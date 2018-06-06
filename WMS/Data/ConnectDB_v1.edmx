@@ -1,0 +1,1140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AccessSystem">
+          <Key>
+            <PropertyRef Name="AccessID" />
+          </Key>
+          <Property Name="AccessID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="Accesstime" Type="datetime" />
+          <Property Name="TimeOut" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tblBranch">
+          <Key>
+            <PropertyRef Name="BranchID" />
+          </Key>
+          <Property Name="BranchID" Type="int" Nullable="false" />
+          <Property Name="BranchName" Type="varchar" MaxLength="50" />
+          <Property Name="Status" Type="int" />
+        </EntityType>
+        <EntityType Name="tblCodeMaster">
+          <Key>
+            <PropertyRef Name="MasterCodeID" />
+          </Key>
+          <Property Name="MasterCodeID" Type="int" Nullable="false" />
+          <Property Name="TypeID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="200" />
+          <Property Name="Note" Type="varchar" MaxLength="200" />
+          <Property Name="FilterInd" Type="varchar" MaxLength="50" />
+          <Property Name="CreateBy" Type="varchar" MaxLength="50" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdateBy" Type="varchar" MaxLength="50" />
+          <Property Name="UpdateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblDepartment">
+          <Key>
+            <PropertyRef Name="DepartmentID" />
+          </Key>
+          <Property Name="DepartmentID" Type="int" Nullable="false" />
+          <Property Name="DepartmentName" Type="varchar" MaxLength="50" />
+          <Property Name="Status" Type="int" />
+        </EntityType>
+        <EntityType Name="tblLogUser">
+          <Key>
+            <PropertyRef Name="LowNumber" />
+          </Key>
+          <Property Name="LowNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="UserGroupID" Type="int" />
+          <Property Name="StatusAdd" Type="varchar" MaxLength="50" />
+          <Property Name="StatusModify" Type="varchar" MaxLength="50" />
+          <Property Name="StatusDelete" Type="varchar" MaxLength="50" />
+          <Property Name="StatusPrint" Type="varchar" MaxLength="50" />
+          <Property Name="StatusImport" Type="varchar" MaxLength="50" />
+          <Property Name="StatusExport" Type="varchar" MaxLength="50" />
+          <Property Name="StatusWarehouse" Type="varchar" MaxLength="50" />
+          <Property Name="UserStatus" Type="varchar" MaxLength="50" />
+          <Property Name="UserBy" Type="varchar" MaxLength="50" />
+          <Property Name="LastUpDate" Type="datetime" />
+          <Property Name="userId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblParty">
+          <Key>
+            <PropertyRef Name="PartyCode" />
+          </Key>
+          <Property Name="PartyCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PartyFullName" Type="varchar" MaxLength="200" />
+          <Property Name="PartyLocalCode" Type="varchar" MaxLength="50" />
+          <Property Name="PartyLocalName" Type="varchar" MaxLength="200" />
+          <Property Name="PartyLocation" Type="varchar" MaxLength="50" />
+          <Property Name="PartyCountry" Type="varchar" MaxLength="50" />
+          <Property Name="RegistrationNo" Type="varchar" MaxLength="50" />
+          <Property Name="PartyTypeCode" Type="varchar" MaxLength="50" />
+          <Property Name="PartyTypeName" Type="varchar" MaxLength="200" />
+          <Property Name="CommissionToSales" Type="varchar" MaxLength="50" />
+          <Property Name="IATACode" Type="varchar" MaxLength="50" />
+          <Property Name="Remarks" Type="varchar" MaxLength="200" />
+          <Property Name="PartyStatus" Type="varchar" MaxLength="50" />
+          <Property Name="MessageHubID" Type="varchar" MaxLength="50" />
+          <Property Name="OtherSystemPartyID" Type="varchar" MaxLength="100" />
+          <Property Name="FormID" Type="varchar" MaxLength="50" />
+          <Property Name="Shipper" Type="varchar" MaxLength="50" />
+          <Property Name="Consignee" Type="varchar" MaxLength="50" />
+          <Property Name="Branch_Agent" Type="varchar" MaxLength="50" />
+          <Property Name="Co_Loader" Type="varchar" MaxLength="50" />
+          <Property Name="Trucking" Type="varchar" MaxLength="50" />
+          <Property Name="ShippingLine" Type="varchar" MaxLength="50" />
+          <Property Name="Vendor" Type="varchar" MaxLength="50" />
+          <Property Name="ContainerYard" Type="varchar" MaxLength="50" />
+          <Property Name="Warehouse" Type="varchar" MaxLength="50" />
+          <Property Name="Bank" Type="varchar" MaxLength="50" />
+          <Property Name="Factory" Type="varchar" MaxLength="50" />
+          <Property Name="Customer" Type="varchar" MaxLength="50" />
+          <Property Name="Broker" Type="varchar" MaxLength="50" />
+          <Property Name="AirLine" Type="varchar" MaxLength="50" />
+          <Property Name="EndCustomer" Type="varchar" MaxLength="50" />
+          <Property Name="CreateBy" Type="varchar" MaxLength="50" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdateBy" Type="varchar" MaxLength="50" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="AmountGuarantee" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="AmountUsed" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Balance" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="tblProductDetail">
+          <Key>
+            <PropertyRef Name="ProductCode" />
+          </Key>
+          <Property Name="ProductCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PONo" Type="varchar" MaxLength="50" />
+          <Property Name="CustomerPart" Type="varchar" MaxLength="50" />
+          <Property Name="EndUserPart" Type="varchar" MaxLength="50" />
+          <Property Name="ImpProductCode" Type="varchar" MaxLength="50" />
+          <Property Name="TariffCode" Type="varchar" MaxLength="50" />
+          <Property Name="ImpDesc1" Type="varchar" MaxLength="200" />
+          <Property Name="ImpStatus1" Type="varchar" MaxLength="50" />
+          <Property Name="ImpEndlife1" Type="datetime" />
+          <Property Name="ImpDesc2" Type="varchar" MaxLength="200" />
+          <Property Name="ImpStatus2" Type="varchar" MaxLength="50" />
+          <Property Name="ImpEndlife2" Type="datetime" />
+          <Property Name="ImpDesc3" Type="varchar" MaxLength="200" />
+          <Property Name="ImpStatus3" Type="varchar" MaxLength="50" />
+          <Property Name="ImpEndlife3" Type="datetime" />
+          <Property Name="ImpProductAttribute1" Type="varchar" MaxLength="200" />
+          <Property Name="ImpProductAttribute2" Type="varchar" MaxLength="200" />
+          <Property Name="ImpTariffSequence" Type="varchar" MaxLength="50" />
+          <Property Name="ImpStatisticalCode" Type="varchar" MaxLength="50" />
+          <Property Name="ImpCustomsProductCode" Type="varchar" MaxLength="50" />
+          <Property Name="ImpProductYear" Type="varchar" MaxLength="50" />
+          <Property Name="ImpDutytype" Type="varchar" MaxLength="50" />
+          <Property Name="ImpSpeciticRate" Type="float" />
+          <Property Name="ImpValueRate_P" Type="float" />
+          <Property Name="ImpSpecificCal" Type="varchar" MaxLength="50" />
+          <Property Name="ImpSpecificRate_P" Type="float" />
+          <Property Name="ImpExemptVAT" Type="float" />
+          <Property Name="ImpExemptDuty" Type="float" />
+          <Property Name="ImpExciseNo" Type="varchar" MaxLength="50" />
+          <Property Name="ImpSurchargeRate" Type="float" />
+          <Property Name="ImpExciseRatePay" Type="float" />
+          <Property Name="ImpExciseRate" Type="float" />
+          <Property Name="ImpExciseSpcRatePay" Type="float" />
+          <Property Name="ImpExciseSpcRate" Type="float" />
+          <Property Name="ImpPriviege" Type="varchar" MaxLength="50" />
+          <Property Name="ImpExemptExcise" Type="varchar" MaxLength="50" />
+          <Property Name="ImpBrand" Type="varchar" MaxLength="100" />
+          <Property Name="ImpValueRate" Type="float" />
+          <Property Name="ImpCurrency" Type="varchar" MaxLength="50" />
+          <Property Name="ImpExchangeRate" Type="float" />
+          <Property Name="ImpValueRateAmount" Type="float" />
+          <Property Name="ExpProductCode" Type="varchar" MaxLength="50" />
+          <Property Name="ExpDesc1" Type="varchar" MaxLength="200" />
+          <Property Name="ExpStatus1" Type="varchar" MaxLength="50" />
+          <Property Name="ExpEndlife1" Type="datetime" />
+          <Property Name="ExpDesc2" Type="varchar" MaxLength="200" />
+          <Property Name="ExpStatus2" Type="varchar" MaxLength="50" />
+          <Property Name="ExpEndlife2" Type="datetime" />
+          <Property Name="ExpDesc3" Type="varchar" MaxLength="200" />
+          <Property Name="ExpStatus3" Type="varchar" MaxLength="50" />
+          <Property Name="ExpEndlife3" Type="datetime" />
+          <Property Name="ExpProductAttribute1" Type="varchar" MaxLength="200" />
+          <Property Name="ExpProductAttribute2" Type="varchar" MaxLength="200" />
+          <Property Name="ExpTariffSequence" Type="varchar" MaxLength="50" />
+          <Property Name="ExpTariffCode" Type="varchar" MaxLength="50" />
+          <Property Name="ExpCustomsProductCode" Type="varchar" MaxLength="50" />
+          <Property Name="ExpStatisticalCode" Type="varchar" MaxLength="50" />
+          <Property Name="ExpFomulaNo" Type="varchar" MaxLength="50" />
+          <Property Name="ExpProductYear" Type="varchar" MaxLength="50" />
+          <Property Name="ExpBOINo" Type="varchar" MaxLength="50" />
+          <Property Name="Exp19BisTranNo" Type="varchar" MaxLength="50" />
+          <Property Name="ExpDutyType" Type="varchar" MaxLength="50" />
+          <Property Name="ExpBondFormulaNo" Type="varchar" MaxLength="50" />
+          <Property Name="ExpQTYCarton" Type="float" />
+          <Property Name="ExpPriceForeight" Type="float" />
+          <Property Name="ExpWeightCarton" Type="float" />
+          <Property Name="ExpQTYPallet" Type="float" />
+          <Property Name="ExpValueRate" Type="float" />
+          <Property Name="ExpCurrency" Type="varchar" MaxLength="50" />
+          <Property Name="ExpExchangeRate" Type="float" />
+          <Property Name="ExpValueRateAmount" Type="float" />
+          <Property Name="CartonSetUnit" Type="varchar" MaxLength="50" />
+          <Property Name="CartonWidth" Type="float" />
+          <Property Name="CartonHeight" Type="float" />
+          <Property Name="CartonLenght" Type="float" />
+          <Property Name="CartonVolume" Type="float" />
+          <Property Name="CartonVolUnit" Type="varchar" MaxLength="50" />
+          <Property Name="PalletSetUnit" Type="varchar" MaxLength="50" />
+          <Property Name="PalletWidth" Type="float" />
+          <Property Name="PalletHeight" Type="float" />
+          <Property Name="PalletLenght" Type="float" />
+          <Property Name="PalletNoCarton" Type="float" />
+          <Property Name="PalletVolume" Type="float" />
+          <Property Name="PalletVolUnit" Type="varchar" MaxLength="50" />
+          <Property Name="SpecialHandling" Type="varchar" MaxLength="254" />
+          <Property Name="ImpEstablishNo" Type="varchar" MaxLength="50" />
+          <Property Name="ImpFactoryNo" Type="varchar" MaxLength="50" />
+          <Property Name="ExpEstablishNo" Type="varchar" MaxLength="50" />
+          <Property Name="ExpFactoryNo" Type="varchar" MaxLength="50" />
+          <Property Name="CreateBy" Type="varchar" MaxLength="50" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdateBy" Type="varchar" MaxLength="50" />
+          <Property Name="UpdateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblRunningNumber">
+          <Key>
+            <PropertyRef Name="NumbeId" />
+          </Key>
+          <Property Name="NumbeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="RunNo" Type="int" />
+        </EntityType>
+        <EntityType Name="tblTypeMasterCode">
+          <Key>
+            <PropertyRef Name="TypeID" />
+          </Key>
+          <Property Name="TypeID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TypeName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="200" />
+          <Property Name="Note" Type="varchar" MaxLength="200" />
+          <Property Name="FilterInd" Type="varchar" MaxLength="50" />
+          <Property Name="CreateBy" Type="int" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdateBy" Type="varchar" MaxLength="50" />
+          <Property Name="UpdateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="UserGroupID" Type="int" />
+          <Property Name="DepartmentID" Type="int" />
+          <Property Name="BranchID" Type="int" />
+          <Property Name="Password" Type="varchar" MaxLength="100" />
+          <Property Name="StatusAdd" Type="varchar" MaxLength="50" />
+          <Property Name="StatusModify" Type="varchar" MaxLength="50" />
+          <Property Name="StatusDelete" Type="varchar" MaxLength="50" />
+          <Property Name="StatusPrint" Type="varchar" MaxLength="50" />
+          <Property Name="StatusImport" Type="varchar" MaxLength="50" />
+          <Property Name="StatusExport" Type="varchar" MaxLength="50" />
+          <Property Name="StatusWarehouse" Type="varchar" MaxLength="50" />
+          <Property Name="UserStatus" Type="varchar" MaxLength="50" />
+          <Property Name="RejectStatus" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblUserGroup">
+          <Key>
+            <PropertyRef Name="UserGroupID" />
+          </Key>
+          <Property Name="UserGroupID" Type="int" Nullable="false" />
+          <Property Name="UserGroupCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserGroupName" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <Association Name="FK_AccessSystem_tblUser">
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="0..1" />
+          <End Role="AccessSystem" Type="Self.AccessSystem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="AccessSystem">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCodeMaster_tblTypeMasterCode">
+          <End Role="tblTypeMasterCode" Type="Self.tblTypeMasterCode" Multiplicity="1" />
+          <End Role="tblCodeMaster" Type="Self.tblCodeMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTypeMasterCode">
+              <PropertyRef Name="TypeID" />
+            </Principal>
+            <Dependent Role="tblCodeMaster">
+              <PropertyRef Name="TypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCodeMaster_tblUser">
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="1" />
+          <End Role="tblCodeMaster" Type="Self.tblCodeMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblCodeMaster">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblLogUser_tblUser">
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="1" />
+          <End Role="tblLogUser" Type="Self.tblLogUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblLogUser">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblTypeMasterCode_tblUser">
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="0..1" />
+          <End Role="tblTypeMasterCode" Type="Self.tblTypeMasterCode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblTypeMasterCode">
+              <PropertyRef Name="CreateBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUser_tblBranchID">
+          <End Role="tblBranch" Type="Self.tblBranch" Multiplicity="0..1" />
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblBranch">
+              <PropertyRef Name="BranchID" />
+            </Principal>
+            <Dependent Role="tblUser">
+              <PropertyRef Name="BranchID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUser_tblDepartment">
+          <End Role="tblDepartment" Type="Self.tblDepartment" Multiplicity="0..1" />
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblDepartment">
+              <PropertyRef Name="DepartmentID" />
+            </Principal>
+            <Dependent Role="tblUser">
+              <PropertyRef Name="DepartmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUser_tblUserGroup">
+          <End Role="tblUserGroup" Type="Self.tblUserGroup" Multiplicity="0..1" />
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUserGroup">
+              <PropertyRef Name="UserGroupID" />
+            </Principal>
+            <Dependent Role="tblUser">
+              <PropertyRef Name="UserGroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="AccessSystem" EntityType="Self.AccessSystem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblBranch" EntityType="Self.tblBranch" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCodeMaster" EntityType="Self.tblCodeMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblDepartment" EntityType="Self.tblDepartment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblLogUser" EntityType="Self.tblLogUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblParty" EntityType="Self.tblParty" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblProductDetail" EntityType="Self.tblProductDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblRunningNumber" EntityType="Self.tblRunningNumber" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTypeMasterCode" EntityType="Self.tblTypeMasterCode" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUserGroup" EntityType="Self.tblUserGroup" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AccessSystem_tblUser" Association="Self.FK_AccessSystem_tblUser">
+            <End Role="tblUser" EntitySet="tblUser" />
+            <End Role="AccessSystem" EntitySet="AccessSystem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCodeMaster_tblTypeMasterCode" Association="Self.FK_tblCodeMaster_tblTypeMasterCode">
+            <End Role="tblTypeMasterCode" EntitySet="tblTypeMasterCode" />
+            <End Role="tblCodeMaster" EntitySet="tblCodeMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCodeMaster_tblUser" Association="Self.FK_tblCodeMaster_tblUser">
+            <End Role="tblUser" EntitySet="tblUser" />
+            <End Role="tblCodeMaster" EntitySet="tblCodeMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblLogUser_tblUser" Association="Self.FK_tblLogUser_tblUser">
+            <End Role="tblUser" EntitySet="tblUser" />
+            <End Role="tblLogUser" EntitySet="tblLogUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblTypeMasterCode_tblUser" Association="Self.FK_tblTypeMasterCode_tblUser">
+            <End Role="tblUser" EntitySet="tblUser" />
+            <End Role="tblTypeMasterCode" EntitySet="tblTypeMasterCode" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUser_tblBranchID" Association="Self.FK_tblUser_tblBranchID">
+            <End Role="tblBranch" EntitySet="tblBranch" />
+            <End Role="tblUser" EntitySet="tblUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUser_tblDepartment" Association="Self.FK_tblUser_tblDepartment">
+            <End Role="tblDepartment" EntitySet="tblDepartment" />
+            <End Role="tblUser" EntitySet="tblUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUser_tblUserGroup" Association="Self.FK_tblUser_tblUserGroup">
+            <End Role="tblUserGroup" EntitySet="tblUserGroup" />
+            <End Role="tblUser" EntitySet="tblUser" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AccessSystem">
+          <Key>
+            <PropertyRef Name="AccessID" />
+          </Key>
+          <Property Name="AccessID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="Accesstime" Type="DateTime" Precision="3" />
+          <Property Name="TimeOut" Type="DateTime" Precision="7" />
+          <NavigationProperty Name="tblUser" Relationship="Self.FK_AccessSystem_tblUser" FromRole="AccessSystem" ToRole="tblUser" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblBranch">
+          <Key>
+            <PropertyRef Name="BranchID" />
+          </Key>
+          <Property Name="BranchID" Type="Int32" Nullable="false" />
+          <Property Name="BranchName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="Int32" />
+          <NavigationProperty Name="tblUser" Relationship="Self.FK_tblUser_tblBranchID" FromRole="tblBranch" ToRole="tblUser" />
+        </EntityType>
+        <EntityType Name="tblCodeMaster">
+          <Key>
+            <PropertyRef Name="MasterCodeID" />
+          </Key>
+          <Property Name="MasterCodeID" Type="Int32" Nullable="false" />
+          <Property Name="TypeID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Note" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="FilterInd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblTypeMasterCode" Relationship="Self.FK_tblCodeMaster_tblTypeMasterCode" FromRole="tblCodeMaster" ToRole="tblTypeMasterCode" />
+          <NavigationProperty Name="tblUser" Relationship="Self.FK_tblCodeMaster_tblUser" FromRole="tblCodeMaster" ToRole="tblUser" />
+        </EntityType>
+        <EntityType Name="tblDepartment">
+          <Key>
+            <PropertyRef Name="DepartmentID" />
+          </Key>
+          <Property Name="DepartmentID" Type="Int32" Nullable="false" />
+          <Property Name="DepartmentName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="Int32" />
+          <NavigationProperty Name="tblUser" Relationship="Self.FK_tblUser_tblDepartment" FromRole="tblDepartment" ToRole="tblUser" />
+        </EntityType>
+        <EntityType Name="tblLogUser">
+          <Key>
+            <PropertyRef Name="LowNumber" />
+          </Key>
+          <Property Name="LowNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserGroupID" Type="Int32" />
+          <Property Name="StatusAdd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StatusModify" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StatusDelete" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StatusPrint" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StatusImport" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StatusExport" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StatusWarehouse" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastUpDate" Type="DateTime" Precision="3" />
+          <Property Name="userId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblUser" Relationship="Self.FK_tblLogUser_tblUser" FromRole="tblLogUser" ToRole="tblUser" />
+        </EntityType>
+        <EntityType Name="tblParty">
+          <Key>
+            <PropertyRef Name="PartyCode" />
+          </Key>
+          <Property Name="PartyCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PartyFullName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="PartyLocalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PartyLocalName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="PartyLocation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PartyCountry" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RegistrationNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PartyTypeCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PartyTypeName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CommissionToSales" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IATACode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Remarks" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="PartyStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MessageHubID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OtherSystemPartyID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FormID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Shipper" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Consignee" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Branch_Agent" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Co_Loader" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Trucking" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ShippingLine" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Vendor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ContainerYard" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Warehouse" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Bank" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Factory" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Customer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Broker" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AirLine" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EndCustomer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="AmountGuarantee" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="AmountUsed" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Balance" Type="Decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="tblProductDetail">
+          <Key>
+            <PropertyRef Name="ProductCode" />
+          </Key>
+          <Property Name="ProductCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PONo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerPart" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EndUserPart" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ImpProductCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TariffCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ImpDesc1" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ImpStatus1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ImpEndlife1" Type="DateTime" Precision="3" />
+          <Property Name="ImpDesc2" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ImpStatus2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ImpEndlife2" Type="DateTime" Precision="3" />
+          <Property Name="ImpDesc3" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ImpStatus3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ImpEndlife3" Type="DateTime" Precision="3" />
+          <Property Name="ImpProductAttribute1" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ImpProductAttribute2" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ImpTariffSequence" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ImpStatisticalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ImpCustomsProductCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ImpProductYear" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ImpDutytype" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ImpSpeciticRate" Type="Double" />
+          <Property Name="ImpValueRate_P" Type="Double" />
+          <Property Name="ImpSpecificCal" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ImpSpecificRate_P" Type="Double" />
+          <Property Name="ImpExemptVAT" Type="Double" />
+          <Property Name="ImpExemptDuty" Type="Double" />
+          <Property Name="ImpExciseNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ImpSurchargeRate" Type="Double" />
+          <Property Name="ImpExciseRatePay" Type="Double" />
+          <Property Name="ImpExciseRate" Type="Double" />
+          <Property Name="ImpExciseSpcRatePay" Type="Double" />
+          <Property Name="ImpExciseSpcRate" Type="Double" />
+          <Property Name="ImpPriviege" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ImpExemptExcise" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ImpBrand" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ImpValueRate" Type="Double" />
+          <Property Name="ImpCurrency" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ImpExchangeRate" Type="Double" />
+          <Property Name="ImpValueRateAmount" Type="Double" />
+          <Property Name="ExpProductCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ExpDesc1" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ExpStatus1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ExpEndlife1" Type="DateTime" Precision="3" />
+          <Property Name="ExpDesc2" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ExpStatus2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ExpEndlife2" Type="DateTime" Precision="3" />
+          <Property Name="ExpDesc3" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ExpStatus3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ExpEndlife3" Type="DateTime" Precision="3" />
+          <Property Name="ExpProductAttribute1" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ExpProductAttribute2" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ExpTariffSequence" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ExpTariffCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ExpCustomsProductCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ExpStatisticalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ExpFomulaNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ExpProductYear" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ExpBOINo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Exp19BisTranNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ExpDutyType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ExpBondFormulaNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ExpQTYCarton" Type="Double" />
+          <Property Name="ExpPriceForeight" Type="Double" />
+          <Property Name="ExpWeightCarton" Type="Double" />
+          <Property Name="ExpQTYPallet" Type="Double" />
+          <Property Name="ExpValueRate" Type="Double" />
+          <Property Name="ExpCurrency" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ExpExchangeRate" Type="Double" />
+          <Property Name="ExpValueRateAmount" Type="Double" />
+          <Property Name="CartonSetUnit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CartonWidth" Type="Double" />
+          <Property Name="CartonHeight" Type="Double" />
+          <Property Name="CartonLenght" Type="Double" />
+          <Property Name="CartonVolume" Type="Double" />
+          <Property Name="CartonVolUnit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PalletSetUnit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PalletWidth" Type="Double" />
+          <Property Name="PalletHeight" Type="Double" />
+          <Property Name="PalletLenght" Type="Double" />
+          <Property Name="PalletNoCarton" Type="Double" />
+          <Property Name="PalletVolume" Type="Double" />
+          <Property Name="PalletVolUnit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SpecialHandling" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+          <Property Name="ImpEstablishNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ImpFactoryNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ExpEstablishNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ExpFactoryNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tblRunningNumber">
+          <Key>
+            <PropertyRef Name="NumbeId" />
+          </Key>
+          <Property Name="NumbeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RunNo" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tblTypeMasterCode">
+          <Key>
+            <PropertyRef Name="TypeID" />
+          </Key>
+          <Property Name="TypeID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Note" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="FilterInd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreateBy" Type="Int32" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblCodeMaster" Relationship="Self.FK_tblCodeMaster_tblTypeMasterCode" FromRole="tblTypeMasterCode" ToRole="tblCodeMaster" />
+          <NavigationProperty Name="tblUser" Relationship="Self.FK_tblTypeMasterCode_tblUser" FromRole="tblTypeMasterCode" ToRole="tblUser" />
+        </EntityType>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UserGroupID" Type="Int32" />
+          <Property Name="DepartmentID" Type="Int32" />
+          <Property Name="BranchID" Type="Int32" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="StatusAdd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StatusModify" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StatusDelete" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StatusPrint" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StatusImport" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StatusExport" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StatusWarehouse" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RejectStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="AccessSystem" Relationship="Self.FK_AccessSystem_tblUser" FromRole="tblUser" ToRole="AccessSystem" />
+          <NavigationProperty Name="tblBranch" Relationship="Self.FK_tblUser_tblBranchID" FromRole="tblUser" ToRole="tblBranch" />
+          <NavigationProperty Name="tblCodeMaster" Relationship="Self.FK_tblCodeMaster_tblUser" FromRole="tblUser" ToRole="tblCodeMaster" />
+          <NavigationProperty Name="tblDepartment" Relationship="Self.FK_tblUser_tblDepartment" FromRole="tblUser" ToRole="tblDepartment" />
+          <NavigationProperty Name="tblLogUser" Relationship="Self.FK_tblLogUser_tblUser" FromRole="tblUser" ToRole="tblLogUser" />
+          <NavigationProperty Name="tblTypeMasterCode" Relationship="Self.FK_tblTypeMasterCode_tblUser" FromRole="tblUser" ToRole="tblTypeMasterCode" />
+          <NavigationProperty Name="tblUserGroup" Relationship="Self.FK_tblUser_tblUserGroup" FromRole="tblUser" ToRole="tblUserGroup" />
+        </EntityType>
+        <EntityType Name="tblUserGroup">
+          <Key>
+            <PropertyRef Name="UserGroupID" />
+          </Key>
+          <Property Name="UserGroupID" Type="Int32" Nullable="false" />
+          <Property Name="UserGroupCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserGroupName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblUser" Relationship="Self.FK_tblUser_tblUserGroup" FromRole="tblUserGroup" ToRole="tblUser" />
+        </EntityType>
+        <Association Name="FK_AccessSystem_tblUser">
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="0..1" />
+          <End Role="AccessSystem" Type="Self.AccessSystem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="AccessSystem">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUser_tblBranchID">
+          <End Role="tblBranch" Type="Self.tblBranch" Multiplicity="0..1" />
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblBranch">
+              <PropertyRef Name="BranchID" />
+            </Principal>
+            <Dependent Role="tblUser">
+              <PropertyRef Name="BranchID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCodeMaster_tblTypeMasterCode">
+          <End Role="tblTypeMasterCode" Type="Self.tblTypeMasterCode" Multiplicity="1" />
+          <End Role="tblCodeMaster" Type="Self.tblCodeMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTypeMasterCode">
+              <PropertyRef Name="TypeID" />
+            </Principal>
+            <Dependent Role="tblCodeMaster">
+              <PropertyRef Name="TypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCodeMaster_tblUser">
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="1" />
+          <End Role="tblCodeMaster" Type="Self.tblCodeMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblCodeMaster">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUser_tblDepartment">
+          <End Role="tblDepartment" Type="Self.tblDepartment" Multiplicity="0..1" />
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblDepartment">
+              <PropertyRef Name="DepartmentID" />
+            </Principal>
+            <Dependent Role="tblUser">
+              <PropertyRef Name="DepartmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblLogUser_tblUser">
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="1" />
+          <End Role="tblLogUser" Type="Self.tblLogUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblLogUser">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblTypeMasterCode_tblUser">
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="0..1" />
+          <End Role="tblTypeMasterCode" Type="Self.tblTypeMasterCode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblTypeMasterCode">
+              <PropertyRef Name="CreateBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUser_tblUserGroup">
+          <End Role="tblUserGroup" Type="Self.tblUserGroup" Multiplicity="0..1" />
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUserGroup">
+              <PropertyRef Name="UserGroupID" />
+            </Principal>
+            <Dependent Role="tblUser">
+              <PropertyRef Name="UserGroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LKBwarehouseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AccessSystem" EntityType="Self.AccessSystem" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="tblBranch" EntityType="Self.tblBranch" />
+          <EntitySet Name="tblCodeMaster" EntityType="Self.tblCodeMaster" />
+          <EntitySet Name="tblDepartment" EntityType="Self.tblDepartment" />
+          <EntitySet Name="tblLogUser" EntityType="Self.tblLogUser" />
+          <EntitySet Name="tblParty" EntityType="Self.tblParty" />
+          <EntitySet Name="tblProductDetail" EntityType="Self.tblProductDetail" />
+          <EntitySet Name="tblRunningNumber" EntityType="Self.tblRunningNumber" />
+          <EntitySet Name="tblTypeMasterCode" EntityType="Self.tblTypeMasterCode" />
+          <EntitySet Name="tblUser" EntityType="Self.tblUser" />
+          <EntitySet Name="tblUserGroup" EntityType="Self.tblUserGroup" />
+          <AssociationSet Name="FK_AccessSystem_tblUser" Association="Self.FK_AccessSystem_tblUser">
+            <End Role="tblUser" EntitySet="tblUser" />
+            <End Role="AccessSystem" EntitySet="AccessSystem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUser_tblBranchID" Association="Self.FK_tblUser_tblBranchID">
+            <End Role="tblBranch" EntitySet="tblBranch" />
+            <End Role="tblUser" EntitySet="tblUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCodeMaster_tblTypeMasterCode" Association="Self.FK_tblCodeMaster_tblTypeMasterCode">
+            <End Role="tblTypeMasterCode" EntitySet="tblTypeMasterCode" />
+            <End Role="tblCodeMaster" EntitySet="tblCodeMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCodeMaster_tblUser" Association="Self.FK_tblCodeMaster_tblUser">
+            <End Role="tblUser" EntitySet="tblUser" />
+            <End Role="tblCodeMaster" EntitySet="tblCodeMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUser_tblDepartment" Association="Self.FK_tblUser_tblDepartment">
+            <End Role="tblDepartment" EntitySet="tblDepartment" />
+            <End Role="tblUser" EntitySet="tblUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblLogUser_tblUser" Association="Self.FK_tblLogUser_tblUser">
+            <End Role="tblUser" EntitySet="tblUser" />
+            <End Role="tblLogUser" EntitySet="tblLogUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblTypeMasterCode_tblUser" Association="Self.FK_tblTypeMasterCode_tblUser">
+            <End Role="tblUser" EntitySet="tblUser" />
+            <End Role="tblTypeMasterCode" EntitySet="tblTypeMasterCode" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUser_tblUserGroup" Association="Self.FK_tblUser_tblUserGroup">
+            <End Role="tblUserGroup" EntitySet="tblUserGroup" />
+            <End Role="tblUser" EntitySet="tblUser" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="LKBwarehouseEntities">
+          <EntitySetMapping Name="AccessSystem">
+            <EntityTypeMapping TypeName="Model.AccessSystem">
+              <MappingFragment StoreEntitySet="AccessSystem">
+                <ScalarProperty Name="AccessID" ColumnName="AccessID" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Accesstime" ColumnName="Accesstime" />
+                <ScalarProperty Name="TimeOut" ColumnName="TimeOut" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Model.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblBranch">
+            <EntityTypeMapping TypeName="Model.tblBranch">
+              <MappingFragment StoreEntitySet="tblBranch">
+                <ScalarProperty Name="BranchID" ColumnName="BranchID" />
+                <ScalarProperty Name="BranchName" ColumnName="BranchName" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCodeMaster">
+            <EntityTypeMapping TypeName="Model.tblCodeMaster">
+              <MappingFragment StoreEntitySet="tblCodeMaster">
+                <ScalarProperty Name="MasterCodeID" ColumnName="MasterCodeID" />
+                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="FilterInd" ColumnName="FilterInd" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDepartment">
+            <EntityTypeMapping TypeName="Model.tblDepartment">
+              <MappingFragment StoreEntitySet="tblDepartment">
+                <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+                <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblLogUser">
+            <EntityTypeMapping TypeName="Model.tblLogUser">
+              <MappingFragment StoreEntitySet="tblLogUser">
+                <ScalarProperty Name="LowNumber" ColumnName="LowNumber" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserGroupID" ColumnName="UserGroupID" />
+                <ScalarProperty Name="StatusAdd" ColumnName="StatusAdd" />
+                <ScalarProperty Name="StatusModify" ColumnName="StatusModify" />
+                <ScalarProperty Name="StatusDelete" ColumnName="StatusDelete" />
+                <ScalarProperty Name="StatusPrint" ColumnName="StatusPrint" />
+                <ScalarProperty Name="StatusImport" ColumnName="StatusImport" />
+                <ScalarProperty Name="StatusExport" ColumnName="StatusExport" />
+                <ScalarProperty Name="StatusWarehouse" ColumnName="StatusWarehouse" />
+                <ScalarProperty Name="UserStatus" ColumnName="UserStatus" />
+                <ScalarProperty Name="UserBy" ColumnName="UserBy" />
+                <ScalarProperty Name="LastUpDate" ColumnName="LastUpDate" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblParty">
+            <EntityTypeMapping TypeName="Model.tblParty">
+              <MappingFragment StoreEntitySet="tblParty">
+                <ScalarProperty Name="PartyCode" ColumnName="PartyCode" />
+                <ScalarProperty Name="PartyFullName" ColumnName="PartyFullName" />
+                <ScalarProperty Name="PartyLocalCode" ColumnName="PartyLocalCode" />
+                <ScalarProperty Name="PartyLocalName" ColumnName="PartyLocalName" />
+                <ScalarProperty Name="PartyLocation" ColumnName="PartyLocation" />
+                <ScalarProperty Name="PartyCountry" ColumnName="PartyCountry" />
+                <ScalarProperty Name="RegistrationNo" ColumnName="RegistrationNo" />
+                <ScalarProperty Name="PartyTypeCode" ColumnName="PartyTypeCode" />
+                <ScalarProperty Name="PartyTypeName" ColumnName="PartyTypeName" />
+                <ScalarProperty Name="CommissionToSales" ColumnName="CommissionToSales" />
+                <ScalarProperty Name="IATACode" ColumnName="IATACode" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="PartyStatus" ColumnName="PartyStatus" />
+                <ScalarProperty Name="MessageHubID" ColumnName="MessageHubID" />
+                <ScalarProperty Name="OtherSystemPartyID" ColumnName="OtherSystemPartyID" />
+                <ScalarProperty Name="FormID" ColumnName="FormID" />
+                <ScalarProperty Name="Shipper" ColumnName="Shipper" />
+                <ScalarProperty Name="Consignee" ColumnName="Consignee" />
+                <ScalarProperty Name="Branch_Agent" ColumnName="Branch_Agent" />
+                <ScalarProperty Name="Co_Loader" ColumnName="Co_Loader" />
+                <ScalarProperty Name="Trucking" ColumnName="Trucking" />
+                <ScalarProperty Name="ShippingLine" ColumnName="ShippingLine" />
+                <ScalarProperty Name="Vendor" ColumnName="Vendor" />
+                <ScalarProperty Name="ContainerYard" ColumnName="ContainerYard" />
+                <ScalarProperty Name="Warehouse" ColumnName="Warehouse" />
+                <ScalarProperty Name="Bank" ColumnName="Bank" />
+                <ScalarProperty Name="Factory" ColumnName="Factory" />
+                <ScalarProperty Name="Customer" ColumnName="Customer" />
+                <ScalarProperty Name="Broker" ColumnName="Broker" />
+                <ScalarProperty Name="AirLine" ColumnName="AirLine" />
+                <ScalarProperty Name="EndCustomer" ColumnName="EndCustomer" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="AmountGuarantee" ColumnName="AmountGuarantee" />
+                <ScalarProperty Name="AmountUsed" ColumnName="AmountUsed" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProductDetail">
+            <EntityTypeMapping TypeName="Model.tblProductDetail">
+              <MappingFragment StoreEntitySet="tblProductDetail">
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="PONo" ColumnName="PONo" />
+                <ScalarProperty Name="CustomerPart" ColumnName="CustomerPart" />
+                <ScalarProperty Name="EndUserPart" ColumnName="EndUserPart" />
+                <ScalarProperty Name="ImpProductCode" ColumnName="ImpProductCode" />
+                <ScalarProperty Name="TariffCode" ColumnName="TariffCode" />
+                <ScalarProperty Name="ImpDesc1" ColumnName="ImpDesc1" />
+                <ScalarProperty Name="ImpStatus1" ColumnName="ImpStatus1" />
+                <ScalarProperty Name="ImpEndlife1" ColumnName="ImpEndlife1" />
+                <ScalarProperty Name="ImpDesc2" ColumnName="ImpDesc2" />
+                <ScalarProperty Name="ImpStatus2" ColumnName="ImpStatus2" />
+                <ScalarProperty Name="ImpEndlife2" ColumnName="ImpEndlife2" />
+                <ScalarProperty Name="ImpDesc3" ColumnName="ImpDesc3" />
+                <ScalarProperty Name="ImpStatus3" ColumnName="ImpStatus3" />
+                <ScalarProperty Name="ImpEndlife3" ColumnName="ImpEndlife3" />
+                <ScalarProperty Name="ImpProductAttribute1" ColumnName="ImpProductAttribute1" />
+                <ScalarProperty Name="ImpProductAttribute2" ColumnName="ImpProductAttribute2" />
+                <ScalarProperty Name="ImpTariffSequence" ColumnName="ImpTariffSequence" />
+                <ScalarProperty Name="ImpStatisticalCode" ColumnName="ImpStatisticalCode" />
+                <ScalarProperty Name="ImpCustomsProductCode" ColumnName="ImpCustomsProductCode" />
+                <ScalarProperty Name="ImpProductYear" ColumnName="ImpProductYear" />
+                <ScalarProperty Name="ImpDutytype" ColumnName="ImpDutytype" />
+                <ScalarProperty Name="ImpSpeciticRate" ColumnName="ImpSpeciticRate" />
+                <ScalarProperty Name="ImpValueRate_P" ColumnName="ImpValueRate_P" />
+                <ScalarProperty Name="ImpSpecificCal" ColumnName="ImpSpecificCal" />
+                <ScalarProperty Name="ImpSpecificRate_P" ColumnName="ImpSpecificRate_P" />
+                <ScalarProperty Name="ImpExemptVAT" ColumnName="ImpExemptVAT" />
+                <ScalarProperty Name="ImpExemptDuty" ColumnName="ImpExemptDuty" />
+                <ScalarProperty Name="ImpExciseNo" ColumnName="ImpExciseNo" />
+                <ScalarProperty Name="ImpSurchargeRate" ColumnName="ImpSurchargeRate" />
+                <ScalarProperty Name="ImpExciseRatePay" ColumnName="ImpExciseRatePay" />
+                <ScalarProperty Name="ImpExciseRate" ColumnName="ImpExciseRate" />
+                <ScalarProperty Name="ImpExciseSpcRatePay" ColumnName="ImpExciseSpcRatePay" />
+                <ScalarProperty Name="ImpExciseSpcRate" ColumnName="ImpExciseSpcRate" />
+                <ScalarProperty Name="ImpPriviege" ColumnName="ImpPriviege" />
+                <ScalarProperty Name="ImpExemptExcise" ColumnName="ImpExemptExcise" />
+                <ScalarProperty Name="ImpBrand" ColumnName="ImpBrand" />
+                <ScalarProperty Name="ImpValueRate" ColumnName="ImpValueRate" />
+                <ScalarProperty Name="ImpCurrency" ColumnName="ImpCurrency" />
+                <ScalarProperty Name="ImpExchangeRate" ColumnName="ImpExchangeRate" />
+                <ScalarProperty Name="ImpValueRateAmount" ColumnName="ImpValueRateAmount" />
+                <ScalarProperty Name="ExpProductCode" ColumnName="ExpProductCode" />
+                <ScalarProperty Name="ExpDesc1" ColumnName="ExpDesc1" />
+                <ScalarProperty Name="ExpStatus1" ColumnName="ExpStatus1" />
+                <ScalarProperty Name="ExpEndlife1" ColumnName="ExpEndlife1" />
+                <ScalarProperty Name="ExpDesc2" ColumnName="ExpDesc2" />
+                <ScalarProperty Name="ExpStatus2" ColumnName="ExpStatus2" />
+                <ScalarProperty Name="ExpEndlife2" ColumnName="ExpEndlife2" />
+                <ScalarProperty Name="ExpDesc3" ColumnName="ExpDesc3" />
+                <ScalarProperty Name="ExpStatus3" ColumnName="ExpStatus3" />
+                <ScalarProperty Name="ExpEndlife3" ColumnName="ExpEndlife3" />
+                <ScalarProperty Name="ExpProductAttribute1" ColumnName="ExpProductAttribute1" />
+                <ScalarProperty Name="ExpProductAttribute2" ColumnName="ExpProductAttribute2" />
+                <ScalarProperty Name="ExpTariffSequence" ColumnName="ExpTariffSequence" />
+                <ScalarProperty Name="ExpTariffCode" ColumnName="ExpTariffCode" />
+                <ScalarProperty Name="ExpCustomsProductCode" ColumnName="ExpCustomsProductCode" />
+                <ScalarProperty Name="ExpStatisticalCode" ColumnName="ExpStatisticalCode" />
+                <ScalarProperty Name="ExpFomulaNo" ColumnName="ExpFomulaNo" />
+                <ScalarProperty Name="ExpProductYear" ColumnName="ExpProductYear" />
+                <ScalarProperty Name="ExpBOINo" ColumnName="ExpBOINo" />
+                <ScalarProperty Name="Exp19BisTranNo" ColumnName="Exp19BisTranNo" />
+                <ScalarProperty Name="ExpDutyType" ColumnName="ExpDutyType" />
+                <ScalarProperty Name="ExpBondFormulaNo" ColumnName="ExpBondFormulaNo" />
+                <ScalarProperty Name="ExpQTYCarton" ColumnName="ExpQTYCarton" />
+                <ScalarProperty Name="ExpPriceForeight" ColumnName="ExpPriceForeight" />
+                <ScalarProperty Name="ExpWeightCarton" ColumnName="ExpWeightCarton" />
+                <ScalarProperty Name="ExpQTYPallet" ColumnName="ExpQTYPallet" />
+                <ScalarProperty Name="ExpValueRate" ColumnName="ExpValueRate" />
+                <ScalarProperty Name="ExpCurrency" ColumnName="ExpCurrency" />
+                <ScalarProperty Name="ExpExchangeRate" ColumnName="ExpExchangeRate" />
+                <ScalarProperty Name="ExpValueRateAmount" ColumnName="ExpValueRateAmount" />
+                <ScalarProperty Name="CartonSetUnit" ColumnName="CartonSetUnit" />
+                <ScalarProperty Name="CartonWidth" ColumnName="CartonWidth" />
+                <ScalarProperty Name="CartonHeight" ColumnName="CartonHeight" />
+                <ScalarProperty Name="CartonLenght" ColumnName="CartonLenght" />
+                <ScalarProperty Name="CartonVolume" ColumnName="CartonVolume" />
+                <ScalarProperty Name="CartonVolUnit" ColumnName="CartonVolUnit" />
+                <ScalarProperty Name="PalletSetUnit" ColumnName="PalletSetUnit" />
+                <ScalarProperty Name="PalletWidth" ColumnName="PalletWidth" />
+                <ScalarProperty Name="PalletHeight" ColumnName="PalletHeight" />
+                <ScalarProperty Name="PalletLenght" ColumnName="PalletLenght" />
+                <ScalarProperty Name="PalletNoCarton" ColumnName="PalletNoCarton" />
+                <ScalarProperty Name="PalletVolume" ColumnName="PalletVolume" />
+                <ScalarProperty Name="PalletVolUnit" ColumnName="PalletVolUnit" />
+                <ScalarProperty Name="SpecialHandling" ColumnName="SpecialHandling" />
+                <ScalarProperty Name="ImpEstablishNo" ColumnName="ImpEstablishNo" />
+                <ScalarProperty Name="ImpFactoryNo" ColumnName="ImpFactoryNo" />
+                <ScalarProperty Name="ExpEstablishNo" ColumnName="ExpEstablishNo" />
+                <ScalarProperty Name="ExpFactoryNo" ColumnName="ExpFactoryNo" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblRunningNumber">
+            <EntityTypeMapping TypeName="Model.tblRunningNumber">
+              <MappingFragment StoreEntitySet="tblRunningNumber">
+                <ScalarProperty Name="NumbeId" ColumnName="NumbeId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="RunNo" ColumnName="RunNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTypeMasterCode">
+            <EntityTypeMapping TypeName="Model.tblTypeMasterCode">
+              <MappingFragment StoreEntitySet="tblTypeMasterCode">
+                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="FilterInd" ColumnName="FilterInd" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUser">
+            <EntityTypeMapping TypeName="Model.tblUser">
+              <MappingFragment StoreEntitySet="tblUser">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UserGroupID" ColumnName="UserGroupID" />
+                <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+                <ScalarProperty Name="BranchID" ColumnName="BranchID" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="StatusAdd" ColumnName="StatusAdd" />
+                <ScalarProperty Name="StatusModify" ColumnName="StatusModify" />
+                <ScalarProperty Name="StatusDelete" ColumnName="StatusDelete" />
+                <ScalarProperty Name="StatusPrint" ColumnName="StatusPrint" />
+                <ScalarProperty Name="StatusImport" ColumnName="StatusImport" />
+                <ScalarProperty Name="StatusExport" ColumnName="StatusExport" />
+                <ScalarProperty Name="StatusWarehouse" ColumnName="StatusWarehouse" />
+                <ScalarProperty Name="UserStatus" ColumnName="UserStatus" />
+                <ScalarProperty Name="RejectStatus" ColumnName="RejectStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUserGroup">
+            <EntityTypeMapping TypeName="Model.tblUserGroup">
+              <MappingFragment StoreEntitySet="tblUserGroup">
+                <ScalarProperty Name="UserGroupID" ColumnName="UserGroupID" />
+                <ScalarProperty Name="UserGroupCode" ColumnName="UserGroupCode" />
+                <ScalarProperty Name="UserGroupName" ColumnName="UserGroupName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="df2a9e2d880d473fb32eb944080889bc" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.AccessSystem" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tblBranch" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tblCodeMaster" Width="1.5" PointX="7.5" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tblDepartment" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tblLogUser" Width="1.5" PointX="5.25" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tblParty" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tblProductDetail" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tblRunningNumber" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tblTypeMasterCode" Width="1.5" PointX="5.25" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tblUser" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tblUserGroup" Width="1.5" PointX="0.75" PointY="11.375" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK_AccessSystem_tblUser" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tblUser_tblBranchID" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tblCodeMaster_tblTypeMasterCode" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tblCodeMaster_tblUser" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tblUser_tblDepartment" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tblLogUser_tblUser" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tblTypeMasterCode_tblUser" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tblUser_tblUserGroup" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
