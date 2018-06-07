@@ -1,0 +1,423 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="LKBwarehouseTesr" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="sysdiagrams" EntityType="Model.sysdiagram" />
+    <EntitySet Name="tblBranches" EntityType="Model.tblBranch" />
+    <EntitySet Name="tblDepartments" EntityType="Model.tblDepartment" />
+    <EntitySet Name="tblTypeMasterCodes" EntityType="Model.tblTypeMasterCode" />
+    <EntitySet Name="tblUsers" EntityType="Model.tblUser" />
+    <EntitySet Name="tblUserGroups" EntityType="Model.tblUserGroup" />
+    <AssociationSet Name="FK_tblUser_tblBranchID" Association="Model.FK_tblUser_tblBranchID">
+      <End Role="tblBranch" EntitySet="tblBranches" />
+      <End Role="tblUser" EntitySet="tblUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblUser_tblDepartment" Association="Model.FK_tblUser_tblDepartment">
+      <End Role="tblDepartment" EntitySet="tblDepartments" />
+      <End Role="tblUser" EntitySet="tblUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblTypeMasterCode_tblUser" Association="Model.FK_tblTypeMasterCode_tblUser">
+      <End Role="tblUser" EntitySet="tblUsers" />
+      <End Role="tblTypeMasterCode" EntitySet="tblTypeMasterCodes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblUser_tblUserGroup" Association="Model.FK_tblUser_tblUserGroup">
+      <End Role="tblUserGroup" EntitySet="tblUserGroups" />
+      <End Role="tblUser" EntitySet="tblUsers" />
+    </AssociationSet>
+    <EntitySet Name="tblRunningNumbers" EntityType="Model.tblRunningNumber" />
+    <EntitySet Name="tblLogUsers" EntityType="Model.tblLogUser" />
+    <AssociationSet Name="FK_tblLogUser_tblUser" Association="Model.FK_tblLogUser_tblUser">
+      <End Role="tblUser" EntitySet="tblUsers" />
+      <End Role="tblLogUser" EntitySet="tblLogUsers" />
+    </AssociationSet>
+    <EntitySet Name="AccessSystems" EntityType="Model.AccessSystem" />
+    <AssociationSet Name="FK_AccessSystem_tblUser" Association="Model.FK_AccessSystem_tblUser">
+      <End Role="tblUser" EntitySet="tblUsers" />
+      <End Role="AccessSystem" EntitySet="AccessSystems" />
+    </AssociationSet>
+    <EntitySet Name="tblProductDetails" EntityType="Model.tblProductDetail" />
+    <EntitySet Name="tblCodeMasters" EntityType="Model.tblCodeMaster" />
+    <AssociationSet Name="FK_tblCodeMaster_tblTypeMasterCode" Association="Model.FK_tblCodeMaster_tblTypeMasterCode">
+      <End Role="tblTypeMasterCode" EntitySet="tblTypeMasterCodes" />
+      <End Role="tblCodeMaster" EntitySet="tblCodeMasters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblCodeMaster_tblUser" Association="Model.FK_tblCodeMaster_tblUser">
+      <End Role="tblUser" EntitySet="tblUsers" />
+      <End Role="tblCodeMaster" EntitySet="tblCodeMasters" />
+    </AssociationSet>
+    <EntitySet Name="tblParties" EntityType="Model.tblParty" />
+  </EntityContainer>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="tblBranch">
+    <Key>
+      <PropertyRef Name="BranchID" />
+    </Key>
+    <Property Name="BranchID" Type="Int32" Nullable="false" />
+    <Property Name="BranchName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="Int32" />
+    <NavigationProperty Name="tblUsers" Relationship="Model.FK_tblUser_tblBranchID" FromRole="tblBranch" ToRole="tblUser" />
+  </EntityType>
+  <EntityType Name="tblDepartment">
+    <Key>
+      <PropertyRef Name="DepartmentID" />
+    </Key>
+    <Property Name="DepartmentID" Type="Int32" Nullable="false" />
+    <Property Name="DepartmentName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="Int32" />
+    <NavigationProperty Name="tblUsers" Relationship="Model.FK_tblUser_tblDepartment" FromRole="tblDepartment" ToRole="tblUser" />
+  </EntityType>
+  <EntityType Name="tblTypeMasterCode">
+    <Key>
+      <PropertyRef Name="TypeID" />
+    </Key>
+    <Property Name="TypeID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TypeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Note" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="FilterInd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CreateBy" Type="Int32" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="tblUser" Relationship="Model.FK_tblTypeMasterCode_tblUser" FromRole="tblTypeMasterCode" ToRole="tblUser" />
+    <NavigationProperty Name="tblCodeMasters" Relationship="Model.FK_tblCodeMaster_tblTypeMasterCode" FromRole="tblTypeMasterCode" ToRole="tblCodeMaster" />
+  </EntityType>
+  <EntityType Name="tblUser">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="UserGroupID" Type="Int32" />
+    <Property Name="DepartmentID" Type="Int32" />
+    <Property Name="BranchID" Type="Int32" />
+    <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="StatusAdd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="StatusModify" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="StatusDelete" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="StatusPrint" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="StatusImport" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="StatusExport" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="StatusWarehouse" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="RejectStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tblBranch" Relationship="Model.FK_tblUser_tblBranchID" FromRole="tblUser" ToRole="tblBranch" />
+    <NavigationProperty Name="tblDepartment" Relationship="Model.FK_tblUser_tblDepartment" FromRole="tblUser" ToRole="tblDepartment" />
+    <NavigationProperty Name="tblTypeMasterCodes" Relationship="Model.FK_tblTypeMasterCode_tblUser" FromRole="tblUser" ToRole="tblTypeMasterCode" />
+    <NavigationProperty Name="tblUserGroup" Relationship="Model.FK_tblUser_tblUserGroup" FromRole="tblUser" ToRole="tblUserGroup" />
+    <NavigationProperty Name="tblLogUsers" Relationship="Model.FK_tblLogUser_tblUser" FromRole="tblUser" ToRole="tblLogUser" />
+    <NavigationProperty Name="AccessSystems" Relationship="Model.FK_AccessSystem_tblUser" FromRole="tblUser" ToRole="AccessSystem" />
+    <NavigationProperty Name="tblCodeMasters" Relationship="Model.FK_tblCodeMaster_tblUser" FromRole="tblUser" ToRole="tblCodeMaster" />
+  </EntityType>
+  <EntityType Name="tblUserGroup">
+    <Key>
+      <PropertyRef Name="UserGroupID" />
+    </Key>
+    <Property Name="UserGroupID" Type="Int32" Nullable="false" />
+    <Property Name="UserGroupCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserGroupName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tblUsers" Relationship="Model.FK_tblUser_tblUserGroup" FromRole="tblUserGroup" ToRole="tblUser" />
+  </EntityType>
+  <Association Name="FK_tblUser_tblBranchID">
+    <End Type="Model.tblBranch" Role="tblBranch" Multiplicity="0..1" />
+    <End Type="Model.tblUser" Role="tblUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblBranch">
+        <PropertyRef Name="BranchID" />
+      </Principal>
+      <Dependent Role="tblUser">
+        <PropertyRef Name="BranchID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblUser_tblDepartment">
+    <End Type="Model.tblDepartment" Role="tblDepartment" Multiplicity="0..1" />
+    <End Type="Model.tblUser" Role="tblUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblDepartment">
+        <PropertyRef Name="DepartmentID" />
+      </Principal>
+      <Dependent Role="tblUser">
+        <PropertyRef Name="DepartmentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblTypeMasterCode_tblUser">
+    <End Type="Model.tblUser" Role="tblUser" Multiplicity="0..1" />
+    <End Type="Model.tblTypeMasterCode" Role="tblTypeMasterCode" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUser">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="tblTypeMasterCode">
+        <PropertyRef Name="CreateBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblUser_tblUserGroup">
+    <End Type="Model.tblUserGroup" Role="tblUserGroup" Multiplicity="0..1" />
+    <End Type="Model.tblUser" Role="tblUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUserGroup">
+        <PropertyRef Name="UserGroupID" />
+      </Principal>
+      <Dependent Role="tblUser">
+        <PropertyRef Name="UserGroupID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="tblRunningNumber">
+    <Key>
+      <PropertyRef Name="NumbeId" />
+    </Key>
+    <Property Name="NumbeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="RunNo" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tblLogUser">
+    <Key>
+      <PropertyRef Name="LowNumber" />
+    </Key>
+    <Property Name="LowNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="UserGroupID" Type="Int32" />
+    <Property Name="StatusAdd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="StatusModify" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="StatusDelete" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="StatusPrint" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="StatusImport" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="StatusExport" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="StatusWarehouse" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LastUpDate" Type="DateTime" Precision="3" />
+    <Property Name="userId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tblUser" Relationship="Model.FK_tblLogUser_tblUser" FromRole="tblLogUser" ToRole="tblUser" />
+  </EntityType>
+  <Association Name="FK_tblLogUser_tblUser">
+    <End Type="Model.tblUser" Role="tblUser" Multiplicity="1" />
+    <End Type="Model.tblLogUser" Role="tblLogUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUser">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="tblLogUser">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="AccessSystem">
+    <Key>
+      <PropertyRef Name="AccessID" />
+    </Key>
+    <Property Name="AccessID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="Accesstime" Type="DateTime" Precision="3" />
+    <Property Name="TimeOut" Type="DateTime" Precision="7" />
+    <NavigationProperty Name="tblUser" Relationship="Model.FK_AccessSystem_tblUser" FromRole="AccessSystem" ToRole="tblUser" />
+  </EntityType>
+  <Association Name="FK_AccessSystem_tblUser">
+    <End Type="Model.tblUser" Role="tblUser" Multiplicity="0..1" />
+    <End Type="Model.AccessSystem" Role="AccessSystem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUser">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="AccessSystem">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="tblProductDetail">
+    <Key>
+      <PropertyRef Name="ProductCode" />
+    </Key>
+    <Property Name="ProductCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PONo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerPart" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EndUserPart" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ImpProductCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TariffCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ImpDesc1" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ImpStatus1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ImpEndlife1" Type="DateTime" Precision="3" />
+    <Property Name="ImpDesc2" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ImpStatus2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ImpEndlife2" Type="DateTime" Precision="3" />
+    <Property Name="ImpDesc3" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ImpStatus3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ImpEndlife3" Type="DateTime" Precision="3" />
+    <Property Name="ImpProductAttribute1" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ImpProductAttribute2" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ImpTariffSequence" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ImpStatisticalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ImpCustomsProductCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ImpProductYear" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ImpDutytype" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ImpSpeciticRate" Type="Double" />
+    <Property Name="ImpValueRate_P" Type="Double" />
+    <Property Name="ImpSpecificCal" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ImpSpecificRate_P" Type="Double" />
+    <Property Name="ImpExemptVAT" Type="Double" />
+    <Property Name="ImpExemptDuty" Type="Double" />
+    <Property Name="ImpExciseNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ImpSurchargeRate" Type="Double" />
+    <Property Name="ImpExciseRatePay" Type="Double" />
+    <Property Name="ImpExciseRate" Type="Double" />
+    <Property Name="ImpExciseSpcRatePay" Type="Double" />
+    <Property Name="ImpExciseSpcRate" Type="Double" />
+    <Property Name="ImpPriviege" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ImpExemptExcise" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ImpBrand" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ImpValueRate" Type="Double" />
+    <Property Name="ImpCurrency" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ImpExchangeRate" Type="Double" />
+    <Property Name="ImpValueRateAmount" Type="Double" />
+    <Property Name="ExpProductCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ExpDesc1" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ExpStatus1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ExpEndlife1" Type="DateTime" Precision="3" />
+    <Property Name="ExpDesc2" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ExpStatus2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ExpEndlife2" Type="DateTime" Precision="3" />
+    <Property Name="ExpDesc3" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ExpStatus3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ExpEndlife3" Type="DateTime" Precision="3" />
+    <Property Name="ExpProductAttribute1" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ExpProductAttribute2" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ExpTariffSequence" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ExpTariffCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ExpCustomsProductCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ExpStatisticalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ExpFomulaNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ExpProductYear" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ExpBOINo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Exp19BisTranNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ExpDutyType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ExpBondFormulaNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ExpQTYCarton" Type="Double" />
+    <Property Name="ExpPriceForeight" Type="Double" />
+    <Property Name="ExpWeightCarton" Type="Double" />
+    <Property Name="ExpQTYPallet" Type="Double" />
+    <Property Name="ExpValueRate" Type="Double" />
+    <Property Name="ExpCurrency" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ExpExchangeRate" Type="Double" />
+    <Property Name="ExpValueRateAmount" Type="Double" />
+    <Property Name="CartonSetUnit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CartonWidth" Type="Double" />
+    <Property Name="CartonHeight" Type="Double" />
+    <Property Name="CartonLenght" Type="Double" />
+    <Property Name="CartonVolume" Type="Double" />
+    <Property Name="CartonVolUnit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PalletSetUnit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PalletWidth" Type="Double" />
+    <Property Name="PalletHeight" Type="Double" />
+    <Property Name="PalletLenght" Type="Double" />
+    <Property Name="PalletNoCarton" Type="Double" />
+    <Property Name="PalletVolume" Type="Double" />
+    <Property Name="PalletVolUnit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SpecialHandling" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <Property Name="ImpEstablishNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ImpFactoryNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ExpEstablishNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ExpFactoryNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CreateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="tblCodeMaster">
+    <Key>
+      <PropertyRef Name="MasterCodeID" />
+    </Key>
+    <Property Name="MasterCodeID" Type="Int32" Nullable="false" />
+    <Property Name="TypeID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Note" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="FilterInd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CreateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="tblTypeMasterCode" Relationship="Model.FK_tblCodeMaster_tblTypeMasterCode" FromRole="tblCodeMaster" ToRole="tblTypeMasterCode" />
+    <NavigationProperty Name="tblUser" Relationship="Model.FK_tblCodeMaster_tblUser" FromRole="tblCodeMaster" ToRole="tblUser" />
+  </EntityType>
+  <Association Name="FK_tblCodeMaster_tblTypeMasterCode">
+    <End Type="Model.tblTypeMasterCode" Role="tblTypeMasterCode" Multiplicity="1" />
+    <End Type="Model.tblCodeMaster" Role="tblCodeMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblTypeMasterCode">
+        <PropertyRef Name="TypeID" />
+      </Principal>
+      <Dependent Role="tblCodeMaster">
+        <PropertyRef Name="TypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblCodeMaster_tblUser">
+    <End Type="Model.tblUser" Role="tblUser" Multiplicity="1" />
+    <End Type="Model.tblCodeMaster" Role="tblCodeMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUser">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="tblCodeMaster">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="tblParty">
+    <Key>
+      <PropertyRef Name="PartyCode" />
+    </Key>
+    <Property Name="PartyCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PartyFullName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="PartyLocalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PartyLocalName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="PartyLocation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PartyCountry" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="RegistrationNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PartyTypeCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PartyTypeName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="CommissionToSales" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IATACode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Remarks" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="PartyStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MessageHubID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="OtherSystemPartyID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="FormID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Shipper" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Consignee" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Branch_Agent" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Co_Loader" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Trucking" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ShippingLine" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Vendor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ContainerYard" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Warehouse" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Bank" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Factory" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Customer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Broker" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AirLine" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EndCustomer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CreateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+    <Property Name="AmountGuarantee" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="AmountUsed" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Balance" Type="Decimal" Precision="18" Scale="0" />
+  </EntityType>
+</Schema>
