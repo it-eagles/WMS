@@ -157,6 +157,65 @@
                                     <i></i>
                                 </span></a>
                            </li>
+                           <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-file"></i> <span>Receive Process</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="#"><i class="fa fa-circle-o"></i>Create Rec. LOT</a></li>
+                                <li><a href="#"><i class="fa fa-circle-o"></i>Report IEAT Rec</a></li>
+                                <li><a href="#"><i class="fa fa-circle-o"></i>Truck Waybill Rec</a></li>
+                                <li><a href="#"><i class="fa fa-circle-o"></i>Invoice/Packing List Rec</a></li>
+                                <li><a href="#"><i class="fa fa-circle-o"></i>Plan Receive</a></li>
+                                <li><a href="#"><i class="fa fa-circle-o"></i>Shipment</a></li>
+                                <li><a href="#"><i class="fa fa-circle-o"></i>HTI Tracking</a></li>
+                               
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-file"></i> <span>Issue Process</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="MasterGoods.aspx"><i class="fa fa-circle-o"></i>Create Issue. LOT</a></li>
+                                <li><a href="PartyMaster.aspx"><i class="fa fa-circle-o"></i>GEN IEAT. Doc</a></li>
+                                <li><a href="MasterCode.aspx"><i class="fa fa-circle-o"></i>Master Code</a></li>
+                                <li><a ><i class="fa fa-circle-o"></i>Invoice/Packing List Issue</a></li>
+                                 <li><a href="#"><i class="fa fa-circle-o"></i>Truck Waybill Issue</a></li>
+                                <li><a ><i class="fa fa-circle-o"></i>Report IEAT Issue</a></li>
+                                <li><a href="#"><i class="fa fa-circle-o"></i>Truck Manifest</a></li>
+                                <li><a href="#"><i class="fa fa-circle-o"></i>Plan Issue</a></li>
+                                
+                            </ul>
+                        </li>
+                         <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-file"></i> <span>Ware House</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="#"><i class="fa fa-circle-o"></i>Single Received</a></li>
+                                <li><a href="#"><i class="fa fa-circle-o"></i>Multiple Received</a></li>
+                                <li><a href="#"><i class="fa fa-circle-o"></i>Reject Received</a></li>
+                                <li><a href="#"><i class="fa fa-circle-o"></i>Picking</a></li>
+                                <li><a href="#"><i class="fa fa-circle-o"></i>Single Issued</a></li>
+                                <li><a href="#"><i class="fa fa-circle-o"></i>Reject Issued</a></li>
+                                <li><a href="#"><i class="fa fa-circle-o"></i>Adjust Location</a></li>
+                                <li><a href="#"><i class="fa fa-circle-o"></i>Adjust Location SCRAP</a></li>
+                                <li><a href="#"><i class="fa fa-circle-o"></i>Check Stock</a></li>
+                                <li><a href="#"><i class="fa fa-circle-o"></i>Check Status Movement</a></li>
+                                <li><a href="#"><i class="fa fa-circle-o"></i>FinishGoods</a></li>
+                            </ul>
+                        </li>
+
                         <li class="treeview">
                             <a href="#">
                                 <i class="fa fa-file"></i> <span>Master Files</span>
@@ -232,7 +291,15 @@
                                 <li><a href="#"><i class="fa fa-circle-o"></i>Database Configuration</a></li>
                             </ul>
                         </li>
-         
+                          <li>
+                            <a href="#">
+                                <i class="fa fa-sign-out"></i> 
+                                <span>Logout</span>
+                                <span class="pull-right-container">
+                                 </span>
+                            </a>
+                    
+                        </li>
                     </ul>
                 </section>
                 <!-- /.sidebar -->

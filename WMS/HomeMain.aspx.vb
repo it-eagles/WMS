@@ -62,8 +62,8 @@ Public Class HomeMain
         'Dim PwdWithEncrypt As String
         'PwdWithEncrypt = Convert.ToBase64String(ms.ToArray())
 
-        Dim show As String = LoginCls.Decrypt(txtUserName.Value, wsm)
-        MsgBox(show)
+        'Dim show As String = LoginCls.Decrypt(txtUserName.Value, wsm)
+        'MsgBox(show)
 
     End Sub
 

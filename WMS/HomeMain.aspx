@@ -81,7 +81,7 @@
       <!-- /.row -->
     </section>
             <!-- /.content -->
-               <div class="form-group" >
+          <%--     <div class="form-group" >
                                     
                 
                <div class="box-footer text-right">
@@ -93,6 +93,6 @@
                         <button type="submit" runat="server" class="btn btn-primary" id="btnAddUser" title="btnAddUser" onserverclick="btnAddUser_click">Submit</button>
                    
                     </div>    
-                   </div>       
+                   </div>    --%>   
     </form>
 </asp:Content>

@@ -228,16 +228,6 @@
   <ItemGroup>
     <Content Include="AddGroup.aspx" />
     <Content Include="AddUser.aspx" />
-    <Content Include="Data\ConnectDB_v1.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ConnectDB_v1.edmx</DependentUpon>
-      <LastGenOutput>ConnectDB_v1.Context.vb</LastGenOutput>
-    </Content>
-    <Content Include="Data\ConnectDB_v1.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ConnectDB_v1.edmx</DependentUpon>
-      <LastGenOutput>ConnectDB_v1.vb</LastGenOutput>
-    </Content>
     <Content Include="HomeMain.aspx" />
     <Content Include="LogIN.aspx" />
     <Content Include="MasterCode.aspx" />
@@ -6822,57 +6812,6 @@
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Class\LoginCls.vb" />
-    <Compile Include="Data\AccessSystem.vb">
-      <DependentUpon>ConnectDB_v1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\ConnectDB_v1.Context.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ConnectDB_v1.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\ConnectDB_v1.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ConnectDB_v1.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Data\ConnectDB_v1.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ConnectDB_v1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\sysdiagrams.vb">
-      <DependentUpon>ConnectDB_v1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\tblBranch.vb">
-      <DependentUpon>ConnectDB_v1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\tblCodeMaster.vb">
-      <DependentUpon>ConnectDB_v1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\tblDepartment.vb">
-      <DependentUpon>ConnectDB_v1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\tblLogUser.vb">
-      <DependentUpon>ConnectDB_v1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\tblParty.vb">
-      <DependentUpon>ConnectDB_v1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\tblProductDetail.vb">
-      <DependentUpon>ConnectDB_v1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\tblRunningNumber.vb">
-      <DependentUpon>ConnectDB_v1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\tblTypeMasterCode.vb">
-      <DependentUpon>ConnectDB_v1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\tblUser.vb">
-      <DependentUpon>ConnectDB_v1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\tblUserGroup.vb">
-      <DependentUpon>ConnectDB_v1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Home.Master.designer.vb">
       <DependentUpon>Home.Master</DependentUpon>
     </Compile>
@@ -7001,13 +6940,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Home.Master" />
-    <EntityDeploy Include="Data\ConnectDB_v1.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ConnectDB_v1.Designer.vb</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Data\ConnectDB_v1.edmx.diagram">
-      <DependentUpon>ConnectDB_v1.edmx</DependentUpon>
-    </Content>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -7513,6 +7445,9 @@
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\fullcalendar\dist\fullcalendar.d.ts" />
     <TypeScriptCompile Include="Scripts\moment\moment.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Data\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
