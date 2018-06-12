@@ -228,17 +228,8 @@
   <ItemGroup>
     <Content Include="AddGroup.aspx" />
     <Content Include="AddUser.aspx" />
-    <Content Include="Data\ConnectDB_v1.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ConnectDB_v1.edmx</DependentUpon>
-      <LastGenOutput>ConnectDB_v1.Context.vb</LastGenOutput>
-    </Content>
-    <Content Include="Data\ConnectDB_v1.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ConnectDB_v1.edmx</DependentUpon>
-      <LastGenOutput>ConnectDB_v1.vb</LastGenOutput>
-    </Content>
     <Content Include="HomeMain.aspx" />
+    <Content Include="img\forklift-with-boxes.png" />
     <Content Include="LogIN.aspx" />
     <Content Include="MasterCode.aspx" />
     <Content Include="MasterGoods.aspx" />
@@ -6812,7 +6803,7 @@
     </Compile>
     <Compile Include="AddGroup.aspx.vb">
       <DependentUpon>AddGroup.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AddUser.aspx.designer.vb">
       <DependentUpon>AddUser.aspx</DependentUpon>
@@ -6822,57 +6813,6 @@
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Class\LoginCls.vb" />
-    <Compile Include="Data\AccessSystem.vb">
-      <DependentUpon>ConnectDB_v1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\ConnectDB_v1.Context.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ConnectDB_v1.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\ConnectDB_v1.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ConnectDB_v1.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Data\ConnectDB_v1.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ConnectDB_v1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\sysdiagrams.vb">
-      <DependentUpon>ConnectDB_v1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\tblBranch.vb">
-      <DependentUpon>ConnectDB_v1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\tblCodeMaster.vb">
-      <DependentUpon>ConnectDB_v1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\tblDepartment.vb">
-      <DependentUpon>ConnectDB_v1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\tblLogUser.vb">
-      <DependentUpon>ConnectDB_v1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\tblParty.vb">
-      <DependentUpon>ConnectDB_v1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\tblProductDetail.vb">
-      <DependentUpon>ConnectDB_v1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\tblRunningNumber.vb">
-      <DependentUpon>ConnectDB_v1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\tblTypeMasterCode.vb">
-      <DependentUpon>ConnectDB_v1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\tblUser.vb">
-      <DependentUpon>ConnectDB_v1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\tblUserGroup.vb">
-      <DependentUpon>ConnectDB_v1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Home.Master.designer.vb">
       <DependentUpon>Home.Master</DependentUpon>
     </Compile>
@@ -7001,13 +6941,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Home.Master" />
-    <EntityDeploy Include="Data\ConnectDB_v1.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ConnectDB_v1.Designer.vb</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Data\ConnectDB_v1.edmx.diagram">
-      <DependentUpon>ConnectDB_v1.edmx</DependentUpon>
-    </Content>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -7020,16 +6953,6 @@
     <Content Include="packages.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Scripts\dist\css\adminlte.css.map" />
-    <Content Include="Scripts\dist\css\adminlte.min.css.map" />
-    <Content Include="Scripts\plugins\input-mask\phone-codes\phone-be.json" />
-    <Content Include="Scripts\plugins\input-mask\phone-codes\phone-codes.json" />
-    <Content Include="Scripts\vendor\bootstrap\css\bootstrap-grid.css.map" />
-    <Content Include="Scripts\vendor\bootstrap\css\bootstrap-grid.min.css.map" />
-    <Content Include="Scripts\vendor\bootstrap\css\bootstrap-reboot.css.map" />
-    <Content Include="Scripts\vendor\bootstrap\css\bootstrap-reboot.min.css.map" />
-    <Content Include="Scripts\vendor\bootstrap\css\bootstrap.css.map" />
-    <Content Include="Scripts\vendor\bootstrap\css\bootstrap.min.css.map" />
     <Content Include="Scripts\bootstrap-colorpicker\.bower.json" />
     <Content Include="Scripts\bootstrap-colorpicker\bower.json" />
     <Content Include="Scripts\bootstrap-colorpicker\CONTRIBUTING.md" />
@@ -7056,61 +6979,6 @@
     <Content Include="Scripts\bootstrap-colorpicker\README.md" />
     <Content Include="Scripts\bootstrap-colorpicker\src\less\colorpicker.less" />
     <Content Include="Scripts\bootstrap-colorpicker\src\sass\_colorpicker.scss" />
-    <Content Include="Scripts\bootstrap-datepicker\.bower.json" />
-    <Content Include="Scripts\bootstrap-datepicker\.editorconfig" />
-    <Content Include="Scripts\bootstrap-datepicker\.github\ISSUE_TEMPLATE.md" />
-    <Content Include="Scripts\bootstrap-datepicker\.github\PULL_REQUEST_TEMPLATE.md" />
-    <Content Include="Scripts\bootstrap-datepicker\.travis.yml" />
-    <Content Include="Scripts\bootstrap-datepicker\bower.json" />
-    <Content Include="Scripts\bootstrap-datepicker\build\build.less" />
-    <Content Include="Scripts\bootstrap-datepicker\build\build3.less" />
-    <Content Include="Scripts\bootstrap-datepicker\build\build_standalone.less" />
-    <Content Include="Scripts\bootstrap-datepicker\build\build_standalone3.less" />
-    <Content Include="Scripts\bootstrap-datepicker\CHANGELOG.md" />
-    <Content Include="Scripts\bootstrap-datepicker\CODE_OF_CONDUCT.md" />
-    <Content Include="Scripts\bootstrap-datepicker\composer.json" />
-    <Content Include="Scripts\bootstrap-datepicker\CONTRIBUTING.md" />
-    <Content Include="Scripts\bootstrap-datepicker\dist\css\bootstrap-datepicker.css.map" />
-    <Content Include="Scripts\bootstrap-datepicker\dist\css\bootstrap-datepicker.standalone.css.map" />
-    <Content Include="Scripts\bootstrap-datepicker\dist\css\bootstrap-datepicker3.css.map" />
-    <Content Include="Scripts\bootstrap-datepicker\dist\css\bootstrap-datepicker3.standalone.css.map" />
-    <Content Include="Scripts\bootstrap-datepicker\docs\conf.py" />
-    <Content Include="Scripts\bootstrap-datepicker\docs\events.rst" />
-    <Content Include="Scripts\bootstrap-datepicker\docs\i18n.rst" />
-    <Content Include="Scripts\bootstrap-datepicker\docs\index.rst" />
-    <Content Include="Scripts\bootstrap-datepicker\docs\keyboard.rst" />
-    <Content Include="Scripts\bootstrap-datepicker\docs\make.bat" />
-    <Content Include="Scripts\bootstrap-datepicker\docs\Makefile" />
-    <Content Include="Scripts\bootstrap-datepicker\docs\markup.rst" />
-    <Content Include="Scripts\bootstrap-datepicker\docs\methods.rst" />
-    <Content Include="Scripts\bootstrap-datepicker\docs\options.rst" />
-    <Content Include="Scripts\bootstrap-datepicker\docs\README.md" />
-    <Content Include="Scripts\bootstrap-datepicker\grunt\.jshintrc" />
-    <Content Include="Scripts\bootstrap-datepicker\js\.jscsrc" />
-    <Content Include="Scripts\bootstrap-datepicker\js\.jshintrc" />
-    <Content Include="Scripts\bootstrap-datepicker\less\.csslintrc" />
-    <Content Include="Scripts\bootstrap-datepicker\less\datepicker.less" />
-    <Content Include="Scripts\bootstrap-datepicker\less\datepicker3.less" />
-    <Content Include="Scripts\bootstrap-datepicker\LICENSE" />
-    <Content Include="Scripts\bootstrap-datepicker\package.json" />
-    <Content Include="Scripts\bootstrap-datepicker\README.md" />
-    <Content Include="Scripts\bootstrap-datepicker\tests\README.md" />
-    <Content Include="Scripts\bootstrap-datepicker\yarn.lock" />
-    <Content Include="Scripts\bootstrap-daterangepicker\.bower.json" />
-    <Content Include="Scripts\bootstrap-daterangepicker\bower.json" />
-    <Content Include="Scripts\bootstrap-daterangepicker\daterangepicker.scss" />
-    <Content Include="Scripts\bootstrap-daterangepicker\example\browserify\README.md" />
-    <Content Include="Scripts\bootstrap-daterangepicker\package.json" />
-    <Content Include="Scripts\bootstrap-daterangepicker\README.md" />
-    <Content Include="Scripts\bootstrap-slider\.bower.json" />
-    <Content Include="Scripts\bootstrap-slider\bower.json" />
-    <Content Include="Scripts\bootstrap-slider\README.md" />
-    <Content Include="Scripts\bootstrap-timepicker\.bower.json" />
-    <Content Include="Scripts\bootstrap-timepicker\bower.json" />
-    <Content Include="Scripts\bootstrap-timepicker\CHANGELOG.md" />
-    <Content Include="Scripts\bootstrap-timepicker\css\timepicker.less" />
-    <Content Include="Scripts\bootstrap-timepicker\LICENSE" />
-    <Content Include="Scripts\bootstrap-timepicker\README.md" />
     <Content Include="Scripts\bootstrap\.bower.json" />
     <Content Include="Scripts\bootstrap\bower.json" />
     <Content Include="Scripts\bootstrap\CHANGELOG.md" />
@@ -7214,6 +7082,61 @@
     <Content Include="Scripts\bootstrap\nuget\MyGet.ps1" />
     <Content Include="Scripts\bootstrap\package.json" />
     <Content Include="Scripts\bootstrap\README.md" />
+    <Content Include="Scripts\bootstrap-datepicker\.bower.json" />
+    <Content Include="Scripts\bootstrap-datepicker\.editorconfig" />
+    <Content Include="Scripts\bootstrap-datepicker\.github\ISSUE_TEMPLATE.md" />
+    <Content Include="Scripts\bootstrap-datepicker\.github\PULL_REQUEST_TEMPLATE.md" />
+    <Content Include="Scripts\bootstrap-datepicker\.travis.yml" />
+    <Content Include="Scripts\bootstrap-datepicker\bower.json" />
+    <Content Include="Scripts\bootstrap-datepicker\build\build.less" />
+    <Content Include="Scripts\bootstrap-datepicker\build\build3.less" />
+    <Content Include="Scripts\bootstrap-datepicker\build\build_standalone.less" />
+    <Content Include="Scripts\bootstrap-datepicker\build\build_standalone3.less" />
+    <Content Include="Scripts\bootstrap-datepicker\CHANGELOG.md" />
+    <Content Include="Scripts\bootstrap-datepicker\CODE_OF_CONDUCT.md" />
+    <Content Include="Scripts\bootstrap-datepicker\composer.json" />
+    <Content Include="Scripts\bootstrap-datepicker\CONTRIBUTING.md" />
+    <Content Include="Scripts\bootstrap-datepicker\dist\css\bootstrap-datepicker.css.map" />
+    <Content Include="Scripts\bootstrap-datepicker\dist\css\bootstrap-datepicker.standalone.css.map" />
+    <Content Include="Scripts\bootstrap-datepicker\dist\css\bootstrap-datepicker3.css.map" />
+    <Content Include="Scripts\bootstrap-datepicker\dist\css\bootstrap-datepicker3.standalone.css.map" />
+    <Content Include="Scripts\bootstrap-datepicker\docs\conf.py" />
+    <Content Include="Scripts\bootstrap-datepicker\docs\events.rst" />
+    <Content Include="Scripts\bootstrap-datepicker\docs\i18n.rst" />
+    <Content Include="Scripts\bootstrap-datepicker\docs\index.rst" />
+    <Content Include="Scripts\bootstrap-datepicker\docs\keyboard.rst" />
+    <Content Include="Scripts\bootstrap-datepicker\docs\make.bat" />
+    <Content Include="Scripts\bootstrap-datepicker\docs\Makefile" />
+    <Content Include="Scripts\bootstrap-datepicker\docs\markup.rst" />
+    <Content Include="Scripts\bootstrap-datepicker\docs\methods.rst" />
+    <Content Include="Scripts\bootstrap-datepicker\docs\options.rst" />
+    <Content Include="Scripts\bootstrap-datepicker\docs\README.md" />
+    <Content Include="Scripts\bootstrap-datepicker\grunt\.jshintrc" />
+    <Content Include="Scripts\bootstrap-datepicker\js\.jscsrc" />
+    <Content Include="Scripts\bootstrap-datepicker\js\.jshintrc" />
+    <Content Include="Scripts\bootstrap-datepicker\less\.csslintrc" />
+    <Content Include="Scripts\bootstrap-datepicker\less\datepicker.less" />
+    <Content Include="Scripts\bootstrap-datepicker\less\datepicker3.less" />
+    <Content Include="Scripts\bootstrap-datepicker\LICENSE" />
+    <Content Include="Scripts\bootstrap-datepicker\package.json" />
+    <Content Include="Scripts\bootstrap-datepicker\README.md" />
+    <Content Include="Scripts\bootstrap-datepicker\tests\README.md" />
+    <Content Include="Scripts\bootstrap-datepicker\yarn.lock" />
+    <Content Include="Scripts\bootstrap-daterangepicker\.bower.json" />
+    <Content Include="Scripts\bootstrap-daterangepicker\bower.json" />
+    <Content Include="Scripts\bootstrap-daterangepicker\daterangepicker.scss" />
+    <Content Include="Scripts\bootstrap-daterangepicker\example\browserify\README.md" />
+    <Content Include="Scripts\bootstrap-daterangepicker\package.json" />
+    <Content Include="Scripts\bootstrap-daterangepicker\README.md" />
+    <Content Include="Scripts\bootstrap-slider\.bower.json" />
+    <Content Include="Scripts\bootstrap-slider\bower.json" />
+    <Content Include="Scripts\bootstrap-slider\README.md" />
+    <Content Include="Scripts\bootstrap-timepicker\.bower.json" />
+    <Content Include="Scripts\bootstrap-timepicker\bower.json" />
+    <Content Include="Scripts\bootstrap-timepicker\CHANGELOG.md" />
+    <Content Include="Scripts\bootstrap-timepicker\css\timepicker.less" />
+    <Content Include="Scripts\bootstrap-timepicker\LICENSE" />
+    <Content Include="Scripts\bootstrap-timepicker\README.md" />
     <Content Include="Scripts\chart.js\.bower.json" />
     <Content Include="Scripts\chart.js\.travis.yml" />
     <Content Include="Scripts\chart.js\bower.json" />
@@ -7258,6 +7181,8 @@
     <Content Include="Scripts\datatables.net\.bower.json" />
     <Content Include="Scripts\datatables.net\bower.json" />
     <Content Include="Scripts\datatables.net\Readme.md" />
+    <Content Include="Scripts\dist\css\adminlte.css.map" />
+    <Content Include="Scripts\dist\css\adminlte.min.css.map" />
     <Content Include="Scripts\eve-raphael\.bower.json" />
     <Content Include="Scripts\eve-raphael\bower.json" />
     <Content Include="Scripts\eve-raphael\component.json" />
@@ -7468,6 +7393,8 @@
     <Content Include="Scripts\PACE\LICENSE" />
     <Content Include="Scripts\PACE\pace.coffee" />
     <Content Include="Scripts\PACE\README.md" />
+    <Content Include="Scripts\plugins\input-mask\phone-codes\phone-be.json" />
+    <Content Include="Scripts\plugins\input-mask\phone-codes\phone-codes.json" />
     <Content Include="Scripts\raphael\.bower.json" />
     <Content Include="Scripts\raphael\bower.json" />
     <Content Include="Scripts\raphael\yarn.lock" />
@@ -7500,6 +7427,12 @@
     <Content Include="Scripts\select2\src\scss\_dropdown.scss" />
     <Content Include="Scripts\select2\src\scss\_multiple.scss" />
     <Content Include="Scripts\select2\src\scss\_single.scss" />
+    <Content Include="Scripts\vendor\bootstrap\css\bootstrap-grid.css.map" />
+    <Content Include="Scripts\vendor\bootstrap\css\bootstrap-grid.min.css.map" />
+    <Content Include="Scripts\vendor\bootstrap\css\bootstrap-reboot.css.map" />
+    <Content Include="Scripts\vendor\bootstrap\css\bootstrap-reboot.min.css.map" />
+    <Content Include="Scripts\vendor\bootstrap\css\bootstrap.css.map" />
+    <Content Include="Scripts\vendor\bootstrap\css\bootstrap.min.css.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -7513,6 +7446,9 @@
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\fullcalendar\dist\fullcalendar.d.ts" />
     <TypeScriptCompile Include="Scripts\moment\moment.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Data\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
