@@ -11,27 +11,74 @@ Imports System.Security.Cryptography
 
 Public Class LoginCls
 
+   
+
+
     Private Shared DES As New TripleDESCryptoServiceProvider
     Private Shared MD5 As New MD5CryptoServiceProvider
     Public Shared EncryptPass As String = "eagles"
     'Dim db As New LKBwarehouseEntities
 
-    Public Shared Function chkUser(userid As String, password As String) As Boolean
-       
-        '    Dim passEn As String = Encrypt(password, EncryptPass)
-        'Using db As New LKBwarehouseEntities
-        '    Dim q = (From p In db.tblUser _
-        '            Where p.UserName.ToUpper() = userid And p.Password = passEn
-        '            Select p).Count()
+    Public Shared Function chkUser(_UserName As String, _Password As String) As Boolean
+        Dim ms As MemoryStream
+        Dim desCrypt As DESCryptoServiceProvider
+        Dim cs As CryptoStream
+        'Dim dtUser As DataTable
+        Dim PwdWithEncrypt As String
 
-        '    If (q > 0) Then
-        '        Return True
-        '    Else
-        '        Return False
+        Dim CurrentIV As Byte() = New Byte() {51, 52, 53, 54, 55, 56, 57, 58}
+        Dim CurrentKey As Byte() = {}
 
-        '    End If
-        'End Using
-       
+        If _UserName.Length = 8 Then
+            CurrentKey = Encoding.ASCII.GetBytes(_UserName)
+        ElseIf _UserName.Length > 8 Then
+            CurrentKey = Encoding.ASCII.GetBytes(_UserName.Substring(0, 8))
+        Else
+            Dim i As Integer
+            Dim AddString As String = _UserName.Substring(0, 1)
+            Dim TotalLoop As Integer = 8 - CInt(_UserName.Length)
+            Dim tmpKey As String = _UserName
+
+            For i = 1 To TotalLoop
+                tmpKey = tmpKey & AddString
+            Next
+
+            CurrentKey = Encoding.ASCII.GetBytes(tmpKey)
+        End If
+
+        desCrypt = New DESCryptoServiceProvider
+        With desCrypt
+            .IV = CurrentIV
+            .Key = CurrentKey
+        End With
+
+        ms = New MemoryStream
+        ms.Position = 0
+
+        cs = New CryptoStream(ms, desCrypt.CreateEncryptor, CryptoStreamMode.Write)
+        Dim arrByte As Byte() = Encoding.ASCII.GetBytes(_Password)
+        cs.Write(arrByte, 0, arrByte.Length)
+        cs.FlushFinalBlock()
+        cs.Close()
+
+        PwdWithEncrypt = Convert.ToBase64String(ms.ToArray())
+        'Dim passEn As String = Encrypt(password, EncryptPass)
+
+        Using db As New LKBWarehouseEntities1_Test
+
+            'Using db As New LKBWarehouseEntities
+            Dim q = (From p In db.tblUsers _
+                    Where p.UserName.ToUpper() = _UserName And p.Password = PwdWithEncrypt
+                    Select p).Count()
+
+            If (q > 0) Then
+                Return True
+            Else
+                Return False
+
+            End If
+        End Using
+
 
     End Function
 
@@ -56,5 +103,7 @@ Public Class LoginCls
             Return ""
         End Try
     End Function
+
+    
 
 End Class

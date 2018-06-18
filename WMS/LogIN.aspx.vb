@@ -7,45 +7,50 @@ Imports System.Web.Configuration
 Imports System.Security
 Public Class LogIN
     Inherits System.Web.UI.Page
-    'Dim db As New LKBwarehouseEntities
+    'Dim db As New LKBWarehouseEntities
+    Dim db As New LKBWarehouseEntities1_Test
+
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
     End Sub
 
     Protected Sub btnSigIN_Click1(sender As Object, e As EventArgs) Handles btnSigIN.Click
 
+        Dim LoginCls As New LoginCls
+        Dim menu As String = "wms"
 
-        'Dim LoginCls As New LoginCls
-        'Dim menu As String = "wms"
+        txtusername.Value = txtusername.Value.ToUpper
 
+        If LoginCls.chkUser(txtusername.Value, txtpassword.Value) Then
+            Dim ds = (From c In db.tblUsers
+                          Where c.UserName = txtusername.Value).FirstOrDefault()
+            Session("UserId") = ds.UserName
+            Session("UserName") = txtusername.Value.Trim
+            Session("Name") = ds.Name
+            Session("StatusAdd") = ds.StatusAdd
+            Session("StatusDelete") = ds.StatusDelete
+            Session("StatusImport") = ds.StatusImport
+            Session("StatusExport") = ds.StatusExport
+            Session("StatusEdit") = ds.StatusModify
+            Session("StatusExport") = ds.StatusExport
+            Session("StatusPrint") = ds.StatusPrint
+            ckeckMenu(ds.UserName)
+        Else
+            lblMsg.Text = "* Your Username and/or password  is not correct."
+        End If
 
-        'If LoginCls.chkUser(txtusername.Value, txtpassword.Value) Then
-        '        Dim ds = (From c In db.tblUser
-        '                  Where c.UserName = txtusername.Value.Trim
-        '                  Select New With
-        '                         {
-        '                             c.UserId,
-        '                             c.UserName,
-        '                             c.Name,
-        '                             c.UserGroupID,
-        '                             c.StatusDelete
-        '                             }).FirstOrDefault()
-        '        Dim dsq = (From c In db.tblUser Where c.UserName = ds.UserName).FirstOrDefault()
-        '        If Not IsNothing(dsq) Then
-        '            Session("UserId") = ds.UserId
-        '            Session("UserName") = txtusername.Value.Trim
-        '            Session("Name") = ds.Name
-        '            Session("StatusDelete") = ds.StatusDelete
-        '            'checkID(ds.UserId)
-        '            Response.Redirect("HomeMain.aspx")
-        '        Else
-        '            lblMsg.Text = "* You do not have access"
-        '        End If
-
-        'Else
-        '    lblMsg.Text = "* Your Username and/or password  is not correct."
-        'End If
     End Sub
+    Private Sub ckeckMenu(user As String)
+        Dim dsq = (From c In db.tblUserMenus Where c.UserName = user).FirstOrDefault()
+        If Not IsNothing(dsq) Then
+            'checkID(ds.UserId)
+            Response.Redirect("HomeMain.aspx")
+        Else
+            lblMsg.Text = "* You do not have access"
+        End If
+    End Sub
+
+
     Private Sub checkID(userid As Integer)
         'Dim Key As String
         'Dim runno As Integer
@@ -81,7 +86,7 @@ Public Class LogIN
         '    showUserIDAss(RJITno)
         'End If
 
-     
+
     End Sub
     Private Sub addAccess(userid As Integer, assID As String)
 

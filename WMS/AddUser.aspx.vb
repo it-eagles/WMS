@@ -15,6 +15,8 @@ Public Class AddUser
     Inherits System.Web.UI.Page
    
     'Dim db As New LKBwarehouseEntities
+    Dim db As New LKBWarehouseEntities1_Test
+
     'Dim ClassPermis As ClassPermis
     Dim PassEncrypt As String
 
@@ -62,23 +64,23 @@ Public Class AddUser
         'dcbBranch.Items.Add(New ListItem("--Select Branch--", ""))
         'dcbBranch.AppendDataBoundItems = True
 
-        '    Dim d = From p In db.tblBranch
-        '          Select p.BranchID,
-        '          p.BranchName
-        '    Try
-        '        dcbBranch.DataSource = d.ToList
-        '        dcbBranch.DataTextField = "BranchName"
-        '        dcbBranch.DataValueField = "BranchID"
-        '        dcbBranch.DataBind()
-        '        If dcbBranch.Items.Count > 1 Then
-        '            dcbBranch.Enabled = True
-        '        Else
-        '            dcbBranch.Enabled = False
+        'Dim d = From p In db.tblBranch
+        '      Select p.BranchID,
+        '      p.BranchName
+        'Try
+        '    dcbBranch.DataSource = d.ToList
+        '    dcbBranch.DataTextField = "BranchName"
+        '    dcbBranch.DataValueField = "BranchID"
+        '    dcbBranch.DataBind()
+        '    If dcbBranch.Items.Count > 1 Then
+        '        dcbBranch.Enabled = True
+        '    Else
+        '        dcbBranch.Enabled = False
 
-        '        End If
-        '    Catch ex As Exception
-        '        Throw ex
-        '    End Try
+        '    End If
+        'Catch ex As Exception
+        '    Throw ex
+        'End Try
     End Sub
     Private Sub showDepartment()
         'dcbDept.Items.Clear()

@@ -223,7 +223,7 @@
                                  <div class="form-group">
                                      <div class="radio">
                                          <label>
-                                             <input type="radio" name="optionsRadios" runat="server" id ="rdbEnable" value="option1" checked="checked" />
+                                             <input type="radio" name="optionsRadios" runat="server" id ="rdbEnable" value="option1"  />
                                              Enable
                                          </label>
                                      </div>

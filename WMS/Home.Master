@@ -292,7 +292,7 @@
                             </ul>
                         </li>
                           <li>
-                            <a href="#">
+                            <a href="Logout.aspx">
                                 <i class="fa fa-sign-out"></i> 
                                 <span>Logout</span>
                                 <span class="pull-right-container">
