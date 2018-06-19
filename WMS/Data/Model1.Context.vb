@@ -22,6 +22,8 @@ Partial Public Class LKBWarehouseEntities1_Test
         Throw New UnintentionalCodeFirstException()
     End Sub
 
+    Public Overridable Property Branches() As DbSet(Of Branch)
+    Public Overridable Property Departments() As DbSet(Of Department)
     Public Overridable Property tblBookingMessengers() As DbSet(Of tblBookingMessenger)
     Public Overridable Property tblCurrencies() As DbSet(Of tblCurrency)
     Public Overridable Property tblDocTrackings() As DbSet(Of tblDocTracking)
@@ -77,7 +79,6 @@ Partial Public Class LKBWarehouseEntities1_Test
     Public Overridable Property tblLogTruckWayBillDetails() As DbSet(Of tblLogTruckWayBillDetail)
     Public Overridable Property tblLogTruckWayBillDetailImps() As DbSet(Of tblLogTruckWayBillDetailImp)
     Public Overridable Property tblLogTruckWayBillImps() As DbSet(Of tblLogTruckWayBillImp)
-    Public Overridable Property tblLogUsers() As DbSet(Of tblLogUser)
     Public Overridable Property tblMasterCodes() As DbSet(Of tblMasterCode)
     Public Overridable Property tblMenus() As DbSet(Of tblMenu)
     Public Overridable Property tblMoneyConfigs() As DbSet(Of tblMoneyConfig)
@@ -103,12 +104,13 @@ Partial Public Class LKBWarehouseEntities1_Test
     Public Overridable Property tblTruckWayBillDetails() As DbSet(Of tblTruckWayBillDetail)
     Public Overridable Property tblTruckWayBillDetailImps() As DbSet(Of tblTruckWayBillDetailImp)
     Public Overridable Property tblTruckWayBillImps() As DbSet(Of tblTruckWayBillImp)
-    Public Overridable Property tblUsers() As DbSet(Of tblUser)
     Public Overridable Property tblUserGroups() As DbSet(Of tblUserGroup)
     Public Overridable Property tblUserMenus() As DbSet(Of tblUserMenu)
     Public Overridable Property tblUserWebClients() As DbSet(Of tblUserWebClient)
     Public Overridable Property tblWarehouseTypes() As DbSet(Of tblWarehouseType)
     Public Overridable Property tblWHConfirmGoodsReceives() As DbSet(Of tblWHConfirmGoodsReceive)
     Public Overridable Property tblWHConfirmGoodsReceiveDetails() As DbSet(Of tblWHConfirmGoodsReceiveDetail)
+    Public Overridable Property tblUsers() As DbSet(Of tblUser)
+    Public Overridable Property tblLogUsers() As DbSet(Of tblLogUser)
 
 End Class

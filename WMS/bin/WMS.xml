@@ -6,15 +6,7 @@ WMS
 </name>
 </assembly>
 <members>
-<member name="F:WMS.Logout.form1">
-	<summary>
-form1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.Test.form1">
+<member name="F:WMS.Test.form1">
 	<summary>
 form1 control.
 </summary>
@@ -2623,6 +2615,14 @@ btnAddGroup control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
+</member><member name="F:WMS.Logout.form1">
+	<summary>
+form1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
 </member><member name="F:WMS.MasterGoods.form1">
 	<summary>
 form1 control.
@@ -3818,6 +3818,14 @@ To modify move field declaration from designer file to code-behind file.
 </member><member name="F:WMS.AddUser.btnAddUser">
 	<summary>
 btnAddUser control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.AddUser.btnReset">
+	<summary>
+btnReset control.
 </summary>
 	<remarks>
 Auto-generated field.

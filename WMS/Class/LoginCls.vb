@@ -11,7 +11,7 @@ Imports System.Security.Cryptography
 
 Public Class LoginCls
 
-   
+
 
 
     Private Shared DES As New TripleDESCryptoServiceProvider
@@ -65,21 +65,24 @@ Public Class LoginCls
         'Dim passEn As String = Encrypt(password, EncryptPass)
 
         Using db As New LKBWarehouseEntities1_Test
+            Try
+                'Using db As New LKBWarehouseEntities
+                Dim q = (From p In db.tblUsers _
+                        Where p.UserName.ToUpper() = _UserName And p.Password = PwdWithEncrypt
+                        Select p).Count()
 
-            'Using db As New LKBWarehouseEntities
-            Dim q = (From p In db.tblUsers _
-                    Where p.UserName.ToUpper() = _UserName And p.Password = PwdWithEncrypt
-                    Select p).Count()
+                If (q > 0) Then
+                    Return True
+                Else
+                    Return False
 
-            If (q > 0) Then
-                Return True
-            Else
-                Return False
+                End If
+            Catch ex As Exception
 
-            End If
+                MsgBox("เกิกข้อผิดพลาดในการเข้าสู่ระบบ", MsgBoxStyle.Critical)
+            End Try
+
         End Using
-
-
     End Function
 
     Public Shared Function MD5Hash(ByVal value As String) As Byte()
@@ -104,6 +107,52 @@ Public Class LoginCls
         End Try
     End Function
 
-    
 
+    Public Shared Function ReturnASCII(_UserName As String, _Password As String) As String
+        Dim ms As MemoryStream
+        Dim desCrypt As DESCryptoServiceProvider
+        Dim cs As CryptoStream
+        'Dim dtUser As DataTable
+        Dim PwdWithEncrypt As String
+
+        Dim CurrentIV As Byte() = New Byte() {51, 52, 53, 54, 55, 56, 57, 58}
+        Dim CurrentKey As Byte() = {}
+
+        If _UserName.Length = 8 Then
+            CurrentKey = Encoding.ASCII.GetBytes(_UserName)
+        ElseIf _UserName.Length > 8 Then
+            CurrentKey = Encoding.ASCII.GetBytes(_UserName.Substring(0, 8))
+        Else
+            Dim i As Integer
+            Dim AddString As String = _UserName.Substring(0, 1)
+            Dim TotalLoop As Integer = 8 - CInt(_UserName.Length)
+            Dim tmpKey As String = _UserName
+
+            For i = 1 To TotalLoop
+                tmpKey = tmpKey & AddString
+            Next
+
+            CurrentKey = Encoding.ASCII.GetBytes(tmpKey)
+        End If
+
+        desCrypt = New DESCryptoServiceProvider
+        With desCrypt
+            .IV = CurrentIV
+            .Key = CurrentKey
+        End With
+
+        ms = New MemoryStream
+        ms.Position = 0
+
+        cs = New CryptoStream(ms, desCrypt.CreateEncryptor, CryptoStreamMode.Write)
+        Dim arrByte As Byte() = Encoding.ASCII.GetBytes(_Password)
+        cs.Write(arrByte, 0, arrByte.Length)
+        cs.FlushFinalBlock()
+        cs.Close()
+
+        PwdWithEncrypt = Convert.ToBase64String(ms.ToArray())
+
+        Return PwdWithEncrypt
+
+    End Function
 End Class

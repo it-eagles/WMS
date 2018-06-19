@@ -2640,5 +2640,29 @@
     <EntitySet Name="tblWarehouseTypes" EntityType="Self.tblWarehouseType" />
     <EntitySet Name="tblWHConfirmGoodsReceives" EntityType="Self.tblWHConfirmGoodsReceive" />
     <EntitySet Name="tblWHConfirmGoodsReceiveDetails" EntityType="Self.tblWHConfirmGoodsReceiveDetail" />
+    <EntitySet Name="Departments" EntityType="LKBWarehouseModel1.Department" />
+    <EntitySet Name="tblBranches" EntityType="LKBWarehouseModel1.tblBranch" />
   </EntityContainer>
+  <EntityType Name="Department">
+    <Key>
+      <PropertyRef Name="DepartmentID" />
+    </Key>
+    <Property Name="DepartmentID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DepartmentName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="CreateBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SideID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblBranch">
+    <Key>
+      <PropertyRef Name="BranchID" />
+    </Key>
+    <Property Name="BranchID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="BranchName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+  </EntityType>
 </Schema>

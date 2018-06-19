@@ -192,4 +192,13 @@ Partial Public Class AddUser
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents btnAddUser As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''btnReset control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnReset As Global.System.Web.UI.HtmlControls.HtmlButton
 End Class

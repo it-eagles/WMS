@@ -1,5 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="LKBWarehouseModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Branch">
+    <Key>
+      <PropertyRef Name="BranchID" />
+    </Key>
+    <Property Name="BranchID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="BranchName" Type="varchar" MaxLength="200" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+    <Property Name="UserId" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Department">
+    <Key>
+      <PropertyRef Name="DepartmentID" />
+    </Key>
+    <Property Name="DepartmentID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DepartmentName" Type="varchar" MaxLength="200" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="CreateBy" Type="varchar" MaxLength="100" />
+    <Property Name="UpdateDate" Type="datetime" />
+    <Property Name="UpdateBy" Type="varchar" MaxLength="100" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+    <Property Name="SideID" Type="varchar" MaxLength="50" />
+  </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'LKBWarehouse.dbo.tblBookingMessenger' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblBookingMessenger">
@@ -28,13 +50,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblBookingMessenger' does not hav
     <Property Name="CreateDate" Type="datetime" />
     <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6013: The table/view 'LKBWarehouse.dbo.tblCompanyGuarantee' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tblCompanyGuarantee">
-          <Property Name="AmountGuarantee" Type="decimal" Precision="18" Scale="0" />
-          <Property Name="AmountUsed" Type="decimal" Precision="18" Scale="0" />
-          <Property Name="Balance" Type="decimal" Precision="18" Scale="0" />
-        </EntityType>-->
   <!--Errors Found During Generation:
 warning 6002: The table/view 'LKBWarehouse.dbo.tblCurrency' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblCurrency">
@@ -2362,12 +2377,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblTempItemNo' does not have a pr
     <Property Name="ItemNo" Type="float" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
-warning 6013: The table/view 'LKBWarehouse.dbo.tblTempMJSummaryStock-11122013' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tblTempMJSummaryStock-11122013">
-          <Property Name="PART NUMBER" Type="nvarchar" MaxLength="255" />
-          <Property Name="On Hand" Type="float" />
-        </EntityType>-->
-  <!--Errors Found During Generation:
 warning 6002: The table/view 'LKBWarehouse.dbo.tblTruckManifest' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblTruckManifest">
     <Key>
@@ -2741,6 +2750,8 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHConfirmGoodsReceiveDetail' d
     <Property Name="CustFrmOnline" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityContainer Name="LKBWarehouseModel1StoreContainer">
+    <EntitySet Name="Branch" EntityType="Self.Branch" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblBookingMessenger" EntityType="Self.tblBookingMessenger" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [tblBookingMessenger].[RecNo] AS [RecNo], 

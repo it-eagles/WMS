@@ -75,7 +75,7 @@
                                         <label for="dcbBranch" class="col-sm-2 control-label">Branch</label>
                                                                   
                                       <div class="col-sm-10">
-                                           <asp:DropDownList ID="dcbBranch" CssClass="form-control" runat="server" DataTextField="BranchName" DataValueField="BranchID"></asp:DropDownList>
+                                           <asp:DropDownList ID="dcbBranch" CssClass="form-control" runat="server" DataTextField="BranchName" DataValueField="BranchID" AutoPostBack="true"></asp:DropDownList>
                                         </div>
                       
                                     </div>
@@ -85,7 +85,7 @@
                                         <label for="dcbDept" class="col-sm-2 control-label">Dept</label>
                                                                    
                                       <div class="col-sm-10">
-                                       <asp:DropDownList ID="dcbDept" CssClass="form-control" runat="server" DataTextField="DepartmentName" DataValueField="DepartmentID"></asp:DropDownList>
+                                       <asp:DropDownList ID="dcbDept" CssClass="form-control" runat="server" DataTextField="DepartmentName" DataValueField="DepartmentID" AutoPostBack="true"></asp:DropDownList>
                                         </div>
                       
                                     </div>
@@ -223,7 +223,7 @@
                                  <div class="form-group">
                                      <div class="radio">
                                          <label>
-                                             <input type="radio" name="optionsRadios" runat="server" id ="rdbEnable" value="option1"  />
+                                             <input type="radio" name="optionsRadios" runat="server" id ="rdbEnable" value="option1"/>
                                              Enable
                                          </label>
                                      </div>
@@ -239,7 +239,12 @@
                           </div>
 
                      <div class="box-footer text-right">
+                         <div class="text-center">
                         <button type="submit" runat="server" class="btn btn-primary" id="btnAddUser" title="btnAddUser" onserverclick="btnAddUser_click">Submit</button>
+
+                        <button type="reset"  runat="server" class="btn btn-danger" id="btnReset" title="btnReset" onserverclick="btnReset_Click">Reset</button>
+                        
+                         </div>
                     </div>
                      </div>
                        

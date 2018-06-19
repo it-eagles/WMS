@@ -80,7 +80,6 @@ Partial Public Class LKBWarehouseEntities
     Public Overridable Property tblLogTruckWayBillDetails() As DbSet(Of tblLogTruckWayBillDetail)
     Public Overridable Property tblLogTruckWayBillDetailImps() As DbSet(Of tblLogTruckWayBillDetailImp)
     Public Overridable Property tblLogTruckWayBillImps() As DbSet(Of tblLogTruckWayBillImp)
-    Public Overridable Property tblLogUsers() As DbSet(Of tblLogUser)
     Public Overridable Property tblMasterCodes() As DbSet(Of tblMasterCode)
     Public Overridable Property tblMoneyConfigs() As DbSet(Of tblMoneyConfig)
     Public Overridable Property tblParties() As DbSet(Of tblParty)
