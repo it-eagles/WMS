@@ -32,7 +32,7 @@
                     <!-- /.box-header -->
                     <div class="row">
 
-                        <form class="form-horizontal">
+                        <from class="form-horizontal">
                             <div class="col-lg-8 col-md-8 col-md-offset-2">
                                  <div class="box-body">   
                                             
@@ -41,7 +41,7 @@
                                         <label for="txtUserName" class="col-sm-2 control-label">User ID</label>
                                           
                                          <div class="col-sm-10">
-                                           <input class="form-control" id="txtUserName" runat="server" placeholder="User ID"/>
+                                           <input class="form-control" id="txtUserName" runat="server" placeholder="User ID" disabled="disabled"/>
                                         </div>
                                     </div>
                                   <div class="form-group">
@@ -90,7 +90,7 @@
                       
                                     </div>
 
-                                <div class="form-group">
+                                <%--<div class="form-group">
                                         <label for="txtPassword" class="col-sm-2 control-label">Password</label>
                                                       
                                       <div class="col-sm-10">
@@ -105,12 +105,12 @@
                                         <input type="password" class="form-control" id="txtConfirmPassword" runat="server"  placeholder="Password Again"/>
                                         </div>
                       
-                                    </div>
+                                    </div>--%>
                                     <!-- /.box-body -->
                              </div>
                            </div>
                              
-                       </form>
+                       </from>
                           
                         <!--/.row-->
                     </div>
@@ -219,7 +219,7 @@
                                  <div class="form-group">
                                      <div class="radio">
                                          <label>
-                                             <input type="radio" name="optionsRadios" runat="server" id ="rdbEnable" value="option1" checked="checked"/>
+                                             <input type="radio" name="optionsRadios" runat="server" id ="rdbEnable" value="option1" />
                                              Enable
                                          </label>
                                      </div>

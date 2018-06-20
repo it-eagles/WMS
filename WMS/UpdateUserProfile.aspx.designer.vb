@@ -86,24 +86,6 @@ Partial Public Class UpdateUserProfile
     Protected WithEvents dcbDept As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''txtPassword control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtPassword As Global.System.Web.UI.HtmlControls.HtmlInputPassword
-
-    '''<summary>
-    '''txtConfirmPassword control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtConfirmPassword As Global.System.Web.UI.HtmlControls.HtmlInputPassword
-
-    '''<summary>
     '''chkAdd control.
     '''</summary>
     '''<remarks>

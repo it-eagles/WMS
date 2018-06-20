@@ -39,10 +39,10 @@ Public Class AddUser
         Try
             dcboUserGroup.DataSource = d.ToList
             dcboUserGroup.DataTextField = "UserGroupCode"
-            dcboUserGroup.DataValueField = "UserGroupName"
+            dcboUserGroup.DataValueField = "UserGroupCode"
             dcboUserGroup.DataBind()
-            Dim dd As String = dcboUserGroup.Text
-            showUserGroupName(dd)
+            'Dim dd As String = dcboUserGroup.Text
+            'showUserGroupName(dd)
             If dcboUserGroup.Items.Count > 1 Then
                 dcboUserGroup.Enabled = True
             Else
@@ -100,7 +100,7 @@ Public Class AddUser
 
     End Sub
     Private Sub showUserGroupName(groupName As String)
-        Dim d = (From p In db.tblUserGroups Where p.UserGroupName = groupName).SingleOrDefault
+        Dim d = (From p In db.tblUserGroups Where p.UserGroupCode = groupName).SingleOrDefault
         txtUserGroup.Value = d.UserGroupName
     End Sub
     Protected Sub dcboUserGroup_SelectedIndexChanged(sender As Object, e As EventArgs) Handles dcboUserGroup.SelectedIndexChanged
@@ -157,7 +157,7 @@ Public Class AddUser
                 addUser()
                 checkID()
                 'check()
-                Response.Write("<script>window.open('UserFrolie.aspx,target='_self');</script>")
+                Response.Write("<script>window.open('UserProlie.aspx,target='_self');</script>")
             End If
         Catch ex As Exception
             ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด');", True)
@@ -237,7 +237,7 @@ Public Class AddUser
 
         'PassEncrypt = LoginCls.Encrypt(txtPassword.Value.Trim, key)
         PassEncrypt = LoginCls.ReturnASCII(txtUserName.Value.Trim, txtPassword.Value.Trim)
-        MsgBox(PassEncrypt)
+        'MsgBox(PassEncrypt)
 
         Using tran As New TransactionScope()
             Try
@@ -246,7 +246,8 @@ Public Class AddUser
                 db.tblUsers.Add(New tblUser With { _
                              .UserName = txtUserName.Value.Trim, _
                              .Name = txtFullName.Value.Trim, _
-                             .GroupName = dcboUserGroup.Text.Trim, _
+                             .UserGroup = dcboUserGroup.Text, _
+                             .GroupName = txtUserGroup.Value.Trim, _
                              .Dept = dcbDept.Text.Trim, _
                              .Branch = dcbBranch.Text.Trim, _
                              .Password = PassEncrypt, _
@@ -263,7 +264,7 @@ Public Class AddUser
                 db.SaveChanges()
                 tran.Complete()
                 ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('เพิ่ม user สำเร็จ !');", True)
-
+                Response.Redirect("UserProfile.aspx")
             Catch ex As Exception
 
                 ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด กรุณาบันทึกข้อมูลใหม่อีกครั้ง');", True)
