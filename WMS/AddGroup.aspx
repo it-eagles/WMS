@@ -115,7 +115,7 @@
                   <div class="row margin-bottom">
               
                     <div class="col-lg-8 col-md-8 col-md-offset-2">
-                       <from class="form-horizontal">
+                       <form class="form-horizontal">
                            <div class="box-body">   
                                                            
                                     <div class="form-group" >
@@ -157,7 +157,7 @@
                                     <!-- /.box-body -->
                                 </div>
                           
-                       </from>
+                       </form>
                                 
                             <!--/.col-lg-6 col-md-6--->
                         </div>
