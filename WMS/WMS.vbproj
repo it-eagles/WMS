@@ -6789,6 +6789,7 @@
     <Content Include="UpdateGoods.aspx" />
     <Content Include="UpdateGroup.aspx" />
     <Content Include="UpdateUserProfile.aspx" />
+    <Content Include="UserMenu.aspx" />
     <Content Include="UserProfile.aspx" />
     <Content Include="ViewGoods.aspx" />
     <Content Include="ViewGroup.aspx" />
@@ -7294,6 +7295,13 @@
     </Compile>
     <Compile Include="UpdateUserProfile.aspx.vb">
       <DependentUpon>UpdateUserProfile.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="UserMenu.aspx.designer.vb">
+      <DependentUpon>UserMenu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserMenu.aspx.vb">
+      <DependentUpon>UserMenu.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="UserProfile.aspx.designer.vb">
