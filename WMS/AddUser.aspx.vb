@@ -147,21 +147,21 @@ Public Class AddUser
             Exit Sub
         End If
         addUser()
-        'Try
-        '    Dim user = (From u In db.tblUsers Where u.UserName = txtUserName.Value
-        '  Select u).FirstOrDefault
+        Try
+            Dim user = (From u In db.tblUsers Where u.UserName = txtUserName.Value
+          Select u).FirstOrDefault
 
-        '    If Not user Is Nothing Then
-        '        ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('ชื่อ user ซ้ำ กรุณาเปลี่ยนใหม่');", True)
-        '    Else
-        '        addUser()
-        '        checkID()
-        '        check()
-        '        Response.Write("<script>window.open('UserFrolie.aspx,target='_self');</script>")
-        '    End If
-        'Catch ex As Exception
-        '    ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด');", True)
-        'End Try
+            If Not user Is Nothing Then
+                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('ชื่อ user ซ้ำ กรุณาเปลี่ยนใหม่');", True)
+            Else
+                addUser()
+                checkID()
+                'check()
+                Response.Write("<script>window.open('UserFrolie.aspx,target='_self');</script>")
+            End If
+        Catch ex As Exception
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด');", True)
+        End Try
 
     End Sub
     Private Sub addUser()
@@ -239,42 +239,42 @@ Public Class AddUser
         PassEncrypt = LoginCls.ReturnASCII(txtUserName.Value.Trim, txtPassword.Value.Trim)
         MsgBox(PassEncrypt)
 
-        'Using tran As New TransactionScope()
-        '    Try
-        '        db.Database.Connection.Open()
+        Using tran As New TransactionScope()
+            Try
+                db.Database.Connection.Open()
 
-        '        db.tblUsers.Add(New tblUser With { _
-        '                     .UserName = txtUserName.Value.Trim, _
-        '                     .Name = txtFullName.Value.Trim, _
-        '                     .GroupName = dcboUserGroup.Text.Trim, _
-        '                     .Dept = dcbDept.Text.Trim, _
-        '                     .Branch = dcbBranch.Text.Trim, _
-        '                     .Password = PassEncrypt, _
-        '                     .StatusAdd = StatusAdd, _
-        '                     .StatusModify = StatusModify, _
-        '                     .StatusDelete = StatusDelete, _
-        '                     .StatusPrint = StatusPrint, _
-        '                     .StatusImport = StatusImport, _
-        '                     .StatusExport = StatusExport, _
-        '                     .StatusWarehouse = StatusWareHouse, _
-        '                     .UserStatus = UserStatus
-        '                 })
+                db.tblUsers.Add(New tblUser With { _
+                             .UserName = txtUserName.Value.Trim, _
+                             .Name = txtFullName.Value.Trim, _
+                             .GroupName = dcboUserGroup.Text.Trim, _
+                             .Dept = dcbDept.Text.Trim, _
+                             .Branch = dcbBranch.Text.Trim, _
+                             .Password = PassEncrypt, _
+                             .StatusAdd = StatusAdd, _
+                             .StatusModify = StatusModify, _
+                             .StatusDelete = StatusDelete, _
+                             .StatusPrint = StatusPrint, _
+                             .StatusImport = StatusImport, _
+                             .StatusExport = StatusExport, _
+                             .StatusWarehouse = StatusWareHouse, _
+                             .UserStatus = UserStatus
+                         })
 
-        '        db.SaveChanges()
-        '        tran.Complete()
-        '        ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('เพิ่ม user สำเร็จ !');", True)
+                db.SaveChanges()
+                tran.Complete()
+                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('เพิ่ม user สำเร็จ !');", True)
 
-        '    Catch ex As Exception
+            Catch ex As Exception
 
-        '        ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด กรุณาบันทึกข้อมูลใหม่อีกครั้ง');", True)
+                ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด กรุณาบันทึกข้อมูลใหม่อีกครั้ง');", True)
 
-        '    Finally
-        '        db.Database.Connection.Close()
-        '        db.Dispose()
-        '        tran.Dispose()
-        '    End Try
+            Finally
+                db.Database.Connection.Close()
+                db.Dispose()
+                tran.Dispose()
+            End Try
 
-        'End Using
+        End Using
     End Sub
     Private Sub checkID()
 

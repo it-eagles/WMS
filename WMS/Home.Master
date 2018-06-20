@@ -286,7 +286,7 @@
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="UserFroile.aspx"><i class="fa fa-circle-o"></i>User Profiles</a></li>
+                                <li><a href="UserProfile.aspx"><i class="fa fa-circle-o"></i>User Profiles</a></li>
                                 <li><a href="#"><i class="fa fa-circle-o"></i>User Menu</a></li>
                                 <li><a href="#"><i class="fa fa-circle-o"></i>Database Configuration</a></li>
                             </ul>

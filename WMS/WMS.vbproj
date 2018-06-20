@@ -6788,8 +6788,8 @@
     <Content Include="Test.aspx" />
     <Content Include="UpdateGoods.aspx" />
     <Content Include="UpdateGroup.aspx" />
-    <Content Include="UpdateUserfroile.aspx" />
-    <Content Include="UserFroile.aspx" />
+    <Content Include="UpdateUserProfile.aspx" />
+    <Content Include="UserProfile.aspx" />
     <Content Include="ViewGoods.aspx" />
     <Content Include="ViewGroup.aspx" />
     <Content Include="ViewUserfroile.aspx" />
@@ -7289,18 +7289,18 @@
       <DependentUpon>UpdateGroup.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="UpdateUserfroile.aspx.designer.vb">
-      <DependentUpon>UpdateUserfroile.aspx</DependentUpon>
+    <Compile Include="UpdateUserProfile.aspx.designer.vb">
+      <DependentUpon>UpdateUserProfile.aspx</DependentUpon>
     </Compile>
-    <Compile Include="UpdateUserfroile.aspx.vb">
-      <DependentUpon>UpdateUserfroile.aspx</DependentUpon>
+    <Compile Include="UpdateUserProfile.aspx.vb">
+      <DependentUpon>UpdateUserProfile.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="UserFroile.aspx.designer.vb">
-      <DependentUpon>UserFroile.aspx</DependentUpon>
+    <Compile Include="UserProfile.aspx.designer.vb">
+      <DependentUpon>UserProfile.aspx</DependentUpon>
     </Compile>
-    <Compile Include="UserFroile.aspx.vb">
-      <DependentUpon>UserFroile.aspx</DependentUpon>
+    <Compile Include="UserProfile.aspx.vb">
+      <DependentUpon>UserProfile.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="ViewGoods.aspx.designer.vb">
