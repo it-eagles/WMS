@@ -1549,27 +1549,6 @@
     <Property Name="LastUpDate" Type="DateTime" Precision="3" />
     <Property Name="rowguid" Type="Guid" Nullable="false" />
   </EntityType>
-  <EntityType Name="tblLogUser">
-    <Key>
-      <PropertyRef Name="LowNumber" />
-      <PropertyRef Name="UserName" />
-      <PropertyRef Name="rowguid" />
-    </Key>
-    <Property Name="LowNumber" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-    <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="UserGroup" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="StatusAdd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="StatusModify" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="StatusDelete" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="StatusPrint" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="StatusImport" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="StatusExport" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="StatusWarehouse" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="UserStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="UserBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="LastUpDate" Type="DateTime" Precision="3" />
-    <Property Name="rowguid" Type="Guid" Nullable="false" />
-  </EntityType>
   <EntityType Name="tblMasterCode">
     <Key>
       <PropertyRef Name="Type" />
@@ -2610,7 +2589,6 @@
     <EntitySet Name="tblLogTruckWayBillDetails" EntityType="Self.tblLogTruckWayBillDetail" />
     <EntitySet Name="tblLogTruckWayBillDetailImps" EntityType="Self.tblLogTruckWayBillDetailImp" />
     <EntitySet Name="tblLogTruckWayBillImps" EntityType="Self.tblLogTruckWayBillImp" />
-    <EntitySet Name="tblLogUsers" EntityType="Self.tblLogUser" />
     <EntitySet Name="tblMasterCodes" EntityType="Self.tblMasterCode" />
     <EntitySet Name="tblMenus" EntityType="Self.tblMenu" />
     <EntitySet Name="tblMoneyConfigs" EntityType="Self.tblMoneyConfig" />
@@ -2643,6 +2621,7 @@
     <EntitySet Name="tblWHConfirmGoodsReceives" EntityType="Self.tblWHConfirmGoodsReceive" />
     <EntitySet Name="tblWHConfirmGoodsReceiveDetails" EntityType="Self.tblWHConfirmGoodsReceiveDetail" />
     <EntitySet Name="tblUsers" EntityType="LKBWarehouseModel1_Test.tblUser" />
+    <EntitySet Name="tblLogUsers" EntityType="LKBWarehouseModel1_Test.tblLogUser" />
   </EntityContainer>
   <EntityType Name="tblUser">
     <Key>
@@ -2664,5 +2643,24 @@
     <Property Name="StatusWarehouse" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="UserStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="RejectStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblLogUser">
+    <Key>
+      <PropertyRef Name="LowNumber" />
+    </Key>
+    <Property Name="LowNumber" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="UserGroup" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="StatusAdd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="StatusModify" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="StatusDelete" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="StatusPrint" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="StatusImport" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="StatusExport" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="StatusWarehouse" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LastUpDate" Type="DateTime" Precision="3" />
+    <Property Name="rowguid" Type="Guid" Nullable="false" />
   </EntityType>
 </Schema>

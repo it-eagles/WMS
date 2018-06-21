@@ -2549,8 +2549,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblTruckWayBillImp' does not have
     <Property Name="PlaceofReceipt" Type="varchar" MaxLength="100" />
     <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblUser' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblUser">
     <Key>
       <PropertyRef Name="UserName" />
@@ -2749,6 +2747,7 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHConfirmGoodsReceiveDetail' d
     <EntitySet Name="Branch" EntityType="Self.Branch" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblLogUser" EntityType="Self.tblLogUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblBookingMessenger" EntityType="Self.tblBookingMessenger" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [tblBookingMessenger].[RecNo] AS [RecNo], 
@@ -4865,26 +4864,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHConfirmGoodsReceiveDetail' d
     [tblTruckWayBillImp].[PlaceofReceipt] AS [PlaceofReceipt], 
     [tblTruckWayBillImp].[rowguid] AS [rowguid]
     FROM [dbo].[tblTruckWayBillImp] AS [tblTruckWayBillImp]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblUser" EntityType="Self.tblUser" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblUser].[UserName] AS [UserName], 
-    [tblUser].[Name] AS [Name], 
-    [tblUser].[UserGroup] AS [UserGroup], 
-    [tblUser].[GroupName] AS [GroupName], 
-    [tblUser].[Dept] AS [Dept], 
-    [tblUser].[Branch] AS [Branch], 
-    [tblUser].[Password] AS [Password], 
-    [tblUser].[StatusAdd] AS [StatusAdd], 
-    [tblUser].[StatusModify] AS [StatusModify], 
-    [tblUser].[StatusDelete] AS [StatusDelete], 
-    [tblUser].[StatusPrint] AS [StatusPrint], 
-    [tblUser].[StatusImport] AS [StatusImport], 
-    [tblUser].[StatusExport] AS [StatusExport], 
-    [tblUser].[StatusWarehouse] AS [StatusWarehouse], 
-    [tblUser].[UserStatus] AS [UserStatus], 
-    [tblUser].[RejectStatus] AS [RejectStatus]
-    FROM [dbo].[tblUser] AS [tblUser]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="tblUserGroup" EntityType="Self.tblUserGroup" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 

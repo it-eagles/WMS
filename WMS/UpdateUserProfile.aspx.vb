@@ -18,9 +18,9 @@ Public Class UpdateUserProfile
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If Not Me.IsPostBack Then
             showEdit()
-            'showBranchlist()
-            'showDepartmentlist()
-            'showuserGrouplist()
+            showBranchlist()
+            showDepartmentlist()
+            showuserGrouplist()
         End If
     End Sub
 
@@ -97,18 +97,17 @@ Public Class UpdateUserProfile
 
         txtUserName.Value = user.u.UserName
         txtFullName.Value = user.u.Name
+        dcboUserGroup.Text = user.u.UserGroup
         txtUserGroup.Value = user.ug.UserGroupName
 
-        '_branch = user.br.BranchName
-        getBranch = user.br.BranchName
-        dcbBranch.Text = getBranch
-        dcbDept.Text = user.de.DepartmentName
+        dcbBranch.Text = user.u.Branch
+        dcbDept.Text = user.u.Dept
         
-        showBranch(_branch)
-        Dim userG As String = user.ug.UserGroupCode
-        showuserGroup(userG)
-        Dim dep As String = user.de.DepartmentName
-        showDepartment(dep)
+        'showBranch(_branch)
+        'Dim userG As String = user.ug.UserGroupCode
+        'showuserGroup(userG)
+        'Dim dep As String = user.de.DepartmentName
+        'showDepartment(dep)
 
         'show password ถอนรหัส ASCII 
         'Dim PassEncrypt = LoginCls.ReturnASCII(txtUserName.Value.Trim, txtPassword.Value.Trim)
@@ -130,10 +129,32 @@ Public Class UpdateUserProfile
 
 
     End Sub
-   
+    Private Sub showuserGrouplist()
+        'dcboUserGroup.Items.Clear()
+        'dcboUserGroup.Items.Add(New ListItem(userG, ""))
+        'dcboUserGroup.AppendDataBoundItems = True
+
+        Dim d = From ug In db.tblUserGroups
+                Select ug.UserGroupName, ug.UserGroupCode
+        Try
+            dcboUserGroup.DataSource = d.ToList
+            dcboUserGroup.DataTextField = "UserGroupCode"
+            dcboUserGroup.DataValueField = "UserGroupCode"
+            dcboUserGroup.DataBind()
+
+            'Dim dd As String = dcboUserGroup.Text
+            'showUserGroupName(dd)
+            If dcboUserGroup.Items.Count > 1 Then
+                dcboUserGroup.Enabled = True
+            Else
+                dcboUserGroup.Enabled = False
+            End If
+        Catch ex As Exception
+        End Try
+    End Sub
     Private Sub showuserGroup(userG As String)
         dcboUserGroup.Items.Clear()
-        dcboUserGroup.Items.Add(New ListItem(userG, ""))
+        dcboUserGroup.Items.Add(New ListItem("--select UserGroup--", ""))
         dcboUserGroup.AppendDataBoundItems = True
 
         Dim d = From ug In db.tblUserGroups
@@ -154,11 +175,11 @@ Public Class UpdateUserProfile
         Catch ex As Exception
         End Try
     End Sub
-   
-    Private Sub showBranch(Branch As String)
-        dcbBranch.Items.Clear()
-        dcbBranch.Items.Add(New ListItem(Branch, ""))
-        dcbBranch.AppendDataBoundItems = True
+
+    Private Sub showBranchlist()
+        'dcbBranch.Items.Clear()
+        'dcbBranch.Items.Add(New ListItem("--select Branch--", ""))
+        'dcbBranch.AppendDataBoundItems = True
 
         Dim d = From p In db.Branches
               Select p.BranchID,
@@ -177,10 +198,52 @@ Public Class UpdateUserProfile
             'Throw ex
         End Try
     End Sub
-   
+    Private Sub showBranch(Branch As String)
+        dcbBranch.Items.Clear()
+        dcbBranch.Items.Add(New ListItem("--select Branch--", ""))
+        dcbBranch.AppendDataBoundItems = True
+
+        Dim d = From p In db.Branches
+              Select p.BranchID, p.BranchName
+        Try
+            dcbBranch.DataSource = d.ToList
+            dcbBranch.DataTextField = "BranchName"
+            dcbBranch.DataValueField = "BranchID"
+            dcbBranch.DataBind()
+            If dcbBranch.Items.Count > 1 Then
+                dcbBranch.Enabled = True
+            Else
+                dcbBranch.Enabled = False
+            End If
+        Catch ex As Exception
+            'Throw ex
+        End Try
+    End Sub
+    Private Sub showDepartmentlist()
+        'dcbDept.Items.Clear()
+        'dcbDept.Items.Add(New ListItem(Dep, ""))
+        'dcbDept.AppendDataBoundItems = True
+
+        Dim d = From p In db.Departments
+                Select p.DepartmentID,
+                p.DepartmentName
+        Try
+            dcbDept.DataSource = d.ToList
+            dcbDept.DataTextField = "DepartmentName"
+            dcbDept.DataValueField = "DepartmentID"
+            dcbDept.DataBind()
+            If dcbDept.Items.Count > 1 Then
+                dcbDept.Enabled = True
+            Else
+                dcbDept.Enabled = False
+            End If
+        Catch ex As Exception
+            'Throw ex
+        End Try
+    End Sub
     Private Sub showDepartment(Dep As String)
         dcbDept.Items.Clear()
-        dcbDept.Items.Add(New ListItem(Dep, ""))
+        dcbDept.Items.Add(New ListItem("--select Dep--", ""))
         dcbDept.AppendDataBoundItems = True
 
         Dim d = From p In db.Departments
@@ -321,51 +384,51 @@ Public Class UpdateUserProfile
                 MsgBox(dcbBranch.Text)
             End If
             'PassEncrypt = LoginCls.Encrypt(txtPassword.Value.Trim, key)
-            '    Using tran As New TransactionScope()
-            '        Try
-            '            db.Database.Connection.Open()
-            '            Dim edit As tblUser = (From c In db.tblUsers Where c.UserName = UserName
-            '    Select c).First()
-            '            If edit IsNot Nothing Then
-            '                edit.UserName = txtUserName.Value.Trim
-            '                edit.Name = txtFullName.Value.Trim
-            '                If String.IsNullOrEmpty(dcbBranch.Text) Then
-            '                    edit.Branch = ""
-            '                Else
-            '                    edit.Branch = dcbBranch.Text
-            '                End If
-            '                edit.UserGroup = dcboUserGroup.Text
-            '                edit.GroupName = txtUserGroup.Value.Trim
-            '                edit.Dept = dcbDept.Text
-            '                edit.Branch = dcbBranch.Text
-            '                edit.StatusAdd = StatusAdd
-            '                edit.StatusModify = StatusModify
-            '                edit.StatusDelete = StatusDelete
-            '                edit.StatusPrint = StatusPrint
-            '                edit.StatusImport = StatusImport
-            '                edit.StatusExport = StatusExport
-            '                edit.StatusWarehouse = StatusWareHouse
-            '                edit.UserStatus = UserStatus
+            Using tran As New TransactionScope()
+                Try
+                    db.Database.Connection.Open()
+                    Dim edit As tblUser = (From c In db.tblUsers Where c.UserName = UserName
+            Select c).First()
+                    If edit IsNot Nothing Then
+                        edit.UserName = txtUserName.Value.Trim
+                        edit.Name = txtFullName.Value.Trim
+                        If String.IsNullOrEmpty(dcbBranch.Text) Then
+                            edit.Branch = ""
+                        Else
+                            edit.Branch = dcbBranch.Text
+                        End If
+                        edit.UserGroup = dcboUserGroup.Text
+                        edit.GroupName = txtUserGroup.Value.Trim
+                        edit.Dept = dcbDept.Text
+                        edit.Branch = dcbBranch.Text
+                        edit.StatusAdd = StatusAdd
+                        edit.StatusModify = StatusModify
+                        edit.StatusDelete = StatusDelete
+                        edit.StatusPrint = StatusPrint
+                        edit.StatusImport = StatusImport
+                        edit.StatusExport = StatusExport
+                        edit.StatusWarehouse = StatusWareHouse
+                        edit.UserStatus = UserStatus
 
-            '                db.SaveChanges()
-            '                tran.Complete()
-            '                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('แก้ไขข้อมูล สำเร็จ !');", True)
-            '                Response.Redirect("UserProfile.aspx")
-            '            End If
-            '        Catch ex As Exception
+                        db.SaveChanges()
+                        tran.Complete()
+                        ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('แก้ไขข้อมูล สำเร็จ !');", True)
+                        Response.Redirect("UserProfile.aspx")
+                    End If
+                Catch ex As Exception
 
-            '            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด กรุณาบันทึกข้อมูลใหม่อีกครั้ง');", True)
+                    ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด กรุณาบันทึกข้อมูลใหม่อีกครั้ง');", True)
 
-            '        Finally
-            '            db.Database.Connection.Close()
-            '            db.Dispose()
-            '            tran.Dispose()
-            '        End Try
+                Finally
+                    db.Database.Connection.Close()
+                    db.Dispose()
+                    tran.Dispose()
+                End Try
 
-            '    End Using
+            End Using
 
-            'End If
         End If
+
     End Sub
 
     Dim _branch As String
