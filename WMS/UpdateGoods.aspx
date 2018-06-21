@@ -43,13 +43,13 @@
                                <div class="form-group" >
                                     <label for="txtProductCode" class="col-sm-4 control-label">Product Code :</label>
                                          <div class="col-sm-8">
-                                           <input class="form-control" id="txtProductCode" runat="server" placeholder="Product Code" disabled>
+                                           <input class="form-control" id="txtProductCode" runat="server" placeholder="Product Code" disabled="disabled"/>
                                         </div>
                                     </div>
                                   <div class="form-group">
                                         <label for="txtCustomerPart" class="col-sm-4 control-label">Owner Part :</label>
                                            <div class="col-sm-8">
-                                           <input class="form-control" id="txtCustomerPart" runat="server"  placeholder="Owner Part ">
+                                           <input class="form-control" id="txtCustomerPart" runat="server"  placeholder="Owner Part"/>
                                        </div>
                                     </div>
                                   </div>      
@@ -59,7 +59,7 @@
                                         <label for="txtProductPO" class="col-sm-3 control-label">PO :</label>
           
                                       <div class="col-sm-8">
-                                         <input  class="form-control" id="txtProductPO" runat="server" placeholder="Product PO">
+                                         <input  class="form-control" id="txtProductPO" runat="server" placeholder="Product PO"/>
                                       </div>
                                     </div>
                                     <div class="form-group">
@@ -115,7 +115,7 @@
                                                                <label for="txtMinimunStock" class="col-sm-4 control-label">Minimun Stock</label>
                                        
                                                              <div class="col-sm-8">
-                                                               <input class="form-control" id="txtMinimunStock" runat="server" placeholder="Minimun Stock">
+                                                               <input class="form-control" id="txtMinimunStock" runat="server" placeholder="Minimun Stock"/>
                                                              </div>
 
                                                            </div>
@@ -124,21 +124,21 @@
                                                                   <label for="txtAdjustment" class="col-sm-4 control-label">Adjustment</label>
                                       
                                                      <div class="col-sm-8">
-                                                                  <input class="form-control" id="txtAdjustment" runat="server" placeholder="Adjustment">
+                                                                  <input class="form-control" id="txtAdjustment" runat="server" placeholder="Adjustment"/>
                                                      </div>
                       
                                                     </div>
                                                        <div class="form-group">
                                                       <label for="txtDamageQty" class="col-sm-4 control-label">Damage Qty</label>
                                                      <div class="col-sm-8">
-                                                          <input class="form-control" id="txtDamageQty" runat="server"  placeholder="Damage Qty">
+                                                          <input class="form-control" id="txtDamageQty" runat="server"  placeholder="Damage Qty"/>
                                                      </div>
                                                 </div>
 
                                     <div class="form-group">
                                              <label for="txtAvailableQTY" class="col-sm-4 control-label">Available QTY</label>
                                        <div class="col-sm-8">
-                                            <input class="form-control" id="txtAvailableQTY" runat="server"  placeholder="Available QTY">
+                                            <input class="form-control" id="txtAvailableQTY" runat="server"  placeholder="Available QTY"/>
                                        </div>
                                    
                                     </div>
@@ -181,7 +181,7 @@
                                      <label for="txtImpProductCode" class="col-sm-2 control-label">Imp. Product Code :</label>
                                        <div class="col-md-3">
          
-                                             <input class="form-control" id="txtImpProductCode" runat="server" placeholder="Product Code">
+                                             <input class="form-control" id="txtImpProductCode" runat="server" placeholder="Product Code"/>
                                       </div>
                                            <label for="dcboImpTariffCode" class="col-sm-2 control-label">Tariff Code :</label>
                                        <div class="col-md-5">   
@@ -195,13 +195,13 @@
                                          <label for="txtImpDesc1" class="col-sm-2 control-label">Desc. (ENG) 1 :</label>
                                        <div class="col-md-9" id="ImpDesc1">
          
-                                             <input class="form-control" id="txtImpDesc1" runat="server" placeholder="Desc" disabled>
+                                             <input class="form-control" id="txtImpDesc1" runat="server" placeholder="Desc" disabled="disabled"/>
                                       </div>
                                           
                                        <div class="col-md-1">   
                                            <div class="checkbox">
                                                  <label>
-                                                     <input type="checkbox" runat="server" id="chkImpEnable1" onclick="EnableDisableControls();"> Enable
+                                                     <input type="checkbox" runat="server" id="chkImpEnable1" onclick="EnableDisableControls();"/> Enable
                                                  </label>
                                              </div>
                                        
@@ -213,7 +213,7 @@
                                      
                                          <label for="txtImpDesc2" class="col-sm-2 control-label">Desc. (ENG) 2 :</label>
                                        <div class="col-md-9" id="ImpDesc2">
-                                             <input class="form-control" id="txtImpDesc2" runat="server" placeholder="Desc" disabled>
+                                             <input class="form-control" id="txtImpDesc2" runat="server" placeholder="Desc" disabled="disabled"/>
                                       </div>
                                           
                                        <div class="col-md-1">   
@@ -228,12 +228,12 @@
                                   <div class="form-group">
                                          <label for="txtImpDesc3" class="col-sm-2 control-label">Desc. (ENG) 3 :</label>
                                    <div class="col-md-9" id="ImpDesc3">
-                                       <input class="form-control" id="txtImpDesc3" runat="server" placeholder="Desc" disabled>
+                                       <input class="form-control" id="txtImpDesc3" runat="server" placeholder="Desc" disabled="disabled"/>
                                    </div>
                                     <div class="col-md-1">   
                                         <div class="checkbox">
                                             <label>
-                                                <input type="checkbox" runat="server" id="chkImpEnable3" onclick="chkImpEnable3();"> Enable
+                                                <input type="checkbox" runat="server" id="chkImpEnable3" onclick="chkImpEnable3();"/> Enable
                                             </label>
                                         </div>
                                       </div>
@@ -241,14 +241,14 @@
                                    <div class="form-group" >
                                        <label for="txtImpProductAttribute1" class="col-sm-2 control-label">Product Desc. (TH) :</label>
                                     <div class="col-sm-10">
-                                       <input class="form-control" id="txtImpProductAttribute1" runat="server" placeholder="Desc. (TH)">
+                                       <input class="form-control" id="txtImpProductAttribute1" runat="server" placeholder="Desc. (TH)"/>
                                     </div>
                                    </div>
                                     
                                     <div class="form-group">
                                         <label for="txtImpProductAttribute2" class="col-sm-2 control-label">Product Attribute:</label>  
                                       <div class="col-sm-10">
-                                             <input class="form-control" id="txtImpProductAttribute2" runat="server" placeholder=" Attribute">
+                                             <input class="form-control" id="txtImpProductAttribute2" runat="server" placeholder=" Attribute"/>
                                         </div>
                                     </div>
 
@@ -263,20 +263,20 @@
                                     <div class="form-group">
                                         <label for="txtImpCustomsProductCode" class="col-sm-4 control-label">H.S. Code</label>
                                        <div class="col-sm-8">
-                                          <input class="form-control" id="txtImpCustomsProductCode" runat="server"  placeholder="H.S.">
+                                          <input class="form-control" id="txtImpCustomsProductCode" runat="server"  placeholder="H.S."/>
                                        </div>
                                     </div>
 
                                <div class="form-group" >
                                         <label for="txtImpDutyType" class="col-sm-4 control-label">Duty Type</label>
                                          <div class="col-sm-8">
-                                             <input class="form-control" id="txtImpDutyType" runat="server" placeholder="Duty Type">
+                                             <input class="form-control" id="txtImpDutyType" runat="server" placeholder="Duty Type"/>
                                         </div>
                                </div>
                                       <div class="form-group">
                                         <label for="txtImpValueRateP" class="col-sm-4 control-label">Value Rate(P) :</label>
                                            <div class="col-sm-8">
-                                              <input class="form-control" id="txtImpValueRateP" runat="server"  placeholder="Value Rate">
+                                              <input class="form-control" id="txtImpValueRateP" runat="server"  placeholder="Value Rate"/>
                                            </div>
                                       
                                     </div>
@@ -284,7 +284,7 @@
                                     <div class="form-group">
                                         <label for="txtImpSpecificRateP" class="col-sm-4 control-label">Specific Rate(P) :</label>
                                          <div class="col-sm-8">
-                                          <input class="form-control" id="txtImpSpecificRateP" runat="server"  placeholder="Specific Rate">
+                                          <input class="form-control" id="txtImpSpecificRateP" runat="server"  placeholder="Specific Rate"/>
                                         </div>
                                    
                                     </div>
@@ -294,7 +294,7 @@
                                         <label for="txtImpExemptDuty" class="col-sm-4 control-label">Exempt Duty :</label>
                                        
                                          <div class="col-sm-8">
-                                             <input class="form-control" id="txtImpExemptDuty" runat="server" placeholder="Exempt Duty">
+                                             <input class="form-control" id="txtImpExemptDuty" runat="server" placeholder="Exempt Duty"/>
                                         </div>
                       
                                     </div>
@@ -303,14 +303,14 @@
                                         <label for="txtImpSurchargeRate" class="col-sm-4 control-label">Surcharge Rate :</label>
                                        
                                       <div class="col-sm-8">
-                                             <input class="form-control" id="txtImpSurchargeRate" runat="server" placeholder="Surcharge Rate">
+                                             <input class="form-control" id="txtImpSurchargeRate" runat="server" placeholder="Surcharge Rate"/>
                                         </div>
                       
                                     </div>
                                       <div class="form-group">
                                         <label for="txtImpExciseRate" class="col-sm-4 control-label">Excise Rate :</label>
                                            <div class="col-sm-8">
-                                            <input class="form-control" id="txtImpExciseRate" runat="server" placeholder="Excise Rate">
+                                            <input class="form-control" id="txtImpExciseRate" runat="server" placeholder="Excise Rate"/>
                                            </div>
                                       
                                     </div>
@@ -318,7 +318,7 @@
                                     <div class="form-group">
                                         <label for="txtImpExciseSpcRate" class="col-sm-4 control-label">Excise Spc Rate :</label>
                                          <div class="col-sm-8">
-                                          <input class="form-control" id="txtImpExciseSpcRate" runat="server"  placeholder="Excise Spc Rate">
+                                          <input class="form-control" id="txtImpExciseSpcRate" runat="server"  placeholder="Excise Spc Rate"/>
                                            </div>
                                    
                                     </div>
@@ -328,7 +328,7 @@
                                         <label for="txtImpExemptExcise" class="col-sm-4 control-label">Exempt(Excise) :</label>
                                        
                                          <div class="col-sm-8">
-                                             <input class="form-control" id="txtImpExemptExcise" runat="server" placeholder="Excise">
+                                             <input class="form-control" id="txtImpExemptExcise" runat="server" placeholder="Excise"/>
                                         </div>
                       
                                     </div>
@@ -337,14 +337,14 @@
                                         <label for="txtImpValueRate" class="col-sm-4 control-label">Value Rate :</label>
                                        
                                       <div class="col-sm-8">
-                                             <input class="form-control" id="txtImpValueRate" runat="server" placeholder="Value Rate">
+                                             <input class="form-control" id="txtImpValueRate" runat="server" placeholder="Value Rate"/>
                                         </div>
                       
                                     </div>
                                       <div class="form-group">
                                         <label for="txtImpValueRateAmount" class="col-sm-4 control-label">Value Rate Amount :</label>
                                            <div class="col-sm-8">
-                                            <input class="form-control" id="txtImpValueRateAmount" runat="server" placeholder="Value Rate Amount">
+                                            <input class="form-control" id="txtImpValueRateAmount" runat="server" placeholder="Value Rate Amount"/>
                                            </div>
                                       
                                     </div>
@@ -352,7 +352,7 @@
                                     <div class="form-group">
                                         <label for="txtImpFactoryNo" class="col-sm-4 control-label">Factory No :</label>
                                          <div class="col-sm-8">
-                                          <input class="form-control" id="txtImpFactoryNo" runat="server"  placeholder="Factory No">
+                                          <input class="form-control" id="txtImpFactoryNo" runat="server"  placeholder="Factory No"/>
                                       </div>
                                    
                                     </div>
@@ -370,7 +370,7 @@
                                     <div class="form-group">
                                         <label for="txtImpProductYear" class="col-sm-4 control-label">Product Year :</label>
                                          <div class="col-sm-8">
-                                          <input class="form-control" id="txtImpProductYear" runat="server"  placeholder="Product Year">
+                                          <input class="form-control" id="txtImpProductYear" runat="server"  placeholder="Product Year"/>
                                            </div>
                                    
                                     </div>
@@ -380,7 +380,7 @@
                                         <label for="txtImpSpeciticRate" class="col-sm-4 control-label">Specitic Rate :</label>
                                        
                                          <div class="col-sm-8">
-                                             <input class="form-control" id="txtImpSpeciticRate" runat="server" placeholder="Specitic Rate">
+                                             <input class="form-control" id="txtImpSpeciticRate" runat="server" placeholder="Specitic Rate"/>
                                         </div>
                       
                                     </div>
@@ -389,14 +389,14 @@
                                         <label for="txtImpSpecificCal" class="col-sm-4 control-label">Specific Cal :</label>
                                        
                                       <div class="col-sm-8">
-                                             <input class="form-control" id="txtImpSpecificCal" runat="server" placeholder="Specific Cal">
+                                             <input class="form-control" id="txtImpSpecificCal" runat="server" placeholder="Specific Cal"/>
                                         </div>
                       
                                     </div>
                                       <div class="form-group">
                                         <label for="txtImpExemptVat" class="col-sm-4 control-label">Exempt Vat :</label>
                                            <div class="col-sm-8">
-                                              <input class="form-control" id="txtImpExemptVat" runat="server"  placeholder="Exempt Vat">
+                                              <input class="form-control" id="txtImpExemptVat" runat="server"  placeholder="Exempt Vat"/>
                                            </div>
                                       
                                     </div>
@@ -404,7 +404,7 @@
                                     <div class="form-group">
                                         <label for="txtImpExciseNo" class="col-sm-4 control-label">Excise No :</label>
                                          <div class="col-sm-8">
-                                          <input class="form-control" id="txtImpExciseNo" runat="server"  placeholder="Excise No">
+                                          <input class="form-control" id="txtImpExciseNo" runat="server"  placeholder="Excise No"/>
                                            </div>
                                    
                                     </div>
@@ -414,7 +414,7 @@
                                         <label for="txtImpExciseRatePay" class="col-sm-4 control-label">Excise Rate Pay :</label>
                                        
                                          <div class="col-sm-8">
-                                             <input class="form-control" id="txtImpExciseRatePay" runat="server" placeholder="Excise Rate Pay ">
+                                             <input class="form-control" id="txtImpExciseRatePay" runat="server" placeholder="Excise Rate Pay "/>
                                         </div>
                       
                                     </div>
@@ -423,14 +423,14 @@
                                         <label for="txtImpExciseSpcRatePay" class="col-sm-4 control-label">Excise Spc Rate Pay :</label>
                                        
                                       <div class="col-sm-8">
-                                             <input class="form-control" id="txtImpExciseSpcRatePay" runat="server" placeholder="Excise Spc Rate Pay">
+                                             <input class="form-control" id="txtImpExciseSpcRatePay" runat="server" placeholder="Excise Spc Rate Pay"/>
                                         </div>
                       
                                     </div>
                                       <div class="form-group">
                                         <label for="txtImpPriviege" class="col-sm-4 control-label">Priviege :</label>
                                            <div class="col-sm-8">
-                                            <input class="form-control" id="txtImpPriviege" runat="server" placeholder="Priviege">
+                                            <input class="form-control" id="txtImpPriviege" runat="server" placeholder="Priviege"/>
                                            </div>
                                       
                                     </div>
@@ -458,7 +458,7 @@
                                       <div class="form-group">
                                         <label for="txtImpEstablishNo" class="col-sm-4 control-label">Establish No :</label>
                                            <div class="col-sm-8">
-                                            <input class="form-control" id="txtImpEstablishNo" runat="server" placeholder="Establish No">
+                                            <input class="form-control" id="txtImpEstablishNo" runat="server" placeholder="Establish No"/>
                                            </div>
                                       
                                     </div>
@@ -491,7 +491,7 @@
                               <div class="form-group" >
                                      <label for="txtExpProductCode" class="col-sm-2 control-label">Exp. Product Code :</label>
                                  <div class="col-md-6">
-                                     <input class="form-control" id="txtExpProductCode" runat="server" placeholder="Product Code">
+                                     <input class="form-control" id="txtExpProductCode" runat="server" placeholder="Product Code"/>
                                  </div>
                                  <div class="col-md-2"></div>
                              </div> 
@@ -499,12 +499,12 @@
                              <div class="form-group" >
                                   <label for="txtImpDesc1" class="col-sm-2 control-label">Desc. (ENG) 1 :</label>
                                <div class="col-md-9" id="ExpDesc1">
-                                  <input class="form-control" id="txtExpDesc1" runat="server" placeholder="Desc" disabled>
+                                  <input class="form-control" id="txtExpDesc1" runat="server" placeholder="Desc" disabled="disabled"/>
                                </div>
                                 <div class="col-md-1">   
                                    <div class="checkbox">
                                       <label>
-                                          <input type="checkbox" runat="server" id="chkExpEnable1" onclick="chkExpEnable1();"> Enable
+                                          <input type="checkbox" runat="server" id="chkExpEnable1" onclick="chkExpEnable1();"/> Enable
                                       </label>
                                   </div>
                                </div>
@@ -513,12 +513,12 @@
                            <div class="form-group" >
                                <label for="txtExpDesc2" class="col-sm-2 control-label">Desc. (ENG) 2 :</label>
                                 <div class="col-md-9" id="ExpDesc2">
-                                    <input class="form-control" id="txtExpDesc2" runat="server" placeholder="Desc" disabled>
+                                    <input class="form-control" id="txtExpDesc2" runat="server" placeholder="Desc" disabled="disabled"/>
                                 </div>
                                <div class="col-md-1">
                                    <div class="checkbox">
                                        <label>
-                                           <input type="checkbox" runat="server" id="chkExpEnable2" onclick="chkExpEnable2();"> Enable
+                                           <input type="checkbox" runat="server" id="chkExpEnable2" onclick="chkExpEnable2();"/> Enable
                                        </label>
                                    </div>
                                </div>
@@ -527,12 +527,12 @@
                           <div class="form-group" >
                               <label for="txtExpDesc3" class="col-sm-2 control-label">Desc. (ENG) 3 :</label>
                               <div class="col-md-9" id="ExpDesc3">
-                                  <input class="form-control" id="txtExpDesc3" runat="server" placeholder="Desc" disabled>
+                                  <input class="form-control" id="txtExpDesc3" runat="server" placeholder="Desc" disabled="disabled"/>
                               </div>
                               <div class="col-md-1">
                                   <div class="checkbox">
                                       <label>
-                                          <input type="checkbox" runat="server" id="chkExpEnable3" onclick="chkExpEnable3();"> Enable
+                                          <input type="checkbox" runat="server" id="chkExpEnable3" onclick="chkExpEnable3();"/> Enable
                                       </label>
                                   </div>
                               </div>
@@ -540,14 +540,14 @@
                          <div class="form-group" >
                              <label for="txtExpProductAttribute1" class="col-sm-2 control-label">Attribute 1 :</label>
                                    <div class="col-sm-10">
-                                        <input class="form-control" id="txtExpProductAttribute1" runat="server" placeholder="Desc. (TH)">
+                                        <input class="form-control" id="txtExpProductAttribute1" runat="server" placeholder="Desc. (TH)"/>
                                    </div>
                          </div>
                          
                          <div class="form-group">
                              <label for="txtExpProductAttribute2" class="col-sm-2 control-label">Attribute 2 :</label>
                                    <div class="col-sm-10">
-                                             <input class="form-control" id="txtExpProductAttribute2" runat="server" placeholder=" Attribute">
+                                             <input class="form-control" id="txtExpProductAttribute2" runat="server" placeholder=" Attribute"/>
                                         </div>
                       
                                     </div>
@@ -564,7 +564,7 @@
                                     <div class="form-group">
                                         <label for="txtExpCustomsProductCode" class="col-sm-4 control-label">H.S. Code</label>
                                          <div class="col-sm-8">
-                                          <input class="form-control" id="txtExpCustomsProductCode" runat="server"  placeholder="H.S.">
+                                          <input class="form-control" id="txtExpCustomsProductCode" runat="server"  placeholder="H.S."/>
                                         </div>
                                    
                                     </div>
@@ -574,7 +574,7 @@
                                         <label for="txtExpFomulaNo" class="col-sm-4 control-label">Fomula No :</label>
                                        
                                          <div class="col-sm-8">
-                                             <input class="form-control" id="txtExpFomulaNo" runat="server" placeholder="Fomula No">
+                                             <input class="form-control" id="txtExpFomulaNo" runat="server" placeholder="Fomula No"/>
                                         </div>
                       
                                     </div>
@@ -583,7 +583,7 @@
                                       <div class="form-group">
                                         <label for="txtExpBOINo" class="col-sm-4 control-label">BOI No :</label>
                                            <div class="col-sm-8">
-                                              <input class="form-control" id="txtExpBOINo" runat="server"  placeholder="BOI No">
+                                              <input class="form-control" id="txtExpBOINo" runat="server"  placeholder="BOI No"/>
                                            </div>
                                       
                                     </div>
@@ -593,7 +593,7 @@
                                         <label for="txtExpDutyType" class="col-sm-4 control-label">Duty Type :</label>
                                        
                                          <div class="col-sm-8">
-                                             <input class="form-control" id="txtExpDutyType" runat="server" placeholder="Duty Type">
+                                             <input class="form-control" id="txtExpDutyType" runat="server" placeholder="Duty Type"/>
                                         </div>
                       
                                     </div>
@@ -602,14 +602,14 @@
                                         <label for="txtExpQtyCarton" class="col-sm-4 control-label">Qty./Carton :</label>
                                        
                                       <div class="col-sm-8">
-                                             <input class="form-control" id="txtExpQtyCarton" runat="server" placeholder="Qty Carton">
+                                             <input class="form-control" id="txtExpQtyCarton" runat="server" placeholder="Qty Carton"/>
                                         </div>
                       
                                     </div>
                                       <div class="form-group">
                                         <label for="txtExpWeightCarton" class="col-sm-4 control-label">Weight/Carton :</label>
                                            <div class="col-sm-8">
-                                            <input class="form-control" id="txtExpWeightCarton" runat="server" placeholder="Weight/Carton">
+                                            <input class="form-control" id="txtExpWeightCarton" runat="server" placeholder="Weight/Carton"/>
                                            </div>
                                       
                                     </div>
@@ -617,7 +617,7 @@
                                     <div class="form-group">
                                         <label for="txtExpValueRate" class="col-sm-4 control-label">Value Rate :</label>
                                          <div class="col-sm-8">
-                                          <input class="form-control" id="txtExpValueRate" runat="server"  placeholder="Value Rate">
+                                          <input class="form-control" id="txtExpValueRate" runat="server"  placeholder="Value Rate"/>
                                            </div>
                                    
                                     </div>
@@ -627,7 +627,7 @@
                                         <label for="txtExpValueRateAmount" class="col-sm-4 control-label">Value Rate Amount :</label>
                                        
                                          <div class="col-sm-8">
-                                             <input class="form-control" id="txtExpValueRateAmount" runat="server" placeholder="Value Rate Amount">
+                                             <input class="form-control" id="txtExpValueRateAmount" runat="server" placeholder="Value Rate Amount"/>
                                         </div>
                       
                                     </div>
@@ -636,7 +636,7 @@
                                         <label for="txtExpFactoryNo" class="col-sm-4 control-label">Factory No :</label>
                                        
                                       <div class="col-sm-8">
-                                             <input class="form-control" id="txtExpFactoryNo" runat="server" placeholder="Factory No">
+                                             <input class="form-control" id="txtExpFactoryNo" runat="server" placeholder="Factory No"/>
                                         </div>
                       
                                     </div>
@@ -664,7 +664,7 @@
                                         <label for="txtImpSpeciticRate" class="col-sm-4 control-label">Specitic Rate :</label>
                                        
                                          <div class="col-sm-8">
-                                             <input class="form-control" id="Text20" runat="server" placeholder="Specitic Rate">
+                                             <input class="form-control" id="Text20" runat="server" placeholder="Specitic Rate"/>
                                         </div>
                       
                                     </div>
@@ -673,14 +673,14 @@
                                         <label for="txtExpProductYear" class="col-sm-4 control-label">Product Year :</label>
                                        
                                       <div class="col-sm-8">
-                                             <input class="form-control" id="txtExpProductYear" runat="server" placeholder="Product Year">
+                                             <input class="form-control" id="txtExpProductYear" runat="server" placeholder="Product Year"/>
                                         </div>
                       
                                     </div>
                                       <div class="form-group">
                                         <label for="txtExp19BisTranNo" class="col-sm-4 control-label">19 Bis TranNo :</label>
                                            <div class="col-sm-8">
-                                              <input class="form-control" id="txtExp19BisTranNo" runat="server"  placeholder="19 Bis TranNo">
+                                              <input class="form-control" id="txtExp19BisTranNo" runat="server"  placeholder="19 Bis TranNo"/>
                                            </div>
                                       
                                     </div>
@@ -688,7 +688,7 @@
                                     <div class="form-group">
                                         <label for="txtExpBondFormulaNo" class="col-sm-4 control-label">Bond Formula No :</label>
                                          <div class="col-sm-8">
-                                          <input class="form-control" id="txtExpBondFormulaNo" runat="server"  placeholder="Bond Formula No">
+                                          <input class="form-control" id="txtExpBondFormulaNo" runat="server"  placeholder="Bond Formula No"/>
                                            </div>
                                    
                                     </div>
@@ -698,7 +698,7 @@
                                         <label for="txtExpPriceForeight" class="col-sm-4 control-label">Price(Foreight) :</label>
                                        
                                          <div class="col-sm-8">
-                                             <input class="form-control" id="txtExpPriceForeight" runat="server" placeholder="Foreight">
+                                             <input class="form-control" id="txtExpPriceForeight" runat="server" placeholder="Foreight"/>
                                         </div>
                       
                                     </div>
@@ -707,14 +707,14 @@
                                         <label for="txtExpQtyPallet" class="col-sm-4 control-label">QTY/PALLET :</label>
                                        
                                       <div class="col-sm-8">
-                                             <input class="form-control" id="txtExpQtyPallet" runat="server" placeholder="QTY/PALLET ">
+                                             <input class="form-control" id="txtExpQtyPallet" runat="server" placeholder="QTY/PALLET "/>
                                         </div>
                       
                                     </div>
                                       <div class="form-group">
                                         <label for="txtImpPriviege" class="col-sm-4 control-label">Priviege :</label>
                                            <div class="col-sm-8">
-                                            <input class="form-control" id="Text26" runat="server" placeholder="Priviege">
+                                            <input class="form-control" id="Text26" runat="server" placeholder="Priviege"/>
                                         </div>
                                       
                                     </div>
@@ -736,7 +736,7 @@
                                       <div class="form-group">
                                         <label for="txtExpEstablishNo" class="col-sm-4 control-label">Establish No :</label>
                                            <div class="col-sm-8">
-                                            <input class="form-control" id="txtExpEstablishNo" runat="server" placeholder="Establish No">
+                                            <input class="form-control" id="txtExpEstablishNo" runat="server" placeholder="Establish No"/>
                                       </div>
                                       
                                     </div>
@@ -789,21 +789,21 @@
                               
                                    <div class="col-md-2">
                                        <label for="txtProductWidth">Width</label>
-                                       <input class="form-control" id="txtProductWidth" runat="server" placeholder="Width">
+                                       <input class="form-control" id="txtProductWidth" runat="server" placeholder="Width"/>
                                   </div>
                                   
                                    <div class="col-md-2">
                                        <label for="txtProductHeight">Heigh</label>
-                                       <input class="form-control" id="txtProductHeight" runat="server" placeholder="Height">
+                                       <input class="form-control" id="txtProductHeight" runat="server" placeholder="Height"/>
                                   </div>
                                      
                                    <div class="col-md-2">
                                        <label for="txtProductLeng">Leng</label>
-                                       <input class="form-control" id="txtProductLeng" runat="server" placeholder="Leng">
+                                       <input class="form-control" id="txtProductLeng" runat="server" placeholder="Leng"/>
                                   </div>
                                    <div class="col-md-2">
                                        <label for="txtProductVolume">Volume</label>
-                                       <input class="form-control" id="txtProductVolume" runat="server" placeholder="Volume">
+                                       <input class="form-control" id="txtProductVolume" runat="server" placeholder="Volume"/>
                                   </div>
                                     <div class="col-md-2 p-t-24">   
                                        <asp:DropDownList ID="cboUnitofVolume" CssClass="form-control " runat="server" DataTextField="Code" DataValueField="TypeID"></asp:DropDownList>
@@ -840,21 +840,21 @@
                               
                                    <div class="col-md-2">
                                        <label for="txtPackageWidth">Width</label>
-                                       <input class="form-control" id="txtPackageWidth" runat="server" placeholder="Width">
+                                       <input class="form-control" id="txtPackageWidth" runat="server" placeholder="Width"/>
                                   </div>
                                   
                                    <div class="col-md-2">
                                        <label for="txtPackageHeigh">Heigh</label>
-                                       <input class="form-control" id="txtPackageHeigh" runat="server" placeholder="Height">
+                                       <input class="form-control" id="txtPackageHeigh" runat="server" placeholder="Height"/>
                                   </div>
                                      
                                    <div class="col-md-2">
                                        <label for="txtPackageLenght">Leng</label>
-                                       <input class="form-control" id="txtPackageLenght" runat="server" placeholder="Leng">
+                                       <input class="form-control" id="txtPackageLenght" runat="server" placeholder="Leng"/>
                                   </div>
                                    <div class="col-md-2">
                                        <label for="txtPackageCarton">No of Carton</label>
-                                       <input class="form-control" id="txtPackageCarton" runat="server" placeholder="Volume">
+                                       <input class="form-control" id="txtPackageCarton" runat="server" placeholder="Volume"/>
                                   </div>
                                     
                                  </div>
@@ -867,7 +867,7 @@
                                    </div>
                                    <div class="col-md-4">
                                       
-                                       <input class="form-control" id="txtPackageVolume" runat="server" placeholder="Volume">
+                                       <input class="form-control" id="txtPackageVolume" runat="server" placeholder="Volume"/>
                                   
                                   </div>
                                    <div class="col-md-4">
@@ -917,7 +917,7 @@
                                  <div class="form-group" >
                                    <label for="txtEAS" class="col-sm-3 control-label">EAS P/N :</label>
                                    <div class="col-md-8">
-                                       <input class="form-control" id="txtEAS" runat="server" placeholder="EAS P/N" disabled>
+                                       <input class="form-control" id="txtEAS" runat="server" placeholder="EAS P/N" disabled="disabled"/>
                                    </div>
                            
                                </div>                
@@ -925,7 +925,7 @@
                                <div class="form-group">
                                    <label for="txtCustomer" class="col-sm-3 control-label">Customer P/N :</label>
                                        <div class="col-md-8">
-                                           <input class="form-control" id="txtCustomer" runat="server" placeholder="Customer" disabled>
+                                           <input class="form-control" id="txtCustomer" runat="server" placeholder="Customer" disabled="disabled"/>
                                       </div>
                               </div> 
                              </div>
@@ -933,7 +933,7 @@
                                    <div class="form-group" >
                                   <label for="txtOwner" class="col-sm-3">Owner P/N :</label>
                                        <div class="col-md-8">
-                                           <input class="form-control" id="txtOwner" runat="server" placeholder="Owner" disabled>
+                                           <input class="form-control" id="txtOwner" runat="server" placeholder="Owner" disabled="disabled"/>
                                       </div>
                      
                                   </div> 
@@ -941,7 +941,7 @@
                                     <div class="form-group" >
                                         <label for="txtQty" class="col-sm-3">Quality :</label>
                                        <div class="col-md-8">
-                                           <input class="form-control" id="txtQty" runat="server" placeholder="Quality" disabled>
+                                           <input class="form-control" id="txtQty" runat="server" placeholder="Quality" disabled="disabled"/>
                                       </div>
                                    </div> 
                                  
@@ -950,9 +950,9 @@
                                 <div class="form-group" >
 
                                 <div class="col-md-offset-9">
-                                        <button type="submit" runat="server" class="btn btn-primary" id="btAdd" title="btnAddUser" disabled>Add</button>
-                                        <button type="submit" runat="server" class="btn bg-olive" id="btModify" title="btnAddUser" disabled>Modify</button>
-                                        <button type="submit" runat="server" class="btn btn-danger" id="btDel" title="btnAddUser" disabled>Delete</button>
+                                        <button type="submit" runat="server" class="btn btn-primary" id="btAdd" title="btnAddUser" disabled="disabled">Add</button>
+                                        <button type="submit" runat="server" class="btn bg-olive" id="btModify" title="btnAddUser" disabled="disabled">Modify</button>
+                                        <button type="submit" runat="server" class="btn btn-danger" id="btDel" title="btnAddUser" disabled="disabled">Delete</button>
                                 </div>
                                 </div>
                         
@@ -1018,7 +1018,7 @@
                                         <label for="txtGenCode" class="col-sm-3 control-label">รหัสชื่อลูกค้า :</label>
                                        
                                       <div class="col-sm-6">
-                                           <input class="form-control" id="txtGenCode" runat="server"  placeholder="Name">
+                                           <input class="form-control" id="txtGenCode" runat="server"  placeholder="Name"/>
                                        </div>
                                        <div class="col-md-3">
                                             <label for="txtGenCode">ใช้3ตัวอักษร</label>
@@ -1034,7 +1034,7 @@
                                       </div>
                                 
                                        <div class="col-md-3">
-                                             <input class="form-control" id="txtCodeGoods" runat="server" placeholder="Group">
+                                             <input class="form-control" id="txtCodeGoods" runat="server" placeholder="Group"/>
                                         </div>
                                        </div>
                                      <div class="col-lg-4 col-md-4 col-md-offset-2">
@@ -1077,7 +1077,7 @@
                                         <label for="txtGenCode" class="col-sm-3 control-label p-t-10">รหัสลูกค้า :</label>
                                       
                                       <div class="col-sm-6">
-                                           <input class="form-control" id="txtCodeCustomers" runat="server" name="txtCodeCustomers" placeholder="Name" >
+                                           <input class="form-control" id="txtCodeCustomers" runat="server" name="txtCodeCustomers" placeholder="Name" />
                                        </div>
                                      
                                     </div>

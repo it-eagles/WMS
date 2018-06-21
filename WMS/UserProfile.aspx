@@ -13,7 +13,7 @@
                 <ol class="breadcrumb">
                     <li><a href="HomeMain.aspx"><i class="fa fa-home"></i>Home</a></li>
                     <li><a><i class="fa fa-file"></i>System</a></li>
-                    <li class="active">User froile</li>
+                    <li class="active">User Profile</li>
                 </ol>
             </section>
 
@@ -64,7 +64,7 @@
                                                 <a class="btn btn-danger"><i class="fa fa-trash"></i></a>
                                             </td>
                                             <td class="text-center">
-                                                 <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="viewfroile" CommandArgument='<%# Eval("UserName")%>'><i class="fa fa-search-plus"></i></asp:LinkButton>
+                                                 <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="viewprofile" CommandArgument='<%# Eval("UserName")%>'><i class="fa fa-search-plus"></i></asp:LinkButton>
                                                 
                                             </td>
                                         </tr>
