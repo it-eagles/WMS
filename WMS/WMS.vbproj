@@ -6786,6 +6786,7 @@
     <Content Include="Scripts\vendor\select2\select2.min.css" />
     <Content Include="Scripts\vendor\select2\select2.min.js" />
     <Content Include="Test.aspx" />
+    <Content Include="TestCode.aspx" />
     <Content Include="UpdateGoods.aspx" />
     <Content Include="UpdateGroup.aspx" />
     <Content Include="UpdateUserProfile.aspx" />
@@ -7274,6 +7275,13 @@
     </Compile>
     <Compile Include="Test.aspx.vb">
       <DependentUpon>Test.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="TestCode.aspx.designer.vb">
+      <DependentUpon>TestCode.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TestCode.aspx.vb">
+      <DependentUpon>TestCode.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="UpdateGoods.aspx.designer.vb">

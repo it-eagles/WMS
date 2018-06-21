@@ -32,13 +32,22 @@ Partial Public Class UserMenu
     Protected WithEvents ScriptManager1 As Global.System.Web.UI.ScriptManager
 
     '''<summary>
-    '''dcboGroup control.
+    '''sltUser control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents dcboGroup As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents sltUser As Global.System.Web.UI.HtmlControls.HtmlSelect
+
+    '''<summary>
+    '''DropDownList1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents DropDownList1 As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''txtCode control.
@@ -59,31 +68,13 @@ Partial Public Class UserMenu
     Protected WithEvents txtDescription As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtNotes control.
+    '''btnSave control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtNotes As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''txtFilteringIndicator control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtFilteringIndicator As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''btnAddGroup control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents btnAddGroup As Global.System.Web.UI.HtmlControls.HtmlButton
+    Protected WithEvents btnSave As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
     '''txtTypeName control.
@@ -104,29 +95,47 @@ Partial Public Class UserMenu
     Protected WithEvents txtTypeDes As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtTypeNotes control.
+    '''btnAddUp1 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtTypeNotes As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents btnAddUp1 As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
-    '''txtIndicator control.
+    '''tbnDelete control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtIndicator As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents tbnDelete As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
-    '''Button1 control.
+    '''Text1 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Button1 As Global.System.Web.UI.HtmlControls.HtmlButton
+    Protected WithEvents Text1 As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''btnAddUp2 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnAddUp2 As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''btnDelete2 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnDelete2 As Global.System.Web.UI.HtmlControls.HtmlButton
 End Class

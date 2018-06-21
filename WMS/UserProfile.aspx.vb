@@ -29,6 +29,7 @@ Public Class UserProfile
                           ug.UserGroupName,
                           de.DepartmentName}).ToList()
 
+
         If user.Count > 0 Then
             Repeater1.DataSource = user.ToList
             Repeater1.DataBind()
