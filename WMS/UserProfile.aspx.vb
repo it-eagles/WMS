@@ -50,10 +50,10 @@ Public Class UserProfile
             Else
                 ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธ์การแก้ไข')", True)
             End If
-        ElseIf e.CommandName.Equals("viewproile") Then
+        ElseIf e.CommandName.Equals("viewprofile") Then
             Dim ds1 = From c In db.tblUserMenus Where c.UserName = id And c.Form = menu And c.Read_ = 1
             If ds1.Any Then
-                Response.Write("<script>window.open('ViewUserfroile.aspx?UserName=" & index & "',target='_self');</script>")
+                Response.Write("<script>window.open('ViewUserProfile.aspx?UserName=" & index & "',target='_self');</script>")
             Else
                 ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธ์การแก้ไข')", True)
             End If

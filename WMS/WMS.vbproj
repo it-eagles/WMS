@@ -6793,7 +6793,7 @@
     <Content Include="UserProfile.aspx" />
     <Content Include="ViewGoods.aspx" />
     <Content Include="ViewGroup.aspx" />
-    <Content Include="ViewUserfroile.aspx" />
+    <Content Include="ViewUserProfile.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -7325,11 +7325,11 @@
       <DependentUpon>ViewGroup.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="ViewUserfroile.aspx.designer.vb">
-      <DependentUpon>ViewUserfroile.aspx</DependentUpon>
+    <Compile Include="ViewUserProfile.aspx.designer.vb">
+      <DependentUpon>ViewUserProfile.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ViewUserfroile.aspx.vb">
-      <DependentUpon>ViewUserfroile.aspx</DependentUpon>
+    <Compile Include="ViewUserProfile.aspx.vb">
+      <DependentUpon>ViewUserProfile.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
   </ItemGroup>

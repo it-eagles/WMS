@@ -9,15 +9,15 @@
     <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
-  <link rel="stylesheet" href="Scripts/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="Scripts/bootstrap/dist/css/bootstrap.min.css"/>
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="Scripts/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="Scripts/font-awesome/css/font-awesome.min.css"/>
   <!-- Ionicons -->
-  <link rel="stylesheet" href="Scripts/Ionicons/css/ionicons.min.css">
+  <link rel="stylesheet" href="Scripts/Ionicons/css/ionicons.min.css"/>
   <!-- Theme style -->
-  <link rel="stylesheet" href="Scripts/dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="Scripts/dist/css/AdminLTE.min.css"/>
   <!-- iCheck -->
-  <link rel="stylesheet" href="Scripts/plugins/iCheck/square/blue.css">
+  <link rel="stylesheet" href="Scripts/plugins/iCheck/square/blue.css"/>
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -27,7 +27,7 @@
   <![endif]-->
 
   <!-- Google Font -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic"/>
 </head>
 <body class="hold-transition login-page">
     <form id="form1" runat="server">
@@ -41,11 +41,11 @@
 
    
       <div class="form-group has-feedback">
-        <input type="text" autocapitalize="off" class="form-control" placeholder="User Name" runat="server" id="txtusername" required="required" autofocus="autofocus" autocomplete="off">
+        <input type="text" autocapitalize="off" class="form-control" placeholder="User Name" runat="server" id="txtusername" required="required" autofocus="autofocus" autocomplete="off"/>
         <span class="form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Password" runat="server" id="txtpassword" required="required" >
+        <input type="password" class="form-control" placeholder="Password" runat="server" id="txtpassword" required="required" />
         <span class="form-control-feedback btn-sm"></span>
       </div>
       <div class="row">

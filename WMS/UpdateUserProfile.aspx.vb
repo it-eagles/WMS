@@ -198,27 +198,27 @@ Public Class UpdateUserProfile
             'Throw ex
         End Try
     End Sub
-    Private Sub showBranch(Branch As String)
-        dcbBranch.Items.Clear()
-        dcbBranch.Items.Add(New ListItem("--select Branch--", ""))
-        dcbBranch.AppendDataBoundItems = True
+    'Private Sub showBranch(Branch As String)
+    '    dcbBranch.Items.Clear()
+    '    dcbBranch.Items.Add(New ListItem("--select Branch--", ""))
+    '    dcbBranch.AppendDataBoundItems = True
 
-        Dim d = From p In db.Branches
-              Select p.BranchID, p.BranchName
-        Try
-            dcbBranch.DataSource = d.ToList
-            dcbBranch.DataTextField = "BranchName"
-            dcbBranch.DataValueField = "BranchID"
-            dcbBranch.DataBind()
-            If dcbBranch.Items.Count > 1 Then
-                dcbBranch.Enabled = True
-            Else
-                dcbBranch.Enabled = False
-            End If
-        Catch ex As Exception
-            'Throw ex
-        End Try
-    End Sub
+    '    Dim d = From p In db.Branches
+    '          Select p.BranchID, p.BranchName
+    '    Try
+    '        dcbBranch.DataSource = d.ToList
+    '        dcbBranch.DataTextField = "BranchName"
+    '        dcbBranch.DataValueField = "BranchID"
+    '        dcbBranch.DataBind()
+    '        If dcbBranch.Items.Count > 1 Then
+    '            dcbBranch.Enabled = True
+    '        Else
+    '            dcbBranch.Enabled = False
+    '        End If
+    '    Catch ex As Exception
+    '        'Throw ex
+    '    End Try
+    'End Sub
     Private Sub showDepartmentlist()
         'dcbDept.Items.Clear()
         'dcbDept.Items.Add(New ListItem(Dep, ""))
@@ -241,28 +241,28 @@ Public Class UpdateUserProfile
             'Throw ex
         End Try
     End Sub
-    Private Sub showDepartment(Dep As String)
-        dcbDept.Items.Clear()
-        dcbDept.Items.Add(New ListItem("--select Dep--", ""))
-        dcbDept.AppendDataBoundItems = True
+    'Private Sub showDepartment(Dep As String)
+    '    dcbDept.Items.Clear()
+    '    dcbDept.Items.Add(New ListItem("--select Dep--", ""))
+    '    dcbDept.AppendDataBoundItems = True
 
-        Dim d = From p In db.Departments
-                Select p.DepartmentID,
-                p.DepartmentName
-        Try
-            dcbDept.DataSource = d.ToList
-            dcbDept.DataTextField = "DepartmentName"
-            dcbDept.DataValueField = "DepartmentID"
-            dcbDept.DataBind()
-            If dcbDept.Items.Count > 1 Then
-                dcbDept.Enabled = True
-            Else
-                dcbDept.Enabled = False
-            End If
-        Catch ex As Exception
-            'Throw ex
-        End Try
-    End Sub
+    '    Dim d = From p In db.Departments
+    '            Select p.DepartmentID,
+    '            p.DepartmentName
+    '    Try
+    '        dcbDept.DataSource = d.ToList
+    '        dcbDept.DataTextField = "DepartmentName"
+    '        dcbDept.DataValueField = "DepartmentID"
+    '        dcbDept.DataBind()
+    '        If dcbDept.Items.Count > 1 Then
+    '            dcbDept.Enabled = True
+    '        Else
+    '            dcbDept.Enabled = False
+    '        End If
+    '    Catch ex As Exception
+    '        'Throw ex
+    '    End Try
+    'End Sub
     Private Sub showUserGroupName(groupName As String)
 
         Dim d = (From p In db.tblUserGroups Where p.UserGroupCode = groupName).SingleOrDefault
@@ -376,13 +376,13 @@ Public Class UpdateUserProfile
             If rdbDisable.Checked = True Then
                 UserStatus = "1"
             End If
-            If String.IsNullOrEmpty(dcbBranch.Text) Then
-                'edit.Branch = ""
-                MsgBox(_branch)
-            Else
-                'edit.Branch = dcbBranch.Text
-                MsgBox(dcbBranch.Text)
-            End If
+            'If String.IsNullOrEmpty(dcbBranch.Text) Then
+            '    'edit.Branch = ""
+            '    MsgBox(_branch)
+            'Else
+            '    'edit.Branch = dcbBranch.Text
+            '    MsgBox(dcbBranch.Text)
+            'End If
             'PassEncrypt = LoginCls.Encrypt(txtPassword.Value.Trim, key)
             Using tran As New TransactionScope()
                 Try
