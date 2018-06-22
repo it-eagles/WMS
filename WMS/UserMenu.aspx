@@ -53,17 +53,19 @@
                                                                </select>--%>
                                                             
 
-                                                         <asp:DropDownList ID="ddlUser" CssClass="form-control select2" runat="server" AutoPostBack="true" DataTextField="Name" DataValueField="UserName"></asp:DropDownList>
+                                                         <asp:DropDownList ID="ddlUser" CssClass="form-control select2" runat="server" AutoPostBack="true" DataTextField="UserName" DataValueField="UserName"></asp:DropDownList>
                                                            <%-- <input class="form-control" id="txtUserName" runat="server" placeholder="User Name" />--%>
                                                         </div>
 
                                                     </div>
                                                     <div class="form-group">
 
-                                                        <label for="txtUserName" class="col-sm-3 control-label">Copy From Name</label>
+                                                        <label for="txtUserName" class="col-sm-3 control-label">Copy From UserName</label>
 
                                                         <div class="col-sm-9">
-                                                            <input class="form-control" id="txtCode" runat="server" placeholder="Copy From Name" />
+
+                                                            <asp:DropDownList ID="ddlCopyUser" CssClass="form-control select2" runat="server" AutoPostBack="true" DataTextField="UserName" DataValueField="UserName"></asp:DropDownList>
+                                                           <%-- <input class="form-control" id="txtCode" runat="server" placeholder="Copy From UserName" />--%>
                                                         </div>
 
                                                     </div>
@@ -111,32 +113,69 @@
 
                                                     <div class="form-group">
 
-                                                        <label for="txtUserName" class="col-sm-2 control-label">Form</label>
+                                                        <label for="txtForm" class="col-sm-2 control-label">Form</label>
 
                                                         <div class="col-sm-10">
-                                                            <input class="form-control" id="txtTypeName" runat="server" placeholder="Form" />
+                                                            <input class="form-control" id="txtForm" runat="server" placeholder="Form" />
                                                         </div>
 
                                                     </div>
 
                                                     <div class="form-group">
-                                                        <label for="txtBranch" class="col-sm-2 control-label">Menu</label>
+                                                        <label for="txtMenu" class="col-sm-2 control-label">Menu</label>
 
                                                         <div class="col-sm-10">
-                                                            <input class="form-control" id="txtTypeDes" runat="server" placeholder="Menu" />
+                                                            <input class="form-control" id="txtMenu" runat="server" placeholder="Menu" />
                                                         </div>
 
                                                     </div>
 
                                                     <div class="text-right">
                                                         <button type="submit" runat="server" class="btn btn-primary" id="btnAddUp1" title="btnAddUp1">Add up</button>
-                                                        <button type="submit" runat="server" class="btn btn-danger" id="tbnDelete" title="btnDelete">Delete</button>
+                                                        <button type="submit" runat="server" class="btn btn-danger" id="btnDelete1" title="btnDelete1">Delete</button>
                                                     </div>
                                                     <!-- /.box-body -->
                                                 </div>
 
                                             </formview>
 
+                                            <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="Repeater1_ItemCommand">
+                                    <HeaderTemplate>
+                                        <table id="example1" class="table table-bordered table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Form</th>
+                                                    <th>Menu</th>
+                                                    <th>UserBy</th>
+                                                    <th>UpdateBy</th>                                                    
+                                                </tr>
+                                            </thead>
+                                    </HeaderTemplate>
+
+                                    <ItemTemplate>
+                                        <tr>
+                                            <td>
+                                                <asp:Label ID="lblForm" runat="server" Text='<%# Bind("Form")%>'></asp:Label></td>
+                                            <td>
+                                                <asp:Label ID="lblMenu" runat="server" Text='<%# Bind("Menu")%>'></asp:Label></td>
+                                            <td>
+                                                <asp:Label ID="lblUserBy" runat="server" Text='<%# Bind("UserBy")%>'></asp:Label></td>
+                                            <td>
+                                                <asp:Label ID="lblUpdateBy" runat="server" Text='<%# Bind("UpdateBy")%>'></asp:Label></td>                                   
+                                        </tr>
+                                    </ItemTemplate>
+                                    <FooterTemplate>
+                                        <tfoot>
+                                            <tr>
+                                                    <th>Form</th>
+                                                    <th>Menu</th>
+                                                    <th>UserBy</th>
+                                                    <th>UpdateBy</th>   
+                                            </tr>
+                                        </tfoot>
+                                        </table>
+                                    </FooterTemplate>
+                                </asp:Repeater>
                                             <!--/.col-lg-6 col-md-6--->
                                         </div>
 

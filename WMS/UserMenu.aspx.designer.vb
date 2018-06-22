@@ -41,13 +41,13 @@ Partial Public Class UserMenu
     Protected WithEvents ddlUser As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''txtCode control.
+    '''ddlCopyUser control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtCode As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents ddlCopyUser As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''txtDescription control.
@@ -68,22 +68,22 @@ Partial Public Class UserMenu
     Protected WithEvents btnSave As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
-    '''txtTypeName control.
+    '''txtForm control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtTypeName As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtForm As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtTypeDes control.
+    '''txtMenu control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtTypeDes As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtMenu As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
     '''btnAddUp1 control.
@@ -95,13 +95,22 @@ Partial Public Class UserMenu
     Protected WithEvents btnAddUp1 As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
-    '''tbnDelete control.
+    '''btnDelete1 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents tbnDelete As Global.System.Web.UI.HtmlControls.HtmlButton
+    Protected WithEvents btnDelete1 As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''Repeater1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Repeater1 As Global.System.Web.UI.WebControls.Repeater
 
     '''<summary>
     '''Text1 control.
