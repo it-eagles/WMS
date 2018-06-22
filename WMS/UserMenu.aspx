@@ -48,12 +48,12 @@
                                                         <label for="txtUserName" class="col-sm-3 control-label">UserName</label>
 
                                                         <div class="col-sm-9">
-                                                                <select class="form-control select2" style="width: 100%;" id="sltUser" runat="server">
+                                                                <%--<select class="form-control select2" style="width: 100%;" id="sltUser" runat="server"  datavaluefield="UserName" datatextfield="Name">
                                                               
-                                                               </select>
+                                                               </select>--%>
                                                             
 
-                                                                                                                <%--<asp:DropDownList ID="dcboUserGroup" CssClass="form-control" runat="server" AutoPostBack="true" DataTextField="UserGroupCode" DataValueField="UserGroupID"></asp:DropDownList>--%>
+                                                         <asp:DropDownList ID="ddlUser" CssClass="form-control select2" runat="server" AutoPostBack="true" DataTextField="Name" DataValueField="UserName"></asp:DropDownList>
                                                            <%-- <input class="form-control" id="txtUserName" runat="server" placeholder="User Name" />--%>
                                                         </div>
 

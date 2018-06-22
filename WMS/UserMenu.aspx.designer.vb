@@ -32,22 +32,13 @@ Partial Public Class UserMenu
     Protected WithEvents ScriptManager1 As Global.System.Web.UI.ScriptManager
 
     '''<summary>
-    '''sltUser control.
+    '''ddlUser control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents sltUser As Global.System.Web.UI.HtmlControls.HtmlSelect
-
-    '''<summary>
-    '''DropDownList1 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents DropDownList1 As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents ddlUser As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''txtCode control.

@@ -3,11 +3,11 @@ Option Strict On
 
 Public Class UserMenu
     Inherits System.Web.UI.Page
-    Dim db As LKBWarehouseEntities1_Test
+    Dim db As New LKBWarehouseEntities1_Test
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If Not Me.IsPostBack Then
-            'showUserlist()
+            showUserlist()
         Else
             MsgBox("เกิดความผิดพลาดในการทำงาน", MsgBoxStyle.OkCancel)
         End If
@@ -15,8 +15,8 @@ Public Class UserMenu
     End Sub
     Private Sub showUserlist()
 
-        Dim d = From ug In db.tblUserGroups
-              Select ug.UserGroupName, ug.UserGroupCode
+        'Dim d = From ug In db.tblUserGroups
+        '      Select ug.UserGroupName, ug.UserGroupCode
 
         'dcboUserGroup.DataSource = d.ToList
         'dcboUserGroup.DataTextField = "UserGroupCode"
@@ -30,38 +30,42 @@ Public Class UserMenu
         '    dcboUserGroup.Enabled = False
 
         'End If
+        Dim user = From u In db.tblUsers
+                   Select u.UserName, u.Name
         Try
-            Dim user = From u In db.tblUsers
-                    Select u.Name
-
-
-            sltUser.DataSource = user.ToList
-            sltUser.DataTextField = ""
-            sltUser.DataValueField = ""
-            sltUser.DataBind()
+           
+            ddlUser.DataSource = user.ToList
+            ddlUser.DataTextField = "Name"
+            ddlUser.DataValueField = "UserName"
+            ddlUser.DataBind()
+            If ddlUser.Items.Count > 1 Then
+                ddlUser.Enabled = True
+            Else
+                ddlUser.Enabled = False
+            End If
 
         Catch ex As Exception
             MsgBox("เกิดเหตุผิดพลาด")
         End Try
 
     End Sub
-    Private Sub showUser()
-        Try
-            Dim user = (From u In db.tblUsers Where u.Name Like sltUser.Value & "%"
-                    Select New With {u.Name}).ToList()
+    'Private Sub showUser()
+    '    Try
+    '        Dim user = (From u In db.tblUsers Where u.Name Like sltUser.Value & "%"
+    '                Select New With {u.Name}).ToList()
 
 
-            If user.Count > 0 Then
-                sltUser.DataSource = user
-                sltUser.DataBind()
-            Else
-                sltUser.DataSource = Nothing
-                sltUser.DataBind()
+    '        If user.Count > 0 Then
+    '            sltUser.DataSource = user
+    '            sltUser.DataBind()
+    '        Else
+    '            sltUser.DataSource = Nothing
+    '            sltUser.DataBind()
 
-            End If
-        Catch ex As Exception
+    '        End If
+    '    Catch ex As Exception
 
-        End Try
-        
-    End Sub
+    '    End Try
+
+    'End Sub
 End Class
