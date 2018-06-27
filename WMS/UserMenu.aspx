@@ -219,6 +219,7 @@
                                                     <th>Form</th>
                                                     <th>Menu</th>
                                                     <th>Status</th>
+                                                    <th>Edit</th>
                                                 </tr>
                                             </thead>
                                     </HeaderTemplate>
@@ -235,6 +236,9 @@
                                                     <asp:ListItem>Save</asp:ListItem>
                                                     <asp:ListItem>Edit</asp:ListItem>
                                                     <asp:ListItem>Delete</asp:ListItem>--%>
+                                            <td class="text-center">
+                                                
+                                            </td>
                                </asp:DropDownList></td>           
                                         </tr>
                                     </ItemTemplate>
@@ -244,6 +248,7 @@
                                                 <th>Form</th>
                                                 <th>Menu</th>
                                                 <th>Status</th>
+                                                <th>Edit</th>
                                             </tr>
                                         </tfoot>
                                         </table>

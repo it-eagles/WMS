@@ -206,21 +206,21 @@ Public Class UserMenu
     End Sub
     Protected Sub Repeater2_ItemDataBound(sender As Object, e As RepeaterItemEventArgs) Handles Repeater2.ItemDataBound
 
-        'If e.Item.ItemType = ListItemType.Item OrElse e.Item.ItemType = ListItemType.AlternatingItem Then
-        '    Dim m = (From n In db.tblGroupMenus
-        '             Select New With {n.Status}).ToList
-        '    Dim lblStatus As DropDownList = (TryCast(e.Item.FindControl("lblStatus"), DropDownList))
-        '    lblStatus.DataSource = m
-        '    'ddlCountries.DataSource = Me.GetData("SELECT DISTINCT Country FROM Customers")
-        '    lblStatus.DataTextField = "Status"
-        '    lblStatus.DataValueField = "Status"
-        '    lblStatus.DataBind()
+        If e.Item.ItemType = ListItemType.Item OrElse e.Item.ItemType = ListItemType.AlternatingItem Then
+            Dim m = (From n In db.tblGroupMenus
+                     Select New With {n.Status}).ToList
+            Dim lblStatus As DropDownList = (TryCast(e.Item.FindControl("lblStatus"), DropDownList))
+            lblStatus.DataSource = m
+            'ddlCountries.DataSource = Me.GetData("SELECT DISTINCT Country FROM Customers")
+            lblStatus.DataTextField = "Status"
+            lblStatus.DataValueField = "Status"
+            lblStatus.DataBind()
 
-        '    lblStatus.Items.Insert(0, New ListItem("Please select"))
+            lblStatus.Items.Insert(0, New ListItem("Please select"))
 
-        'Dim status As String = (TryCast(e.Item.DataItem, DataRowView))("Status").ToString()
-        '    'lblStatus.Items.FindByValue(status).Selected = True
-        'End If
+            Dim status As String = (TryCast(e.Item.DataItem, DataRowView))("Status").ToString()
+            'lblStatus.Items.FindByValue(status).Selected = True
+        End If
     End Sub
     'Private Function GetData(ByVal query As String) As DataTable
     '    Dim constr As String = ConfigurationManager.ConnectionStrings("constr").ConnectionString
@@ -234,4 +234,7 @@ Public Class UserMenu
     '        End Using
     '    End Using
     'End Function
+    Private Sub Test()
+        MsgBox("Tesจ้า")
+    End Sub
 End Class
