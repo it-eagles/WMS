@@ -211,9 +211,9 @@
                                                     <!-- /.box-body -->
                                                 </div>
                                             </formview>
-                                            <asp:Repeater ID="Repeater2" runat="server" OnItemCommand="Repeater2_ItemCommand">
+                                            <asp:Repeater ID="Repeater2" runat="server" OnItemCommand="Repeater2_ItemCommand" OnItemDataBound="Repeater2_ItemDataBound">
                                     <HeaderTemplate>
-                                        <table id="example1" class="table table-bordered table-striped">
+                                        <table id="example2" class="table table-bordered table-striped">
                                             <thead>
                                                 <tr>
                                                     <th>Form</th>
@@ -228,9 +228,14 @@
                                                 <asp:Label ID="lblForm" runat="server" Text='<%# Bind("Form")%>'></asp:Label></td>
                                             <td>
                                                 <asp:Label ID="lblMenu" runat="server" Text='<%# Bind("Menu")%>'></asp:Label></td>
-                                            <td>
-                                                <asp:Label ID="lblStatus" runat="server" DataSourceID="tblGroupMenu" DataTextField="Form" 
-                        DataValueField="Form" Text='<%# Bind("Status")%>'></asp:Label></td>           
+                                            <td class="text-center">
+                                                <asp:DropDownList ID="lblStatus" CssClass="form-control" runat="server" >
+                                                    <%--<asp:ListItem>None</asp:ListItem>
+                                                    <asp:ListItem>Read</asp:ListItem>
+                                                    <asp:ListItem>Save</asp:ListItem>
+                                                    <asp:ListItem>Edit</asp:ListItem>
+                                                    <asp:ListItem>Delete</asp:ListItem>--%>
+                               </asp:DropDownList></td>           
                                         </tr>
                                     </ItemTemplate>
                                     <FooterTemplate>

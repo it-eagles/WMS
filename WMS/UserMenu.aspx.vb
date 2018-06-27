@@ -11,6 +11,7 @@ Imports System.Transactions
 
 Imports System.Data.SqlClient
 Imports System.Data
+Imports System.Configuration
 
 Public Class UserMenu
     Inherits System.Web.UI.Page
@@ -27,6 +28,7 @@ Public Class UserMenu
         End If
 
     End Sub
+
     '----------------------------------------------------Show Data Dropdown UserName Method in User Tab-------------------------------------
     Private Sub showUserlist()
         Dim user = From u In db.tblUsers
@@ -160,6 +162,8 @@ Public Class UserMenu
     '-----------------------------------------------------Begin Group Tab Method----------------------------------------------
     '-----------------------------------------------------Show Group Data in Group Tab--------------------------------------
     Public Sub showGroupList()
+
+
         Dim grouplist = (From u In db.tblGroupMenus
                     Select New With {u.Form,
                                      u.Menu,
@@ -179,4 +183,55 @@ Public Class UserMenu
 
     End Sub
 
+    Private Sub showStatuslist()
+        'dcbBranch.Items.Clear()
+        'dcbBranch.Items.Add(New ListItem("--select Branch--", ""))
+        'dcbBranch.AppendDataBoundItems = True
+
+        'Dim d = From p In db.tblGroupMenus
+        '      Select p.Status
+        'Try
+        '    lblStatus.DataSource = d.ToList
+        '    dcbBranch.DataTextField = "Status"
+        '    dcbBranch.DataValueField = "Status"
+        '    dcbBranch.DataBind()
+        '    If dcbBranch.Items.Count > 1 Then
+        '        dcbBranch.Enabled = True
+        '    Else
+        '        dcbBranch.Enabled = False
+        '    End If
+        'Catch ex As Exception
+        '    'Throw ex
+        'End Try
+    End Sub
+    Protected Sub Repeater2_ItemDataBound(sender As Object, e As RepeaterItemEventArgs) Handles Repeater2.ItemDataBound
+
+        'If e.Item.ItemType = ListItemType.Item OrElse e.Item.ItemType = ListItemType.AlternatingItem Then
+        '    Dim m = (From n In db.tblGroupMenus
+        '             Select New With {n.Status}).ToList
+        '    Dim lblStatus As DropDownList = (TryCast(e.Item.FindControl("lblStatus"), DropDownList))
+        '    lblStatus.DataSource = m
+        '    'ddlCountries.DataSource = Me.GetData("SELECT DISTINCT Country FROM Customers")
+        '    lblStatus.DataTextField = "Status"
+        '    lblStatus.DataValueField = "Status"
+        '    lblStatus.DataBind()
+
+        '    lblStatus.Items.Insert(0, New ListItem("Please select"))
+
+        'Dim status As String = (TryCast(e.Item.DataItem, DataRowView))("Status").ToString()
+        '    'lblStatus.Items.FindByValue(status).Selected = True
+        'End If
+    End Sub
+    'Private Function GetData(ByVal query As String) As DataTable
+    '    Dim constr As String = ConfigurationManager.ConnectionStrings("constr").ConnectionString
+    '    Using con As SqlConnection = New SqlConnection(constr)
+    '        Using cmd As SqlCommand = New SqlCommand(query, con)
+    '            Using sda As SqlDataAdapter = New SqlDataAdapter(cmd)
+    '                Dim dt As DataTable = New DataTable()
+    '                sda.Fill(dt)
+    '                Return dt
+    '            End Using
+    '        End Using
+    '    End Using
+    'End Function
 End Class
