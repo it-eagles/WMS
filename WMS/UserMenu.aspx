@@ -2,17 +2,16 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <form id="form1" runat="server">
-
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         <!-- Content Wrapper. Contains page content -->
         <!-- Content Header (Page header) -->
         <section class="content-header">
-            <h1>Add Master Code
-            </h1>
+            <h1>Add Master Code </h1>
             <ol class="breadcrumb">
                 <li><a href="HomeMain.aspx"><i class="fa fa-home"></i>Home</a></li>
                 <li><a class="active"><i class="fa fa-file"></i>Master Files</a></li>
                 <li><a href="MasterCode.aspx">Master Code</a></li>
+                <li><a href="Test.aspx">Master Code</a></li>
                 <li class="active">Add Group</li>
             </ol>
         </section>
@@ -137,8 +136,7 @@
                                                     <!-- /.box-body -->
                                                 </div>
 
-                                            </formview>
-
+                                            </formview>                                            
                                             <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="Repeater1_ItemCommand">
                                     <HeaderTemplate>
                                         <table id="example1" class="table table-bordered table-striped">
@@ -206,17 +204,46 @@
                                                         </div>
 
                                                     </div>
-
-
                                                     <div class="text-right">
                                                         <button type="submit" runat="server" class="btn btn-primary" id="btnAddUp2" title="btnAddUp2">Add up</button>
                                                         <button type="submit" runat="server" class="btn btn-danger" id="btnDelete2" title="btnDelete2">Delete</button>
                                                     </div>
                                                     <!-- /.box-body -->
                                                 </div>
-
                                             </formview>
-
+                                            <asp:Repeater ID="Repeater2" runat="server" OnItemCommand="Repeater2_ItemCommand">
+                                    <HeaderTemplate>
+                                        <table id="example1" class="table table-bordered table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Form</th>
+                                                    <th>Menu</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                            </thead>
+                                    </HeaderTemplate>
+                                    <ItemTemplate>
+                                        <tr>
+                                            <td>
+                                                <asp:Label ID="lblForm" runat="server" Text='<%# Bind("Form")%>'></asp:Label></td>
+                                            <td>
+                                                <asp:Label ID="lblMenu" runat="server" Text='<%# Bind("Menu")%>'></asp:Label></td>
+                                            <td>
+                                                <asp:Label ID="lblStatus" runat="server" DataSourceID="tblGroupMenu" DataTextField="Form" 
+                        DataValueField="Form" Text='<%# Bind("Status")%>'></asp:Label></td>           
+                                        </tr>
+                                    </ItemTemplate>
+                                    <FooterTemplate>
+                                        <tfoot>
+                                            <tr>
+                                                <th>Form</th>
+                                                <th>Menu</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </tfoot>
+                                        </table>
+                                    </FooterTemplate>
+                                </asp:Repeater>
                                             <!--/.col-lg-6 col-md-6--->
                                         </div>
 
@@ -238,4 +265,36 @@
         </section>
         <!-- /.content -->
     </form>
+
+    <!-- ./wrapper -->
+
+<!-- jQuery 3 -->
+<script src="../../bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- DataTables -->
+<script src="../../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="../../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<!-- SlimScroll -->
+<script src="../../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="../../bower_components/fastclick/lib/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="../../dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../../dist/js/demo.js"></script>
+<!-- page script -->
+<script>
+    $(function () {
+        $('#example1').DataTable()
+        $('#example2').DataTable({
+            'paging'      : true,
+            'lengthChange': false,
+            'searching'   : false,
+            'ordering'    : true,
+            'info'        : true,
+            'autoWidth'   : false
+        })
+    })
+    </script>
 </asp:Content>

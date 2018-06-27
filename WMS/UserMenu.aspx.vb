@@ -7,6 +7,10 @@ Imports System.Net
 Imports System.IO
 Imports System.Text
 Imports System.Security.Cryptography
+Imports System.Transactions
+
+Imports System.Data.SqlClient
+Imports System.Data
 
 Public Class UserMenu
     Inherits System.Web.UI.Page
@@ -17,17 +21,18 @@ Public Class UserMenu
             showUserlist()
             ShowCopyUser()
             showList()
+            showGroupList()
             'Else
             '    MsgBox("เกิดความผิดพลาดในการทำงาน", MsgBoxStyle.OkCancel)
         End If
-       
+
     End Sub
     '----------------------------------------------------Show Data Dropdown UserName Method in User Tab-------------------------------------
     Private Sub showUserlist()
         Dim user = From u In db.tblUsers
                    Select u.UserName, u.Name
         Try
-           
+
             ddlUser.DataSource = user.ToList
             ddlUser.DataTextField = "UserName"
             ddlUser.DataValueField = "UserName"
@@ -64,24 +69,24 @@ Public Class UserMenu
     End Sub
 
     Protected Sub Repeater1_ItemCommand(source As Object, e As RepeaterCommandEventArgs) Handles Repeater1.ItemCommand
-        Dim id As String = Session("UserName").ToString
-        Dim menu As String = "frmUserProfile"
-        Dim index As String = CStr(e.CommandArgument)
-        If e.CommandName.Equals("edituser") Then
-            Dim ds1 = From c In db.tblUserMenus Where c.UserName = id And c.Form = menu And c.Edit_ = 1
-            If ds1.Any Then
-                Response.Write("<script>window.open('UpdateUserProfile.aspx?UserName=" & index & "',target='_self');</script>")
-            Else
-                ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธ์การแก้ไข')", True)
-            End If
-        ElseIf e.CommandName.Equals("viewprofile") Then
-            Dim ds1 = From c In db.tblUserMenus Where c.UserName = id And c.Form = menu And c.Read_ = 1
-            If ds1.Any Then
-                Response.Write("<script>window.open('ViewUserProfile.aspx?UserName=" & index & "',target='_self');</script>")
-            Else
-                ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธ์การแก้ไข')", True)
-            End If
-        End If
+        'Dim id As String = Session("UserName").ToString
+        'Dim menu As String = "frmUserProfile"
+        'Dim index As String = CStr(e.CommandArgument)
+        'If e.CommandName.Equals("edituser") Then
+        '    Dim ds1 = From c In db.tblUserMenus Where c.UserName = id And c.Form = menu And c.Edit_ = 1
+        '    If ds1.Any Then
+        '        Response.Write("<script>window.open('UpdateUserProfile.aspx?UserName=" & index & "',target='_self');</script>")
+        '    Else
+        '        ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธ์การแก้ไข')", True)
+        '    End If
+        'ElseIf e.CommandName.Equals("viewprofile") Then
+        '    Dim ds1 = From c In db.tblUserMenus Where c.UserName = id And c.Form = menu And c.Read_ = 1
+        '    If ds1.Any Then
+        '        Response.Write("<script>window.open('ViewUserProfile.aspx?UserName=" & index & "',target='_self');</script>")
+        '    Else
+        '        ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธ์การแก้ไข')", True)
+        '    End If
+        'End If
     End Sub
     '---------------------------------------------------Show Data Method in Menu Tab--------------------------------------
     Public Sub showList()
@@ -104,13 +109,18 @@ Public Class UserMenu
 
         Try
             Using db = New LKBWarehouseEntities1_Test
-                Dim user = (From u In db.tblMenus Where u.Form = txtForm.Value
+                Dim Form = (From u In db.tblMenus Where u.Form = txtForm.Value
                 Select u).FirstOrDefault
 
-                If Not user Is Nothing Then
+                Dim Menu = (From u In db.tblMenus Where u.Menu = txtMenu.Value
+                Select u).FirstOrDefault
+
+                If Not Form Is Nothing Then
                     ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('ชื่อ Form ซ้ำ กรุณาเปลี่ยนใหม่');", True)
+                ElseIf Not Menu Is Nothing Then
+                    ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('ชื่อ Menu ซ้ำ กรุณาเปลี่ยนใหม่');", True)
                 Else
-                    'AddForm()
+                    AddForm()
                 End If
             End Using
         Catch ex As Exception
@@ -121,26 +131,52 @@ Public Class UserMenu
     End Sub
     '-------------------------------------- Add Form Method in Menu Tab------------------------------------ 
     Private Sub AddForm()
-        Try
-            db.Database.Connection.Open()
-            db.tblMenus.Add(New tblMenu() With { _
-                            .Form = txtForm.Value.Trim, _
-                            .Menu = txtMenu.Value.Trim, _
-                            .UserBy = CStr(Session("UserName")), _
-                            .UpdateBy = Now})
-            db.SaveChanges()
-            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('เพิ่ม user สำเร็จ !');", True)
-            Response.Redirect("UserProfile.aspx")
-        Catch ex As Exception
-            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด กรุณาบันทึกข้อมูลใหม่อีกครั้ง');", True)
-        Finally
-            db.Database.Connection.Close()
-            db.Dispose()
-        End Try
+        Using tran As New TransactionScope()
+            Try
+                db.Database.Connection.Open()
+                db.tblMenus.Add(New tblMenu() With { _
+                                .Form = txtForm.Value.Trim, _
+                                .Menu = txtMenu.Value.Trim, _
+                                .UserBy = CStr(Session("UserName")), _
+                                .UpdateBy = Now})
+                db.SaveChanges()
+                tran.Complete()
+                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('เพิ่ม user สำเร็จ !');", True)
+                Response.Redirect("UserMenu.aspx")
+            Catch ex As Exception
+                ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด กรุณาบันทึกข้อมูลใหม่อีกครั้ง');", True)
+            Finally
+                db.Database.Connection.Close()
+                db.Dispose()
+                tran.Dispose()
+            End Try
+        End Using
     End Sub
     '----------------------------------------Clear Data Method------------------------------- 
     Private Sub Clear()
         txtForm.Value = ""
         txtMenu.Value = ""
     End Sub
+    '-----------------------------------------------------Begin Group Tab Method----------------------------------------------
+    '-----------------------------------------------------Show Group Data in Group Tab--------------------------------------
+    Public Sub showGroupList()
+        Dim grouplist = (From u In db.tblGroupMenus
+                    Select New With {u.Form,
+                                     u.Menu,
+                                     u.Status}).ToList()
+
+        If grouplist.Count > 0 Then
+            Repeater2.DataSource = grouplist.ToList
+            Repeater2.DataBind()
+
+        Else
+            Me.Repeater2.DataSource = Nothing
+            Me.Repeater2.DataBind()
+        End If
+    End Sub
+
+    Protected Sub Repeater2_ItemCommand(source As Object, e As RepeaterCommandEventArgs) Handles Repeater2.ItemCommand
+
+    End Sub
+
 End Class

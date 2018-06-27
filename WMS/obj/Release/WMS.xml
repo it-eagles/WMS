@@ -14,6 +14,14 @@ form1 control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
+</member><member name="F:WMS.Test.Repeater1">
+	<summary>
+Repeater1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
 </member><member name="F:WMS.UserProfile.form1">
 	<summary>
 form1 control.
@@ -1330,6 +1338,14 @@ To modify move field declaration from designer file to code-behind file.
 </member><member name="F:WMS.UserMenu.btnDelete2">
 	<summary>
 btnDelete2 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.UserMenu.Repeater2">
+	<summary>
+Repeater2 control.
 </summary>
 	<remarks>
 Auto-generated field.
