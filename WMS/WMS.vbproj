@@ -229,7 +229,6 @@
     <Content Include="AddGroup.aspx" />
     <Content Include="AddUser.aspx" />
     <Content Include="HomeMain.aspx" />
-    <Content Include="img\forklift-with-boxes.png" />
     <Content Include="LogIN.aspx" />
     <Content Include="Logout.aspx" />
     <Content Include="MasterCode.aspx" />
@@ -6806,7 +6805,7 @@
     </Compile>
     <Compile Include="AddGroup.aspx.vb">
       <DependentUpon>AddGroup.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="AddUser.aspx.designer.vb">
       <DependentUpon>AddUser.aspx</DependentUpon>
@@ -6816,7 +6815,6 @@
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Class\LoginCls.vb" />
-<<<<<<< HEAD
     <Compile Include="Data\Branch.vb">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -7213,8 +7211,6 @@
     <Compile Include="Data\VTestLOtout.vb">
       <DependentUpon>Connectserver.tt</DependentUpon>
     </Compile>
-=======
->>>>>>> e994a466b064353b4d66687f04df5a84dfd4ec8d
     <Compile Include="Home.Master.designer.vb">
       <DependentUpon>Home.Master</DependentUpon>
     </Compile>
@@ -7364,7 +7360,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Home.Master" />
-<<<<<<< HEAD
     <EntityDeploy Include="Data\Connectserver.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Connectserver.Designer.vb</LastGenOutput>
@@ -7399,8 +7394,6 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.vb</LastGenOutput>
     </Content>
-=======
->>>>>>> e994a466b064353b4d66687f04df5a84dfd4ec8d
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -7907,13 +7900,7 @@
     <TypeScriptCompile Include="Scripts\fullcalendar\dist\fullcalendar.d.ts" />
     <TypeScriptCompile Include="Scripts\moment\moment.d.ts" />
   </ItemGroup>
-<<<<<<< HEAD
   <ItemGroup />
-=======
-  <ItemGroup>
-    <Folder Include="Data\" />
-  </ItemGroup>
->>>>>>> e994a466b064353b4d66687f04df5a84dfd4ec8d
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
