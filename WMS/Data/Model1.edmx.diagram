@@ -70,7 +70,7 @@
         <EntityTypeShape EntityType="LKBWarehouseModel1_Test.tblProductDetail" Width="1.5" PointX="28.75" PointY="24.75" IsExpanded="true" />
         <EntityTypeShape EntityType="LKBWarehouseModel1_Test.tblRecEASInvoice" Width="1.5" PointX="8.75" PointY="29.75" IsExpanded="true" />
         <EntityTypeShape EntityType="LKBWarehouseModel1_Test.tblRecINV" Width="1.5" PointX="10.75" PointY="29.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="LKBWarehouseModel1_Test.tblRunningNumber" Width="1.5" PointX="16.75" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1_Test.tblRunningNumber" Width="1.5" PointX="16.75" PointY="30.25" IsExpanded="true" />
         <EntityTypeShape EntityType="LKBWarehouseModel1_Test.tblShippingTranfer" Width="1.5" PointX="18.75" PointY="29.75" IsExpanded="true" />
         <EntityTypeShape EntityType="LKBWarehouseModel1_Test.tblStatusBalance" Width="1.5" PointX="20.75" PointY="29.75" IsExpanded="true" />
         <EntityTypeShape EntityType="LKBWarehouseModel1_Test.tblStatusIEAT107" Width="1.5" PointX="22.75" PointY="29.75" IsExpanded="true" />
@@ -96,6 +96,7 @@
         <EntityTypeShape EntityType="LKBWarehouseModel1_Test.tblUser" Width="1.5" PointX="25.375" PointY="32.75" />
         <EntityTypeShape EntityType="LKBWarehouseModel1_Test.tblLogUser" Width="1.5" PointX="9.375" PointY="35.75" />
         <EntityTypeShape EntityType="LKBWarehouseModel1_Test.sysdiagram" Width="1.5" PointX="25.375" PointY="28.75" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1_Test.tblMasterCode2" Width="1.5" PointX="35.375" PointY="16.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -7040,6 +7040,9 @@
     <Compile Include="Data\tblMasterCode.vb">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\tblMasterCode2.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\tblMenu.vb">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

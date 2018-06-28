@@ -1716,6 +1716,22 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblMasterCode' does not have a pr
           <Property Name="CreateDate" Type="datetime" />
           <Property Name="UpdateBy" Type="varchar" MaxLength="50" />
           <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="MasterCodeID" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblMasterCode2">
+          <Key>
+            <PropertyRef Name="MasterCodeID" />
+          </Key>
+          <Property Name="MasterCodeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="200" />
+          <Property Name="Note" Type="varchar" MaxLength="50" />
+          <Property Name="FilterInd" Type="varchar" MaxLength="50" />
+          <Property Name="CreateBy" Type="varchar" MaxLength="50" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdateBy" Type="varchar" MaxLength="50" />
+          <Property Name="UpdateDate" Type="datetime" />
         </EntityType>
         <EntityType Name="tblMenu">
           <Key>
@@ -2805,6 +2821,7 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHConfirmGoodsReceiveDetail' d
           <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblLogUser" EntityType="Self.tblLogUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblMasterCode2" EntityType="Self.tblMasterCode2" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblMenu" EntityType="Self.tblMenu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblBookingMessenger" EntityType="Self.tblBookingMessenger" store:Type="Tables" store:Schema="dbo">
@@ -4183,7 +4200,8 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHConfirmGoodsReceiveDetail' d
     [tblMasterCode].[CreateBy] AS [CreateBy], 
     [tblMasterCode].[CreateDate] AS [CreateDate], 
     [tblMasterCode].[UpdateBy] AS [UpdateBy], 
-    [tblMasterCode].[UpdateDate] AS [UpdateDate]
+    [tblMasterCode].[UpdateDate] AS [UpdateDate], 
+    [tblMasterCode].[MasterCodeID] AS [MasterCodeID]
     FROM [dbo].[tblMasterCode] AS [tblMasterCode]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="tblMoneyConfig" EntityType="Self.tblMoneyConfig" store:Type="Tables" store:Schema="dbo">
@@ -6633,6 +6651,7 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHConfirmGoodsReceiveDetail' d
           <Property Name="CreateDate" Type="DateTime" Precision="3" />
           <Property Name="UpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="MasterCodeID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="tblMenu">
           <Key>
@@ -7723,6 +7742,7 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHConfirmGoodsReceiveDetail' d
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
+          <EntitySet Name="tblMasterCode2" EntityType="LKBWarehouseModel1_Test.tblMasterCode2" />
         </EntityContainer>
         <EntityType Name="tblUser">
           <Key>
@@ -7785,6 +7805,21 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHConfirmGoodsReceiveDetail' d
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
+        <EntityType Name="tblMasterCode2">
+          <Key>
+            <PropertyRef Name="MasterCodeID" />
+          </Key>
+          <Property Name="MasterCodeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Note" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FilterInd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -9294,6 +9329,7 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHConfirmGoodsReceiveDetail' d
           <EntitySetMapping Name="tblMasterCodes">
             <EntityTypeMapping TypeName="LKBWarehouseModel1_Test.tblMasterCode">
               <MappingFragment StoreEntitySet="tblMasterCode">
+                <ScalarProperty Name="MasterCodeID" ColumnName="MasterCodeID" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
                 <ScalarProperty Name="Code" ColumnName="Code" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
@@ -10330,6 +10366,22 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHConfirmGoodsReceiveDetail' d
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="LKBWarehouseModel1_Test.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="LKBWarehouseModel1_Test.Store.sp_upgraddiagrams" />
+          <EntitySetMapping Name="tblMasterCode2">
+            <EntityTypeMapping TypeName="LKBWarehouseModel1_Test.tblMasterCode2">
+              <MappingFragment StoreEntitySet="tblMasterCode2">
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="FilterInd" ColumnName="FilterInd" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="MasterCodeID" ColumnName="MasterCodeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

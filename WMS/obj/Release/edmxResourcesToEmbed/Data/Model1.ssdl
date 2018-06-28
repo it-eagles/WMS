@@ -1711,6 +1711,22 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblMasterCode' does not have a pr
     <Property Name="CreateDate" Type="datetime" />
     <Property Name="UpdateBy" Type="varchar" MaxLength="50" />
     <Property Name="UpdateDate" Type="datetime" />
+    <Property Name="MasterCodeID" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tblMasterCode2">
+    <Key>
+      <PropertyRef Name="MasterCodeID" />
+    </Key>
+    <Property Name="MasterCodeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Type" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Code" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="200" />
+    <Property Name="Note" Type="varchar" MaxLength="50" />
+    <Property Name="FilterInd" Type="varchar" MaxLength="50" />
+    <Property Name="CreateBy" Type="varchar" MaxLength="50" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="UpdateBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdateDate" Type="datetime" />
   </EntityType>
   <EntityType Name="tblMenu">
     <Key>
@@ -2800,6 +2816,7 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHConfirmGoodsReceiveDetail' d
     <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblLogUser" EntityType="Self.tblLogUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblMasterCode2" EntityType="Self.tblMasterCode2" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblMenu" EntityType="Self.tblMenu" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblBookingMessenger" EntityType="Self.tblBookingMessenger" store:Type="Tables" store:Schema="dbo">
@@ -4178,7 +4195,8 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHConfirmGoodsReceiveDetail' d
     [tblMasterCode].[CreateBy] AS [CreateBy], 
     [tblMasterCode].[CreateDate] AS [CreateDate], 
     [tblMasterCode].[UpdateBy] AS [UpdateBy], 
-    [tblMasterCode].[UpdateDate] AS [UpdateDate]
+    [tblMasterCode].[UpdateDate] AS [UpdateDate], 
+    [tblMasterCode].[MasterCodeID] AS [MasterCodeID]
     FROM [dbo].[tblMasterCode] AS [tblMasterCode]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="tblMoneyConfig" EntityType="Self.tblMoneyConfig" store:Type="Tables" store:Schema="dbo">

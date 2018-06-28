@@ -6,6 +6,8 @@ Imports System.Transactions
 Public Class AddGroup
     Inherits System.Web.UI.Page
 
+    Dim db As New LKBWarehouseEntities1_Test
+
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
@@ -13,124 +15,100 @@ Public Class AddGroup
             'showType()
         End If
     End Sub
-    
     'Private Sub showType()
-    '    dcboGroup.Items.Clear()
-    '    dcboGroup.Items.Add(New ListItem("--Select Group--", ""))
-    '    dcboGroup.AppendDataBoundItems = True
+    '    dcboTypeGroup.Items.Clear()
+    '    dcboTypeGroup.Items.Add(New ListItem("--Select Group--", ""))
+    '    dcboTypeGroup.AppendDataBoundItems = True
 
     '    Dim d = From ug In db.tblTypeMasterCode
     '            Select ug.TypeID, ug.TypeName
     '    Try
-    '        dcboGroup.DataSource = d.ToList
-    '        dcboGroup.DataTextField = "TypeName"
-    '        dcboGroup.DataValueField = "TypeID"
-    '        dcboGroup.DataBind()
-    '        If dcboGroup.Items.Count > 1 Then
-    '            dcboGroup.Enabled = True
+    '        dcboTypeGroup.DataSource = d.ToList
+    '        dcboTypeGroup.DataTextField = "TypeName"
+    '        dcboTypeGroup.DataValueField = "TypeID"
+    '        dcboTypeGroup.DataBind()
+    '        If dcboTypeGroup.Items.Count > 1 Then
+    '            dcboTypeGroup.Enabled = True
     '        Else
-    '            dcboGroup.Enabled = False
-
+    '            dcboTypeGroup.Enabled = False
     '        End If
     '    Catch ex As Exception
     '        Throw ex
     '    End Try
-
     'End Sub
+
     Protected Sub btnAddGroup_click(sender As Object, e As EventArgs)
-
         checkID()
-
     End Sub
     Private Sub checkID()
-        'Dim Key As String
-        'Dim runno As Integer
-        'Dim RJITno As String
-        'Dim codeId As Integer
-        'Key = Mid(CStr(Now.Year), 3) + (CStr(Format(Now.Date, "MM")))
+        Dim Key As String
+        Dim runno As Integer
+        Dim RJITno As String
+        Dim codeId As Integer
+        Key = "log-" + Mid(CStr(Now.Year), 3) + (CStr(Format(Now.Date, "MM")))
 
-        'Dim u = (From us In db.tblRunningNumber()
-        '                         Where us.Name = Key Select us).FirstOrDefault
+        Dim u = (From log In db.tblRunningNumbers Where log.Name = Key Select log).FirstOrDefault
 
-        'If Not u Is Nothing Then
+        If Not u Is Nothing Then
 
-        '    runno = CInt(u.RunNo)
-        '    codeId = runno + 1
-        '    RJITno = Mid(CStr(Now.Year), 3) + (CStr(Format(Now.Date, "MM"))) + CStr(codeId).PadLeft(3, CChar("0"))
-        '    AddGroup(RJITno)
-        '    upDateID(codeId, Key)
-        'Else
+            runno = CInt(u.RunNo)
+            codeId = runno + 1
+            RJITno = "log-" + Mid(CStr(Now.Year), 3) + (CStr(Format(Now.Date, "MM"))) + CStr(codeId).PadLeft(3, CChar("0"))
+            AddGroup(RJITno)
+            upDateID(codeId, Key)
+        Else
 
-        '    db.tblRunningNumber.Add(New tblRunningNumber With
-        '                      {
-        '                          .Name = Key, _
-        '                          .RunNo = CType("0", Integer?) _
-        '                      })
+            db.tblRunningNumbers.Add(New tblRunningNumber With
+                              {
+                                  .Name = Key, _
+                                  .RunNo = CType("0", Integer?) _
+                              })
 
-        '    db.SaveChanges()
-        '    runno = CInt("0")
-        '    codeId = runno + 1
-        '    RJITno = Mid(CStr(Now.Year), 3) + (CStr(Format(Now.Date, "MM"))) + CStr(codeId).PadLeft(3, CChar("0"))
-        '    AddGroup(RJITno)
-        '    upDateID(codeId, Key)
-        'End If
+            db.SaveChanges()
+            runno = CInt("0")
+            codeId = runno + 1
+            RJITno = "log-" + Mid(CStr(Now.Year), 3) + (CStr(Format(Now.Date, "MM"))) + CStr(codeId).PadLeft(3, CChar("0"))
+            AddGroup(RJITno)
+            upDateID(codeId, Key)
+        End If
 
     End Sub
     Private Sub AddGroup(WSIT As String)
+        If (String.IsNullOrEmpty(txtCode.Value.Trim)) Then
 
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาป้อน Code ก่อน !');", True)
 
-        'If (String.IsNullOrEmpty(txtCode.Value.Trim)) Then
+        Else
 
-        '    ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาป้อน Code ก่อน !');", True)
+            Using tran As New TransactionScope()
 
-        'Else
+                Try
+                    db.Database.Connection.Open()
+                    db.tblMasterCode2.Add(New tblMasterCode2() With {
+                                      .Type = txtType.Value.Trim, _
+                                      .Code = txtCode.Value.Trim, _
+                                      .Note = txtNotes.Value.Trim, _
+                                      .Description = txtDescription.Value.Trim, _
+                                      .FilterInd = txtFilteringIndicator.Value.Trim, _
+                                      .CreateBy = CStr(Session("UserId")), _
+                                      .CreateDate = Now})
 
-        '    Using tran As New TransactionScope()
+                    db.SaveChanges()
+                    tran.Complete()
+                    ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('เพิ่ม Group สำเร็จ !');", True)
+                    clearType()
 
-        '            Try
+                Catch ex As Exception
 
-        '                db.Database.Connection.Open()
-
-        '                db.tblCodeMaster.Add(New tblCodeMaster With {
-        '                                  .MasterCodeID = CInt(WSIT), _
-        '                                  .TypeID = dcboGroup.Text, _
-        '                                  .Code = txtCode.Value.Trim, _
-        '                                  .Note = txtNotes.Value.Trim, _
-        '                                  .Description = txtDescription.Value.Trim, _
-        '                                  .FilterInd = txtFilteringIndicator.Value.Trim, _
-        '                                  .UserID = CInt(Session("UserId")), _
-        '                                  .CreateDate = Now
-        '                               })
-
-        '                db.SaveChanges()
-        '                tran.Complete()
-        '                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('เพิ่ม Group สำเร็จ !');", True)
-        '                check()
-
-        '            Catch ex As Exception
-
-        '                ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด กรุณาบันทึกข้อมูลใหม่อีกครั้ง');", True)
-
-
-        '            Finally
-        '                db.Database.Connection.Close()
-        '                db.Dispose()
-        '                tran.Dispose()
-        '            End Try
-
-        '        End Using
-
-        'End If
+                    ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด กรุณาบันทึกข้อมูลใหม่อีกครั้ง');", True)
+                Finally
+                    db.Database.Connection.Close()
+                    db.Dispose()
+                    tran.Dispose()
+                End Try
+            End Using
+        End If
     End Sub
-
-    Private Sub check()
-        txtCode.Value = ""
-        txtNotes.Value = ""
-        txtDescription.Value = ""
-        txtFilteringIndicator.Value = ""
-    End Sub
-
-    
     Protected Sub btnAddTypeGroup_click(sender As Object, e As EventArgs)
         checkTypeID()
     End Sub
@@ -211,27 +189,30 @@ Public Class AddGroup
     End Sub
 
     Private Sub upDateID(codeId As Integer, key As String)
-        'Try
-        '    db.Database.Connection.Open()
-        '    Dim update = (From c In db.tblRunningNumber Where c.Name = key
-        '         Select c).First
-        '    If update IsNot Nothing Then
+        Try
+            db.Database.Connection.Open()
+            Dim update = (From c In db.tblRunningNumbers Where c.Name = key
+                 Select c).First
+            If update IsNot Nothing Then
 
-        '        update.RunNo = codeId
+                update.RunNo = codeId
 
-        '        db.SaveChanges()
+                db.SaveChanges()
 
-        '    End If
-        'Catch ex As Exception
-        '    ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด !');", True)
-        'End Try
+            End If
+        Catch ex As Exception
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด !');", True)
+        End Try
 
     End Sub
-    Private Sub checkType()
-        txtTypeName.Value = ""
-        txtTypeDes.Value = ""
-        txtTypeNotes.Value = ""
-        txtIndicator.Value = ""
+    Private Sub clearType()
+        txtType.Value = ""
+        txtDescription.Value = ""
+        txtNotes.Value = ""
+        txtFilteringIndicator.Value = ""
+        txtCode.Value = ""
     End Sub
-
+    Protected Sub btnClear_Click(sender As Object, e As EventArgs)
+        clearType()
+    End Sub
 End Class

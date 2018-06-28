@@ -32,13 +32,13 @@ Partial Public Class AddGroup
     Protected WithEvents ScriptManager1 As Global.System.Web.UI.ScriptManager
 
     '''<summary>
-    '''dcboGroup control.
+    '''txtType control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents dcboGroup As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtType As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
     '''txtCode control.
@@ -86,47 +86,11 @@ Partial Public Class AddGroup
     Protected WithEvents btnAddGroup As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
-    '''txtTypeName control.
+    '''btnClear control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtTypeName As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''txtTypeDes control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtTypeDes As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''txtTypeNotes control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtTypeNotes As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''txtIndicator control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtIndicator As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''Button1 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents Button1 As Global.System.Web.UI.HtmlControls.HtmlButton
+    Protected WithEvents btnClear As Global.System.Web.UI.HtmlControls.HtmlButton
 End Class

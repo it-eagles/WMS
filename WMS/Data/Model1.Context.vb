@@ -115,6 +115,7 @@ Partial Public Class LKBWarehouseEntities1_Test
     Public Overridable Property tblUsers() As DbSet(Of tblUser)
     Public Overridable Property tblLogUsers() As DbSet(Of tblLogUser)
     Public Overridable Property sysdiagrams() As DbSet(Of sysdiagram)
+    Public Overridable Property tblMasterCode2() As DbSet(Of tblMasterCode2)
 
     Public Overridable Function sp_alterdiagram(diagramname As String, owner_id As Nullable(Of Integer), version As Nullable(Of Integer), definition As Byte()) As Integer
         Dim diagramnameParameter As ObjectParameter = If(diagramname IsNot Nothing, New ObjectParameter("diagramname", diagramname), New ObjectParameter("diagramname", GetType(String)))

@@ -35,14 +35,13 @@
                                     <HeaderTemplate>
                                         <table id="example1" class="table table-bordered table-striped">
                                             <thead>
-                                                <tr>
-                                                    <th>ID</th>
+                                                <tr>                                                    
                                                     <th>Type</th>
                                                     <th>Code</th>
                                                     <th>Description</th>
-                                                    <th>Note</th>                                           
+                                                    <th>Note</th>            
+                                                    <th>FilterInd</th>                                   
                                                     <th>Edit/Delete</th>
-                                                    <th>view</th>
                                                 </tr>
                                             </thead>
                                     </HeaderTemplate>
@@ -50,39 +49,34 @@
                                     <ItemTemplate>
                                         <tr>
                                             <td>
-                                                <asp:Label ID="lblFilterInd" runat="server" Text='<%# Bind("MasterCodeID")%>'></asp:Label></td>
-                                            <td>
-                                                <asp:Label ID="lblTypeName" runat="server" Text='<%# Bind("TypeName")%>'></asp:Label></td>
+                                                <asp:Label ID="lblType" runat="server" Text='<%# Bind("Type")%>'></asp:Label></td>                                         
                                             <td>
                                                 <asp:Label ID="lblCode" runat="server" Text='<%# Bind("Code")%>'></asp:Label></td>
                                             <td>
                                                 <asp:Label ID="lblDescription" runat="server" Text='<%# Bind("Description")%>'></asp:Label></td>
                                              <td>
                                                 <asp:Label ID="lblNote" runat="server" Text='<%# Bind("Note")%>'></asp:Label></td>
+                                            <td>
+                                                <asp:Label ID="lblFilterInd" runat="server" Text='<%# Bind("FilterInd")%>'></asp:Label></td>
                                                  
                                             <td class="text-center" >
-                                                  <asp:LinkButton ID="LinkButton1" CssClass="btn btn-default" runat="server" CausesValidation="False" CommandName="editGroup" CommandArgument='<%# Eval("MasterCodeID")%>'><i class="fa fa-pencil"></i></asp:LinkButton>
+                                                  <asp:LinkButton ID="LinkButton1" CssClass="btn btn-default" runat="server" CausesValidation="False" CommandName="editGroup" CommandArgument='<%# Eval("Type")%>'><i class="fa fa-pencil"></i></asp:LinkButton>
                                                 <a class="btn btn-danger"><i class="fa fa-trash"></i></a>
                                             </td>
-                                            <td class="text-center">
+                                           <%-- <td class="text-center">
                                                 <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="viewGroup" CommandArgument='<%# Eval("MasterCodeID")%>'><i class="fa fa-search-plus"></i></asp:LinkButton>
-                                              
-                                            </td>
+                                            </td>--%>
                                         </tr>
-
                                     </ItemTemplate>
-
                                     <FooterTemplate>
                                         <tfoot>
                                             <tr>
-                                                <th>ID</th>
-                                                <th>Type</th>
-                                                <th>Code</th>
-                                                <th>Description</th>
-                                                <th>Note</th>
-                                         
-                                                <th>Edit/Delete</th>
-                                                <th>view</th>
+                                                    <th>Type</th>
+                                                    <th>Code</th>
+                                                    <th>Description</th>
+                                                    <th>Note</th>            
+                                                    <th>FilterInd</th>                                   
+                                                    <th>Edit/Delete</th>
                                             </tr>
                                         </tfoot>
                                         </table>
