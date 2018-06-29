@@ -166,7 +166,7 @@ Public Class AddUser
     End Sub
     Private Sub addUser()
 
-
+        Dim usernameupper As String = txtUserName.Value.ToUpper
         Dim key As String = LoginCls.EncryptPass
 
         Dim StatusAdd As String = "0"
@@ -236,7 +236,7 @@ Public Class AddUser
         End If
 
         'PassEncrypt = LoginCls.Encrypt(txtPassword.Value.Trim, key)
-        PassEncrypt = LoginCls.ReturnASCII(txtUserName.Value.Trim, txtPassword.Value.Trim)
+        PassEncrypt = LoginCls.ReturnASCII(usernameupper, txtPassword.Value.Trim)
         'MsgBox(PassEncrypt)
 
         Using tran As New TransactionScope()
@@ -244,7 +244,7 @@ Public Class AddUser
                 db.Database.Connection.Open()
 
                 db.tblUsers.Add(New tblUser With { _
-                             .UserName = txtUserName.Value.Trim, _
+                             .UserName = usernameupper.Trim, _
                              .Name = txtFullName.Value.Trim, _
                              .UserGroup = dcboUserGroup.Text, _
                              .GroupName = txtUserGroup.Value.Trim, _

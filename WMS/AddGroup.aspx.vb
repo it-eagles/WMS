@@ -38,42 +38,42 @@ Public Class AddGroup
     'End Sub
 
     Protected Sub btnAddGroup_click(sender As Object, e As EventArgs)
-        checkID()
+        AddGroup()
     End Sub
     Private Sub checkID()
-        Dim Key As String
-        Dim runno As Integer
-        Dim RJITno As String
-        Dim codeId As Integer
-        Key = "log-" + Mid(CStr(Now.Year), 3) + (CStr(Format(Now.Date, "MM")))
+        '    Dim Key As String
+        '    Dim runno As Integer
+        '    Dim RJITno As String
+        '    Dim codeId As Integer
+        '    Key = "log-" + Mid(CStr(Now.Year), 3) + (CStr(Format(Now.Date, "MM")))
 
-        Dim u = (From log In db.tblRunningNumbers Where log.Name = Key Select log).FirstOrDefault
+        '    Dim u = (From log In db.tblRunningNumbers Where log.Name = Key Select log).FirstOrDefault
 
-        If Not u Is Nothing Then
+        '    If Not u Is Nothing Then
 
-            runno = CInt(u.RunNo)
-            codeId = runno + 1
-            RJITno = "log-" + Mid(CStr(Now.Year), 3) + (CStr(Format(Now.Date, "MM"))) + CStr(codeId).PadLeft(3, CChar("0"))
-            AddGroup(RJITno)
-            upDateID(codeId, Key)
-        Else
+        '        runno = CInt(u.RunNo)
+        '        codeId = runno + 1
+        '        RJITno = "log-" + Mid(CStr(Now.Year), 3) + (CStr(Format(Now.Date, "MM"))) + CStr(codeId).PadLeft(3, CChar("0"))
+        '        AddGroup()
+        '        upDateID(codeId, Key)
+        '    Else
 
-            db.tblRunningNumbers.Add(New tblRunningNumber With
-                              {
-                                  .Name = Key, _
-                                  .RunNo = CType("0", Integer?) _
-                              })
+        '        db.tblRunningNumbers.Add(New tblRunningNumber With
+        '                          {
+        '                              .Name = Key, _
+        '                              .RunNo = CType("0", Integer?) _
+        '                          })
 
-            db.SaveChanges()
-            runno = CInt("0")
-            codeId = runno + 1
-            RJITno = "log-" + Mid(CStr(Now.Year), 3) + (CStr(Format(Now.Date, "MM"))) + CStr(codeId).PadLeft(3, CChar("0"))
-            AddGroup(RJITno)
-            upDateID(codeId, Key)
-        End If
-
+        '        db.SaveChanges()
+        '        runno = CInt("0")
+        '        codeId = runno + 1
+        '        RJITno = "log-" + Mid(CStr(Now.Year), 3) + (CStr(Format(Now.Date, "MM"))) + CStr(codeId).PadLeft(3, CChar("0"))
+        '        AddGroup()
+        '        upDateID(codeId, Key)
+        '    End If
     End Sub
-    Private Sub AddGroup(WSIT As String)
+    '-------------------------------------------------------Add Group Method --------------------------------------
+    Private Sub AddGroup()
         If (String.IsNullOrEmpty(txtCode.Value.Trim)) Then
 
             ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาป้อน Code ก่อน !');", True)
@@ -87,8 +87,8 @@ Public Class AddGroup
                     db.tblMasterCode2.Add(New tblMasterCode2() With {
                                       .Type = txtType.Value.Trim, _
                                       .Code = txtCode.Value.Trim, _
-                                      .Note = txtNotes.Value.Trim, _
-                                      .Description = txtDescription.Value.Trim, _
+                                      .Note = txtNotes2.Text.Trim, _
+                                      .Description = txtDescription2.Text.Trim, _
                                       .FilterInd = txtFilteringIndicator.Value.Trim, _
                                       .CreateBy = CStr(Session("UserId")), _
                                       .CreateDate = Now})
@@ -109,8 +109,10 @@ Public Class AddGroup
             End Using
         End If
     End Sub
+
+
     Protected Sub btnAddTypeGroup_click(sender As Object, e As EventArgs)
-        checkTypeID()
+        'checkTypeID()
     End Sub
     Private Sub checkTypeID()
 
@@ -207,12 +209,13 @@ Public Class AddGroup
     End Sub
     Private Sub clearType()
         txtType.Value = ""
-        txtDescription.Value = ""
-        txtNotes.Value = ""
+        txtDescription2.Text = ""
+        txtNotes2.Text = ""
         txtFilteringIndicator.Value = ""
         txtCode.Value = ""
     End Sub
     Protected Sub btnClear_Click(sender As Object, e As EventArgs)
         clearType()
     End Sub
+
 End Class

@@ -19,13 +19,13 @@ Public Class LogIN
         Dim LoginCls As New LoginCls
         Dim menu As String = "wms"
 
-        txtusername.Value = txtusername.Value.ToUpper
+        'txtusername.Value = txtusername.Value.ToUpper
 
-        If LoginCls.chkUser(txtusername.Value, txtpassword.Value) Then
+        If LoginCls.chkUser(txtusername.Value.ToUpper, txtpassword.Value) Then
             Dim ds = (From c In db.tblUsers
                           Where c.UserName = txtusername.Value).FirstOrDefault()
-            Session("UserId") = ds.UserName
-            Session("UserName") = txtusername.Value.Trim
+
+            Session("UserName") = ds.UserName
             Session("Name") = ds.Name
             Session("StatusAdd") = ds.StatusAdd
             Session("StatusDelete") = ds.StatusDelete

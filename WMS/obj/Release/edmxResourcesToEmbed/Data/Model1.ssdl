@@ -61,13 +61,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblBookingMessenger' does not hav
     <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
-warning 6013: The table/view 'LKBWarehouse.dbo.tblCompanyGuarantee' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tblCompanyGuarantee">
-          <Property Name="AmountGuarantee" Type="decimal" Precision="18" Scale="0" />
-          <Property Name="AmountUsed" Type="decimal" Precision="18" Scale="0" />
-          <Property Name="Balance" Type="decimal" Precision="18" Scale="0" />
-        </EntityType>-->
-  <!--Errors Found During Generation:
 warning 6002: The table/view 'LKBWarehouse.dbo.tblCurrency' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblCurrency">
     <Key>
@@ -1721,7 +1714,7 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblMasterCode' does not have a pr
     <Property Name="Type" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Code" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Description" Type="varchar" MaxLength="200" />
-    <Property Name="Note" Type="varchar" MaxLength="50" />
+    <Property Name="Note" Type="varchar" MaxLength="200" />
     <Property Name="FilterInd" Type="varchar" MaxLength="50" />
     <Property Name="CreateBy" Type="varchar" MaxLength="50" />
     <Property Name="CreateDate" Type="datetime" />
@@ -2403,12 +2396,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblTempItemNo' does not have a pr
     <Property Name="PullSignal" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="ItemNo" Type="float" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6013: The table/view 'LKBWarehouse.dbo.tblTempMJSummaryStock-11122013' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tblTempMJSummaryStock-11122013">
-          <Property Name="PART NUMBER" Type="nvarchar" MaxLength="255" />
-          <Property Name="On Hand" Type="float" />
-        </EntityType>-->
   <!--Errors Found During Generation:
 warning 6002: The table/view 'LKBWarehouse.dbo.tblTruckManifest' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblTruckManifest">

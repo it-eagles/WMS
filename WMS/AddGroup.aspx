@@ -31,40 +31,41 @@
                                 <from class="form-horizontal">
                            <div class="box-body">   
                                 <div class="form-group" >
-                                        <label for="txtType" class="col-sm-2 control-label">Type</label>
-                                         <div class="col-sm-10">
+                                        <label for="txtType" class="col-sm-3 control-label">Type</label>
+                                         <div class="col-sm-6">
                                             <input class="form-control" id="txtType" runat="server" placeholder="Type" />
                                         </div>
                                     </div>               
                                     <div class="form-group" >
                                     
-                                        <label for="txtCode" class="col-sm-2 control-label">Code</label>
+                                        <label for="txtCode" class="col-sm-3 control-label">Code</label>
                                        
-                                         <div class="col-sm-10">
+                                         <div class="col-sm-6">
                                             <input class="form-control" id="txtCode" runat="server" placeholder="Code"/>
                                         </div>
                       
                                     </div>
                                     
                                     <div class="form-group">
-                                        <label for="txtDescription" class="col-sm-2 control-label">Description</label>
+                                        <label for="txtDescription" class="col-sm-3 control-label">Description</label>
                                       
-                                      <div class="col-sm-10">
-                                           <input class="form-control" id="txtDescription" runat="server" placeholder="Description"/>
+                                      <div class="col-sm-6">
+                                           <%--<input class="form-control" id="txtDescription" runat="server" placeholder="Description"/>--%>
+                                          <asp:TextBox runat="server" Cssclass="form-control" TextMode="MultiLine" Height="135px"  ID="txtDescription2" ></asp:TextBox>
                                         </div>
                       
                                     </div>
                                       <div class="form-group">
-                                        <label for="txtNotes" class="col-sm-2 control-label">Notes</label>
-                                           <div class="col-sm-10">
-                                            <input class="form-control" id="txtNotes" runat="server"  placeholder="Notes"/>
+                                        <label for="txtNotes" class="col-sm-3 control-label">Notes</label>
+                                           <div class="col-sm-6">
+                                                <asp:TextBox runat="server" Cssclass="form-control" TextMode="MultiLine" Height="135px"  ID="txtNotes2" ></asp:TextBox>
                                            </div>
                                       
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="txtFilteringIndicator" class="col-sm-2 control-label">FilteringIndicator</label>
-                                         <div class="col-sm-10">
+                                        <label for="txtFilteringIndicator" class="col-sm-3 control-label">FilteringIndicator</label>
+                                         <div class="col-sm-6">
                                         <input class="form-control" id="txtFilteringIndicator" runat="server"  placeholder="FilteringIndicator"/>
                                        </div>
                                    

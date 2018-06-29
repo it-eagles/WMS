@@ -32,13 +32,13 @@ Partial Public Class UpdateGroup
     Protected WithEvents ScriptManager1 As Global.System.Web.UI.ScriptManager
 
     '''<summary>
-    '''txtTypeName control.
+    '''txtType control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtTypeName As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtType As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
     '''txtCode control.
@@ -56,7 +56,7 @@ Partial Public Class UpdateGroup
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtDescription As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtDescription As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''txtNotes control.
@@ -65,7 +65,7 @@ Partial Public Class UpdateGroup
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtNotes As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtNotes As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''txtFilteringIndicator control.

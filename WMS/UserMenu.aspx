@@ -87,6 +87,51 @@
 
                                             </formview>
 
+                                            <asp:Repeater ID="Repeater3" runat="server" OnItemCommand="Repeater3_ItemCommand">
+                                    <HeaderTemplate>
+                                        <table id="example1" class="table table-bordered table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Form</th>
+                                                    <th>Read</th>
+                                                    <th>Save</th>           
+                                                    <th>Edit</th>
+                                                    <th>Delete</th>                                          
+                                                </tr>
+                                            </thead>
+                                    </HeaderTemplate>
+                                    <ItemTemplate>
+                                        <tr>
+                                            <td>
+                                                <asp:Label ID="lblForm" runat="server" Text='<%# Bind("Form")%>'></asp:Label></td>
+                                            <td class="text-center">
+                                                <input type="checkbox" class="flat-red"  disabled="disabled" runat="server"/>
+                                                <%--<asp:Label ID="lblRead" runat="server" Text='<%# Bind("Read_")%>'></asp:Label></td>--%></td>
+                                            <td class="text-center">
+                                                 <input type="checkbox" class="flat-red"   runat="server"/>
+                                                <%--<asp:Label ID="lblSave" runat="server" Text='<%# Bind("Save_")%>'></asp:Label></td>   --%></td>
+                                            <td class="text-center">
+                                                 <input type="checkbox" class="flat-red"  runat="server"/>
+                                               <%-- <asp:Label ID="lblEdit" runat="server" Text='<%# Bind("Edit_")%>'></asp:Label></td>  --%></td>
+                                            <td class="text-center">
+                                                 <input type="checkbox" class="flat-red"  runat="server"/>
+                                                <%--<asp:Label ID="lblDelete" runat="server" Text='<%# Bind("Delete_")%>'></asp:Label></td>       --%> 
+                                             </td>                 
+                                        </tr>
+                                    </ItemTemplate>
+                                    <FooterTemplate>
+                                        <tfoot>
+                                            <tr>
+                                                    <th>Form</th>
+                                                    <th>Read</th>
+                                                    <th>Save</th>           
+                                                    <th>Edit</th>
+                                                    <th>Delete</th>      
+                                            </tr>
+                                        </tfoot>
+                                        </table>
+                                    </FooterTemplate>
+                                </asp:Repeater>
                                             <!--/.col-lg-6 col-md-6--->
                                         </div>
 
@@ -213,13 +258,13 @@
                                             </formview>
                                             <asp:Repeater ID="Repeater2" runat="server" OnItemCommand="Repeater2_ItemCommand" OnItemDataBound="Repeater2_ItemDataBound">
                                     <HeaderTemplate>
-                                        <table id="example2" class="table table-bordered table-striped">
+                                        <table id="example1" class="table table-bordered table-striped">
                                             <thead>
                                                 <tr>
                                                     <th>Form</th>
                                                     <th>Menu</th>
                                                     <th>Status</th>
-                                                    <th>Edit</th>
+                                            
                                                 </tr>
                                             </thead>
                                     </HeaderTemplate>
@@ -235,10 +280,7 @@
                                                     <asp:ListItem>Read</asp:ListItem>
                                                     <asp:ListItem>Save</asp:ListItem>
                                                     <asp:ListItem>Edit</asp:ListItem>
-                                                    <asp:ListItem>Delete</asp:ListItem>--%>
-                                            <td class="text-center">
-                                                
-                                            </td>
+                                                    <asp:ListItem>Delete</asp:ListItem>--%>                                      
                                </asp:DropDownList></td>           
                                         </tr>
                                     </ItemTemplate>
@@ -248,7 +290,7 @@
                                                 <th>Form</th>
                                                 <th>Menu</th>
                                                 <th>Status</th>
-                                                <th>Edit</th>
+                                             
                                             </tr>
                                         </tfoot>
                                         </table>

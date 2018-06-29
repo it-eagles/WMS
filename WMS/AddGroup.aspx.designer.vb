@@ -50,22 +50,22 @@ Partial Public Class AddGroup
     Protected WithEvents txtCode As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtDescription control.
+    '''txtDescription2 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtDescription As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtDescription2 As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''txtNotes control.
+    '''txtNotes2 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtNotes As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtNotes2 As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''txtFilteringIndicator control.

@@ -23,6 +23,7 @@ Public Class UserMenu
             ShowCopyUser()
             showList()
             showGroupList()
+            showReapeaterUserList()
             'Else
             '    MsgBox("เกิดความผิดพลาดในการทำงาน", MsgBoxStyle.OkCancel)
         End If
@@ -69,7 +70,29 @@ Public Class UserMenu
             'MsgBox("เกิดเหตุผิดพลาด")
         End Try
     End Sub
+    Protected Sub Repeater3_ItemCommand(source As Object, e As RepeaterCommandEventArgs) Handles Repeater3.ItemCommand
 
+    End Sub
+    Public Sub showReapeaterUserList()
+        Dim formlist = (From u In db.tblMenus
+                        Group By Form = u.Form
+                        Into f = Group, Count())
+
+
+        If formlist.Count > 0 Then
+            Repeater3.DataSource = formlist.ToList
+            Repeater3.DataBind()
+        Else
+            Me.Repeater3.DataSource = Nothing
+            Me.Repeater3.DataBind()
+        End If
+    End Sub
+
+
+
+
+    '-----------------------------------------------------Start Method Menu Tab-------------------------------------------------
+    '---------------------------------------------------Repeater Menu Tab-------------------------------------------------------
     Protected Sub Repeater1_ItemCommand(source As Object, e As RepeaterCommandEventArgs) Handles Repeater1.ItemCommand
         'Dim id As String = Session("UserName").ToString
         'Dim menu As String = "frmUserProfile"
@@ -99,7 +122,7 @@ Public Class UserMenu
                                      u.UpdateBy}).ToList()
 
         If formlist.Count > 0 Then
-            Repeater1.DataSource = formlist.ToList
+            Repeater1.DataSource = formlist
             Repeater1.DataBind()
         Else
             Me.Repeater1.DataSource = Nothing
@@ -170,7 +193,7 @@ Public Class UserMenu
                                      u.Status}).ToList()
 
         If grouplist.Count > 0 Then
-            Repeater2.DataSource = grouplist.ToList
+            Repeater2.DataSource = grouplist
             Repeater2.DataBind()
 
         Else
@@ -218,7 +241,7 @@ Public Class UserMenu
 
             lblStatus.Items.Insert(0, New ListItem("Please select"))
 
-            Dim status As String = (TryCast(e.Item.DataItem, DataRowView))("Status").ToString()
+            'Dim status As String = (TryCast(e.Item.DataItem, DataRowView))("Status").ToString()
             'lblStatus.Items.FindByValue(status).Selected = True
         End If
     End Sub
@@ -234,7 +257,5 @@ Public Class UserMenu
     '        End Using
     '    End Using
     'End Function
-    Private Sub Test()
-        MsgBox("Tesจ้า")
-    End Sub
+
 End Class

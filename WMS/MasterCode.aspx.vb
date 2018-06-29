@@ -13,8 +13,9 @@ Public Class MasterCode
     End Sub
     Private Sub showMasterCode()
        
-        Dim codeType = (From ct In db.tblMasterCodes
-         Select New With {ct.Type,
+        Dim codeType = (From ct In db.tblMasterCode2
+         Select New With {ct.MasterCodeID,
+                 ct.Type,
                  ct.Code,
                  ct.Description,
                  ct.Note,
@@ -30,14 +31,24 @@ Public Class MasterCode
     End Sub
 
     Protected Sub Repeater1_ItemCommand(source As Object, e As RepeaterCommandEventArgs) Handles Repeater1.ItemCommand
-        '    Dim index As String = CStr(e.CommandArgument)
-
-        '    If e.CommandName.Equals("editGroup") Then
-        '        Response.Write("<script>window.open('UpdateGroup.aspx?ID=" & index & "',target='_self');</script>")
-        '    ElseIf e.CommandName.Equals("viewGroup") Then
-
-        '        Response.Write("<script>window.open('ViewGroup.aspx?ID=" & index & "',target='_self');</script>")
-
-        '    End If
+        Dim id As String = Session("UserName").ToString
+        Dim menu As String = "frmUserProfile"
+        Dim index As String = CStr(e.CommandArgument)
+        If e.CommandName.Equals("UpdateGroup") Then
+            Dim ds1 = From c In db.tblUserMenus Where c.UserName = id And c.Form = menu And c.Edit_ = 1
+            If ds1.Any Then
+                Response.Write("<script>window.open('UpdateGroup.aspx?ID=" & index & "',target='_self');</script>")
+            Else
+                ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธ์การแก้ไข')", True)
+            End If
+            'ElseIf e.CommandName.Equals("viewprofile") Then
+            '    Dim ds1 = From c In db.tblUserMenus Where c.UserName = id And c.Form = menu And c.Read_ = 1
+            '    If ds1.Any Then
+            '        Response.Write("<script>window.open('ViewUserProfile.aspx?UserName=" & index & "',target='_self');</script>")
+            '    Else
+            '        ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธ์การแก้ไข')", True)
+            '    End If
+        End If
     End Sub
+
 End Class

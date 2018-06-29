@@ -35,11 +35,12 @@
                                     <HeaderTemplate>
                                         <table id="example1" class="table table-bordered table-striped">
                                             <thead>
-                                                <tr>                                                    
+                                                <tr>    
+                                                    <th>ID</th>                                                
                                                     <th>Type</th>
                                                     <th>Code</th>
                                                     <th>Description</th>
-                                                    <th>Note</th>            
+                                                    <th>Note</th>                                                
                                                     <th>FilterInd</th>                                   
                                                     <th>Edit/Delete</th>
                                                 </tr>
@@ -48,6 +49,9 @@
 
                                     <ItemTemplate>
                                         <tr>
+                                            <td>
+                                                <asp:Label ID="lblMasterCodeID" runat="server" Text='<%# Bind("MasterCodeID")%>'></asp:Label>
+                                            </td>
                                             <td>
                                                 <asp:Label ID="lblType" runat="server" Text='<%# Bind("Type")%>'></asp:Label></td>                                         
                                             <td>
@@ -60,7 +64,7 @@
                                                 <asp:Label ID="lblFilterInd" runat="server" Text='<%# Bind("FilterInd")%>'></asp:Label></td>
                                                  
                                             <td class="text-center" >
-                                                  <asp:LinkButton ID="LinkButton1" CssClass="btn btn-default" runat="server" CausesValidation="False" CommandName="editGroup" CommandArgument='<%# Eval("Type")%>'><i class="fa fa-pencil"></i></asp:LinkButton>
+                                                  <asp:LinkButton ID="btnUpdateGroup" CssClass="btn btn-default" runat="server" CausesValidation="False" CommandName="UpdateGroup" CommandArgument='<%# Eval("MasterCodeID")%>'><i class="fa fa-pencil"></i></asp:LinkButton>
                                                 <a class="btn btn-danger"><i class="fa fa-trash"></i></a>
                                             </td>
                                            <%-- <td class="text-center">
@@ -71,10 +75,11 @@
                                     <FooterTemplate>
                                         <tfoot>
                                             <tr>
+                                                    <th>ID</th>                                          
                                                     <th>Type</th>
                                                     <th>Code</th>
                                                     <th>Description</th>
-                                                    <th>Note</th>            
+                                                    <th>Note</th>   
                                                     <th>FilterInd</th>                                   
                                                     <th>Edit/Delete</th>
                                             </tr>
