@@ -2,23 +2,23 @@
     Inherits System.Web.UI.MasterPage
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        'If Session("UserName").ToString = "" Then
-        '    Response.Redirect("Login.aspx")
-        '    Response.End()
-        'Else
+        If Session("UserName").ToString = "" Then
+            Response.Redirect("Login.aspx")
+            Response.End()
+        Else
 
-        '    lblUser.InnerText = Session("Name").ToString
-        '    userName.InnerText = Session("Name").ToString
+            lblUser.InnerText = Session("Name").ToString
+            userName.InnerText = Session("Name").ToString
 
-        'End If
+        End If
     End Sub
     Protected Sub signout_click(sender As Object, e As EventArgs)
-        'signout()
-        'Session.Clear()
-        'Session.RemoveAll()
-        'Session.Abandon()
-        'Response.Redirect("LogIN.aspx")
-        'Response.End()
+        signout()
+        Session.Clear()
+        Session.RemoveAll()
+        Session.Abandon()
+        Response.Redirect("LogIN.aspx")
+        Response.End()
     End Sub
 
     Private Sub signout()

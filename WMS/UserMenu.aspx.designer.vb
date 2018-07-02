@@ -68,13 +68,13 @@ Partial Public Class UserMenu
     Protected WithEvents btnSave As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
-    '''Repeater3 control.
+    '''Repeater1 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Repeater3 As Global.System.Web.UI.WebControls.Repeater
+    Protected WithEvents Repeater1 As Global.System.Web.UI.WebControls.Repeater
 
     '''<summary>
     '''txtForm control.
@@ -113,13 +113,13 @@ Partial Public Class UserMenu
     Protected WithEvents btnDelete1 As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
-    '''Repeater1 control.
+    '''Repeater2 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Repeater1 As Global.System.Web.UI.WebControls.Repeater
+    Protected WithEvents Repeater2 As Global.System.Web.UI.WebControls.Repeater
 
     '''<summary>
     '''Text1 control.
@@ -149,11 +149,11 @@ Partial Public Class UserMenu
     Protected WithEvents btnDelete2 As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
-    '''Repeater2 control.
+    '''Repeater3 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Repeater2 As Global.System.Web.UI.WebControls.Repeater
+    Protected WithEvents Repeater3 As Global.System.Web.UI.WebControls.Repeater
 End Class

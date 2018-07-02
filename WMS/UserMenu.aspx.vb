@@ -19,11 +19,11 @@ Public Class UserMenu
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If Not Me.IsPostBack Then
-            showUserlist()
+            showUser()
             ShowCopyUser()
-            showList()
+            showMenuList()
             showGroupList()
-            showReapeaterUserList()
+            showUserList()
             'Else
             '    MsgBox("เกิดความผิดพลาดในการทำงาน", MsgBoxStyle.OkCancel)
         End If
@@ -31,13 +31,13 @@ Public Class UserMenu
     End Sub
 
     '----------------------------------------------------Show Data Dropdown UserName Method in User Tab-------------------------------------
-    Private Sub showUserlist()
+    Private Sub showUser()
         Dim user = From u In db.tblUsers
                    Select u.UserName, u.Name
         Try
 
             ddlUser.DataSource = user.ToList
-            ddlUser.DataTextField = "UserName"
+            ddlUser.DataTextField = "Name"
             ddlUser.DataValueField = "UserName"
             ddlUser.DataBind()
             If ddlUser.Items.Count > 1 Then
@@ -70,21 +70,21 @@ Public Class UserMenu
             'MsgBox("เกิดเหตุผิดพลาด")
         End Try
     End Sub
-    Protected Sub Repeater3_ItemCommand(source As Object, e As RepeaterCommandEventArgs) Handles Repeater3.ItemCommand
+    Protected Sub Repeater2_ItemCommand(source As Object, e As RepeaterCommandEventArgs)
 
     End Sub
-    Public Sub showReapeaterUserList()
+    Public Sub showUserList()
         Dim formlist = (From u In db.tblMenus
                         Group By Form = u.Form
                         Into f = Group, Count())
 
 
         If formlist.Count > 0 Then
-            Repeater3.DataSource = formlist.ToList
-            Repeater3.DataBind()
+            Repeater1.DataSource = formlist.ToList
+            Repeater1.DataBind()
         Else
-            Me.Repeater3.DataSource = Nothing
-            Me.Repeater3.DataBind()
+            Me.Repeater1.DataSource = Nothing
+            Me.Repeater1.DataBind()
         End If
     End Sub
 
@@ -114,19 +114,18 @@ Public Class UserMenu
         'End If
     End Sub
     '---------------------------------------------------Show Data Method in Menu Tab--------------------------------------
-    Public Sub showList()
+    Public Sub showMenuList()
         Dim formlist = (From u In db.tblMenus
                     Select New With {u.Form,
                                      u.Menu,
-                                     u.UserBy,
-                                     u.UpdateBy}).ToList()
+                                     u.UserBy}).ToList()
 
         If formlist.Count > 0 Then
-            Repeater1.DataSource = formlist
-            Repeater1.DataBind()
+            Repeater2.DataSource = formlist
+            Repeater2.DataBind()
         Else
-            Me.Repeater1.DataSource = Nothing
-            Me.Repeater1.DataBind()
+            Me.Repeater2.DataSource = Nothing
+            Me.Repeater2.DataBind()
         End If
     End Sub
     '--------------------------------------Click Add Form Method in Menu Tab------------------------------------ 
@@ -189,20 +188,19 @@ Public Class UserMenu
 
         Dim grouplist = (From u In db.tblGroupMenus
                     Select New With {u.Form,
-                                     u.Menu,
-                                     u.Status}).ToList()
+                                     u.Menu}).ToList()
 
         If grouplist.Count > 0 Then
-            Repeater2.DataSource = grouplist
-            Repeater2.DataBind()
+            Repeater3.DataSource = grouplist
+            Repeater3.DataBind()
 
         Else
-            Me.Repeater2.DataSource = Nothing
-            Me.Repeater2.DataBind()
+            Me.Repeater3.DataSource = Nothing
+            Me.Repeater3.DataBind()
         End If
     End Sub
 
-    Protected Sub Repeater2_ItemCommand(source As Object, e As RepeaterCommandEventArgs) Handles Repeater2.ItemCommand
+    Protected Sub Repeater3_ItemCommand(source As Object, e As RepeaterCommandEventArgs) Handles Repeater3.ItemCommand
 
     End Sub
 
@@ -227,23 +225,28 @@ Public Class UserMenu
         '    'Throw ex
         'End Try
     End Sub
-    Protected Sub Repeater2_ItemDataBound(sender As Object, e As RepeaterItemEventArgs) Handles Repeater2.ItemDataBound
+    Protected Sub Repeater3_ItemDataBound(sender As Object, e As RepeaterItemEventArgs) Handles Repeater2.ItemDataBound
 
-        If e.Item.ItemType = ListItemType.Item OrElse e.Item.ItemType = ListItemType.AlternatingItem Then
-            Dim m = (From n In db.tblGroupMenus
-                     Select New With {n.Status}).ToList
-            Dim lblStatus As DropDownList = (TryCast(e.Item.FindControl("lblStatus"), DropDownList))
-            lblStatus.DataSource = m
-            'ddlCountries.DataSource = Me.GetData("SELECT DISTINCT Country FROM Customers")
-            lblStatus.DataTextField = "Status"
-            lblStatus.DataValueField = "Status"
-            lblStatus.DataBind()
+        'If e.Item.ItemType = ListItemType.Item OrElse e.Item.ItemType = ListItemType.AlternatingItem Then
+        '    Dim m = (From n In db.tblGroupMenus
+        '             Select New With {n.Status}).ToList
+        '    Dim lblStatus As DropDownList = (TryCast(e.Item.FindControl("lblStatus"), DropDownList))
 
-            lblStatus.Items.Insert(0, New ListItem("Please select"))
+        '    Dim status As String = (TryCast(e.Item.DataItem, DataRowView))("Status").ToString
+        '    If String.IsNullOrEmpty(status) Then
+        '        lblStatus.DataSource = m
+        '        'ddlCountries.DataSource = Me.GetData("SELECT DISTINCT Country FROM Customers")
+        '        lblStatus.DataTextField = "Status"
+        '        lblStatus.DataValueField = "Status"
+        '        lblStatus.DataBind()
+        '        If IsNothing(lblStatus.Items.FindByValue(status)) Then
+        '            lblStatus.SelectedValue = status
+        '            lblStatus.Items.Insert(0, New ListItem("Please select"))
 
-            'Dim status As String = (TryCast(e.Item.DataItem, DataRowView))("Status").ToString()
-            'lblStatus.Items.FindByValue(status).Selected = True
-        End If
+        '        End If
+        '    End If
+        'End If
+
     End Sub
     'Private Function GetData(ByVal query As String) As DataTable
     '    Dim constr As String = ConfigurationManager.ConnectionStrings("constr").ConnectionString
@@ -258,4 +261,22 @@ Public Class UserMenu
     '    End Using
     'End Function
 
+    Protected Sub Repeater2_ItemCreated(sender As Object, e As RepeaterItemEventArgs) Handles Repeater2.ItemCreated
+       
+    End Sub
+
+    Protected Sub ddlUser_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlUser.SelectedIndexChanged
+        Dim formlist = (From u In db.tblUserMenus Where u.UserName = ddlUser.Text
+                  Select New With {
+                       u.Form}).ToList
+
+
+        If formlist.Count > 0 Then
+            Repeater1.DataSource = formlist
+            Repeater1.DataBind()
+        Else
+            Me.Repeater1.DataSource = Nothing
+            Me.Repeater1.DataBind()
+        End If
+    End Sub
 End Class

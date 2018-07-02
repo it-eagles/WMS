@@ -52,7 +52,7 @@
                                                                </select>--%>
                                                             
 
-                                                         <asp:DropDownList ID="ddlUser" CssClass="form-control select2" runat="server" AutoPostBack="true" DataTextField="UserName" DataValueField="UserName"></asp:DropDownList>
+                                                         <asp:DropDownList ID="ddlUser" CssClass="form-control select2" runat="server" AutoPostBack="true" DataTextField="Name" DataValueField="UserName"></asp:DropDownList>
                                                            <%-- <input class="form-control" id="txtUserName" runat="server" placeholder="User Name" />--%>
                                                         </div>
 
@@ -87,7 +87,7 @@
 
                                             </formview>
 
-                                            <asp:Repeater ID="Repeater3" runat="server" OnItemCommand="Repeater3_ItemCommand">
+                               <asp:Repeater ID="Repeater1" runat="server">
                                     <HeaderTemplate>
                                         <table id="example1" class="table table-bordered table-striped">
                                             <thead>
@@ -96,7 +96,8 @@
                                                     <th>Read</th>
                                                     <th>Save</th>           
                                                     <th>Edit</th>
-                                                    <th>Delete</th>                                          
+                                                    <th>Delete</th>
+                                                    <th>Permissions</th>                                          
                                                 </tr>
                                             </thead>
                                     </HeaderTemplate>
@@ -105,18 +106,30 @@
                                             <td>
                                                 <asp:Label ID="lblForm" runat="server" Text='<%# Bind("Form")%>'></asp:Label></td>
                                             <td class="text-center">
-                                                <input type="checkbox" class="flat-red"  disabled="disabled" runat="server"/>
-                                                <%--<asp:Label ID="lblRead" runat="server" Text='<%# Bind("Read_")%>'></asp:Label></td>--%></td>
+                                               
+                             
+                                                <asp:Label ID="lblRead" runat="server" Text='<%# Bind("Read_")%>'><i class="fa  fa-check-square-o fa-2x"></i></asp:Label></td>
                                             <td class="text-center">
-                                                 <input type="checkbox" class="flat-red"   runat="server"/>
+                                                 <i class="fa  fa-check-square-o fa-2x" aria-hidden="true"></i>
+                                            
                                                 <%--<asp:Label ID="lblSave" runat="server" Text='<%# Bind("Save_")%>'></asp:Label></td>   --%></td>
                                             <td class="text-center">
-                                                 <input type="checkbox" class="flat-red"  runat="server"/>
+                                                <i class="fa  fa-check-square-o fa-2x" aria-hidden="true"></i>       
                                                <%-- <asp:Label ID="lblEdit" runat="server" Text='<%# Bind("Edit_")%>'></asp:Label></td>  --%></td>
                                             <td class="text-center">
-                                                 <input type="checkbox" class="flat-red"  runat="server"/>
+                                                <i class="fa  fa-check-square-o fa-2x" aria-hidden="true"></i>  
                                                 <%--<asp:Label ID="lblDelete" runat="server" Text='<%# Bind("Delete_")%>'></asp:Label></td>       --%> 
-                                             </td>                 
+                                             </td>  
+                                            <td class="text-center">
+                                                  <asp:DropDownList ID="lblStatus" CssClass="form-control" runat="server">
+                                                 <asp:ListItem>None</asp:ListItem>
+                                                    <asp:ListItem Value="1">Read</asp:ListItem>
+                                                    <asp:ListItem Value="2">Save</asp:ListItem>
+                                                    <asp:ListItem Value="3">Edit</asp:ListItem>
+                                                    <asp:ListItem Value="4">Delete</asp:ListItem>   
+
+                                               </asp:DropDownList>
+                                            </td>               
                                         </tr>
                                     </ItemTemplate>
                                     <FooterTemplate>
@@ -126,7 +139,8 @@
                                                     <th>Read</th>
                                                     <th>Save</th>           
                                                     <th>Edit</th>
-                                                    <th>Delete</th>      
+                                                    <th>Delete</th>
+                                                    <th>Permissions</th>                  
                                             </tr>
                                         </tfoot>
                                         </table>
@@ -181,16 +195,16 @@
                                                     <!-- /.box-body -->
                                                 </div>
 
-                                            </formview>                                            
-                                            <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="Repeater1_ItemCommand">
+                                            </formview> 
+                                                                                       
+                                  <asp:Repeater ID="Repeater2" runat="server" OnItemCommand="Repeater2_ItemCommand">
                                     <HeaderTemplate>
-                                        <table id="example1" class="table table-bordered table-striped">
+                                        <table id="example2" class="table table-bordered table-hover">
                                             <thead>
                                                 <tr>
                                                     <th>Form</th>
                                                     <th>Menu</th>
-                                                    <th>UserBy</th>
-                                                    <th>UpdateBy</th>                                                    
+                                                    <th>UserBy</th>                                                
                                                 </tr>
                                             </thead>
                                     </HeaderTemplate>
@@ -203,8 +217,7 @@
                                                 <asp:Label ID="lblMenu" runat="server" Text='<%# Bind("Menu")%>'></asp:Label></td>
                                             <td>
                                                 <asp:Label ID="lblUserBy" runat="server" Text='<%# Bind("UserBy")%>'></asp:Label></td>
-                                            <td>
-                                                <asp:Label ID="lblUpdateBy" runat="server" Text='<%# Bind("UpdateBy")%>'></asp:Label></td>                                   
+                                                                             
                                         </tr>
                                     </ItemTemplate>
                                     <FooterTemplate>
@@ -212,8 +225,7 @@
                                             <tr>
                                                     <th>Form</th>
                                                     <th>Menu</th>
-                                                    <th>UserBy</th>
-                                                    <th>UpdateBy</th>   
+                                                    <th>UserBy</th> 
                                             </tr>
                                         </tfoot>
                                         </table>
@@ -256,7 +268,8 @@
                                                     <!-- /.box-body -->
                                                 </div>
                                             </formview>
-                                            <asp:Repeater ID="Repeater2" runat="server" OnItemCommand="Repeater2_ItemCommand" OnItemDataBound="Repeater2_ItemDataBound">
+                                           
+                                     <asp:Repeater ID="Repeater3" runat="server" OnItemCommand="Repeater3_ItemCommand" OnItemDataBound="Repeater3_ItemDataBound">
                                     <HeaderTemplate>
                                         <table id="example1" class="table table-bordered table-striped">
                                             <thead>
@@ -273,15 +286,16 @@
                                             <td>
                                                 <asp:Label ID="lblForm" runat="server" Text='<%# Bind("Form")%>'></asp:Label></td>
                                             <td>
-                                                <asp:Label ID="lblMenu" runat="server" Text='<%# Bind("Menu")%>'></asp:Label></td>
+                                                <asp:Label ID="lblMenu" runat="server" Text='<%# Bind("Menu")%>' Visible="false"></asp:Label></td>
                                             <td class="text-center">
-                                                <asp:DropDownList ID="lblStatus" CssClass="form-control" runat="server" >
-                                                    <%--<asp:ListItem>None</asp:ListItem>
+                                                <asp:DropDownList ID="lblStatus" CssClass="form-control" runat="server">
+                                                    <asp:ListItem>None</asp:ListItem>
                                                     <asp:ListItem>Read</asp:ListItem>
                                                     <asp:ListItem>Save</asp:ListItem>
                                                     <asp:ListItem>Edit</asp:ListItem>
-                                                    <asp:ListItem>Delete</asp:ListItem>--%>                                      
-                               </asp:DropDownList></td>           
+                                                    <asp:ListItem>Delete</asp:ListItem></asp:DropDownList>
+
+                                            </td>           
                                         </tr>
                                     </ItemTemplate>
                                     <FooterTemplate>
@@ -319,34 +333,4 @@
     </form>
 
     <!-- ./wrapper -->
-
-<!-- jQuery 3 -->
-<script src="../../bower_components/jquery/dist/jquery.min.js"></script>
-<!-- Bootstrap 3.3.7 -->
-<script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<!-- DataTables -->
-<script src="../../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="../../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-<!-- SlimScroll -->
-<script src="../../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-<!-- FastClick -->
-<script src="../../bower_components/fastclick/lib/fastclick.js"></script>
-<!-- AdminLTE App -->
-<script src="../../dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="../../dist/js/demo.js"></script>
-<!-- page script -->
-<script>
-    $(function () {
-        $('#example1').DataTable()
-        $('#example2').DataTable({
-            'paging'      : true,
-            'lengthChange': false,
-            'searching'   : false,
-            'ordering'    : true,
-            'info'        : true,
-            'autoWidth'   : false
-        })
-    })
-    </script>
 </asp:Content>

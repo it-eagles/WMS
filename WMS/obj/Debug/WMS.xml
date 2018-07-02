@@ -1343,9 +1343,9 @@ ScriptManager1 control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.UpdateGroup.txtTypeName">
+</member><member name="F:WMS.UpdateGroup.txtType">
 	<summary>
-txtTypeName control.
+txtType control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -3399,14 +3399,6 @@ form1 control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MasterCode.ScriptManager1">
-	<summary>
-ScriptManager1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
 </member><member name="F:WMS.MasterCode.Repeater1">
 	<summary>
 Repeater1 control.
@@ -3583,9 +3575,9 @@ ddlUser control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.UserMenu.txtCode">
+</member><member name="F:WMS.UserMenu.ddlCopyUser">
 	<summary>
-txtCode control.
+ddlCopyUser control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -3607,17 +3599,25 @@ btnSave control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.UserMenu.txtTypeName">
+</member><member name="F:WMS.UserMenu.Repeater1">
 	<summary>
-txtTypeName control.
+Repeater1 control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.UserMenu.txtTypeDes">
+</member><member name="F:WMS.UserMenu.txtForm">
 	<summary>
-txtTypeDes control.
+txtForm control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.UserMenu.txtMenu">
+	<summary>
+txtMenu control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -3631,9 +3631,17 @@ btnAddUp1 control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.UserMenu.tbnDelete">
+</member><member name="F:WMS.UserMenu.btnDelete1">
 	<summary>
-tbnDelete control.
+btnDelete1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.UserMenu.Repeater2">
+	<summary>
+Repeater2 control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -3658,6 +3666,14 @@ To modify move field declaration from designer file to code-behind file.
 </member><member name="F:WMS.UserMenu.btnDelete2">
 	<summary>
 btnDelete2 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.UserMenu.Repeater3">
+	<summary>
+Repeater3 control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -3839,9 +3855,9 @@ ScriptManager1 control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.AddGroup.dcboGroup">
+</member><member name="F:WMS.AddGroup.txtType">
 	<summary>
-dcboGroup control.
+txtType control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -3855,17 +3871,17 @@ txtCode control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.AddGroup.txtDescription">
+</member><member name="F:WMS.AddGroup.txtDescription2">
 	<summary>
-txtDescription control.
+txtDescription2 control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.AddGroup.txtNotes">
+</member><member name="F:WMS.AddGroup.txtNotes2">
 	<summary>
-txtNotes control.
+txtNotes2 control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -3887,41 +3903,9 @@ btnAddGroup control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.AddGroup.txtTypeName">
+</member><member name="F:WMS.AddGroup.btnClear">
 	<summary>
-txtTypeName control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.AddGroup.txtTypeDes">
-	<summary>
-txtTypeDes control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.AddGroup.txtTypeNotes">
-	<summary>
-txtTypeNotes control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.AddGroup.txtIndicator">
-	<summary>
-txtIndicator control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.AddGroup.Button1">
-	<summary>
-Button1 control.
+btnClear control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -3962,6 +3946,14 @@ To modify move field declaration from designer file to code-behind file.
 </member><member name="F:WMS.Test.form1">
 	<summary>
 form1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.Test.Repeater1">
+	<summary>
+Repeater1 control.
 </summary>
 	<remarks>
 Auto-generated field.
