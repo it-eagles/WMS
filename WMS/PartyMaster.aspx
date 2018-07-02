@@ -13,6 +13,7 @@
                 <li><a href="HomeMain.aspx"><i class="fa fa-home"></i>Home</a></li>
                 <li><a class="active"><i class="fa fa-file"></i>Master Files</a></li>
                 <li><a class="active">Party Master</a></li>
+                <li><a href="MasterPartyAdd.aspx"><i class="fa fa-home"></i>TESTMASTERADD</a></li>
 
             </ol>
         </section>
@@ -74,7 +75,7 @@
                                                         <label for="txtImpProductCode" class="col-sm-2 control-label">Party Code :</label>
                                                     <div class="col-md-6">
          
-                                                         <input class="form-control" id="txtPartyCode" runat="server" placeholder="Party Code">
+                                                         <input class="form-control" id="txtPartyCode" runat="server" placeholder="Party Code"/>
                                                     </div>
                                       
                                                 </div>
@@ -84,7 +85,7 @@
                                                 
                                                     <div class="col-md-9" id="ImpDesc1">
          
-                                                        <input class="form-control" id="txtFullName" runat="server" placeholder="Desc">
+                                                        <input class="form-control" id="txtFullName" runat="server" placeholder="Desc"/>
                                                     </div>
                                                 </div> 
                                                 <div class="form-group" >
@@ -106,20 +107,23 @@
                                             <div class="col-md-2">
                                                     
                                                     <asp:DropDownList ID="cboLocationID" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code" >
-                                                         <asp:ListItem Text = "--Select Continent--" Value = ""></asp:ListItem>
+                                                         <%--<asp:ListItem Text = "--Select Country--" Value = ""></asp:ListItem>--%>
                                                     </asp:DropDownList>
                                                 
                                             </div>
                                 
                                             <div class="col-md-2">   
-                                                     <asp:DropDownList ID="cboCountry" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code"></asp:DropDownList>
+                                                     <asp:DropDownList ID="cboCity" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code">
+                                                         <%--<asp:ListItem Text = "--Select City--" Value = ""></asp:ListItem>--%>
+                                                     </asp:DropDownList>
+                                                        
                                             </div>
                                             
                                             <div class="col-md-6">   
                                              <div class="form-group">
                                                     <label for="txtImpCustomsProductCode" class="col-sm-3 control-label">Registration No :</label>
                                              <div class="col-sm-7">
-                                                    <input class="form-control" id="txtRegistrationNo" runat="server"  placeholder="Registration No">
+                                                    <input class="form-control" id="txtRegistrationNo" runat="server"  placeholder="Registration No"/>
                                              </div>
                                             </div>
                                           </div>
@@ -134,7 +138,7 @@
                                       </div>
                                 
                                        <div class="col-md-2">   
-                                             <input class="form-control" id="txtTypeName" runat="server"  placeholder="H.S.">
+                                             <input class="form-control" id="txtTypeName" runat="server"  placeholder="H.S."/>
                                         </div>
                                     <div class="col-md-6">   
                                              <div class="form-group">
@@ -142,7 +146,7 @@
                                        <div class="col-sm-2">
                                          <div class="checkbox">
                                                  <label>
-                                                     <input type="checkbox" runat="server" id="chkCommissiontoSale">
+                                                     <input type="checkbox" runat="server" id="chkCommissiontoSale"/>
                                                  </label>
                                              </div>
                                        </div>
@@ -152,7 +156,7 @@
                                 <div class="form-group">
                                         <label for="txtImpCustomsProductCode" class="col-sm-2 control-label">IATA Code :</label>
                                        <div class="col-sm-6">
-                                          <input class="form-control" id="txtIATACode" runat="server"  placeholder="IATA Code">
+                                          <input class="form-control" id="txtIATACode" runat="server"  placeholder="IATA Code"/>
                                        </div>
                                     </div>
 
@@ -169,7 +173,7 @@
                                          <div class="box-body">
                                               <div class="radio">
                                          <label>
-                                             <input type="radio" name="optionsRadios" runat="server" id ="rdbConfirm" value="option1" >Confirm
+                                             <input type="radio" name="optionsRadios" runat="server" id ="rdbConfirm" value="option1" />Confirm
                                           </label>
                                            </div>
                                          </div>
@@ -185,7 +189,7 @@
 
                                         <div class="radio">
                                          <label>
-                                             <input type="radio" name="optionsRadios" runat="server" id ="rdbPending" value="option1"> Pending
+                                             <input type="radio" name="optionsRadios" runat="server" id ="rdbPending" value="option1"/> Pending
                                          </label>
                                         </div>
                                              
@@ -202,7 +206,7 @@
 
                                        <div class="radio">
                                          <label>
-                                             <input type="radio" name="optionsRadios" runat="server" id ="rdbBlacklisted" value="option1">Blacklisted
+                                             <input type="radio" name="optionsRadios" runat="server" id ="rdbBlacklisted" value="option1"/>Blacklisted
                                           </label>
                                       </div>
                                                  
@@ -219,7 +223,7 @@
 
                                            <div class="radio">
                                             <label>
-                                                <input type="radio" name="optionsRadios" runat="server" id ="rdbRevoke" value="option1"> Revoke
+                                                <input type="radio" name="optionsRadios" runat="server" id ="rdbRevoke" value="option1"/> Revoke
                                             </label>
                                            </div>
                                             
@@ -233,19 +237,19 @@
                                       <div class="form-group">
                                                     <label for="txtImpCustomsProductCode" class="col-sm-2 control-label">Brance ID :</label>
                                           <div class="col-sm-6">
-                                                <input class="form-control" id="txtMessageHubID" runat="server"  placeholder="Brance ID">
+                                                <input class="form-control" id="txtMessageHubID" runat="server"  placeholder="Brance ID"/>
                                          </div>
                                      </div>
                                     <div class="form-group">
                                                     <label for="txtImpCustomsProductCode" class="col-sm-2 control-label">Full Thai Name :</label>
                                           <div class="col-sm-9">
-                                                <input class="form-control" id="txtOtherSystemPartyID" runat="server"  placeholder="Full Thai Name">
+                                                <input class="form-control" id="txtOtherSystemPartyID" runat="server"  placeholder="Full Thai Name"/>
                                          </div>
                                      </div>
                                       <div class="form-group">
                                                     <label for="txtImpCustomsProductCode" class="col-sm-2 control-label">TAX ID :</label>
                                           <div class="col-sm-6">
-                                                <input class="form-control" id="txtFormID" runat="server"  placeholder="TAX ID">
+                                                <input class="form-control" id="txtFormID" runat="server"  placeholder="TAX ID"/>
                                          </div>
                                      </div>
                                           <div class="form-group">
@@ -253,37 +257,37 @@
                                                 <div class="col-sm-2">
                                                         <div class="checkbox">
                                                  <label>
-                                                     <input type="checkbox" runat="server" id="chkShipper"> Shipper
+                                                     <input type="checkbox" runat="server" id="chkShipper"/> Shipper
                                                  </label>
                                              </div>
                                               <div class="checkbox">
                                                  <label>
-                                                     <input type="checkbox" runat="server" id="chkConsignee">Consignee
+                                                     <input type="checkbox" runat="server" id="chkConsignee"/>Consignee
                                                  </label>
                                              </div>
                                              <div class="checkbox">
                                                  <label>
-                                                     <input type="checkbox" runat="server" id="chkBranch">Branch/Agent
+                                                     <input type="checkbox" runat="server" id="chkBranch"/>Branch/Agent
                                                  </label>
                                              </div>
                                              <div class="checkbox">
                                                  <label>
-                                                     <input type="checkbox" runat="server" id="chkCoLoader">Co-Loader
+                                                     <input type="checkbox" runat="server" id="chkCoLoader"/>Co-Loader
                                                  </label>
                                              </div>
                                             <div class="checkbox">
                                                  <label>
-                                                     <input type="checkbox" runat="server" id="chkTrucking">Trucking
+                                                     <input type="checkbox" runat="server" id="chkTrucking"/>Trucking
                                                  </label>
                                              </div>
                                             <div class="checkbox">
                                                  <label>
-                                                     <input type="checkbox" runat="server" id="chkShippingLine">Shipping Line
+                                                     <input type="checkbox" runat="server" id="chkShippingLine"/>Shipping Line
                                                  </label>
                                              </div>
                                               <div class="checkbox">
                                                  <label>
-                                                     <input type="checkbox" runat="server" id="chkVendor">Vendor
+                                                     <input type="checkbox" runat="server" id="chkVendor"/>Vendor
                                                  </label>
                                              </div>
                                              
@@ -292,42 +296,42 @@
                                                <div class="col-md-2">
                                                     <div class="checkbox">
                                                  <label>
-                                                     <input type="checkbox" runat="server" id="chkContainerYard">Container Yard
+                                                     <input type="checkbox" runat="server" id="chkContainerYard"/>Container Yard
                                                  </label>
                                              </div>
                                              <div class="checkbox">
                                                  <label>
-                                                     <input type="checkbox" runat="server" id="chkWarehouse">Warehouse
+                                                     <input type="checkbox" runat="server" id="chkWarehouse"/>Warehouse
                                                  </label>
                                              </div>
                                                 <div class="checkbox">
                                                  <label>
-                                                     <input type="checkbox" runat="server" id="chkBank">Bank
+                                                     <input type="checkbox" runat="server" id="chkBank"/>Bank
                                                  </label>
                                              </div>
                                              <div class="checkbox">
                                                  <label>
-                                                     <input type="checkbox" runat="server" id="chkFactory">Factory
+                                                     <input type="checkbox" runat="server" id="chkFactory"/>Factory
                                                  </label>
                                              </div>
                                             <div class="checkbox">
                                                  <label>
-                                                     <input type="checkbox" runat="server" id="chkConference">Traiding Firm
+                                                     <input type="checkbox" runat="server" id="chkConference"/>Traiding Firm
                                                  </label>
                                              </div>
                                                      <div class="checkbox">
                                                  <label>
-                                                     <input type="checkbox" runat="server" id="chkBroker">Broker
+                                                     <input type="checkbox" runat="server" id="chkBroker"/>Broker
                                                  </label>
                                              </div>
                                                      <div class="checkbox">
                                                  <label>
-                                                     <input type="checkbox" runat="server" id="chkAirLine">AirLine
+                                                     <input type="checkbox" runat="server" id="chkAirLine"/>AirLine
                                                  </label>
                                              </div>
                                                        <div class="checkbox">
                                                  <label>
-                                                     <input type="checkbox" runat="server" id="chkEndCustomer">End Customer
+                                                     <input type="checkbox" runat="server" id="chkEndCustomer"/>End Customer
                                                  </label>
                                              </div>
                                                 </div>
@@ -374,34 +378,34 @@
                                 <div class="form-group">
                                         <label for="txtImpCustomsProductCode" class="col-sm-2 control-label">Address :</label>
                                        <div class="col-sm-4">
-                                          <input class="form-control" id="txtAddress1" runat="server"  placeholder="Address">
+                                          <input class="form-control" id="txtAddress1" runat="server"  placeholder="Address"/>
                                        </div>
                                       <label for="txtImpDutyType" class="col-sm-1 control-label">Attn :</label>
                                          <div class="col-sm-4">
-                                             <input class="form-control" id="txtAttn" runat="server" placeholder="Attn">
+                                             <input class="form-control" id="txtAttn" runat="server" placeholder="Attn"/>
                                         </div>
                                 </div>
                                  <div class="form-group" >
                                       <label for="txtImpExemptDuty" class="col-sm-2 control-label"></label>
                                          <div class="col-sm-4">
-                                             <input class="form-control" id="txtAddress2" runat="server">
+                                             <input class="form-control" id="txtAddress2" runat="server"/>
                                         </div>
                                       <label for="txtImpExemptDuty" class="col-sm-1 control-label">Tel :</label>
                                        
                                          <div class="col-sm-4">
-                                             <input class="form-control" id="txtTel" runat="server" placeholder="Tel">
+                                             <input class="form-control" id="txtTel" runat="server" placeholder="Tel"/>
                                         </div>
                       
                                </div>
                                       <div class="form-group">
                                         <label for="txtImpValueRateP" class="col-sm-2 control-label"></label>
                                            <div class="col-sm-4">
-                                              <input class="form-control" id="txtAddress3" runat="server" >
+                                              <input class="form-control" id="txtAddress3" runat="server" />
                                            </div>
                                        <label for="txtImpExemptDuty" class="col-sm-1 control-label">Fax :</label>
                                        
                                          <div class="col-sm-4">
-                                             <input class="form-control" id="txtFax" runat="server" placeholder="Fax">
+                                             <input class="form-control" id="txtFax" runat="server" placeholder="Fax"/>
                                         </div>
                       
                                     </div>
@@ -409,12 +413,12 @@
                                     <div class="form-group">
                                         <label for="txtImpSpecificRateP" class="col-sm-2 control-label"></label>
                                          <div class="col-sm-4">
-                                          <input class="form-control" id="txtAddress4" runat="server" >
+                                          <input class="form-control" id="txtAddress4" runat="server" />
                                         </div>
                                     <label for="txtImpExemptDuty" class="col-sm-1 control-label">Web :</label>
                                        
                                          <div class="col-sm-4">
-                                             <input class="form-control" id="txtWebsite" runat="server" placeholder="Web">
+                                             <input class="form-control" id="txtWebsite" runat="server" placeholder="Web"/>
                                         </div>
                       
                                     </div>
@@ -422,7 +426,7 @@
                                 <div class="form-group">
                                         <label for="txtImpSpecificRateP" class="col-sm-2 control-label">Zip Code :</label>
                                          <div class="col-md-4">
-                                          <input class="form-control" id="txtZipCode" runat="server"  placeholder="Zip Code">
+                                          <input class="form-control" id="txtZipCode" runat="server"  placeholder="Zip Code"/>
                                         
                                     
                                          </div>
@@ -430,7 +434,7 @@
                                     <label for="txtImpExemptDuty" class="col-sm-1 control-label">E-Mail :</label>
                                        
                                          <div class="col-sm-4">
-                                             <input class="form-control" id="txtEmail" runat="server" placeholder="E-Mail">
+                                             <input class="form-control" id="txtEmail" runat="server" placeholder="E-Mail"/>
                                         </div>
                       
                                     </div>
@@ -470,7 +474,7 @@
                               <div class="form-group" >
                                      <label for="txtExpProductCode" class="col-sm-3 control-label">ยอดเงินค้ำประกันทั้งหมด :</label>
                                  <div class="col-md-6">
-                                     <input class="form-control" id="txtAmountGuarantee" runat="server" placeholder="Product Code">
+                                     <input class="form-control" id="txtAmountGuarantee" runat="server" placeholder="Product Code"/>
                                  </div>
                                    <label for="txtExpProductCode" class="col-sm-1 control-label">บาท</label>
                                 
@@ -479,7 +483,7 @@
                              <div class="form-group" >
                                   <label for="txtImpDesc1" class="col-sm-3 control-label">ยอดเงินที่ใช้ไป :</label>
                                <div class="col-md-6" id="ExpDesc1">
-                                  <input class="form-control" id="txtAmountUsed" runat="server" disabled>
+                                  <input class="form-control" id="txtAmountUsed" runat="server" disabled="disabled"/>
                                </div>
                              <label for="txtExpProductCode" class="col-sm-1 control-label">บาท</label>
                                 
@@ -488,7 +492,7 @@
                            <div class="form-group" >
                                <label for="txtExpDesc2" class="col-sm-3 control-label">ยอดเงินคงเหลือ :</label>
                                 <div class="col-md-6" id="ExpDesc2">
-                                    <input class="form-control" id="txtBalance" runat="server">
+                                    <input class="form-control" id="txtBalance" runat="server"/>
                                 </div>
                              <label for="txtExpProductCode" class="col-sm-1 control-label">บาท</label>
                                 
@@ -516,7 +520,7 @@
                     <!------ /. nav-tabs-custom ------>
                 </div>
                 <!----- /.col-lg-12 ------->
-            </div>
+          
             <!--------/.row --------->
         </section>
 

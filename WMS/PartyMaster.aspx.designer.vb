@@ -32,6 +32,15 @@ Partial Public Class PartyMaster
     Protected WithEvents ScriptManager1 As Global.System.Web.UI.ScriptManager
 
     '''<summary>
+    '''btnAddParty control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnAddParty As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
     '''txtPartyCode control.
     '''</summary>
     '''<remarks>
@@ -77,13 +86,13 @@ Partial Public Class PartyMaster
     Protected WithEvents cboLocationID As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''cboCountry control.
+    '''cboCity control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents cboCountry As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents cboCity As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''txtRegistrationNo control.
@@ -471,13 +480,4 @@ Partial Public Class PartyMaster
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents txtBalance As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''btnAddParty control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents btnAddParty As Global.System.Web.UI.HtmlControls.HtmlButton
 End Class

@@ -233,6 +233,7 @@
     <Content Include="Logout.aspx" />
     <Content Include="MasterCode.aspx" />
     <Content Include="MasterGoods.aspx" />
+    <Content Include="MasterPartyAdd.aspx" />
     <Content Include="PartyMaster.aspx" />
     <Content Include="Scripts\bootstrap-colorpicker\dist\css\bootstrap-colorpicker.css" />
     <Content Include="Scripts\bootstrap-colorpicker\dist\css\bootstrap-colorpicker.min.css" />
@@ -7167,31 +7168,31 @@
       <DependentUpon>Connectserver.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblWHPickPackMaster.vb">
-      <DependentUpon>Connectserver.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblWHPickPackNewProduct.vb">
-      <DependentUpon>Connectserver.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblWHPrepairGoodsReceive.vb">
-      <DependentUpon>Connectserver.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblWHPrepairGoodsReceiveDetail.vb">
-      <DependentUpon>Connectserver.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblWHReceiveScantoTemp.vb">
-      <DependentUpon>Connectserver.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblWHRemarkMoveJob.vb">
-      <DependentUpon>Connectserver.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblWHRequestedISSUE.vb">
-      <DependentUpon>Connectserver.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblWHStockCtrl.vb">
-      <DependentUpon>Connectserver.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblWHStockMovement.vb">
-      <DependentUpon>Connectserver.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\VInventoryDetailbyOrder.vb">
       <DependentUpon>Connectserver.tt</DependentUpon>
@@ -7254,6 +7255,13 @@
     </Compile>
     <Compile Include="MasterGoods.aspx.vb">
       <DependentUpon>MasterGoods.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="MasterPartyAdd.aspx.designer.vb">
+      <DependentUpon>MasterPartyAdd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPartyAdd.aspx.vb">
+      <DependentUpon>MasterPartyAdd.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
