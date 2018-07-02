@@ -2767,6 +2767,323 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHConfirmGoodsReceiveDetail' d
     <Property Name="OrderFrmOnline" Type="varchar" MaxLength="50" />
     <Property Name="CustFrmOnline" Type="varchar" MaxLength="50" />
   </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'LKBWarehouse.dbo.tblWHPickPackMaster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="tblWHPickPackMaster">
+    <Key>
+      <PropertyRef Name="NewProductCode" />
+      <PropertyRef Name="rowguid" />
+    </Key>
+    <Property Name="NewProductCode" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="NewPO" Type="varchar" MaxLength="50" />
+    <Property Name="NewOwnerPart" Type="varchar" MaxLength="50" />
+    <Property Name="NewEndUserPart" Type="varchar" MaxLength="50" />
+    <Property Name="NewProductName" Type="varchar" MaxLength="200" />
+    <Property Name="DateProduct" Type="datetime" />
+    <Property Name="Quantity" Type="float" />
+    <Property Name="UnitQuantity" Type="varchar" MaxLength="50" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+    <Property Name="Userby" Type="char" MaxLength="10" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'LKBWarehouse.dbo.tblWHPickPackNewProduct' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="tblWHPickPackNewProduct">
+    <Key>
+      <PropertyRef Name="NewProductCode" />
+      <PropertyRef Name="UseProductCode" />
+      <PropertyRef Name="rowguid" />
+    </Key>
+    <Property Name="NewProductCode" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UseProductCode" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UsePO" Type="varchar" MaxLength="50" />
+    <Property Name="UseOwnerPart" Type="varchar" MaxLength="50" />
+    <Property Name="UseEndUserPart" Type="varchar" MaxLength="50" />
+    <Property Name="UseProductName" Type="varchar" MaxLength="200" />
+    <Property Name="QuantityUse" Type="float" />
+    <Property Name="UnitQuantityUse" Type="varchar" MaxLength="50" />
+    <Property Name="Userby" Type="varchar" MaxLength="100" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'LKBWarehouse.dbo.tblWHPrepairGoodsReceive' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="tblWHPrepairGoodsReceive">
+    <Key>
+      <PropertyRef Name="LOTNo" />
+    </Key>
+    <Property Name="LOTNo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LOTDate" Type="datetime" />
+    <Property Name="CustREFNo" Type="varchar" MaxLength="100" />
+    <Property Name="OwnerCode" Type="varchar" MaxLength="100" />
+    <Property Name="OwnerNameENG" Type="varchar" MaxLength="200" />
+    <Property Name="OwnerStreet_Number" Type="varchar" MaxLength="200" />
+    <Property Name="OwnerDistrict" Type="varchar" MaxLength="200" />
+    <Property Name="OwnerSubProvince" Type="varchar" MaxLength="200" />
+    <Property Name="OwnerProvince" Type="varchar" MaxLength="200" />
+    <Property Name="CustomerCode" Type="varchar" MaxLength="100" />
+    <Property Name="CustomerNameENG" Type="varchar" MaxLength="200" />
+    <Property Name="CustomerStreet_Number" Type="varchar" MaxLength="200" />
+    <Property Name="CustomerDistrict" Type="varchar" MaxLength="200" />
+    <Property Name="CustomerSubProvince" Type="varchar" MaxLength="200" />
+    <Property Name="CustomerProvince" Type="varchar" MaxLength="200" />
+    <Property Name="BrokerCode" Type="varchar" MaxLength="100" />
+    <Property Name="BrokerNameENG" Type="varchar" MaxLength="200" />
+    <Property Name="BrokerStreet_Number" Type="varchar" MaxLength="200" />
+    <Property Name="BrokerDistrict" Type="varchar" MaxLength="200" />
+    <Property Name="BrokerSubprovince" Type="varchar" MaxLength="200" />
+    <Property Name="BrokerProvince" Type="varchar" MaxLength="200" />
+    <Property Name="ENDUserCode" Type="varchar" MaxLength="100" />
+    <Property Name="ENDNameENG" Type="varchar" MaxLength="200" />
+    <Property Name="ENDStreet_Number" Type="varchar" MaxLength="200" />
+    <Property Name="ENDDistrict" Type="varchar" MaxLength="200" />
+    <Property Name="ENDSubprovince" Type="varchar" MaxLength="200" />
+    <Property Name="ENDProvince" Type="varchar" MaxLength="200" />
+    <Property Name="Commodity" Type="varchar" MaxLength="100" />
+    <Property Name="QuantityOfPart" Type="float" />
+    <Property Name="QuantityUnit" Type="varchar" MaxLength="100" />
+    <Property Name="QuantityPackage" Type="float" />
+    <Property Name="PackageUNIT" Type="varchar" MaxLength="50" />
+    <Property Name="QuantityPLT" Type="float" />
+    <Property Name="QuantityPLTUnit" Type="varchar" MaxLength="100" />
+    <Property Name="Weigth" Type="float" />
+    <Property Name="WeigthUnit" Type="varchar" MaxLength="100" />
+    <Property Name="Volume" Type="float" />
+    <Property Name="VolumeUnit" Type="varchar" MaxLength="100" />
+    <Property Name="Remark" Type="varchar" MaxLength="250" />
+    <Property Name="UserBy" Type="varchar" MaxLength="100" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="PrintCount" Type="varchar" MaxLength="50" />
+    <Property Name="UsedStatus" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'LKBWarehouse.dbo.tblWHPrepairGoodsReceiveDetail' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="tblWHPrepairGoodsReceiveDetail">
+    <Key>
+      <PropertyRef Name="LOTNo" />
+      <PropertyRef Name="ItemNo" />
+    </Key>
+    <Property Name="LOTNo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="WHSite" Type="varchar" MaxLength="100" />
+    <Property Name="WHLocation" Type="varchar" MaxLength="100" />
+    <Property Name="ENDCustomer" Type="varchar" MaxLength="200" />
+    <Property Name="WHSource" Type="varchar" MaxLength="200" />
+    <Property Name="CustomerLOTNo" Type="varchar" MaxLength="200" />
+    <Property Name="ItemNo" Type="float" Nullable="false" />
+    <Property Name="ProductCode" Type="varchar" MaxLength="100" />
+    <Property Name="CustomerPN" Type="varchar" MaxLength="100" />
+    <Property Name="OwnerPN" Type="varchar" MaxLength="100" />
+    <Property Name="ProductDesc" Type="varchar" MaxLength="200" />
+    <Property Name="Measurement" Type="varchar" MaxLength="50" />
+    <Property Name="ProductWidth" Type="float" />
+    <Property Name="ProductLength" Type="float" />
+    <Property Name="ProductHeight" Type="float" />
+    <Property Name="ProductVolume" Type="float" />
+    <Property Name="OrderNo" Type="varchar" MaxLength="100" />
+    <Property Name="ReceiveNo" Type="varchar" MaxLength="100" />
+    <Property Name="Type" Type="varchar" MaxLength="100" />
+    <Property Name="ManufacturingDate" Type="datetime" />
+    <Property Name="ExpiredDate" Type="datetime" />
+    <Property Name="ReceiveDate" Type="datetime" />
+    <Property Name="Quantity" Type="float" />
+    <Property Name="QuantityUnit" Type="varchar" MaxLength="100" />
+    <Property Name="Weigth" Type="float" />
+    <Property Name="WeigthUnit" Type="varchar" MaxLength="50" />
+    <Property Name="Currency" Type="varchar" MaxLength="50" />
+    <Property Name="ExchangeRate" Type="float" />
+    <Property Name="PriceForeigh" Type="float" />
+    <Property Name="PriceForeighAmount" Type="float" />
+    <Property Name="PriceBath" Type="float" />
+    <Property Name="PriceBathAmount" Type="float" />
+    <Property Name="PalletNo" Type="varchar" MaxLength="50" />
+    <Property Name="UserBy" Type="varchar" MaxLength="100" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="Status" Type="float" />
+    <Property Name="Supplier" Type="varchar" MaxLength="100" />
+    <Property Name="Buyer" Type="varchar" MaxLength="100" />
+    <Property Name="Exporter" Type="varchar" MaxLength="100" />
+    <Property Name="Destination" Type="varchar" MaxLength="100" />
+    <Property Name="Consignee" Type="varchar" MaxLength="100" />
+    <Property Name="ShippingMark" Type="varchar" MaxLength="100" />
+    <Property Name="EntryNo" Type="varchar" MaxLength="50" />
+    <Property Name="EntryItemNo" Type="int" />
+    <Property Name="Invoice" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'LKBWarehouse.dbo.tblWHReceiveScantoTemp' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="tblWHReceiveScantoTemp">
+    <Key>
+      <PropertyRef Name="JobNo" />
+      <PropertyRef Name="OwnerPN" />
+      <PropertyRef Name="CustomerLOTNo" />
+      <PropertyRef Name="BoxNo" />
+    </Key>
+    <Property Name="JobNo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ProductCode" Type="varchar" MaxLength="100" />
+    <Property Name="CustomerPN" Type="char" MaxLength="100" />
+    <Property Name="OwnerPN" Type="char" MaxLength="100" Nullable="false" />
+    <Property Name="ProductDesc" Type="char" MaxLength="200" />
+    <Property Name="CustomerLOTNo" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="ReceiveDate" Type="datetime" />
+    <Property Name="Quantity" Type="float" />
+    <Property Name="QuantityUnit" Type="varchar" MaxLength="50" />
+    <Property Name="BoxNo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PalletNo" Type="varchar" MaxLength="50" />
+    <Property Name="TransectionDate" Type="datetime" />
+    <Property Name="UserBy" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'LKBWarehouse.dbo.tblWHRemarkMoveJob' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="tblWHRemarkMoveJob">
+    <Key>
+      <PropertyRef Name="PullSignal" />
+      <PropertyRef Name="LOTNo" />
+    </Key>
+    <Property Name="PullSignal" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="LOTNo" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="MovetoLot" Type="varchar" MaxLength="100" />
+    <Property Name="CustREFNo" Type="varchar" MaxLength="100" />
+    <Property Name="WHSite" Type="varchar" MaxLength="50" />
+    <Property Name="Status1" Type="varchar" MaxLength="50" />
+    <Property Name="UserBy" Type="varchar" MaxLength="50" />
+    <Property Name="LastUpdate" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'LKBWarehouse.dbo.tblWHRequestedISSUE' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="tblWHRequestedISSUE">
+    <Key>
+      <PropertyRef Name="PullSignal" />
+      <PropertyRef Name="LotNo" />
+      <PropertyRef Name="ItemNo" />
+    </Key>
+    <Property Name="PullSignal" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="LotNo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ItemNo" Type="int" Nullable="false" />
+    <Property Name="ProductNo" Type="varchar" MaxLength="50" />
+    <Property Name="CutomerPart" Type="varchar" MaxLength="50" />
+    <Property Name="OwnerPart" Type="varchar" MaxLength="50" />
+    <Property Name="ProductDesc" Type="varchar" MaxLength="200" />
+    <Property Name="RequestQTY" Type="float" />
+    <Property Name="QTYUnit" Type="varchar" MaxLength="50" />
+    <Property Name="OrderNo" Type="varchar" MaxLength="50" />
+    <Property Name="PriceForeigh" Type="float" />
+    <Property Name="PriceBath" Type="float" />
+    <Property Name="CustomerLot" Type="varchar" MaxLength="50" />
+    <Property Name="ManufacturingDate" Type="datetime" />
+    <Property Name="ExpiredDate" Type="datetime" />
+    <Property Name="CreateBy" Type="varchar" MaxLength="50" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="ModifyBy" Type="varchar" MaxLength="50" />
+    <Property Name="ModifyDate" Type="datetime" />
+    <Property Name="AvailableRequestQTY" Type="float" />
+    <Property Name="ItemNo1" Type="float" />
+    <Property Name="WHSource" Type="varchar" MaxLength="50" />
+    <Property Name="ItemInvoice" Type="int" />
+    <Property Name="NetWeight" Type="float" />
+    <Property Name="NetWeightUnit" Type="varchar" MaxLength="50" />
+    <Property Name="GrossWeight" Type="float" />
+    <Property Name="GrossWeightUnit" Type="varchar" MaxLength="50" />
+    <Property Name="Currency" Type="varchar" MaxLength="3" />
+    <Property Name="Amount" Type="float" />
+    <Property Name="Package" Type="int" />
+    <Property Name="Origin" Type="varchar" MaxLength="2" />
+    <Property Name="PalletNo" Type="varchar" MaxLength="30" />
+    <Property Name="OrderFrmOnline" Type="varchar" MaxLength="50" />
+    <Property Name="CustFrmOnline" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockCtrl' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="tblWHStockCtrl">
+    <Key>
+      <PropertyRef Name="ProductCode" />
+    </Key>
+    <Property Name="ProductCode" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="OwnerPart" Type="varchar" MaxLength="50" />
+    <Property Name="ENDUserPart" Type="varchar" MaxLength="50" />
+    <Property Name="ProductDescription" Type="varchar" MaxLength="200" />
+    <Property Name="OwnerCode" Type="varchar" MaxLength="50" />
+    <Property Name="MinimumStock" Type="float" />
+    <Property Name="PhysicalCount" Type="float" />
+    <Property Name="SystemCount" Type="float" />
+    <Property Name="Adjustment" Type="float" />
+    <Property Name="ReceivedQTY" Type="float" />
+    <Property Name="PickQTY" Type="float" />
+    <Property Name="DamageQTY" Type="float" />
+    <Property Name="AvailableQTY" Type="float" />
+    <Property Name="CreateBy" Type="varchar" MaxLength="50" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="UpdateBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdateDate" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="tblWHStockMovement">
+    <Key>
+      <PropertyRef Name="LOTNo" />
+      <PropertyRef Name="ItemNo" />
+      <PropertyRef Name="ReceiveNo" />
+      <PropertyRef Name="item" />
+    </Key>
+    <Property Name="LOTNo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="WHSite" Type="varchar" MaxLength="100" />
+    <Property Name="WHLocation" Type="varchar" MaxLength="100" />
+    <Property Name="OwnerCode" Type="varchar" MaxLength="50" />
+    <Property Name="ENDCustomer" Type="varchar" MaxLength="200" />
+    <Property Name="WHSource" Type="varchar" MaxLength="200" />
+    <Property Name="CustomerLOTNo" Type="varchar" MaxLength="100" />
+    <Property Name="ItemNo" Type="float" Nullable="false" />
+    <Property Name="ProductCode" Type="varchar" MaxLength="100" />
+    <Property Name="ProductDesc" Type="varchar" MaxLength="200" />
+    <Property Name="CustomerPN" Type="varchar" MaxLength="100" />
+    <Property Name="OwnerPN" Type="varchar" MaxLength="100" />
+    <Property Name="Measurement" Type="varchar" MaxLength="50" />
+    <Property Name="ProductWidth" Type="float" />
+    <Property Name="ProductLength" Type="float" />
+    <Property Name="ProductHeight" Type="float" />
+    <Property Name="ProductVolume" Type="float" />
+    <Property Name="OrderNo" Type="varchar" MaxLength="100" />
+    <Property Name="ReceiveNo" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Type" Type="varchar" MaxLength="100" />
+    <Property Name="ManufacturingDate" Type="datetime" />
+    <Property Name="ExpiredDate" Type="datetime" />
+    <Property Name="ReceiveDate" Type="datetime" />
+    <Property Name="ISSUEDate" Type="datetime" />
+    <Property Name="StockType" Type="varchar" MaxLength="50" />
+    <Property Name="ReceivedQuantity" Type="float" />
+    <Property Name="QuantityUnit" Type="varchar" MaxLength="100" />
+    <Property Name="DamageQuantity" Type="float" />
+    <Property Name="DamageUnit" Type="varchar" MaxLength="50" />
+    <Property Name="ISSUEQuantity" Type="float" />
+    <Property Name="ISSUEUnit" Type="varchar" MaxLength="50" />
+    <Property Name="AvalableQuantity" Type="float" />
+    <Property Name="Weigth" Type="float" />
+    <Property Name="WeigthUnit" Type="varchar" MaxLength="50" />
+    <Property Name="Currency" Type="varchar" MaxLength="50" />
+    <Property Name="ExchangeRate" Type="float" />
+    <Property Name="PriceForeigh" Type="float" />
+    <Property Name="PriceForeighAmount" Type="float" />
+    <Property Name="PriceBath" Type="float" />
+    <Property Name="PriceBathAmount" Type="float" />
+    <Property Name="PalletNo" Type="varchar" MaxLength="50" />
+    <Property Name="UserBy" Type="varchar" MaxLength="100" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="Status" Type="float" />
+    <Property Name="TransactionDate" Type="datetime" />
+    <Property Name="TypeDamage" Type="varchar" MaxLength="50" />
+    <Property Name="item" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Supplier" Type="varchar" MaxLength="100" />
+    <Property Name="Buyer" Type="varchar" MaxLength="100" />
+    <Property Name="Exporter" Type="varchar" MaxLength="100" />
+    <Property Name="Destination" Type="varchar" MaxLength="100" />
+    <Property Name="Consignee" Type="varchar" MaxLength="100" />
+    <Property Name="ShippingMark" Type="varchar" MaxLength="100" />
+    <Property Name="EntryNo" Type="varchar" MaxLength="50" />
+    <Property Name="EntryItemNo" Type="int" />
+    <Property Name="Invoice" Type="varchar" MaxLength="50" />
+    <Property Name="OrderFrmOnline" Type="varchar" MaxLength="50" />
+    <Property Name="CustFrmOnline" Type="varchar" MaxLength="50" />
+  </EntityType>
   <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
   <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
@@ -5064,6 +5381,283 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHConfirmGoodsReceiveDetail' d
     [tblWHConfirmGoodsReceiveDetail].[OrderFrmOnline] AS [OrderFrmOnline], 
     [tblWHConfirmGoodsReceiveDetail].[CustFrmOnline] AS [CustFrmOnline]
     FROM [dbo].[tblWHConfirmGoodsReceiveDetail] AS [tblWHConfirmGoodsReceiveDetail]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="tblWHPickPackMaster" EntityType="Self.tblWHPickPackMaster" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [tblWHPickPackMaster].[NewProductCode] AS [NewProductCode], 
+    [tblWHPickPackMaster].[NewPO] AS [NewPO], 
+    [tblWHPickPackMaster].[NewOwnerPart] AS [NewOwnerPart], 
+    [tblWHPickPackMaster].[NewEndUserPart] AS [NewEndUserPart], 
+    [tblWHPickPackMaster].[NewProductName] AS [NewProductName], 
+    [tblWHPickPackMaster].[DateProduct] AS [DateProduct], 
+    [tblWHPickPackMaster].[Quantity] AS [Quantity], 
+    [tblWHPickPackMaster].[UnitQuantity] AS [UnitQuantity], 
+    [tblWHPickPackMaster].[Status] AS [Status], 
+    [tblWHPickPackMaster].[Userby] AS [Userby], 
+    [tblWHPickPackMaster].[LastUpdate] AS [LastUpdate], 
+    [tblWHPickPackMaster].[rowguid] AS [rowguid]
+    FROM [dbo].[tblWHPickPackMaster] AS [tblWHPickPackMaster]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="tblWHPickPackNewProduct" EntityType="Self.tblWHPickPackNewProduct" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [tblWHPickPackNewProduct].[NewProductCode] AS [NewProductCode], 
+    [tblWHPickPackNewProduct].[UseProductCode] AS [UseProductCode], 
+    [tblWHPickPackNewProduct].[UsePO] AS [UsePO], 
+    [tblWHPickPackNewProduct].[UseOwnerPart] AS [UseOwnerPart], 
+    [tblWHPickPackNewProduct].[UseEndUserPart] AS [UseEndUserPart], 
+    [tblWHPickPackNewProduct].[UseProductName] AS [UseProductName], 
+    [tblWHPickPackNewProduct].[QuantityUse] AS [QuantityUse], 
+    [tblWHPickPackNewProduct].[UnitQuantityUse] AS [UnitQuantityUse], 
+    [tblWHPickPackNewProduct].[Userby] AS [Userby], 
+    [tblWHPickPackNewProduct].[LastUpdate] AS [LastUpdate], 
+    [tblWHPickPackNewProduct].[rowguid] AS [rowguid]
+    FROM [dbo].[tblWHPickPackNewProduct] AS [tblWHPickPackNewProduct]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="tblWHPrepairGoodsReceive" EntityType="Self.tblWHPrepairGoodsReceive" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [tblWHPrepairGoodsReceive].[LOTNo] AS [LOTNo], 
+    [tblWHPrepairGoodsReceive].[LOTDate] AS [LOTDate], 
+    [tblWHPrepairGoodsReceive].[CustREFNo] AS [CustREFNo], 
+    [tblWHPrepairGoodsReceive].[OwnerCode] AS [OwnerCode], 
+    [tblWHPrepairGoodsReceive].[OwnerNameENG] AS [OwnerNameENG], 
+    [tblWHPrepairGoodsReceive].[OwnerStreet_Number] AS [OwnerStreet_Number], 
+    [tblWHPrepairGoodsReceive].[OwnerDistrict] AS [OwnerDistrict], 
+    [tblWHPrepairGoodsReceive].[OwnerSubProvince] AS [OwnerSubProvince], 
+    [tblWHPrepairGoodsReceive].[OwnerProvince] AS [OwnerProvince], 
+    [tblWHPrepairGoodsReceive].[CustomerCode] AS [CustomerCode], 
+    [tblWHPrepairGoodsReceive].[CustomerNameENG] AS [CustomerNameENG], 
+    [tblWHPrepairGoodsReceive].[CustomerStreet_Number] AS [CustomerStreet_Number], 
+    [tblWHPrepairGoodsReceive].[CustomerDistrict] AS [CustomerDistrict], 
+    [tblWHPrepairGoodsReceive].[CustomerSubProvince] AS [CustomerSubProvince], 
+    [tblWHPrepairGoodsReceive].[CustomerProvince] AS [CustomerProvince], 
+    [tblWHPrepairGoodsReceive].[BrokerCode] AS [BrokerCode], 
+    [tblWHPrepairGoodsReceive].[BrokerNameENG] AS [BrokerNameENG], 
+    [tblWHPrepairGoodsReceive].[BrokerStreet_Number] AS [BrokerStreet_Number], 
+    [tblWHPrepairGoodsReceive].[BrokerDistrict] AS [BrokerDistrict], 
+    [tblWHPrepairGoodsReceive].[BrokerSubprovince] AS [BrokerSubprovince], 
+    [tblWHPrepairGoodsReceive].[BrokerProvince] AS [BrokerProvince], 
+    [tblWHPrepairGoodsReceive].[ENDUserCode] AS [ENDUserCode], 
+    [tblWHPrepairGoodsReceive].[ENDNameENG] AS [ENDNameENG], 
+    [tblWHPrepairGoodsReceive].[ENDStreet_Number] AS [ENDStreet_Number], 
+    [tblWHPrepairGoodsReceive].[ENDDistrict] AS [ENDDistrict], 
+    [tblWHPrepairGoodsReceive].[ENDSubprovince] AS [ENDSubprovince], 
+    [tblWHPrepairGoodsReceive].[ENDProvince] AS [ENDProvince], 
+    [tblWHPrepairGoodsReceive].[Commodity] AS [Commodity], 
+    [tblWHPrepairGoodsReceive].[QuantityOfPart] AS [QuantityOfPart], 
+    [tblWHPrepairGoodsReceive].[QuantityUnit] AS [QuantityUnit], 
+    [tblWHPrepairGoodsReceive].[QuantityPackage] AS [QuantityPackage], 
+    [tblWHPrepairGoodsReceive].[PackageUNIT] AS [PackageUNIT], 
+    [tblWHPrepairGoodsReceive].[QuantityPLT] AS [QuantityPLT], 
+    [tblWHPrepairGoodsReceive].[QuantityPLTUnit] AS [QuantityPLTUnit], 
+    [tblWHPrepairGoodsReceive].[Weigth] AS [Weigth], 
+    [tblWHPrepairGoodsReceive].[WeigthUnit] AS [WeigthUnit], 
+    [tblWHPrepairGoodsReceive].[Volume] AS [Volume], 
+    [tblWHPrepairGoodsReceive].[VolumeUnit] AS [VolumeUnit], 
+    [tblWHPrepairGoodsReceive].[Remark] AS [Remark], 
+    [tblWHPrepairGoodsReceive].[UserBy] AS [UserBy], 
+    [tblWHPrepairGoodsReceive].[LastUpdate] AS [LastUpdate], 
+    [tblWHPrepairGoodsReceive].[PrintCount] AS [PrintCount], 
+    [tblWHPrepairGoodsReceive].[UsedStatus] AS [UsedStatus]
+    FROM [dbo].[tblWHPrepairGoodsReceive] AS [tblWHPrepairGoodsReceive]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="tblWHPrepairGoodsReceiveDetail" EntityType="Self.tblWHPrepairGoodsReceiveDetail" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [tblWHPrepairGoodsReceiveDetail].[LOTNo] AS [LOTNo], 
+    [tblWHPrepairGoodsReceiveDetail].[WHSite] AS [WHSite], 
+    [tblWHPrepairGoodsReceiveDetail].[WHLocation] AS [WHLocation], 
+    [tblWHPrepairGoodsReceiveDetail].[ENDCustomer] AS [ENDCustomer], 
+    [tblWHPrepairGoodsReceiveDetail].[WHSource] AS [WHSource], 
+    [tblWHPrepairGoodsReceiveDetail].[CustomerLOTNo] AS [CustomerLOTNo], 
+    [tblWHPrepairGoodsReceiveDetail].[ItemNo] AS [ItemNo], 
+    [tblWHPrepairGoodsReceiveDetail].[ProductCode] AS [ProductCode], 
+    [tblWHPrepairGoodsReceiveDetail].[CustomerPN] AS [CustomerPN], 
+    [tblWHPrepairGoodsReceiveDetail].[OwnerPN] AS [OwnerPN], 
+    [tblWHPrepairGoodsReceiveDetail].[ProductDesc] AS [ProductDesc], 
+    [tblWHPrepairGoodsReceiveDetail].[Measurement] AS [Measurement], 
+    [tblWHPrepairGoodsReceiveDetail].[ProductWidth] AS [ProductWidth], 
+    [tblWHPrepairGoodsReceiveDetail].[ProductLength] AS [ProductLength], 
+    [tblWHPrepairGoodsReceiveDetail].[ProductHeight] AS [ProductHeight], 
+    [tblWHPrepairGoodsReceiveDetail].[ProductVolume] AS [ProductVolume], 
+    [tblWHPrepairGoodsReceiveDetail].[OrderNo] AS [OrderNo], 
+    [tblWHPrepairGoodsReceiveDetail].[ReceiveNo] AS [ReceiveNo], 
+    [tblWHPrepairGoodsReceiveDetail].[Type] AS [Type], 
+    [tblWHPrepairGoodsReceiveDetail].[ManufacturingDate] AS [ManufacturingDate], 
+    [tblWHPrepairGoodsReceiveDetail].[ExpiredDate] AS [ExpiredDate], 
+    [tblWHPrepairGoodsReceiveDetail].[ReceiveDate] AS [ReceiveDate], 
+    [tblWHPrepairGoodsReceiveDetail].[Quantity] AS [Quantity], 
+    [tblWHPrepairGoodsReceiveDetail].[QuantityUnit] AS [QuantityUnit], 
+    [tblWHPrepairGoodsReceiveDetail].[Weigth] AS [Weigth], 
+    [tblWHPrepairGoodsReceiveDetail].[WeigthUnit] AS [WeigthUnit], 
+    [tblWHPrepairGoodsReceiveDetail].[Currency] AS [Currency], 
+    [tblWHPrepairGoodsReceiveDetail].[ExchangeRate] AS [ExchangeRate], 
+    [tblWHPrepairGoodsReceiveDetail].[PriceForeigh] AS [PriceForeigh], 
+    [tblWHPrepairGoodsReceiveDetail].[PriceForeighAmount] AS [PriceForeighAmount], 
+    [tblWHPrepairGoodsReceiveDetail].[PriceBath] AS [PriceBath], 
+    [tblWHPrepairGoodsReceiveDetail].[PriceBathAmount] AS [PriceBathAmount], 
+    [tblWHPrepairGoodsReceiveDetail].[PalletNo] AS [PalletNo], 
+    [tblWHPrepairGoodsReceiveDetail].[UserBy] AS [UserBy], 
+    [tblWHPrepairGoodsReceiveDetail].[LastUpdate] AS [LastUpdate], 
+    [tblWHPrepairGoodsReceiveDetail].[Status] AS [Status], 
+    [tblWHPrepairGoodsReceiveDetail].[Supplier] AS [Supplier], 
+    [tblWHPrepairGoodsReceiveDetail].[Buyer] AS [Buyer], 
+    [tblWHPrepairGoodsReceiveDetail].[Exporter] AS [Exporter], 
+    [tblWHPrepairGoodsReceiveDetail].[Destination] AS [Destination], 
+    [tblWHPrepairGoodsReceiveDetail].[Consignee] AS [Consignee], 
+    [tblWHPrepairGoodsReceiveDetail].[ShippingMark] AS [ShippingMark], 
+    [tblWHPrepairGoodsReceiveDetail].[EntryNo] AS [EntryNo], 
+    [tblWHPrepairGoodsReceiveDetail].[EntryItemNo] AS [EntryItemNo], 
+    [tblWHPrepairGoodsReceiveDetail].[Invoice] AS [Invoice]
+    FROM [dbo].[tblWHPrepairGoodsReceiveDetail] AS [tblWHPrepairGoodsReceiveDetail]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="tblWHReceiveScantoTemp" EntityType="Self.tblWHReceiveScantoTemp" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [tblWHReceiveScantoTemp].[JobNo] AS [JobNo], 
+    [tblWHReceiveScantoTemp].[ProductCode] AS [ProductCode], 
+    [tblWHReceiveScantoTemp].[CustomerPN] AS [CustomerPN], 
+    [tblWHReceiveScantoTemp].[OwnerPN] AS [OwnerPN], 
+    [tblWHReceiveScantoTemp].[ProductDesc] AS [ProductDesc], 
+    [tblWHReceiveScantoTemp].[CustomerLOTNo] AS [CustomerLOTNo], 
+    [tblWHReceiveScantoTemp].[ReceiveDate] AS [ReceiveDate], 
+    [tblWHReceiveScantoTemp].[Quantity] AS [Quantity], 
+    [tblWHReceiveScantoTemp].[QuantityUnit] AS [QuantityUnit], 
+    [tblWHReceiveScantoTemp].[BoxNo] AS [BoxNo], 
+    [tblWHReceiveScantoTemp].[PalletNo] AS [PalletNo], 
+    [tblWHReceiveScantoTemp].[TransectionDate] AS [TransectionDate], 
+    [tblWHReceiveScantoTemp].[UserBy] AS [UserBy]
+    FROM [dbo].[tblWHReceiveScantoTemp] AS [tblWHReceiveScantoTemp]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="tblWHRemarkMoveJob" EntityType="Self.tblWHRemarkMoveJob" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [tblWHRemarkMoveJob].[PullSignal] AS [PullSignal], 
+    [tblWHRemarkMoveJob].[LOTNo] AS [LOTNo], 
+    [tblWHRemarkMoveJob].[MovetoLot] AS [MovetoLot], 
+    [tblWHRemarkMoveJob].[CustREFNo] AS [CustREFNo], 
+    [tblWHRemarkMoveJob].[WHSite] AS [WHSite], 
+    [tblWHRemarkMoveJob].[Status1] AS [Status1], 
+    [tblWHRemarkMoveJob].[UserBy] AS [UserBy], 
+    [tblWHRemarkMoveJob].[LastUpdate] AS [LastUpdate]
+    FROM [dbo].[tblWHRemarkMoveJob] AS [tblWHRemarkMoveJob]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="tblWHRequestedISSUE" EntityType="Self.tblWHRequestedISSUE" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [tblWHRequestedISSUE].[PullSignal] AS [PullSignal], 
+    [tblWHRequestedISSUE].[LotNo] AS [LotNo], 
+    [tblWHRequestedISSUE].[ItemNo] AS [ItemNo], 
+    [tblWHRequestedISSUE].[ProductNo] AS [ProductNo], 
+    [tblWHRequestedISSUE].[CutomerPart] AS [CutomerPart], 
+    [tblWHRequestedISSUE].[OwnerPart] AS [OwnerPart], 
+    [tblWHRequestedISSUE].[ProductDesc] AS [ProductDesc], 
+    [tblWHRequestedISSUE].[RequestQTY] AS [RequestQTY], 
+    [tblWHRequestedISSUE].[QTYUnit] AS [QTYUnit], 
+    [tblWHRequestedISSUE].[OrderNo] AS [OrderNo], 
+    [tblWHRequestedISSUE].[PriceForeigh] AS [PriceForeigh], 
+    [tblWHRequestedISSUE].[PriceBath] AS [PriceBath], 
+    [tblWHRequestedISSUE].[CustomerLot] AS [CustomerLot], 
+    [tblWHRequestedISSUE].[ManufacturingDate] AS [ManufacturingDate], 
+    [tblWHRequestedISSUE].[ExpiredDate] AS [ExpiredDate], 
+    [tblWHRequestedISSUE].[CreateBy] AS [CreateBy], 
+    [tblWHRequestedISSUE].[CreateDate] AS [CreateDate], 
+    [tblWHRequestedISSUE].[ModifyBy] AS [ModifyBy], 
+    [tblWHRequestedISSUE].[ModifyDate] AS [ModifyDate], 
+    [tblWHRequestedISSUE].[AvailableRequestQTY] AS [AvailableRequestQTY], 
+    [tblWHRequestedISSUE].[ItemNo1] AS [ItemNo1], 
+    [tblWHRequestedISSUE].[WHSource] AS [WHSource], 
+    [tblWHRequestedISSUE].[ItemInvoice] AS [ItemInvoice], 
+    [tblWHRequestedISSUE].[NetWeight] AS [NetWeight], 
+    [tblWHRequestedISSUE].[NetWeightUnit] AS [NetWeightUnit], 
+    [tblWHRequestedISSUE].[GrossWeight] AS [GrossWeight], 
+    [tblWHRequestedISSUE].[GrossWeightUnit] AS [GrossWeightUnit], 
+    [tblWHRequestedISSUE].[Currency] AS [Currency], 
+    [tblWHRequestedISSUE].[Amount] AS [Amount], 
+    [tblWHRequestedISSUE].[Package] AS [Package], 
+    [tblWHRequestedISSUE].[Origin] AS [Origin], 
+    [tblWHRequestedISSUE].[PalletNo] AS [PalletNo], 
+    [tblWHRequestedISSUE].[OrderFrmOnline] AS [OrderFrmOnline], 
+    [tblWHRequestedISSUE].[CustFrmOnline] AS [CustFrmOnline]
+    FROM [dbo].[tblWHRequestedISSUE] AS [tblWHRequestedISSUE]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="tblWHStockCtrl" EntityType="Self.tblWHStockCtrl" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [tblWHStockCtrl].[ProductCode] AS [ProductCode], 
+    [tblWHStockCtrl].[OwnerPart] AS [OwnerPart], 
+    [tblWHStockCtrl].[ENDUserPart] AS [ENDUserPart], 
+    [tblWHStockCtrl].[ProductDescription] AS [ProductDescription], 
+    [tblWHStockCtrl].[OwnerCode] AS [OwnerCode], 
+    [tblWHStockCtrl].[MinimumStock] AS [MinimumStock], 
+    [tblWHStockCtrl].[PhysicalCount] AS [PhysicalCount], 
+    [tblWHStockCtrl].[SystemCount] AS [SystemCount], 
+    [tblWHStockCtrl].[Adjustment] AS [Adjustment], 
+    [tblWHStockCtrl].[ReceivedQTY] AS [ReceivedQTY], 
+    [tblWHStockCtrl].[PickQTY] AS [PickQTY], 
+    [tblWHStockCtrl].[DamageQTY] AS [DamageQTY], 
+    [tblWHStockCtrl].[AvailableQTY] AS [AvailableQTY], 
+    [tblWHStockCtrl].[CreateBy] AS [CreateBy], 
+    [tblWHStockCtrl].[CreateDate] AS [CreateDate], 
+    [tblWHStockCtrl].[UpdateBy] AS [UpdateBy], 
+    [tblWHStockCtrl].[UpdateDate] AS [UpdateDate]
+    FROM [dbo].[tblWHStockCtrl] AS [tblWHStockCtrl]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="tblWHStockMovement" EntityType="Self.tblWHStockMovement" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [tblWHStockMovement].[LOTNo] AS [LOTNo], 
+    [tblWHStockMovement].[WHSite] AS [WHSite], 
+    [tblWHStockMovement].[WHLocation] AS [WHLocation], 
+    [tblWHStockMovement].[OwnerCode] AS [OwnerCode], 
+    [tblWHStockMovement].[ENDCustomer] AS [ENDCustomer], 
+    [tblWHStockMovement].[WHSource] AS [WHSource], 
+    [tblWHStockMovement].[CustomerLOTNo] AS [CustomerLOTNo], 
+    [tblWHStockMovement].[ItemNo] AS [ItemNo], 
+    [tblWHStockMovement].[ProductCode] AS [ProductCode], 
+    [tblWHStockMovement].[ProductDesc] AS [ProductDesc], 
+    [tblWHStockMovement].[CustomerPN] AS [CustomerPN], 
+    [tblWHStockMovement].[OwnerPN] AS [OwnerPN], 
+    [tblWHStockMovement].[Measurement] AS [Measurement], 
+    [tblWHStockMovement].[ProductWidth] AS [ProductWidth], 
+    [tblWHStockMovement].[ProductLength] AS [ProductLength], 
+    [tblWHStockMovement].[ProductHeight] AS [ProductHeight], 
+    [tblWHStockMovement].[ProductVolume] AS [ProductVolume], 
+    [tblWHStockMovement].[OrderNo] AS [OrderNo], 
+    [tblWHStockMovement].[ReceiveNo] AS [ReceiveNo], 
+    [tblWHStockMovement].[Type] AS [Type], 
+    [tblWHStockMovement].[ManufacturingDate] AS [ManufacturingDate], 
+    [tblWHStockMovement].[ExpiredDate] AS [ExpiredDate], 
+    [tblWHStockMovement].[ReceiveDate] AS [ReceiveDate], 
+    [tblWHStockMovement].[ISSUEDate] AS [ISSUEDate], 
+    [tblWHStockMovement].[StockType] AS [StockType], 
+    [tblWHStockMovement].[ReceivedQuantity] AS [ReceivedQuantity], 
+    [tblWHStockMovement].[QuantityUnit] AS [QuantityUnit], 
+    [tblWHStockMovement].[DamageQuantity] AS [DamageQuantity], 
+    [tblWHStockMovement].[DamageUnit] AS [DamageUnit], 
+    [tblWHStockMovement].[ISSUEQuantity] AS [ISSUEQuantity], 
+    [tblWHStockMovement].[ISSUEUnit] AS [ISSUEUnit], 
+    [tblWHStockMovement].[AvalableQuantity] AS [AvalableQuantity], 
+    [tblWHStockMovement].[Weigth] AS [Weigth], 
+    [tblWHStockMovement].[WeigthUnit] AS [WeigthUnit], 
+    [tblWHStockMovement].[Currency] AS [Currency], 
+    [tblWHStockMovement].[ExchangeRate] AS [ExchangeRate], 
+    [tblWHStockMovement].[PriceForeigh] AS [PriceForeigh], 
+    [tblWHStockMovement].[PriceForeighAmount] AS [PriceForeighAmount], 
+    [tblWHStockMovement].[PriceBath] AS [PriceBath], 
+    [tblWHStockMovement].[PriceBathAmount] AS [PriceBathAmount], 
+    [tblWHStockMovement].[PalletNo] AS [PalletNo], 
+    [tblWHStockMovement].[UserBy] AS [UserBy], 
+    [tblWHStockMovement].[LastUpdate] AS [LastUpdate], 
+    [tblWHStockMovement].[Status] AS [Status], 
+    [tblWHStockMovement].[TransactionDate] AS [TransactionDate], 
+    [tblWHStockMovement].[TypeDamage] AS [TypeDamage], 
+    [tblWHStockMovement].[item] AS [item], 
+    [tblWHStockMovement].[Supplier] AS [Supplier], 
+    [tblWHStockMovement].[Buyer] AS [Buyer], 
+    [tblWHStockMovement].[Exporter] AS [Exporter], 
+    [tblWHStockMovement].[Destination] AS [Destination], 
+    [tblWHStockMovement].[Consignee] AS [Consignee], 
+    [tblWHStockMovement].[ShippingMark] AS [ShippingMark], 
+    [tblWHStockMovement].[EntryNo] AS [EntryNo], 
+    [tblWHStockMovement].[EntryItemNo] AS [EntryItemNo], 
+    [tblWHStockMovement].[Invoice] AS [Invoice], 
+    [tblWHStockMovement].[OrderFrmOnline] AS [OrderFrmOnline], 
+    [tblWHStockMovement].[CustFrmOnline] AS [CustFrmOnline]
+    FROM [dbo].[tblWHStockMovement] AS [tblWHStockMovement]</DefiningQuery>
     </EntitySet>
   </EntityContainer>
 </Schema>
