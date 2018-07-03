@@ -68,6 +68,15 @@ Partial Public Class UserMenu
     Protected WithEvents btnSave As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
+    '''btnCopy control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnCopy As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
     '''Repeater1 control.
     '''</summary>
     '''<remarks>

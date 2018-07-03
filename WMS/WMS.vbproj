@@ -229,6 +229,8 @@
     <Content Include="AddGroup.aspx" />
     <Content Include="AddUser.aspx" />
     <Content Include="HomeMain.aspx" />
+    <Content Include="Image\0.png" />
+    <Content Include="Image\1.png" />
     <Content Include="LogIN.aspx" />
     <Content Include="Logout.aspx" />
     <Content Include="MasterCode.aspx" />

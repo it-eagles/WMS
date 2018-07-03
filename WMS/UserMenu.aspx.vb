@@ -74,13 +74,20 @@ Public Class UserMenu
 
     End Sub
     Public Sub showUserList()
-        Dim formlist = (From u In db.tblMenus
-                        Group By Form = u.Form
-                        Into f = Group, Count())
-
+       
+        'Dim formlist = (From u In db.tblMenus
+        '                Group By Form = u.Form
+        '                Into f = Group, Count())
+        Dim formlist = (From u In db.tblUserMenus
+                 Select New With {
+                     u.Form,
+                     u.Read_,
+                     u.Save_,
+                     u.Edit_,
+                     u.Delete_}).ToList
 
         If formlist.Count > 0 Then
-            Repeater1.DataSource = formlist.ToList
+            Repeater1.DataSource = formlist
             Repeater1.DataBind()
         Else
             Me.Repeater1.DataSource = Nothing
@@ -225,27 +232,75 @@ Public Class UserMenu
         '    'Throw ex
         'End Try
     End Sub
-    Protected Sub Repeater3_ItemDataBound(sender As Object, e As RepeaterItemEventArgs) Handles Repeater2.ItemDataBound
+    Protected Sub Repeater1_ItemDataBound(sender As Object, e As RepeaterItemEventArgs) Handles Repeater1.ItemDataBound
+        Dim Read As String
+        Dim Save As String
+        Dim Edit As String
+        Dim Delete As String
+        If e.Item.ItemType = ListItemType.Item OrElse e.Item.ItemType = ListItemType.AlternatingItem Then
+            Dim lblForm As Label = CType(e.Item.FindControl("lblForm"), Label)
+            'Dim cbRead As CheckBox = CType(e.Item.FindControl("cbRead"), CheckBox)
+            Dim lblRead As Label = CType(e.Item.FindControl("lblRead"), Label)
+            Dim lblRead2 As Label = CType(e.Item.FindControl("lblRead2"), Label)
+            Dim lblSave As Label = CType(e.Item.FindControl("lblSave"), Label)
+            Dim lblSave2 As Label = CType(e.Item.FindControl("lblSave2"), Label)
+            Dim lblEdit As Label = CType(e.Item.FindControl("lblEdit"), Label)
+            Dim lblEdit2 As Label = CType(e.Item.FindControl("lblEdit2"), Label)
+            Dim lblDelete As Label = CType(e.Item.FindControl("lblDelete"), Label)
+            Dim lblDelete2 As Label = CType(e.Item.FindControl("lblDelete2"), Label)
+            Read = DataBinder.Eval(e.Item.DataItem, "Read_").ToString()
+            Save = DataBinder.Eval(e.Item.DataItem, "Save_").ToString
+            Edit = DataBinder.Eval(e.Item.DataItem, "Edit_").ToString
+            Delete = DataBinder.Eval(e.Item.DataItem, "Delete_").ToString
 
-        'If e.Item.ItemType = ListItemType.Item OrElse e.Item.ItemType = ListItemType.AlternatingItem Then
-        '    Dim m = (From n In db.tblGroupMenus
-        '             Select New With {n.Status}).ToList
-        '    Dim lblStatus As DropDownList = (TryCast(e.Item.FindControl("lblStatus"), DropDownList))
 
-        '    Dim status As String = (TryCast(e.Item.DataItem, DataRowView))("Status").ToString
-        '    If String.IsNullOrEmpty(status) Then
-        '        lblStatus.DataSource = m
-        '        'ddlCountries.DataSource = Me.GetData("SELECT DISTINCT Country FROM Customers")
-        '        lblStatus.DataTextField = "Status"
-        '        lblStatus.DataValueField = "Status"
-        '        lblStatus.DataBind()
-        '        If IsNothing(lblStatus.Items.FindByValue(status)) Then
-        '            lblStatus.SelectedValue = status
-        '            lblStatus.Items.Insert(0, New ListItem("Please select"))
+            If Not IsNothing(lblForm) Then
+                lblForm.Text = DataBinder.Eval(e.Item.DataItem, "Form").ToString
 
-        '        End If
-        '    End If
-        'End If
+            End If
+
+            If Read = "1" Then
+                lblRead.Visible = True
+                lblRead2.Visible = False
+            ElseIf Read = "0" Then
+                lblRead2.Visible = True
+                lblRead.Visible = False
+            End If
+
+            If Save = "1" Then
+                lblSave.Visible = True
+                lblSave2.Visible = False
+            ElseIf Save = "0" Then
+                lblSave2.Visible = True
+                lblSave.Visible = False
+            End If
+            If Edit = "1" Then
+                lblEdit.Visible = True
+                lblEdit2.Visible = False
+            ElseIf Edit = "0" Then
+                lblEdit2.Visible = True
+                lblEdit.Visible = False
+            End If
+            If Delete = "1" Then
+                lblDelete.Visible = True
+                lblDelete2.Visible = False
+            ElseIf Delete = "0" Then
+                lblDelete2.Visible = True
+                lblDelete.Visible = False
+            End If
+            Dim lblStatus As DropDownList = (TryCast(e.Item.FindControl("lblStatus"), DropDownList))
+
+            If Not IsNothing(lblStatus) Then
+                With lblStatus
+                    .Items.Add("None")
+                    .Items.Add("Read")
+                    .Items.Add("Save")
+                    .Items.Add("Edit")
+                    .Items.Add("Delete")
+                End With
+            End If
+
+        End If
 
     End Sub
     'Private Function GetData(ByVal query As String) As DataTable
@@ -266,17 +321,79 @@ Public Class UserMenu
     End Sub
 
     Protected Sub ddlUser_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlUser.SelectedIndexChanged
-        Dim formlist = (From u In db.tblUserMenus Where u.UserName = ddlUser.Text
-                  Select New With {
-                       u.Form}).ToList
+  
+        Dim formlist = From u In db.tblUserMenus Where u.UserName = ddlUser.Text
+                  Select
+                     u.Form,
+                     u.Read_,
+                     u.Save_,
+                     u.Edit_,
+                     u.Delete_
+
 
 
         If formlist.Count > 0 Then
-            Repeater1.DataSource = formlist
+            Repeater1.DataSource = formlist.ToList
             Repeater1.DataBind()
         Else
             Me.Repeater1.DataSource = Nothing
             Me.Repeater1.DataBind()
         End If
+    End Sub
+
+    Protected Sub btnSave_ServerClick(sender As Object, e As EventArgs)
+        'If String.IsNullOrEmpty(ddlUser.Text) Then
+        '    MsgBox("0")
+        'Else
+        '    MsgBox(ddlUser.Text)
+        'End If
+    End Sub
+
+
+    Protected Sub btnCopy_ServerClick(sender As Object, e As EventArgs)
+        Dim Form As String
+        Dim Read As Integer
+        Dim Save As Integer
+        Dim Edit As Integer
+        Dim Delete As Integer
+        Dim UserCopy As String
+        Try
+            Dim copy = (From c In db.tblUserMenus Where c.UserName = ddlCopyUser.Text
+                 Select c).FirstOrDefault
+            UserCopy = copy.UserName
+            Form = copy.Form
+            Read = CInt(copy.Read_)
+            Save = CInt(copy.Save_)
+            Edit = CInt(copy.Edit_)
+            Delete = CInt(copy.Delete_)
+            copyUser(UserCopy, Form, Read, Save, Edit, Delete)
+        Catch ex As Exception
+
+        End Try
+       
+    End Sub
+
+    Private Sub copyUser(UserCopy As String, Form As String, Read As Integer, Save As Integer, Edit As Integer, Delete As Integer)
+
+        'If ddlCopyUser.Text = UserCopy Then
+        '    ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('คุณ copy'" + UserCopy + "');", True)
+        'Else
+
+        'End If
+        Try
+            db.tblUserMenus.Add(New tblUserMenu With { _
+                                .UserName = ddlUser.Text, _
+                                .Form = Form, _
+                                .Read_ = Read, _
+                                .Save_ = Save, _
+                                .Edit_ = Edit, _
+                                .Delete_ = Delete, _
+                                .UserBy = CStr(Session("UserName")), _
+                                .LastUpdate = Now
+                            })
+        Catch ex As Exception
+
+        End Try
+
     End Sub
 End Class

@@ -1,4 +1,4 @@
-﻿<%@ Master Language="VB" AutoEventWireup="false" CodeBehind="Home.master.vb" Inherits="WMS.Home" %>
+﻿<%@ Master Language="VB" AutoEventWireup="false" CodeBehind="Home.master.vb" Inherits="WMS.Home" EnableViewState="true"%>
 
 <!DOCTYPE html>
 
@@ -167,7 +167,7 @@
                            </li>
                            <li class="treeview">
                             <a href="#">
-                                <i class="fa fa-file"></i> <span>Receive Process</span>
+                                <i class="fa  fa-cart-plus"></i> <span>Receive Process</span>
                                 <span class="pull-right-container">
                                     <i class="fa fa-angle-left pull-right"></i>
                                 </span>
@@ -185,7 +185,7 @@
                         </li>
                         <li class="treeview">
                             <a href="#">
-                                <i class="fa fa-file"></i> <span>Issue Process</span>
+                                <i class="fa  fa-share-square-o"></i> <span>Issue Process</span>
                                 <span class="pull-right-container">
                                     <i class="fa fa-angle-left pull-right"></i>
                                 </span>
@@ -204,7 +204,7 @@
                         </li>
                          <li class="treeview">
                             <a href="#">
-                                <i class="fa fa-file"></i> <span>Ware House</span>
+                                <i class="glyphicon glyphicon-home"></i> <span>Ware House</span>
                                 <span class="pull-right-container">
                                     <i class="fa fa-angle-left pull-right"></i>
                                 </span>

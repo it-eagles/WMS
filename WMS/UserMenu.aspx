@@ -1,4 +1,4 @@
-﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="UserMenu.aspx.vb" Inherits="WMS.UserMenu" MasterPageFile="~/Home.Master" %>
+﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" CodeBehind="UserMenu.aspx.vb" Inherits="WMS.UserMenu" MasterPageFile="~/Home.Master" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <form id="form1" runat="server">
@@ -80,7 +80,9 @@
 
 
                                                     <div class="text-right">
-                                                        <button type="submit" runat="server" class="btn btn-primary" id="btnSave" title="btnSave">Save</button>
+                                                        <button type="submit" runat="server" class="btn btn-primary" id="btnSave" title="btnSave" onserverclick="btnSave_ServerClick">Save</button>
+
+                                                    <button type="submit" runat="server" class="btn btn-reddit" id="btnCopy" title="btnCopy" onserverclick="btnCopy_ServerClick">Copy</button>
                                                     </div>
                                                     <!-- /.box-body -->
                                                 </div>
@@ -104,29 +106,37 @@
                                     <ItemTemplate>
                                         <tr>
                                             <td>
-                                                <asp:Label ID="lblForm" runat="server" Text='<%# Bind("Form")%>'></asp:Label></td>
+                                                <asp:Label ID="lblForm" runat="server"></asp:Label></td>
                                             <td class="text-center">
+                                                 <asp:Label ID="lblRead" runat="server">
+                                                     <i class="fa  fa-check-square-o fa-2x" aria-hidden="true"></i></asp:Label>
+                                                  <asp:Label ID="lblRead2" runat="server">
+                                                     <i class="fa  fa-close fa-2x" aria-hidden="true"></i></asp:Label> 
+                                            </td>
+                                            <td class="text-center">
+                                                 <asp:Label ID="lblSave" runat="server">
+                                                     <i class="fa  fa-check-square-o fa-2x" aria-hidden="true"></i></asp:Label>
+                                                  <asp:Label ID="lblSave2" runat="server">
+                                                     <i class="fa  fa-close fa-2x" aria-hidden="true"></i></asp:Label> 
+                                            </td>   
+                                            <td class="text-center">   
+                                                  <asp:Label ID="lblEdit" runat="server">
+                                                      <i class="fa  fa-check-square-o fa-2x" aria-hidden="true"></i> </asp:Label>     
+                                                   <asp:Label ID="lblEdit2" runat="server">
+                                                      <i class="fa  fa-close fa-2x" aria-hidden="true"></i></asp:Label> 
+                                            </td>
+                                            <td class="text-center">
+                                               <asp:Label ID="lblDelete" runat="server"><i class="fa  fa-check-square-o fa-2x" aria-hidden="true"></i></asp:Label>
+                                               <asp:Label ID="lblDelete2" runat="server"><i class="fa fa-close fa-2x" aria-hidden="true"></i></asp:Label>
+                                            </td>        
                                                
-                             
-                                                <asp:Label ID="lblRead" runat="server" Text='<%# Bind("Read_")%>'><i class="fa  fa-check-square-o fa-2x"></i></asp:Label></td>
-                                            <td class="text-center">
-                                                 <i class="fa  fa-check-square-o fa-2x" aria-hidden="true"></i>
-                                            
-                                                <%--<asp:Label ID="lblSave" runat="server" Text='<%# Bind("Save_")%>'></asp:Label></td>   --%></td>
-                                            <td class="text-center">
-                                                <i class="fa  fa-check-square-o fa-2x" aria-hidden="true"></i>       
-                                               <%-- <asp:Label ID="lblEdit" runat="server" Text='<%# Bind("Edit_")%>'></asp:Label></td>  --%></td>
-                                            <td class="text-center">
-                                                <i class="fa  fa-check-square-o fa-2x" aria-hidden="true"></i>  
-                                                <%--<asp:Label ID="lblDelete" runat="server" Text='<%# Bind("Delete_")%>'></asp:Label></td>       --%> 
-                                             </td>  
                                             <td class="text-center">
                                                   <asp:DropDownList ID="lblStatus" CssClass="form-control" runat="server">
-                                                 <asp:ListItem>None</asp:ListItem>
+                                                <%-- <asp:ListItem>None</asp:ListItem>
                                                     <asp:ListItem Value="1">Read</asp:ListItem>
                                                     <asp:ListItem Value="2">Save</asp:ListItem>
                                                     <asp:ListItem Value="3">Edit</asp:ListItem>
-                                                    <asp:ListItem Value="4">Delete</asp:ListItem>   
+                                                    <asp:ListItem Value="4">Delete</asp:ListItem>   --%>
 
                                                </asp:DropDownList>
                                             </td>               
@@ -269,7 +279,7 @@
                                                 </div>
                                             </formview>
                                            
-                                     <asp:Repeater ID="Repeater3" runat="server" OnItemCommand="Repeater3_ItemCommand" OnItemDataBound="Repeater3_ItemDataBound">
+                                     <asp:Repeater ID="Repeater3" runat="server">
                                     <HeaderTemplate>
                                         <table id="example1" class="table table-bordered table-striped">
                                             <thead>
