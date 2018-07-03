@@ -229,10 +229,13 @@
     <Content Include="AddGroup.aspx" />
     <Content Include="AddUser.aspx" />
     <Content Include="HomeMain.aspx" />
-    <Content Include="img\forklift-with-boxes.png" />
+    <Content Include="Image\0.png" />
+    <Content Include="Image\1.png" />
     <Content Include="LogIN.aspx" />
+    <Content Include="Logout.aspx" />
     <Content Include="MasterCode.aspx" />
     <Content Include="MasterGoods.aspx" />
+    <Content Include="MasterPartyAdd.aspx" />
     <Content Include="PartyMaster.aspx" />
     <Content Include="Scripts\bootstrap-colorpicker\dist\css\bootstrap-colorpicker.css" />
     <Content Include="Scripts\bootstrap-colorpicker\dist\css\bootstrap-colorpicker.min.css" />
@@ -6786,13 +6789,15 @@
     <Content Include="Scripts\vendor\select2\select2.min.css" />
     <Content Include="Scripts\vendor\select2\select2.min.js" />
     <Content Include="Test.aspx" />
+    <Content Include="TestCode.aspx" />
     <Content Include="UpdateGoods.aspx" />
     <Content Include="UpdateGroup.aspx" />
-    <Content Include="UpdateUserfroile.aspx" />
-    <Content Include="UserFroile.aspx" />
+    <Content Include="UpdateUserProfile.aspx" />
+    <Content Include="UserMenu.aspx" />
+    <Content Include="UserProfile.aspx" />
     <Content Include="ViewGoods.aspx" />
     <Content Include="ViewGroup.aspx" />
-    <Content Include="ViewUserfroile.aspx" />
+    <Content Include="ViewUserProfile.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -6803,7 +6808,7 @@
     </Compile>
     <Compile Include="AddGroup.aspx.vb">
       <DependentUpon>AddGroup.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="AddUser.aspx.designer.vb">
       <DependentUpon>AddUser.aspx</DependentUpon>
@@ -6813,6 +6818,405 @@
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Class\LoginCls.vb" />
+    <Compile Include="Data\Branch.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Connectserver.Context.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Connectserver.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Connectserver.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Connectserver.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Connectserver.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Connectserver.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Department.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\dtproperty.vb">
+      <DependentUpon>Connectserver.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\dt_getpropertiesbyid_Result.vb">
+      <DependentUpon>Connectserver.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\dt_getpropertiesbyid_u_Result.vb">
+      <DependentUpon>Connectserver.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Model1.Context.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Model1.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Model1.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\sp_helpdiagramdefinition_Result.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\sp_helpdiagrams_Result.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\sysdiagram.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblBookingMessenger.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblCurrency.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblDocTracking.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblEntryManagementWH.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblExchangeRate.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblExpGenLOT.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblExpInvoice.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblExpInvoiceDetail.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblExpPackingList.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblGenAutoNo.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblGroupMenu.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblHAWBDetail.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblImpBookingInvDetail.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblImpGenLOT.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblImpInvoice.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblImpInvoiceDetail.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblImpLogFlight.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblImpPackingList.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblInventoryItem.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblLocation.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblLocationArea.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblLocationMaster.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblLogBrand.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblLogCarLicense.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblLogConsignnee.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblLogCountry.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblLogCurrency.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblLogDeliveryTerm.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblLogDriver.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblLogExpGenLOT.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblLogExpInvoice.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblLogExpInvoiceDetail.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblLogExpPackingList.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblLogImpGenLOT.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblLogImpInvoice.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblLogImpInvoiceDetail.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblLogImpPackingList.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblLogLocationArea.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblLogLocationMaster.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblLogPackageUnit.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblLogProductDetail.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblLogProductUnit.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblLogProvince.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblLogReferenceType.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblLogShipper.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblLogShippingMark.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblLogtransportationMode.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblLogTruckManifest.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblLogTruckManifestDetail.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblLogTruckOwner.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblLogTruckType.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblLogTruckWayBill.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblLogTruckWayBillDetail.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblLogTruckWayBillDetailImp.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblLogTruckWayBillImp.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblLogUser.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblMasterCode.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblMasterCode2.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblMenu.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblMoneyConfig.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblParty.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblPartyAddress.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblProductDetail.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblRecEASInvoice.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblRecINV.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblRunningNumber.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblShippingTranfer.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblStatusBalance.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblStatusIEAT107.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblStockBalance.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblStockWip.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblStockWipDtl.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblSummaryReport.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblTempExpGenLOT.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblTempImpGenLOT.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblTempItemNo.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblTruckManifest.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblTruckManifestDetail.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblTruckWayBill.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblTruckWayBillDetail.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblTruckWayBillDetailImp.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblTruckWayBillImp.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblUser.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblUserGroup.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblUserMenu.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblUserWebClient.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblWarehouseType.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblWHConfirmGoodsReceive.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblWHConfirmGoodsReceiveDetail.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblWHEquipment.vb">
+      <DependentUpon>Connectserver.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblWHHandlePreson.vb">
+      <DependentUpon>Connectserver.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblWHISSUED.vb">
+      <DependentUpon>Connectserver.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblWHISSUEDDetail.vb">
+      <DependentUpon>Connectserver.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblWHIssueScantoTemp.vb">
+      <DependentUpon>Connectserver.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblWHLocation.vb">
+      <DependentUpon>Connectserver.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblWHPartNew.vb">
+      <DependentUpon>Connectserver.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblWHPicking.vb">
+      <DependentUpon>Connectserver.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblWHPickingDetail.vb">
+      <DependentUpon>Connectserver.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblWHPickPackChecking.vb">
+      <DependentUpon>Connectserver.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblWHPickPackMaster.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblWHPickPackNewProduct.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblWHPrepairGoodsReceive.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblWHPrepairGoodsReceiveDetail.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblWHReceiveScantoTemp.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblWHRemarkMoveJob.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblWHRequestedISSUE.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblWHStockCtrl.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tblWHStockMovement.vb">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\VInventoryDetailbyOrder.vb">
+      <DependentUpon>Connectserver.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\vIssued.vb">
+      <DependentUpon>Connectserver.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\vReceived.vb">
+      <DependentUpon>Connectserver.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\vStockMovement.vb">
+      <DependentUpon>Connectserver.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\vStockMovementAllView.vb">
+      <DependentUpon>Connectserver.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\VtestLotImp.vb">
+      <DependentUpon>Connectserver.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\VTestLOtout.vb">
+      <DependentUpon>Connectserver.tt</DependentUpon>
+    </Compile>
     <Compile Include="Home.Master.designer.vb">
       <DependentUpon>Home.Master</DependentUpon>
     </Compile>
@@ -6834,6 +7238,12 @@
       <DependentUpon>LogIN.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
+    <Compile Include="Logout.aspx.designer.vb">
+      <DependentUpon>Logout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Logout.aspx.vb">
+      <DependentUpon>Logout.aspx</DependentUpon>
+    </Compile>
     <Compile Include="MasterCode.aspx.designer.vb">
       <DependentUpon>MasterCode.aspx</DependentUpon>
     </Compile>
@@ -6847,6 +7257,12 @@
     <Compile Include="MasterGoods.aspx.vb">
       <DependentUpon>MasterGoods.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="MasterPartyAdd.aspx.designer.vb">
+      <DependentUpon>MasterPartyAdd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPartyAdd.aspx.vb">
+      <DependentUpon>MasterPartyAdd.aspx</DependentUpon>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -6881,6 +7297,12 @@
       <DependentUpon>Test.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
+    <Compile Include="TestCode.aspx.designer.vb">
+      <DependentUpon>TestCode.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TestCode.aspx.vb">
+      <DependentUpon>TestCode.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UpdateGoods.aspx.designer.vb">
       <DependentUpon>UpdateGoods.aspx</DependentUpon>
     </Compile>
@@ -6895,19 +7317,25 @@
       <DependentUpon>UpdateGroup.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="UpdateUserfroile.aspx.designer.vb">
-      <DependentUpon>UpdateUserfroile.aspx</DependentUpon>
+    <Compile Include="UpdateUserProfile.aspx.designer.vb">
+      <DependentUpon>UpdateUserProfile.aspx</DependentUpon>
     </Compile>
-    <Compile Include="UpdateUserfroile.aspx.vb">
-      <DependentUpon>UpdateUserfroile.aspx</DependentUpon>
+    <Compile Include="UpdateUserProfile.aspx.vb">
+      <DependentUpon>UpdateUserProfile.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="UserFroile.aspx.designer.vb">
-      <DependentUpon>UserFroile.aspx</DependentUpon>
+    <Compile Include="UserMenu.aspx.designer.vb">
+      <DependentUpon>UserMenu.aspx</DependentUpon>
     </Compile>
-    <Compile Include="UserFroile.aspx.vb">
-      <DependentUpon>UserFroile.aspx</DependentUpon>
+    <Compile Include="UserMenu.aspx.vb">
+      <DependentUpon>UserMenu.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="UserProfile.aspx.designer.vb">
+      <DependentUpon>UserProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserProfile.aspx.vb">
+      <DependentUpon>UserProfile.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewGoods.aspx.designer.vb">
       <DependentUpon>ViewGoods.aspx</DependentUpon>
@@ -6923,12 +7351,11 @@
       <DependentUpon>ViewGroup.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="ViewUserfroile.aspx.designer.vb">
-      <DependentUpon>ViewUserfroile.aspx</DependentUpon>
+    <Compile Include="ViewUserProfile.aspx.designer.vb">
+      <DependentUpon>ViewUserProfile.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ViewUserfroile.aspx.vb">
-      <DependentUpon>ViewUserfroile.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+    <Compile Include="ViewUserProfile.aspx.vb">
+      <DependentUpon>ViewUserProfile.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -6941,6 +7368,40 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Home.Master" />
+    <EntityDeploy Include="Data\Connectserver.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Connectserver.Designer.vb</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Data\Connectserver.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Connectserver.edmx</DependentUpon>
+      <LastGenOutput>Connectserver.Context.vb</LastGenOutput>
+    </Content>
+    <Content Include="Data\Connectserver.edmx.diagram">
+      <DependentUpon>Connectserver.edmx</DependentUpon>
+    </Content>
+    <Content Include="Data\Connectserver.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Connectserver.edmx</DependentUpon>
+      <LastGenOutput>Connectserver.vb</LastGenOutput>
+    </Content>
+    <EntityDeploy Include="Data\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.vb</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Data\Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.vb</LastGenOutput>
+    </Content>
+    <Content Include="Data\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <Content Include="Data\Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.vb</LastGenOutput>
+    </Content>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -7447,9 +7908,7 @@
     <TypeScriptCompile Include="Scripts\fullcalendar\dist\fullcalendar.d.ts" />
     <TypeScriptCompile Include="Scripts\moment\moment.d.ts" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
