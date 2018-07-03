@@ -12,9 +12,6 @@ Public Class UpdateUserProfile
     Dim userg As Integer
     'Dim db As New LKBwarehouseEntities
     Dim db As New LKBWarehouseEntities1_Test
-
-
-
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If Not Me.IsPostBack Then
             showEdit()

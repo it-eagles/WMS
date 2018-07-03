@@ -397,7 +397,8 @@ Public Class PartyMaster
                                       })
                     db.SaveChanges()
                     tran.Complete()
-                    ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('เพิ่ม Parter สำเร็จ !');", True)
+                    ClearDATA()
+                    ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('เพิ่ม Party สำเร็จ !');", True)
                 Catch ex As Exception
                     ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด กรุณาบันทึกข้อมูลใหม่อีกครั้ง');", True)
                 Finally
@@ -413,4 +414,23 @@ Public Class PartyMaster
 
     End Sub
 
+    Protected Sub btnAddParty_click(sender As Object, e As EventArgs)
+        SaveDATA_New()
+    End Sub
+
+    Private Sub SaveDATA_New()
+        Try
+            Dim user = (From u In db.tblParties Where u.PartyCode = txtPartyCode.Value
+          Select u).FirstOrDefault
+
+            If Not user Is Nothing Then
+                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('Party Code ซ้ำ กรุณาเปลี่ยนใหม่');", True)
+            Else
+                addParty()
+                Response.Write("<script>window.open('UserProlie.aspx,target='_self');</script>")
+            End If
+        Catch ex As Exception
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด');", True)
+        End Try
+    End Sub
 End Class

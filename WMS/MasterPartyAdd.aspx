@@ -64,7 +64,7 @@
                                              <td>
                                                 <asp:Label ID="lblPartyCountry" runat="server" Text='<%# Bind("PartyCountry")%>'></asp:Label></td>                                            
                                             <td class="text-center" >
-                                                  <asp:LinkButton ID="LinkButton1" CssClass="btn btn-default" runat="server" CausesValidation="False" CommandName="edituser" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-pencil"></i></asp:LinkButton>
+                                                  <asp:LinkButton ID="LinkButton1" CssClass="btn btn-default" runat="server" CausesValidation="False" CommandName="editCode" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-pencil"></i></asp:LinkButton>
                                                 <a class="btn btn-danger"><i class="fa fa-trash"></i></a>
                                             </td>
                                             <td class="text-center">
