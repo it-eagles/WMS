@@ -12,8 +12,7 @@
             <ol class="breadcrumb">
                 <li><a href="HomeMain.aspx"><i class="fa fa-home"></i>Home</a></li>
                 <li><a class="active"><i class="fa fa-file"></i>Master Files</a></li>
-                <li><a class="active">Party Master</a></li>
-                <li><a href="MasterPartyAdd.aspx"><i class="fa fa-home"></i>TESTMASTERADD</a></li>
+                <li><a class="active">Party Master</a></li>               
 
             </ol>
         </section>
@@ -39,7 +38,7 @@
                <from class="form-horizontal">
                    
                             <div class="box-footer text-right">
-                                <button runat="server" class="btn btn-app" id="btnAddParty" title="btnAddParty"><i class="fa fa-save"></i> Sava</button>
+                                <button runat="server" class="btn btn-app" id="btnAddParty" title="btnAddParty" onserverclick="btnAddParty_click"><i class="fa fa-save"></i> Save</button>
                            </div>
                          </from>
                     </div>
@@ -474,7 +473,7 @@
                               <div class="form-group" >
                                      <label for="txtExpProductCode" class="col-sm-3 control-label">ยอดเงินค้ำประกันทั้งหมด :</label>
                                  <div class="col-md-6">
-                                     <input class="form-control" id="txtAmountGuarantee" runat="server" placeholder="Product Code"/>
+                                     <input class="form-control" id="txtAmountGuarantee" runat="server" placeholder="Product Code" value="0"/>
                                  </div>
                                    <label for="txtExpProductCode" class="col-sm-1 control-label">บาท</label>
                                 
@@ -483,7 +482,7 @@
                              <div class="form-group" >
                                   <label for="txtImpDesc1" class="col-sm-3 control-label">ยอดเงินที่ใช้ไป :</label>
                                <div class="col-md-6" id="ExpDesc1">
-                                  <input class="form-control" id="txtAmountUsed" runat="server" disabled="disabled"/>
+                                  <input class="form-control" id="txtAmountUsed" runat="server" disabled="disabled" value="0"/>
                                </div>
                              <label for="txtExpProductCode" class="col-sm-1 control-label">บาท</label>
                                 
@@ -492,7 +491,7 @@
                            <div class="form-group" >
                                <label for="txtExpDesc2" class="col-sm-3 control-label">ยอดเงินคงเหลือ :</label>
                                 <div class="col-md-6" id="ExpDesc2">
-                                    <input class="form-control" id="txtBalance" runat="server"/>
+                                    <input class="form-control" id="txtBalance" runat="server" value="0"/>
                                 </div>
                              <label for="txtExpProductCode" class="col-sm-1 control-label">บาท</label>
                                 

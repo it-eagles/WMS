@@ -1750,8 +1750,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblMoneyConfig' does not have a p
     <Property Name="item" Type="numeric" Precision="18" Scale="0" Nullable="false" />
     <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblParty' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblParty">
     <Key>
       <PropertyRef Name="PartyCode" />
@@ -3122,6 +3120,7 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
     <EntitySet Name="tblLogUser" EntityType="Self.tblLogUser" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblMasterCode2" EntityType="Self.tblMasterCode2" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblMenu" EntityType="Self.tblMenu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblParty" EntityType="Self.tblParty" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblBookingMessenger" EntityType="Self.tblBookingMessenger" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
@@ -4517,48 +4516,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
     [tblMoneyConfig].[item] AS [item], 
     [tblMoneyConfig].[rowguid] AS [rowguid]
     FROM [dbo].[tblMoneyConfig] AS [tblMoneyConfig]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblParty" EntityType="Self.tblParty" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblParty].[PartyCode] AS [PartyCode], 
-    [tblParty].[PartyFullName] AS [PartyFullName], 
-    [tblParty].[PartyLocalCode] AS [PartyLocalCode], 
-    [tblParty].[PartyLocalName] AS [PartyLocalName], 
-    [tblParty].[PartyLocation] AS [PartyLocation], 
-    [tblParty].[PartyCountry] AS [PartyCountry], 
-    [tblParty].[RegistrationNo] AS [RegistrationNo], 
-    [tblParty].[PartyTypeCode] AS [PartyTypeCode], 
-    [tblParty].[PartyTypeName] AS [PartyTypeName], 
-    [tblParty].[CommissionToSales] AS [CommissionToSales], 
-    [tblParty].[IATACode] AS [IATACode], 
-    [tblParty].[Remarks] AS [Remarks], 
-    [tblParty].[PartyStatus] AS [PartyStatus], 
-    [tblParty].[MessageHubID] AS [MessageHubID], 
-    [tblParty].[OtherSystemPartyID] AS [OtherSystemPartyID], 
-    [tblParty].[FormID] AS [FormID], 
-    [tblParty].[Shipper] AS [Shipper], 
-    [tblParty].[Consignee] AS [Consignee], 
-    [tblParty].[Branch_Agent] AS [Branch_Agent], 
-    [tblParty].[Co_Loader] AS [Co_Loader], 
-    [tblParty].[Trucking] AS [Trucking], 
-    [tblParty].[ShippingLine] AS [ShippingLine], 
-    [tblParty].[Vendor] AS [Vendor], 
-    [tblParty].[ContainerYard] AS [ContainerYard], 
-    [tblParty].[Warehouse] AS [Warehouse], 
-    [tblParty].[Bank] AS [Bank], 
-    [tblParty].[Factory] AS [Factory], 
-    [tblParty].[Customer] AS [Customer], 
-    [tblParty].[Broker] AS [Broker], 
-    [tblParty].[AirLine] AS [AirLine], 
-    [tblParty].[EndCustomer] AS [EndCustomer], 
-    [tblParty].[CreateBy] AS [CreateBy], 
-    [tblParty].[CreateDate] AS [CreateDate], 
-    [tblParty].[UpdateBy] AS [UpdateBy], 
-    [tblParty].[UpdateDate] AS [UpdateDate], 
-    [tblParty].[AmountGuarantee] AS [AmountGuarantee], 
-    [tblParty].[AmountUsed] AS [AmountUsed], 
-    [tblParty].[Balance] AS [Balance]
-    FROM [dbo].[tblParty] AS [tblParty]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="tblPartyAddress" EntityType="Self.tblPartyAddress" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 

@@ -192,7 +192,7 @@
                             </a>
                             <ul class="treeview-menu">
                                 <li><a href="MasterGoods.aspx"><i class="fa fa-circle-o"></i>Create Issue. LOT</a></li>
-                                <li><a href="PartyMaster.aspx"><i class="fa fa-circle-o"></i>GEN IEAT. Doc</a></li>
+                                <li><a href="MasterPartyAdd.aspx"><i class="fa fa-circle-o"></i>GEN IEAT. Doc</a></li>
                                 <li><a href="MasterCode.aspx"><i class="fa fa-circle-o"></i>Master Code</a></li>
                                 <li><a ><i class="fa fa-circle-o"></i>Invoice/Packing List Issue</a></li>
                                  <li><a href="#"><i class="fa fa-circle-o"></i>Truck Waybill Issue</a></li>
@@ -233,7 +233,7 @@
                             </a>
                             <ul class="treeview-menu">
                                 <li><a href="MasterGoods.aspx"><i class="fa fa-circle-o"></i>Master Goods</a></li>
-                                <li><a href="PartyMaster.aspx"><i class="fa fa-circle-o"></i>Master Party</a></li>
+                                <li><a href="MasterPartyAdd.aspx"><i class="fa fa-circle-o"></i>Master Party</a></li>
                                 <li><a href="MasterCode.aspx"><i class="fa fa-circle-o"></i>Master Code</a></li>
                                 <li><a ><i class="fa fa-circle-o"></i>Master Exchange Rate</a></li>
                                 <li><a ><i class="fa fa-circle-o"></i>Master Location</a></li>

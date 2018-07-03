@@ -42,10 +42,10 @@ Public Class MasterPartyAdd
         Dim id As String = Session("UserName").ToString
         Dim menu As String = "frmUserProfile"
         Dim index As String = CStr(e.CommandArgument)
-        If e.CommandName.Equals("edituser") Then
+        If e.CommandName.Equals("editCode") Then
             Dim ds1 = From c In db.tblUserMenus Where c.UserName = id And c.Form = menu And c.Edit_ = 1
             If ds1.Any Then
-                Response.Write("<script>window.open('UpdateUserProfile.aspx?UserName=" & index & "',target='_self');</script>")
+                Response.Write("<script>window.open('MasterPartyEdit.aspx?PartyCode=" & index & "',target='_self');</script>")
             Else
                 ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธ์การแก้ไข')", True)
             End If

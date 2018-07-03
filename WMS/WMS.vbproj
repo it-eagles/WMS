@@ -236,6 +236,7 @@
     <Content Include="MasterCode.aspx" />
     <Content Include="MasterGoods.aspx" />
     <Content Include="MasterPartyAdd.aspx" />
+    <Content Include="MasterPartyEdit.aspx" />
     <Content Include="PartyMaster.aspx" />
     <Content Include="Scripts\bootstrap-colorpicker\dist\css\bootstrap-colorpicker.css" />
     <Content Include="Scripts\bootstrap-colorpicker\dist\css\bootstrap-colorpicker.min.css" />
@@ -7264,6 +7265,13 @@
     </Compile>
     <Compile Include="MasterPartyAdd.aspx.vb">
       <DependentUpon>MasterPartyAdd.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="MasterPartyEdit.aspx.designer.vb">
+      <DependentUpon>MasterPartyEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPartyEdit.aspx.vb">
+      <DependentUpon>MasterPartyEdit.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
