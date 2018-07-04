@@ -12,7 +12,7 @@
             <ol class="breadcrumb">
                 <li><a href="HomeMain.aspx"><i class="fa fa-home"></i>Home</a></li>
                 <li><a class="active"><i class="fa fa-file"></i>Master Files</a></li>
-                <li><a class="active">Party Master</a></li>               
+                <li><a href="HomeMain.aspx"><i class="active"></i>Add Party</a></li>               
 
             </ol>
         </section>
@@ -28,7 +28,7 @@
                         <div class="box-header with-border">
                             <div class="form-group">
                                 <div class="col-sm-2">
-                                  <h3 class="box-title p-t-8">Party Master</h3>
+                                  <h3 class="box-title p-t-8">Add Party</h3>
                             </div>             
                             
                           </div>         
@@ -84,7 +84,7 @@
                                                 
                                                     <div class="col-md-9" id="ImpDesc1">
          
-                                                        <input class="form-control" id="txtFullName" runat="server" placeholder="Desc"/>
+                                                        <input class="form-control" id="txtFullName" runat="server" placeholder="FullName"/>
                                                     </div>
                                                 </div> 
                                                 <div class="form-group" >
@@ -92,11 +92,11 @@
                                                                         
                                                 <div class="col-md-4">
          
-                                                <input class="form-control" id="txtLocalCode" runat="server" placeholder="Currency" />
+                                                <input class="form-control" id="txtLocalCode" runat="server" placeholder="Local" />
                                               </div>
                                 
                                               <div class="col-md-5">   
-                                                    <input class="form-control" id="txtLocalName" runat="server" placeholder="Currency" />
+                                                    <input class="form-control" id="txtLocalName" runat="server" placeholder="Local" />
                                              </div>
                                             </div>
                                               
@@ -172,7 +172,8 @@
                                          <div class="box-body">
                                               <div class="radio">
                                          <label>
-                                             <input type="radio" name="optionsRadios" runat="server" id ="rdbConfirm" value="option1" />Confirm
+                                             <%--<input type="radio" name="optionsRadios" runat="server" id ="rdbConfirm" value="option1"/>Confirm--%>
+                                             <asp:RadioButton runat="server" ID ="rdbConfirm_" Text="Confirm" GroupName="option1"/>
                                           </label>
                                            </div>
                                          </div>
@@ -188,7 +189,8 @@
 
                                         <div class="radio">
                                          <label>
-                                             <input type="radio" name="optionsRadios" runat="server" id ="rdbPending" value="option1"/> Pending
+                                           <%--  <input type="radio" name="optionsRadios" runat="server" id ="rdbPending" value="option1"/> Pending--%>
+                                             <asp:RadioButton runat="server" ID="rdbPending_" Text="Pending" GroupName="option1"/>
                                          </label>
                                         </div>
                                              
@@ -205,7 +207,8 @@
 
                                        <div class="radio">
                                          <label>
-                                             <input type="radio" name="optionsRadios" runat="server" id ="rdbBlacklisted" value="option1"/>Blacklisted
+                                             <asp:RadioButton runat="server" ID="rdbBlacklisted_" Text="Blacklisted" GroupName="option1"/>
+                                            <%-- <input type="radio" name="optionsRadios" runat="server" id ="rdbBlacklisted" value="option1"/>Blacklisted--%>
                                           </label>
                                       </div>
                                                  
@@ -222,10 +225,10 @@
 
                                            <div class="radio">
                                             <label>
-                                                <input type="radio" name="optionsRadios" runat="server" id ="rdbRevoke" value="option1"/> Revoke
-                                            </label>
-                                           </div>
-                                            
+                                                <asp:RadioButton runat="server" ID="rdbRevoke_" Text="Revoke" GroupName="option1"/>
+                                              <%--  <input type="radio" name="optionsRadios" runat="server" id ="rdbRevoke" value="option1"/> Revoke--%>
+                                            </label> 
+                                           </div>                                            
                                          </div>
                                        <!--/.box-body-->
                                     

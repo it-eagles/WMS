@@ -1824,8 +1824,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblPartyAddress' does not have a 
           <Property Name="UpdateBy" Type="varchar" MaxLength="50" />
           <Property Name="UpdateDate" Type="datetime" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblProductDetail' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tblProductDetail">
           <Key>
             <PropertyRef Name="ProductCode" />
@@ -2608,8 +2606,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblUserGroup' does not have a pri
           <Property Name="UserGroupName" Type="varchar" MaxLength="100" />
           <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblUserMenu' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tblUserMenu">
           <Key>
             <PropertyRef Name="UserName" />
@@ -2995,8 +2991,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHRequestedISSUE' does not hav
           <Property Name="OrderFrmOnline" Type="varchar" MaxLength="50" />
           <Property Name="CustFrmOnline" Type="varchar" MaxLength="50" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockCtrl' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tblWHStockCtrl">
           <Key>
             <PropertyRef Name="ProductCode" />
@@ -3126,7 +3120,10 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
           <EntitySet Name="tblMasterCode2" EntityType="Self.tblMasterCode2" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblMenu" EntityType="Self.tblMenu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblParty" EntityType="Self.tblParty" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblProductDetail" EntityType="Self.tblProductDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUserMenu" EntityType="Self.tblUserMenu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblWHStockCtrl" EntityType="Self.tblWHStockCtrl" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblBookingMessenger" EntityType="Self.tblBookingMessenger" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [tblBookingMessenger].[RecNo] AS [RecNo], 
@@ -4544,103 +4541,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
     [tblPartyAddress].[UpdateDate] AS [UpdateDate]
     FROM [dbo].[tblPartyAddress] AS [tblPartyAddress]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="tblProductDetail" EntityType="Self.tblProductDetail" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [tblProductDetail].[ProductCode] AS [ProductCode], 
-    [tblProductDetail].[PONo] AS [PONo], 
-    [tblProductDetail].[CustomerPart] AS [CustomerPart], 
-    [tblProductDetail].[EndUserPart] AS [EndUserPart], 
-    [tblProductDetail].[ImpProductCode] AS [ImpProductCode], 
-    [tblProductDetail].[TariffCode] AS [TariffCode], 
-    [tblProductDetail].[ImpDesc1] AS [ImpDesc1], 
-    [tblProductDetail].[ImpStatus1] AS [ImpStatus1], 
-    [tblProductDetail].[ImpEndlife1] AS [ImpEndlife1], 
-    [tblProductDetail].[ImpDesc2] AS [ImpDesc2], 
-    [tblProductDetail].[ImpStatus2] AS [ImpStatus2], 
-    [tblProductDetail].[ImpEndlife2] AS [ImpEndlife2], 
-    [tblProductDetail].[ImpDesc3] AS [ImpDesc3], 
-    [tblProductDetail].[ImpStatus3] AS [ImpStatus3], 
-    [tblProductDetail].[ImpEndlife3] AS [ImpEndlife3], 
-    [tblProductDetail].[ImpProductAttribute1] AS [ImpProductAttribute1], 
-    [tblProductDetail].[ImpProductAttribute2] AS [ImpProductAttribute2], 
-    [tblProductDetail].[ImpTariffSequence] AS [ImpTariffSequence], 
-    [tblProductDetail].[ImpStatisticalCode] AS [ImpStatisticalCode], 
-    [tblProductDetail].[ImpCustomsProductCode] AS [ImpCustomsProductCode], 
-    [tblProductDetail].[ImpProductYear] AS [ImpProductYear], 
-    [tblProductDetail].[ImpDutytype] AS [ImpDutytype], 
-    [tblProductDetail].[ImpSpeciticRate] AS [ImpSpeciticRate], 
-    [tblProductDetail].[ImpValueRate_P] AS [ImpValueRate_P], 
-    [tblProductDetail].[ImpSpecificCal] AS [ImpSpecificCal], 
-    [tblProductDetail].[ImpSpecificRate_P] AS [ImpSpecificRate_P], 
-    [tblProductDetail].[ImpExemptVAT] AS [ImpExemptVAT], 
-    [tblProductDetail].[ImpExemptDuty] AS [ImpExemptDuty], 
-    [tblProductDetail].[ImpExciseNo] AS [ImpExciseNo], 
-    [tblProductDetail].[ImpSurchargeRate] AS [ImpSurchargeRate], 
-    [tblProductDetail].[ImpExciseRatePay] AS [ImpExciseRatePay], 
-    [tblProductDetail].[ImpExciseRate] AS [ImpExciseRate], 
-    [tblProductDetail].[ImpExciseSpcRatePay] AS [ImpExciseSpcRatePay], 
-    [tblProductDetail].[ImpExciseSpcRate] AS [ImpExciseSpcRate], 
-    [tblProductDetail].[ImpPriviege] AS [ImpPriviege], 
-    [tblProductDetail].[ImpExemptExcise] AS [ImpExemptExcise], 
-    [tblProductDetail].[ImpBrand] AS [ImpBrand], 
-    [tblProductDetail].[ImpValueRate] AS [ImpValueRate], 
-    [tblProductDetail].[ImpCurrency] AS [ImpCurrency], 
-    [tblProductDetail].[ImpExchangeRate] AS [ImpExchangeRate], 
-    [tblProductDetail].[ImpValueRateAmount] AS [ImpValueRateAmount], 
-    [tblProductDetail].[ExpProductCode] AS [ExpProductCode], 
-    [tblProductDetail].[ExpDesc1] AS [ExpDesc1], 
-    [tblProductDetail].[ExpStatus1] AS [ExpStatus1], 
-    [tblProductDetail].[ExpEndlife1] AS [ExpEndlife1], 
-    [tblProductDetail].[ExpDesc2] AS [ExpDesc2], 
-    [tblProductDetail].[ExpStatus2] AS [ExpStatus2], 
-    [tblProductDetail].[ExpEndlife2] AS [ExpEndlife2], 
-    [tblProductDetail].[ExpDesc3] AS [ExpDesc3], 
-    [tblProductDetail].[ExpStatus3] AS [ExpStatus3], 
-    [tblProductDetail].[ExpEndlife3] AS [ExpEndlife3], 
-    [tblProductDetail].[ExpProductAttribute1] AS [ExpProductAttribute1], 
-    [tblProductDetail].[ExpProductAttribute2] AS [ExpProductAttribute2], 
-    [tblProductDetail].[ExpTariffSequence] AS [ExpTariffSequence], 
-    [tblProductDetail].[ExpTariffCode] AS [ExpTariffCode], 
-    [tblProductDetail].[ExpCustomsProductCode] AS [ExpCustomsProductCode], 
-    [tblProductDetail].[ExpStatisticalCode] AS [ExpStatisticalCode], 
-    [tblProductDetail].[ExpFomulaNo] AS [ExpFomulaNo], 
-    [tblProductDetail].[ExpProductYear] AS [ExpProductYear], 
-    [tblProductDetail].[ExpBOINo] AS [ExpBOINo], 
-    [tblProductDetail].[Exp19BisTranNo] AS [Exp19BisTranNo], 
-    [tblProductDetail].[ExpDutyType] AS [ExpDutyType], 
-    [tblProductDetail].[ExpBondFormulaNo] AS [ExpBondFormulaNo], 
-    [tblProductDetail].[ExpQTYCarton] AS [ExpQTYCarton], 
-    [tblProductDetail].[ExpPriceForeight] AS [ExpPriceForeight], 
-    [tblProductDetail].[ExpWeightCarton] AS [ExpWeightCarton], 
-    [tblProductDetail].[ExpQTYPallet] AS [ExpQTYPallet], 
-    [tblProductDetail].[ExpValueRate] AS [ExpValueRate], 
-    [tblProductDetail].[ExpCurrency] AS [ExpCurrency], 
-    [tblProductDetail].[ExpExchangeRate] AS [ExpExchangeRate], 
-    [tblProductDetail].[ExpValueRateAmount] AS [ExpValueRateAmount], 
-    [tblProductDetail].[CartonSetUnit] AS [CartonSetUnit], 
-    [tblProductDetail].[CartonWidth] AS [CartonWidth], 
-    [tblProductDetail].[CartonHeight] AS [CartonHeight], 
-    [tblProductDetail].[CartonLenght] AS [CartonLenght], 
-    [tblProductDetail].[CartonVolume] AS [CartonVolume], 
-    [tblProductDetail].[CartonVolUnit] AS [CartonVolUnit], 
-    [tblProductDetail].[PalletSetUnit] AS [PalletSetUnit], 
-    [tblProductDetail].[PalletWidth] AS [PalletWidth], 
-    [tblProductDetail].[PalletHeight] AS [PalletHeight], 
-    [tblProductDetail].[PalletLenght] AS [PalletLenght], 
-    [tblProductDetail].[PalletNoCarton] AS [PalletNoCarton], 
-    [tblProductDetail].[PalletVolume] AS [PalletVolume], 
-    [tblProductDetail].[PalletVolUnit] AS [PalletVolUnit], 
-    [tblProductDetail].[SpecialHandling] AS [SpecialHandling], 
-    [tblProductDetail].[ImpEstablishNo] AS [ImpEstablishNo], 
-    [tblProductDetail].[ImpFactoryNo] AS [ImpFactoryNo], 
-    [tblProductDetail].[ExpEstablishNo] AS [ExpEstablishNo], 
-    [tblProductDetail].[ExpFactoryNo] AS [ExpFactoryNo], 
-    [tblProductDetail].[CreateBy] AS [CreateBy], 
-    [tblProductDetail].[CreateDate] AS [CreateDate], 
-    [tblProductDetail].[UpdateBy] AS [UpdateBy], 
-    [tblProductDetail].[UpdateDate] AS [UpdateDate]
-    FROM [dbo].[tblProductDetail] AS [tblProductDetail]</DefiningQuery>
-          </EntitySet>
           <EntitySet Name="tblRecEASInvoice" EntityType="Self.tblRecEASInvoice" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [tblRecEASInvoice].[InvoiceNo] AS [InvoiceNo], 
@@ -5202,19 +5102,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
     [tblUserGroup].[rowguid] AS [rowguid]
     FROM [dbo].[tblUserGroup] AS [tblUserGroup]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="tblUserMenu" EntityType="Self.tblUserMenu" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [tblUserMenu].[UserName] AS [UserName], 
-    [tblUserMenu].[Form] AS [Form], 
-    [tblUserMenu].[Status] AS [Status], 
-    [tblUserMenu].[Read_] AS [Read_], 
-    [tblUserMenu].[Save_] AS [Save_], 
-    [tblUserMenu].[Edit_] AS [Edit_], 
-    [tblUserMenu].[Delete_] AS [Delete_], 
-    [tblUserMenu].[UserBy] AS [UserBy], 
-    [tblUserMenu].[LastUpdate] AS [LastUpdate]
-    FROM [dbo].[tblUserMenu] AS [tblUserMenu]</DefiningQuery>
-          </EntitySet>
           <EntitySet Name="tblUserWebClient" EntityType="Self.tblUserWebClient" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [tblUserWebClient].[UserName] AS [UserName], 
@@ -5537,27 +5424,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
     [tblWHRequestedISSUE].[OrderFrmOnline] AS [OrderFrmOnline], 
     [tblWHRequestedISSUE].[CustFrmOnline] AS [CustFrmOnline]
     FROM [dbo].[tblWHRequestedISSUE] AS [tblWHRequestedISSUE]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="tblWHStockCtrl" EntityType="Self.tblWHStockCtrl" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [tblWHStockCtrl].[ProductCode] AS [ProductCode], 
-    [tblWHStockCtrl].[OwnerPart] AS [OwnerPart], 
-    [tblWHStockCtrl].[ENDUserPart] AS [ENDUserPart], 
-    [tblWHStockCtrl].[ProductDescription] AS [ProductDescription], 
-    [tblWHStockCtrl].[OwnerCode] AS [OwnerCode], 
-    [tblWHStockCtrl].[MinimumStock] AS [MinimumStock], 
-    [tblWHStockCtrl].[PhysicalCount] AS [PhysicalCount], 
-    [tblWHStockCtrl].[SystemCount] AS [SystemCount], 
-    [tblWHStockCtrl].[Adjustment] AS [Adjustment], 
-    [tblWHStockCtrl].[ReceivedQTY] AS [ReceivedQTY], 
-    [tblWHStockCtrl].[PickQTY] AS [PickQTY], 
-    [tblWHStockCtrl].[DamageQTY] AS [DamageQTY], 
-    [tblWHStockCtrl].[AvailableQTY] AS [AvailableQTY], 
-    [tblWHStockCtrl].[CreateBy] AS [CreateBy], 
-    [tblWHStockCtrl].[CreateDate] AS [CreateDate], 
-    [tblWHStockCtrl].[UpdateBy] AS [UpdateBy], 
-    [tblWHStockCtrl].[UpdateDate] AS [UpdateDate]
-    FROM [dbo].[tblWHStockCtrl] AS [tblWHStockCtrl]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="tblWHStockMovement" EntityType="Self.tblWHStockMovement" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 

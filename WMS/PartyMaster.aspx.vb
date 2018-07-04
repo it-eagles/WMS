@@ -9,7 +9,7 @@ Public Class PartyMaster
     Dim tmpButtonStatus As String
     Dim sqlDataComboList As String
     Dim CommissionToSales As String = "1"
-    Dim PartyStatus As String = "4"
+    Dim PartyStatus As String
     Dim RoleShipper As String = "1"
     Dim RoleConsignee As String = "1"
     Dim RoleBranch_Agent As String = "1"
@@ -172,10 +172,10 @@ Public Class PartyMaster
         chkCommissiontoSale.Checked = False
         txtIATACode.Value = ""
         txtRemarks.Value = ""
-        rdbConfirm.Checked = False
-        rdbPending.Checked = False
-        rdbBlacklisted.Checked = False
-        rdbRevoke.Checked = False
+        rdbConfirm_.Checked = False
+        rdbPending_.Checked = False
+        rdbBlacklisted_.Checked = False
+        rdbRevoke_.Checked = False
         txtMessageHubID.Value = ""
         txtOtherSystemPartyID.Value = ""
         txtFormID.Value = ""
@@ -214,38 +214,52 @@ Public Class PartyMaster
     End Sub
     Private Sub addParty()
 
-        If chkCommissiontoSale.Checked = True Then
-            CommissionToSales = "0"
-        Else
-            CommissionToSales = "1"
-        End If
+        'If chkCommissiontoSale.Checked = True Then
+        '    CommissionToSales = "0"
+        'Else
+        '    CommissionToSales = "1"
+        'End If
+        '<---------------- เริ่ม ------------->
 
-        If rdbConfirm.Checked = True Then
+        If rdbConfirm_.Checked = True Then
             PartyStatus = "0"
-        Else
-            PartyStatus = "4"
-        End If
-
-        If rdbPending.Checked = True Then
+        ElseIf rdbPending_.Checked = True Then
             PartyStatus = "1"
-        Else
-            PartyStatus = "4"
-        End If
-
-
-        If rdbBlacklisted.Checked = True Then
+        ElseIf rdbBlacklisted_.Checked = True Then
             PartyStatus = "2"
-        Else
-            PartyStatus = "4"
-        End If
-
-
-        If rdbRevoke.Checked = True Then
+        ElseIf rdbRevoke_.Checked = True Then
             PartyStatus = "3"
         Else
             PartyStatus = "4"
         End If
 
+        'If rdbConfirm.Checked = True Then
+        '    PartyStatus = "0"
+        'Else
+        '    PartyStatus = "4"
+        'End If
+
+        'If rdbPending.Checked = True Then
+        '    PartyStatus = "1"
+        'Else
+        '    PartyStatus = "4"
+        'End If
+
+
+        'If rdbBlacklisted.Checked = True Then
+        '    PartyStatus = "2"
+        'Else
+        '    PartyStatus = "4"
+        'End If
+
+
+        'If rdbRevoke.Checked = True Then
+        '    PartyStatus = "3"
+        'Else
+        '    PartyStatus = "4"
+        'End If
+        '<------------- ถึงนี้ ------------>
+       
 
 
         If chkShipper.Checked = True Then
@@ -432,5 +446,9 @@ Public Class PartyMaster
         Catch ex As Exception
             ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด');", True)
         End Try
+    End Sub
+
+    Protected Sub btnClear_Click(sender As Object, e As EventArgs)
+        ClearDATA()
     End Sub
 End Class

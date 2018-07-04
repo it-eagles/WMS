@@ -47,31 +47,31 @@ Public Class MasterPartyEdit
         End If
 
         If code.PartyStatus = "0" Then
-            rdbConfirm.Checked = True
+            rdbConfirm_.Checked = True
         End If
         If code.PartyStatus = "4" Then
-            rdbConfirm.Checked = False
+            rdbConfirm_.Checked = False
         End If
 
         If code.PartyStatus = "1" Then
-            rdbPending.Checked = True
+            rdbPending_.Checked = True
         End If
         If code.PartyStatus = "4" Then
-            rdbPending.Checked = False
+            rdbPending_.Checked = False
         End If
 
         If code.PartyStatus = "2" Then
-            rdbBlacklisted.Checked = True
+            rdbBlacklisted_.Checked = True
         End If
         If code.PartyStatus = "4" Then
-            rdbBlacklisted.Checked = False
+            rdbBlacklisted_.Checked = False
         End If
 
         If code.PartyStatus = "3" Then
-            rdbRevoke.Checked = True
+            rdbRevoke_.Checked = True
         End If
         If code.PartyStatus = "4" Then
-            rdbRevoke.Checked = False
+            rdbRevoke_.Checked = False
         End If
 
         If code.Shipper = "0" Then
@@ -344,10 +344,10 @@ Public Class MasterPartyEdit
         chkCommissiontoSale.Checked = False
         txtIATACode.Value = ""
         txtRemarks.Value = ""
-        rdbConfirm.Checked = False
-        rdbPending.Checked = False
-        rdbBlacklisted.Checked = False
-        rdbRevoke.Checked = False
+        rdbConfirm_.Checked = False
+        rdbPending_.Checked = False
+        rdbBlacklisted_.Checked = False
+        rdbRevoke_.Checked = False
         txtMessageHubID.Value = ""
         txtOtherSystemPartyID.Value = ""
         txtFormID.Value = ""
@@ -395,27 +395,13 @@ Public Class MasterPartyEdit
             CommissionToSales = "1"
         End If
 
-        If rdbConfirm.Checked = True Then
+        If rdbConfirm_.Checked = True Then
             PartyStatus = "0"
-        Else
-            PartyStatus = "4"
-        End If
-
-        If rdbPending.Checked = True Then
+        ElseIf rdbPending_.Checked = True Then
             PartyStatus = "1"
-        Else
-            PartyStatus = "4"
-        End If
-
-
-        If rdbBlacklisted.Checked = True Then
+        ElseIf rdbBlacklisted_.Checked = True Then
             PartyStatus = "2"
-        Else
-            PartyStatus = "4"
-        End If
-
-
-        If rdbRevoke.Checked = True Then
+        ElseIf rdbRevoke_.Checked = True Then
             PartyStatus = "3"
         Else
             PartyStatus = "4"

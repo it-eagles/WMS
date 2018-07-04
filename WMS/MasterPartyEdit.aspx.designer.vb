@@ -149,40 +149,40 @@ Partial Public Class MasterPartyEdit
     Protected WithEvents txtRemarks As Global.System.Web.UI.HtmlControls.HtmlTextArea
 
     '''<summary>
-    '''rdbConfirm control.
+    '''rdbConfirm_ control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents rdbConfirm As Global.System.Web.UI.HtmlControls.HtmlInputRadioButton
+    Protected WithEvents rdbConfirm_ As Global.System.Web.UI.WebControls.RadioButton
 
     '''<summary>
-    '''rdbPending control.
+    '''rdbPending_ control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents rdbPending As Global.System.Web.UI.HtmlControls.HtmlInputRadioButton
+    Protected WithEvents rdbPending_ As Global.System.Web.UI.WebControls.RadioButton
 
     '''<summary>
-    '''rdbBlacklisted control.
+    '''rdbBlacklisted_ control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents rdbBlacklisted As Global.System.Web.UI.HtmlControls.HtmlInputRadioButton
+    Protected WithEvents rdbBlacklisted_ As Global.System.Web.UI.WebControls.RadioButton
 
     '''<summary>
-    '''rdbRevoke control.
+    '''rdbRevoke_ control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents rdbRevoke As Global.System.Web.UI.HtmlControls.HtmlInputRadioButton
+    Protected WithEvents rdbRevoke_ As Global.System.Web.UI.WebControls.RadioButton
 
     '''<summary>
     '''txtMessageHubID control.
