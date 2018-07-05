@@ -2608,8 +2608,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblUserGroup' does not have a pri
           <Property Name="UserGroupName" Type="varchar" MaxLength="100" />
           <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblUserMenu' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tblUserMenu">
           <Key>
             <PropertyRef Name="UserName" />
@@ -3127,6 +3125,7 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
           <EntitySet Name="tblMenu" EntityType="Self.tblMenu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblParty" EntityType="Self.tblParty" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUserMenu" EntityType="Self.tblUserMenu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblBookingMessenger" EntityType="Self.tblBookingMessenger" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [tblBookingMessenger].[RecNo] AS [RecNo], 
@@ -5201,19 +5200,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
     [tblUserGroup].[UserGroupName] AS [UserGroupName], 
     [tblUserGroup].[rowguid] AS [rowguid]
     FROM [dbo].[tblUserGroup] AS [tblUserGroup]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="tblUserMenu" EntityType="Self.tblUserMenu" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [tblUserMenu].[UserName] AS [UserName], 
-    [tblUserMenu].[Form] AS [Form], 
-    [tblUserMenu].[Status] AS [Status], 
-    [tblUserMenu].[Read_] AS [Read_], 
-    [tblUserMenu].[Save_] AS [Save_], 
-    [tblUserMenu].[Edit_] AS [Edit_], 
-    [tblUserMenu].[Delete_] AS [Delete_], 
-    [tblUserMenu].[UserBy] AS [UserBy], 
-    [tblUserMenu].[LastUpdate] AS [LastUpdate]
-    FROM [dbo].[tblUserMenu] AS [tblUserMenu]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="tblUserWebClient" EntityType="Self.tblUserWebClient" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 

@@ -1,82 +1,86 @@
-﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="Test.aspx.vb" Inherits="WMS.Test" %>
+﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" CodeBehind="Test.aspx.vb" Inherits="WMS.Test" MasterPageFile="~/Home.Master" EnableEventValidation="false" EnableViewState="false" %>
 
-<!DOCTYPE html>
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
     <form id="form1" runat="server">
-    <div>
-    <div class="box-body">
-                            <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="Repeater1_ItemCommand">
-                                <HeaderTemplate>
-                                    <table id="example1" class="table table-bordered table-hover">
-                                        <thead>
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+        <section class="content-header">
+            <h1>TEST</h1>
+            <ol class="breadcrumb">
+                <li><a href="HomeMain.aspx"><i class="fa fa-home"></i>Home</a></li>
+                <li><a class="active"><i class="fa fa-file"></i>TEST</a></li>
+            </ol>
+        </section>
+          <!-- Main content -->
+            <section class="content">
+                <div class="row">
+                    <div class="col-lg-12 col-xs-12">
+
+                        <div class="box">
+                         
+                            <!-- /.box-header -->
+                            <div class="box-body">
+
+                                
+                                <asp:Repeater ID="cpRepeater" runat="server" OnItemCommand="cpRepeater_ItemCommand" OnItemDataBound="cpRepeater_ItemDataBound">
+                                    <HeaderTemplate>
+                                        <table id="example1" class="table table-bordered table-striped">
+                                            <thead>
                                             <tr>
-                                                <th>รหัสพนักงาน</th>
-                                                <th>ชื่อ</th>
-                                                <th>นามสกุล</th>
-                                                <th>อีเมล์</th>
-                                                <th>ตำแหน่ง</th>
-                                                <th>แผนก</th>
-                                                <th>ฝ่าย</th>
-                                                <th>สาขา</th>
-                                                <th>Edit</th>
-
+                                                <td>Check</td>
+                                                <td>Form</td>
+                                                <td>Type</td>
+                                                <td>Options</td>
                                             </tr>
-                                        </thead>
-                                </HeaderTemplate>
-
-                                <ItemTemplate>
-
-
-                                    <tr>
-                                        <td>
-                                            <asp:Label ID="Label1" runat="server" Text='<%# Bind("UserId") %>'></asp:Label></td>
-                                        <td>
-                                            <asp:Label ID="Label3" runat="server" Text='<%# Bind("Name_thai")%>'></asp:Label></td>
-                                        <td>
-                                            <asp:Label ID="Label4" runat="server" Text='<%# Bind("Surname_thai")%>'></asp:Label></td>
-                                        <td>
-                                            <asp:Label ID="Label2" runat="server" Text='<%# Bind("Email") %>'></asp:Label></td>
-                                        <td>
-                                            <asp:Label ID="Label5" runat="server" Text='<%# Bind("Position") %>'></asp:Label></td>
-                                        <td>
-                                            <asp:Label ID="Labelsec" runat="server" Text='<%# Bind("Dept")%>'></asp:Label></td>
-                                        <td>
-                                            <asp:Label ID="Label6" runat="server" Text='<%# Bind("Section") %>'></asp:Label></td>
-                                        <td>
-                                            <asp:Label ID="Label7" runat="server" Text='<%# Bind("Branch") %>'></asp:Label></td>
-                                        <td class="text-center">
-
-                                            <asp:LinkButton ID="LinkButton2" CssClass="btn btn-default" runat="server" CausesValidation="False" CommandName="edituser" CommandArgument='<%# Eval("UserID")%>'><i class="fa fa-pencil"></i></asp:LinkButton>
-                                        </td>
-
-                                    </tr>
-
-                                </ItemTemplate>
-
-                                <FooterTemplate>
-                                    <tfoot>
+                                          </thead>
+                                    </HeaderTemplate>
+                                    <ItemTemplate>
                                         <tr>
-                                            <th>รหัสพนักงาน</th>
-                                            <th>ชื่อ</th>
-                                            <th>นามสกุล</th>
-                                            <th>อีเมล์</th>
-                                            <th>ตำแหน่ง</th>
-                                            <th>แผนก</th>
-                                            <th>ฝ่าย</th>
-                                            <th>สาขา</th>
-                                            <th>Edit</th>
+                                            <td class="text-center">
+                                                <asp:CheckBox ID="chkDelete" runat="server" />
+                                            </td>
+                                            <td>
+                                                <asp:Label ID="lblID" Visible="false" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Form")%>'></asp:Label>
+                                                <asp:Label ID="lblName" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Form")%>'></asp:Label>
+                                                <asp:TextBox ID="txtName" BackColor="#d4d0c8" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Read_")%>' Visible="false"></asp:TextBox>
+                                            </td>
+                                            <td>
+                                                <asp:DropDownList ID="ddlType" runat="server">
+                                                </asp:DropDownList>
+                                            </td>
+                                            <td>
+                                                <asp:LinkButton ID="lnkEdit" runat="server" CommandName="edit" CommandArgument='<%# DataBinder.Eval(Container.DataItem, "Form")%>'>Edit</asp:LinkButton>
+                                                <asp:LinkButton Visible="false" ID="lnkUpdate" runat="server" CommandName="update" CommandArgument='<%# DataBinder.Eval(Container.DataItem, "Form")%>'>Update</asp:LinkButton>
+                                                <asp:LinkButton Visible="false" ID="lnkCancel" runat="server" CommandName="cancel" CommandArgument='<%# DataBinder.Eval(Container.DataItem, "Form")%>'>Cancel</asp:LinkButton>
+                                              
+                                            </td>
                                         </tr>
-                                    </tfoot>
-                                    </table>
-                                </FooterTemplate>
-                            </asp:Repeater>
+                                    </ItemTemplate>
+                                    <FooterTemplate>
+                                        <tfoot>
+                                            <tr>
+                                                <td>Check</td>
+                                                <td>Form</td>
+                                                <td>Type</td>
+                                                <td>Options</td>
+                                            </tr>
+                                        </tfoot>
+                                        </table>
+                                    </FooterTemplate>
+                                </asp:Repeater>
+                                   
+                            </div>
+                            <!-- /.box-body -->
                         </div>
-    </div>
+                        <!-- /.box -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </section>
+            <!-- /.content -->
+        
+        
     </form>
-</body>
-</html>
+
+</asp:Content>

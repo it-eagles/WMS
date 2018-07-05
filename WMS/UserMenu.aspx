@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" CodeBehind="UserMenu.aspx.vb" Inherits="WMS.UserMenu" MasterPageFile="~/Home.Master" %>
+﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" CodeBehind="UserMenu.aspx.vb" Inherits="WMS.UserMenu" MasterPageFile="~/Home.Master" EnableViewState="true"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <form id="form1" runat="server">
@@ -6,13 +6,11 @@
         <!-- Content Wrapper. Contains page content -->
         <!-- Content Header (Page header) -->
         <section class="content-header">
-            <h1>Add Master Code </h1>
+            <h1>User Menu</h1>
             <ol class="breadcrumb">
                 <li><a href="HomeMain.aspx"><i class="fa fa-home"></i>Home</a></li>
-                <li><a class="active"><i class="fa fa-file"></i>Master Files</a></li>
-                <li><a href="MasterCode.aspx">Master Code</a></li>
-                <li><a href="Test.aspx">Master Code</a></li>
-                <li class="active">Add Group</li>
+                <li><a class="active"><i class="fa fa-file"></i>System</a></li>
+                <li class="active">User Menu</li>
             </ol>
         </section>
         <!-- Main content -->
@@ -52,7 +50,7 @@
                                                                </select>--%>
                                                             
 
-                                                         <asp:DropDownList ID="ddlUser" CssClass="form-control select2" runat="server" AutoPostBack="true" DataTextField="Name" DataValueField="UserName"></asp:DropDownList>
+                                                         <asp:DropDownList ID="ddlUser" CssClass="form-control select2" runat="server" DataTextField="Name" DataValueField="UserName"></asp:DropDownList>
                                                            <%-- <input class="form-control" id="txtUserName" runat="server" placeholder="User Name" />--%>
                                                         </div>
 
@@ -63,7 +61,7 @@
 
                                                         <div class="col-sm-9">
 
-                                                            <asp:DropDownList ID="ddlCopyUser" CssClass="form-control select2" runat="server" AutoPostBack="true" DataTextField="UserName" DataValueField="UserName"></asp:DropDownList>
+                                                            <asp:DropDownList ID="ddlCopyUser" CssClass="form-control select2" runat="server" AutoPostBack="true" DataTextField="Name" DataValueField="UserName"></asp:DropDownList>
                                                            <%-- <input class="form-control" id="txtCode" runat="server" placeholder="Copy From UserName" />--%>
                                                         </div>
 

@@ -57,7 +57,7 @@ Public Class UserMenu
         Try
 
             ddlCopyUser.DataSource = user.ToList
-            ddlCopyUser.DataTextField = "UserName"
+            ddlCopyUser.DataTextField = "Name"
             ddlCopyUser.DataValueField = "UserName"
             ddlCopyUser.DataBind()
             If ddlCopyUser.Items.Count > 1 Then
@@ -173,7 +173,8 @@ Public Class UserMenu
                 db.SaveChanges()
                 tran.Complete()
                 ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('เพิ่ม user สำเร็จ !');", True)
-                Response.Redirect("UserMenu.aspx")
+                'Response.Redirect("UserMenu.aspx")
+                showMenuList()
             Catch ex As Exception
                 ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด กรุณาบันทึกข้อมูลใหม่อีกครั้ง');", True)
             Finally
@@ -187,6 +188,8 @@ Public Class UserMenu
     Private Sub Clear()
         txtForm.Value = ""
         txtMenu.Value = ""
+        ddlUser.Text = ""
+        ddlCopyUser.Text = ""
     End Sub
     '-----------------------------------------------------Begin Group Tab Method----------------------------------------------
     '-----------------------------------------------------Show Group Data in Group Tab--------------------------------------
@@ -256,9 +259,9 @@ Public Class UserMenu
 
             If Not IsNothing(lblForm) Then
                 lblForm.Text = DataBinder.Eval(e.Item.DataItem, "Form").ToString
-
+            Else
+                MsgBox("")
             End If
-
             If Read = "1" Then
                 lblRead.Visible = True
                 lblRead2.Visible = False
@@ -321,24 +324,9 @@ Public Class UserMenu
     End Sub
 
     Protected Sub ddlUser_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlUser.SelectedIndexChanged
-  
-        Dim formlist = From u In db.tblUserMenus Where u.UserName = ddlUser.Text
-                  Select
-                     u.Form,
-                     u.Read_,
-                     u.Save_,
-                     u.Edit_,
-                     u.Delete_
+        Dim userMune As String = ddlUser.SelectedValue
+        selectUserMune(userMune)
 
-
-
-        If formlist.Count > 0 Then
-            Repeater1.DataSource = formlist.ToList
-            Repeater1.DataBind()
-        Else
-            Me.Repeater1.DataSource = Nothing
-            Me.Repeater1.DataBind()
-        End If
     End Sub
 
     Protected Sub btnSave_ServerClick(sender As Object, e As EventArgs)
@@ -366,34 +354,73 @@ Public Class UserMenu
             Save = CInt(copy.Save_)
             Edit = CInt(copy.Edit_)
             Delete = CInt(copy.Delete_)
-            copyUser(UserCopy, Form, Read, Save, Edit, Delete)
+            copyUser(UserCopy)
         Catch ex As Exception
-
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด');", True)
         End Try
        
     End Sub
 
-    Private Sub copyUser(UserCopy As String, Form As String, Read As Integer, Save As Integer, Edit As Integer, Delete As Integer)
+    Private Sub copyUser(UserCopy As String)
 
-        'If ddlCopyUser.Text = UserCopy Then
-        '    ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('คุณ copy'" + UserCopy + "');", True)
-        'Else
-
-        'End If
         Try
-            db.tblUserMenus.Add(New tblUserMenu With { _
-                                .UserName = ddlUser.Text, _
-                                .Form = Form, _
-                                .Read_ = Read, _
-                                .Save_ = Save, _
-                                .Edit_ = Edit, _
-                                .Delete_ = Delete, _
-                                .UserBy = CStr(Session("UserName")), _
-                                .LastUpdate = Now
-                            })
-        Catch ex As Exception
+            'ค้าหาชื่อที่userต้องการ copy
+            Dim ds = (From u In db.tblUserMenus Where u.UserName = UserCopy).ToList
+            If ds.Count > 0 Then
+                'ค้นหาชื่อ user ที่ต้องการ copy ว่ามีอยู่หรือไม่
+                Dim del = (From c In db.tblUserMenus Where c.UserName = ddlUser.SelectedValue).ToList
+                For Each c In del
+                    db.tblUserMenus.Remove(c)
+                Next
+                db.SaveChanges()
+                For Each it In ds
+                    db.tblUserMenus.Add(New tblUserMenu With { _
+                               .UserName = ddlUser.Text.Trim.ToUpper, _
+                               .Form = it.Form, _
+                               .Read_ = it.Read_, _
+                               .Save_ = it.Save_, _
+                               .Edit_ = it.Edit_, _
+                               .Delete_ = it.Delete_, _
+                               .Status = it.Status, _
+                               .UserBy = CStr(Session("UserName")), _
+                               .LastUpdate = Now
+                           })
+                    db.SaveChanges()
+                    ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('เพิ่ม สิทธิ์ใช้งาน เสร็จเรียบร้อย');", True)
+                Next
+                selectUserMune(ddlUser.SelectedValue)
+                Clear()
+            End If
 
+        Catch ex As Exception
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด');", True)
         End Try
+
+    End Sub
+
+    Private Sub selectUserMune(userMune As String)
+        Dim formlist = From u In db.tblUserMenus Where u.UserName = userMune
+                 Select
+                    u.Form,
+                    u.Read_,
+                    u.Save_,
+                    u.Edit_,
+                    u.Delete_
+
+
+
+        If formlist.Count > 0 Then
+            Repeater1.DataSource = formlist.ToList
+            Repeater1.DataBind()
+        Else
+            Me.Repeater1.DataSource = Nothing
+            Me.Repeater1.DataBind()
+        End If
+    End Sub
+
+    Protected Sub ddlCopyUser_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlCopyUser.SelectedIndexChanged
+        Dim userMune As String = ddlCopyUser.SelectedValue
+        selectUserMune(userMune)
 
     End Sub
 End Class

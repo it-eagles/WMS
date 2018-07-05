@@ -1,4 +1,4 @@
-﻿<%@ Master Language="VB" AutoEventWireup="false" CodeBehind="Home.master.vb" Inherits="WMS.Home" EnableViewState="true"%>
+﻿<%@ Master Language="VB" AutoEventWireup="false" CodeBehind="Home.master.vb" Inherits="WMS.Home" EnableTheming="true" EnableViewState="true"%>
 
 <!DOCTYPE html>
 
@@ -298,6 +298,15 @@
                                 <li><a href="UserMenu.aspx"><i class="fa fa-circle-o"></i>User Menu</a></li>
                                 <li><a href="#"><i class="fa fa-circle-o"></i>Database Configuration</a></li>
                             </ul>
+                        </li>
+                        <li>
+                            <a href="Test.aspx">
+                                <i class="fa fa-certificate"></i> 
+                                <span>TEST</span>
+                                <span class="pull-right-container">
+                                 </span>
+                            </a>
+                    
                         </li>
                           <li>
                             <a href="Logout.aspx">
@@ -647,6 +656,13 @@
                  })
              })
 </script>
-
+         <script type="text/javascript">
+             function CallConfirmBox() {
+                 if (confirm('Confirm Proceed Further?')) {
+                     alert('You pressed OK!')
+                 } else {
+                     alert('You pressed Cancel!');
+                 }}
+         </script>
       </body>
  </html>
