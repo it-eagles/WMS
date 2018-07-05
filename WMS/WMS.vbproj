@@ -6820,7 +6820,7 @@
     </Compile>
     <Compile Include="Class\LoginCls.vb" />
     <Compile Include="Data\Branch.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\Connectserver.Context.vb">
       <AutoGen>True</AutoGen>
@@ -6838,7 +6838,7 @@
       <DependentUpon>Connectserver.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\Department.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\dtproperty.vb">
       <DependentUpon>Connectserver.tt</DependentUpon>
@@ -6849,296 +6849,290 @@
     <Compile Include="Data\dt_getpropertiesbyid_u_Result.vb">
       <DependentUpon>Connectserver.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\Model1.Context.vb">
+    <Compile Include="Data\LKBWarehouse_Test.Context.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.Context.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\Model1.Designer.vb">
+    <Compile Include="Data\LKBWarehouse_Test.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.edmx</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Data\Model1.vb">
+    <Compile Include="Data\LKBWarehouse_Test.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\sp_helpdiagramdefinition_Result.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\sp_helpdiagrams_Result.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\sysdiagram.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblBookingMessenger.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblCurrency.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblDocTracking.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblEntryManagementWH.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblExchangeRate.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblExpGenLOT.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblExpInvoice.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblExpInvoiceDetail.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblExpPackingList.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblGenAutoNo.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblGroupMenu.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblHAWBDetail.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblImpBookingInvDetail.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblImpGenLOT.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblImpInvoice.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblImpInvoiceDetail.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblImpLogFlight.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblImpPackingList.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblInventoryItem.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblLocation.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblLocationArea.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblLocationMaster.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblLogBrand.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblLogCarLicense.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblLogConsignnee.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblLogCountry.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblLogCurrency.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblLogDeliveryTerm.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblLogDriver.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblLogExpGenLOT.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblLogExpInvoice.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblLogExpInvoiceDetail.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblLogExpPackingList.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblLogImpGenLOT.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblLogImpInvoice.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblLogImpInvoiceDetail.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblLogImpPackingList.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblLogLocationArea.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblLogLocationMaster.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblLogPackageUnit.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblLogProductDetail.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblLogProductUnit.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblLogProvince.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblLogReferenceType.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblLogShipper.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblLogShippingMark.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblLogtransportationMode.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblLogTruckManifest.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblLogTruckManifestDetail.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblLogTruckOwner.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblLogTruckType.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblLogTruckWayBill.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblLogTruckWayBillDetail.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblLogTruckWayBillDetailImp.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblLogTruckWayBillImp.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblLogUser.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblMasterCode.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblMasterCode2.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblMenu.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblMoneyConfig.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblParty.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblPartyAddress.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblProductDetail.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblRecEASInvoice.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblRecINV.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblRunningNumber.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblShippingTranfer.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblStatusBalance.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblStatusIEAT107.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblStockBalance.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblStockWip.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblStockWipDtl.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblSummaryReport.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblTempExpGenLOT.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblTempImpGenLOT.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblTempItemNo.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblTruckManifest.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblTruckManifestDetail.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblTruckWayBill.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblTruckWayBillDetail.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblTruckWayBillDetailImp.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblTruckWayBillImp.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblUser.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblUserGroup.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblUserMenu.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblUserWebClient.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblWarehouseType.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblWHConfirmGoodsReceive.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblWHConfirmGoodsReceiveDetail.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblWHEquipment.vb">
       <DependentUpon>Connectserver.tt</DependentUpon>
@@ -7171,31 +7165,31 @@
       <DependentUpon>Connectserver.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblWHPickPackMaster.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblWHPickPackNewProduct.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblWHPrepairGoodsReceive.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblWHPrepairGoodsReceiveDetail.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblWHReceiveScantoTemp.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblWHRemarkMoveJob.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblWHRequestedISSUE.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblWHStockCtrl.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblWHStockMovement.vb">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\VInventoryDetailbyOrder.vb">
       <DependentUpon>Connectserver.tt</DependentUpon>
@@ -7398,22 +7392,22 @@
       <DependentUpon>Connectserver.edmx</DependentUpon>
       <LastGenOutput>Connectserver.vb</LastGenOutput>
     </Content>
-    <EntityDeploy Include="Data\Model1.edmx">
+    <EntityDeploy Include="Data\LKBWarehouse_Test.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.vb</LastGenOutput>
+      <LastGenOutput>LKBWarehouse_Test.Designer.vb</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Data\Model1.Context.tt">
+    <Content Include="Data\LKBWarehouse_Test.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.Context.vb</LastGenOutput>
+      <DependentUpon>LKBWarehouse_Test.edmx</DependentUpon>
+      <LastGenOutput>LKBWarehouse_Test.Context.vb</LastGenOutput>
     </Content>
-    <Content Include="Data\Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
+    <Content Include="Data\LKBWarehouse_Test.edmx.diagram">
+      <DependentUpon>LKBWarehouse_Test.edmx</DependentUpon>
     </Content>
-    <Content Include="Data\Model1.tt">
+    <Content Include="Data\LKBWarehouse_Test.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.vb</LastGenOutput>
+      <DependentUpon>LKBWarehouse_Test.edmx</DependentUpon>
+      <LastGenOutput>LKBWarehouse_Test.vb</LastGenOutput>
     </Content>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>

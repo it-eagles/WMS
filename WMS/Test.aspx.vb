@@ -41,15 +41,15 @@ Public Class Test
     'End Sub
 
     Protected Sub cpRepeater_ItemCommand(source As Object, e As RepeaterCommandEventArgs)
-        If e.CommandName.Equals("edit") Then
+        'If e.CommandName.Equals("edit") Then
 
-        End If
-        If e.CommandName.Equals("update") Then
-            MsgBox("update")
-        End If
-        If e.CommandName.Equals("delete") Then
-            MsgBox("dalete")
-        End If
+        'End If
+        'If e.CommandName.Equals("update") Then
+        '    MsgBox("update")
+        'End If
+        'If e.CommandName.Equals("delete") Then
+        '    MsgBox("dalete")
+        'End If
     End Sub
 
     Protected Sub cpRepeater_ItemDataBound(sender As Object, e As RepeaterItemEventArgs)
