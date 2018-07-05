@@ -251,7 +251,7 @@ Public Class MasterGoods
     Protected Sub saveGoods_click(sender As Object, e As EventArgs)
         addGoods()
         Dim st As String = CStr(Convert.ToDecimal(txtImpSpeciticRate.Value))
-        MsgBox(st)
+
     End Sub
 
     Protected Sub genCode_click(sender As Object, e As EventArgs)
@@ -321,10 +321,12 @@ Public Class MasterGoods
     End Sub
     Private Sub addGoods()
         Dim str As String = Me.txtRemarks.InnerText
-
+        Dim chkproductcode = (From z In db.tblProductDetails Where z.ProductCode = txtProductCode.Value Select z).FirstOrDefault
         If (String.IsNullOrEmpty(txtProductCode.Value)) Then
             ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาป้อน รหัส Product Code ก่อน !!!');", True)
             Exit Sub
+        ElseIf Not chkproductcode Is Nothing Then
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('ชื่อ Productcode ซ้ำ กรุณาเปลี่ยนใหม่');", True)
         Else
             Using tran As New TransactionScope()
                 Try
@@ -449,15 +451,15 @@ Public Class MasterGoods
         End If
     End Sub
     Public Sub showReapeaterStock()
-        Dim formlist = (From u In db.tblWHStockCtrls)
+        'Dim formlist = (From u In db.tblWHStockCtrls)
 
-        If formlist.Count > 0 Then
-            Repeater1.DataSource = formlist.ToList
-            Repeater1.DataBind()
-        Else
-            Me.Repeater1.DataSource = Nothing
-            Me.Repeater1.DataBind()
-        End If
+        'If formlist.Count > 0 Then
+        '    Repeater1.DataSource = formlist.ToList
+        '    Repeater1.DataBind()
+        'Else
+        '    Me.Repeater1.DataSource = Nothing
+        '    Me.Repeater1.DataBind()
+        'End If
     End Sub
 
 End Class

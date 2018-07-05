@@ -14,7 +14,7 @@
                 <ol class="breadcrumb">
                     <li><a href="HomeMain.aspx"><i class="fa fa-home"></i>Home</a></li>
                     <li><a><i class="fa fa-file"></i>System</a></li>
-                    <li class="active">User Profile</li>
+                    <li><a href="MasterPartyAdd.aspx"> class="active">Master Party</a></li>
                 </ol>
             </section>
 

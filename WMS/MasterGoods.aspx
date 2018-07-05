@@ -585,7 +585,7 @@
                                <div class="col-md-1">
                                    <div class="checkbox">
                                        <label>
-                                           <input type="checkbox" runat="server" id="chkExpEnable2" onclick="chkExpEnable2();"> Enable
+                                           <input type="checkbox" runat="server" id="chkExpEnable2" onclick="chkExpEnable2();"/> Enable
                                        </label>
                                    </div>
                                </div>
@@ -1017,9 +1017,9 @@
                                 <div class="form-group" >
 
                                 <div class="col-md-offset-9">
-                                        <button type="submit" runat="server" class="btn btn-primary" id="btAdd" title="btnAddUser" disabled="disabled"/>Add</button>
-                                        <button type="submit" runat="server" class="btn bg-olive" id="btModify" title="btnAddUser" disabled="disabled"/>Modify</button>
-                                        <button type="submit" runat="server" class="btn btn-danger" id="btDel" title="btnAddUser" disabled="disabled"/>Delete</button>
+                                        <button type="submit" runat="server" class="btn btn-primary" id="btAdd" title="btnAddUser" disabled="disabled"/>Add</>
+                                        <button type="submit" runat="server" class="btn bg-olive" id="btModify" title="btnAddUser" disabled="disabled"/>Modify</>
+                                        <button type="submit" runat="server" class="btn btn-danger" id="btDel" title="btnAddUser" disabled="disabled"/>Delete</>
                                 </div>
                                 </div>
                         

@@ -92,11 +92,11 @@
                                                                         
                                                 <div class="col-md-4">
          
-                                                <input class="form-control" id="txtLocalCode" runat="server" placeholder="Currency" />
+                                                <input class="form-control" id="txtLocalCode" runat="server" placeholder="Local" />
                                               </div>
                                 
                                               <div class="col-md-5">   
-                                                    <input class="form-control" id="txtLocalName" runat="server" placeholder="Currency" />
+                                                    <input class="form-control" id="txtLocalName" runat="server" placeholder="Local" />
                                              </div>
                                             </div>
                                               
@@ -172,7 +172,8 @@
                                          <div class="box-body">
                                               <div class="radio">
                                          <label>
-                                             <input type="radio" name="optionsRadios" runat="server" id ="rdbConfirm" value="option1" />Confirm
+                                             <%--<input type="radio" name="optionsRadios" runat="server" id ="rdbConfirm" value="option1" />Confirm--%>
+                                             <asp:RadioButton runat="server" ID ="rdbConfirm_" Text="Confirm" GroupName="option1"/>
                                           </label>
                                            </div>
                                          </div>
@@ -188,7 +189,8 @@
 
                                         <div class="radio">
                                          <label>
-                                             <input type="radio" name="optionsRadios" runat="server" id ="rdbPending" value="option1"/> Pending
+                                             <%--<input type="radio" name="optionsRadios" runat="server" id ="rdbPending" value="option1"/> Pending--%>
+                                              <asp:RadioButton runat="server" ID="rdbPending_" Text="Pending" GroupName="option1"/>
                                          </label>
                                         </div>
                                              
@@ -205,7 +207,8 @@
 
                                        <div class="radio">
                                          <label>
-                                             <input type="radio" name="optionsRadios" runat="server" id ="rdbBlacklisted" value="option1"/>Blacklisted
+                                             <%--<input type="radio" name="optionsRadios" runat="server" id ="rdbBlacklisted" value="option1"/>Blacklisted--%>
+                                             <asp:RadioButton runat="server" ID="rdbBlacklisted_" Text="Blacklisted" GroupName="option1"/>
                                           </label>
                                       </div>
                                                  
@@ -222,7 +225,8 @@
 
                                            <div class="radio">
                                             <label>
-                                                <input type="radio" name="optionsRadios" runat="server" id ="rdbRevoke" value="option1"/> Revoke
+                                                <%--<input type="radio" name="optionsRadios" runat="server" id ="rdbRevoke" value="option1"/> Revoke--%>
+                                                <asp:RadioButton runat="server" ID="rdbRevoke_" Text="Revoke" GroupName="option1"/>
                                             </label>
                                            </div>
                                             
