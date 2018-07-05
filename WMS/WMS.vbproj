@@ -235,8 +235,11 @@
     <Content Include="Logout.aspx" />
     <Content Include="MasterCode.aspx" />
     <Content Include="MasterGoods.aspx" />
+    <Content Include="MasterLocation.aspx" />
+    <Content Include="MasterLocationEdit.aspx" />
     <Content Include="MasterPartyAdd.aspx" />
     <Content Include="MasterPartyEdit.aspx" />
+    <Content Include="MasterPartyView.aspx" />
     <Content Include="PartyMaster.aspx" />
     <Content Include="Scripts\bootstrap-colorpicker\dist\css\bootstrap-colorpicker.css" />
     <Content Include="Scripts\bootstrap-colorpicker\dist\css\bootstrap-colorpicker.min.css" />
@@ -7150,7 +7153,7 @@
       <DependentUpon>Connectserver.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblWHLocation.vb">
-      <DependentUpon>Connectserver.tt</DependentUpon>
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblWHPartNew.vb">
       <DependentUpon>Connectserver.tt</DependentUpon>
@@ -7254,6 +7257,20 @@
       <DependentUpon>MasterGoods.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
+    <Compile Include="MasterLocation.aspx.designer.vb">
+      <DependentUpon>MasterLocation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterLocation.aspx.vb">
+      <DependentUpon>MasterLocation.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="MasterLocationEdit.aspx.designer.vb">
+      <DependentUpon>MasterLocationEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterLocationEdit.aspx.vb">
+      <DependentUpon>MasterLocationEdit.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="MasterPartyAdd.aspx.designer.vb">
       <DependentUpon>MasterPartyAdd.aspx</DependentUpon>
     </Compile>
@@ -7266,6 +7283,13 @@
     </Compile>
     <Compile Include="MasterPartyEdit.aspx.vb">
       <DependentUpon>MasterPartyEdit.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="MasterPartyView.aspx.designer.vb">
+      <DependentUpon>MasterPartyView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPartyView.aspx.vb">
+      <DependentUpon>MasterPartyView.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />

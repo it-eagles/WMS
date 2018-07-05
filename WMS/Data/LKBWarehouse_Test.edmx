@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="LKBWarehouseModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="LKBWarehouseModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Branch">
           <Key>
             <PropertyRef Name="BranchID" />
@@ -2779,6 +2779,25 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHConfirmGoodsReceiveDetail' d
           <Property Name="OrderFrmOnline" Type="varchar" MaxLength="50" />
           <Property Name="CustFrmOnline" Type="varchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="tblWHLocation">
+          <Key>
+            <PropertyRef Name="LocationNo" />
+          </Key>
+          <Property Name="WHsite" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="LocationNo" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Width" Type="float" />
+          <Property Name="Long" Type="float" />
+          <Property Name="Height" Type="float" />
+          <Property Name="Valume" Type="float" />
+          <Property Name="Qtypallet" Type="int" />
+          <Property Name="Remark" Type="varchar" MaxLength="200" />
+          <Property Name="LocationStatus" Type="int" />
+          <Property Name="Usedstatus" Type="int" />
+          <Property Name="CreateBy" Type="varchar" MaxLength="50" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdateBy" Type="varchar" MaxLength="50" />
+          <Property Name="UpdateDate" Type="datetime" />
+        </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'LKBWarehouse.dbo.tblWHPickPackMaster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tblWHPickPackMaster">
@@ -3105,6 +3124,7 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
           <EntitySet Name="tblProductDetail" EntityType="Self.tblProductDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblUserMenu" EntityType="Self.tblUserMenu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblWHLocation" EntityType="Self.tblWHLocation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblWHStockCtrl" EntityType="Self.tblWHStockCtrl" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblBookingMessenger" EntityType="Self.tblBookingMessenger" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -5470,8 +5490,7 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
     FROM [dbo].[tblWHStockMovement] AS [tblWHStockMovement]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="LKBWarehouseModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -8473,7 +8492,27 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
           <EntitySet Name="tblWHRemarkMoveJobs" EntityType="Self.tblWHRemarkMoveJob" />
           <EntitySet Name="tblWHRequestedISSUEs" EntityType="Self.tblWHRequestedISSUE" />
           <EntitySet Name="tblWHStockMovements" EntityType="Self.tblWHStockMovement" />
+          <EntitySet Name="tblWHLocations" EntityType="LKBWarehouseModel1.tblWHLocation" />
         </EntityContainer>
+        <EntityType Name="tblWHLocation">
+          <Key>
+            <PropertyRef Name="LocationNo" />
+          </Key>
+          <Property Name="WHsite" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LocationNo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Width" Type="Double" />
+          <Property Name="Long" Type="Double" />
+          <Property Name="Height" Type="Double" />
+          <Property Name="Valume" Type="Double" />
+          <Property Name="Qtypallet" Type="Int32" />
+          <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="LocationStatus" Type="Int32" />
+          <Property Name="Usedstatus" Type="Int32" />
+          <Property Name="CreateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -11304,6 +11343,26 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
                 <ScalarProperty Name="Invoice" ColumnName="Invoice" />
                 <ScalarProperty Name="OrderFrmOnline" ColumnName="OrderFrmOnline" />
                 <ScalarProperty Name="CustFrmOnline" ColumnName="CustFrmOnline" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblWHLocations">
+            <EntityTypeMapping TypeName="LKBWarehouseModel1.tblWHLocation">
+              <MappingFragment StoreEntitySet="tblWHLocation">
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="Usedstatus" ColumnName="Usedstatus" />
+                <ScalarProperty Name="LocationStatus" ColumnName="LocationStatus" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="Qtypallet" ColumnName="Qtypallet" />
+                <ScalarProperty Name="Valume" ColumnName="Valume" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="Long" ColumnName="Long" />
+                <ScalarProperty Name="Width" ColumnName="Width" />
+                <ScalarProperty Name="LocationNo" ColumnName="LocationNo" />
+                <ScalarProperty Name="WHsite" ColumnName="WHsite" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

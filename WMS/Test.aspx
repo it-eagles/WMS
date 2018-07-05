@@ -52,10 +52,10 @@
                                                 <%--<asp:LinkButton ID="lnkEdit" runat="server" CommandName="edit" CommandArgument='<%# DataBinder.Eval(Container.DataItem, "Form")%>'>Edit</asp:LinkButton>
                                                 <asp:LinkButton Visible="false" ID="lnkUpdate" runat="server" CommandName="update" CommandArgument='<%# DataBinder.Eval(Container.DataItem, "Form")%>'>Update</asp:LinkButton>
                                                 <asp:LinkButton Visible="false" ID="lnkCancel" runat="server" CommandName="cancel" CommandArgument='<%# DataBinder.Eval(Container.DataItem, "Form")%>'>Cancel</asp:LinkButton>--%>
-                                                <asp:LinkButton ID="LinkButton1" Text="Edit" runat="server" OnClick="OnEdit" />
-                                                <asp:LinkButton ID="LinkButton2" Text="Update" runat="server" Visible="false" OnClick="OnUpdate" />
-                                                <asp:LinkButton ID="LinkButton3" Text="Cancel" runat="server" Visible="false" OnClick="OnCancel" />
-                                                <asp:LinkButton ID="lnkDelete" Text="Delete" runat="server" OnClick="OnDelete" OnClientClick="return confirm('Do you want to delete this row?');" />
+                                                <asp:LinkButton ID="LinkButton1" Text="Edit" runat="server" OnClick="LinkButton1_Click" />
+                                                <asp:LinkButton ID="LinkButton2" Text="Update" runat="server" Visible="false" OnClick="LinkButton2_Click"/>
+                                                <asp:LinkButton ID="LinkButton3" Text="Cancel" runat="server" Visible="false" OnClick="LinkButton3_Click" />
+                                                <asp:LinkButton ID="lnkDelete" Text="Delete" runat="server" OnClick="lnkDelete_Click" OnClientClick="return confirm('Do you want to delete this row?');" />
                                               
                                             </td>
                                         </tr>

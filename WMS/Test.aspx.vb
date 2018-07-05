@@ -79,4 +79,20 @@ Public Class Test
             Me.cpRepeater.DataBind()
         End If
     End Sub
+
+    Protected Sub LinkButton1_Click(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Protected Sub LinkButton2_Click(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Protected Sub LinkButton3_Click(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Protected Sub lnkDelete_Click(sender As Object, e As EventArgs)
+
+    End Sub
 End Class

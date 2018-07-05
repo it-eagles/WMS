@@ -123,5 +123,6 @@ Partial Public Class LKBWarehouseEntities1_Test
     Public Overridable Property tblWHRemarkMoveJobs() As DbSet(Of tblWHRemarkMoveJob)
     Public Overridable Property tblWHRequestedISSUEs() As DbSet(Of tblWHRequestedISSUE)
     Public Overridable Property tblWHStockMovements() As DbSet(Of tblWHStockMovement)
+    Public Overridable Property tblWHLocations() As DbSet(Of tblWHLocation)
 
 End Class

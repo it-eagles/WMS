@@ -106,6 +106,7 @@
         <EntityTypeShape EntityType="LKBWarehouseModel1.tblWHRemarkMoveJob" Width="1.5" PointX="20.75" PointY="35.75" IsExpanded="true" />
         <EntityTypeShape EntityType="LKBWarehouseModel1.tblWHRequestedISSUE" Width="1.5" PointX="22.75" PointY="35.75" IsExpanded="true" />
         <EntityTypeShape EntityType="LKBWarehouseModel1.tblWHStockMovement" Width="1.5" PointX="36.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblWHLocation" Width="1.5" PointX="25.375" PointY="36.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
