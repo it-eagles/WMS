@@ -50,15 +50,6 @@ Partial Public Class ViewUserProfile
     Protected WithEvents txtdeptname As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
-    '''LinkButton2 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents LinkButton2 As Global.System.Web.UI.WebControls.LinkButton
-
-    '''<summary>
     '''txtUserName control.
     '''</summary>
     '''<remarks>
