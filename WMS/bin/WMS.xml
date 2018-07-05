@@ -4823,6 +4823,7 @@ txtTel control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
+<<<<<<< HEAD
 </member><member name="F:WMS.MasterPartyEdit.txtAddress3">
 	<summary>
 txtAddress3 control.
@@ -4832,6 +4833,9 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member><member name="F:WMS.MasterPartyEdit.txtFax">
+=======
+</member><member name="F:WMS.ViewUserProfile.txtUserName">
+>>>>>>> 614229c4ab8a45000138e8910507dcb605089363
 	<summary>
 txtFax control.
 </summary>
