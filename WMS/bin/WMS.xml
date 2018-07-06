@@ -6,7 +6,7 @@ WMS
 </name>
 </assembly>
 <members>
-<member name="F:WMS.MasterLocationEdit.form1">
+<member name="F:WMS.MasterExchangeRate.form1">
 	<summary>
 form1 control.
 </summary>
@@ -14,7 +14,7 @@ form1 control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MasterLocationEdit.ScriptManager1">
+</member><member name="F:WMS.MasterExchangeRate.ScriptManager1">
 	<summary>
 ScriptManager1 control.
 </summary>
@@ -22,87 +22,79 @@ ScriptManager1 control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MasterLocationEdit.txtWHsite">
+</member><member name="F:WMS.MasterExchangeRate.txtDirectory">
 	<summary>
-txtWHsite control.
+txtDirectory control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MasterLocationEdit.txtLocationNo">
+</member><member name="F:WMS.MasterExchangeRate.dcbStatus">
 	<summary>
-txtLocationNo control.
+dcbStatus control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MasterLocationEdit.rdbPallet">
+</member><member name="F:WMS.MasterExchangeRate.btnImport">
 	<summary>
-rdbPallet control.
+btnImport control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MasterLocationEdit.rdbPalletNone">
+</member><member name="F:WMS.MasterExchangeRate.Repeater1">
 	<summary>
-rdbPalletNone control.
+Repeater1 control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MasterLocationEdit.txtWidth">
+</member><member name="F:WMS.MasterMoneyConfigEdit.form1">
 	<summary>
-txtWidth control.
+form1 control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MasterLocationEdit.txtLong">
+</member><member name="F:WMS.MasterMoneyConfigEdit.ScriptManager1">
 	<summary>
-txtLong control.
+ScriptManager1 control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MasterLocationEdit.txtHeigth">
+</member><member name="F:WMS.MasterMoneyConfigEdit.txtCode">
 	<summary>
-txtHeigth control.
+txtCode control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MasterLocationEdit.txtValume">
+</member><member name="F:WMS.MasterMoneyConfigEdit.txtAmount">
 	<summary>
-txtValume control.
+txtAmount control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MasterLocationEdit.txtUsedStatus">
+</member><member name="F:WMS.MasterMoneyConfigEdit.txtTotalAmount">
 	<summary>
-txtUsedStatus control.
+txtTotalAmount control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MasterLocationEdit.txtQTYPallet">
-	<summary>
-txtQTYPallet control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MasterLocationEdit.txtRemark">
+</member><member name="F:WMS.MasterMoneyConfigEdit.txtRemark">
 	<summary>
 txtRemark control.
 </summary>
@@ -110,9 +102,33 @@ txtRemark control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MasterLocationEdit.btnAdd">
+</member><member name="F:WMS.MasterMoneyConfigEdit.dcbStatus">
+	<summary>
+dcbStatus control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.MasterMoneyConfigEdit.btnAdd">
 	<summary>
 btnAdd control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.MasterMoneyConfigEdit.btnClear">
+	<summary>
+btnClear control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.MasterMoneyConfigEdit.Repeater1">
+	<summary>
+Repeater1 control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -783,14 +799,6 @@ txtdeptname control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.ViewUserProfile.LinkButton2">
-	<summary>
-LinkButton2 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
 </member><member name="F:WMS.ViewUserProfile.txtUserName">
 	<summary>
 txtUserName control.
@@ -1010,6 +1018,118 @@ To modify move field declaration from designer file to code-behind file.
 </member><member name="F:WMS.MasterCode.Repeater1">
 	<summary>
 Repeater1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.MasterLocationEdit.form1">
+	<summary>
+form1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.MasterLocationEdit.ScriptManager1">
+	<summary>
+ScriptManager1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.MasterLocationEdit.txtWHsite">
+	<summary>
+txtWHsite control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.MasterLocationEdit.txtLocationNo">
+	<summary>
+txtLocationNo control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.MasterLocationEdit.rdbPallet">
+	<summary>
+rdbPallet control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.MasterLocationEdit.rdbPalletNone">
+	<summary>
+rdbPalletNone control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.MasterLocationEdit.txtWidth">
+	<summary>
+txtWidth control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.MasterLocationEdit.txtLong">
+	<summary>
+txtLong control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.MasterLocationEdit.txtHeigth">
+	<summary>
+txtHeigth control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.MasterLocationEdit.txtValume">
+	<summary>
+txtValume control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.MasterLocationEdit.txtUsedStatus">
+	<summary>
+txtUsedStatus control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.MasterLocationEdit.txtQTYPallet">
+	<summary>
+txtQTYPallet control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.MasterLocationEdit.txtRemark">
+	<summary>
+txtRemark control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.MasterLocationEdit.btnAdd">
+	<summary>
+btnAdd control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -1880,6 +2000,86 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member><member name="F:WMS.MasterLocation.Repeater1">
+	<summary>
+Repeater1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.MasterMoneyConfig.form1">
+	<summary>
+form1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.MasterMoneyConfig.ScriptManager1">
+	<summary>
+ScriptManager1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.MasterMoneyConfig.txtCode">
+	<summary>
+txtCode control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.MasterMoneyConfig.txtAmount">
+	<summary>
+txtAmount control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.MasterMoneyConfig.txtTotalAmount">
+	<summary>
+txtTotalAmount control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.MasterMoneyConfig.txtRemark">
+	<summary>
+txtRemark control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.MasterMoneyConfig.dcbStatus">
+	<summary>
+dcbStatus control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.MasterMoneyConfig.btnAdd">
+	<summary>
+btnAdd control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.MasterMoneyConfig.btnClear">
+	<summary>
+btnClear control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.MasterMoneyConfig.Repeater1">
 	<summary>
 Repeater1 control.
 </summary>
@@ -4823,7 +5023,6 @@ txtTel control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-<<<<<<< HEAD
 </member><member name="F:WMS.MasterPartyEdit.txtAddress3">
 	<summary>
 txtAddress3 control.
@@ -4833,9 +5032,6 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member><member name="F:WMS.MasterPartyEdit.txtFax">
-=======
-</member><member name="F:WMS.ViewUserProfile.txtUserName">
->>>>>>> 614229c4ab8a45000138e8910507dcb605089363
 	<summary>
 txtFax control.
 </summary>

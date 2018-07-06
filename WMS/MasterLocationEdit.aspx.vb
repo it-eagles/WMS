@@ -37,7 +37,6 @@ Public Class MasterLocationEdit
 
     Private Sub editParty()
         Dim LocationNo As String = Request.QueryString("LocationNo")
-        Dim UserName As String = Request.QueryString("UserName")
         If (String.IsNullOrEmpty(txtLocationNo.Value)) Then
             ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาป้อน  LocationNo ก่อน !!!');", True)
             txtLocationNo.Focus()
@@ -56,7 +55,7 @@ Public Class MasterLocationEdit
                     edit.Usedstatus = CType(txtUsedStatus.Value.Trim, Integer?)
                     edit.Qtypallet = CType(txtQTYPallet.Value.Trim, Integer?)
                     edit.Remark = txtRemark.Text.Trim
-                    edit.UpdateBy = CStr(Session("UserId"))
+                    edit.UpdateBy = CStr(Session("UserName"))
                     edit.UpdateDate = Now
                     db.SaveChanges()
                     tran.Complete()

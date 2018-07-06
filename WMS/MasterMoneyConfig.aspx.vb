@@ -1,35 +1,40 @@
 ﻿Imports System.Transactions
-Public Class MasterLocation
+
+Public Class MasterMoneyConfig
     Inherits System.Web.UI.Page
 
-    'Dim db As New LKBwarehouseEntities
     Dim db As New LKBWarehouseEntities1_Test
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If Not Me.IsPostBack Then
-            showListLocation()
+            showListMoney()
         End If
     End Sub
-    '---------------------------------------------------------------btnAddClick-------------------------------------------------
-    Protected Sub Button1_ServerClick(sender As Object, e As EventArgs)
+
+    Protected Sub btnAdd_ServerClick(sender As Object, e As EventArgs)
         SaveDATA_New()
     End Sub
-    '---------------------------------------------------------------------btnClearClick------------------------------------------------
-    Protected Sub Button2_ServerClick(sender As Object, e As EventArgs)
+
+    Protected Sub btnClear_ServerClick(sender As Object, e As EventArgs)
         clear()
     End Sub
+    '-------------------------------------------------------------------Clear Data-------------------------------------------------
+    Private Sub clear()
+        txtCode.Value = ""
+        txtAmount.Value = ""
+        txtTotalAmount.Value = ""
+        txtRemark.Text = ""
+        dcbStatus.Text = ""
+    End Sub
     '------------------------------------------------------Show DataLocation in Repeater--------------------------------------------
-    Public Sub showListLocation()
+    Public Sub showListMoney()
 
-        Dim user = (From u In db.tblWHLocations
-                   Select New With {u.WHsite,
-                          u.LocationNo,
-                          u.Width,
-                          u.Long,
-                          u.Height,
-                          u.Valume,
-                          u.Qtypallet})
-
+        Dim user = (From u In db.tblMoneyConfigs
+                   Select New With {u.Code,
+                          u.Amonut,
+                          u.TotalAmonut,
+                          u.Remark,
+                          u.Status})
 
         If user.Count > 0 Then
             Repeater1.DataSource = user.ToList
@@ -44,10 +49,10 @@ Public Class MasterLocation
         Dim id As String = Session("UserName").ToString
         Dim menu As String = "frmUserProfile"
         Dim index As String = CStr(e.CommandArgument)
-        If e.CommandName.Equals("editlocation") Then
+        If e.CommandName.Equals("editcode") Then
             Dim ds1 = From c In db.tblUserMenus Where c.UserName = id And c.Form = menu And c.Edit_ = 1
             If ds1.Any Then
-                Response.Write("<script>window.open('MasterLocationEdit.aspx?LocationNo=" & index & "',target='_self');</script>")
+                Response.Write("<script>window.open('MasterMoneyConfigEdit.aspx?Code=" & index & "',target='_self');</script>")
             Else
                 ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธ์การแก้ไข')", True)
             End If
@@ -61,28 +66,24 @@ Public Class MasterLocation
         End If
     End Sub
     '-----------------------------------------------------------------------Add User Method-------------------------------------------
-    Private Sub addLocation()
+    Private Sub addMoneyConfig()
         Using tran As New TransactionScope()
             Try
                 db.Database.Connection.Open()
 
-                db.tblWHLocations.Add(New tblWHLocation With { _
-                             .WHsite = txtWHsite.Value.Trim, _
-                             .LocationNo = txtLocationNo.Value.Trim, _
-                             .Width = txtWidth.Value.Trim, _
-                             .Long = txtLong.Value.Trim, _
-                             .Height = txtHeigth.Value.Trim, _
-                             .Valume = txtValume.Value.Trim, _
-                             .Usedstatus = txtUsedStatus.Value.Trim, _
-                             .Qtypallet = txtQTYPallet.Value.Trim, _
+                db.tblMoneyConfigs.Add(New tblMoneyConfig With { _
+                             .Code = txtCode.Value.Trim, _
+                             .Amonut = txtAmount.Value.Trim, _
+                             .TotalAmonut = txtAmount.Value.Trim, _
                              .Remark = txtRemark.Text.Trim, _
+                             .Status = dcbStatus.Text.Trim, _
                              .CreateBy = CStr(Session("UserName")), _
                              .CreateDate = Now})
 
                 db.SaveChanges()
                 tran.Complete()
                 ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('เพิ่ม Location สำเร็จ !');", True)
-                Response.Redirect("MasterLocation.aspx")
+                Response.Redirect("MasterMoneyConfig.aspx")
             Catch ex As Exception
                 ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด กรุณาบันทึกข้อมูลใหม่อีกครั้ง');", True)
             Finally
@@ -92,27 +93,16 @@ Public Class MasterLocation
             End Try
         End Using
     End Sub
-    '-------------------------------------------------------------------Clear Data-------------------------------------------------
-    Private Sub clear()
-        txtWHsite.Value = ""
-        txtLocationNo.Value = ""
-        txtWidth.Value = ""
-        txtHeigth.Value = ""
-        txtValume.Value = ""
-        txtUsedStatus.Value = ""
-        txtQTYPallet.Value = ""
-        txtRemark.Text = ""
-    End Sub
-    '-----------------------------------------------------Check LocationNo--------------------------------------------
+
     Private Sub SaveDATA_New()
         Try
-            Dim user = (From u In db.tblWHLocations Where u.LocationNo = txtLocationNo.Value
+            Dim user = (From u In db.tblMoneyConfigs Where u.Code = txtCode.Value
           Select u).FirstOrDefault
 
             If Not user Is Nothing Then
                 ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('Code ซ้ำ กรุณาเปลี่ยนใหม่');", True)
             Else
-                addLocation()
+                addMoneyConfig()
                 Response.Write("<script>window.open('MasterMoneyConfig.aspx,target='_self');</script>")
             End If
         Catch ex As Exception

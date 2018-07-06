@@ -58,7 +58,7 @@
                                        <div class="col-lg2 col-md-5">
                                             <div class="radio">
                                             <label>                                            
-                                             <asp:RadioButton runat="server" ID ="rdbPallet" Text="Pallet"  onclick="EnableDisableTextBox();"  GroupName="option1" Checked="true" />
+                                             <asp:RadioButton runat="server" ID ="rdbPallet" Text="Pallet"  onclick="EnableDisableTextBox();"  GroupName="1" />
                                           </label>
                                            </div>            
                                        </div>
@@ -66,7 +66,7 @@
                                         <div class="col-lg2 col-md-5">
                                             <div class="radio">
                                             <label>                                            
-                                             <asp:RadioButton runat="server" ID ="rdbPalletNone" Text="ปริมาตร" onclick="EnableDisableTextBox();" GroupName="option1"/>
+                                             <asp:RadioButton runat="server" ID ="rdbPalletNone" Text="ปริมาตร" onclick="EnableDisableTextBox();" GroupName="1"/>
                                           </label>
                                            </div>            
                                        </div>

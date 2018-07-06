@@ -234,9 +234,12 @@
     <Content Include="LogIN.aspx" />
     <Content Include="Logout.aspx" />
     <Content Include="MasterCode.aspx" />
+    <Content Include="MasterExchangeRate.aspx" />
     <Content Include="MasterGoods.aspx" />
     <Content Include="MasterLocation.aspx" />
     <Content Include="MasterLocationEdit.aspx" />
+    <Content Include="MasterMoneyConfig.aspx" />
+    <Content Include="MasterMoneyConfigEdit.aspx" />
     <Content Include="MasterPartyAdd.aspx" />
     <Content Include="MasterPartyEdit.aspx" />
     <Content Include="MasterPartyView.aspx" />
@@ -7250,6 +7253,13 @@
       <DependentUpon>MasterCode.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
+    <Compile Include="MasterExchangeRate.aspx.designer.vb">
+      <DependentUpon>MasterExchangeRate.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterExchangeRate.aspx.vb">
+      <DependentUpon>MasterExchangeRate.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="MasterGoods.aspx.designer.vb">
       <DependentUpon>MasterGoods.aspx</DependentUpon>
     </Compile>
@@ -7269,6 +7279,20 @@
     </Compile>
     <Compile Include="MasterLocationEdit.aspx.vb">
       <DependentUpon>MasterLocationEdit.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="MasterMoneyConfig.aspx.designer.vb">
+      <DependentUpon>MasterMoneyConfig.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterMoneyConfig.aspx.vb">
+      <DependentUpon>MasterMoneyConfig.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="MasterMoneyConfigEdit.aspx.designer.vb">
+      <DependentUpon>MasterMoneyConfigEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterMoneyConfigEdit.aspx.vb">
+      <DependentUpon>MasterMoneyConfigEdit.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="MasterPartyAdd.aspx.designer.vb">
@@ -7939,7 +7963,9 @@
     <TypeScriptCompile Include="Scripts\fullcalendar\dist\fullcalendar.d.ts" />
     <TypeScriptCompile Include="Scripts\moment\moment.d.ts" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Receive Process\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

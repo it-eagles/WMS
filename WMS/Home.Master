@@ -235,10 +235,10 @@
                                 <li><a href="MasterGoods.aspx"><i class="fa fa-circle-o"></i>Master Goods</a></li>
                                 <li><a href="MasterPartyAdd.aspx"><i class="fa fa-circle-o"></i>Master Party</a></li>
                                 <li><a href="MasterCode.aspx"><i class="fa fa-circle-o"></i>Master Code</a></li>
-                                <li><a ><i class="fa fa-circle-o"></i>Master Exchange Rate</a></li>
+                                <li><a href="MasterExchangeRate.aspx"><i class="fa fa-circle-o"></i>Master Exchange Rate</a></li>
                                 <li><a href="MasterLocation.aspx"><i class="fa fa-circle-o"></i>Master Location</a></li>
                                 <li><a ><i class="fa fa-circle-o"></i>Master Tariff Code</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i>Master Money Config</a></li>
+                                <li><a href="MasterMoneyConfig.aspx"><i class="fa fa-circle-o"></i>Master Money Config</a></li>
                                 <li><a href="#"><i class="fa fa-circle-o"></i>Upload Doc</a></li>
                                 <li><a href="#"><i class="fa fa-circle-o"></i>Report Lot Total</a></li>
                             </ul>

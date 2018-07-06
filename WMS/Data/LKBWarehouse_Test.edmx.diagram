@@ -72,7 +72,6 @@
         <EntityTypeShape EntityType="LKBWarehouseModel1.tblLogTruckWayBillDetailImp" Width="1.5" PointX="28.75" PointY="12.75" IsExpanded="true" />
         <EntityTypeShape EntityType="LKBWarehouseModel1.tblLogTruckWayBillImp" Width="1.5" PointX="14.75" PointY="28.75" IsExpanded="true" />
         <EntityTypeShape EntityType="LKBWarehouseModel1.tblMasterCode" Width="1.5" PointX="28.75" PointY="15.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="LKBWarehouseModel1.tblMoneyConfig" Width="1.5" PointX="28.75" PointY="19.75" IsExpanded="true" />
         <EntityTypeShape EntityType="LKBWarehouseModel1.tblPartyAddress" Width="1.5" PointX="20.75" PointY="28.75" IsExpanded="true" />
         <EntityTypeShape EntityType="LKBWarehouseModel1.tblRecEASInvoice" Width="1.5" PointX="28.75" PointY="23.75" IsExpanded="true" />
         <EntityTypeShape EntityType="LKBWarehouseModel1.tblRecINV" Width="1.5" PointX="28.75" PointY="27.75" IsExpanded="true" />
@@ -107,6 +106,7 @@
         <EntityTypeShape EntityType="LKBWarehouseModel1.tblWHRequestedISSUE" Width="1.5" PointX="22.75" PointY="35.75" IsExpanded="true" />
         <EntityTypeShape EntityType="LKBWarehouseModel1.tblWHStockMovement" Width="1.5" PointX="36.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="LKBWarehouseModel1.tblWHLocation" Width="1.5" PointX="25.375" PointY="36.75" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblMoneyConfig" Width="1.5" PointX="27.375" PointY="36.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
