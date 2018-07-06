@@ -75,10 +75,6 @@
     <EntitySetMapping Name="tblMenus">
       <EntityTypeMapping TypeName="LKBWarehouseModel1.tblMenu">
         <MappingFragment StoreEntitySet="tblMenu">
-          <ScalarProperty Name="Delete_" ColumnName="Delete_" />
-          <ScalarProperty Name="Edit_" ColumnName="Edit_" />
-          <ScalarProperty Name="Save_" ColumnName="Save_" />
-          <ScalarProperty Name="Read_" ColumnName="Read_" />
           <ScalarProperty Name="Form" ColumnName="Form" />
           <ScalarProperty Name="Menu" ColumnName="Menu" />
           <ScalarProperty Name="UserBy" ColumnName="UserBy" />
@@ -1781,6 +1777,23 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="tblMoneyConfigs">
+      <EntityTypeMapping TypeName="LKBWarehouseModel1.tblMoneyConfig">
+        <MappingFragment StoreEntitySet="tblMoneyConfig">
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Amonut" ColumnName="Amonut" />
+          <ScalarProperty Name="TotalAmonut" ColumnName="TotalAmonut" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+          <ScalarProperty Name="item" ColumnName="item" />
+          <ScalarProperty Name="rowguid" ColumnName="rowguid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="tblPartyAddresses">
       <EntityTypeMapping TypeName="LKBWarehouseModel1.tblPartyAddress">
         <MappingFragment StoreEntitySet="tblPartyAddress">
@@ -2832,23 +2845,6 @@
           <ScalarProperty Name="Width" ColumnName="Width" />
           <ScalarProperty Name="LocationNo" ColumnName="LocationNo" />
           <ScalarProperty Name="WHsite" ColumnName="WHsite" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="tblMoneyConfigs">
-      <EntityTypeMapping TypeName="LKBWarehouseModel1.tblMoneyConfig">
-        <MappingFragment StoreEntitySet="tblMoneyConfig">
-          <ScalarProperty Name="rowguid" ColumnName="rowguid" />
-          <ScalarProperty Name="item" ColumnName="item" />
-          <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
-          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
-          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
-          <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="Remark" ColumnName="Remark" />
-          <ScalarProperty Name="TotalAmonut" ColumnName="TotalAmonut" />
-          <ScalarProperty Name="Amonut" ColumnName="Amonut" />
-          <ScalarProperty Name="Code" ColumnName="Code" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -590,7 +590,7 @@ Public Class MasterPartyEdit
                     'edit.CreateBy = CStr(Session("UserName"))
                     'edit.CreateDate = Now()
                     edit.AmountGuarantee = CType(txtAmountGuarantee.Value, Decimal?)
-                    edit.UpdateBy = CStr(Session("UserName"))
+                    edit.UpdateBy = CStr(Session("UserId"))
                     edit.UpdateDate = Now
                     db.SaveChanges()
                     tran.Complete()

@@ -451,15 +451,15 @@ Public Class MasterGoods
         End If
     End Sub
     Public Sub showReapeaterStock()
-        Dim formlist = (From u In db.tblWHStockCtrls).Take(100)
+        'Dim formlist = (From u In db.tblWHStockCtrls)
 
-        If formlist.Count > 0 Then
-            Repeater1.DataSource = formlist.ToList
-            Repeater1.DataBind()
-        Else
-            Me.Repeater1.DataSource = Nothing
-            Me.Repeater1.DataBind()
-        End If
+        'If formlist.Count > 0 Then
+        '    Repeater1.DataSource = formlist.ToList
+        '    Repeater1.DataBind()
+        'Else
+        '    Me.Repeater1.DataSource = Nothing
+        '    Me.Repeater1.DataBind()
+        'End If
     End Sub
 
 End Class

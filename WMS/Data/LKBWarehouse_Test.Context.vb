@@ -89,6 +89,7 @@ Partial Public Class LKBWarehouseEntities1_Test
     Public Overridable Property tblLogTruckWayBillDetailImps() As DbSet(Of tblLogTruckWayBillDetailImp)
     Public Overridable Property tblLogTruckWayBillImps() As DbSet(Of tblLogTruckWayBillImp)
     Public Overridable Property tblMasterCodes() As DbSet(Of tblMasterCode)
+    Public Overridable Property tblMoneyConfigs() As DbSet(Of tblMoneyConfig)
     Public Overridable Property tblPartyAddresses() As DbSet(Of tblPartyAddress)
     Public Overridable Property tblRecEASInvoices() As DbSet(Of tblRecEASInvoice)
     Public Overridable Property tblRecINVs() As DbSet(Of tblRecINV)
@@ -123,6 +124,5 @@ Partial Public Class LKBWarehouseEntities1_Test
     Public Overridable Property tblWHRequestedISSUEs() As DbSet(Of tblWHRequestedISSUE)
     Public Overridable Property tblWHStockMovements() As DbSet(Of tblWHStockMovement)
     Public Overridable Property tblWHLocations() As DbSet(Of tblWHLocation)
-    Public Overridable Property tblMoneyConfigs() As DbSet(Of tblMoneyConfig)
 
 End Class

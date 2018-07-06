@@ -12,7 +12,7 @@ Public Class MasterLocation
     End Sub
     '---------------------------------------------------------------btnAddClick-------------------------------------------------
     Protected Sub Button1_ServerClick(sender As Object, e As EventArgs)
-        SaveDATA_New()
+        addLocation()
     End Sub
     '---------------------------------------------------------------------btnClearClick------------------------------------------------
     Protected Sub Button2_ServerClick(sender As Object, e As EventArgs)
@@ -76,7 +76,7 @@ Public Class MasterLocation
                              .Usedstatus = txtUsedStatus.Value.Trim, _
                              .Qtypallet = txtQTYPallet.Value.Trim, _
                              .Remark = txtRemark.Text.Trim, _
-                             .CreateBy = CStr(Session("UserName")), _
+                             .CreateBy = CStr(Session("UserId")), _
                              .CreateDate = Now})
 
                 db.SaveChanges()
@@ -102,21 +102,5 @@ Public Class MasterLocation
         txtUsedStatus.Value = ""
         txtQTYPallet.Value = ""
         txtRemark.Text = ""
-    End Sub
-    '-----------------------------------------------------Check LocationNo--------------------------------------------
-    Private Sub SaveDATA_New()
-        Try
-            Dim user = (From u In db.tblWHLocations Where u.LocationNo = txtLocationNo.Value
-          Select u).FirstOrDefault
-
-            If Not user Is Nothing Then
-                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('Code ซ้ำ กรุณาเปลี่ยนใหม่');", True)
-            Else
-                addLocation()
-                Response.Write("<script>window.open('MasterMoneyConfig.aspx,target='_self');</script>")
-            End If
-        Catch ex As Exception
-            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด');", True)
-        End Try
     End Sub
 End Class
