@@ -146,9 +146,8 @@ Public Class AddUser
             ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('รหัส Password ต้องมีจำนวนตัวอักษรระหว่าง 4-16 ตัวอักษร');", True)
             Exit Sub
         End If
-        addUser()
         Try
-            Dim user = (From u In db.tblUsers Where u.UserName = txtUserName.Value
+            Dim user = (From u In db.tblUsers Where u.UserName = txtUserName.Value.Trim.ToUpper
           Select u).FirstOrDefault
 
             If Not user Is Nothing Then
@@ -260,11 +259,11 @@ Public Class AddUser
                              .StatusWarehouse = StatusWareHouse, _
                              .UserStatus = UserStatus
                          })
-
+                addMenu(usernameupper)
                 db.SaveChanges()
                 tran.Complete()
                 ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('เพิ่ม user สำเร็จ !');", True)
-                Response.Redirect("UserProfile.aspx")
+
             Catch ex As Exception
 
                 ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด กรุณาบันทึกข้อมูลใหม่อีกครั้ง');", True)
@@ -452,5 +451,36 @@ Public Class AddUser
     End Sub
     Protected Sub btnReset_Click(sender As Object, e As EventArgs)
         clear()
+    End Sub
+    Private Sub addMenu(user As String)
+        Try
+            Dim ds = (From u In db.tblUserMenus Where u.UserName = user).ToList
+            If Not ds Is Nothing Then
+                Dim del = (From c In db.tblMenus).ToList
+                'For Each c In del
+                '    db.tblMenus.Remove(c)
+                'Next
+                'db.SaveChanges()
+                For Each it In del
+                    db.tblUserMenus.Add(New tblUserMenu With { _
+                               .UserName = user.Trim.ToUpper, _
+                               .Form = it.Form, _
+                               .Read_ = it.Read_, _
+                               .Save_ = it.Save_, _
+                               .Edit_ = it.Edit_, _
+                               .Delete_ = it.Delete_, _
+                               .UserBy = CStr(Session("UserName")), _
+                               .LastUpdate = Now
+                           })
+                    db.SaveChanges()
+
+                Next
+                'Response.Redirect("UserProfile.aspx")
+            End If
+
+        Catch ex As Exception
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด');", True)
+        End Try
+
     End Sub
 End Class

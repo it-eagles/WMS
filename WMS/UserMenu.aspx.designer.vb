@@ -59,15 +59,6 @@ Partial Public Class UserMenu
     Protected WithEvents txtDescription As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''btnSave control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents btnSave As Global.System.Web.UI.HtmlControls.HtmlButton
-
-    '''<summary>
     '''btnCopy control.
     '''</summary>
     '''<remarks>

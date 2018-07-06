@@ -75,6 +75,10 @@
     <EntitySetMapping Name="tblMenus">
       <EntityTypeMapping TypeName="LKBWarehouseModel1.tblMenu">
         <MappingFragment StoreEntitySet="tblMenu">
+          <ScalarProperty Name="Delete_" ColumnName="Delete_" />
+          <ScalarProperty Name="Edit_" ColumnName="Edit_" />
+          <ScalarProperty Name="Save_" ColumnName="Save_" />
+          <ScalarProperty Name="Read_" ColumnName="Read_" />
           <ScalarProperty Name="Form" ColumnName="Form" />
           <ScalarProperty Name="Menu" ColumnName="Menu" />
           <ScalarProperty Name="UserBy" ColumnName="UserBy" />
@@ -2825,6 +2829,26 @@
           <ScalarProperty Name="Invoice" ColumnName="Invoice" />
           <ScalarProperty Name="OrderFrmOnline" ColumnName="OrderFrmOnline" />
           <ScalarProperty Name="CustFrmOnline" ColumnName="CustFrmOnline" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblWHLocations">
+      <EntityTypeMapping TypeName="LKBWarehouseModel1.tblWHLocation">
+        <MappingFragment StoreEntitySet="tblWHLocation">
+          <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+          <ScalarProperty Name="Usedstatus" ColumnName="Usedstatus" />
+          <ScalarProperty Name="LocationStatus" ColumnName="LocationStatus" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="Qtypallet" ColumnName="Qtypallet" />
+          <ScalarProperty Name="Valume" ColumnName="Valume" />
+          <ScalarProperty Name="Height" ColumnName="Height" />
+          <ScalarProperty Name="Long" ColumnName="Long" />
+          <ScalarProperty Name="Width" ColumnName="Width" />
+          <ScalarProperty Name="LocationNo" ColumnName="LocationNo" />
+          <ScalarProperty Name="WHsite" ColumnName="WHsite" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

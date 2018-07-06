@@ -15,5 +15,9 @@ Partial Public Class tblMenu
     Public Property Menu As String
     Public Property UserBy As String
     Public Property UpdateBy As Nullable(Of Date)
+    Public Property Read_ As Nullable(Of Integer)
+    Public Property Save_ As Nullable(Of Integer)
+    Public Property Edit_ As Nullable(Of Integer)
+    Public Property Delete_ As Nullable(Of Integer)
 
 End Class
