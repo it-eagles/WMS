@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" CodeBehind="Test.aspx.vb" Inherits="WMS.Test" MasterPageFile="~/Home.Master" EnableEventValidation="false" EnableViewState="false" %>
+﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" CodeBehind="Test.aspx.vb" Inherits="WMS.Test" MasterPageFile="~/Home.Master" EnableEventValidation="false" EnableViewState="true" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -22,7 +22,7 @@
                             <div class="box-body">
 
                                 
-                                <asp:Repeater ID="cpRepeater" runat="server" OnItemCommand="cpRepeater_ItemCommand" OnItemDataBound="cpRepeater_ItemDataBound">
+                                <asp:Repeater ID="cpRepeater" runat="server">
                                     <HeaderTemplate>
                                         <table id="example1" class="table table-bordered table-striped">
                                             <thead>
@@ -30,7 +30,7 @@
                                                 <td>Check</td>
                                                 <td>Form</td>
                                                 <td>Type</td>
-                                                <td>Options</td>
+                                                <td>Edit</td>
                                             </tr>
                                           </thead>
                                     </HeaderTemplate>
@@ -40,21 +40,18 @@
                                                 <asp:CheckBox ID="chkDelete" runat="server" />
                                             </td>
                                             <td>
-                                                <asp:Label ID="lblID" Visible="false" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Form")%>'></asp:Label>
-                                                <asp:Label ID="lblName" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Form")%>'></asp:Label>
-                                                <asp:TextBox ID="txtName" BackColor="#d4d0c8" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Read_")%>' Visible="false"></asp:TextBox>
+                                                <asp:Label ID="lblID" Visible="false" runat="server" Text='<%# Bind("Form")%>'></asp:Label>
+                                                <asp:Label ID="lblName" runat="server" Text='<%# Bind("Form")%>'></asp:Label>
+                                                <asp:TextBox ID="txtName" BackColor="#d4d0c8" runat="server" Text='<%# Bind("Form")%>' Visible="false"></asp:TextBox>
                                             </td>
                                             <td>
-                                                <asp:DropDownList ID="ddlType" runat="server">
-                                                </asp:DropDownList>
+                                                <asp:DropDownList ID="ddlType" runat="server"></asp:DropDownList>
                                             </td>
                                             <td>
-                                                <%--<asp:LinkButton ID="lnkEdit" runat="server" CommandName="edit" CommandArgument='<%# DataBinder.Eval(Container.DataItem, "Form")%>'>Edit</asp:LinkButton>
-                                                <asp:LinkButton Visible="false" ID="lnkUpdate" runat="server" CommandName="update" CommandArgument='<%# DataBinder.Eval(Container.DataItem, "Form")%>'>Update</asp:LinkButton>
-                                                <asp:LinkButton Visible="false" ID="lnkCancel" runat="server" CommandName="cancel" CommandArgument='<%# DataBinder.Eval(Container.DataItem, "Form")%>'>Cancel</asp:LinkButton>--%>
-                                                <asp:LinkButton ID="LinkButton1" Text="Edit" runat="server" OnClick="LinkButton1_Click" />
-                                                <asp:LinkButton ID="LinkButton2" Text="Update" runat="server" Visible="false" OnClick="LinkButton2_Click"/>
-                                                <asp:LinkButton ID="LinkButton3" Text="Cancel" runat="server" Visible="false" OnClick="LinkButton3_Click" />
+                                            
+                                                <asp:LinkButton ID="lnkEdit" CssClass="btn btn-default" runat="server" OnClick="LinkButton1_Click"></asp:LinkButton>
+                                                <asp:LinkButton ID="lnkUpdate" Text="Update" runat="server" Visible="false" OnClick="LinkButton2_Click"></asp:LinkButton>
+                                                <asp:LinkButton ID="lnkCancel" Text="Cancel" runat="server" Visible="false" OnClick="LinkButton3_Click"></asp:LinkButton>
                                                 <asp:LinkButton ID="lnkDelete" Text="Delete" runat="server" OnClick="lnkDelete_Click" OnClientClick="return confirm('Do you want to delete this row?');" />
                                               
                                             </td>
@@ -66,7 +63,7 @@
                                                 <td>Check</td>
                                                 <td>Form</td>
                                                 <td>Type</td>
-                                                <td>Options</td>
+                                                <td>Edit</td>
                                             </tr>
                                         </tfoot>
                                         </table>

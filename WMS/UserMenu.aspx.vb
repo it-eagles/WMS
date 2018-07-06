@@ -23,7 +23,7 @@ Public Class UserMenu
             ShowCopyUser()
             showMenuList()
             showGroupList()
-            showUserList()
+            'showUserList()
             'Else
             '    MsgBox("เกิดความผิดพลาดในการทำงาน", MsgBoxStyle.OkCancel)
         End If
@@ -78,7 +78,7 @@ Public Class UserMenu
         'Dim formlist = (From u In db.tblMenus
         '                Group By Form = u.Form
         '                Into f = Group, Count())
-        Dim formlist = (From u In db.tblUserMenus
+        Dim formlist = (From u In db.tblMenus
                  Select New With {
                      u.Form,
                      u.Read_,
@@ -198,7 +198,8 @@ Public Class UserMenu
 
         Dim grouplist = (From u In db.tblGroupMenus
                     Select New With {u.Form,
-                                     u.Menu}).ToList()
+                                     u.Menu
+                                    }).ToList()
 
         If grouplist.Count > 0 Then
             Repeater3.DataSource = grouplist
@@ -211,6 +212,7 @@ Public Class UserMenu
     End Sub
 
     Protected Sub Repeater3_ItemCommand(source As Object, e As RepeaterCommandEventArgs) Handles Repeater3.ItemCommand
+      
 
     End Sub
 
@@ -306,19 +308,6 @@ Public Class UserMenu
         End If
 
     End Sub
-    'Private Function GetData(ByVal query As String) As DataTable
-    '    Dim constr As String = ConfigurationManager.ConnectionStrings("constr").ConnectionString
-    '    Using con As SqlConnection = New SqlConnection(constr)
-    '        Using cmd As SqlCommand = New SqlCommand(query, con)
-    '            Using sda As SqlDataAdapter = New SqlDataAdapter(cmd)
-    '                Dim dt As DataTable = New DataTable()
-    '                sda.Fill(dt)
-    '                Return dt
-    '            End Using
-    '        End Using
-    '    End Using
-    'End Function
-
     Protected Sub Repeater2_ItemCreated(sender As Object, e As RepeaterItemEventArgs) Handles Repeater2.ItemCreated
        
     End Sub
@@ -326,17 +315,7 @@ Public Class UserMenu
     Protected Sub ddlUser_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlUser.SelectedIndexChanged
         Dim userMune As String = ddlUser.SelectedValue
         selectUserMune(userMune)
-
     End Sub
-
-    Protected Sub btnSave_ServerClick(sender As Object, e As EventArgs)
-        'If String.IsNullOrEmpty(ddlUser.Text) Then
-        '    MsgBox("0")
-        'Else
-        '    MsgBox(ddlUser.Text)
-        'End If
-    End Sub
-
 
     Protected Sub btnCopy_ServerClick(sender As Object, e As EventArgs)
         Dim Form As String
@@ -422,5 +401,102 @@ Public Class UserMenu
         Dim userMune As String = ddlCopyUser.SelectedValue
         selectUserMune(userMune)
 
+    End Sub
+
+    Protected Sub lnkEdit_Click(sender As Object, e As EventArgs)
+        Dim item As RepeaterItem = TryCast(TryCast(sender, LinkButton).Parent, RepeaterItem)
+        Me.ToggleElemnts(item, True)
+
+    End Sub
+
+    Protected Sub lnkUpdate_Click(sender As Object, e As EventArgs)
+        Dim Read As Integer
+        Dim save As Integer
+        Dim edit As Integer
+        Dim Delete As Integer
+
+        Dim Item As RepeaterItem = TryCast(TryCast(sender, LinkButton).Parent, RepeaterItem)
+        Dim lblForm As String = TryCast(Item.FindControl("lblForm"), Label).Text.Trim
+        Dim lblStatus As String = TryCast(Item.FindControl("lblStatus"), DropDownList).Text.Trim
+       
+        If lblStatus.Trim = "None" Then
+            Read = 0
+            save = 0
+            edit = 0
+            Delete = 0
+        ElseIf lblStatus.Trim = "Read" Then
+            Read = 1
+            save = 0
+            edit = 0
+            Delete = 0
+        ElseIf lblStatus.Trim = "Save" Then
+            Read = 1
+            save = 1
+            edit = 0
+            Delete = 0
+        ElseIf lblStatus.Trim = "Edit" Then
+            Read = 1
+            save = 1
+            edit = 1
+            Delete = 0
+        Else
+            Read = 1
+            save = 1
+            edit = 1
+            Delete = 1
+        End If
+
+        Try
+            Dim edti As tblUserMenu = (From um In db.tblUserMenus
+                                       Where um.UserName = ddlUser.Text.Trim And um.Form = lblForm.Trim).First
+            edti.UserName = ddlUser.Text.Trim
+            edti.Form = lblForm.Trim
+            edti.Read_ = Read
+            edti.Save_ = save
+            edti.Edit_ = edit
+            edti.Delete_ = Delete
+            edti.Status = lblStatus.Trim
+            edti.UserBy = CStr(Session("UserName"))
+            edti.LastUpdate = Now
+            db.SaveChanges()
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('เพิ่ม สิทธิ์ใช้งาน เสร็จเรียบร้อย');", True)
+            Me.ToggleElemnts(Item, False)
+            selectUserMune(ddlUser.Text.Trim)
+        Catch ex As Exception
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด');", True)
+        End Try
+       
+    End Sub
+
+    Protected Sub lnkCancel_Click(sender As Object, e As EventArgs)
+        Dim item As RepeaterItem = TryCast(TryCast(sender, LinkButton).Parent, RepeaterItem)
+        Me.ToggleElemnts(item, False)
+    End Sub
+
+    Private Sub ToggleElemnts(item As RepeaterItem, isEdit As Boolean)
+        item.FindControl("lnkEdit").Visible = Not isEdit
+        item.FindControl("lnkUpdate").Visible = isEdit
+        item.FindControl("lnkCancel").Visible = isEdit
+        'item.FindControl("lnkDelete").Visible = Not isEdit
+
+        'item.FindControl("lblID").Visible = Not isEdit
+        'item.FindControl("lblName").Visible = Not isEdit
+    End Sub
+
+    Protected Sub Repeater3_ItemDataBound(sender As Object, e As RepeaterItemEventArgs)
+
+        If e.Item.ItemType = ListItemType.Item OrElse e.Item.ItemType = ListItemType.AlternatingItem Then
+            Dim lblStatus As DropDownList = (TryCast(e.Item.FindControl("lblStatus"), DropDownList))
+
+            If Not IsNothing(lblStatus) Then
+                With lblStatus
+                    .Items.Add("None")
+                    .Items.Add("Read")
+                    .Items.Add("Save")
+                    .Items.Add("Edit")
+                    .Items.Add("Delete")
+                End With
+            End If
+        End If
     End Sub
 End Class

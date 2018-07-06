@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" CodeBehind="UserMenu.aspx.vb" Inherits="WMS.UserMenu" MasterPageFile="~/Home.Master" EnableViewState="true"%>
+﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" CodeBehind="UserMenu.aspx.vb" Inherits="WMS.UserMenu" MasterPageFile="~/Home.Master" EnableViewState="true" EnableEventValidation="false" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <form id="form1" runat="server">
@@ -45,12 +45,7 @@
                                                         <label for="txtUserName" class="col-sm-3 control-label">UserName</label>
 
                                                         <div class="col-sm-9">
-                                                                <%--<select class="form-control select2" style="width: 100%;" id="sltUser" runat="server"  datavaluefield="UserName" datatextfield="Name">
-                                                              
-                                                               </select>--%>
-                                                            
-
-                                                         <asp:DropDownList ID="ddlUser" CssClass="form-control select2" runat="server" DataTextField="Name" DataValueField="UserName"></asp:DropDownList>
+                                                         <asp:DropDownList ID="ddlUser" CssClass="form-control select2" runat="server" DataTextField="Name" DataValueField="UserName"  AutoPostBack="true"></asp:DropDownList>
                                                            <%-- <input class="form-control" id="txtUserName" runat="server" placeholder="User Name" />--%>
                                                         </div>
 
@@ -78,7 +73,7 @@
 
 
                                                     <div class="text-right">
-                                                        <button type="submit" runat="server" class="btn btn-primary" id="btnSave" title="btnSave" onserverclick="btnSave_ServerClick">Save</button>
+                                                       <%-- <button type="submit" runat="server" class="btn btn-primary" id="btnSave" title="btnSave" onserverclick="btnSave_ServerClick">Save</button>--%>
 
                                                     <button type="submit" runat="server" class="btn btn-reddit" id="btnCopy" title="btnCopy" onserverclick="btnCopy_ServerClick">Copy</button>
                                                     </div>
@@ -86,76 +81,80 @@
                                                 </div>
 
                                             </formview>
-
-                               <asp:Repeater ID="Repeater1" runat="server">
-                                    <HeaderTemplate>
-                                        <table id="example1" class="table table-bordered table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th>Form</th>
-                                                    <th>Read</th>
-                                                    <th>Save</th>           
-                                                    <th>Edit</th>
-                                                    <th>Delete</th>
-                                                    <th>Permissions</th>                                          
-                                                </tr>
-                                            </thead>
-                                    </HeaderTemplate>
-                                    <ItemTemplate>
-                                        <tr>
-                                            <td>
-                                                <asp:Label ID="lblForm" runat="server"></asp:Label></td>
-                                            <td class="text-center">
-                                                 <asp:Label ID="lblRead" runat="server">
-                                                     <i class="fa  fa-check-square-o fa-2x" aria-hidden="true"></i></asp:Label>
-                                                  <asp:Label ID="lblRead2" runat="server">
-                                                     <i class="fa  fa-close fa-2x" aria-hidden="true"></i></asp:Label> 
-                                            </td>
-                                            <td class="text-center">
-                                                 <asp:Label ID="lblSave" runat="server">
-                                                     <i class="fa  fa-check-square-o fa-2x" aria-hidden="true"></i></asp:Label>
-                                                  <asp:Label ID="lblSave2" runat="server">
-                                                     <i class="fa  fa-close fa-2x" aria-hidden="true"></i></asp:Label> 
-                                            </td>   
-                                            <td class="text-center">   
-                                                  <asp:Label ID="lblEdit" runat="server">
-                                                      <i class="fa  fa-check-square-o fa-2x" aria-hidden="true"></i> </asp:Label>     
-                                                   <asp:Label ID="lblEdit2" runat="server">
-                                                      <i class="fa  fa-close fa-2x" aria-hidden="true"></i></asp:Label> 
-                                            </td>
-                                            <td class="text-center">
-                                               <asp:Label ID="lblDelete" runat="server"><i class="fa  fa-check-square-o fa-2x" aria-hidden="true"></i></asp:Label>
-                                               <asp:Label ID="lblDelete2" runat="server"><i class="fa fa-close fa-2x" aria-hidden="true"></i></asp:Label>
-                                            </td>        
-                                               
-                                            <td class="text-center">
-                                                  <asp:DropDownList ID="lblStatus" CssClass="form-control" runat="server">
-                                                <%-- <asp:ListItem>None</asp:ListItem>
-                                                    <asp:ListItem Value="1">Read</asp:ListItem>
-                                                    <asp:ListItem Value="2">Save</asp:ListItem>
-                                                    <asp:ListItem Value="3">Edit</asp:ListItem>
-                                                    <asp:ListItem Value="4">Delete</asp:ListItem>   --%>
-
-                                               </asp:DropDownList>
-                                            </td>               
-                                        </tr>
-                                    </ItemTemplate>
-                                    <FooterTemplate>
-                                        <tfoot>
-                                            <tr>
-                                                    <th>Form</th>
-                                                    <th>Read</th>
-                                                    <th>Save</th>           
-                                                    <th>Edit</th>
-                                                    <th>Delete</th>
-                                                    <th>Permissions</th>                  
-                                            </tr>
-                                        </tfoot>
-                                        </table>
-                                    </FooterTemplate>
-                                </asp:Repeater>
-                                            <!--/.col-lg-6 col-md-6--->
                                         </div>
+
+                                        <div class="col-lg-10 col-md-offset-1">
+                                            <asp:Repeater ID="Repeater1" runat="server">
+                                                <HeaderTemplate>
+                                                    <table id="example1" class="table table-bordered table-striped">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Form</th>
+                                                                <th>Read</th>
+                                                                <th>Save</th>
+                                                                <th>Edit</th>
+                                                                <th>Delete</th>
+                                                                <th>Permissions</th>
+                                                                <th>Edit</th>
+                                                            </tr>
+                                                        </thead>
+                                                </HeaderTemplate>
+                                                <ItemTemplate>
+                                                    <tr>
+                                                        <td>
+                                                            <asp:Label ID="lblForm" runat="server"></asp:Label></td>
+                                                        <td class="text-center">
+                                                            <asp:Label ID="lblRead" runat="server">
+                                                     <i class="fa  fa-check-square-o fa-2x" aria-hidden="true"></i></asp:Label>
+                                                            <asp:Label ID="lblRead2" runat="server">
+                                                     <i class="fa  fa-close fa-2x" aria-hidden="true"></i></asp:Label>
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <asp:Label ID="lblSave" runat="server">
+                                                     <i class="fa  fa-check-square-o fa-2x" aria-hidden="true"></i></asp:Label>
+                                                            <asp:Label ID="lblSave2" runat="server">
+                                                     <i class="fa  fa-close fa-2x" aria-hidden="true"></i></asp:Label>
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <asp:Label ID="lblEdit" runat="server">
+                                                      <i class="fa  fa-check-square-o fa-2x" aria-hidden="true"></i> </asp:Label>
+                                                            <asp:Label ID="lblEdit2" runat="server">
+                                                      <i class="fa  fa-close fa-2x" aria-hidden="true"></i></asp:Label>
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <asp:Label ID="lblDelete" runat="server"><i class="fa  fa-check-square-o fa-2x" aria-hidden="true"></i></asp:Label>
+                                                            <asp:Label ID="lblDelete2" runat="server"><i class="fa fa-close fa-2x" aria-hidden="true"></i></asp:Label>
+                                                        </td>
+
+                                                        <td class="text-center">
+                                                            <asp:DropDownList ID="lblStatus" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <asp:LinkButton ID="lnkEdit" CssClass="btn btn-default" runat="server" OnClick="lnkEdit_Click"><i class="fa fa-pencil"></i></asp:LinkButton>
+                                                            <asp:LinkButton ID="lnkUpdate" Text="Update" runat="server" Visible="false" OnClick="lnkUpdate_Click"></asp:LinkButton>
+                                                            <asp:LinkButton ID="lnkCancel" Text="Cancel" runat="server" Visible="false" OnClick="lnkCancel_Click"></asp:LinkButton>
+                                                        </td>
+
+
+                                                    </tr>
+                                                </ItemTemplate>
+                                                <FooterTemplate>
+                                                    <tfoot>
+                                                        <tr>
+                                                            <th>Form</th>
+                                                            <th>Read</th>
+                                                            <th>Save</th>
+                                                            <th>Edit</th>
+                                                            <th>Delete</th>
+                                                            <th>Permissions</th>
+                                                            <th>Edit</th>
+                                                        </tr>
+                                                    </tfoot>
+                                                    </table>
+                                                </FooterTemplate>
+                                            </asp:Repeater>
+                                        </div>
+
 
                                         <!--/.row-->
                                     </div>
@@ -203,42 +202,42 @@
                                                     <!-- /.box-body -->
                                                 </div>
 
-                                            </formview> 
-                                                                                       
-                                  <asp:Repeater ID="Repeater2" runat="server" OnItemCommand="Repeater2_ItemCommand">
-                                    <HeaderTemplate>
-                                        <table id="example2" class="table table-bordered table-hover">
-                                            <thead>
-                                                <tr>
-                                                    <th>Form</th>
-                                                    <th>Menu</th>
-                                                    <th>UserBy</th>                                                
-                                                </tr>
-                                            </thead>
-                                    </HeaderTemplate>
+                                            </formview>
 
-                                    <ItemTemplate>
-                                        <tr>
-                                            <td>
-                                                <asp:Label ID="lblForm" runat="server" Text='<%# Bind("Form")%>'></asp:Label></td>
-                                            <td>
-                                                <asp:Label ID="lblMenu" runat="server" Text='<%# Bind("Menu")%>'></asp:Label></td>
-                                            <td>
-                                                <asp:Label ID="lblUserBy" runat="server" Text='<%# Bind("UserBy")%>'></asp:Label></td>
-                                                                             
-                                        </tr>
-                                    </ItemTemplate>
-                                    <FooterTemplate>
-                                        <tfoot>
-                                            <tr>
-                                                    <th>Form</th>
-                                                    <th>Menu</th>
-                                                    <th>UserBy</th> 
-                                            </tr>
-                                        </tfoot>
-                                        </table>
-                                    </FooterTemplate>
-                                </asp:Repeater>
+                                            <asp:Repeater ID="Repeater2" runat="server" OnItemCommand="Repeater2_ItemCommand">
+                                                <HeaderTemplate>
+                                                    <table id="example2" class="table table-bordered table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Form</th>
+                                                                <th>Menu</th>
+                                                                <th>UserBy</th>
+                                                            </tr>
+                                                        </thead>
+                                                </HeaderTemplate>
+
+                                                <ItemTemplate>
+                                                    <tr>
+                                                        <td>
+                                                            <asp:Label ID="lblForm" runat="server" Text='<%# Bind("Form")%>'></asp:Label></td>
+                                                        <td>
+                                                            <asp:Label ID="lblMenu" runat="server" Text='<%# Bind("Menu")%>'></asp:Label></td>
+                                                        <td>
+                                                            <asp:Label ID="lblUserBy" runat="server" Text='<%# Bind("UserBy")%>'></asp:Label></td>
+
+                                                    </tr>
+                                                </ItemTemplate>
+                                                <FooterTemplate>
+                                                    <tfoot>
+                                                        <tr>
+                                                            <th>Form</th>
+                                                            <th>Menu</th>
+                                                            <th>UserBy</th>
+                                                        </tr>
+                                                    </tfoot>
+                                                    </table>
+                                                </FooterTemplate>
+                                            </asp:Repeater>
                                             <!--/.col-lg-6 col-md-6--->
                                         </div>
 
@@ -276,48 +275,49 @@
                                                     <!-- /.box-body -->
                                                 </div>
                                             </formview>
-                                           
-                                     <asp:Repeater ID="Repeater3" runat="server">
-                                    <HeaderTemplate>
-                                        <table id="example1" class="table table-bordered table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th>Form</th>
-                                                    <th>Menu</th>
-                                                    <th>Status</th>
-                                            
-                                                </tr>
-                                            </thead>
-                                    </HeaderTemplate>
-                                    <ItemTemplate>
-                                        <tr>
-                                            <td>
-                                                <asp:Label ID="lblForm" runat="server" Text='<%# Bind("Form")%>'></asp:Label></td>
-                                            <td>
-                                                <asp:Label ID="lblMenu" runat="server" Text='<%# Bind("Menu")%>' Visible="false"></asp:Label></td>
-                                            <td class="text-center">
-                                                <asp:DropDownList ID="lblStatus" CssClass="form-control" runat="server">
-                                                    <asp:ListItem>None</asp:ListItem>
-                                                    <asp:ListItem>Read</asp:ListItem>
-                                                    <asp:ListItem>Save</asp:ListItem>
-                                                    <asp:ListItem>Edit</asp:ListItem>
-                                                    <asp:ListItem>Delete</asp:ListItem></asp:DropDownList>
 
-                                            </td>           
-                                        </tr>
-                                    </ItemTemplate>
-                                    <FooterTemplate>
-                                        <tfoot>
-                                            <tr>
-                                                <th>Form</th>
-                                                <th>Menu</th>
-                                                <th>Status</th>
-                                             
-                                            </tr>
-                                        </tfoot>
-                                        </table>
-                                    </FooterTemplate>
-                                </asp:Repeater>
+                                            <asp:Repeater ID="Repeater3" runat="server" OnItemDataBound="Repeater3_ItemDataBound">
+                                                <HeaderTemplate>
+                                                    <table id="exa" class="table table-bordered table-striped">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Form</th>
+                                                                <th>Menu</th>
+                                                                <th>Status</th>
+                                                                <th>Edit</th>
+                                                            </tr>
+                                                        </thead>
+                                                </HeaderTemplate>
+                                                <ItemTemplate>
+                                                    <tr>
+                                                        <td>
+                                                            <asp:Label ID="lblForm" runat="server" Text='<%# Bind("Form")%>'></asp:Label></td>
+                                                        <td>
+                                                            <asp:Label ID="lblMenu" runat="server" Text='<%# Bind("Menu")%>'></asp:Label></td>
+                                                        <td class="text-center">
+                                                            <asp:DropDownList ID="lblStatus" CssClass="form-control" runat="server">
+                          
+                                                            </asp:DropDownList>
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <asp:LinkButton ID="lnkEdit" CssClass="btn btn-default" runat="server"><i class="fa fa-pencil"></i></asp:LinkButton>
+                                                            <asp:LinkButton ID="lnkUpdate" Text="Update" runat="server" Visible="false"></asp:LinkButton>
+                                                            <asp:LinkButton ID="lnkCancel" Text="Cancel" runat="server" Visible="false"></asp:LinkButton>
+                                                        </td>
+                                                    </tr>
+                                                </ItemTemplate>
+                                                <FooterTemplate>
+                                                    <tfoot>
+                                                        <tr>
+                                                            <th>Form</th>
+                                                            <th>Menu</th>
+                                                            <th>Status</th>
+                                                            <th>Edit</th>
+                                                        </tr>
+                                                    </tfoot>
+                                                    </table>
+                                                </FooterTemplate>
+                                            </asp:Repeater>
                                             <!--/.col-lg-6 col-md-6--->
                                         </div>
 

@@ -61,13 +61,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblBookingMessenger' does not hav
     <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
-warning 6013: The table/view 'LKBWarehouse.dbo.tblCompanyGuarantee' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tblCompanyGuarantee">
-          <Property Name="AmountGuarantee" Type="decimal" Precision="18" Scale="0" />
-          <Property Name="AmountUsed" Type="decimal" Precision="18" Scale="0" />
-          <Property Name="Balance" Type="decimal" Precision="18" Scale="0" />
-        </EntityType>-->
-  <!--Errors Found During Generation:
 warning 6002: The table/view 'LKBWarehouse.dbo.tblCurrency' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblCurrency">
     <Key>
@@ -1736,14 +1729,15 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblMasterCode' does not have a pr
     <Property Name="Menu" Type="varchar" MaxLength="50" />
     <Property Name="UserBy" Type="varchar" MaxLength="50" />
     <Property Name="UpdateBy" Type="datetime" />
+    <Property Name="Read_" Type="int" />
+    <Property Name="Save_" Type="int" />
+    <Property Name="Edit_" Type="int" />
+    <Property Name="Delete_" Type="int" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblMoneyConfig' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblMoneyConfig">
     <Key>
       <PropertyRef Name="Code" />
       <PropertyRef Name="item" />
-      <PropertyRef Name="rowguid" />
     </Key>
     <Property Name="Code" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="Amonut" Type="float" />
@@ -2400,12 +2394,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblTempItemNo' does not have a pr
     <Property Name="ItemNo" Type="float" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
-warning 6013: The table/view 'LKBWarehouse.dbo.tblTempMJSummaryStock-11122013' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tblTempMJSummaryStock-11122013">
-          <Property Name="PART NUMBER" Type="nvarchar" MaxLength="255" />
-          <Property Name="On Hand" Type="float" />
-        </EntityType>-->
-  <!--Errors Found During Generation:
 warning 6002: The table/view 'LKBWarehouse.dbo.tblTruckManifest' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblTruckManifest">
     <Key>
@@ -2774,6 +2762,25 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHConfirmGoodsReceiveDetail' d
     <Property Name="OrderFrmOnline" Type="varchar" MaxLength="50" />
     <Property Name="CustFrmOnline" Type="varchar" MaxLength="50" />
   </EntityType>
+  <EntityType Name="tblWHLocation">
+    <Key>
+      <PropertyRef Name="LocationNo" />
+    </Key>
+    <Property Name="WHsite" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="LocationNo" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Width" Type="float" />
+    <Property Name="Long" Type="float" />
+    <Property Name="Height" Type="float" />
+    <Property Name="Valume" Type="float" />
+    <Property Name="Qtypallet" Type="int" />
+    <Property Name="Remark" Type="varchar" MaxLength="200" />
+    <Property Name="LocationStatus" Type="int" />
+    <Property Name="Usedstatus" Type="int" />
+    <Property Name="CreateBy" Type="varchar" MaxLength="50" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="UpdateBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdateDate" Type="datetime" />
+  </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'LKBWarehouse.dbo.tblWHPickPackMaster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblWHPickPackMaster">
@@ -3096,10 +3103,12 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
     <EntitySet Name="tblLogUser" EntityType="Self.tblLogUser" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblMasterCode2" EntityType="Self.tblMasterCode2" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblMenu" EntityType="Self.tblMenu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblMoneyConfig" EntityType="Self.tblMoneyConfig" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblParty" EntityType="Self.tblParty" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblProductDetail" EntityType="Self.tblProductDetail" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblUserMenu" EntityType="Self.tblUserMenu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblWHLocation" EntityType="Self.tblWHLocation" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblWHStockCtrl" EntityType="Self.tblWHStockCtrl" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblBookingMessenger" EntityType="Self.tblBookingMessenger" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
@@ -4480,21 +4489,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
     [tblMasterCode].[UpdateDate] AS [UpdateDate], 
     [tblMasterCode].[MasterCodeID] AS [MasterCodeID]
     FROM [dbo].[tblMasterCode] AS [tblMasterCode]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblMoneyConfig" EntityType="Self.tblMoneyConfig" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblMoneyConfig].[Code] AS [Code], 
-    [tblMoneyConfig].[Amonut] AS [Amonut], 
-    [tblMoneyConfig].[TotalAmonut] AS [TotalAmonut], 
-    [tblMoneyConfig].[Remark] AS [Remark], 
-    [tblMoneyConfig].[Status] AS [Status], 
-    [tblMoneyConfig].[CreateBy] AS [CreateBy], 
-    [tblMoneyConfig].[CreateDate] AS [CreateDate], 
-    [tblMoneyConfig].[UpdateBy] AS [UpdateBy], 
-    [tblMoneyConfig].[UpdateDate] AS [UpdateDate], 
-    [tblMoneyConfig].[item] AS [item], 
-    [tblMoneyConfig].[rowguid] AS [rowguid]
-    FROM [dbo].[tblMoneyConfig] AS [tblMoneyConfig]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="tblPartyAddress" EntityType="Self.tblPartyAddress" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
