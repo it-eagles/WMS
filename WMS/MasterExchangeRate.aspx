@@ -13,7 +13,7 @@
         <ol class="breadcrumb">
             <li><a href="HomeMain.aspx"><i class="fa fa-home"></i>Home</a></li>
             <li><a><i class="fa fa-file"></i>System</a></li>     
-            <li><a href="MasterExchangeRate.aspx">MasterExchangeRate</a></li>                     
+            <li><a href="MasterExchangeRate.aspx">MasterExchangeRate</a></li>                   
         </ol>
     </section>
     <!-- Main content -->
