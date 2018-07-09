@@ -630,6 +630,41 @@
                      autoclose: true
                  })
 
+                 //Date pickerJobdate       USE IN CreateRec.aspx
+                 $('#datepickerJobdate').datepicker({
+                     autoclose: true
+                 })
+
+                 //Date pickerActualDate1   USE IN CreateRec.aspx
+                 $('#datepickerActualDate1').datepicker({
+                     autoclose: true
+                 })
+
+                 //Date pickerActualDate2   USE IN CreateRec.aspx
+                 $('#datepickerActualDate2').datepicker({
+                     autoclose: true
+                 })
+
+                 //Date pickerActualDate3   USE IN CreateRec.aspx
+                 $('#datepickerActualDate3').datepicker({
+                     autoclose: true
+                 })
+
+                 //Date pickerActualDate4   USE IN CreateRec.aspx
+                 $('#datepickerActualDate4').datepicker({
+                     autoclose: true
+                 })
+
+                 //Date pickerActualPickUp  USE IN CreateRec.aspx
+                 $('#datepickerActualPickUp').datepicker({
+                     autoclose: true
+                 })
+
+                 //Date pickerArrivalToEAS  USE IN CreateRec.aspx
+                 $('#datepickerArrivalToEAS').datepicker({
+                     autoclose: true
+                 })
+
                  //iCheck for checkbox and radio inputs
                  $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
                      checkboxClass: 'icheckbox_minimal-blue',

@@ -40,56 +40,71 @@
                                 <div class="post">
                                     <div class="row margin-bottom">
 
-                                        <div class="col-lg-8 col-md-8 col-md-offset-1">
+                                        <div class="col-lg-12 col-md-12 ">
                                             <!-- form start -->                        
-                                               <from class="form-horizontal">
+                                               <div class="form-horizontal">
+                                                   <fieldset>  <legend>Job</legend>
                                                       <div class="box-body">   
-                                                           <div class="form-group" >                                    
-                                                             <label for="txtJobno" class="col-sm-1 control-label">Job No:</label>                                       
-                                                                <div class="col-sm-3">
+                                                          <div class="col-md-4 col-sm-4"> 
+                                                              <div class="form-group">
+                                                                  <label for="txtJobno" class="col-sm-4 control-label">Job No:</label>                                       
+                                                                <div class="col-sm-8">
                                                                     <input class="form-control" id="txtJobno" runat="server" placeholder="Job No"/>
                                                                 </div>
-                                                                
-                                                             <label for="txtJobdate" class="col-sm-1 control-label">Job Date:</label>                                       
-                                                                <div class="col-sm-3">
-                                                                    <input class="form-control" id="txtJobdate" runat="server" placeholder="Job Date"/>
+                                                                  </div>
+                                                                  <div class="form-group">
+                                                                  <label for="txtJobsite" class="col-sm-4 control-label">Job Site:</label>                                      
+                                                                 <div class="col-sm-8">
+                                                                    <asp:DropDownList ID="ddlJobsite" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                                 </div>
+                                                              </div>
+                                                          </div>
+
+                                                          <div class="col-md-4"> 
+                                                              <div class="form-group">
+                                                                   <label for="txtJobdate" class="col-sm-4 control-label">Job Date:</label>                                       
+                                                                <div class="col-sm-8">
+                                                                    <input type="text" class="form-control pull-right" id="datepickerJobdate"/>
                                                                 </div>
+                                                                  </div>
+                                                                  <div class="form-group">
+                                                                  <div class="checkbox col-sm-4">
+                                                                     <label>
+                                                                         <input type="checkbox" runat="server" id="chkNextmonth"/>NextMonth
+                                                                     </label>
+                                                                  </div>
+                                                                      <label for="txtSaleman" class="col-sm-4 control-label">Sale Man:</label>                                      
+                                                                 <div class="col-sm-4">
+                                                                    <asp:DropDownList ID="DropDownList1" CssClass="form-control" runat="server"></asp:DropDownList>                                                                     
+                                                                 </div>          
+                                                                 
 
-                                                            <label for="txtJobno" class="col-sm-1 control-label">Job No:</label>                                       
-                                                                <div class="col-sm-3">
-                                                                    <input class="form-control" id="Text2" runat="server" placeholder="Job No"/>
-                                                                </div>
-                                                           </div>
-                                    
-                                                        <div class="form-group">
-                                                                  <label for="txtAdjustment" class="col-sm-4 control-label">Adjustment</label>
-                                      
-                                                     <div class="col-sm-8">
-                                                                  <input class="form-control" id="txtAdjustment" runat="server" placeholder="Adjustment"/>
-                                                     </div>
-                      
-                                                    </div>
-                                                       <div class="form-group">
-                                                      <label for="txtDamageQty" class="col-sm-4 control-label">Damage Qty</label>
-                                                     <div class="col-sm-8">
-                                                          <input class="form-control" id="txtDamageQty" runat="server"  placeholder="Damage Qty"/>
-                                                     </div>
-                                                </div>
+                                                              </div>
 
-                                    <div class="form-group">
-                                             <label for="txtAvailableQTY" class="col-sm-4 control-label">Available QTY</label>
-                                       <div class="col-sm-8">
-                                            <input class="form-control" id="txtAvailableQTY" runat="server"  placeholder="Available QTY"/>
-                                       </div>
-                                   
-                                    </div>
+                                                          </div>
 
-                              
+                                                          <div class="col-md-4"> 
+                                                              <div class="form-group">
+                                                                  <label for="txtLotof" class="col-sm-4 control-label">LOT of:</label>
+                                                                <div class="col-sm-8">
+                                                                    <asp:DropDownList ID="ddlLotof" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                                    <%--<input class="form-control" id="txtLotof" runat="server" placeholder="LOT of"/>--%>
+                                                                 </div>
+                                                                  </div>
+                                                                  <div class="form-group">
+                                                                    <%--<label for="txtSaleman" class="col-sm-4 control-label">Sale Man:</label>--%>                                      
+                                                                 <div class="col-sm-8 col-sm-offset-4">
+                                                                    <input class="form-control" id="txtsalemandis" runat="server" disabled="disabled"/>                                                                     
+                                                                 </div>                                                              
+                                                              </div>
+                                                          </div>
+                                                           
+                                                                                                                                            
                                     <!-- /.box-body -->
                              </div>
                             <!-- /.box-header -->
-                           
-                       </from>
+                           </fieldset>
+                       </div>
           <!--/.col-lg-6 col-md-6 stockqty--->
                
                     </div>
@@ -104,77 +119,504 @@
             <!-- /.content -->
          <!-- /.box-header -->
                 <div class="row">
-                    <div class="col-lg-12 col-xs-12">
+                    
+                    <div class="col-md-6">
+          <!-- Horizontal Form -->
+          
 
-                                <asp:Repeater ID="Repeater1" runat="server">
-                                    <HeaderTemplate>
-                                        <table id="example1" class="table table-bordered table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th>ProductCode</th>
-                                                    <th>OwnerPart</th>
-                                                    <th>EndUserPart</th>
-                                                    <th>ProductDescription</th>
-                                                    <%--<th>OwnerCode</th>--%>
-                                                    <th>MinimumStock</th>
-                                                    <th>Adjustment</th>
-                                                    <th>DamageQTY</th>
-                                                    <th>AvailableQTY</th>                                                                                   
-                                                    <%--<th>Edit/Delete</th>
-                                                    <th>view</th>--%>
-                                                </tr>
-                                            </thead>
-                                    </HeaderTemplate>
+            <!-- form start -->
+            <div class="form-horizontal">
+                <fieldset>  <legend>Consignee Code</legend>
+              <div class="box-body">
+                <div class="form-group">
+                  <label for="txtConsigneecode" class="col-sm-4 control-label">Consignee Code:</label>
+                  <div class="col-sm-8">                    
+                      <asp:DropDownList ID="txtConsigneecode" CssClass="form-control" runat="server"></asp:DropDownList>  
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="txtNameEngConsign" class="col-sm-4 control-label">Name(Eng):</label>
+                  <div class="col-sm-8">
+                    <input class="form-control" id="txtNameEngConsign" runat="server"  placeholder="Name(Eng)"/>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="txtAddress1" class="col-sm-4 control-label">Address1:</label>
+                  <div class="col-sm-8">
+                    <input class="form-control" id="txtAddress1" runat="server"/>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="txtAddress2" class="col-sm-4 control-label">Address2:</label>
+                  <div class="col-sm-8">
+                    <input class="form-control" id="txtAddress2" runat="server"/>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="txtAddress3" class="col-sm-4 control-label">Address3:</label>
+                  <div class="col-sm-8">
+                    <input class="form-control" id="txtAddress3" runat="server"/>
+                  </div>
+                </div>
+                 <div class="form-group">
+                  <label for="txtAddress4" class="col-sm-4 control-label">Address4:</label>
+                  <div class="col-sm-8">
+                    <input class="form-control" id="txtAddress4" runat="server"/>
+                  </div>
+                </div>
+                 <div class="form-group">
+                  <label for="txtAddress5" class="col-sm-4 control-label">Address5:</label>
+                  <div class="col-sm-8">
+                    <input class="form-control" id="txtAddress5" runat="server"/>
+                  </div>
+                </div>
+                 <div class="form-group">
+                  <label for="txtEmail" class="col-sm-4 control-label">E-mail:</label>
+                  <div class="col-sm-8">
+                    <input class="form-control" id="txtEmail" runat="server"/>
+                  </div>
+                </div>
+              </div>
+              <!-- /.box-body -->
+                    </fieldset>
+            </div>        
+          <!-- /.box -->
 
-                                    <ItemTemplate>
-                                        <tr>
-                                            <td><asp:Label ID="lblProductCode" runat="server" Text='<%# Bind("ProductCode")%>'></asp:Label></td>
-                                            <td><asp:Label ID="lblOwnerPart" runat="server" Text='<%# Bind("OwnerPart")%>'></asp:Label></td>
-                                            <td><asp:Label ID="lblEndUserPart" runat="server" Text='<%# Bind("EndUserPart")%>'></asp:Label></td>
-                                            <td><asp:Label ID="lblProductDescription" runat="server" Text='<%# Bind("ProductDescription")%>'></asp:Label></td>
-                                            <%--<td><asp:Label ID="lblOwnerCode" runat="server" Text='<%# Bind("OwnerCode")%>'></asp:Label></td>--%>
-                                            <td><asp:Label ID="lblMinimumStock" runat="server" Text='<%# Bind("MinimumStock")%>'></asp:Label></td>
-                                            <td><asp:Label ID="lblAdjustment" runat="server" Text='<%# Bind("Adjustment")%>'></asp:Label></td>
-                                            <td><asp:Label ID="lblDamageQTY" runat="server" Text='<%# Bind("DamageQTY")%>'></asp:Label></td>
-                                            <td><asp:Label ID="lblAvailableQTY" runat="server" Text='<%# Bind("AvailableQTY")%>'></asp:Label></td>                                                                                            
-                                        <%--    <td class="text-center" >
-                                                <asp:LinkButton ID="LinkButton1" CssClass="btn btn-default" runat="server" CausesValidation="False" CommandName="editGoods" CommandArgument='<%# Eval("ProductCode")%>'><i class="fa fa-pencil"></i></asp:LinkButton>
-                                                <a class="btn btn-danger"><i class="fa fa-trash"></i></a>
-                                            </td>
-                                            <td class="text-center">
-                                                <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="viewGoods" CommandArgument='<%# Eval("ProductCode")%>'><i class="fa fa-search-plus"></i></asp:LinkButton>
-                                            </td>--%>
-                                        </tr>
-                                    </ItemTemplate>
-                                    <FooterTemplate>
-                                        <tfoot>
-                                            <tr>                                               
-                                                    <th>ProductCode</th>
-                                                    <th>OwnerPart</th>
-                                                    <th>EndUserPart</th>
-                                                    <th>ProductDescription</th>
-                                                    <%--<th>OwnerCode</th>--%>
-                                                    <th>MinimumStock</th>
-                                                    <th>Adjustment</th>
-                                                    <th>DamageQTY</th>
-                                                    <th>AvailableQTY</th>                                                                                   
-                                                   <%-- <th>Edit/Delete</th>
-                                                    <th>view</th>--%>
-                                            </tr>
-                                        </tfoot>
-                                        </table>
-                                    </FooterTemplate>
-                                </asp:Repeater>
-                                 
-                                 
-                         
+          <!-- general form Commodity -->
+            <div class="form-horizontal">
+                <fieldset><legend>Commodity</legend>
+              <div class="box-body">
+                <div class="form-group">
+                  <label for="txtCommodity" class="col-sm-4 control-label">Commodity:</label>
+                  <div class="col-sm-8">                    
+                      <asp:DropDownList ID="ddlCommodity" CssClass="form-control" runat="server"></asp:DropDownList>  
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="txtQuantity" class="col-sm-5 control-label">Quantity PLT/Skid:</label>
+                  <div class="col-sm-3">
+                    <input class="form-control" id="txtQuantity" runat="server" value="0.0"/>
+                  </div>
+                  <div class="col-sm-4">                    
+                      <asp:DropDownList ID="ddlQuan" CssClass="form-control" runat="server"></asp:DropDownList>  
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="txtQuantityBox" class="col-sm-5 control-label">Quantity Box:</label>
+                  <div class="col-sm-3">
+                    <input class="form-control" id="txtQuantityBox" runat="server" value="0.0"/>
+                  </div>
+                  <div class="col-sm-4">                    
+                      <asp:DropDownList ID="ddlquanbox" CssClass="form-control" runat="server"></asp:DropDownList>  
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="txtVolume" class="col-sm-5 control-label">Volume:</label>
+                  <div class="col-sm-3">
+                    <input class="form-control" id="txtVolume" runat="server" value="0.0"/>
+                  </div>
+                  <div class="col-sm-4">                    
+                      <asp:DropDownList ID="ddlvolume" CssClass="form-control" runat="server"></asp:DropDownList>  
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-4">                    
+                      <asp:DropDownList ID="ddlvolume2" CssClass="form-control" runat="server"></asp:DropDownList>  
+                  </div>
+                  <div class="col-sm-8">
+                    <input class="form-control" id="txtVolume2" runat="server"/>
+                  </div>
+                </div>
+                 <div class="form-group">
+                  <label for="txtShipto" class="col-sm-4 control-label">Ship To:</label>
+                  <div class="col-sm-8">
+                    <input class="form-control" id="txtShipto" runat="server"/>
+                  </div>
+                </div>
+
+              </div>
+              <!-- /.box-body -->
+                    </fieldset>
+            </div>
+
+
+                        <div class="form-horizontal">
+                <fieldset><legend>Actual</legend>
+              <div class="box-body">
+                <div class="form-group">
+                  <label for="txtFlight" class="col-sm-3 control-label">Flight:</label>
+                  <label for="txtDate" class="col-sm-3 control-label">Date:</label>
+                  <label for="txtORGN" class="col-sm-3 control-label">ORGN:</label>
+                  <label for="txtDSTN" class="col-sm-3 control-label">DSTN:</label>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-3">
+                    <input class="form-control" id="txtActual1" runat="server" placeholder="Actual"/>
+                  </div>
+                  <div class="col-sm-3">
+                    <input type="text" class="form-control pull-right"  id="datepickerActualDate1" />
+                  </div>
+                  <div class="col-sm-3">
+                    <input class="form-control" id="txtORGN1" runat="server" placeholder="ORGN"/>
+                  </div>
+                  <div class="col-sm-3">
+                    <input class="form-control" id="txtDSTN1" runat="server" placeholder="DSTN"/>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-3">
+                    <input class="form-control" id="txtActual2" runat="server" placeholder="Actual"/>
+                  </div>
+                  <div class="col-sm-3">
+                    <input type="text" class="form-control pull-right" id="datepickerActualDate2"/>
+                  </div>
+                  <div class="col-sm-3">
+                    <input class="form-control" id="txtORGN2" runat="server" placeholder="ORGN"/>
+                  </div>
+                  <div class="col-sm-3">
+                    <input class="form-control" id="txtDSTN2" runat="server" placeholder="DSTN"/>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-3">
+                    <input class="form-control" id="txtActual3" runat="server" placeholder="Actual"/>
+                  </div>
+                  <div class="col-sm-3">
+                    <input type="text" class="form-control pull-right" id="datepickerActualDate3"/>
+                  </div>
+                  <div class="col-sm-3">
+                    <input class="form-control" id="txtORGN3" runat="server" placeholder="ORGN"/>
+                  </div>
+                  <div class="col-sm-3">
+                    <input class="form-control" id="txtDSTN3" runat="server" placeholder="DSTN"/>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-3">
+                    <input class="form-control" id="txtActual4" runat="server" placeholder="Actual"/>
+                  </div>
+                  <div class="col-sm-3">
+                    <input type="text" class="form-control pull-right" id="datepickerActualDate4"/>
+                  </div>
+                  <div class="col-sm-3">
+                    <input class="form-control" id="txtORGN4" runat="server" placeholder="ORGN"/>
+                  </div>
+                  <div class="col-sm-3">
+                    <input class="form-control" id="txtDSTN4" runat="server" placeholder="DSTN"/>
+                  </div>
+                </div>
+                 <div class="form-group">
+                  <label for="txtPickUp" class="col-sm-4 control-label">Pick Up Time:</label>
+                  <div class="col-sm-4">                    
+                      <div class="bootstrap-timepicker">
+
+                  <div class="input-group">
+                    <input type="text" class="form-control timepicker" id="txtTimePickUp"/>
+                  <div class="input-group-addon">
+                      <i class="fa fa-clock-o"></i>
                     </div>
+                  </div>
+                  <!-- /.input group -->
+
+              </div>
+
+                  </div>
+                  <div class="col-sm-4">                    
+                      <input type="text" class="form-control pull-right" id="datepickerActualPickUp"/>
+                  </div>
+                </div>
+                 <div class="form-group">
+                  <label for="txtRamarkActual" class="col-sm-3 control-label">Remark:</label>
+                  <div class="col-sm-9">
+                    <textarea class="form-control" rows="3" id="txtRamarkActual" placeholder="Remark" style="height: 71px; width: 917px;"></textarea>
+                  </div>                  
+                </div>
+
+              </div>
+              <!-- /.box-body -->
+                    </fieldset>
+            </div>
+        </div>
+        <!--/.col (left) -->
+
+                    <%------------------------------------------------------------Start Right Form------------------------------------------------%>
+                    <div class="col-md-6">
+          <!-- Horizontal Form -->                      
+            <!-- form start -->
+            <div class="form-horizontal">
+                <fieldset>  <legend>Shipper Code</legend>
+              <div class="box-body">
+                <div class="form-group">
+                  <label for="txtShippercode" class="col-sm-4 control-label">Shipper Code:</label>
+                  <div class="col-sm-8">                    
+                      <asp:DropDownList ID="ddlShippercode" CssClass="form-control" runat="server"></asp:DropDownList>  
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="txtNameEngShipper" class="col-sm-4 control-label">Name(Eng):</label>
+                  <div class="col-sm-8">
+                    <input class="form-control" id="txtNameEngShipper" runat="server"  placeholder="Name(Eng)"/>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="txtAddress1Shipper" class="col-sm-4 control-label">Address1:</label>
+                  <div class="col-sm-8">
+                    <input class="form-control" id="txtAddress1Shipper" runat="server"/>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="txtAddress2Shipper" class="col-sm-4 control-label">Address2:</label>
+                  <div class="col-sm-8">
+                    <input class="form-control" id="txtAddress2Shipper" runat="server"/>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="txtAddress3Shipper" class="col-sm-4 control-label">Address3:</label>
+                  <div class="col-sm-8">
+                    <input class="form-control" id="txtAddress3Shipper" runat="server"/>
+                  </div>
+                </div>
+                 <div class="form-group">
+                  <label for="txtAddress4Shipper" class="col-sm-4 control-label">Address4:</label>
+                  <div class="col-sm-8">
+                    <input class="form-control" id="txtAddress4Shipper" runat="server"/>
+                  </div>
+                </div>
+                 <div class="form-group">
+                  <label for="txtAddress5Shipper" class="col-sm-4 control-label">Address5:</label>
+                  <div class="col-sm-8">
+                    <input class="form-control" id="txtAddress5Shipper" runat="server"/>
+                  </div>
+                </div>
+                 <div class="form-group">
+                  <label for="txtEmailShipper" class="col-sm-4 control-label">E-mail:</label>
+                  <div class="col-sm-8">
+                    <input class="form-control" id="txtEmailShipper" runat="server"/>
+                  </div>
+                </div>
+              </div>
+              <!-- /.box-body -->
+                    </fieldset>
+            </div>        
+          <!-- /.box -->
+
+          <!-- general form Commodity -->
+            <div class="form-horizontal">
+                <fieldset><legend>Commodity</legend>
+              <div class="box-body">
+                <div class="form-group">
+                  <label for="txtQuantityOfPart" class="col-sm-5 control-label">Quantity Of Part:</label>
+                  <div class="col-sm-3">
+                    <input class="form-control" id="txtQuantityOfPart" runat="server" value="0.0"/>
+                  </div>
+                  <div class="col-sm-4">                    
+                      <asp:DropDownList ID="ddlQuantityOfParty" CssClass="form-control" runat="server"></asp:DropDownList>  
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="txtWeight" class="col-sm-5 control-label">Weight:</label>
+                  <div class="col-sm-3">
+                    <input class="form-control" id="txtWeight" runat="server" value="0.0"/>
+                  </div>
+                  <div class="col-sm-4">                    
+                      <asp:DropDownList ID="ddlWeight" CssClass="form-control" runat="server"></asp:DropDownList>  
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="txtMAWB/BL/TWB" class="col-sm-4 control-label">MAWB/BL/TWB:</label>
+                  <div class="col-sm-8">
+                    <input class="form-control" id="txtMAWB_BL_TWB" runat="server"/>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="txtFLT/Voy/TruckDate" class="col-sm-4 control-label">FLT/Voy/TruckDate:</label>
+                  <div class="col-sm-8">
+                    <input class="form-control" id="txtFLT_Voy_TruckDate" runat="server"/>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="txtFreight" class="col-sm-4 control-label">Freight Forwarder:</label>
+                  <div class="col-sm-8">                    
+                      <asp:DropDownList ID="ddlFreight" CssClass="form-control" runat="server"></asp:DropDownList>  
+                  </div>
+                </div>
+                 <div class="form-group">
+                  <label for="txtBilling" class="col-sm-4 control-label">Billing No.:</label>
+                  <div class="col-sm-8">
+                    <input class="form-control" id="txtBilling" runat="server"/>
+                  </div>
+                </div>
+
+              </div>
+              <!-- /.box-body -->
+                    </fieldset>
+            </div>
+
+                        <div class="form-horizontal">
+                <fieldset><legend>Actual</legend>
+              <div class="box-body">
+                <div class="form-group">
+                  <label for="txtETD" class="col-sm-3 control-label">ETD:</label>
+                  <label for="txtETA" class="col-sm-3 control-label">ETA:</label>
+                  <label for="txtPacket" class="col-sm-3 control-label">Packet:</label>
+                  <label for="txtWeight" class="col-sm-3 control-label">Weight:</label>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-4">
+                    <div class="bootstrap-timepicker">
+                  <div class="input-group">
+                    <input type="text" class="form-control timepicker" id="txtpickupETD"/>
+                  <div class="input-group-addon">
+                      <i class="fa fa-clock-o"></i>
+                    </div>
+                  </div>
+                  <!-- /.input group -->
+              </div>
+                  </div>
+                  <div class="col-sm-4">
+                      <div class="bootstrap-timepicker">
+                  <div class="input-group">
+                    <input type="text" class="form-control timepicker" id="txtpickupETA"/>
+                  <div class="input-group-addon">
+                      <i class="fa fa-clock-o"></i>
+                    </div>
+                  </div>
+                  <!-- /.input group -->
+              </div>
+                  </div>
+                  <div class="col-sm-2">
+                    <input class="form-control" id="txtPacket" runat="server" value="0"/>
+                  </div>
+                  <div class="col-sm-2">
+                    <input class="form-control" id="txtWeightActual" runat="server" value="0"/>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-4">
+                      <div class="bootstrap-timepicker">
+                  <div class="input-group">
+                    <input type="text" class="form-control timepicker" id="txtpickupETD2"/>
+                  <div class="input-group-addon">
+                      <i class="fa fa-clock-o"></i>
+                    </div>
+                  </div>
+                  <!-- /.input group -->
+              </div>
+                  </div>
+                  <div class="col-sm-4">
+                      <div class="bootstrap-timepicker">
+                  <div class="input-group">
+                    <input type="text" class="form-control timepicker" id="txtpickupETA2"/>
+                  <div class="input-group-addon">
+                      <i class="fa fa-clock-o"></i>
+                    </div>
+                  </div>
+                  <!-- /.input group -->
+              </div>
+                  </div>
+                  <div class="col-sm-2">
+                    <input class="form-control" id="txtPacket2" runat="server" value="0"/>
+                  </div>
+                  <div class="col-sm-2">
+                    <input class="form-control" id="txtWeightActual2" runat="server" value="0"/>
+                  </div>
+                </div>
+               <div class="form-group">
+                  <div class="col-sm-4">
+                      <div class="bootstrap-timepicker">
+                  <div class="input-group">
+                    <input type="text" class="form-control timepicker" id="txtpickupETD3"/>
+                  <div class="input-group-addon">
+                      <i class="fa fa-clock-o"></i>
+                    </div>
+                  </div>
+                  <!-- /.input group -->
+              </div>
+                  </div>
+                  <div class="col-sm-4">
+                      <div class="bootstrap-timepicker">
+                  <div class="input-group">
+                    <input type="text" class="form-control timepicker" id="txtpickupETA3"/>
+                  <div class="input-group-addon">
+                      <i class="fa fa-clock-o"></i>
+                    </div>
+                  </div>
+                  <!-- /.input group -->
+              </div>
+                  </div>
+                  <div class="col-sm-2">
+                    <input class="form-control" id="txtPacket3" runat="server" value="0"/>
+                  </div>
+                  <div class="col-sm-2">
+                    <input class="form-control" id="txtWeightActual3" runat="server" value="0"/>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-4">
+                      <div class="bootstrap-timepicker">
+                  <div class="input-group">
+                    <input type="text" class="form-control timepicker" id="txtpickupETD4"/>
+                  <div class="input-group-addon">
+                      <i class="fa fa-clock-o"></i>
+                    </div>
+                  </div>
+                  <!-- /.input group -->
+              </div>
+                  </div>
+                  <div class="col-sm-4">
+                      <div class="bootstrap-timepicker">
+                  <div class="input-group">
+                    <input type="text" class="form-control timepicker" id="txtpickupETA4"/>
+                  <div class="input-group-addon">
+                      <i class="fa fa-clock-o"></i>
+                    </div>
+                  </div>
+                  <!-- /.input group -->
+              </div>
+                  </div>
+                  <div class="col-sm-2">
+                    <input class="form-control" id="txtPacket4" runat="server" value="0"/>
+                  </div>
+                  <div class="col-sm-2">
+                    <input class="form-control" id="txtWeightActual4" runat="server" value="0"/>
+                  </div>
+                </div>
+                 <div class="form-group">
+                  <label for="txtArrivalToEAS" class="col-sm-4 control-label">Arrival to EAS:</label>
+                  <div class="col-sm-4">
+                      <div class="bootstrap-timepicker">
+                  <div class="input-group">
+                    <input type="text" class="form-control timepicker" id="txtArrivalToEAS"/>
+                  <div class="input-group-addon">
+                      <i class="fa fa-clock-o"></i>
+                    </div>
+                  </div>
+                  <!-- /.input group -->
+              </div>
+                  </div>
+                  <div class="col-sm-4">                    
+                      <input type="text" class="form-control pull-right" id="datepickerArrivalToEAS"/>
+                  </div>
+                </div>
+
+              </div>
+              <!-- /.box-body -->
+                    </fieldset>
+            </div>
+
+        </div>
+         <!-- right column -->
+
+
                     <!-- /.col -->
                 </div>
                 <!-- /.row -->   
             </div>
-          <!------- /.StockQTY ---------->
+          <!------- /.MasterJob ---------->
+                            <%-------------------------------------------------End MASTER JOB------------------------------------------------------------%>
 
+
+                            <%-----------------------------------------------------Start JOB DETAIL-----------------------------------------------------------%>
              <!------- Import Goods ------->
             <div class="tab-pane" id="importgoods">
                      <!-- Post -->
