@@ -21,7 +21,7 @@
             <div class="row">
                 <!-- left column -->
 
-                <div class="col-md-12">
+                <div class="col-md-12 col-lg-12">
                     <div class="nav-tabs-custom">
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="#master" data-toggle="tab">Master JOB</a></li>
@@ -32,19 +32,19 @@
 
                         <div class="tab-content">
 
-                            <!------- master ---------->
+                    <!------- master ---------->
                             <div class="active tab-pane" id="master">
                                 <!-- Post -->
                                 <div class="post">
                                     <div class="row margin-bottom">
 
-                                        <div class="col-lg-10 col-md-8 col-md-offset-1">
+                                        <div class="col-lg-12 col-md-8 ">
                                             <!-- form start -->
-
-                                            <div class="form-horizontal">
+                                             <div class="form-horizontal">
 
                                                 <div class="box-body">
-                                                    <div class="col-md-4">
+                                                    <div class="col-lg-12">
+                                                        <div class="col-md-5 col-lg-5">
                                                         <div class="form-group">
 
                                                             <label for="txtLotNo" class="col-sm-3 control-label">JOB No</label>
@@ -73,24 +73,25 @@
 
                                                     <div class="col-md-4">
                                                         <div class="form-group">
-                                                            <label for="dtpInvoiceDate" class="col-sm-3 control-label">JOB Date</label>
-                                                            <div class="col-md-8">
-                                                                <asp:TextBox CssClass="form-control" ID="txtDateIt_R" runat="server" placeholder="MM/DD/YYYY">
-                                                                </asp:TextBox>
-                                                                <asp:CalendarExtender ID="CalendarExtender2" runat="server" Enabled="True" TargetControlID="txtDateIt_R" Format="dd/MM/yyyy"></asp:CalendarExtender>
-                                                              <%--  <div class="input-group date">
+                                                            <label for="dtpInvoiceDate" class="col-sm-4 control-label">JOB Date</label>
+                                                            <div class="col-md-7">
+                                                              
+                                                               
+                                                                <div class="input-group date">
                                                                     <div class="input-group-addon">
                                                                         <i class="fa fa-calculator"></i>
                                                                     </div>
-                                                                    <input class="form-control pull-right" id="dtpInvoiceDate" type="text" />
-                                                                </div>--%>
+                                                                     <asp:TextBox CssClass="form-control" ID="txtDateIt_R" runat="server" placeholder="MM/DD/YYYY">
+                                                                </asp:TextBox>
+                                                                     <asp:CalendarExtender ID="CalendarExtender2" runat="server" Enabled="True" TargetControlID="txtDateIt_R" Format="dd/MM/yyyy"></asp:CalendarExtender>
+                                                                </div>
 
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
 
-                                                            <label for="dcbSales" class="col-sm-3 control-label">Site Man</label>
-                                                            <div class="col-md-8">
+                                                            <label for="dcbSales" class="col-sm-4 control-label">Site Man</label>
+                                                            <div class="col-md-7">
                                                                 <asp:DropDownList ID="dcbSales" CssClass="form-control" runat="server" DataTextField="TypeName" DataValueField="TypeID"></asp:DropDownList>
 
                                                             </div>
@@ -98,10 +99,10 @@
                                                         </div>
 
                                                     </div>
-                                                    <div class="col-md-4">
+                                                    <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <label for="DropDownList5" class="col-sm-3 control-label">JOB of</label>
-                                                            <div class="col-md-8">
+                                                            <label for="DropDownList5" class="col-sm-4 control-label">JOB of</label>
+                                                            <div class="col-md-7">
 
                                                                 <asp:DropDownList ID="DropDownList5" CssClass="form-control" runat="server" DataTextField="TypeName" DataValueField="TypeID"></asp:DropDownList>
 
@@ -114,8 +115,10 @@
                                                         </div>
                                                     </div>
                                                     <!-- /.box-body -->
-
-                                                    <div class="col-md-6">
+                                                    </div>
+                                                    
+                                                    <div class="col-lg-12">
+                                                          <div class="col-md-6 col-lg-6">
                                                         <fieldset>
                                                             <legend></legend>
                                                             <div class="form-group">
@@ -222,6 +225,8 @@
 
                                                         </fieldset>
                                                     </div>
+                                                    </div>
+                                                  
                                                     <div class="col-md-12 col-lg-12">
                                                         <fieldset>
                                                             <legend></legend>
@@ -361,75 +366,66 @@
                                                                 </div>
                                                             </div>
                                                         </fieldset>
+                                                        </div>
                                                         <div class="collg-12 col-md-12">
                                                             <fieldset>
                                                                 <legend></legend>
-                                                                <table class="table table-bordered">
-                                                                    <tr>
+                                                                <asp:Repeater ID="dgvEASInv" runat="server">
+                                                                 <HeaderTemplate>
+                                                                     <table class="table table-bordered">
                                                                         <th style="width: 10px">#</th>
                                                                         <th>Task</th>
                                                                         <th>Progress</th>
                                                                         <th style="width: 40px">Label</th>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>1.</td>
-                                                                        <td>Update software</td>
-                                                                        <td>
-                                                                            <div class="progress progress-xs">
-                                                                                <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
-                                                                            </div>
-                                                                        </td>
-                                                                        <td><span class="badge bg-red">55%</span></td>
-                                                                    </tr>
-                                                                    <tr>
+                                                                     
+                                                                 </HeaderTemplate>
+                                                                   
+                                                                    <ItemTemplate>
+                                        
+                                                                    <tr class="success">
                                                                         <td>2.</td>
-                                                                        <td>Clean database</td>
-                                                                        <td>
-                                                                            <div class="progress progress-xs">
-                                                                                <div class="progress-bar progress-bar-yellow" style="width: 70%"></div>
-                                                                            </div>
-                                                                        </td>
-                                                                        <td><span class="badge bg-yellow">70%</span></td>
+                                                                        <td>2</td>
+                                                                        <td>2</td>
+                                                                        <td>2</td>
                                                                     </tr>
-                                                                    <tr>
-                                                                        <td>3.</td>
-                                                                        <td>Cron job running</td>
-                                                                        <td>
-                                                                            <div class="progress progress-xs progress-striped active">
-                                                                                <div class="progress-bar progress-bar-primary" style="width: 30%"></div>
-                                                                            </div>
-                                                                        </td>
-                                                                        <td><span class="badge bg-light-blue">30%</span></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>4.</td>
-                                                                        <td>Fix and squish bugs</td>
-                                                                        <td>
-                                                                            <div class="progress progress-xs progress-striped active">
-                                                                                <div class="progress-bar progress-bar-success" style="width: 90%"></div>
-                                                                            </div>
-                                                                        </td>
-                                                                        <td><span class="badge bg-green">90%</span></td>
-                                                                    </tr>
-                                                                </table>
+                                                                   
+                                                                   
+                                                                    </ItemTemplate>
+                                                                    <AlternatingItemTemplate>
+                                                                       <tr class="info">
+                                                                        <td>4.</td 
+                                                                        <td>4</td>
+                                                                        <td>4</td>
+                                                                        <td>4</td>
+                                                                     </tr>
+                                                                    </AlternatingItemTemplate>
+                                                                    <FooterTemplate>
+                                                                         <th style="width: 10px">#</th>
+                                                                        <th>Task</th>
+                                                                        <th>Progress</th>
+                                                                        <th style="width: 40px">Label</th>
+                                                                        </table>
+                                                                    </FooterTemplate>
+                                                     
+                                                                </asp:Repeater>
+                                     
                                                             </fieldset>
-                                                        </div>
-                                                    </div>
-                                                    <!--/.col-lg-6 col-md-6 stockqty--->
+                                             
+                                                             </div> 
+
                                                 </div>
-
-                                                <!--/.row-->
-                                            </div>
+                                         </div>
                                         </div>
-
+                                        <!-- /.col-->
                                     </div>
-                                    <!-- /.post -->
+                                  <!-- /.rom -->
                                 </div>
+                                  <!-- /.post -->
                             </div>
                             <!------- /.master ---------->
 
 
-                            <!-------- detail --------->
+                                             <!-------- detail --------->
                             <div class="tab-pane" id="detail">
                                 <!-- Post -->
                                 <div class="post">
@@ -801,13 +797,9 @@
                                 </div>
                                 <!-- /.post -->
                             </div>
-                            <!-----/ Export Goods----->
-
-                            <!--- Detailof Goods --->
-
-
-
-                            <!--- Asembly --->
+                            <!-----/ detail----->
+            
+                                            <!--- invoice --->
                             <div class="tab-pane" id="invoice">
                                 <!-- Post -->
                                 <div class="post">
@@ -871,9 +863,14 @@
                                                                         <div class="input-group-addon">
                                                                             <i class="fa fa-calculator"></i>
                                                                         </div>
-                                                                        <input class="form-control pull-right" id="Text3" runat="server" type="text" />
+                                                                         <asp:TextBox CssClass="form-control" ID="dtpDeliveryDate" runat="server" placeholder="MM/DD/YYYY">
+                                                                </asp:TextBox>
+                                                                        <%--<input class="form-control pull-right" id="dtpIEATDate" runat="server" type="text" />--%>
                                                                     </div>
+                                                                    <asp:CalendarExtender ID="CalendarExtender3" runat="server" Enabled="True" TargetControlID="dtpDeliveryDate" Format="dd/MM/yyyy"></asp:CalendarExtender>
                                                                 </div>
+                                                                    
+                                                                
                                                                 <label for="txtCustomerENGGroup" class="col-sm-1 control-label">Time</label>
                                                                 <div class="col-sm-3">
                                                                     <div class="bootstrap-timepicker">
@@ -890,7 +887,7 @@
                                                                         <!-- /.form group -->
                                                                     </div>
                                                                 </div>
-                                                            </div>
+                                                       </div>
                                                             <div class="form-group">
                                                                 <label for="dcbStatus1" class="col-sm-3 control-label">Status1</label>
                                                                 <div class="col-sm-8">
@@ -912,6 +909,7 @@
                                                                 </div>
                                                             </div>
                                                         </fieldset>
+
                                                         <fieldset>
                                                             <legend></legend>
                                                             <div class="form-group">
@@ -959,7 +957,53 @@
                                                                 </div>
 
                                                             </div>
-
+                                                            <div class="form-group">
+                                                                <div class="col-sm-11">
+                                                                    <div class="col-md-offset-6">
+                                                                        <button type="button" class="btn btn-primary">Save Invoice No.</button>
+                                                                    <button type="button" class="btn btn-default">Delete Inv.</button>
+                                                                    </div>
+                                                                     <asp:Repeater ID="Repeater1" runat="server">
+                                                                 <HeaderTemplate>
+                                                                     <table class="table table-bordered">
+                                                                        <th style="width: 10px">#</th>
+                                                                        <th>Task</th>
+                                                                        <th>Progress</th>
+                                                                        <th style="width: 40px">Label</th>
+                                                                     
+                                                                 </HeaderTemplate>
+                                                                   
+                                                                    <ItemTemplate>
+                                        
+                                                                    <tr class="success">
+                                                                        <td>2.</td>
+                                                                        <td>2</td>
+                                                                        <td>2</td>
+                                                                        <td>2</td>
+                                                                    </tr>
+                                                                   
+                                                                   
+                                                                    </ItemTemplate>
+                                                                    <AlternatingItemTemplate>
+                                                                       <tr class="info">
+                                                                        <td>4.</td 
+                                                                        <td>4</td>
+                                                                        <td>4</td>
+                                                                        <td>4</td>
+                                                                     </tr>
+                                                                    </AlternatingItemTemplate>
+                                                                    <FooterTemplate>
+                                                                         <th style="width: 10px">#</th>
+                                                                        <th>Task</th>
+                                                                        <th>Progress</th>
+                                                                        <th style="width: 40px">Label</th>
+                                                                        </table>
+                                                                    </FooterTemplate>
+                                                     
+                                                                </asp:Repeater>
+                                     
+                                                                </div>
+                                                            </div>
 
                                                         </fieldset>
                                                     </div>
@@ -1022,12 +1066,23 @@
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="txtWeightInv" class="col-sm-3 control-label">Date Invoice</label>
+
                                                                 <div class="col-sm-4">
-                                                                    <input class="form-control pull-right" id="Text1" runat="server" type="text" />
+                                                                    <div class="input-group date">
+                                                                        <div class="input-group-addon">
+                                                                            <i class="fa fa-calculator"></i>
+                                                                        </div>
+                                                                        <asp:TextBox CssClass="form-control" ID="dtpInvoice" runat="server" placeholder="MM/DD/YYYY">
+                                                                        </asp:TextBox>
+                                                                        <%--<input class="form-control pull-right" id="dtpIEATDate" runat="server" type="text" />--%>
+                                                                    </div>
+                                                                    <asp:CalendarExtender ID="CalendarExtender4" runat="server" Enabled="True" TargetControlID="dtpInvoice" Format="dd/MM/yyyy"></asp:CalendarExtender>
                                                                 </div>
+                                                                
                                                                 <label for="txtWeightInv" class="col-sm-2 control-label">ITem No</label>
-                                                                <div class="col-sm-4">
-                                                                </div>
+                                                                <div class="col-sm-2">
+                                                                <input class="form-control" id="txtItemNo" runat="server" type="text" />
+                                                             </div>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="txtShipment" class="col-sm-3 control-label">Shipment</label>
@@ -1051,7 +1106,66 @@
                                                                     <input class="form-control" id="txtPriceForeign" runat="server" type="text" />
                                                                 </div>
                                                             </div>
+                                                            
+                                                            <div class="form-group">
+                                                                <div class="col-md-11 col-xs-10">
+                                                                    <div class="col-md-offset-5">
+                                                                   <div class="col-md-2">
+                                                                        <button type="button" class="btn btn-primary">Save</button>
+                                                                   </div>
+                                                                   <div class="col-md-2">
+                                                                        <button type="button" class="btn btn-default">Modify</button>
+                                                                   </div>
+                                                                   <div class="col-md-2">
+                                                                       <button type="button" class="btn btn-danger">Delete</button>
+                                                                   
+                                                                   </div>
+                                                                    
+                                                                    </div>
+                                                                 
+                                                                     <asp:Repeater ID="Repeater2" runat="server">
+                                                                 <HeaderTemplate>
+                                                                     <table class="table table-bordered">
+                                                                        <th style="width: 10px">#</th>
+                                                                        <th>Task</th>
+                                                                        <th>Progress</th>
+                                                                        <th style="width: 40px">Label</th>
+                                                                     
+                                                                 </HeaderTemplate>
+                                                                   
+                                                                    <ItemTemplate>
+                                        
+                                                                    <tr class="success">
+                                                                        <td>2.</td>
+                                                                        <td>2</td>
+                                                                        <td>2</td>
+                                                                        <td>2</td>
+                                                                    </tr>
+                                                                   
+                                                                   
+                                                                    </ItemTemplate>
+                                                                    <AlternatingItemTemplate>
+                                                                       <tr class="info">
+                                                                        <td>4.</td 
+                                                                        <td>4</td>
+                                                                        <td>4</td>
+                                                                        <td>4</td>
+                                                                     </tr>
+                                                                    </AlternatingItemTemplate>
+                                                                    <FooterTemplate>
+                                                                         <th style="width: 10px">#</th>
+                                                                        <th>Task</th>
+                                                                        <th>Progress</th>
+                                                                        <th style="width: 40px">Label</th>
+                                                                        </table>
+                                                                    </FooterTemplate>
+                                                     
+                                                                </asp:Repeater>
+                                     
+                                                                </div>
+                                                            </div>
                                                         </fieldset>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <!-- /.box-body -->
@@ -1063,15 +1177,12 @@
                                     </div>
                                     <!-- /.post -->
                                 </div>
-                            </div>
-                            <!----/ .Asembly----->
-
-
+                            <!----/ .invoice----->
 
                         </div>
-                        <!-- /.tab-pane -->
+                        <!-- /.tab-content -->
                     </div>
-                    <!-- /.tab-pane -->
+                    <!-- /.nav-tabs-custom -->
                 </div>
                 <!-- /.col -->
             </div>

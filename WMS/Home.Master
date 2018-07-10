@@ -192,12 +192,11 @@
                             </a>
                             <ul class="treeview-menu">
                                 <li><a href="ExpGenLot.aspx"><i class="fa fa-circle-o"></i>Create Issue. LOT</a></li>
-                                <li><a href="MasterPartyAdd.aspx"><i class="fa fa-circle-o"></i>GEN IEAT. Doc</a></li>
-                                <li><a href="MasterCode.aspx"><i class="fa fa-circle-o"></i>Master Code</a></li>
+                                <li><a href="IEATOut.aspx"><i class="fa fa-circle-o"></i>GEN IEAT. Doc</a></li>
                                 <li><a ><i class="fa fa-circle-o"></i>Invoice/Packing List Issue</a></li>
                                  <li><a href="#"><i class="fa fa-circle-o"></i>Truck Waybill Issue</a></li>
-                                <li><a ><i class="fa fa-circle-o"></i>Report IEAT Issue</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i>Truck Manifest</a></li>
+                                <li><a href="ReportIEAT-E-02.aspx"><i class="fa fa-circle-o"></i>Report IEAT Issue</a></li>
+                                <li><a href="TruckManifest.aspx"><i class="fa fa-circle-o"></i>Truck Manifest</a></li>
                                 <li><a href="#"><i class="fa fa-circle-o"></i>Plan Issue</a></li>
                                 
                             </ul>
@@ -629,11 +628,6 @@
                  $('#datepicker').datepicker({
                      autoclose: true
                  })
-<<<<<<< HEAD
-                 $('#dtpInvoiceDate').datepicker({
-                     autoclose: true
-                 })
-=======
 
                  //Date pickerJobdate       USE IN CreateRec.aspx
                  $('#datepickerJobdate').datepicker({
@@ -670,7 +664,6 @@
                      autoclose: true
                  })
 
->>>>>>> af6e3fd329b126c8a8f6e06eb9d98f7f2b7f82e3
                  //iCheck for checkbox and radio inputs
                  $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
                      checkboxClass: 'icheckbox_minimal-blue',
