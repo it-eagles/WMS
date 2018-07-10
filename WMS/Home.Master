@@ -174,7 +174,7 @@
                             </a>
                             <ul class="treeview-menu">
                                 <li><a href="CreateRec.aspx"><i class="fa fa-circle-o"></i>Create Rec. LOT</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i>Report IEAT Rec</a></li>
+                                <li><a href="ReportIEATRec.aspx"><i class="fa fa-circle-o"></i>Report IEAT Rec</a></li>
                                 <li><a href="#"><i class="fa fa-circle-o"></i>Truck Waybill Rec</a></li>
                                 <li><a href="#"><i class="fa fa-circle-o"></i>Invoice/Packing List Rec</a></li>
                                 <li><a href="#"><i class="fa fa-circle-o"></i>Plan Receive</a></li>
@@ -629,11 +629,11 @@
                  $('#datepicker').datepicker({
                      autoclose: true
                  })
-<<<<<<< HEAD
+
                  $('#dtpInvoiceDate').datepicker({
                      autoclose: true
                  })
-=======
+
 
                  //Date pickerJobdate       USE IN CreateRec.aspx
                  $('#datepickerJobdate').datepicker({
@@ -670,7 +670,6 @@
                      autoclose: true
                  })
 
->>>>>>> af6e3fd329b126c8a8f6e06eb9d98f7f2b7f82e3
                  //iCheck for checkbox and radio inputs
                  $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
                      checkboxClass: 'icheckbox_minimal-blue',

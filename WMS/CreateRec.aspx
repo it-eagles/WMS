@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="CreateRec.aspx.vb" Inherits="WMS.CreateRec" MasterPageFile="~/Home.Master"%>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <form id="form1" runat="server">
@@ -64,7 +65,10 @@
                                                               <div class="form-group">
                                                                    <label for="txtJobdate" class="col-sm-4 control-label">Job Date:</label>                                       
                                                                 <div class="col-sm-8">
-                                                                    <input type="text" class="form-control pull-right" id="datepickerJobdate"/>
+                                                                    <%--<input type="text" class="form-control pull-right" id="datepickerJobdate"/>--%>
+                                                                    <asp:TextBox CssClass="form-control" ID="txtdatepickerJobdate" runat="server" placeholder="DD/MM/YYYY">
+                                                                </asp:TextBox>
+                                                                <asp:CalendarExtender ID="CalendarExtenderJobdate" runat="server" Enabled="True" TargetControlID="txtdatepickerJobdate" Format="dd/MM/yyyy"></asp:CalendarExtender>
                                                                 </div>
                                                                   </div>
                                                                   <div class="form-group">
@@ -254,7 +258,10 @@
                     <input class="form-control" id="txtActual1" runat="server" placeholder="Actual"/>
                   </div>
                   <div class="col-sm-3">
-                    <input type="text" class="form-control pull-right"  id="datepickerActualDate1" />
+                    <%--<input type="text" class="form-control pull-right"  id="datepickerActualDate1" />--%>
+                    <asp:TextBox CssClass="form-control" ID="txtdatepickerActualDate1" runat="server" placeholder="DD/MM/YYYY">
+                    </asp:TextBox>
+                    <asp:CalendarExtender ID="CalendarExtenderActualDate1" runat="server" Enabled="True" TargetControlID="txtdatepickerActualDate1" Format="dd/MM/yyyy"></asp:CalendarExtender>
                   </div>
                   <div class="col-sm-3">
                     <input class="form-control" id="txtORGN1" runat="server" placeholder="ORGN"/>
@@ -268,7 +275,10 @@
                     <input class="form-control" id="txtActual2" runat="server" placeholder="Actual"/>
                   </div>
                   <div class="col-sm-3">
-                    <input type="text" class="form-control pull-right" id="datepickerActualDate2"/>
+                    <%--<input type="text" class="form-control pull-right" id="datepickerActualDate2"/>--%>
+                    <asp:TextBox CssClass="form-control" ID="txtdatepickerActualDate2" runat="server" placeholder="DD/MM/YYYY">
+                    </asp:TextBox>
+                    <asp:CalendarExtender ID="CalendarExtenderActualDate2" runat="server" Enabled="True" TargetControlID="txtdatepickerActualDate2" Format="dd/MM/yyyy"></asp:CalendarExtender>
                   </div>
                   <div class="col-sm-3">
                     <input class="form-control" id="txtORGN2" runat="server" placeholder="ORGN"/>
@@ -282,7 +292,10 @@
                     <input class="form-control" id="txtActual3" runat="server" placeholder="Actual"/>
                   </div>
                   <div class="col-sm-3">
-                    <input type="text" class="form-control pull-right" id="datepickerActualDate3"/>
+                    <%--<input type="text" class="form-control pull-right" id="datepickerActualDate3"/>--%>
+                    <asp:TextBox CssClass="form-control" ID="txtdatepickerActualDate3" runat="server" placeholder="DD/MM/YYYY">
+                    </asp:TextBox>
+                    <asp:CalendarExtender ID="CalendarExtenderActualDate3" runat="server" Enabled="True" TargetControlID="txtdatepickerActualDate3" Format="dd/MM/yyyy"></asp:CalendarExtender>
                   </div>
                   <div class="col-sm-3">
                     <input class="form-control" id="txtORGN3" runat="server" placeholder="ORGN"/>
@@ -296,7 +309,10 @@
                     <input class="form-control" id="txtActual4" runat="server" placeholder="Actual"/>
                   </div>
                   <div class="col-sm-3">
-                    <input type="text" class="form-control pull-right" id="datepickerActualDate4"/>
+                    <%--<input type="text" class="form-control pull-right" id="datepickerActualDate4"/>--%>
+                    <asp:TextBox CssClass="form-control" ID="txtdatepickerActualDate4" runat="server" placeholder="DD/MM/YYYY">
+                    </asp:TextBox>
+                    <asp:CalendarExtender ID="CalendarExtenderActualDate4" runat="server" Enabled="True" TargetControlID="txtdatepickerActualDate4" Format="dd/MM/yyyy"></asp:CalendarExtender>
                   </div>
                   <div class="col-sm-3">
                     <input class="form-control" id="txtORGN4" runat="server" placeholder="ORGN"/>
@@ -322,7 +338,10 @@
 
                   </div>
                   <div class="col-sm-4">                    
-                      <input type="text" class="form-control pull-right" id="datepickerActualPickUp"/>
+                      <%--<input type="text" class="form-control pull-right" id="datepickerActualPickUp"/>--%>
+                      <asp:TextBox CssClass="form-control" ID="txtdatepickerActualPickUp" runat="server" placeholder="DD/MM/YYYY">
+                    </asp:TextBox>
+                    <asp:CalendarExtender ID="CalendarExtenderdatepickerActualPickUp" runat="server" Enabled="True" TargetControlID="txtdatepickerActualPickUp" Format="dd/MM/yyyy"></asp:CalendarExtender>
                   </div>
                 </div>
                  <div class="form-group">
@@ -595,7 +614,10 @@
               </div>
                   </div>
                   <div class="col-sm-4">                    
-                      <input type="text" class="form-control pull-right" id="datepickerArrivalToEAS"/>
+                      <%--<input type="text" class="form-control pull-right" id="datepickerArrivalToEAS"/>--%>
+                      <asp:TextBox CssClass="form-control" ID="txtdatepickerArrivalToEAS" runat="server" placeholder="DD/MM/YYYY">
+                      </asp:TextBox>
+                      <asp:CalendarExtender ID="CalendarExtenderArrivalToEAS" runat="server" Enabled="True" TargetControlID="txtdatepickerArrivalToEAS" Format="DD/MM/yyyy"></asp:CalendarExtender>
                   </div>
                 </div>
 
@@ -620,590 +642,750 @@
              <!------- Import Goods ------->
             <div class="tab-pane" id="importgoods">
                      <!-- Post -->
-               <div class="post">
-                  <div class="row margin-bottom">
-                    <div class="col-lg-12 col-md-12">
+               <div class="row">
+                    
+                    <div class="col-md-6">
+          <!-- Horizontal Form -->
+          
 
-                        <from class="form-horizontal">
-                           <div class="box-body">   
-                                              
-                               <div class="form-group" >
-                                     
-                                     <label for="txtImpProductCode" class="col-sm-2 control-label">Imp. Product Code :</label>
-                                       <div class="col-md-3">
-         
-                                             <input class="form-control" id="txtImpProductCode" runat="server" placeholder="Product Code"/>
-                                      </div>
-                                           <label for="dcboImpTariffCode" class="col-sm-2 control-label">Tariff Code :</label>
-                                       <div class="col-md-5">   
+            <!-- form start -->
+            <div class="form-horizontal">
+                <fieldset>  <legend>Delivery Place</legend>
+              <div class="box-body">
+                <div class="form-group">
+                  <label for="txtDeliverycode" class="col-sm-4 control-label">Code:</label>
+                  <div class="col-sm-8">                    
+                      <asp:DropDownList ID="ddlDeliveryCode" CssClass="form-control" runat="server"></asp:DropDownList>  
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="txtNameEngDelivery" class="col-sm-4 control-label">Name(Eng):</label>
+                  <div class="col-sm-8">
+                    <input class="form-control" id="txtNameEngDelivery" runat="server"  placeholder="Name(Eng)"/>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="txtAddress1Delivery" class="col-sm-4 control-label">Address1:</label>
+                  <div class="col-sm-8">
+                    <input class="form-control" id="txtAddress1Delivery" runat="server"/>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="txtAddress2Delivery" class="col-sm-4 control-label">Address2:</label>
+                  <div class="col-sm-8">
+                    <input class="form-control" id="txtAddress2Delivery" runat="server"/>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="txtAddress3Delivery" class="col-sm-4 control-label">Address3:</label>
+                  <div class="col-sm-8">
+                    <input class="form-control" id="txtAddress3Delivery" runat="server"/>
+                  </div>
+                </div>
+                 <div class="form-group">
+                  <label for="txtAddress4Delivery" class="col-sm-4 control-label">Address4:</label>
+                  <div class="col-sm-8">
+                    <input class="form-control" id="txtAddress4Delivery" runat="server"/>
+                  </div>
+                </div>
+                 <div class="form-group">
+                  <label for="txtAddress5Delivery" class="col-sm-4 control-label">Address5:</label>
+                  <div class="col-sm-8">
+                    <input class="form-control" id="txtAddress5Delivery" runat="server"/>
+                  </div>
+                </div>
+                 <div class="form-group">
+                  <label for="txtEmailDelivery" class="col-sm-4 control-label">E-mail:</label>
+                  <div class="col-sm-8">
+                    <input class="form-control" id="txtEmailDelivery" runat="server"/>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="txtContractPersonDelivery" class="col-sm-4 control-label">Contract Person:</label>
+                  <div class="col-sm-8">
+                    <input class="form-control" id="txtContractPersonDelivery" runat="server"/>
+                  </div>
+                </div>
+              </div>
+              <!-- /.box-body -->
+                    </fieldset>
+            </div>        
+          <!-- /.box -->
 
-                                           <asp:DropDownList ID="dcboImpTariffCode" CssClass="form-control" runat="server" DataTextField="TypeName" DataValueField="TypeID"></asp:DropDownList>
-                                        </div>
-                                       </div>                
-                                 
-                                    <div class="form-group" >
-                                     
-                                         <label for="txtImpDesc1" class="col-sm-2 control-label">Desc. (ENG) 1 :</label>
-                                       <div class="col-md-9" id="ImpDesc1">
-         
-                                             <input class="form-control" id="txtImpDesc1" runat="server" placeholder="Desc" disabled="disabled"/>
-                                      </div>
-                                          
-                                       <div class="col-md-1">   
-                                           <div class="checkbox">
-                                                 <label>
-                                                     <input type="checkbox" runat="server" id="chkImpEnable1" onclick="EnableDisableControls();"/> Enable
-                                                 </label>
-                                             </div>
-                                       
-                                        </div>
-                                       </div> 
+          <!-- general form Commodity -->
+            <div class="form-horizontal">
+                <fieldset><legend>Pick Up Place</legend>
+              <div class="box-body">
+                <div class="form-group">
+                  <label for="txtCodePickUpPlace" class="col-sm-4 control-label">Pick Up Place:</label>
+                  <div class="col-sm-8">                    
+                      <asp:DropDownList ID="ddlCodePickUpPlace" CssClass="form-control" runat="server"></asp:DropDownList>  
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="txtNamePickUpPlace" class="col-sm-4 control-label">Name(Eng):</label>
+                  <div class="col-sm-8">
+                    <input class="form-control" id="txtNamePickUpPlace" runat="server"  placeholder="Name(Eng)"/>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="txtAddress1PickUpPlace" class="col-sm-4 control-label">Address1:</label>
+                  <div class="col-sm-8">
+                    <input class="form-control" id="txtAddress1PickUpPlace" runat="server"/>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="txtAddress2PickUpPlace" class="col-sm-4 control-label">Address2:</label>
+                  <div class="col-sm-8">
+                    <input class="form-control" id="txtAddress2PickUpPlace" runat="server"/>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="txtAddress3PickUpPlace" class="col-sm-4 control-label">Address3:</label>
+                  <div class="col-sm-8">
+                    <input class="form-control" id="txtAddress3PickUpPlace" runat="server"/>
+                  </div>
+                </div>
+                 <div class="form-group">
+                  <label for="txtAddress4PickUpPlace" class="col-sm-4 control-label">Address4:</label>
+                  <div class="col-sm-8">
+                    <input class="form-control" id="txtAddress4PickUpPlace" runat="server"/>
+                  </div>
+                </div>
+                 <div class="form-group">
+                  <label for="txtAddress5PickUpPlace" class="col-sm-4 control-label">Address5:</label>
+                  <div class="col-sm-8">
+                    <input class="form-control" id="txtAddress5PickUpPlace" runat="server"/>
+                  </div>
+                </div>
+                 <div class="form-group">
+                  <label for="txtEmailPickUpPlace" class="col-sm-4 control-label">E-mail:</label>
+                  <div class="col-sm-8">
+                    <input class="form-control" id="txtEmailPickUpPlace" runat="server"/>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="txtContractPersonPickUpPlace" class="col-sm-4 control-label">Contract Person:</label>
+                  <div class="col-sm-8">
+                    <input class="form-control" id="txtContractPersonPickUpPlace" runat="server"/>
+                  </div>
+                </div>
 
-                                 
-                                    <div class="form-group" >
-                                     
-                                         <label for="txtImpDesc2" class="col-sm-2 control-label">Desc. (ENG) 2 :</label>
-                                       <div class="col-md-9" id="ImpDesc2">
-                                             <input class="form-control" id="txtImpDesc2" runat="server" placeholder="Desc" disabled="disabled"/>
-                                      </div>
-                                          
-                                       <div class="col-md-1">   
-                                           <div class="checkbox">
-                                                 <label>
-                                                     <input type="checkbox" runat="server" id="chkImpEnable2" onclick="chkImpEnable2();"/> Enable
-                                                 </label>
-                                             </div>
-                                        </div>
-                                      </div> 
-                                 
-                                  <div class="form-group">
-                                         <label for="txtImpDesc3" class="col-sm-2 control-label">Desc. (ENG) 3 :</label>
-                                   <div class="col-md-9" id="ImpDesc3">
-                                       <input class="form-control" id="txtImpDesc3" runat="server" placeholder="Desc" disabled="disabled"/>
-                                   </div>
-                                    <div class="col-md-1">   
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox" runat="server" id="chkImpEnable3" onclick="chkImpEnable3();"/> Enable
-                                            </label>
-                                        </div>
-                                      </div>
-                                   </div> 
-                                   <div class="form-group" >
-                                       <label for="txtImpProductAttribute1" class="col-sm-2 control-label">Product Desc. (TH) :</label>
-                                    <div class="col-sm-10">
-                                       <input class="form-control" id="txtImpProductAttribute1" runat="server" placeholder="Desc. (TH)"/>
-                                    </div>
-                                   </div>
-                                    
-                                    <div class="form-group">
-                                        <label for="txtImpProductAttribute2" class="col-sm-2 control-label">Product Attribute:</label>  
-                                      <div class="col-sm-10">
-                                             <input class="form-control" id="txtImpProductAttribute2" runat="server" placeholder=" Attribute"/>
-                                        </div>
-                                    </div>
-
-                               <div class="col-lg-6 col-md-6">
-                                   <div class="form-group">
-                                        <label for="dcboImpTariffSequence" class="col-sm-4 control-label">Tariff Sequence</label>
-                                           <div class="col-sm-8">
-                                             <asp:DropDownList ID="dcboImpTariffSequence" CssClass="form-control" runat="server" DataTextField="TypeName" DataValueField="TypeID"></asp:DropDownList>
-                                           </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="txtImpCustomsProductCode" class="col-sm-4 control-label">H.S. Code</label>
-                                       <div class="col-sm-8">
-                                          <input class="form-control" id="txtImpCustomsProductCode" runat="server"  placeholder="H.S."/>
-                                       </div>
-                                    </div>
-
-                               <div class="form-group" >
-                                        <label for="txtImpDutyType" class="col-sm-4 control-label">Duty Type</label>
-                                         <div class="col-sm-8">
-                                             <input class="form-control" id="txtImpDutyType" runat="server" placeholder="Duty Type"/>
-                                        </div>
-                               </div>
-                                      <div class="form-group">
-                                        <label for="txtImpValueRateP" class="col-sm-4 control-label">Value Rate(P) :</label>
-                                           <div class="col-sm-8">
-                                              <input class="form-control" id="txtImpValueRateP" runat="server"  placeholder="Value Rate"/>
-                                           </div>
-                                      
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="txtImpSpecificRateP" class="col-sm-4 control-label">Specific Rate(P) :</label>
-                                         <div class="col-sm-8">
-                                          <input class="form-control" id="txtImpSpecificRateP" runat="server"  placeholder="Specific Rate"/>
-                                        </div>
-                                   
-                                    </div>
-
-                                <div class="form-group" >
-                                    
-                                        <label for="txtImpExemptDuty" class="col-sm-4 control-label">Exempt Duty :</label>
-                                       
-                                         <div class="col-sm-8">
-                                             <input class="form-control" id="txtImpExemptDuty" runat="server" placeholder="Exempt Duty"/>
-                                        </div>
-                      
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                        <label for="txtImpSurchargeRate" class="col-sm-4 control-label">Surcharge Rate :</label>
-                                       
-                                      <div class="col-sm-8">
-                                             <input class="form-control" id="txtImpSurchargeRate" runat="server" placeholder="Surcharge Rate"/>
-                                        </div>
-                      
-                                    </div>
-                                      <div class="form-group">
-                                        <label for="txtImpExciseRate" class="col-sm-4 control-label">Excise Rate :</label>
-                                           <div class="col-sm-8">
-                                            <input class="form-control" id="txtImpExciseRate" runat="server" placeholder="Excise Rate"/>
-                                           </div>
-                                      
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="txtImpExciseSpcRate" class="col-sm-4 control-label">Excise Spc Rate :</label>
-                                         <div class="col-sm-8">
-                                          <input class="form-control" id="txtImpExciseSpcRate" runat="server"  placeholder="Excise Spc Rate"/>
-                                           </div>
-                                   
-                                    </div>
-
-                               <div class="form-group" >
-                                    
-                                        <label for="txtImpExemptExcise" class="col-sm-4 control-label">Exempt(Excise) :</label>
-                                       
-                                         <div class="col-sm-8">
-                                             <input class="form-control" id="txtImpExemptExcise" runat="server" placeholder="Excise"/>
-                                        </div>
-                      
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                        <label for="txtImpValueRate" class="col-sm-4 control-label">Value Rate :</label>
-                                       
-                                      <div class="col-sm-8">
-                                             <input class="form-control" id="txtImpValueRate" runat="server" placeholder="Value Rate"/>
-                                        </div>
-                      
-                                    </div>
-                                      <div class="form-group">
-                                        <label for="txtImpValueRateAmount" class="col-sm-4 control-label">Value Rate Amount :</label>
-                                           <div class="col-sm-8">
-                                            <input class="form-control" id="txtImpValueRateAmount" runat="server" placeholder="Value Rate Amount"/>
-                                           </div>
-                                      
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="txtImpFactoryNo" class="col-sm-4 control-label">Factory No :</label>
-                                         <div class="col-sm-8">
-                                          <input class="form-control" id="txtImpFactoryNo" runat="server"  placeholder="Factory No"/>
-                                      </div>
-                                   
-                                    </div>
-                               </div>
-
-                               <div class="col-lg-6 col-md-6">
-                                   <div class="form-group">
-                                        <label for="dcboImpStatisticalCode" class="col-sm-4 control-label">Statistical Code</label>
-                                           <div class="col-sm-8">
-                                             <asp:DropDownList ID="dcboImpStatisticalCode" CssClass="form-control" runat="server" DataTextField="TypeName" DataValueField="TypeID"></asp:DropDownList>
-                                           </div>
-                                      
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="txtImpProductYear" class="col-sm-4 control-label">Product Year :</label>
-                                         <div class="col-sm-8">
-                                          <input class="form-control" id="txtImpProductYear" runat="server"  placeholder="Product Year"/>
-                                           </div>
-                                   
-                                    </div>
-
-                               <div class="form-group" >
-                                    
-                                        <label for="txtImpSpeciticRate" class="col-sm-4 control-label">Specitic Rate :</label>
-                                       
-                                         <div class="col-sm-8">
-                                             <input class="form-control" id="txtImpSpeciticRate" runat="server" placeholder="Specitic Rate"/>
-                                        </div>
-                      
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                        <label for="txtImpSpecificCal" class="col-sm-4 control-label">Specific Cal :</label>
-                                       
-                                      <div class="col-sm-8">
-                                             <input class="form-control" id="txtImpSpecificCal" runat="server" placeholder="Specific Cal"/>
-                                        </div>
-                      
-                                    </div>
-                                      <div class="form-group">
-                                        <label for="txtImpExemptVat" class="col-sm-4 control-label">Exempt Vat :</label>
-                                           <div class="col-sm-8">
-                                              <input class="form-control" id="txtImpExemptVat" runat="server"  placeholder="Exempt Vat"/>
-                                           </div>
-                                      
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="txtImpExciseNo" class="col-sm-4 control-label">Excise No :</label>
-                                         <div class="col-sm-8">
-                                          <input class="form-control" id="txtImpExciseNo" runat="server"  placeholder="Excise No"/>
-                                           </div>
-                                   
-                                    </div>
-
-                                <div class="form-group" >
-                                    
-                                        <label for="txtImpExciseRatePay" class="col-sm-4 control-label">Excise Rate Pay :</label>
-                                       
-                                         <div class="col-sm-8">
-                                             <input class="form-control" id="txtImpExciseRatePay" runat="server" placeholder="Excise Rate Pay "/>
-                                        </div>
-                      
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                        <label for="txtImpExciseSpcRatePay" class="col-sm-4 control-label">Excise Spc Rate Pay :</label>
-                                       
-                                      <div class="col-sm-8">
-                                             <input class="form-control" id="txtImpExciseSpcRatePay" runat="server" placeholder="Excise Spc Rate Pay"/>
-                                        </div>
-                      
-                                    </div>
-                                      <div class="form-group">
-                                        <label for="txtImpPriviege" class="col-sm-4 control-label">Priviege :</label>
-                                           <div class="col-sm-8">
-                                            <input class="form-control" id="txtImpPriviege" runat="server" placeholder="Priviege"/>
-                                           </div>
-                                      
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="dcboImpBrand" class="col-sm-4 control-label">Brand :</label>
-                                         <div class="col-sm-8">
-                                             <asp:DropDownList ID="dcboImpBrand" CssClass="form-control" runat="server" DataTextField="Description" DataValueField="Description"></asp:DropDownList>
-                                           </div>
-                                   
-                                    </div>
-                                     <div class="form-group" >
-                                          <label class="col-sm-4 control-label">Currency :</label>
-                                                                        
-                                       <div class="col-md-4">
-         
-                                          <asp:DropDownList ID="cboImpCurrency" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code"></asp:DropDownList>            
-                                      </div>
-                                
-                                       <div class="col-md-4">   
-                                            <input class="form-control" id="txtImpExchangeRate" runat="server" placeholder="Currency" />
-                                        </div>
-                                       </div>
-                                
-                                      <div class="form-group">
-                                        <label for="txtImpEstablishNo" class="col-sm-4 control-label">Establish No :</label>
-                                           <div class="col-sm-8">
-                                            <input class="form-control" id="txtImpEstablishNo" runat="server" placeholder="Establish No"/>
-                                           </div>
-                                      
-                                    </div>
-                               </div>
-                            
-                                    <!-- /.box-body -->
-                          </div>
-                          
-                       </from>
-
-                <!--/.col-lg-6 col-md-6--->
-                 </div>
-           <!--/.row-->
+              </div>
+              <!-- /.box-body -->
+                    </fieldset>
             </div>
-         </div>
+
+
+              <div class="form-horizontal">
+                <fieldset><legend>Customer Group</legend>
+              <div class="box-body">
+                  <div class="form-group">
+                  <label for="txtCodeCustommerGroup" class="col-sm-4 control-label">Code Group:</label>
+                  <div class="col-sm-8">                    
+                      <asp:DropDownList ID="ddlCodeCustommerGroup" CssClass="form-control" runat="server"></asp:DropDownList>  
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="txtNameCustommerGroup" class="col-sm-4 control-label">Name(Eng):</label>
+                  <div class="col-sm-8">
+                    <input class="form-control" id="txtNameCustommerGroup" runat="server"  placeholder="Name(Eng)"/>
+                  </div>
+                </div>
+
+              </div>
+              <!-- /.box-body -->
+                    </fieldset>
+            </div>
+        </div>
+        <!--/.col (left) -->
+                   <%---------------------------------------------------------------End Left Form------------------------------------------------%>
+
+
+
+                    <%------------------------------------------------------------Start Right Form------------------------------------------------%>
+                    <div class="col-md-6">
+          <!-- Horizontal Form -->                      
+            <!-- form start -->
+                <div class="form-horizontal">
+                <fieldset>  <legend>Customer</legend>
+              <div class="box-body">
+                <div class="form-group">
+                  <label for="txtCustomercode" class="col-sm-4 control-label">Customer Code:</label>
+                  <div class="col-sm-8">                    
+                      <asp:DropDownList ID="ddlCustomercode" CssClass="form-control" runat="server"></asp:DropDownList>  
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="txtNameEngCustomer" class="col-sm-4 control-label">Name(Eng):</label>
+                  <div class="col-sm-8">
+                    <input class="form-control" id="txtNameEngCustomer" runat="server"  placeholder="Name(Eng)"/>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="txtAddress1Custommer" class="col-sm-4 control-label">Address1:</label>
+                  <div class="col-sm-8">
+                    <input class="form-control" id="txtAddress1Custommer" runat="server"/>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="txtAddress2Custommer" class="col-sm-4 control-label">Address2:</label>
+                  <div class="col-sm-8">
+                    <input class="form-control" id="txtAddress2Custommer" runat="server"/>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="txtAddress3Custommer" class="col-sm-4 control-label">Address3:</label>
+                  <div class="col-sm-8">
+                    <input class="form-control" id="txtAddress3Custommer" runat="server"/>
+                  </div>
+                </div>
+                 <div class="form-group">
+                  <label for="txtAddress4Custommer" class="col-sm-4 control-label">Address4:</label>
+                  <div class="col-sm-8">
+                    <input class="form-control" id="txtAddress4Custommer" runat="server"/>
+                  </div>
+                </div>
+                 <div class="form-group">
+                  <label for="txtAddress5Custommer" class="col-sm-4 control-label">Address5:</label>
+                  <div class="col-sm-8">
+                    <input class="form-control" id="txtAddress5Custommer" runat="server"/>
+                  </div>
+                </div>
+                 <div class="form-group">
+                  <label for="txtEmailCustommer" class="col-sm-4 control-label">E-mail:</label>
+                  <div class="col-sm-8">
+                    <input class="form-control" id="txtEmailCustommer" runat="server"/>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="txtContractPersonCustommer" class="col-sm-4 control-label">Contract Person:</label>
+                  <div class="col-sm-8">
+                    <input class="form-control" id="txtContractPersonCustommer" runat="server"/>
+                  </div>
+                </div>
+              </div>
+              <!-- /.box-body -->
+                    </fieldset>
+            </div>        
+          <!-- /.box -->
+
+          <!-- general form Commodity -->
+            <div class="form-horizontal">
+                <fieldset><legend>End Customer</legend>
+              <div class="box-body">
+                <div class="form-group">
+                  <label for="txtCodeEndCustomer" class="col-sm-4 control-label">End Customer Code:</label>
+                  <div class="col-sm-8">                    
+                      <asp:DropDownList ID="ddlCodeEndCustomer" CssClass="form-control" runat="server"></asp:DropDownList>  
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="txtNameEndCustomer" class="col-sm-4 control-label">Name(Eng):</label>
+                  <div class="col-sm-8">
+                    <input class="form-control" id="txtNameEndCustomer" runat="server"  placeholder="Name(Eng)"/>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="txtAddress1EndCustomer" class="col-sm-4 control-label">Address1:</label>
+                  <div class="col-sm-8">
+                    <input class="form-control" id="txtAddress1EndCustomer" runat="server"/>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="txtAddress2EndCustomer" class="col-sm-4 control-label">Address2:</label>
+                  <div class="col-sm-8">
+                    <input class="form-control" id="txtAddress2EndCustomer" runat="server"/>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="txtAddress3EndCustomer" class="col-sm-4 control-label">Address3:</label>
+                  <div class="col-sm-8">
+                    <input class="form-control" id="txtAddress3EndCustomer" runat="server"/>
+                  </div>
+                </div>
+                 <div class="form-group">
+                  <label for="txtAddress4EndCustomer" class="col-sm-4 control-label">Address4:</label>
+                  <div class="col-sm-8">
+                    <input class="form-control" id="txtAddress4EndCustomer" runat="server"/>
+                  </div>
+                </div>
+                 <div class="form-group">
+                  <label for="txtAddress5EndCustomer" class="col-sm-4 control-label">Address5:</label>
+                  <div class="col-sm-8">
+                    <input class="form-control" id="txtAddress5EndCustomer" runat="server"/>
+                  </div>
+                </div>
+                 <div class="form-group">
+                  <label for="txtEmailEndCustomer" class="col-sm-4 control-label">E-mail:</label>
+                  <div class="col-sm-8">
+                    <input class="form-control" id="txtEmailEndCustomer" runat="server"/>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="txtContractPersonEndCustomer" class="col-sm-4 control-label">Contract Person:</label>
+                  <div class="col-sm-8">
+                    <input class="form-control" id="txtContractPersonEndCustomer" runat="server"/>
+                  </div>
+                </div>
+
+              </div>
+              <!-- /.box-body -->
+                    </fieldset>
+            </div>        
+                           
+         
+                <div class="form-horizontal">
+                <fieldset><legend>Reference</legend>
+              <div class="box-body">
+                  <div class="form-group">
+                  <label for="txtReferenceInvoice" class="col-sm-4 control-label">Reference Invoice:</label>
+                  <div class="col-sm-8">                                          
+                      <input class="form-control" id="txtReferenceInvoice" runat="server"  placeholder="Reference Invoice"/> 
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="txtNameCustommerGroup" class="col-sm-4 control-label">Name(Eng):</label>
+                  <div class="col-sm-4">
+                  <asp:TextBox CssClass="form-control" ID="txtdatepickerReturnDate" runat="server" placeholder="DD/MM/YYYY">
+                  </asp:TextBox>
+                  <asp:CalendarExtender ID="CalendarExtenderReturnDate" runat="server" Enabled="True" TargetControlID="txtdatepickerReturnDate" Format="dd/MM/yyyy"></asp:CalendarExtender>
+                  </div>
+                  <div class="col-sm-4">
+                  <asp:TextBox CssClass="form-control" ID="txtdatepickerReturnDate2" runat="server" placeholder="DD/MM/YYYY">
+                  </asp:TextBox>
+                  <asp:CalendarExtender ID="CalendarExtenderReturnDate2" runat="server" Enabled="True" TargetControlID="txtdatepickerReturnDate2" Format="dd/MM/yyyy"></asp:CalendarExtender>
+                  </div>
+                </div>
+
+              </div>
+              <!-- /.box-body -->
+                    </fieldset>
+            </div>
+
+        </div>
+         <!-- right column -->
+
+
+                   <%--------------------------------------------------------------------End Right Form------------------------------------------------------%>
+
+                   <div class="col-lg-12 col-md-12 ">
+                                            <!-- form start -->                        
+                                               <div class="form-horizontal">
+                                                   <fieldset>  <legend>IEAT</legend>
+                                                      <div class="box-body">   
+                                                          <div class="col-md-6 col-sm-6"> 
+                                                              <div class="form-group">
+                                                                  <label for="txtIEATNo" class="col-sm-4 control-label">IEAT No:</label>                                       
+                                                                <div class="col-sm-8">
+                                                                    <input class="form-control" id="txtIEATNo" runat="server" placeholder="IEAT  No"/>
+                                                                </div>
+                                                                  </div>
+                                                                  <div class="form-group">
+                                                                  <label for="txtIEATPermit" class="col-sm-4 control-label">IEAT Permit:</label>                                      
+                                                                 <div class="col-sm-8">
+                                                                    <asp:DropDownList ID="ddlIEATPermit" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                                 </div>
+                                                              </div>
+                                                              <div class="form-group">
+                                                                  <label for="txtImportEntryNo" class="col-sm-4 control-label">Import Entry No:</label>                                       
+                                                                <div class="col-sm-8">
+                                                                    <input class="form-control" id="txtImportEntryNo" runat="server" placeholder="Import Entry No"/>
+                                                                </div>
+                                                                  </div>
+                                                              <div class="form-group">
+                                                                       <label for="txtStatusIEAT1" class="col-sm-4 control-label">Status 1:</label> 
+                                                                <div class="col-sm-8">
+                                                                    <asp:DropDownList ID="ddlStatusIEAT1" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                                 </div>
+                                                              </div>
+                                                          </div>
+
+                                                          <div class="col-md-6"> 
+                                                              <div class="form-group">
+                                                                <div class="col-sm-4">
+                                                                    <%--<button runat="server" class="btn-primary" id="btnGenIEATNo" title="btnGenIEATNo">Generate </button>--%> 
+                                                                    <button type="submit" runat="server" class="btn btn-primary" id="btnGenIEATNo" title="btnGenIEATNo" >Submit</button> 
+                                                                </div>
+                                                                <div class="checkbox col-md-8">
+                                                                    <label>
+                                                                        <input type="checkbox" runat="server" id="chkGenerateIEATNo" onclick="chkExpEnable2();" />
+                                                                        Request System Auto Generate IEAT No.
+                                                                    </label>
+                                                                </div>                                    
+                                                                <%--<div class="col-sm-8">
+                                                                    <%--<input type="text" class="form-control pull-right" id="datepickerJobdate"/>
+                                                                    <asp:TextBox CssClass="form-control" ID="TextBox1" runat="server" placeholder="DD/MM/YYYY">
+                                                                </asp:TextBox>
+                                                                <asp:CalendarExtender ID="CalendarExtender1" runat="server" Enabled="True" TargetControlID="txtdatepickerJobdate" Format="dd/MM/yyyy"></asp:CalendarExtender>
+                                                                </div>--%>
+                                                                  </div>
+                                                                          <style>
+                                                                              h1{height:34px;}                                                                             
+                                                                          </style>
+                                                                           <h1></h1>
+                                                                  <div class="form-group">
+                                                                       <label for="txtImportEntryDate" class="col-sm-4 control-label">Import Entry Date:</label> 
+                                                                <div class="col-md-8">
+                                                                    <%--<input type="text" class="form-control pull-right" id="datepickerJobdate"/>--%>
+                                                                    <asp:TextBox CssClass="form-control" ID="txtdatepickerImportEntryDate" runat="server" placeholder="DD/MM/YYYY">
+                                                                </asp:TextBox>
+                                                                <asp:CalendarExtender ID="CalendarExtenderImportEntryDate" runat="server" Enabled="True" TargetControlID="txtdatepickerImportEntryDate" Format="dd/MM/yyyy"></asp:CalendarExtender>
+                                                                </div>
+                                                              </div>
+                                                                <div class="form-group">
+                                                                       <label for="txtStatusIEAT2" class="col-sm-4 control-label">Status 2:</label> 
+                                                                <div class="col-sm-8">
+                                                                    <asp:DropDownList ID="ddlStatusIEAT2" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                                 </div>
+                                                              </div>
+
+                                                          </div>                                                                                                                                         
+                                    <!-- /.box-body -->
+                             </div>
+                            <!-- /.box-header -->
+                           </fieldset>
+                       </div>
+          <!--/.col-lg-6 col-md-6 stockqty--->
+               
+                    </div>
+
+                    <!-- /.col -->
+                </div>
      <!-- /.post -->
        </div>
  <!------- /. Import Goods ------->
+                            <%-------------------------------------------------------------End Job Detail-------------------------------------------------------%>
 
+
+
+                            <%--------------------------------------------------------------Start Invoice----------------------------------------------------------%>
        <!-------- Export Goods --------->
      <div class="tab-pane" id="exportgoods">
                                 <!-- Post -->
-        <div class="post">
-         <div class="row margin-bottom">
-
-                <div class="col-lg-12 col-md-12">
-
-                       <from class="form-horizontal">
-                           <div class="box-body">   
-                              <div class="form-group" >
-                                     <label for="txtExpProductCode" class="col-sm-2 control-label">Exp. Product Code :</label>
-                                 <div class="col-md-6">
-                                     <input class="form-control" id="txtExpProductCode" runat="server" placeholder="Product Code"/>
-                                 </div>
-                                 <div class="col-md-2"></div>
-                             </div> 
-                                              
-                             <div class="form-group" >
-                                  <label for="txtImpDesc1" class="col-sm-2 control-label">Desc. (ENG) 1 :</label>
-                               <div class="col-md-9" id="ExpDesc1">
-                                  <input class="form-control" id="txtExpDesc1" runat="server" placeholder="Desc" disabled="disabled"/>
-                               </div>
-                                <div class="col-md-1">   
-                                   <div class="checkbox">
-                                      <label>
-                                          <input type="checkbox" runat="server" id="chkExpEnable1" onclick="chkExpEnable1();"/> Enable
-                                      </label>
-                                  </div>
-                               </div>
-                            </div> 
-                               
-                           <div class="form-group" >
-                               <label for="txtExpDesc2" class="col-sm-2 control-label">Desc. (ENG) 2 :</label>
-                                <div class="col-md-9" id="ExpDesc2">
-                                    <input class="form-control" id="txtExpDesc2" runat="server" placeholder="Desc" disabled="disabled"/>
-                                </div>
-                               <div class="col-md-1">
-                                   <div class="checkbox">
-                                       <label>
-                                           <input type="checkbox" runat="server" id="chkExpEnable2" onclick="chkExpEnable2();"/> Enable
-                                       </label>
-                                   </div>
-                               </div>
-                           </div> 
-                                 
-                          <div class="form-group" >
-                              <label for="txtExpDesc3" class="col-sm-2 control-label">Desc. (ENG) 3 :</label>
-                              <div class="col-md-9" id="ExpDesc3">
-                                  <input class="form-control" id="txtExpDesc3" runat="server" placeholder="Desc" disabled="disabled"/>
-                              </div>
-                              <div class="col-md-1">
-                                  <div class="checkbox">
-                                      <label>
-                                          <input type="checkbox" runat="server" id="chkExpEnable3" onclick="chkExpEnable3();"/> Enable
-                                      </label>
-                                  </div>
-                              </div>
-                          </div> 
-                         <div class="form-group" >
-                             <label for="txtExpProductAttribute1" class="col-sm-2 control-label">Attribute 1 :</label>
-                                   <div class="col-sm-10">
-                                        <input class="form-control" id="txtExpProductAttribute1" runat="server" placeholder="Desc. (TH)"/>
-                                   </div>
-                         </div>
-                         
-                         <div class="form-group">
-                             <label for="txtExpProductAttribute2" class="col-sm-2 control-label">Attribute 2 :</label>
-                                   <div class="col-sm-10">
-                                             <input class="form-control" id="txtExpProductAttribute2" runat="server" placeholder=" Attribute"/>
-                                        </div>
-                      
-                                    </div>
-
-                               <div class="col-lg-6 col-md-6">
-                                   <div class="form-group">
-                                        <label for="dcboExpTariffSequence" class="col-sm-4 control-label">Tariff Sequence</label>
-                                           <div class="col-sm-8">
-                                             <asp:DropDownList ID="dcboExpTariffSequence" CssClass="form-control" runat="server" DataTextField="TypeName" DataValueField="TypeID"></asp:DropDownList>
-                                           </div>
-                                      
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="txtExpCustomsProductCode" class="col-sm-4 control-label">H.S. Code</label>
-                                         <div class="col-sm-8">
-                                          <input class="form-control" id="txtExpCustomsProductCode" runat="server"  placeholder="H.S."/>
-                                        </div>
-                                   
-                                    </div>
-
-                               <div class="form-group" >
-                                    
-                                        <label for="txtExpFomulaNo" class="col-sm-4 control-label">Fomula No :</label>
-                                       
-                                         <div class="col-sm-8">
-                                             <input class="form-control" id="txtExpFomulaNo" runat="server" placeholder="Fomula No"/>
-                                        </div>
-                      
-                                    </div>
-                                    
-                                
-                                      <div class="form-group">
-                                        <label for="txtExpBOINo" class="col-sm-4 control-label">BOI No :</label>
-                                           <div class="col-sm-8">
-                                              <input class="form-control" id="txtExpBOINo" runat="server"  placeholder="BOI No"/>
-                                           </div>
-                                      
-                                    </div>
-
-                                <div class="form-group" >
-                                    
-                                        <label for="txtExpDutyType" class="col-sm-4 control-label">Duty Type :</label>
-                                       
-                                         <div class="col-sm-8">
-                                             <input class="form-control" id="txtExpDutyType" runat="server" placeholder="Duty Type"/>
-                                        </div>
-                      
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                        <label for="txtExpQtyCarton" class="col-sm-4 control-label">Qty./Carton :</label>
-                                       
-                                      <div class="col-sm-8">
-                                             <input class="form-control" id="txtExpQtyCarton" runat="server" placeholder="Qty Carton"/>
-                                        </div>
-                      
-                                    </div>
-                                      <div class="form-group">
-                                        <label for="txtExpWeightCarton" class="col-sm-4 control-label">Weight/Carton :</label>
-                                           <div class="col-sm-8">
-                                            <input class="form-control" id="txtExpWeightCarton" runat="server" placeholder="Weight/Carton"/>
-                                           </div>
-                                      
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="txtExpValueRate" class="col-sm-4 control-label">Value Rate :</label>
-                                         <div class="col-sm-8">
-                                          <input class="form-control" id="txtExpValueRate" runat="server"  placeholder="Value Rate"/>
-                                           </div>
-                                   
-                                    </div>
-
-                               <div class="form-group" >
-                                    
-                                        <label for="txtExpValueRateAmount" class="col-sm-4 control-label">Value Rate Amount :</label>
-                                       
-                                         <div class="col-sm-8">
-                                             <input class="form-control" id="txtExpValueRateAmount" runat="server" placeholder="Value Rate Amount"/>
-                                        </div>
-                      
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                        <label for="txtExpFactoryNo" class="col-sm-4 control-label">Factory No :</label>
-                                       
-                                      <div class="col-sm-8">
-                                             <input class="form-control" id="txtExpFactoryNo" runat="server" placeholder="Factory No"/>
-                                        </div>
-                      
-                                    </div>
-                                     
-                               </div>
-                               <div class="col-lg-6 col-md-6">
-                               
-                                      <div class="form-group">
-                                        <label for="dcboExpTariffCode" class="col-sm-4 control-label">Tariff Code :</label>
-                                           <div class="col-sm-8">
-                                             <asp:DropDownList ID="dcboExpTariffCode" CssClass="form-control" runat="server" DataTextField="TypeName" DataValueField="TypeID"></asp:DropDownList>
-                                           </div>
-                                      
-                                    </div>
-                                     <div class="form-group">
-                                        <label for="dcboExpStatisticalCode" class="col-sm-4 control-label">Statistical Code</label>
-                                           <div class="col-sm-8">
-                                             <asp:DropDownList ID="dcboExpStatisticalCode" CssClass="form-control" runat="server" DataTextField="TypeName" DataValueField="TypeID"></asp:DropDownList>
-                                           </div>
-                                      
-                                    </div>
-
-                               <div class="form-group" >
-                                    
-                                        <label for="txtImpSpeciticRate" class="col-sm-4 control-label">Specitic Rate :</label>
-                                       
-                                         <div class="col-sm-8">
-                                             <input class="form-control" id="Text20" runat="server" placeholder="Specitic Rate"/>
-                                        </div>
-                      
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                        <label for="txtExpProductYear" class="col-sm-4 control-label">Product Year :</label>
-                                       
-                                      <div class="col-sm-8">
-                                             <input class="form-control" id="txtExpProductYear" runat="server" placeholder="Product Year"/>
-                                        </div>
-                      
-                                    </div>
-                                      <div class="form-group">
-                                        <label for="txtExp19BisTranNo" class="col-sm-4 control-label">19 Bis TranNo :</label>
-                                           <div class="col-sm-8">
-                                              <input class="form-control" id="txtExp19BisTranNo" runat="server"  placeholder="19 Bis TranNo"/>
-                                           </div>
-                                      
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="txtExpBondFormulaNo" class="col-sm-4 control-label">Bond Formula No :</label>
-                                         <div class="col-sm-8">
-                                          <input class="form-control" id="txtExpBondFormulaNo" runat="server"  placeholder="Bond Formula No"/>
-                                           </div>
-                                   
-                                    </div>
-
-                                <div class="form-group" >
-                                    
-                                        <label for="txtExpPriceForeight" class="col-sm-4 control-label">Price(Foreight) :</label>
-                                       
-                                         <div class="col-sm-8">
-                                             <input class="form-control" id="txtExpPriceForeight" runat="server" placeholder="Foreight"/>
-                                        </div>
-                      
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                        <label for="txtExpQtyPallet" class="col-sm-4 control-label">QTY/PALLET :</label>
-                                       
-                                      <div class="col-sm-8">
-                                             <input class="form-control" id="txtExpQtyPallet" runat="server" placeholder="QTY/PALLET "/>
-                                        </div>
-                      
-                                    </div>
-                                      <div class="form-group">
-                                        <label for="txtImpPriviege" class="col-sm-4 control-label">Priviege :</label>
-                                           <div class="col-sm-8">
-                                            <input class="form-control" id="Text26" runat="server" placeholder="Priviege"/>
-                                        </div>
-                                      
-                                    </div>
-
-                           
-                                     <div class="form-group" >
-                                          <label class="col-sm-4 control-label">Currency :</label>
-                                                                        
-                                       <div class="col-md-4">
-         
-                                          <asp:DropDownList ID="cboExpCurrency" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code"></asp:DropDownList>            
-                                      </div>
-                                
-                                       <div class="col-md-4">   
-                                            <input class="form-control" id="txtExpExchangeRate" runat="server" placeholder="Currency" />
-                                        </div>
-                                       </div>
-                                
-                                      <div class="form-group">
-                                        <label for="txtExpEstablishNo" class="col-sm-4 control-label">Establish No :</label>
-                                           <div class="col-sm-8">
-                                            <input class="form-control" id="txtExpEstablishNo" runat="server" placeholder="Establish No"/>
-                                      </div>
-                                      
-                                    </div>
-                               </div>
-                               <!-- /.box-body -->
-                             </div>
-                        </from>
-                  <!--/.col-lg-6 col-md-6--->
-                     </div>
-                <!--/.row-->
+        <div class="row">
+                    <%--------------------------------------------------------------------Start Left Form---------------------------------------------%>
+                    <div class="col-md-6">
+          <!-- Horizontal Form -->         
+            <!-- form start -->
+            <div class="form-horizontal">
+                <fieldset>  <legend>Invoice</legend>
+              <div class="box-body">
+                <div class="form-group">
+                  <label for="txtInvoiceNo" class="col-sm-4 control-label">Invoice No:</label>
+                  <div class="col-sm-8">                    
+                      <asp:DropDownList ID="ddlInvoiceNo" CssClass="form-control" runat="server"></asp:DropDownList>  
                   </div>
-               </div>
+                </div>
+                <div class="form-group">
+                  <label for="txtProductCodeInvoice" class="col-sm-3 control-label">Product Code:</label>
+                  <div class="col-sm-4">
+                    <asp:DropDownList ID="ddlProductCodeInvoice" CssClass="form-control" runat="server"></asp:DropDownList>  
+                  </div>
+                  <label for="txtPONoProductCode" class="col-sm-2 control-label">PO No:</label>
+                  <div class="col-sm-3">
+                    <input class="form-control" id="txtPONoProductCode" runat="server"/>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="txtQuantityInvoice" class="col-sm-3 control-label">Quantity:</label>
+                  <div class="col-sm-4">
+                    <input class="form-control" id="txtQuantityInvoice" runat="server" value="0"/>
+                  </div>                 
+                  <div class="col-sm-5">
+                    <asp:DropDownList ID="ddlQuantityInvoice" CssClass="form-control" runat="server"></asp:DropDownList>  
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="txtWeightInvoice" class="col-sm-3 control-label">Weight:</label>
+                  <div class="col-sm-4">
+                    <input class="form-control" id="txtWeightInvoice" runat="server" value="0"/>
+                  </div>                 
+                  <div class="col-sm-5">
+                    <asp:DropDownList ID="ddlWeightInvoice" CssClass="form-control" runat="server"></asp:DropDownList>  
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="txtRamarkInvoice" class="col-sm-3 control-label">Remark:</label>
+                  <div class="col-sm-9">
+                    <textarea class="form-control" rows="3" id="txtRamarkInvoice" placeholder="Remark" style="height: 34px; width: 917px;"></textarea>
+                  </div>                  
+                </div>
+                 <div class="form-group">
+                  <label for="txtShipmentInvoice" class="col-sm-3 control-label">Shipment:</label>
+                  <div class="col-sm-4">
+                    <input class="form-control" id="txtShipmentInvoice" runat="server"/>
+                  </div>                 
+                  <label for="txtItemNoInvoice" class="col-sm-2 control-label">Item No:</label>
+                  <div class="col-sm-3">
+                    <input class="form-control" id="txtItemNoInvoice" runat="server"/>
+                  </div> 
+                </div>
+                 <div class="form-group">
+                  <label for="txtMeasurementInvoice" class="col-sm-4 control-label">Measurement:</label>
+                  <div class="col-sm-4">
+                    <input class="form-control" id="txtWidthInvoice" runat="server" placeholder="Width"/>
+                  </div>
+                  <div class="col-sm-4">
+                    <input class="form-control" id="txtHeightInvoice" runat="server" placeholder="Height"/>
+                  </div>
+                </div>
+              </div>
+              <!-- /.box-body -->
+                    </fieldset>
+            </div>        
+          <!-- /.box -->
+
+          <!-- general form Commodity -->
+            <div class="form-horizontal">
+                <fieldset><legend>Currency</legend>
+              <div class="box-body">
+                <div class="form-group">
+                  <label for="txtCurrencyInvoice" class="col-sm-4 control-label">Currency:</label>
+                  <label for="txtExchangeRateInvoice" class="col-sm-4 control-label">Exchange Rate:</label>
+                  <label for="txtPriceForeignInvoice" class="col-sm-4 control-label">@Price(Foreign):</label>                  
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-4">                    
+                      <asp:DropDownList ID="ddlCurrencyInvoice" CssClass="form-control" runat="server"></asp:DropDownList>  
+                  </div>
+                  <div class="col-sm-4">
+                    <input class="form-control" id="txtExchangeRateInvoice" runat="server"  value="0.0"/>
+                  </div>
+                  <div class="col-sm-4">
+                    <input class="form-control" id="txtPriceForeignInvoice" runat="server"  value="0.0"/>
+                  </div>
+                </div> 
+                <div class="form-group">
+                  <div class="col-sm-6">
+                      <%--<button runat="server" class="btn-primary" id="btnGenIEATNo" title="btnGenIEATNo">Generate </button>--%> 
+                      <button type="submit" runat="server" class="btn btn-primary" id="btnSaveInvoice" title="btnSaveInvoice" >Save Inv.</button> 
+                  </div>
+                  <div class="col-sm-6">
+                      <%--<button runat="server" class="btn-primary" id="btnGenIEATNo" title="btnGenIEATNo">Generate </button>--%> 
+                      <button type="submit" runat="server" class="btn btn-default" id="btnModifyInvoice" title="btnModifyInvoice" >Modify Inv.</button> 
+                  </div>                 
+                </div> 
+              </div>
+              <!-- /.box-body -->
+                    </fieldset>
+            </div>
+
+
+              <div class="form-horizontal">
+                <fieldset><legend>Import Flight</legend>
+              <div class="box-body">
+                  <div class="form-group">
+                  <label for="txtFlightNoInvoice" class="col-sm-4 control-label">Flight No:</label>
+                  <div class="col-sm-8">                    
+                      <input class="form-control" id="txtFlightNo" runat="server"/>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="txtFlightDateInvoice" class="col-sm-4 control-label">Flight Date:</label>
+                  <div class="col-sm-8">                    
+                      <asp:TextBox CssClass="form-control" ID="txtdatepickerFlightDateInvoice" runat="server" placeholder="DD/MM/YYYY">
+                      </asp:TextBox>
+                      <asp:CalendarExtender ID="CalendarExtenderFlightDateInvoice" runat="server" Enabled="True" TargetControlID="txtdatepickerFlightDateInvoice" Format="DD/MM/yyyy"></asp:CalendarExtender>  
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="txtQuantity_PLT_Skid_Invoice" class="col-sm-4 control-label">Quantity PLT/SKID:</label>
+                  <div class="col-sm-4">
+                    <input class="form-control" id="txtQuantity_PLT_Skid_Invoice" runat="server" value="0"/>
+                  </div>
+                  <div class="col-sm-4">
+                    <asp:DropDownList ID="ddlQuantity_PLT_Skid_Invoice" CssClass="form-control" runat="server"></asp:DropDownList>  
+                  </div>
+                </div>
+                <div class="form-group"> 
+                    <div class="col-sm-4">
+                    <asp:DropDownList ID="ddlQuantity_PLT_Skid_Invoice2" CssClass="form-control" runat="server"></asp:DropDownList>  
+                  </div>
+                    <div class="col-sm-8">
+                    <input class="form-control" id="txtQuantity_PLT_Skid_Invoice2" runat="server" value="0"/>
+                  </div>
+                </div>
+                <div class="form-group"> 
+                    <div class="col-sm-4 col-sm-offset-4">
+                        <button type="submit" runat="server" class="btn btn-primary" id="btnSaveFlightNoInvoice" title="btnSaveFlightNoInvoice" >Save Flight No</button> 
+                    </div>
+                    <div class="col-sm-4 ">
+                        <button type="submit" runat="server" class="btn btn-warning" id="btnDeleteFlightNoInvoice" title="btnDeleteFlightNoInvoice" >Delete Flight No</button> 
+                    </div>
+                </div>
+              </div>
+              <!-- /.box-body -->
+                    </fieldset>
+            </div>
+        </div>
+        <!--/.col (left) -->
+                   <%---------------------------------------------------------------End Left Form------------------------------------------------%>
+
+
+
+                    <%------------------------------------------------------------Start Right Form------------------------------------------------%>
+                    <div class="col-md-6">
+          <!-- Horizontal Form -->                      
+            <!-- form start -->
+                <div class="form-horizontal">
+                <fieldset>  <legend>Invoice</legend>
+              <div class="box-body">
+                <div class="form-group">
+                  <label for="txtDataInvoice" class="col-sm-4 control-label">Data Invoice:</label>
+                  <div class="col-sm-8">                    
+                      <asp:TextBox CssClass="form-control" ID="txtdatepickerDataInvoice" runat="server" placeholder="DD/MM/YYYY">
+                      </asp:TextBox>
+                      <asp:CalendarExtender ID="CalendarExtenderDataInvoice" runat="server" Enabled="True" TargetControlID="txtdatepickerDataInvoice" Format="DD/MM/yyyy"></asp:CalendarExtender>  
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="txtProductNameInvoice" class="col-sm-4 control-label">Product Name:</label>
+                  <div class="col-sm-8">
+                    <input class="form-control" id="txtProductNameInvoice" runat="server"/>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="txtPallet_SKIDInvoice" class="col-sm-3 control-label">Pallet/SKID:</label>
+                  <div class="col-sm-4">
+                    <input class="form-control" id="txtPallet_SKIDInvoice" runat="server" value="0"/>
+                  </div>
+                  <div class="col-sm-5">
+                    <asp:DropDownList ID="ddlPallet_SKIDInvoice" CssClass="form-control" runat="server"></asp:DropDownList>  
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="txtBoxInvoice" class="col-sm-3 control-label">Box:</label>
+                  <div class="col-sm-4">
+                    <input class="form-control" id="txtBoxInvoice" runat="server" value="0"/>
+                  </div>
+                  <div class="col-sm-5">
+                    <asp:DropDownList ID="ddlBoxInvoice" CssClass="form-control" runat="server"></asp:DropDownList>  
+                  </div>
+                </div>
+                
+                  <h1></h1>
+                  <%--<h1></h1>--%>
+
+                 <div class="form-group">
+                  <label for="txtUnitDimension" class="col-sm-4 control-label">UnitDimension:</label>
+                  <div class="col-sm-3">
+                    <asp:DropDownList ID="ddlUnitDimension" CssClass="form-control" runat="server"></asp:DropDownList>  
+                  </div>
+                  <label for="txtPalletDimensionInvoice" class="col-sm-2 control-label">Pallet:</label>
+                  <div class="col-sm-3">
+                    <input class="form-control" id="txtPalletDimensionInvoice" runat="server" value="0"/>
+                  </div>
+                </div>                 
+                 <div class="form-group">
+                  <div class="col-sm-4">
+                    <input class="form-control" id="txtLenghtInvoice" runat="server" placeholder="Lenght"/>
+                  </div>
+                  <label for="txtEntryItemNoInvoice" class="col-sm-4 control-label">EntryItemNo:</label>                  
+                  <div class="col-sm-4">
+                    <input class="form-control" id="txtEntryItemNoInvoice" runat="server"/>
+                  </div>
+                </div>
+              </div>
+              <!-- /.box-body -->
+                    </fieldset>
+            </div>        
+          <!-- /.box -->
+
+          <!-- general form Commodity -->
+            <div class="form-horizontal">
+                <fieldset><legend>Currency</legend>
+              <div class="box-body">
+                <div class="form-group">
+                  <label for="txtPriceBathInvoice" class="col-sm-4 control-label">@Price(Bath):</label>
+                  <label for="txtAmountForeignInvoice" class="col-sm-4 control-label">Amount(Foreign):</label>
+                  <label for="txtAmountBathInvoice" class="col-sm-4 control-label">Amount(Bath):</label>                  
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-4">
+                    <input class="form-control" id="txtPriceBathInvoice" runat="server"  value="0.0"/>
+                  </div>
+                  <div class="col-sm-4">
+                    <input class="form-control" id="txtAmountForeignInvoice" runat="server"  value="0.0"/>
+                  </div>
+                  <div class="col-sm-4">
+                    <input class="form-control" id="txtAmountBathInvoice" runat="server"  value="0.0"/>
+                  </div>
+                </div>
+                <div class="form-group">
+                     <div class="col-sm-6">
+                      <%--<button runat="server" class="btn-primary" id="btnGenIEATNo" title="btnGenIEATNo">Generate </button>--%> 
+                      <button type="submit" runat="server" class="btn btn-warning" id="btnDeleteInvoice" title="btnDeleteInvoice" >Delete Inv.</button> 
+                  </div>
+                     <div class="col-sm-6">
+                      <%--<button runat="server" class="btn-primary" id="btnGenIEATNo" title="btnGenIEATNo">Generate </button>--%> 
+                      <button type="submit" runat="server" class="btn btn-danger" id="btnDeleteAllInvoice" title="btnDeleteAllInvoice" >Delete Inv. All</button> 
+                  </div>  
+                </div>          
+              </div>
+              <!-- /.box-body -->
+                    </fieldset>
+            </div>        
+                           
+         
+                <div class="form-horizontal">
+                <fieldset><legend>Export</legend>
+              <div class="box-body">
+                  <div class="form-group">                 
+                  <div class="col-sm-8">                                          
+                      <input class="form-control" id="txtQTYExportInvoice" runat="server"  placeholder="0"/> 
+                  </div>
+                  <div class="col-sm-4">
+                      <%--<button runat="server" class="btn-primary" id="btnGenIEATNo" title="btnGenIEATNo">Generate </button>--%> 
+                      <button type="submit" runat="server" class="btn btn-primary" id="btnSumQTYInvoice" title="btnSumQTYInvoice" >Sum QTY</button> 
+                  </div> 
+                </div>
+                <div class="form-group">                  
+                  <div class="col-sm-8">
+                  
+                  </div>
+                  <div class="col-sm-4">
+                     <button type="submit" runat="server" class="btn btn-primary" id="btnSaveToPrepairInvoice" title="btnSaveToPrepairInvoice" >Save To Prepair</button> 
+                  </div>
+                </div>
+                <div class="form-group">                  
+                  <div class="col-sm-8">
+                  
+                  </div>
+                  <div class="col-sm-4">
+                     <button type="submit" runat="server" class="btn btn-soundcloud" id="btnExportCSVFileInvoice" title="btnExportCSVFileInvoice" >Export csv File   </button> 
+                  </div>
+                </div>
+                <div class="form-group">                  
+                  <div class="col-sm-8">
+                  
+                  </div>
+                  <div class="col-sm-4">
+                     <button type="submit" runat="server" class="btn btn-success" id="btnSaveToConfirmNJRCInvoice" title="btnSaveToConfirmNJRCInvoice" >Save To Confirm NJRC</button> 
+                  </div>
+                </div>
+
+              </div>
+              <!-- /.box-body -->
+                    </fieldset>
+            </div>
+
+        </div>
+         <!-- right column -->
+
+
+                   <%--------------------------------------------------------------------End Right Form------------------------------------------------------%>
+
+                    <!-- /.col -->
+                </div>
               <!-- /.post -->
            </div>
             <!-----/ Export Goods----->
 
+             <%----------------------------------------------------------------------End Invoice Tab--------------------------------------------------------------%>
+
+
+                <%----------------------------------------------------------------------Start ImportFile--------------------------------------------------------%>
              <!--- Detailof Goods --->
          <div class="tab-pane" id="detailofgoods">
             <!-- Post -->
@@ -1211,208 +1393,151 @@
              <div class="row margin-bottom">
                 <div class="col-lg-12 col-md-12">
 
-                     <from class="form-horizontal">
+                     <div class="form-horizontal">
                            <div class="box-body">
 
                             <fieldset class="col-md-12">
-                                
-                                <legend>Carton box dimension</legend>
-                                
-                                <div class="col-lg-6 col-md-6">
-                                  <div class="form-group">
-                                    <div class="col-md-4">
-                                       <label for="txtProductUnit">Unit</label>
-                                   </div>
-                                   <div class="col-md-8">
-                                       
-                                         <asp:DropDownList ID="cboProductUnit" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code"></asp:DropDownList>
-                                   </div>
-                            
-                                 </div>
-                                </div>
-                                   
-                                  <div class="col-md-12">
-                                      <h4>Measurement</h4>
-                                   </div>
-                                           
-                               <div class="col-lg-12 col-md-12 col-md-offset-2">
+                                <legend>Import File</legend>
+                               <div class="col-lg-12 col-md-12">
                                  <div class="form-group">
-                              
-                                   <div class="col-md-2">
-                                       <label for="txtProductWidth">Width</label>
-                                       <input class="form-control" id="txtProductWidth" runat="server" placeholder="Width"/>
+                                  <label for="txtSelectFileForImport" class="col-sm-4 control-label">Select File For Import:</label>
+                                  <div class="col-sm-4">
+                                    <input type="file" class ="form-control" id="txtSelectFileForImport_Import" runat="server"/>     
+                                  </div>                                  
+                                  <div class="col-sm-4">
+                                    <button type="submit" runat="server" class="btn btn-success" id="btnImport_Import" title="btnImport_Import" >Import</button> 
                                   </div>
-                                  
-                                   <div class="col-md-2">
-                                       <label for="txtProductHeight">Heigh</label>
-                                       <input class="form-control" id="txtProductHeight" runat="server" placeholder="Height"/>
-                                  </div>
-                                     
-                                   <div class="col-md-2">
-                                       <label for="txtProductLeng">length</label>
-                                       <input class="form-control" id="txtProductLeng" runat="server" placeholder="length"/>
-                                  </div>
-                                   <div class="col-md-2">
-                                       <label for="txtProductVolume">Volume</label>
-                                       <input class="form-control" id="txtProductVolume" runat="server" placeholder="Volume"/>
-                                  </div>
-                                    <div class="col-md-2 p-t-24">   
-                                       <asp:DropDownList ID="cboUnitofVolume" CssClass="form-control " runat="server" DataTextField="Code" DataValueField="Code"></asp:DropDownList>
-                                  </div>
-                                 </div>
+                                </div>  
+                                 <div class="form-group">
+                                   <div class="col-sm-12">
+                                   <div class="progress active">
+                                    <div class="progress-bar progress-bar-primary progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                                      <span class="sr-only">40% Complete (success)</span>
+                                    </div>
+                                   </div>
+                                   </div>
+                                 </div> 
                                    
-                               </div>
-                             
+                               </div>                             
                          </fieldset>
-                              
-                     
-
-                         <fieldset class="col-md-12">
-                            <legend>Pallet Dimension</legend>
-                                 <div class="col-lg-6 col-md-6">
-                                  <div class="form-group">
-                                    <div class="col-md-4">
-                                       <label for="txtProductUnit">Unit</label>
-                                   </div>
-                                   <div class="col-md-8">
-                                       
-                                         <asp:DropDownList ID="cboPackageUnit" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code"></asp:DropDownList>
-                                   </div>
-                            
-                                 </div>
-                                </div>
-                                   
-                                  <div class="col-md-12">
-                                      <h4>Measurement</h4>
-                                   </div>
-                                           
-                               <div class="col-lg-12 col-md-12 col-md-offset-2">
-                                 <div class="form-group">
-                              
-                                   <div class="col-md-2">
-                                       <label for="txtPackageWidth">Width</label>
-                                       <input class="form-control" id="txtPackageWidth" runat="server" placeholder="Width"/>
-                                  </div>
-                                  
-                                   <div class="col-md-2">
-                                       <label for="txtPackageHeigh">Heigh</label>
-                                       <input class="form-control" id="txtPackageHeigh" runat="server" placeholder="Height"/>
-                                  </div>
-                                     
-                                   <div class="col-md-2">
-                                       <label for="txtPackageLenght">length</label>
-                                       <input class="form-control" id="txtPackageLenght" runat="server" placeholder="length"/>
-                                  </div>
-                                   <div class="col-md-2">
-                                       <label for="txtPackageCarton">No of Carton</label>
-                                       <input class="form-control" id="txtPackageCarton" runat="server" placeholder="Volume"/>
-                                  </div>
-                                    
-                                 </div>
-                                   
-                               </div>
-                             <div class="col-lg-12 col-md-12">
-                                  <div class="form-group">
-                                    <div class="col-md-2">
-                                       <label for="txtProductUnit" >Volume of Pallet :</label>
-                                   </div>
-                                   <div class="col-md-4">
-                                      
-                                       <input class="form-control" id="txtPackageVolume" runat="server" placeholder="Volume"/>
-                                  
-                                  </div>
-                                   <div class="col-md-4">
-                                        <asp:DropDownList ID="cboPackageofUnit" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code"></asp:DropDownList>
-                                         
-                                   </div>            
-                                 </div>   
-                             </div>
-                           
-                           </fieldset>
-
-                               <fieldset class="col-lg-12 col-md-12">
-                                   <legend>Special Handing</legend>
-                                   <div class="col-md-12 col-md-offset-2">
-                                       <div class="form-group">
-                                     <div class="col-md-8">
-                                          <textarea class="form-control" id="txtRemarks" rows="6" runat="server" name="txtRemarks" placeholder="Remarks ..."></textarea>
-                                     </div>
-                                     
-                                    </div>  
-                                   </div>
-                                     
-                               </fieldset>
-                                              
+                    
                           </div>
                       
-                     </from>
+                     </div>
+                     
+                    <div class="form-horizontal">
+                           <div class="box-body">
+
+                            <fieldset class="col-md-12">
+                                <legend>File</legend>
+                               <div class="col-lg-12 col-md-12">
+                                   
+                                  <div class="form-group">
+                                   <div class="col-sm-8">
+                                   
+                                   </div>
+                                   <div class="col-sm-4">
+                                   <button type="submit" runat="server" class="btn btn-success" id="btnSaveToInvoice_Import" title="btnSaveToInvoice_Import" >Save To Invoice</button> 
+                                   </div>
+                                 </div>
+                                   
+                               </div>                             
+                         </fieldset>
+                    
+                          </div>
+                      
+                     </div>
+
                      </div>
                 <!--/.col-lg-6 col-md-6--->
                   </div>
                 </div>
               </div>
-
-
           <!----/Detailof Goods----->
+                            <%---------------------------------------------------------------End Import File Tab----------------------------------------------%>
 
+
+
+
+                            <%-------------------------------------------------------------Start Import File NJR Tab-------------------------------------------------%>
                             <!--- Asembly --->
                             <div class="tab-pane" id="assembly">
                                 <!-- Post -->
                                 <div class="post">
                                     <div class="row margin-bottom">
                                         <div class="col-lg-12 col-md-12">
-                                            <from class="form-horizontal">
-                           <div class="box-body">
-                            
-                               <div class="col-lg-6">
-                                 <div class="form-group" >
-                                   <label for="txtEAS" class="col-sm-3 control-label">EAS P/N :</label>
-                                   <div class="col-md-8">
-                                       <input class="form-control" id="txtEAS" runat="server" placeholder="EAS P/N" disabled="disabled"/>
-                                   </div>
-                           
-                               </div>                
-                                 
-                               <div class="form-group">
-                                   <label for="txtCustomer" class="col-sm-3 control-label">Customer P/N :</label>
-                                       <div class="col-md-8">
-                                           <input class="form-control" id="txtCustomer" runat="server" placeholder="Customer" disabled="disabled"/>
-                                      </div>
-                              </div> 
-                             </div>
-                               <div class="col-lg-6">
-                                   <div class="form-group" >
-                                  <label for="txtOwner" class="col-sm-3">Owner P/N :</label>
-                                       <div class="col-md-8">
-                                           <input class="form-control" id="txtOwner" runat="server" placeholder="Owner" disabled="disabled"/>
-                                      </div>
-                     
-                                  </div> 
-                                 
-                                    <div class="form-group" >
-                                        <label for="txtQty" class="col-sm-3">Quality :</label>
-                                       <div class="col-md-8">
-                                           <input class="form-control" id="txtQty" runat="server" placeholder="Quality" disabled="disabled"/>
-                                      </div>
-                                   </div> 
-                                 
-                               </div>
-                               
-                                <div class="form-group" >
-
-                                <div class="col-md-offset-9">
-                                        <button type="submit" runat="server" class="btn btn-primary" id="btAdd" title="btnAddUser" disabled="disabled"/>Add</>
-                                        <button type="submit" runat="server" class="btn bg-olive" id="btModify" title="btnAddUser" disabled="disabled"/>Modify</>
-                                        <button type="submit" runat="server" class="btn btn-danger" id="btDel" title="btnAddUser" disabled="disabled"/>Delete</>
-                                </div>
-                                </div>
-                        
-                            </div>
-                          
-                                    <!-- /.box-body -->
-                          
-                       </from>
+                                            <div class="form-horizontal">
+                                               <div class="box-body">
+                                                <fieldset class="col-md-12">
+                                                    <legend>Import File</legend>
+                                                   <div class="col-lg-12 col-md-12">
+                                                     <div class="form-group">
+                                                      <label for="txtSelectFileForImport" class="col-sm-4 control-label">Select File For Import:</label>
+                                                      <div class="col-sm-4">
+                                                        <input type="file" class ="form-control" id="txtSelectFileForImport_ImportFileNJR" runat="server"/>     
+                                                      </div>                                  
+                                                      <div class="col-sm-4">
+                                                        <%--<button type="submit" runat="server" class="btn btn-success" id="btnImport_ImportFileNJR" title="btnImport_Import" >Import</button>--%> 
+                                                      </div>
+                                                    </div>                                     
+                                                   </div>                             
+                                             </fieldset>                        
+                                            </div>                          
+                                    <!-- /.box-body -->                          
+                                            </div>
                                             <!--/.col-lg-6 col-md-6--->
+                                            <div class="form-horizontal">
+                                               <div class="box-body">
+                                                <fieldset class="col-md-12">
+                                                    <legend>Import EntryItemNo File</legend>
+                                                   <div class="col-lg-12 col-md-12">
+                                                     <div class="form-group">
+                                                      <label for="txtSelectFileForImport" class="col-sm-4 control-label">Select File For Import:</label>
+                                                      <div class="col-sm-4">
+                                                        <input type="file" class ="form-control" id="txtSelectFileForImportEntryItemNo_ItemPortFileNJR" runat="server"/>     
+                                                      </div>                                  
+                                                      <div class="col-sm-4">
+                                                        <button type="submit" runat="server" class="btn btn-success" id="btnImport_ImportFileNJR" title="btnImport_ImportFileNJR" >Import Update</button> 
+                                                      </div>
+                                                    </div>  
+                                                     <div class="form-group">
+                                                       <div class="col-sm-12">
+                                                       <div class="progress active">
+                                                        <div class="progress-bar progress-bar-primary progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                                                          <span class="sr-only">40% Complete (success)</span>
+                                                        </div>
+                                                       </div>
+                                                       </div>
+                                                     </div> 
+                                   
+                                                   </div>                             
+                                             </fieldset>                        
+                            </div>                          
+                                    <!-- /.box-body -->                          
+                       </div>
+
+                                    <div class="form-horizontal">
+                           <div class="box-body">
+
+                            <fieldset class="col-md-12">
+                                <legend>File</legend>
+                               <div class="col-lg-12 col-md-12">
+                                   
+                                  <div class="form-group">
+                                   <div class="col-sm-8">
+                                   
+                                   </div>
+                                   <div class="col-sm-4">
+                                   <button type="submit" runat="server" class="btn btn-success" id="btnSaveToInvoice_ImportFileNJR" title="btnSaveToInvoice_ImportFileNJR" >Save To Invoice</button> 
+                                   </div>
+                                 </div>
+                                   
+                               </div>                             
+                         </fieldset>
+                    
+                          </div>
+                      
+                     </div>
                                         </div>
                                         <!--/.row-->
                                     </div>
@@ -1620,126 +1745,6 @@
       </div>
     </div>
   
-<script type="text/javascript">
-    $(document).ready(function () {
-        EnableDisableControls();
-    });
-    function EnableDisableControls() {
-        var status = $('#<%=chkImpEnable1.ClientID%>').is(':checked');
-                if (status == true) {
-                    $("#ImpDesc1").find("input, select, button, textarea").prop("disabled", false);
-                }
-                else {
-                    $("#ImpDesc1").find("input, select, button, textarea").prop("disabled", true);
-                }
-            }
-        </script>
 
-        <script type="text/javascript">
-            $(document).ready(function () {
-                chkImpEnable2();
-            });
-            function chkImpEnable2() {
-                var status = $('#<%=chkImpEnable2.ClientID%>').is(':checked');
-                if (status == true) {
-                    $("#ImpDesc2").find("input, select, button, textarea").prop("disabled", false);
-                }
-                else {
-                    $("#ImpDesc2").find("input, select, button, textarea").prop("disabled", true);
-                }
-            }
-        </script>
-
-        <script type="text/javascript">
-            $(document).ready(function () {
-                chkImpEnable3();
-            });
-            function chkImpEnable3() {
-                var status = $('#<%=chkImpEnable3.ClientID%>').is(':checked');
-                if (status == true) {
-                    $("#ImpDesc3").find("input, select, button, textarea").prop("disabled", false);
-                }
-                else {
-                    $("#ImpDesc3").find("input, select, button, textarea").prop("disabled", true);
-                }
-            }
-        </script>
-
-
-        <script type='text/javascript'>
-            $(document).ready(function () {
-                chkExpEnable1();
-            });
-            function chkExpEnable1() {
-                var status = $('#<%=chkExpEnable1.ClientID%>').is(':checked');
-                if (status == true) {
-                    $("#ExpDesc1").find("input, select, button, textarea").prop("disabled", false);
-                }
-                else {
-                    $("#ExpDesc1").find("input, select, button, textarea").prop("disabled", true);
-                }
-            }
-        </script>
-
-        <script type='text/javascript'>
-            $(document).ready(function () {
-                chkExpEnable2();
-            });
-            function chkExpEnable2() {
-                var status = $('#<%=chkExpEnable2.ClientID%>').is(':checked');
-                if (status == true) {
-                    $("#ExpDesc2").find("input, select, button, textarea").prop("disabled", false);
-                }
-                else {
-                    $("#ExpDesc2").find("input, select, button, textarea").prop("disabled", true);
-                }
-            }
-        </script>
-
-        <script type='text/javascript'>
-            $(document).ready(function () {
-                chkExpEnable3();
-            });
-            function chkExpEnable3() {
-                var status = $('#<%=chkExpEnable3.ClientID%>').is(':checked');
-                if (status == true) {
-                    $("#ExpDesc3").find("input, select, button, textarea").prop("disabled", false);
-                }
-                else {
-                    $("#ExpDesc3").find("input, select, button, textarea").prop("disabled", true);
-                }
-
-            }
-        </script>
-
-        <script type='text/javascript'>
-            function openModal() {
-                $('#myModal').modal('show');
-            }
-        </script>
-   
-      <script type="text/javascript">
-          function EnableDisableTextBox() {
-              var status = document.getElementById('<%=rbtEnable.ClientID %>').checked;
-
-              if (status == true) {
-                  document.getElementById('<%=txtCodeCustomers.ClientID%>').disabled = false;
-                document.getElementById('<%=txtNoCodeGoods.ClientID%>').disabled = true;
-                document.getElementById('<%=txtCodeSize.ClientID%>').disabled = true;
-                document.getElementById('<%=txtCodeColor.ClientID%>').disabled = true;
-                document.getElementById('<%=cdbGroupColor.ClientID%>').disabled = true;
-            } else if (status == false) {
-                document.getElementById('<%=txtCodeCustomers.ClientID%>').disabled = true;
-                document.getElementById('<%=txtNoCodeGoods.ClientID%>').disabled = false;
-                document.getElementById('<%=txtCodeSize.ClientID%>').disabled = false;
-                document.getElementById('<%=txtCodeColor.ClientID%>').disabled = false;
-                document.getElementById('<%=cdbGroupColor.ClientID%>').disabled = false;
-
-            }
-
-    }
-    </script>
-
-           
     </form>
 </asp:Content>

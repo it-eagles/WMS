@@ -27,11 +27,6 @@
             The execute SQL
             </summary>
         </member>
-        <member name="P:ADONetHelper.DbClient.CanCreateDataSourceEnumerator">
-            <summary>
-            Whether or not the passed in provider is capable of creating a data source enumerator
-            </summary>
-        </member>
         <member name="P:ADONetHelper.DbClient.ExecuteSQL">
             <summary>
             Represents an instance of the <see cref="T:ADONetHelper.ISqlExecutor"/> class to facilitate querying a data store
@@ -69,7 +64,7 @@
         </member>
         <member name="P:ADONetHelper.DbClient.QueryCommandType">
             <summary>
-            Represents how a command should be interpreted by the data provider
+            Represents how a command should be interpreted by the data provider.  Default value is <see cref="F:System.Data.CommandType.Text"/>
             </summary>
         </member>
         <member name="P:ADONetHelper.DbClient.RetryAttempts">
@@ -122,9 +117,6 @@
             <summary>
             The overloaded constuctor that will initialize the connection string and command type
             </summary>
-            <example>
-            An example of provider name would be System.Data.SqlClient.  The drivers assembly needs to be installed in the Global Assembly Cache in order to be referenced.
-            </example>
             <param name="providerName">The name of the data provider that the should be used to query a data store</param>
             <param name="connectionString">The connection string used to query a data store</param>
             <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
@@ -133,9 +125,6 @@
             <summary>
             The overloaded constuctor that will initialize the <paramref name="connectionString"/> and <paramref name="providerName"/>
             </summary>
-            <example>
-            An example of provider name would be System.Data.SqlClient.  The drivers assembly needs to be installed in the Global Assembly Cache in order to be referenced.
-            </example>
             <param name="providerName">The name of the data provider that the should be used to query a data store</param>
             <param name="connectionString">The connection string used to query a data store</param>
         </member>
@@ -143,9 +132,6 @@
             <summary>
             The overloaded constuctor that will initialize the <paramref name="providerName"/>
             </summary>
-            <example>
-            An example of provider name would be System.Data.SqlClient.  The drivers assembly needs to be installed in the Global Assembly Cache in order to be referenced.
-            </example>
             <param name="providerName">The name of the data provider that the should be used to query a data store</param>
         </member>
         <member name="M:ADONetHelper.DbClient.#ctor(System.Data.Common.DbConnection)">
@@ -154,45 +140,10 @@
             </summary>
             <param name="connection">An instance of <see cref="T:System.Data.Common.DbConnection"/> to use to query a database </param>
         </member>
-        <member name="M:ADONetHelper.DbClient.#ctor">
-            <summary>
-            Constructor to use if no information about the provider is known ahead of time
-            </summary>
-        </member>
         <member name="M:ADONetHelper.DbClient.Finalize">
             <summary>
             Finalizer for the class to release unmanaged resources
             </summary>
-        </member>
-        <member name="M:ADONetHelper.DbClient.GetDataSet(System.String)">
-            <summary>
-            Gets an instance of <see cref="T:System.Data.DataSet"/>
-            </summary>
-            <param name="query">SQL query to use to build a <see cref="T:System.Data.DataSet"/></param>
-            <returns>Returns an instance of <see cref="T:System.Data.DataSet"/> based on the <paramref name="query"/> passed into the routine</returns>
-        </member>
-        <member name="M:ADONetHelper.DbClient.GetDataSet(System.String,System.Data.Common.DbConnection)">
-            <summary>
-            Gets an instance of <see cref="T:System.Data.DataSet"/>
-            </summary>
-            <param name="connection">An instance of <see cref="T:System.Data.Common.DbConnection"/></param>
-            <param name="query">SQL query to use to build a <see cref="T:System.Data.DataSet"/></param>
-            <returns>Returns an instance of <see cref="T:System.Data.DataSet"/> based on the <paramref name="query"/> passed into the routine</returns>
-        </member>
-        <member name="M:ADONetHelper.DbClient.GetDataTable(System.String)">
-            <summary>
-            Gets an instance of <see cref="T:System.Data.DataTable"/>
-            </summary>
-            <param name="query">SQL query to use to build a result set</param>
-            <returns>Returns an instance of <see cref="T:System.Data.DataTable"/></returns>
-        </member>
-        <member name="M:ADONetHelper.DbClient.GetDataTable(System.String,System.Data.Common.DbConnection)">
-            <summary>
-            Gets an instance of <see cref="T:System.Data.DataTable"/>
-            </summary>
-            <param name="connection">An instance of <see cref="T:System.Data.Common.DbConnection"/></param>
-            <param name="query">SQL query to use to build a result set</param>
-            <returns>Returns an instance of <see cref="T:System.Data.DataTable"/></returns>
         </member>
         <member name="M:ADONetHelper.DbClient.GetDbDataReader(System.String,System.Data.CommandBehavior,System.Data.Common.DbTransaction)">
             <summary>
@@ -257,6 +208,78 @@
             <param name="query">The query command text or name of stored procedure to execute against the data store</param>
             <returns>Returns a <see cref="T:System.Collections.Generic.List`1"/> based on the results of the passed in <paramref name="query"/></returns>
         </member>
+        <member name="M:ADONetHelper.DbClient.GetDataObjectAsync``1(System.String)">
+            <summary>
+            Gets a single instance of <typeparamref name="T"/> based on the <paramref name="query"/> passed into the routine
+            </summary>
+            <typeparam name="T">An instance of the type caller wants create from query passed into procedure</typeparam>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <returns>Gets an instance of <typeparamref name="T"/> based on the <paramref name="query"/> passed into the routine.
+            Or the default value of <typeparamref name="T"/> if there are no search results
+            </returns>
+        </member>
+        <member name="M:ADONetHelper.DbClient.GetDataObjectAsync``1(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets a single instance of <typeparamref name="T"/> based on the <paramref name="query"/> passed into the routine
+            </summary>
+            <typeparam name="T">An instance of the type caller wants create from query passed into procedure</typeparam>
+            <param name="token">Structure that propogates a notification that an operation should be cancelled</param>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <returns>Gets an instance of <typeparamref name="T"/> based on the <paramref name="query"/> passed into the routine.
+            Or the default value of <typeparamref name="T"/> if there are no search results
+            </returns>
+        </member>
+        <member name="M:ADONetHelper.DbClient.GetDataObjectListAsync``1(System.String)">
+            <summary>
+            Gets a list of the type parameter object that creates an object based on the query passed into the routine
+            </summary>
+            <typeparam name="T">An instance of the type caller wants to create from the query passed into procedure</typeparam>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <returns>Returns a <see cref="T:System.Collections.Generic.List`1"/> based on the results of the passed in <paramref name="query"/></returns>
+        </member>
+        <member name="M:ADONetHelper.DbClient.GetDataObjectListAsync``1(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets a list of the type parameter object that creates an object based on the query passed into the routine
+            </summary>
+            <typeparam name="T">An instance of the type caller wants create from the query passed into procedure</typeparam>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="token">Structure that propogates a notification that an operation should be cancelled</param>
+            <returns>Returns a <see cref="T:System.Collections.Generic.List`1"/> based on the results of the passed in <paramref name="query"/></returns>
+        </member>
+        <member name="M:ADONetHelper.DbClient.GetDbDataReaderAsync(System.String,System.Data.CommandBehavior,System.Data.Common.DbTransaction)">
+            <summary>
+            Utility method for returning a <see cref="T:System.Threading.Tasks.Task`1"/> object created from the passed in query
+            </summary>
+            <param name="transact">An instance of <see cref="T:System.Data.Common.DbTransaction"/> to use with the passed in <paramref name="query"/></param>
+            <param name="behavior">Provides a description of the results of the query and its effect on the database.  Defaults to <see cref="F:System.Data.CommandBehavior.Default"/></param>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task`1"/> object, the caller is responsible for handling closing the <see cref="T:System.Data.Common.DbDataReader"/>.  Once the data reader is closed, the database connection will be closed as well</returns>
+        </member>
+        <member name="M:ADONetHelper.DbClient.GetDbDataReaderAsync(System.String,System.Threading.CancellationToken,System.Data.CommandBehavior,System.Data.Common.DbTransaction)">
+            <summary>
+            Utility method for returning a <see cref="T:System.Threading.Tasks.Task`1"/> object created from the passed in query
+            </summary>
+            <param name="transact">An instance of <see cref="T:System.Data.Common.DbTransaction"/></param>
+            <param name="behavior">Provides a description of the results of the query and its effect on the database.  Defaults to <see cref="F:System.Data.CommandBehavior.Default"/></param>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="token">Structure that propogates a notification that an operation should be cancelled</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task`1"/> object, the caller is responsible for handling closing the <see cref="T:System.Data.Common.DbDataReader"/>.  Once the data reader is closed, the database connection will be closed as well</returns>
+        </member>
+        <member name="M:ADONetHelper.DbClient.GetScalarValueAsync(System.String)">
+            <summary>
+            Utility method for returning a <see cref="T:System.Threading.Tasks.Task`1"/> value from the database
+            </summary>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <returns>Returns the value of the first column in the first row as <see cref="T:System.Threading.Tasks.Task"/></returns>
+        </member>
+        <member name="M:ADONetHelper.DbClient.GetScalarValueAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Utility method for returning a <see cref="T:System.Threading.Tasks.Task`1"/> value from the database
+            </summary>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="token">Structure that propogates a notification that an operation should be cancelled</param>
+            <returns>Returns the value of the first column in the first row as <see cref="T:System.Threading.Tasks.Task"/></returns>
+        </member>
         <member name="M:ADONetHelper.DbClient.ExecuteNonQuery(System.String)">
             <summary>
             Utility method for executing an Ad-Hoc query or stored procedure without a transaction
@@ -302,39 +325,27 @@
             <param name="transact">An instance of a DbTransaction class</param>
             <returns>Returns the number of rows affected by all queries passed in, assuming all are succesful</returns>
         </member>
-        <member name="M:ADONetHelper.DbClient.GetSchema(System.String,System.String[])">
+        <member name="M:ADONetHelper.DbClient.ExecuteTransactedNonQueryAsync(System.String)">
             <summary>
-            Returns schema information for the data source of this <see cref="T:System.Data.Common.DbConnection"/> using the specified string for the schema name and the specified string array for the restriction values.
+            Utility method for executing an Ad-Hoc query or stored procedure with a transaction
             </summary>
-            <param name="collectionName">Name of the collection.</param>
-            <param name="restrictionValues">The restriction values.</param>
-            <returns>A <see cref="T:System.Data.DataTable"/> that contains schema information</returns>
-            <remarks>If the connection is associated with a transaction, executing GetSchema calls may cause some providers to throw an exception</remarks>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <returns>Returns the number of rows affected by this query as a <see cref="T:System.Threading.Tasks.Task`1"/></returns>
         </member>
-        <member name="M:ADONetHelper.DbClient.GetSchema(System.String)">
+        <member name="M:ADONetHelper.DbClient.ExecuteTransactedNonQueryAsync(System.String,System.Data.Common.DbTransaction)">
             <summary>
-            Returns schema information for the data source of this <paramref name="collectionName"/> using the specified string for the schema name.
+            Utility method for executing a query or stored procedure in a SQL transaction
             </summary>
-            <param name="collectionName">Name of the collection.</param>
-            <returns>A <see cref="T:System.Data.DataTable"/> that contains schema information</returns>
-            <remarks>If the connection is associated with a transaction, executing GetSchema calls may cause some providers to throw an exception</remarks>
+            <param name="transact">An instance of a <see cref="T:System.Data.Common.DbTransaction"/> class</param>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <returns>Returns the number of rows affected by this query</returns>
         </member>
-        <member name="M:ADONetHelper.DbClient.GetSchema">
+        <member name="M:ADONetHelper.DbClient.ExecuteNonQueryAsync(System.String)">
             <summary>
-            Returns schema information for the data source of this <see cref="T:System.Data.Common.DbConnection"/>
+            Utility method for executing an Ad-Hoc query or stored procedure without a transaction
             </summary>
-            <returns>A <see cref="T:System.Data.DataTable"/> that contains schema information</returns>
-            <remarks>If the connection is associated with a transaction, executing GetSchema calls may cause some providers to throw an exception</remarks>
-        </member>
-        <member name="M:ADONetHelper.DbClient.EnlistTransaction(System.Transactions.Transaction)">
-            <summary>
-            Enlists the passed in <paramref name="transact"/> in a distributed transaction
-            </summary>
-            <param name="transact">An instance of <see cref="T:System.Transactions.Transaction"/> to use to enlist a distributed transaction</param>
-            <remarks>
-            Because it enlists a connection in a Transaction instance, EnlistTransaction takes advantage of functionality available in the System.Transactions namespace for managing distributed transactions. 
-            Once a connection is explicitly enlisted in a transaction, it cannot be unenlisted or enlisted in another transaction until the first transaction finishes. 
-            </remarks>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <returns>Returns the number of rows affected by this query as a <see cref="T:System.Threading.Tasks.Task`1"/></returns>
         </member>
         <member name="M:ADONetHelper.DbClient.ChangeDatabase(System.String)">
             <summary>
@@ -344,13 +355,25 @@
         </member>
         <member name="M:ADONetHelper.DbClient.Close">
             <summary>
-            Disposes of the <see cref="T:System.Data.Common.DbConnection"/> being used by this instance
+            Disposes of the <see cref="T:System.Data.Common.DbConnection"/> being used by this instance, clears any <see cref="T:System.Data.Common.DbParameter"/>
+            assocatied with the current <see cref="T:System.Data.Common.DbConnection"/>
             </summary>
         </member>
         <member name="M:ADONetHelper.DbClient.Open">
             <summary>
             Opens the connection to a database
             </summary>
+        </member>
+        <member name="M:ADONetHelper.DbClient.OpenAsync">
+            <summary>
+            Opens the connection to a database asynchronously
+            </summary>
+        </member>
+        <member name="M:ADONetHelper.DbClient.OpenAsync(System.Threading.CancellationToken)">
+            <summary>
+            Opens the connection to a database asynchronously if the connection is not <see cref="F:System.Data.ConnectionState.Open"/>
+            </summary>
+            <param name="token">Structure that propogates a notification that an operation should be cancelled</param>
         </member>
         <member name="M:ADONetHelper.DbClient.AddConnectionStringProperty(System.String,System.Object)">
             <summary>
@@ -380,14 +403,14 @@
         </member>
         <member name="M:ADONetHelper.DbClient.RemoveParameter(System.String)">
             <summary>
-            Removes a parameter from the parameters collection by using the parameter name
+            Removes a <see cref="T:System.Data.Common.DbParameter"/> from the parameters collection for the current <see cref="T:System.Data.Common.DbConnection"/> by using the parameter name
             </summary>
             <param name="parameterName">The name of the parameter to identify the parameter to remove from the collection</param>
             <returns>Returns true if item was successully removed, false otherwise if item was not found in the list</returns>
         </member>
         <member name="M:ADONetHelper.DbClient.RemoveParameter(System.Int32)">
             <summary>
-            Removes a parameter from the parameters collection by using the index of the parameter
+            Removes a <see cref="T:System.Data.Common.DbParameter"/> from the parameters collection for the current <see cref="T:System.Data.Common.DbConnection"/> by using the index of the parameter
             </summary>
             <param name="index">The index of the parameter in the parameters collection to identify the parameter to remove from the collection</param>
             <returns>Returns true if item was successully removed, false otherwise if item was not found in the list</returns>
@@ -399,7 +422,7 @@
         </member>
         <member name="M:ADONetHelper.DbClient.GetParameter(System.String)">
             <summary>
-            Retrieves a DbParameter object by using the passed in parameter name
+            Retrieves a <see cref="T:System.Data.Common.DbParameter"/> object by using the passed in parameter name
             </summary>
             <exception cref="T:System.InvalidOperationException">Thrown when the passed in parameter name is not present in the parameters collection</exception>
             <param name="parameterName">The name of the parameter to use to find the parameter value</param>
@@ -407,7 +430,7 @@
         </member>
         <member name="M:ADONetHelper.DbClient.GetParameter(System.Int32)">
             <summary>
-            Retrieves a parameter from the parameters collection by using the index of the parameter
+            Retrieves a <see cref="T:System.Data.Common.DbParameter"/> from the parameters collection by using the index of the parameter
             </summary>
             <param name="index">The index of the parameter in the parameters collection to identify the parameter to retrieve from the collection</param>
             <returns>Returns the DbParameter object located at this index</returns>
@@ -429,21 +452,21 @@
         </member>
         <member name="M:ADONetHelper.DbClient.SetParamaterValue(System.String,System.Object)">
             <summary>
-            Sets the value of an existing parameter
+            Sets the value of an existing <see cref="T:System.Data.Common.DbParameter"/>
             </summary>
             <param name="parameterName">The name of the parameter to identify the parameter</param>
             <param name="value">The new value of the parameter</param>
         </member>
         <member name="M:ADONetHelper.DbClient.SetParamaterValue(System.Int32,System.Object)">
             <summary>
-            Sets the value of an existing parameter
+            Sets the value of an existing <see cref="T:System.Data.Common.DbParameter"/>
             </summary>
             <param name="index">The index of the parameter in the parameters collection to identify the parameter to retrieve from the collection</param>
             <param name="value">The new value of the parameter</param>
         </member>
         <member name="M:ADONetHelper.DbClient.AddParameter(System.String,System.Object,System.Data.DbType,System.Nullable{System.Int32},System.Data.ParameterDirection)">
             <summary>
-            Adds a new parameter to the parameters collection
+            Adds a new <see cref="T:System.Data.Common.DbParameter"/> to the parameters collection for the current <see cref="T:System.Data.Common.DbConnection"/>
             </summary>
             <exception cref="T:System.ArgumentException">Thrown when the passed in parameter name is already present in the parameters collection</exception>
             <param name="type">The data type of the parameter being sent to the data store with the query</param>
@@ -454,7 +477,7 @@
         </member>
         <member name="M:ADONetHelper.DbClient.AddParameter(System.String,System.Object)">
             <summary>
-            Adds a new parameter to the parameters collection
+            Adds a new <see cref="T:System.Data.Common.DbParameter"/> to the parameters collection for the current <see cref="T:System.Data.Common.DbConnection"/>
             </summary>
             <exception cref="T:System.ArgumentException">Thrown when the passed in parameter name is already present in the parameters collection</exception>
             <param name="parameterName">The name of the parameter to identify the parameter</param>
@@ -462,21 +485,21 @@
         </member>
         <member name="M:ADONetHelper.DbClient.AddParameter(System.Data.Common.DbParameter)">
             <summary>
-            Adds the passed in parameter to the parameters collection
+            Adds the passed in parameter to the parameters collection for the current <see cref="T:System.Data.Common.DbConnection"/>
             </summary>
             <exception cref="T:System.ArgumentException">Thrown when the passed in parameter name is already present in the parameters collection</exception>
             <param name="param">An instance of <see cref="T:System.Data.Common.DbParameter"/> object, that is created the by the caller</param>
         </member>
         <member name="M:ADONetHelper.DbClient.AddParameterRange(System.Collections.Generic.IEnumerable{System.Data.Common.DbParameter})">
             <summary>
-            Adds an <see cref="T:System.Collections.Generic.IEnumerable`1"/> objects to the helpers underlying db parameter collection
+            Adds an <see cref="T:System.Collections.Generic.IEnumerable`1"/> objects to the helpers underlying db parameter collection for the current <see cref="T:System.Data.Common.DbConnection"/>
             </summary>
             <exception cref="T:System.ArgumentException">Throws argument exception when there are duplicate parameter names</exception>
             <param name="dbParams">An <see cref="T:System.Collections.Generic.IEnumerable`1"/> objects to add to the helpers underlying db parameter collection</param>
         </member>
         <member name="M:ADONetHelper.DbClient.AddParameterRange(System.Collections.Generic.IDictionary{System.String,System.Object})">
             <summary>
-            Adds an <see cref="T:System.Collections.Generic.IDictionary`2"/> object to add to the helpers underlying db parameter collection
+            Adds an <see cref="T:System.Collections.Generic.IDictionary`2"/> object to add to the helpers underlying db parameter collection for the current <see cref="T:System.Data.Common.DbConnection"/>
             </summary>
             <param name="dbParams">An <see cref="T:System.Collections.Generic.IDictionary`2"/> of <see cref="T:System.Collections.Generic.KeyValuePair`2"/> where the key is a parameter name and the value is the value of a parameter</param>
         </member>
@@ -507,12 +530,6 @@
             </summary>
             <param name="level">The <see cref="T:System.Data.IsolationLevel"/> to describe the locking behavior for the transaction</param>
             <returns></returns>
-        </member>
-        <member name="M:ADONetHelper.DbClient.GetDataSourceEnumerator">
-            <summary>
-            Provides a mechanism for enumerating all available instances of database servers within the local network
-            </summary>
-            <returns>Returns a new instance of <see cref="T:System.Data.Common.DbDataSourceEnumerator"/> created by the current <see cref="T:System.Data.Common.DbProviderFactory"/></returns>
         </member>
         <member name="M:ADONetHelper.DbClient.Dispose(System.Boolean)">
             <summary>
@@ -559,6 +576,12 @@
             Initializes a new instance of <see cref="T:ADONetHelper.DbFieldIgnore"/>
             </summary>
         </member>
+        <member name="T:ADONetHelper.DbObject">
+            <summary>
+            Attribute class that a nested object within a query
+            </summary>
+            <seealso cref="T:System.Attribute"/>
+        </member>
         <member name="T:ADONetHelper.DbObjectFactory">
             <summary>
             A class that facilitates creating the ADO.NET class objects necessary to query a data store
@@ -574,11 +597,6 @@
         <member name="P:ADONetHelper.DbObjectFactory.VariableBinder">
             <summary>
             The character symbol to use when binding a variable in a given providers SQL query
-            </summary>
-        </member>
-        <member name="P:ADONetHelper.DbObjectFactory.CanCreateDataSourceEnumerator">
-            <summary>
-            Whether or not the passed in provider is capable of creating a data source enumerator
             </summary>
         </member>
         <member name="P:ADONetHelper.DbObjectFactory.ProviderFactory">
@@ -603,24 +621,6 @@
             Initialzes and instantiates a new instance of the <see cref="T:System.Data.Common.DbProviderFactory"/>  class
             </summary>
             <param name="connection">An instance of <see cref="T:System.Data.Common.DbConnection"/> </param>
-        </member>
-        <member name="M:ADONetHelper.DbObjectFactory.GetDataSourceEnumerator">
-            <summary>
-            Provides a mechanism for enumerating all available instances of database servers within the local network
-            </summary>
-            <returns>Returns a new instance of <see cref="T:System.Data.Common.DbDataSourceEnumerator"/> created by the current <see cref="T:System.Data.Common.DbProviderFactory"/></returns>
-        </member>
-        <member name="M:ADONetHelper.DbObjectFactory.GetDbDataAdapter">
-            <summary>
-            Gets a <see cref="T:System.Data.Common.DbDataAdapter"/> based on the provider the <see cref="T:ADONetHelper.DbObjectFactory"/> is utilizing
-            </summary>
-            <returns>Returns an instance of <see cref="T:System.Data.Common.DbDataAdapter"/></returns>
-        </member>
-        <member name="M:ADONetHelper.DbObjectFactory.GetDbCommandBuilder">
-            <summary>
-            Gets a <see cref="T:System.Data.Common.DbCommandBuilder"/> based on the provider the <see cref="T:ADONetHelper.DbObjectFactory"/> is utilizing
-            </summary>
-            <returns>Returns an instance of <see cref="T:System.Data.Common.DbCommandBuilder"/></returns>
         </member>
         <member name="M:ADONetHelper.DbObjectFactory.GetDbConnectionStringBuilder(System.String)">
             <summary>
@@ -804,11 +804,6 @@
             Gets the time to wait in seconds while trying to establish a connection before terminating the attempt and generating an error.
             </summary>
         </member>
-        <member name="P:ADONetHelper.IDbClient.CanCreateDataSourceEnumerator">
-            <summary>
-            Whether or not the passed in provider is capable of creating a data source enumerator
-            </summary>
-        </member>
         <member name="P:ADONetHelper.IDbClient.Database">
             <summary>
             Gets the name of the current database after a connection is opened, or the database name specified in the connection string before the connection is opened.
@@ -823,36 +818,6 @@
             <summary>
             Gets a string that represents the version of the server to which the object is connected
             </summary>
-        </member>
-        <member name="M:ADONetHelper.IDbClient.GetDataSet(System.String)">
-            <summary>
-            Gets an instance of <see cref="T:System.Data.DataSet"/>
-            </summary>
-            <param name="query">SQL query to use to build a <see cref="T:System.Data.DataSet"/></param>
-            <returns>Returns an instance of <see cref="T:System.Data.DataSet"/> based on the <paramref name="query"/> passed into the routine</returns>
-        </member>
-        <member name="M:ADONetHelper.IDbClient.GetDataSet(System.String,System.Data.Common.DbConnection)">
-            <summary>
-            Gets an instance of <see cref="T:System.Data.DataSet"/>
-            </summary>
-            <param name="connection">An instance of a <see cref="T:System.Data.Common.DbConnection"/></param>
-            <param name="query">SQL query to use to build a <see cref="T:System.Data.DataSet"/></param>
-            <returns>Returns an instance of <see cref="T:System.Data.DataSet"/> based on the <paramref name="query"/> passed into the routine</returns>
-        </member>
-        <member name="M:ADONetHelper.IDbClient.GetDataTable(System.String)">
-            <summary>
-            Utility method for returning a <see cref="T:System.Data.DataTable"/> object created from the passed in query
-            </summary>
-            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
-            <returns>Returns a <see cref="T:System.Data.DataTable"/> object</returns>
-        </member>
-        <member name="M:ADONetHelper.IDbClient.GetDataTable(System.String,System.Data.Common.DbConnection)">
-            <summary>
-            Utility method for returning a <see cref="T:System.Data.DataTable"/> object created from the passed in query
-            </summary>
-            <param name="connection">An instance of <see cref="T:System.Data.Common.DbConnection"/></param>
-            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
-            <returns>Returns a <see cref="T:System.Data.DataTable"/> object</returns>
         </member>
         <member name="M:ADONetHelper.IDbClient.GetDataObject``1(System.String)">
             <summary>
@@ -897,6 +862,78 @@
             <param name="query">The query command text or name of stored procedure to execute against the data store</param>
             <returns>Returns the value of the first column in the first row as an object</returns>
         </member>
+        <member name="M:ADONetHelper.IDbClient.GetDataObjectAsync``1(System.String)">
+            <summary>
+            Gets a single instance of <typeparamref name="T"/> based on the <paramref name="query"/> passed into the routine
+            </summary>
+            <typeparam name="T">An instance of the type caller wants create from the query passed into procedure</typeparam>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <returns>Gets an instance of <typeparamref name="T"/> based on the <paramref name="query"/> passed into the routine.
+            Or the default value of <typeparamref name="T"/> if there are no search results
+            </returns>
+        </member>
+        <member name="M:ADONetHelper.IDbClient.GetDataObjectAsync``1(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets a single instance of <typeparamref name="T"/> based on the <paramref name="query"/> passed into the routine
+            </summary>
+            <typeparam name="T">An instance of the type caller wants create from the query passed into procedure</typeparam>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="token">Structure that propogates a notification that an operation should be cancelled</param>
+            <returns>Gets an instance of <typeparamref name="T"/> based on the <paramref name="query"/> passed into the routine.
+            Or the default value of <typeparamref name="T"/> if there are no search results
+            </returns>
+        </member>
+        <member name="M:ADONetHelper.IDbClient.GetDataObjectListAsync``1(System.String)">
+            <summary>
+            Gets a list of the type parameter object that creates an object based on the query passed into the routine
+            </summary>
+            <typeparam name="T">An instance of the type caller wants create from the query passed into procedure</typeparam>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <returns>Returns a <see cref="T:System.Collections.Generic.List`1"/> based on the results of the passed in <paramref name="query"/></returns>
+        </member>
+        <member name="M:ADONetHelper.IDbClient.GetDataObjectListAsync``1(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets a list of the type parameter object that creates an object based on the query passed into the routine
+            </summary>
+            <typeparam name="T">An instance of the type caller wants create from the query passed into procedure</typeparam>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="token">Structure that propogates a notification that an operation should be cancelled</param>
+            <returns>Returns a list of type parameter object based on the fields in the passed in query</returns>
+        </member>
+        <member name="M:ADONetHelper.IDbClient.GetDbDataReaderAsync(System.String,System.Data.CommandBehavior,System.Data.Common.DbTransaction)">
+            <summary>
+            Utility method for returning a <see cref="T:System.Threading.Tasks.Task`1"/> object created from the passed in query
+            </summary>
+            <param name="transact">An instance of <see cref="T:System.Data.Common.DbTransaction"/> to use with the passed in <paramref name="query"/></param>
+            <param name="behavior">Provides a description of the results of the query and its effect on the database.  Defaults to <see cref="F:System.Data.CommandBehavior.Default"/></param>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task`1"/> object, the caller is responsible for handling closing the <see cref="T:System.Data.Common.DbDataReader"/>.  Once the data reader is closed, the database connection will be closed as well</returns>
+        </member>
+        <member name="M:ADONetHelper.IDbClient.GetDbDataReaderAsync(System.String,System.Threading.CancellationToken,System.Data.CommandBehavior,System.Data.Common.DbTransaction)">
+            <summary>
+            Utility method for returning a <see cref="T:System.Threading.Tasks.Task`1"/> object created from the passed in query
+            </summary>
+            <param name="transact">An instance of <see cref="T:System.Data.Common.DbTransaction"/></param>
+            <param name="behavior">Provides a description of the results of the query and its effect on the database.  Defaults to <see cref="F:System.Data.CommandBehavior.Default"/></param>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="token">Structure that propogates a notification that an operation should be cancelled</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task`1"/> object, the caller is responsible for handling closing the <see cref="T:System.Data.Common.DbDataReader"/>.  Once the data reader is closed, the database connection will be closed as well</returns>
+        </member>
+        <member name="M:ADONetHelper.IDbClient.GetScalarValueAsync(System.String)">
+            <summary>
+            Utility method for returning a <see cref="T:System.Threading.Tasks.Task`1"/> value from the database
+            </summary>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <returns>Returns the value of the first column in the first row as <see cref="T:System.Threading.Tasks.Task"/></returns>
+        </member>
+        <member name="M:ADONetHelper.IDbClient.GetScalarValueAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Utility method for returning a <see cref="T:System.Threading.Tasks.Task`1"/> value from the database
+            </summary>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="token">Structure that propogates a notification that an operation should be cancelled</param>
+            <returns>Returns the value of the first column in the first row as <see cref="T:System.Threading.Tasks.Task"/></returns>
+        </member>
         <member name="M:ADONetHelper.IDbClient.ExecuteNonQuery(System.String)">
             <summary>
             Utility method for executing an Ad-Hoc query or stored procedure without a transaction
@@ -935,6 +972,28 @@
             <param name="transact">An instance of a DbTransaction class</param>
             <returns>Returns the number of rows affected by all queries passed in, assuming all are succesful</returns>
         </member>
+        <member name="M:ADONetHelper.IDbClient.ExecuteNonQueryAsync(System.String)">
+            <summary>
+            Utility method for executing an Ad-Hoc query or stored procedure without a transaction
+            </summary>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <returns>Returns the number of rows affected by this query as a <see cref="T:System.Threading.Tasks.Task`1"/></returns>
+        </member>
+        <member name="M:ADONetHelper.IDbClient.ExecuteTransactedNonQueryAsync(System.String)">
+            <summary>
+            Utility method for executing an Ad-Hoc query or stored procedure with a transaction
+            </summary>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <returns>Returns the number of rows affected by this query as a <see cref="T:System.Threading.Tasks.Task`1"/></returns>
+        </member>
+        <member name="M:ADONetHelper.IDbClient.ExecuteTransactedNonQueryAsync(System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            Utility method for executing a query or stored procedure in a SQL transaction
+            </summary>
+            <param name="transact">An instance of a <see cref="T:System.Data.Common.DbTransaction"/> class</param>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <returns>Returns the number of rows affected by this query</returns>
+        </member>
         <member name="M:ADONetHelper.IDbClient.GetDbTransaction">
             <summary>
             Starts a database transaction using the underlying <see cref="T:System.Data.Common.DbConnection"/>
@@ -948,46 +1007,6 @@
             <param name="level">The <see cref="T:System.Data.IsolationLevel"/> to describe the locking behavior for the transaction</param>
             <returns></returns>
         </member>
-        <member name="M:ADONetHelper.IDbClient.EnlistTransaction(System.Transactions.Transaction)">
-            <summary>
-            Enlists the passed in <paramref name="transact"/> in a distributed transaction
-            </summary>
-            <param name="transact">An instance of <see cref="T:System.Transactions.Transaction"/> to use to enlist a distributed transaction</param>
-            <remarks>
-            Because it enlists a connection in a Transaction instance, EnlistTransaction takes advantage of functionality available in the System.Transactions namespace for managing distributed transactions. 
-            Once a connection is explicitly enlisted in a transaction, it cannot be unenlisted or enlisted in another transaction until the first transaction finishes. 
-            </remarks>
-        </member>
-        <member name="M:ADONetHelper.IDbClient.GetSchema(System.String,System.String[])">
-            <summary>
-            Returns schema information for the data source of this <see cref="T:System.Data.Common.DbConnection"/> using the specified string for the schema name and the specified string array for the restriction values.
-            </summary>
-            <param name="collectionName">Name of the collection.</param>
-            <param name="restrictionValues">The restriction values.</param>
-            <returns>A <see cref="T:System.Data.DataTable"/> that contains schema information</returns>
-            <remarks>If the connection is associated with a transaction, executing GetSchema calls may cause some providers to throw an exception</remarks>
-        </member>
-        <member name="M:ADONetHelper.IDbClient.GetSchema(System.String)">
-            <summary>
-            Returns schema information for the data source of this <paramref name="collectionName"/> using the specified string for the schema name.
-            </summary>
-            <param name="collectionName">Name of the collection.</param>
-            <returns>A <see cref="T:System.Data.DataTable"/> that contains schema information</returns>
-            <remarks>If the connection is associated with a transaction, executing GetSchema calls may cause some providers to throw an exception</remarks>
-        </member>
-        <member name="M:ADONetHelper.IDbClient.GetSchema">
-            <summary>
-            Returns schema information for the data source of this <see cref="T:System.Data.Common.DbConnection"/>
-            </summary>
-            <returns>A <see cref="T:System.Data.DataTable"/> that contains schema information</returns>
-            <remarks>If the connection is associated with a transaction, executing GetSchema calls may cause some providers to throw an exception</remarks>
-        </member>
-        <member name="M:ADONetHelper.IDbClient.GetDataSourceEnumerator">
-            <summary>
-            Provides a mechanism for enumerating all available instances of database servers within the local network
-            </summary>
-            <returns>Returns a new instance of <see cref="T:System.Data.Common.DbDataSourceEnumerator"/> created by the current <see cref="T:System.Data.Common.DbProviderFactory"/></returns>
-        </member>
         <member name="M:ADONetHelper.IDbClient.Close">
             <summary>
             Closes any open connections being used by the helper 
@@ -998,38 +1017,26 @@
             Opens the connection to a database if not already opened
             </summary>
         </member>
+        <member name="M:ADONetHelper.IDbClient.OpenAsync">
+            <summary>
+            Opens the connection to a database asynchronously if not already opened
+            </summary>
+        </member>
+        <member name="M:ADONetHelper.IDbClient.OpenAsync(System.Threading.CancellationToken)">
+            <summary>
+            Opens the connection to a database asynchronously if not already opened
+            </summary>
+            <param name="token">Structure that propogates a notification that an operation should be cancelled</param>
+        </member>
         <member name="T:ADONetHelper.IDbObjectFactory">
             <summary>
-            The contract class for a DbObjectFactory based class
+            The contract class for a factory class that creates database objects in order to query a database
             </summary>
         </member>
         <member name="P:ADONetHelper.IDbObjectFactory.VariableBinder">
             <summary>
             The character symbol to use when binding a variable in a given providers SQL query
             </summary>
-        </member>
-        <member name="P:ADONetHelper.IDbObjectFactory.CanCreateDataSourceEnumerator">
-            <summary>
-            Whether or not the passed in provider is capable of creating a data source enumerator
-            </summary>
-        </member>
-        <member name="M:ADONetHelper.IDbObjectFactory.GetDataSourceEnumerator">
-            <summary>
-            Provides a mechanism for enumerating all available instances of database servers within the local network
-            </summary>
-            <returns>Returns a new instance of <see cref="T:System.Data.Common.DbDataSourceEnumerator"/> created by the current <see cref="T:System.Data.Common.DbProviderFactory"/></returns>
-        </member>
-        <member name="M:ADONetHelper.IDbObjectFactory.GetDbCommandBuilder">
-            <summary>
-            Gets a <see cref="T:System.Data.Common.DbCommandBuilder"/> based on the provider the <see cref="T:ADONetHelper.DbObjectFactory"/> is utilizing
-            </summary>
-            <returns>Returns an instance of <see cref="T:System.Data.Common.DbCommandBuilder"/></returns>
-        </member>
-        <member name="M:ADONetHelper.IDbObjectFactory.GetDbDataAdapter">
-            <summary>
-            Gets a <see cref="T:System.Data.Common.DbDataAdapter"/> based on the provider the <see cref="T:ADONetHelper.DbObjectFactory"/> is utilizing
-            </summary>
-            <returns>Returns an instance of <see cref="T:System.Data.Common.DbDataAdapter"/></returns>
         </member>
         <member name="M:ADONetHelper.IDbObjectFactory.GetDbConnectionStringBuilder(System.String)">
             <summary>
@@ -1095,7 +1102,7 @@
             <summary>
             Create an instance of a <see cref="T:System.Data.Common.DbParameter"/> based off of the provider passed into factory
             </summary>
-            <returns>Returns an instantiated DbParameter object</returns>
+            <returns>Returns an instantiated <see cref="T:System.Data.Common.DbParameter"/> object</returns>
         </member>
         <member name="M:ADONetHelper.IDbObjectFactory.GetDbParameter(System.String,System.Object)">
             <summary>
@@ -1103,7 +1110,7 @@
             </summary>
             <param name="parameterName">The name of the parameter to identify the parameter</param>
             <param name="parameterValue">The value of the parameter</param>
-            <returns>Returns an instance of DbParameter type with information passed into procedure</returns>
+            <returns>Returns an instance of <see cref="T:System.Data.Common.DbParameter"/> type with information passed into procedure</returns>
         </member>
         <member name="M:ADONetHelper.IDbObjectFactory.GetDbParameter(System.String,System.Object,System.Data.DbType,System.Nullable{System.Int32},System.Data.ParameterDirection)">
             <summary>
@@ -1114,7 +1121,7 @@
             <param name="parameterName">The name of the parameter to identify the parameter</param>
             <param name="parameterValue">The value of the parameter</param>
             <param name="paramDirection">The direction of the parameter, defaults to input</param>
-            <returns>Returns an instance of DbParameter type with information passed into procedure</returns>
+            <returns>Returns an instance of <see cref="T:System.Data.Common.DbParameter"/> type with information passed into procedure</returns>
         </member>
         <member name="T:ADONetHelper.IDbParameterHelper">
             <summary>
@@ -1270,25 +1277,6 @@
             Gets or sets the wait time in seconds before terminating the attempt to execute a command and generating an error.
             </summary>
         </member>
-        <member name="M:ADONetHelper.ISqlExecutor.GetDataSet(System.Data.CommandType,System.String,System.Data.Common.DbConnection)">
-            <summary>
-            Gets an instance of <see cref="T:System.Data.DataSet"/>
-            </summary>
-            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
-            <param name="connection">An instance of <see cref="T:System.Data.Common.DbConnection"/></param>
-            <param name="query">SQL query to use to build a <see cref="T:System.Data.DataSet"/></param>
-            <returns>Returns an instance of <see cref="T:System.Data.DataSet"/> based on the <paramref name="query"/> passed into the routine</returns>
-        </member>
-        <member name="M:ADONetHelper.ISqlExecutor.GetDataSet(System.Data.CommandType,System.String)">
-            <summary>
-            Gets an instance of <see cref="T:System.Data.DataSet"/>
-            </summary>
-            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
-            <param name="query">SQL query to use to build a <see cref="T:System.Data.DataSet"/></param>
-            <returns>Returns an instance of <see cref="T:System.Data.DataSet"/> based on the <paramref name="query"/> passed into the routine</returns>
-        </member>
-        <!-- Badly formed XML comment ignored for member "M:ADONetHelper.ISqlExecutor.GetDataTable(System.Data.CommandType,System.String)" -->
-        <!-- Badly formed XML comment ignored for member "M:ADONetHelper.ISqlExecutor.GetDataTable(System.Data.CommandType,System.String,System.Data.Common.DbConnection)" -->
         <member name="M:ADONetHelper.ISqlExecutor.GetDataObject``1(System.Data.CommandType,System.String)">
             <summary>
             Gets a single instance of <typeparamref name="T"/> based on the <paramref name="query"/> passed into the routine
@@ -1410,6 +1398,248 @@
             Utility method for returning a scalar value from the database
             </summary>
             <param name="transact">An instance of <see cref="T:System.Data.Common.DbTransaction"/></param>
+            <param name="connection">An instanace of the DbConnection object used to query a data store</param>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <returns>Returns the value of the first column in the first row as an object</returns>
+        </member>
+        <member name="M:ADONetHelper.ISqlExecutor.GetDataObjectAsync``1(System.Data.CommandType,System.String)">
+            <summary>
+            Gets a single instance of <typeparamref name="T"/> based on the <paramref name="query"/> passed into the routine
+            </summary>
+            <typeparam name="T">An instance of the type the caller wants create from the query passed into procedure</typeparam>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <returns>Gets an instance of <typeparamref name="T"/> based on the <paramref name="query"/> passed into the routine</returns>
+        </member>
+        <member name="M:ADONetHelper.ISqlExecutor.GetDataObjectAsync``1(System.Data.CommandType,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets a single instance of <typeparamref name="T"/> based on the <paramref name="query"/> passed into the routine
+            </summary>
+            <typeparam name="T">An instance of the type the caller wants create from the query passed into procedure</typeparam>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <param name="token">Structure that propogates a notification that an operation should be cancelled</param>
+            <returns>Gets an instance of <typeparamref name="T"/> based on the <paramref name="query"/> passed into the routine</returns>
+        </member>
+        <member name="M:ADONetHelper.ISqlExecutor.GetDataObjectAsync``1(System.Data.CommandType,System.String,System.String)">
+            <summary>
+            Gets a single instance of <typeparamref name="T"/> based on the <paramref name="query"/> passed into the routine
+            </summary>
+            <typeparam name="T">An instance of the type the caller wants create from the query passed into procedure</typeparam>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <param name="connectionString">The connection string used to query a data store</param>
+            <returns>Gets an instance of <typeparamref name="T"/> based on the <paramref name="query"/> passed into the routine</returns>
+        </member>
+        <member name="M:ADONetHelper.ISqlExecutor.GetDataObjectAsync``1(System.Data.CommandType,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets a single instance of <typeparamref name="T"/> based on the <paramref name="query"/> passed into the routine
+            </summary>
+            <typeparam name="T">An instance of the type the caller wants create from the query passed into procedure</typeparam>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <param name="connectionString">The connection string used to query a data store</param>
+            <param name="token">Structure that propogates a notification that an operation should be cancelled</param>
+            <returns>Gets an instance of <typeparamref name="T"/> based on the <paramref name="query"/> passed into the routine</returns>
+        </member>
+        <member name="M:ADONetHelper.ISqlExecutor.GetDataObjectAsync``1(System.Data.CommandType,System.String,System.Data.Common.DbConnection)">
+            <summary>
+            Gets a single instance of <typeparamref name="T"/> based on the <paramref name="query"/> passed into the routine
+            </summary>
+            <typeparam name="T">An instance of the type the caller wants create from the query passed into procedure</typeparam>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <param name="connection">An instance of a <see cref="T:System.Data.Common.DbConnection"/> object to use to connect to a datastore</param>
+            <returns>Gets an instance of <typeparamref name="T"/> based on the <paramref name="query"/> passed into the routine</returns>
+        </member>
+        <member name="M:ADONetHelper.ISqlExecutor.GetDataObjectAsync``1(System.Data.CommandType,System.String,System.Data.Common.DbConnection,System.Threading.CancellationToken)">
+            <summary>
+            Gets a single instance of <typeparamref name="T"/> based on the <paramref name="query"/> passed into the routine
+            </summary>
+            <typeparam name="T">An instance of the type the caller wants create from the query passed into procedure</typeparam>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <param name="connection">An instance of a <see cref="T:System.Data.Common.DbConnection"/> object to use to connect to a datastore</param>
+            <param name="token">Structure that propogates a notification that an operation should be cancelled</param>
+            <returns>Gets an instance of <typeparamref name="T"/> based on the <paramref name="query"/> passed into the routine</returns>
+        </member>
+        <member name="M:ADONetHelper.ISqlExecutor.GetDataObjectListAsync``1(System.Data.CommandType,System.String)">
+            <summary>
+            Gets a <see cref="T:System.Collections.Generic.List`1"/> based on the <typeparamref name="T"/> sent into the function to create an object list based on the query passed into the routine
+            </summary>
+            <typeparam name="T">An instance of the type caller wants to create from the query passed into procedure</typeparam>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <returns>Returns a <see cref="T:System.Collections.Generic.List`1"/> based on the results of the passed in <paramref name="query"/></returns>
+        </member>
+        <member name="M:ADONetHelper.ISqlExecutor.GetDataObjectListAsync``1(System.Data.CommandType,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets a <see cref="T:System.Collections.Generic.List`1"/> based on the <typeparamref name="T"/> sent into the function to create an object list based on the query passed into the routine
+            </summary>
+            <typeparam name="T">An instance of the type the caller wants to create from the query passed into procedure</typeparam>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <param name="token">Structure that propogates a notification that an operation should be cancelled</param>
+            <returns>Returns a <see cref="T:System.Collections.Generic.List`1"/> based on the results of the passed in <paramref name="query"/></returns>
+        </member>
+        <member name="M:ADONetHelper.ISqlExecutor.GetDataObjectListAsync``1(System.Data.CommandType,System.String,System.String)">
+            <summary>
+            Gets a <see cref="T:System.Collections.Generic.List`1"/> based on the <typeparamref name="T"/> sent into the function to create an object list based on the query passed into the routine
+            </summary>
+            <typeparam name="T">An instance of the type the caller wants create from the query passed into procedure</typeparam>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <param name="connectionString">The connection string used to query a data store</param>
+            <returns>Returns a <see cref="T:System.Collections.Generic.List`1"/> based on the results of the passed in <paramref name="query"/></returns>
+        </member>
+        <member name="M:ADONetHelper.ISqlExecutor.GetDataObjectListAsync``1(System.Data.CommandType,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets a <see cref="T:System.Collections.Generic.List`1"/> based on the <typeparamref name="T"/> sent into the function to create an object list based on the query passed into the routine
+            </summary>
+            <typeparam name="T">An instance of the type the caller wants to create from the query passed into procedure</typeparam>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <param name="connectionString">The connection string used to query a data store</param>
+            <param name="token">Structure that propogates a notification that an operation should be cancelled</param>
+            <returns>Returns a <see cref="T:System.Collections.Generic.List`1"/> based on the results of the passed in <paramref name="query"/></returns>
+        </member>
+        <member name="M:ADONetHelper.ISqlExecutor.GetDataObjectListAsync``1(System.Data.CommandType,System.String,System.Data.Common.DbConnection)">
+            <summary>
+            Gets a <see cref="T:System.Collections.Generic.List`1"/> based on the <typeparamref name="T"/> sent into the function to create an object list based on the query passed into the routine
+            </summary>
+            <typeparam name="T">An instance of the type the caller wants to create from the query passed into procedure</typeparam>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <param name="connection">An instance of a <see cref="T:System.Data.Common.DbConnection"/> object to use to connect to a datastore</param>
+            <returns>Returns a <see cref="T:System.Collections.Generic.List`1"/> based on the results of the passed in <paramref name="query"/></returns>
+        </member>
+        <member name="M:ADONetHelper.ISqlExecutor.GetDataObjectListAsync``1(System.Data.CommandType,System.String,System.Data.Common.DbConnection,System.Threading.CancellationToken)">
+            <summary>
+            Gets a <see cref="T:System.Collections.Generic.List`1"/> based on the <typeparamref name="T"/> sent into the function to create an object list based on the query passed into the routine
+            </summary>
+            <typeparam name="T">An instance of the type the caller wants to create from the query passed into procedure</typeparam>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <param name="connection">An instance of a <see cref="T:System.Data.Common.DbConnection"/> object to use to connect to a datastore</param>
+            <param name="token">Structure that propogates a notification that an operation should be cancelled</param>
+            <returns>Returns a <see cref="T:System.Collections.Generic.List`1"/> based on the results of the passed in <paramref name="query"/></returns>
+        </member>
+        <member name="M:ADONetHelper.ISqlExecutor.GetDbDataReaderAsync(System.Data.CommandType,System.String,System.Data.CommandBehavior,System.Data.Common.DbTransaction)">
+            <summary>
+            Utility method for returning a <see cref="T:System.Threading.Tasks.Task`1"/> object
+            </summary>
+            <param name="transact">An instance of <see cref="T:System.Data.Common.DbTransaction"/></param>
+            <param name="behavior">Provides a description of the results of the query and its effect on the database.  Defaults to <see cref="F:System.Data.CommandBehavior.Default"/></param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <returns>A DbDataReader object, the caller is responsible for handling closing the DataReader.  Once the data reader is closed, the Database Connection will be closed as well</returns>
+        </member>
+        <member name="M:ADONetHelper.ISqlExecutor.GetDbDataReaderAsync(System.Data.CommandType,System.String,System.String,System.Data.CommandBehavior)">
+            <summary>
+            Utility method for returning a <see cref="T:System.Threading.Tasks.Task`1"/> object
+            </summary>
+            <param name="behavior">Provides a description of the results of the query and its effect on the database.  Defaults to <see cref="F:System.Data.CommandBehavior.Default"/></param>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <param name="connectionString">The connection string used to query a data store</param>
+            <returns>A DbDataReader object, the caller is responsible for handling closing the DataReader</returns>
+        </member>
+        <member name="M:ADONetHelper.ISqlExecutor.GetDbDataReaderAsync(System.Data.CommandType,System.String,System.String,System.Threading.CancellationToken,System.Data.CommandBehavior)">
+            <summary>
+            Utility method for returning a <see cref="T:System.Threading.Tasks.Task`1"/> object
+            </summary>
+            <param name="behavior">Provides a description of the results of the query and its effect on the database.  Defaults to <see cref="F:System.Data.CommandBehavior.Default"/></param>
+            <param name="token">Structure that propogates a notification that an operation should be cancelled</param>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <param name="connectionString">The connection string used to query a data store</param>
+            <returns>A DbDataReader object, the caller is responsible for handling closing the DataReader</returns>
+        </member>
+        <member name="M:ADONetHelper.ISqlExecutor.GetDbDataReaderAsync(System.Data.CommandType,System.String,System.Threading.CancellationToken,System.Data.CommandBehavior,System.Data.Common.DbTransaction)">
+            <summary>
+            Utility method for returning a <see cref="T:System.Threading.Tasks.Task`1"/> object
+            </summary>
+            <param name="transact">An instance of <see cref="T:System.Data.Common.DbTransaction"/></param>
+            <param name="behavior">Provides a description of the results of the query and its effect on the database.  Defaults to <see cref="F:System.Data.CommandBehavior.Default"/></param>
+            <param name="token">Structure that propogates a notification that an operation should be cancelled</param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <returns>A DbDataReader object, the caller is responsible for handling closing the DataReader.  Once the data reader is closed, the Database Connection will be closed as well</returns>
+        </member>
+        <member name="M:ADONetHelper.ISqlExecutor.GetDbDataReaderAsync(System.Data.CommandType,System.String,System.Data.Common.DbConnection,System.Data.CommandBehavior,System.Data.Common.DbTransaction)">
+            <summary>
+            Utility method for returning a <see cref="T:System.Threading.Tasks.Task`1"/> object
+            </summary>
+            <param name="transact">An instance of <see cref="T:System.Data.Common.DbTransaction"/></param>
+            <param name="behavior">Provides a description of the results of the query and its effect on the database.  Defaults to <see cref="F:System.Data.CommandBehavior.Default"/></param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="connection">An instance of the DbConnection class</param>
+            <returns>A DbDataReader object, the caller is responsible for handling closing the DataReader.  Once the data reader is closed, the Database Connection will be closed as well</returns>
+        </member>
+        <member name="M:ADONetHelper.ISqlExecutor.GetDbDataReaderAsync(System.Data.CommandType,System.String,System.Data.Common.DbConnection,System.Threading.CancellationToken,System.Data.CommandBehavior,System.Data.Common.DbTransaction)">
+            <summary>
+            Utility method for returning a <see cref="T:System.Threading.Tasks.Task`1"/> object
+            </summary>
+            <param name="transact">An instance of <see cref="T:System.Data.Common.DbTransaction"/></param>
+            <param name="behavior">Provides a description of the results of the query and its effect on the database.  Defaults to <see cref="F:System.Data.CommandBehavior.Default"/></param>
+            <param name="token">Structure that propogates a notification that an operation should be cancelled</param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="connection">An instance of the DbConnection class</param>
+            <returns>A DbDataReader object, the caller is responsible for handling closing the DataReader.  Once the data reader is closed, the Database Connection will be closed as well</returns>
+        </member>
+        <member name="M:ADONetHelper.ISqlExecutor.GetScalarValueAsync(System.Data.CommandType,System.String)">
+            <summary>
+            Utility method for returning a <see cref="T:System.Threading.Tasks.Task`1"/> from the database
+            </summary>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <returns>Returns the value of the first column in the first row as an object</returns>
+        </member>
+        <member name="M:ADONetHelper.ISqlExecutor.GetScalarValueAsync(System.Data.CommandType,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Utility method for returning a <see cref="T:System.Threading.Tasks.Task`1"/> from the database
+            </summary>
+            <param name="token">Structure that propogates a notification that an operation should be cancelled</param>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <returns>Returns the value of the first column in the first row as an object</returns>
+        </member>
+        <member name="M:ADONetHelper.ISqlExecutor.GetScalarValueAsync(System.Data.CommandType,System.String,System.String)">
+            <summary>
+            Utility method for returning a <see cref="T:System.Threading.Tasks.Task`1"/> value from the database
+            </summary>
+            <param name="connectionString">The connection string used to query a data store</param>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <returns>Returns the value of the first column in the first row returned from the passed in query as an object</returns>
+        </member>
+        <member name="M:ADONetHelper.ISqlExecutor.GetScalarValueAsync(System.Data.CommandType,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Utility method for returning a <see cref="T:System.Threading.Tasks.Task`1"/> value from the database
+            </summary>
+            <param name="token">Structure that propogates a notification that an operation should be cancelled</param>
+            <param name="connectionString">The connection string used to query a data store</param>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <returns>Returns the value of the first column in the first row returned from the passed in query as an object</returns>
+        </member>
+        <member name="M:ADONetHelper.ISqlExecutor.GetScalarValueAsync(System.Data.CommandType,System.String,System.Data.Common.DbConnection)">
+            <summary>
+            Utility method for returning a <see cref="T:System.Threading.Tasks.Task`1"/> from the database
+            </summary>
+            <param name="connection">An instanace of the DbConnection object used to query a data store</param>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <returns>Returns the value of the first column in the first row as an object</returns>
+        </member>
+        <member name="M:ADONetHelper.ISqlExecutor.GetScalarValueAsync(System.Data.CommandType,System.String,System.Data.Common.DbConnection,System.Threading.CancellationToken)">
+            <summary>
+            Utility method for returning a <see cref="T:System.Threading.Tasks.Task`1"/> from the database
+            </summary>
+            <param name="token">Structure that propogates a notification that an operation should be cancelled</param>
             <param name="connection">An instanace of the DbConnection object used to query a data store</param>
             <param name="query">The query command text or name of stored procedure to execute against the data store</param>
             <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
@@ -1551,6 +1781,78 @@
             <param name="commitTransaction">Whether or not to commit the transaction that is passed in if succesful</param>
             <returns>Returns the number of rows affected by this query</returns>
         </member>
+        <member name="M:ADONetHelper.ISqlExecutor.ExecuteNonQueryAsync(System.Data.CommandType,System.String)">
+            <summary>
+            Utility method for executing an Ad-Hoc query or stored procedure without a transaction
+            </summary>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <returns>Returns the number of rows affected by this query as a <see cref="T:System.Threading.Tasks.Task`1"/></returns>
+        </member>
+        <member name="M:ADONetHelper.ISqlExecutor.ExecuteNonQueryAsync(System.Data.CommandType,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Utility method for executing an Ad-Hoc query or stored procedure without a transaction
+            </summary>
+            <param name="token">Propagates notification that operations should be canceled</param>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <returns>Returns the number of rows affected by this query as a <see cref="T:System.Threading.Tasks.Task`1"/></returns>
+        </member>
+        <member name="M:ADONetHelper.ISqlExecutor.ExecuteNonQueryAsync(System.Data.CommandType,System.String,System.String)">
+            <summary>
+            Utility method for executing an Ad-Hoc query or stored procedure without a transaction
+            </summary>
+            <param name="connectionString">The connection string used to query a data store</param>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <returns>Returns the number of rows affected by this query as a <see cref="T:System.Threading.Tasks.Task`1"/></returns>
+        </member>
+        <member name="M:ADONetHelper.ISqlExecutor.ExecuteNonQueryAsync(System.Data.CommandType,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Utility method for executing an Ad-Hoc query or stored procedure without a transaction
+            </summary>
+            <param name="token">Propagates notification that operations should be canceled</param>
+            <param name="connectionString">The connection string used to query a data store</param>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <returns>Returns the number of rows affected by this query as a <see cref="T:System.Threading.Tasks.Task`1"/></returns>
+        </member>
+        <member name="M:ADONetHelper.ISqlExecutor.ExecuteNonQueryAsync(System.Data.CommandType,System.String,System.Data.Common.DbConnection)">
+            <summary>
+            Utility method for executing an Ad-Hoc query or stored procedure without a transaction
+            </summary>
+            <param name="connection">An instance of a <see cref="T:System.Data.Common.DbConnection"/> object to use to query a datastore</param>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <returns>Returns the number of rows affected by this query as a <see cref="T:System.Threading.Tasks.Task`1"/></returns>
+        </member>
+        <member name="M:ADONetHelper.ISqlExecutor.ExecuteNonQueryAsync(System.Data.CommandType,System.String,System.Data.Common.DbConnection,System.Threading.CancellationToken)">
+            <summary>
+            Utility method for executing an Ad-Hoc query or stored procedure without a transaction
+            </summary>
+            <param name="token">Propagates notification that operations should be canceled</param>
+            <param name="connection">An instance of a <see cref="T:System.Data.Common.DbConnection"/> object to use to query a datastore</param>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <returns>Returns the number of rows affected by this query as a <see cref="T:System.Threading.Tasks.Task`1"/></returns>
+        </member>
+        <member name="M:ADONetHelper.ISqlExecutor.ExecuteTransactedNonQueryAsync(System.Data.CommandType,System.String)">
+            <summary>
+            Utility method for executing a query or stored procedure in a SQL transaction
+            </summary>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <returns>Returns the number of rows affected by this query</returns>
+        </member>
+        <member name="M:ADONetHelper.ISqlExecutor.ExecuteTransactedNonQueryAsync(System.Data.CommandType,System.Data.Common.DbTransaction,System.String)">
+            <summary>
+            Utility method for executing a query or stored procedure in a SQL transaction
+            </summary>
+            <param name="transact">An instance of a <see cref="T:System.Data.Common.DbTransaction"/> class</param>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <returns>Returns the number of rows affected by this query</returns>
+        </member>
         <member name="T:ADONetHelper.IXMLExecutor">
             <summary>
             Contract class that defines how a class that can execute sql queries should return xml from the database
@@ -1562,6 +1864,32 @@
             </summary>
             <param name="query">The query command text or name of stored procedure to execute against the data store</param>
             <returns>Returns an instance of <see cref="T:System.Xml.XmlReader"/> based on the <paramref name="query"/> passed into the routine</returns>
+        </member>
+        <member name="M:ADONetHelper.IXMLExecutor.ExecuteXMLReaderAsync(System.String)">
+            <summary>
+            Returns an instance of <see cref="T:System.Xml.XmlReader"/> based on the <paramref name="query"/>
+            </summary>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <returns>Returns an instance of <see cref="T:System.Xml.XmlReader"/> based on the <paramref name="query"/> passed into the routine</returns>
+        </member>
+        <member name="T:ADONetHelper.QueryBuilder">
+            <summary>
+            Utility class that builds out queries to be exectued against a database
+            </summary>
+        </member>
+        <member name="M:ADONetHelper.QueryBuilder.CreateInsertStatement``1(System.String)">
+            <summary>
+            Creates a parameterized insert statement
+            </summary>
+            <param name="variableBinder">The binding symbol for variables and parameters for a specific RDBMS, defaults to @</param>
+            <returns>Returns an ANSI standard insert statement as a <see cref="T:System.String"/></returns>
+        </member>
+        <member name="M:ADONetHelper.QueryBuilder.CreateUpdateStatement``1(System.String)">
+            <summary>
+            Creates a parameterized update statement
+            </summary>
+            <param name="variableBinder">The binding symbol for variables and parameters for a specific RDBMS, defaults to @</param>
+            <returns>Returns an ANSI standard update statement as a <see cref="T:System.String"/></returns>
         </member>
         <member name="T:ADONetHelper.SqlExecutor">
             <summary>
@@ -1620,49 +1948,15 @@
         </member>
         <member name="M:ADONetHelper.SqlExecutor.#ctor(ADONetHelper.IDbObjectFactory)">
             <summary>
-            Initializes an instance of the SQLExecutor class with an instance of the client DbProviderFactory
+            Initializes an instance of the SQLExecutor class with an instance of <see cref="T:ADONetHelper.IDbObjectFactory"/>
             </summary>
-            <param name="factory">An instance of the providers DbProviderFactory class</param>
+            <param name="factory">An instance of <see cref="T:ADONetHelper.IDbObjectFactory"/></param>
         </member>
         <member name="M:ADONetHelper.SqlExecutor.#ctor(System.Data.Common.DbProviderFactory)">
             <summary>
             Instantiates a new instance of <see cref="T:ADONetHelper.SqlExecutor"/> with the <paramref name="factory"/>
             </summary>
             <param name="factory">An instance of <see cref="T:System.Data.Common.DbProviderFactory"/></param>
-        </member>
-        <member name="M:ADONetHelper.SqlExecutor.GetDataSet(System.Data.CommandType,System.String)">
-            <summary>
-            Gets an instance of <see cref="T:System.Data.DataSet"/>
-            </summary>
-            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
-            <param name="query">SQL query to use to build a <see cref="T:System.Data.DataSet"/></param>
-            <returns>Returns an instance of <see cref="T:System.Data.DataSet"/> based on the <paramref name="query"/> passed into the routine</returns>
-        </member>
-        <member name="M:ADONetHelper.SqlExecutor.GetDataSet(System.Data.CommandType,System.String,System.Data.Common.DbConnection)">
-            <summary>
-            Gets an instance of <see cref="T:System.Data.DataSet"/>
-            </summary>
-            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
-            <param name="connection">An instance of <see cref="T:System.Data.Common.DbConnection"/></param>
-            <param name="query">SQL query to use to build a <see cref="T:System.Data.DataSet"/></param>
-            <returns>Returns an instance of <see cref="T:System.Data.DataSet"/> based on the <paramref name="query"/> passed into the routine</returns>
-        </member>
-        <member name="M:ADONetHelper.SqlExecutor.GetDataTable(System.Data.CommandType,System.String)">
-            <summary>
-            Gets an instance of <see cref="T:System.Data.DataTable"/>
-            </summary>
-            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
-            <param name="query">SQL query to use to build a result set</param>
-            <returns>Returns an instance of <see cref="T:System.Data.DataTable"/></returns>
-        </member>
-        <member name="M:ADONetHelper.SqlExecutor.GetDataTable(System.Data.CommandType,System.String,System.Data.Common.DbConnection)">
-            <summary>
-            Gets an instance of <see cref="T:System.Data.DataTable"/>
-            </summary>
-            <param name="connection">An instance of <see cref="T:System.Data.Common.DbConnection"/></param>
-            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
-            <param name="query">SQL query to use to build a result set</param>
-            <returns>Returns an instance of <see cref="T:System.Data.DataTable"/></returns>
         </member>
         <member name="M:ADONetHelper.SqlExecutor.GetDataObject``1(System.Data.CommandType,System.String)">
             <summary>
@@ -1795,6 +2089,260 @@
             Utility method for returning a scalar value from the database
             </summary>
             <param name="transact">An instance of <see cref="T:System.Data.Common.DbTransaction"/></param>
+            <param name="connection">An instance of a <see cref="T:System.Data.Common.DbConnection"/> object to use to query a datastore</param>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <returns>Returns the value of the first column in the first row returned from the passed in query as an object</returns>
+        </member>
+        <member name="M:ADONetHelper.SqlExecutor.GetDataObjectAsync``1(System.Data.CommandType,System.String)">
+            <summary>
+            Gets a single instance of <typeparamref name="T"/> based on the <paramref name="query"/> passed into the routine
+            </summary>
+            <typeparam name="T">An instance of the type caller wants create from the query passed into procedure</typeparam>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <returns>Gets an instance of <typeparamref name="T"/> based on the <paramref name="query"/> passed into the routine.
+            Or the default value of <typeparamref name="T"/> if there are no search results
+            </returns>
+        </member>
+        <member name="M:ADONetHelper.SqlExecutor.GetDataObjectAsync``1(System.Data.CommandType,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets a single instance of <typeparamref name="T"/> based on the <paramref name="query"/> passed into the routine
+            </summary>
+            <typeparam name="T">An instance of the type caller wants create from the query passed into procedure</typeparam>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <param name="token">Structure that propogates a notification that an operation should be cancelled</param>
+            <returns>Gets an instance of <typeparamref name="T"/> based on the <paramref name="query"/> passed into the routine.
+            Or the default value of <typeparamref name="T"/> if there are no search results
+            </returns>
+        </member>
+        <member name="M:ADONetHelper.SqlExecutor.GetDataObjectAsync``1(System.Data.CommandType,System.String,System.String)">
+            <summary>
+            Gets a single instance of <typeparamref name="T"/> based on the <paramref name="query"/> passed into the routine
+            </summary>
+            <typeparam name="T">An instance of the type caller wants create from the query passed into procedure</typeparam>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <param name="connectionString">The connection string used to query a data store</param>
+            <returns>Gets an instance of <typeparamref name="T"/> based on the <paramref name="query"/> passed into the routine.
+            Or the default value of <typeparamref name="T"/> if there are no search results
+            </returns>
+        </member>
+        <member name="M:ADONetHelper.SqlExecutor.GetDataObjectAsync``1(System.Data.CommandType,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets a single instance of <typeparamref name="T"/> based on the <paramref name="query"/> passed into the routine
+            </summary>
+            <typeparam name="T">An instance of the type caller wants create from the query passed into procedure</typeparam>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <param name="connectionString">The connection string used to query a data store</param>
+            <param name="token">Structure that propogates a notification that an operation should be cancelled</param>
+            <returns>Gets an instance of <typeparamref name="T"/> based on the <paramref name="query"/> passed into the routine.
+            Or the default value of <typeparamref name="T"/> if there are no search results
+            </returns>
+        </member>
+        <member name="M:ADONetHelper.SqlExecutor.GetDataObjectAsync``1(System.Data.CommandType,System.String,System.Data.Common.DbConnection)">
+            <summary>
+            Gets a single instance of <typeparamref name="T"/> based on the <paramref name="query"/> passed into the routine
+            </summary>
+            <typeparam name="T">An instance of the type caller wants create from the query passed into procedure</typeparam>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <param name="connection">An instance of a DbConnection object to use to query a datastore</param>
+            <returns>Gets an instance of <typeparamref name="T"/> based on the <paramref name="query"/> passed into the routine.
+            Or the default value of <typeparamref name="T"/> if there are no search results
+            </returns>
+        </member>
+        <member name="M:ADONetHelper.SqlExecutor.GetDataObjectAsync``1(System.Data.CommandType,System.String,System.Data.Common.DbConnection,System.Threading.CancellationToken)">
+            <summary>
+            Gets an instance of the <typeparamref name="T"/> parameter object that creates an object based on the query passed into the routine
+            </summary>
+            <typeparam name="T">An instance of the type caller wants create from the query passed into procedure</typeparam>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <param name="connection">An instance of a DbConnection object to use to query a datastore</param>
+            <param name="token">Structure that propogates a notification that an operation should be cancelled</param>
+            <returns>Gets an instance of <typeparamref name="T"/> based on the <paramref name="query"/> passed into the routine.
+            Or the default value of <typeparamref name="T"/> if there are no search results
+            </returns>
+        </member>
+        <member name="M:ADONetHelper.SqlExecutor.GetDataObjectListAsync``1(System.Data.CommandType,System.String)">
+            <summary>
+            Gets a list of the type parameter object that creates an object based on the query passed into the routine
+            </summary>
+            <typeparam name="T">An instance of the type caller wants create from the query passed into procedure</typeparam>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <returns>Returns a <see cref="T:System.Collections.Generic.List`1"/> based on the results of the passed in <paramref name="query"/></returns>
+        </member>
+        <member name="M:ADONetHelper.SqlExecutor.GetDataObjectListAsync``1(System.Data.CommandType,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets a list of the type parameter object that creates an object based on the query passed into the routine
+            </summary>
+            <typeparam name="T">An instance of the type caller wants create from the query passed into procedure</typeparam>
+            <param name="token">Structure that propogates a notification that an operation should be cancelled</param>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <returns>Returns a <see cref="T:System.Collections.Generic.List`1"/> based on the results of the passed in <paramref name="query"/></returns>
+        </member>
+        <member name="M:ADONetHelper.SqlExecutor.GetDataObjectListAsync``1(System.Data.CommandType,System.String,System.String)">
+            <summary>
+            Gets a list of the type parameter object that creates an object based on the query passed into the routine
+            </summary>
+            <typeparam name="T">An instance of the type caller wants create from the query passed into procedure</typeparam>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <param name="connectionString">The connection string used to query a data store</param>
+            <returns>Returns a <see cref="T:System.Collections.Generic.List`1"/> based on the results of the passed in <paramref name="query"/></returns>
+        </member>
+        <member name="M:ADONetHelper.SqlExecutor.GetDataObjectListAsync``1(System.Data.CommandType,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets a list of the type parameter object that creates an object based on the query passed into the routine
+            </summary>
+            <typeparam name="T">An instance of the type caller wants create from the query passed into procedure</typeparam>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <param name="connectionString">The connection string used to query a data store</param>
+            <param name="token">Structure that propogates a notification that an operation should be cancelled</param>
+            <returns>Returns a <see cref="T:System.Collections.Generic.List`1"/> based on the results of the passed in <paramref name="query"/></returns>
+        </member>
+        <member name="M:ADONetHelper.SqlExecutor.GetDataObjectListAsync``1(System.Data.CommandType,System.String,System.Data.Common.DbConnection)">
+            <summary>
+            Gets a list of the type parameter object that creates an object based on the query passed into the routine
+            </summary>
+            <typeparam name="T">An instance of the type caller wants create from the query passed into procedure</typeparam>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <param name="connection">An instance of a DbConnection object to use to query a datastore</param>
+            <returns>Returns a <see cref="T:System.Collections.Generic.List`1"/> based on the results of the passed in <paramref name="query"/>s</returns>
+        </member>
+        <member name="M:ADONetHelper.SqlExecutor.GetDataObjectListAsync``1(System.Data.CommandType,System.String,System.Data.Common.DbConnection,System.Threading.CancellationToken)">
+            <summary>
+            Gets a list of the type parameter object that creates an object based on the query passed into the routine
+            </summary>
+            <typeparam name="T">An instance of the type caller wants create from the query passed into procedure</typeparam>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <param name="connection">An instance of a DbConnection object to use to query a datastore</param>
+            <param name="token">Structure that propogates a notification that an operation should be cancelled</param>
+            <returns>Returns a <see cref="T:System.Collections.Generic.List`1"/> based on the results of the passed in <paramref name="query"/></returns>
+        </member>
+        <member name="M:ADONetHelper.SqlExecutor.GetDbDataReaderAsync(System.Data.CommandType,System.String,System.String,System.Data.CommandBehavior)">
+            <summary>
+            Utility method for returning a <see cref="T:System.Threading.Tasks.Task`1"/> object
+            </summary>
+            <param name="behavior">Provides a description of the results of the query and its effect on the database.  Defaults to <see cref="F:System.Data.CommandBehavior.CloseConnection"/></param>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <param name="connectionString">The connection string used to query a data store</param>
+            <returns>Returns an instance of <see cref="T:System.Data.Common.DbDataReader"/>, the caller is responsible for handling closing the DataReader</returns>
+        </member>
+        <member name="M:ADONetHelper.SqlExecutor.GetDbDataReaderAsync(System.Data.CommandType,System.String,System.String,System.Threading.CancellationToken,System.Data.CommandBehavior)">
+            <summary>
+            Utility method for returning a <see cref="T:System.Threading.Tasks.Task`1"/> object
+            </summary>
+            <param name="behavior">Provides a description of the results of the query and its effect on the database.  Defaults to <see cref="F:System.Data.CommandBehavior.CloseConnection"/></param>
+            <param name="token">Structure that propogates a notification that an operation should be cancelled</param>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <param name="connectionString">The connection string used to query a data store</param>
+            <returns>Returns an instance of <see cref="T:System.Data.Common.DbDataReader"/>, the caller is responsible for handling closing the DataReader</returns>
+        </member>
+        <member name="M:ADONetHelper.SqlExecutor.GetDbDataReaderAsync(System.Data.CommandType,System.String,System.Data.CommandBehavior,System.Data.Common.DbTransaction)">
+            <summary>
+            Utility method for returning a <see cref="T:System.Threading.Tasks.Task`1"/> object
+            </summary>
+            <param name="transact">An instance of <see cref="T:System.Data.Common.DbTransaction"/></param>
+            <param name="behavior">Provides a description of the results of the query and its effect on the database.  Defaults to <see cref="F:System.Data.CommandBehavior.Default"/></param>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <returns>Returns an instance of <see cref="T:System.Data.Common.DbDataReader"/>, the caller is responsible for handling closing the DataReader</returns>
+        </member>
+        <member name="M:ADONetHelper.SqlExecutor.GetDbDataReaderAsync(System.Data.CommandType,System.String,System.Threading.CancellationToken,System.Data.CommandBehavior,System.Data.Common.DbTransaction)">
+            <summary>
+            Utility method for returning a <see cref="T:System.Threading.Tasks.Task`1"/> object
+            </summary>
+            <param name="transact">An instance of <see cref="T:System.Data.Common.DbTransaction"/></param>
+            <param name="behavior">Provides a description of the results of the query and its effect on the database.  Defaults to <see cref="F:System.Data.CommandBehavior.Default"/></param>
+            <param name="token">Structure that propogates a notification that an operation should be cancelled</param>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <returns>Returns an instance of <see cref="T:System.Data.Common.DbDataReader"/>, the caller is responsible for handling closing the DataReader</returns>
+        </member>
+        <member name="M:ADONetHelper.SqlExecutor.GetDbDataReaderAsync(System.Data.CommandType,System.String,System.Data.Common.DbConnection,System.Data.CommandBehavior,System.Data.Common.DbTransaction)">
+            <summary>
+            Utility method for returning a <see cref="T:System.Threading.Tasks.Task`1"/> object
+            </summary>
+            <param name="transact">An instance of <see cref="T:System.Data.Common.DbTransaction"/></param>
+            <param name="behavior">Provides a description of the results of the query and its effect on the database.  Defaults to <see cref="F:System.Data.CommandBehavior.Default"/></param>
+            <param name="connection">An instance of a <see cref="T:System.Data.Common.DbConnection"/> object to use to query a datastore</param>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <returns>Returns an instance of <see cref="T:System.Data.Common.DbDataReader"/>, the caller is responsible for handling closing the DataReader</returns>
+        </member>
+        <member name="M:ADONetHelper.SqlExecutor.GetDbDataReaderAsync(System.Data.CommandType,System.String,System.Data.Common.DbConnection,System.Threading.CancellationToken,System.Data.CommandBehavior,System.Data.Common.DbTransaction)">
+            <summary>
+            Utility method for returning a <see cref="T:System.Threading.Tasks.Task`1"/> object
+            </summary>
+            <param name="transact">An instance of <see cref="T:System.Data.Common.DbTransaction"/></param>
+            <param name="behavior">Provides a description of the results of the query and its effect on the database.  Defaults to <see cref="F:System.Data.CommandBehavior.Default"/></param>
+            <param name="token">Structure that propogates a notification that an operation should be cancelled</param>
+            <param name="connection">An instance of a <see cref="T:System.Data.Common.DbConnection"/> object to use to query a datastore</param>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <returns>Returns an instance of <see cref="T:System.Data.Common.DbDataReader"/> object, the caller is responsible for handling closing the DataReader</returns>
+        </member>
+        <member name="M:ADONetHelper.SqlExecutor.GetScalarValueAsync(System.Data.CommandType,System.String)">
+            <summary>
+            Utility method for returning a <see cref="T:System.Threading.Tasks.Task`1"/> value from the database
+            </summary>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <returns>Returns the value of the first column in the first row returned from the passed in query as an object</returns>
+        </member>
+        <member name="M:ADONetHelper.SqlExecutor.GetScalarValueAsync(System.Data.CommandType,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Utility method for returning a <see cref="T:System.Threading.Tasks.Task`1"/> value from the database
+            </summary>
+            <param name="token">Structure that propogates a notification that an operation should be cancelled</param>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <returns>Returns the value of the first column in the first row returned from the passed in query as an object</returns>
+        </member>
+        <member name="M:ADONetHelper.SqlExecutor.GetScalarValueAsync(System.Data.CommandType,System.String,System.String)">
+            <summary>
+            Utility method for returning a <see cref="T:System.Threading.Tasks.Task`1"/> value from the database
+            </summary>
+            <param name="connectionString">The connection string used to query a data store</param>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <returns>Returns the value of the first column in the first row returned from the passed in query as an object</returns>
+        </member>
+        <member name="M:ADONetHelper.SqlExecutor.GetScalarValueAsync(System.Data.CommandType,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Utility method for returning a <see cref="T:System.Threading.Tasks.Task`1"/> value from the database
+            </summary>
+            <param name="token">Structure that propogates a notification that an operation should be cancelled</param>
+            <param name="connectionString">The connection string used to query a data store</param>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <returns>Returns the value of the first column in the first row returned from the passed in query as an object</returns>
+        </member>
+        <member name="M:ADONetHelper.SqlExecutor.GetScalarValueAsync(System.Data.CommandType,System.String,System.Data.Common.DbConnection)">
+            <summary>
+            Utility method for returning a <see cref="T:System.Threading.Tasks.Task`1"/> value from the database
+            </summary>
+            <param name="connection">An instance of a <see cref="T:System.Data.Common.DbConnection"/> object to use to query a datastore</param>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <returns>Returns the value of the first column in the first row returned from the passed in query as an object</returns>
+        </member>
+        <member name="M:ADONetHelper.SqlExecutor.GetScalarValueAsync(System.Data.CommandType,System.String,System.Data.Common.DbConnection,System.Threading.CancellationToken)">
+            <summary>
+            Utility method for returning a <see cref="T:System.Threading.Tasks.Task`1"/> value from the database
+            </summary>
+            <param name="token">Structure that propogates a notification that an operation should be cancelled</param>
             <param name="connection">An instance of a <see cref="T:System.Data.Common.DbConnection"/> object to use to query a datastore</param>
             <param name="query">The query command text or name of stored procedure to execute against the data store</param>
             <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
@@ -1946,27 +2494,151 @@
             <param name="transact">An instance of a <see cref="T:System.Data.Common.DbTransaction"/> class</param>
             <returns>Returns the number of rows affected by all queries passed in, assuming all are succesful</returns>
         </member>
+        <member name="M:ADONetHelper.SqlExecutor.ExecuteNonQueryAsync(System.Data.CommandType,System.String)">
+            <summary>
+            Utility method for executing an Ad-Hoc query or stored procedure without a transaction
+            </summary>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <returns>Returns the number of rows affected by this query as a <see cref="T:System.Threading.Tasks.Task`1"/></returns>
+        </member>
+        <member name="M:ADONetHelper.SqlExecutor.ExecuteNonQueryAsync(System.Data.CommandType,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Utility method for executing an Ad-Hoc query or stored procedure without a transaction
+            </summary>
+            <param name="token">Propagates notification that operations should be canceled</param>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <returns>Returns the number of rows affected by this query as a <see cref="T:System.Threading.Tasks.Task`1"/></returns>
+        </member>
+        <member name="M:ADONetHelper.SqlExecutor.ExecuteNonQueryAsync(System.Data.CommandType,System.String,System.String)">
+            <summary>
+            Utility method for executing an Ad-Hoc query or stored procedure without a transaction
+            </summary>
+            <param name="connectionString">The connection string used to query a data store</param>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <returns>Returns the number of rows affected by this query as a <see cref="T:System.Threading.Tasks.Task`1"/></returns>
+        </member>
+        <member name="M:ADONetHelper.SqlExecutor.ExecuteNonQueryAsync(System.Data.CommandType,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Utility method for executing an Ad-Hoc query or stored procedure without a transaction
+            </summary>
+            <param name="token">Propagates notification that operations should be canceled</param>
+            <param name="connectionString">The connection string used to query a data store</param>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <returns>Returns the number of rows affected by this query as a <see cref="T:System.Threading.Tasks.Task`1"/></returns>
+        </member>
+        <member name="M:ADONetHelper.SqlExecutor.ExecuteNonQueryAsync(System.Data.CommandType,System.String,System.Data.Common.DbConnection)">
+            <summary>
+            Utility method for executing an Ad-Hoc query or stored procedure without a transaction
+            </summary>
+            <param name="connection">An instance of a <see cref="T:System.Data.Common.DbConnection"/> object to use to query a datastore</param>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <returns>Returns the number of rows affected by this query as a <see cref="T:System.Threading.Tasks.Task`1"/></returns>
+        </member>
+        <member name="M:ADONetHelper.SqlExecutor.ExecuteNonQueryAsync(System.Data.CommandType,System.String,System.Data.Common.DbConnection,System.Threading.CancellationToken)">
+            <summary>
+            Utility method for executing an Ad-Hoc query or stored procedure without a transaction
+            </summary>
+            <param name="token">Propagates notification that operations should be canceled</param>
+            <param name="connection">An instance of a <see cref="T:System.Data.Common.DbConnection"/> object to use to query a datastore</param>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <returns>Returns the number of rows affected by this query as a <see cref="T:System.Threading.Tasks.Task`1"/></returns>
+        </member>
+        <member name="M:ADONetHelper.SqlExecutor.ExecuteTransactedNonQueryAsync(System.Data.CommandType,System.String)">
+            <summary>
+            Utility method for executing a query or stored procedure in a SQL transaction
+            </summary>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <returns>Returns the number of rows affected by this query</returns>
+        </member>
+        <member name="M:ADONetHelper.SqlExecutor.ExecuteTransactedNonQueryAsync(System.Data.CommandType,System.String,System.String)">
+            <summary>
+            Utility method for executing an Ad-Hoc query or stored procedure without a transaction
+            </summary>
+            <param name="connectionString">The connection string used to query a data store</param>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <returns>Returns the number of rows affected by this query as a <see cref="T:System.Threading.Tasks.Task`1"/></returns>
+        </member>
+        <member name="M:ADONetHelper.SqlExecutor.ExecuteTransactedNonQueryAsync(System.Data.CommandType,System.Data.Common.DbTransaction,System.String)">
+            <summary>
+            Utility method for executing a query or stored procedure in a SQL transaction
+            </summary>
+            <param name="transact">An instance of a <see cref="T:System.Data.Common.DbTransaction"/> class</param>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <returns>Returns the number of rows affected by this query</returns>
+        </member>
+        <member name="M:ADONetHelper.SqlExecutor.ExecuteTransactedNonQueryAsync(System.Data.CommandType,System.Data.Common.DbTransaction,System.String,System.Boolean)">
+            <summary>
+            Utility method for executing a query or stored procedure in a SQL transaction
+            </summary>
+            <param name="commitTransaction">Whether or not to commit this transaction after it was completed successfully</param>
+            <param name="transact">An instance of a <see cref="T:System.Data.Common.DbTransaction"/> class</param>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <returns>Returns the number of rows affected by this query</returns>
+        </member>
+        <member name="M:ADONetHelper.SqlExecutor.ExecuteTransactedNonQueryAsync(System.Data.CommandType,System.String,System.Data.Common.DbConnection)">
+            <summary>
+            Utility method for executing a query or stored procedure in a SQL transaction
+            </summary>
+            <param name="connection">An instance of a <see cref="T:System.Data.Common.DbConnection"/> object to use to query a datastore</param>
+            <param name="query">The query command text or name of stored procedure to execute against the data store</param>
+            <param name="queryCommandType">Represents how a command should be interpreted by the data provider</param>
+            <returns>Returns the number of rows affected by this query</returns>
+        </member>
         <member name="M:ADONetHelper.SqlExecutor.GetDynamicResults(System.Data.Common.DbDataReader)">
             <summary>
             Gets the query values coming out of the passed in <paramref name="reader"/> for each row retrieved
             </summary>
-            <param name="reader">An instance of <see cref="T:System.Data.Common.DbDataRecord"/> that has the results from a SQL query</param>
-            <returns>Retusns a <see cref="T:System.Collections.Generic.List`1"/> of <see cref="T:System.Collections.Generic.Dictionary`2"/> from the results of a sql query</returns>
+            <param name="reader">An instance of <see cref="T:System.Data.Common.DbDataReader"/> that has the results from a SQL query</param>
+            <returns>Returns a <see cref="T:System.Collections.Generic.List`1"/> of <see cref="T:System.Collections.Generic.Dictionary`2"/> from the results of a sql query</returns>
         </member>
-        <member name="M:ADONetHelper.SqlExecutor.GetDynamicType``1(System.Collections.Generic.IEnumerable{System.Collections.Generic.IDictionary{System.String,System.Object}})">
+        <member name="M:ADONetHelper.SqlExecutor.GetDynamicTypeList``1(System.Collections.Generic.IEnumerable{System.Collections.Generic.IDictionary{System.String,System.Object}})">
             <summary>
             Gets a <see cref="T:System.Collections.Generic.List`1"/> from the passed in <see cref="T:System.Collections.Generic.IEnumerable`1"/>
             </summary>
-            <param name="result">An <see cref="T:System.Collections.Generic.IEnumerable`1"/>/> with the results from a sql query</param>
+            <param name="results">An <see cref="T:System.Collections.Generic.IEnumerable`1"/>/> with the results from a sql query</param>
             <typeparam name="T">A tyoe that will be generated from the results of a sql query</typeparam>
             <seealso cref="T:System.Collections.Generic.IEnumerable`1"/>
             <seealso cref="T:System.Collections.Generic.List`1"/>
+        </member>
+        <member name="M:ADONetHelper.SqlExecutor.GetSingleDynamicType``1(System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Gets the type of the single dynamic.
+            </summary>
+            <typeparam name="T">A tyoe that will be generated from the results of a sql query</typeparam>
+            <param name="results">The results.</param>
+            <returns></returns>
         </member>
         <member name="M:ADONetHelper.SqlExecutor.GetParameterList(System.Data.Common.DbCommand)">
             <summary>
             Gets all of the existing output parameter values from the passed in command object
             </summary>
             <param name="command">An instance of an existing <see cref="T:System.Data.Common.DbCommand"/> object to retrieve the output parameter values from</param>
+        </member>
+        <member name="M:ADONetHelper.SqlExecutor.GetDynamicResultsAsync(System.Data.Common.DbDataReader)">
+            <summary>
+            Gets the query values coming out of the passed in <paramref name="reader"/> for each row retrieved
+            </summary>
+            <param name="reader">An instance of <see cref="T:System.Data.Common.DbDataReader"/> that has the results from a SQL query</param>
+            <returns>Returns a <see cref="T:System.Collections.Generic.List`1"/> of <see cref="T:System.Collections.Generic.Dictionary`2"/> from the results of a sql query</returns>
+        </member>
+        <member name="M:ADONetHelper.SqlExecutor.GetDynamicTypeAsync``1(System.Collections.Generic.IEnumerable{System.Collections.Generic.IDictionary{System.String,System.Object}})">
+            <summary>
+            Gets a <see cref="T:System.Collections.Generic.List`1"/> from the passed in <see cref="T:System.Collections.Generic.IEnumerable`1"/>
+            </summary>
+            <param name="dictList">An <see cref="T:System.Collections.Generic.IEnumerable`1"/>/> with the results from a sql query</param>
+            <typeparam name="T">A <see cref="T:System.Collections.Generic.List`1"/>that will be generated from the results of a sql query</typeparam>
+            <seealso cref="T:System.Collections.Generic.IEnumerable`1"/>
+            <seealso cref="T:System.Collections.Generic.List`1"/>
         </member>
         <member name="M:ADONetHelper.SqlExecutor.Dispose(System.Boolean)">
             <summary>
@@ -2045,6 +2717,19 @@
             <summary>
             Opens the passed in <see cref="T:System.Data.Common.DbConnection"/>
             </summary>
+            <param name="connection">An instance of the <see cref="T:System.Data.Common.DbConnection"/> class</param>
+        </member>
+        <member name="M:ADONetHelper.UtilityHelper.OpenDbConnectionAsync(System.Data.Common.DbConnection)">
+            <summary>
+            Opens the passed in <see cref="T:System.Data.Common.DbConnection"/> if the <see cref="P:System.Data.Common.DbConnection.State"/> is <see cref="F:System.Data.ConnectionState.Closed"/>
+            </summary>
+            <param name="connection">An instance of the <see cref="T:System.Data.Common.DbConnection"/> class</param>
+        </member>
+        <member name="M:ADONetHelper.UtilityHelper.OpenDbConnectionAsync(System.Data.Common.DbConnection,System.Threading.CancellationToken)">
+            <summary>
+            Opens the passed in <see cref="T:System.Data.Common.DbConnection"/> if the <see cref="P:System.Data.Common.DbConnection.State"/> is <see cref="F:System.Data.ConnectionState.Closed"/>
+            </summary>
+            <param name="token">Structure that propogates a notification that an operation should be cancelled</param>
             <param name="connection">An instance of the <see cref="T:System.Data.Common.DbConnection"/> class</param>
         </member>
     </members>

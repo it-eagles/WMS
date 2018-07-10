@@ -57,7 +57,7 @@
 
                                      <div class="box-footer text-right">
                                         <div class="text-center">  
-                                           <button type="submit" runat="server" class="btn btn-primary" id="btnImport" title="btnImport" onserverclick="btnGenScript_Click">Import</button>
+                                           <%--<button type="submit" runat="server" class="btn btn-primary" id="btnImport" title="btnImport" onserverclick="btnGenScript_Click">Import</button>--%>
 <%--                                         <button type="submit" runat="server" class="btn btn-primary" id="btnAdd" title="btnAdd" onserverclick="btnAdd_ServerClick">Add</button>
                                          <button type="reset"  runat="server" class="btn btn-danger" id="btnClear" title="btnClear" onserverclick="btnClear_ServerClick">Clear</button>--%>
                                         </div>
