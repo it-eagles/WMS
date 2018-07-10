@@ -251,7 +251,11 @@
     <Content Include="MasterPartyView.aspx" />
     <Content Include="PartyMaster.aspx" />
     <Content Include="CreateRec.aspx" />
+<<<<<<< HEAD
     <Content Include="ReportIEAT-E-02.aspx" />
+=======
+    <Content Include="ReportIEATRec.aspx" />
+>>>>>>> 747225631abff5d3d258e6f6282358c469a58db1
     <Content Include="Scripts\bootstrap-colorpicker\dist\css\bootstrap-colorpicker.css" />
     <Content Include="Scripts\bootstrap-colorpicker\dist\css\bootstrap-colorpicker.min.css" />
     <Content Include="Scripts\bootstrap-colorpicker\dist\img\bootstrap-colorpicker\alpha-horizontal.png" />
@@ -7372,11 +7376,19 @@
       <DependentUpon>CreateRec.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="ReportIEAT-E-02.aspx.designer.vb">
       <DependentUpon>ReportIEAT-E-02.aspx</DependentUpon>
     </Compile>
     <Compile Include="ReportIEAT-E-02.aspx.vb">
       <DependentUpon>ReportIEAT-E-02.aspx</DependentUpon>
+=======
+    <Compile Include="ReportIEATRec.aspx.designer.vb">
+      <DependentUpon>ReportIEATRec.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportIEATRec.aspx.vb">
+      <DependentUpon>ReportIEATRec.aspx</DependentUpon>
+>>>>>>> 747225631abff5d3d258e6f6282358c469a58db1
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Test.aspx.designer.vb">

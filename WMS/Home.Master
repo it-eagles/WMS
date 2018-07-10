@@ -174,7 +174,7 @@
                             </a>
                             <ul class="treeview-menu">
                                 <li><a href="CreateRec.aspx"><i class="fa fa-circle-o"></i>Create Rec. LOT</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i>Report IEAT Rec</a></li>
+                                <li><a href="ReportIEATRec.aspx"><i class="fa fa-circle-o"></i>Report IEAT Rec</a></li>
                                 <li><a href="#"><i class="fa fa-circle-o"></i>Truck Waybill Rec</a></li>
                                 <li><a href="#"><i class="fa fa-circle-o"></i>Invoice/Packing List Rec</a></li>
                                 <li><a href="#"><i class="fa fa-circle-o"></i>Plan Receive</a></li>
@@ -628,6 +628,14 @@
                  $('#datepicker').datepicker({
                      autoclose: true
                  })
+<<<<<<< HEAD
+=======
+
+                 $('#dtpInvoiceDate').datepicker({
+                     autoclose: true
+                 })
+
+>>>>>>> 747225631abff5d3d258e6f6282358c469a58db1
 
                  //Date pickerJobdate       USE IN CreateRec.aspx
                  $('#datepickerJobdate').datepicker({
