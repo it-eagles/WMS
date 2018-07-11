@@ -6,327 +6,7 @@ WMS
 </name>
 </assembly>
 <members>
-<member name="F:WMS.ReportIEAT_E_02.form1">
-	<summary>
-form1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.ReportIEAT_E_02.ScriptManager1">
-	<summary>
-ScriptManager1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.ReportIEAT_E_02.txtConsignneeCode">
-	<summary>
-txtConsignneeCode control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.ReportIEAT_E_02.txtConsignneesName">
-	<summary>
-txtConsignneesName control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.ReportIEAT_E_02.rdb107">
-	<summary>
-rdb107 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.ReportIEAT_E_02.rdb108">
-	<summary>
-rdb108 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.ReportIEAT_E_02.rdbPermitTranfer">
-	<summary>
-rdbPermitTranfer control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.ReportIEAT_E_02.txtAmountInvoice">
-	<summary>
-txtAmountInvoice control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.ReportIEAT_E_02.txtInvoiceNo1">
-	<summary>
-txtInvoiceNo1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.ReportIEAT_E_02.txtInvoiceNo3">
-	<summary>
-txtInvoiceNo3 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.ReportIEAT_E_02.txtInvoiceNo5">
-	<summary>
-txtInvoiceNo5 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.ReportIEAT_E_02.txtInvoiceNo7">
-	<summary>
-txtInvoiceNo7 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.ReportIEAT_E_02.txtInvoiceNo9">
-	<summary>
-txtInvoiceNo9 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.ReportIEAT_E_02.txtInvoiceNo2">
-	<summary>
-txtInvoiceNo2 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.ReportIEAT_E_02.txtInvoiceNo4">
-	<summary>
-txtInvoiceNo4 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.ReportIEAT_E_02.txtInvoiceNo6">
-	<summary>
-txtInvoiceNo6 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.ReportIEAT_E_02.txtInvoiceNo8">
-	<summary>
-txtInvoiceNo8 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.ReportIEAT_E_02.txtInvoiceNo10">
-	<summary>
-txtInvoiceNo10 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.TruckManifest.form1">
-	<summary>
-form1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.TruckManifest.ScriptManager1">
-	<summary>
-ScriptManager1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.TruckManifest.txtConsignneeCode">
-	<summary>
-txtConsignneeCode control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.TruckManifest.txtConsignneesName">
-	<summary>
-txtConsignneesName control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.TruckManifest.rdb107">
-	<summary>
-rdb107 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.TruckManifest.rdb108">
-	<summary>
-rdb108 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.TruckManifest.rdbPermitTranfer">
-	<summary>
-rdbPermitTranfer control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.TruckManifest.txtAmountInvoice">
-	<summary>
-txtAmountInvoice control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.TruckManifest.txtInvoiceNo1">
-	<summary>
-txtInvoiceNo1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.TruckManifest.txtInvoiceNo3">
-	<summary>
-txtInvoiceNo3 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.TruckManifest.txtInvoiceNo5">
-	<summary>
-txtInvoiceNo5 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.TruckManifest.txtInvoiceNo7">
-	<summary>
-txtInvoiceNo7 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.TruckManifest.txtInvoiceNo9">
-	<summary>
-txtInvoiceNo9 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.TruckManifest.txtInvoiceNo2">
-	<summary>
-txtInvoiceNo2 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.TruckManifest.txtInvoiceNo4">
-	<summary>
-txtInvoiceNo4 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.IEATOut.form1">
-	<summary>
-form1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.IEATOut.ScriptManager1">
-	<summary>
-ScriptManager1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.IEATOut.txtConsignneeCode">
-	<summary>
-txtConsignneeCode control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.IEATOut.txtConsignneesName">
-	<summary>
-txtConsignneesName control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.IEATOut.rdb107">
-	<summary>
-rdb107 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.IEATOut.rdb108">
-	<summary>
-rdb108 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.IEATOut.rdbPermitTranfer">
-	<summary>
-rdbPermitTranfer control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.ExpGenLot.form1">
+<member name="F:WMS.ExpGenLot.form1">
 	<summary>
 form1 control.
 </summary>
@@ -718,14 +398,6 @@ Bsave control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.ExpGenLot.dgvEASInv">
-	<summary>
-dgvEASInv control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
 </member><member name="F:WMS.ExpGenLot.txtDOCode">
 	<summary>
 txtDOCode control.
@@ -1062,9 +734,9 @@ txtIEATPermit control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.ExpGenLot.txtIEATDate">
+</member><member name="F:WMS.ExpGenLot.dtpIEATDate">
 	<summary>
-txtIEATDate control.
+dtpIEATDate control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -1086,17 +758,9 @@ txtEntryNo control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.ExpGenLot.dtpDeliveryDate">
+</member><member name="F:WMS.ExpGenLot.Text3">
 	<summary>
-dtpDeliveryDate control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.ExpGenLot.CalendarExtender3">
-	<summary>
-CalendarExtender3 control.
+Text3 control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -1182,14 +846,6 @@ txtCancleIEAT control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.ExpGenLot.Repeater1">
-	<summary>
-Repeater1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
 </member><member name="F:WMS.ExpGenLot.txtGenInvNo">
 	<summary>
 txtGenInvNo control.
@@ -1270,25 +926,9 @@ txtPullS control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.ExpGenLot.dtpInvoice">
+</member><member name="F:WMS.ExpGenLot.Text1">
 	<summary>
-dtpInvoice control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.ExpGenLot.CalendarExtender4">
-	<summary>
-CalendarExtender4 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.ExpGenLot.txtItemNo">
-	<summary>
-txtItemNo control.
+Text1 control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -1313,14 +953,6 @@ To modify move field declaration from designer file to code-behind file.
 </member><member name="F:WMS.ExpGenLot.txtPriceForeign">
 	<summary>
 txtPriceForeign control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.ExpGenLot.Repeater2">
-	<summary>
-Repeater2 control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -5826,6 +5458,110 @@ To modify move field declaration from designer file to code-behind file.
 </member><member name="F:WMS.MasterPartyView.txtBalance">
 	<summary>
 txtBalance control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.ReportIEATRec.form1">
+	<summary>
+form1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.ReportIEATRec.ScriptManager1">
+	<summary>
+ScriptManager1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.ReportIEATRec.ddlReportName">
+	<summary>
+ddlReportName control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.ReportIEATRec.rdbEAS001">
+	<summary>
+rdbEAS001 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.ReportIEATRec.rdbOther">
+	<summary>
+rdbOther control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.ReportIEATRec.ddlCode">
+	<summary>
+ddlCode control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.ReportIEATRec.txtName">
+	<summary>
+txtName control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.ReportIEATRec.txtTAXNo">
+	<summary>
+txtTAXNo control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.ReportIEATRec.ddlJobSite_ReportIEATRec">
+	<summary>
+ddlJobSite_ReportIEATRec control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.ReportIEATRec.txtUsedStatus">
+	<summary>
+txtUsedStatus control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.ReportIEATRec.txtQTYPallet">
+	<summary>
+txtQTYPallet control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.ReportIEATRec.txtRemark">
+	<summary>
+txtRemark control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.ReportIEATRec.btnPrint">
+	<summary>
+btnPrint control.
 </summary>
 	<remarks>
 Auto-generated field.

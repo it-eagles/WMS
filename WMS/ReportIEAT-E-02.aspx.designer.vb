@@ -32,24 +32,6 @@ Partial Public Class ReportIEAT_E_02
     Protected WithEvents ScriptManager1 As Global.System.Web.UI.ScriptManager
 
     '''<summary>
-    '''txtConsignneeCode control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtConsignneeCode As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''txtConsignneesName control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtConsignneesName As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
     '''rdb107 control.
     '''</summary>
     '''<remarks>
@@ -77,101 +59,290 @@ Partial Public Class ReportIEAT_E_02
     Protected WithEvents rdbPermitTranfer As Global.System.Web.UI.WebControls.RadioButton
 
     '''<summary>
-    '''txtAmountInvoice control.
+    '''RWD001 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtAmountInvoice As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents RWD001 As Global.System.Web.UI.WebControls.RadioButton
 
     '''<summary>
-    '''txtInvoiceNo1 control.
+    '''ROther control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtInvoiceNo1 As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents ROther As Global.System.Web.UI.WebControls.RadioButton
 
     '''<summary>
-    '''txtInvoiceNo3 control.
+    '''dcbConsigneeCode control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtInvoiceNo3 As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents dcbConsigneeCode As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''txtInvoiceNo5 control.
+    '''txtConsigneeName control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtInvoiceNo5 As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtConsigneeName As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtInvoiceNo7 control.
+    '''txtNotar control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtInvoiceNo7 As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtNotar As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtInvoiceNo9 control.
+    '''cboJobSite control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtInvoiceNo9 As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents cboJobSite As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''txtInvoiceNo2 control.
+    '''RadioButton1 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtInvoiceNo2 As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents RadioButton1 As Global.System.Web.UI.WebControls.RadioButton
 
     '''<summary>
-    '''txtInvoiceNo4 control.
+    '''RadioButton6 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtInvoiceNo4 As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents RadioButton6 As Global.System.Web.UI.WebControls.RadioButton
 
     '''<summary>
-    '''txtInvoiceNo6 control.
+    '''RadioButton5 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtInvoiceNo6 As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents RadioButton5 As Global.System.Web.UI.WebControls.RadioButton
 
     '''<summary>
-    '''txtInvoiceNo8 control.
+    '''RadioButton7 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtInvoiceNo8 As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents RadioButton7 As Global.System.Web.UI.WebControls.RadioButton
 
     '''<summary>
-    '''txtInvoiceNo10 control.
+    '''RadioButton8 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtInvoiceNo10 As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents RadioButton8 As Global.System.Web.UI.WebControls.RadioButton
+
+    '''<summary>
+    '''RadioButton9 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents RadioButton9 As Global.System.Web.UI.WebControls.RadioButton
+
+    '''<summary>
+    '''RadioButton10 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents RadioButton10 As Global.System.Web.UI.WebControls.RadioButton
+
+    '''<summary>
+    '''RadioButton11 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents RadioButton11 As Global.System.Web.UI.WebControls.RadioButton
+
+    '''<summary>
+    '''RadioButton12 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents RadioButton12 As Global.System.Web.UI.WebControls.RadioButton
+
+    '''<summary>
+    '''RadioButton13 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents RadioButton13 As Global.System.Web.UI.WebControls.RadioButton
+
+    '''<summary>
+    '''RadioButton2 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents RadioButton2 As Global.System.Web.UI.WebControls.RadioButton
+
+    '''<summary>
+    '''RadioButton3 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents RadioButton3 As Global.System.Web.UI.WebControls.RadioButton
+
+    '''<summary>
+    '''RadioButton4 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents RadioButton4 As Global.System.Web.UI.WebControls.RadioButton
+
+    '''<summary>
+    '''RadioButton14 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents RadioButton14 As Global.System.Web.UI.WebControls.RadioButton
+
+    '''<summary>
+    '''RadioButton15 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents RadioButton15 As Global.System.Web.UI.WebControls.RadioButton
+
+    '''<summary>
+    '''RadioButton16 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents RadioButton16 As Global.System.Web.UI.WebControls.RadioButton
+
+    '''<summary>
+    '''RadioButton17 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents RadioButton17 As Global.System.Web.UI.WebControls.RadioButton
+
+    '''<summary>
+    '''RadioButton18 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents RadioButton18 As Global.System.Web.UI.WebControls.RadioButton
+
+    '''<summary>
+    '''RadioButton19 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents RadioButton19 As Global.System.Web.UI.WebControls.RadioButton
+
+    '''<summary>
+    '''RadioButton20 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents RadioButton20 As Global.System.Web.UI.WebControls.RadioButton
+
+    '''<summary>
+    '''RadioButton21 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents RadioButton21 As Global.System.Web.UI.WebControls.RadioButton
+
+    '''<summary>
+    '''RadioButton22 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents RadioButton22 As Global.System.Web.UI.WebControls.RadioButton
+
+    '''<summary>
+    '''txtDateIt_R control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtDateIt_R As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''CalendarExtender2 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CalendarExtender2 As Global.AjaxControlToolkit.CalendarExtender
+
+    '''<summary>
+    '''TextBox1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents TextBox1 As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''CalendarExtender1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CalendarExtender1 As Global.AjaxControlToolkit.CalendarExtender
 End Class

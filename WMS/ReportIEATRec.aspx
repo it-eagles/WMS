@@ -68,23 +68,19 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="Name" class="col-sm-2 control-label">Name</label>
-                                        <div class="col-sm-2">
+                                        <div class="col-sm-4">
                                            <input class="form-control" id="txtName" runat="server"  placeholder="Name"/>
                                         </div>
-                                    </div>
-                                    <div class="form-group">
-                                         <label for="TAXNo" class="col-sm-2 control-label">TAX No</label>
-                                        <div class="col-sm-2">
+                                        <label for="TAXNo" class="col-sm-2 control-label">TAX No</label>
+                                        <div class="col-sm-4">
                                            <input class="form-control" id="txtTAXNo" runat="server"  placeholder="TAX No"/>
                                         </div> 
-                                    </div>                     
-                                    
-                                    
+                                    </div>                                   
 
                                   <div class="form-group">
-                                        <label for="Valume" class="col-sm-2 control-label">Valume</label>                                                       
-                                      <div class="col-sm-10">
-                                           <input class="form-control" id="txtValume" runat="server"  placeholder="Valume" value="0"/>
+                                        <label for="JobSite" class="col-sm-2 control-label">Job Site</label>                                                       
+                                      <div class="col-sm-10">             
+                                             <asp:DropDownList ID="ddlJobSite_ReportIEATRec" CssClass="form-control" runat="server"></asp:DropDownList>  
                                         </div>                      
                                   </div>
 
@@ -111,8 +107,7 @@
 
                                      <div class="box-footer text-right">
                                         <div class="text-center">
-                                         <button type="submit" runat="server" class="btn btn-primary" id="btnAdd" title="btnAdd" onserverclick="Button1_ServerClick">Add</button>
-                                         <button type="reset"  runat="server" class="btn btn-danger" id="btnClear" title="btnClear" onserverclick="Button2_ServerClick">Clear</button>
+                                         <button type="submit" runat="server" class="btn btn-primary" id="btnPrint" title="btnPrint" onserverclick="btnPrint_ServerClick">Print</button>                                         
                                         </div>
                                      </div>
 
