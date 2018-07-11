@@ -234,10 +234,9 @@
     <Content Include="AddUser.aspx" />
     <Content Include="ExpGenLot.aspx" />
     <Content Include="HomeMain.aspx" />
-<<<<<<< HEAD
+
     <Content Include="IEATOut.aspx" />
-=======
->>>>>>> 6bfeba1df1128a574d0c78c7fb83cb0b3e423659
+
     <Content Include="Image\0.png" />
     <Content Include="Image\1.png" />
     <Content Include="LogIN.aspx" />
@@ -245,7 +244,7 @@
     <Content Include="MasterCode.aspx" />
     <Content Include="MasterExchangeRate.aspx" />
     <Content Include="MasterGoods.aspx" />
-<<<<<<< HEAD
+
     <Content Include="MasterLocation.aspx" />
     <Content Include="MasterLocationEdit.aspx" />
     <Content Include="MasterMoneyConfig.aspx" />
@@ -253,16 +252,16 @@
     <Content Include="MasterPartyAdd.aspx" />
     <Content Include="MasterPartyEdit.aspx" />
     <Content Include="MasterPartyView.aspx" />
-=======
+
     <Content Include="MasterPartyAdd.aspx" />
->>>>>>> 6bfeba1df1128a574d0c78c7fb83cb0b3e423659
+
     <Content Include="PartyMaster.aspx" />
     <Content Include="CreateRec.aspx" />
-<<<<<<< HEAD
+
     <Content Include="ReportIEAT-E-02.aspx" />
-=======
+
     <Content Include="ReportIEATRec.aspx" />
->>>>>>> 747225631abff5d3d258e6f6282358c469a58db1
+
     <Content Include="Scripts\bootstrap-colorpicker\dist\css\bootstrap-colorpicker.css" />
     <Content Include="Scripts\bootstrap-colorpicker\dist\css\bootstrap-colorpicker.min.css" />
     <Content Include="Scripts\bootstrap-colorpicker\dist\img\bootstrap-colorpicker\alpha-horizontal.png" />
@@ -6816,10 +6815,9 @@
     <Content Include="Scripts\vendor\select2\select2.min.js" />
     <Content Include="Test.aspx" />
     <Content Include="TestCode.aspx" />
-<<<<<<< HEAD
+
     <Content Include="TruckManifest.aspx" />
-=======
->>>>>>> 6bfeba1df1128a574d0c78c7fb83cb0b3e423659
+
     <Content Include="UpdateGoods.aspx" />
     <Content Include="UpdateGroup.aspx" />
     <Content Include="UpdateUserProfile.aspx" />
@@ -6836,6 +6834,7 @@
     <Compile Include="AddGroup.aspx.designer.vb">
       <DependentUpon>AddGroup.aspx</DependentUpon>
     </Compile>
+
     <Compile Include="AddGroup.aspx.vb">
       <DependentUpon>AddGroup.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
@@ -6847,13 +6846,13 @@
       <DependentUpon>AddUser.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
+
     <Compile Include="Class\LoginCls.vb" />
     <Compile Include="Data\Branch.vb">
-<<<<<<< HEAD
+
       <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
-=======
+
       <DependentUpon>Model1.tt</DependentUpon>
->>>>>>> 6bfeba1df1128a574d0c78c7fb83cb0b3e423659
     </Compile>
     <Compile Include="Data\Connectserver.Context.vb">
       <AutoGen>True</AutoGen>
@@ -6871,11 +6870,11 @@
       <DependentUpon>Connectserver.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\Department.vb">
-<<<<<<< HEAD
+
       <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
-=======
+
       <DependentUpon>Model1.tt</DependentUpon>
->>>>>>> 6bfeba1df1128a574d0c78c7fb83cb0b3e423659
+
     </Compile>
     <Compile Include="Data\dtproperty.vb">
       <DependentUpon>Connectserver.tt</DependentUpon>
@@ -6886,7 +6885,7 @@
     <Compile Include="Data\dt_getpropertiesbyid_u_Result.vb">
       <DependentUpon>Connectserver.tt</DependentUpon>
     </Compile>
-<<<<<<< HEAD
+
     <Compile Include="Data\LKBWarehouse_Test.Context.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -7171,7 +7170,7 @@
     </Compile>
     <Compile Include="Data\tblWHConfirmGoodsReceiveDetail.vb">
       <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
-=======
+    </Compile>
     <Compile Include="Data\Model1.Context.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -7462,7 +7461,7 @@
     </Compile>
     <Compile Include="Data\tblWHConfirmGoodsReceiveDetail.vb">
       <DependentUpon>Model1.tt</DependentUpon>
->>>>>>> 6bfeba1df1128a574d0c78c7fb83cb0b3e423659
+
     </Compile>
     <Compile Include="Data\tblWHEquipment.vb">
       <DependentUpon>Connectserver.tt</DependentUpon>
@@ -7480,11 +7479,11 @@
       <DependentUpon>Connectserver.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblWHLocation.vb">
-<<<<<<< HEAD
+
       <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
-=======
+
       <DependentUpon>Connectserver.tt</DependentUpon>
->>>>>>> 6bfeba1df1128a574d0c78c7fb83cb0b3e423659
+
     </Compile>
     <Compile Include="Data\tblWHPartNew.vb">
       <DependentUpon>Connectserver.tt</DependentUpon>
@@ -7499,7 +7498,7 @@
       <DependentUpon>Connectserver.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblWHPickPackMaster.vb">
-<<<<<<< HEAD
+
       <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblWHPickPackNewProduct.vb">
@@ -7525,7 +7524,7 @@
     </Compile>
     <Compile Include="Data\tblWHStockMovement.vb">
       <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
-=======
+      =======
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblWHPickPackNewProduct.vb">
@@ -7551,7 +7550,7 @@
     </Compile>
     <Compile Include="Data\tblWHStockMovement.vb">
       <DependentUpon>Model1.tt</DependentUpon>
->>>>>>> 6bfeba1df1128a574d0c78c7fb83cb0b3e423659
+
     </Compile>
     <Compile Include="Data\VInventoryDetailbyOrder.vb">
       <DependentUpon>Connectserver.tt</DependentUpon>
@@ -7574,7 +7573,7 @@
     <Compile Include="Data\VTestLOtout.vb">
       <DependentUpon>Connectserver.tt</DependentUpon>
     </Compile>
-<<<<<<< HEAD
+
     <Compile Include="ExpGenLot.aspx.designer.vb">
       <DependentUpon>ExpGenLot.aspx</DependentUpon>
     </Compile>
@@ -7582,8 +7581,7 @@
       <DependentUpon>ExpGenLot.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-=======
->>>>>>> 6bfeba1df1128a574d0c78c7fb83cb0b3e423659
+
     <Compile Include="Home.Master.designer.vb">
       <DependentUpon>Home.Master</DependentUpon>
     </Compile>
@@ -7617,10 +7615,9 @@
     </Compile>
     <Compile Include="Logout.aspx.vb">
       <DependentUpon>Logout.aspx</DependentUpon>
-<<<<<<< HEAD
+
       <SubType>ASPXCodebehind</SubType>
-=======
->>>>>>> 6bfeba1df1128a574d0c78c7fb83cb0b3e423659
+
     </Compile>
     <Compile Include="MasterCode.aspx.designer.vb">
       <DependentUpon>MasterCode.aspx</DependentUpon>
@@ -7643,7 +7640,7 @@
       <DependentUpon>MasterGoods.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-<<<<<<< HEAD
+
     <Compile Include="MasterLocation.aspx.designer.vb">
       <DependentUpon>MasterLocation.aspx</DependentUpon>
     </Compile>
@@ -7672,14 +7669,13 @@
       <DependentUpon>MasterMoneyConfigEdit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-=======
->>>>>>> 6bfeba1df1128a574d0c78c7fb83cb0b3e423659
+
     <Compile Include="MasterPartyAdd.aspx.designer.vb">
       <DependentUpon>MasterPartyAdd.aspx</DependentUpon>
     </Compile>
     <Compile Include="MasterPartyAdd.aspx.vb">
       <DependentUpon>MasterPartyAdd.aspx</DependentUpon>
-<<<<<<< HEAD
+
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="MasterPartyEdit.aspx.designer.vb">
@@ -7695,8 +7691,7 @@
     <Compile Include="MasterPartyView.aspx.vb">
       <DependentUpon>MasterPartyView.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
-=======
->>>>>>> 6bfeba1df1128a574d0c78c7fb83cb0b3e423659
+
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -7731,19 +7726,19 @@
       <DependentUpon>CreateRec.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-<<<<<<< HEAD
+
     <Compile Include="ReportIEAT-E-02.aspx.designer.vb">
       <DependentUpon>ReportIEAT-E-02.aspx</DependentUpon>
     </Compile>
     <Compile Include="ReportIEAT-E-02.aspx.vb">
       <DependentUpon>ReportIEAT-E-02.aspx</DependentUpon>
-=======
+    </Compile>
     <Compile Include="ReportIEATRec.aspx.designer.vb">
       <DependentUpon>ReportIEATRec.aspx</DependentUpon>
     </Compile>
     <Compile Include="ReportIEATRec.aspx.vb">
       <DependentUpon>ReportIEATRec.aspx</DependentUpon>
->>>>>>> 747225631abff5d3d258e6f6282358c469a58db1
+
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Test.aspx.designer.vb">
@@ -7758,7 +7753,7 @@
     </Compile>
     <Compile Include="TestCode.aspx.vb">
       <DependentUpon>TestCode.aspx</DependentUpon>
-<<<<<<< HEAD
+
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="TruckManifest.aspx.designer.vb">
@@ -7767,8 +7762,7 @@
     <Compile Include="TruckManifest.aspx.vb">
       <DependentUpon>TruckManifest.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
-=======
->>>>>>> 6bfeba1df1128a574d0c78c7fb83cb0b3e423659
+
     </Compile>
     <Compile Include="UpdateGoods.aspx.designer.vb">
       <DependentUpon>UpdateGoods.aspx</DependentUpon>
@@ -7786,7 +7780,7 @@
     </Compile>
     <Compile Include="UpdateUserProfile.aspx.designer.vb">
       <DependentUpon>UpdateUserProfile.aspx</DependentUpon>
-<<<<<<< HEAD
+
     </Compile>
     <Compile Include="UpdateUserProfile.aspx.vb">
       <DependentUpon>UpdateUserProfile.aspx</DependentUpon>
@@ -7804,7 +7798,7 @@
     </Compile>
     <Compile Include="UserProfile.aspx.vb">
       <DependentUpon>UserProfile.aspx</DependentUpon>
-=======
+
     </Compile>
     <Compile Include="UpdateUserProfile.aspx.vb">
       <DependentUpon>UpdateUserProfile.aspx</DependentUpon>
@@ -7815,7 +7809,7 @@
     </Compile>
     <Compile Include="UserMenu.aspx.vb">
       <DependentUpon>UserMenu.aspx</DependentUpon>
->>>>>>> 6bfeba1df1128a574d0c78c7fb83cb0b3e423659
+
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="UserProfile.aspx.designer.vb">
@@ -7843,10 +7837,9 @@
     </Compile>
     <Compile Include="ViewUserProfile.aspx.vb">
       <DependentUpon>ViewUserProfile.aspx</DependentUpon>
-<<<<<<< HEAD
+
       <SubType>ASPXCodebehind</SubType>
-=======
->>>>>>> 6bfeba1df1128a574d0c78c7fb83cb0b3e423659
+
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -7876,7 +7869,7 @@
       <DependentUpon>Connectserver.edmx</DependentUpon>
       <LastGenOutput>Connectserver.vb</LastGenOutput>
     </Content>
-<<<<<<< HEAD
+
     <EntityDeploy Include="Data\LKBWarehouse_Test.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>LKBWarehouse_Test.Designer.vb</LastGenOutput>
@@ -7893,7 +7886,7 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>LKBWarehouse_Test.edmx</DependentUpon>
       <LastGenOutput>LKBWarehouse_Test.vb</LastGenOutput>
-=======
+    </Content>
     <EntityDeploy Include="Data\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.vb</LastGenOutput>
@@ -7910,7 +7903,7 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.vb</LastGenOutput>
->>>>>>> 6bfeba1df1128a574d0c78c7fb83cb0b3e423659
+
     </Content>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
@@ -8418,13 +8411,13 @@
     <TypeScriptCompile Include="Scripts\fullcalendar\dist\fullcalendar.d.ts" />
     <TypeScriptCompile Include="Scripts\moment\moment.d.ts" />
   </ItemGroup>
-<<<<<<< HEAD
+
   <ItemGroup>
     <Folder Include="Receive Process\" />
   </ItemGroup>
-=======
+
   <ItemGroup />
->>>>>>> 6bfeba1df1128a574d0c78c7fb83cb0b3e423659
+
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
