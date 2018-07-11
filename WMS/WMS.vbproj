@@ -234,11 +234,8 @@
     <Content Include="AddUser.aspx" />
     <Content Include="ExpGenLot.aspx" />
     <Content Include="HomeMain.aspx" />
-<<<<<<< HEAD
     <Content Include="HTITrackingRec.aspx" />
-=======
     <Content Include="IEATOut.aspx" />
->>>>>>> a29377979e7d7ada84b29bf758b2f60b683acd65
     <Content Include="Image\0.png" />
     <Content Include="Image\1.png" />
     <Content Include="InvoicePackingListRec.aspx" />
@@ -6812,12 +6809,9 @@
     <Content Include="ShipmentRec.aspx" />
     <Content Include="Test.aspx" />
     <Content Include="TestCode.aspx" />
-<<<<<<< HEAD
-    <Content Include="TruckWaybillRec.aspx" />
-=======
     <Content Include="TruckManifest.aspx" />
     <Content Include="TruckWaybillIssue.aspx" />
->>>>>>> a29377979e7d7ada84b29bf758b2f60b683acd65
+    <Content Include="TruckWaybillRec.aspx" />
     <Content Include="UpdateGoods.aspx" />
     <Content Include="UpdateGroup.aspx" />
     <Content Include="UpdateUserProfile.aspx" />
@@ -7260,7 +7254,6 @@
       <DependentUpon>HomeMain.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-<<<<<<< HEAD
     <Compile Include="HTITrackingRec.aspx.designer.vb">
       <DependentUpon>HTITrackingRec.aspx</DependentUpon>
     </Compile>
@@ -7268,18 +7261,18 @@
       <DependentUpon>HTITrackingRec.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="InvoicePackingListRec.aspx.designer.vb">
-      <DependentUpon>InvoicePackingListRec.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="InvoicePackingListRec.aspx.vb">
-      <DependentUpon>InvoicePackingListRec.aspx</DependentUpon>
-=======
     <Compile Include="IEATOut.aspx.designer.vb">
       <DependentUpon>IEATOut.aspx</DependentUpon>
     </Compile>
     <Compile Include="IEATOut.aspx.vb">
       <DependentUpon>IEATOut.aspx</DependentUpon>
->>>>>>> a29377979e7d7ada84b29bf758b2f60b683acd65
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="InvoicePackingListRec.aspx.designer.vb">
+      <DependentUpon>InvoicePackingListRec.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InvoicePackingListRec.aspx.vb">
+      <DependentUpon>InvoicePackingListRec.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="LogIN.aspx.designer.vb">
@@ -7434,13 +7427,6 @@
       <DependentUpon>TestCode.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-<<<<<<< HEAD
-    <Compile Include="TruckWaybillRec.aspx.designer.vb">
-      <DependentUpon>TruckWaybillRec.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="TruckWaybillRec.aspx.vb">
-      <DependentUpon>TruckWaybillRec.aspx</DependentUpon>
-=======
     <Compile Include="TruckManifest.aspx.designer.vb">
       <DependentUpon>TruckManifest.aspx</DependentUpon>
     </Compile>
@@ -7453,7 +7439,13 @@
     </Compile>
     <Compile Include="TruckWaybillIssue.aspx.vb">
       <DependentUpon>TruckWaybillIssue.aspx</DependentUpon>
->>>>>>> a29377979e7d7ada84b29bf758b2f60b683acd65
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="TruckWaybillRec.aspx.designer.vb">
+      <DependentUpon>TruckWaybillRec.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TruckWaybillRec.aspx.vb">
+      <DependentUpon>TruckWaybillRec.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="UpdateGoods.aspx.designer.vb">

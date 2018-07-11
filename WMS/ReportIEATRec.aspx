@@ -1,5 +1,4 @@
 ﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="ReportIEATRec.aspx.vb" Inherits="WMS.ReportIEATRec" MasterPageFile="~/Home.Master" %>
-<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <form id="form1" runat="server">
@@ -13,7 +12,7 @@
         </h1>
         <ol class="breadcrumb">
             <li><a href="HomeMain.aspx"><i class="fa fa-home"></i>Home</a></li>
-            <li><a><i class="fa fa-file"></i>Receive Process</a></li>     
+            <li><a><i class="fa fa-file"></i>System</a></li>     
             <li><a href="ReportIEATRec.aspx">Report IEAT Rec</a></li>           
         </ol>
     </section>
@@ -86,91 +85,24 @@
                                   </div>
 
                                 <div class="form-group">
-                                            <label for="txtStatus" class="col-sm-2 control-label">Status</label>
-                                                <div class="col-lg2 col-md-2 col-sm-2">
-                                                <div class="radio">
-                                                <label>                                            
-                                                 <asp:RadioButton runat="server" ID ="rdb1_1" Text="rdb1,1"  GroupName="option1"/>
-                                              </label>
-                                               </div>            
-                                           </div>
-                                
-                                                <div class="col-lg2 col-md-2 col-sm-2">
-                                                <div class="radio">
-                                                <label>                                            
-                                                 <asp:RadioButton runat="server" ID ="rdb1_2" Text="rdb1,2"  GroupName="option1"/>
-                                              </label>
-                                               </div>            
-                                           </div>       
-                                                
-                                                <div class="col-lg2 col-md-2 col-sm-2">
-                                                <div class="radio">
-                                                <label>                                            
-                                                 <asp:RadioButton runat="server" ID ="rdb1_3" Text="rdb1,3"  GroupName="option1"/>
-                                              </label>
-                                               </div>            
-                                           </div>
-                                
-                                                <div class="col-lg2 col-md-2 col-sm-2">
-                                                <div class="radio">
-                                                <label>                                            
-                                                 <asp:RadioButton runat="server" ID ="rdb1_4" Text="rdb1,4"  GroupName="option1"/>
-                                              </label>
-                                               </div>            
-                                           </div>                      
-                                </div>
-
-                                <div class="form-group">
-                                            <label for="txtStatus" class="col-sm-2 control-label"></label>
-                                                <div class="col-lg2 col-md-2 col-sm-2">
-                                                <div class="radio">
-                                                <label>                                            
-                                                 <asp:RadioButton runat="server" ID ="rdb2_1" Text="rdb2,1"  GroupName="option1"/>
-                                              </label>
-                                               </div>            
-                                           </div>
-                                
-                                                <div class="col-lg2 col-md-2 col-sm-2">
-                                                <div class="radio">
-                                                <label>                                            
-                                                 <asp:RadioButton runat="server" ID ="rdb2_2" Text="rdb2,2"  GroupName="option1"/>
-                                              </label>
-                                               </div>            
-                                           </div>       
-                                                
-                                                <div class="col-lg2 col-md-2 col-sm-2">
-                                                <div class="radio">
-                                                <label>                                            
-                                                 <asp:RadioButton runat="server" ID ="rdb2_3" Text="rdb2,3"  GroupName="option1"/>
-                                              </label>
-                                               </div>            
-                                           </div>
-                                
-                                                <div class="col-lg2 col-md-2 col-sm-2">
-                                                <div class="radio">
-                                                <label>                                            
-                                                 <asp:RadioButton runat="server" ID ="rdb2_4" Text="rdb2,4"  GroupName="option1"/>
-                                              </label>
-                                               </div>            
-                                           </div>                      
-                                </div>
+                                        <label for="txtUsedStatus" class="col-sm-2 control-label">UsedStatus</label>                                                      
+                                         <div class="col-sm-10">
+                                         <input class="form-control" id="txtUsedStatus" runat="server" placeholder="UsedStatus" value="0"/>
+                                         </div>                      
+                                 </div>
 
                                <div class="form-group">
-                                        <label for="txtFromDate" class="col-sm-2 control-label">From Date</label>                                                             
-                                        <div class="col-sm-10">                                            
-                                            <asp:TextBox CssClass="form-control" ID="txtdatepickerFromDate" runat="server" placeholder="DD/MM/YYYY">
-                                            </asp:TextBox>
-                                            <asp:CalendarExtender ID="CalendarExtendertxtdatepickerFromDate" runat="server" Enabled="True" TargetControlID="txtdatepickerFromDate" Format="dd/MM/yyyy"></asp:CalendarExtender>
-                                        </div>                     
+                                        <label for="txtQTYPallet" class="col-sm-2 control-label">QTYPallet</label>                                                             
+                                        <div class="col-sm-10">
+                                        <input  class="form-control" id="txtQTYPallet" runat="server"  placeholder="QTYPallet" value="0"/>
+                                        </div>                      
                                </div>
 
                                <div class="form-group">
-                                        <label for="txtToDate" class="col-sm-2 control-label">To Date</label>                                                             
-                                        <div class="col-sm-10">                                            
-                                            <asp:TextBox CssClass="form-control" ID="txtdatepickerToDate" runat="server" placeholder="DD/MM/YYYY">
-                                            </asp:TextBox>
-                                            <asp:CalendarExtender ID="CalendarExtenderToDate" runat="server" Enabled="True" TargetControlID="txtdatepickerToDate" Format="dd/MM/yyyy"></asp:CalendarExtender>
-                                        </div>                     
+                                        <label for="txtRemark" class="col-sm-2 control-label">Remark</label>                                                             
+                                        <div class="col-sm-10">
+                                        <asp:TextBox runat="server" Cssclass="form-control" TextMode="MultiLine"  ID="txtRemark" ></asp:TextBox>
+                                        </div>                      
                                </div> 
 
                                      <div class="box-footer text-right">
@@ -212,11 +144,15 @@
                 document.getElementById('<%=ddlCode.ClientID%>').disabled = true;
                 document.getElementById('<%=txtName.ClientID%>').disabled = true;
                 document.getElementById('<%=txtTAXNo.ClientID%>').disabled = true;
+                document.getElementById('<%=txtValume.ClientID%>').disabled = true;
             } else if (status == false){
                 document.getElementById('<%=ddlCode.ClientID%>').disabled = false;
                 document.getElementById('<%=txtName.ClientID%>').disabled = false;
                 document.getElementById('<%=txtTAXNo.ClientID%>').disabled = false;
+                document.getElementById('<%=txtValume.ClientID%>').disabled = false;
+               
             }
+             
         }
     </script>
 

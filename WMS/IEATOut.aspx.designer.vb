@@ -11,7 +11,7 @@ Option Strict On
 Option Explicit On
 
 
-Partial Public Class ReportIEATRec
+Partial Public Class IEATOut
 
     '''<summary>
     '''form1 control.
@@ -32,101 +32,146 @@ Partial Public Class ReportIEATRec
     Protected WithEvents ScriptManager1 As Global.System.Web.UI.ScriptManager
 
     '''<summary>
-    '''ddlReportName control.
+    '''txtConsignneeCode control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlReportName As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtConsignneeCode As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''rdbEAS001 control.
+    '''txtConsignneesName control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents rdbEAS001 As Global.System.Web.UI.WebControls.RadioButton
+    Protected WithEvents txtConsignneesName As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''rdbOther control.
+    '''rdb107 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents rdbOther As Global.System.Web.UI.WebControls.RadioButton
+    Protected WithEvents rdb107 As Global.System.Web.UI.WebControls.RadioButton
 
     '''<summary>
-    '''ddlCode control.
+    '''rdb108 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlCode As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents rdb108 As Global.System.Web.UI.WebControls.RadioButton
 
     '''<summary>
-    '''txtName control.
+    '''rdbPermitTranfer control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtName As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents rdbPermitTranfer As Global.System.Web.UI.WebControls.RadioButton
 
     '''<summary>
-    '''txtTAXNo control.
+    '''txtAmountInvoice control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtTAXNo As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtAmountInvoice As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''ddlJobSite_ReportIEATRec control.
+    '''txtInvoiceNo1 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlJobSite_ReportIEATRec As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtInvoiceNo1 As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtUsedStatus control.
+    '''txtInvoiceNo3 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtUsedStatus As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtInvoiceNo3 As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtQTYPallet control.
+    '''txtInvoiceNo5 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtQTYPallet As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtInvoiceNo5 As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtRemark control.
+    '''txtInvoiceNo7 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtRemark As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents txtInvoiceNo7 As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''btnPrint control.
+    '''txtInvoiceNo9 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents btnPrint As Global.System.Web.UI.HtmlControls.HtmlButton
+    Protected WithEvents txtInvoiceNo9 As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''txtInvoiceNo2 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtInvoiceNo2 As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''txtInvoiceNo4 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtInvoiceNo4 As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''txtInvoiceNo6 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtInvoiceNo6 As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''txtInvoiceNo8 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtInvoiceNo8 As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''txtInvoiceNo10 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtInvoiceNo10 As Global.System.Web.UI.HtmlControls.HtmlInputText
 End Class

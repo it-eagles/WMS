@@ -176,6 +176,24 @@ Partial Public Class InvoicePackingListRec
     Protected WithEvents txtEmailConsignee As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
+    '''ddlTruckLicense_Invoice control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ddlTruckLicense_Invoice As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''ddlDriverName_Invoice control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ddlDriverName_Invoice As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
     '''ddlOriginCountry_Invoice control.
     '''</summary>
     '''<remarks>
@@ -516,6 +534,60 @@ Partial Public Class InvoicePackingListRec
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents Text2 As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''rdbDiffAmount control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents rdbDiffAmount As Global.System.Web.UI.WebControls.RadioButton
+
+    '''<summary>
+    '''txtdatepickerTransmitDate control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtdatepickerTransmitDate As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''CalendarExtenderTransmitDate control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CalendarExtenderTransmitDate As Global.AjaxControlToolkit.CalendarExtender
+
+    '''<summary>
+    '''rdbDiffWeight control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents rdbDiffWeight As Global.System.Web.UI.WebControls.RadioButton
+
+    '''<summary>
+    '''rdbNotifyParty control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents rdbNotifyParty As Global.System.Web.UI.WebControls.RadioButton
+
+    '''<summary>
+    '''rdbOnBehalfOf control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents rdbOnBehalfOf As Global.System.Web.UI.WebControls.RadioButton
 
     '''<summary>
     '''txtInvoiceNo control.

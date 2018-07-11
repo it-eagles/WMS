@@ -5,11 +5,4 @@
 
     End Sub
 
-    Protected Sub btnPrint_ServerClick(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Protected Sub btnClose_ServerClick(sender As Object, e As EventArgs)
-
-    End Sub
 End Class
