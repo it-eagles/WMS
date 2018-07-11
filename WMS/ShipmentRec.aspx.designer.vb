@@ -11,7 +11,7 @@ Option Strict On
 Option Explicit On
 
 
-Partial Public Class ReportIEATRec
+Partial Public Class ShipmentRec
 
     '''<summary>
     '''form1 control.
@@ -32,112 +32,103 @@ Partial Public Class ReportIEATRec
     Protected WithEvents ScriptManager1 As Global.System.Web.UI.ScriptManager
 
     '''<summary>
-    '''ddlReportName control.
+    '''txtMAWB control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlReportName As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtMAWB As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''rdbEAS001 control.
+    '''txtFlight control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents rdbEAS001 As Global.System.Web.UI.WebControls.RadioButton
+    Protected WithEvents txtFlight As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''rdbOther control.
+    '''txtAmountOfMAWB control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents rdbOther As Global.System.Web.UI.WebControls.RadioButton
+    Protected WithEvents txtAmountOfMAWB As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''ddlCode control.
+    '''txtHAWBNo1 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlCode As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtHAWBNo1 As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtName control.
+    '''txtHAWBNo5 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtName As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtHAWBNo5 As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtTAXNo control.
+    '''txtHAWBNo2 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtTAXNo As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtHAWBNo2 As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''ddlJobSite_ReportIEATRec control.
+    '''txtHAWBNo6 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlJobSite_ReportIEATRec As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtHAWBNo6 As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''rdb1_1 control.
+    '''txtHAWBNo3 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents rdb1_1 As Global.System.Web.UI.WebControls.RadioButton
+    Protected WithEvents txtHAWBNo3 As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''rdb1_2 control.
+    '''txtHAWBNo7 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents rdb1_2 As Global.System.Web.UI.WebControls.RadioButton
+    Protected WithEvents txtHAWBNo7 As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''rdb1_3 control.
+    '''txtHAWBNo4 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents rdb1_3 As Global.System.Web.UI.WebControls.RadioButton
+    Protected WithEvents txtHAWBNo4 As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''rdb1_4 control.
+    '''txtHAWBNo8 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents rdb1_4 As Global.System.Web.UI.WebControls.RadioButton
-
-    '''<summary>
-    '''txtQTYPallet control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtQTYPallet As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtHAWBNo8 As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
     '''txtRemark control.
@@ -156,4 +147,13 @@ Partial Public Class ReportIEATRec
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents btnPrint As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''btnClose control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnClose As Global.System.Web.UI.HtmlControls.HtmlButton
 End Class

@@ -27,10 +27,10 @@
                     <div class="nav-tabs-custom">
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="#stockqty" data-toggle="tab">Master JOB</a></li>
-                            <li><a href="#importgoods" data-toggle="tab">Job Detail</a></li>
-                            <li><a href="#exportgoods" data-toggle="tab">Invoice</a></li>
-                            <li><a href="#detailofgoods" data-toggle="tab">Import File</a></li>
-                            <li><a href="#assembly" data-toggle="tab">Import File NJR</a></li>
+                            <li><a href="#jobdetail" data-toggle="tab">Job Detail</a></li>
+                            <li><a href="#invoice" data-toggle="tab">Invoice</a></li>
+                            <li><a href="#importfile" data-toggle="tab">Import File</a></li>
+                            <li><a href="#importfilenjr" data-toggle="tab">Import File NJR</a></li>
                         </ul>
 
                         <div class="tab-content">
@@ -640,7 +640,7 @@
 
                             <%-----------------------------------------------------Start JOB DETAIL-----------------------------------------------------------%>
              <!------- Import Goods ------->
-            <div class="tab-pane" id="importgoods">
+            <div class="tab-pane" id="jobdetail">
                      <!-- Post -->
                <div class="row">
                     
@@ -1061,7 +1061,7 @@
 
                             <%--------------------------------------------------------------Start Invoice----------------------------------------------------------%>
        <!-------- Export Goods --------->
-     <div class="tab-pane" id="exportgoods">
+     <div class="tab-pane" id="invoice">
                                 <!-- Post -->
         <div class="row">
                     <%--------------------------------------------------------------------Start Left Form---------------------------------------------%>
@@ -1387,7 +1387,7 @@
 
                 <%----------------------------------------------------------------------Start ImportFile--------------------------------------------------------%>
              <!--- Detailof Goods --->
-         <div class="tab-pane" id="detailofgoods">
+         <div class="tab-pane" id="importfile">
             <!-- Post -->
             <div class="post">
              <div class="row margin-bottom">
@@ -1461,7 +1461,7 @@
 
                             <%-------------------------------------------------------------Start Import File NJR Tab-------------------------------------------------%>
                             <!--- Asembly --->
-                            <div class="tab-pane" id="assembly">
+                            <div class="tab-pane" id="importfilenjr">
                                 <!-- Post -->
                                 <div class="post">
                                     <div class="row margin-bottom">
@@ -1559,192 +1559,5 @@
         </section>
         <!-- /.content -->
         
-
-     <!-- Modal -->
-    <div class="modal fade" id="myModal" role="dialog">
-     <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
-        </div>
-
-        <div class="modal-body">  
-           
-           <section class="content">
-
-        <div class="row">
-            <!-- left column -->
-            <div class="col-lg-12 col-md-12 ">
-
-                <!-- general form elements -->
-            
-                    <!-- /.box-header -->
-                    <div class="row">
-
-                        <from class="form-horizontal">
-                            <div class="col-lg-12 col-md-12">
-                                 <div class="box-body">   
-                                            
-                       
-                                  <div class="form-group">
-                                        <label for="txtGenCode" class="col-sm-3 control-label">รหัสชื่อลูกค้า :</label>
-                                       
-                                      <div class="col-sm-6">
-                                           <input class="form-control" id="txtGenCode" runat="server"  placeholder="Name"/>
-                                       </div>
-                                       <div class="col-md-3">
-                                            <label for="txtGenCode">ใช้3ตัวอักษร</label>
-                                        </div>
-                                    </div>
-                                                 
-                                    <div class="form-group" >
-                                          <label class="col-sm-3 control-label">รหัสกลุ่มสินค้า :</label>
-                                                                        
-                                       <div class="col-md-6">
-                                 
-                                            <asp:DropDownList ID="cdbGroupGoods" CssClass="form-control" runat="server"  DataTextField="Description" DataValueField="Description"></asp:DropDownList>
-                                      </div>
-                                
-                                       <div class="col-md-3">
-                                             <input class="form-control" id="txtCodeGoods" runat="server" placeholder="Group"/>
-                                        </div>
-                                       </div>
-                                     <div class="col-lg-4 col-md-4 col-md-offset-2">
-                                        <div class="radio">
-                                         <label>
-                                              <asp:RadioButton ID="rbtEnable" runat="server" Text="ลูกค้าที่มีรหัสมา" onclick="EnableDisableTextBox();" GroupName="1" Checked="true"/>
-                                         </label>
-                                        </div>
-                                     </div>
-                                       <div class="col-lg-6 col-md-6">
-                                           <div class="radio">
-                                         <label>
-                                              <asp:RadioButton ID="rbtDisable" runat="server" Text="ลูกค้าที่ไม่มีรหัสมา" onclick="EnableDisableTextBox();" GroupName="1" />           
-                                         </label>
-                                     </div>
-                                     </div>
-                              
-                                    <!-- /.box-body -->
-                             </div>
-                           </div>
-                             
-                       </from>
-                          
-                        <!--/.row-->
-                    </div>
-                    <div class="box-header with-border">
-                        <h3 class="box-title">ลูกค้าที่มีรหัสมา</h3>
-                    </div>
-                <div id="radio1">
-                   <div class="row" >
-                         <div class="col-lg-12 col-md-12">
-
-                             
-                                     <!-- form start -->
-                         <from class="form-horizontal">
-                            <div class="col-lg-12 col-md-12">
-                                 <div class="box-body">   
-                                            
-                                <div class="form-group">
-                                        <label for="txtGenCode" class="col-sm-3 control-label p-t-10">รหัสลูกค้า :</label>
-                                      
-                                      <div class="col-sm-6">
-                                           <input class="form-control" id="txtCodeCustomers" runat="server" name="txtCodeCustomers" placeholder="Name" />
-                                       </div>
-                                     
-                                    </div>
-                                     <div class="col-md-offset-3">
-                                         <p class="text-red">* หมายเหตุ ให้ใช้8ตัว โดยถ้ามี7ตัวให้ใส่ 0นำหน้า เช่า 0</p>  
-                                     </div>
-                                        
-                                  <!-- /.box-body -->
-                             </div>
-                           </div>
-                             
-                       </from>
-                                
-                  </div> 
-                     
-               </div>
-             </div>
-                     
-                         <!--/.row-->
-
-                    <div class="box-header with-border">
-                        <h3 class="box-title">ลูกค้าที่ไม่มีรหัสมา</h3>
-                    </div>
-                <div id="radio2">
-                    <div class="row" >
-                          <from class="form-horizontal">
-                            <div class="col-lg-12 col-md-12">
-                                 <div class="box-body">   
-                                            
-                      <div class="form-group">
-                                        <label for="txtGenCode" class="col-sm-3 control-label p-t-8">รหัสชื่อลูกค้า :</label>
-                                       
-                                      <div class="col-sm-6">
-                                           <input class="form-control" id="txtNoCodeGoods" name="txtNoCodeGoods" runat="server"  placeholder="Name" disabled="disabled"/>
-                                       </div>
-                                         <div class="col-md-3">
-                                            <label for="txtGenCode">ใส่ตัวเลข 4 ตัว</label>
-                                        </div>
-                                    </div>
-                                     
-                               
-                                  <div class="form-group">
-                                        <label for="txtGenCode" class="col-sm-3 control-label p-t-10">รหัสขนาด :</label>
-                                       
-                                      <div class="col-sm-6">
-                                           <input class="form-control" id="txtCodeSize" runat="server"  placeholder="Name" disabled="disabled"/>
-                                      </div>
-                                    
-                                </div>      
-                                      <div class="col-md-offset-3">
-                 
-                                          <p class="text-red">* ใช้ 2 ตัวอักษรหรือตัวเลย</p>
-                                     </div>
-
-                                    <div class="form-group" >
-                                          <label class="col-sm-3 control-label">รหัสสีของสินค้า :</label>
-                                                                        
-                                       <div class="col-md-6">
-                                 
-                                            <asp:DropDownList ID="cdbGroupColor" CssClass="form-control" runat="server"  DataTextField="Description" DataValueField="TypeID" disabled="disabled"></asp:DropDownList>
-                                      </div>
-                                
-                                       <div class="col-md-3">
-                                             <input class="form-control" id="txtCodeColor" runat="server" placeholder="Group" disabled="disabled"/>
-                                        </div>
-                                    </div>
-                                    <!-- /.box-body -->
-                             </div>
-                           </div>
-                             
-                       </from>
-                      </div>   
-                </div>
-             </div> 
-          </div>
-                     
-                <!--/.col-lg-12 -->
-         
-
-            <!--/.col (right) -->
-        
-        <!-- /.row -->
-    </section>
-    <!-- /.content -->
-            
-        </div>    
-  
-      </div>
-      </div>
-    </div>
-  
-
     </form>
 </asp:Content>
