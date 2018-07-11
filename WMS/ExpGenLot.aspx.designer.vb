@@ -455,6 +455,15 @@ Partial Public Class ExpGenLot
     Protected WithEvents Bsave As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
+    '''dgvEASInv control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents dgvEASInv As Global.System.Web.UI.WebControls.Repeater
+
+    '''<summary>
     '''txtDOCode control.
     '''</summary>
     '''<remarks>
@@ -833,13 +842,13 @@ Partial Public Class ExpGenLot
     Protected WithEvents txtIEATPermit As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''dtpIEATDate control.
+    '''txtIEATDate control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents dtpIEATDate As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtIEATDate As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''CalendarExtender1 control.
@@ -860,13 +869,22 @@ Partial Public Class ExpGenLot
     Protected WithEvents txtEntryNo As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''Text3 control.
+    '''dtpDeliveryDate control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Text3 As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents dtpDeliveryDate As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''CalendarExtender3 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CalendarExtender3 As Global.AjaxControlToolkit.CalendarExtender
 
     '''<summary>
     '''dcbStatus1 control.
@@ -959,6 +977,15 @@ Partial Public Class ExpGenLot
     Protected WithEvents txtCancleIEAT As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
+    '''Repeater1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Repeater1 As Global.System.Web.UI.WebControls.Repeater
+
+    '''<summary>
     '''txtGenInvNo control.
     '''</summary>
     '''<remarks>
@@ -1049,13 +1076,31 @@ Partial Public Class ExpGenLot
     Protected WithEvents txtPullS As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''Text1 control.
+    '''dtpInvoice control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Text1 As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents dtpInvoice As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''CalendarExtender4 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CalendarExtender4 As Global.AjaxControlToolkit.CalendarExtender
+
+    '''<summary>
+    '''txtItemNo control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtItemNo As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
     '''txtShipment control.
@@ -1083,4 +1128,13 @@ Partial Public Class ExpGenLot
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents txtPriceForeign As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''Repeater2 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Repeater2 As Global.System.Web.UI.WebControls.Repeater
 End Class

@@ -95,12 +95,17 @@ Partial Public Class ReportIEATRec
     Protected WithEvents ddlJobSite_ReportIEATRec As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
+<<<<<<< HEAD
     '''rdb1_1 control.
+=======
+    '''txtUsedStatus control.
+>>>>>>> a29377979e7d7ada84b29bf758b2f60b683acd65
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
+<<<<<<< HEAD
     Protected WithEvents rdb1_1 As Global.System.Web.UI.WebControls.RadioButton
 
     '''<summary>
@@ -129,6 +134,9 @@ Partial Public Class ReportIEATRec
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents rdb1_4 As Global.System.Web.UI.WebControls.RadioButton
+=======
+    Protected WithEvents txtUsedStatus As Global.System.Web.UI.HtmlControls.HtmlInputText
+>>>>>>> a29377979e7d7ada84b29bf758b2f60b683acd65
 
     '''<summary>
     '''txtQTYPallet control.

@@ -234,7 +234,11 @@
     <Content Include="AddUser.aspx" />
     <Content Include="ExpGenLot.aspx" />
     <Content Include="HomeMain.aspx" />
+<<<<<<< HEAD
     <Content Include="HTITrackingRec.aspx" />
+=======
+    <Content Include="IEATOut.aspx" />
+>>>>>>> a29377979e7d7ada84b29bf758b2f60b683acd65
     <Content Include="Image\0.png" />
     <Content Include="Image\1.png" />
     <Content Include="InvoicePackingListRec.aspx" />
@@ -252,6 +256,7 @@
     <Content Include="MasterPartyView.aspx" />
     <Content Include="PartyMaster.aspx" />
     <Content Include="CreateRec.aspx" />
+    <Content Include="ReportIEAT-E-02.aspx" />
     <Content Include="ReportIEATRec.aspx" />
     <Content Include="Scripts\bootstrap-colorpicker\dist\css\bootstrap-colorpicker.css" />
     <Content Include="Scripts\bootstrap-colorpicker\dist\css\bootstrap-colorpicker.min.css" />
@@ -6807,7 +6812,12 @@
     <Content Include="ShipmentRec.aspx" />
     <Content Include="Test.aspx" />
     <Content Include="TestCode.aspx" />
+<<<<<<< HEAD
     <Content Include="TruckWaybillRec.aspx" />
+=======
+    <Content Include="TruckManifest.aspx" />
+    <Content Include="TruckWaybillIssue.aspx" />
+>>>>>>> a29377979e7d7ada84b29bf758b2f60b683acd65
     <Content Include="UpdateGoods.aspx" />
     <Content Include="UpdateGroup.aspx" />
     <Content Include="UpdateUserProfile.aspx" />
@@ -7250,6 +7260,7 @@
       <DependentUpon>HomeMain.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="HTITrackingRec.aspx.designer.vb">
       <DependentUpon>HTITrackingRec.aspx</DependentUpon>
     </Compile>
@@ -7262,6 +7273,13 @@
     </Compile>
     <Compile Include="InvoicePackingListRec.aspx.vb">
       <DependentUpon>InvoicePackingListRec.aspx</DependentUpon>
+=======
+    <Compile Include="IEATOut.aspx.designer.vb">
+      <DependentUpon>IEATOut.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="IEATOut.aspx.vb">
+      <DependentUpon>IEATOut.aspx</DependentUpon>
+>>>>>>> a29377979e7d7ada84b29bf758b2f60b683acd65
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="LogIN.aspx.designer.vb">
@@ -7381,6 +7399,13 @@
       <DependentUpon>CreateRec.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
+    <Compile Include="ReportIEAT-E-02.aspx.designer.vb">
+      <DependentUpon>ReportIEAT-E-02.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportIEAT-E-02.aspx.vb">
+      <DependentUpon>ReportIEAT-E-02.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="ReportIEATRec.aspx.designer.vb">
       <DependentUpon>ReportIEATRec.aspx</DependentUpon>
     </Compile>
@@ -7409,11 +7434,26 @@
       <DependentUpon>TestCode.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="TruckWaybillRec.aspx.designer.vb">
       <DependentUpon>TruckWaybillRec.aspx</DependentUpon>
     </Compile>
     <Compile Include="TruckWaybillRec.aspx.vb">
       <DependentUpon>TruckWaybillRec.aspx</DependentUpon>
+=======
+    <Compile Include="TruckManifest.aspx.designer.vb">
+      <DependentUpon>TruckManifest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TruckManifest.aspx.vb">
+      <DependentUpon>TruckManifest.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="TruckWaybillIssue.aspx.designer.vb">
+      <DependentUpon>TruckWaybillIssue.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TruckWaybillIssue.aspx.vb">
+      <DependentUpon>TruckWaybillIssue.aspx</DependentUpon>
+>>>>>>> a29377979e7d7ada84b29bf758b2f60b683acd65
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="UpdateGoods.aspx.designer.vb">
@@ -8023,9 +8063,7 @@
     <TypeScriptCompile Include="Scripts\fullcalendar\dist\fullcalendar.d.ts" />
     <TypeScriptCompile Include="Scripts\moment\moment.d.ts" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Receive Process\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
