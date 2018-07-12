@@ -95,31 +95,112 @@ Partial Public Class ReportIEATRec
     Protected WithEvents ddlJobSite_ReportIEATRec As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''txtUsedStatus control.
+    '''rdb1_1 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtUsedStatus As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents rdb1_1 As Global.System.Web.UI.WebControls.RadioButton
 
     '''<summary>
-    '''txtQTYPallet control.
+    '''rdb1_2 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtQTYPallet As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents rdb1_2 As Global.System.Web.UI.WebControls.RadioButton
 
     '''<summary>
-    '''txtRemark control.
+    '''rdb1_3 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtRemark As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents rdb1_3 As Global.System.Web.UI.WebControls.RadioButton
+
+    '''<summary>
+    '''rdb1_4 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents rdb1_4 As Global.System.Web.UI.WebControls.RadioButton
+
+    '''<summary>
+    '''rdb2_1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents rdb2_1 As Global.System.Web.UI.WebControls.RadioButton
+
+    '''<summary>
+    '''rdb2_2 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents rdb2_2 As Global.System.Web.UI.WebControls.RadioButton
+
+    '''<summary>
+    '''rdb2_3 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents rdb2_3 As Global.System.Web.UI.WebControls.RadioButton
+
+    '''<summary>
+    '''rdb2_4 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents rdb2_4 As Global.System.Web.UI.WebControls.RadioButton
+
+    '''<summary>
+    '''txtdatepickerFromDate control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtdatepickerFromDate As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''CalendarExtendertxtdatepickerFromDate control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CalendarExtendertxtdatepickerFromDate As Global.AjaxControlToolkit.CalendarExtender
+
+    '''<summary>
+    '''txtdatepickerToDate control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtdatepickerToDate As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''CalendarExtenderToDate control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CalendarExtenderToDate As Global.AjaxControlToolkit.CalendarExtender
 
     '''<summary>
     '''btnPrint control.

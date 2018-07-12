@@ -175,11 +175,11 @@
                             <ul class="treeview-menu">
                                 <li><a href="CreateRec.aspx"><i class="fa fa-circle-o"></i>Create Rec. LOT</a></li>
                                 <li><a href="ReportIEATRec.aspx"><i class="fa fa-circle-o"></i>Report IEAT Rec</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i>Truck Waybill Rec</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i>Invoice/Packing List Rec</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i>Plan Receive</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i>Shipment</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i>HTI Tracking</a></li>
+                                <li><a href="TruckWaybillRec.aspx"><i class="fa fa-circle-o"></i>Truck Waybill Rec</a></li>
+                                <li><a href="InvoicePackingListRec.aspx"><i class="fa fa-circle-o"></i>Invoice/Packing List Rec</a></li>
+                                <li><a href="PlanReceiveRec.aspx"><i class="fa fa-circle-o"></i>Plan Receive</a></li>
+                                <li><a href="ShipmentRec.aspx"><i class="fa fa-circle-o"></i>Shipment</a></li>
+                                <li><a href="HTITrackingRec.aspx"><i class="fa fa-circle-o"></i>HTI Tracking</a></li>
                                
                             </ul>
                         </li>

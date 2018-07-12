@@ -253,6 +253,7 @@
     <Content Include="MasterPartyView.aspx" />
     <Content Include="PartyMaster.aspx" />
     <Content Include="CreateRec.aspx" />
+    <Content Include="PlanReceiveRec.aspx" />
     <Content Include="ReportIEAT-E-02.aspx" />
     <Content Include="ReportIEATRec.aspx" />
     <Content Include="Scripts\bootstrap-colorpicker\dist\css\bootstrap-colorpicker.css" />
@@ -7390,6 +7391,13 @@
     </Compile>
     <Compile Include="CreateRec.aspx.vb">
       <DependentUpon>CreateRec.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="PlanReceiveRec.aspx.designer.vb">
+      <DependentUpon>PlanReceiveRec.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PlanReceiveRec.aspx.vb">
+      <DependentUpon>PlanReceiveRec.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="ReportIEAT-E-02.aspx.designer.vb">
