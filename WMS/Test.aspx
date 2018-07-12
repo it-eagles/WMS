@@ -21,7 +21,12 @@
                             <!-- /.box-header -->
                             <div class="box-body">
 
-                                
+                                <div id="div1">
+                                    <h2>ผลลัพธ์ JSON จะแสดงไว้ตรงนี้</h2>
+                                </div>
+                                <br />
+                                <button runat="server" id="button">ทดสอบ API แบงค์ชาติ</button>
+
                                 <asp:Repeater ID="cpRepeater" runat="server">
                                     <HeaderTemplate>
                                         <table id="example1" class="table table-bordered table-striped">
@@ -82,6 +87,26 @@
             <!-- /.content -->
         
         
+         <script>
+             $(document).ready(function () {
+                 //อ้างอิงคู่มือ ตามลิงค์นี้ https://iapi.bot.or.th/Developer?lang=th 
+                 // ตัวอย่างดู อัตราแลกเปลี่ยนถัวเฉลี่ยถ่วงน้ำหนักระหว่างธนาคาร (รายวัน)
+                 $("button").click(function () {
+                     $.ajax({
+                         type: "GET",
+                         url: "https://iapi.bot.or.th/Stat/Stat-ReferenceRate/DAILY_REF_RATE_V1/?start_period=2002-01-12&end_period=2002-01-15",
+                         beforeSend: function (xhr) { xhr.setRequestHeader('api-key', 'U9G1L457H6DCugT7VmBaEacbHV9RX0PySO05cYaGsm'); },
+                         success: function (result) {
+                             $("#div1").html(JSON.stringify(result));
+                             console.log(JSON.stringify(result));
+                         },
+                         error: function (result) {
+                             //handle the error 
+                         }
+                     });
+                 });
+             });
+</script>
     </form>
 
 </asp:Content>

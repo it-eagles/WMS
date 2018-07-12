@@ -88,119 +88,208 @@
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                    </div>
+                                                    <div class="col-lg-12 col-md-12">
+                                                        <div class="col-md-6">
+                                                            <fieldset>
+                                                                <legend></legend>
+                                                                <div class="form-group">
+                                                                    <label for="txtNoOriginals" class="col-sm-3 control-label">No. of Originals</label>
+                                                                    <div class="col-md-8">
+                                                                        <input class="form-control pull-right" id="txtNoOriginals" runat="server" type="text" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="txtDelivery" class="col-sm-3 control-label">Delivery of Goods</label>
+                                                                    <div class="col-md-8">
+                                                                        <input class="form-control pull-right" id="txtDelivery" runat="server" type="text" />
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label for="txtDriverName" class="col-sm-3 control-label">Driver Name</label>
+                                                                    <div class="col-md-8">
+                                                                        <input class="form-control pull-right" id="txtDriverName" runat="server" type="text" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="txtPrepaid" class="col-sm-3 control-label">Prepaid</label>
+                                                                    <div class="col-md-8">
+                                                                        <input class="form-control pull-right" id="txtPrepaid" runat="server" type="text" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="txtGrossWeight" class="col-sm-3 control-label">Gross Weight</label>
+                                                                    <div class="col-md-8">
+                                                                        <input class="form-control pull-right" id="txtGrossWeight" runat="server" type="text" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="txtPlaceCode" class="col-sm-3 control-label">Place Delivery Code</label>
+                                                                    <div class="col-md-8">
+                                                                        <input class="form-control pull-right" id="txtPlaceCode" runat="server" type="text" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="txtPlaceName" class="col-sm-3 control-label">Place Delivery Name</label>
+                                                                    <div class="col-md-8">
+                                                                        <input class="form-control pull-right" id="txtPlaceName" runat="server" type="text" />
+                                                                    </div>
+                                                                </div>
+
+                                                            </fieldset>
                                                         </div>
-                                                     <div class="col-lg-12 col-md-12">
-                                                         <div class="col-md-6">
-                                                        <fieldset>
-                                                            <legend></legend>
-                                                            <div class="form-group">
-                                                                <label for="txtNoOriginals" class="col-sm-3 control-label">No. of Originals</label>
-                                                                <div class="col-md-8">
-                                                                    <input class="form-control pull-right" id="txtNoOriginals" runat="server" type="text" />
+                                                        <div class="col-md-6">
+                                                            <fieldset>
+                                                                <legend></legend>
+                                                                <div class="form-group">
+                                                                    <label for="txtNotifyParty" class="col-sm-3 control-label">Notify Party</label>
+                                                                    <div class="col-md-8">
+                                                                        <input class="form-control pull-right" id="txtNotifyParty" runat="server" type="text" />
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="txtDelivery" class="col-sm-3 control-label">Delivery of Goods</label>
-                                                                <div class="col-md-8">
-                                                                    <input class="form-control pull-right" id="txtDelivery" runat="server" type="text" />
+                                                                <div class="form-group">
+                                                                    <label for="txtCarLicense" class="col-sm-3 control-label">Car License</label>
+                                                                    <div class="col-md-8">
+                                                                        <input class="form-control pull-right" id="txtCarLicense" runat="server" type="text" />
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="txtStreet_Number" class="col-sm-3 control-label">Address1</label>
-                                                                <div class="col-md-8">
-                                                                    <input class="form-control pull-right" id="txtStreet_Number" runat="server" type="text" />
+                                                                <div class="form-group">
+                                                                    <label for="txtFreightCharges" class="col-sm-3 control-label">Freight & Charges</label>
+                                                                    <div class="col-md-8">
+                                                                        <input class="form-control pull-right" id="txtFreightCharges" runat="server" type="text" />
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="txtDistrict" class="col-sm-3 control-label">Address2</label>
-                                                                <div class="col-md-8">
-                                                                    <input class="form-control pull-right" id="txtDistrict" runat="server" type="text" />
+                                                                <div class="form-group">
+                                                                    <label for="txtQuantityAmount" class="col-sm-3 control-label">Quantity Amount</label>
+                                                                    <div class="col-md-8">
+                                                                        <input class="form-control pull-right" id="txtQuantityAmount" runat="server" type="text" />
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="txtSubProvince" class="col-sm-3 control-label">Address3</label>
-                                                                <div class="col-md-8">
-                                                                    <input class="form-control pull-right" id="txtSubProvince" runat="server" type="text" />
+                                                                <div class="form-group">
+                                                                    <label for="txtMeasurement" class="col-sm-3 control-label">Measurement</label>
+                                                                    <div class="col-md-8">
+                                                                        <input class="form-control pull-right" id="txtMeasurement" runat="server" type="text" />
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="txtProvince" class="col-sm-3 control-label">Address4</label>
-                                                                <div class="col-md-8">
-                                                                    <input class="form-control pull-right" id="txtProvince" runat="server" type="text" />
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="txtPostCode" class="col-sm-3 control-label">Address5</label>
-                                                                <div class="col-md-8">
-                                                                    <input class="form-control pull-right" id="txtPostCode" runat="server" type="text" />
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="txtCompensateCode" class="col-sm-3 control-label">Email</label>
-                                                                <div class="col-md-8">
-                                                                    <input class="form-control pull-right" id="txtCompensateCode" runat="server" type="text" />
-                                                                </div>
-                                                            </div>
 
-                                                        </fieldset>
-                                                    </div>
-                                                          <div class="col-md-6">
-                                                        <fieldset>
-                                                            <legend></legend>
-                                                            <div class="form-group">
-                                                                <label for="txtExporterCode" class="col-sm-3 control-label">Exporter Code</label>
-                                                                <div class="col-md-8">
-                                                                    <input class="form-control pull-right" id="Text1" runat="server" type="text" />
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="txtExportEng" class="col-sm-3 control-label">Name(Eng)</label>
-                                                                <div class="col-md-8">
-                                                                    <input class="form-control pull-right" id="Text2" runat="server" type="text" />
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="txtStreet_Number" class="col-sm-3 control-label">Address1</label>
-                                                                <div class="col-md-8">
-                                                                    <input class="form-control pull-right" id="Text3" runat="server" type="text" />
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="txtDistrict" class="col-sm-3 control-label">Address2</label>
-                                                                <div class="col-md-8">
-                                                                    <input class="form-control pull-right" id="Text4" runat="server" type="text" />
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="txtSubProvince" class="col-sm-3 control-label">Address3</label>
-                                                                <div class="col-md-8">
-                                                                    <input class="form-control pull-right" id="Text5" runat="server" type="text" />
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="txtProvince" class="col-sm-3 control-label">Address4</label>
-                                                                <div class="col-md-8">
-                                                                    <input class="form-control pull-right" id="Text6" runat="server" type="text" />
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="txtPostCode" class="col-sm-3 control-label">Address5</label>
-                                                                <div class="col-md-8">
-                                                                    <input class="form-control pull-right" id="Text7" runat="server" type="text" />
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="txtCompensateCode" class="col-sm-3 control-label">Email</label>
-                                                                <div class="col-md-8">
-                                                                    <input class="form-control pull-right" id="Text8" runat="server" type="text" />
-                                                                </div>
-                                                            </div>
+                                                            </fieldset>
+                                                        </div>
 
-                                                        </fieldset>
+
                                                     </div>
-                                                     </div>
-                                                    
-                                               </div>
+                                                    <div class="col-lg-12 col-md-12 ">
+                                                        <div class="col-lg-10 col-md-10">
+                                                            <div class="form-group">
+                                                                <label for="txtPlaceAddress" class="col-sm-2 control-label">Address</label>
+                                                                <div class="col-md-10">
+                                                                    <textarea class="form-control" id="txtPlaceAddress" rows="4" runat="server" name="txtRemarks" placeholder="Remarks ..."></textarea>
+                                                                    <%--<input class="form-control pull-right" id="txtPlaceAddress" runat="server" type="text" />--%>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col-lg-12 col-md-12">
+                                                        <div class="col-md-6">
+                                                            <fieldset>
+                                                                <legend></legend>
+                                                                <div class="form-group">
+                                                                    <label for="txtExporterCode" class="col-sm-3 control-label">Shipper Code</label>
+                                                                    <div class="col-md-8">
+                                                                        <input class="form-control pull-right" id="txtExporterCode" runat="server" type="text" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="txtExportEng" class="col-sm-3 control-label">Name (Eng)</label>
+                                                                    <div class="col-md-8">
+                                                                        <input class="form-control pull-right" id="txtExportEng" runat="server" type="text" />
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label for="txtStreet_Number" class="col-sm-3 control-label">Address1</label>
+                                                                    <div class="col-md-8">
+                                                                        <input class="form-control pull-right" id="txtStreet_Number" runat="server" type="text" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="txtDistrict" class="col-sm-3 control-label">Address2</label>
+                                                                    <div class="col-md-8">
+                                                                        <input class="form-control pull-right" id="txtDistrict" runat="server" type="text" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="txtProvince" class="col-sm-3 control-label">Address3</label>
+                                                                    <div class="col-md-8">
+                                                                        <input class="form-control pull-right" id="txtProvince" runat="server" type="text" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="txtPostCode" class="col-sm-3 control-label">Address5</label>
+                                                                    <div class="col-md-8">
+                                                                        <input class="form-control pull-right" id="txtPostCode" runat="server" type="text" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="txtCompensateCode" class="col-sm-3 control-label">Email</label>
+                                                                    <div class="col-md-8">
+                                                                        <input class="form-control pull-right" id="txtCompensateCode" runat="server" type="text" />
+                                                                    </div>
+                                                                </div>
+
+                                                            </fieldset>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <fieldset>
+                                                                <legend></legend>
+                                                                <div class="form-group">
+                                                                    <label for="txtConsigneeCode" class="col-sm-3 control-label">Consignee Code</label>
+                                                                    <div class="col-md-8">
+                                                                        <input class="form-control pull-right" id="txtConsigneeCode" runat="server" type="text" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="txtConsignneeEng" class="col-sm-3 control-label">Name (Eng)</label>
+                                                                    <div class="col-md-8">
+                                                                        <input class="form-control pull-right" id="txtConsignneeEng2" runat="server" type="text" />
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label for="txtConsignneeStreet_Number" class="col-sm-3 control-label">Address1</label>
+                                                                    <div class="col-md-8">
+                                                                        <input class="form-control pull-right" id="txtConsignneeStreet_Number" runat="server" type="text" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="txtConsignneeDistrict" class="col-sm-3 control-label">Address2</label>
+                                                                    <div class="col-md-8">
+                                                                        <input class="form-control pull-right" id="txtConsignneeDistrict" runat="server" type="text" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="txtConsignneeSubProvince" class="col-sm-3 control-label">Address3</label>
+                                                                    <div class="col-md-8">
+                                                                        <input class="form-control pull-right" id="txtConsignneeSubProvince" runat="server" type="text" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="txtConsignneeProvince" class="col-sm-3 control-label">Address5</label>
+                                                                    <div class="col-md-8">
+                                                                        <input class="form-control pull-right" id="txtConsignneeProvince" runat="server" type="text" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="txtConsignneeEMail" class="col-sm-3 control-label">Email</label>
+                                                                    <div class="col-md-8">
+                                                                        <input class="form-control pull-right" id="txtConsignneeEMail" runat="server" type="text" />
+                                                                    </div>
+                                                                </div>
+                                                            </fieldset>
+                                                        </div>
+
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -210,11 +299,140 @@
                             </div>
                             <!-- ./head -->
 
+                            <!-- detail -->
+                            <div class="active tab-pane" id="detail">
+                                <!-- Post -->
+                                <div class="post">
+                                    <div class="row margin-bottom">
+
+                                        <div class="col-lg-12 col-md-8 ">
+                                            <!-- form start -->
+                                            <div class="form-horizontal">
+
+                                                <div class="box-body">
+
+                                                    <div class="col-lg-12 col-md-12">
+                                                        <div class="col-md-8">
+
+                                                            <div class="form-group">
+                                                                <label for="txtInvoiceNo" class="col-sm-2 control-label">Invoice No</label>
+                                                                <div class="col-md-8">
+                                                                    <input class="form-control pull-right" id="txtInvoiceNo" runat="server" type="text" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="txtLOTNo" class="col-sm-2 control-label">LOT No</label>
+                                                                <div class="col-md-10">
+                                                                    <input class="form-control pull-right" id="txtLOTNo" runat="server" type="text" />
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label for="txtPartDesc" class="col-sm-2 control-label">Part Desc</label>
+                                                                <div class="col-md-10">
+                                                                    <input class="form-control pull-right" id="txtPartDesc" runat="server" type="text" />
+                                                                </div>
+                                                            </div>
 
 
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col-lg-12 col-md-12">
+                                                        <div class="col-md-6">
+                                                            <fieldset>
+                                                                <legend></legend>
+                                                                <div class="form-group">
+                                                                    <label for="txtOwner" class="col-sm-3 control-label">Owner P/N</label>
+                                                                    <div class="col-md-8">
+                                                                        <input class="form-control pull-right" id="txtOwner" runat="server" type="text" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="txtQuantity" class="col-sm-3 control-label">Quantity</label>
+                                                                    <div class="col-md-4">
+                                                                        <input class="form-control pull-right" id="txtQuantity" runat="server" type="text" />
+                                                                    </div>
+                                                                    <label for="dcbQuantityUnit" class="col-sm-1 control-label">Unit</label>
+                                                                    <div class="col-md-4">
+                                                                        <asp:DropDownList ID="dcbQuantityUnit" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code">
+                                                                            <%--<asp:ListItem Text = "--Select Country--" Value = ""></asp:ListItem>--%>
+                                                                        </asp:DropDownList>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label for="txtMeasurementDetail" class="col-sm-3 control-label">Measurement</label>
+                                                                    <div class="col-md-9">
+                                                                        <input class="form-control pull-right" id="txtMeasurementDetail" runat="server" type="text" />
+                                                                    </div>
+                                                                </div>
+
+                                                            </fieldset>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <fieldset>
+                                                                <legend></legend>
+                                                                <div class="form-group">
+                                                                    <label for="txtCustomer" class="col-sm-3 control-label">Customer P/N</label>
+                                                                    <div class="col-md-8">
+                                                                        <input class="form-control pull-right" id="txtCustomer" runat="server" type="text" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="txtConsignneeEng" class="col-sm-3 control-label">Gross Weight</label>
+                                                                    <div class="col-md-4">
+                                                                        <input class="form-control pull-right" id="txtWeight" runat="server" type="text" />
+                                                                    </div>
+                                                                    <label for="dcbWeightUnit" class="col-sm-1 control-label">Unit</label>
+                                                                    <div class="col-md-4">
+                                                                        <asp:DropDownList ID="dcbWeightUnit" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code">
+                                                                            <%--<asp:ListItem Text = "--Select Country--" Value = ""></asp:ListItem>--%>
+                                                                        </asp:DropDownList>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="dcbCountryofOrigin" class="col-sm-3 control-label">Country of Origin</label>
+                                                                    <div class="col-md-9">
+                                                                        <asp:DropDownList ID="dcbCountryofOrigin" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code">
+                                                                            <%--<asp:ListItem Text = "--Select Country--" Value = ""></asp:ListItem>--%>
+                                                                        </asp:DropDownList>
+                                                                    </div>
+                                                                </div>
+
+
+
+                                                            </fieldset>
+                                                        </div>
+
+
+                                                    </div>
+                                                    <div class="col-lg-12">
+                                                        <fieldset>
+                                                            <legend></legend>
+                                                            <div class="form-group">
+
+                                                                <div class="col-sm-10 col-md-offset-7">
+                                                                    <button type="button" class="btn btn-primary">SaveNew</button>
+                                                                    <button type="button" class="btn btn-default">SaveModify</button>
+                                                                    <button type="button" class="btn btn-default">Delete</button>
+                                                                    <button type="button" class="btn btn-default">Close</button>
+                                                                </div>
+                                                            </div>
+                                                        </fieldset>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ./ detail-->
                         </div>
-
                     </div>
+
+
+
 
 
                 </div>
@@ -222,7 +440,7 @@
 
             </div>
             <!-- /.row -->
-           
+
         </section>
         <!-- /.content -->
 
