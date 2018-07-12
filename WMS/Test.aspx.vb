@@ -62,22 +62,22 @@ Public Class Test
 
     Public Sub showUserList()
 
-        Dim formlist = (From u In db.tblMenus
-                        Group By Form = u.Form
-                        Into f = Group, Count())
-        'Dim formlist = (From u In db.tblUserMenus
-        '         Select New With {
-        '             u.Form,
-        '             u.Read_
-        '            }).ToList
+        'Dim formlist = (From u In db.tblMenus
+        '                Group By Form = u.Form
+        '                Into f = Group, Count())
+        ''Dim formlist = (From u In db.tblUserMenus
+        ''         Select New With {
+        ''             u.Form,
+        ''             u.Read_
+        ''            }).ToList
 
-        If formlist.Count > 0 Then
-            Me.cpRepeater.DataSource = formlist.ToList
-            Me.cpRepeater.DataBind()
-        Else
-            Me.cpRepeater.DataSource = Nothing
-            Me.cpRepeater.DataBind()
-        End If
+        'If formlist.Count > 0 Then
+        '    Me.cpRepeater.DataSource = formlist.ToList
+        '    Me.cpRepeater.DataBind()
+        'Else
+        '    Me.cpRepeater.DataSource = Nothing
+        '    Me.cpRepeater.DataBind()
+        'End If
     End Sub
 
     Protected Sub LinkButton1_Click(sender As Object, e As EventArgs)

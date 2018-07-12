@@ -232,6 +232,7 @@
   <ItemGroup>
     <Content Include="AddGroup.aspx" />
     <Content Include="AddUser.aspx" />
+    <Content Include="CustomsInvoice.aspx" />
     <Content Include="ExpGenLot.aspx" />
     <Content Include="HomeMain.aspx" />
     <Content Include="HTITrackingRec.aspx" />
@@ -6840,6 +6841,13 @@
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Class\LoginCls.vb" />
+    <Compile Include="CustomsInvoice.aspx.designer.vb">
+      <DependentUpon>CustomsInvoice.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomsInvoice.aspx.vb">
+      <DependentUpon>CustomsInvoice.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="Data\Branch.vb">
       <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>

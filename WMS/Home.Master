@@ -193,7 +193,7 @@
                             <ul class="treeview-menu">
                                   <li><a href="ExpGenLot.aspx"><i class="fa fa-circle-o"></i>Create Issue. LOT</a></li>
                                 <li><a href="IEATOut.aspx"><i class="fa fa-circle-o"></i>GEN IEAT. Doc</a></li>
-                                <li><a ><i class="fa fa-circle-o"></i>Invoice/Packing List Issue</a></li>
+                                <li><a href="CustomsInvoice.aspx"><i class="fa fa-circle-o"></i>Invoice/Packing List Issue</a></li>
                                  <li><a href="TruckWaybillIssue.aspx"><i class="fa fa-circle-o"></i>Truck Waybill Issue</a></li>
                                 <li><a href="ReportIEAT-E-02.aspx"><i class="fa fa-circle-o"></i>Report IEAT Issue</a></li>
                                 <li><a href="TruckManifest.aspx"><i class="fa fa-circle-o"></i>Truck Manifest</a></li>
@@ -573,7 +573,7 @@
                 <!-- DataTables -->
                     <script src="Scripts/datatables.net/js/jquery.dataTables.min.js"></script>
                     <script src="Scripts/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
            <script type="text/javascript">
                   $(document).ready(function () {
                       $('#example1').DataTable()
@@ -704,5 +704,7 @@
                      alert('You pressed Cancel!');
                  }}
          </script>
+
+
       </body>
  </html>

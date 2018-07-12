@@ -77,6 +77,123 @@ Partial Public Class TruckWaybillIssue
     Protected WithEvents CalendarExtender1 As Global.AjaxControlToolkit.CalendarExtender
 
     '''<summary>
+    '''txtNoOriginals control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtNoOriginals As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''txtDelivery control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtDelivery As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''txtDriverName control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtDriverName As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''txtPrepaid control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtPrepaid As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''txtGrossWeight control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtGrossWeight As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''txtPlaceCode control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtPlaceCode As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''txtPlaceName control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtPlaceName As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''txtNotifyParty control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtNotifyParty As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''txtCarLicense control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtCarLicense As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''txtFreightCharges control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtFreightCharges As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''txtQuantityAmount control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtQuantityAmount As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''txtMeasurement control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtMeasurement As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''txtPlaceAddress control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtPlaceAddress As Global.System.Web.UI.HtmlControls.HtmlTextArea
+
+    '''<summary>
     '''txtExporterCode control.
     '''</summary>
     '''<remarks>
@@ -113,15 +230,6 @@ Partial Public Class TruckWaybillIssue
     Protected WithEvents txtDistrict As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtSubProvince control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtSubProvince As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
     '''txtProvince control.
     '''</summary>
     '''<remarks>
@@ -149,74 +257,146 @@ Partial Public Class TruckWaybillIssue
     Protected WithEvents txtCompensateCode As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''Text1 control.
+    '''txtConsigneeCode control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Text1 As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtConsigneeCode As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''Text2 control.
+    '''txtConsignneeEng2 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Text2 As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtConsignneeEng2 As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''Text3 control.
+    '''txtConsignneeStreet_Number control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Text3 As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtConsignneeStreet_Number As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''Text4 control.
+    '''txtConsignneeDistrict control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Text4 As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtConsignneeDistrict As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''Text5 control.
+    '''txtConsignneeSubProvince control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Text5 As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtConsignneeSubProvince As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''Text6 control.
+    '''txtConsignneeProvince control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Text6 As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtConsignneeProvince As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''Text7 control.
+    '''txtConsignneeEMail control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Text7 As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtConsignneeEMail As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''Text8 control.
+    '''txtInvoiceNo control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Text8 As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtInvoiceNo As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''txtLOTNo control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtLOTNo As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''txtPartDesc control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtPartDesc As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''txtOwner control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtOwner As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''txtQuantity control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtQuantity As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''txtMeasurementDetail control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtMeasurementDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''txtCustomer control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtCustomer As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''txtWeight control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtWeight As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''dcbCountryofOrigin control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents dcbCountryofOrigin As Global.System.Web.UI.WebControls.DropDownList
 End Class
