@@ -220,7 +220,13 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <label for="txtProvince" class="col-sm-3 control-label">Address3</label>
+                                                                    <label for="txtSubProvince" class="col-sm-3 control-label">Address3</label>
+                                                                    <div class="col-md-8">
+                                                                        <input class="form-control pull-right" id="txtSubProvince" runat="server" type="text" />
+                                                                    </div>
+                                                                </div>
+                                                                       <div class="form-group">
+                                                                    <label for="txtProvince" class="col-sm-3 control-label">Address4</label>
                                                                     <div class="col-md-8">
                                                                         <input class="form-control pull-right" id="txtProvince" runat="server" type="text" />
                                                                     </div>
@@ -274,10 +280,16 @@
                                                                         <input class="form-control pull-right" id="txtConsignneeSubProvince" runat="server" type="text" />
                                                                     </div>
                                                                 </div>
-                                                                <div class="form-group">
+                                                                     <div class="form-group">
                                                                     <label for="txtConsignneeProvince" class="col-sm-3 control-label">Address5</label>
                                                                     <div class="col-md-8">
                                                                         <input class="form-control pull-right" id="txtConsignneeProvince" runat="server" type="text" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="txtConsignneePostCode" class="col-sm-3 control-label">Address5</label>
+                                                                    <div class="col-md-8">
+                                                                        <input class="form-control pull-right" id="txtConsignneePostCode" runat="server" type="text" />
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group">
@@ -288,7 +300,60 @@
                                                                 </div>
                                                             </fieldset>
                                                         </div>
+                                                        <div class="col-md-6">
+                                                            <fieldset>
+                                                                <legend></legend>
+                                                                <div class="form-group">
+                                                                    <label for="txtConsigneeCode" class="col-sm-3 control-label">Total Invoice</label>
+                                                                    <div class="col-md-8">
+                                                                        <input class="form-control pull-right" id="Text1" runat="server" type="text" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="txtConsignneeEng" class="col-sm-3 control-label">Forwarding</label>
+                                                                    <div class="col-md-8">
+                                                                        <input class="form-control pull-right" id="Text2" runat="server" type="text" />
+                                                                    </div>
+                                                                </div>
 
+                                                                <div class="form-group">
+                                                                    <label for="txtConsignneeStreet_Number" class="col-sm-3 control-label">Freight</label>
+                                                                    <div class="col-md-8">
+                                                                        <input class="form-control pull-right" id="Text3" runat="server" type="text" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="txtConsignneeDistrict" class="col-sm-3 control-label">Insurance</label>
+                                                                    <div class="col-md-8">
+                                                                        <input class="form-control pull-right" id="Text4" runat="server" type="text" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="txtConsignneeSubProvince" class="col-sm-3 control-label">Packing Charge</label>
+                                                                    <div class="col-md-8">
+                                                                        <input class="form-control pull-right" id="Text5" runat="server" type="text" />
+                                                                    </div>
+                                                                </div>
+                                                                     <div class="form-group">
+                                                                    <label for="txtConsignneeProvince" class="col-sm-3 control-label">Handling Charge</label>
+                                                                    <div class="col-md-8">
+                                                                        <input class="form-control pull-right" id="Text6" runat="server" type="text" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="txtConsignneePostCode" class="col-sm-3 control-label">Landing Charge</label>
+                                                                    <div class="col-md-8">
+                                                                        <input class="form-control pull-right" id="Text7" runat="server" type="text" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="txtConsignneeEMail" class="col-sm-3 control-label">Total Invoice THB</label>
+                                                                    <div class="col-md-8">
+                                                                        <input class="form-control pull-right" id="Text8" runat="server" type="text" />
+                                                                    </div>
+                                                                </div>
+                                                            </fieldset>
+                                                        </div>
 
                                                     </div>
                                                 </div>
