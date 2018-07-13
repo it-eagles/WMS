@@ -232,8 +232,13 @@
   <ItemGroup>
     <Content Include="AddGroup.aspx" />
     <Content Include="AddUser.aspx" />
+    <Content Include="AdLocSCRAPWH.aspx" />
+    <Content Include="AdLocWH.aspx" />
+    <Content Include="ChkStatMoveWH.aspx" />
+    <Content Include="ChkStockWH.aspx" />
     <Content Include="CustomsInvoice.aspx" />
     <Content Include="ExpGenLot.aspx" />
+    <Content Include="FinishGoodWH.aspx" />
     <Content Include="HomeMain.aspx" />
     <Content Include="HTITrackingRec.aspx" />
     <Content Include="IEATOut.aspx" />
@@ -6841,6 +6846,34 @@
       <DependentUpon>AddUser.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
+    <Compile Include="AdLocSCRAPWH.aspx.designer.vb">
+      <DependentUpon>AdLocSCRAPWH.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdLocSCRAPWH.aspx.vb">
+      <DependentUpon>AdLocSCRAPWH.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="AdLocWH.aspx.designer.vb">
+      <DependentUpon>AdLocWH.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdLocWH.aspx.vb">
+      <DependentUpon>AdLocWH.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="ChkStatMoveWH.aspx.designer.vb">
+      <DependentUpon>ChkStatMoveWH.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ChkStatMoveWH.aspx.vb">
+      <DependentUpon>ChkStatMoveWH.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="ChkStockWH.aspx.designer.vb">
+      <DependentUpon>ChkStockWH.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ChkStockWH.aspx.vb">
+      <DependentUpon>ChkStockWH.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="Class\LoginCls.vb" />
     <Compile Include="CustomsInvoice.aspx.designer.vb">
       <DependentUpon>CustomsInvoice.aspx</DependentUpon>
@@ -7247,6 +7280,13 @@
     </Compile>
     <Compile Include="ExpGenLot.aspx.vb">
       <DependentUpon>ExpGenLot.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="FinishGoodWH.aspx.designer.vb">
+      <DependentUpon>FinishGoodWH.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FinishGoodWH.aspx.vb">
+      <DependentUpon>FinishGoodWH.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Home.Master.designer.vb">

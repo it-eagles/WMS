@@ -215,11 +215,11 @@
                                 <li><a href="#"><i class="fa fa-circle-o"></i>Picking</a></li>
                                 <li><a href="#"><i class="fa fa-circle-o"></i>Single Issued</a></li>
                                 <li><a href="#"><i class="fa fa-circle-o"></i>Reject Issued</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i>Adjust Location</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i>Adjust Location SCRAP</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i>Check Stock</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i>Check Status Movement</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i>FinishGoods</a></li>
+                                <li><a href="AdLocWH.aspx"><i class="fa fa-circle-o"></i>Adjust Location</a></li>
+                                <li><a href="AdLocSCRAPWH.aspx"><i class="fa fa-circle-o"></i>Adjust Location SCRAP</a></li>
+                                <li><a href="ChkStockWH.aspx"><i class="fa fa-circle-o"></i>Check Stock</a></li>
+                                <li><a href="ChkStatMoveWH.aspx"><i class="fa fa-circle-o"></i>Check Status Movement</a></li>
+                                <li><a href="FinishGoodWH.aspx"><i class="fa fa-circle-o"></i>FinishGoods</a></li>
                             </ul>
                         </li>
 
