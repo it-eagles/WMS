@@ -52,8 +52,14 @@
                                                                 <div class="col-sm-8">                                                                    
                                                                   <input class="form-control" id="txtJobNo" runat="server"/>
                                                                 </div>
-                                                                  </div>                                                                                                                      
-                                                          </div>
+                                                                  </div>  
+                                                              <div class="form-group">			  
+                                                                    <label for="txtInvoice" class="col-sm-4 control-label">Inovice:</label>                                       
+                                                                <div class="col-sm-8">                                                                   
+                                                                    <input class="form-control" id="txtInvoice" runat="server"/>
+                                                                </div>  
+																</div>                                                                                                                      
+                                                            </div>
 
                                                           <div class="col-md-4"> 
                                                               <div class="form-group">
@@ -70,9 +76,13 @@
                                                                           <asp:RadioButton runat="server" ID ="rdbAdLoc" Text="Adjust Location"  onclick="EnableDisableTextBox();"  GroupName="option4"  />
                                                                        </label>
                                                                        </div>            
-                                                                  </div>
-                                                                                  
+                                                                  </div>                                                                                  
                                                               </div>
+                                                              <div class="form-group">
+																<div class="col-sm-6">                                                                    
+                                                                  <button type="submit" runat="server" class="btn btn-primary" id="btnFind" title="btnFind" onserverclick="btnFind_ServerClick">Find</button>
+                                                                </div>
+																</div>
                                                               </div>
 
                                                           <div class="col-md-4">    
@@ -89,10 +99,7 @@
                                                                           <asp:RadioButton runat="server" ID ="rdbAdQTY" Text="Adjust QTY"  onclick="EnableDisableTextBox();"  GroupName="option4"  />
                                                                        </label>
                                                                        </div>            
-                                                                  </div>                             
-                                                                <div class="col-sm-4">                                                                    
-                                                                  <button type="submit" runat="server" class="btn btn-primary" id="btnFind" title="btnFind" onserverclick="btnFind_ServerClick">Find</button>
-                                                                </div>
+                                                                  </div>
                                                                   </div>                                                 
                                                           </div>
                                                            
@@ -115,13 +122,19 @@
                 <fieldset>  <legend>Input</legend>
               <div class="box-body">
                 <div class="form-group">
-                  <label for="txtRecordQTY" class="col-sm-4 control-label">Record QTY:</label>
-                  <div class="col-sm-8">                    
-                      <input class="form-control" id="txtRecordQTY" runat="server" value="0"/>  
+                  <label for="txtOwnerPN2" class="col-sm-4 control-label">Owner P/N:</label>
+                  <div class="col-sm-8">
+                    <input class="form-control" id="txtOwnerPN2" runat="server" value="0"/>
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="txtAvalibleQTY" class="col-sm-4 control-label">Avalible QTY:</label>
+                  <label for="txtLocation" class="col-sm-4 control-label">Location:  <input type="checkbox" runat="server" id="chkLocation" /></label>
+                  <div class="col-sm-8">                    
+                      <input class="form-control" id="txtLocation" runat="server" value="0"/>  
+                  </div>
+                </div>
+                <div class="form-group">                  
+                  <label for="txtAvalibleQTY" class="col-sm-4 control-label">Avalible QTY: <input type="checkbox" runat="server" id="chkAvalibleQTY" /></label>
                   <div class="col-sm-8">
                     <input class="form-control" id="txtAvalibleQTY" runat="server" value="0"/>
                   </div>
@@ -130,6 +143,18 @@
                   <label for="txtType" class="col-sm-4 control-label">Type:</label>
                   <div class="col-sm-8">                    
                       <asp:DropDownList ID="ddlType" CssClass="form-control" runat="server"></asp:DropDownList>  
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="txtWeight" class="col-sm-4 control-label">Weight:</label>
+                  <div class="col-sm-8">
+                    <input class="form-control" id="txtWeight" runat="server" value="0"/>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="txtRemark" class="col-sm-4 control-label">Remark:</label>
+                  <div class="col-sm-8">
+                    <textarea class="form-control" rows="3" id="txtRamark" placeholder="Remark" style="height: 71px;"></textarea>
                   </div>
                 </div>
               </div>
@@ -148,17 +173,24 @@
                 <fieldset>  <legend>Input</legend>
               <div class="box-body">
                 <div class="form-group">
+                  <label for="txtCustomerLotNo2" class="col-sm-4 control-label">Customer Lot No:</label>
+                  <div class="col-sm-8">
+                    <input class="form-control" id="txtCustomerLotNo2" runat="server" value="0"/>
+                  </div>
+                </div>
+                <div class="form-group">
                   <label for="txtRCVQuantity" class="col-sm-4 control-label">RCV Quantity:</label>
                   <div class="col-sm-8">
                     <input class="form-control" id="txtRCVQuantity" runat="server" value="0"/>
                   </div>
                 </div>
                 <div class="form-group">
-                  <div class="col-sm-3">
+                  <label for="txtStatus" class="col-sm-4 control-label">Status:  <input type="checkbox" runat="server" id="chkStatus" /></label>
+                  <%--<div class="col-sm-3">
                      <label>
                          <input type="checkbox" runat="server" id="chkStatus" />Status
                      </label>
-                  </div>
+                  </div>--%>
                    <div class="col-sm-4">
                        <div class="radio">
                        <label>                                            
@@ -175,9 +207,20 @@
                   </div>                  
                 </div>
                 <div class="form-group">
-                  <label for="txtDamageQTY" class="col-sm-4 control-label">Damage QTY:</label>
+                   <label for="txtDamageQTY" class="col-sm-4 control-label">Damage QTY:  <input type="checkbox" runat="server" id="chkDamageQTY" /></label>
+                   <%-- <div class="col-sm-4">
+                     <label>
+                         <input type="checkbox" runat="server" id="chkDamageQTY" />Damage QTY:
+                     </label>
+                  </div>--%>
                   <div class="col-sm-8">
                     <input class="form-control" id="txtDamageQTY" runat="server" value="0"/>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="txtUnit" class="col-sm-4 control-label">Unit:</label>
+                  <div class="col-sm-8">
+                    <input class="form-control" id="txtUnit" runat="server"/>
                   </div>
                 </div>
                 <div class="form-group">

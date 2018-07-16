@@ -257,9 +257,13 @@
     <Content Include="MasterPartyAdd.aspx" />
     <Content Include="MasterPartyEdit.aspx" />
     <Content Include="MasterPartyView.aspx" />
+    <Content Include="MultiIssuedWH.aspx" />
+    <Content Include="MultiReceivedWH.aspx" />
     <Content Include="PartyMaster.aspx" />
     <Content Include="CreateRec.aspx" />
     <Content Include="PlanReceiveRec.aspx" />
+    <Content Include="RejectIssuedWH.aspx" />
+    <Content Include="RejectReceivedWH.aspx" />
     <Content Include="ReportIEAT-E-02.aspx" />
     <Content Include="ReportIEATRec.aspx" />
     <Content Include="Scripts\bootstrap-colorpicker\dist\css\bootstrap-colorpicker.css" />
@@ -6814,6 +6818,8 @@
     <Content Include="Scripts\vendor\select2\select2.min.css" />
     <Content Include="Scripts\vendor\select2\select2.min.js" />
     <Content Include="ShipmentRec.aspx" />
+    <Content Include="SingleIssuedWH.aspx" />
+    <Content Include="SingleReceivedWH.aspx" />
     <Content Include="Test.aspx" />
     <Content Include="TestCode.aspx" />
     <Content Include="TruckManifest.aspx" />
@@ -7408,6 +7414,20 @@
       <DependentUpon>MasterPartyView.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
+    <Compile Include="MultiIssuedWH.aspx.designer.vb">
+      <DependentUpon>MultiIssuedWH.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MultiIssuedWH.aspx.vb">
+      <DependentUpon>MultiIssuedWH.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="MultiReceivedWH.aspx.designer.vb">
+      <DependentUpon>MultiReceivedWH.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MultiReceivedWH.aspx.vb">
+      <DependentUpon>MultiReceivedWH.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -7448,6 +7468,20 @@
       <DependentUpon>PlanReceiveRec.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
+    <Compile Include="RejectIssuedWH.aspx.designer.vb">
+      <DependentUpon>RejectIssuedWH.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RejectIssuedWH.aspx.vb">
+      <DependentUpon>RejectIssuedWH.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="RejectReceivedWH.aspx.designer.vb">
+      <DependentUpon>RejectReceivedWH.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RejectReceivedWH.aspx.vb">
+      <DependentUpon>RejectReceivedWH.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="ReportIEAT-E-02.aspx.designer.vb">
       <DependentUpon>ReportIEAT-E-02.aspx</DependentUpon>
     </Compile>
@@ -7467,6 +7501,20 @@
     </Compile>
     <Compile Include="ShipmentRec.aspx.vb">
       <DependentUpon>ShipmentRec.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="SingleIssuedWH.aspx.designer.vb">
+      <DependentUpon>SingleIssuedWH.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SingleIssuedWH.aspx.vb">
+      <DependentUpon>SingleIssuedWH.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="SingleReceivedWH.aspx.designer.vb">
+      <DependentUpon>SingleReceivedWH.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SingleReceivedWH.aspx.vb">
+      <DependentUpon>SingleReceivedWH.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Test.aspx.designer.vb">

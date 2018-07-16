@@ -209,12 +209,13 @@
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="#"><i class="fa fa-circle-o"></i>Single Received</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i>Multiple Received</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i>Reject Received</a></li>
+                                <li><a href="SingleReceivedWH.aspx"><i class="fa fa-circle-o"></i>Single Received</a></li>
+                                <li><a href="MultiReceivedWH.aspx"><i class="fa fa-circle-o"></i>Multiple Received</a></li>
+                                <li><a href="RejectReceivedWH.aspx"><i class="fa fa-circle-o"></i>Reject Received</a></li>
                                 <li><a href="#"><i class="fa fa-circle-o"></i>Picking</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i>Single Issued</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i>Reject Issued</a></li>
+                                <li><a href="SingleIssuedWH.aspx"><i class="fa fa-circle-o"></i>Single Issued</a></li>
+                                <li><a href="MultiIssuedWH.aspx"><i class="fa fa-circle-o"></i>Multiple Issued</a></li>
+                                <li><a href="RejectIssuedWH.aspx"><i class="fa fa-circle-o"></i>Reject Issued</a></li>
                                 <li><a href="AdLocWH.aspx"><i class="fa fa-circle-o"></i>Adjust Location</a></li>
                                 <li><a href="AdLocSCRAPWH.aspx"><i class="fa fa-circle-o"></i>Adjust Location SCRAP</a></li>
                                 <li><a href="ChkStockWH.aspx"><i class="fa fa-circle-o"></i>Check Stock</a></li>

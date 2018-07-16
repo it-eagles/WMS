@@ -1,5 +1,6 @@
-﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="FinishGoodWH.aspx.vb" Inherits="WMS.FinishGoodWH" MasterPageFile="~/Home.Master"%>
+﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="MultiReceivedWH.aspx.vb" Inherits="WMS.MultiReceivedWH" MasterPageFile="~/Home.Master" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <form id="form1" runat="server">
@@ -8,12 +9,12 @@
         <!-- Content Wrapper. Contains page content -->
         <!-- Content Header (Page header) -->
         <section class="content-header">
-            <h1>Truck Way Bill
+            <h1>Multi Received
             </h1>
             <ol class="breadcrumb">
                 <li><a href="HomeMain.aspx"><i class="fa fa-home"></i>Home</a></li>
                 <li><a class="active"><i class="fa fa-file"></i>WareHouse</a></li>
-                <li><a href="TruckWaybillRec.aspx"class="active">Finish Good</a></li>
+                <li><a href="MultiReceivedWH.aspx"class="active">MultiReceived</a></li>
 
             </ol>
         </section>
@@ -556,19 +557,23 @@
                 </div>
                 <div class="form-group">
                   <label for="txtReceiveDate_GoodRecDetail" class="col-sm-4 control-label">Receive Date:</label>
-                  <div class="col-sm-8">                       
+                  <div class="col-sm-3">                       
                        <asp:TextBox CssClass="form-control" ID="txtdatepickerReceiveDate_GoodRecDetail" runat="server" placeholder="DD/MM/YYYY">
                        </asp:TextBox>
                        <asp:CalendarExtender ID="CalendarExtenderReceiveDate_GoodRecDetail" runat="server" Enabled="True" TargetControlID="txtdatepickerReceiveDate_GoodRecDetail" Format="dd/MM/yyyy"></asp:CalendarExtender>
                   </div>
+                  <label for="txtActualQTY_GoodRecDetail" class="col-sm-2 control-label">ActualQTY:</label>
+                  <div class="col-sm-3">
+                    <input class="form-control" id="txtActualQTY" runat="server" value="0"/>
+                  </div>
                 </div>
                 <div class="form-group">
-                  <label for="txtQuantity1_GoodRecDetail" class="col-sm-4 control-label">Quantity1:</label>
+                  <label for="txtPrepareQTY_GoodRecDetail" class="col-sm-4 control-label">Prepare QTY:</label>
                   <div class="col-sm-4">
-                    <input class="form-control" id="txtQuantity1_GoodRecDetail" runat="server" value="0"/>
+                    <input class="form-control" id="txtPrepareQTY_GoodRecDetail" runat="server" value="0"/>
                   </div>
                   <div class="col-sm-4">                    
-                    <asp:DropDownList ID="ddlQuantity1_GoodRecDetail" CssClass="form-control" runat="server"></asp:DropDownList> 
+                    <asp:DropDownList ID="ddlPrepareQTY_GoodRecDetail" CssClass="form-control" runat="server"></asp:DropDownList> 
                   </div>
                 </div>
                 <div class="form-group">
@@ -666,12 +671,12 @@
                   </div>
                 </div> 
                  <div class="form-group">
-                  <label for="txtQuantity2_GoodRecDetail" class="col-sm-4 control-label">Quantity2:</label>
+                  <label for="txtWeight_GoodRecDetail" class="col-sm-4 control-label">Weight:</label>
                   <div class="col-sm-4">
-                    <input class="form-control" id="txtQuantity2_GoodRecDetail" runat="server" value="0"/>
+                    <input class="form-control" id="txtWeight_GoodRecDetail" runat="server" value="0"/>
                   </div>
                   <div class="col-sm-4">                    
-                    <asp:DropDownList ID="ddlQuantity2_GoodRecDetail" CssClass="form-control" runat="server"></asp:DropDownList> 
+                    <asp:DropDownList ID="ddlWeight_GoodRecDetail" CssClass="form-control" runat="server"></asp:DropDownList> 
                   </div>
                 </div>
                   <div class="form-group">
@@ -766,20 +771,20 @@
                                                    <%--<fieldset>  <legend>Job</legend>--%>
                                                       <div class="box-body">   
                                                           <div class="col-sm-6">
-                                                              <div class="form-group">
+                                                             <%-- <div class="form-group">
                                                                   <div class="col-sm-4">                                                                    
-                                                                    <button type="submit" runat="server" class="btn btn-primary" id="btnSelectAll_GoodRecDetail" title="btnSelectAll_GoodRecDetail" >Select All</button>                                                                    
+                                                                    <button type="submit" runat="server" class="btn btn-primary" id="btnSelectAll_GoodRecDetail" title="btnSelectAll_GoodRecDetail" onserverclick="btnSelectAll_GoodRecDetail_ServerClick">Select All</button>                                                                    
                                                                   </div>
                                                                   <div class="col-sm-4">                                                                    
-                                                                    <button type="submit" runat="server" class="btn btn-primary" id="btnCencelSelectAll_GoodRecDetail" title="btnCencelSelectAll_GoodRecDetail" >Cencel Select All</button>                                                                    
+                                                                    <button type="submit" runat="server" class="btn btn-primary" id="btnCencelSelectAll_GoodRecDetail" title="btnCencelSelectAll_GoodRecDetail" onserverclick="btnCencelSelectAll_GoodRecDetail_ServerClick" >Cencel Select All</button>                                                                    
                                                                   </div> 
-                                                              </div>
+                                                              </div>--%>
                                                           </div>
 
                                                           <div class="col-sm-6">
                                                               <div class="form-group">
                                                                   <div class="col-sm-4">                                                                    
-                                                                    <button type="submit" runat="server" class="btn btn-primary" id="btnReceive_GoodRecDetail" title="btnReceive_GoodRecDetail" >Receive</button>                                                                    
+                                                                    <button type="submit" runat="server" class="btn btn-primary" id="btnReceive_GoodRecDetail" title="btnReceive_GoodRecDetail" onserverclick="btnReceive_GoodRecDetail_ServerClick" >Receive</button>                                                                    
                                                                   </div>
                                                               </div>
                                                           </div>

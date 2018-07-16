@@ -1,5 +1,6 @@
-﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="FinishGoodWH.aspx.vb" Inherits="WMS.FinishGoodWH" MasterPageFile="~/Home.Master"%>
+﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="SingleReceivedWH.aspx.vb" Inherits="WMS.SingleReceivedWH" MasterPageFile="~/Home.Master" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <form id="form1" runat="server">
@@ -8,12 +9,12 @@
         <!-- Content Wrapper. Contains page content -->
         <!-- Content Header (Page header) -->
         <section class="content-header">
-            <h1>Truck Way Bill
+            <h1>Single Received
             </h1>
             <ol class="breadcrumb">
                 <li><a href="HomeMain.aspx"><i class="fa fa-home"></i>Home</a></li>
                 <li><a class="active"><i class="fa fa-file"></i>WareHouse</a></li>
-                <li><a href="TruckWaybillRec.aspx"class="active">Finish Good</a></li>
+                <li><a href="SingleReceivedWH.aspx"class="active">SingleReceived</a></li>
 
             </ol>
         </section>
@@ -28,6 +29,7 @@
                         <ul class="nav nav-tabs">                            
                             <li class="active"><a href="#confirmgoodreceive" data-toggle="tab">Confirm Good Receive</a></li>
                             <li><a href="#goodreceivedetail" data-toggle="tab">Good Receive Detail</a></li>
+                            <li><a href="#putaway" data-toggle="tab">Put Away</a></li>
                         </ul>
 
                         <div class="tab-content">
@@ -556,19 +558,23 @@
                 </div>
                 <div class="form-group">
                   <label for="txtReceiveDate_GoodRecDetail" class="col-sm-4 control-label">Receive Date:</label>
-                  <div class="col-sm-8">                       
+                  <div class="col-sm-3">                       
                        <asp:TextBox CssClass="form-control" ID="txtdatepickerReceiveDate_GoodRecDetail" runat="server" placeholder="DD/MM/YYYY">
                        </asp:TextBox>
                        <asp:CalendarExtender ID="CalendarExtenderReceiveDate_GoodRecDetail" runat="server" Enabled="True" TargetControlID="txtdatepickerReceiveDate_GoodRecDetail" Format="dd/MM/yyyy"></asp:CalendarExtender>
                   </div>
+                  <label for="txtActualQTY_GoodRecDetail" class="col-sm-2 control-label">ActualQTY:</label>
+                  <div class="col-sm-3">
+                    <input class="form-control" id="txtActualQTY" runat="server" value="0"/>
+                  </div>
                 </div>
                 <div class="form-group">
-                  <label for="txtQuantity1_GoodRecDetail" class="col-sm-4 control-label">Quantity1:</label>
+                  <label for="txtQuantity1QTY_GoodRecDetail" class="col-sm-4 control-label">Quantity1 QTY:</label>
                   <div class="col-sm-4">
-                    <input class="form-control" id="txtQuantity1_GoodRecDetail" runat="server" value="0"/>
+                    <input class="form-control" id="txtQuantity1QTY_GoodRecDetail" runat="server" value="0"/>
                   </div>
                   <div class="col-sm-4">                    
-                    <asp:DropDownList ID="ddlQuantity1_GoodRecDetail" CssClass="form-control" runat="server"></asp:DropDownList> 
+                    <asp:DropDownList ID="ddlQuantity1QTY_GoodRecDetail" CssClass="form-control" runat="server"></asp:DropDownList> 
                   </div>
                 </div>
                 <div class="form-group">
@@ -650,19 +656,27 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="txtExpiredDate_GoodRecDetail" class="col-sm-4 control-label">Expired Date:</label>
-                  <div class="col-sm-4">                       
+                  <label for="txtExpiredDate_GoodRecDetail" class="col-sm-3 control-label">Expired Date:</label>
+                  <div class="col-sm-3">                       
                        <asp:TextBox CssClass="form-control" ID="txtdatepickerExpiredDate_GoodRecDetail" runat="server" placeholder="DD/MM/YYYY">
                        </asp:TextBox>
                        <asp:CalendarExtender ID="CalendarExtenderExpiredDate_GoodRecDetail" runat="server" Enabled="True" TargetControlID="txtdatepickerExpiredDate_GoodRecDetail" Format="dd/MM/yyyy"></asp:CalendarExtender>
                   </div>
+                  <label for="txtEntryNo_GoodRecDetail" class="col-sm-3 control-label">EntryNo:</label>
+                  <div class="col-sm-3">
+                    <input class="form-control" id="txtEntryNo_GoodRecDetail" runat="server"/>
+                  </div>
                 </div> 
                 <div class="form-group">
-                  <label for="txtETAARRDate_GoodRecDetail" class="col-sm-4 control-label">ETA/ARR Date:</label>
-                  <div class="col-sm-4">                       
+                  <label for="txtETAARRDate_GoodRecDetail" class="col-sm-3 control-label">ETA/ARR Date:</label>
+                  <div class="col-sm-3">                       
                        <asp:TextBox CssClass="form-control" ID="txtdatepickerETAARRDate_GoodRecDetail" runat="server" placeholder="DD/MM/YYYY">
                        </asp:TextBox>
                        <asp:CalendarExtender ID="CalendarExtenderETAARRDate_GoodRecDetail" runat="server" Enabled="True" TargetControlID="txtdatepickerETAARRDate_GoodRecDetail" Format="dd/MM/yyyy"></asp:CalendarExtender>
+                  </div>
+                  <label for="txtEntryItemNo_GoodRecDetail" class="col-sm-3 control-label">EntryItemNo:</label>
+                  <div class="col-sm-3">
+                    <input class="form-control" id="txtEntryItemNo_GoodRecDetail" runat="server"/>
                   </div>
                 </div> 
                  <div class="form-group">
@@ -689,7 +703,13 @@
                   <div class="col-sm-4">
                     <input class="form-control" id="txtBathAmount_GoodRecDetail" runat="server" value="0"/>
                   </div>                  
-                </div>                               
+                </div>  
+                 <div class="form-group">
+                  <label for="txtInvoice_GoodRecDetail" class="col-sm-4 control-label">Invoice:</label>
+                  <div class="col-sm-4">                     
+                    <input class="form-control" id="txtInvoice_GoodRecDetail" runat="server"/>
+                  </div>
+                </div>                             
               </div>
               <!-- /.box-body -->
                     <%--</fieldset>--%>
@@ -768,10 +788,10 @@
                                                           <div class="col-sm-6">
                                                               <div class="form-group">
                                                                   <div class="col-sm-4">                                                                    
-                                                                    <button type="submit" runat="server" class="btn btn-primary" id="btnSelectAll_GoodRecDetail" title="btnSelectAll_GoodRecDetail" >Select All</button>                                                                    
+                                                                    <button type="submit" runat="server" class="btn btn-primary" id="btnSelectAll_GoodRecDetail" title="btnSelectAll_GoodRecDetail" onserverclick="btnSelectAll_GoodRecDetail_ServerClick">Select All</button>                                                                    
                                                                   </div>
                                                                   <div class="col-sm-4">                                                                    
-                                                                    <button type="submit" runat="server" class="btn btn-primary" id="btnCencelSelectAll_GoodRecDetail" title="btnCencelSelectAll_GoodRecDetail" >Cencel Select All</button>                                                                    
+                                                                    <button type="submit" runat="server" class="btn btn-primary" id="btnCencelSelectAll_GoodRecDetail" title="btnCencelSelectAll_GoodRecDetail" onserverclick="btnCencelSelectAll_GoodRecDetail_ServerClick" >Cencel Select All</button>                                                                    
                                                                   </div> 
                                                               </div>
                                                           </div>
@@ -779,7 +799,7 @@
                                                           <div class="col-sm-6">
                                                               <div class="form-group">
                                                                   <div class="col-sm-4">                                                                    
-                                                                    <button type="submit" runat="server" class="btn btn-primary" id="btnReceive_GoodRecDetail" title="btnReceive_GoodRecDetail" >Receive</button>                                                                    
+                                                                    <button type="submit" runat="server" class="btn btn-primary" id="btnReceive_GoodRecDetail" title="btnReceive_GoodRecDetail" onserverclick="btnReceive_GoodRecDetail_ServerClick" >Receive</button>                                                                    
                                                                   </div>
                                                               </div>
                                                           </div>
