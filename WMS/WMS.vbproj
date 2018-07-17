@@ -261,6 +261,7 @@
     <Content Include="MultiReceivedWH.aspx" />
     <Content Include="PartyMaster.aspx" />
     <Content Include="CreateRec.aspx" />
+    <Content Include="PickingWH.aspx" />
     <Content Include="PlanReceiveRec.aspx" />
     <Content Include="RejectIssuedWH.aspx" />
     <Content Include="RejectReceivedWH.aspx" />
@@ -7459,6 +7460,13 @@
     </Compile>
     <Compile Include="CreateRec.aspx.vb">
       <DependentUpon>CreateRec.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="PickingWH.aspx.designer.vb">
+      <DependentUpon>PickingWH.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PickingWH.aspx.vb">
+      <DependentUpon>PickingWH.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="PlanReceiveRec.aspx.designer.vb">

@@ -822,6 +822,134 @@
              <!-----/ Export Goods----->
 
               <%--------------------------------------------------------------END Good Receive Detail----------------------------------------------------------%>
+
+
+                             <%-----------------------------------------------------Start Put Away-----------------------------------------------------------%>
+             <!------- Import Goods ------->
+            <div class="active tab-pane" id="putaway">
+                     <!-- Post -->
+               <div class="row">
+                        <%-----------------------------------------------------Start JOB Form-----------------------------------------------------------%>
+                   <div class="col-lg-12 col-md-12 ">
+                                            <!-- form start -->                        
+                                               <div class="form-horizontal">
+                                                   <%--<fieldset>  <legend>Job</legend>--%>
+                                                      <div class="box-body">   
+                                                          <div class="col-md-4 col-sm-4"> 
+                                                              <div class="form-group">                                                                  
+                                                                  <label for="txtWHSite_PutAway" class="col-sm-4 control-label">WH/Site:</label>                                       
+                                                                <div class="col-sm-8">                                                                    
+                                                                    <asp:DropDownList ID="ddlWHSite_PutAway" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                                </div>
+                                                                  </div>   
+                                                              <div class="form-group " style="height:34px;">
+                                                                  <div class="col-lg5 col-md-5 col-sm-5">
+                                                                        <div class="radio">
+                                                                        <label>                                            
+                                                                         <asp:RadioButton runat="server" ID ="rdbManual" Text="Manual"  onclick="EnableDisableTextBox();"  GroupName="option1" />
+                                                                      </label>
+                                                                       </div>            
+                                                                   </div>
+                                
+                                                                        <div class="col-lg5 col-md-5 col-sm-5">
+                                                                        <div class="radio">
+                                                                        <label>                                            
+                                                                         <asp:RadioButton runat="server" ID ="rdbAutoPallet" Text="Auto Pallet" onclick="EnableDisableTextBox();" GroupName="option1"/>
+                                                                      </label>
+                                                                       </div>            
+                                                                   </div>                                                                    
+                                                              </div>       
+                                                              <div class="form-group">
+                                                                   <label for="txtmessages1_PutAway" class="col-sm-8 control-label">พื้นที่จัดเก็บ(ปริมาตร):</label>                                       
+                                                                <div class="col-sm-4">
+                                                                    <input class="form-control" id="txtmessages1_PutAway" runat="server" value="0"/>
+                                                                </div>
+                                                              </div>   
+                                                              <div class="form-group">
+                                                                   <label for="txtmessages2_PutAway" class="col-sm-8 control-label">Jobอื่นใช้พื้นที่จัดเก็บ(ปริมาตร):</label>                                       
+                                                                <div class="col-sm-4">
+                                                                    <input class="form-control" id="txtmessages2_PutAway" runat="server" value="0"/>
+                                                                </div>
+                                                              </div>                                                      
+                                                          </div>
+
+                                                          <div class="col-md-4"> 
+                                                              <div class="form-group">
+                                                                  <label for="txtWHLocation_PutAway" class="col-sm-4 control-label">WH/Location:</label>
+                                                                 <div class="col-sm-8">                                                                    
+                                                                    <asp:DropDownList ID="ddlWHLocation_PutAway" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                                </div>
+                                                                  </div>
+                                                              <div class="form-group">
+                                                                  <label for="txtRemark_PutAway" class="col-sm-4 control-label">Remark:</label>
+                                                                  <div class="col-sm-8">
+                                                                    <textarea class="form-control" rows="1" id="txtRamark_PutAway" placeholder="Remark" style=" width: 563px;"></textarea>
+                                                                  </div>
+                                                              </div>
+                                                              <div class="form-group">
+                                                                   <label for="txtmessages3_PutAway" class="col-sm-8 control-label">พื้นที่จัดเก็บ(Pallet):</label>                                       
+                                                                <div class="col-sm-4">
+                                                                    <input class="form-control" id="txtmessages3_PutAway" runat="server" value="0"/>
+                                                                </div>
+                                                              </div>   
+                                                              <div class="form-group">
+                                                                   <label for="txtmessages4_PutAway" class="col-sm-8 control-label">Jobอื่นใช้พื้นที่จัดเก็บ(Pallet):</label>                                       
+                                                                <div class="col-sm-4">
+                                                                    <input class="form-control" id="txtmessages4_PutAway" runat="server" value="0"/>
+                                                                </div>
+                                                              </div> 
+                                                                                                                               
+                                                          </div>
+
+                                                          <div class="col-md-4"> 
+                                                              <div class="form-group">
+                                                                   <label for="txtPalletNo_PutAway" class="col-sm-4 control-label">Pallet No:</label>                                       
+                                                                <div class="col-sm-8">
+                                                                    <input class="form-control" id="txtPalletNo_PutAway" runat="server" value="0"/>
+                                                                </div>
+                                                              </div>                                                                   
+                                                          </div>
+                                                           
+                                                                                                                                            
+                                    <!-- /.box-body -->
+                             </div>
+                            <!-- /.box-header -->
+                           <%--</fieldset>--%>
+                       </div>
+          <!--/.col-lg-6 col-md-6 stockqty--->
+               
+                    </div>
+                         <%-------------------------------------------------------End JOB Form----------------------------------------------------------------%>
+                   <div class="col-lg-12 col-md-12 ">
+                                            <!-- form start -->                        
+                                               <div class="form-horizontal">
+                                                   <%--<fieldset>  <legend>Job</legend>--%>
+                                                      <div class="box-body">   
+                                                          <div class="col-md-12"> 
+                                                              <div class="form-group">
+                                                                <div class="col-md-8"></div>       
+                                                                <div class="col-sm-4">
+                                                                    <button type="submit" runat="server" class="btn btn-primary" id="btnPutAway" title="btnPutAway" onserverclick="btnPutAway_ServerClick">PutAway</button> 
+                                                                </div>
+                                                              </div>                                                                   
+                                                          </div>
+                                                           
+                                                                                                                                            
+                                    <!-- /.box-body -->
+                             </div>
+                            <!-- /.box-header -->
+                           <%--</fieldset>--%>
+                       </div>
+          <!--/.col-lg-6 col-md-6 stockqty--->
+               
+                    </div>
+                         
+                </div>
+     <!-- /.post -->
+       </div>
+ <!------- /. Import Goods ------->
+                            <%-------------------------------------------------------------End Put Away-------------------------------------------------------%>
+
            </div>
             
 

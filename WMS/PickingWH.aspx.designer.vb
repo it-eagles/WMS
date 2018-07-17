@@ -11,7 +11,7 @@ Option Strict On
 Option Explicit On
 
 
-Partial Public Class SingleReceivedWH
+Partial Public Class PickingWH
 
     '''<summary>
     '''form1 control.
@@ -32,391 +32,409 @@ Partial Public Class SingleReceivedWH
     Protected WithEvents ScriptManager1 As Global.System.Web.UI.ScriptManager
 
     '''<summary>
-    '''ddlJobNo_ConGoodRec control.
+    '''txtPullSignal_BeforeTab control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlJobNo_ConGoodRec As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtPullSignal_BeforeTab As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtdatepickerJobdate_ConGoodRec control.
+    '''txtJobNo_BeforeTab control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtdatepickerJobdate_ConGoodRec As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents txtJobNo_BeforeTab As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''CalendarExtenderJobdate_ConGoodRec control.
+    '''chkScrap control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents CalendarExtenderJobdate_ConGoodRec As Global.AjaxControlToolkit.CalendarExtender
+    Protected WithEvents chkScrap As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
 
     '''<summary>
-    '''txtCustRefNo_ConGoodRec control.
+    '''txtdatepickertxtPullDateTime_beforeTab control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtCustRefNo_ConGoodRec As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtdatepickertxtPullDateTime_beforeTab As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''ddlOwnerCode_ConGoodRec control.
+    '''CalendarExtenderPullDateTime_beforeTab control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlOwnerCode_ConGoodRec As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents CalendarExtenderPullDateTime_beforeTab As Global.AjaxControlToolkit.CalendarExtender
 
     '''<summary>
-    '''txtNameOwner_ConGoodRec control.
+    '''txtdatepickerDeliveryDateTime_beforeTab control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtNameOwner_ConGoodRec As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtdatepickerDeliveryDateTime_beforeTab As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''txtAddress1Owner_ConGoodRec control.
+    '''CalendarExtenderDeliveryDateTime_beforeTab control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtAddress1Owner_ConGoodRec As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents CalendarExtenderDeliveryDateTime_beforeTab As Global.AjaxControlToolkit.CalendarExtender
 
     '''<summary>
-    '''txtAddress2Owner_ConGoodRec control.
+    '''txtdatepickerComfirmDateTime_beforeTab control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtAddress2Owner_ConGoodRec As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtdatepickerComfirmDateTime_beforeTab As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''txtAddress3Owner_ConGoodRec control.
+    '''CalendarExtenderComfirmDateTime_beforeTab control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtAddress3Owner_ConGoodRec As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents CalendarExtenderComfirmDateTime_beforeTab As Global.AjaxControlToolkit.CalendarExtender
 
     '''<summary>
-    '''txtAddress4Owner_ConGoodRec control.
+    '''ddlExporterCode_PickingHead control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtAddress4Owner_ConGoodRec As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents ddlExporterCode_PickingHead As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''ddlWHManagement_ConGoodRec control.
+    '''txtNameExporter_PickingHead control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlWHManagement_ConGoodRec As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtNameExporter_PickingHead As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtNameWHManage_ConGoodRec control.
+    '''txtAddress1Exporter_PickingHead control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtNameWHManage_ConGoodRec As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtAddress1Exporter_PickingHead As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtAddress1WHManage_ConGoodRec control.
+    '''txtAddress2Exporter_PickingHead control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtAddress1WHManage_ConGoodRec As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtAddress2Exporter_PickingHead As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtAddress2WHManage_ConGoodRec control.
+    '''txtAddress3Exporter_PickingHead control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtAddress2WHManage_ConGoodRec As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtAddress3Exporter_PickingHead As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtAddress3WHManage_ConGoodRec control.
+    '''txtAddress4Exporter_PickingHead control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtAddress3WHManage_ConGoodRec As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtAddress4Exporter_PickingHead As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtAddress4WHManage_ConGoodRec control.
+    '''ddlOwnerCode_PickingHead control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtAddress4WHManage_ConGoodRec As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents ddlOwnerCode_PickingHead As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''ddlCommodity_ConGoodRec control.
+    '''txtNameOwner_PickingHead control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlCommodity_ConGoodRec As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtNameOwner_PickingHead As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtQuantityPackage_ConGoodRec control.
+    '''txtAddress1Owner_PickingHead control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtQuantityPackage_ConGoodRec As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtAddress1Owner_PickingHead As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''ddlQuantityPackage_ConGoodRec control.
+    '''txtAddress2Owner_PickingHead control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlQuantityPackage_ConGoodRec As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtAddress2Owner_PickingHead As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtQuantityPLTSkid_ConGoodRec control.
+    '''txtAddress3Owner_PickingHead control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtQuantityPLTSkid_ConGoodRec As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtAddress3Owner_PickingHead As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''ddlQuantityPLTSkid_ConGoodRec control.
+    '''txtAddress4Owner_PickingHead control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlQuantityPLTSkid_ConGoodRec As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtAddress4Owner_PickingHead As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtQuantityReceived_ConGoodRec control.
+    '''ddlCommodity_PickingHead control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtQuantityReceived_ConGoodRec As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents ddlCommodity_PickingHead As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''ddlQuantityReceived_ConGoodRec control.
+    '''txtQuantityPackage_PickingHead control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlQuantityReceived_ConGoodRec As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtQuantityPackage_PickingHead As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txttxtQuantityDamage_ConGoodRec control.
+    '''ddlQuantityPackage_PickingHead control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txttxtQuantityDamage_ConGoodRec As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents ddlQuantityPackage_PickingHead As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''ddlQuantityDamage_ConGoodRec control.
+    '''txtQuantityPLTSkid_PickingHead control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlQuantityDamage_ConGoodRec As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtQuantityPLTSkid_PickingHead As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''btnSumQTY_ConGoodRec control.
+    '''ddlQuantityPLTSkid_PickingHead control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents btnSumQTY_ConGoodRec As Global.System.Web.UI.HtmlControls.HtmlButton
+    Protected WithEvents ddlQuantityPLTSkid_PickingHead As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''txtCustomerCode_ConGoodRec control.
+    '''txttxtQuantityPicked_PickingHead control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtCustomerCode_ConGoodRec As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txttxtQuantityPicked_PickingHead As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtNameCustomer_ConGoodRec control.
+    '''ddlQuantityPicked_PickingHead control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtNameCustomer_ConGoodRec As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents ddlQuantityPicked_PickingHead As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''txtAddress1Customer_ConGoodRec control.
+    '''txtConsigneeCode_PickingHead control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtAddress1Customer_ConGoodRec As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtConsigneeCode_PickingHead As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''txtAddress2Customer_ConGoodRec control.
+    '''txtNameConsignee_PickingHead control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtAddress2Customer_ConGoodRec As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtNameConsignee_PickingHead As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtAddress3Customer_ConGoodRec control.
+    '''txtAddress1Consignee_PickingHead control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtAddress3Customer_ConGoodRec As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtAddress1Consignee_PickingHead As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtAddress4Customer_ConGoodRec control.
+    '''txtAddress2Consignee_PickingHead control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtAddress4Customer_ConGoodRec As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtAddress2Consignee_PickingHead As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''ddlEndUserCode_ConGoodRec control.
+    '''txtAddress3Consignee_PickingHead control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlEndUserCode_ConGoodRec As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtAddress3Consignee_PickingHead As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtNameEndUser_ConGoodRec control.
+    '''txtAddress4Consignee_PickingHead control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtNameEndUser_ConGoodRec As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtAddress4Consignee_PickingHead As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtAddress1EndUser_ConGoodRec control.
+    '''ddlShipToCode_PickingHead control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtAddress1EndUser_ConGoodRec As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents ddlShipToCode_PickingHead As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''txtAddress2EndUser_ConGoodRec control.
+    '''txtNameShipTo_PickingHead control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtAddress2EndUser_ConGoodRec As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtNameShipTo_PickingHead As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtAddress3EndUser_ConGoodRec control.
+    '''txtAddress1ShipTo_PickingHead control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtAddress3EndUser_ConGoodRec As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtAddress1ShipTo_PickingHead As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtAddress4EndUser_ConGoodRec control.
+    '''txtAddress2ShipTo_PickingHead control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtAddress4EndUser_ConGoodRec As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtAddress2ShipTo_PickingHead As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtQuantityOfGood_ConGoodRec control.
+    '''txtAddress3ShipTo_PickingHead control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtQuantityOfGood_ConGoodRec As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtAddress3ShipTo_PickingHead As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''ddlQuantityOfGood_ConGoodRec control.
+    '''txtAddress4ShipTo_PickingHead control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlQuantityOfGood_ConGoodRec As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtAddress4ShipTo_PickingHead As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtWeight_ConGoodRec control.
+    '''txtQuantityOfGood_PickingHead control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtWeight_ConGoodRec As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtQuantityOfGood_PickingHead As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''ddlWeight_ConGoodRec control.
+    '''ddlQuantityOfGood_PickingHead control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlWeight_ConGoodRec As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents ddlQuantityOfGood_PickingHead As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''txtVolume_ConGoodRec control.
+    '''txtWeight_PickingHead control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtVolume_ConGoodRec As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtWeight_PickingHead As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''ddlWeight_PickingHead control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ddlWeight_PickingHead As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''txtVolume_PickingHead control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtVolume_PickingHead As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
     '''DropDownList1 control.
@@ -428,605 +446,560 @@ Partial Public Class SingleReceivedWH
     Protected WithEvents DropDownList1 As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''txtQTYWaitRec_ConGoodRec control.
+    '''txtQTYDiscrepancy_PickingHead control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtQTYWaitRec_ConGoodRec As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtQTYDiscrepancy_PickingHead As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''ddlQTYWaitRec_ConGoodRec control.
+    '''ddlQTYDiscrepancy_PickingHead control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlQTYWaitRec_ConGoodRec As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents ddlQTYDiscrepancy_PickingHead As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''txtQTYDiscrepancy_ConGoodRec control.
+    '''txtSelectFileForImport_SEQ_ImportFiles control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtQTYDiscrepancy_ConGoodRec As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtSelectFileForImport_SEQ_ImportFiles As Global.System.Web.UI.HtmlControls.HtmlInputFile
 
     '''<summary>
-    '''ddlQTYDiscrepancy_ConGoodRec control.
+    '''txtSelectFileForImport_Detail_ImportFiles control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlQTYDiscrepancy_ConGoodRec As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtSelectFileForImport_Detail_ImportFiles As Global.System.Web.UI.HtmlControls.HtmlInputFile
 
     '''<summary>
-    '''ddlWHSite_GoodRecDetail control.
+    '''txtSelectFileForImport_Shipment_ImportFiles control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlWHSite_GoodRecDetail As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtSelectFileForImport_Shipment_ImportFiles As Global.System.Web.UI.HtmlControls.HtmlInputFile
 
     '''<summary>
-    '''txtCusLOTNo_GoodRecDetail control.
+    '''btnImport3NJRC_ImportFiles control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtCusLOTNo_GoodRecDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents btnImport3NJRC_ImportFiles As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
-    '''ddlEASPN_GoodRecDetail control.
+    '''txtSelectFileForImport_NewFileNJRC_ImportFiles control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlEASPN_GoodRecDetail As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtSelectFileForImport_NewFileNJRC_ImportFiles As Global.System.Web.UI.HtmlControls.HtmlInputFile
 
     '''<summary>
-    '''ddlWHLocation_GoodRecDetail control.
+    '''btnImport1NJRC_ImportFiles control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlWHLocation_GoodRecDetail As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents btnImport1NJRC_ImportFiles As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
-    '''ddlCustWHFac_GoodRecDetail control.
+    '''txtSelectFileForImport_Pallet_ImportFiles control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlCustWHFac_GoodRecDetail As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtSelectFileForImport_Pallet_ImportFiles As Global.System.Web.UI.HtmlControls.HtmlInputFile
 
     '''<summary>
-    '''txtCustomerPN_GoodRecDetail control.
+    '''btnImportPallet_ImportFiles control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtCustomerPN_GoodRecDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents btnImportPallet_ImportFiles As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
-    '''ddlENDCustomer_GoodRecDetail control.
+    '''txtItemNo_AssignDetail control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlENDCustomer_GoodRecDetail As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtItemNo_AssignDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtItemNo_GoodRecDetail control.
+    '''txtOwnerPN_AssignDetail control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtItemNo_GoodRecDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtOwnerPN_AssignDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtOwnerPN_GoodRecDetail control.
+    '''txtRequestedQuantity_AssignDetail control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtOwnerPN_GoodRecDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtRequestedQuantity_AssignDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''ddlMeasurement_GoodRecDetail control.
+    '''txtCustomerLot_AssignDetail control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlMeasurement_GoodRecDetail As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtCustomerLot_AssignDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtWidth_GoodRecDetail control.
+    '''ddlEASPN_AssignDetail control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtWidth_GoodRecDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents ddlEASPN_AssignDetail As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''txtHight_GoodRecDetail control.
+    '''ddlRequestedQuantity_AssignDetail control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtHight_GoodRecDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents ddlRequestedQuantity_AssignDetail As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''txtOrderNo_GoodRecDetail control.
+    '''txtOrderNo_AssignDetail control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtOrderNo_GoodRecDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtOrderNo_AssignDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtReceiveNo_GoodRecDetail control.
+    '''txtPriceForeign_AssignDetail control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtReceiveNo_GoodRecDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtPriceForeign_AssignDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''chkNotUseDate_GoodRecDetail control.
+    '''txtCustomerPN_AssignDetail control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents chkNotUseDate_GoodRecDetail As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
+    Protected WithEvents txtCustomerPN_AssignDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtdatepickerManufacturing_GoodRecDetail control.
+    '''rdbIMP control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtdatepickerManufacturing_GoodRecDetail As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents rdbIMP As Global.System.Web.UI.WebControls.RadioButton
 
     '''<summary>
-    '''CalendarExtenderManufacturing_GoodRecDetail control.
+    '''rdbEXP control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents CalendarExtenderManufacturing_GoodRecDetail As Global.AjaxControlToolkit.CalendarExtender
+    Protected WithEvents rdbEXP As Global.System.Web.UI.WebControls.RadioButton
 
     '''<summary>
-    '''txtdatepickerReceiveDate_GoodRecDetail control.
+    '''txtPriceBath_AssignDetail control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtdatepickerReceiveDate_GoodRecDetail As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents txtPriceBath_AssignDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''CalendarExtenderReceiveDate_GoodRecDetail control.
+    '''chkNotUseDate_AssignDetail control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents CalendarExtenderReceiveDate_GoodRecDetail As Global.AjaxControlToolkit.CalendarExtender
+    Protected WithEvents chkNotUseDate_AssignDetail As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
 
     '''<summary>
-    '''txtActualQTY control.
+    '''txtdatepickerManufacturing_AssignDetail control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtActualQTY As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtdatepickerManufacturing_AssignDetail As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''txtQuantity1QTY_GoodRecDetail control.
+    '''CalendarExtenderManufacturing_AssignDetail control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtQuantity1QTY_GoodRecDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents CalendarExtenderManufacturing_AssignDetail As Global.AjaxControlToolkit.CalendarExtender
 
     '''<summary>
-    '''ddlQuantity1QTY_GoodRecDetail control.
+    '''txtAvailableQuantity_AssignDetail control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlQuantity1QTY_GoodRecDetail As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtAvailableQuantity_AssignDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''ddlCurrency_GoodRecDetail control.
+    '''txtOrderFromOnline_AssignDetail control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlCurrency_GoodRecDetail As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtOrderFromOnline_AssignDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtPriceForeign_GoodRecDetail control.
+    '''txtdatepickerExpiredDate_AssignDetail control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtPriceForeign_GoodRecDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtdatepickerExpiredDate_AssignDetail As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''txtPriceBath_GoodRecDetail control.
+    '''CalendarExtenderExpiredDate_AssignDetail control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtPriceBath_GoodRecDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents CalendarExtenderExpiredDate_AssignDetail As Global.AjaxControlToolkit.CalendarExtender
 
     '''<summary>
-    '''rdbShortShip control.
+    '''txtPalletNo_AssignDetail control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents rdbShortShip As Global.System.Web.UI.WebControls.RadioButton
+    Protected WithEvents txtPalletNo_AssignDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''rdbOverShip control.
+    '''txtCustomerFromOnline_AssignDetail control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents rdbOverShip As Global.System.Web.UI.WebControls.RadioButton
+    Protected WithEvents txtCustomerFromOnline_AssignDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtLength_GoodRecDetail control.
+    '''btnSaveNew_AssignDetail control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtLength_GoodRecDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents btnSaveNew_AssignDetail As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
-    '''txtProductVolume_GoodRecDetail control.
+    '''btnSaveModify_AssignDetail control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtProductVolume_GoodRecDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents btnSaveModify_AssignDetail As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
-    '''txtPalletNo_GoodRecDetail control.
+    '''btnDelete_AssignDetail control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtPalletNo_GoodRecDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents btnDelete_AssignDetail As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
-    '''ddlStatus_GoodRecDetail control.
+    '''btnDeleteAll_AssignDetail control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlStatus_GoodRecDetail As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents btnDeleteAll_AssignDetail As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
-    '''ddlType_GoodRecDetail control.
+    '''txtSelectFileForImport_AssignDetail control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlType_GoodRecDetail As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtSelectFileForImport_AssignDetail As Global.System.Web.UI.HtmlControls.HtmlInputFile
 
     '''<summary>
-    '''txtdatepickerExpiredDate_GoodRecDetail control.
+    '''btnImport_AssignDetail control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtdatepickerExpiredDate_GoodRecDetail As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents btnImport_AssignDetail As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
-    '''CalendarExtenderExpiredDate_GoodRecDetail control.
+    '''rdbOwner control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents CalendarExtenderExpiredDate_GoodRecDetail As Global.AjaxControlToolkit.CalendarExtender
+    Protected WithEvents rdbOwner As Global.System.Web.UI.WebControls.RadioButton
 
     '''<summary>
-    '''txtEntryNo_GoodRecDetail control.
+    '''rdbSpecific control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtEntryNo_GoodRecDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents rdbSpecific As Global.System.Web.UI.WebControls.RadioButton
 
     '''<summary>
-    '''txtdatepickerETAARRDate_GoodRecDetail control.
+    '''txtCustomerLOT_PickPack control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtdatepickerETAARRDate_GoodRecDetail As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents txtCustomerLOT_PickPack As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''CalendarExtenderETAARRDate_GoodRecDetail control.
+    '''txtOwnerPN_PickPack control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents CalendarExtenderETAARRDate_GoodRecDetail As Global.AjaxControlToolkit.CalendarExtender
+    Protected WithEvents txtOwnerPN_PickPack As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtEntryItemNo_GoodRecDetail control.
+    '''ddlWHSite_PickPack control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtEntryItemNo_GoodRecDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents ddlWHSite_PickPack As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''txtQuantity2_GoodRecDetail control.
+    '''txtINVNo_PickPack control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtQuantity2_GoodRecDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtINVNo_PickPack As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''ddlQuantity2_GoodRecDetail control.
+    '''txtENDCustomer_PickPack control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlQuantity2_GoodRecDetail As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtENDCustomer_PickPack As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtExchangeRate_GoodRecDetail control.
+    '''chkCustomerLot_PickPack control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtExchangeRate_GoodRecDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents chkCustomerLot_PickPack As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
 
     '''<summary>
-    '''txtAmount_GoodRecDetail control.
+    '''rcbFIFO control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtAmount_GoodRecDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents rcbFIFO As Global.System.Web.UI.WebControls.RadioButton
 
     '''<summary>
-    '''txtBathAmount_GoodRecDetail control.
+    '''rcbLIFO control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtBathAmount_GoodRecDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents rcbLIFO As Global.System.Web.UI.WebControls.RadioButton
 
     '''<summary>
-    '''txtInvoice_GoodRecDetail control.
+    '''txtPalletNo_PickPack control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtInvoice_GoodRecDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtPalletNo_PickPack As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtSupplier_GoodRecDetail control.
+    '''btnSelectAll control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtSupplier_GoodRecDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents btnSelectAll As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
-    '''txtDestination_GoodRecDetail control.
+    '''btnCancelSelectAll control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtDestination_GoodRecDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents btnCancelSelectAll As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
-    '''txtBuyer_GoodRecDetail control.
+    '''txtFIFO_PickPack control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtBuyer_GoodRecDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtFIFO_PickPack As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtConsignee_GoodRecDetail control.
+    '''txtLIFO_PickPack control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtConsignee_GoodRecDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtLIFO_PickPack As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtExporter_GoodRecDetail control.
+    '''ddlQuantityOfPick_PickPack control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtExporter_GoodRecDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents ddlQuantityOfPick_PickPack As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''txtShippingMark_GoodRecDetail control.
+    '''txtQTYCanPick_PickPack control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtShippingMark_GoodRecDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtQTYCanPick_PickPack As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''btnSelectAll_GoodRecDetail control.
+    '''txtPONo_PickPack control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents btnSelectAll_GoodRecDetail As Global.System.Web.UI.HtmlControls.HtmlButton
+    Protected WithEvents txtPONo_PickPack As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''btnCencelSelectAll_GoodRecDetail control.
+    '''btnPick control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents btnCencelSelectAll_GoodRecDetail As Global.System.Web.UI.HtmlControls.HtmlButton
+    Protected WithEvents btnPick As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
-    '''btnReceive_GoodRecDetail control.
+    '''btnCancel control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents btnReceive_GoodRecDetail As Global.System.Web.UI.HtmlControls.HtmlButton
+    Protected WithEvents btnCancel As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
-    '''ddlWHSite_PutAway control.
+    '''ddlWHSite_PickNJR control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlWHSite_PutAway As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents ddlWHSite_PickNJR As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''rdbManual control.
+    '''txtQuantityOfPick_PickNJR control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents rdbManual As Global.System.Web.UI.WebControls.RadioButton
+    Protected WithEvents txtQuantityOfPick_PickNJR As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''rdbAutoPallet control.
+    '''btnAutoPickNJR control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents rdbAutoPallet As Global.System.Web.UI.WebControls.RadioButton
+    Protected WithEvents btnAutoPickNJR As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
-    '''txtmessages1_PutAway control.
+    '''ddlWHSite_PickAutoPallet control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtmessages1_PutAway As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents ddlWHSite_PickAutoPallet As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''txtmessages2_PutAway control.
+    '''btnAutoPickPallet control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtmessages2_PutAway As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''ddlWHLocation_PutAway control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents ddlWHLocation_PutAway As Global.System.Web.UI.WebControls.DropDownList
-
-    '''<summary>
-    '''txtmessages3_PutAway control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtmessages3_PutAway As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''txtmessages4_PutAway control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtmessages4_PutAway As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''txtPalletNo_PutAway control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtPalletNo_PutAway As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''btnPutAway control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents btnPutAway As Global.System.Web.UI.HtmlControls.HtmlButton
+    Protected WithEvents btnAutoPickPallet As Global.System.Web.UI.HtmlControls.HtmlButton
 End Class

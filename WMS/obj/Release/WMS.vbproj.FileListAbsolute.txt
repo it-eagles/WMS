@@ -92,3 +92,4 @@ D:\WMS\WMS\bin\System.Web.WebPages.Deployment.dll
 D:\WMS\WMS\bin\System.Web.WebPages.dll
 D:\WMS\WMS\bin\System.Web.WebPages.Razor.dll
 D:\WMS\WMS\bin\WebGrease.dll
+D:\WMS\WMS\bin\CrystalDecisions.Shared.dll

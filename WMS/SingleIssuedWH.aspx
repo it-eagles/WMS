@@ -9,7 +9,7 @@
         <!-- Content Wrapper. Contains page content -->
         <!-- Content Header (Page header) -->
         <section class="content-header">
-            <h1>Invoice/Packing List Rec
+            <h1>Single Issued
             </h1>
             <ol class="breadcrumb">
                 <li><a href="HomeMain.aspx"><i class="fa fa-home"></i>Home</a></li>
@@ -97,7 +97,7 @@
                             </div>
                       </div>
                        <div class="form-group">     
-                            <label for="txtConfirmDateTime" class="col-sm-4 control-label">Delivery Date/Time:</label>                       
+                            <label for="txtConfirmDateTime" class="col-sm-4 control-label">Confirm Date/Time:</label>                       
                             <div class="col-sm-4">                                            
                                  <asp:TextBox CssClass="form-control" ID="txtdatepickerComfirmDateTime_beforeTab" runat="server" placeholder="DD/MM/YYYY">
                                  </asp:TextBox>

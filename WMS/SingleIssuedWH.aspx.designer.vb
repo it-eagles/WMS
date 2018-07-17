@@ -626,13 +626,13 @@ Partial Public Class SingleIssuedWH
     Protected WithEvents ddlMeasurement_ConfirmIssue As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''txtWeidth_ConfirmIssue control.
+    '''txtWidth_ConfirmIssue control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtWeidth_ConfirmIssue As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtWidth_ConfirmIssue As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
     '''txtHight_ConfirmIssue control.
@@ -707,22 +707,22 @@ Partial Public Class SingleIssuedWH
     Protected WithEvents CalendarExtenderReceiveDate_ConfirmIssue As Global.AjaxControlToolkit.CalendarExtender
 
     '''<summary>
-    '''txtPickQTY_ConfirmIssue control.
+    '''txtQuantity_ConfirmIssue control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtPickQTY_ConfirmIssue As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtQuantity_ConfirmIssue As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''ddlPickQTY_ConfirmIssue control.
+    '''ddlQuantity_ConfirmIssue control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlPickQTY_ConfirmIssue As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents ddlQuantity_ConfirmIssue As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''ddlCurrency_ConfirmIssue control.
@@ -815,13 +815,13 @@ Partial Public Class SingleIssuedWH
     Protected WithEvents CalendarExtenderExpiredDate_ConfirmIssue As Global.AjaxControlToolkit.CalendarExtender
 
     '''<summary>
-    '''txtIssueQTY_ConfirmIssue control.
+    '''txtPONo_ConfirmIssue control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtIssueQTY_ConfirmIssue As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtPONo_ConfirmIssue As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
     '''txtWeight_ConfirmIssue control.
@@ -867,6 +867,24 @@ Partial Public Class SingleIssuedWH
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents txtBathAmount_ConfirmIssue As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''btnSelectAll_ConfirmIssue control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnSelectAll_ConfirmIssue As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''btnCencelSelectAll_ConfirmIssue control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnCencelSelectAll_ConfirmIssue As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
     '''txtdatepickerReceiveDate_Button_ConfirmIssue control.
