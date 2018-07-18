@@ -1,5 +1,6 @@
-﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="FinishGoodWH.aspx.vb" Inherits="WMS.FinishGoodWH" MasterPageFile="~/Home.Master"%>
+﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="PrepareLotWH.aspx.vb" Inherits="WMS.PrepareLotWH" MasterPageFile="~/Home.Master" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <form id="form1" runat="server">
@@ -13,7 +14,7 @@
             <ol class="breadcrumb">
                 <li><a href="HomeMain.aspx"><i class="fa fa-home"></i>Home</a></li>
                 <li><a class="active"><i class="fa fa-file"></i>WareHouse</a></li>
-                <li><a href="FinishGoodWH.aspx"class="active">Finish Good</a></li>
+                <li><a href="PrepareLotWH.aspx"class="active">Prepare LOT</a></li>
 
             </ol>
         </section>
@@ -26,8 +27,9 @@
                 <div class="col-md-12">
                     <div class="nav-tabs-custom">
                         <ul class="nav nav-tabs">                            
-                            <li class="active"><a href="#confirmgoodreceive" data-toggle="tab">Confirm Good Receive</a></li>
+                            <li class="active"><a href="#preparegoodsreceive" data-toggle="tab">Prepare Goods Receive</a></li>
                             <li><a href="#goodreceivedetail" data-toggle="tab">Good Receive Detail</a></li>
+                            <li><a href="#importdata" data-toggle="tab">Import Data</a></li>
                         </ul>
 
                         <div class="tab-content">
@@ -37,7 +39,7 @@
 
                             <%-----------------------------------------------------Start Confirm Good Receive-----------------------------------------------------------%>
              <!------- Import Goods ------->
-            <div class="active tab-pane" id="confirmgoodreceive">
+            <div class="active tab-pane" id="preparegoodsreceive">
                      <!-- Post -->
                <div class="row">
                         <%-----------------------------------------------------Start JOB Form-----------------------------------------------------------%>
@@ -48,30 +50,30 @@
                                                       <div class="box-body">   
                                                           <div class="col-md-4 col-sm-4"> 
                                                               <div class="form-group">
-                                                                  <label for="txtJobNo_ConGoodRec" class="col-sm-4 control-label">Job No:</label>                                       
+                                                                  <label for="txtJobNo_PreGoodRec" class="col-sm-4 control-label">Job No:</label>                                       
                                                                 <div class="col-sm-8">                                                                    
-                                                                    <asp:DropDownList ID="ddlJobNo_ConGoodRec" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                                    <asp:DropDownList ID="ddlJobNo_PreGoodRec" CssClass="form-control" runat="server"></asp:DropDownList>
                                                                 </div>
                                                                   </div>                                                                  
                                                           </div>
 
                                                           <div class="col-md-4"> 
                                                               <div class="form-group">
-                                                                   <label for="txtJobdate_ConGoodRec" class="col-sm-4 control-label">Job Date:</label>                                       
+                                                                   <label for="txtJobdate_PreGoodRec" class="col-sm-4 control-label">Job Date:</label>                                       
                                                                 <div class="col-sm-8">
                                                                     <%--<input type="text" class="form-control pull-right" id="datepickerJobdate"/>--%>
-                                                                    <asp:TextBox CssClass="form-control" ID="txtdatepickerJobdate_ConGoodRec" runat="server" placeholder="DD/MM/YYYY">
+                                                                    <asp:TextBox CssClass="form-control" ID="txtdatepickerJobdate_PreGoodRec" runat="server" placeholder="DD/MM/YYYY">
                                                                 </asp:TextBox>
-                                                                <asp:CalendarExtender ID="CalendarExtenderJobdate_ConGoodRec" runat="server" Enabled="True" TargetControlID="txtdatepickerJobdate_ConGoodRec" Format="dd/MM/yyyy"></asp:CalendarExtender>
+                                                                <asp:CalendarExtender ID="CalendarExtenderJobdate_PreGoodRec" runat="server" Enabled="True" TargetControlID="txtdatepickerJobdate_PreGoodRec" Format="dd/MM/yyyy"></asp:CalendarExtender>
                                                                 </div>
                                                                   </div>                                                                  
                                                           </div>
 
                                                           <div class="col-md-4"> 
                                                               <div class="form-group">
-                                                                  <label for="txtCustRefNo_ConGoodRec" class="col-sm-4 control-label">Cust REF No:</label>
+                                                                  <label for="txtCustRefNo_PreGoodRec" class="col-sm-4 control-label">Cust REF No:</label>
                                                                  <div class="col-sm-8">
-                                                                    <input class="form-control" id="txtCustRefNo_ConGoodRec" runat="server"/>
+                                                                    <input class="form-control" id="txtCustRefNo_PreGoodRec" runat="server"/>
                                                                 </div>
                                                                   </div>                                                                  
                                                           </div>
@@ -97,39 +99,39 @@
                 <fieldset><legend>Owner</legend>
               <div class="box-body">
                 <div class="form-group">
-                  <label for="txtOwnerCode_ConGoodRec" class="col-sm-4 control-label">Owner Code:</label>
+                  <label for="txtOwnerCode_PreGoodRec" class="col-sm-4 control-label">Owner Code:</label>
                   <div class="col-sm-8">                    
-                      <asp:DropDownList ID="ddlOwnerCode_ConGoodRec" CssClass="form-control" runat="server"></asp:DropDownList>  
+                      <asp:DropDownList ID="ddlOwnerCode_PreGoodRec" CssClass="form-control" runat="server"></asp:DropDownList>  
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="txtNameOwner_ConGoodRec" class="col-sm-4 control-label">Name:</label>
+                  <label for="txtNameOwner_PreGoodRec" class="col-sm-4 control-label">Name:</label>
                   <div class="col-sm-8">
-                    <input class="form-control" id="txtNameOwner_ConGoodRec" runat="server"/>
+                    <input class="form-control" id="txtNameOwner_PreGoodRec" runat="server"/>
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="txtAddress1Owner_ConGoodRec" class="col-sm-4 control-label">Address1:</label>
+                  <label for="txtAddress1Owner_PreGoodRec" class="col-sm-4 control-label">Address1:</label>
                   <div class="col-sm-8">
-                    <input class="form-control" id="txtAddress1Owner_ConGoodRec" runat="server"/>
+                    <input class="form-control" id="txtAddress1Owner_PreGoodRec" runat="server"/>
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="txtAddress2Owner_ConGoodRec" class="col-sm-4 control-label">Address2:</label>
+                  <label for="txtAddress2Owner_PreGoodRec" class="col-sm-4 control-label">Address2:</label>
                   <div class="col-sm-8">
-                    <input class="form-control" id="txtAddress2Owner_ConGoodRec" runat="server"/>
+                    <input class="form-control" id="txtAddress2Owner_PreGoodRec" runat="server"/>
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="txtAddress3Owner_ConGoodRec" class="col-sm-4 control-label">Address3:</label>
+                  <label for="txtAddress3Owner_PreGoodRec" class="col-sm-4 control-label">Address3:</label>
                   <div class="col-sm-8">
-                    <input class="form-control" id="txtAddress3Owner_ConGoodRec" runat="server"/>
+                    <input class="form-control" id="txtAddress3Owner_PreGoodRec" runat="server"/>
                   </div>
                 </div>
                  <div class="form-group">
-                  <label for="txtAddress4Owner_ConGoodRec" class="col-sm-4 control-label">Address4:</label>
+                  <label for="txtAddress4Owner_PreGoodRec" class="col-sm-4 control-label">Address4:</label>
                   <div class="col-sm-8">
-                    <input class="form-control" id="txtAddress4Owner_ConGoodRec" runat="server"/>
+                    <input class="form-control" id="txtAddress4Owner_PreGoodRec" runat="server"/>
                   </div>
                 </div>                
             </div>
@@ -141,39 +143,39 @@
                 <fieldset><legend>WH Management</legend>
               <div class="box-body">
                 <div class="form-group">
-                  <label for="txtWHManagement_ConGoodRec" class="col-sm-4 control-label">WH Management:</label>
+                  <label for="txtWHManagement_PreGoodRec" class="col-sm-4 control-label">WH Management:</label>
                   <div class="col-sm-8">                    
-                      <asp:DropDownList ID="ddlWHManagement_ConGoodRec" CssClass="form-control" runat="server"></asp:DropDownList>  
+                      <asp:DropDownList ID="ddlWHManagement_PreGoodRec" CssClass="form-control" runat="server"></asp:DropDownList>  
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="txtNameWHManage_ConGoodRec" class="col-sm-4 control-label">Name:</label>
+                  <label for="txtNameWHManage_PreGoodRec" class="col-sm-4 control-label">Name:</label>
                   <div class="col-sm-8">
-                    <input class="form-control" id="txtNameWHManage_ConGoodRec" runat="server"/>
+                    <input class="form-control" id="txtNameWHManage_PreGoodRec" runat="server"/>
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="txtAddress1WHManage_ConGoodRec" class="col-sm-4 control-label">Address1:</label>
+                  <label for="txtAddress1WHManage_PreGoodRec" class="col-sm-4 control-label">Address1:</label>
                   <div class="col-sm-8">
-                    <input class="form-control" id="txtAddress1WHManage_ConGoodRec" runat="server"/>
+                    <input class="form-control" id="txtAddress1WHManage_PreGoodRec" runat="server"/>
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="txtAddress2WHManage_ConGoodRec" class="col-sm-4 control-label">Address2:</label>
+                  <label for="txtAddress2WHManage_PreGoodRec" class="col-sm-4 control-label">Address2:</label>
                   <div class="col-sm-8">
-                    <input class="form-control" id="txtAddress2WHManage_ConGoodRec" runat="server"/>
+                    <input class="form-control" id="txtAddress2WHManage_PreGoodRec" runat="server"/>
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="txtAddress3WHManage_ConGoodRec" class="col-sm-4 control-label">Address3:</label>
+                  <label for="txtAddress3WHManage_PreGoodRec" class="col-sm-4 control-label">Address3:</label>
                   <div class="col-sm-8">
-                    <input class="form-control" id="txtAddress3WHManage_ConGoodRec" runat="server"/>
+                    <input class="form-control" id="txtAddress3WHManage_PreGoodRec" runat="server"/>
                   </div>
                 </div>
                  <div class="form-group">
-                  <label for="txtAddress4WHManage_ConGoodRec" class="col-sm-4 control-label">Address4:</label>
+                  <label for="txtAddress4WHManage_PreGoodRec" class="col-sm-4 control-label">Address4:</label>
                   <div class="col-sm-8">
-                    <input class="form-control" id="txtAddress4WHManage_ConGoodRec" runat="server"/>
+                    <input class="form-control" id="txtAddress4WHManage_PreGoodRec" runat="server"/>
                   </div>
                 </div>                
             </div>
@@ -181,68 +183,7 @@
                     </fieldset>
             </div>      
 
-            <div class="form-horizontal">
-                <fieldset><legend>Commodity</legend>
-              <div class="box-body">
-                <div class="form-group">
-                  <label for="txtCommodity_ConGoodRec" class="col-sm-4 control-label">Commodity:</label>
-                  <div class="col-sm-8">                    
-                      <asp:DropDownList ID="ddlCommodity_ConGoodRec" CssClass="form-control" runat="server"></asp:DropDownList>  
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="txtQuantityPackage_ConGoodRec" class="col-sm-5 control-label">Quantity Package:</label>
-                  <div class="col-sm-3">
-                    <input class="form-control" id="txtQuantityPackage_ConGoodRec" runat="server" value="0.0"/>
-                  </div>
-                  <div class="col-sm-4">                    
-                      <asp:DropDownList ID="ddlQuantityPackage_ConGoodRec" CssClass="form-control" runat="server"></asp:DropDownList>  
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="txtQuantityPLTSkid_ConGoodRec" class="col-sm-5 control-label">Quantity PLT/Skid:</label>
-                  <div class="col-sm-3">
-                    <input class="form-control" id="txtQuantityPLTSkid_ConGoodRec" runat="server" value="0.0"/>
-                  </div>
-                  <div class="col-sm-4">                    
-                      <asp:DropDownList ID="ddlQuantityPLTSkid_ConGoodRec" CssClass="form-control" runat="server"></asp:DropDownList>  
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="txtQuantityReceived_ConGoodRec" class="col-sm-5 control-label">Quantity Received:</label>
-                  <div class="col-sm-3">
-                    <input class="form-control" id="txtQuantityReceived_ConGoodRec" runat="server" value="0.0"/>
-                  </div>
-                  <div class="col-sm-4">                    
-                      <asp:DropDownList ID="ddlQuantityReceived_ConGoodRec" CssClass="form-control" runat="server"></asp:DropDownList>  
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="txtQuantityDamage_ConGoodRec" class="col-sm-5 control-label">Quantity Damage:</label>
-                  <div class="col-sm-3">
-                    <input class="form-control" id="txttxtQuantityDamage_ConGoodRec" runat="server" value="0.0"/>
-                  </div>
-                  <div class="col-sm-4">                    
-                      <asp:DropDownList ID="ddlQuantityDamage_ConGoodRec" CssClass="form-control" runat="server"></asp:DropDownList>  
-                  </div>
-                </div>
-                 <div class="form-group">
-                  <label for="txtRemark_ConGoodRec" class="col-sm-4 control-label">Remark:</label>
-                  <div class="col-sm-8">
-                    <textarea class="form-control" rows="3" id="txtRamark_ConGoodRec" placeholder="Remark" style="height: 71px; width: 872px;"></textarea>
-                  </div>
-                </div>
-                 <div class="form-group">      
-                  <div class="col-sm-4">  
-                  </div>         
-                  <div class="col-sm-8">
-                    <button type="submit" runat="server" class="btn btn-primary" id="btnSumQTY_ConGoodRec" title="btnSumQTY_ConGoodRec" onserverclick="btnSumQTY_ConGoodRec_ServerClick">Sum QTY</button>
-                  </div>
-                </div>
-              </div>
-              <!-- /.box-body -->
-                    </fieldset>
-            </div>
+            
                  
         </div>
         <!--/.col (left) -->
@@ -259,39 +200,39 @@
                 <fieldset><legend>Customer</legend>
               <div class="box-body">
                 <div class="form-group">
-                  <label for="txtCustomerCode_ConGoodRec" class="col-sm-4 control-label">Customer Code:</label>
+                  <label for="txtCustomerCode_PreGoodRec" class="col-sm-4 control-label">Customer Code:</label>
                   <div class="col-sm-8">                    
-                      <asp:DropDownList ID="txtCustomerCode_ConGoodRec" CssClass="form-control" runat="server"></asp:DropDownList>  
+                      <asp:DropDownList ID="txtCustomerCode_PreGoodRec" CssClass="form-control" runat="server"></asp:DropDownList>  
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="txtNameCustomer_ConGoodRec" class="col-sm-4 control-label">Name:</label>
+                  <label for="txtNameCustomer_PreGoodRec" class="col-sm-4 control-label">Name:</label>
                   <div class="col-sm-8">
-                    <input class="form-control" id="txtNameCustomer_ConGoodRec" runat="server"/>
+                    <input class="form-control" id="txtNameCustomer_PreGoodRec" runat="server"/>
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="txtAddress1Customer_ConGoodRec" class="col-sm-4 control-label">Address1:</label>
+                  <label for="txtAddress1Customer_PreGoodRec" class="col-sm-4 control-label">Address1:</label>
                   <div class="col-sm-8">
-                    <input class="form-control" id="txtAddress1Customer_ConGoodRec" runat="server"/>
+                    <input class="form-control" id="txtAddress1Customer_PreGoodRec" runat="server"/>
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="txtAddress2Customer_ConGoodRec" class="col-sm-4 control-label">Address2:</label>
+                  <label for="txtAddress2Customer_PreGoodRec" class="col-sm-4 control-label">Address2:</label>
                   <div class="col-sm-8">
-                    <input class="form-control" id="txtAddress2Customer_ConGoodRec" runat="server"/>
+                    <input class="form-control" id="txtAddress2Customer_PreGoodRec" runat="server"/>
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="txtAddress3Customer_ConGoodRec" class="col-sm-4 control-label">Address3:</label>
+                  <label for="txtAddress3Customer_PreGoodRec" class="col-sm-4 control-label">Address3:</label>
                   <div class="col-sm-8">
-                    <input class="form-control" id="txtAddress3Customer_ConGoodRec" runat="server"/>
+                    <input class="form-control" id="txtAddress3Customer_PreGoodRec" runat="server"/>
                   </div>
                 </div>
                  <div class="form-group">
-                  <label for="txtAddress4Customer_ConGoodRec" class="col-sm-4 control-label">Address4:</label>
+                  <label for="txtAddress4Customer_PreGoodRec" class="col-sm-4 control-label">Address4:</label>
                   <div class="col-sm-8">
-                    <input class="form-control" id="txtAddress4Customer_ConGoodRec" runat="server"/>
+                    <input class="form-control" id="txtAddress4Customer_PreGoodRec" runat="server"/>
                   </div>
                 </div>                                 
               </div>
@@ -303,39 +244,39 @@
                 <fieldset><legend>End User</legend>
               <div class="box-body">
                 <div class="form-group">
-                  <label for="txtEndUserCode_ConGoodRec" class="col-sm-4 control-label">End User Code:</label>
+                  <label for="txtEndUserCode_PreGoodRec" class="col-sm-4 control-label">End User Code:</label>
                   <div class="col-sm-8">                    
-                      <asp:DropDownList ID="ddlEndUserCode_ConGoodRec" CssClass="form-control" runat="server"></asp:DropDownList>  
+                      <asp:DropDownList ID="ddlEndUserCode_PreGoodRec" CssClass="form-control" runat="server"></asp:DropDownList>  
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="txtNameEndUser_ConGoodRec" class="col-sm-4 control-label">Name:</label>
+                  <label for="txtNameEndUser_PreGoodRec" class="col-sm-4 control-label">Name:</label>
                   <div class="col-sm-8">
-                    <input class="form-control" id="txtNameEndUser_ConGoodRec" runat="server"/>
+                    <input class="form-control" id="txtNameEndUser_PreGoodRec" runat="server"/>
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="txtAddress1EndUser_ConGoodRec" class="col-sm-4 control-label">Address1:</label>
+                  <label for="txtAddress1EndUser_PreGoodRec" class="col-sm-4 control-label">Address1:</label>
                   <div class="col-sm-8">
-                    <input class="form-control" id="txtAddress1EndUser_ConGoodRec" runat="server"/>
+                    <input class="form-control" id="txtAddress1EndUser_PreGoodRec" runat="server"/>
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="txtAddress2EndUser_ConGoodRec" class="col-sm-4 control-label">Address2:</label>
+                  <label for="txtAddress2EndUser_PreGoodRec" class="col-sm-4 control-label">Address2:</label>
                   <div class="col-sm-8">
-                    <input class="form-control" id="txtAddress2EndUser_ConGoodRec" runat="server"/>
+                    <input class="form-control" id="txtAddress2EndUser_PreGoodRec" runat="server"/>
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="txtAddress3EndUser_ConGoodRec" class="col-sm-4 control-label">Address3:</label>
+                  <label for="txtAddress3EndUser_PreGoodRec" class="col-sm-4 control-label">Address3:</label>
                   <div class="col-sm-8">
-                    <input class="form-control" id="txtAddress3EndUser_ConGoodRec" runat="server"/>
+                    <input class="form-control" id="txtAddress3EndUser_PreGoodRec" runat="server"/>
                   </div>
                 </div>
                  <div class="form-group">
-                  <label for="txtAddress4EndUser_ConGoodRec" class="col-sm-4 control-label">Address4:</label>
+                  <label for="txtAddress4EndUser_PreGoodRec" class="col-sm-4 control-label">Address4:</label>
                   <div class="col-sm-8">
-                    <input class="form-control" id="txtAddress4EndUser_ConGoodRec" runat="server"/>
+                    <input class="form-control" id="txtAddress4EndUser_PreGoodRec" runat="server"/>
                   </div>
                 </div>                
             </div>
@@ -343,63 +284,129 @@
                     </fieldset>
             </div>
 
-            <div class="form-horizontal">
-                <fieldset><legend>Commodity</legend>
-              <div class="box-body">
-              <div class="form-group">
-                <label for="txtQuantityOfGood_ConGoodRec" class="col-sm-5 control-label">Quantity Of Goods:</label>
-                <div class="col-sm-3">
-                  <input class="form-control" id="txtQuantityOfGood_ConGoodRec" runat="server" value="0.0"/>
-                </div>
-                <div class="col-sm-4">                    
-                    <asp:DropDownList ID="ddlQuantityOfGood_ConGoodRec" CssClass="form-control" runat="server"></asp:DropDownList>  
-                </div>
-              </div>
-                <div class="form-group">
-                  <label for="txtWeight_ConGoodRec" class="col-sm-5 control-label">Weight:</label>
-                  <div class="col-sm-3">
-                    <input class="form-control" id="txtWeight_ConGoodRec" runat="server" value="0.0"/>
-                  </div>
-                  <div class="col-sm-4">                    
-                      <asp:DropDownList ID="ddlWeight_ConGoodRec" CssClass="form-control" runat="server"></asp:DropDownList>  
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="txtVolume_ConGoodRec" class="col-sm-5 control-label">Volume:</label>
-                  <div class="col-sm-3">
-                    <input class="form-control" id="txtVolume_ConGoodRec" runat="server" value="0.0"/>
-                  </div>
-                  <div class="col-sm-4">                    
-                      <asp:DropDownList ID="DropDownList1" CssClass="form-control" runat="server"></asp:DropDownList>  
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="txtQTYWaitRec_ConGoodRec" class="col-sm-5 control-label">QTY Wait Receive:</label>
-                  <div class="col-sm-3">
-                    <input class="form-control" id="txtQTYWaitRec_ConGoodRec" runat="server" value="0.0"/>
-                  </div>
-                  <div class="col-sm-4">                    
-                      <asp:DropDownList ID="ddlQTYWaitRec_ConGoodRec" CssClass="form-control" runat="server"></asp:DropDownList>  
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="txtQTYDiscrepancy_ConGoodRec" class="col-sm-5 control-label">QTY Discrepancy:</label>
-                  <div class="col-sm-3">
-                    <input class="form-control" id="txtQTYDiscrepancy_ConGoodRec" runat="server" value="0.0"/>
-                  </div>
-                  <div class="col-sm-4">                    
-                      <asp:DropDownList ID="ddlQTYDiscrepancy_ConGoodRec" CssClass="form-control" runat="server"></asp:DropDownList>  
-                  </div>
-                </div>          
-                </div>
-              <!-- /.box-body -->
-                    </fieldset>
-            </div>
+            
 
         </div>
          <!-- right column -->
 
                    <%--------------------------------------------------------------------End Right Form------------------------------------------------------%>
+
+                   <%--------------------------------------------------------Start Mid Form----------------------------------------------------%>
+                   <div class="col-md-12">
+                       <div class="form-horizontal">
+                <fieldset><legend>Assign Resource</legend>
+              <div class="box-body">
+                 <div class="form-group">
+                  <label for="txtHandlePreson_PreGoodRec" class="col-sm-3 control-label">Handle Person:</label>
+                  <div class="col-sm-3">
+                    <input class="form-control" id="txtHandlePreson_PreGoodRec" runat="server"/>
+                  </div>
+                  <label for="txtDate_PreGoodRec" class="col-sm-3 control-label">Date:</label>
+                  <div class="col-sm-3">                       
+                       <asp:TextBox CssClass="form-control" ID="txtdatepickerDateAssign_PreGoodRec" runat="server" placeholder="DD/MM/YYYY">
+                       </asp:TextBox>
+                       <asp:CalendarExtender ID="CalendarExtenderDateAssign_PreGoodRec" runat="server" Enabled="True" TargetControlID="txtdatepickerDateAssign_PreGoodRec" Format="dd/MM/yyyy"></asp:CalendarExtender>
+                  </div>
+                </div>   
+                <div class="form-group">
+                  <%-------------------------------Repeater Assign Resource--------------------%>
+
+                </div>             
+            </div>
+              <!-- /.box-body -->
+                    </fieldset>
+            </div>
+
+                       								<%-----------------------------------------------------Start Left Form--------------------------------------------------%>
+<div class="col-md-6">
+        <div class="form-horizontal">
+                <fieldset><legend>Commodity</legend>
+              <div class="box-body">
+                <div class="form-group">
+                  <label for="txtCommodity_PreGoodRec" class="col-sm-4 control-label">Commodity:</label>
+                  <div class="col-sm-8">                    
+                      <asp:DropDownList ID="ddlCommodity_PreGoodRec" CssClass="form-control" runat="server"></asp:DropDownList>  
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="txtQuantityPackage_PreGoodRec" class="col-sm-5 control-label">Quantity Package:</label>
+                  <div class="col-sm-3">
+                    <input class="form-control" id="txtQuantityPackage_PreGoodRec" runat="server" value="0.0"/>
+                  </div>
+                  <div class="col-sm-4">                    
+                      <asp:DropDownList ID="ddlQuantityPackage_PreGoodRec" CssClass="form-control" runat="server"></asp:DropDownList>  
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="txtQuantityPLTSkid_PreGoodRec" class="col-sm-5 control-label">Quantity PLT/Skid:</label>
+                  <div class="col-sm-3">
+                    <input class="form-control" id="txtQuantityPLTSkid_PreGoodRec" runat="server" value="0.0"/>
+                  </div>
+                  <div class="col-sm-4">                    
+                      <asp:DropDownList ID="ddlQuantityPLTSkid_PreGoodRec" CssClass="form-control" runat="server"></asp:DropDownList>  
+                  </div>
+                </div>
+                 <div class="form-group">
+                  <label for="txtRemark_PreGoodRec" class="col-sm-4 control-label">Remark:</label>
+                  <div class="col-sm-8">
+                    <textarea class="form-control" rows="3" id="txtRamark_PreGoodRec" placeholder="Remark" style="height: 71px; width: 872px;"></textarea>
+                  </div>
+                </div>
+                 
+              </div>
+              <!-- /.box-body -->
+                    </fieldset>
+            </div>
+</div>
+								 <%---------------------------------------------------------------End Left Form------------------------------------------------%>
+								 
+								 
+								 
+								 
+								 
+								 <%------------------------------------------------------------Start Right Form------------------------------------------------%>
+								 
+<div class="col-md-6">
+			<div class="form-horizontal">
+                <fieldset><legend>Commodity</legend>
+              <div class="box-body">
+              <div class="form-group">
+                <label for="txtQuantityOfGood_PreGoodRec" class="col-sm-5 control-label">Quantity Of Goods:</label>
+                <div class="col-sm-3">
+                  <input class="form-control" id="txtQuantityOfGood_PreGoodRec" runat="server" value="0.0"/>
+                </div>
+                <div class="col-sm-4">                    
+                    <asp:DropDownList ID="ddlQuantityOfGood_PreGoodRec" CssClass="form-control" runat="server"></asp:DropDownList>  
+                </div>
+              </div>
+                <div class="form-group">
+                  <label for="txtWeight_PreGoodRec" class="col-sm-5 control-label">Weight:</label>
+                  <div class="col-sm-3">
+                    <input class="form-control" id="txtWeight_PreGoodRec" runat="server" value="0.0"/>
+                  </div>
+                  <div class="col-sm-4">                    
+                      <asp:DropDownList ID="ddlWeight_PreGoodRec" CssClass="form-control" runat="server"></asp:DropDownList>  
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="txtVolume_PreGoodRec" class="col-sm-5 control-label">Volume:</label>
+                  <div class="col-sm-3">
+                    <input class="form-control" id="txtVolume_PreGoodRec" runat="server" value="0.0"/>
+                  </div>
+                  <div class="col-sm-4">                    
+                      <asp:DropDownList ID="DropDownList1" CssClass="form-control" runat="server"></asp:DropDownList>  
+                  </div>
+                </div>    
+                </div>
+              <!-- /.box-body -->
+                    </fieldset>
+            </div>					 
+</div>					
+						<%--------------------------------------------------------------------End Right Form------------------------------------------------------%>
+
+                   </div>
+                        <%-------------------------------------------------------------End Mid Form----------------------------------------------------%>
+
                 </div>
      <!-- /.post -->
        </div>
@@ -563,12 +570,12 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="txtQuantity1_GoodRecDetail" class="col-sm-4 control-label">Quantity1:</label>
+                  <label for="txtQuantity_GoodRecDetail" class="col-sm-4 control-label">Quantity:</label>
                   <div class="col-sm-4">
-                    <input class="form-control" id="txtQuantity1_GoodRecDetail" runat="server" value="0"/>
+                    <input class="form-control" id="txtQuantity_GoodRecDetail" runat="server" value="0"/>
                   </div>
                   <div class="col-sm-4">                    
-                    <asp:DropDownList ID="ddlQuantity1_GoodRecDetail" CssClass="form-control" runat="server"></asp:DropDownList> 
+                    <asp:DropDownList ID="ddlQuantity_GoodRecDetail" CssClass="form-control" runat="server"></asp:DropDownList> 
                   </div>
                 </div>
                 <div class="form-group">
@@ -643,11 +650,11 @@
                     <asp:DropDownList ID="ddlStatus_GoodRecDetail" CssClass="form-control" runat="server"></asp:DropDownList> 
                   </div>                  
                 </div>
-                <div class="form-group">
-                  <label for="txtType_GoodRecDetail" class="col-sm-4 control-label">Type:</label>
+                <div class="form-group" style="height:34px;">
+                  <%--<label for="txtType_GoodRecDetail" class="col-sm-4 control-label">Type:</label>
                   <div class="col-sm-8">                    
                     <asp:DropDownList ID="ddlType_GoodRecDetail" CssClass="form-control" runat="server"></asp:DropDownList> 
-                  </div>
+                  </div>--%>
                 </div>
                 <div class="form-group">
                   <label for="txtExpiredDate_GoodRecDetail" class="col-sm-4 control-label">Expired Date:</label>
@@ -658,20 +665,20 @@
                   </div>
                 </div> 
                 <div class="form-group">
-                  <label for="txtETAARRDate_GoodRecDetail" class="col-sm-4 control-label">ETA/ARR Date:</label>
+                  <label for="txtStorageExpDate_GoodRecDetail" class="col-sm-4 control-label">Storage EXP Date:</label>
                   <div class="col-sm-4">                       
-                       <asp:TextBox CssClass="form-control" ID="txtdatepickerETAARRDate_GoodRecDetail" runat="server" placeholder="DD/MM/YYYY">
+                       <asp:TextBox CssClass="form-control" ID="txtdatepickerStorageExpDate_GoodRecDetail" runat="server" placeholder="DD/MM/YYYY">
                        </asp:TextBox>
-                       <asp:CalendarExtender ID="CalendarExtenderETAARRDate_GoodRecDetail" runat="server" Enabled="True" TargetControlID="txtdatepickerETAARRDate_GoodRecDetail" Format="dd/MM/yyyy"></asp:CalendarExtender>
+                       <asp:CalendarExtender ID="CalendarExtenderStorageExpDate_GoodRecDetail" runat="server" Enabled="True" TargetControlID="txtdatepickerStorageExpDate_GoodRecDetail" Format="dd/MM/yyyy"></asp:CalendarExtender>
                   </div>
                 </div> 
                  <div class="form-group">
-                  <label for="txtQuantity2_GoodRecDetail" class="col-sm-4 control-label">Quantity2:</label>
+                  <label for="txtWeight_GoodRecDetail" class="col-sm-4 control-label">Weight:</label>
                   <div class="col-sm-4">
-                    <input class="form-control" id="txtQuantity2_GoodRecDetail" runat="server" value="0"/>
+                    <input class="form-control" id="txtWeight_GoodRecDetail" runat="server" value="0"/>
                   </div>
                   <div class="col-sm-4">                    
-                    <asp:DropDownList ID="ddlQuantity2_GoodRecDetail" CssClass="form-control" runat="server"></asp:DropDownList> 
+                    <asp:DropDownList ID="ddlWeight_GoodRecDetail" CssClass="form-control" runat="server"></asp:DropDownList> 
                   </div>
                 </div>
                   <div class="form-group">
@@ -765,21 +772,20 @@
                                                <div class="form-horizontal">
                                                    <%--<fieldset>  <legend>Job</legend>--%>
                                                       <div class="box-body">   
-                                                          <div class="col-sm-6">
+                                                          <div class="col-sm-3 col-sm-offset-9">
                                                               <div class="form-group">
-                                                                  <div class="col-sm-4">                                                                    
-                                                                    <button type="submit" runat="server" class="btn btn-primary" id="btnSelectAll_GoodRecDetail" title="btnSelectAll_GoodRecDetail" >Select All</button>                                                                    
-                                                                  </div>
-                                                                  <div class="col-sm-4">                                                                    
-                                                                    <button type="submit" runat="server" class="btn btn-primary" id="btnCencelSelectAll_GoodRecDetail" title="btnCencelSelectAll_GoodRecDetail" >Cencel Select All</button>                                                                    
-                                                                  </div> 
+                                                                    <button type="submit" runat="server" class="btn btn-primary" id="btnAddNew_GoodRecDetail" title="btnAddNew_GoodRecDetail" onserverclick="btnAddNew_GoodRecDetail_ServerClick" >Add New</button>                                                                    
+                                                                                                                                                                                                       
+                                                                    <button type="submit" runat="server" class="btn btn-primary" id="btnSaveModify_GoodRecDetail" title="btnSaveModify_GoodRecDetail" onserverclick="btnSaveModify_GoodRecDetail_ServerClick" >Save Modify</button>                                                                    
+                                                                    
+                                                                    <button type="submit" runat="server" class="btn btn-primary" id="btnDelete_GoodRecDetail" title="btnDelete_GoodRecDetail" onserverclick="btnDelete_GoodRecDetail_ServerClick" >Delete</button>   
                                                               </div>
                                                           </div>
 
                                                           <div class="col-sm-6">
                                                               <div class="form-group">
                                                                   <div class="col-sm-4">                                                                    
-                                                                    <button type="submit" runat="server" class="btn btn-primary" id="btnReceive_GoodRecDetail" title="btnReceive_GoodRecDetail" >Receive</button>                                                                    
+                                                                                                                                     
                                                                   </div>
                                                               </div>
                                                           </div>
@@ -802,6 +808,69 @@
              <!-----/ Export Goods----->
 
               <%--------------------------------------------------------------END Good Receive Detail----------------------------------------------------------%>
+
+
+             <%----------------------------------------------------------------------Start Import Data Tab--------------------------------------------------------%>
+             <!--- Detailof Goods --->
+         <div class="tab-pane" id="importdata">
+            <!-- Post -->
+            <div class="post">
+             <div class="row margin-bottom">
+                <div class="col-lg-12 col-md-12">
+
+                     <div class="form-horizontal">
+                           <div class="box-body">
+
+                            <fieldset class="col-md-12">
+                                <legend>Import File</legend>
+                               <div class="col-lg-12 col-md-12">
+                                 <div class="form-group">
+                                  <label for="txtSelectFileForImport_ImportData" class="col-sm-4 control-label">Select File For Import:</label>
+                                  <div class="col-sm-4">
+                                    <input type="file" class ="form-control" id="txtSelectFileForImport_ImportData" runat="server"/>     
+                                  </div>                                  
+                                  <div class="col-sm-4">
+                                    <button type="submit" runat="server" class="btn btn-success" id="btnImport_ImportData" title="btnImport_ImportData" >Import</button> 
+                                  </div>
+                                </div>  
+                                 <div class="form-group">
+                                   <div class="col-sm-12">
+                                   <div class="progress active">
+                                    <div class="progress-bar progress-bar-primary progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                                      <span class="sr-only">40% Complete (success)</span>
+                                    </div>
+                                   </div>
+                                   </div>
+                                 </div> 
+                                   
+                               </div>                             
+                         </fieldset>
+                    
+                          </div>
+                      
+                     </div>
+                     
+                    <div class="form-horizontal">
+                           <div class="box-body">
+
+                            <fieldset class="col-md-12">
+                                <legend>Data Imported List</legend>
+                               <div class="col-lg-12 col-md-12">
+                                   <%------------------Repeater DataImport--------------------%>
+                               </div>                             
+                         </fieldset>
+                    
+                          </div>
+                      
+                     </div>
+
+                     </div>
+                <!--/.col-lg-6 col-md-6--->
+                  </div>
+                </div>
+              </div>
+          <!----/Detailof Goods----->
+                            <%---------------------------------------------------------------End Import Data Tab----------------------------------------------%>
            </div>
             
 

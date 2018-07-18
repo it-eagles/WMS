@@ -209,6 +209,7 @@
                                 </span>
                             </a>
                             <ul class="treeview-menu">
+                                <li><a href="PrepareLotWH.aspx"><i class="fa fa-circle-o"></i>Prepare LOT</a></li>
                                 <li><a href="SingleReceivedWH.aspx"><i class="fa fa-circle-o"></i>Single Received</a></li>
                                 <li><a href="MultiReceivedWH.aspx"><i class="fa fa-circle-o"></i>Multiple Received</a></li>
                                 <li><a href="RejectReceivedWH.aspx"><i class="fa fa-circle-o"></i>Reject Received</a></li>
