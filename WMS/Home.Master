@@ -270,21 +270,21 @@
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="#"><i class="fa fa-circle-o"></i>Report Summary Seagate</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i>Report IEAT Fee</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i>Report IEAT</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i>Report Log</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i>Report SumLOT</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i>Report JobSheet</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i>Report Storage Charge</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i>Report Storage Aging</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i>Report Plan HTI</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i>Report WD</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i>Report Customs Daily</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i>Report Customs</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i>Report Location</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i>Report Status Pick</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i>Report Carton</a></li>
+                                <li><a target="_blank" href="RptSumSeagate.aspx"><i class="fa fa-circle-o"></i>Report Summary Seagate</a></li>
+                                <li><a target="_blank" href="RptIEATFee.aspx"><i class="fa fa-circle-o"></i>Report IEAT Fee</a></li>
+                                <li><a target="_blank" href="RptIEAT.aspx"><i class="fa fa-circle-o"></i>Report IEAT</a></li>
+                                <li><a target="_blank" href="RptLog.aspx"><i class="fa fa-circle-o"></i>Report Log</a></li>
+                                <li><a target="_blank" href="RptSumLOT.aspx"><i class="fa fa-circle-o"></i>Report SumLOT</a></li>
+                                <li><a target="_blank" href="RptJobSheet.aspx"><i class="fa fa-circle-o"></i>Report JobSheet</a></li>
+                                <li><a target="_blank" href="#"><i class="fa fa-circle-o"></i>Report Storage Charge</a></li>
+                                <li><a target="_blank" href="#"><i class="fa fa-circle-o"></i>Report Storage Aging</a></li>
+                                <li><a target="_blank" href="#"><i class="fa fa-circle-o"></i>Report Plan HTI</a></li>
+                                <li><a target="_blank" href="#"><i class="fa fa-circle-o"></i>Report WD</a></li>
+                                <li><a target="_blank" href="#"><i class="fa fa-circle-o"></i>Report Customs Daily</a></li>
+                                <li><a target="_blank" href="#"><i class="fa fa-circle-o"></i>Report Customs</a></li>
+                                <li><a target="_blank" href="#"><i class="fa fa-circle-o"></i>Report Location</a></li>
+                                <li><a target="_blank" href="#"><i class="fa fa-circle-o"></i>Report Status Pick</a></li>
+                                <li><a target="_blank" href="#"><i class="fa fa-circle-o"></i>Report Carton</a></li>
                             </ul>
                         </li>
                         <li class="treeview">

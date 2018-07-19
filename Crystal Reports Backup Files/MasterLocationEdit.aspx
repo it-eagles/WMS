@@ -1,4 +1,4 @@
-﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="MasterLocation.aspx.vb" Inherits="WMS.MasterLocation" MasterPageFile="~/Home.Master" %>
+﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="MasterLocationEdit.aspx.vb" Inherits="WMS.MasterLocationEdit" MasterPageFile="~/Home.Master"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <form id="form1" runat="server">
@@ -13,7 +13,7 @@
         <ol class="breadcrumb">
             <li><a href="HomeMain.aspx"><i class="fa fa-home"></i>Home</a></li>
             <li><a><i class="fa fa-file"></i>System</a></li>     
-            <li><a href="MasterLocation.aspx">MasterLocation</a></li>
+            <li><a href="MasterLocationEdit.aspx">MasterLocationEdit</a></li>
            
         </ol>
     </section>
@@ -27,12 +27,12 @@
                 <!-- general form elements -->
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Master Location Add</h3>
+                        <h3 class="box-title">Master Location Edit</h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="row">
 
-                        <div class="form-horizontal">
+                        <from class="form-horizontal">
                             <div class="col-lg-8 col-md-8 col-md-offset-2">
                                  <div class="box-body">   
                                             
@@ -47,7 +47,7 @@
                                   <div class="form-group">
                                         <label for="txtLocationNo" class="col-sm-2 control-label">LocationNo</label>
                                            <div class="col-sm-10">
-                                           <input class="form-control" id="txtLocationNo" runat="server"  placeholder="LocationNo" />
+                                           <input class="form-control" id="txtLocationNo" runat="server"  placeholder="LocationNo" disabled="disabled" />
                                        </div>
                                       
                                     </div>
@@ -119,7 +119,7 @@
                                      <div class="box-footer text-right">
                                         <div class="text-center">
                                          <button type="submit" runat="server" class="btn btn-primary" id="btnAdd" title="btnAdd" onserverclick="Button1_ServerClick">Add</button>
-                                         <button type="reset"  runat="server" class="btn btn-danger" id="btnClear" title="btnClear" onserverclick="Button2_ServerClick">Clear</button>
+                                        
                                         </div>
                                      </div>
 
@@ -127,84 +127,12 @@
                              </div>
                            </div>
                              
-                       </div>
+                       </from>
                           
                         <!--/.row-->
                     </div>
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Location List</h3>
-                    </div>
-                     <div class="row">
-                         <div class="col-lg-8 col-md-8 col-md-offset-2">
-                               <div class="form-group">
-                                 
-                                    <div class="box-body">
-                               <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="Repeater1_ItemCommand">
-                                    <HeaderTemplate>
-                                        <table id="example1" class="table table-bordered table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th>WHsite</th>
-                                                    <th>Location</th>
-                                                    <th>Width</th>
-                                                    <th>Long</th>
-                                                    <th>Height</th>
-                                                    <th>Valume</th>
-                                                    <th>QTYPallet</th>
-                                                    <th>Edit/Delete</th>
-                                                    <th>view</th>
-                                                </tr>
-                                            </thead>
-                                    </HeaderTemplate>
-                                    <ItemTemplate>
-                                        <tr>
-                                            <td>
-                                                <asp:Label ID="lblWHsite" runat="server" Text='<%# Bind("WHsite")%>'></asp:Label></td>
-                                            <td>
-                                                <asp:Label ID="lblLocation" runat="server" Text='<%# Bind("LocationNo")%>'></asp:Label></td>
-                                            <td>
-                                                <asp:Label ID="lblWidth" runat="server" Text='<%# Bind("Width")%>'></asp:Label></td>
-                                            <td>
-                                                <asp:Label ID="lblLong" runat="server" Text='<%# Bind("Long")%>'></asp:Label></td>
-                                            <td>
-                                                <asp:Label ID="lblHeight" runat="server" Text='<%# Bind("Height")%>'></asp:Label></td>
-                                            <td>
-                                                <asp:Label ID="lblValume" runat="server" Text='<%# Bind("Valume")%>'></asp:Label></td>
-                                            <td>
-                                                <asp:Label ID="lblQTYPallet" runat="server" Text='<%# Bind("QTYPallet")%>'></asp:Label></td>
-                                            
-                                            <td class="text-center" >
-                                                  <asp:LinkButton ID="LinkButton1" CssClass="btn btn-default" runat="server" CausesValidation="False" CommandName="editlocation" CommandArgument='<%# Eval("LocationNo")%>'><i class="fa fa-pencil"></i></asp:LinkButton>
-                                                  <a class="btn btn-danger"><i class="fa fa-trash"></i></a>
-                                            </td>
-                                            <td class="text-center">
-                                                  <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="viewprofile" CommandArgument='<%# Eval("LocationNo")%>'><i class="fa fa-search-plus"></i></asp:LinkButton>
-                                            </td>
-                                        </tr>
-                                    </ItemTemplate>
-                                    <FooterTemplate>
-                                        <tfoot>
-                                            <tr>
-                                                    <th>WHsite</th>
-                                                    <th>Location</th>
-                                                    <th>Width</th>
-                                                    <th>Long</th>
-                                                    <th>Height</th>
-                                                    <th>Valume</th>
-                                                    <th>QTYPallet</th>
-                                                    <th>Edit/Delete</th>
-                                                    <th>view</th>
-                                            </tr>
-                                        </tfoot>
-                                        </table>
-                                    </FooterTemplate>
-                                </asp:Repeater>
-                                    </div>
-                               </div> 
-                          </div>
-                           
-                        
-                        </div>
+
+                     
                          <!--/.row-->
                      </div>
                        
