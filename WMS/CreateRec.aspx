@@ -8,7 +8,7 @@
         <!-- Content Wrapper. Contains page content -->
         <!-- Content Header (Page header) -->
         <section class="content-header">
-            <h1>Master Goods
+            <h1>Create Rec. LOT
             </h1>
             <ol class="breadcrumb">
                 <li><a href="HomeMain.aspx"><i class="fa fa-home"></i>Home</a></li>
@@ -77,9 +77,9 @@
                                                                          <input type="checkbox" runat="server" id="chkNextmonth"/>NextMonth
                                                                      </label>
                                                                   </div>
-                                                                      <label for="txtSaleman" class="col-sm-4 control-label">Sale Man:</label>                                      
-                                                                 <div class="col-sm-4">
-                                                                    <asp:DropDownList ID="DropDownList1" CssClass="form-control" runat="server"></asp:DropDownList>                                                                     
+                                                                      <label for="txtSaleman" class="col-sm-3 control-label">SaleMan:</label>                                      
+                                                                 <div class="col-sm-5">
+                                                                    <asp:DropDownList ID="ddlSaleman" CssClass="form-control" runat="server"></asp:DropDownList>                                                                     
                                                                  </div>          
                                                                  
 

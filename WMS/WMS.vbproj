@@ -272,12 +272,23 @@
     <Content Include="RejectReceivedWH.aspx" />
     <Content Include="ReportIEAT-E-02.aspx" />
     <Content Include="ReportIEATRec.aspx" />
+    <Content Include="RptCarton.aspx" />
+    <Content Include="RptCustoms.aspx" />
+    <Content Include="RptCustomsDaily.aspx" />
     <Content Include="RptIEAT.aspx" />
     <Content Include="RptIEATFee.aspx" />
     <Content Include="RptJobSheet.aspx" />
+    <Content Include="RptLocation.aspx" />
     <Content Include="RptLog.aspx" />
+    <Content Include="RptPlanHTI.aspx" />
+    <Content Include="RptStatusPick.aspx" />
+    <Content Include="RptStorageAging.aspx" />
+    <Content Include="RptStorageCharge.aspx" />
     <Content Include="RptSumLOT.aspx" />
     <Content Include="RptSumSeagate.aspx" />
+    <Content Include="RptTranPick.aspx" />
+    <Content Include="RptWareHouse.aspx" />
+    <Content Include="RptWD.aspx" />
     <Content Include="Scripts\bootstrap-colorpicker\dist\css\bootstrap-colorpicker.css" />
     <Content Include="Scripts\bootstrap-colorpicker\dist\css\bootstrap-colorpicker.min.css" />
     <Content Include="Scripts\bootstrap-colorpicker\dist\img\bootstrap-colorpicker\alpha-horizontal.png" />
@@ -7529,6 +7540,27 @@
       <DependentUpon>rptSegateSummaryReport1.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="RptCarton.aspx.designer.vb">
+      <DependentUpon>RptCarton.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RptCarton.aspx.vb">
+      <DependentUpon>RptCarton.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="RptCustoms.aspx.designer.vb">
+      <DependentUpon>RptCustoms.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RptCustoms.aspx.vb">
+      <DependentUpon>RptCustoms.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="RptCustomsDaily.aspx.designer.vb">
+      <DependentUpon>RptCustomsDaily.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RptCustomsDaily.aspx.vb">
+      <DependentUpon>RptCustomsDaily.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="RptIEAT.aspx.designer.vb">
       <DependentUpon>RptIEAT.aspx</DependentUpon>
     </Compile>
@@ -7550,11 +7582,46 @@
       <DependentUpon>RptJobSheet.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
+    <Compile Include="RptLocation.aspx.designer.vb">
+      <DependentUpon>RptLocation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RptLocation.aspx.vb">
+      <DependentUpon>RptLocation.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="RptLog.aspx.designer.vb">
       <DependentUpon>RptLog.aspx</DependentUpon>
     </Compile>
     <Compile Include="RptLog.aspx.vb">
       <DependentUpon>RptLog.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="RptPlanHTI.aspx.designer.vb">
+      <DependentUpon>RptPlanHTI.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RptPlanHTI.aspx.vb">
+      <DependentUpon>RptPlanHTI.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="RptStatusPick.aspx.designer.vb">
+      <DependentUpon>RptStatusPick.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RptStatusPick.aspx.vb">
+      <DependentUpon>RptStatusPick.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="RptStorageAging.aspx.designer.vb">
+      <DependentUpon>RptStorageAging.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RptStorageAging.aspx.vb">
+      <DependentUpon>RptStorageAging.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="RptStorageCharge.aspx.designer.vb">
+      <DependentUpon>RptStorageCharge.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RptStorageCharge.aspx.vb">
+      <DependentUpon>RptStorageCharge.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="RptSumLOT.aspx.designer.vb">
@@ -7569,6 +7636,27 @@
     </Compile>
     <Compile Include="RptSumSeagate.aspx.vb">
       <DependentUpon>RptSumSeagate.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="RptTranPick.aspx.designer.vb">
+      <DependentUpon>RptTranPick.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RptTranPick.aspx.vb">
+      <DependentUpon>RptTranPick.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="RptWareHouse.aspx.designer.vb">
+      <DependentUpon>RptWareHouse.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RptWareHouse.aspx.vb">
+      <DependentUpon>RptWareHouse.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="RptWD.aspx.designer.vb">
+      <DependentUpon>RptWD.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RptWD.aspx.vb">
+      <DependentUpon>RptWD.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="ShipmentRec.aspx.designer.vb">
