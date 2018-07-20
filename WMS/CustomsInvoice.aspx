@@ -412,11 +412,11 @@
                                                                       <label for="txtAmount" class="col-sm-2 control-label">Amount:</label>
                                                                     </div>
                                                                     <div class="form-group">
-<<<<<<< HEAD
+
                                                                     <label for="txtConsigneeCode" class="col-sm-3 control-label">Total Invoice</label>
-=======
+
                                                                     <label for="txtConsigneeCode" class="col-sm-4 control-label">Total Invoice</label>
->>>>>>> 22b29495f8740ab111c79c50326695553b26075d
+
                                                                      <div class="col-md-3">
                                                                            <asp:DropDownList ID="dcbQuantityUnit" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code">
                                                                             <%--<asp:ListItem Text = "--Select Country--" Value = ""></asp:ListItem>--%>
@@ -430,7 +430,7 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group">
-<<<<<<< HEAD
+
                                                                     <label for="txtConsignneeEng" class="col-sm-3 control-label">Forwarding</label>
                                                                        <div class="col-md-3">
                                                                            <asp:DropDownList ID="dcboForwarding" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code">
@@ -442,7 +442,7 @@
                                                                     </div>
                                                                      <div class="col-md-3">
                                                                         <input class="form-control pull-right" id="txtForwardingAmount1" runat="server" type="text" />
-=======
+
                                                                     <label for="txtConsignneeEng" class="col-sm-4 control-label">Forwarding</label>
                                                                        <div class="col-md-3">
                                                                            <asp:DropDownList ID="DropDownList1" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code">
@@ -454,23 +454,23 @@
                                                                     </div>
                                                                     <div class="col-md-2">
                                                                         <input class="form-control pull-right" id="txtForwardAmount1" runat="server" type="text" />
->>>>>>> 22b29495f8740ab111c79c50326695553b26075d
+
                                                                     </div>
                                                                 </div>
 
                                                                 <div class="form-group">
-<<<<<<< HEAD
-                                                                    <label for="txtConsignneeStreet_Number" class="col-sm-3 control-label">Freight</label>
+
+                                                                   <%-- <label for="txtConsignneeStreet_Number" class="col-sm-3 control-label">Freight</label>
                                                                        <div class="col-md-3">
                                                                            <asp:DropDownList ID="dcboFreight" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code">
-                                                                            <%--<asp:ListItem Text = "--Select Country--" Value = ""></asp:ListItem>--%>
+                                                                            <%--<asp:ListItem Text = "--Select Country--" Value = ""></asp:ListItem>
                                                                         </asp:DropDownList>
                                                                      </div>
                                                                     <div class="col-md-3">
-                                                                        <input class="form-control pull-right" id="txtFreightAmount" runat="server" type="text" />
+                                                                       <input class="form-control pull-right" id="txtFreightAmount" runat="server" type="text" />
                                                                     </div>
-                                                                     <div class="col-md-3">
-=======
+                                                                     <div class="col-md-3">--%>
+
                                                                     <label for="txtConsignneeStreet_Number" class="col-sm-4 control-label">Freight</label>
                                                                        <div class="col-md-3">
                                                                            <asp:DropDownList ID="DropDownList2" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code">
@@ -481,23 +481,22 @@
                                                                         <input class="form-control pull-right" id="txtFreightAmount" runat="server" type="text" />
                                                                     </div>
                                                                     <div class="col-md-2">
->>>>>>> 22b29495f8740ab111c79c50326695553b26075d
+
                                                                         <input class="form-control pull-right" id="txtFreightAmount1" runat="server" type="text" />
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group">
-<<<<<<< HEAD
-                                                                    <label for="txtConsignneeDistrict" class="col-sm-3 control-label">Insurance</label>
+
+                                                                 <%--   <label for="txtConsignneeDistrict" class="col-sm-3 control-label">Insurance</label>
                                                                        <div class="col-md-3">
                                                                            <asp:DropDownList ID="dcboInsurance" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code">
-                                                                            <%--<asp:ListItem Text = "--Select Country--" Value = ""></asp:ListItem>--%>
+                                                                            
                                                                         </asp:DropDownList>
                                                                      </div>
                                                                     <div class="col-md-3">
                                                                         <input class="form-control pull-right" id="txtInsuranceAmount" runat="server" type="text" />
-                                                                    </div>
+                                                                    </div>--%>
                                                                      <div class="col-md-3">
-=======
                                                                     <label for="txtConsignneeDistrict" class="col-sm-4 control-label">Insurance</label>
                                                                        <div class="col-md-3">
                                                                            <asp:DropDownList ID="DropDownList3" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code">
@@ -508,12 +507,11 @@
                                                                         <input class="form-control pull-right" id="txtInsuranceAmount" runat="server" type="text" />
                                                                     </div>
                                                                     <div class="col-md-2">
->>>>>>> 22b29495f8740ab111c79c50326695553b26075d
                                                                         <input class="form-control pull-right" id="txtInsuranceAmount1" runat="server" type="text" />
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group">
-<<<<<<< HEAD
+
                                                                     <label for="txtConsignneeSubProvince" class="col-sm-3 control-label">Packing Charge</label>
                                                                        <div class="col-md-3">
                                                                            <asp:DropDownList ID="dcboPackingCharge" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code">
@@ -521,10 +519,10 @@
                                                                         </asp:DropDownList>
                                                                      </div>
                                                                     <div class="col-md-3">
-                                                                        <input class="form-control pull-right" id="txtPackingChargeAmount" runat="server" type="text" />
+                                                                        <%--<input class="form-control pull-right" id="txtPackingChargeAmount" runat="server" type="text" />--%>
                                                                     </div>
                                                                      <div class="col-md-3">
-=======
+
                                                                     <label for="txtConsignneeSubProvince" class="col-sm-4 control-label">Packing Charge</label>
                                                                        <div class="col-md-3">
                                                                            <asp:DropDownList ID="DropDownList4" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code">
@@ -535,13 +533,13 @@
                                                                         <input class="form-control pull-right" id="txtPackingChargeAmount" runat="server" type="text" />
                                                                     </div>
                                                                      <div class="col-md-2">
->>>>>>> 22b29495f8740ab111c79c50326695553b26075d
+
                                                                         <input class="form-control pull-right" id="txtPackingChargeAmount1" runat="server" type="text" />
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group">
 
-<<<<<<< HEAD
+
                                                                     <label for="txtConsignneeProvince" class="col-sm-3 control-label">Handling Charge</label>
                                                                        <div class="col-md-3">
                                                                            <asp:DropDownList ID="dcboForeignInland" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code">
@@ -566,7 +564,6 @@
                                                                         <input class="form-control pull-right" id="txtLandingChargeAmount" runat="server" type="text" />
                                                                     </div>
                                                                          <div class="col-md-3">
-=======
                                                                     <label for="txtConsignneeProvince" class="col-sm-4 control-label">Handling Charge</label>
                                                                        <div class="col-md-3">
                                                                            <asp:DropDownList ID="DropDownList5" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code">
@@ -588,15 +585,15 @@
                                                                         </asp:DropDownList>
                                                                      </div>
                                                                     <div class="col-md-2">
-                                                                        <input class="form-control pull-right" id="txtLandingChargeAmount" runat="server" type="text" />
+                                                                        <%--<input class="form-control pull-right" id="txtLandingChargeAmount" runat="server" type="text" />--%>
                                                                     </div>
                                                                     <div class="col-md-2">
->>>>>>> 22b29495f8740ab111c79c50326695553b26075d
+
                                                                         <input class="form-control pull-right" id="txtLandingChargeAmount1" runat="server" type="text" />
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group">
-<<<<<<< HEAD
+
                                                                     <label for="txtConsignneeEMail" class="col-sm-3 control-label">Total Invoice THB</label>
                                                                        <div class="col-md-3">
                                                                            <asp:DropDownList ID="dcboOtherCharge" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code">
@@ -608,7 +605,6 @@
                                                                     </div>
                                                                      <div class="col-md-3">
                                                                         <input class="form-control pull-right" id="txtOtherChargeAmount1" runat="server" type="text" />
-=======
                                                                     <label for="txtConsignneeEMail" class="col-sm-4 control-label">Total Invoice THB</label>
                                                                        <div class="col-md-3">
                                                                            <asp:DropDownList ID="DropDownList7" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code">
@@ -620,7 +616,7 @@
                                                                     </div>
                                                                     <div class="col-md-2">
                                                                         <input class="form-control pull-right" id="txtTotalInvoiceTHBAmount1" runat="server" type="text" />
->>>>>>> 22b29495f8740ab111c79c50326695553b26075d
+
                                                                     </div>
                                                                 </div>
 
