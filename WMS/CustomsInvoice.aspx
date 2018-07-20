@@ -412,7 +412,11 @@
                                                                       <label for="txtAmount" class="col-sm-2 control-label">Amount:</label>
                                                                     </div>
                                                                     <div class="form-group">
+
+                                                                    <label for="txtConsigneeCode" class="col-sm-3 control-label">Total Invoice</label>
+
                                                                     <label for="txtConsigneeCode" class="col-sm-4 control-label">Total Invoice</label>
+
                                                                      <div class="col-md-3">
                                                                            <asp:DropDownList ID="dcbQuantityUnit" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code">
                                                                             <%--<asp:ListItem Text = "--Select Country--" Value = ""></asp:ListItem>--%>
@@ -426,6 +430,19 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group">
+
+                                                                    <label for="txtConsignneeEng" class="col-sm-3 control-label">Forwarding</label>
+                                                                       <div class="col-md-3">
+                                                                           <asp:DropDownList ID="dcboForwarding" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code">
+                                                                            <%--<asp:ListItem Text = "--Select Country--" Value = ""></asp:ListItem>--%>
+                                                                        </asp:DropDownList>
+                                                                     </div>
+                                                                    <div class="col-md-3">
+                                                                        <input class="form-control pull-right" id="txtForwardingAmount" runat="server" type="text" />
+                                                                    </div>
+                                                                     <div class="col-md-3">
+                                                                        <input class="form-control pull-right" id="txtForwardingAmount1" runat="server" type="text" />
+
                                                                     <label for="txtConsignneeEng" class="col-sm-4 control-label">Forwarding</label>
                                                                        <div class="col-md-3">
                                                                            <asp:DropDownList ID="DropDownList1" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code">
@@ -437,10 +454,23 @@
                                                                     </div>
                                                                     <div class="col-md-2">
                                                                         <input class="form-control pull-right" id="txtForwardAmount1" runat="server" type="text" />
+
                                                                     </div>
                                                                 </div>
 
                                                                 <div class="form-group">
+
+                                                                   <%-- <label for="txtConsignneeStreet_Number" class="col-sm-3 control-label">Freight</label>
+                                                                       <div class="col-md-3">
+                                                                           <asp:DropDownList ID="dcboFreight" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code">
+                                                                            <%--<asp:ListItem Text = "--Select Country--" Value = ""></asp:ListItem>
+                                                                        </asp:DropDownList>
+                                                                     </div>
+                                                                    <div class="col-md-3">
+                                                                       <input class="form-control pull-right" id="txtFreightAmount" runat="server" type="text" />
+                                                                    </div>
+                                                                     <div class="col-md-3">--%>
+
                                                                     <label for="txtConsignneeStreet_Number" class="col-sm-4 control-label">Freight</label>
                                                                        <div class="col-md-3">
                                                                            <asp:DropDownList ID="DropDownList2" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code">
@@ -451,10 +481,22 @@
                                                                         <input class="form-control pull-right" id="txtFreightAmount" runat="server" type="text" />
                                                                     </div>
                                                                     <div class="col-md-2">
+
                                                                         <input class="form-control pull-right" id="txtFreightAmount1" runat="server" type="text" />
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group">
+
+                                                                 <%--   <label for="txtConsignneeDistrict" class="col-sm-3 control-label">Insurance</label>
+                                                                       <div class="col-md-3">
+                                                                           <asp:DropDownList ID="dcboInsurance" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code">
+                                                                            
+                                                                        </asp:DropDownList>
+                                                                     </div>
+                                                                    <div class="col-md-3">
+                                                                        <input class="form-control pull-right" id="txtInsuranceAmount" runat="server" type="text" />
+                                                                    </div>--%>
+                                                                     <div class="col-md-3">
                                                                     <label for="txtConsignneeDistrict" class="col-sm-4 control-label">Insurance</label>
                                                                        <div class="col-md-3">
                                                                            <asp:DropDownList ID="DropDownList3" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code">
@@ -469,6 +511,18 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group">
+
+                                                                    <label for="txtConsignneeSubProvince" class="col-sm-3 control-label">Packing Charge</label>
+                                                                       <div class="col-md-3">
+                                                                           <asp:DropDownList ID="dcboPackingCharge" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code">
+                                                                            <%--<asp:ListItem Text = "--Select Country--" Value = ""></asp:ListItem>--%>
+                                                                        </asp:DropDownList>
+                                                                     </div>
+                                                                    <div class="col-md-3">
+                                                                        <%--<input class="form-control pull-right" id="txtPackingChargeAmount" runat="server" type="text" />--%>
+                                                                    </div>
+                                                                     <div class="col-md-3">
+
                                                                     <label for="txtConsignneeSubProvince" class="col-sm-4 control-label">Packing Charge</label>
                                                                        <div class="col-md-3">
                                                                            <asp:DropDownList ID="DropDownList4" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code">
@@ -479,11 +533,37 @@
                                                                         <input class="form-control pull-right" id="txtPackingChargeAmount" runat="server" type="text" />
                                                                     </div>
                                                                      <div class="col-md-2">
+
                                                                         <input class="form-control pull-right" id="txtPackingChargeAmount1" runat="server" type="text" />
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group">
 
+
+                                                                    <label for="txtConsignneeProvince" class="col-sm-3 control-label">Handling Charge</label>
+                                                                       <div class="col-md-3">
+                                                                           <asp:DropDownList ID="dcboForeignInland" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code">
+                                                                            <%--<asp:ListItem Text = "--Select Country--" Value = ""></asp:ListItem>--%>
+                                                                        </asp:DropDownList>
+                                                                     </div>
+                                                                    <div class="col-md-3">
+                                                                        <input class="form-control pull-right" id="txtForeignInlandAmount" runat="server" type="text" />
+                                                                    </div>
+                                                                     <div class="col-md-3">
+                                                                        <input class="form-control pull-right" id="txtForeignInlandAmount1" runat="server" type="text" />
+                                                                    </div>
+                                                                </div>
+                                                                    <div class="form-group">
+                                                                    <label for="txtConsignneeProvince" class="col-sm-3 control-label">Landing Charge</label>
+                                                                           <div class="col-md-3">
+                                                                           <asp:DropDownList ID="dcboLandingCharge" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code">
+                                                                            <%--<asp:ListItem Text = "--Select Country--" Value = ""></asp:ListItem>--%>
+                                                                        </asp:DropDownList>
+                                                                     </div>
+                                                                    <div class="col-md-3">
+                                                                        <input class="form-control pull-right" id="txtLandingChargeAmount" runat="server" type="text" />
+                                                                    </div>
+                                                                         <div class="col-md-3">
                                                                     <label for="txtConsignneeProvince" class="col-sm-4 control-label">Handling Charge</label>
                                                                        <div class="col-md-3">
                                                                            <asp:DropDownList ID="DropDownList5" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code">
@@ -505,13 +585,26 @@
                                                                         </asp:DropDownList>
                                                                      </div>
                                                                     <div class="col-md-2">
-                                                                        <input class="form-control pull-right" id="txtLandingChargeAmount" runat="server" type="text" />
+                                                                        <%--<input class="form-control pull-right" id="txtLandingChargeAmount" runat="server" type="text" />--%>
                                                                     </div>
                                                                     <div class="col-md-2">
+
                                                                         <input class="form-control pull-right" id="txtLandingChargeAmount1" runat="server" type="text" />
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group">
+
+                                                                    <label for="txtConsignneeEMail" class="col-sm-3 control-label">Total Invoice THB</label>
+                                                                       <div class="col-md-3">
+                                                                           <asp:DropDownList ID="dcboOtherCharge" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code">
+                                                                            <%--<asp:ListItem Text = "--Select Country--" Value = ""></asp:ListItem>--%>
+                                                                        </asp:DropDownList>
+                                                                     </div>
+                                                                    <div class="col-md-3">
+                                                                        <input class="form-control pull-right" id="txtOtherChargeAmount" runat="server" type="text" />
+                                                                    </div>
+                                                                     <div class="col-md-3">
+                                                                        <input class="form-control pull-right" id="txtOtherChargeAmount1" runat="server" type="text" />
                                                                     <label for="txtConsignneeEMail" class="col-sm-4 control-label">Total Invoice THB</label>
                                                                        <div class="col-md-3">
                                                                            <asp:DropDownList ID="DropDownList7" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code">
@@ -523,6 +616,7 @@
                                                                     </div>
                                                                     <div class="col-md-2">
                                                                         <input class="form-control pull-right" id="txtTotalInvoiceTHBAmount1" runat="server" type="text" />
+
                                                                     </div>
                                                                 </div>
 
@@ -577,6 +671,54 @@
 
 
                                                     </div>
+                                                         <div class="col-lg-12 col-md-12">
+                                                        <div class="col-md-6">
+                                                            <fieldset>
+                                                                <legend></legend>
+                                                                 <div class="form-group">
+                                                                    <label for="txtConsigneeCode" class="col-sm-3 control-label">Truck License</label>
+                                                                     <div class="col-md-6">
+                                                                              <asp:DropDownList ID="dcboCarLicense" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code">
+                                                                            <%--<asp:ListItem Text = "--Select Country--" Value = ""></asp:ListItem>--%>
+                                                                        </asp:DropDownList>
+                                                                     </div>
+                                                                     
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="txtConsignneeEng" class="col-sm-3 control-label">Driver Name</label>
+                                                                    <div class="col-md-8">
+                                                                              <asp:DropDownList ID="dcboDriverName" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code">
+                                                                            <%--<asp:ListItem Text = "--Select Country--" Value = ""></asp:ListItem>--%>
+                                                                        </asp:DropDownList>
+                                                                    </div>
+                                                                   
+                                                                </div>
+
+                                                              
+                                                     
+                                                            </fieldset>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <fieldset>
+                                                                <legend></legend>
+                                                                    <div class="form-group">
+                                                                    <label for="txtConsigneeCode" class="col-sm-3 control-label">Truck License</label>
+                                                                     <div class="col-md-6">
+                                                                    
+                                                                     </div>
+
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="txtConsignneeEng" class="col-sm-3 control-label">Forwarding</label>
+                                                                       <div class="col-md-6">
+                                                                    
+                                                                     </div>
+                                                               
+                                                                </div>
+
+                                                            
+                                                            </fieldset>
+                                                        </div>
                                                 </div>
                                                 
 
