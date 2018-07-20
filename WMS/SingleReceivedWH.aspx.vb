@@ -20,4 +20,8 @@
     Protected Sub btnReceive_GoodRecDetail_ServerClick(sender As Object, e As EventArgs)
 
     End Sub
+
+    Protected Sub btnPutAway_ServerClick(sender As Object, e As EventArgs)
+
+    End Sub
 End Class

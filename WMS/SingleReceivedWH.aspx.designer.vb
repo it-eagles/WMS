@@ -851,6 +851,15 @@ Partial Public Class SingleReceivedWH
     Protected WithEvents txtBathAmount_GoodRecDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
+    '''txtInvoice_GoodRecDetail control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtInvoice_GoodRecDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
     '''txtSupplier_GoodRecDetail control.
     '''</summary>
     '''<remarks>
@@ -930,4 +939,94 @@ Partial Public Class SingleReceivedWH
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents btnReceive_GoodRecDetail As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''ddlWHSite_PutAway control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ddlWHSite_PutAway As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''rdbManual control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents rdbManual As Global.System.Web.UI.WebControls.RadioButton
+
+    '''<summary>
+    '''rdbAutoPallet control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents rdbAutoPallet As Global.System.Web.UI.WebControls.RadioButton
+
+    '''<summary>
+    '''txtmessages1_PutAway control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtmessages1_PutAway As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''txtmessages2_PutAway control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtmessages2_PutAway As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''ddlWHLocation_PutAway control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ddlWHLocation_PutAway As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''txtmessages3_PutAway control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtmessages3_PutAway As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''txtmessages4_PutAway control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtmessages4_PutAway As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''txtPalletNo_PutAway control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtPalletNo_PutAway As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''btnPutAway control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnPutAway As Global.System.Web.UI.HtmlControls.HtmlButton
 End Class
