@@ -225,7 +225,11 @@
                 </div>
                 <div class="form-group">
                   <div class="col-sm-4">                    
-                      <asp:DropDownList ID="ddlvolume2" CssClass="form-control" runat="server"></asp:DropDownList>  
+                      <asp:DropDownList ID="ddlvolume2" CssClass="form-control" runat="server">
+                      <asp:ListItem>--select--</asp:ListItem>
+                      <asp:ListItem>HAWB</asp:ListItem>
+                      <asp:ListItem>HBL</asp:ListItem>
+                      </asp:DropDownList>
                   </div>
                   <div class="col-sm-8">
                     <input class="form-control" id="txtVolume2" runat="server"/>
@@ -996,7 +1000,12 @@
                                                               <div class="form-group">
                                                                        <label for="txtStatusIEAT1" class="col-sm-4 control-label">Status 1:</label> 
                                                                 <div class="col-sm-8">
-                                                                    <asp:DropDownList ID="ddlStatusIEAT1" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                                    <asp:DropDownList ID="ddlStatusIEAT1" CssClass="form-control" runat="server">
+                                                                    <asp:ListItem>--Select Status--</asp:ListItem>
+                                                                    <asp:ListItem>บัญชีวัตถุดิบและสิ่งจำเป็นที่ต้องใช้ในการผลิต</asp:ListItem>
+                                                                    <asp:ListItem>บัญชีเครื่องจักรและอุปกรณ์</asp:ListItem>
+                                                                    <asp:ListItem>นำเข้าในนามผู้อื่น</asp:ListItem>
+                                                                    </asp:DropDownList>
                                                                  </div>
                                                               </div>
                                                           </div>
@@ -1036,7 +1045,13 @@
                                                                 <div class="form-group">
                                                                        <label for="txtStatusIEAT2" class="col-sm-4 control-label">Status 2:</label> 
                                                                 <div class="col-sm-8">
-                                                                    <asp:DropDownList ID="ddlStatusIEAT2" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                                    <asp:DropDownList ID="ddlStatusIEAT2" CssClass="form-control" runat="server">
+                                                                    <asp:ListItem>--Select Status--</asp:ListItem>
+                                                                    <asp:ListItem>จากต่างประเทศ(ใบขนฯขาเข้า)</asp:ListItem>
+                                                                    <asp:ListItem>จากในประเทศ(ใบขนฯขาออก)</asp:ListItem>
+                                                                    <asp:ListItem>จากในประเทศ(ตามคำร้อง)</asp:ListItem>
+                                                                    <asp:ListItem>การรับโอนของเข้าจากสิทธิประโยชน์อื่น</asp:ListItem>
+                                                                    </asp:DropDownList>
                                                                  </div>
                                                               </div>
 
@@ -1200,7 +1215,11 @@
                 </div>
                 <div class="form-group"> 
                     <div class="col-sm-4">
-                    <asp:DropDownList ID="ddlQuantity_PLT_Skid_Invoice2" CssClass="form-control" runat="server"></asp:DropDownList>  
+                    <asp:DropDownList ID="ddlQuantity_PLT_Skid_Invoice2" CssClass="form-control" runat="server">
+                        <asp:ListItem>--select--</asp:ListItem>
+                        <asp:ListItem>HAWB</asp:ListItem>
+                        <asp:ListItem>HBL</asp:ListItem>
+                        </asp:DropDownList> 
                   </div>
                     <div class="col-sm-8">
                     <input class="form-control" id="txtQuantity_PLT_Skid_Invoice2" runat="server" value="0"/>
