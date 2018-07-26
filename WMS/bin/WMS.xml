@@ -13935,9 +13935,9 @@ CalendarExtenderdatepickerActualPickUp control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.CreateRec.ddlShippercode">
+</member><member name="F:WMS.CreateRec.txtShippercode">
 	<summary>
-ddlShippercode control.
+txtShippercode control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -14143,9 +14143,9 @@ CalendarExtenderArrivalToEAS control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.CreateRec.ddlDeliveryCode">
+</member><member name="F:WMS.CreateRec.txtDeliverycode">
 	<summary>
-ddlDeliveryCode control.
+txtDeliverycode control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -14215,9 +14215,9 @@ txtContractPersonDelivery control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.CreateRec.ddlCodePickUpPlace">
+</member><member name="F:WMS.CreateRec.txtCodePickUpPlace">
 	<summary>
-ddlCodePickUpPlace control.
+txtCodePickUpPlace control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -14287,9 +14287,9 @@ txtContractPersonPickUpPlace control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.CreateRec.ddlCodeCustommerGroup">
+</member><member name="F:WMS.CreateRec.txtCodeCustommerGroup">
 	<summary>
-ddlCodeCustommerGroup control.
+txtCodeCustommerGroup control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -14303,9 +14303,9 @@ txtNameCustommerGroup control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.CreateRec.ddlCustomercode">
+</member><member name="F:WMS.CreateRec.txtCustomercode">
 	<summary>
-ddlCustomercode control.
+txtCustomercode control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -14375,9 +14375,9 @@ txtContractPersonCustommer control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.CreateRec.ddlCodeEndCustomer">
+</member><member name="F:WMS.CreateRec.txtCodeEndCustomer">
 	<summary>
-ddlCodeEndCustomer control.
+txtCodeEndCustomer control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -14978,6 +14978,62 @@ To modify move field declaration from designer file to code-behind file.
 </member><member name="F:WMS.CreateRec.btnSaveToInvoice_ImportFileNJR">
 	<summary>
 btnSaveToInvoice_ImportFileNJR control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.CreateRec.Repeater1">
+	<summary>
+Repeater1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.CreateRec.Repeater2">
+	<summary>
+Repeater2 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.CreateRec.Repeater3">
+	<summary>
+Repeater3 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.CreateRec.Repeater4">
+	<summary>
+Repeater4 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.CreateRec.Repeater5">
+	<summary>
+Repeater5 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.CreateRec.Repeater6">
+	<summary>
+Repeater6 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.CreateRec.Repeater7">
+	<summary>
+Repeater7 control.
 </summary>
 	<remarks>
 Auto-generated field.

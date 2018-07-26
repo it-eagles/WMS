@@ -110,7 +110,7 @@ Partial Public Class CreateRec
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtConsigneecode As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtConsigneecode As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
     '''txtNameEngConsign control.
@@ -464,13 +464,13 @@ Partial Public Class CreateRec
     Protected WithEvents CalendarExtenderdatepickerActualPickUp As Global.AjaxControlToolkit.CalendarExtender
 
     '''<summary>
-    '''ddlShippercode control.
+    '''txtShippercode control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlShippercode As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtShippercode As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
     '''txtNameEngShipper control.
@@ -698,13 +698,13 @@ Partial Public Class CreateRec
     Protected WithEvents CalendarExtenderArrivalToEAS As Global.AjaxControlToolkit.CalendarExtender
 
     '''<summary>
-    '''ddlDeliveryCode control.
+    '''txtDeliverycode control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlDeliveryCode As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtDeliverycode As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
     '''txtNameEngDelivery control.
@@ -779,13 +779,13 @@ Partial Public Class CreateRec
     Protected WithEvents txtContractPersonDelivery As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''ddlCodePickUpPlace control.
+    '''txtCodePickUpPlace control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlCodePickUpPlace As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtCodePickUpPlace As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
     '''txtNamePickUpPlace control.
@@ -860,13 +860,13 @@ Partial Public Class CreateRec
     Protected WithEvents txtContractPersonPickUpPlace As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''ddlCodeCustommerGroup control.
+    '''txtCodeCustommerGroup control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlCodeCustommerGroup As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtCodeCustommerGroup As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
     '''txtNameCustommerGroup control.
@@ -878,13 +878,13 @@ Partial Public Class CreateRec
     Protected WithEvents txtNameCustommerGroup As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''ddlCustomercode control.
+    '''txtCustomercode control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlCustomercode As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtCustomercode As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
     '''txtNameEngCustomer control.
@@ -959,13 +959,13 @@ Partial Public Class CreateRec
     Protected WithEvents txtContractPersonCustommer As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''ddlCodeEndCustomer control.
+    '''txtCodeEndCustomer control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlCodeEndCustomer As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtCodeEndCustomer As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
     '''txtNameEndCustomer control.
@@ -1641,4 +1641,67 @@ Partial Public Class CreateRec
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents btnSaveToInvoice_ImportFileNJR As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''Repeater1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Repeater1 As Global.System.Web.UI.WebControls.Repeater
+
+    '''<summary>
+    '''Repeater2 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Repeater2 As Global.System.Web.UI.WebControls.Repeater
+
+    '''<summary>
+    '''Repeater3 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Repeater3 As Global.System.Web.UI.WebControls.Repeater
+
+    '''<summary>
+    '''Repeater4 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Repeater4 As Global.System.Web.UI.WebControls.Repeater
+
+    '''<summary>
+    '''Repeater5 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Repeater5 As Global.System.Web.UI.WebControls.Repeater
+
+    '''<summary>
+    '''Repeater6 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Repeater6 As Global.System.Web.UI.WebControls.Repeater
+
+    '''<summary>
+    '''Repeater7 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Repeater7 As Global.System.Web.UI.WebControls.Repeater
 End Class

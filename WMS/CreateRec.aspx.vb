@@ -24,6 +24,13 @@ Public Class CreateRec
         showIEATPermit()
         showunitdimension()
         showcurrency()
+        showListConsignee()
+        showListShipper()
+        showListDelivery()
+        showListPickUp()
+        showListCustomer()
+        showListEndCustomer()
+        showListCustomerGroup()
     End Sub
 
     Private Sub showJobSite()
@@ -333,6 +340,315 @@ Public Class CreateRec
             End If
         Catch ex As Exception
 
+        End Try
+    End Sub
+    '--------------------------------------------------------Show Data Consignee In Modal-----------------------------------------
+    Public Sub showListConsignee()
+
+        Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode
+                   Select New With {u.PartyCode,
+                                    u.PartyFullName,
+                                    br.Address1,
+                                    br.Address2,
+                                    br.Address3}).ToList()
+
+
+        If user.Count > 0 Then
+            Repeater1.DataSource = user
+            Repeater1.DataBind()
+        Else
+            Me.Repeater1.DataSource = Nothing
+            Me.Repeater1.DataBind()
+        End If
+    End Sub
+    '--------------------------------------------------------Click Data Consignee In Modal-----------------------------------------
+    Protected Sub Repeater1_ItemCommand(source As Object, e As RepeaterCommandEventArgs) Handles Repeater1.ItemCommand
+        Dim PartyCode As String = CStr(e.CommandArgument)
+        Try
+            If e.CommandName.Equals("SelectConsignee") Then
+
+                If String.IsNullOrEmpty(PartyCode) Then
+
+                    MsgBox("เป็นค่าว่าง")
+                Else
+                    Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode Where u.PartyCode = PartyCode And u.Consignee = "0").SingleOrDefault
+
+                    txtConsigneecode.Value = user.u.PartyCode
+                    txtNameEngConsign.Value = user.u.PartyFullName
+                    txtAddress1.Value = user.br.Address1
+                    txtAddress2.Value = user.br.Address2
+                    txtAddress3.Value = user.br.Address3
+                    txtAddress4.Value = user.br.Address4
+                    txtAddress5.Value = user.br.ZipCode
+                    txtEmail.Value = user.br.email
+
+                End If
+            End If
+        Catch ex As Exception
+        End Try
+    End Sub
+    '--------------------------------------------------------Show Data Shipper In Modal-----------------------------------------
+    Public Sub showListShipper()
+
+        Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode
+                   Select New With {u.PartyCode,
+                                    u.PartyFullName,
+                                    br.Address1,
+                                    br.Address2,
+                                    br.Address3}).ToList()
+
+
+        If user.Count > 0 Then
+            Repeater2.DataSource = user
+            Repeater2.DataBind()
+        Else
+            Me.Repeater2.DataSource = Nothing
+            Me.Repeater2.DataBind()
+        End If
+    End Sub
+    '--------------------------------------------------------Click Data Shipper In Modal-----------------------------------------
+    Protected Sub Repeater2_ItemCommand(source As Object, e As RepeaterCommandEventArgs) Handles Repeater2.ItemCommand
+        Dim PartyCode As String = CStr(e.CommandArgument)
+        Try
+            If e.CommandName.Equals("SelectShipper") Then
+
+                If String.IsNullOrEmpty(PartyCode) Then
+
+                    MsgBox("เป็นค่าว่าง")
+                Else
+                    Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode Where u.PartyCode = PartyCode And u.Consignee = "0").SingleOrDefault
+
+                    txtShippercode.Value = user.u.PartyCode
+                    txtNameEngShipper.Value = user.u.PartyFullName
+                    txtAddress1Shipper.Value = user.br.Address1
+                    txtAddress2Shipper.Value = user.br.Address2
+                    txtAddress3Shipper.Value = user.br.Address3
+                    txtAddress4Shipper.Value = user.br.Address4
+                    txtAddress5Shipper.Value = user.br.ZipCode
+                    txtEmailShipper.Value = user.br.email
+
+                End If
+            End If
+        Catch ex As Exception
+        End Try
+    End Sub
+    '--------------------------------------------------------Show Data Delivery In Modal-----------------------------------------
+    Public Sub showListDelivery()
+
+        Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode
+                   Select New With {u.PartyCode,
+                                    u.PartyFullName,
+                                    br.Address1,
+                                    br.Address2,
+                                    br.Address3}).ToList()
+
+
+        If user.Count > 0 Then
+            Repeater3.DataSource = user
+            Repeater3.DataBind()
+        Else
+            Me.Repeater3.DataSource = Nothing
+            Me.Repeater3.DataBind()
+        End If
+    End Sub
+    '--------------------------------------------------------Click Data Shipper In Modal-----------------------------------------
+    Protected Sub Repeater3_ItemCommand(source As Object, e As RepeaterCommandEventArgs) Handles Repeater3.ItemCommand
+        Dim PartyCode As String = CStr(e.CommandArgument)
+        Try
+            If e.CommandName.Equals("SelectDelivery") Then
+
+                If String.IsNullOrEmpty(PartyCode) Then
+
+                    MsgBox("เป็นค่าว่าง")
+                Else
+                    Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode Where u.PartyCode = PartyCode And u.Consignee = "0").SingleOrDefault
+
+                    txtDeliverycode.Value = user.u.PartyCode
+                    txtNameEngDelivery.Value = user.u.PartyFullName
+                    txtAddress1Delivery.Value = user.br.Address1
+                    txtAddress2Delivery.Value = user.br.Address2
+                    txtAddress3Delivery.Value = user.br.Address3
+                    txtAddress4Delivery.Value = user.br.Address4
+                    txtAddress5Delivery.Value = user.br.ZipCode
+                    txtEmailDelivery.Value = user.br.email
+                    txtContractPersonDelivery.Value = user.br.Attn
+
+                End If
+            End If
+        Catch ex As Exception
+        End Try
+    End Sub
+    '--------------------------------------------------------Show Data PickUp In Modal-----------------------------------------
+    Public Sub showListPickUp()
+
+        Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode
+                   Select New With {u.PartyCode,
+                                    u.PartyFullName,
+                                    br.Address1,
+                                    br.Address2,
+                                    br.Address3}).ToList()
+
+
+        If user.Count > 0 Then
+            Repeater4.DataSource = user
+            Repeater4.DataBind()
+        Else
+            Me.Repeater4.DataSource = Nothing
+            Me.Repeater4.DataBind()
+        End If
+    End Sub
+    '--------------------------------------------------------Click Data PickUp In Modal-----------------------------------------
+    Protected Sub Repeater4_ItemCommand(source As Object, e As RepeaterCommandEventArgs) Handles Repeater4.ItemCommand
+        Dim PartyCode As String = CStr(e.CommandArgument)
+        Try
+            If e.CommandName.Equals("SelectPickUp") Then
+
+                If String.IsNullOrEmpty(PartyCode) Then
+
+                    MsgBox("เป็นค่าว่าง")
+                Else
+                    Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode Where u.PartyCode = PartyCode And u.Consignee = "0").SingleOrDefault
+
+                    txtCodePickUpPlace.Value = user.u.PartyCode
+                    txtNamePickUpPlace.Value = user.u.PartyFullName
+                    txtAddress1PickUpPlace.Value = user.br.Address1
+                    txtAddress2PickUpPlace.Value = user.br.Address2
+                    txtAddress3PickUpPlace.Value = user.br.Address3
+                    txtAddress4PickUpPlace.Value = user.br.Address4
+                    txtAddress5PickUpPlace.Value = user.br.ZipCode
+                    txtEmailPickUpPlace.Value = user.br.email
+                    txtContractPersonPickUpPlace.Value = user.br.Attn
+
+                End If
+            End If
+        Catch ex As Exception
+        End Try
+    End Sub
+    '--------------------------------------------------------Show Data Customer In Modal-----------------------------------------
+    Public Sub showListCustomer()
+
+        Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode
+                   Select New With {u.PartyCode,
+                                    u.PartyFullName,
+                                    br.Address1,
+                                    br.Address2,
+                                    br.Address3}).ToList()
+
+
+        If user.Count > 0 Then
+            Repeater5.DataSource = user
+            Repeater5.DataBind()
+        Else
+            Me.Repeater5.DataSource = Nothing
+            Me.Repeater5.DataBind()
+        End If
+    End Sub
+    '--------------------------------------------------------Click Data Customer In Modal-----------------------------------------
+    Protected Sub Repeater5_ItemCommand(source As Object, e As RepeaterCommandEventArgs) Handles Repeater5.ItemCommand
+        Dim PartyCode As String = CStr(e.CommandArgument)
+        Try
+            If e.CommandName.Equals("SelectCustomer") Then
+
+                If String.IsNullOrEmpty(PartyCode) Then
+
+                    MsgBox("เป็นค่าว่าง")
+                Else
+                    Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode Where u.PartyCode = PartyCode And u.Consignee = "0").SingleOrDefault
+
+                    txtCustomercode.Value = user.u.PartyCode
+                    txtNameEngCustomer.Value = user.u.PartyFullName
+                    txtAddress1Custommer.Value = user.br.Address1
+                    txtAddress2Custommer.Value = user.br.Address2
+                    txtAddress3Custommer.Value = user.br.Address3
+                    txtAddress4Custommer.Value = user.br.Address4
+                    txtAddress5Custommer.Value = user.br.ZipCode
+                    txtEmailCustommer.Value = user.br.email
+                    txtContractPersonCustommer.Value = user.br.Attn
+
+                End If
+            End If
+        Catch ex As Exception
+        End Try
+    End Sub
+    '--------------------------------------------------------Show Data Customer In Modal-----------------------------------------
+    Public Sub showListEndCustomer()
+
+        Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode
+                   Select New With {u.PartyCode,
+                                    u.PartyFullName,
+                                    br.Address1,
+                                    br.Address2,
+                                    br.Address3}).ToList()
+
+
+        If user.Count > 0 Then
+            Repeater6.DataSource = user
+            Repeater6.DataBind()
+        Else
+            Me.Repeater6.DataSource = Nothing
+            Me.Repeater6.DataBind()
+        End If
+    End Sub
+    '--------------------------------------------------------Click Data EndCustomer In Modal-----------------------------------------
+    Protected Sub Repeater6_ItemCommand(source As Object, e As RepeaterCommandEventArgs) Handles Repeater6.ItemCommand
+        Dim PartyCode As String = CStr(e.CommandArgument)
+        Try
+            If e.CommandName.Equals("SelectEndCustomer") Then
+
+                If String.IsNullOrEmpty(PartyCode) Then
+
+                    MsgBox("เป็นค่าว่าง")
+                Else
+                    Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode Where u.PartyCode = PartyCode And u.Consignee = "0").SingleOrDefault
+
+                    txtCodeEndCustomer.Value = user.u.PartyCode
+                    txtNameEndCustomer.Value = user.u.PartyFullName
+                    txtAddress1EndCustomer.Value = user.br.Address1
+                    txtAddress2EndCustomer.Value = user.br.Address2
+                    txtAddress3EndCustomer.Value = user.br.Address3
+                    txtAddress4EndCustomer.Value = user.br.Address4
+                    txtAddress5EndCustomer.Value = user.br.ZipCode
+                    txtEmailEndCustomer.Value = user.br.email
+                    txtContractPersonEndCustomer.Value = user.br.Attn
+
+                End If
+            End If
+        Catch ex As Exception
+        End Try
+    End Sub
+    '--------------------------------------------------------Show Data CustomerGroup In Modal-----------------------------------------
+    Public Sub showListCustomerGroup()
+
+        Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode
+                   Select New With {u.PartyCode,
+                                    u.PartyFullName}).ToList()
+
+
+        If user.Count > 0 Then
+            Repeater7.DataSource = user
+            Repeater7.DataBind()
+        Else
+            Me.Repeater7.DataSource = Nothing
+            Me.Repeater7.DataBind()
+        End If
+    End Sub
+    '--------------------------------------------------------Click Data EndCustomer In Modal-----------------------------------------
+    Protected Sub Repeater7_ItemCommand(source As Object, e As RepeaterCommandEventArgs) Handles Repeater7.ItemCommand
+        Dim PartyCode As String = CStr(e.CommandArgument)
+        Try
+            If e.CommandName.Equals("SelectCustomerGroup") Then
+
+                If String.IsNullOrEmpty(PartyCode) Then
+
+                    MsgBox("เป็นค่าว่าง")
+                Else
+                    Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode Where u.PartyCode = PartyCode And u.Consignee = "0").SingleOrDefault
+
+                    txtCodeCustommerGroup.Value = user.u.PartyCode
+                    txtNameCustommerGroup.Value = user.u.PartyFullName
+                End If
+            End If
+        Catch ex As Exception
         End Try
     End Sub
 End Class

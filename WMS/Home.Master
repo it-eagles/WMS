@@ -577,12 +577,18 @@
                 <!-- DataTables -->
                     <script src="Scripts/datatables.net/js/jquery.dataTables.min.js"></script>
                     <script src="Scripts/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+         <%--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>--%>
            <script type="text/javascript">
                   $(document).ready(function () {
                       $('#example1').DataTable()
+                      $('#example2').DataTable()
+                      $('#example3').DataTable()
+                      $('#example4').DataTable()
+                      $('#example5').DataTable()
+                      $('#example6').DataTable()
+                      $('#example7').DataTable()
                       $('#exa').DataTable()
-                      $('#example2').DataTable({
+                      $('#example20').DataTable({
                           'paging': true,
                           'lengthChange': false,
                           'searching': false,

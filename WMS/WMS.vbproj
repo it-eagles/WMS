@@ -6957,6 +6957,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\sp_helpdiagramdefinition_Result.vb">
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\sp_helpdiagrams_Result.vb">
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\sysdiagram.vb">
       <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
