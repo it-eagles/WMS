@@ -149,13 +149,13 @@ Partial Public Class InvoicePackingListRec
     Protected WithEvents CalendarExtenderCustomsRefDate_beforeTab As Global.AjaxControlToolkit.CalendarExtender
 
     '''<summary>
-    '''ddlShipperCode_Invoice control.
+    '''txtShippercode control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlShipperCode_Invoice As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtShippercode As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
     '''txtNameShipper_Invoice control.
@@ -221,13 +221,13 @@ Partial Public Class InvoicePackingListRec
     Protected WithEvents txtEmailShipper As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtConsigneeCode_Invoice control.
+    '''txtConsigneeCode control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtConsigneeCode_Invoice As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtConsigneeCode As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
     '''txtNameConsignee_Invoice control.
@@ -788,13 +788,13 @@ Partial Public Class InvoicePackingListRec
     Protected WithEvents txtEmailOwner_EASJOB As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''ddlCustomerCode_EASJOB control.
+    '''txtCustomerCode_EASJOB control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlCustomerCode_EASJOB As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtCustomerCode_EASJOB As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
     '''txtNameCustomer_EASJOB control.
@@ -806,13 +806,13 @@ Partial Public Class InvoicePackingListRec
     Protected WithEvents txtNameCustomer_EASJOB As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtRemarks control.
+    '''txtAddressCustomer_EASJOB control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtRemarks As Global.System.Web.UI.HtmlControls.HtmlTextArea
+    Protected WithEvents txtAddressCustomer_EASJOB As Global.System.Web.UI.HtmlControls.HtmlTextArea
 
     '''<summary>
     '''txtEmailCustomer_EASJOB control.
@@ -950,13 +950,13 @@ Partial Public Class InvoicePackingListRec
     Protected WithEvents txtTotal_EASJOB As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''ddlCustomerCode_BillTo_EASJOB control.
+    '''txtCustomerCode_BillTo_EASJOB control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlCustomerCode_BillTo_EASJOB As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtCustomerCode_BillTo_EASJOB As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
     '''txtNameCustomer_BillTo_EASJOB control.
@@ -1938,4 +1938,40 @@ Partial Public Class InvoicePackingListRec
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents btnDelete_PACKINGLIST As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''Repeater1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Repeater1 As Global.System.Web.UI.WebControls.Repeater
+
+    '''<summary>
+    '''Repeater2 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Repeater2 As Global.System.Web.UI.WebControls.Repeater
+
+    '''<summary>
+    '''Repeater3 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Repeater3 As Global.System.Web.UI.WebControls.Repeater
+
+    '''<summary>
+    '''Repeater4 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Repeater4 As Global.System.Web.UI.WebControls.Repeater
 End Class

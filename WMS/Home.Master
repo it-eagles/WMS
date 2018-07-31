@@ -587,6 +587,7 @@
                       $('#example5').DataTable()
                       $('#example6').DataTable()
                       $('#example7').DataTable()
+                      $('#example8').DataTable()
                       $('#exa').DataTable()
                       $('#example20').DataTable({
                           'paging': true,

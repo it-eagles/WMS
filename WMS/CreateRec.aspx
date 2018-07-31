@@ -1115,9 +1115,12 @@
                 </div>
                 <div class="form-group">
                   <label for="txtProductCodeInvoice" class="col-sm-3 control-label">Product Code:</label>
-                  <div class="col-sm-4">
-                    <asp:DropDownList ID="ddlProductCodeInvoice" CssClass="form-control" runat="server"></asp:DropDownList>  
-                  </div>
+                    <div class="col-sm-2">
+                        <input class="form-control" id="txtProductCodeInvoice" runat="server" readonly="true" autocomplete="off"/>
+                    </div>
+                    <div class="col-sm-2">
+                        <button type="button" class="btn btn-block btn-primary" data-toggle="modal" data-target="#ProductCodeModal" runat="server"><i class="glyphicon glyphicon-search"></i></button>
+                    </div>
                   <label for="txtPONoProductCode" class="col-sm-2 control-label">PO No:</label>
                   <div class="col-sm-3">
                     <input class="form-control" id="txtPONoProductCode" runat="server" autocomplete="off"/>
@@ -2084,5 +2087,74 @@
             </div>
 </div>
         <!-- End CustomerGroup Modal -->
+                                                        <!--Start ProductCode Modal -->
+        <!-- Modal -->
+        <div class="modal fade" id="ProductCodeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="dialog">
+                <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Select Product Code</h4>
+              </div>
+              <div class="modal-body">
+                <section class="content">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 " style="overflow:auto;">
+                            <asp:Repeater ID="Repeater8" runat="server" OnItemCommand="Repeater8_ItemCommand">
+                                    <HeaderTemplate>
+                                        <table id="example8" class="table table-bordered table-striped table-responsive" style="overflow:auto;">
+                                            <thead>
+                                                <tr>
+                                                    <th>ProductCode</th>
+                                                    <th>ImpDesc1</th>
+                                                    <th>PONo</th>
+                                                    <th>CustomerPart</th>
+                                                    <th>EndUserPart</th>
+                                                </tr>
+                                            </thead>
+                                    </HeaderTemplate>
+
+                                    <ItemTemplate>
+                                        <tr>
+                                            <td>
+                                                <asp:Label ID="lblPartyCode" runat="server" Text='<%# Bind("ProductCode")%>'></asp:Label></td>
+                                            <td>
+                                                <asp:Label ID="lblPartyFullName" runat="server" Text='<%# Bind("ImpDesc1")%>'></asp:Label></td>
+                                            <td>
+                                                <asp:Label ID="Label1" runat="server" Text='<%# Bind("PONo")%>'></asp:Label></td>
+                                            <td>
+                                                <asp:Label ID="Label2" runat="server" Text='<%# Bind("CustomerPart")%>'></asp:Label></td>
+                                            <td>
+                                                <asp:Label ID="Label3" runat="server" Text='<%# Bind("EndUserPart")%>'></asp:Label></td>
+                                            <td class="text-center">
+                                                 <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectProductCode" CommandArgument='<%# Eval("ProductCode")%>'><i class="fa fa-plus-square"></i></asp:LinkButton>
+                                            </td>
+                                        </tr>
+                                    </ItemTemplate>
+                                    <FooterTemplate>
+                                        <tfoot>
+                                            <tr>
+                                                    <th>ProductCode</th>
+                                                    <th>ImpDesc1</th>
+                                                    <th>PONo</th>
+                                                    <th>CustomerPart</th>
+                                                    <th>EndUserPart</th>
+                                            </tr>
+                                        </tfoot>
+                                        </table>
+                                    </FooterTemplate>
+                                </asp:Repeater>
+                        </div>
+                    </div>
+                </section>
+              </div>
+              <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+            </div>
+</div>
+        <!-- End ProductCode Modal -->
     </form>
 </asp:Content>

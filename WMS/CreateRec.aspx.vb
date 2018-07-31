@@ -31,6 +31,7 @@ Public Class CreateRec
         showListCustomer()
         showListEndCustomer()
         showListCustomerGroup()
+        showListProductCode()
     End Sub
 
     Private Sub showJobSite()
@@ -632,7 +633,7 @@ Public Class CreateRec
             Me.Repeater7.DataBind()
         End If
     End Sub
-    '--------------------------------------------------------Click Data EndCustomer In Modal-----------------------------------------
+    '--------------------------------------------------------Click Data CustomerGroup In Modal-----------------------------------------
     Protected Sub Repeater7_ItemCommand(source As Object, e As RepeaterCommandEventArgs) Handles Repeater7.ItemCommand
         Dim PartyCode As String = CStr(e.CommandArgument)
         Try
@@ -650,5 +651,42 @@ Public Class CreateRec
             End If
         Catch ex As Exception
         End Try
+    End Sub
+    '--------------------------------------------------------Show Data ProductCode In Modal-----------------------------------------
+    Public Sub showListProductCode()
+
+        'Dim user = (From u In db.tblProductDetails
+        '           Select New With {u.ProductCode,
+        '                            u.ImpDesc1,
+        '                            u.PONo,
+        '                            u.CustomerPart,
+        '                            u.EndUserPart}).ToList()
+
+        'If user.Count > 0 Then
+        '    Repeater8.DataSource = user
+        '    Repeater8.DataBind()
+        'Else
+        '    Me.Repeater8.DataSource = Nothing
+        '    Me.Repeater8.DataBind()
+        'End If
+    End Sub
+    '--------------------------------------------------------Click Data ProductCode In Modal-----------------------------------------
+    Protected Sub Repeater8_ItemCommand(source As Object, e As RepeaterCommandEventArgs) Handles Repeater8.ItemCommand
+        'Dim ProductCode As String = CStr(e.CommandArgument)
+        'Try
+        '    If e.CommandName.Equals("SelectProductCode") Then
+
+        '        If String.IsNullOrEmpty(ProductCode) Then
+
+        '            MsgBox("เป็นค่าว่าง")
+        '        Else
+        '            Dim user = (From u In db.tblProductDetails Where u.ProductCode = ProductCode).SingleOrDefault
+
+        '            txtProductCodeInvoice.Value = user.ProductCode
+        '            txtProductNameInvoice.Value = user.ImpDesc1
+        '        End If
+        '    End If
+        'Catch ex As Exception
+        'End Try
     End Sub
 End Class

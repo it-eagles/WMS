@@ -123,9 +123,12 @@
               <div class="box-body">
                 <div class="form-group">
                   <label for="txtShipperCode" class="col-sm-4 control-label">Shipper Code:</label>
-                  <div class="col-sm-8">                    
-                      <asp:DropDownList ID="ddlShipperCode_Invoice" CssClass="form-control" runat="server"></asp:DropDownList>  
-                  </div>
+                    <div class="col-sm-6">
+                        <input class="form-control" id="txtShippercode" runat="server" readonly="true" autocomplete="off"/>
+                    </div>
+                    <div class="col-sm-2">
+                        <button type="button" class="btn btn-block btn-primary" data-toggle="modal" data-target="#ShipperModal" runat="server"><i class="glyphicon glyphicon-search"></i></button>
+                    </div>
                 </div>
                 <div class="form-group">
                   <label for="txtNameShipper_Invoice" class="col-sm-4 control-label">Name English:</label>
@@ -181,8 +184,11 @@
               <div class="box-body">
                 <div class="form-group">
                   <label for="txtConsigneeCode_Invoice" class="col-sm-4 control-label">Consignee Code:</label>
-                  <div class="col-sm-8">                    
-                      <asp:DropDownList ID="txtConsigneeCode_Invoice" CssClass="form-control" runat="server"></asp:DropDownList>  
+                  <div class="col-sm-6">                     
+                      <input class="form-control" id="txtConsigneeCode" runat="server" readonly="true" autocomplete="off"/>
+                  </div>
+                  <div class="col-sm-2">
+                      <button type="button" class="btn btn-block btn-primary" data-toggle="modal" data-target="#consigneeModal" runat="server"><i class="glyphicon glyphicon-search"></i></button>
                   </div>
                 </div>
                 <div class="form-group">
@@ -596,8 +602,11 @@
               <div class="box-body">
                 <div class="form-group">
                   <label for="txtCustomerCode_EASJOB" class="col-sm-4 control-label">Customer Code:</label>
-                  <div class="col-sm-8">                    
-                      <asp:DropDownList ID="ddlCustomerCode_EASJOB" CssClass="form-control" runat="server"></asp:DropDownList>  
+                  <div class="col-sm-6">                     
+                      <input class="form-control" id="txtCustomerCode_EASJOB" runat="server" readonly="true" autocomplete="off"/>
+                  </div>
+                  <div class="col-sm-2">
+                      <button type="button" class="btn btn-block btn-primary" data-toggle="modal" data-target="#CustomerCodeModal" runat="server"><i class="glyphicon glyphicon-search"></i></button>
                   </div>
                 </div>
                 <div class="form-group">
@@ -609,7 +618,7 @@
                 <div class="form-group">
                   <label for="txtAddressCustomer_EASJOB" class="col-sm-4 control-label">Address:</label>
                   <div class="col-sm-8">                       
-                     <textarea class="form-control" id="txtRemarks" rows="3" runat="server" name="txtRemarks" placeholder="Remarks ..."></textarea>
+                     <textarea class="form-control" id="txtAddressCustomer_EASJOB" rows="3" runat="server" name="txtRemarks" placeholder="Remarks ..."></textarea>
                   </div>
                 </div>
                 <div class="form-group">
@@ -702,13 +711,13 @@
                  <div class="form-group">
                   <label for="txtCompany_EASJOB" class="col-sm-4 control-label">Company:</label>
                   <div class="col-sm-8">
-                    <input class="form-control" id="txtCompany_EASJOB" runat="server"/>
+                    <input class="form-control" id="txtCompany_EASJOB" runat="server" disabled="disabled"/>
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="txtAddressEAS_EASJOB" class="col-sm-4 control-label">Address:</label>
                   <div class="col-sm-8">                       
-                     <textarea class="form-control" id="txtAddressEAS_EASJOB" rows="3" runat="server" name="txtRemarks" placeholder="Remarks ..."></textarea>
+                     <textarea class="form-control" id="txtAddressEAS_EASJOB" rows="3" runat="server" name="txtRemarks" placeholder="Remarks ..." disabled="disabled"></textarea>
                   </div>
                 </div>
                 <div class="form-group">
@@ -735,8 +744,11 @@
               <div class="box-body">
                 <div class="form-group">
                   <label for="txtCustomerCode_BillTo_EASJOB" class="col-sm-4 control-label">Customer Code:</label>
-                  <div class="col-sm-8">                    
-                      <asp:DropDownList ID="ddlCustomerCode_BillTo_EASJOB" CssClass="form-control" runat="server"></asp:DropDownList>  
+                  <div class="col-sm-6">                     
+                      <input class="form-control" id="txtCustomerCode_BillTo_EASJOB" runat="server" readonly="true" autocomplete="off"/>
+                  </div>
+                  <div class="col-sm-2">
+                      <button type="button" class="btn btn-block btn-primary" data-toggle="modal" data-target="#CustomerCode_BillTo_EASJOB_Modal" runat="server"><i class="glyphicon glyphicon-search"></i></button>
                   </div>
                 </div>
                 <div class="form-group">
@@ -1515,5 +1527,289 @@
         </section>
         <!-- /.content -->
         
+        <!-- Shipper Modal -->
+        <!-- Modal -->
+        <div class="modal fade" id="ShipperModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="dialog">
+                <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Select Shipper Code</h4>
+              </div>
+              <div class="modal-body">
+                <section class="content">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 " style="overflow:auto;">
+                            <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="Repeater1_ItemCommand">
+                                    <HeaderTemplate>
+                                        <table id="example1" class="table table-bordered table-striped table-responsive" style="overflow:auto;">
+                                            <thead>
+                                                <tr>
+                                                    <th>PartyCode</th>
+                                                    <th>PartyFullName</th>
+                                                    <th>Address1</th>
+                                                    <th>Address2</th>
+                                                    <th>Address3</th>
+                                                    <th>view</th>
+                                                </tr>
+                                            </thead>
+                                    </HeaderTemplate>
+
+                                    <ItemTemplate>
+                                        <tr>
+                                            <td>
+                                                <asp:Label ID="lblPartyCode" runat="server" Text='<%# Bind("PartyCode")%>'></asp:Label></td>
+                                            <td>
+                                                <asp:Label ID="lblPartyFullName" runat="server" Text='<%# Bind("PartyFullName")%>'></asp:Label></td>
+                                            <td>
+                                                <asp:Label ID="lblAddress1" runat="server" Text='<%# Bind("Address1")%>'></asp:Label></td>
+                                            <td>
+                                                <asp:Label ID="lblAddress2" runat="server" Text='<%# Bind("Address2")%>'></asp:Label></td>
+                                            <td>
+                                                <asp:Label ID="lblAddress3" runat="server" Text='<%# Bind("Address3")%>'></asp:Label></td>
+                                            <td class="text-center">
+                                                 <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectShipper" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-plus-square"></i></asp:LinkButton>
+                                            </td>
+                                        </tr>
+                                    </ItemTemplate>
+                                    <FooterTemplate>
+                                        <tfoot>
+                                            <tr>
+                                                    <th>PartyCode</th>
+                                                    <th>PartyFullName</th>
+                                                    <th>Address1</th>
+                                                    <th>Address2</th>
+                                                    <th>Address3</th>
+                                                    <th>view</th>
+                                            </tr>
+                                        </tfoot>
+                                        </table>
+                                    </FooterTemplate>
+                                </asp:Repeater>
+                        </div>
+                    </div>
+                </section>
+              </div>
+              <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+            </div>
+</div>
+        <!-- End Shipper Modal -->
+        <!-- Consignee Modal -->
+        <!-- Modal -->
+        <div class="modal fade" id="consigneeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="dialog">
+                <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Select Consignee Code</h4>
+              </div>
+              <div class="modal-body">
+                <section class="content">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 " style="overflow:auto;">
+                            <asp:Repeater ID="Repeater2" runat="server" OnItemCommand="Repeater2_ItemCommand">
+                                    <HeaderTemplate>
+                                        <table id="example2" class="table table-bordered table-striped table-responsive" style="overflow:auto;">
+                                            <thead>
+                                                <tr>
+                                                    <th>PartyCode</th>
+                                                    <th>PartyFullName</th>
+                                                    <th>Address1</th>
+                                                    <th>Address2</th>
+                                                    <th>Address3</th>
+                                                    <th>view</th>
+                                                </tr>
+                                            </thead>
+                                    </HeaderTemplate>
+
+                                    <ItemTemplate>
+                                        <tr>
+                                            <td>
+                                                <asp:Label ID="lblPartyCode" runat="server" Text='<%# Bind("PartyCode")%>'></asp:Label></td>
+                                            <td>
+                                                <asp:Label ID="lblPartyFullName" runat="server" Text='<%# Bind("PartyFullName")%>'></asp:Label></td>
+                                            <td>
+                                                <asp:Label ID="lblAddress1" runat="server" Text='<%# Bind("Address1")%>'></asp:Label></td>
+                                            <td>
+                                                <asp:Label ID="lblAddress2" runat="server" Text='<%# Bind("Address2")%>'></asp:Label></td>
+                                            <td>
+                                                <asp:Label ID="lblAddress3" runat="server" Text='<%# Bind("Address3")%>'></asp:Label></td>
+                                            <td class="text-center">
+                                                 <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectConsignee" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-plus-square"></i></asp:LinkButton>
+                                            </td>
+                                        </tr>
+                                    </ItemTemplate>
+                                    <FooterTemplate>
+                                        <tfoot>
+                                            <tr>
+                                                    <th>PartyCode</th>
+                                                    <th>PartyFullName</th>
+                                                    <th>Address1</th>
+                                                    <th>Address2</th>
+                                                    <th>Address3</th>
+                                                    <th>view</th>
+                                            </tr>
+                                        </tfoot>
+                                        </table>
+                                    </FooterTemplate>
+                                </asp:Repeater>
+                        </div>
+                    </div>
+                </section>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+            </div>
+</div>
+        <!-- End Consignee Modal -->
+                <!-- CustomerCode Modal -->
+        <!-- Modal -->
+        <div class="modal fade" id="CustomerCodeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="dialog">
+                <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Select Ship To</h4>
+              </div>
+              <div class="modal-body">
+                <section class="content">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 " style="overflow:auto;">
+                            <asp:Repeater ID="Repeater3" runat="server" OnItemCommand="Repeater3_ItemCommand">
+                                    <HeaderTemplate>
+                                        <table id="example3" class="table table-bordered table-striped table-responsive" style="overflow:auto;">
+                                            <thead>
+                                                <tr>
+                                                    <th>PartyCode</th>
+                                                    <th>PartyFullName</th>
+                                                    <th>Address1</th>
+                                                    <th>Address2</th>
+                                                    <th>Address3</th>
+                                                    <th>view</th>
+                                                </tr>
+                                            </thead>
+                                    </HeaderTemplate>
+
+                                    <ItemTemplate>
+                                        <tr>
+                                            <td>
+                                                <asp:Label ID="lblPartyCode" runat="server" Text='<%# Bind("PartyCode")%>'></asp:Label></td>
+                                            <td>
+                                                <asp:Label ID="lblPartyFullName" runat="server" Text='<%# Bind("PartyFullName")%>'></asp:Label></td>
+                                            <td>
+                                                <asp:Label ID="lblAddress1" runat="server" Text='<%# Bind("Address1")%>'></asp:Label></td>
+                                            <td>
+                                                <asp:Label ID="lblAddress2" runat="server" Text='<%# Bind("Address2")%>'></asp:Label></td>
+                                            <td>
+                                                <asp:Label ID="lblAddress3" runat="server" Text='<%# Bind("Address3")%>'></asp:Label></td>
+                                            <td class="text-center">
+                                                 <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectCustomerCode" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-plus-square"></i></asp:LinkButton>
+                                            </td>
+                                        </tr>
+                                    </ItemTemplate>
+                                    <FooterTemplate>
+                                        <tfoot>
+                                            <tr>
+                                                    <th>PartyCode</th>
+                                                    <th>PartyFullName</th>
+                                                    <th>Address1</th>
+                                                    <th>Address2</th>
+                                                    <th>Address3</th>
+                                                    <th>view</th>
+                                            </tr>
+                                        </tfoot>
+                                        </table>
+                                    </FooterTemplate>
+                                </asp:Repeater>
+                        </div>
+                    </div>
+                </section>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+            </div>
+</div>
+        <!-- End CustomerCode Modal -->
+                        <!-- CustomerCode_BillTo_EASJOB Modal -->
+        <!-- Modal -->
+        <div class="modal fade" id="CustomerCode_BillTo_EASJOB_Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="dialog">
+                <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Select Bill To</h4>
+              </div>
+              <div class="modal-body">
+                <section class="content">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 " style="overflow:auto;">
+                            <asp:Repeater ID="Repeater4" runat="server" OnItemCommand="Repeater4_ItemCommand">
+                                    <HeaderTemplate>
+                                        <table id="example4" class="table table-bordered table-striped table-responsive" style="overflow:auto;">
+                                            <thead>
+                                                <tr>
+                                                    <th>PartyCode</th>
+                                                    <th>PartyFullName</th>
+                                                    <th>Address1</th>
+                                                    <th>Address2</th>
+                                                    <th>Address3</th>
+                                                    <th>view</th>
+                                                </tr>
+                                            </thead>
+                                    </HeaderTemplate>
+
+                                    <ItemTemplate>
+                                        <tr>
+                                            <td>
+                                                <asp:Label ID="lblPartyCode" runat="server" Text='<%# Bind("PartyCode")%>'></asp:Label></td>
+                                            <td>
+                                                <asp:Label ID="lblPartyFullName" runat="server" Text='<%# Bind("PartyFullName")%>'></asp:Label></td>
+                                            <td>
+                                                <asp:Label ID="lblAddress1" runat="server" Text='<%# Bind("Address1")%>'></asp:Label></td>
+                                            <td>
+                                                <asp:Label ID="lblAddress2" runat="server" Text='<%# Bind("Address2")%>'></asp:Label></td>
+                                            <td>
+                                                <asp:Label ID="lblAddress3" runat="server" Text='<%# Bind("Address3")%>'></asp:Label></td>
+                                            <td class="text-center">
+                                                 <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectCustomerCode_BillTo" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-plus-square"></i></asp:LinkButton>
+                                            </td>
+                                        </tr>
+                                    </ItemTemplate>
+                                    <FooterTemplate>
+                                        <tfoot>
+                                            <tr>
+                                                    <th>PartyCode</th>
+                                                    <th>PartyFullName</th>
+                                                    <th>Address1</th>
+                                                    <th>Address2</th>
+                                                    <th>Address3</th>
+                                                    <th>view</th>
+                                            </tr>
+                                        </tfoot>
+                                        </table>
+                                    </FooterTemplate>
+                                </asp:Repeater>
+                        </div>
+                    </div>
+                </section>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+            </div>
+</div>
+        <!-- End CustomerCode_BillTo_EASJOB Modal -->
     </form>
 </asp:Content>

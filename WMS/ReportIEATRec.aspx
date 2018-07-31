@@ -51,7 +51,7 @@
                                                 <div class="col-lg5 col-md-5 col-sm-5">
                                                 <div class="radio">
                                                 <label>                                            
-                                                 <asp:RadioButton ID ="rdbEAS001" runat="server" Text="EAS001" onclick="EnableDisableTextBox();" GroupName="1" Checked="true"/>
+                                                 <asp:RadioButton ID ="rdbEAS001" runat="server" Text="EAS001" onclick="EnableDisableTextBox();" GroupName="1" />
                                               </label>
                                                </div>            
                                            </div>
@@ -59,7 +59,7 @@
                                                 <div class="col-lg5 col-md-5 col-sm-5">
                                                 <div class="radio">
                                                 <label>                                            
-                                                 <asp:RadioButton ID ="rdbOther" runat="server"  Text="Other" onclick="EnableDisableTextBox();" GroupName="1"/>
+                                                 <asp:RadioButton ID ="rdbOther" runat="server"  Text="Other" onclick="EnableDisableTextBox();" GroupName="1" Checked="true"/>
                                               </label>
                                                </div>            
                                            </div>                                      

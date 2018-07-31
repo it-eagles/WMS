@@ -113,13 +113,13 @@ Partial Public Class TruckWaybillRec
     Protected WithEvents txtNotifyPartyAddress As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''ddlShipperCode control.
+    '''txtShippercode control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlShipperCode As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtShippercode As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
     '''txtNameShipper control.
@@ -275,13 +275,13 @@ Partial Public Class TruckWaybillRec
     Protected WithEvents txtPlaceOfReceipt As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtConsigneeCode control.
+    '''txtConsigneeCodee control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtConsigneeCode As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtConsigneeCodee As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
     '''txtNameConsignee control.
@@ -347,13 +347,13 @@ Partial Public Class TruckWaybillRec
     Protected WithEvents txtEmailConsignee As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtInvoiceNo control.
+    '''txtInvoiceNoo control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtInvoiceNo As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtInvoiceNoo As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
     '''txtLOTNo control.
@@ -480,4 +480,49 @@ Partial Public Class TruckWaybillRec
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents btnCencel_Detail As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''Repeater1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Repeater1 As Global.System.Web.UI.WebControls.Repeater
+
+    '''<summary>
+    '''Repeater2 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Repeater2 As Global.System.Web.UI.WebControls.Repeater
+
+    '''<summary>
+    '''Repeater3 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Repeater3 As Global.System.Web.UI.WebControls.Repeater
+
+    '''<summary>
+    '''Repeater4 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Repeater4 As Global.System.Web.UI.WebControls.Repeater
+
+    '''<summary>
+    '''Repeater5 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Repeater5 As Global.System.Web.UI.WebControls.Repeater
 End Class

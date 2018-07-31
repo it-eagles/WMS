@@ -1175,13 +1175,13 @@ Partial Public Class CreateRec
     Protected WithEvents ddlInvoiceNo As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''ddlProductCodeInvoice control.
+    '''txtProductCodeInvoice control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlProductCodeInvoice As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtProductCodeInvoice As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
     '''txtPONoProductCode control.
@@ -1704,4 +1704,13 @@ Partial Public Class CreateRec
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents Repeater7 As Global.System.Web.UI.WebControls.Repeater
+
+    '''<summary>
+    '''Repeater8 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Repeater8 As Global.System.Web.UI.WebControls.Repeater
 End Class

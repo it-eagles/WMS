@@ -2582,9 +2582,9 @@ CalendarExtenderCustomsRefDate_beforeTab control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.InvoicePackingListRec.ddlShipperCode_Invoice">
+</member><member name="F:WMS.InvoicePackingListRec.txtShippercode">
 	<summary>
-ddlShipperCode_Invoice control.
+txtShippercode control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -2646,9 +2646,9 @@ txtEmailShipper control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.InvoicePackingListRec.txtConsigneeCode_Invoice">
+</member><member name="F:WMS.InvoicePackingListRec.txtConsigneeCode">
 	<summary>
-txtConsigneeCode_Invoice control.
+txtConsigneeCode control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -3150,9 +3150,9 @@ txtEmailOwner_EASJOB control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.InvoicePackingListRec.ddlCustomerCode_EASJOB">
+</member><member name="F:WMS.InvoicePackingListRec.txtCustomerCode_EASJOB">
 	<summary>
-ddlCustomerCode_EASJOB control.
+txtCustomerCode_EASJOB control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -3166,9 +3166,9 @@ txtNameCustomer_EASJOB control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.InvoicePackingListRec.txtRemarks">
+</member><member name="F:WMS.InvoicePackingListRec.txtAddressCustomer_EASJOB">
 	<summary>
-txtRemarks control.
+txtAddressCustomer_EASJOB control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -3294,9 +3294,9 @@ txtTotal_EASJOB control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.InvoicePackingListRec.ddlCustomerCode_BillTo_EASJOB">
+</member><member name="F:WMS.InvoicePackingListRec.txtCustomerCode_BillTo_EASJOB">
 	<summary>
-ddlCustomerCode_BillTo_EASJOB control.
+txtCustomerCode_BillTo_EASJOB control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -4169,6 +4169,38 @@ To modify move field declaration from designer file to code-behind file.
 </member><member name="F:WMS.InvoicePackingListRec.btnDelete_PACKINGLIST">
 	<summary>
 btnDelete_PACKINGLIST control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.InvoicePackingListRec.Repeater1">
+	<summary>
+Repeater1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.InvoicePackingListRec.Repeater2">
+	<summary>
+Repeater2 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.InvoicePackingListRec.Repeater3">
+	<summary>
+Repeater3 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.InvoicePackingListRec.Repeater4">
+	<summary>
+Repeater4 control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -14567,9 +14599,9 @@ ddlInvoiceNo control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.CreateRec.ddlProductCodeInvoice">
+</member><member name="F:WMS.CreateRec.txtProductCodeInvoice">
 	<summary>
-ddlProductCodeInvoice control.
+txtProductCodeInvoice control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -15034,6 +15066,14 @@ To modify move field declaration from designer file to code-behind file.
 </member><member name="F:WMS.CreateRec.Repeater7">
 	<summary>
 Repeater7 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.CreateRec.Repeater8">
+	<summary>
+Repeater8 control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -21095,9 +21135,9 @@ txtNotifyPartyAddress control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.TruckWaybillRec.ddlShipperCode">
+</member><member name="F:WMS.TruckWaybillRec.txtShippercode">
 	<summary>
-ddlShipperCode control.
+txtShippercode control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -21239,9 +21279,9 @@ txtPlaceOfReceipt control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.TruckWaybillRec.txtConsigneeCode">
+</member><member name="F:WMS.TruckWaybillRec.txtConsigneeCodee">
 	<summary>
-txtConsigneeCode control.
+txtConsigneeCodee control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -21303,9 +21343,9 @@ txtEmailConsignee control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.TruckWaybillRec.txtInvoiceNo">
+</member><member name="F:WMS.TruckWaybillRec.txtInvoiceNoo">
 	<summary>
-txtInvoiceNo control.
+txtInvoiceNoo control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -21418,6 +21458,46 @@ To modify move field declaration from designer file to code-behind file.
 </member><member name="F:WMS.TruckWaybillRec.btnCencel_Detail">
 	<summary>
 btnCencel_Detail control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.TruckWaybillRec.Repeater1">
+	<summary>
+Repeater1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.TruckWaybillRec.Repeater2">
+	<summary>
+Repeater2 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.TruckWaybillRec.Repeater3">
+	<summary>
+Repeater3 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.TruckWaybillRec.Repeater4">
+	<summary>
+Repeater4 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.TruckWaybillRec.Repeater5">
+	<summary>
+Repeater5 control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -21666,6 +21746,70 @@ To modify move field declaration from designer file to code-behind file.
 </member><member name="F:WMS.PlanReceiveRec.form1">
 	<summary>
 form1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.PlanReceiveRec.ScriptManager1">
+	<summary>
+ScriptManager1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.PlanReceiveRec.txtdatepickerFromDate">
+	<summary>
+txtdatepickerFromDate control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.PlanReceiveRec.CalendarExtenderFromDate">
+	<summary>
+CalendarExtenderFromDate control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.PlanReceiveRec.txtdatepickerToDate">
+	<summary>
+txtdatepickerToDate control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.PlanReceiveRec.CalendarExtenderToDate">
+	<summary>
+CalendarExtenderToDate control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.PlanReceiveRec.ddlBranch">
+	<summary>
+ddlBranch control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.PlanReceiveRec.ddlLOTOf">
+	<summary>
+ddlLOTOf control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.PlanReceiveRec.btnReport">
+	<summary>
+btnReport control.
 </summary>
 	<remarks>
 Auto-generated field.
