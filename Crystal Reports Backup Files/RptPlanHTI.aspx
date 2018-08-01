@@ -1,6 +1,7 @@
-﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="PlanReceiveRec.aspx.vb" Inherits="WMS.PlanReceiveRec" MasterPageFile="~/Home.Master" %>
+﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="RptPlanHTI.aspx.vb" Inherits="WMS.RptPlanHTI" MasterPageFile="~/Home.Master" %>
 <%@ Register Assembly="CrystalDecisions.Web, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" Namespace="CrystalDecisions.Web" TagPrefix="CR" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <form id="form1" runat="server">
@@ -14,8 +15,8 @@
         </h1>
         <ol class="breadcrumb">
             <li><a href="HomeMain.aspx"><i class="fa fa-home"></i>Home</a></li>
-            <li><a><i class="fa fa-file"></i>Receive Process</a></li>     
-            <li><a href="PlanReceiveRec.aspx">Plan Receive Rec</a></li>
+            <li><a><i class="fa fa-file"></i>Report</a></li>     
+            <li><a href="RptPlanHTI.aspx">Report Plan HTI</a></li>
            
         </ol>
     </section>
@@ -29,7 +30,7 @@
                 <!-- general form elements -->
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Plan Receive Rec</h3>
+                        <h3 class="box-title">Report Plan HTI</h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="row">
@@ -53,22 +54,7 @@
                                              </asp:TextBox>
                                              <asp:CalendarExtender ID="CalendarExtenderToDate" runat="server" Enabled="True" TargetControlID="txtdatepickerToDate" Format="dd/MM/yyyy"></asp:CalendarExtender>
                                          </div>
-                                 </div>      
-                                 
-                                 <div class="form-group" >                                    
-                                        <label for="txtSelect" class="col-sm-3 control-label">Branch:</label>
-                                         <div class="col-sm-5">                                            
-                                             <asp:DropDownList ID="ddlBranch" CssClass="form-control" runat="server"></asp:DropDownList>  
-                                         </div>
-                                 </div>
-
-                                 <div class="form-group" >                                    
-                                        <label for="txtSelect" class="col-sm-3 control-label">LOT Of:</label>
-                                         <div class="col-sm-5">                                            
-                                             <asp:DropDownList ID="ddlLOTOf" CssClass="form-control" runat="server"></asp:DropDownList>  
-                                         </div>
-                                 </div>
-                                                         
+                                 </div>                          
                                  <div class="form-group" >   
                                         <div class="col-sm-5"></div>                                 
                                         <button type="submit" runat="server" class="btn btn-primary" id="btnReport" title="btnReport" onserverclick="btnReport_ServerClick">Report</button>

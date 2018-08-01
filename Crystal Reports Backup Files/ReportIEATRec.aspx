@@ -9,7 +9,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Master Location
+            Report IEAT Rec
         </h1>
         <ol class="breadcrumb">
             <li><a href="HomeMain.aspx"><i class="fa fa-home"></i>Home</a></li>
@@ -39,7 +39,11 @@
                                 <div class="form-group">                                    
                                         <label for="txtReportName" class="col-sm-2 control-label">Report Name</label>                                          
                                          <div class="col-sm-10">             
-                                             <asp:DropDownList ID="ddlReportName" CssClass="form-control" runat="server"></asp:DropDownList>  
+                                             <asp:DropDownList ID="ddlReportName" CssClass="form-control" runat="server">
+                                             <asp:ListItem>IEAT-I-02</asp:ListItem>
+                                             <asp:ListItem>IEAT-I-07 R</asp:ListItem>
+                                             <asp:ListItem>IEAT-I-02 for internal</asp:ListItem>
+                                             </asp:DropDownList>
                                         </div>
                                 </div>
                                 <div class="form-group">
@@ -47,7 +51,7 @@
                                                 <div class="col-lg5 col-md-5 col-sm-5">
                                                 <div class="radio">
                                                 <label>                                            
-                                                 <asp:RadioButton runat="server" ID ="rdbEAS001" Text="EAS001"  onclick="EnableDisableTextBox();"  GroupName="option1" Checked="true" />
+                                                 <asp:RadioButton ID ="rdbEAS001" runat="server" Text="EAS001" onclick="EnableDisableTextBox();" GroupName="1" />
                                               </label>
                                                </div>            
                                            </div>
@@ -55,7 +59,7 @@
                                                 <div class="col-lg5 col-md-5 col-sm-5">
                                                 <div class="radio">
                                                 <label>                                            
-                                                 <asp:RadioButton runat="server" ID ="rdbOther" Text="Other" onclick="EnableDisableTextBox();" GroupName="option1"/>
+                                                 <asp:RadioButton ID ="rdbOther" runat="server"  Text="Other" onclick="EnableDisableTextBox();" GroupName="1" Checked="true"/>
                                               </label>
                                                </div>            
                                            </div>                                      
@@ -209,7 +213,7 @@
                   var status = document.getElementById('<%=rdbEAS001.ClientID%>').checked;
 
               if (status == true) {
-                  document.getElementById('<%=ddlCode.ClientID%>').disabled = true;
+                document.getElementById('<%=ddlCode.ClientID%>').disabled = true;
                 document.getElementById('<%=txtName.ClientID%>').disabled = true;
                 document.getElementById('<%=txtTAXNo.ClientID%>').disabled = true;
             } else if (status == false) {

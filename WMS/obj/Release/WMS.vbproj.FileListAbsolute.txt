@@ -28,10 +28,8 @@ D:\ProjectDevelop\Project\WMS\bin\WMS.dll.config
 D:\ProjectDevelop\Project\WMS\bin\WMS.dll
 D:\ProjectDevelop\Project\WMS\bin\WMS.pdb
 D:\ProjectDevelop\Project\WMS\bin\WMS.xml
-D:\ProjectDevelop\Project\WMS\bin\ADO.NET.Helper.dll
 D:\ProjectDevelop\Project\WMS\bin\ADONetHelper.dll
 D:\ProjectDevelop\Project\WMS\bin\Antlr3.Runtime.dll
-D:\ProjectDevelop\Project\WMS\bin\CrystalDecisions.ReportAppServer.DataSetConversion.dll
 D:\ProjectDevelop\Project\WMS\bin\EntityFramework.dll
 D:\ProjectDevelop\Project\WMS\bin\EntityFramework.SqlServer.dll
 D:\ProjectDevelop\Project\WMS\bin\Microsoft.AspNet.Identity.Core.dll

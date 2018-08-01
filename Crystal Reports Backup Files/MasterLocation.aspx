@@ -32,7 +32,7 @@
                     <!-- /.box-header -->
                     <div class="row">
 
-                        <from class="form-horizontal">
+                        <div class="form-horizontal">
                             <div class="col-lg-8 col-md-8 col-md-offset-2">
                                  <div class="box-body">   
                                             
@@ -127,7 +127,7 @@
                              </div>
                            </div>
                              
-                       </from>
+                       </div>
                           
                         <!--/.row-->
                     </div>
