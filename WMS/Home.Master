@@ -715,7 +715,21 @@
                      alert('You pressed Cancel!');
                  }}
          </script>
-
-
+  
+              <script type='text/javascript'>
+                  function openModal() {
+                      $('#exampleModal').modal('show');
+                  }
+                  //function openModalEdit() {
+                  //    $('#myModalEdit').modal('show');
+                  //}
+                  //function openmyModal1() {
+                  //    $('#confirmModal').modal('show');
+                  //}
+                  function openjobNoModal() {
+                      $('#jobNoModal').modal('show');
+                  }
+                  
+    </script>
       </body>
  </html>

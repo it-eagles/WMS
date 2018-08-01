@@ -6858,6 +6858,7 @@
       <DependentUpon>ChkStockWH.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
+    <Compile Include="Class\ClassPermis.vb" />
     <Compile Include="Class\LoginCls.vb" />
     <Compile Include="CustomsInvoice.aspx.designer.vb">
       <DependentUpon>CustomsInvoice.aspx</DependentUpon>

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="ExpGenLot.aspx.vb" Inherits="WMS.ExpGenLot" MasterPageFile="~/Home.Master" EnableEventValidation="false" EnableViewState="true" %>
+﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="ExpGenLot.aspx.vb" Inherits="WMS.ExpGenLot" MasterPageFile="~/Home.Master" EnableEventValidation="false" EnableViewState="true"%>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
 <asp:Content ContentPlaceHolderID="ContentPlaceHolder1" runat="server" ID="Content1">
@@ -48,8 +48,11 @@
                                                         <div class="form-group">
 
                                                             <label for="txtLotNo" class="col-sm-3 control-label">JOB No</label>
-                                                            <div class="col-sm-8">
+                                                            <div class="col-sm-7">
                                                                 <input class="form-control" id="txtLotNo" runat="server" placeholder="JOB NO" />
+                                                            </div>
+                                                            <div class="col-sm-2">
+                                                                <asp:Button runat="server" CSSClass="btn btn-primary" Text="Button" ID="Button1" OnClick="Unnamed_ServerClick"></asp:Button>
                                                             </div>
                                                         </div>
 
@@ -57,7 +60,9 @@
                                                         <div class="form-group">
                                                             <label for="cboJobSite" class="col-sm-3 control-label">JOB Site</label>
                                                             <div class="col-sm-5">
-                                                                <asp:DropDownList ID="cboJobSite" CssClass="form-control" runat="server" DataTextField="TypeName" DataValueField="TypeID"></asp:DropDownList>
+                                                                <asp:DropDownList ID="cboJobSite" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code">
+
+                                                                </asp:DropDownList>
                                                             </div>
                                                             <div class="col-sm-4">
                                                                 <div class="checkbox">
@@ -68,7 +73,7 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-
+                                                           
                                                     </div>
 
                                                     <div class="col-md-4">
@@ -92,7 +97,7 @@
 
                                                             <label for="dcbSales" class="col-sm-4 control-label">Site Man</label>
                                                             <div class="col-md-7">
-                                                                <asp:DropDownList ID="dcbSales" CssClass="form-control" runat="server" DataTextField="TypeName" DataValueField="TypeID"></asp:DropDownList>
+                                                                <asp:DropDownList ID="dcbSales" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code"></asp:DropDownList>
 
                                                             </div>
 
@@ -104,7 +109,14 @@
                                                             <label for="DropDownList5" class="col-sm-4 control-label">JOB of</label>
                                                             <div class="col-md-7">
 
-                                                                <asp:DropDownList ID="DropDownList5" CssClass="form-control" runat="server" DataTextField="TypeName" DataValueField="TypeID"></asp:DropDownList>
+                                                                <asp:DropDownList ID="DropDownList5" CssClass="form-control" runat="server">
+                                                                    <asp:ListItem></asp:ListItem>
+                                                                    <asp:ListItem>Air Out</asp:ListItem>
+                                                                    <asp:ListItem>Sea Out</asp:ListItem>
+                                                                    <asp:ListItem>Truck Out</asp:ListItem>
+                                                                    <asp:ListItem>Other</asp:ListItem>
+                                                                </asp:DropDownList>
+
 
                                                             </div>
                                                         </div>
@@ -121,10 +133,13 @@
                                                           <div class="col-md-6 col-lg-6">
                                                         <fieldset>
                                                             <legend></legend>
-                                                            <div class="form-group">
+                                                            <div class="form-group has-success">
                                                                 <label for="txtConsigneeCode" class="col-sm-3 control-label">Consignee Code</label>
-                                                                <div class="col-md-8">
+                                                                <div class="col-md-6">
                                                                     <input class="form-control pull-right" id="txtConsigneeCode" runat="server" type="text" />
+                                                                </div>
+                                                                <div class="col-sm-2">
+                                                                    <button runat="server" class="btn btn-primary btn-block" type="button"><i class="fa fa-search"></i></button>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group">
@@ -176,8 +191,11 @@
                                                             <legend></legend>
                                                             <div class="form-group">
                                                                 <label for="txtExporterCode" class="col-sm-3 control-label">Exporter Code</label>
-                                                                <div class="col-md-8">
+                                                                <div class="col-md-6">
                                                                     <input class="form-control pull-right" id="txtExporterCode" runat="server" type="text" />
+                                                                </div>
+                                                                <div class="col-md-2">
+                                                                     <button runat="server" class="btn btn-primary btn-block" type="button"><i class="fa fa-search"></i></button>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group">
@@ -234,7 +252,7 @@
                                                                 <div class="form-group">
                                                                     <label for="txtCommodity" class="col-sm-4 control-label">Commodity</label>
                                                                     <div class="col-md-8">
-                                                                        <asp:DropDownList ID="txtCommodity" CssClass="form-control" runat="server" DataTextField="TypeName" DataValueField="TypeID"></asp:DropDownList>
+                                                                        <asp:DropDownList ID="txtCommodity" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code"></asp:DropDownList>
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group">
@@ -243,7 +261,7 @@
                                                                         <input class="form-control pull-right" id="txtQuantityPLT" runat="server" type="text" />
                                                                     </div>
                                                                     <div class="col-md-4">
-                                                                        <asp:DropDownList ID="dcbQuantity2" CssClass="form-control" runat="server" DataTextField="TypeName" DataValueField="TypeID"></asp:DropDownList>
+                                                                        <asp:DropDownList ID="dcbQuantity2" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code"></asp:DropDownList>
                                                                     </div>
                                                                 </div>
 
@@ -253,7 +271,7 @@
                                                                         <input class="form-control pull-right" id="txtBox" runat="server" type="text" />
                                                                     </div>
                                                                     <div class="col-md-4">
-                                                                        <asp:DropDownList ID="cdbBox1" CssClass="form-control" runat="server" DataTextField="TypeName" DataValueField="TypeID"></asp:DropDownList>
+                                                                        <asp:DropDownList ID="cdbBox1" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code"></asp:DropDownList>
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group">
@@ -262,12 +280,16 @@
                                                                         <input class="form-control pull-right" id="txtVolume" runat="server" type="text" />
                                                                     </div>
                                                                     <div class="col-md-4">
-                                                                        <asp:DropDownList ID="dcbVolume" CssClass="form-control" runat="server" DataTextField="TypeName" DataValueField="TypeID"></asp:DropDownList>
+                                                                        <asp:DropDownList ID="dcbVolume" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code"></asp:DropDownList>
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <div class="col-md-4">
-                                                                        <asp:DropDownList ID="ComboBox7" CssClass="form-control" runat="server" DataTextField="TypeName" DataValueField="TypeID"></asp:DropDownList>
+                                                                        <asp:DropDownList ID="ComboBox7" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code">
+                                                                            <asp:ListItem></asp:ListItem>
+                                                                            <asp:ListItem>HAWB.</asp:ListItem>
+                                                                            <asp:ListItem>HBL.</asp:ListItem>
+                                                                        </asp:DropDownList>
                                                                     </div>
                                                                     <div class="col-md-8">
                                                                         <input class="form-control pull-right" id="txtDocumentCode" runat="server" type="text" />
@@ -291,7 +313,7 @@
                                                                         <input class="form-control pull-right" id="txtQuantityofPart" runat="server" type="text" />
                                                                     </div>
                                                                     <div class="col-md-4">
-                                                                        <asp:DropDownList ID="dcbQuantity1" CssClass="form-control" runat="server" DataTextField="TypeName" DataValueField="TypeID"></asp:DropDownList>
+                                                                        <asp:DropDownList ID="dcbQuantity1" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code"></asp:DropDownList>
                                                                     </div>
                                                                 </div>
 
@@ -301,7 +323,7 @@
                                                                         <input class="form-control pull-right" id="txtWeight" runat="server" type="text" />
                                                                     </div>
                                                                     <div class="col-md-4">
-                                                                        <asp:DropDownList ID="dcbWeight" CssClass="form-control" runat="server" DataTextField="TypeName" DataValueField="TypeID"></asp:DropDownList>
+                                                                        <asp:DropDownList ID="dcbWeight" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code"></asp:DropDownList>
                                                                     </div>
                                                                 </div>
 
@@ -445,7 +467,9 @@
                                                                     <input class="form-control" id="txtDOCode" runat="server" />
 
                                                                 </div>
-
+                                                                 <div class="col-md-2">
+                                                                     <button runat="server" class="btn btn-primary btn-block" type="button"><i class="fa fa-search"></i></button>
+                                                                </div>
                                                             </div>
 
                                                             <div class="form-group">
@@ -531,7 +555,9 @@
                                                                 <div class="col-sm-6">
                                                                     <input class="form-control" id="txtCustomerCode" runat="server" />
                                                                 </div>
-
+                                                                 <div class="col-md-2">
+                                                                     <button runat="server" class="btn btn-primary btn-block" type="button"><i class="fa fa-search"></i></button>
+                                                                </div>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="txtCustomerENG" class="col-sm-4 control-label">Name(Eng)</label>
@@ -612,7 +638,9 @@
                                                                 <div class="col-sm-6">
                                                                     <input class="form-control" id="txtPickUpCode" runat="server" />
                                                                 </div>
-
+                                                                 <div class="col-md-2">
+                                                                     <button runat="server" class="btn btn-primary btn-block" type="button"><i class="fa fa-search"></i></button>
+                                                                </div>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="txtPickUpNameEng" class="col-sm-4 control-label">Name(Eng)</label>
@@ -692,7 +720,9 @@
                                                                 <div class="col-sm-6">
                                                                     <input class="form-control" id="txtEndCusCode" runat="server" />
                                                                 </div>
-
+                                                                 <div class="col-md-2">
+                                                                     <button runat="server" class="btn btn-primary btn-block" type="button"><i class="fa fa-search"></i></button>
+                                                                </div>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="txtEndCusNameEng" class="col-sm-4 control-label">Name(Eng)</label>
@@ -773,7 +803,9 @@
                                                                 <div class="col-sm-6">
                                                                     <input class="form-control" id="txtCustomerCodeGroup" runat="server" />
                                                                 </div>
-
+                                                                 <div class="col-md-2">
+                                                                     <button runat="server" class="btn btn-primary btn-block" type="button"><i class="fa fa-search"></i></button>
+                                                                </div>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="txtCustomerENGGroup" class="col-sm-4 control-label">Name Group (Eng)</label>
@@ -891,21 +923,21 @@
                                                             <div class="form-group">
                                                                 <label for="dcbStatus1" class="col-sm-3 control-label">Status1</label>
                                                                 <div class="col-sm-8">
-                                                                    <asp:DropDownList ID="dcbStatus1" CssClass="form-control" runat="server" DataTextField="TypeName" DataValueField="TypeID"></asp:DropDownList>
+                                                                    <asp:DropDownList ID="dcbStatus1" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code"></asp:DropDownList>
                                                                 </div>
 
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="dcbStatus2" class="col-sm-3 control-label">Status2</label>
                                                                 <div class="col-sm-8">
-                                                                    <asp:DropDownList ID="dcbStatus2" CssClass="form-control" runat="server" DataTextField="TypeName" DataValueField="TypeID"></asp:DropDownList>
+                                                                    <asp:DropDownList ID="dcbStatus2" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code"></asp:DropDownList>
                                                                 </div>
 
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="txtCustomerENGGroup" class="col-sm-3 control-label">Status3</label>
                                                                 <div class="col-sm-8">
-                                                                    <asp:DropDownList ID="dcbStatus3" CssClass="form-control" runat="server" DataTextField="TypeName" DataValueField="TypeID"></asp:DropDownList>
+                                                                    <asp:DropDownList ID="dcbStatus3" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code"></asp:DropDownList>
                                                                 </div>
                                                             </div>
                                                         </fieldset>
@@ -945,7 +977,7 @@
                                                             <div class="form-group">
                                                                 <label for="txtRemark" class="col-sm-3 control-label">Remark</label>
                                                                 <div class="col-sm-8">
-                                                                    <asp:DropDownList ID="txtRemark" CssClass="form-control" runat="server" DataTextField="TypeName" DataValueField="TypeID"></asp:DropDownList>
+                                                                    <asp:DropDownList ID="txtRemark" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code"></asp:DropDownList>
                                                                 </div>
 
                                                             </div>
@@ -1023,7 +1055,7 @@
                                                                     <input class="form-control" id="txtQuantityDetail" runat="server" />
                                                                 </div>
                                                                 <div class="col-sm-4">
-                                                                    <asp:DropDownList ID="cdbUnitQuantityDetail" CssClass="form-control" runat="server" DataTextField="TypeName" DataValueField="TypeID"></asp:DropDownList>
+                                                                    <asp:DropDownList ID="cdbUnitQuantityDetail" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code"></asp:DropDownList>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group">
@@ -1034,7 +1066,7 @@
 
                                                                 </div>
                                                                 <div class="col-sm-4">
-                                                                    <asp:DropDownList ID="cdbUnitPallet" CssClass="form-control" runat="server" DataTextField="TypeName" DataValueField="TypeID"></asp:DropDownList>
+                                                                    <asp:DropDownList ID="cdbUnitPallet" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code"></asp:DropDownList>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group">
@@ -1044,7 +1076,7 @@
                                                                     <input class="form-control" id="txtBoxINV" runat="server" type="text" />
                                                                 </div>
                                                                 <div class="col-sm-4">
-                                                                    <asp:DropDownList ID="cdbBox" CssClass="form-control" runat="server" DataTextField="TypeName" DataValueField="TypeID"></asp:DropDownList>
+                                                                    <asp:DropDownList ID="cdbBox" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code"></asp:DropDownList>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group">
@@ -1053,7 +1085,7 @@
                                                                     <input class="form-control pull-right" id="txtWeightInv" runat="server" type="text" />
                                                                 </div>
                                                                 <div class="col-sm-4">
-                                                                    <asp:DropDownList ID="cdbUnitWeightInv" CssClass="form-control" runat="server" DataTextField="TypeName" DataValueField="TypeID"></asp:DropDownList>
+                                                                    <asp:DropDownList ID="cdbUnitWeightInv" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code"></asp:DropDownList>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group">
@@ -1190,6 +1222,85 @@
         </section>
         <!-- /.content -->
 
+        <!-- Modal -->
+        <div class="modal fade" id="jobNoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel">Select JOB No</h4>
+                    </div>
+                    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                     <ContentTemplate>
 
+                         <div class="modal-body">
+                             <section class="content">
+                                 <form class="form-horizontal">
+                                     <div class="col-lg-12 col-md-12 " style="overflow: auto;">
+
+                                         <asp:Repeater ID="dgvLotNo" runat="server">
+                                             <HeaderTemplate>
+                                                 <table id="example1" class="table table-bordered table-striped table-responsive" style="overflow: auto;">
+                                                     <thead>
+                                                         <tr>
+                                                             <th>EASLOTNo</th>
+                                                             <th>CustomerCode</th>
+                                                             <th>EndCusCode</th>
+                                                             <th>JobSite</th>
+                                                             <th>select</th>
+                                                         </tr>
+                                                     </thead>
+                                             </HeaderTemplate>
+
+                                             <ItemTemplate>
+                                                 <tr>
+                                                     <td>
+                                                         <asp:Label ID="lblEASLOTNo" runat="server" Text='<%# Bind("EASLOTNo")%>'></asp:Label></td>
+                                                     <td>
+                                                         <asp:Label ID="lblCustomerCode" runat="server" Text='<%# Bind("CustomerCode")%>'></asp:Label></td>
+                                                     <td>
+                                                         <asp:Label ID="lblEndCusCode" runat="server" Text='<%# Bind("EndCusCode")%>'></asp:Label></td>
+                                                     <td>
+                                                         <asp:Label ID="lblJobSite" runat="server" Text='<%# Bind("JobSite")%>'></asp:Label></td>
+
+                                                     <td class="text-center">
+                                                         <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectShipper" CommandArgument='<%# Eval("EASLOTNo")%>'><i class="fa fa-plus-square"></i></asp:LinkButton>
+                                                     </td>
+                                                 </tr>
+                                             </ItemTemplate>
+                                             <FooterTemplate>
+                                                 <tfoot>
+                                                     <tr>
+                                                         <th>EASLOTNo</th>
+                                                         <th>CustomerCode</th>
+                                                         <th>EndCusCode</th>
+                                                         <th>JobSite</th>
+                                                         <th>select</th>
+                                                     </tr>
+                                                 </tfoot>
+                                                 </table>
+                                             </FooterTemplate>
+                                         </asp:Repeater>
+                                     </div>
+                                 </form>
+                             </section>
+                         </div>
+                         <div class="modal-footer">
+                             <asp:Button  CssClass="btn btn-primary" ID="btnClose" Text="Close" runat="server"/>
+                         </div>
+                     </ContentTemplate>
+                        <Triggers>
+                            <asp:AsyncPostBackTrigger ControlID="btnClose"/>
+                        </Triggers>
+                    </asp:UpdatePanel>
+
+
+                </div>
+            </div>
+        </div>
+        <!-- End Shipper Modal -->
+
+         
     </form>
 </asp:Content>
