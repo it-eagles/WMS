@@ -7,7 +7,7 @@ Public Class Test
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         'lblDisplayDate.Text = System.DateTime.Now.ToString("T")
         If Not Me.IsPostBack Then
-           
+            ScriptManager.RegisterStartupScript(CType(sender, Control), Me.GetType(), "Popup", "ShowPopup();", True)
             showUserList()
             'Else
             '    MsgBox("เกิดความผิดพลาดในการทำงาน", MsgBoxStyle.OkCancel)
@@ -107,21 +107,37 @@ Public Class Test
 
     End Sub
 
-    Protected Sub cpRepeater_ItemCommand(source As Object, e As RepeaterCommandEventArgs) Handles cpRepeater.ItemCommand
+    'Protected Sub cpRepeater_ItemCommand(source As Object, e As RepeaterCommandEventArgs) Handles cpRepeater.ItemCommand
 
-        'Dim lblRead As Label = CType(e.Item.FindControl("lblRead"), Label)
-        'Dim lblUpdate As LinkButton = CType(e.Item.FindControl("lnkUpdate"), LinkButton)
-        'Dim lnkCancel As LinkButton = CType(e.Item.FindControl("lnkCancel"), LinkButton)
-        'Dim lnkEdit As LinkButton = CType(e.Item.FindControl("lnkEdit"), LinkButton)
-        'Dim lnkDelete As LinkButton = CType(e.Item.FindControl("lnkDelete"), LinkButton)
-        'If e.CommandName.Equals("editMenu") Then
-        '    'MsgBox("อะไรว่ะ")
-        '    'Response.Write("<script>window.open('ViewUserProfile.aspx?UserName,target='_self');</script>")
-        '    lblUpdate.Visible = True
-        '    lnkCancel.Visible = True
-        '    lnkEdit.Visible = False
-        '    lnkDelete.Visible = False
-        '    'showUserList()
-        'End If
+    '    'Dim lblRead As Label = CType(e.Item.FindControl("lblRead"), Label)
+    '    'Dim lblUpdate As LinkButton = CType(e.Item.FindControl("lnkUpdate"), LinkButton)
+    '    'Dim lnkCancel As LinkButton = CType(e.Item.FindControl("lnkCancel"), LinkButton)
+    '    'Dim lnkEdit As LinkButton = CType(e.Item.FindControl("lnkEdit"), LinkButton)
+    '    'Dim lnkDelete As LinkButton = CType(e.Item.FindControl("lnkDelete"), LinkButton)
+    '    'If e.CommandName.Equals("editMenu") Then
+    '    '    'MsgBox("อะไรว่ะ")
+    '    '    'Response.Write("<script>window.open('ViewUserProfile.aspx?UserName,target='_self');</script>")
+    '    '    lblUpdate.Visible = True
+    '    '    lnkCancel.Visible = True
+    '    '    lnkEdit.Visible = False
+    '    '    lnkDelete.Visible = False
+    '    '    'showUserList()
+    '    'End If
+    'End Sub
+
+    Protected Sub btnOpenModal_Click(sender As Object, e As EventArgs)
+        ScriptManager.RegisterStartupScript(UpdatePanel2, UpdatePanel2.GetType(), "show", "$(function () { $('#" + Panel2.ClientID + "').modal('show'); });", True)
+        UpdatePanel2.Update()
+        '.RegisterStartupScript(Me, Me.GetType(), "myModal", "openjobNoModal();", True)
+        'ScriptManager.RegisterStartupScript(Me, Me.GetType(), "myModalHide", "$('body').removeClass('modal-open');$('.modal-backdrop').remove();$('#myModal').hide();", True)
+
+    End Sub
+
+    Protected Sub btnCloseModal_Click(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Protected Sub DropDownList1_SelectedIndexChanged(sender As Object, e As EventArgs)
+        mp1.Show()
     End Sub
 End Class

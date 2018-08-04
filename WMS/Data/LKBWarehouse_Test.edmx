@@ -5561,7 +5561,7 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
           <Property Name="Note" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="FilterInd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="CreateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CreateDate" Type="DateTime" Precision="3" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
           <Property Name="UpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="UpdateDate" Type="DateTime" Precision="3" />
         </EntityType>

@@ -390,9 +390,9 @@ Public Class ExpGenLot
         'End If
         Dim sb As New StringBuilder
        
-        ScriptManager.RegisterStartupScript(Me, Me.GetType(), "ModalScript", "openjobNoModal();", True)
+        'ScriptManager.RegisterStartupScript(Page, Page.GetType(), "myModal", "$('#jobNoModal').modal();", True)
         'ScriptManager.RegisterStartupScript(Me, Me.GetType(), "EditModalScript", sb.ToString(), False)
-
+        ScriptManager.RegisterStartupScript(Me, Me.GetType(), "myModalHide", "$('body').removeClass('modal-open');$('.modal-backdrop').remove();$('#jobNoModal').hide();", True)
     End Sub
 
 End Class

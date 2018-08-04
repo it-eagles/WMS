@@ -1223,7 +1223,7 @@
         <!-- /.content -->
 
         <!-- Modal -->
-        <div class="modal fade" id="jobNoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="jobNoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
             <div class="modal-dialog modal-lg" role="dialog">
                 <div class="modal-content">
                     <div class="modal-header">

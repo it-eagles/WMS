@@ -18,7 +18,7 @@ Partial Public Class tblMasterCode2
     Public Property Note As String
     Public Property FilterInd As String
     Public Property CreateBy As String
-    Public Property CreateDate As Date
+    Public Property CreateDate As Nullable(Of Date)
     Public Property UpdateBy As String
     Public Property UpdateDate As Nullable(Of Date)
 
