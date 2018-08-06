@@ -224,7 +224,7 @@
                                                             <asp:Label ID="lblMenu" runat="server" Text='<%# Bind("Menu")%>'></asp:Label></td>
                                                         <td>
                                                             <asp:Label ID="lblUserBy" runat="server" Text='<%# Bind("UserBy")%>'></asp:Label></td>
-
+                                                        
                                                     </tr>
                                                 </ItemTemplate>
                                                 <FooterTemplate>
@@ -233,6 +233,7 @@
                                                             <th>Form</th>
                                                             <th>Menu</th>
                                                             <th>UserBy</th>
+                                                           
                                                         </tr>
                                                     </tfoot>
                                                     </table>

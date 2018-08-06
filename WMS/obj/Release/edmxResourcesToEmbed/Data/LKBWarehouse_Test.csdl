@@ -388,7 +388,7 @@
       <PropertyRef Name="fwdstatus" />
     </Key>
     <Property Name="EASLOTNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="LOTDate" Type="DateTime" Precision="3" />
+    <Property Name="LOTDate" Type="DateTime" Precision="3" Nullable="false" />
     <Property Name="LOTBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="SalesCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="SalesName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />

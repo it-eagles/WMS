@@ -83,6 +83,7 @@ Public Class LoginCls
             End Try
 
         End Using
+
     End Function
 
     Public Shared Function MD5Hash(ByVal value As String) As Byte()

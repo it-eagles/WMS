@@ -195,7 +195,7 @@ Public Class MasterExchangeRate
         Dim strTempText As String
         Dim strMount As String
 
-        Dim strReturn As String
+        'Dim strReturn As String
         Try
 
             strCurrency = pStrData.Substring(0, 3)

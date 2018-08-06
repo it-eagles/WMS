@@ -664,7 +664,7 @@
                 <div class="form-group">
                   <label for="txtDeliverycode" class="col-sm-4 control-label">Code:</label>
                     <div class="col-sm-6">
-                        <input class="form-control" id="txtDeliverycode" runat="server" readonly="true" autocomplete="off"/>
+                        <input class="form-control" id="txtDeliverycode" runat="server"  autocomplete="off"/>
                     </div>
                     <div class="col-sm-2">
                         <button type="button" class="btn btn-block btn-primary" data-toggle="modal" data-target="#DeliveryModal" runat="server"><i class="glyphicon glyphicon-search"></i></button>

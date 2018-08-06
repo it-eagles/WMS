@@ -122,13 +122,14 @@ Public Class UserMenu
     End Sub
     '---------------------------------------------------Show Data Method in Menu Tab--------------------------------------
     Public Sub showMenuList()
-        Dim formlist = (From u In db.tblMenus
-                    Select New With {u.Form,
+        Dim formlist = From u In db.tblMenus
+                    Select u.Form,
                                      u.Menu,
-                                     u.UserBy}).ToList()
+                                     u.UserBy
+
 
         If formlist.Count > 0 Then
-            Repeater2.DataSource = formlist
+            Repeater2.DataSource = formlist.ToList
             Repeater2.DataBind()
         Else
             Me.Repeater2.DataSource = Nothing

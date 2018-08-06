@@ -12,7 +12,7 @@ Imports System.Collections.Generic
 
 Partial Public Class tblExpGenLOT
     Public Property EASLOTNo As String
-    Public Property LOTDate As Nullable(Of Date)
+    Public Property LOTDate As Date
     Public Property LOTBy As String
     Public Property SalesCode As String
     Public Property SalesName As String
