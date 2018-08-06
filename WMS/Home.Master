@@ -13,10 +13,10 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
     <!-- Bootstrap 3.3.7 -->
     <link rel="stylesheet" href="Scripts/bootstrap/dist/css/bootstrap.min.css" />
-    <!-- Font Awesome -->
-                   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <%-- <!-- Font Awesome -->
-                  <link rel="stylesheet" href="Scripts/font-awesome/css/font-awesome.min.css"/>--%>
+   <%-- <!-- Font Awesome -->
+                   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">--%>
+     <!-- Font Awesome -->
+                  <link rel="stylesheet" href="Scripts/font-awesome/css/font-awesome.min.css"/>
     <!-- Ionicons -->
     <link rel="stylesheet" href="Scripts/Ionicons/css/ionicons.min.css" />
     <!-- daterange picker -->
@@ -45,10 +45,9 @@
 
     <link rel="stylesheet" href="Scripts/dist/css/skins/_all-skins.min.css" />
     <%--<link rel="stylesheet" href="Scripts/util.css" />--%>
-    <%--<!-- Google Font -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic" />--%>
+    <!-- Google Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic" />
 
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
@@ -603,7 +602,7 @@
         $(function () {
             //Initialize Select2 Elements
             $('.select2').select2()
-
+            $('.select3').select2()
             //Datemask dd/mm/yyyy
             $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
             //Datemask2 mm/dd/yyyy

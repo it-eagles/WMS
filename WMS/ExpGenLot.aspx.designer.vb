@@ -41,15 +41,6 @@ Partial Public Class ExpGenLot
     Protected WithEvents txtLotNo As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''Button1 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents Button1 As Global.System.Web.UI.WebControls.Button
-
-    '''<summary>
     '''cboJobSite control.
     '''</summary>
     '''<remarks>
@@ -1148,6 +1139,15 @@ Partial Public Class ExpGenLot
     Protected WithEvents Repeater2 As Global.System.Web.UI.WebControls.Repeater
 
     '''<summary>
+    '''Panel1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Panel1 As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
     '''UpdatePanel1 control.
     '''</summary>
     '''<remarks>
@@ -1166,11 +1166,191 @@ Partial Public Class ExpGenLot
     Protected WithEvents dgvLotNo As Global.System.Web.UI.WebControls.Repeater
 
     '''<summary>
-    '''btnClose control.
+    '''Panel2 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents btnClose As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents Panel2 As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''UpdatePanel2 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents UpdatePanel2 As Global.System.Web.UI.UpdatePanel
+
+    '''<summary>
+    '''dgvConsigneeCode control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents dgvConsigneeCode As Global.System.Web.UI.WebControls.Repeater
+
+    '''<summary>
+    '''plExporterCode control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents plExporterCode As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''upExporterCode control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents upExporterCode As Global.System.Web.UI.UpdatePanel
+
+    '''<summary>
+    '''dgvExporterCode control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents dgvExporterCode As Global.System.Web.UI.WebControls.Repeater
+
+    '''<summary>
+    '''plDOCode control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents plDOCode As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''upDOCod control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents upDOCod As Global.System.Web.UI.UpdatePanel
+
+    '''<summary>
+    '''dgvcodeconsignnee control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents dgvcodeconsignnee As Global.System.Web.UI.WebControls.Repeater
+
+    '''<summary>
+    '''plCustomerCode control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents plCustomerCode As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''upCustomerCode control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents upCustomerCode As Global.System.Web.UI.UpdatePanel
+
+    '''<summary>
+    '''dgvCustomer control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents dgvCustomer As Global.System.Web.UI.WebControls.Repeater
+
+    '''<summary>
+    '''plPickUpCode control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents plPickUpCode As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''upPickUpCode control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents upPickUpCode As Global.System.Web.UI.UpdatePanel
+
+    '''<summary>
+    '''dgvPickUp control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents dgvPickUp As Global.System.Web.UI.WebControls.Repeater
+
+    '''<summary>
+    '''plEndCusCode control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents plEndCusCode As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''upEndCusCode control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents upEndCusCode As Global.System.Web.UI.UpdatePanel
+
+    '''<summary>
+    '''dgvEndCus control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents dgvEndCus As Global.System.Web.UI.WebControls.Repeater
+
+    '''<summary>
+    '''plCustomerGroup control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents plCustomerGroup As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''upCustomerGroup control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents upCustomerGroup As Global.System.Web.UI.UpdatePanel
+
+    '''<summary>
+    '''dgvCustomerGroup control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents dgvCustomerGroup As Global.System.Web.UI.WebControls.Repeater
 End Class

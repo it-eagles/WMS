@@ -7,7 +7,6 @@ Public Class Test
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         'lblDisplayDate.Text = System.DateTime.Now.ToString("T")
         If Not Me.IsPostBack Then
-            ScriptManager.RegisterStartupScript(CType(sender, Control), Me.GetType(), "Popup", "ShowPopup();", True)
             showUserList()
             'Else
             '    MsgBox("เกิดความผิดพลาดในการทำงาน", MsgBoxStyle.OkCancel)
@@ -65,18 +64,20 @@ Public Class Test
         'Dim formlist = (From u In db.tblMenus
         '                Group By Form = u.Form
         '                Into f = Group, Count())
-        ''Dim formlist = (From u In db.tblUserMenus
-        ''         Select New With {
-        ''             u.Form,
-        ''             u.Read_
-        ''            }).ToList
+        'Dim formlist = (From u In db.tblUsers
+        '         Select New With {
+        '             u.UserName,
+        '             u.Name,
+        '             u.Branch,
+        '             u.Dept
+        '            }).ToList
 
         'If formlist.Count > 0 Then
-        '    Me.cpRepeater.DataSource = formlist.ToList
-        '    Me.cpRepeater.DataBind()
+        '    Me.productListTable.DataSource = formlist.ToList
+        '    Me.productListTable.DataBind()
         'Else
-        '    Me.cpRepeater.DataSource = Nothing
-        '    Me.cpRepeater.DataBind()
+        '    Me.productListTable.DataSource = Nothing
+        '    Me.productListTable.DataBind()
         'End If
     End Sub
 
@@ -140,4 +141,10 @@ Public Class Test
     Protected Sub DropDownList1_SelectedIndexChanged(sender As Object, e As EventArgs)
         mp1.Show()
     End Sub
+
+    'Protected Sub GridView1_PageIndexChanging(sender As Object, e As GridViewPageEventArgs)
+    '    GridView1.PageIndex = e.NewPageIndex
+    '    showUserList()
+
+    'End Sub
 End Class
