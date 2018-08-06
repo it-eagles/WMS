@@ -24,14 +24,41 @@ Public Class CreateRec
         showIEATPermit()
         showunitdimension()
         showcurrency()
-        showListConsignee()
+        'showListConsignee()
         showListShipper()
         showListDelivery()
         showListPickUp()
         showListCustomer()
         showListEndCustomer()
         showListCustomerGroup()
-        showListProductCode()
+        'showListProductCode()
+    End Sub
+    Private Sub Test_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnconsigneecode.Init
+
+        If String.IsNullOrEmpty(txtConsigneecode.Value) Then
+            showListConsignee()
+
+            'Else
+            '    Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode Where u.PartyCode Like "%" & txtConsigneecode.Value & "%" And u.Consignee = "0"
+            '          Select New With {u.PartyCode,
+            '                           u.PartyFullName,
+            '                           br.Address1,
+            '                           br.Address2,
+            '                           br.Address3}).ToList()
+            '    If user.Count > 0 Then
+            '        Repeater1.DataSource = user
+            '        Repeater1.DataBind()
+            '    Else
+            '        Me.Repeater1.DataSource = Nothing
+            '        Me.Repeater1.DataBind()
+            '    End If
+
+        End If
+    End Sub
+    Protected Sub Test_Load2(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnProductCode.Init
+        'If String.IsNullOrEmpty(txtConsigneecode.Value) Then
+        '    showListProductCode()
+        'End If
     End Sub
 
     Private Sub showJobSite()
@@ -345,15 +372,12 @@ Public Class CreateRec
     End Sub
     '--------------------------------------------------------Show Data Consignee In Modal-----------------------------------------
     Public Sub showListConsignee()
-
         Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode
                    Select New With {u.PartyCode,
                                     u.PartyFullName,
                                     br.Address1,
                                     br.Address2,
                                     br.Address3}).ToList()
-
-
         If user.Count > 0 Then
             Repeater1.DataSource = user
             Repeater1.DataBind()
@@ -371,6 +395,7 @@ Public Class CreateRec
                 If String.IsNullOrEmpty(PartyCode) Then
 
                     MsgBox("เป็นค่าว่าง")
+
                 Else
                     Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode Where u.PartyCode = PartyCode And u.Consignee = "0").SingleOrDefault
 
@@ -384,6 +409,7 @@ Public Class CreateRec
                     txtEmail.Value = user.br.email
 
                 End If
+            
             End If
         Catch ex As Exception
         End Try
@@ -655,38 +681,38 @@ Public Class CreateRec
     '--------------------------------------------------------Show Data ProductCode In Modal-----------------------------------------
     Public Sub showListProductCode()
 
-        'Dim user = (From u In db.tblProductDetails
-        '           Select New With {u.ProductCode,
-        '                            u.ImpDesc1,
-        '                            u.PONo,
-        '                            u.CustomerPart,
-        '                            u.EndUserPart}).ToList()
+        Dim user = (From u In db.tblProductDetails
+                   Select New With {u.ProductCode,
+                                    u.ImpDesc1,
+                                    u.PONo,
+                                    u.CustomerPart,
+                                    u.EndUserPart}).ToList()
 
-        'If user.Count > 0 Then
-        '    Repeater8.DataSource = user
-        '    Repeater8.DataBind()
-        'Else
-        '    Me.Repeater8.DataSource = Nothing
-        '    Me.Repeater8.DataBind()
-        'End If
+        If user.Count > 0 Then
+            Repeater8.DataSource = user
+            Repeater8.DataBind()
+        Else
+            Me.Repeater8.DataSource = Nothing
+            Me.Repeater8.DataBind()
+        End If
     End Sub
     '--------------------------------------------------------Click Data ProductCode In Modal-----------------------------------------
     Protected Sub Repeater8_ItemCommand(source As Object, e As RepeaterCommandEventArgs) Handles Repeater8.ItemCommand
-        'Dim ProductCode As String = CStr(e.CommandArgument)
-        'Try
-        '    If e.CommandName.Equals("SelectProductCode") Then
+        Dim ProductCode As String = CStr(e.CommandArgument)
+        Try
+            If e.CommandName.Equals("SelectProductCode") Then
 
-        '        If String.IsNullOrEmpty(ProductCode) Then
+                If String.IsNullOrEmpty(ProductCode) Then
 
-        '            MsgBox("เป็นค่าว่าง")
-        '        Else
-        '            Dim user = (From u In db.tblProductDetails Where u.ProductCode = ProductCode).SingleOrDefault
+                    MsgBox("เป็นค่าว่าง")
+                Else
+                    Dim user = (From u In db.tblProductDetails Where u.ProductCode = ProductCode).SingleOrDefault
 
-        '            txtProductCodeInvoice.Value = user.ProductCode
-        '            txtProductNameInvoice.Value = user.ImpDesc1
-        '        End If
-        '    End If
-        'Catch ex As Exception
-        'End Try
+                    txtProductCodeInvoice.Value = user.ProductCode
+                    txtProductNameInvoice.Value = user.ImpDesc1
+                End If
+            End If
+        Catch ex As Exception
+        End Try
     End Sub
 End Class

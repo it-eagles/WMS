@@ -126,7 +126,6 @@
                     
                     <div class="col-md-6">
           <!-- Horizontal Form -->
-          
 
             <!-- form start -->
             <div class="form-horizontal">
@@ -135,10 +134,10 @@
                 <div class="form-group">
                   <label for="txtConsigneecode" class="col-sm-4 control-label">Consignee Code:</label>
                   <div class="col-sm-6">                     
-                      <input class="form-control" id="txtConsigneecode" runat="server" readonly="true" autocomplete="off"/>
+                      <input class="form-control" id="txtConsigneecode" runat="server"  autocomplete="off"/>
                   </div>
                   <div class="col-sm-2">
-                      <button type="button" class="btn btn-block btn-primary" data-toggle="modal" data-target="#consigneeModal" runat="server"><i class="glyphicon glyphicon-search"></i></button>
+                      <button type="button" id="btnconsigneecode" class="btn btn-block btn-primary" data-toggle="modal" data-target="#consigneeModal" runat="server"><i class="glyphicon glyphicon-search"></i></button>
                   </div>
                 </div>
                 <div class="form-group">
@@ -1119,7 +1118,7 @@
                         <input class="form-control" id="txtProductCodeInvoice" runat="server" readonly="true" autocomplete="off"/>
                     </div>
                     <div class="col-sm-2">
-                        <button type="button" class="btn btn-block btn-primary" data-toggle="modal" data-target="#ProductCodeModal" runat="server"><i class="glyphicon glyphicon-search"></i></button>
+                        <button type="button" id="btnProductCode" class="btn btn-block btn-primary" data-toggle="modal" data-target="#ProductCodeModal" runat="server"><i class="glyphicon glyphicon-search"></i></button>
                     </div>
                   <label for="txtPONoProductCode" class="col-sm-2 control-label">PO No:</label>
                   <div class="col-sm-3">
@@ -1601,7 +1600,7 @@
             <!-- /.row -->
         </section>
         <!-- /.content -->
-  
+   
         <!-- Consignee Modal -->
         <!-- Modal -->
         <div class="modal fade" id="consigneeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -1616,6 +1615,7 @@
                 <section class="content">
                     <div class="row">
                         <div class="col-lg-12 col-md-12 " style="overflow:auto;">
+                           
                             <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="Repeater1_ItemCommand">
                                     <HeaderTemplate>
                                         <table id="example1" class="table table-bordered table-striped table-responsive" style="overflow:auto;">
@@ -1662,6 +1662,7 @@
                                         </table>
                                     </FooterTemplate>
                                 </asp:Repeater>
+                               
                         </div>
                     </div>
                 </section>

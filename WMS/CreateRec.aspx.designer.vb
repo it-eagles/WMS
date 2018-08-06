@@ -113,6 +113,15 @@ Partial Public Class CreateRec
     Protected WithEvents txtConsigneecode As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
+    '''btnconsigneecode control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnconsigneecode As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
     '''txtNameEngConsign control.
     '''</summary>
     '''<remarks>
@@ -1182,6 +1191,15 @@ Partial Public Class CreateRec
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents txtProductCodeInvoice As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''btnProductCode control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnProductCode As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
     '''txtPONoProductCode control.
