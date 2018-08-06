@@ -32,6 +32,42 @@ Partial Public Class ExpGenLot
     Protected WithEvents ScriptManager1 As Global.System.Web.UI.ScriptManager
 
     '''<summary>
+    '''btnAddNew control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnAddNew As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''btnEdit control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnEdit As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''btnSaveNew control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnSaveNew As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''btnSaveEdit control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnSaveEdit As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
     '''txtLotNo control.
     '''</summary>
     '''<remarks>
@@ -39,6 +75,15 @@ Partial Public Class ExpGenLot
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents txtLotNo As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''btnSeletJob control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnSeletJob As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
     '''cboJobSite control.
@@ -59,13 +104,13 @@ Partial Public Class ExpGenLot
     Protected WithEvents NextMonth As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
 
     '''<summary>
-    '''txtDateIt_R control.
+    '''dtpInvoiceDate control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtDateIt_R As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents dtpInvoiceDate As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''CalendarExtender2 control.
@@ -887,6 +932,15 @@ Partial Public Class ExpGenLot
     Protected WithEvents CalendarExtender3 As Global.AjaxControlToolkit.CalendarExtender
 
     '''<summary>
+    '''txtDeliveryTime control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtDeliveryTime As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
     '''dcbStatus1 control.
     '''</summary>
     '''<remarks>
@@ -977,13 +1031,31 @@ Partial Public Class ExpGenLot
     Protected WithEvents txtCancleIEAT As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''Repeater1 control.
+    '''btnInvoice control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Repeater1 As Global.System.Web.UI.WebControls.Repeater
+    Protected WithEvents btnInvoice As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''btnInv control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnInv As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''dgvEASInv_ control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents dgvEASInv_ As Global.System.Web.UI.WebControls.Repeater
 
     '''<summary>
     '''txtGenInvNo control.
@@ -1130,6 +1202,33 @@ Partial Public Class ExpGenLot
     Protected WithEvents txtPriceForeign As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
+    '''cmdGenInvNo control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents cmdGenInvNo As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''Button4 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Button4 As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''cmdDeleteInv control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents cmdDeleteInv As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
     '''Repeater2 control.
     '''</summary>
     '''<remarks>
@@ -1137,6 +1236,51 @@ Partial Public Class ExpGenLot
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents Repeater2 As Global.System.Web.UI.WebControls.Repeater
+
+    '''<summary>
+    '''txtTypeCode control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtTypeCode As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''txtRunNo control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtRunNo As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''txtMountNo control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtMountNo As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''txtYearNo control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtYearNo As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''txtDigitNo control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtDigitNo As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
     '''Panel1 control.

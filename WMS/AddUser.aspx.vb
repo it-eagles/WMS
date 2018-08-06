@@ -18,7 +18,7 @@ Public Class AddUser
     'Dim db As New LKBWarehouseEntities
     Dim db As New LKBWarehouseEntities1_Test
     Dim usename As String = CStr(Session("UserName"))
-    Dim form As String = "frmExpGenLot"
+    'Dim form As String = "frmExpGenLot"
     'Dim ClassPermis As ClassPermis
     Dim PassEncrypt As String
 

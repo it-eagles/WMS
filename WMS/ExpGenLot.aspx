@@ -12,28 +12,54 @@
             <ol class="breadcrumb">
                 <li><a href="HomeMain.aspx"><i class="fa fa-home"></i>Home</a></li>
                 <li><a class="active"><i class="fa fa-share-square-o"></i>Issue Process</a></li>
-
             </ol>
         </section>
-
-
         <!-- Main content -->
         <section class="content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box box-default">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Modal Examples</h3>
+                        </div>
+                        <div class="box-body">
+                            <div class="col-md-6">
+                                <button type="button" class="btn btn-info" runat="server" id="btnAddNew" onserverclick="btnAddNew_ServerClick">
+                                    <i class="fa fa-plus-square"></i>
+                                    Add
+                                </button>
+                                <button type="button" class="btn btn-danger" runat="server" id="btnEdit" onserverclick="btnEdit_ServerClick">
+                                    <i class="fa fa-edit"></i>
+                                    Edit
+                                </button>
+                            </div>
+                          <div class="col-md-6">
+                              <div class="text-right">
+                                  <button type="button" class=" btn btn-app" runat="server" id="btnSaveNew" onserverclick="btnSaveNew_ServerClick">
+                                      <i class="fa fa-save"></i>
+                                      Save
+                                  </button>
+                                  <button type="button" class=" btn btn-app" runat="server" id="btnSaveEdit">
+                                      <i class="fa fa-edit"></i>
+                                      Edit
+                                  </button>
+                              </div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <div class="row">
                 <!-- left column -->
-
                 <div class="col-md-12 col-lg-12">
                     <div class="nav-tabs-custom">
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="#master" data-toggle="tab">Master JOB</a></li>
                             <li><a href="#detail" data-toggle="tab">JOB Detail</a></li>
                             <li><a href="#invoice" data-toggle="tab">Invoice</a></li>
-
                         </ul>
-
                         <div class="tab-content">
-
                     <!------- master ---------->
                             <div class="active tab-pane" id="master">
                                 <!-- Post -->
@@ -48,23 +74,19 @@
                                                     <div class="col-lg-12">
                                                         <div class="col-md-5 col-lg-5">
                                                         <div class="form-group">
-
                                                             <label for="txtLotNo" class="col-sm-3 control-label">JOB No</label>
                                                             <div class="col-sm-7">
                                                                 <input class="form-control" id="txtLotNo" runat="server" placeholder="JOB NO" autofocus="autofocus" autocomplete="off"/>
                                                             </div>
                                                             <div class="col-sm-2">
-                                                                <button runat="server" class="btn btn-primary " type="button" onserverclick="Unnamed_ServerClick"><i class="fa fa-search"></i></button>
+                                                                <button runat="server" class="btn btn-primary " type="button" onserverclick="Unnamed_ServerClick" id="btnSeletJob"><i class="fa fa-search"></i></button>
                                                                 <%--<asp:Button runat="server" CSSClass="btn btn-primary" Text="Button" ID="Button1" OnClick="Unnamed_ServerClick"></asp:Button>--%>
                                                             </div>
                                                         </div>
-
-
                                                         <div class="form-group">
                                                             <label for="cboJobSite" class="col-sm-3 control-label">JOB Site</label>
                                                             <div class="col-sm-5">
                                                                 <asp:DropDownList ID="cboJobSite" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code">
-
                                                                 </asp:DropDownList>
                                                             </div>
                                                             <div class="col-sm-4">
@@ -75,43 +97,33 @@
                                                                     </label>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                           
+                                                        </div>           
                                                     </div>
-
                                                     <div class="col-md-4">
                                                         <div class="form-group">
                                                             <label for="dtpInvoiceDate" class="col-sm-4 control-label">JOB Date</label>
-                                                            <div class="col-md-7">
-                                                              
-                                                               
+                                                            <div class="col-md-7">           
                                                                 <div class="input-group date">
                                                                     <div class="input-group-addon">
                                                                         <i class="fa fa-calculator"></i>
                                                                     </div>
-                                                                     <asp:TextBox CssClass="form-control" ID="txtDateIt_R" runat="server" placeholder="MM/DD/YYYY" autocomplete="off">
+                                                                     <asp:TextBox CssClass="form-control" ID="dtpInvoiceDate" runat="server" placeholder="MM/DD/YYYY" autocomplete="off">
                                                                 </asp:TextBox>
-                                                                     <asp:CalendarExtender ID="CalendarExtender2" runat="server" Enabled="True" TargetControlID="txtDateIt_R" Format="dd/MM/yyyy"></asp:CalendarExtender>
+                                                                     <asp:CalendarExtender ID="CalendarExtender2" runat="server" Enabled="True" TargetControlID="dtpInvoiceDate" Format="dd/MM/yyyy"></asp:CalendarExtender>
                                                                 </div>
-
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-
                                                             <label for="dcbSales" class="col-sm-4 control-label">Site Man</label>
                                                             <div class="col-md-7">
                                                                 <asp:DropDownList ID="dcbSales" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code"></asp:DropDownList>
-
                                                             </div>
-
                                                         </div>
-
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label for="DropDownList5" class="col-sm-4 control-label">JOB of</label>
                                                             <div class="col-md-7">
-
                                                                 <asp:DropDownList ID="DropDownList5" CssClass="form-control" runat="server">
                                                                     <asp:ListItem></asp:ListItem>
                                                                     <asp:ListItem>Air Out</asp:ListItem>
@@ -119,8 +131,6 @@
                                                                     <asp:ListItem>Truck Out</asp:ListItem>
                                                                     <asp:ListItem>Other</asp:ListItem>
                                                                 </asp:DropDownList>
-
-
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
@@ -197,7 +207,7 @@
                                                                 <label for="txtExporterCode" class="col-sm-3 control-label">Exporter Code</label>
                                                                 <div class="col-md-6">
                                                                    <%--  <asp:DropDownList ID="ddlExporterCode" CssClass="form-control select2" runat="server" DataTextField="Code" DataValueField="Code"> </asp:DropDownList>--%>
-                                                                    <input class="form-control pull-right select2" id="txtExporterCode" runat="server" type="text" autocomplete="off"/>
+                                                                    <input class="form-control pull-right" id="txtExporterCode" runat="server" type="text" autocomplete="off"/>
                                                                 </div>
                                                                 <div class="col-md-2">
                                                                      <button runat="server" class="btn btn-primary btn-block" type="button" onserverclick="Unnamed_ServerClick3"><i class="fa fa-search"></i></button>
@@ -248,7 +258,7 @@
 
                                                         </fieldset>
                                                     </div>
-                                                    </div>
+                                                   </div>
                                                   
                                                     <div class="col-md-12 col-lg-12">
                                                         <fieldset>
@@ -436,10 +446,8 @@
                                                      
                                                                 </asp:Repeater>
                                      
-                                                            </fieldset>
-                                             
-                                                             </div> 
-
+                                                            </fieldset>                                          
+                                                           </div> 
                                                 </div>
                                          </div>
                                         </div>
@@ -450,8 +458,6 @@
                                   <!-- /.post -->
                             </div>
                             <!------- /.master ---------->
-
-
                                              <!-------- detail --------->
                             <div class="tab-pane" id="detail">
                                 <!-- Post -->
@@ -728,7 +734,7 @@
                                                             <div class="form-group">
                                                                 <label for="txtEndCusCode" class="col-sm-4 control-label">End Customer Code</label>
                                                                 <div class="col-sm-6">
-                                                                    <input class="form-control select2" id="txtEndCusCode" runat="server" autocomplete="off"/>
+                                                                    <input class="form-control" id="txtEndCusCode" runat="server" autocomplete="off"/>
                                                                  <%--    <asp:DropDownList ID="ddlEndCusCode" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code"> </asp:DropDownList>--%>
 
                                                                 </div>
@@ -801,19 +807,16 @@
                                                                 <div class="col-sm-8">
                                                                     <input class="form-control" id="txtEndCusContact" runat="server" autocomplete="off"/>
                                                                 </div>
-
                                                             </div>
-                                                        </fieldset>
-
+                                                      </fieldset>
                                                     </div>
-
                                                     <div class="col-lg-6 col-md-6">
                                                         <fieldset>
                                                             <legend>Customer Group</legend>
                                                             <div class="form-group">
                                                                 <label for="txtCustomerCodeGroup" class="col-sm-4 control-label">Code Group</label>
                                                                 <div class="col-sm-6">
-                                                                    <input class="form-control select2" id="txtCustomerCodeGroup" runat="server" autocomplete="off"/>
+                                                                    <input class="form-control" id="txtCustomerCodeGroup" runat="server" autocomplete="off"/>
                                                                   <%--   <asp:DropDownList ID="ddlCustomerCodeGroup" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code"> </asp:DropDownList>--%>
 
                                                                 </div>
@@ -826,10 +829,7 @@
                                                                 <div class="col-sm-8">
                                                                     <input class="form-control" id="txtCustomerENGGroup" runat="server" autocomplete="off"/>
                                                                 </div>
-
                                                             </div>
-
-
                                                         </fieldset>
 
                                                     </div>
@@ -860,7 +860,7 @@
                                                             <div class="form-group">
                                                                 <label for="txtCustomerCodeGroup" class="col-sm-3 control-label">IEAT No</label>
                                                                 <div class="col-sm-4">
-                                                                    <input class="form-control" id="txtIEATNo" runat="server" />
+                                                                    <input class="form-control" id="txtIEATNo" runat="server" disabled="disabled"/>
                                                                 </div>
                                                                 <div class="col-sm-4">
                                                                     <asp:Button runat="server" ID="Gen" Text="Gen" />
@@ -914,15 +914,13 @@
                                                                         <%--<input class="form-control pull-right" id="dtpIEATDate" runat="server" type="text" />--%>
                                                                     </div>
                                                                     <asp:CalendarExtender ID="CalendarExtender3" runat="server" Enabled="True" TargetControlID="dtpDeliveryDate" Format="dd/MM/yyyy"></asp:CalendarExtender>
-                                                                </div>
-                                                                    
-                                                                
+                                                                </div>                                                            
                                                                 <label for="txtCustomerENGGroup" class="col-sm-1 control-label">Time</label>
                                                                 <div class="col-sm-3">
                                                                     <div class="bootstrap-timepicker">
                                                                         <div class="form-group">
                                                                             <div class="input-group">
-                                                                                <input type="text" class="form-control timepicker" runat="server" autocomplete="off">
+                                                                                <input type="text" class="form-control timepicker" runat="server" autocomplete="off" id="txtDeliveryTime">
 
                                                                                 <div class="input-group-addon">
                                                                                     <i class="fa fa-clock-o"></i>
@@ -1020,7 +1018,6 @@
                                                                     </asp:DropDownList>
                                                                     
                                                                 </div>
-
                                                             </div>
 
                                                             <div class="form-group">
@@ -1033,10 +1030,10 @@
                                                             <div class="form-group">
                                                                 <div class="col-sm-11">
                                                                     <div class="col-md-offset-6">
-                                                                        <button type="button" class="btn btn-primary">Save Invoice No.</button>
-                                                                    <button type="button" class="btn btn-default">Delete Inv.</button>
+                                                                        <button type="button" class="btn btn-primary" id="btnInvoice" runat="server">Save Invoice No.</button>
+                                                                    <button type="button" class="btn btn-default" id="btnInv" runat="server">Delete Inv.</button>
                                                                     </div>
-                                                                     <asp:Repeater ID="Repeater1" runat="server">
+                                                                     <asp:Repeater ID="dgvEASInv_" runat="server">
                                                                  <HeaderTemplate>
                                                                      <table class="table table-bordered">
                                                                         <th style="width: 10px">#</th>
@@ -1183,17 +1180,12 @@
                                                             <div class="form-group">
                                                                 <div class="col-md-11 col-xs-10">
                                                                     <div class="col-md-offset-5">
-                                                                   <div class="col-md-2">
-                                                                        <button type="button" class="btn btn-primary">Save</button>
-                                                                   </div>
-                                                                   <div class="col-md-2">
-                                                                        <button type="button" class="btn btn-default">Modify</button>
-                                                                   </div>
-                                                                   <div class="col-md-2">
-                                                                       <button type="button" class="btn btn-danger">Delete</button>
-                                                                   
-                                                                   </div>
-                                                                    
+                                                             
+                                                                        <button type="button" class="btn btn-primary" runat="server" id="cmdGenInvNo">Save</button>
+                                                                                                                                  
+                                                                        <button type="button" class="btn btn-default" runat="server" id="Button4">Modify</button>
+                                                                                                                                  
+                                                                       <button type="button" class="btn btn-danger" runat="server" id="cmdDeleteInv">Delete</button>                         
                                                                     </div>
                                                                  
                                                                      <asp:Repeater ID="Repeater2" runat="server">
@@ -1238,6 +1230,11 @@
                                                                 </div>
                                                             </div>
                                                         </fieldset>
+                                                        <input runat="server" id="txtTypeCode" visible="false"/>
+                                                         <input runat="server" id="txtRunNo" visible="false"/>
+                                                         <input runat="server" id="txtMountNo" visible="false"/>
+                                                         <input runat="server" id="txtYearNo" visible="false"/>
+                                                         <input runat="server" id="txtDigitNo" visible="false"/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1279,22 +1276,25 @@
                                  <form class="form-horizontal">
                                      <div class="col-lg-12 col-md-12 " style="overflow: auto;">
 
-                                         <asp:Repeater ID="dgvLotNo" runat="server">
+                                         <asp:Repeater ID="dgvLotNo" runat="server" OnItemCommand="dgvLotNo_ItemCommand">
                                              <HeaderTemplate>
                                                  <table id="example1" class="table table-bordered table-striped table-responsive" style="overflow: auto;">
                                                      <thead>
                                                          <tr>
+                                                             <th>select</th>
                                                              <th>EASLOTNo</th>
                                                              <th>CustomerCode</th>
                                                              <th>EndCusCode</th>
                                                              <th>JobSite</th>
-                                                             <th>select</th>
                                                          </tr>
                                                      </thead>
                                              </HeaderTemplate>
 
                                              <ItemTemplate>
                                                  <tr>
+                                                     <td class="text-center">
+                                                         <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="selectLotNO" CommandArgument='<%# Eval("EASLOTNo")%>'><i class="fa fa-hand-o-up"></i></asp:LinkButton>
+                                                     </td>
                                                      <td>
                                                          <asp:Label ID="lblEASLOTNo" runat="server" Text='<%# Bind("EASLOTNo")%>'></asp:Label></td>
                                                      <td>
@@ -1303,20 +1303,16 @@
                                                          <asp:Label ID="lblEndCusCode" runat="server" Text='<%# Bind("EndCusCode")%>'></asp:Label></td>
                                                      <td>
                                                          <asp:Label ID="lblJobSite" runat="server" Text='<%# Bind("JobSite")%>'></asp:Label></td>
-
-                                                     <td class="text-center">
-                                                         <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectShipper" CommandArgument='<%# Eval("EASLOTNo")%>'><i class="fa fa-plus-square"></i></asp:LinkButton>
-                                                     </td>
                                                  </tr>
                                              </ItemTemplate>
                                              <FooterTemplate>
                                                  <tfoot>
                                                      <tr>
+                                                         <th>select</th>
                                                          <th>EASLOTNo</th>
                                                          <th>CustomerCode</th>
                                                          <th>EndCusCode</th>
-                                                         <th>JobSite</th>
-                                                         <th>select</th>
+                                                         <th>JobSite</th> 
                                                      </tr>
                                                  </tfoot>
                                                  </table>
@@ -1331,8 +1327,6 @@
                          </div>
                      </ContentTemplate>
                     </asp:UpdatePanel>
-
-
                 </div>
             </div>
         </asp:Panel>
@@ -1354,22 +1348,25 @@
                                  <form class="form-horizontal">
                                      <div class="col-lg-12 col-md-12 " style="overflow: auto;">
 
-                                         <asp:Repeater ID="dgvConsigneeCode" runat="server">
+                                         <asp:Repeater ID="dgvConsigneeCode" runat="server" OnItemCommand="dgvConsigneeCode_ItemCommand">
                                              <HeaderTemplate>
                                                  <table id="example1" class="table table-bordered table-striped table-responsive" style="overflow: auto;">
                                                      <thead>
                                                          <tr>
+                                                              <th>select</th>
                                                              <th>PartyCode</th>
                                                              <th>PartyFullName</th>
                                                              <th>Address1</th>
                                                              <th>Address2</th>
-                                                             <th>select</th>
                                                          </tr>
                                                      </thead>
                                              </HeaderTemplate>
 
                                              <ItemTemplate>
                                                  <tr>
+                                                      <td class="text-center">
+                                                         <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectPartyCoder" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-hand-o-up"></i></asp:LinkButton>
+                                                     </td>
                                                      <td>
                                                          <asp:Label ID="lblEASLOTNo" runat="server" Text='<%# Bind("PartyCode")%>'></asp:Label></td>
                                                      <td>
@@ -1378,20 +1375,16 @@
                                                          <asp:Label ID="lblEndCusCode" runat="server" Text='<%# Bind("Address1")%>'></asp:Label></td>
                                                      <td>
                                                          <asp:Label ID="lblJobSite" runat="server" Text='<%# Bind("Address2")%>'></asp:Label></td>
-
-                                                     <td class="text-center">
-                                                         <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectShipper" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-plus-square"></i></asp:LinkButton>
-                                                     </td>
                                                  </tr>
                                              </ItemTemplate>
                                              <FooterTemplate>
                                                  <tfoot>
                                                      <tr>
+                                                         <th>select</th>
                                                         <th>PartyCode</th>
                                                          <th>PartyFullName</th>
                                                          <th>Address1</th>
                                                          <th>Address2</th>
-                                                         <th>select</th>
                                                      </tr>
                                                  </tfoot>
                                                  </table>
@@ -1406,8 +1399,6 @@
                          </div>
                      </ContentTemplate>
                     </asp:UpdatePanel>
-
-
                 </div>
             </div>
         </asp:Panel>
@@ -1429,22 +1420,25 @@
                                  <form class="form-horizontal">
                                      <div class="col-lg-12 col-md-12 " style="overflow: auto;">
 
-                                         <asp:Repeater ID="dgvExporterCode" runat="server">
+                                         <asp:Repeater ID="dgvExporterCode" runat="server" OnItemCommand="dgvExporterCode_ItemCommand">
                                              <HeaderTemplate>
                                                  <table id="example3" class="table table-bordered table-striped table-responsive" style="overflow: auto;">
                                                      <thead>
                                                          <tr>
+                                                              <th>select</th>
                                                              <th>PartyCode</th>
                                                              <th>PartyFullName</th>
                                                              <th>Address1</th>
                                                              <th>Address2</th>
-                                                             <th>select</th>
                                                          </tr>
                                                      </thead>
                                              </HeaderTemplate>
 
                                              <ItemTemplate>
                                                  <tr>
+                                                     <td class="text-center">
+                                                         <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectPartyCode" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-hand-o-up"></i></asp:LinkButton>
+                                                     </td>
                                                      <td>
                                                          <asp:Label ID="lblEASLOTNo" runat="server" Text='<%# Bind("PartyCode")%>'></asp:Label></td>
                                                      <td>
@@ -1452,21 +1446,17 @@
                                                      <td>
                                                          <asp:Label ID="lblEndCusCode" runat="server" Text='<%# Bind("Address1")%>'></asp:Label></td>
                                                      <td>
-                                                         <asp:Label ID="lblJobSite" runat="server" Text='<%# Bind("Address2")%>'></asp:Label></td>
-
-                                                     <td class="text-center">
-                                                         <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectShipper" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-plus-square"></i></asp:LinkButton>
-                                                     </td>
+                                                         <asp:Label ID="lblJobSite" runat="server" Text='<%# Bind("Address2")%>'></asp:Label></td>                     
                                                  </tr>
                                              </ItemTemplate>
                                              <FooterTemplate>
                                                  <tfoot>
                                                      <tr>
+                                                          <th>select</th>
                                                         <th>PartyCode</th>
                                                          <th>PartyFullName</th>
                                                          <th>Address1</th>
                                                          <th>Address2</th>
-                                                         <th>select</th>
                                                      </tr>
                                                  </tfoot>
                                                  </table>
@@ -1481,8 +1471,6 @@
                          </div>
                      </ContentTemplate>
                     </asp:UpdatePanel>
-
-
                 </div>
             </div>
         </asp:Panel>
@@ -1504,22 +1492,25 @@
                                  <form class="form-horizontal">
                                      <div class="col-lg-12 col-md-12 " style="overflow: auto;">
 
-                                         <asp:Repeater ID="dgvcodeconsignnee" runat="server">
+                                         <asp:Repeater ID="dgvcodeconsignnee" runat="server" OnItemCommand="dgvcodeconsignnee_ItemCommand">
                                              <HeaderTemplate>
                                                  <table id="example4" class="table table-bordered table-striped table-responsive" style="overflow: auto;">
                                                      <thead>
                                                          <tr>
+                                                              <th>select</th>
                                                              <th>PartyCode</th>
                                                              <th>PartyFullName</th>
                                                              <th>Address1</th>
                                                              <th>Address2</th>
-                                                             <th>select</th>
                                                          </tr>
                                                      </thead>
                                              </HeaderTemplate>
 
                                              <ItemTemplate>
                                                  <tr>
+                                                     <td class="text-center">
+                                                         <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectPartyCode" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-hand-o-up"></i></asp:LinkButton>
+                                                     </td>
                                                      <td>
                                                          <asp:Label ID="lblEASLOTNo" runat="server" Text='<%# Bind("PartyCode")%>'></asp:Label></td>
                                                      <td>
@@ -1529,19 +1520,18 @@
                                                      <td>
                                                          <asp:Label ID="lblJobSite" runat="server" Text='<%# Bind("Address2")%>'></asp:Label></td>
 
-                                                     <td class="text-center">
-                                                         <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectShipper" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-plus-square"></i></asp:LinkButton>
-                                                     </td>
+                                                
                                                  </tr>
                                              </ItemTemplate>
                                              <FooterTemplate>
                                                  <tfoot>
                                                      <tr>
+                                                          <th>select</th>
                                                         <th>PartyCode</th>
                                                          <th>PartyFullName</th>
                                                          <th>Address1</th>
                                                          <th>Address2</th>
-                                                         <th>select</th>
+                                                        
                                                      </tr>
                                                  </tfoot>
                                                  </table>
@@ -1578,22 +1568,25 @@
                                  <form class="form-horizontal">
                                      <div class="col-lg-12 col-md-12 " style="overflow: auto;">
 
-                                         <asp:Repeater ID="dgvCustomer" runat="server">
+                                         <asp:Repeater ID="dgvCustomer" runat="server" OnItemCommand="dgvCustomer_ItemCommand">
                                              <HeaderTemplate>
                                                  <table id="example5" class="table table-bordered table-striped table-responsive" style="overflow: auto;">
                                                      <thead>
                                                          <tr>
+                                                              <th>select</th>
                                                              <th>PartyCode</th>
                                                              <th>PartyFullName</th>
                                                              <th>Address1</th>
                                                              <th>Address2</th>
-                                                             <th>select</th>
                                                          </tr>
                                                      </thead>
                                              </HeaderTemplate>
 
                                              <ItemTemplate>
                                                  <tr>
+                                                       <td class="text-center">
+                                                         <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectPartyCode" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-hand-o-up"></i></asp:LinkButton>
+                                                     </td>
                                                      <td>
                                                          <asp:Label ID="lblEASLOTNo" runat="server" Text='<%# Bind("PartyCode")%>'></asp:Label></td>
                                                      <td>
@@ -1601,21 +1594,17 @@
                                                      <td>
                                                          <asp:Label ID="lblEndCusCode" runat="server" Text='<%# Bind("Address1")%>'></asp:Label></td>
                                                      <td>
-                                                         <asp:Label ID="lblJobSite" runat="server" Text='<%# Bind("Address2")%>'></asp:Label></td>
-
-                                                     <td class="text-center">
-                                                         <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectShipper" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-plus-square"></i></asp:LinkButton>
-                                                     </td>
+                                                         <asp:Label ID="lblJobSite" runat="server" Text='<%# Bind("Address2")%>'></asp:Label></td>      
                                                  </tr>
                                              </ItemTemplate>
                                              <FooterTemplate>
                                                  <tfoot>
                                                      <tr>
+                                                         <th>select</th>
                                                         <th>PartyCode</th>
                                                          <th>PartyFullName</th>
                                                          <th>Address1</th>
                                                          <th>Address2</th>
-                                                         <th>select</th>
                                                      </tr>
                                                  </tfoot>
                                                  </table>
@@ -1630,8 +1619,6 @@
                          </div>
                      </ContentTemplate>
                     </asp:UpdatePanel>
-
-
                 </div>
             </div>
         </asp:Panel>
@@ -1652,22 +1639,26 @@
                                  <form class="form-horizontal">
                                      <div class="col-lg-12 col-md-12 " style="overflow: auto;">
 
-                                         <asp:Repeater ID="dgvPickUp" runat="server">
+                                         <asp:Repeater ID="dgvPickUp" runat="server" OnItemCommand="dgvPickUp_ItemCommand">
                                              <HeaderTemplate>
                                                  <table id="example6" class="table table-bordered table-striped table-responsive" style="overflow: auto;">
                                                      <thead>
                                                          <tr>
+                                                             <th>select</th>
                                                              <th>PartyCode</th>
                                                              <th>PartyFullName</th>
                                                              <th>Address1</th>
                                                              <th>Address2</th>
-                                                             <th>select</th>
                                                          </tr>
                                                      </thead>
                                              </HeaderTemplate>
 
                                              <ItemTemplate>
                                                  <tr>
+                                                     
+                                                     <td class="text-center">
+                                                         <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectPartyCode" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-hand-o-up"></i></asp:LinkButton>
+                                                     </td>
                                                      <td>
                                                          <asp:Label ID="lblEASLOTNo" runat="server" Text='<%# Bind("PartyCode")%>'></asp:Label></td>
                                                      <td>
@@ -1677,19 +1668,16 @@
                                                      <td>
                                                          <asp:Label ID="lblJobSite" runat="server" Text='<%# Bind("Address2")%>'></asp:Label></td>
 
-                                                     <td class="text-center">
-                                                         <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectShipper" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-plus-square"></i></asp:LinkButton>
-                                                     </td>
                                                  </tr>
                                              </ItemTemplate>
                                              <FooterTemplate>
                                                  <tfoot>
                                                      <tr>
-                                                        <th>PartyCode</th>
+                                                         <th>select</th>
+                                                         <th>PartyCode</th>
                                                          <th>PartyFullName</th>
                                                          <th>Address1</th>
                                                          <th>Address2</th>
-                                                         <th>select</th>
                                                      </tr>
                                                  </tfoot>
                                                  </table>
@@ -1726,22 +1714,25 @@
                                  <form class="form-horizontal">
                                      <div class="col-lg-12 col-md-12 " style="overflow: auto;">
 
-                                         <asp:Repeater ID="dgvEndCus" runat="server">
+                                         <asp:Repeater ID="dgvEndCus" runat="server" OnItemCommand="dgvEndCus_ItemCommand">
                                              <HeaderTemplate>
                                                  <table id="example7" class="table table-bordered table-striped table-responsive" style="overflow: auto;">
                                                      <thead>
                                                          <tr>
+                                                             <th>select</th>
                                                              <th>PartyCode</th>
                                                              <th>PartyFullName</th>
                                                              <th>Address1</th>
                                                              <th>Address2</th>
-                                                             <th>select</th>
                                                          </tr>
                                                      </thead>
                                              </HeaderTemplate>
 
                                              <ItemTemplate>
                                                  <tr>
+                                                        <td class="text-center">
+                                                         <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectPartyCode" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-hand-o-up"></i></asp:LinkButton>
+                                                     </td>
                                                      <td>
                                                          <asp:Label ID="lblEASLOTNo" runat="server" Text='<%# Bind("PartyCode")%>'></asp:Label></td>
                                                      <td>
@@ -1751,19 +1742,17 @@
                                                      <td>
                                                          <asp:Label ID="lblJobSite" runat="server" Text='<%# Bind("Address2")%>'></asp:Label></td>
 
-                                                     <td class="text-center">
-                                                         <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectShipper" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-plus-square"></i></asp:LinkButton>
-                                                     </td>
+                                                  
                                                  </tr>
                                              </ItemTemplate>
                                              <FooterTemplate>
                                                  <tfoot>
                                                      <tr>
-                                                        <th>PartyCode</th>
+                                                         <th>select</th>
+                                                         <th>PartyCode</th>
                                                          <th>PartyFullName</th>
                                                          <th>Address1</th>
                                                          <th>Address2</th>
-                                                         <th>select</th>
                                                      </tr>
                                                  </tfoot>
                                                  </table>
@@ -1800,36 +1789,37 @@
                                  <form class="form-horizontal">
                                      <div class="col-lg-12 col-md-12 " style="overflow: auto;">
 
-                                         <asp:Repeater ID="dgvCustomerGroup" runat="server">
+                                         <asp:Repeater ID="dgvCustomerGroup" runat="server" OnItemCommand="dgvCustomerGroup_ItemCommand">
                                              <HeaderTemplate>
                                                  <table id="example8" class="table table-bordered table-striped table-responsive" style="overflow: auto;">
                                                      <thead>
                                                          <tr>
+                                                              <th>select</th>
                                                              <th>PartyCode</th>
                                                              <th>PartyFullName</th>
-                                                             <th>select</th>
+                                                           
                                                          </tr>
                                                      </thead>
                                              </HeaderTemplate>
 
                                              <ItemTemplate>
                                                  <tr>
+                                                      <td class="text-center">
+                                                         <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectPartyCode" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-hand-o-up"></i></asp:LinkButton>
+                                                     </td>
                                                      <td>
                                                          <asp:Label ID="lblEASLOTNo" runat="server" Text='<%# Bind("PartyCode")%>'></asp:Label></td>
                                                      <td>
                                                          <asp:Label ID="lblCustomerCode" runat="server" Text='<%# Bind("PartyFullName")%>'></asp:Label></td>
-                                                
-                                                     <td class="text-center">
-                                                         <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectShipper" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-plus-square"></i></asp:LinkButton>
-                                                     </td>
                                                  </tr>
                                              </ItemTemplate>
                                              <FooterTemplate>
                                                  <tfoot>
                                                      <tr>
+                                                        <th>select</th>
                                                         <th>PartyCode</th>
                                                         <th>PartyFullName</th>
-                                                        <th>select</th>
+                                                       
                                                      </tr>
                                                  </tfoot>
                                                  </table>
@@ -1844,8 +1834,6 @@
                          </div>
                      </ContentTemplate>
                     </asp:UpdatePanel>
-
-
                 </div>
             </div>
         </asp:Panel>
