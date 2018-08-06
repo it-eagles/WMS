@@ -35,12 +35,12 @@
                         </div>
                        
                         <!-- /.box-header -->
-               <from class="form-horizontal">
+               <div class="form-horizontal">
                    
                             <div class="box-footer text-right">
                                 <button runat="server" class="btn btn-app" id="btnAddParty" title="btnAddParty" onserverclick="btnAddParty_click"><i class="fa fa-save"></i> Save</button>
                            </div>
-                         </from>
+                         </div>
                     </div>
                 </div>
                <!--------- /.col-lg-12 col-md-12 ------------->
@@ -68,7 +68,7 @@
                                         <div class="col-lg-12 col-md-12">
                                             <!-- form start -->
 
-                                            <from class="form-horizontal">
+                                            <div class="form-horizontal">
                                                 <div class="form-group" >
                                      
                                                         <label for="txtImpProductCode" class="col-sm-2 control-label">Party Code :</label>
@@ -338,7 +338,7 @@
                                              </div>
                                                 </div>
                                                </div>
-                                        </from>
+                                        </div>
                                      <!-------- /.from --------->
 
                                         </div>
@@ -361,7 +361,7 @@
                   <div class="row margin-bottom">
                     <div class="col-lg-12 col-md-12">
 
-                        <from class="form-horizontal">
+                        <div class="form-horizontal">
                            <div class="box-body">   
                                               
                                     
@@ -452,7 +452,7 @@
                                     <!-- /.box-body -->
                           </div>
                           
-                       </from>
+                       </div>
 
                 <!--/.col-lg-6 col-md-6--->
                  </div>
@@ -471,7 +471,7 @@
 
                 <div class="col-lg-12 col-md-12">
 
-                       <from class="form-horizontal">
+                       <div class="form-horizontal">
                            <div class="box-body">   
                               <div class="form-group" >
                                      <label for="txtExpProductCode" class="col-sm-3 control-label">ยอดเงินค้ำประกันทั้งหมด :</label>
@@ -506,7 +506,7 @@
                                </div>
                                <!-- /.box-body -->
                              </div>
-                        </from>
+                        </div>
                   <!--/.col-lg-6 col-md-6--->
                      </div>
                 <!--/.row-->

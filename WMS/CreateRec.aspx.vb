@@ -24,15 +24,42 @@ Public Class CreateRec
         showIEATPermit()
         showunitdimension()
         showcurrency()
-        showListConsignee()
-        showListShipper()
-        showListDelivery()
-        showListPickUp()
-        showListCustomer()
-        showListEndCustomer()
-        showListCustomerGroup()
-        showListProductCode()
+        'showListConsignee()
+        'showListShipper()
+        'showListDelivery()
+        'showListPickUp()
+        'showListCustomer()
+        'showListEndCustomer()
+        'showListCustomerGroup()
+        'showListProductCode()
     End Sub
+    'Private Sub Test_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnconsigneecode.Init
+
+    '    If String.IsNullOrEmpty(txtConsigneecode.Value) Then
+    '        showListConsignee()
+
+    '        'Else
+    '        '    Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode Where u.PartyCode Like "%" & txtConsigneecode.Value & "%" And u.Consignee = "0"
+    '        '          Select New With {u.PartyCode,
+    '        '                           u.PartyFullName,
+    '        '                           br.Address1,
+    '        '                           br.Address2,
+    '        '                           br.Address3}).ToList()
+    '        '    If user.Count > 0 Then
+    '        '        Repeater1.DataSource = user
+    '        '        Repeater1.DataBind()
+    '        '    Else
+    '        '        Me.Repeater1.DataSource = Nothing
+    '        '        Me.Repeater1.DataBind()
+    '        '    End If
+
+    '    End If
+    'End Sub
+    'Protected Sub Test_Load2(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnProductCode.Init
+    '    'If String.IsNullOrEmpty(txtConsigneecode.Value) Then
+    '    '    showListProductCode()
+    '    'End If
+    'End Sub
 
     Private Sub showJobSite()
         ddlJobsite.Items.Clear()
@@ -345,34 +372,56 @@ Public Class CreateRec
     End Sub
     '--------------------------------------------------------Show Data Consignee In Modal-----------------------------------------
     Public Sub showListConsignee()
+        'Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode
+        '           Select New With {u.PartyCode,
+        '                            u.PartyFullName,
+        '                            br.Address1,
+        '                            br.Address2,
+        '                            br.Address3}).ToList()
+        'If user.Count > 0 Then
+        '    Repeater1.DataSource = user
+        '    Repeater1.DataBind()
+        'Else
+        '    Me.Repeater1.DataSource = Nothing
+        '    Me.Repeater1.DataBind()
+        'End If
+    End Sub
+    '--------------------------------------------------------Show Data Consignee In Modal-----------------------------------------
+    Private Sub selectConsigneeCode()
+        Dim cons_code As String
 
-        Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode
-                   Select New With {u.PartyCode,
-                                    u.PartyFullName,
-                                    br.Address1,
-                                    br.Address2,
-                                    br.Address3}).ToList()
+        If String.IsNullOrEmpty(txtConsigneeCode.Value.Trim) Then
+            cons_code = ""
 
-
-        If user.Count > 0 Then
-            Repeater1.DataSource = user
-            Repeater1.DataBind()
         Else
-            Me.Repeater1.DataSource = Nothing
-            Me.Repeater1.DataBind()
+            cons_code = txtConsigneeCode.Value.Trim
         End If
+
+        Dim cons = From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
+        Where (p.PartyCode = cons_code And p.Consignee = "0") Or p.Consignee = "0"
+        Select p.PartyCode, p.PartyFullName, pa.Address1, pa.Address2, pa.Address3
+
+        If cons.Count > 0 Then
+            Repeater1.DataSource = cons.ToList
+            Repeater1.DataBind()
+            ScriptManager.RegisterStartupScript(ConsigneeUpdatePanel, ConsigneeUpdatePanel.GetType(), "show", "$(function () { $('#" + ConsigneePanel.ClientID + "').modal('show'); });", True)
+            ConsigneeUpdatePanel.Update()
+        Else
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('ไม่พบข้อมูล Consignee Code นี้')", True)
+            Exit Sub
+
+        End If
+    End Sub
+    '--------------------------------------------------------------Click Search Consignee-----------------------------------------------
+    Protected Sub Unnamed_ServerClick(sender As Object, e As EventArgs)
+        selectConsigneeCode()
     End Sub
     '--------------------------------------------------------Click Data Consignee In Modal-----------------------------------------
     Protected Sub Repeater1_ItemCommand(source As Object, e As RepeaterCommandEventArgs) Handles Repeater1.ItemCommand
         Dim PartyCode As String = CStr(e.CommandArgument)
         Try
             If e.CommandName.Equals("SelectConsignee") Then
-
-                If String.IsNullOrEmpty(PartyCode) Then
-
-                    MsgBox("เป็นค่าว่าง")
-                Else
-                    Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode Where u.PartyCode = PartyCode And u.Consignee = "0").SingleOrDefault
+                Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode Where u.PartyCode = PartyCode And u.Consignee = "0").SingleOrDefault
 
                     txtConsigneecode.Value = user.u.PartyCode
                     txtNameEngConsign.Value = user.u.PartyFullName
@@ -382,30 +431,57 @@ Public Class CreateRec
                     txtAddress4.Value = user.br.Address4
                     txtAddress5.Value = user.br.ZipCode
                     txtEmail.Value = user.br.email
-
-                End If
             End If
         Catch ex As Exception
         End Try
     End Sub
     '--------------------------------------------------------Show Data Shipper In Modal-----------------------------------------
     Public Sub showListShipper()
+        'Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode
+        '           Select New With {u.PartyCode,
+        '                            u.PartyFullName,
+        '                            br.Address1,
+        '                            br.Address2,
+        '                            br.Address3}).ToList()
 
-        Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode
-                   Select New With {u.PartyCode,
-                                    u.PartyFullName,
-                                    br.Address1,
-                                    br.Address2,
-                                    br.Address3}).ToList()
 
+        'If user.Count > 0 Then
+        '    Repeater2.DataSource = user
+        '    Repeater2.DataBind()
+        'Else
+        '    Me.Repeater2.DataSource = Nothing
+        '    Me.Repeater2.DataBind()
+        'End If
+    End Sub
+    '--------------------------------------------------------Show Data Shipper In Modal-----------------------------------------
+    Private Sub selectShipperCode()
+        Dim Ship_code As String
 
-        If user.Count > 0 Then
-            Repeater2.DataSource = user
-            Repeater2.DataBind()
+        If String.IsNullOrEmpty(txtShippercode.Value.Trim) Then
+            Ship_code = ""
+
         Else
-            Me.Repeater2.DataSource = Nothing
-            Me.Repeater2.DataBind()
+            Ship_code = txtShippercode.Value.Trim
         End If
+
+        Dim cons = From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
+        Where (p.PartyCode = Ship_code And p.Shipper = "0") Or p.Shipper = "0"
+        Select p.PartyCode, p.PartyFullName, pa.Address1, pa.Address2, pa.Address3
+
+        If cons.Count > 0 Then
+            Repeater2.DataSource = cons.ToList
+            Repeater2.DataBind()
+            ScriptManager.RegisterStartupScript(ShipperUpdatePanel, ShipperUpdatePanel.GetType(), "show", "$(function () { $('#" + ShipperPanel.ClientID + "').modal('show'); });", True)
+            ShipperUpdatePanel.Update()
+        Else
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('ไม่พบข้อมูล Shipper Code นี้')", True)
+            Exit Sub
+
+        End If
+    End Sub
+    '--------------------------------------------------------------Click Search Shipper-----------------------------------------------
+    Protected Sub Unnamed_ServerClick1(sender As Object, e As EventArgs)
+        selectShipperCode()
     End Sub
     '--------------------------------------------------------Click Data Shipper In Modal-----------------------------------------
     Protected Sub Repeater2_ItemCommand(source As Object, e As RepeaterCommandEventArgs) Handles Repeater2.ItemCommand
@@ -435,24 +511,53 @@ Public Class CreateRec
     End Sub
     '--------------------------------------------------------Show Data Delivery In Modal-----------------------------------------
     Public Sub showListDelivery()
+        'Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode
+        '           Select New With {u.PartyCode,
+        '                            u.PartyFullName,
+        '                            br.Address1,
+        '                            br.Address2,
+        '                            br.Address3}).ToList()
 
-        Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode
-                   Select New With {u.PartyCode,
-                                    u.PartyFullName,
-                                    br.Address1,
-                                    br.Address2,
-                                    br.Address3}).ToList()
 
+        'If user.Count > 0 Then
+        '    Repeater3.DataSource = user
+        '    Repeater3.DataBind()
+        'Else
+        '    Me.Repeater3.DataSource = Nothing
+        '    Me.Repeater3.DataBind()
+        'End If
+    End Sub
+    '--------------------------------------------------------Show Data Delivery In Modal-----------------------------------------
+    Private Sub selectDeliveryCode()
+        Dim Delivery_code As String
 
-        If user.Count > 0 Then
-            Repeater3.DataSource = user
-            Repeater3.DataBind()
+        If String.IsNullOrEmpty(txtDeliverycode.Value.Trim) Then
+            Delivery_code = ""
+
         Else
-            Me.Repeater3.DataSource = Nothing
-            Me.Repeater3.DataBind()
+            Delivery_code = txtDeliverycode.Value.Trim
+        End If
+
+        Dim cons = From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
+        Where (p.PartyCode = Delivery_code And p.Shipper = "0") Or p.Shipper = "0"
+        Select p.PartyCode, p.PartyFullName, pa.Address1, pa.Address2, pa.Address3
+
+        If cons.Count > 0 Then
+            Repeater3.DataSource = cons.ToList
+            Repeater3.DataBind()
+            ScriptManager.RegisterStartupScript(DeliveryUpdatePanel, DeliveryUpdatePanel.GetType(), "show", "$(function () { $('#" + DeliveryPanel.ClientID + "').modal('show'); });", True)
+            DeliveryUpdatePanel.Update()
+        Else
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('ไม่พบข้อมูล Delivery Code นี้')", True)
+            Exit Sub
+
         End If
     End Sub
-    '--------------------------------------------------------Click Data Shipper In Modal-----------------------------------------
+    '--------------------------------------------------------------Click Search Delivery-----------------------------------------------
+    Protected Sub Unnamed_ServerClick2(sender As Object, e As EventArgs)
+        selectDeliveryCode()
+    End Sub
+    '--------------------------------------------------------Click Data Delivery In Modal-----------------------------------------
     Protected Sub Repeater3_ItemCommand(source As Object, e As RepeaterCommandEventArgs) Handles Repeater3.ItemCommand
         Dim PartyCode As String = CStr(e.CommandArgument)
         Try
@@ -481,22 +586,51 @@ Public Class CreateRec
     End Sub
     '--------------------------------------------------------Show Data PickUp In Modal-----------------------------------------
     Public Sub showListPickUp()
+        'Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode
+        '           Select New With {u.PartyCode,
+        '                            u.PartyFullName,
+        '                            br.Address1,
+        '                            br.Address2,
+        '                            br.Address3}).ToList()
 
-        Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode
-                   Select New With {u.PartyCode,
-                                    u.PartyFullName,
-                                    br.Address1,
-                                    br.Address2,
-                                    br.Address3}).ToList()
 
+        'If user.Count > 0 Then
+        '    Repeater4.DataSource = user
+        '    Repeater4.DataBind()
+        'Else
+        '    Me.Repeater4.DataSource = Nothing
+        '    Me.Repeater4.DataBind()
+        'End If
+    End Sub
+    '--------------------------------------------------------Show Data PickUp In Modal-----------------------------------------
+    Private Sub selectPickUpCode()
+        Dim Pickup_code As String
 
-        If user.Count > 0 Then
-            Repeater4.DataSource = user
-            Repeater4.DataBind()
+        If String.IsNullOrEmpty(txtCodePickUpPlace.Value.Trim) Then
+            Pickup_code = ""
+
         Else
-            Me.Repeater4.DataSource = Nothing
-            Me.Repeater4.DataBind()
+            Pickup_code = txtCodePickUpPlace.Value.Trim
         End If
+
+        Dim cons = From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
+        Where (p.PartyCode = Pickup_code And p.Shipper = "0") Or p.Shipper = "0"
+        Select p.PartyCode, p.PartyFullName, pa.Address1, pa.Address2, pa.Address3
+
+        If cons.Count > 0 Then
+            Repeater4.DataSource = cons.ToList
+            Repeater4.DataBind()
+            ScriptManager.RegisterStartupScript(PickUpUpdatePanel, PickUpUpdatePanel.GetType(), "show", "$(function () { $('#" + PickUpPanel.ClientID + "').modal('show'); });", True)
+            PickUpUpdatePanel.Update()
+        Else
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('ไม่พบข้อมูล PickUp Code นี้')", True)
+            Exit Sub
+
+        End If
+    End Sub
+    '--------------------------------------------------------------Click Search PickUp-----------------------------------------------
+    Protected Sub Unnamed_ServerClick3(sender As Object, e As EventArgs)
+        selectPickUpCode()
     End Sub
     '--------------------------------------------------------Click Data PickUp In Modal-----------------------------------------
     Protected Sub Repeater4_ItemCommand(source As Object, e As RepeaterCommandEventArgs) Handles Repeater4.ItemCommand
@@ -527,22 +661,51 @@ Public Class CreateRec
     End Sub
     '--------------------------------------------------------Show Data Customer In Modal-----------------------------------------
     Public Sub showListCustomer()
+        'Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode
+        '           Select New With {u.PartyCode,
+        '                            u.PartyFullName,
+        '                            br.Address1,
+        '                            br.Address2,
+        '                            br.Address3}).ToList()
 
-        Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode
-                   Select New With {u.PartyCode,
-                                    u.PartyFullName,
-                                    br.Address1,
-                                    br.Address2,
-                                    br.Address3}).ToList()
 
+        'If user.Count > 0 Then
+        '    Repeater5.DataSource = user
+        '    Repeater5.DataBind()
+        'Else
+        '    Me.Repeater5.DataSource = Nothing
+        '    Me.Repeater5.DataBind()
+        'End If
+    End Sub
+    '--------------------------------------------------------Show Data Customer In Modal-----------------------------------------
+    Private Sub selectCustomerCode()
+        Dim Customer_code As String
 
-        If user.Count > 0 Then
-            Repeater5.DataSource = user
-            Repeater5.DataBind()
+        If String.IsNullOrEmpty(txtCustomercode.Value.Trim) Then
+            Customer_code = ""
+
         Else
-            Me.Repeater5.DataSource = Nothing
-            Me.Repeater5.DataBind()
+            Customer_code = txtCustomercode.Value.Trim
         End If
+
+        Dim cons = From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
+        Where (p.PartyCode = Customer_code And p.Shipper = "0") Or p.Shipper = "0"
+        Select p.PartyCode, p.PartyFullName, pa.Address1, pa.Address2, pa.Address3
+
+        If cons.Count > 0 Then
+            Repeater5.DataSource = cons.ToList
+            Repeater5.DataBind()
+            ScriptManager.RegisterStartupScript(CustomerUpdatePanel, CustomerUpdatePanel.GetType(), "show", "$(function () { $('#" + CustomerPanel.ClientID + "').modal('show'); });", True)
+            CustomerUpdatePanel.Update()
+        Else
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('ไม่พบข้อมูล Customer Code นี้')", True)
+            Exit Sub
+
+        End If
+    End Sub
+    '--------------------------------------------------------------Click Search CustomerCode-----------------------------------------------
+    Protected Sub Unnamed_ServerClick4(sender As Object, e As EventArgs)
+        selectCustomerCode()
     End Sub
     '--------------------------------------------------------Click Data Customer In Modal-----------------------------------------
     Protected Sub Repeater5_ItemCommand(source As Object, e As RepeaterCommandEventArgs) Handles Repeater5.ItemCommand
@@ -573,23 +736,53 @@ Public Class CreateRec
     End Sub
     '--------------------------------------------------------Show Data Customer In Modal-----------------------------------------
     Public Sub showListEndCustomer()
+        'Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode
+        '           Select New With {u.PartyCode,
+        '                            u.PartyFullName,
+        '                            br.Address1,
+        '                            br.Address2,
+        '                            br.Address3}).ToList()
 
-        Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode
-                   Select New With {u.PartyCode,
-                                    u.PartyFullName,
-                                    br.Address1,
-                                    br.Address2,
-                                    br.Address3}).ToList()
 
+        'If user.Count > 0 Then
+        '    Repeater6.DataSource = user
+        '    Repeater6.DataBind()
+        'Else
+        '    Me.Repeater6.DataSource = Nothing
+        '    Me.Repeater6.DataBind()
+        'End If
+    End Sub
+    '--------------------------------------------------------Show Data EndCustomer In Modal-----------------------------------------
+    Private Sub selectEndCustomerCode()
+        Dim EndCustomer_code As String
 
-        If user.Count > 0 Then
-            Repeater6.DataSource = user
-            Repeater6.DataBind()
+        If String.IsNullOrEmpty(txtCodeEndCustomer.Value.Trim) Then
+            EndCustomer_code = ""
+
         Else
-            Me.Repeater6.DataSource = Nothing
-            Me.Repeater6.DataBind()
+            EndCustomer_code = txtCodeEndCustomer.Value.Trim
+        End If
+
+        Dim cons = From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
+        Where (p.PartyCode = EndCustomer_code And p.Shipper = "0") Or p.Shipper = "0"
+        Select p.PartyCode, p.PartyFullName, pa.Address1, pa.Address2, pa.Address3
+
+        If cons.Count > 0 Then
+            Repeater6.DataSource = cons.ToList
+            Repeater6.DataBind()
+            ScriptManager.RegisterStartupScript(EndCustomerUpdatePanel, EndCustomerUpdatePanel.GetType(), "show", "$(function () { $('#" + EndCustomerPanel.ClientID + "').modal('show'); });", True)
+            EndCustomerUpdatePanel.Update()
+        Else
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('ไม่พบข้อมูล EndCustomer Code นี้')", True)
+            Exit Sub
+
         End If
     End Sub
+    '--------------------------------------------------------------Click Search EndCustomer-----------------------------------------------
+    Protected Sub Unnamed_ServerClick5(sender As Object, e As EventArgs)
+        selectEndCustomerCode()
+    End Sub
+
     '--------------------------------------------------------Click Data EndCustomer In Modal-----------------------------------------
     Protected Sub Repeater6_ItemCommand(source As Object, e As RepeaterCommandEventArgs) Handles Repeater6.ItemCommand
         Dim PartyCode As String = CStr(e.CommandArgument)
@@ -620,18 +813,48 @@ Public Class CreateRec
     '--------------------------------------------------------Show Data CustomerGroup In Modal-----------------------------------------
     Public Sub showListCustomerGroup()
 
-        Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode
+        'Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode
+        '           Select New With {u.PartyCode,
+        '                            u.PartyFullName}).ToList()
+
+
+        'If user.Count > 0 Then
+        '    Repeater7.DataSource = user
+        '    Repeater7.DataBind()
+        'Else
+        '    Me.Repeater7.DataSource = Nothing
+        '    Me.Repeater7.DataBind()
+        'End If
+    End Sub
+    '--------------------------------------------------------Show Data CustomerGroup In Modal-----------------------------------------
+    Private Sub selectCustomerGroupCode()
+        Dim CustomerGroup_code As String
+
+        If String.IsNullOrEmpty(txtCodeCustommerGroup.Value.Trim) Then
+            CustomerGroup_code = ""
+
+        Else
+            CustomerGroup_code = txtCodeCustommerGroup.Value.Trim
+        End If
+
+        Dim cons = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode
                    Select New With {u.PartyCode,
                                     u.PartyFullName}).ToList()
 
-
-        If user.Count > 0 Then
-            Repeater7.DataSource = user
+        If cons.Count > 0 Then
+            Repeater7.DataSource = cons.ToList
             Repeater7.DataBind()
+            ScriptManager.RegisterStartupScript(CustomerGroupUpdatePanel, CustomerGroupUpdatePanel.GetType(), "show", "$(function () { $('#" + CustomerGroupPanel.ClientID + "').modal('show'); });", True)
+            CustomerGroupUpdatePanel.Update()
         Else
-            Me.Repeater7.DataSource = Nothing
-            Me.Repeater7.DataBind()
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('ไม่พบข้อมูล CustomerGroup Code นี้')", True)
+            Exit Sub
+
         End If
+    End Sub
+    '--------------------------------------------------------------Click Search CustomerGroup-----------------------------------------------
+    Protected Sub Unnamed_ServerClick6(sender As Object, e As EventArgs)
+        selectCustomerGroupCode()
     End Sub
     '--------------------------------------------------------Click Data CustomerGroup In Modal-----------------------------------------
     Protected Sub Repeater7_ItemCommand(source As Object, e As RepeaterCommandEventArgs) Handles Repeater7.ItemCommand
@@ -654,7 +877,6 @@ Public Class CreateRec
     End Sub
     '--------------------------------------------------------Show Data ProductCode In Modal-----------------------------------------
     Public Sub showListProductCode()
-
         'Dim user = (From u In db.tblProductDetails
         '           Select New With {u.ProductCode,
         '                            u.ImpDesc1,
@@ -670,23 +892,57 @@ Public Class CreateRec
         '    Me.Repeater8.DataBind()
         'End If
     End Sub
+    '--------------------------------------------------------Show Data ProductCode In Modal-----------------------------------------
+    Private Sub selectProductCode()
+        Dim ProductCode_code As String
+
+        If String.IsNullOrEmpty(txtCodeCustommerGroup.Value.Trim) Then
+            ProductCode_code = ""
+
+        Else
+            ProductCode_code = txtCodeCustommerGroup.Value.Trim
+        End If
+
+        Dim cons = (From u In db.tblProductDetails
+                    Where (u.ProductCode = ProductCode_code) Or ProductCode_code = ""
+                   Select New With {u.ProductCode,
+                                    u.ImpDesc1,
+                                    u.PONo,
+                                    u.CustomerPart,
+                                    u.EndUserPart}).ToList()
+
+        If cons.Count > 0 Then
+            Repeater8.DataSource = cons.ToList
+            Repeater8.DataBind()
+            ScriptManager.RegisterStartupScript(ProductCodeUpdatePanel, ProductCodeUpdatePanel.GetType(), "show", "$(function () { $('#" + ProductCodePanel.ClientID + "').modal('show'); });", True)
+            ProductCodeUpdatePanel.Update()
+        Else
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('ไม่พบข้อมูล ProductCode Code นี้')", True)
+            Exit Sub
+
+        End If
+    End Sub
+    '--------------------------------------------------------------Click Search ProductCode-----------------------------------------------
+    Protected Sub Unnamed_ServerClick7(sender As Object, e As EventArgs)
+        selectProductCode()
+    End Sub
     '--------------------------------------------------------Click Data ProductCode In Modal-----------------------------------------
     Protected Sub Repeater8_ItemCommand(source As Object, e As RepeaterCommandEventArgs) Handles Repeater8.ItemCommand
-        'Dim ProductCode As String = CStr(e.CommandArgument)
-        'Try
-        '    If e.CommandName.Equals("SelectProductCode") Then
+        Dim ProductCode As String = CStr(e.CommandArgument)
+        Try
+            If e.CommandName.Equals("SelectProductCode") Then
 
-        '        If String.IsNullOrEmpty(ProductCode) Then
+                If String.IsNullOrEmpty(ProductCode) Then
 
-        '            MsgBox("เป็นค่าว่าง")
-        '        Else
-        '            Dim user = (From u In db.tblProductDetails Where u.ProductCode = ProductCode).SingleOrDefault
+                    MsgBox("เป็นค่าว่าง")
+                Else
+                    Dim user = (From u In db.tblProductDetails Where u.ProductCode = ProductCode).SingleOrDefault
 
-        '            txtProductCodeInvoice.Value = user.ProductCode
-        '            txtProductNameInvoice.Value = user.ImpDesc1
-        '        End If
-        '    End If
-        'Catch ex As Exception
-        'End Try
+                    txtProductCodeInvoice.Value = user.ProductCode
+                    txtProductNameInvoice.Value = user.ImpDesc1
+                End If
+            End If
+        Catch ex As Exception
+        End Try
     End Sub
 End Class
