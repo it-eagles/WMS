@@ -12,10 +12,10 @@
         showshipmode()
         showdeliveryterm()
         showshipmark()
-        showListShipper()
-        showListConsignee()
-        showListCustomerCode()
-        showListCustomerCode_BillTo()
+        'showListShipper()
+        'showListConsignee()
+        'showListCustomerCode()
+        'showListCustomerCode_BillTo()
     End Sub
 
     Protected Sub NetWeight_PACKINGLIST_ServerClick(sender As Object, e As EventArgs)
@@ -53,7 +53,7 @@
     Protected Sub btnGen_BeforeTab_ServerClick(sender As Object, e As EventArgs)
 
     End Sub
-
+    '---------------------------------------------Show All dll Country--------------------------------------------
     Private Sub showCountry()
         ddlOriginCountry_Invoice.Items.Clear()
         ddlOriginCountry_Invoice.Items.Add(New ListItem("--Select Country--", ""))
@@ -108,7 +108,7 @@
 
         End Try
     End Sub
-
+    '------------------------------------------------------Show ddl PAYMENTTERM--------------------------------------------------
     Private Sub showpaymenterm()
         ddlTermOfPayment_Invoice.Items.Clear()
         ddlTermOfPayment_Invoice.Items.Add(New ListItem("--Select Payment--", ""))
@@ -132,7 +132,7 @@
 
         End Try
     End Sub
-
+    '-----------------------------------------------------Show ddl INCOTERM------------------------------------------
     Private Sub showincoterm()
         ddlTerm_Invoice.Items.Clear()
         ddlTerm_Invoice.Items.Add(New ListItem("--Select Payment--", ""))
@@ -156,7 +156,7 @@
 
         End Try
     End Sub
-
+    '-------------------------------------------------------Show ddl Currency--------------------------------------------------
     Private Sub showcurrency()
         ddlTotalInvoice_Invoice.Items.Clear()
         ddlTotalInvoice_Invoice.Items.Add(New ListItem("--Select Currency--", ""))
@@ -285,7 +285,7 @@
 
         End Try
     End Sub
-
+    '-------------------------------------------------------------Show ddl TRUCKLICENSE--------------------------------------------
     Private Sub showtrucklicense()
         ddlTruckLicense_Invoice.Items.Clear()
         ddlTruckLicense_Invoice.Items.Add(New ListItem("--Select TruckLicense--", ""))
@@ -309,7 +309,7 @@
 
         End Try
     End Sub
-
+    '--------------------------------------------------------------Show ddl DRIVER--------------------------------------------
     Private Sub showtruckdriver()
         ddlDriverName_Invoice.Items.Clear()
         ddlDriverName_Invoice.Items.Add(New ListItem("--Select TruckDriver--", ""))
@@ -333,7 +333,7 @@
 
         End Try
     End Sub
-
+    '----------------------------------------------------------Show ddl  TRANSMODE-------------------------------------------
     Private Sub showshipmode()
         ddlShipMode_EASJOB.Items.Clear()
         ddlShipMode_EASJOB.Items.Add(New ListItem("--Select ShipMode--", ""))
@@ -356,7 +356,7 @@
         Catch ex As Exception
         End Try
     End Sub
-
+    '---------------------------------------------------------Show ddl PAYMENTTERM---------------------------------------------------
     Private Sub showdeliveryterm()
         ddlDeliveryTerm_EASJOB.Items.Clear()
         ddlDeliveryTerm_EASJOB.Items.Add(New ListItem("--Select Delivery--", ""))
@@ -379,7 +379,7 @@
         Catch ex As Exception
         End Try
     End Sub
-
+    '------------------------------------------------------------Show ddl SHIPMARK-----------------------------------------------------
     Private Sub showshipmark()
         ddlShippingMark_EASJOB.Items.Clear()
         ddlShippingMark_EASJOB.Items.Add(New ListItem("--Select Delivery--", ""))
@@ -405,21 +405,51 @@
     '--------------------------------------------------------Show Data Shipper In Modal-----------------------------------------
     Public Sub showListShipper()
 
-        Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode
-                   Select New With {u.PartyCode,
-                                    u.PartyFullName,
-                                    br.Address1,
-                                    br.Address2,
-                                    br.Address3}).ToList()
+        'Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode
+        '           Select New With {u.PartyCode,
+        '                            u.PartyFullName,
+        '                            br.Address1,
+        '                            br.Address2,
+        '                            br.Address3}).ToList()
 
 
-        If user.Count > 0 Then
-            Repeater1.DataSource = user
-            Repeater1.DataBind()
+        'If user.Count > 0 Then
+        '    Repeater1.DataSource = user
+        '    Repeater1.DataBind()
+        'Else
+        '    Me.Repeater1.DataSource = Nothing
+        '    Me.Repeater1.DataBind()
+        'End If
+    End Sub
+    '--------------------------------------------------------Show Data Shipper In Modal-----------------------------------------
+    Private Sub selectShipperCode()
+        Dim Ship_code As String
+
+        If String.IsNullOrEmpty(txtShippercode.Value.Trim) Then
+            Ship_code = ""
+
         Else
-            Me.Repeater1.DataSource = Nothing
-            Me.Repeater1.DataBind()
+            Ship_code = txtShippercode.Value.Trim
         End If
+
+        Dim cons = From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
+        Where (p.PartyCode = Ship_code And p.Shipper = "0") Or p.Shipper = "0"
+        Select p.PartyCode, p.PartyFullName, pa.Address1, pa.Address2, pa.Address3
+
+        If cons.Count > 0 Then
+            Repeater1.DataSource = cons.ToList
+            Repeater1.DataBind()
+            ScriptManager.RegisterStartupScript(ShipperUpdatePanel, ShipperUpdatePanel.GetType(), "show", "$(function () { $('#" + ShipperPanel.ClientID + "').modal('show'); });", True)
+            ShipperUpdatePanel.Update()
+        Else
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('ไม่พบข้อมูล Shipper Code นี้')", True)
+            Exit Sub
+
+        End If
+    End Sub
+    '--------------------------------------------------------------Click Search Shipper-----------------------------------------------
+    Protected Sub Unnamed_ServerClick(sender As Object, e As EventArgs)
+        selectShipperCode()
     End Sub
     '--------------------------------------------------------Click Data Shipper In Modal-----------------------------------------
     Protected Sub Repeater1_ItemCommand(source As Object, e As RepeaterCommandEventArgs) Handles Repeater1.ItemCommand
@@ -450,21 +480,51 @@
     '--------------------------------------------------------Show Data Consignee In Modal-----------------------------------------
     Public Sub showListConsignee()
 
-        Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode
-                   Select New With {u.PartyCode,
-                                    u.PartyFullName,
-                                    br.Address1,
-                                    br.Address2,
-                                    br.Address3}).ToList()
+        'Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode
+        '           Select New With {u.PartyCode,
+        '                            u.PartyFullName,
+        '                            br.Address1,
+        '                            br.Address2,
+        '                            br.Address3}).ToList()
 
 
-        If user.Count > 0 Then
-            Repeater2.DataSource = user
-            Repeater2.DataBind()
+        'If user.Count > 0 Then
+        '    Repeater2.DataSource = user
+        '    Repeater2.DataBind()
+        'Else
+        '    Me.Repeater2.DataSource = Nothing
+        '    Me.Repeater2.DataBind()
+        'End If
+    End Sub
+    '--------------------------------------------------------Show Data Consignee In Modal-----------------------------------------
+    Private Sub selectConsigneeCode()
+        Dim cons_code As String
+
+        If String.IsNullOrEmpty(txtConsigneeCode.Value.Trim) Then
+            cons_code = ""
+
         Else
-            Me.Repeater2.DataSource = Nothing
-            Me.Repeater2.DataBind()
+            cons_code = txtConsigneeCode.Value.Trim
         End If
+
+        Dim cons = From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
+        Where (p.PartyCode = cons_code And p.Consignee = "0") Or p.Consignee = "0"
+        Select p.PartyCode, p.PartyFullName, pa.Address1, pa.Address2, pa.Address3
+
+        If cons.Count > 0 Then
+            Repeater2.DataSource = cons.ToList
+            Repeater2.DataBind()
+            ScriptManager.RegisterStartupScript(ConsigneeUpdatePanel, ConsigneeUpdatePanel.GetType(), "show", "$(function () { $('#" + ConsigneePanel.ClientID + "').modal('show'); });", True)
+            ConsigneeUpdatePanel.Update()
+        Else
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('ไม่พบข้อมูล Consignee Code นี้')", True)
+            Exit Sub
+
+        End If
+    End Sub
+    '--------------------------------------------------------------Click Search Consignee-----------------------------------------------
+    Protected Sub Unnamed_ServerClick1(sender As Object, e As EventArgs)
+        selectConsigneeCode()
     End Sub
     '--------------------------------------------------------Click Data Consignee In Modal-----------------------------------------
     Protected Sub Repeater2_ItemCommand(source As Object, e As RepeaterCommandEventArgs) Handles Repeater2.ItemCommand
@@ -495,21 +555,51 @@
     '--------------------------------------------------------Show Data CustomerCode In Modal-----------------------------------------
     Public Sub showListCustomerCode()
 
-        Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode
-                   Select New With {u.PartyCode,
-                                    u.PartyFullName,
-                                    br.Address1,
-                                    br.Address2,
-                                    br.Address3}).ToList()
+        'Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode
+        '           Select New With {u.PartyCode,
+        '                            u.PartyFullName,
+        '                            br.Address1,
+        '                            br.Address2,
+        '                            br.Address3}).ToList()
 
 
-        If user.Count > 0 Then
-            Repeater3.DataSource = user
-            Repeater3.DataBind()
+        'If user.Count > 0 Then
+        '    Repeater3.DataSource = user
+        '    Repeater3.DataBind()
+        'Else
+        '    Me.Repeater3.DataSource = Nothing
+        '    Me.Repeater3.DataBind()
+        'End If
+    End Sub
+    '--------------------------------------------------------Show Data CustomerCode In Modal-----------------------------------------
+    Private Sub selectCustomerCode()
+        Dim cus_code As String
+
+        If String.IsNullOrEmpty(txtCustomerCode_EASJOB.Value.Trim) Then
+            cus_code = ""
+
         Else
-            Me.Repeater3.DataSource = Nothing
-            Me.Repeater3.DataBind()
+            cus_code = txtCustomerCode_EASJOB.Value.Trim
         End If
+
+        Dim cons = From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
+        Where (p.PartyCode = cus_code And p.Consignee = "0") Or p.Consignee = "0"
+        Select p.PartyCode, p.PartyFullName, pa.Address1, pa.Address2, pa.Address3
+
+        If cons.Count > 0 Then
+            Repeater3.DataSource = cons.ToList
+            Repeater3.DataBind()
+            ScriptManager.RegisterStartupScript(CustomerCodeUpdatePanel, CustomerCodeUpdatePanel.GetType(), "show", "$(function () { $('#" + CustomerCodePanel.ClientID + "').modal('show'); });", True)
+            CustomerCodeUpdatePanel.Update()
+        Else
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('ไม่พบข้อมูล Customer Code นี้')", True)
+            Exit Sub
+
+        End If
+    End Sub
+    '--------------------------------------------------------------Click Search CustomerCode-----------------------------------------------
+    Protected Sub Unnamed_ServerClick2(sender As Object, e As EventArgs)
+        selectCustomerCode()
     End Sub
     '--------------------------------------------------------Click Data CustomerCode In Modal-----------------------------------------
     Protected Sub Repeater3_ItemCommand(source As Object, e As RepeaterCommandEventArgs) Handles Repeater3.ItemCommand
@@ -538,21 +628,51 @@
     '--------------------------------------------------------Show Data CustomerCode_BillTo In Modal-----------------------------------------
     Public Sub showListCustomerCode_BillTo()
 
-        Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode
-                   Select New With {u.PartyCode,
-                                    u.PartyFullName,
-                                    br.Address1,
-                                    br.Address2,
-                                    br.Address3}).ToList()
+        'Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode
+        '           Select New With {u.PartyCode,
+        '                            u.PartyFullName,
+        '                            br.Address1,
+        '                            br.Address2,
+        '                            br.Address3}).ToList()
 
 
-        If user.Count > 0 Then
-            Repeater4.DataSource = user
-            Repeater4.DataBind()
+        'If user.Count > 0 Then
+        '    Repeater4.DataSource = user
+        '    Repeater4.DataBind()
+        'Else
+        '    Me.Repeater4.DataSource = Nothing
+        '    Me.Repeater4.DataBind()
+        'End If
+    End Sub
+    '--------------------------------------------------------Show Data CustomerCode_BillTo In Modal-----------------------------------------
+    Private Sub selectCustomerCode_BillTo()
+        Dim cus_billto_code As String
+
+        If String.IsNullOrEmpty(txtCustomerCode_EASJOB.Value.Trim) Then
+            cus_billto_code = ""
+
         Else
-            Me.Repeater4.DataSource = Nothing
-            Me.Repeater4.DataBind()
+            cus_billto_code = txtCustomerCode_EASJOB.Value.Trim
         End If
+
+        Dim cons = From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
+        Where (p.PartyCode = cus_billto_code And p.Consignee = "0") Or p.Consignee = "0"
+        Select p.PartyCode, p.PartyFullName, pa.Address1, pa.Address2, pa.Address3
+
+        If cons.Count > 0 Then
+            Repeater4.DataSource = cons.ToList
+            Repeater4.DataBind()
+            ScriptManager.RegisterStartupScript(CustomerCode_BillToUpdatePanel, CustomerCode_BillToUpdatePanel.GetType(), "show", "$(function () { $('#" + CustomerCode_BillToPanel.ClientID + "').modal('show'); });", True)
+            CustomerCode_BillToUpdatePanel.Update()
+        Else
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('ไม่พบข้อมูล Customer Code นี้')", True)
+            Exit Sub
+
+        End If
+    End Sub
+    '--------------------------------------------------------------Click Search CustomerCode_BillTo-----------------------------------------------
+    Protected Sub Unnamed_ServerClick3(sender As Object, e As EventArgs)
+        selectCustomerCode_BillTo()
     End Sub
     '--------------------------------------------------------Click Data CustomerCode_BillTo In Modal-----------------------------------------
     Protected Sub Repeater4_ItemCommand(source As Object, e As RepeaterCommandEventArgs) Handles Repeater4.ItemCommand
@@ -578,4 +698,5 @@
         Catch ex As Exception
         End Try
     End Sub
+
 End Class
