@@ -27,18 +27,18 @@
           <div class="box box-default">
             <div class="box-body">
             <div class="col-xs-6">
-                <a class="btn btn-app">
+                <a class="btn btn-app" id="btnAddHead">
                 <i class="fa fa-inbox"></i> Add
                 </a>
-                <a class="btn btn-app">
+                <a class="btn btn-app" id="btnEditHead">
                 <i class="fa fa-edit"></i> Edit
                 </a>
             </div>
             <div class="col-xs-6 text-right">
-                <a class="btn btn-app">
+                <a class="btn btn-app" id="btnSaveAddHead">
                 <i class="fa fa-save"></i> Save Add
                 </a>
-                <a class="btn btn-app">
+                <a class="btn btn-app" id="btnSaveEditHead">
                 <i class="fa fa-save"></i> Save Edit
                 </a>
             </div>
@@ -360,7 +360,7 @@
                       <div class="bootstrap-timepicker">
 
                   <div class="input-group">
-                    <input type="text" class="form-control timepicker" id="txtTimePickUp" autocomplete="off"/>
+                    <input type="text" class="form-control timepicker" id="txtTimePickUp" autocomplete="off" runat="server"/>
                   <div class="input-group-addon">
                       <i class="fa fa-clock-o"></i>
                     </div>
@@ -380,7 +380,7 @@
                  <div class="form-group">
                   <label for="txtRamarkActual" class="col-sm-3 control-label">Remark:</label>
                   <div class="col-sm-9">
-                    <textarea class="form-control" rows="3" id="txtRamarkActual" placeholder="Remark" style="height: 71px; width: 917px;"></textarea>
+                    <textarea class="form-control" rows="3" id="txtRamarkActual" placeholder="Remark" style="height: 71px; width: 917px;" runat="server"></textarea>
                   </div>                  
                 </div>
 
@@ -521,7 +521,7 @@
                   <div class="col-sm-4">
                     <div class="bootstrap-timepicker">
                   <div class="input-group">
-                    <input type="text" class="form-control timepicker" id="txtpickupETD" autocomplete="off"/>
+                    <input type="text" class="form-control timepicker" id="txtpickupETD" autocomplete="off" runat="server"/>
                   <div class="input-group-addon">
                       <i class="fa fa-clock-o"></i>
                     </div>
@@ -532,7 +532,7 @@
                   <div class="col-sm-4">
                       <div class="bootstrap-timepicker">
                   <div class="input-group">
-                    <input type="text" class="form-control timepicker" id="txtpickupETA" autocomplete="off"/>
+                    <input type="text" class="form-control timepicker" id="txtpickupETA" autocomplete="off" runat="server"/>
                   <div class="input-group-addon">
                       <i class="fa fa-clock-o"></i>
                     </div>
@@ -551,7 +551,7 @@
                   <div class="col-sm-4">
                       <div class="bootstrap-timepicker">
                   <div class="input-group">
-                    <input type="text" class="form-control timepicker" id="txtpickupETD2" autocomplete="off"/>
+                    <input type="text" class="form-control timepicker" id="txtpickupETD2" autocomplete="off" runat="server"/>
                   <div class="input-group-addon">
                       <i class="fa fa-clock-o"></i>
                     </div>
@@ -562,7 +562,7 @@
                   <div class="col-sm-4">
                       <div class="bootstrap-timepicker">
                   <div class="input-group">
-                    <input type="text" class="form-control timepicker" id="txtpickupETA2" autocomplete="off"/>
+                    <input type="text" class="form-control timepicker" id="txtpickupETA2" autocomplete="off" runat="server"/>
                   <div class="input-group-addon">
                       <i class="fa fa-clock-o"></i>
                     </div>
@@ -581,7 +581,7 @@
                   <div class="col-sm-4">
                       <div class="bootstrap-timepicker">
                   <div class="input-group">
-                    <input type="text" class="form-control timepicker" id="txtpickupETD3" autocomplete="off"/>
+                    <input type="text" class="form-control timepicker" id="txtpickupETD3" autocomplete="off" runat="server"/>
                   <div class="input-group-addon">
                       <i class="fa fa-clock-o"></i>
                     </div>
@@ -592,7 +592,7 @@
                   <div class="col-sm-4">
                       <div class="bootstrap-timepicker">
                   <div class="input-group">
-                    <input type="text" class="form-control timepicker" id="txtpickupETA3" autocomplete="off"/>
+                    <input type="text" class="form-control timepicker" id="txtpickupETA3" autocomplete="off" runat="server"/>
                   <div class="input-group-addon">
                       <i class="fa fa-clock-o"></i>
                     </div>
@@ -611,7 +611,7 @@
                   <div class="col-sm-4">
                       <div class="bootstrap-timepicker">
                   <div class="input-group">
-                    <input type="text" class="form-control timepicker" id="txtpickupETD4" autocomplete="off"/>
+                    <input type="text" class="form-control timepicker" id="txtpickupETD4" autocomplete="off" runat="server"/>
                   <div class="input-group-addon">
                       <i class="fa fa-clock-o"></i>
                     </div>
@@ -622,7 +622,7 @@
                   <div class="col-sm-4">
                       <div class="bootstrap-timepicker">
                   <div class="input-group">
-                    <input type="text" class="form-control timepicker" id="txtpickupETA4" autocomplete="off"/>
+                    <input type="text" class="form-control timepicker" id="txtpickupETA4" autocomplete="off" runat="server"/>
                   <div class="input-group-addon">
                       <i class="fa fa-clock-o"></i>
                     </div>
@@ -642,7 +642,7 @@
                   <div class="col-sm-4">
                       <div class="bootstrap-timepicker">
                   <div class="input-group">
-                    <input type="text" class="form-control timepicker" id="txtArrivalToEAS" autocomplete="off"/>
+                    <input type="text" class="form-control timepicker" id="txtArrivalToEAS" autocomplete="off" runat="server"/>
                   <div class="input-group-addon">
                       <i class="fa fa-clock-o"></i>
                     </div>
@@ -1791,6 +1791,7 @@
             <%--</div>--%>
             </asp:Panel>
         <!-- End Shipper Modal -->
+
                 <!-- Delivery Modal -->
         <!-- Modal -->
         <asp:Panel ID="DeliveryPanel" runat="server" CssClass="modal" TabIndex="-1" role="dialog" aria-labelledby="myLabe1">

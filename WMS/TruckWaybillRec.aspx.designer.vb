@@ -482,6 +482,24 @@ Partial Public Class TruckWaybillRec
     Protected WithEvents btnCencel_Detail As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
+    '''NofityPartyPanel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents NofityPartyPanel As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''NofityPartyUpdatePanel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents NofityPartyUpdatePanel As Global.System.Web.UI.UpdatePanel
+
+    '''<summary>
     '''Repeater1 control.
     '''</summary>
     '''<remarks>
@@ -489,6 +507,24 @@ Partial Public Class TruckWaybillRec
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents Repeater1 As Global.System.Web.UI.WebControls.Repeater
+
+    '''<summary>
+    '''ShipperPanel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ShipperPanel As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''ShipperUpdatePanel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ShipperUpdatePanel As Global.System.Web.UI.UpdatePanel
 
     '''<summary>
     '''Repeater2 control.
@@ -500,6 +536,24 @@ Partial Public Class TruckWaybillRec
     Protected WithEvents Repeater2 As Global.System.Web.UI.WebControls.Repeater
 
     '''<summary>
+    '''ConsigneePanel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ConsigneePanel As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''ConsigneeUpdatePanel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ConsigneeUpdatePanel As Global.System.Web.UI.UpdatePanel
+
+    '''<summary>
     '''Repeater3 control.
     '''</summary>
     '''<remarks>
@@ -507,6 +561,24 @@ Partial Public Class TruckWaybillRec
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents Repeater3 As Global.System.Web.UI.WebControls.Repeater
+
+    '''<summary>
+    '''InvoicePanel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents InvoicePanel As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''InvoiceUpdatePanel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents InvoiceUpdatePanel As Global.System.Web.UI.UpdatePanel
 
     '''<summary>
     '''Repeater4 control.

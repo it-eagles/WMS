@@ -21,6 +21,32 @@
         <section class="content">
 
             <div class="row">
+
+                        <div class="row">
+        <div class="col-xs-12">
+          <div class="box box-default">
+            <div class="box-body">
+            <div class="col-xs-6">
+                <a class="btn btn-app" id="btnAddHead">
+                <i class="fa fa-inbox"></i> Add
+                </a>
+                <a class="btn btn-app" id="btnEditHead">
+                <i class="fa fa-edit"></i> Edit
+                </a>
+            </div>
+            <div class="col-xs-6 text-right">
+                <a class="btn btn-app" id="btnSaveAddHead">
+                <i class="fa fa-save"></i> Save Add
+                </a>
+                <a class="btn btn-app" id="btnSaveEditHead">
+                <i class="fa fa-save"></i> Save Edit
+                </a>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
                 <!-- left column -->
 
                 <div class="col-md-12">
@@ -87,10 +113,11 @@
                  <div class="form-group">
                   <label for="txtNotifyPartyCode" class="col-sm-4 control-label">Notify Party Code:</label>
                     <div class="col-sm-6">
-                        <input class="form-control" id="txtNotifyPartyCode" runat="server" readonly="true" autocomplete="off"/>
+                        <input class="form-control" id="txtNotifyPartyCode" runat="server" autocomplete="off"/>
                     </div>
                     <div class="col-sm-2">
-                        <button type="button" class="btn btn-block btn-primary" data-toggle="modal" data-target="#NotifyPartyModal" runat="server"><i class="glyphicon glyphicon-search"></i></button>
+                        <%--<button type="button" class="btn btn-block btn-primary" data-toggle="modal" data-target="#NotifyPartyModal" runat="server"><i class="glyphicon glyphicon-search"></i></button>--%>
+                        <button type="button" class="btn btn-block btn-primary" runat="server" onserverclick="Unnamed_ServerClick"><i class="glyphicon glyphicon-search"></i></button>
                     </div>
                 </div>
                  <div class="form-group">
@@ -127,7 +154,8 @@
                         <input class="form-control" id="txtShippercode" runat="server" readonly="true" autocomplete="off"/>
                     </div>
                     <div class="col-sm-2">
-                        <button type="button" class="btn btn-block btn-primary" data-toggle="modal" data-target="#ShipperModal" runat="server"><i class="glyphicon glyphicon-search"></i></button>
+                        <%--<button type="button" class="btn btn-block btn-primary" data-toggle="modal" data-target="#ShipperModal" runat="server"><i class="glyphicon glyphicon-search"></i></button>--%>
+                        <button type="button" class="btn btn-block btn-primary" runat="server" onserverclick="Unnamed_ServerClick1"><i class="glyphicon glyphicon-search"></i></button>
                     </div>
                 </div>
                 <div class="form-group">
@@ -262,7 +290,8 @@
                       <input class="form-control" id="txtConsigneeCodee" runat="server" readonly="true" autocomplete="off"/>
                   </div>
                   <div class="col-sm-2">
-                      <button type="button" class="btn btn-block btn-primary" data-toggle="modal" data-target="#consigneeModal" runat="server"><i class="glyphicon glyphicon-search"></i></button>
+                      <%--<button type="button" class="btn btn-block btn-primary" data-toggle="modal" data-target="#consigneeModal" runat="server"><i class="glyphicon glyphicon-search"></i></button>--%>
+                      <button type="button" class="btn btn-block btn-primary" runat="server" onserverclick="Unnamed_ServerClick2"><i class="glyphicon glyphicon-search"></i></button>
                   </div>
                 </div>
                 <div class="form-group">
@@ -342,7 +371,8 @@
                                                                       <input class="form-control" id="txtInvoiceNoo" runat="server" readonly="true" autocomplete="off"/>
                                                                   </div>
                                                                   <div class="col-sm-1">
-                                                                      <button type="button" class="btn btn-block btn-primary" data-toggle="modal" data-target="#InvoiceNoModal" runat="server"><i class="glyphicon glyphicon-search"></i></button>
+                                                                      <%--<button type="button" class="btn btn-block btn-primary" data-toggle="modal" data-target="#InvoiceNoModal" runat="server"><i class="glyphicon glyphicon-search"></i></button>--%>
+                                                                      <button type="button" class="btn btn-block btn-primary" runat="server" onserverclick="Unnamed_ServerClick3"><i class="glyphicon glyphicon-search"></i></button>
                                                                   </div>
                                                                   <label for="txtLOTNo" class="col-sm-2 control-label">LOT No:</label>                                      
                                                                  <div class="col-sm-4">
@@ -452,7 +482,8 @@
 
         <!-- NotifyParty Modal -->
         <!-- Modal -->
-        <div class="modal fade" id="NotifyPartyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <asp:Panel ID="NofityPartyPanel" runat="server" CssClass="modal" TabIndex="-1" role="dialog" aria-labelledby="myLabe1">
+        <%--<div class="modal fade" id="NotifyPartyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">--%>
             <div class="modal-dialog modal-lg" role="dialog">
                 <div class="modal-content">
               <div class="modal-header">
@@ -460,6 +491,8 @@
                   <span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title">Select NotifyParty Code</h4>
               </div>
+                <asp:UpdatePanel ID="NofityPartyUpdatePanel" runat="server" UpdateMode="Conditional">
+                     <ContentTemplate>
               <div class="modal-body">
                 <section class="content">
                     <div class="row">
@@ -517,13 +550,18 @@
               <div class="modal-footer">
                 <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
               </div>
+                         </ContentTemplate>
+                    </asp:UpdatePanel>
             </div>
             </div>
-</div>
+            <%--</div>--%>
+            </asp:Panel>
         <!-- End NotifyParty Modal -->
+
         <!-- Shipper Modal -->
         <!-- Modal -->
-        <div class="modal fade" id="ShipperModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <asp:Panel ID="ShipperPanel" runat="server" CssClass="modal" TabIndex="-1" role="dialog" aria-labelledby="myLabe1">
+        <%--<div class="modal fade" id="ShipperModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">--%>
             <div class="modal-dialog modal-lg" role="dialog">
                 <div class="modal-content">
               <div class="modal-header">
@@ -531,6 +569,8 @@
                   <span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title">Select Shipper Code</h4>
               </div>
+                    <asp:UpdatePanel ID="ShipperUpdatePanel" runat="server" UpdateMode="Conditional">
+                     <ContentTemplate>
               <div class="modal-body">
                 <section class="content">
                     <div class="row">
@@ -588,14 +628,18 @@
               <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
               </div>
+                         </ContentTemplate>
+                    </asp:UpdatePanel>
             </div>
             </div>
-</div>
+            <%--</div>--%>
+            </asp:Panel>
         <!-- End Shipper Modal -->
         
         <!-- Consignee Modal -->
         <!-- Modal -->
-        <div class="modal fade" id="consigneeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <asp:Panel ID="ConsigneePanel" runat="server" CssClass="modal" TabIndex="-1" role="dialog" aria-labelledby="myLabe1">
+        <%--<div class="modal fade" id="consigneeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">--%>
             <div class="modal-dialog modal-lg" role="dialog">
                 <div class="modal-content">
               <div class="modal-header">
@@ -603,6 +647,8 @@
                   <span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title">Select Consignee Code</h4>
               </div>
+                    <asp:UpdatePanel ID="ConsigneeUpdatePanel" runat="server" UpdateMode="Conditional">
+                     <ContentTemplate>
               <div class="modal-body">
                 <section class="content">
                     <div class="row">
@@ -660,14 +706,18 @@
               <div class="modal-footer">
                 <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
               </div>
+                         </ContentTemplate>
+                    </asp:UpdatePanel>
             </div>
             </div>
-</div>
+            <%--</div>--%>
+            </asp:Panel>
         <!-- End Consignee Modal -->
 
                 <!-- InvoiceNo Modal -->
         <!-- Modal -->
-        <div class="modal fade" id="InvoiceNoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <asp:Panel ID="InvoicePanel" runat="server" CssClass="modal" TabIndex="-1" role="dialog" aria-labelledby="myLabe1">
+        <%--<div class="modal fade" id="InvoiceNoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">--%>
             <div class="modal-dialog modal-lg" role="dialog">
                 <div class="modal-content">
               <div class="modal-header">
@@ -675,6 +725,8 @@
                   <span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title">Select Invoice No</h4>
               </div>
+                    <asp:UpdatePanel ID="InvoiceUpdatePanel" runat="server" UpdateMode="Conditional">
+                     <ContentTemplate>
               <div class="modal-body">
                 <section class="content">
                     <div class="row">
@@ -732,9 +784,12 @@
               <div class="modal-footer">
                 <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
               </div>
+                         </ContentTemplate>
+                    </asp:UpdatePanel>
             </div>
             </div>
-</div>
+            <%--</div>--%>
+            </asp:Panel>
         <!-- End InvoiceNo Modal -->
          <!--Start ProductCode Modal -->
         <!-- Modal -->

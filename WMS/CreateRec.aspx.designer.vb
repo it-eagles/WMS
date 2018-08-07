@@ -446,6 +446,15 @@ Partial Public Class CreateRec
     Protected WithEvents txtDSTN4 As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
+    '''txtTimePickUp control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtTimePickUp As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
     '''txtdatepickerActualPickUp control.
     '''</summary>
     '''<remarks>
@@ -462,6 +471,15 @@ Partial Public Class CreateRec
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents CalendarExtenderdatepickerActualPickUp As Global.AjaxControlToolkit.CalendarExtender
+
+    '''<summary>
+    '''txtRamarkActual control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtRamarkActual As Global.System.Web.UI.HtmlControls.HtmlTextArea
 
     '''<summary>
     '''txtShippercode control.
@@ -608,6 +626,24 @@ Partial Public Class CreateRec
     Protected WithEvents txtBilling As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
+    '''txtpickupETD control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtpickupETD As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''txtpickupETA control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtpickupETA As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
     '''txtPacket control.
     '''</summary>
     '''<remarks>
@@ -624,6 +660,24 @@ Partial Public Class CreateRec
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents txtWeightActual As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''txtpickupETD2 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtpickupETD2 As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''txtpickupETA2 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtpickupETA2 As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
     '''txtPacket2 control.
@@ -644,6 +698,24 @@ Partial Public Class CreateRec
     Protected WithEvents txtWeightActual2 As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
+    '''txtpickupETD3 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtpickupETD3 As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''txtpickupETA3 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtpickupETA3 As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
     '''txtPacket3 control.
     '''</summary>
     '''<remarks>
@@ -662,6 +734,24 @@ Partial Public Class CreateRec
     Protected WithEvents txtWeightActual3 As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
+    '''txtpickupETD4 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtpickupETD4 As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''txtpickupETA4 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtpickupETA4 As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
     '''txtPacket4 control.
     '''</summary>
     '''<remarks>
@@ -678,6 +768,15 @@ Partial Public Class CreateRec
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents txtWeightActual4 As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''txtArrivalToEAS control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtArrivalToEAS As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
     '''txtdatepickerArrivalToEAS control.

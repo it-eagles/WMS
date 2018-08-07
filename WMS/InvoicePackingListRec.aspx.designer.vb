@@ -1940,6 +1940,24 @@ Partial Public Class InvoicePackingListRec
     Protected WithEvents btnDelete_PACKINGLIST As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
+    '''ShipperPanel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ShipperPanel As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''ShipperUpdatePanel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ShipperUpdatePanel As Global.System.Web.UI.UpdatePanel
+
+    '''<summary>
     '''Repeater1 control.
     '''</summary>
     '''<remarks>
@@ -1947,6 +1965,24 @@ Partial Public Class InvoicePackingListRec
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents Repeater1 As Global.System.Web.UI.WebControls.Repeater
+
+    '''<summary>
+    '''ConsigneePanel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ConsigneePanel As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''ConsigneeUpdatePanel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ConsigneeUpdatePanel As Global.System.Web.UI.UpdatePanel
 
     '''<summary>
     '''Repeater2 control.
@@ -1958,6 +1994,24 @@ Partial Public Class InvoicePackingListRec
     Protected WithEvents Repeater2 As Global.System.Web.UI.WebControls.Repeater
 
     '''<summary>
+    '''CustomerCodePanel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CustomerCodePanel As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''CustomerCodeUpdatePanel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CustomerCodeUpdatePanel As Global.System.Web.UI.UpdatePanel
+
+    '''<summary>
     '''Repeater3 control.
     '''</summary>
     '''<remarks>
@@ -1965,6 +2019,24 @@ Partial Public Class InvoicePackingListRec
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents Repeater3 As Global.System.Web.UI.WebControls.Repeater
+
+    '''<summary>
+    ''' CustomerCode_BillToPanel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CustomerCode_BillToPanel As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    ''' CustomerCode_BillToUpdatePanel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CustomerCode_BillToUpdatePanel As Global.System.Web.UI.UpdatePanel
 
     '''<summary>
     '''Repeater4 control.
