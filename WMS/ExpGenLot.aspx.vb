@@ -143,7 +143,6 @@ Public Class ExpGenLot
                 dcbVolume.Enabled = True
             Else
                 dcbVolume.Enabled = False
-
             End If
         Catch ex As Exception
             Throw ex
@@ -328,10 +327,7 @@ Public Class ExpGenLot
 
         End Try
     End Sub
-    Private Sub ReadDATA()
-
-    End Sub
-
+ 
     Private Sub selectExpGenLOT()
         Dim testdate As Integer
         Dim lot As String
@@ -343,20 +339,18 @@ Public Class ExpGenLot
 
 
         'Where e.LOTDate.Year = testdate
-        Dim exl = (From e In db.tblExpGenLOTs Where e.EASLOTNo = txtLotNo.Value.Trim Or e.LOTDate.Year = testdate
+        Dim exl = (From e In db.tblExpGenLOTs Where e.EASLOTNo = txtLotNo.Value.Trim Or e.LOTDate.Year = testdate Order By e.EASLOTNo Descending
                  Select New With {
                  e.EASLOTNo,
                  e.CustomerCode,
                  e.JobSite,
                  e.EndCusCode}).ToList
-
-
         Try
 
           
                 If exl.Count > 0 Then
-                    Me.dgvLotNo.DataSource = exl
-                    Me.dgvLotNo.DataBind()
+                Me.dgvLot.DataSource = exl
+                Me.dgvLot.DataBind()
                     ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "show", "$(function () { $('#" + Panel1.ClientID + "').modal('show'); });", True)
                     UpdatePanel1.Update()
                 Else
@@ -580,106 +574,512 @@ Public Class ExpGenLot
         selectCustomerGroup()
     End Sub
 
-    Protected Sub dgvLotNo_ItemCommand(source As Object, e As RepeaterCommandEventArgs)
+    Protected Sub dgvLot_ItemCommand(source As Object, e As RepeaterCommandEventArgs)
         Dim EASLOTNo As String = CStr(e.CommandArgument)
         If e.CommandName.Equals("selectLotNO") Then
             Dim exp = (From ex In db.tblExpGenLOTs Where ex.EASLOTNo = EASLOTNo).SingleOrDefault
 
-            'Dim eano = (From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
-            'Where p.PartyCode = EASLOTNo Select p).SingleOrDefault
             If String.IsNullOrEmpty(exp.EASLOTNo) Then
                 txtLotNo.Value = ""
             Else
-                txtConsigneeCode.Value = exp.EASLOTNo
+                txtLotNo.Value = exp.EASLOTNo
             End If
+
             dtpInvoiceDate.Text = Convert.ToDateTime(exp.LOTDate).ToString("dd/MM/yyyy")
             'Checkbox3.Checked = CBool(exp.LOTBy)
-            dcbSales.Text = exp.SalesCode
-            txtSalesName.Value = exp.SalesName
-            txtConsigneeCode.Value = exp.ConsigneeCode
-            txtConsignneeEng.Value = exp.ConsignNameEng
-            txtConsignneeStreet_Number.Value = exp.ConsignAddress
-            txtConsignneeDistrict.Value = exp.ConsignDistrict
-            txtConsignneeSubProvince.Value = exp.ConsignSubProvince
-            txtConsignneeProvince.Value = exp.ConsignProvince
-            txtConsignneePostCode.Value = exp.ConsignPostCode
-            txtConsignneeEMail.Value = exp.ConsignEmail
-            txtExporterCode.Value = exp.ShipperCode
-            txtExportEng.Value = exp.ShipperNameEng
-            txtStreet_Number.Value = exp.ShipperAddress
-            txtDistrict.Value = exp.ShipperDistrict
-            txtSubProvince.Value = exp.ShipperSubprovince
-            txtProvince.Value = exp.ShipperProvince
-            txtPostCode.Value = exp.ShipperPostCode
-            txtCompensateCode.Value = exp.ShipperReturnCode
-            txtCommodity.Text = exp.Commodity
-            txtQuantityofPart.Value = CStr(exp.QuantityofPart)
-            dcbQuantity1.Text = exp.QuantityUnit
-            txtQuantityPLT.Value = CStr(exp.QuantityPack)
-            dcbQuantity2.Text = exp.QuantityUnitPack
-            txtWeight.Value = CStr(exp.Weight)
-            dcbWeight.Text = exp.WeightUnit
-            txtVolume.Value = CStr(exp.Volume)
-            dcbVolume.Text = exp.VolumeUnit
-            txtMAWB.Value = exp.MAWB
+            If String.IsNullOrEmpty(exp.SalesCode) Then
+                dcbSales.Text = ""
+            Else
+                dcbSales.Text = exp.SalesCode
+            End If
+            If String.IsNullOrEmpty(exp.SalesName) Then
+                txtSalesName.Value = ""
+            Else
+                txtSalesName.Value = exp.SalesName
+            End If
+            If String.IsNullOrEmpty(exp.ConsigneeCode) Then
+                txtConsigneeCode.Value = ""
+            Else
+                txtConsigneeCode.Value = exp.ConsigneeCode
+            End If
+            If String.IsNullOrEmpty(exp.ConsignNameEng) Then
+                txtConsignneeEng.Value = ""
+            Else
+                txtConsignneeEng.Value = exp.ConsignNameEng
+            End If
+
+            If String.IsNullOrEmpty(exp.ConsignAddress) Then
+                txtConsignneeStreet_Number.Value = ""
+            Else
+                txtConsignneeStreet_Number.Value = exp.ConsignAddress
+            End If
+
+            If String.IsNullOrEmpty(exp.ConsignDistrict) Then
+                txtConsignneeDistrict.Value = ""
+            Else
+                txtConsignneeDistrict.Value = exp.ConsignDistrict
+            End If
+
+            If String.IsNullOrEmpty(exp.ConsignSubProvince) Then
+                txtConsignneeSubProvince.Value = ""
+            Else
+                txtConsignneeSubProvince.Value = exp.ConsignSubProvince
+            End If
+            If String.IsNullOrEmpty(exp.ConsignProvince) Then
+                txtConsignneeProvince.Value = ""
+            Else
+                txtConsignneeProvince.Value = exp.ConsignProvince
+            End If
+
+            If String.IsNullOrEmpty(exp.ConsignPostCode) Then
+                txtConsignneePostCode.Value = ""
+            Else
+                txtConsignneePostCode.Value = exp.ConsignPostCode
+            End If
+
+            If String.IsNullOrEmpty(exp.ConsignEmail) Then
+                txtConsignneeEMail.Value = ""
+            Else
+                txtConsignneeEMail.Value = exp.ConsignEmail
+            End If
+
+            If String.IsNullOrEmpty(exp.ShipperCode) Then
+                txtExporterCode.Value = ""
+            Else
+                txtExporterCode.Value = exp.ShipperCode
+            End If
+
+            If String.IsNullOrEmpty(exp.ShipperNameEng) Then
+                txtExportEng.Value = ""
+            Else
+                txtExportEng.Value = exp.ShipperNameEng
+            End If
+
+            If String.IsNullOrEmpty(exp.ShipperAddress) Then
+                txtStreet_Number.Value = ""
+            Else
+                txtStreet_Number.Value = exp.ShipperAddress
+            End If
+            If String.IsNullOrEmpty(exp.ShipperDistrict) Then
+                txtDistrict.Value = ""
+            Else
+                txtDistrict.Value = exp.ShipperDistrict
+            End If
+            If String.IsNullOrEmpty(exp.ShipperSubprovince) Then
+                txtSubProvince.Value = ""
+            Else
+                txtSubProvince.Value = exp.ShipperSubprovince
+            End If
+            If String.IsNullOrEmpty(exp.ShipperProvince) Then
+                txtProvince.Value = ""
+            Else
+                txtProvince.Value = exp.ShipperProvince
+            End If
+            If String.IsNullOrEmpty(exp.ShipperPostCode) Then
+                txtPostCode.Value = ""
+            Else
+                txtPostCode.Value = exp.ShipperPostCode
+            End If
+
+            If String.IsNullOrEmpty(exp.ShipperReturnCode) Then
+                txtCompensateCode.Value = ""
+            Else
+                txtCompensateCode.Value = exp.ShipperReturnCode
+            End If
+            If String.IsNullOrEmpty(exp.Commodity) Then
+                txtCommodity.Text = ""
+            Else
+                txtCommodity.Text = exp.Commodity
+            End If
+
+            If String.IsNullOrEmpty(CStr(exp.QuantityofPart)) Then
+                txtQuantityofPart.Value = ""
+            Else
+                txtQuantityofPart.Value = CStr(exp.QuantityofPart)
+            End If
+
+            If String.IsNullOrEmpty(exp.QuantityUnit) Then
+                dcbQuantity1.Text = ""
+            Else
+                dcbQuantity1.Text = exp.QuantityUnit
+            End If
+
+            If String.IsNullOrEmpty(CStr(exp.QuantityPack)) Then
+                txtQuantityPLT.Value = ""
+            Else
+                txtQuantityPLT.Value = CStr(exp.QuantityPack)
+            End If
+
+            If String.IsNullOrEmpty(exp.QuantityUnitPack) Then
+                dcbQuantity2.Text = ""
+            Else
+                dcbQuantity2.Text = exp.QuantityUnitPack
+            End If
+
+            If String.IsNullOrEmpty(CStr(exp.Weight)) Then
+                txtWeight.Value = ""
+            Else
+                txtWeight.Value = String.Format("{0:0.00}", exp.Weight)
+            End If
+
+            If String.IsNullOrEmpty(exp.WeightUnit) Then
+                dcbWeight.Text = ""
+            Else
+                dcbWeight.Text = exp.WeightUnit
+            End If
+
+            If String.IsNullOrEmpty(CStr(exp.Volume)) Then
+                txtVolume.Value = ""
+            Else
+                txtVolume.Value = CStr(exp.Volume)
+            End If
+
+            If String.IsNullOrEmpty(exp.VolumeUnit) Then
+                'dcbVolume.Text = ""
+            Else
+                dcbVolume.Text = exp.VolumeUnit
+            End If
+
+            If String.IsNullOrEmpty(exp.MAWB) Then
+                txtMAWB.Value = ""
+            Else
+                txtMAWB.Value = exp.MAWB
+            End If
+
             ComboBox7.Text = exp.DocType
-            txtDocumentCode.Value = exp.DocCode
-            txtFlight.Value = exp.Flight
-            txtStatusFile.Value = exp.ScanPathFile
-            txtDOCode.Value = exp.DOCode
-            txtDONameENG.Value = exp.DONameENG
-            txtDOStreet.Value = exp.DOStreet_Number
-            txtDODistrict.Value = exp.DODistrict
-            txtDOSubProvince.Value = exp.DOSubProvince
-            txtDOProvince.Value = exp.DOProvince
-            txtDOPostCode.Value = exp.DOPostCode
-            txtDOEmail.Value = exp.DOEmail
-            txtDOContactPerson.Value = exp.DOContactPerson
-            txtIEATNo.Value = exp.IEATNo
-            txtEntryNo.Value = exp.EntryNo
+
+            If String.IsNullOrEmpty(exp.DocCode) Then
+                txtDocumentCode.Value = ""
+            Else
+                txtDocumentCode.Value = exp.DocCode
+            End If
+
+            If String.IsNullOrEmpty(exp.Flight) Then
+                txtFlight.Value = ""
+            Else
+                txtFlight.Value = exp.Flight
+            End If
+
+            If String.IsNullOrEmpty(exp.ScanPathFile) Then
+                txtStatusFile.Value = ""
+            Else
+                txtStatusFile.Value = exp.ScanPathFile
+            End If
+
+            If String.IsNullOrEmpty(exp.DOCode) Then
+                txtDOCode.Value = ""
+            Else
+                txtDOCode.Value = exp.DOCode
+            End If
+
+            If String.IsNullOrEmpty(exp.DONameENG) Then
+                txtDONameENG.Value = ""
+            Else
+                txtDONameENG.Value = exp.DONameENG
+            End If
+
+            If String.IsNullOrEmpty(exp.DOStreet_Number) Then
+                txtDOStreet.Value = ""
+            Else
+                txtDOStreet.Value = exp.DOStreet_Number
+            End If
+
+            If String.IsNullOrEmpty(exp.DODistrict) Then
+                txtDODistrict.Value = ""
+            Else
+                txtDODistrict.Value = exp.DODistrict
+            End If
+
+            If String.IsNullOrEmpty(exp.DOSubProvince) Then
+                txtDOSubProvince.Value = ""
+            Else
+                txtDOSubProvince.Value = exp.DOSubProvince
+            End If
+
+            If String.IsNullOrEmpty(exp.DOProvince) Then
+                txtDOProvince.Value = ""
+            Else
+                txtDOProvince.Value = exp.DOProvince
+            End If
+
+            If String.IsNullOrEmpty(exp.DOPostCode) Then
+                txtDOPostCode.Value = ""
+            Else
+                txtDOPostCode.Value = exp.DOPostCode
+            End If
+
+            If String.IsNullOrEmpty(exp.DOEmail) Then
+                txtDOEmail.Value = ""
+            Else
+                txtDOEmail.Value = exp.DOEmail
+            End If
+
+            If String.IsNullOrEmpty(exp.DOContactPerson) Then
+                txtDOContactPerson.Value = ""
+            Else
+                txtDOContactPerson.Value = exp.DOContactPerson
+            End If
+
+            If String.IsNullOrEmpty(exp.IEATNo) Then
+                txtIEATNo.Value = ""
+            Else
+                txtIEATNo.Value = exp.IEATNo
+            End If
+
+            If String.IsNullOrEmpty(exp.EntryNo) Then
+                txtEntryNo.Value = ""
+            Else
+                txtEntryNo.Value = exp.EntryNo
+            End If
+
             dtpDeliveryDate.Text = Convert.ToDateTime(exp.DeliveryDate).ToString("dd/MM/yyyy")
-            txtCustomerCode.Value = exp.CustomerCode
-            txtCustomerENG.Value = exp.CustomerENG
-            txtCustomerStreet.Value = exp.CustomerStreet
-            txtCustomerDistrict.Value = exp.CustomerDistrict
-            txtCustomerSub.Value = exp.CustomerSub
-            txtCustomerProvince.Value = exp.CustomerProvince
-            txtCustomerPostCode.Value = exp.CustomerPostCode
-            txtCustomerEmail.Value = exp.CustomerEmail
-            txtCustomerContact.Value = exp.CustomerContact
-            txtPickUpCode.Value = exp.PickUpCode
-            txtPickUpNameEng.Value = exp.PickUpENG
-            txtPickUpAddress1.Value = exp.PickUpAddress1
-            txtPickUpAddress2.Value = exp.PickUpAddress2
-            txtPickUpAddress3.Value = exp.PickUpAddress3
-            txtPickUpAddress4.Value = exp.PickUpAddress4
-            txtPickUpAddress5.Value = exp.PickUpAddress5
-            txtPickUpEmail.Value = exp.PickUpEmail
-            txtPickUpContact.Value = exp.PickUpContact
-            txtEndCusCode.Value = exp.EndCusCode
-            txtEndCusNameEng.Value = exp.EndCusENG
-            txtEndCusAddress1.Value = exp.EndCusAddress1
-            txtEndCusAddress2.Value = exp.EndCusAddress2
-            txtEndCusAddress3.Value = exp.EndCusAddress3
-            txtEndCusAddress4.Value = exp.EndCusAddress4
-            txtEndCusAddress5.Value = exp.EndCusAddress5
-            txtEndCusEmail.Value = exp.EndCusEmail
-            txtEndCusContact.Value = exp.EndCusContact
-            txtFreigh.Value = exp.FreighForwarder
-            txtIEATPermit.Value = exp.IEATPermit
-            txtShipTo.Value = exp.ShipTo
-            txtBox.Value = CStr(exp.Box)
+
+            If String.IsNullOrEmpty(exp.CustomerCode) Then
+                txtCustomerCode.Value = ""
+            Else
+                txtCustomerCode.Value = exp.CustomerCode
+            End If
+
+            If String.IsNullOrEmpty(exp.CustomerENG) Then
+                txtCustomerENG.Value = ""
+            Else
+                txtCustomerENG.Value = exp.CustomerENG
+            End If
+
+            If String.IsNullOrEmpty(exp.CustomerStreet) Then
+                txtCustomerStreet.Value = ""
+            Else
+                txtCustomerStreet.Value = exp.CustomerStreet
+            End If
+
+            If String.IsNullOrEmpty(exp.CustomerDistrict) Then
+                txtCustomerDistrict.Value = ""
+            Else
+                txtCustomerDistrict.Value = exp.CustomerDistrict
+            End If
+
+            If String.IsNullOrEmpty(exp.CustomerSub) Then
+                txtCustomerSub.Value = ""
+            Else
+                txtCustomerSub.Value = exp.CustomerSub
+            End If
+
+            If String.IsNullOrEmpty(exp.CustomerProvince) Then
+                txtCustomerProvince.Value = ""
+            Else
+                txtCustomerProvince.Value = exp.CustomerProvince
+            End If
+
+            If String.IsNullOrEmpty(exp.CustomerPostCode) Then
+                txtCustomerPostCode.Value = ""
+            Else
+                txtCustomerPostCode.Value = exp.CustomerPostCode
+            End If
+
+            If String.IsNullOrEmpty(exp.CustomerEmail) Then
+                txtCustomerEmail.Value = ""
+            Else
+                txtCustomerEmail.Value = exp.CustomerEmail
+            End If
+
+            If String.IsNullOrEmpty(exp.CustomerContact) Then
+                txtCustomerContact.Value = ""
+            Else
+                txtCustomerContact.Value = exp.CustomerContact
+            End If
+
+            If String.IsNullOrEmpty(exp.PickUpCode) Then
+                txtPickUpCode.Value = ""
+            Else
+                txtPickUpCode.Value = exp.PickUpCode
+            End If
+
+            If String.IsNullOrEmpty(exp.PickUpENG) Then
+                txtPickUpNameEng.Value = ""
+            Else
+                txtPickUpNameEng.Value = exp.PickUpENG
+            End If
+
+            If String.IsNullOrEmpty(exp.PickUpAddress1) Then
+                txtPickUpAddress1.Value = ""
+            Else
+                txtPickUpAddress1.Value = exp.PickUpAddress1
+            End If
+
+            If String.IsNullOrEmpty(exp.PickUpAddress2) Then
+                txtPickUpAddress2.Value = ""
+            Else
+                txtPickUpAddress2.Value = exp.PickUpAddress2
+            End If
+            If String.IsNullOrEmpty(exp.PickUpAddress2) Then
+                txtPickUpAddress2.Value = ""
+            Else
+                txtPickUpAddress2.Value = exp.PickUpAddress3
+            End If
+
+            If String.IsNullOrEmpty(exp.PickUpAddress3) Then
+                txtPickUpAddress3.Value = ""
+            Else
+                txtPickUpAddress3.Value = exp.PickUpAddress3
+            End If
+
+            If String.IsNullOrEmpty(exp.PickUpAddress4) Then
+                txtPickUpAddress4.Value = ""
+            Else
+                txtPickUpAddress4.Value = exp.PickUpAddress4
+            End If
+
+            If String.IsNullOrEmpty(exp.PickUpAddress5) Then
+                txtPickUpAddress5.Value = ""
+            Else
+                txtPickUpAddress5.Value = exp.PickUpAddress5
+            End If
+
+            If String.IsNullOrEmpty(exp.PickUpEmail) Then
+                txtPickUpEmail.Value = ""
+            Else
+                txtPickUpEmail.Value = exp.PickUpEmail
+            End If
+
+            If String.IsNullOrEmpty(exp.PickUpContact) Then
+                txtPickUpContact.Value = ""
+            Else
+                txtPickUpContact.Value = exp.PickUpContact
+            End If
+
+            If String.IsNullOrEmpty(exp.EndCusCode) Then
+                txtEndCusCode.Value = ""
+            Else
+                txtEndCusCode.Value = exp.EndCusCode
+            End If
+
+            If String.IsNullOrEmpty(exp.EndCusENG) Then
+                txtEndCusNameEng.Value = ""
+            Else
+                txtEndCusNameEng.Value = exp.EndCusENG
+            End If
+
+            If String.IsNullOrEmpty(exp.EndCusAddress1) Then
+                txtEndCusAddress1.Value = ""
+            Else
+                txtEndCusAddress1.Value = exp.EndCusAddress1
+            End If
+
+            If String.IsNullOrEmpty(exp.EndCusAddress2) Then
+                txtEndCusAddress2.Value = ""
+            Else
+                txtEndCusAddress2.Value = exp.EndCusAddress2
+            End If
+            If String.IsNullOrEmpty(exp.EndCusAddress3) Then
+                txtEndCusAddress3.Value = ""
+            Else
+                txtEndCusAddress3.Value = exp.EndCusAddress3
+            End If
+            If String.IsNullOrEmpty(exp.EndCusAddress4) Then
+                txtEndCusAddress4.Value = ""
+            Else
+                txtEndCusAddress4.Value = exp.EndCusAddress4
+            End If
+
+            If String.IsNullOrEmpty(exp.EndCusAddress5) Then
+                txtEndCusAddress5.Value = ""
+            Else
+                txtEndCusAddress5.Value = exp.EndCusAddress5
+            End If
+
+            If String.IsNullOrEmpty(exp.EndCusEmail) Then
+                txtEndCusEmail.Value = ""
+            Else
+                txtEndCusEmail.Value = exp.EndCusEmail
+            End If
+
+            If String.IsNullOrEmpty(exp.EndCusContact) Then
+                txtEndCusContact.Value = ""
+            Else
+                txtEndCusContact.Value = exp.EndCusContact
+            End If
+
+            If String.IsNullOrEmpty(exp.FreighForwarder) Then
+                txtFreigh.Value = ""
+            Else
+                txtFreigh.Value = exp.FreighForwarder
+            End If
+
+            If String.IsNullOrEmpty(exp.IEATPermit) Then
+                txtIEATPermit.Value = ""
+            Else
+                txtIEATPermit.Value = exp.IEATPermit
+            End If
+
+            If String.IsNullOrEmpty(exp.ShipTo) Then
+                txtShipTo.Value = ""
+            Else
+                txtShipTo.Value = exp.ShipTo
+            End If
+
+            If String.IsNullOrEmpty(CStr(exp.Box)) Then
+                txtBox.Value = ""
+            Else
+                txtBox.Value = CStr(exp.Box)
+            End If
+
+            If String.IsNullOrEmpty(CStr(exp.Box)) Then
+                txtBox.Value = ""
+            Else
+                txtBox.Value = CStr(exp.Box)
+            End If
+
             cdbBox1.Text = exp.UnitBox
             txtIEATDate.Text = Convert.ToDateTime(exp.IEATDate).ToString("dd/MM/yyyy")
-            dcbStatus1.Text = exp.Status1
-            dcbStatus2.Text = exp.Status2
-            dcbStatus3.Text = exp.Status3
-            txtJobRemark.Value = exp.Remark
-            cboJobSite.Text = exp.JobSite
-            txtBillingNo.Value = exp.BillingNo
-            txtCustomerCodeGroup.Value = exp.CustomerCodeGroup
-            txtCustomerENGGroup.Value = exp.CustomerENGGroup
-            txtDeliveryTime.Value = exp.DeliveryTime
+            If String.IsNullOrEmpty(exp.Status1) Then
+                dcbStatus1.Text = ""
+            Else
+                dcbStatus1.Text = exp.Status1
+            End If
+            If String.IsNullOrEmpty(exp.Status2) Then
+                dcbStatus2.Text = ""
+            Else
+                dcbStatus2.Text = exp.Status2
+            End If
+
+            If String.IsNullOrEmpty(exp.Status2) Then
+                dcbStatus2.Text = ""
+            Else
+                dcbStatus2.Text = exp.Status2
+            End If
+            If String.IsNullOrEmpty(exp.Remark) Then
+                txtJobRemark.Value = ""
+            Else
+                txtJobRemark.Value = exp.Remark
+            End If
+            If String.IsNullOrEmpty(exp.JobSite) Then
+                cboJobSite.Text = ""
+            Else
+                cboJobSite.Text = exp.JobSite
+            End If
+            If String.IsNullOrEmpty(exp.BillingNo) Then
+                txtBillingNo.Value = ""
+            Else
+                txtBillingNo.Value = exp.BillingNo
+            End If
+            If String.IsNullOrEmpty(exp.CustomerCodeGroup) Then
+                txtCustomerCodeGroup.Value = ""
+            Else
+                txtCustomerCodeGroup.Value = exp.CustomerCodeGroup
+            End If
+            If String.IsNullOrEmpty(exp.CustomerENGGroup) Then
+                txtCustomerENGGroup.Value = ""
+            Else
+                txtCustomerENGGroup.Value = exp.CustomerENGGroup
+            End If
+            If String.IsNullOrEmpty(exp.DeliveryTime) Then
+                txtDeliveryTime.Value = ""
+            Else
+                txtDeliveryTime.Value = exp.DeliveryTime
+            End If
+            ReadDATA()
+            ReadDATA2()
+            ReadDATAEAS()
         End If
     End Sub
 
@@ -1093,10 +1493,9 @@ Public Class ExpGenLot
     End Sub
     Private Sub showVisible()
         txtIEATNo.Disabled = True
-        Checkbox1.Disabled = True
-        txtIEATPermit.Disabled = True
-        txtEntryNo.Disabled = True
-        txtDeliveryTime.Disabled = True
+        'txtIEATPermit.Disabled = True
+        'txtEntryNo.Disabled = True
+        'txtDeliveryTime.Disabled = True
         txtGenInvNo.Disabled = True
         txtEASInv.Disabled = True
         Checkbox3.Disabled = True
@@ -1123,17 +1522,22 @@ Public Class ExpGenLot
         cdbUnitPallet.Enabled = False
         cdbUnitQuantityDetail.Enabled = False
         txtRemark.Enabled = False
-        dcbStatus1.Enabled = False
-        dcbStatus2.Enabled = False
-        dcbStatus3.Enabled = False
-        dtpDeliveryDate.Enabled = False
+        'dcbStatus1.Enabled = False
+        'dcbStatus2.Enabled = False
+        'dcbStatus3.Enabled = False
+        'dtpDeliveryDate.Enabled = False
         Gen.Enabled = False
         Button2.Enabled = False
-        txtIEATDate.Enabled = False
+        'txtIEATDate.Enabled = False
+        txtQuantityPLT.Value = "0.0"
+        txtBox.Value = "0.0"
+        txtVolume.Value = "0.0"
+        txtQuantityofPart.Value = "0.0"
+        txtWeight.Value = "0.0"
     End Sub
 
     Private Sub showVisibleEdit()
-        txtIEATNo.Disabled = False
+        'txtIEATNo.Disabled = False
         Checkbox1.Disabled = False
         txtIEATPermit.Disabled = False
         txtEntryNo.Disabled = False
@@ -1168,9 +1572,14 @@ Public Class ExpGenLot
         dcbStatus2.Enabled = True
         dcbStatus3.Enabled = True
         dtpDeliveryDate.Enabled = True
-        Gen.Enabled = True
-        Button2.Enabled = True
+        Gen.Enabled = False
+        Button2.Enabled = False
         txtIEATDate.Enabled = True
+        txtQuantityPLT.Value = "0.0"
+        txtBox.Value = "0.0"
+        txtVolume.Value = "0.0"
+        txtQuantityofPart.Value = "0.0"
+        txtWeight.Value = "0.0"
     End Sub
 
     Protected Sub btnSaveNew_ServerClick(sender As Object, e As EventArgs)
@@ -1960,5 +2369,446 @@ Public Class ExpGenLot
     End Sub
     Private Sub GentblWIP()
 
+    End Sub
+
+    Protected Sub Gen_Click(sender As Object, e As EventArgs)
+        If String.IsNullOrEmpty(txtIEATNo.Value) Then
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('Gen สามารถซ้ำได้ !!!')", True)
+            Exit Sub
+        End If
+        GenNum1()
+    End Sub
+    Private Sub GenNum1()
+        Dim tmpDate As Single
+        Dim tmpMount As Single
+        Dim LotNo As String
+        Dim Nmount As Single
+        Dim Num As Single
+        Dim Mount As Single
+        Dim Year As Single
+        Dim Digit As Single
+
+        tmpDate = CSng(Format(Now(), "dd"))
+        tmpMount = CSng(Format(Now(), "MM"))
+        Nmount = CSng(Format(Now(), "yy")) + 43
+
+        Mount = CSng(txtMountNo.Value)
+        Year = CSng(txtYearNo.Value)
+        Digit = CSng(txtDigitNo.Value)
+
+        If Nmount = Year Then
+            If tmpMount = Mount Then
+                Digit = Digit + 1
+                Num = Digit
+            End If
+
+            If tmpMount <> Mount Then
+                tmpMount = Mount
+                Num = Digit + 1
+            End If
+        End If
+        If Nmount <> Year Then
+            Nmount = Year
+            If tmpMount = Mount Then
+                Digit = Digit + 1
+                Num = Digit
+            End If
+
+            If tmpMount <> Mount Then
+                tmpMount = Mount
+                Num = Digit + 1
+            End If
+        End If
+
+        LotNo = Nmount.ToString("0#") & tmpMount.ToString("0#") & Num.ToString("00#")
+        txtIEATNo.Value = LotNo
+
+        txtTypeCode.Value = "IEAT"
+        txtRunNo.Value = LotNo
+        txtMountNo.Value = tmpMount.ToString("0#")
+        txtYearNo.Value = Nmount.ToString("0#")
+        txtDigitNo.Value = Num.ToString("00#")
+        Try
+            Dim sb = db.tblGenAutoNoes.Add(New tblGenAutoNo With { _
+                                           .TypeCode = txtTypeCode.Value.Trim, _
+                                           .RunNo = txtRunNo.Value.Trim, _
+                                           .MountNo = txtMountNo.Value.Trim, _
+                                           .YearNo = txtYearNo.Value.Trim, _
+                                           .DigitNo = txtDigitNo.Value.Trim
+                                       })
+            db.SaveChanges()
+            upGenLot()
+        Catch ex As Exception
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", ex.Message, True)
+        End Try
+    End Sub
+    Private Sub upGenLot()
+        Try
+            Dim upGen As tblExpGenLOT = CType((From up In db.tblExpGenLOTs Where up.EASLOTNo = txtLotNo.Value.Trim
+          Select up), tblExpGenLOT)
+            upGen.IEATNo = txtIEATNo.Value.Trim
+
+            db.SaveChanges()
+        Catch ex As Exception
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('ข้อมูล ที่คุณใส่ ไม่ถูกต้อง !!!')", True)
+        End Try
+      
+    End Sub
+
+    Protected Sub Button2_Click(sender As Object, e As EventArgs)
+        Dim tmpDate As Single
+        Dim tmpMount As Single
+        Dim LotNo As String
+        Dim Nmount As Single
+        Dim Num As Single
+        Dim Mount As Single
+        Dim Year As Single
+        Dim Digit As Single
+
+        tmpDate = CSng(Format(Now(), "dd"))
+        tmpMount = CSng(Format(Now(), "MM"))
+        Nmount = CSng(Format(Now(), "yy")) + 43
+        'tmpYear = Format(CDate(Nmount), "yy")
+        'GentblEAS()
+        Mount = CSng(txtMountNo.Value)
+        Year = CSng(txtYearNo.Value)
+        Digit = CSng(txtDigitNo.Value)
+        If Nmount = Year Then
+            If tmpMount = Mount Then
+                Digit = Digit + 1
+                Num = Digit
+            End If
+
+            If tmpMount <> Mount Then
+                tmpMount = Mount
+                Num = Digit + 1
+            End If
+        End If
+        If Nmount <> Year Then
+            Nmount = Year
+            If tmpMount = Mount Then
+                Digit = Digit + 1
+                Num = Digit
+            End If
+
+            If tmpMount <> Mount Then
+                tmpMount = Mount
+                Num = Digit + 1
+            End If
+        End If
+        LotNo = "LKB " & Nmount.ToString("0#") & tmpMount.ToString("0#") & Num.ToString("00#")
+        txtEASInv.Value = LotNo
+
+        txtTypeCode.Value = "LKBEASOUT"
+        txtRunNo.Value = LotNo
+        txtMountNo.Value = tmpMount.ToString("0#")
+        txtYearNo.Value = Nmount.ToString("0#")
+        txtDigitNo.Value = Num.ToString("00#")
+        Try
+            Dim sb = db.tblGenAutoNoes.Add(New tblGenAutoNo With { _
+                                           .TypeCode = txtTypeCode.Value.Trim, _
+                                           .RunNo = txtRunNo.Value.Trim, _
+                                           .MountNo = txtMountNo.Value.Trim, _
+                                           .YearNo = txtYearNo.Value.Trim, _
+                                           .DigitNo = txtDigitNo.Value.Trim
+                                       })
+            db.SaveChanges()
+            upGenLot()
+        Catch ex As Exception
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", ex.Message, True)
+        End Try
+    End Sub
+    Private Sub ReadDATA()
+        Dim sqlCurrency = From exp In db.tblExpInvoices Where exp.EASLOTNo = txtLotNo.Value.Trim
+          Select exp.InvoiceNo,
+                 exp.ReferenceNo,
+                 exp.ReferenceDate,
+                 exp.PurchaseOrderNo,
+                 exp.InvoiceDate,
+                 exp.EASLOTNo
+        Try
+            If sqlCurrency.Count > 0 Then
+                dgvLotNo.DataSource = sqlCurrency.ToList
+                dgvLotNo.DataBind()
+            Else
+                dgvLotNo.DataSource = Nothing
+                dgvLotNo.DataBind()
+            End If
+        Catch ex As Exception
+
+        End Try
+    End Sub
+    Private Sub ReadDATA2()
+        Dim sqlCurrency = From exp In db.tblRecINVs Where exp.LOTNo = txtLotNo.Value.Trim
+          Select exp.InvoiceNo,
+                 exp.LOTNo,
+                 exp.DateInv,
+                 exp.Quantity
+        Try
+            If sqlCurrency.Count > 0 Then
+                dgvInvNo.DataSource = sqlCurrency.ToList
+                dgvInvNo.DataBind()
+            Else
+                dgvInvNo.DataSource = Nothing
+                dgvInvNo.DataBind()
+            End If
+        Catch ex As Exception
+
+        End Try
+    End Sub
+    Private Sub ReadDATAEAS()
+        Dim sqlCurrency = From exp In db.tblRecEASInvoices Where exp.LOTNo = txtLotNo.Value.Trim
+          Select exp.InvoiceNo,
+                 exp.LOTNo,
+                 exp.PullSignal,
+                 exp.Remark,
+                 exp.CustomerINV
+        Try
+            If sqlCurrency.Count > 0 Then
+                dgvEASInv.DataSource = sqlCurrency.ToList
+                dgvEASInv.DataBind()
+            Else
+                dgvEASInv.DataSource = Nothing
+                dgvEASInv.DataBind()
+            End If
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub SaveDATA_New()
+        If txtLotNo.Value.Trim = "" Then
+
+        End If
+        Select Case MsgBox("คุณต้องการเพิ่มรายการ LOT No ใหม่ ใช่หรือไม่ ?", MsgBoxStyle.YesNo, "คำยืนยัน")
+            Case MsgBoxResult.Yes
+                Try
+                    db.tblExpGenLOTs.Add(New tblExpGenLOT With { _
+                                    .EASLOTNo = txtLotNo.Value.Trim, _
+                                    .LOTDate = DateTime.ParseExact(dtpInvoiceDate.Text, "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US")), _
+                                    .LOTBy = CStr(Checkbox3.Checked), _
+                                    .SalesCode = dcbSales.Text.Trim, _
+                                    .SalesName = txtSalesName.Value.Trim, _
+                                    .ConsigneeCode = txtConsigneeCode.Value.Trim, _
+                                    .ConsignNameEng = txtConsignneeEng.Value.Trim, _
+                                    .ConsignAddress = txtConsignneeStreet_Number.Value.Trim, _
+                                    .ConsignDistrict = txtConsignneeDistrict.Value.Trim, _
+                                    .ConsignSubProvince = txtConsignneeSubProvince.Value.Trim, _
+                                    .ConsignProvince = txtConsignneeProvince.Value.Trim, _
+                                    .ConsignPostCode = txtConsignneePostCode.Value.Trim, _
+                                    .ConsignEmail = txtConsignneeEMail.Value.Trim, _
+                                    .ShipperCode = txtExporterCode.Value.Trim, _
+                                    .ShipperNameEng = txtExportEng.Value.Trim, _
+                                    .ShipperAddress = txtStreet_Number.Value.Trim, _
+                                    .ShipperDistrict = txtDistrict.Value.Trim, _
+                                    .ShipperSubprovince = txtSubProvince.Value.Trim, _
+                                    .ShipperProvince = txtProvince.Value.Trim, _
+                                    .ShipperPostCode = txtPostCode.Value.Trim, _
+                                    .ShipperReturnCode = txtCompensateCode.Value.Trim, _
+                                    .Commodity = txtCommodity.Text.Trim(), _
+                                    .QuantityofPart = CType(CDbl(txtQuantityofPart.Value).ToString("#,##0.000"), Decimal?), _
+                                    .QuantityUnit = dcbQuantity1.Text.Trim, _
+                                    .QuantityPack = CType(CDbl(txtQuantityPLT.Value).ToString("#,##0.000"), Decimal?), _
+                                    .QuantityUnitPack = dcbQuantity2.Text.Trim, _
+                                    .Weight = CType(CDbl(txtWeight.Value).ToString("#,##0.000"), Decimal?), _
+                                    .WeightUnit = dcbWeight.Text.Trim, _
+                                    .Volume = CType(CDbl(txtVolume.Value).ToString("#,##0.000"), Double?), _
+                                    .VolumeUnit = dcbVolume.Text.Trim, _
+                                    .MAWB = txtMAWB.Value.Trim, _
+                                    .DocType = ComboBox7.Text.Trim, _
+                                    .DocCode = txtDocumentCode.Value.Trim, _
+                                    .Flight = txtFlight.Value.Trim, _
+                                    .ScanPathFile = txtPathFile.Value.Trim, _
+                                    .DOCode = txtDOCode.Value.Trim, _
+                                    .DONameENG = txtDONameENG.Value.Trim, _
+                                    .DOStreet_Number = txtDOStreet.Value.Trim, _
+                                    .DODistrict = txtDODistrict.Value.Trim, _
+                                    .DOSubProvince = txtDOSubProvince.Value.Trim, _
+                                    .DOProvince = txtDOProvince.Value.Trim, _
+                                    .DOPostCode = txtDOPostCode.Value.Trim, _
+                                    .DOEmail = txtDOEmail.Value.Trim, _
+                                    .DOContactPerson = txtDOContactPerson.Value.Trim, _
+                                    .IEATNo = txtIEATNo.Value.Trim, _
+                                    .EntryNo = txtEntryNo.Value.Trim, _
+                                    .DeliveryDate = CType(dtpDeliveryDate.Text, Date?), _
+                                    .CustomerCode = txtCustomerCode.Value.Trim, _
+                                    .CustomerENG = txtCustomerENG.Value.Trim, _
+                                    .CustomerStreet = txtCustomerStreet.Value.Trim, _
+                                    .CustomerDistrict = txtCustomerDistrict.Value.Trim, _
+                                    .CustomerSub = txtCustomerSub.Value.Trim, _
+                                    .CustomerProvince = txtCustomerProvince.Value.Trim, _
+                                    .CustomerPostCode = txtCustomerPostCode.Value.Trim, _
+                                    .CustomerEmail = txtCustomerEmail.Value.Trim, _
+                                    .CustomerContact = txtCustomerContact.Value.Trim, _
+                                    .PickUpCode = txtPickUpCode.Value.Trim, _
+                                    .PickUpENG = txtPickUpNameEng.Value.Trim, _
+                                    .PickUpAddress1 = txtPickUpAddress1.Value.Trim, _
+                                    .PickUpAddress2 = txtPickUpAddress2.Value.Trim, _
+                                    .PickUpAddress3 = txtPickUpAddress3.Value.Trim, _
+                                    .PickUpAddress4 = txtPickUpAddress4.Value.Trim, _
+                                    .PickUpAddress5 = txtPickUpAddress5.Value.Trim, _
+                                    .PickUpEmail = txtPickUpEmail.Value.Trim, _
+                                    .PickUpContact = txtPickUpContact.Value.Trim, _
+                                    .EndCusCode = txtEndCusCode.Value.Trim, _
+                                    .EndCusENG = txtEndCusNameEng.Value.Trim, _
+                                    .EndCusAddress1 = txtEndCusAddress1.Value.Trim, _
+                                    .EndCusAddress2 = txtEndCusAddress2.Value.Trim, _
+                                    .EndCusAddress3 = txtEndCusAddress3.Value.Trim, _
+                                    .EndCusAddress4 = txtEndCusAddress4.Value.Trim, _
+                                    .EndCusAddress5 = txtEndCusAddress5.Value.Trim, _
+                                    .EndCusEmail = txtEndCusEmail.Value.Trim, _
+                                    .EndCusContact = txtEndCusContact.Value.Trim, _
+                                    .FreighForwarder = txtFreigh.Value.Trim, _
+                                    .Useby = CStr(Session("UserName")), _
+                                    .IEATPermit = txtIEATPermit.Value.Trim, _
+                                    .ShipTo = txtShipTo.Value.Trim, _
+                                    .Box = CType(CDbl(txtBox.Value).ToString("#,##0.000"), Double?), _
+                                    .UnitBox = cdbBox1.Text.Trim, _
+                                    .JOBBranch = "JOB", _
+                                    .IEATDate = CType(txtIEATDate.Text, Date?), _
+                                    .Status1 = dcbStatus1.Text.Trim, _
+                                    .Status2 = dcbStatus2.Text.Trim, _
+                                    .Status3 = dcbStatus3.Text.Trim, _
+                                    .Remark = txtJobRemark.Value.Trim, _
+                                    .JobSite = cboJobSite.Text.Trim, _
+                                    .BillingNo = txtBillingNo.Value.Trim, _
+                                    .CustomerCodeGroup = txtCustomerCodeGroup.Value.Trim, _
+                                    .CustomerENGGroup = txtCustomerENGGroup.Value.Trim, _
+                                    .DeliveryTime = txtDeliveryTime.Value.Trim
+                })
+                    db.SaveChanges()
+
+                Catch ex As Exception
+                    ScriptManager.RegisterStartupScript(Me, Me.GetType(), "redirect", ex.Message, True)
+                End Try
+            Case MsgBoxResult.No
+
+        End Select
+    End Sub
+
+    Private Sub ClearDATA()
+        NextMonth.Checked = False
+        txtTypeCode.Value = ""
+        txtMountNo.Value = ""
+        txtYearNo.Value = ""
+        txtDigitNo.Value = ""
+        txtRunNo.Value = ""
+        txtLotNo.Value = ""
+        Checkbox3.Checked = False
+        txtShipTo.Value = ""
+        dcbSales.Text = ""
+        txtSalesName.Value = ""
+        txtConsigneeCode.Value = ""
+        txtConsignneeEng.Value = ""
+        txtConsignneeStreet_Number.Value = ""
+        txtConsignneeDistrict.Value = ""
+        txtConsignneeSubProvince.Value = ""
+        txtConsignneeProvince.Value = ""
+        txtConsignneePostCode.Value = ""
+        txtConsignneeEMail.Value = ""
+        txtExporterCode.Value = ""
+        txtExportEng.Value = ""
+        txtStreet_Number.Value = ""
+        txtDistrict.Value = ""
+        txtSubProvince.Value = ""
+        txtProvince.Value = ""
+        txtPostCode.Value = ""
+        txtCompensateCode.Value = ""
+        txtCommodity.Text = ""
+        txtQuantityofPart.Value = "0.0"
+        dcbQuantity1.Text = ""
+        txtQuantityPLT.Value = "0.0"
+        dcbQuantity2.Text = ""
+        txtWeight.Value = "0.0"
+        dcbWeight.Text = ""
+        txtVolume.Value = "0.0"
+        dcbVolume.Text = ""
+        txtMAWB.Value = ""
+        ComboBox7.Text = ""
+        txtDocumentCode.Value = ""
+        txtFlight.Value = ""
+        txtPathFile.Value = ""
+        txtDOCode.Value = ""
+        txtDONameENG.Value = ""
+        txtDOStreet.Value = ""
+        txtDODistrict.Value = ""
+        txtDOSubProvince.Value = ""
+        txtDOProvince.Value = ""
+        txtDOPostCode.Value = ""
+        txtDOEmail.Value = ""
+        txtDOContactPerson.Value = ""
+        txtIEATNo.Value = ""
+        txtEntryNo.Value = ""
+        txtGenInvNo.Value = ""
+        txtEASInv.Value = ""
+        txtPullSignal.Value = ""
+        txtCustomerCode.Value = ""
+        txtCustomerENG.Value = ""
+        txtCustomerStreet.Value = ""
+        txtCustomerDistrict.Value = ""
+        txtCustomerSub.Value = ""
+        txtCustomerProvince.Value = ""
+        txtCustomerPostCode.Value = ""
+        txtCustomerEmail.Value = ""
+        txtCustomerContact.Value = ""
+        txtPickUpCode..Value = ""
+        txtPickUpNameEng.Value = ""
+        txtPickUpAddress1.Value = ""
+        txtPickUpAddress2.Value = ""
+        txtPickUpAddress3.Value = ""
+        txtPickUpAddress4.Value = ""
+        txtPickUpAddress5.Value = ""
+        txtPickUpEmail.Value = ""
+        txtPickUpContact.Value = ""
+        txtEndCusCode.Value = ""
+        txtEndCusNameEng.Value = ""
+        txtEndCusAddress1.Value = ""
+        txtEndCusAddress2.Value = ""
+        txtEndCusAddress3.Value = ""
+        txtEndCusAddress4.Value = ""
+        txtEndCusAddress5.Value = ""
+        txtEndCusEmail.Value = ""
+        txtEndCusContact.Value = ""
+        txtFreigh.Value = ""
+        txtBox.Value = "0"
+        cdbBox1.Text = ""
+        dcbStatus1.Text = ""
+        dcbStatus2.Text = ""
+        dcbStatus3.Text = ""
+        txtJobRemark.Value = ""
+        cboJobSite.Text = ""
+        txtBillingNo.Value = ""
+        txtCustomerCodeGroup.Value = ""
+        txtCustomerENGGroup.Value = ""
+
+    End Sub
+
+    Protected Sub dcbStatus2_SelectedIndexChanged(sender As Object, e As EventArgs)
+        If dcbStatus2.Text = "ใช้หรือจำหน่ายภายในประเทศ" Then
+            dcbStatus3.Enabled = True
+        Else
+            dcbStatus3.Enabled = False
+        End If
+    End Sub
+    Private Sub CJob()
+        If cboJobSite.Text = "LKB" Then
+            JOB = "LKB"
+        ElseIf cboJobSite.Text = "SBIA" Then
+            JOB = "SBIA"
+        ElseIf cboJobSite.Text = "HCR" Then
+            JOB = "HCR"
+        ElseIf cboJobSite.Text = "HTO" Then
+            JOB = "HTO"
+        ElseIf cboJobSite.Text = "AEC" Then
+            JOB = "AEC"
+        ElseIf cboJobSite.Text = "SPM" Then
+            JOB = "SPM"
+        ElseIf cboJobSite.Text = "PTN" Then
+            JOB = "PTN"
+        ElseIf cboJobSite.Text = "CKT" Then
+            JOB = "CKT"
+        ElseIf cboJobSite.Text = "WIP" Then
+            JOB = "WIP"
+        End If
     End Sub
 End Class
