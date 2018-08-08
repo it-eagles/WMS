@@ -14071,6 +14071,38 @@ ScriptManager1 control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
+</member><member name="F:WMS.CreateRec.btnAddHead">
+	<summary>
+btnAddHead control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.CreateRec.btnEditHead">
+	<summary>
+btnEditHead control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.CreateRec.btnSaveAddHead">
+	<summary>
+btnSaveAddHead control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.CreateRec.btnSaveEditHead">
+	<summary>
+btnSaveEditHead control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
 </member><member name="F:WMS.CreateRec.txtJobno">
 	<summary>
 txtJobno control.
@@ -14130,6 +14162,14 @@ To modify move field declaration from designer file to code-behind file.
 </member><member name="F:WMS.CreateRec.txtsalemandis">
 	<summary>
 txtsalemandis control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.CreateRec.FormLeft_MasterJob">
+	<summary>
+FormLeft_MasterJob control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -14439,6 +14479,14 @@ txtDSTN4 control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
+</member><member name="F:WMS.CreateRec.txtTimePickUp">
+	<summary>
+txtTimePickUp control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
 </member><member name="F:WMS.CreateRec.txtdatepickerActualPickUp">
 	<summary>
 txtdatepickerActualPickUp control.
@@ -14450,6 +14498,22 @@ To modify move field declaration from designer file to code-behind file.
 </member><member name="F:WMS.CreateRec.CalendarExtenderdatepickerActualPickUp">
 	<summary>
 CalendarExtenderdatepickerActualPickUp control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.CreateRec.txtRamarkActual">
+	<summary>
+txtRamarkActual control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.CreateRec.FormRight_MasterJob">
+	<summary>
+FormRight_MasterJob control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -14583,6 +14647,22 @@ txtBilling control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
+</member><member name="F:WMS.CreateRec.txtpickupETD">
+	<summary>
+txtpickupETD control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.CreateRec.txtpickupETA">
+	<summary>
+txtpickupETA control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
 </member><member name="F:WMS.CreateRec.txtPacket">
 	<summary>
 txtPacket control.
@@ -14594,6 +14674,22 @@ To modify move field declaration from designer file to code-behind file.
 </member><member name="F:WMS.CreateRec.txtWeightActual">
 	<summary>
 txtWeightActual control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.CreateRec.txtpickupETD2">
+	<summary>
+txtpickupETD2 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.CreateRec.txtpickupETA2">
+	<summary>
+txtpickupETA2 control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -14615,6 +14711,22 @@ txtWeightActual2 control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
+</member><member name="F:WMS.CreateRec.txtpickupETD3">
+	<summary>
+txtpickupETD3 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.CreateRec.txtpickupETA3">
+	<summary>
+txtpickupETA3 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
 </member><member name="F:WMS.CreateRec.txtPacket3">
 	<summary>
 txtPacket3 control.
@@ -14631,6 +14743,22 @@ txtWeightActual3 control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
+</member><member name="F:WMS.CreateRec.txtpickupETD4">
+	<summary>
+txtpickupETD4 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.CreateRec.txtpickupETA4">
+	<summary>
+txtpickupETA4 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
 </member><member name="F:WMS.CreateRec.txtPacket4">
 	<summary>
 txtPacket4 control.
@@ -14642,6 +14770,14 @@ To modify move field declaration from designer file to code-behind file.
 </member><member name="F:WMS.CreateRec.txtWeightActual4">
 	<summary>
 txtWeightActual4 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.CreateRec.txtArrivalToEAS">
+	<summary>
+txtArrivalToEAS control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -21674,6 +21810,38 @@ To modify move field declaration from designer file to code-behind file.
 </member><member name="F:WMS.TruckWaybillRec.ScriptManager1">
 	<summary>
 ScriptManager1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.TruckWaybillRec.btnAddHead">
+	<summary>
+btnAddHead control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.TruckWaybillRec.btnEditHead">
+	<summary>
+btnEditHead control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.TruckWaybillRec.btnSaveAddHead">
+	<summary>
+btnSaveAddHead control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.TruckWaybillRec.btnSaveEditHead">
+	<summary>
+btnSaveEditHead control.
 </summary>
 	<remarks>
 Auto-generated field.

@@ -32,6 +32,42 @@ Partial Public Class CreateRec
     Protected WithEvents ScriptManager1 As Global.System.Web.UI.ScriptManager
 
     '''<summary>
+    '''btnAddHead control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnAddHead As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''btnEditHead control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnEditHead As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''btnSaveAddHead control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnSaveAddHead As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''btnSaveEditHead control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnSaveEditHead As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
     '''txtJobno control.
     '''</summary>
     '''<remarks>
@@ -102,6 +138,15 @@ Partial Public Class CreateRec
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents txtsalemandis As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''FormLeft_MasterJob control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents FormLeft_MasterJob As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
     '''txtConsigneecode control.
@@ -480,6 +525,15 @@ Partial Public Class CreateRec
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents txtRamarkActual As Global.System.Web.UI.HtmlControls.HtmlTextArea
+
+    '''<summary>
+    '''FormRight_MasterJob control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents FormRight_MasterJob As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
     '''txtShippercode control.
