@@ -1,4 +1,6 @@
-﻿Public Class TruckWaybillRec
+﻿Imports System.Transactions
+
+Public Class TruckWaybillRec
     Inherits System.Web.UI.Page
     Dim db As New LKBWarehouseEntities1_Test
 
@@ -345,5 +347,110 @@
         '    End Try
     End Sub
 
+    Private Sub SaveDATA_New()
 
+        If txtTruckW_B.Value.Trim() = "" Then
+            MsgBox("กรุณาป้อน TruckWayBill No ก่อน !!!")
+            'UnlockDATA()
+            txtTruckW_B.Focus()
+            Exit Sub
+        End If
+
+        If txtShippercode.Value.Trim() = "" Then
+            MsgBox("กรุณาป้อน Exporter No ก่อน !!!")
+            'UnlockDATA()
+            txtShippercode.Focus()
+            Exit Sub
+        End If
+
+        If txtConsigneeCodee.Value.Trim() = "" Then
+            MsgBox("กรุณาป้อน Consignnee No ก่อน !!!")
+            'UnlockDATA()
+            txtConsigneeCodee.Focus()
+            Exit Sub
+        End If
+
+        If MsgBox("คุณต้องการเพิ่มรายการ TruckWayBillImp ใหม่ ใช่หรือไม่ ?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+
+            Using tran As New TransactionScope()
+
+
+
+                Try
+                    db.Database.Connection.Open()
+                    'sb = New StringBuilder()
+                    'sb.Append("INSERT INTO tblTruckWayBillImp (TruckWayBillNo,ReceivedDate,Dateofissue,NoofOriginals,NotifyPatty,DeliveryofGoods,CarLicense,DriverName,FreightCharges,Prepaid,QuantityAmount,GrossWeightAmount,Measurement,ExporterCode,NameEng,StreetAddress,District,SubProvince,Province,PostCode,CodeReturn,ConsignneeCode,ConsignNameEng,ConsingStreetNumber,ConsignDistrict,ConsignSubProvince,ConsgnProvince,ConsignPostCode,ConsignEmail,PlaceCode,PlaceName,PlaceAddress,PlaceofReceipt)")
+                    'sb.Append(" VALUES (@TruckWayBillNo,@ReceivedDate,@Dateofissue,@NoofOriginals,@NotifyPatty,@DeliveryofGoods,@CarLicense,@DriverName,@FreightCharges,@Prepaid,@QuantityAmount,@GrossWeightAmount,@Measurement,@ExporterCode,@NameEng,@StreetAddress,@District,@SubProvince,@Province,@PostCode,@CodeReturn,@ConsignneeCode,@ConsignNameEng,@ConsingStreetNumber,@ConsignDistrict,@ConsignSubProvince,@ConsgnProvince,@ConsignPostCode,@ConsignEmail,@PlaceCode,@PlaceName,@PlaceAddress,PlaceofReceipt)"
+                    db.tblTruckWayBillImps.Add(New tblTruckWayBillImp With { _
+                   .TruckWayBillNo = txtTruckW_B.Value.Trim, _
+                   .ReceivedDate = txtdatepickerReceivedDate.Text.Trim, _
+                   .Dateofissue = txtdatepickerDateOfIssue.Text.Trim, _
+                   .NoofOriginals = txtNoOfOriginals.Value.Trim, _
+                   .NotifyPatty = txtNotifyParty.Value.Trim, _
+                   .DeliveryofGoods = txtDeliveryOfGoods.Value.Trim, _
+                   .CarLicense = txtCarLicense.Value.Trim, _
+                   .DriverName = txtDriverName.Value.Trim, _
+                   .FreightCharges = txtFreightCharges.Value.Trim, _
+                   .Prepaid = txtPrepaid.Value.Trim, _
+                   .QuantityAmount = txtQuantityAmount.Value.Trim, _
+                   .GrossWeightAmount = txtGrossWeight.Value.Trim, _
+                   .Measurement = txtMeasurement.Value.Trim, _
+                   .ExporterCode = txtShippercode.Value.Trim, _
+                   .NameEng = txtNameShipper.Value.Trim, _
+                   .StreetAddress = txtAddress1Shipper.Value.Trim, _
+                   .District = txtAddress2Shipper.Value.Trim, _
+                   .SubProvince = txtAddress3Shipper.Value.Trim, _
+                   .Province = txtAddress4Shipper.Value.Trim, _
+                   .PostCode = txtAddress5Shipper.Value.Trim, _
+                   .CodeReturn = txtEmailShipper.Value.Trim, _
+                   .ConsignneeCode = txtConsigneeCodee.Value.Trim, _
+                   .ConsignNameEng = txtNameConsignee.Value.Trim, _
+                   .ConsingStreetNumber = txtAddress1Consignee.Value.Trim, _
+                   .ConsignDistrict = txtAddress2Consignee.Value.Trim, _
+                   .ConsignSubProvince = txtAddress3Consignee.Value.Trim, _
+                   .ConsgnProvince = txtAddress4Consignee.Value.Trim, _
+                   .ConsignPostCode = txtAddress5Consignee.Value.Trim, _
+                   .ConsignEmail = txtEmailConsignee.Value.Trim, _
+                   .PlaceCode = txtNotifyPartyCode.Value.Trim, _
+                   .PlaceName = txtNotifyPartyName.Value.Trim, _
+                   .PlaceAddress = txtNotifyPartyAddress.Value.Trim, _
+                   .PlaceofReceipt = txtPlaceOfReceipt.Value.Trim
+                   })
+
+                    db.SaveChanges()
+                    tran.Complete()
+                    ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('Add สำเร็จ !');", True)
+
+                Catch
+                    'MessageBox.Show("คุณป้อน ข้อมูล. ซ้ำ !!!", "ผลการทำงาน", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                    'tr.Rollback()
+                    'UnlockDATA()
+                    ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด กรุณาบันทึกข้อมูลใหม่อีกครั้ง');", True)
+
+                Finally
+                    db.Database.Connection.Close()
+                    db.Dispose()
+                    tran.Dispose()
+                End Try
+            End Using
+        End If
+
+        txtTruckW_B.Focus()
+    End Sub
+
+    Protected Sub btnAddHead_ServerClick(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Protected Sub btnEditHead_ServerClick(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Protected Sub btnSaveAddHead_ServerClick(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Protected Sub btnSaveEditHead_ServerClick(sender As Object, e As EventArgs)
+
+    End Sub
 End Class

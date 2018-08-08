@@ -27,20 +27,12 @@
           <div class="box box-default">
             <div class="box-body">
             <div class="col-xs-6">
-                <a class="btn btn-app" id="btnAddHead">
-                <i class="fa fa-inbox"></i> Add
-                </a>
-                <a class="btn btn-app" id="btnEditHead">
-                <i class="fa fa-edit"></i> Edit
-                </a>
+                <button class="btn btn-app" id="btnAddHead" runat="server" onserverclick="btnAddHead_ServerClick"><i class="fa fa-inbox"></i>Add</button>
+                <button class="btn btn-app" id="btnEditHead" runat="server" onserverclick="btnEditHead_ServerClick"><i class="fa fa-edit"></i>Edit</button>
             </div>
             <div class="col-xs-6 text-right">
-                <a class="btn btn-app" id="btnSaveAddHead">
-                <i class="fa fa-save"></i> Save Add
-                </a>
-                <a class="btn btn-app" id="btnSaveEditHead">
-                <i class="fa fa-save"></i> Save Edit
-                </a>
+                <button class="btn btn-app" id="btnSaveAddHead" runat="server" onserverclick="btnSaveAddHead_ServerClick"><i class="fa fa-save"></i>Save Add</button>
+                <button class="btn btn-app" id="btnSaveEditHead" runat="server" onserverclick="btnSaveEditHead_ServerClick"><i class="fa fa-save"></i>Save Edit</button>
             </div>
             </div>
           </div>
@@ -149,8 +141,8 @@
             <!-- /.content -->
          <!-- /.box-header -->
                 <div class="row">
-                    
-                    <div class="col-md-6">
+                    <%---------------------------------------------------------Start Left Form--------------------------------------------------------%>
+                    <div class="col-md-6" id="FormLeft_MasterJob" runat="server" visible="false">
           <!-- Horizontal Form -->
 
             <!-- form start -->
@@ -390,9 +382,10 @@
             </div>
         </div>
         <!--/.col (left) -->
+                    <%---------------------------------------------------------End Left Form--------------------------------------------------------%>
 
                     <%------------------------------------------------------------Start Right Form------------------------------------------------%>
-                    <div class="col-md-6">
+                    <div class="col-md-6" id="FormRight_MasterJob" runat="server" visible="false">
           <!-- Horizontal Form -->                      
             <!-- form start -->
             <div class="form-horizontal">
@@ -679,7 +672,7 @@
              <!------- Import Goods ------->
             <div class="tab-pane" id="importgoods">
                      <!-- Post -->
-               <div class="row">
+               <div class="row" runat="server">
                     
                     <div class="col-md-6">
           <!-- Horizontal Form -->

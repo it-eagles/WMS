@@ -949,165 +949,495 @@ Public Class CreateRec
         Catch ex As Exception
         End Try
     End Sub
+    '--------------------------------------------------Save Data News-----------------------------------------------
+    Private Sub SaveDATA_New()
 
-    'Private Sub SaveDATA_New()
+        If txtJobno.Value.Trim() = "" Then
+            MsgBox("กรุณาป้อน LOT No ก่อน !!!")
+            'UnlockDATA()
+            txtJobno.Focus()
+            Exit Sub
+        End If
+        'CJob()
+        If MsgBox("คุณต้องการเพิ่มรายการ LOT No ใหม่ ใช่หรือไม่ ?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
 
-    '    If txtJobno.Value.Trim() = "" Then
-    '        MsgBox("กรุณาป้อน LOT No ก่อน !!!")
-    '        'UnlockDATA()
-    '        txtJobno.Focus()
-    '        Exit Sub
+            Using tran As New TransactionScope()
+
+                Try
+                    db.Database.Connection.Open()
+
+                    db.tblImpGenLOTs.Add(New tblImpGenLOT With { _
+                                         .EASLOTNo = txtJobno.Value.Trim, _
+                                         .JobSite = ddlJobsite.Text.Trim, _
+                                         .LOTDate = CType(txtdatepickerJobdate.Text.Trim, Date?), _
+                                         .LOTBy = ddlLotof.Text.Trim, _
+                                         .SalesCode = ddlSaleman.Text.Trim, _
+                                         .SalesName = txtsalemandis.Value.Trim, _
+                                         .ConsigneeCode = txtConsigneecode.Value.Trim, _
+                                         .ConsignNameEng = txtNameEngConsign.Value.Trim, _
+                                         .ConsignAddress = txtAddress1.Value.Trim, _
+                                         .ConsignDistrict = txtAddress2.Value.Trim, _
+                                         .ConsignSubProvince = txtAddress3.Value.Trim, _
+                                         .ConsignProvince = txtAddress4.Value.Trim, _
+                                         .ConsignPostCode = txtAddress5.Value.Trim, _
+                                         .ConsignEmail = txtEmail.Value.Trim, _
+                                         .ShipperCode = txtShippercode.Value.Trim, _
+                                         .ShipperNameEng = txtNameEngShipper.Value.Trim, _
+                                         .ShipperAddress = txtAddress1Shipper.Value.Trim, _
+                                         .ShipperDistrict = txtAddress2Shipper.Value.Trim, _
+                                         .ShipperSubprovince = txtAddress3Shipper.Value.Trim, _
+                                         .ShipperProvince = txtAddress4Shipper.Value.Trim, _
+                                         .ShipperPostCode = txtAddress5Shipper.Value.Trim, _
+                                         .ShipperReturnCode = txtEmailShipper.Value.Trim, _
+                                         .Commodity = ddlCommodity.Text.Trim, _
+                                         .QuantityofPart = CType(txtQuantityOfPart.Value.Trim, Double?), _
+                                         .QuantityUnit = ddlQuantityOfParty.Text.Trim, _
+                                         .QuantityPack = CType(txtQuantity.Value.Trim, Double?), _
+                                         .QuantityUnitPack = ddlQuan.Text.Trim, _
+                                         .Weight = CType(txtWeight.Value.Trim, Double?), _
+                                         .WeightUnit = ddlWeight.Text.Trim, _
+                                         .QuantityPack1 = CType(txtQuantityBox.Value.Trim, Double?), _
+                                         .QuantityUnitPack1 = ddlquanbox.Text.Trim, _
+                                         .Volume = CType(txtVolume.Value.Trim, Double?), _
+                                         .VolumeUnit = ddlvolume.Text.Trim, _
+                                         .MAWB = txtMAWB_BL_TWB.Value.Trim, _
+                                         .Flight = txtFLT_Voy_TruckDate.Value.Trim, _
+                                         .DocType = ddlvolume2.Text.Trim, _
+                                         .DocCode = txtVolume2.Value.Trim, _
+                                         .FreighForwarder = ddlFreight.Text.Trim, _
+                                         .ShipTo = txtShipto.Value.Trim, _
+                                         .BillingNo = txtBilling.Value.Trim, _
+                                         .FLT1 = txtActual1.Value.Trim, _
+                                         .FLT2 = txtActual2.Value.Trim, _
+                                         .FLT3 = txtActual3.Value.Trim, _
+                                         .FLT4 = txtActual4.Value.Trim, _
+                                         .DateFLT1 = CType(txtdatepickerActualDate1.Text.Trim, Date?), _
+                                         .DateFLT2 = CType(txtdatepickerActualDate2.Text.Trim, Date?), _
+                                         .DateFLT3 = CType(txtdatepickerActualDate3.Text.Trim, Date?), _
+                                         .DateFLT4 = CType(txtdatepickerActualDate4.Text.Trim, Date?), _
+                                         .ORGN1 = txtORGN1.Value.Trim, _
+                                         .ORGN2 = txtORGN2.Value.Trim, _
+                                         .ORGN3 = txtORGN3.Value.Trim, _
+                                         .ORGN4 = txtORGN4.Value.Trim, _
+                                         .DSTN1 = txtDSTN1.Value.Trim, _
+                                         .DSTN2 = txtDSTN2.Value.Trim, _
+                                         .DSTN3 = txtDSTN3.Value.Trim, _
+                                         .DSTN4 = txtDSTN4.Value.Trim, _
+                                         .ETD1 = txtpickupETD.Value.Trim, _
+                                         .ETD2 = txtpickupETD2.Value.Trim, _
+                                         .ETD3 = txtpickupETD3.Value.Trim, _
+                                         .ETD4 = txtpickupETD4.Value.Trim, _
+                                         .ETA1 = txtpickupETA.Value.Trim, _
+                                         .ETA2 = txtpickupETA2.Value.Trim, _
+                                         .ETA3 = txtpickupETA3.Value.Trim, _
+                                         .ETA4 = txtpickupETA4.Value.Trim, _
+                                         .PCS1 = CType(txtPacket.Value.Trim, Double?), _
+                                         .PCS2 = CType(txtPacket2.Value.Trim, Double?), _
+                                         .PCS3 = CType(txtPacket3.Value.Trim, Double?), _
+                                         .PCS4 = CType(txtPacket4.Value.Trim, Double?), _
+                                         .Weight1 = CType(txtWeightActual.Value.Trim, Double?), _
+                                         .Weight2 = CType(txtWeightActual2.Value.Trim, Double?), _
+                                         .Weight3 = CType(txtWeightActual3.Value.Trim, Double?), _
+                                         .Weight4 = CType(txtWeightActual4.Value.Trim, Double?), _
+                                         .TimeDTE = txtTimePickUp.Value.Trim, _
+                                         .DateDTE = CType(txtdatepickerActualPickUp.Text.Trim, Date?), _
+                                         .TimeATT = txtArrivalToEAS.Value.Trim, _
+                                         .DateATT = CType(txtdatepickerArrivalToEAS.Text.Trim, Date?), _
+                                         .Remark = txtRamarkActual.Value.Trim, _
+                                         .DOCode = txtDeliverycode.Value.Trim, _
+                                         .DONameENG = txtNameEngDelivery.Value.Trim, _
+                                         .DOStreet_Number = txtAddress1Delivery.Value.Trim, _
+                                         .DODistrict = txtAddress2Delivery.Value.Trim, _
+                                         .DOSubProvince = txtAddress3Delivery.Value.Trim, _
+                                         .DOProvince = txtAddress4Delivery.Value.Trim, _
+                                         .DOPostCode = txtAddress5Delivery.Value.Trim, _
+                                         .DOEmail = txtEmailDelivery.Value.Trim, _
+                                         .DOContactPerson = txtContractPersonDelivery.Value.Trim, _
+                                         .PickUpCode = txtCodePickUpPlace.Value.Trim, _
+                                         .PickUpENG = txtNamePickUpPlace.Value.Trim, _
+                                         .PickUpAddress1 = txtAddress1PickUpPlace.Value.Trim, _
+                                         .PickUpAddress2 = txtAddress2PickUpPlace.Value.Trim, _
+                                         .PickUpAddress3 = txtAddress3PickUpPlace.Value.Trim, _
+                                         .PickUpAddress4 = txtAddress4PickUpPlace.Value.Trim, _
+                                         .PickUpAddress5 = txtAddress5PickUpPlace.Value.Trim, _
+                                         .PickUpEmail = txtEmailPickUpPlace.Value.Trim, _
+                                         .PickUpContact = txtContractPersonPickUpPlace.Value.Trim, _
+                                         .CustomerCode = txtCustomercode.Value.Trim, _
+                                         .CustomerENG = txtNameEngCustomer.Value.Trim, _
+                                         .CustomerStreet = txtAddress1Custommer.Value.Trim, _
+                                         .CustomerDistrict = txtAddress2Custommer.Value.Trim, _
+                                         .CustomerSub = txtAddress3Custommer.Value.Trim, _
+                                         .CustomerProvince = txtAddress4Custommer.Value.Trim, _
+                                         .CustomerPostCode = txtAddress5Custommer.Value.Trim, _
+                                         .CustomerEmail = txtEmailCustommer.Value.Trim, _
+                                         .CustomerContact = txtContractPersonCustommer.Value.Trim, _
+                                         .EndCusCode = txtCodeEndCustomer.Value.Trim, _
+                                         .EndCusENG = txtNameEndCustomer.Value.Trim, _
+                                         .EndCusAddress1 = txtAddress1EndCustomer.Value.Trim, _
+                                         .EndCusAddress2 = txtAddress2EndCustomer.Value.Trim, _
+                                         .EndCusAddress3 = txtAddress3EndCustomer.Value.Trim, _
+                                         .EndCusAddress4 = txtAddress4EndCustomer.Value.Trim, _
+                                         .EndCusAddress5 = txtAddress5EndCustomer.Value.Trim, _
+                                         .EndCusEmail = txtEmailEndCustomer.Value.Trim, _
+                                         .EndCusContact = txtContractPersonEndCustomer.Value.Trim, _
+                                         .CustomerCodeGroup = txtCodeCustommerGroup.Value.Trim, _
+                                         .CustomerENGGroup = txtNameCustommerGroup.Value.Trim, _
+                                         .IEATNo = txtIEATNo.Value.Trim, _
+                                         .IEATPermit = ddlIEATPermit.Text.Trim, _
+                                         .EntryNo = txtImportEntryNo.Value.Trim, _
+                                         .DeliveryDate = CType(txtdatepickerImportEntryDate.Text.Trim, Date?), _
+                                         .Status1 = ddlStatusIEAT1.Text.Trim, _
+                                         .Status2 = ddlStatusIEAT2.Text.Trim, _
+                                         .Useby = CStr(Session("UserId")), _
+                                         .JOBBranch = ddlJobsite.Text.Trim
+                                     })
+
+                    db.SaveChanges()
+                    tran.Complete()
+                    ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('Add สำเร็จ !');", True)
+
+                    'End With
+                    'tr.Commit()
+
+                Catch ex As Exception
+                    'tr.Rollback()
+                    'MessageBox.Show(ex.Message, "ผลการทำงาน", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                    ' UnlockDATA()
+                    ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด กรุณาบันทึกข้อมูลใหม่อีกครั้ง');", True)
+
+                Finally
+                    db.Database.Connection.Close()
+                    db.Dispose()
+                    tran.Dispose()
+
+                End Try
+
+            End Using
+        End If
+        txtJobno.Focus()
+
+    End Sub 'saveเข้าtblExpGenLOT
+    '--------------------------------------------------Save Data Modify-----------------------------------------------
+    Private Sub SaveDATA_Modify()
+        Dim JobNooo As String = Request.QueryString("EASLOTNo")
+        If txtJobno.Value.Trim = "" Then
+            MsgBox("กรุณาป้อน LOT No ก่อน !!!")
+            'UnlockDATA()
+            txtJobno.Focus()
+            Exit Sub
+        End If
+
+        If MsgBox("คุณต้องการแก้ไขรายการ LOT No ใหม่ ใช่หรือไม่ ?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+
+            Using tran As New TransactionScope()
+
+
+                Try
+                    db.Database.Connection.Open()
+                    'sb = New StringBuilder()
+                    'sb.Append("UPDATE tblImpGenLOT")
+                    'sb.Append(" SET EASLOTNo=@EASLOTNo,LOTDate=@LOTDate,LOTBy=@LOTBy,SalesCode=@SalesCode,SalesName=@SalesName,ConsigneeCode=@ConsigneeCode,ConsignNameEng=@ConsignNameEng,ConsignAddress=@ConsignAddress,ConsignDistrict=@ConsignDistrict,ConsignSubProvince=@ConsignSubProvince,ConsignProvince=@ConsignProvince,ConsignPostCode=@ConsignPostCode,ConsignEmail=@ConsignEmail,ShipperCode=@ShipperCode,ShipperNameEng=@ShipperNameEng,ShipperAddress=@ShipperAddress,ShipperDistrict=@ShipperDistrict,ShipperSubprovince=@ShipperSubprovince,ShipperProvince=@ShipperProvince,ShipperPostCode=@ShipperPostCode,ShipperReturnCode=@ShipperReturnCode,Commodity=@Commodity,QuantityofPart=@QuantityofPart,QuantityUnit=@QuantityUnit,QuantityPack=@QuantityPack,QuantityUnitPack=@QuantityUnitPack,Weight=@Weight,WeightUnit=@WeightUnit,Volume=@Volume,VolumeUnit=@VolumeUnit,MAWB=@MAWB,DocType=@DocType,DocCode=@DocCode,Flight=@Flight,DOCode=@DOCode,DONameENG=@DONameENG,DOStreet_Number=@DOStreet_Number,DODistrict=@DODistrict,DOSubProvince=@DOSubProvince,DOProvince=@DOProvince,DOPostCode=@DOPostCode,DOEmail=@DOEmail,DOContactPerson=@DOContactPerson,IEATNo=@IEATNo,EntryNo=@EntryNo,DeliveryDate=@DeliveryDate,CustomerCode=@CustomerCode,CustomerENG=@CustomerENG,CustomerStreet=@CustomerStreet,CustomerDistrict=@CustomerDistrict,CustomerSub=@CustomerSub,CustomerProvince=@CustomerProvince,CustomerPostCode=@CustomerPostCode,CustomerEmail=@CustomerEmail,CustomerContact=@CustomerContact,PickUpCode=@PickUpCode,PickUpENG=@PickUpENG,PickUpAddress1=@PickUpAddress1,PickUpAddress2=@PickUpAddress2,PickUpAddress3=@PickUpAddress3,PickUpAddress4=@PickUpAddress4,PickUpAddress5=@PickUpAddress5,PickUpEmail=@PickUpEmail,PickUpContact=@PickUpContact,EndCusCode=@EndCusCode,EndCusENG=@EndCusENG,EndCusAddress1=@EndCusAddress1,EndCusAddress2=@EndCusAddress2,EndCusAddress3=@EndCusAddress3,EndCusAddress4=@EndCusAddress4,EndCusAddress5=@EndCusAddress5,EndCusEmail=@EndCusEmail,EndCusContact=@EndCusContact,FreighForwarder=@FreighForwarder,Useby=@Useby,IEATPermit=@IEATPermit,ShipTo=@ShipTo,Remark=@Remark,FLT1=@FLT1,FLT2=@FLT2,FLT3=@FLT3,FLT4=@FLT4,DateFLT1=@DateFLT1,DateFLT2=@DateFLT2,DateFLT3=@DateFLT3,DateFLT4=@DateFLT4,ORGN1=@ORGN1,ORGN2=@ORGN2,ORGN3=@ORGN3,ORGN4=@ORGN4,DSTN1=@DSTN1,DSTN2=@DSTN2,DSTN3=@DSTN3,DSTN4=@DSTN4,ETD1=@ETD1,ETD2=@ETD2,ETD3=@ETD3,ETD4=@ETD4,ETA1=@ETA1,ETA2=@ETA2,ETA3=@ETA3,ETA4=@ETA4,PCS1=@PCS1,PCS2=@PCS2,PCS3=@PCS3,PCS4=@PCS4,Weight1=@Weight1,Weight2=@Weight2,Weight3=@Weight3,Weight4=@Weight4,QuantityPack1=@QuantityPack1,QuantityUnitPack1=@QuantityUnitPack1,TimeDTE=@TimeDTE,DateDTE=@DateDTE,TimeATT=@TimeATT,DateATT=@DateATT,Status1=@Status1,Status2=@Status2,JobSite=@JobSite,BillingNo=@BillingNo,CustomerCodeGroup=@CustomerCodeGroup,CustomerENGGroup=@CustomerENGGroup")
+                    'sb.Append(" WHERE (EASLOTNo=@EASLOTNo)")
+                    Dim edit As tblImpGenLOT = (From c In db.tblImpGenLOTs Where c.EASLOTNo = JobNooo
+                      Select c).First()
+                    If edit IsNot Nothing Then
+                        '.CommandText = sqlEdit
+                        '.CommandType = CommandType.Text
+                        '.Connection = Conn
+                        '.Transaction = tr
+                        '.Parameters.Clear()
+                        edit.EASLOTNo = txtJobno.Value.Trim
+                        edit.JobSite = ddlJobsite.Text.Trim
+                        edit.LOTDate = CType(txtdatepickerJobdate.Text.Trim, Date?)
+                        edit.LOTBy = ddlLotof.Text.Trim
+                        edit.SalesCode = ddlSaleman.Text.Trim
+                        edit.SalesName = txtsalemandis.Value.Trim
+                        edit.ConsigneeCode = txtConsigneecode.Value.Trim
+                        edit.ConsignNameEng = txtNameEngConsign.Value.Trim
+                        edit.ConsignAddress = txtAddress1.Value.Trim
+                        edit.ConsignDistrict = txtAddress2.Value.Trim
+                        edit.ConsignSubProvince = txtAddress3.Value.Trim
+                        edit.ConsignProvince = txtAddress4.Value.Trim
+                        edit.ConsignPostCode = txtAddress5.Value.Trim
+                        edit.ConsignEmail = txtEmail.Value.Trim
+                        edit.ShipperCode = txtShippercode.Value.Trim
+                        edit.ShipperNameEng = txtNameEngShipper.Value.Trim
+                        edit.ShipperAddress = txtAddress1Shipper.Value.Trim
+                        edit.ShipperDistrict = txtAddress2Shipper.Value.Trim
+                        edit.ShipperSubprovince = txtAddress3Shipper.Value.Trim
+                        edit.ShipperProvince = txtAddress4Shipper.Value.Trim
+                        edit.ShipperPostCode = txtAddress5Shipper.Value.Trim
+                        edit.ShipperReturnCode = txtEmailShipper.Value.Trim
+                        edit.Commodity = ddlCommodity.Text.Trim
+                        edit.QuantityofPart = CType(txtQuantityOfPart.Value.Trim, Double?)
+                        edit.QuantityUnit = ddlQuantityOfParty.Text.Trim
+                        edit.QuantityPack = CType(txtQuantity.Value.Trim, Double?)
+                        edit.QuantityUnitPack = ddlQuan.Text.Trim
+                        edit.Weight = CType(txtWeight.Value.Trim, Double?)
+                        edit.WeightUnit = ddlWeight.Text.Trim
+                        edit.QuantityPack1 = CType(txtQuantityBox.Value.Trim, Double?)
+                        edit.QuantityUnitPack1 = ddlquanbox.Text.Trim
+                        edit.Volume = CType(txtVolume.Value.Trim, Double?)
+                        edit.VolumeUnit = ddlvolume.Text.Trim
+                        edit.MAWB = txtMAWB_BL_TWB.Value.Trim
+                        edit.Flight = txtFLT_Voy_TruckDate.Value.Trim
+                        edit.DocType = ddlvolume2.Text.Trim
+                        edit.DocCode = txtVolume2.Value.Trim
+                        edit.FreighForwarder = ddlFreight.Text.Trim
+                        edit.ShipTo = txtShipto.Value.Trim
+                        edit.BillingNo = txtBilling.Value.Trim
+                        edit.FLT1 = txtActual1.Value.Trim
+                        edit.FLT2 = txtActual2.Value.Trim
+                        edit.FLT3 = txtActual3.Value.Trim
+                        edit.FLT4 = txtActual4.Value.Trim
+                        edit.DateFLT1 = CType(txtdatepickerActualDate1.Text.Trim, Date?)
+                        edit.DateFLT2 = CType(txtdatepickerActualDate2.Text.Trim, Date?)
+                        edit.DateFLT3 = CType(txtdatepickerActualDate3.Text.Trim, Date?)
+                        edit.DateFLT4 = CType(txtdatepickerActualDate4.Text.Trim, Date?)
+                        edit.ORGN1 = txtORGN1.Value.Trim
+                        edit.ORGN2 = txtORGN2.Value.Trim
+                        edit.ORGN3 = txtORGN3.Value.Trim
+                        edit.ORGN4 = txtORGN4.Value.Trim
+                        edit.DSTN1 = txtDSTN1.Value.Trim
+                        edit.DSTN2 = txtDSTN2.Value.Trim
+                        edit.DSTN3 = txtDSTN3.Value.Trim
+                        edit.DSTN4 = txtDSTN4.Value.Trim
+                        edit.ETD1 = txtpickupETD.Value.Trim
+                        edit.ETD2 = txtpickupETD2.Value.Trim
+                        edit.ETD3 = txtpickupETD3.Value.Trim
+                        edit.ETD4 = txtpickupETD4.Value.Trim
+                        edit.ETA1 = txtpickupETA.Value.Trim
+                        edit.ETA2 = txtpickupETA2.Value.Trim
+                        edit.ETA3 = txtpickupETA3.Value.Trim
+                        edit.ETA4 = txtpickupETA4.Value.Trim
+                        edit.PCS1 = CType(txtPacket.Value.Trim, Double?)
+                        edit.PCS2 = CType(txtPacket2.Value.Trim, Double?)
+                        edit.PCS3 = CType(txtPacket3.Value.Trim, Double?)
+                        edit.PCS4 = CType(txtPacket4.Value.Trim, Double?)
+                        edit.Weight1 = CType(txtWeightActual.Value.Trim, Double?)
+                        edit.Weight2 = CType(txtWeightActual2.Value.Trim, Double?)
+                        edit.Weight3 = CType(txtWeightActual3.Value.Trim, Double?)
+                        edit.Weight4 = CType(txtWeightActual4.Value.Trim, Double?)
+                        edit.TimeDTE = txtTimePickUp.Value.Trim
+                        edit.DateDTE = CType(txtdatepickerActualPickUp.Text.Trim, Date?)
+                        edit.TimeATT = txtArrivalToEAS.Value.Trim
+                        edit.DateATT = CType(txtdatepickerArrivalToEAS.Text.Trim, Date?)
+                        edit.Remark = txtRamarkActual.Value.Trim
+                        edit.DOCode = txtDeliverycode.Value.Trim
+                        edit.DONameENG = txtNameEngDelivery.Value.Trim
+                        edit.DOStreet_Number = txtAddress1Delivery.Value.Trim
+                        edit.DODistrict = txtAddress2Delivery.Value.Trim
+                        edit.DOSubProvince = txtAddress3Delivery.Value.Trim
+                        edit.DOProvince = txtAddress4Delivery.Value.Trim
+                        edit.DOPostCode = txtAddress5Delivery.Value.Trim
+                        edit.DOEmail = txtEmailDelivery.Value.Trim
+                        edit.DOContactPerson = txtContractPersonDelivery.Value.Trim
+                        edit.PickUpCode = txtCodePickUpPlace.Value.Trim
+                        edit.PickUpENG = txtNamePickUpPlace.Value.Trim
+                        edit.PickUpAddress1 = txtAddress1PickUpPlace.Value.Trim
+                        edit.PickUpAddress2 = txtAddress2PickUpPlace.Value.Trim
+                        edit.PickUpAddress3 = txtAddress3PickUpPlace.Value.Trim
+                        edit.PickUpAddress4 = txtAddress4PickUpPlace.Value.Trim
+                        edit.PickUpAddress5 = txtAddress5PickUpPlace.Value.Trim
+                        edit.PickUpEmail = txtEmailPickUpPlace.Value.Trim
+                        edit.PickUpContact = txtContractPersonPickUpPlace.Value.Trim
+                        edit.CustomerCode = txtCustomercode.Value.Trim
+                        edit.CustomerENG = txtNameEngCustomer.Value.Trim
+                        edit.CustomerStreet = txtAddress1Custommer.Value.Trim
+                        edit.CustomerDistrict = txtAddress2Custommer.Value.Trim
+                        edit.CustomerSub = txtAddress3Custommer.Value.Trim
+                        edit.CustomerProvince = txtAddress4Custommer.Value.Trim
+                        edit.CustomerPostCode = txtAddress5Custommer.Value.Trim
+                        edit.CustomerEmail = txtEmailCustommer.Value.Trim
+                        edit.CustomerContact = txtContractPersonCustommer.Value.Trim
+                        edit.EndCusCode = txtCodeEndCustomer.Value.Trim
+                        edit.EndCusENG = txtNameEndCustomer.Value.Trim
+                        edit.EndCusAddress1 = txtAddress1EndCustomer.Value.Trim
+                        edit.EndCusAddress2 = txtAddress2EndCustomer.Value.Trim
+                        edit.EndCusAddress3 = txtAddress3EndCustomer.Value.Trim
+                        edit.EndCusAddress4 = txtAddress4EndCustomer.Value.Trim
+                        edit.EndCusAddress5 = txtAddress5EndCustomer.Value.Trim
+                        edit.EndCusEmail = txtEmailEndCustomer.Value.Trim
+                        edit.EndCusContact = txtContractPersonEndCustomer.Value.Trim
+                        edit.CustomerCodeGroup = txtCodeCustommerGroup.Value.Trim
+                        edit.CustomerENGGroup = txtNameCustommerGroup.Value.Trim
+                        edit.IEATNo = txtIEATNo.Value.Trim
+                        edit.IEATPermit = ddlIEATPermit.Text.Trim
+                        edit.EntryNo = txtImportEntryNo.Value.Trim
+                        edit.DeliveryDate = CType(txtdatepickerImportEntryDate.Text.Trim, Date?)
+                        edit.Status1 = ddlStatusIEAT1.Text.Trim
+                        edit.Status2 = ddlStatusIEAT2.Text.Trim
+                        edit.Useby = CStr(Session("UserId"))
+
+                        db.SaveChanges()
+                        tran.Complete()
+                        ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('แก้ไขข้อมูล สำเร็จ !');", True)
+
+                    End If
+                Catch ex As Exception
+                    ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด กรุณาบันทึกข้อมูลใหม่อีกครั้ง');", True)
+                End Try
+            End Using
+        End If
+        txtJobno.Focus()
+    End Sub 'saveModifyเข้าที่tblExpGenLOT
+
+    Protected Sub btnSaveAddHead_ServerClick(sender As Object, e As EventArgs)
+        SaveDATA_New()
+    End Sub
+
+    Protected Sub btnSaveEditHead_ServerClick(sender As Object, e As EventArgs)
+        SaveDATA_Modify()
+    End Sub
+
+    Protected Sub btnAddHead_ServerClick(sender As Object, e As EventArgs)
+        FormLeft_MasterJob.Visible = True
+        FormRight_MasterJob.Visible = True
+    End Sub
+
+    Protected Sub btnEditHead_ServerClick(sender As Object, e As EventArgs)
+
+    End Sub
+    'Private Sub GenNum()
+    '    Dim tmpDate As Single
+    '    Dim tmpMount As Single
+    '    Dim tmpYear As Single
+    '    Dim LotNo As String
+    '    Dim Nmount As Single
+    '    Dim Num As Single
+    '    Dim Mount As Single
+    '    Dim Year As Single
+    '    Dim Digit As Single
+
+    '    tmpDate = CSng(Format(Now(), "dd"))
+    '    tmpMount = CSng(Format(Now(), "MM"))
+    '    Nmount = CSng(Format(Now(), "yy")) + 43
+    '    'tmpYear = Format(CDate(Nmount), "yy")
+    '    Gentbl()
+    '    Mount = CSng(txtMountNo.Text)
+    '    Year = CSng(txtYearNo.Text)
+    '    Digit = CSng(txtDigitNo.Text)
+    '    If Nmount = Year Then
+    '        If tmpMount = Mount Then
+    '            Digit = Digit + 1
+    '            Num = Digit
+    '        End If
+
+    '        If tmpMount <> Mount Then
+    '            tmpMount = Mount
+    '            Num = Digit + 1
+    '        End If
     '    End If
-    '    'CJob()
-    '    If MsgBox("คุณต้องการเพิ่มรายการ LOT No ใหม่ ใช่หรือไม่ ?", "คำยืนยัน", MsgBoxStyle.YesNo, MsgBoxStyle.Question) = Windows.Forms.DialogResult.Yes Then
+    '    If Nmount <> Year Then
+    '        Nmount = Year
+    '        If tmpMount = Mount Then
+    '            Digit = Digit + 1
+    '            Num = Digit
+    '        End If
 
-    '        Using tran As New TransactionScope()
-
-    '            Try
-    '                db.Database.Connection.Open()
-
-    '                db.tblImpGenLOTs.Add(New tblImpGenLOT With { _
-    '                                     .EASLOTNo = txtJobno.Value.Trim, _
-    '                                     .JobSite = ddlJobsite.Text.Trim, _
-    '                                     .LOTDate = CType(txtdatepickerJobdate.Text.Trim, Date?), _
-    '                                     .LOTBy = ddlLotof.Text.Trim, _
-    '                                     .SalesCode = ddlSaleman.Text.Trim, _
-    '                                     .SalesName = txtsalemandis.Value.Trim, _
-    '                                     .ConsigneeCode = txtConsigneecode.Value.Trim, _
-    '                                     .ConsignNameEng = txtNameEngConsign.Value.Trim, _
-    '                                     .ConsignAddress = txtAddress1.Value.Trim, _
-    '                                     .ConsignDistrict = txtAddress2.Value.Trim, _
-    '                                     .ConsignSubProvince = txtAddress3.Value.Trim, _
-    '                                     .ConsignProvince = txtAddress4.Value.Trim, _
-    '                                     .ConsignPostCode = txtAddress5.Value.Trim, _
-    '                                     .ConsignEmail = txtEmail.Value.Trim, _
-    '                                     .ShipperCode = txtShippercode.Value.Trim, _
-    '                                     .ShipperNameEng = txtNameEngShipper.Value.Trim, _
-    '                                     .ShipperAddress = txtAddress1Shipper.Value.Trim, _
-    '                                     .ShipperDistrict = txtAddress2Shipper.Value.Trim, _
-    '                                     .ShipperSubprovince = txtAddress3Shipper.Value.Trim, _
-    '                                     .ShipperProvince = txtAddress4Shipper.Value.Trim, _
-    '                                     .ShipperPostCode = txtAddress5Shipper.Value.Trim, _
-    '                                     .ShipperReturnCode = txtEmailShipper.Value.Trim, _
-    '                                     .Commodity = ddlCommodity.Text.Trim, _
-    '                                     .QuantityofPart = CType(txtQuantityOfPart.Value.Trim, Double?), _
-    '                                     .QuantityUnit = ddlQuantityOfParty.Text.Trim, _
-    '                                     .QuantityPack = CType(txtQuantity.Value.Trim, Double?), _
-    '                                     .QuantityUnitPack = ddlQuan.Text.Trim, _
-    '                                     .Weight = CType(txtWeight.Value.Trim, Double?), _
-    '                                     .WeightUnit = ddlWeight.Text.Trim, _
-    '                                     .QuantityPack1 = CType(txtQuantityBox.Value.Trim, Double?), _
-    '                                     .QuantityUnitPack1 = ddlquanbox.Text.Trim, _
-    '                                     .Volume = CType(txtVolume.Value.Trim, Double?), _
-    '                                     .VolumeUnit = ddlvolume.Text.Trim, _
-    '                                     .MAWB = txtMAWB_BL_TWB.Value.Trim, _
-    '                                     .Flight = txtFLT_Voy_TruckDate.Value.Trim, _
-    '                                     .DocType = ddlvolume2.Text.Trim, _
-    '                                     .DocCode = txtVolume2.Value.Trim, _
-    '                                     .FreighForwarder = ddlFreight.Text.Trim, _
-    '                                     .ShipTo = txtShipto.Value.Trim, _
-    '                                     .BillingNo = txtBilling.Value.Trim, _
-    '                                     .FLT1 = txtActual1.Value.Trim, _
-    '                                     .FLT2 = txtActual2.Value.Trim, _
-    '                                     .FLT3 = txtActual3.Value.Trim, _
-    '                                     .FLT4 = txtActual4.Value.Trim, _
-    '                                     .DateFLT1 = CType(txtdatepickerActualDate1.Text.Trim, Date?), _
-    '                                     .DateFLT2 = CType(txtdatepickerActualDate2.Text.Trim, Date?), _
-    '                                     .DateFLT3 = CType(txtdatepickerActualDate3.Text.Trim, Date?), _
-    '                                     .DateFLT4 = CType(txtdatepickerActualDate4.Text.Trim, Date?), _
-    '                                     .ORGN1 = txtORGN1.Value.Trim, _
-    '                                     .ORGN2 = txtORGN2.Value.Trim, _
-    '                                     .ORGN3 = txtORGN3.Value.Trim, _
-    '                                     .ORGN4 = txtORGN4.Value.Trim, _
-    '                                     .DSTN1 = txtDSTN1.Value.Trim, _
-    '                                     .DSTN2 = txtDSTN2.Value.Trim, _
-    '                                     .DSTN3 = txtDSTN3.Value.Trim, _
-    '                                     .DSTN4 = txtDSTN4.Value.Trim, _
-    '                                     .ETD1 = txtpickupETD.Value.Trim, _
-    '                                     .ETD2 = txtpickupETD2.Value.Trim, _
-    '                                     .ETD3 = txtpickupETD3.Value.Trim, _
-    '                                     .ETD4 = txtpickupETD4.Value.Trim, _
-    '                                     .ETA1 = txtpickupETA.Value.Trim, _
-    '                                     .ETA2 = txtpickupETA2.Value.Trim, _
-    '                                     .ETA3 = txtpickupETA3.Value.Trim, _
-    '                                     .ETA4 = txtpickupETA4.Value.Trim, _
-    '                                     .PCS1 = CType(txtPacket.Value.Trim, Double?), _
-    '                                     .PCS2 = CType(txtPacket2.Value.Trim, Double?), _
-    '                                     .PCS3 = CType(txtPacket3.Value.Trim, Double?), _
-    '                                     .PCS4 = CType(txtPacket4.Value.Trim, Double?), _
-    '                                     .Weight1 = CType(txtWeightActual.Value.Trim, Double?), _
-    '                                     .Weight2 = CType(txtWeightActual2.Value.Trim, Double?), _
-    '                                     .Weight3 = CType(txtWeightActual3.Value.Trim, Double?), _
-    '                                     .Weight4 = CType(txtWeightActual4.Value.Trim, Double?), _
-    '                                     .TimeDTE = txtTimePickUp.Value.Trim, _
-    '                                     .DateDTE = CType(txtdatepickerActualPickUp.Text.Trim, Date?), _
-    '                                     .TimeATT = txtArrivalToEAS.Value.Trim, _
-    '                                     .DateATT = CType(txtdatepickerArrivalToEAS.Text.Trim, Date?), _
-    '                                     .Remark = txtRamarkActual.Value.Trim, _
-    '                                     .DOCode = txtDeliverycode.Value.Trim, _
-    '                                     .DONameENG = txtNameEngDelivery.Value.Trim, _
-    '                                     .DOStreet_Number = txtAddress1Delivery.Value.Trim, _
-    '                                     .DODistrict = txtAddress2Delivery.Value.Trim, _
-    '                                     .DOSubProvince = txtAddress3Delivery.Value.Trim, _
-    '                                     .DOProvince = txtAddress4Delivery.Value.Trim, _
-    '                                     .DOPostCode = txtAddress5Delivery.Value.Trim, _
-    '                                     .DOEmail = txtEmailDelivery.Value.Trim, _
-    '                                     .DOContactPerson = txtContractPersonDelivery.Value.Trim, _
-    '                                     .PickUpCode = txtCodePickUpPlace.Value.Trim, _
-    '                                     .PickUpENG  = txtNamePickUpPlace.Value.Trim, _
-    '                                     .PickUpAddress1 = txtAddress1PickUpPlace.Value.Trim, _
-    '                                     .PickUpAddress2 = txtAddress2PickUpPlace.Value.Trim, _
-    '                                     .PickUpAddress3 = txtAddress3PickUpPlace.Value.Trim, _
-    '                                     .PickUpAddress4 = txtAddress4PickUpPlace.Value.Trim, _
-    '                                     .PickUpAddress5 = txtAddress5PickUpPlace.Value.Trim, _
-    '                                     .PickUpEmail = txtEmailPickUpPlace.Value.Trim, _
-    '                                     .PickUpContact = txtContractPersonPickUpPlace.Value.Trim, _
-    '                                     .CustomerCode = txtCustomercode.Value.Trim, _
-    '                                     .CustomerENG = txtNameEngCustomer.Value.Trim, _
-    '                                     .CustomerStreet = txtAddress1Custommer.Value.Trim, _
-    '                                     .CustomerDistrict = txtAddress2Custommer.Value.Trim, _
-    '                                     .CustomerSub = txtAddress3Custommer.Value.Trim, _
-    '                                     .CustomerProvince = txtAddress4Custommer.Value.Trim, _
-    '                                     .CustomerPostCode = txtAddress5Custommer.Value.Trim, _
-    '                                     .CustomerEmail = txtEmailCustommer.Value.Trim, _
-    '                                     .CustomerContact = txtContractPersonCustommer.Value.Trim, _
-    '                                     .EndCusCode = txtCodeEndCustomer.Value.Trim, _
-    '                                     .EndCusENG = txtNameEndCustomer.Value.Trim, _
-    '                                     .EndCusAddress1 = txtAddress1EndCustomer.Value.Trim, _
-    '                                     .EndCusAddress2 = txtAddress2EndCustomer.Value.Trim, _
-    '                                     .EndCusAddress3 = txtAddress3EndCustomer.Value.Trim, _
-    '                                     .EndCusAddress4 = txtAddress4EndCustomer.Value.Trim, _
-    '                                     .EndCusAddress5 = txtAddress5EndCustomer.Value.Trim, _
-    '                                     .EndCusEmail = txtEmailEndCustomer.Value.Trim, _
-    '                                     .EndCusContact = txtContractPersonEndCustomer.Value.Trim, _
-    '                                     .CustomerCodeGroup = txtCodeCustommerGroup.Value.Trim, _
-    '                                     .CustomerENGGroup = txtNameCustommerGroup.Value.Trim, _
-    '                                     .IEATNo = txtIEATNo.Value.Trim, _
-    '                                     .IEATPermit = ddlIEATPermit.Text.Trim, _
-    '                                     .EntryNo = txtImportEntryNo.Value.Trim, _
-    '                                     .DeliveryDate = CType(txtdatepickerImportEntryDate.Text.Trim, Date?), _
-    '                                     .Status1 = ddlStatusIEAT1.Text.Trim, _
-    '                                     .Status2 = ddlStatusIEAT2.Text.Trim, _
-    '                                     .Useby = CStr(Session("UserId")), _
-
-    '                .Parameters.Add("@JOBBranch", SqlDbType.VarChar).Value = JOB
-
-
-
-    '                .ExecuteNonQuery()
-
-    '                End With
-    '                tr.Commit()
-
-    '            Catch ex As Exception
-    '                tr.Rollback()
-    '                MessageBox.Show(ex.Message, "ผลการทำงาน", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-    '                UnlockDATA()
-    '            End Try
-
-    '        End Using
+    '        If tmpMount <> Mount Then
+    '            tmpMount = Mount
+    '            Num = Digit + 1
+    '        End If
     '    End If
-    '    txtLotNo.Focus()
+    '    LotNo = cboJobSite.Text & "-" & "IN-" & Nmount.ToString("0#") & tmpMount.ToString("0#") & Num.ToString("00#")
+    '    txtLotNo.Text = LotNo
 
-    'End Sub 'saveเข้าtblExpGenLOT
+    '    txtTypeCode.Text = "ImpLOTIN"
+    '    txtRunNo.Text = LotNo
+    '    txtMountNo.Text = tmpMount.ToString("0#")
+    '    txtYearNo.Text = Nmount.ToString("0#")
+    '    txtDigitNo.Text = Num.ToString("00#")
+
+    '    tr = Conn.BeginTransaction()
+    '    Try
+    '        sb = New StringBuilder()
+    '        sb.Append("INSERT INTO tblGenAutoNo (TypeCode,RunNo,MountNo,YearNo,DigitNo)")
+    '        sb.Append(" VALUES (@TypeCode,@RunNo,@MountNo,@YearNo,@DigitNo)")
+
+    '        Dim sqlAdd As String
+    '        sqlAdd = sb.ToString()
+
+    '        With com
+    '            .CommandText = sqlAdd
+    '            .CommandType = CommandType.Text
+    '            .Connection = Conn
+    '            .Transaction = tr
+    '            .Parameters.Clear()
+    '            .Parameters.Add("@TypeCode", SqlDbType.VarChar).Value = txtTypeCode.Text.Trim()
+    '            .Parameters.Add("@RunNo", SqlDbType.VarChar).Value = txtRunNo.Text.Trim()
+    '            .Parameters.Add("@MountNo", SqlDbType.VarChar).Value = txtMountNo.Text.Trim()
+    '            .Parameters.Add("@YearNo", SqlDbType.VarChar).Value = txtYearNo.Text.Trim()
+    '            .Parameters.Add("@DigitNo", SqlDbType.VarChar).Value = txtDigitNo.Text.Trim()
+    '            .ExecuteNonQuery()
+    '        End With
+    '        tr.Commit()
+
+    '    Catch
+    '        MessageBox.Show("คุณป้อน ข้อมูล. ซ้ำ !!!", "ผลการทำงาน", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+    '        tr.Rollback()
+    '        UnlockDATA()
+    '    End Try
+    'End Sub
+
+    'Private Sub Gentbl()
+    '    Dim sqlSearch As String
+    '    Dim Nmount As Single = CSng(Format(Now(), "MM"))
+    '    Dim Nyear As Single = CSng(Format(Now(), "yy")) + 43
+    '    Dim Nemount As String
+    '    Dim Neyear As String
+    '    Nemount = Nmount.ToString("0#")
+    '    Neyear = Nyear.ToString("0#")
+    '    If NextMonth.Checked = True Then
+    '        Nmount = CSng(Format(Now(), "MM")) + 1
+    '        Nemount = Nmount.ToString("0#")
+    '        If Nemount > "12" Then
+    '            Nmount = 1
+    '            Nyear = CSng(Format(Now(), "yy")) + 44
+    '            Nemount = Nmount.ToString("0#")
+    '            Neyear = Nyear.ToString("0#")
+    '        End If
+    '    End If
+    '    sqlSearch = "SELECT TypeCode,MountNo,YearNo,max(DigitNo)DigitNo FROM tblGenAutoNo WHERE (TypeCode = 'ImpLOTIN' and MountNo='" & Nemount & "'and YearNo='" & Neyear & "')group by TypeCode,MountNo,YearNo"
+
+    '    Dim dt As DataTable
+
+    '    com = New SqlCommand()
+    '    dtGenLotNo = New DataTable
+    '    With com
+    '        .Parameters.Clear()
+    '        .Parameters.Add("@TypeCode", SqlDbType.NVarChar).Value = txtTypeCode.Text.Trim()
+    '        .Parameters.Add("@MountNo", SqlDbType.NVarChar).Value = txtMountNo.Text.Trim()
+    '        .Parameters.Add("@YearNo", SqlDbType.NVarChar).Value = txtYearNo.Text.Trim()
+    '        .Parameters.Add("@DigitNo", SqlDbType.NVarChar).Value = txtDigitNo.Text.Trim()
+    '        .CommandType = CommandType.Text
+    '        .CommandText = sqlSearch
+    '        .Connection = Conn
+    '        dr = .ExecuteReader()
+    '        If dr.HasRows Then
+    '            dt = New DataTable()
+    '            dtGenLotNo.Load(dr)
+    '            txtTypeCode.DataBindings.Clear()
+    '            txtMountNo.DataBindings.Clear()
+    '            txtYearNo.DataBindings.Clear()
+    '            txtDigitNo.DataBindings.Clear()
+
+    '            txtTypeCode.DataBindings.Add("Text", dtGenLotNo, "TypeCode")
+    '            txtMountNo.DataBindings.Add("Text", dtGenLotNo, "MountNo")
+    '            txtYearNo.DataBindings.Add("Text", dtGenLotNo, "YearNo")
+    '            txtDigitNo.DataBindings.Add("Text", dtGenLotNo, "DigitNo")
+
+    '        End If
+    '    End With
+    '    dr.Close()
+    '    If txtMountNo.Text = "" Then
+    '        txtMountNo.Text = Nemount
+    '    End If
+    '    If txtYearNo.Text = "" Then
+    '        txtYearNo.Text = Neyear
+    '    End If
+    '    If txtDigitNo.Text = "" Then
+    '        txtDigitNo.Text = "000"
+    '    End If
+    'End Sub
 End Class
