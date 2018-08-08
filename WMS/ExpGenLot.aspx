@@ -407,45 +407,46 @@
                                                         <div class="collg-12 col-md-12">
                                                             <fieldset>
                                                                 <legend></legend>
-                                                                <asp:Repeater ID="dgvEASInv" runat="server">
+                                                                <asp:Repeater ID="dgvLotNo" runat="server">
                                                                  <HeaderTemplate>
                                                                      <table class="table table-bordered">
-                                                                        <th style="width: 10px">#</th>
-                                                                        <th>Task</th>
-                                                                        <th>Progress</th>
-                                                                        <th style="width: 40px">Label</th>
-                                                                     
-                                                                 </HeaderTemplate>
-                                                                   
-                                                                    <ItemTemplate>
-                                        
+                                                                        <th style="width: 10px">InvoiceNo</th>
+                                                                        <th style="width: 10px">ReferenceNo</th>
+                                                                        <th style="width: 10px">ReferenceDate</th>
+                                                                        <th style="width: 10px">PurchaseOrderNo</th>
+                                                                        <th style="width: 10px">InvoiceDate</th>  
+                                                                        <th style="width: 10px">EASLOTNo</th>                      
+                                                                 </HeaderTemplate>      
+                                                                    <ItemTemplate>                                     
                                                                     <tr class="success">
-                                                                        <td>2.</td>
-                                                                        <td>2</td>
-                                                                        <td>2</td>
-                                                                        <td>2</td>
-                                                                    </tr>
-                                                                   
-                                                                   
+                                                                        <td><asp:Label ID="lblJobSite" runat="server" Text='<%# Bind("InvoiceNo")%>'></asp:Label></td>
+                                                                        <td><asp:Label ID="Label1" runat="server" Text='<%# Bind("ReferenceNo")%>'></asp:Label></td>
+                                                                        <td><asp:Label ID="Label2" runat="server" Text='<%# Bind("ReferenceDate", "{0:dd/MM/yyyy}")%>'></asp:Label></td>
+                                                                        <td><asp:Label ID="Label3" runat="server" Text='<%# Bind("PurchaseOrderNo")%>'></asp:Label></td>
+                                                                        <td><asp:Label ID="Label4" runat="server" Text='<%# Bind("InvoiceDate", "{0:dd/MM/yyyy}")%>'></asp:Label></td>
+                                                                        <td><asp:Label ID="lalEASLOTNo" runat="server" Text='<%# Bind("EASLOTNo")%>'></asp:Label></td>
+                                                                    </tr>                                                             
                                                                     </ItemTemplate>
                                                                     <AlternatingItemTemplate>
                                                                        <tr class="info">
-                                                                        <td>4.</td 
-                                                                        <td>4</td>
-                                                                        <td>4</td>
-                                                                        <td>4</td>
+                                                                        <td><asp:Label ID="lblJobSite" runat="server" Text='<%# Bind("InvoiceNo")%>'></asp:Label></td>
+                                                                        <td><asp:Label ID="Label1" runat="server" Text='<%# Bind("ReferenceNo", "{0:dd/MM/yyyy}")%>'></asp:Label></td>
+                                                                        <td><asp:Label ID="Label2" runat="server" Text='<%# Bind("ReferenceDate")%>'></asp:Label></td>
+                                                                        <td><asp:Label ID="Label3" runat="server" Text='<%# Bind("PurchaseOrderNo")%>'></asp:Label></td>
+                                                                        <td><asp:Label ID="Label4" runat="server" Text='<%# Bind("InvoiceDate", "{0:dd/MM/yyyy}")%>'></asp:Label></td>
+                                                                        <td><asp:Label ID="lblEASLOTNo1" runat="server" Text='<%# Bind("EASLOTNo")%>'></asp:Label></td>
                                                                      </tr>
                                                                     </AlternatingItemTemplate>
                                                                     <FooterTemplate>
-                                                                         <th style="width: 10px">#</th>
-                                                                        <th>Task</th>
-                                                                        <th>Progress</th>
-                                                                        <th style="width: 40px">Label</th>
+                                                                        <th>InvoiceNo</th>
+                                                                        <th>ReferenceNo</th>
+                                                                        <th>ReferenceDate</th>
+                                                                        <th>PurchaseOrderNo</th>
+                                                                        <th>InvoiceDate</th>
+                                                                        <th>EASLOTNo</th>
                                                                         </table>
-                                                                    </FooterTemplate>
-                                                     
+                                                                   </FooterTemplate>    
                                                                 </asp:Repeater>
-                                     
                                                             </fieldset>                                          
                                                            </div> 
                                                 </div>
@@ -859,18 +860,19 @@
                                                             <legend></legend>
                                                             <div class="form-group">
                                                                 <label for="txtCustomerCodeGroup" class="col-sm-3 control-label">IEAT No</label>
-                                                                <div class="col-sm-4">
+                                                                <div class="col-sm-6">
                                                                     <input class="form-control" id="txtIEATNo" runat="server" disabled="disabled"/>
-                                                                </div>
-                                                                <div class="col-sm-4">
-                                                                    <asp:Button runat="server" ID="Gen" Text="Gen" />
-                                                                </div>
-                                                                <div class="checkbox col-md-offset-4">
+                                                                     <div class="checkbox">
                                                                     <label>
-                                                                        <input type="checkbox" runat="server" id="Checkbox1" onclick="chkExpEnable2();" />
+                                                                        <input type="checkbox" runat="server" id="Checkbox1" onclick="EnableDisableTextBox();" />
                                                                         Request System Auto Generate IEAT No.
                                                                     </label>
+                                                                </div>  
                                                                 </div>
+                                                                <div class="col-sm-2">
+                                                                    <asp:Button runat="server" ID="Gen" Text="Gen" CssClass="btn"  OnClick="Gen_Click"/>
+                                                                </div>
+                                                               
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="txtIEATPermit" class="col-sm-3 control-label">IEAT Permit</label>
@@ -948,7 +950,7 @@
                                                             <div class="form-group">
                                                                 <label for="dcbStatus2" class="col-sm-3 control-label">Status2</label>
                                                                 <div class="col-sm-8">
-                                                                    <asp:DropDownList ID="dcbStatus2" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code">
+                                                                    <asp:DropDownList ID="dcbStatus2" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code" OnSelectedIndexChanged="dcbStatus2_SelectedIndexChanged">
                                                                         <asp:ListItem></asp:ListItem>
                                                                         <asp:ListItem>ส่งออกไปต่างประเทศ(ใบขนฯขาออก)</asp:ListItem>
                                                                         <asp:ListItem>ใช้หรือจำหน่ายภายในประเทศ</asp:ListItem>
@@ -981,18 +983,19 @@
                                                             <legend></legend>
                                                             <div class="form-group">
                                                                 <label for="txtEASInv" class="col-sm-3 control-label">EAS Invoice</label>
-                                                                <div class="col-sm-4">
+                                                                <div class="col-sm-6">
                                                                     <input class="form-control" id="txtEASInv" runat="server" autocomplete="off"/>
-                                                                </div>
-                                                                <div class="col-sm-4">
-                                                                    <asp:Button runat="server" ID="Button2" Text="Gen" />
-                                                                </div>
-                                                                <div class="checkbox col-md-offset-4">
+                                                                    <div class="checkbox">
                                                                     <label>
                                                                         <input type="checkbox" runat="server" id="Checkbox3" onclick="chkExpEnable2();" />
                                                                         Request System Auto Generate EAS Invoice.
                                                                     </label>
                                                                 </div>
+                                                                </div>
+                                                                <div class="col-sm-2">
+                                                                    <asp:Button runat="server" ID="Button2" Text="Gen" CssClass="btn" OnClick="Button2_Click"/>
+                                                                </div>
+                                                                
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="txtPullSignal" class="col-sm-3 control-label">Pull Signal</label>
@@ -1033,42 +1036,41 @@
                                                                         <button type="button" class="btn btn-primary" id="btnInvoice" runat="server">Save Invoice No.</button>
                                                                     <button type="button" class="btn btn-default" id="btnInv" runat="server">Delete Inv.</button>
                                                                     </div>
-                                                                     <asp:Repeater ID="dgvEASInv_" runat="server">
-                                                                 <HeaderTemplate>
+                                                                     <asp:Repeater ID="dgvEASInv" runat="server">
+                                                              <HeaderTemplate>
                                                                      <table class="table table-bordered">
-                                                                        <th style="width: 10px">#</th>
-                                                                        <th>Task</th>
-                                                                        <th>Progress</th>
-                                                                        <th style="width: 40px">Label</th>
-                                                                     
-                                                                 </HeaderTemplate>
-                                                                   
-                                                                    <ItemTemplate>
-                                        
+                                                                        <th style="width: 10px">InvoiceNo</th>
+                                                                        <th style="width: 10px">LOTNo</th>
+                                                                        <th style="width: 10px">PullSignal</th> 
+                                                                        <th style="width: 10px">Remark</th> 
+                                                                        <th style="width: 10px">CustomerINV</th>                    
+                                                                 </HeaderTemplate>      
+                                                                    <ItemTemplate>                                     
                                                                     <tr class="success">
-                                                                        <td>2.</td>
-                                                                        <td>2</td>
-                                                                        <td>2</td>
-                                                                        <td>2</td>
-                                                                    </tr>
-                                                                   
-                                                                   
+                                                                        <td><asp:Label ID="lblJobSite" runat="server" Text='<%# Bind("InvoiceNo")%>'></asp:Label></td>
+                                                                        <td><asp:Label ID="Label1" runat="server" Text='<%# Bind("LOTNo")%>'></asp:Label></td>
+                                                                        <td><asp:Label ID="Label2" runat="server" Text='<%# Bind("PullSignal")%>'></asp:Label></td>
+                                                                        <td><asp:Label ID="Label5" runat="server" Text='<%# Bind("Remark")%>'></asp:Label></td>
+                                                                         <td><asp:Label ID="Label6" runat="server" Text='<%# Bind("CustomerINV")%>'></asp:Label></td>                                                                      
+                                                                    </tr>                                                             
                                                                     </ItemTemplate>
                                                                     <AlternatingItemTemplate>
                                                                        <tr class="info">
-                                                                        <td>4.</td 
-                                                                        <td>4</td>
-                                                                        <td>4</td>
-                                                                        <td>4</td>
+                                                                        <td><asp:Label ID="lblJobSite" runat="server" Text='<%# Bind("InvoiceNo")%>'></asp:Label></td>
+                                                                        <td><asp:Label ID="Label1" runat="server" Text='<%# Bind("LOTNo")%>'></asp:Label></td>
+                                                                        <td><asp:Label ID="Label2" runat="server" Text='<%# Bind("PullSignal")%>'></asp:Label></td>
+                                                                        <td><asp:Label ID="Label5" runat="server" Text='<%# Bind("Remark")%>'></asp:Label></td>
+                                                                        <td><asp:Label ID="Label7" runat="server" Text='<%# Bind("CustomerINV")%>'></asp:Label></td>  
                                                                      </tr>
                                                                     </AlternatingItemTemplate>
                                                                     <FooterTemplate>
-                                                                         <th style="width: 10px">#</th>
-                                                                        <th>Task</th>
-                                                                        <th>Progress</th>
-                                                                        <th style="width: 40px">Label</th>
+                                                                        <th>InvoiceNo</th>
+                                                                        <td>LOTNo</td>
+                                                                        <th>PullSignal</th> 
+                                                                        <th>Remark</th> 
+                                                                        <th>CustomerINV</th>  
                                                                         </table>
-                                                                    </FooterTemplate>
+                                                                   </FooterTemplate>  
                                                      
                                                                 </asp:Repeater>
                                      
@@ -1188,43 +1190,38 @@
                                                                        <button type="button" class="btn btn-danger" runat="server" id="cmdDeleteInv">Delete</button>                         
                                                                     </div>
                                                                  
-                                                                     <asp:Repeater ID="Repeater2" runat="server">
-                                                                 <HeaderTemplate>
+                                                                     <asp:Repeater ID="dgvInvNo" runat="server">       
+                                                                  <HeaderTemplate>
                                                                      <table class="table table-bordered">
-                                                                        <th style="width: 10px">#</th>
-                                                                        <th>Task</th>
-                                                                        <th>Progress</th>
-                                                                        <th style="width: 40px">Label</th>
-                                                                     
-                                                                 </HeaderTemplate>
-                                                                   
-                                                                    <ItemTemplate>
-                                        
+                                                                        <th style="width: 10px">InvoiceNo</th>
+                                                                        <th style="width: 10px">ReferenceNo</th>
+                                                                        <th style="width: 10px">ReferenceDate</th> 
+                                                                        <th style="width: 10px">Quantity</th>                   
+                                                                 </HeaderTemplate>      
+                                                                    <ItemTemplate>                                     
                                                                     <tr class="success">
-                                                                        <td>2.</td>
-                                                                        <td>2</td>
-                                                                        <td>2</td>
-                                                                        <td>2</td>
-                                                                    </tr>
-                                                                   
-                                                                   
+                                                                        <td><asp:Label ID="lblJobSite" runat="server" Text='<%# Bind("InvoiceNo")%>'></asp:Label></td>
+                                                                        <td><asp:Label ID="Label1" runat="server" Text='<%# Bind("LOTNo")%>'></asp:Label></td>
+                                                                        <td><asp:Label ID="Label2" runat="server" Text='<%# Bind("DateInv", "{0:dd/MM/yyyy}")%>'></asp:Label></td>
+                                                                        <td><asp:Label ID="Label5" runat="server" Text='<%# Bind("Quantity")%>'></asp:Label></td>                                                                    
+                                                                    </tr>                                                             
                                                                     </ItemTemplate>
                                                                     <AlternatingItemTemplate>
                                                                        <tr class="info">
-                                                                        <td>4.</td 
-                                                                        <td>4</td>
-                                                                        <td>4</td>
-                                                                        <td>4</td>
+                                                                         <td><asp:Label ID="lblJobSite" runat="server" Text='<%# Bind("InvoiceNo")%>'></asp:Label></td>
+                                                                        <td><asp:Label ID="Label1" runat="server" Text='<%# Bind("LOTNo")%>'></asp:Label></td>
+                                                                        <td><asp:Label ID="Label2" runat="server" Text='<%# Bind("DateInv", "{0:dd/MM/yyyy}")%>'></asp:Label></td>
+                                                                        <td><asp:Label ID="Label5" runat="server" Text='<%# Bind("Quantity")%>'></asp:Label></td>
                                                                      </tr>
                                                                     </AlternatingItemTemplate>
                                                                     <FooterTemplate>
-                                                                         <th style="width: 10px">#</th>
-                                                                        <th>Task</th>
-                                                                        <th>Progress</th>
-                                                                        <th style="width: 40px">Label</th>
+                                                                        <th>InvoiceNo</th>
+                                                                        <th>ReferenceNo</th>
+                                                                        <th>ReferenceDate</th>
+                                                                        <th>Quantity</th>
                                                                         </table>
-                                                                    </FooterTemplate>
-                                                     
+                                                                   </FooterTemplate>    
+                                                       
                                                                 </asp:Repeater>
                                      
                                                                 </div>
@@ -1276,7 +1273,7 @@
                                  <form class="form-horizontal">
                                      <div class="col-lg-12 col-md-12 " style="overflow: auto;">
 
-                                         <asp:Repeater ID="dgvLotNo" runat="server" OnItemCommand="dgvLotNo_ItemCommand">
+                                         <asp:Repeater ID="dgvLot" runat="server" OnItemCommand="dgvLot_ItemCommand">
                                              <HeaderTemplate>
                                                  <table id="example1" class="table table-bordered table-striped table-responsive" style="overflow: auto;">
                                                      <thead>
@@ -1838,5 +1835,34 @@
             </div>
         </asp:Panel>
         <!-- End Shipper Modal -->
+
+           
+      <script type="text/javascript">
+          function EnableDisableTextBox() {
+              var status = document.getElementById('<%=Checkbox1.ClientID%>').checked;
+
+              if (status == true) {
+                  document.getElementById('<%=Gen.ClientID%>').disabled = false;
+                 
+            } else if (status == false) {
+                document.getElementById('<%=Gen.ClientID%>').disabled = true;
+            }
+
+    }
+    </script>
+          <script type="text/javascript">
+              function chkExpEnable2() {
+                  var status = document.getElementById('<%=Checkbox3.ClientID%>').checked;
+
+                  if (status == true) {
+                      document.getElementById('<%=Button2.ClientID%>').disabled = false;
+                  
+              } else if (status == false) {
+                  document.getElementById('<%=Button2.ClientID%>').disabled = true;
+            }
+
+    }
+    </script>
+        
     </form>
 </asp:Content>

@@ -500,13 +500,13 @@ Partial Public Class ExpGenLot
     Protected WithEvents Bsave As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
-    '''dgvEASInv control.
+    '''dgvLotNo control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents dgvEASInv As Global.System.Web.UI.WebControls.Repeater
+    Protected WithEvents dgvLotNo As Global.System.Web.UI.WebControls.Repeater
 
     '''<summary>
     '''txtDOCode control.
@@ -860,15 +860,6 @@ Partial Public Class ExpGenLot
     Protected WithEvents txtIEATNo As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''Gen control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents Gen As Global.System.Web.UI.WebControls.Button
-
-    '''<summary>
     '''Checkbox1 control.
     '''</summary>
     '''<remarks>
@@ -876,6 +867,15 @@ Partial Public Class ExpGenLot
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents Checkbox1 As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
+
+    '''<summary>
+    '''Gen control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Gen As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
     '''txtIEATPermit control.
@@ -977,15 +977,6 @@ Partial Public Class ExpGenLot
     Protected WithEvents txtEASInv As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''Button2 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents Button2 As Global.System.Web.UI.WebControls.Button
-
-    '''<summary>
     '''Checkbox3 control.
     '''</summary>
     '''<remarks>
@@ -993,6 +984,15 @@ Partial Public Class ExpGenLot
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents Checkbox3 As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
+
+    '''<summary>
+    '''Button2 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Button2 As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
     '''txtPullSignal control.
@@ -1049,13 +1049,13 @@ Partial Public Class ExpGenLot
     Protected WithEvents btnInv As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
-    '''dgvEASInv_ control.
+    '''dgvEASInv control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents dgvEASInv_ As Global.System.Web.UI.WebControls.Repeater
+    Protected WithEvents dgvEASInv As Global.System.Web.UI.WebControls.Repeater
 
     '''<summary>
     '''txtGenInvNo control.
@@ -1229,13 +1229,13 @@ Partial Public Class ExpGenLot
     Protected WithEvents cmdDeleteInv As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
-    '''Repeater2 control.
+    '''dgvInvNo control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Repeater2 As Global.System.Web.UI.WebControls.Repeater
+    Protected WithEvents dgvInvNo As Global.System.Web.UI.WebControls.Repeater
 
     '''<summary>
     '''txtTypeCode control.
@@ -1301,13 +1301,13 @@ Partial Public Class ExpGenLot
     Protected WithEvents UpdatePanel1 As Global.System.Web.UI.UpdatePanel
 
     '''<summary>
-    '''dgvLotNo control.
+    '''dgvLot control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents dgvLotNo As Global.System.Web.UI.WebControls.Repeater
+    Protected WithEvents dgvLot As Global.System.Web.UI.WebControls.Repeater
 
     '''<summary>
     '''Panel2 control.

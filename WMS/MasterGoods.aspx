@@ -827,7 +827,7 @@
              <div class="row margin-bottom">
                 <div class="col-lg-12 col-md-12">
 
-                     <from class="form-horizontal">
+                     <form class="form-horizontal">
                            <div class="box-body">
 
                             <fieldset class="col-md-12">
@@ -961,7 +961,7 @@
                                               
                           </div>
                       
-                     </from>
+                     </form>
                      </div>
                 <!--/.col-lg-6 col-md-6--->
                   </div>
@@ -977,7 +977,7 @@
                                 <div class="post">
                                     <div class="row margin-bottom">
                                         <div class="col-lg-12 col-md-12">
-                                            <from class="form-horizontal">
+                                            <form class="form-horizontal">
                            <div class="box-body">
                             
                                <div class="col-lg-6">
@@ -1027,7 +1027,7 @@
                           
                                     <!-- /.box-body -->
                           
-                       </from>
+                       </form>
                                             <!--/.col-lg-6 col-md-6--->
                                         </div>
                                         <!--/.row-->
@@ -1076,7 +1076,7 @@
                     <!-- /.box-header -->
                     <div class="row">
 
-                        <from class="form-horizontal">
+                        <form class="form-horizontal">
                             <div class="col-lg-12 col-md-12">
                                  <div class="box-body">   
                                             
@@ -1123,7 +1123,7 @@
                              </div>
                            </div>
                              
-                       </from>
+                       </form>
                           
                         <!--/.row-->
                     </div>
