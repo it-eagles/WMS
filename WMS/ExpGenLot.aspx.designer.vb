@@ -1202,6 +1202,15 @@ Partial Public Class ExpGenLot
     Protected WithEvents txtPriceForeign As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
+    '''chkAssign control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents chkAssign As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
+
+    '''<summary>
     '''cmdGenInvNo control.
     '''</summary>
     '''<remarks>

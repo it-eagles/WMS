@@ -24,33 +24,55 @@
                         <!-- /.box-header -->
                         <div class="box-body">
 
-                            <div id="div1">
+                            <div class="panel panel-default" style="width: 500px; padding: 10px; margin: 10px">
+                                <div id="Tabs" role="tabpanel">
+                                    <!-- Nav tabs -->
+                                    <ul class="nav nav-tabs" role="tablist">
+                                        <li><a href="#personal" aria-controls="personal" role="tab" data-toggle="tab">Personal
+                                        </a></li>
+                                        <li><a href="#employment" aria-controls="employment" role="tab" data-toggle="tab">Employment</a></li>
+                                    </ul>
+                                    <!-- Tab panes -->
+                                    <div class="tab-content" style="padding-top: 20px">
+                                        <div role="tabpanel" class="tab-pane active" id="personal">
+                                            This is Personal Information Tab
+                                        </div>
+                                        <div role="tabpanel" class="tab-pane" id="employment">
+                                            This is Employment Information Tab
+                                        </div>
+                                    </div>
+                                </div>
+                                <asp:Button ID="Button1" Text="Submit" runat="server" CssClass="btn btn-primary" />
+                                <asp:HiddenField ID="TabName" runat="server" />
+                            </div>
+
+                            <%-- <div id="div1">
                                 <h2>ผลลัพธ์ JSON จะแสดงไว้ตรงนี้</h2>
                             </div>
                             <br />
                             <button runat="server" id="button">ทดสอบ API แบงค์ชาติ</button>
                             <h2>Modal Example</h2>
                             <!-- Trigger the modal with a button -->
-                            <button type="button" class="btn btn-info btn-lg" id="myBtn" data-toggle="modal">Open Modal</button>
+                            <button type="button" class="btn btn-info btn-lg" id="myBtn" data-toggle="modal">Open Modal</button>--%>
                             <%--  <a class="btn" data-toggle="modal" href="#myModal" >Launch Modal</a>--%>
                             <!--ASP.NET Button -->
 
-                            <asp:Button ID="btnOpenModal" runat="server" CssClass="btn btn-info btn-lg" Text="Open with ASP Button" OnClick="btnOpenModal_Click" />
+                  <%--          <asp:Button ID="btnOpenModal" runat="server" CssClass="btn btn-info btn-lg" Text="Open with ASP Button" OnClick="btnOpenModal_Click" />
                             <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
                                 <ContentTemplate>
                                     <ul>
                                        
-                                        <%--<asp:Repeater ID="Repeater1" runat="server" OnItemCommand="Repeater1_ItemCommand">
+                                        <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="Repeater1_ItemCommand">
                                                 <ItemTemplate>
                                                     <li>
                                                         <asp:LinkButton ID="Button1" runat="server" CommandArgument='<%# Eval("ID") %>' Text='<%# Eval("Title") %>'></asp:LinkButton></li>
                                                 </ItemTemplate>
-                                            </asp:Repeater>--%>
+                                            </asp:Repeater>
                                     </ul>
                                 </ContentTemplate>
-                            </asp:UpdatePanel>
+                            </asp:UpdatePanel>--%>
 
-                            <asp:Panel ID="Panel2" runat="server" CssClass="modal" TabIndex="-1" role="dialog" aria-labelledby="myLabel">
+                            <%--<asp:Panel ID="Panel2" runat="server" CssClass="modal" TabIndex="-1" role="dialog" aria-labelledby="myLabel">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional">
@@ -137,7 +159,7 @@
                                         </asp:UpdatePanel>
                                     </div>
                                 </div>
-                            </asp:Panel>
+                            </asp:Panel>--%>
                             <%--<asp:Repeater ID="cpRepeater" runat="server">
                                     <HeaderTemplate>
                                         <table id="example1" class="table table-bordered table-striped">
@@ -234,7 +256,15 @@
 
             </div>
         </div>
-
+        <script type="text/javascript">
+            $(function () {
+                var tabName = $("[id*=TabName]").val() != "" ? $("[id*=TabName]").val() : "personal";
+                $('#Tabs a[href="#' + tabName + '"]').tab('show');
+                $("#Tabs a").click(function () {
+                    $("[id*=TabName]").val($(this).attr("href").replace("#", ""));
+                });
+            });
+</script>
     </form>
 
 </asp:Content>

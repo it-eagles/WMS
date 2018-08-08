@@ -37,7 +37,7 @@
                         </div>
                        
                         <!-- /.box-header -->
-               <from class="form-horizontal">
+               <form class="form-horizontal">
                      <div class="box-body">   
                          <div class ="col-lg-6 col-md-6">
                                <div class="form-group" >
@@ -74,7 +74,7 @@
                             <div class="box-footer text-right">
                                 <button runat="server" class="btn btn-app" id="btnAddGoods" title="btnAddGoods" onserverclick="saveGoods_click"><i class="fa fa-save"></i> Save</button>
                            </div>
-                         </from>
+                         </form>
                     </div>
                      <!---------- /.box box-primary  --------->
                 </div>

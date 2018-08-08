@@ -2794,8 +2794,8 @@
     <Property Name="PriceForeigh" Type="Double" />
     <Property Name="PriceBath" Type="Double" />
     <Property Name="CustomerLot" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="ManufacturingDate" Type="DateTime" Precision="3" />
-    <Property Name="ExpiredDate" Type="DateTime" Precision="3" />
+    <Property Name="ManufacturingDate" Type="DateTime" Precision="3" Nullable="false" />
+    <Property Name="ExpiredDate" Type="DateTime" Precision="3" Nullable="false" />
     <Property Name="CreateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="CreateDate" Type="DateTime" Precision="3" />
     <Property Name="ModifyBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />

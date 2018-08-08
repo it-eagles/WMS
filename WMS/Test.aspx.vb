@@ -6,10 +6,8 @@ Public Class Test
     Dim db As New LKBWarehouseEntities1_Test
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         'lblDisplayDate.Text = System.DateTime.Now.ToString("T")
-        If Not Me.IsPostBack Then
-            showUserList()
-            'Else
-            '    MsgBox("เกิดความผิดพลาดในการทำงาน", MsgBoxStyle.OkCancel)
+        If Me.IsPostBack Then
+            TabName.Value = Request.Form(TabName.UniqueID)
         End If
     End Sub
 
@@ -127,8 +125,8 @@ Public Class Test
     'End Sub
 
     Protected Sub btnOpenModal_Click(sender As Object, e As EventArgs)
-        ScriptManager.RegisterStartupScript(UpdatePanel2, UpdatePanel2.GetType(), "show", "$(function () { $('#" + Panel2.ClientID + "').modal('show'); });", True)
-        UpdatePanel2.Update()
+        'ScriptManager.RegisterStartupScript(UpdatePanel2, UpdatePanel2.GetType(), "show", "$(function () { $('#" + Panel2.ClientID + "').modal('show'); });", True)
+        'UpdatePanel2.Update()
         '.RegisterStartupScript(Me, Me.GetType(), "myModal", "openjobNoModal();", True)
         'ScriptManager.RegisterStartupScript(Me, Me.GetType(), "myModalHide", "$('body').removeClass('modal-open');$('.modal-backdrop').remove();$('#myModal').hide();", True)
 

@@ -39,7 +39,7 @@
                                       <i class="fa fa-save"></i>
                                       Save
                                   </button>
-                                  <button type="button" class=" btn btn-app" runat="server" id="btnSaveEdit">
+                                  <button type="button" class=" btn btn-app" runat="server" id="btnSaveEdit"  onserverclick="btnSaveEdit_ServerClick">
                                       <i class="fa fa-edit"></i>
                                       Edit
                                   </button>
@@ -399,7 +399,7 @@
                                                                 </div>
                                                                 <div class="col-md-4">
                                                                     <asp:Button runat="server" ID="cmdOpenFile" Text="Open File" />
-                                                                    <asp:Button runat="server" ID="Bsave" Text="Save" />
+                                                                    <asp:Button runat="server" ID="Bsave" Text="Save" OnClick="Bsave_Click"/>
                                                                 </div>
                                                             </div>
                                                         </fieldset>
@@ -1033,8 +1033,8 @@
                                                             <div class="form-group">
                                                                 <div class="col-sm-11">
                                                                     <div class="col-md-offset-6">
-                                                                        <button type="button" class="btn btn-primary" id="btnInvoice" runat="server">Save Invoice No.</button>
-                                                                    <button type="button" class="btn btn-default" id="btnInv" runat="server">Delete Inv.</button>
+                                                                    <button type="button" class="btn btn-primary" id="btnInvoice" runat="server" onserverclick="btnInvoice_ServerClick">Save Invoice No.</button>
+                                                                    <button type="button" class="btn btn-default" id="btnInv" runat="server" onserverclick="btnInv_ServerClick">Delete Inv.</button>
                                                                     </div>
                                                                      <asp:Repeater ID="dgvEASInv" runat="server">
                                                               <HeaderTemplate>
@@ -1181,15 +1181,21 @@
                                                             
                                                             <div class="form-group">
                                                                 <div class="col-md-11 col-xs-10">
-                                                                    <div class="col-md-offset-5">
-                                                             
-                                                                        <button type="button" class="btn btn-primary" runat="server" id="cmdGenInvNo">Save</button>
-                                                                                                                                  
-                                                                        <button type="button" class="btn btn-default" runat="server" id="Button4">Modify</button>
-                                                                                                                                  
-                                                                       <button type="button" class="btn btn-danger" runat="server" id="cmdDeleteInv">Delete</button>                         
-                                                                    </div>
-                                                                 
+                                                                    <div class="col-md-offset-7">
+                                                                        <div class="form-group">
+                                                                            <div class="checkbox">
+                                                                                <label>
+                                                                                    <input type="checkbox" runat="server" id="chkAssign" />
+                                                                                    To Assign Detail 
+                                                                                </label>
+                                                                            </div>
+                                                                        </div>
+                                                                       <div class="form-group">
+                                                                           <button type="button" class="btn btn-primary" runat="server" id="cmdGenInvNo" onserverclick="cmdGenInvNo_ServerClick">Save</button>
+                                                                           <button type="button" class="btn btn-default" runat="server" id="Button4" onserverclick="Button4_ServerClick">Modify</button>
+                                                                           <button type="button" class="btn btn-danger" runat="server" id="cmdDeleteInv" onserverclick="cmdDeleteInv_ServerClick">Delete</button>
+                                                                       </div>                                                                    
+                                                                    </div>                                                            
                                                                      <asp:Repeater ID="dgvInvNo" runat="server">       
                                                                   <HeaderTemplate>
                                                                      <table class="table table-bordered">
@@ -1362,7 +1368,7 @@
                                              <ItemTemplate>
                                                  <tr>
                                                       <td class="text-center">
-                                                         <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectPartyCoder" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-hand-o-up"></i></asp:LinkButton>
+                                                         <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectConsigneeCode" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-hand-o-up"></i></asp:LinkButton>
                                                      </td>
                                                      <td>
                                                          <asp:Label ID="lblEASLOTNo" runat="server" Text='<%# Bind("PartyCode")%>'></asp:Label></td>
@@ -1434,7 +1440,7 @@
                                              <ItemTemplate>
                                                  <tr>
                                                      <td class="text-center">
-                                                         <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectPartyCode" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-hand-o-up"></i></asp:LinkButton>
+                                                         <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectExporterCode" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-hand-o-up"></i></asp:LinkButton>
                                                      </td>
                                                      <td>
                                                          <asp:Label ID="lblEASLOTNo" runat="server" Text='<%# Bind("PartyCode")%>'></asp:Label></td>
@@ -1506,7 +1512,7 @@
                                              <ItemTemplate>
                                                  <tr>
                                                      <td class="text-center">
-                                                         <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectPartyCode" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-hand-o-up"></i></asp:LinkButton>
+                                                         <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="Selectcodeconsignnee" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-hand-o-up"></i></asp:LinkButton>
                                                      </td>
                                                      <td>
                                                          <asp:Label ID="lblEASLOTNo" runat="server" Text='<%# Bind("PartyCode")%>'></asp:Label></td>
@@ -1582,7 +1588,7 @@
                                              <ItemTemplate>
                                                  <tr>
                                                        <td class="text-center">
-                                                         <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectPartyCode" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-hand-o-up"></i></asp:LinkButton>
+                                                         <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectCustomer" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-hand-o-up"></i></asp:LinkButton>
                                                      </td>
                                                      <td>
                                                          <asp:Label ID="lblEASLOTNo" runat="server" Text='<%# Bind("PartyCode")%>'></asp:Label></td>
@@ -1654,7 +1660,7 @@
                                                  <tr>
                                                      
                                                      <td class="text-center">
-                                                         <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectPartyCode" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-hand-o-up"></i></asp:LinkButton>
+                                                         <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectPickUp" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-hand-o-up"></i></asp:LinkButton>
                                                      </td>
                                                      <td>
                                                          <asp:Label ID="lblEASLOTNo" runat="server" Text='<%# Bind("PartyCode")%>'></asp:Label></td>
@@ -1728,7 +1734,7 @@
                                              <ItemTemplate>
                                                  <tr>
                                                         <td class="text-center">
-                                                         <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectPartyCode" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-hand-o-up"></i></asp:LinkButton>
+                                                         <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectEndCus" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-hand-o-up"></i></asp:LinkButton>
                                                      </td>
                                                      <td>
                                                          <asp:Label ID="lblEASLOTNo" runat="server" Text='<%# Bind("PartyCode")%>'></asp:Label></td>
@@ -1802,7 +1808,7 @@
                                              <ItemTemplate>
                                                  <tr>
                                                       <td class="text-center">
-                                                         <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectPartyCode" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-hand-o-up"></i></asp:LinkButton>
+                                                         <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectCustomerGroup" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-hand-o-up"></i></asp:LinkButton>
                                                      </td>
                                                      <td>
                                                          <asp:Label ID="lblEASLOTNo" runat="server" Text='<%# Bind("PartyCode")%>'></asp:Label></td>

@@ -24,8 +24,8 @@ Partial Public Class tblWHRequestedISSUE
     Public Property PriceForeigh As Nullable(Of Double)
     Public Property PriceBath As Nullable(Of Double)
     Public Property CustomerLot As String
-    Public Property ManufacturingDate As Nullable(Of Date)
-    Public Property ExpiredDate As Nullable(Of Date)
+    Public Property ManufacturingDate As Date
+    Public Property ExpiredDate As Date
     Public Property CreateBy As String
     Public Property CreateDate As Nullable(Of Date)
     Public Property ModifyBy As String
