@@ -495,22 +495,16 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblExpPackingList' does not have 
     <Property Name="PONo" Type="varchar" MaxLength="50" />
     <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblGenAutoNo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-  <EntityType Name="tblGenAutoNo">
+  <EntityType Name="tblGenAutoRunNo">
     <Key>
-      <PropertyRef Name="TypeCode" />
-      <PropertyRef Name="MountNo" />
-      <PropertyRef Name="YearNo" />
-      <PropertyRef Name="DigitNo" />
-      <PropertyRef Name="rowguid" />
+      <PropertyRef Name="RunNo" />
     </Key>
-    <Property Name="TypeCode" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="RunNo" Type="varchar" MaxLength="100" />
-    <Property Name="MountNo" Type="varchar" MaxLength="100" Nullable="false" />
-    <Property Name="YearNo" Type="varchar" MaxLength="100" Nullable="false" />
-    <Property Name="DigitNo" Type="varchar" MaxLength="100" Nullable="false" />
-    <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="RunNo" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="TypeCode" Type="varchar" MaxLength="50" />
+    <Property Name="MountNo" Type="varchar" MaxLength="50" />
+    <Property Name="YearNo" Type="varchar" MaxLength="50" />
+    <Property Name="DigitNo" Type="varchar" MaxLength="50" />
+    <Property Name="rowguid" Type="uniqueidentifier" />
   </EntityType>
   <EntityType Name="tblGenAutoRunNo">
     <Key>
@@ -3467,16 +3461,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
     [tblExpPackingList].[PONo] AS [PONo], 
     [tblExpPackingList].[rowguid] AS [rowguid]
     FROM [dbo].[tblExpPackingList] AS [tblExpPackingList]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblGenAutoNo" EntityType="Self.tblGenAutoNo" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblGenAutoNo].[TypeCode] AS [TypeCode], 
-    [tblGenAutoNo].[RunNo] AS [RunNo], 
-    [tblGenAutoNo].[MountNo] AS [MountNo], 
-    [tblGenAutoNo].[YearNo] AS [YearNo], 
-    [tblGenAutoNo].[DigitNo] AS [DigitNo], 
-    [tblGenAutoNo].[rowguid] AS [rowguid]
-    FROM [dbo].[tblGenAutoNo] AS [tblGenAutoNo]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="tblGroupMenu" EntityType="Self.tblGroupMenu" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 

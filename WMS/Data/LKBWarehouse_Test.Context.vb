@@ -43,7 +43,6 @@ Partial Public Class LKBWarehouseEntities1_Test
     Public Overridable Property tblExpInvoices() As DbSet(Of tblExpInvoice)
     Public Overridable Property tblExpInvoiceDetails() As DbSet(Of tblExpInvoiceDetail)
     Public Overridable Property tblExpPackingLists() As DbSet(Of tblExpPackingList)
-    Public Overridable Property tblGenAutoNoes() As DbSet(Of tblGenAutoNo)
     Public Overridable Property tblGroupMenus() As DbSet(Of tblGroupMenu)
     Public Overridable Property tblHAWBDetails() As DbSet(Of tblHAWBDetail)
     Public Overridable Property tblImpBookingInvDetails() As DbSet(Of tblImpBookingInvDetail)

@@ -24,7 +24,6 @@
         <EntityTypeShape EntityType="LKBWarehouseModel1.tblExpInvoice" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="LKBWarehouseModel1.tblExpInvoiceDetail" Width="1.5" PointX="16.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="LKBWarehouseModel1.tblExpPackingList" Width="1.5" PointX="2.75" PointY="16.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="LKBWarehouseModel1.tblGenAutoNo" Width="1.5" PointX="4.75" PointY="16.75" IsExpanded="true" />
         <EntityTypeShape EntityType="LKBWarehouseModel1.tblGroupMenu" Width="1.5" PointX="10.75" PointY="16.75" IsExpanded="true" />
         <EntityTypeShape EntityType="LKBWarehouseModel1.tblHAWBDetail" Width="1.5" PointX="16.75" PointY="16.75" IsExpanded="true" />
         <EntityTypeShape EntityType="LKBWarehouseModel1.tblImpBookingInvDetail" Width="1.5" PointX="18.75" PointY="0.75" IsExpanded="true" />
@@ -106,8 +105,13 @@
         <EntityTypeShape EntityType="LKBWarehouseModel1.tblWHStockMovement" Width="1.5" PointX="36.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="LKBWarehouseModel1.tblWHLocation" Width="1.5" PointX="25.375" PointY="36.75" />
         <EntityTypeShape EntityType="LKBWarehouseModel1.tblMoneyConfig" Width="1.5" PointX="27.375" PointY="36.75" />
+<<<<<<< HEAD
         <EntityTypeShape EntityType="LKBWarehouseModel1.tblGenAutoRunNo" Width="1.5" PointX="37.375" PointY="13.75" />
         <EntityTypeShape EntityType="LKBWarehouseModel1.tblExpGenLOT" Width="1.5" PointX="37.375" PointY="16.75" />
+=======
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblGenAutoRunNo" Width="1.5" PointX="5.375" PointY="16.75" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblExpGenLOT" Width="1.5" PointX="37.375" PointY="13.75" />
+>>>>>>> 69be0aadead45b76f0459160f57a87c142c6e247
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

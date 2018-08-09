@@ -500,22 +500,16 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblExpPackingList' does not have 
           <Property Name="PONo" Type="varchar" MaxLength="50" />
           <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblGenAutoNo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="tblGenAutoNo">
+        <EntityType Name="tblGenAutoRunNo">
           <Key>
-            <PropertyRef Name="TypeCode" />
-            <PropertyRef Name="MountNo" />
-            <PropertyRef Name="YearNo" />
-            <PropertyRef Name="DigitNo" />
-            <PropertyRef Name="rowguid" />
+            <PropertyRef Name="RunNo" />
           </Key>
-          <Property Name="TypeCode" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="RunNo" Type="varchar" MaxLength="100" />
-          <Property Name="MountNo" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="YearNo" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="DigitNo" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="RunNo" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="TypeCode" Type="varchar" MaxLength="50" />
+          <Property Name="MountNo" Type="varchar" MaxLength="50" />
+          <Property Name="YearNo" Type="varchar" MaxLength="50" />
+          <Property Name="DigitNo" Type="varchar" MaxLength="50" />
+          <Property Name="rowguid" Type="uniqueidentifier" />
         </EntityType>
         <EntityType Name="tblGenAutoRunNo">
           <Key>
@@ -3473,16 +3467,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
     [tblExpPackingList].[rowguid] AS [rowguid]
     FROM [dbo].[tblExpPackingList] AS [tblExpPackingList]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="tblGenAutoNo" EntityType="Self.tblGenAutoNo" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [tblGenAutoNo].[TypeCode] AS [TypeCode], 
-    [tblGenAutoNo].[RunNo] AS [RunNo], 
-    [tblGenAutoNo].[MountNo] AS [MountNo], 
-    [tblGenAutoNo].[YearNo] AS [YearNo], 
-    [tblGenAutoNo].[DigitNo] AS [DigitNo], 
-    [tblGenAutoNo].[rowguid] AS [rowguid]
-    FROM [dbo].[tblGenAutoNo] AS [tblGenAutoNo]</DefiningQuery>
-          </EntitySet>
           <EntitySet Name="tblGroupMenu" EntityType="Self.tblGroupMenu" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [tblGroupMenu].[GroupName] AS [GroupName], 
@@ -6015,21 +5999,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
           <Property Name="PONo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="rowguid" Type="Guid" Nullable="false" />
         </EntityType>
-        <EntityType Name="tblGenAutoNo">
-          <Key>
-            <PropertyRef Name="TypeCode" />
-            <PropertyRef Name="MountNo" />
-            <PropertyRef Name="YearNo" />
-            <PropertyRef Name="DigitNo" />
-            <PropertyRef Name="rowguid" />
-          </Key>
-          <Property Name="TypeCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="RunNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="MountNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="YearNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="DigitNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="rowguid" Type="Guid" Nullable="false" />
-        </EntityType>
         <EntityType Name="tblGroupMenu">
           <Key>
             <PropertyRef Name="GroupName" />
@@ -8191,7 +8160,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
           <EntitySet Name="tblExpInvoices" EntityType="Self.tblExpInvoice" />
           <EntitySet Name="tblExpInvoiceDetails" EntityType="Self.tblExpInvoiceDetail" />
           <EntitySet Name="tblExpPackingLists" EntityType="Self.tblExpPackingList" />
-          <EntitySet Name="tblGenAutoNoes" EntityType="Self.tblGenAutoNo" />
           <EntitySet Name="tblGroupMenus" EntityType="Self.tblGroupMenu" />
           <EntitySet Name="tblHAWBDetails" EntityType="Self.tblHAWBDetail" />
           <EntitySet Name="tblImpBookingInvDetails" EntityType="Self.tblImpBookingInvDetail" />
@@ -9097,18 +9065,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
                 <ScalarProperty Name="Hight" ColumnName="Hight" />
                 <ScalarProperty Name="Leng" ColumnName="Leng" />
                 <ScalarProperty Name="PONo" ColumnName="PONo" />
-                <ScalarProperty Name="rowguid" ColumnName="rowguid" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tblGenAutoNoes">
-            <EntityTypeMapping TypeName="LKBWarehouseModel1.tblGenAutoNo">
-              <MappingFragment StoreEntitySet="tblGenAutoNo">
-                <ScalarProperty Name="TypeCode" ColumnName="TypeCode" />
-                <ScalarProperty Name="RunNo" ColumnName="RunNo" />
-                <ScalarProperty Name="MountNo" ColumnName="MountNo" />
-                <ScalarProperty Name="YearNo" ColumnName="YearNo" />
-                <ScalarProperty Name="DigitNo" ColumnName="DigitNo" />
                 <ScalarProperty Name="rowguid" ColumnName="rowguid" />
               </MappingFragment>
             </EntityTypeMapping>

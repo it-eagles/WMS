@@ -615,21 +615,6 @@
     <Property Name="PONo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="rowguid" Type="Guid" Nullable="false" />
   </EntityType>
-  <EntityType Name="tblGenAutoNo">
-    <Key>
-      <PropertyRef Name="TypeCode" />
-      <PropertyRef Name="MountNo" />
-      <PropertyRef Name="YearNo" />
-      <PropertyRef Name="DigitNo" />
-      <PropertyRef Name="rowguid" />
-    </Key>
-    <Property Name="TypeCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="RunNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="MountNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="YearNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="DigitNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="rowguid" Type="Guid" Nullable="false" />
-  </EntityType>
   <EntityType Name="tblGroupMenu">
     <Key>
       <PropertyRef Name="GroupName" />
@@ -2791,7 +2776,6 @@
     <EntitySet Name="tblExpInvoices" EntityType="Self.tblExpInvoice" />
     <EntitySet Name="tblExpInvoiceDetails" EntityType="Self.tblExpInvoiceDetail" />
     <EntitySet Name="tblExpPackingLists" EntityType="Self.tblExpPackingList" />
-    <EntitySet Name="tblGenAutoNoes" EntityType="Self.tblGenAutoNo" />
     <EntitySet Name="tblGroupMenus" EntityType="Self.tblGroupMenu" />
     <EntitySet Name="tblHAWBDetails" EntityType="Self.tblHAWBDetail" />
     <EntitySet Name="tblImpBookingInvDetails" EntityType="Self.tblImpBookingInvDetail" />

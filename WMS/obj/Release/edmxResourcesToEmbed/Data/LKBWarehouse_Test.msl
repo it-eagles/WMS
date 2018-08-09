@@ -622,18 +622,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="tblGenAutoNoes">
-      <EntityTypeMapping TypeName="LKBWarehouseModel1.tblGenAutoNo">
-        <MappingFragment StoreEntitySet="tblGenAutoNo">
-          <ScalarProperty Name="TypeCode" ColumnName="TypeCode" />
-          <ScalarProperty Name="RunNo" ColumnName="RunNo" />
-          <ScalarProperty Name="MountNo" ColumnName="MountNo" />
-          <ScalarProperty Name="YearNo" ColumnName="YearNo" />
-          <ScalarProperty Name="DigitNo" ColumnName="DigitNo" />
-          <ScalarProperty Name="rowguid" ColumnName="rowguid" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="tblGroupMenus">
       <EntityTypeMapping TypeName="LKBWarehouseModel1.tblGroupMenu">
         <MappingFragment StoreEntitySet="tblGroupMenu">
