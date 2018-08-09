@@ -40,7 +40,6 @@ Partial Public Class LKBWarehouseEntities1_Test
     Public Overridable Property tblDocTrackings() As DbSet(Of tblDocTracking)
     Public Overridable Property tblEntryManagementWHs() As DbSet(Of tblEntryManagementWH)
     Public Overridable Property tblExchangeRates() As DbSet(Of tblExchangeRate)
-    Public Overridable Property tblExpGenLOTs() As DbSet(Of tblExpGenLOT)
     Public Overridable Property tblExpInvoices() As DbSet(Of tblExpInvoice)
     Public Overridable Property tblExpInvoiceDetails() As DbSet(Of tblExpInvoiceDetail)
     Public Overridable Property tblExpPackingLists() As DbSet(Of tblExpPackingList)
@@ -126,6 +125,8 @@ Partial Public Class LKBWarehouseEntities1_Test
     Public Overridable Property tblWHStockMovements() As DbSet(Of tblWHStockMovement)
     Public Overridable Property tblWHLocations() As DbSet(Of tblWHLocation)
     Public Overridable Property tblMoneyConfigs() As DbSet(Of tblMoneyConfig)
+    Public Overridable Property tblGenAutoRunNoes() As DbSet(Of tblGenAutoRunNo)
+    Public Overridable Property tblExpGenLOTs() As DbSet(Of tblExpGenLOT)
 
     Public Overridable Function sp_alterdiagram(diagramname As String, owner_id As Nullable(Of Integer), version As Nullable(Of Integer), definition As Byte()) As Integer
         Dim diagramnameParameter As ObjectParameter = If(diagramname IsNot Nothing, New ObjectParameter("diagramname", diagramname), New ObjectParameter("diagramname", GetType(String)))

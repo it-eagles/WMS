@@ -6903,6 +6903,9 @@
     <Compile Include="Data\tblGenAutoNo.vb">
       <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\tblGenAutoRunNo.vb">
+      <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\tblGroupMenu.vb">
       <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>

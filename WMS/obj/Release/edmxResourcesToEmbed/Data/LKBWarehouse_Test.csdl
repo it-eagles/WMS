@@ -382,117 +382,6 @@
     <Property Name="Mount" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="rowguid" Type="Guid" Nullable="false" />
   </EntityType>
-  <EntityType Name="tblExpGenLOT">
-    <Key>
-      <PropertyRef Name="EASLOTNo" />
-      <PropertyRef Name="fwdstatus" />
-    </Key>
-    <Property Name="EASLOTNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="LOTDate" Type="DateTime" Precision="3" Nullable="false" />
-    <Property Name="LOTBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="SalesCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="SalesName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="ConsigneeCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="ConsignNameEng" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="ConsignAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="ConsignDistrict" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="ConsignSubProvince" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="ConsignProvince" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="ConsignPostCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="ConsignEmail" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="ShipperCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="ShipperNameEng" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="ShipperAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="ShipperDistrict" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="ShipperSubprovince" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="ShipperProvince" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="ShipperPostCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="ShipperReturnCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Commodity" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="QuantityofPart" Type="Double" />
-    <Property Name="QuantityUnit" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="QuantityPack" Type="Decimal" Precision="18" Scale="0" />
-    <Property Name="QuantityUnitPack" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="Weight" Type="Decimal" Precision="18" Scale="0" />
-    <Property Name="WeightUnit" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="Volume" Type="Double" />
-    <Property Name="VolumeUnit" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="MAWB" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="DocType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="DocCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="Flight" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="ScanPathFile" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="DOCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="DONameENG" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="DOStreet_Number" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="DODistrict" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="DOSubProvince" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="DOProvince" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="DOPostCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="DOEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="DOContactPerson" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="IEATNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="EntryNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="DeliveryDate" Type="DateTime" Precision="3" />
-    <Property Name="CustomerCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="CustomerENG" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="CustomerStreet" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="CustomerDistrict" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="CustomerSub" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="CustomerProvince" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="CustomerPostCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="CustomerEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="CustomerContact" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="PickUpCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="PickUpENG" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="PickUpAddress1" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="PickUpAddress2" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="PickUpAddress3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="PickUpAddress4" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="PickUpAddress5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="PickUpEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="PickUpContact" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="EndCusCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="EndCusENG" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="EndCusAddress1" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="EndCusAddress2" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="EndCusAddress3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="EndCusAddress4" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="EndCusAddress5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="EndCusEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="EndCusContact" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="FreighForwarder" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="Useby" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="IEATPermit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="ShipTo" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-    <Property Name="Box" Type="Double" />
-    <Property Name="UnitBox" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="JOBBranch" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="IEATDate" Type="DateTime" Precision="3" />
-    <Property Name="Status" Type="Int32" />
-    <Property Name="Status1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Status2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Status3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Remark" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="JobSite" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="BillingNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="BookingNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="OwnerCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="OwnerENG" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="OwnerAddress1" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="OwnerAddress2" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="OwnerAddress3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="OwnerAddress4" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="OwnerAddress5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="OwnerEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="OwnerContact" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="NetWeight" Type="Double" />
-    <Property Name="NetWeightUnit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="DeliveryTime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="fwdstatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="CustomerCodeGroup" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="CustomerENGGroup" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-  </EntityType>
   <EntityType Name="tblExpInvoice">
     <Key>
       <PropertyRef Name="InvoiceNo" />
@@ -2794,8 +2683,8 @@
     <Property Name="PriceForeigh" Type="Double" />
     <Property Name="PriceBath" Type="Double" />
     <Property Name="CustomerLot" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="ManufacturingDate" Type="DateTime" Precision="3" Nullable="false" />
-    <Property Name="ExpiredDate" Type="DateTime" Precision="3" Nullable="false" />
+    <Property Name="ManufacturingDate" Type="DateTime" Precision="3" />
+    <Property Name="ExpiredDate" Type="DateTime" Precision="3" />
     <Property Name="CreateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="CreateDate" Type="DateTime" Precision="3" />
     <Property Name="ModifyBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -2899,7 +2788,6 @@
     <EntitySet Name="tblDocTrackings" EntityType="Self.tblDocTracking" />
     <EntitySet Name="tblEntryManagementWHs" EntityType="Self.tblEntryManagementWH" />
     <EntitySet Name="tblExchangeRates" EntityType="Self.tblExchangeRate" />
-    <EntitySet Name="tblExpGenLOTs" EntityType="Self.tblExpGenLOT" />
     <EntitySet Name="tblExpInvoices" EntityType="Self.tblExpInvoice" />
     <EntitySet Name="tblExpInvoiceDetails" EntityType="Self.tblExpInvoiceDetail" />
     <EntitySet Name="tblExpPackingLists" EntityType="Self.tblExpPackingList" />
@@ -3015,6 +2903,8 @@
       <Parameter Name="new_diagramname" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="sp_upgraddiagrams" />
+    <EntitySet Name="tblGenAutoRunNoes" EntityType="LKBWarehouseModel1.tblGenAutoRunNo" />
+    <EntitySet Name="tblExpGenLOTs" EntityType="LKBWarehouseModel1.tblExpGenLOT" />
   </EntityContainer>
   <EntityType Name="tblWHLocation">
     <Key>
@@ -3063,4 +2953,125 @@
     <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
     <Property Type="Int32" Name="OwnerID" Nullable="false" />
   </ComplexType>
+  <EntityType Name="tblGenAutoRunNo">
+    <Key>
+      <PropertyRef Name="RunNo" />
+    </Key>
+    <Property Name="RunNo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="TypeCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MountNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="YearNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DigitNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="rowguid" Type="Guid" />
+  </EntityType>
+  <EntityType Name="tblExpGenLOT">
+    <Key>
+      <PropertyRef Name="EASLOTNo" />
+    </Key>
+    <Property Name="EASLOTNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LOTDate" Type="DateTime" Precision="3" Nullable="false" />
+    <Property Name="LOTBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="SalesCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SalesName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ConsigneeCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ConsignNameEng" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ConsignAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ConsignDistrict" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ConsignSubProvince" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ConsignProvince" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ConsignPostCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ConsignEmail" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ShipperCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ShipperNameEng" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ShipperAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ShipperDistrict" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ShipperSubprovince" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ShipperProvince" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ShipperPostCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ShipperReturnCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Commodity" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="QuantityofPart" Type="Double" />
+    <Property Name="QuantityUnit" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="QuantityPack" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="QuantityUnitPack" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Weight" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="WeightUnit" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Volume" Type="Double" />
+    <Property Name="VolumeUnit" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="MAWB" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DocType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DocCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Flight" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ScanPathFile" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="DOCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DONameENG" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="DOStreet_Number" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="DODistrict" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="DOSubProvince" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DOProvince" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DOPostCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DOEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DOContactPerson" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="IEATNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="EntryNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DeliveryDate" Type="DateTime" Precision="3" />
+    <Property Name="CustomerCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerENG" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerStreet" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerDistrict" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerSub" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerProvince" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerPostCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerContact" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="PickUpCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PickUpENG" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="PickUpAddress1" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="PickUpAddress2" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="PickUpAddress3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PickUpAddress4" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PickUpAddress5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PickUpEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PickUpContact" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="EndCusCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EndCusENG" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="EndCusAddress1" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="EndCusAddress2" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="EndCusAddress3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="EndCusAddress4" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="EndCusAddress5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EndCusEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="EndCusContact" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="FreighForwarder" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Useby" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="IEATPermit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ShipTo" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Box" Type="Double" />
+    <Property Name="UnitBox" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="JOBBranch" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IEATDate" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="Int32" />
+    <Property Name="Status1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Status2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Status3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Remark" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="JobSite" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="BillingNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="BookingNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="OwnerCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="OwnerENG" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="OwnerAddress1" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="OwnerAddress2" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="OwnerAddress3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="OwnerAddress4" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="OwnerAddress5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="OwnerEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="OwnerContact" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="NetWeight" Type="Double" />
+    <Property Name="NetWeightUnit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DeliveryTime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="fwdstatus" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerCodeGroup" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerENGGroup" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
 </Schema>

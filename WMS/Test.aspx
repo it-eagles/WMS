@@ -28,8 +28,7 @@
                                 <div id="Tabs" role="tabpanel">
                                     <!-- Nav tabs -->
                                     <ul class="nav nav-tabs" role="tablist">
-                                        <li><a href="#personal" aria-controls="personal" role="tab" data-toggle="tab">Personal
-                                        </a></li>
+                                        <li><a href="#personal" aria-controls="personal" role="tab" data-toggle="tab">Personal</a></li>
                                         <li><a href="#employment" aria-controls="employment" role="tab" data-toggle="tab">Employment</a></li>
                                     </ul>
                                     <!-- Tab panes -->
@@ -39,6 +38,7 @@
                                         </div>
                                         <div role="tabpanel" class="tab-pane" id="employment">
                                             This is Employment Information Tab
+                                             <asp:Button ID="Button2" Text="Submit" runat="server" CssClass="btn btn-primary" />
                                         </div>
                                     </div>
                                 </div>
@@ -264,7 +264,7 @@
                     $("[id*=TabName]").val($(this).attr("href").replace("#", ""));
                 });
             });
-</script>
+        </script>
     </form>
 
 </asp:Content>

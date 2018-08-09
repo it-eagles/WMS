@@ -14,17 +14,29 @@ Public Class CreateRec
     Inherits System.Web.UI.Page
     Dim db As New LKBWarehouseEntities1_Test
 
+    Dim checkclicksave As String
+    Dim txtMountNo As String
+    Dim txtYearNo As String
+    Dim txtDigitNo As String
+    Dim txtTypeCode As String
+    Dim txtRunNo As String
+    Dim checkjobsite As String
+
+
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        showJobSite()
-        showSaleMan()
-        showLotof()
-        showCommodity()
-        showUnit()
-        showVolume()
-        showFreight()
-        showIEATPermit()
-        showunitdimension()
-        showcurrency()
+        If Not Me.IsPostBack Then
+            showJobSite()
+            showSaleMan()
+            showLotof()
+            showCommodity()
+            showUnit()
+            showVolume()
+            showFreight()
+            showIEATPermit()
+            showunitdimension()
+            showcurrency()
+        End If
+      
         'showListConsignee()
         'showListShipper()
         'showListDelivery()
@@ -1283,7 +1295,43 @@ Public Class CreateRec
     End Sub 'saveModifyเข้าที่tblExpGenLOT
 
     Protected Sub btnSaveAddHead_ServerClick(sender As Object, e As EventArgs)
-        SaveDATA_New()
+        MsgBox(ddlJobsite.Text)
+        If ddlJobsite.Text = "LKB" Then
+            checkjobsite = "LKB"
+            GenNum()
+        ElseIf ddlJobsite.Text = "SBIA" Then
+            checkjobsite = "SBIA"
+            GenNum()
+        ElseIf ddlJobsite.Text = "HCR" Then
+            checkjobsite = "HCR"
+            GenNum()
+        ElseIf ddlJobsite.Text = "HTO" Then
+            checkjobsite = "HTO"
+            GenNum()
+        ElseIf ddlJobsite.Text = "AEC" Then
+            checkjobsite = "AEC"
+            GenNum()
+        ElseIf ddlJobsite.Text = "MJB" Then
+            checkjobsite = "MJB"
+            GenNum()
+        ElseIf ddlJobsite.Text = "LEA" Then
+            checkjobsite = "LEA"
+            GenNum()
+        ElseIf ddlJobsite.Text = "SPM" Then
+            checkjobsite = "SPM"
+            GenNum()
+        ElseIf ddlJobsite.Text = "PTN" Then
+            checkjobsite = "PTN"
+            GenNum()
+        ElseIf ddlJobsite.Text = "CKT" Then
+            checkjobsite = "CKT"
+            GenNum()
+        ElseIf ddlJobsite.Text = "WIP" Then
+            checkjobsite = "WIP"
+            GenNum()
+        End If
+        'SaveDATA_New()
+
     End Sub
 
     Protected Sub btnSaveEditHead_ServerClick(sender As Object, e As EventArgs)
@@ -1291,6 +1339,7 @@ Public Class CreateRec
     End Sub
 
     Protected Sub btnAddHead_ServerClick(sender As Object, e As EventArgs)
+
         FormLeft_MasterJob.Visible = True
         FormRight_MasterJob.Visible = True
     End Sub
@@ -1298,146 +1347,150 @@ Public Class CreateRec
     Protected Sub btnEditHead_ServerClick(sender As Object, e As EventArgs)
 
     End Sub
-    'Private Sub GenNum()
-    '    Dim tmpDate As Single
-    '    Dim tmpMount As Single
-    '    Dim tmpYear As Single
-    '    Dim LotNo As String
-    '    Dim Nmount As Single
-    '    Dim Num As Single
-    '    Dim Mount As Single
-    '    Dim Year As Single
-    '    Dim Digit As Single
 
-    '    tmpDate = CSng(Format(Now(), "dd"))
-    '    tmpMount = CSng(Format(Now(), "MM"))
-    '    Nmount = CSng(Format(Now(), "yy")) + 43
-    '    'tmpYear = Format(CDate(Nmount), "yy")
-    '    Gentbl()
-    '    Mount = CSng(txtMountNo.Text)
-    '    Year = CSng(txtYearNo.Text)
-    '    Digit = CSng(txtDigitNo.Text)
-    '    If Nmount = Year Then
-    '        If tmpMount = Mount Then
-    '            Digit = Digit + 1
-    '            Num = Digit
-    '        End If
+    Private Sub GenNum()
+        Dim tmpDate As Single
+        Dim tmpMount As Single
+        'Dim tmpYear As Single
+        Dim LotNo As String
+        Dim Nmount As Single
+        Dim Num As Single
+        Dim Mount As Single
+        Dim Year As Single
+        Dim Digit As Single
 
-    '        If tmpMount <> Mount Then
-    '            tmpMount = Mount
-    '            Num = Digit + 1
-    '        End If
-    '    End If
-    '    If Nmount <> Year Then
-    '        Nmount = Year
-    '        If tmpMount = Mount Then
-    '            Digit = Digit + 1
-    '            Num = Digit
-    '        End If
+        tmpDate = CSng(Format(Now(), "dd"))
+        tmpMount = CSng(Format(Now(), "MM"))
+        Nmount = CSng(Format(Now(), "yy")) + 43
+        'tmpYear = Format(CDate(Nmount), "yy")
+        Gentbl()
+        Mount = CSng(txtMountNo)
+        Year = CSng(txtYearNo)
+        Digit = CSng(txtDigitNo)
+        If Nmount = Year Then
+            If tmpMount = Mount Then
+                Digit = Digit + 1
+                Num = Digit
+            End If
 
-    '        If tmpMount <> Mount Then
-    '            tmpMount = Mount
-    '            Num = Digit + 1
-    '        End If
-    '    End If
-    '    LotNo = cboJobSite.Text & "-" & "IN-" & Nmount.ToString("0#") & tmpMount.ToString("0#") & Num.ToString("00#")
-    '    txtLotNo.Text = LotNo
+            If tmpMount <> Mount Then
+                tmpMount = Mount
+                Num = Digit + 1
+            End If
+        End If
+        If Nmount <> Year Then
+            Nmount = Year
+            If tmpMount = Mount Then
+                Digit = Digit + 1
+                Num = Digit
+            End If
 
-    '    txtTypeCode.Text = "ImpLOTIN"
-    '    txtRunNo.Text = LotNo
-    '    txtMountNo.Text = tmpMount.ToString("0#")
-    '    txtYearNo.Text = Nmount.ToString("0#")
-    '    txtDigitNo.Text = Num.ToString("00#")
+            If tmpMount <> Mount Then
+                tmpMount = Mount
+                Num = Digit + 1
+            End If
+        End If
 
-    '    tr = Conn.BeginTransaction()
-    '    Try
-    '        sb = New StringBuilder()
-    '        sb.Append("INSERT INTO tblGenAutoNo (TypeCode,RunNo,MountNo,YearNo,DigitNo)")
-    '        sb.Append(" VALUES (@TypeCode,@RunNo,@MountNo,@YearNo,@DigitNo)")
 
-    '        Dim sqlAdd As String
-    '        sqlAdd = sb.ToString()
+        LotNo = ddlJobsite.Text & "-" & "IN-" & Nmount.ToString("0#") & tmpMount.ToString("0#") & Num.ToString("00#")
+        txtJobno.Value = LotNo
 
-    '        With com
-    '            .CommandText = sqlAdd
-    '            .CommandType = CommandType.Text
-    '            .Connection = Conn
-    '            .Transaction = tr
-    '            .Parameters.Clear()
-    '            .Parameters.Add("@TypeCode", SqlDbType.VarChar).Value = txtTypeCode.Text.Trim()
-    '            .Parameters.Add("@RunNo", SqlDbType.VarChar).Value = txtRunNo.Text.Trim()
-    '            .Parameters.Add("@MountNo", SqlDbType.VarChar).Value = txtMountNo.Text.Trim()
-    '            .Parameters.Add("@YearNo", SqlDbType.VarChar).Value = txtYearNo.Text.Trim()
-    '            .Parameters.Add("@DigitNo", SqlDbType.VarChar).Value = txtDigitNo.Text.Trim()
-    '            .ExecuteNonQuery()
-    '        End With
-    '        tr.Commit()
+        If checkjobsite = "LKB" Then
+            txtTypeCode = "ImpLOTIN"
+        ElseIf checkjobsite = "SBIA" Then
+            txtTypeCode = "SBIALOTIN"
+        ElseIf checkjobsite = "HCR" Then
+            txtTypeCode = "HCRLOTIN"
+        ElseIf checkjobsite = "HTO" Then
+            txtTypeCode = "HTOLOTIN"
+        ElseIf checkjobsite = "AEC" Then
+            txtTypeCode = "AECLOTIN"
+        ElseIf checkjobsite = "MJB" Then
+            txtTypeCode = "MJBLOTIN"
+        ElseIf checkjobsite = "LEA" Then
+            txtTypeCode = "LEALOTIN"
+        ElseIf checkjobsite = "SPM" Then
+            txtTypeCode = "SPMLOTIN"
+        ElseIf checkjobsite = "PTN" Then
+            txtTypeCode = "PTNLOTIN"
+        ElseIf checkjobsite = "CKT" Then
+            txtTypeCode = "CKTLOTIN"
+        ElseIf checkjobsite = "WIP" Then
+            txtTypeCode = "WIPLOTIN"
+        End If
 
-    '    Catch
-    '        MessageBox.Show("คุณป้อน ข้อมูล. ซ้ำ !!!", "ผลการทำงาน", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-    '        tr.Rollback()
-    '        UnlockDATA()
-    '    End Try
-    'End Sub
+        txtRunNo = LotNo
+        txtMountNo = tmpMount.ToString("0#")
+        txtYearNo = Nmount.ToString("0#")
+        txtDigitNo = Num.ToString("00#")
 
-    'Private Sub Gentbl()
-    '    Dim sqlSearch As String
-    '    Dim Nmount As Single = CSng(Format(Now(), "MM"))
-    '    Dim Nyear As Single = CSng(Format(Now(), "yy")) + 43
-    '    Dim Nemount As String
-    '    Dim Neyear As String
-    '    Nemount = Nmount.ToString("0#")
-    '    Neyear = Nyear.ToString("0#")
-    '    If NextMonth.Checked = True Then
-    '        Nmount = CSng(Format(Now(), "MM")) + 1
-    '        Nemount = Nmount.ToString("0#")
-    '        If Nemount > "12" Then
-    '            Nmount = 1
-    '            Nyear = CSng(Format(Now(), "yy")) + 44
-    '            Nemount = Nmount.ToString("0#")
-    '            Neyear = Nyear.ToString("0#")
-    '        End If
-    '    End If
-    '    sqlSearch = "SELECT TypeCode,MountNo,YearNo,max(DigitNo)DigitNo FROM tblGenAutoNo WHERE (TypeCode = 'ImpLOTIN' and MountNo='" & Nemount & "'and YearNo='" & Neyear & "')group by TypeCode,MountNo,YearNo"
+        Using tran As New TransactionScope()
+            Try
+                'sb = New StringBuilder()
+                'sb.Append("INSERT INTO tblGenAutoNo (TypeCode,RunNo,MountNo,YearNo,DigitNo)")
+                'sb.Append(" VALUES (@TypeCode,@RunNo,@MountNo,@YearNo,@DigitNo)")
 
-    '    Dim dt As DataTable
+                db.Database.Connection.Open()
+                'db.tblGenAutoNoes.Add(New tblGenAutoNo() With {
+                db.tblGenAutoRunNoes.Add(New tblGenAutoRunNo() With {
+                    .TypeCode = txtTypeCode.Trim, _
+                    .RunNo = txtRunNo.Trim, _
+                    .MountNo = txtMountNo.Trim, _
+                    .YearNo = txtYearNo.Trim, _
+                    .DigitNo = txtDigitNo.Trim
+                    })
+            Catch
+                'MessageBox.Show("คุณป้อน ข้อมูล. ซ้ำ !!!", "ผลการทำงาน", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "คุณป้อน ข้อมูล. ซ้ำ !!!", True)
+            Finally
+                db.Database.Connection.Close()
+                db.Dispose()
+                tran.Dispose()
+            End Try
+        End Using
+    End Sub
 
-    '    com = New SqlCommand()
-    '    dtGenLotNo = New DataTable
-    '    With com
-    '        .Parameters.Clear()
-    '        .Parameters.Add("@TypeCode", SqlDbType.NVarChar).Value = txtTypeCode.Text.Trim()
-    '        .Parameters.Add("@MountNo", SqlDbType.NVarChar).Value = txtMountNo.Text.Trim()
-    '        .Parameters.Add("@YearNo", SqlDbType.NVarChar).Value = txtYearNo.Text.Trim()
-    '        .Parameters.Add("@DigitNo", SqlDbType.NVarChar).Value = txtDigitNo.Text.Trim()
-    '        .CommandType = CommandType.Text
-    '        .CommandText = sqlSearch
-    '        .Connection = Conn
-    '        dr = .ExecuteReader()
-    '        If dr.HasRows Then
-    '            dt = New DataTable()
-    '            dtGenLotNo.Load(dr)
-    '            txtTypeCode.DataBindings.Clear()
-    '            txtMountNo.DataBindings.Clear()
-    '            txtYearNo.DataBindings.Clear()
-    '            txtDigitNo.DataBindings.Clear()
+    Private Sub Gentbl()
+        'Dim sqlSearch As String
+        Dim Nmount As Single = CSng(Format(Now(), "MM"))
+        Dim Nyear As Single = CSng(Format(Now(), "yy")) + 43
+        Dim Nemount As String
+        Dim Neyear As String
+        Nemount = Nmount.ToString("0#")
+        Neyear = Nyear.ToString("0#")
+        If chkNextmonth.Checked = True Then
+            Nmount = CSng(Format(Now(), "MM")) + 1
+            Nemount = Nmount.ToString("0#")
+            If Nemount > "12" Then
+                Nmount = 1
+                Nyear = CSng(Format(Now(), "yy")) + 44
+                Nemount = Nmount.ToString("0#")
+                Neyear = Nyear.ToString("0#")
+            End If
+        End If
 
-    '            txtTypeCode.DataBindings.Add("Text", dtGenLotNo, "TypeCode")
-    '            txtMountNo.DataBindings.Add("Text", dtGenLotNo, "MountNo")
-    '            txtYearNo.DataBindings.Add("Text", dtGenLotNo, "YearNo")
-    '            txtDigitNo.DataBindings.Add("Text", dtGenLotNo, "DigitNo")
+        'Dim sqlSearch = (From ep In db.tblGenAutoNoes Where ep.TypeCode = "ExpLOTOUT" And ep.MountNo = Nemount And ep.YearNo = Neyear
+        Dim sqlSearch = (From ep In db.tblGenAutoRunNoes Where ep.TypeCode = "ExpLOTOUT" And ep.MountNo = Nemount And ep.YearNo = Neyear
+                        Group By TypeCode = ep.TypeCode,
+                        MountNo = ep.MountNo,
+                        YearNo = ep.YearNo,
+                        DigitNo = ep.DigitNo.Max Into g = Group, Count()).SingleOrDefault
+        If sqlSearch.Count > 0 Then
+            txtTypeCode = sqlSearch.TypeCode
+            txtMountNo = sqlSearch.MountNo
+            txtYearNo = sqlSearch.YearNo
+            txtDigitNo = sqlSearch.DigitNo
+        End If
 
-    '        End If
-    '    End With
-    '    dr.Close()
-    '    If txtMountNo.Text = "" Then
-    '        txtMountNo.Text = Nemount
-    '    End If
-    '    If txtYearNo.Text = "" Then
-    '        txtYearNo.Text = Neyear
-    '    End If
-    '    If txtDigitNo.Text = "" Then
-    '        txtDigitNo.Text = "000"
-    '    End If
-    'End Sub
+        'sqlSearch = "SELECT TypeCode,MountNo,YearNo,max(DigitNo)DigitNo FROM tblGenAutoNo WHERE (TypeCode = '" & txtTypeCode & "' and MountNo='" & Nemount & "'and YearNo='" & Neyear & "')group by TypeCode,MountNo,YearNo"
+        If txtMountNo = "" Then
+            txtMountNo = Nemount
+        End If
+        If txtYearNo = "" Then
+            txtYearNo = Neyear
+        End If
+        If txtDigitNo = "" Then
+            txtDigitNo = "000"
+        End If
+    End Sub
 End Class
