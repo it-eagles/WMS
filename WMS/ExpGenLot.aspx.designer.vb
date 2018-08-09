@@ -1292,6 +1292,15 @@ Partial Public Class ExpGenLot
     Protected WithEvents txtDigitNo As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
+    '''TabName control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents TabName As Global.System.Web.UI.WebControls.HiddenField
+
+    '''<summary>
     '''Panel1 control.
     '''</summary>
     '''<remarks>

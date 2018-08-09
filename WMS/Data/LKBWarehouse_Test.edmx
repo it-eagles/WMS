@@ -151,12 +151,9 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblExchangeRate' does not have a 
           <Property Name="Mount" Type="varchar" MaxLength="50" />
           <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblExpGenLOT' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tblExpGenLOT">
           <Key>
             <PropertyRef Name="EASLOTNo" />
-            <PropertyRef Name="fwdstatus" />
           </Key>
           <Property Name="EASLOTNo" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="LOTDate" Type="datetime" />
@@ -503,22 +500,16 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblExpPackingList' does not have 
           <Property Name="PONo" Type="varchar" MaxLength="50" />
           <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblGenAutoNo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="tblGenAutoNo">
+        <EntityType Name="tblGenAutoRunNo">
           <Key>
-            <PropertyRef Name="TypeCode" />
-            <PropertyRef Name="MountNo" />
-            <PropertyRef Name="YearNo" />
-            <PropertyRef Name="DigitNo" />
-            <PropertyRef Name="rowguid" />
+            <PropertyRef Name="RunNo" />
           </Key>
-          <Property Name="TypeCode" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="RunNo" Type="varchar" MaxLength="100" />
-          <Property Name="MountNo" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="YearNo" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="DigitNo" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="RunNo" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="TypeCode" Type="varchar" MaxLength="50" />
+          <Property Name="MountNo" Type="varchar" MaxLength="50" />
+          <Property Name="YearNo" Type="varchar" MaxLength="50" />
+          <Property Name="DigitNo" Type="varchar" MaxLength="50" />
+          <Property Name="rowguid" Type="uniqueidentifier" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'LKBWarehouse.dbo.tblGroupMenu' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -3136,6 +3127,8 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
           <EntitySet Name="Branch" EntityType="Self.Branch" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblExpGenLOT" EntityType="Self.tblExpGenLOT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblGenAutoRunNo" EntityType="Self.tblGenAutoRunNo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblLogUser" EntityType="Self.tblLogUser" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblMasterCode2" EntityType="Self.tblMasterCode2" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblMenu" EntityType="Self.tblMenu" Schema="dbo" store:Type="Tables" />
@@ -3238,115 +3231,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
     [tblExchangeRate].[Mount] AS [Mount], 
     [tblExchangeRate].[rowguid] AS [rowguid]
     FROM [dbo].[tblExchangeRate] AS [tblExchangeRate]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="tblExpGenLOT" EntityType="Self.tblExpGenLOT" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [tblExpGenLOT].[EASLOTNo] AS [EASLOTNo], 
-    [tblExpGenLOT].[LOTDate] AS [LOTDate], 
-    [tblExpGenLOT].[LOTBy] AS [LOTBy], 
-    [tblExpGenLOT].[SalesCode] AS [SalesCode], 
-    [tblExpGenLOT].[SalesName] AS [SalesName], 
-    [tblExpGenLOT].[ConsigneeCode] AS [ConsigneeCode], 
-    [tblExpGenLOT].[ConsignNameEng] AS [ConsignNameEng], 
-    [tblExpGenLOT].[ConsignAddress] AS [ConsignAddress], 
-    [tblExpGenLOT].[ConsignDistrict] AS [ConsignDistrict], 
-    [tblExpGenLOT].[ConsignSubProvince] AS [ConsignSubProvince], 
-    [tblExpGenLOT].[ConsignProvince] AS [ConsignProvince], 
-    [tblExpGenLOT].[ConsignPostCode] AS [ConsignPostCode], 
-    [tblExpGenLOT].[ConsignEmail] AS [ConsignEmail], 
-    [tblExpGenLOT].[ShipperCode] AS [ShipperCode], 
-    [tblExpGenLOT].[ShipperNameEng] AS [ShipperNameEng], 
-    [tblExpGenLOT].[ShipperAddress] AS [ShipperAddress], 
-    [tblExpGenLOT].[ShipperDistrict] AS [ShipperDistrict], 
-    [tblExpGenLOT].[ShipperSubprovince] AS [ShipperSubprovince], 
-    [tblExpGenLOT].[ShipperProvince] AS [ShipperProvince], 
-    [tblExpGenLOT].[ShipperPostCode] AS [ShipperPostCode], 
-    [tblExpGenLOT].[ShipperReturnCode] AS [ShipperReturnCode], 
-    [tblExpGenLOT].[Commodity] AS [Commodity], 
-    [tblExpGenLOT].[QuantityofPart] AS [QuantityofPart], 
-    [tblExpGenLOT].[QuantityUnit] AS [QuantityUnit], 
-    [tblExpGenLOT].[QuantityPack] AS [QuantityPack], 
-    [tblExpGenLOT].[QuantityUnitPack] AS [QuantityUnitPack], 
-    [tblExpGenLOT].[Weight] AS [Weight], 
-    [tblExpGenLOT].[WeightUnit] AS [WeightUnit], 
-    [tblExpGenLOT].[Volume] AS [Volume], 
-    [tblExpGenLOT].[VolumeUnit] AS [VolumeUnit], 
-    [tblExpGenLOT].[MAWB] AS [MAWB], 
-    [tblExpGenLOT].[DocType] AS [DocType], 
-    [tblExpGenLOT].[DocCode] AS [DocCode], 
-    [tblExpGenLOT].[Flight] AS [Flight], 
-    [tblExpGenLOT].[ScanPathFile] AS [ScanPathFile], 
-    [tblExpGenLOT].[DOCode] AS [DOCode], 
-    [tblExpGenLOT].[DONameENG] AS [DONameENG], 
-    [tblExpGenLOT].[DOStreet_Number] AS [DOStreet_Number], 
-    [tblExpGenLOT].[DODistrict] AS [DODistrict], 
-    [tblExpGenLOT].[DOSubProvince] AS [DOSubProvince], 
-    [tblExpGenLOT].[DOProvince] AS [DOProvince], 
-    [tblExpGenLOT].[DOPostCode] AS [DOPostCode], 
-    [tblExpGenLOT].[DOEmail] AS [DOEmail], 
-    [tblExpGenLOT].[DOContactPerson] AS [DOContactPerson], 
-    [tblExpGenLOT].[IEATNo] AS [IEATNo], 
-    [tblExpGenLOT].[EntryNo] AS [EntryNo], 
-    [tblExpGenLOT].[DeliveryDate] AS [DeliveryDate], 
-    [tblExpGenLOT].[CustomerCode] AS [CustomerCode], 
-    [tblExpGenLOT].[CustomerENG] AS [CustomerENG], 
-    [tblExpGenLOT].[CustomerStreet] AS [CustomerStreet], 
-    [tblExpGenLOT].[CustomerDistrict] AS [CustomerDistrict], 
-    [tblExpGenLOT].[CustomerSub] AS [CustomerSub], 
-    [tblExpGenLOT].[CustomerProvince] AS [CustomerProvince], 
-    [tblExpGenLOT].[CustomerPostCode] AS [CustomerPostCode], 
-    [tblExpGenLOT].[CustomerEmail] AS [CustomerEmail], 
-    [tblExpGenLOT].[CustomerContact] AS [CustomerContact], 
-    [tblExpGenLOT].[PickUpCode] AS [PickUpCode], 
-    [tblExpGenLOT].[PickUpENG] AS [PickUpENG], 
-    [tblExpGenLOT].[PickUpAddress1] AS [PickUpAddress1], 
-    [tblExpGenLOT].[PickUpAddress2] AS [PickUpAddress2], 
-    [tblExpGenLOT].[PickUpAddress3] AS [PickUpAddress3], 
-    [tblExpGenLOT].[PickUpAddress4] AS [PickUpAddress4], 
-    [tblExpGenLOT].[PickUpAddress5] AS [PickUpAddress5], 
-    [tblExpGenLOT].[PickUpEmail] AS [PickUpEmail], 
-    [tblExpGenLOT].[PickUpContact] AS [PickUpContact], 
-    [tblExpGenLOT].[EndCusCode] AS [EndCusCode], 
-    [tblExpGenLOT].[EndCusENG] AS [EndCusENG], 
-    [tblExpGenLOT].[EndCusAddress1] AS [EndCusAddress1], 
-    [tblExpGenLOT].[EndCusAddress2] AS [EndCusAddress2], 
-    [tblExpGenLOT].[EndCusAddress3] AS [EndCusAddress3], 
-    [tblExpGenLOT].[EndCusAddress4] AS [EndCusAddress4], 
-    [tblExpGenLOT].[EndCusAddress5] AS [EndCusAddress5], 
-    [tblExpGenLOT].[EndCusEmail] AS [EndCusEmail], 
-    [tblExpGenLOT].[EndCusContact] AS [EndCusContact], 
-    [tblExpGenLOT].[FreighForwarder] AS [FreighForwarder], 
-    [tblExpGenLOT].[Useby] AS [Useby], 
-    [tblExpGenLOT].[IEATPermit] AS [IEATPermit], 
-    [tblExpGenLOT].[ShipTo] AS [ShipTo], 
-    [tblExpGenLOT].[Box] AS [Box], 
-    [tblExpGenLOT].[UnitBox] AS [UnitBox], 
-    [tblExpGenLOT].[JOBBranch] AS [JOBBranch], 
-    [tblExpGenLOT].[IEATDate] AS [IEATDate], 
-    [tblExpGenLOT].[Status] AS [Status], 
-    [tblExpGenLOT].[Status1] AS [Status1], 
-    [tblExpGenLOT].[Status2] AS [Status2], 
-    [tblExpGenLOT].[Status3] AS [Status3], 
-    [tblExpGenLOT].[Remark] AS [Remark], 
-    [tblExpGenLOT].[JobSite] AS [JobSite], 
-    [tblExpGenLOT].[BillingNo] AS [BillingNo], 
-    [tblExpGenLOT].[BookingNo] AS [BookingNo], 
-    [tblExpGenLOT].[OwnerCode] AS [OwnerCode], 
-    [tblExpGenLOT].[OwnerENG] AS [OwnerENG], 
-    [tblExpGenLOT].[OwnerAddress1] AS [OwnerAddress1], 
-    [tblExpGenLOT].[OwnerAddress2] AS [OwnerAddress2], 
-    [tblExpGenLOT].[OwnerAddress3] AS [OwnerAddress3], 
-    [tblExpGenLOT].[OwnerAddress4] AS [OwnerAddress4], 
-    [tblExpGenLOT].[OwnerAddress5] AS [OwnerAddress5], 
-    [tblExpGenLOT].[OwnerEmail] AS [OwnerEmail], 
-    [tblExpGenLOT].[OwnerContact] AS [OwnerContact], 
-    [tblExpGenLOT].[NetWeight] AS [NetWeight], 
-    [tblExpGenLOT].[NetWeightUnit] AS [NetWeightUnit], 
-    [tblExpGenLOT].[DeliveryTime] AS [DeliveryTime], 
-    [tblExpGenLOT].[fwdstatus] AS [fwdstatus], 
-    [tblExpGenLOT].[CustomerCodeGroup] AS [CustomerCodeGroup], 
-    [tblExpGenLOT].[CustomerENGGroup] AS [CustomerENGGroup]
-    FROM [dbo].[tblExpGenLOT] AS [tblExpGenLOT]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="tblExpInvoice" EntityType="Self.tblExpInvoice" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -3571,16 +3455,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
     [tblExpPackingList].[PONo] AS [PONo], 
     [tblExpPackingList].[rowguid] AS [rowguid]
     FROM [dbo].[tblExpPackingList] AS [tblExpPackingList]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="tblGenAutoNo" EntityType="Self.tblGenAutoNo" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [tblGenAutoNo].[TypeCode] AS [TypeCode], 
-    [tblGenAutoNo].[RunNo] AS [RunNo], 
-    [tblGenAutoNo].[MountNo] AS [MountNo], 
-    [tblGenAutoNo].[YearNo] AS [YearNo], 
-    [tblGenAutoNo].[DigitNo] AS [DigitNo], 
-    [tblGenAutoNo].[rowguid] AS [rowguid]
-    FROM [dbo].[tblGenAutoNo] AS [tblGenAutoNo]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="tblGroupMenu" EntityType="Self.tblGroupMenu" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -5881,117 +5755,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
           <Property Name="Mount" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="rowguid" Type="Guid" Nullable="false" />
         </EntityType>
-        <EntityType Name="tblExpGenLOT">
-          <Key>
-            <PropertyRef Name="EASLOTNo" />
-            <PropertyRef Name="fwdstatus" />
-          </Key>
-          <Property Name="EASLOTNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="LOTDate" Type="DateTime" Precision="3" Nullable="false" />
-          <Property Name="LOTBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="SalesCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="SalesName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="ConsigneeCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ConsignNameEng" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="ConsignAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="ConsignDistrict" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="ConsignSubProvince" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="ConsignProvince" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="ConsignPostCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ConsignEmail" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="ShipperCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ShipperNameEng" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="ShipperAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="ShipperDistrict" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="ShipperSubprovince" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="ShipperProvince" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="ShipperPostCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ShipperReturnCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Commodity" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="QuantityofPart" Type="Double" />
-          <Property Name="QuantityUnit" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="QuantityPack" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="QuantityUnitPack" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="Weight" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="WeightUnit" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="Volume" Type="Double" />
-          <Property Name="VolumeUnit" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="MAWB" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="DocType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="DocCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Flight" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="ScanPathFile" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="DOCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="DONameENG" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="DOStreet_Number" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="DODistrict" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="DOSubProvince" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="DOProvince" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="DOPostCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="DOEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="DOContactPerson" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="IEATNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="EntryNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="DeliveryDate" Type="DateTime" Precision="3" />
-          <Property Name="CustomerCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CustomerENG" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="CustomerStreet" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="CustomerDistrict" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="CustomerSub" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="CustomerProvince" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="CustomerPostCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CustomerEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="CustomerContact" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="PickUpCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="PickUpENG" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="PickUpAddress1" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="PickUpAddress2" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="PickUpAddress3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="PickUpAddress4" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="PickUpAddress5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="PickUpEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="PickUpContact" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="EndCusCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="EndCusENG" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="EndCusAddress1" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="EndCusAddress2" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="EndCusAddress3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="EndCusAddress4" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="EndCusAddress5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="EndCusEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="EndCusContact" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="FreighForwarder" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="Useby" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="IEATPermit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ShipTo" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="Box" Type="Double" />
-          <Property Name="UnitBox" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="JOBBranch" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="IEATDate" Type="DateTime" Precision="3" />
-          <Property Name="Status" Type="Int32" />
-          <Property Name="Status1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Status2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Status3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Remark" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="JobSite" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="BillingNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="BookingNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="OwnerCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="OwnerENG" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="OwnerAddress1" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="OwnerAddress2" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="OwnerAddress3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="OwnerAddress4" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="OwnerAddress5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="OwnerEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="OwnerContact" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="NetWeight" Type="Double" />
-          <Property Name="NetWeightUnit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="DeliveryTime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="fwdstatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="CustomerCodeGroup" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CustomerENGGroup" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="tblExpInvoice">
           <Key>
             <PropertyRef Name="InvoiceNo" />
@@ -6223,21 +5986,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
           <Property Name="Hight" Type="Double" />
           <Property Name="Leng" Type="Double" />
           <Property Name="PONo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="rowguid" Type="Guid" Nullable="false" />
-        </EntityType>
-        <EntityType Name="tblGenAutoNo">
-          <Key>
-            <PropertyRef Name="TypeCode" />
-            <PropertyRef Name="MountNo" />
-            <PropertyRef Name="YearNo" />
-            <PropertyRef Name="DigitNo" />
-            <PropertyRef Name="rowguid" />
-          </Key>
-          <Property Name="TypeCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="RunNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="MountNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="YearNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="DigitNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="rowguid" Type="Guid" Nullable="false" />
         </EntityType>
         <EntityType Name="tblGroupMenu">
@@ -8293,8 +8041,8 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
           <Property Name="PriceForeigh" Type="Double" />
           <Property Name="PriceBath" Type="Double" />
           <Property Name="CustomerLot" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ManufacturingDate" Type="DateTime" Precision="3" Nullable="false" />
-          <Property Name="ExpiredDate" Type="DateTime" Precision="3" Nullable="false" />
+          <Property Name="ManufacturingDate" Type="DateTime" Precision="3" />
+          <Property Name="ExpiredDate" Type="DateTime" Precision="3" />
           <Property Name="CreateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="CreateDate" Type="DateTime" Precision="3" />
           <Property Name="ModifyBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -8398,11 +8146,9 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
           <EntitySet Name="tblDocTrackings" EntityType="Self.tblDocTracking" />
           <EntitySet Name="tblEntryManagementWHs" EntityType="Self.tblEntryManagementWH" />
           <EntitySet Name="tblExchangeRates" EntityType="Self.tblExchangeRate" />
-          <EntitySet Name="tblExpGenLOTs" EntityType="Self.tblExpGenLOT" />
           <EntitySet Name="tblExpInvoices" EntityType="Self.tblExpInvoice" />
           <EntitySet Name="tblExpInvoiceDetails" EntityType="Self.tblExpInvoiceDetail" />
           <EntitySet Name="tblExpPackingLists" EntityType="Self.tblExpPackingList" />
-          <EntitySet Name="tblGenAutoNoes" EntityType="Self.tblGenAutoNo" />
           <EntitySet Name="tblGroupMenus" EntityType="Self.tblGroupMenu" />
           <EntitySet Name="tblHAWBDetails" EntityType="Self.tblHAWBDetail" />
           <EntitySet Name="tblImpBookingInvDetails" EntityType="Self.tblImpBookingInvDetail" />
@@ -8514,6 +8260,8 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
+          <EntitySet Name="tblGenAutoRunNoes" EntityType="LKBWarehouseModel1.tblGenAutoRunNo" />
+          <EntitySet Name="tblExpGenLOTs" EntityType="LKBWarehouseModel1.tblExpGenLOT" />
         </EntityContainer>
         <EntityType Name="tblWHLocation">
           <Key>
@@ -8562,6 +8310,127 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
+        <EntityType Name="tblGenAutoRunNo">
+          <Key>
+            <PropertyRef Name="RunNo" />
+          </Key>
+          <Property Name="RunNo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TypeCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MountNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="YearNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DigitNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="rowguid" Type="Guid" />
+        </EntityType>
+        <EntityType Name="tblExpGenLOT">
+          <Key>
+            <PropertyRef Name="EASLOTNo" />
+          </Key>
+          <Property Name="EASLOTNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LOTDate" Type="DateTime" Precision="3" Nullable="false" />
+          <Property Name="LOTBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SalesCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SalesName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ConsigneeCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ConsignNameEng" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ConsignAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ConsignDistrict" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ConsignSubProvince" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ConsignProvince" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ConsignPostCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ConsignEmail" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ShipperCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ShipperNameEng" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ShipperAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ShipperDistrict" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ShipperSubprovince" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ShipperProvince" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ShipperPostCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ShipperReturnCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Commodity" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="QuantityofPart" Type="Double" />
+          <Property Name="QuantityUnit" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="QuantityPack" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="QuantityUnitPack" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Weight" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="WeightUnit" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Volume" Type="Double" />
+          <Property Name="VolumeUnit" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="MAWB" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DocType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DocCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Flight" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ScanPathFile" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="DOCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DONameENG" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="DOStreet_Number" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="DODistrict" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="DOSubProvince" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DOProvince" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DOPostCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DOEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DOContactPerson" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="IEATNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EntryNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DeliveryDate" Type="DateTime" Precision="3" />
+          <Property Name="CustomerCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerENG" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerStreet" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerDistrict" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerSub" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerProvince" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerPostCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerContact" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="PickUpCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PickUpENG" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="PickUpAddress1" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="PickUpAddress2" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="PickUpAddress3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PickUpAddress4" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PickUpAddress5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PickUpEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PickUpContact" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="EndCusCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EndCusENG" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="EndCusAddress1" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="EndCusAddress2" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="EndCusAddress3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EndCusAddress4" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EndCusAddress5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EndCusEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EndCusContact" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="FreighForwarder" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Useby" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IEATPermit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ShipTo" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Box" Type="Double" />
+          <Property Name="UnitBox" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="JOBBranch" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IEATDate" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="Status1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Status2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Status3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Remark" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="JobSite" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BillingNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BookingNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OwnerCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OwnerENG" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="OwnerAddress1" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="OwnerAddress2" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="OwnerAddress3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="OwnerAddress4" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="OwnerAddress5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OwnerEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="OwnerContact" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="NetWeight" Type="Double" />
+          <Property Name="NetWeightUnit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DeliveryTime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fwdstatus" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerCodeGroup" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerENGGroup" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -8959,117 +8828,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tblExpGenLOTs">
-            <EntityTypeMapping TypeName="LKBWarehouseModel1.tblExpGenLOT">
-              <MappingFragment StoreEntitySet="tblExpGenLOT">
-                <ScalarProperty Name="EASLOTNo" ColumnName="EASLOTNo" />
-                <ScalarProperty Name="LOTDate" ColumnName="LOTDate" />
-                <ScalarProperty Name="LOTBy" ColumnName="LOTBy" />
-                <ScalarProperty Name="SalesCode" ColumnName="SalesCode" />
-                <ScalarProperty Name="SalesName" ColumnName="SalesName" />
-                <ScalarProperty Name="ConsigneeCode" ColumnName="ConsigneeCode" />
-                <ScalarProperty Name="ConsignNameEng" ColumnName="ConsignNameEng" />
-                <ScalarProperty Name="ConsignAddress" ColumnName="ConsignAddress" />
-                <ScalarProperty Name="ConsignDistrict" ColumnName="ConsignDistrict" />
-                <ScalarProperty Name="ConsignSubProvince" ColumnName="ConsignSubProvince" />
-                <ScalarProperty Name="ConsignProvince" ColumnName="ConsignProvince" />
-                <ScalarProperty Name="ConsignPostCode" ColumnName="ConsignPostCode" />
-                <ScalarProperty Name="ConsignEmail" ColumnName="ConsignEmail" />
-                <ScalarProperty Name="ShipperCode" ColumnName="ShipperCode" />
-                <ScalarProperty Name="ShipperNameEng" ColumnName="ShipperNameEng" />
-                <ScalarProperty Name="ShipperAddress" ColumnName="ShipperAddress" />
-                <ScalarProperty Name="ShipperDistrict" ColumnName="ShipperDistrict" />
-                <ScalarProperty Name="ShipperSubprovince" ColumnName="ShipperSubprovince" />
-                <ScalarProperty Name="ShipperProvince" ColumnName="ShipperProvince" />
-                <ScalarProperty Name="ShipperPostCode" ColumnName="ShipperPostCode" />
-                <ScalarProperty Name="ShipperReturnCode" ColumnName="ShipperReturnCode" />
-                <ScalarProperty Name="Commodity" ColumnName="Commodity" />
-                <ScalarProperty Name="QuantityofPart" ColumnName="QuantityofPart" />
-                <ScalarProperty Name="QuantityUnit" ColumnName="QuantityUnit" />
-                <ScalarProperty Name="QuantityPack" ColumnName="QuantityPack" />
-                <ScalarProperty Name="QuantityUnitPack" ColumnName="QuantityUnitPack" />
-                <ScalarProperty Name="Weight" ColumnName="Weight" />
-                <ScalarProperty Name="WeightUnit" ColumnName="WeightUnit" />
-                <ScalarProperty Name="Volume" ColumnName="Volume" />
-                <ScalarProperty Name="VolumeUnit" ColumnName="VolumeUnit" />
-                <ScalarProperty Name="MAWB" ColumnName="MAWB" />
-                <ScalarProperty Name="DocType" ColumnName="DocType" />
-                <ScalarProperty Name="DocCode" ColumnName="DocCode" />
-                <ScalarProperty Name="Flight" ColumnName="Flight" />
-                <ScalarProperty Name="ScanPathFile" ColumnName="ScanPathFile" />
-                <ScalarProperty Name="DOCode" ColumnName="DOCode" />
-                <ScalarProperty Name="DONameENG" ColumnName="DONameENG" />
-                <ScalarProperty Name="DOStreet_Number" ColumnName="DOStreet_Number" />
-                <ScalarProperty Name="DODistrict" ColumnName="DODistrict" />
-                <ScalarProperty Name="DOSubProvince" ColumnName="DOSubProvince" />
-                <ScalarProperty Name="DOProvince" ColumnName="DOProvince" />
-                <ScalarProperty Name="DOPostCode" ColumnName="DOPostCode" />
-                <ScalarProperty Name="DOEmail" ColumnName="DOEmail" />
-                <ScalarProperty Name="DOContactPerson" ColumnName="DOContactPerson" />
-                <ScalarProperty Name="IEATNo" ColumnName="IEATNo" />
-                <ScalarProperty Name="EntryNo" ColumnName="EntryNo" />
-                <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
-                <ScalarProperty Name="CustomerCode" ColumnName="CustomerCode" />
-                <ScalarProperty Name="CustomerENG" ColumnName="CustomerENG" />
-                <ScalarProperty Name="CustomerStreet" ColumnName="CustomerStreet" />
-                <ScalarProperty Name="CustomerDistrict" ColumnName="CustomerDistrict" />
-                <ScalarProperty Name="CustomerSub" ColumnName="CustomerSub" />
-                <ScalarProperty Name="CustomerProvince" ColumnName="CustomerProvince" />
-                <ScalarProperty Name="CustomerPostCode" ColumnName="CustomerPostCode" />
-                <ScalarProperty Name="CustomerEmail" ColumnName="CustomerEmail" />
-                <ScalarProperty Name="CustomerContact" ColumnName="CustomerContact" />
-                <ScalarProperty Name="PickUpCode" ColumnName="PickUpCode" />
-                <ScalarProperty Name="PickUpENG" ColumnName="PickUpENG" />
-                <ScalarProperty Name="PickUpAddress1" ColumnName="PickUpAddress1" />
-                <ScalarProperty Name="PickUpAddress2" ColumnName="PickUpAddress2" />
-                <ScalarProperty Name="PickUpAddress3" ColumnName="PickUpAddress3" />
-                <ScalarProperty Name="PickUpAddress4" ColumnName="PickUpAddress4" />
-                <ScalarProperty Name="PickUpAddress5" ColumnName="PickUpAddress5" />
-                <ScalarProperty Name="PickUpEmail" ColumnName="PickUpEmail" />
-                <ScalarProperty Name="PickUpContact" ColumnName="PickUpContact" />
-                <ScalarProperty Name="EndCusCode" ColumnName="EndCusCode" />
-                <ScalarProperty Name="EndCusENG" ColumnName="EndCusENG" />
-                <ScalarProperty Name="EndCusAddress1" ColumnName="EndCusAddress1" />
-                <ScalarProperty Name="EndCusAddress2" ColumnName="EndCusAddress2" />
-                <ScalarProperty Name="EndCusAddress3" ColumnName="EndCusAddress3" />
-                <ScalarProperty Name="EndCusAddress4" ColumnName="EndCusAddress4" />
-                <ScalarProperty Name="EndCusAddress5" ColumnName="EndCusAddress5" />
-                <ScalarProperty Name="EndCusEmail" ColumnName="EndCusEmail" />
-                <ScalarProperty Name="EndCusContact" ColumnName="EndCusContact" />
-                <ScalarProperty Name="FreighForwarder" ColumnName="FreighForwarder" />
-                <ScalarProperty Name="Useby" ColumnName="Useby" />
-                <ScalarProperty Name="IEATPermit" ColumnName="IEATPermit" />
-                <ScalarProperty Name="ShipTo" ColumnName="ShipTo" />
-                <ScalarProperty Name="Box" ColumnName="Box" />
-                <ScalarProperty Name="UnitBox" ColumnName="UnitBox" />
-                <ScalarProperty Name="JOBBranch" ColumnName="JOBBranch" />
-                <ScalarProperty Name="IEATDate" ColumnName="IEATDate" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="Status1" ColumnName="Status1" />
-                <ScalarProperty Name="Status2" ColumnName="Status2" />
-                <ScalarProperty Name="Status3" ColumnName="Status3" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-                <ScalarProperty Name="JobSite" ColumnName="JobSite" />
-                <ScalarProperty Name="BillingNo" ColumnName="BillingNo" />
-                <ScalarProperty Name="BookingNo" ColumnName="BookingNo" />
-                <ScalarProperty Name="OwnerCode" ColumnName="OwnerCode" />
-                <ScalarProperty Name="OwnerENG" ColumnName="OwnerENG" />
-                <ScalarProperty Name="OwnerAddress1" ColumnName="OwnerAddress1" />
-                <ScalarProperty Name="OwnerAddress2" ColumnName="OwnerAddress2" />
-                <ScalarProperty Name="OwnerAddress3" ColumnName="OwnerAddress3" />
-                <ScalarProperty Name="OwnerAddress4" ColumnName="OwnerAddress4" />
-                <ScalarProperty Name="OwnerAddress5" ColumnName="OwnerAddress5" />
-                <ScalarProperty Name="OwnerEmail" ColumnName="OwnerEmail" />
-                <ScalarProperty Name="OwnerContact" ColumnName="OwnerContact" />
-                <ScalarProperty Name="NetWeight" ColumnName="NetWeight" />
-                <ScalarProperty Name="NetWeightUnit" ColumnName="NetWeightUnit" />
-                <ScalarProperty Name="DeliveryTime" ColumnName="DeliveryTime" />
-                <ScalarProperty Name="fwdstatus" ColumnName="fwdstatus" />
-                <ScalarProperty Name="CustomerCodeGroup" ColumnName="CustomerCodeGroup" />
-                <ScalarProperty Name="CustomerENGGroup" ColumnName="CustomerENGGroup" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="tblExpInvoices">
             <EntityTypeMapping TypeName="LKBWarehouseModel1.tblExpInvoice">
               <MappingFragment StoreEntitySet="tblExpInvoice">
@@ -9296,18 +9054,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
                 <ScalarProperty Name="Hight" ColumnName="Hight" />
                 <ScalarProperty Name="Leng" ColumnName="Leng" />
                 <ScalarProperty Name="PONo" ColumnName="PONo" />
-                <ScalarProperty Name="rowguid" ColumnName="rowguid" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tblGenAutoNoes">
-            <EntityTypeMapping TypeName="LKBWarehouseModel1.tblGenAutoNo">
-              <MappingFragment StoreEntitySet="tblGenAutoNo">
-                <ScalarProperty Name="TypeCode" ColumnName="TypeCode" />
-                <ScalarProperty Name="RunNo" ColumnName="RunNo" />
-                <ScalarProperty Name="MountNo" ColumnName="MountNo" />
-                <ScalarProperty Name="YearNo" ColumnName="YearNo" />
-                <ScalarProperty Name="DigitNo" ColumnName="DigitNo" />
                 <ScalarProperty Name="rowguid" ColumnName="rowguid" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -11443,6 +11189,129 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="LKBWarehouseModel1.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="LKBWarehouseModel1.Store.sp_upgraddiagrams" />
+          <EntitySetMapping Name="tblGenAutoRunNoes">
+            <EntityTypeMapping TypeName="LKBWarehouseModel1.tblGenAutoRunNo">
+              <MappingFragment StoreEntitySet="tblGenAutoRunNo">
+                <ScalarProperty Name="rowguid" ColumnName="rowguid" />
+                <ScalarProperty Name="DigitNo" ColumnName="DigitNo" />
+                <ScalarProperty Name="YearNo" ColumnName="YearNo" />
+                <ScalarProperty Name="MountNo" ColumnName="MountNo" />
+                <ScalarProperty Name="TypeCode" ColumnName="TypeCode" />
+                <ScalarProperty Name="RunNo" ColumnName="RunNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblExpGenLOTs">
+            <EntityTypeMapping TypeName="LKBWarehouseModel1.tblExpGenLOT">
+              <MappingFragment StoreEntitySet="tblExpGenLOT">
+                <ScalarProperty Name="CustomerENGGroup" ColumnName="CustomerENGGroup" />
+                <ScalarProperty Name="CustomerCodeGroup" ColumnName="CustomerCodeGroup" />
+                <ScalarProperty Name="fwdstatus" ColumnName="fwdstatus" />
+                <ScalarProperty Name="DeliveryTime" ColumnName="DeliveryTime" />
+                <ScalarProperty Name="NetWeightUnit" ColumnName="NetWeightUnit" />
+                <ScalarProperty Name="NetWeight" ColumnName="NetWeight" />
+                <ScalarProperty Name="OwnerContact" ColumnName="OwnerContact" />
+                <ScalarProperty Name="OwnerEmail" ColumnName="OwnerEmail" />
+                <ScalarProperty Name="OwnerAddress5" ColumnName="OwnerAddress5" />
+                <ScalarProperty Name="OwnerAddress4" ColumnName="OwnerAddress4" />
+                <ScalarProperty Name="OwnerAddress3" ColumnName="OwnerAddress3" />
+                <ScalarProperty Name="OwnerAddress2" ColumnName="OwnerAddress2" />
+                <ScalarProperty Name="OwnerAddress1" ColumnName="OwnerAddress1" />
+                <ScalarProperty Name="OwnerENG" ColumnName="OwnerENG" />
+                <ScalarProperty Name="OwnerCode" ColumnName="OwnerCode" />
+                <ScalarProperty Name="BookingNo" ColumnName="BookingNo" />
+                <ScalarProperty Name="BillingNo" ColumnName="BillingNo" />
+                <ScalarProperty Name="JobSite" ColumnName="JobSite" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="Status3" ColumnName="Status3" />
+                <ScalarProperty Name="Status2" ColumnName="Status2" />
+                <ScalarProperty Name="Status1" ColumnName="Status1" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="IEATDate" ColumnName="IEATDate" />
+                <ScalarProperty Name="JOBBranch" ColumnName="JOBBranch" />
+                <ScalarProperty Name="UnitBox" ColumnName="UnitBox" />
+                <ScalarProperty Name="Box" ColumnName="Box" />
+                <ScalarProperty Name="ShipTo" ColumnName="ShipTo" />
+                <ScalarProperty Name="IEATPermit" ColumnName="IEATPermit" />
+                <ScalarProperty Name="Useby" ColumnName="Useby" />
+                <ScalarProperty Name="FreighForwarder" ColumnName="FreighForwarder" />
+                <ScalarProperty Name="EndCusContact" ColumnName="EndCusContact" />
+                <ScalarProperty Name="EndCusEmail" ColumnName="EndCusEmail" />
+                <ScalarProperty Name="EndCusAddress5" ColumnName="EndCusAddress5" />
+                <ScalarProperty Name="EndCusAddress4" ColumnName="EndCusAddress4" />
+                <ScalarProperty Name="EndCusAddress3" ColumnName="EndCusAddress3" />
+                <ScalarProperty Name="EndCusAddress2" ColumnName="EndCusAddress2" />
+                <ScalarProperty Name="EndCusAddress1" ColumnName="EndCusAddress1" />
+                <ScalarProperty Name="EndCusENG" ColumnName="EndCusENG" />
+                <ScalarProperty Name="EndCusCode" ColumnName="EndCusCode" />
+                <ScalarProperty Name="PickUpContact" ColumnName="PickUpContact" />
+                <ScalarProperty Name="PickUpEmail" ColumnName="PickUpEmail" />
+                <ScalarProperty Name="PickUpAddress5" ColumnName="PickUpAddress5" />
+                <ScalarProperty Name="PickUpAddress4" ColumnName="PickUpAddress4" />
+                <ScalarProperty Name="PickUpAddress3" ColumnName="PickUpAddress3" />
+                <ScalarProperty Name="PickUpAddress2" ColumnName="PickUpAddress2" />
+                <ScalarProperty Name="PickUpAddress1" ColumnName="PickUpAddress1" />
+                <ScalarProperty Name="PickUpENG" ColumnName="PickUpENG" />
+                <ScalarProperty Name="PickUpCode" ColumnName="PickUpCode" />
+                <ScalarProperty Name="CustomerContact" ColumnName="CustomerContact" />
+                <ScalarProperty Name="CustomerEmail" ColumnName="CustomerEmail" />
+                <ScalarProperty Name="CustomerPostCode" ColumnName="CustomerPostCode" />
+                <ScalarProperty Name="CustomerProvince" ColumnName="CustomerProvince" />
+                <ScalarProperty Name="CustomerSub" ColumnName="CustomerSub" />
+                <ScalarProperty Name="CustomerDistrict" ColumnName="CustomerDistrict" />
+                <ScalarProperty Name="CustomerStreet" ColumnName="CustomerStreet" />
+                <ScalarProperty Name="CustomerENG" ColumnName="CustomerENG" />
+                <ScalarProperty Name="CustomerCode" ColumnName="CustomerCode" />
+                <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
+                <ScalarProperty Name="EntryNo" ColumnName="EntryNo" />
+                <ScalarProperty Name="IEATNo" ColumnName="IEATNo" />
+                <ScalarProperty Name="DOContactPerson" ColumnName="DOContactPerson" />
+                <ScalarProperty Name="DOEmail" ColumnName="DOEmail" />
+                <ScalarProperty Name="DOPostCode" ColumnName="DOPostCode" />
+                <ScalarProperty Name="DOProvince" ColumnName="DOProvince" />
+                <ScalarProperty Name="DOSubProvince" ColumnName="DOSubProvince" />
+                <ScalarProperty Name="DODistrict" ColumnName="DODistrict" />
+                <ScalarProperty Name="DOStreet_Number" ColumnName="DOStreet_Number" />
+                <ScalarProperty Name="DONameENG" ColumnName="DONameENG" />
+                <ScalarProperty Name="DOCode" ColumnName="DOCode" />
+                <ScalarProperty Name="ScanPathFile" ColumnName="ScanPathFile" />
+                <ScalarProperty Name="Flight" ColumnName="Flight" />
+                <ScalarProperty Name="DocCode" ColumnName="DocCode" />
+                <ScalarProperty Name="DocType" ColumnName="DocType" />
+                <ScalarProperty Name="MAWB" ColumnName="MAWB" />
+                <ScalarProperty Name="VolumeUnit" ColumnName="VolumeUnit" />
+                <ScalarProperty Name="Volume" ColumnName="Volume" />
+                <ScalarProperty Name="WeightUnit" ColumnName="WeightUnit" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="QuantityUnitPack" ColumnName="QuantityUnitPack" />
+                <ScalarProperty Name="QuantityPack" ColumnName="QuantityPack" />
+                <ScalarProperty Name="QuantityUnit" ColumnName="QuantityUnit" />
+                <ScalarProperty Name="QuantityofPart" ColumnName="QuantityofPart" />
+                <ScalarProperty Name="Commodity" ColumnName="Commodity" />
+                <ScalarProperty Name="ShipperReturnCode" ColumnName="ShipperReturnCode" />
+                <ScalarProperty Name="ShipperPostCode" ColumnName="ShipperPostCode" />
+                <ScalarProperty Name="ShipperProvince" ColumnName="ShipperProvince" />
+                <ScalarProperty Name="ShipperSubprovince" ColumnName="ShipperSubprovince" />
+                <ScalarProperty Name="ShipperDistrict" ColumnName="ShipperDistrict" />
+                <ScalarProperty Name="ShipperAddress" ColumnName="ShipperAddress" />
+                <ScalarProperty Name="ShipperNameEng" ColumnName="ShipperNameEng" />
+                <ScalarProperty Name="ShipperCode" ColumnName="ShipperCode" />
+                <ScalarProperty Name="ConsignEmail" ColumnName="ConsignEmail" />
+                <ScalarProperty Name="ConsignPostCode" ColumnName="ConsignPostCode" />
+                <ScalarProperty Name="ConsignProvince" ColumnName="ConsignProvince" />
+                <ScalarProperty Name="ConsignSubProvince" ColumnName="ConsignSubProvince" />
+                <ScalarProperty Name="ConsignDistrict" ColumnName="ConsignDistrict" />
+                <ScalarProperty Name="ConsignAddress" ColumnName="ConsignAddress" />
+                <ScalarProperty Name="ConsignNameEng" ColumnName="ConsignNameEng" />
+                <ScalarProperty Name="ConsigneeCode" ColumnName="ConsigneeCode" />
+                <ScalarProperty Name="SalesName" ColumnName="SalesName" />
+                <ScalarProperty Name="SalesCode" ColumnName="SalesCode" />
+                <ScalarProperty Name="LOTBy" ColumnName="LOTBy" />
+                <ScalarProperty Name="LOTDate" ColumnName="LOTDate" />
+                <ScalarProperty Name="EASLOTNo" ColumnName="EASLOTNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

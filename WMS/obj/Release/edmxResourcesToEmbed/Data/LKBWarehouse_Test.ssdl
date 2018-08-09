@@ -146,12 +146,9 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblExchangeRate' does not have a 
     <Property Name="Mount" Type="varchar" MaxLength="50" />
     <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblExpGenLOT' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblExpGenLOT">
     <Key>
       <PropertyRef Name="EASLOTNo" />
-      <PropertyRef Name="fwdstatus" />
     </Key>
     <Property Name="EASLOTNo" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="LOTDate" Type="datetime" />
@@ -498,22 +495,16 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblExpPackingList' does not have 
     <Property Name="PONo" Type="varchar" MaxLength="50" />
     <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblGenAutoNo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-  <EntityType Name="tblGenAutoNo">
+  <EntityType Name="tblGenAutoRunNo">
     <Key>
-      <PropertyRef Name="TypeCode" />
-      <PropertyRef Name="MountNo" />
-      <PropertyRef Name="YearNo" />
-      <PropertyRef Name="DigitNo" />
-      <PropertyRef Name="rowguid" />
+      <PropertyRef Name="RunNo" />
     </Key>
-    <Property Name="TypeCode" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="RunNo" Type="varchar" MaxLength="100" />
-    <Property Name="MountNo" Type="varchar" MaxLength="100" Nullable="false" />
-    <Property Name="YearNo" Type="varchar" MaxLength="100" Nullable="false" />
-    <Property Name="DigitNo" Type="varchar" MaxLength="100" Nullable="false" />
-    <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="RunNo" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="TypeCode" Type="varchar" MaxLength="50" />
+    <Property Name="MountNo" Type="varchar" MaxLength="50" />
+    <Property Name="YearNo" Type="varchar" MaxLength="50" />
+    <Property Name="DigitNo" Type="varchar" MaxLength="50" />
+    <Property Name="rowguid" Type="uniqueidentifier" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'LKBWarehouse.dbo.tblGroupMenu' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -3131,6 +3122,8 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
     <EntitySet Name="Branch" EntityType="Self.Branch" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblExpGenLOT" EntityType="Self.tblExpGenLOT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblGenAutoRunNo" EntityType="Self.tblGenAutoRunNo" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblLogUser" EntityType="Self.tblLogUser" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblMasterCode2" EntityType="Self.tblMasterCode2" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblMenu" EntityType="Self.tblMenu" Schema="dbo" store:Type="Tables" />
@@ -3233,115 +3226,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
     [tblExchangeRate].[Mount] AS [Mount], 
     [tblExchangeRate].[rowguid] AS [rowguid]
     FROM [dbo].[tblExchangeRate] AS [tblExchangeRate]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblExpGenLOT" EntityType="Self.tblExpGenLOT" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblExpGenLOT].[EASLOTNo] AS [EASLOTNo], 
-    [tblExpGenLOT].[LOTDate] AS [LOTDate], 
-    [tblExpGenLOT].[LOTBy] AS [LOTBy], 
-    [tblExpGenLOT].[SalesCode] AS [SalesCode], 
-    [tblExpGenLOT].[SalesName] AS [SalesName], 
-    [tblExpGenLOT].[ConsigneeCode] AS [ConsigneeCode], 
-    [tblExpGenLOT].[ConsignNameEng] AS [ConsignNameEng], 
-    [tblExpGenLOT].[ConsignAddress] AS [ConsignAddress], 
-    [tblExpGenLOT].[ConsignDistrict] AS [ConsignDistrict], 
-    [tblExpGenLOT].[ConsignSubProvince] AS [ConsignSubProvince], 
-    [tblExpGenLOT].[ConsignProvince] AS [ConsignProvince], 
-    [tblExpGenLOT].[ConsignPostCode] AS [ConsignPostCode], 
-    [tblExpGenLOT].[ConsignEmail] AS [ConsignEmail], 
-    [tblExpGenLOT].[ShipperCode] AS [ShipperCode], 
-    [tblExpGenLOT].[ShipperNameEng] AS [ShipperNameEng], 
-    [tblExpGenLOT].[ShipperAddress] AS [ShipperAddress], 
-    [tblExpGenLOT].[ShipperDistrict] AS [ShipperDistrict], 
-    [tblExpGenLOT].[ShipperSubprovince] AS [ShipperSubprovince], 
-    [tblExpGenLOT].[ShipperProvince] AS [ShipperProvince], 
-    [tblExpGenLOT].[ShipperPostCode] AS [ShipperPostCode], 
-    [tblExpGenLOT].[ShipperReturnCode] AS [ShipperReturnCode], 
-    [tblExpGenLOT].[Commodity] AS [Commodity], 
-    [tblExpGenLOT].[QuantityofPart] AS [QuantityofPart], 
-    [tblExpGenLOT].[QuantityUnit] AS [QuantityUnit], 
-    [tblExpGenLOT].[QuantityPack] AS [QuantityPack], 
-    [tblExpGenLOT].[QuantityUnitPack] AS [QuantityUnitPack], 
-    [tblExpGenLOT].[Weight] AS [Weight], 
-    [tblExpGenLOT].[WeightUnit] AS [WeightUnit], 
-    [tblExpGenLOT].[Volume] AS [Volume], 
-    [tblExpGenLOT].[VolumeUnit] AS [VolumeUnit], 
-    [tblExpGenLOT].[MAWB] AS [MAWB], 
-    [tblExpGenLOT].[DocType] AS [DocType], 
-    [tblExpGenLOT].[DocCode] AS [DocCode], 
-    [tblExpGenLOT].[Flight] AS [Flight], 
-    [tblExpGenLOT].[ScanPathFile] AS [ScanPathFile], 
-    [tblExpGenLOT].[DOCode] AS [DOCode], 
-    [tblExpGenLOT].[DONameENG] AS [DONameENG], 
-    [tblExpGenLOT].[DOStreet_Number] AS [DOStreet_Number], 
-    [tblExpGenLOT].[DODistrict] AS [DODistrict], 
-    [tblExpGenLOT].[DOSubProvince] AS [DOSubProvince], 
-    [tblExpGenLOT].[DOProvince] AS [DOProvince], 
-    [tblExpGenLOT].[DOPostCode] AS [DOPostCode], 
-    [tblExpGenLOT].[DOEmail] AS [DOEmail], 
-    [tblExpGenLOT].[DOContactPerson] AS [DOContactPerson], 
-    [tblExpGenLOT].[IEATNo] AS [IEATNo], 
-    [tblExpGenLOT].[EntryNo] AS [EntryNo], 
-    [tblExpGenLOT].[DeliveryDate] AS [DeliveryDate], 
-    [tblExpGenLOT].[CustomerCode] AS [CustomerCode], 
-    [tblExpGenLOT].[CustomerENG] AS [CustomerENG], 
-    [tblExpGenLOT].[CustomerStreet] AS [CustomerStreet], 
-    [tblExpGenLOT].[CustomerDistrict] AS [CustomerDistrict], 
-    [tblExpGenLOT].[CustomerSub] AS [CustomerSub], 
-    [tblExpGenLOT].[CustomerProvince] AS [CustomerProvince], 
-    [tblExpGenLOT].[CustomerPostCode] AS [CustomerPostCode], 
-    [tblExpGenLOT].[CustomerEmail] AS [CustomerEmail], 
-    [tblExpGenLOT].[CustomerContact] AS [CustomerContact], 
-    [tblExpGenLOT].[PickUpCode] AS [PickUpCode], 
-    [tblExpGenLOT].[PickUpENG] AS [PickUpENG], 
-    [tblExpGenLOT].[PickUpAddress1] AS [PickUpAddress1], 
-    [tblExpGenLOT].[PickUpAddress2] AS [PickUpAddress2], 
-    [tblExpGenLOT].[PickUpAddress3] AS [PickUpAddress3], 
-    [tblExpGenLOT].[PickUpAddress4] AS [PickUpAddress4], 
-    [tblExpGenLOT].[PickUpAddress5] AS [PickUpAddress5], 
-    [tblExpGenLOT].[PickUpEmail] AS [PickUpEmail], 
-    [tblExpGenLOT].[PickUpContact] AS [PickUpContact], 
-    [tblExpGenLOT].[EndCusCode] AS [EndCusCode], 
-    [tblExpGenLOT].[EndCusENG] AS [EndCusENG], 
-    [tblExpGenLOT].[EndCusAddress1] AS [EndCusAddress1], 
-    [tblExpGenLOT].[EndCusAddress2] AS [EndCusAddress2], 
-    [tblExpGenLOT].[EndCusAddress3] AS [EndCusAddress3], 
-    [tblExpGenLOT].[EndCusAddress4] AS [EndCusAddress4], 
-    [tblExpGenLOT].[EndCusAddress5] AS [EndCusAddress5], 
-    [tblExpGenLOT].[EndCusEmail] AS [EndCusEmail], 
-    [tblExpGenLOT].[EndCusContact] AS [EndCusContact], 
-    [tblExpGenLOT].[FreighForwarder] AS [FreighForwarder], 
-    [tblExpGenLOT].[Useby] AS [Useby], 
-    [tblExpGenLOT].[IEATPermit] AS [IEATPermit], 
-    [tblExpGenLOT].[ShipTo] AS [ShipTo], 
-    [tblExpGenLOT].[Box] AS [Box], 
-    [tblExpGenLOT].[UnitBox] AS [UnitBox], 
-    [tblExpGenLOT].[JOBBranch] AS [JOBBranch], 
-    [tblExpGenLOT].[IEATDate] AS [IEATDate], 
-    [tblExpGenLOT].[Status] AS [Status], 
-    [tblExpGenLOT].[Status1] AS [Status1], 
-    [tblExpGenLOT].[Status2] AS [Status2], 
-    [tblExpGenLOT].[Status3] AS [Status3], 
-    [tblExpGenLOT].[Remark] AS [Remark], 
-    [tblExpGenLOT].[JobSite] AS [JobSite], 
-    [tblExpGenLOT].[BillingNo] AS [BillingNo], 
-    [tblExpGenLOT].[BookingNo] AS [BookingNo], 
-    [tblExpGenLOT].[OwnerCode] AS [OwnerCode], 
-    [tblExpGenLOT].[OwnerENG] AS [OwnerENG], 
-    [tblExpGenLOT].[OwnerAddress1] AS [OwnerAddress1], 
-    [tblExpGenLOT].[OwnerAddress2] AS [OwnerAddress2], 
-    [tblExpGenLOT].[OwnerAddress3] AS [OwnerAddress3], 
-    [tblExpGenLOT].[OwnerAddress4] AS [OwnerAddress4], 
-    [tblExpGenLOT].[OwnerAddress5] AS [OwnerAddress5], 
-    [tblExpGenLOT].[OwnerEmail] AS [OwnerEmail], 
-    [tblExpGenLOT].[OwnerContact] AS [OwnerContact], 
-    [tblExpGenLOT].[NetWeight] AS [NetWeight], 
-    [tblExpGenLOT].[NetWeightUnit] AS [NetWeightUnit], 
-    [tblExpGenLOT].[DeliveryTime] AS [DeliveryTime], 
-    [tblExpGenLOT].[fwdstatus] AS [fwdstatus], 
-    [tblExpGenLOT].[CustomerCodeGroup] AS [CustomerCodeGroup], 
-    [tblExpGenLOT].[CustomerENGGroup] AS [CustomerENGGroup]
-    FROM [dbo].[tblExpGenLOT] AS [tblExpGenLOT]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="tblExpInvoice" EntityType="Self.tblExpInvoice" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
@@ -3566,16 +3450,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
     [tblExpPackingList].[PONo] AS [PONo], 
     [tblExpPackingList].[rowguid] AS [rowguid]
     FROM [dbo].[tblExpPackingList] AS [tblExpPackingList]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblGenAutoNo" EntityType="Self.tblGenAutoNo" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblGenAutoNo].[TypeCode] AS [TypeCode], 
-    [tblGenAutoNo].[RunNo] AS [RunNo], 
-    [tblGenAutoNo].[MountNo] AS [MountNo], 
-    [tblGenAutoNo].[YearNo] AS [YearNo], 
-    [tblGenAutoNo].[DigitNo] AS [DigitNo], 
-    [tblGenAutoNo].[rowguid] AS [rowguid]
-    FROM [dbo].[tblGenAutoNo] AS [tblGenAutoNo]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="tblGroupMenu" EntityType="Self.tblGroupMenu" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 

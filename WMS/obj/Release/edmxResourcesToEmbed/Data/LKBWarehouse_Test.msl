@@ -392,117 +392,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="tblExpGenLOTs">
-      <EntityTypeMapping TypeName="LKBWarehouseModel1.tblExpGenLOT">
-        <MappingFragment StoreEntitySet="tblExpGenLOT">
-          <ScalarProperty Name="EASLOTNo" ColumnName="EASLOTNo" />
-          <ScalarProperty Name="LOTDate" ColumnName="LOTDate" />
-          <ScalarProperty Name="LOTBy" ColumnName="LOTBy" />
-          <ScalarProperty Name="SalesCode" ColumnName="SalesCode" />
-          <ScalarProperty Name="SalesName" ColumnName="SalesName" />
-          <ScalarProperty Name="ConsigneeCode" ColumnName="ConsigneeCode" />
-          <ScalarProperty Name="ConsignNameEng" ColumnName="ConsignNameEng" />
-          <ScalarProperty Name="ConsignAddress" ColumnName="ConsignAddress" />
-          <ScalarProperty Name="ConsignDistrict" ColumnName="ConsignDistrict" />
-          <ScalarProperty Name="ConsignSubProvince" ColumnName="ConsignSubProvince" />
-          <ScalarProperty Name="ConsignProvince" ColumnName="ConsignProvince" />
-          <ScalarProperty Name="ConsignPostCode" ColumnName="ConsignPostCode" />
-          <ScalarProperty Name="ConsignEmail" ColumnName="ConsignEmail" />
-          <ScalarProperty Name="ShipperCode" ColumnName="ShipperCode" />
-          <ScalarProperty Name="ShipperNameEng" ColumnName="ShipperNameEng" />
-          <ScalarProperty Name="ShipperAddress" ColumnName="ShipperAddress" />
-          <ScalarProperty Name="ShipperDistrict" ColumnName="ShipperDistrict" />
-          <ScalarProperty Name="ShipperSubprovince" ColumnName="ShipperSubprovince" />
-          <ScalarProperty Name="ShipperProvince" ColumnName="ShipperProvince" />
-          <ScalarProperty Name="ShipperPostCode" ColumnName="ShipperPostCode" />
-          <ScalarProperty Name="ShipperReturnCode" ColumnName="ShipperReturnCode" />
-          <ScalarProperty Name="Commodity" ColumnName="Commodity" />
-          <ScalarProperty Name="QuantityofPart" ColumnName="QuantityofPart" />
-          <ScalarProperty Name="QuantityUnit" ColumnName="QuantityUnit" />
-          <ScalarProperty Name="QuantityPack" ColumnName="QuantityPack" />
-          <ScalarProperty Name="QuantityUnitPack" ColumnName="QuantityUnitPack" />
-          <ScalarProperty Name="Weight" ColumnName="Weight" />
-          <ScalarProperty Name="WeightUnit" ColumnName="WeightUnit" />
-          <ScalarProperty Name="Volume" ColumnName="Volume" />
-          <ScalarProperty Name="VolumeUnit" ColumnName="VolumeUnit" />
-          <ScalarProperty Name="MAWB" ColumnName="MAWB" />
-          <ScalarProperty Name="DocType" ColumnName="DocType" />
-          <ScalarProperty Name="DocCode" ColumnName="DocCode" />
-          <ScalarProperty Name="Flight" ColumnName="Flight" />
-          <ScalarProperty Name="ScanPathFile" ColumnName="ScanPathFile" />
-          <ScalarProperty Name="DOCode" ColumnName="DOCode" />
-          <ScalarProperty Name="DONameENG" ColumnName="DONameENG" />
-          <ScalarProperty Name="DOStreet_Number" ColumnName="DOStreet_Number" />
-          <ScalarProperty Name="DODistrict" ColumnName="DODistrict" />
-          <ScalarProperty Name="DOSubProvince" ColumnName="DOSubProvince" />
-          <ScalarProperty Name="DOProvince" ColumnName="DOProvince" />
-          <ScalarProperty Name="DOPostCode" ColumnName="DOPostCode" />
-          <ScalarProperty Name="DOEmail" ColumnName="DOEmail" />
-          <ScalarProperty Name="DOContactPerson" ColumnName="DOContactPerson" />
-          <ScalarProperty Name="IEATNo" ColumnName="IEATNo" />
-          <ScalarProperty Name="EntryNo" ColumnName="EntryNo" />
-          <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
-          <ScalarProperty Name="CustomerCode" ColumnName="CustomerCode" />
-          <ScalarProperty Name="CustomerENG" ColumnName="CustomerENG" />
-          <ScalarProperty Name="CustomerStreet" ColumnName="CustomerStreet" />
-          <ScalarProperty Name="CustomerDistrict" ColumnName="CustomerDistrict" />
-          <ScalarProperty Name="CustomerSub" ColumnName="CustomerSub" />
-          <ScalarProperty Name="CustomerProvince" ColumnName="CustomerProvince" />
-          <ScalarProperty Name="CustomerPostCode" ColumnName="CustomerPostCode" />
-          <ScalarProperty Name="CustomerEmail" ColumnName="CustomerEmail" />
-          <ScalarProperty Name="CustomerContact" ColumnName="CustomerContact" />
-          <ScalarProperty Name="PickUpCode" ColumnName="PickUpCode" />
-          <ScalarProperty Name="PickUpENG" ColumnName="PickUpENG" />
-          <ScalarProperty Name="PickUpAddress1" ColumnName="PickUpAddress1" />
-          <ScalarProperty Name="PickUpAddress2" ColumnName="PickUpAddress2" />
-          <ScalarProperty Name="PickUpAddress3" ColumnName="PickUpAddress3" />
-          <ScalarProperty Name="PickUpAddress4" ColumnName="PickUpAddress4" />
-          <ScalarProperty Name="PickUpAddress5" ColumnName="PickUpAddress5" />
-          <ScalarProperty Name="PickUpEmail" ColumnName="PickUpEmail" />
-          <ScalarProperty Name="PickUpContact" ColumnName="PickUpContact" />
-          <ScalarProperty Name="EndCusCode" ColumnName="EndCusCode" />
-          <ScalarProperty Name="EndCusENG" ColumnName="EndCusENG" />
-          <ScalarProperty Name="EndCusAddress1" ColumnName="EndCusAddress1" />
-          <ScalarProperty Name="EndCusAddress2" ColumnName="EndCusAddress2" />
-          <ScalarProperty Name="EndCusAddress3" ColumnName="EndCusAddress3" />
-          <ScalarProperty Name="EndCusAddress4" ColumnName="EndCusAddress4" />
-          <ScalarProperty Name="EndCusAddress5" ColumnName="EndCusAddress5" />
-          <ScalarProperty Name="EndCusEmail" ColumnName="EndCusEmail" />
-          <ScalarProperty Name="EndCusContact" ColumnName="EndCusContact" />
-          <ScalarProperty Name="FreighForwarder" ColumnName="FreighForwarder" />
-          <ScalarProperty Name="Useby" ColumnName="Useby" />
-          <ScalarProperty Name="IEATPermit" ColumnName="IEATPermit" />
-          <ScalarProperty Name="ShipTo" ColumnName="ShipTo" />
-          <ScalarProperty Name="Box" ColumnName="Box" />
-          <ScalarProperty Name="UnitBox" ColumnName="UnitBox" />
-          <ScalarProperty Name="JOBBranch" ColumnName="JOBBranch" />
-          <ScalarProperty Name="IEATDate" ColumnName="IEATDate" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="Status1" ColumnName="Status1" />
-          <ScalarProperty Name="Status2" ColumnName="Status2" />
-          <ScalarProperty Name="Status3" ColumnName="Status3" />
-          <ScalarProperty Name="Remark" ColumnName="Remark" />
-          <ScalarProperty Name="JobSite" ColumnName="JobSite" />
-          <ScalarProperty Name="BillingNo" ColumnName="BillingNo" />
-          <ScalarProperty Name="BookingNo" ColumnName="BookingNo" />
-          <ScalarProperty Name="OwnerCode" ColumnName="OwnerCode" />
-          <ScalarProperty Name="OwnerENG" ColumnName="OwnerENG" />
-          <ScalarProperty Name="OwnerAddress1" ColumnName="OwnerAddress1" />
-          <ScalarProperty Name="OwnerAddress2" ColumnName="OwnerAddress2" />
-          <ScalarProperty Name="OwnerAddress3" ColumnName="OwnerAddress3" />
-          <ScalarProperty Name="OwnerAddress4" ColumnName="OwnerAddress4" />
-          <ScalarProperty Name="OwnerAddress5" ColumnName="OwnerAddress5" />
-          <ScalarProperty Name="OwnerEmail" ColumnName="OwnerEmail" />
-          <ScalarProperty Name="OwnerContact" ColumnName="OwnerContact" />
-          <ScalarProperty Name="NetWeight" ColumnName="NetWeight" />
-          <ScalarProperty Name="NetWeightUnit" ColumnName="NetWeightUnit" />
-          <ScalarProperty Name="DeliveryTime" ColumnName="DeliveryTime" />
-          <ScalarProperty Name="fwdstatus" ColumnName="fwdstatus" />
-          <ScalarProperty Name="CustomerCodeGroup" ColumnName="CustomerCodeGroup" />
-          <ScalarProperty Name="CustomerENGGroup" ColumnName="CustomerENGGroup" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="tblExpInvoices">
       <EntityTypeMapping TypeName="LKBWarehouseModel1.tblExpInvoice">
         <MappingFragment StoreEntitySet="tblExpInvoice">
@@ -729,18 +618,6 @@
           <ScalarProperty Name="Hight" ColumnName="Hight" />
           <ScalarProperty Name="Leng" ColumnName="Leng" />
           <ScalarProperty Name="PONo" ColumnName="PONo" />
-          <ScalarProperty Name="rowguid" ColumnName="rowguid" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="tblGenAutoNoes">
-      <EntityTypeMapping TypeName="LKBWarehouseModel1.tblGenAutoNo">
-        <MappingFragment StoreEntitySet="tblGenAutoNo">
-          <ScalarProperty Name="TypeCode" ColumnName="TypeCode" />
-          <ScalarProperty Name="RunNo" ColumnName="RunNo" />
-          <ScalarProperty Name="MountNo" ColumnName="MountNo" />
-          <ScalarProperty Name="YearNo" ColumnName="YearNo" />
-          <ScalarProperty Name="DigitNo" ColumnName="DigitNo" />
           <ScalarProperty Name="rowguid" ColumnName="rowguid" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -2876,5 +2753,128 @@
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="LKBWarehouseModel1.Store.sp_renamediagram" />
     <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="LKBWarehouseModel1.Store.sp_upgraddiagrams" />
+    <EntitySetMapping Name="tblGenAutoRunNoes">
+      <EntityTypeMapping TypeName="LKBWarehouseModel1.tblGenAutoRunNo">
+        <MappingFragment StoreEntitySet="tblGenAutoRunNo">
+          <ScalarProperty Name="rowguid" ColumnName="rowguid" />
+          <ScalarProperty Name="DigitNo" ColumnName="DigitNo" />
+          <ScalarProperty Name="YearNo" ColumnName="YearNo" />
+          <ScalarProperty Name="MountNo" ColumnName="MountNo" />
+          <ScalarProperty Name="TypeCode" ColumnName="TypeCode" />
+          <ScalarProperty Name="RunNo" ColumnName="RunNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblExpGenLOTs">
+      <EntityTypeMapping TypeName="LKBWarehouseModel1.tblExpGenLOT">
+        <MappingFragment StoreEntitySet="tblExpGenLOT">
+          <ScalarProperty Name="CustomerENGGroup" ColumnName="CustomerENGGroup" />
+          <ScalarProperty Name="CustomerCodeGroup" ColumnName="CustomerCodeGroup" />
+          <ScalarProperty Name="fwdstatus" ColumnName="fwdstatus" />
+          <ScalarProperty Name="DeliveryTime" ColumnName="DeliveryTime" />
+          <ScalarProperty Name="NetWeightUnit" ColumnName="NetWeightUnit" />
+          <ScalarProperty Name="NetWeight" ColumnName="NetWeight" />
+          <ScalarProperty Name="OwnerContact" ColumnName="OwnerContact" />
+          <ScalarProperty Name="OwnerEmail" ColumnName="OwnerEmail" />
+          <ScalarProperty Name="OwnerAddress5" ColumnName="OwnerAddress5" />
+          <ScalarProperty Name="OwnerAddress4" ColumnName="OwnerAddress4" />
+          <ScalarProperty Name="OwnerAddress3" ColumnName="OwnerAddress3" />
+          <ScalarProperty Name="OwnerAddress2" ColumnName="OwnerAddress2" />
+          <ScalarProperty Name="OwnerAddress1" ColumnName="OwnerAddress1" />
+          <ScalarProperty Name="OwnerENG" ColumnName="OwnerENG" />
+          <ScalarProperty Name="OwnerCode" ColumnName="OwnerCode" />
+          <ScalarProperty Name="BookingNo" ColumnName="BookingNo" />
+          <ScalarProperty Name="BillingNo" ColumnName="BillingNo" />
+          <ScalarProperty Name="JobSite" ColumnName="JobSite" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="Status3" ColumnName="Status3" />
+          <ScalarProperty Name="Status2" ColumnName="Status2" />
+          <ScalarProperty Name="Status1" ColumnName="Status1" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="IEATDate" ColumnName="IEATDate" />
+          <ScalarProperty Name="JOBBranch" ColumnName="JOBBranch" />
+          <ScalarProperty Name="UnitBox" ColumnName="UnitBox" />
+          <ScalarProperty Name="Box" ColumnName="Box" />
+          <ScalarProperty Name="ShipTo" ColumnName="ShipTo" />
+          <ScalarProperty Name="IEATPermit" ColumnName="IEATPermit" />
+          <ScalarProperty Name="Useby" ColumnName="Useby" />
+          <ScalarProperty Name="FreighForwarder" ColumnName="FreighForwarder" />
+          <ScalarProperty Name="EndCusContact" ColumnName="EndCusContact" />
+          <ScalarProperty Name="EndCusEmail" ColumnName="EndCusEmail" />
+          <ScalarProperty Name="EndCusAddress5" ColumnName="EndCusAddress5" />
+          <ScalarProperty Name="EndCusAddress4" ColumnName="EndCusAddress4" />
+          <ScalarProperty Name="EndCusAddress3" ColumnName="EndCusAddress3" />
+          <ScalarProperty Name="EndCusAddress2" ColumnName="EndCusAddress2" />
+          <ScalarProperty Name="EndCusAddress1" ColumnName="EndCusAddress1" />
+          <ScalarProperty Name="EndCusENG" ColumnName="EndCusENG" />
+          <ScalarProperty Name="EndCusCode" ColumnName="EndCusCode" />
+          <ScalarProperty Name="PickUpContact" ColumnName="PickUpContact" />
+          <ScalarProperty Name="PickUpEmail" ColumnName="PickUpEmail" />
+          <ScalarProperty Name="PickUpAddress5" ColumnName="PickUpAddress5" />
+          <ScalarProperty Name="PickUpAddress4" ColumnName="PickUpAddress4" />
+          <ScalarProperty Name="PickUpAddress3" ColumnName="PickUpAddress3" />
+          <ScalarProperty Name="PickUpAddress2" ColumnName="PickUpAddress2" />
+          <ScalarProperty Name="PickUpAddress1" ColumnName="PickUpAddress1" />
+          <ScalarProperty Name="PickUpENG" ColumnName="PickUpENG" />
+          <ScalarProperty Name="PickUpCode" ColumnName="PickUpCode" />
+          <ScalarProperty Name="CustomerContact" ColumnName="CustomerContact" />
+          <ScalarProperty Name="CustomerEmail" ColumnName="CustomerEmail" />
+          <ScalarProperty Name="CustomerPostCode" ColumnName="CustomerPostCode" />
+          <ScalarProperty Name="CustomerProvince" ColumnName="CustomerProvince" />
+          <ScalarProperty Name="CustomerSub" ColumnName="CustomerSub" />
+          <ScalarProperty Name="CustomerDistrict" ColumnName="CustomerDistrict" />
+          <ScalarProperty Name="CustomerStreet" ColumnName="CustomerStreet" />
+          <ScalarProperty Name="CustomerENG" ColumnName="CustomerENG" />
+          <ScalarProperty Name="CustomerCode" ColumnName="CustomerCode" />
+          <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
+          <ScalarProperty Name="EntryNo" ColumnName="EntryNo" />
+          <ScalarProperty Name="IEATNo" ColumnName="IEATNo" />
+          <ScalarProperty Name="DOContactPerson" ColumnName="DOContactPerson" />
+          <ScalarProperty Name="DOEmail" ColumnName="DOEmail" />
+          <ScalarProperty Name="DOPostCode" ColumnName="DOPostCode" />
+          <ScalarProperty Name="DOProvince" ColumnName="DOProvince" />
+          <ScalarProperty Name="DOSubProvince" ColumnName="DOSubProvince" />
+          <ScalarProperty Name="DODistrict" ColumnName="DODistrict" />
+          <ScalarProperty Name="DOStreet_Number" ColumnName="DOStreet_Number" />
+          <ScalarProperty Name="DONameENG" ColumnName="DONameENG" />
+          <ScalarProperty Name="DOCode" ColumnName="DOCode" />
+          <ScalarProperty Name="ScanPathFile" ColumnName="ScanPathFile" />
+          <ScalarProperty Name="Flight" ColumnName="Flight" />
+          <ScalarProperty Name="DocCode" ColumnName="DocCode" />
+          <ScalarProperty Name="DocType" ColumnName="DocType" />
+          <ScalarProperty Name="MAWB" ColumnName="MAWB" />
+          <ScalarProperty Name="VolumeUnit" ColumnName="VolumeUnit" />
+          <ScalarProperty Name="Volume" ColumnName="Volume" />
+          <ScalarProperty Name="WeightUnit" ColumnName="WeightUnit" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="QuantityUnitPack" ColumnName="QuantityUnitPack" />
+          <ScalarProperty Name="QuantityPack" ColumnName="QuantityPack" />
+          <ScalarProperty Name="QuantityUnit" ColumnName="QuantityUnit" />
+          <ScalarProperty Name="QuantityofPart" ColumnName="QuantityofPart" />
+          <ScalarProperty Name="Commodity" ColumnName="Commodity" />
+          <ScalarProperty Name="ShipperReturnCode" ColumnName="ShipperReturnCode" />
+          <ScalarProperty Name="ShipperPostCode" ColumnName="ShipperPostCode" />
+          <ScalarProperty Name="ShipperProvince" ColumnName="ShipperProvince" />
+          <ScalarProperty Name="ShipperSubprovince" ColumnName="ShipperSubprovince" />
+          <ScalarProperty Name="ShipperDistrict" ColumnName="ShipperDistrict" />
+          <ScalarProperty Name="ShipperAddress" ColumnName="ShipperAddress" />
+          <ScalarProperty Name="ShipperNameEng" ColumnName="ShipperNameEng" />
+          <ScalarProperty Name="ShipperCode" ColumnName="ShipperCode" />
+          <ScalarProperty Name="ConsignEmail" ColumnName="ConsignEmail" />
+          <ScalarProperty Name="ConsignPostCode" ColumnName="ConsignPostCode" />
+          <ScalarProperty Name="ConsignProvince" ColumnName="ConsignProvince" />
+          <ScalarProperty Name="ConsignSubProvince" ColumnName="ConsignSubProvince" />
+          <ScalarProperty Name="ConsignDistrict" ColumnName="ConsignDistrict" />
+          <ScalarProperty Name="ConsignAddress" ColumnName="ConsignAddress" />
+          <ScalarProperty Name="ConsignNameEng" ColumnName="ConsignNameEng" />
+          <ScalarProperty Name="ConsigneeCode" ColumnName="ConsigneeCode" />
+          <ScalarProperty Name="SalesName" ColumnName="SalesName" />
+          <ScalarProperty Name="SalesCode" ColumnName="SalesCode" />
+          <ScalarProperty Name="LOTBy" ColumnName="LOTBy" />
+          <ScalarProperty Name="LOTDate" ColumnName="LOTDate" />
+          <ScalarProperty Name="EASLOTNo" ColumnName="EASLOTNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

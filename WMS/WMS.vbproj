@@ -6900,7 +6900,7 @@
     <Compile Include="Data\tblExpPackingList.vb">
       <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\tblGenAutoNo.vb">
+    <Compile Include="Data\tblGenAutoRunNo.vb">
       <DependentUpon>LKBWarehouse_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblGroupMenu.vb">
