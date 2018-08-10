@@ -5465,7 +5465,7 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
           <Property Name="DOContactPerson" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="IEATNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="EntryNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="DeliveryDate" Type="DateTime" Precision="3" />
+          <Property Name="DeliveryDate" Type="DateTime" Precision="3" Nullable="false" />
           <Property Name="CustomerCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="CustomerENG" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="CustomerStreet" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
@@ -5500,7 +5500,7 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
           <Property Name="Box" Type="Double" />
           <Property Name="UnitBox" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="JOBBranch" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="IEATDate" Type="DateTime" Precision="3" />
+          <Property Name="IEATDate" Type="DateTime" Precision="3" Nullable="false" />
           <Property Name="Status" Type="Int32" />
           <Property Name="Status1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Status2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />

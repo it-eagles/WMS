@@ -702,9 +702,9 @@ dcbSales control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.ExpGenLot.DropDownList5">
+</member><member name="F:WMS.ExpGenLot.ComboBox2">
 	<summary>
-DropDownList5 control.
+ComboBox2 control.
 </summary>
 	<remarks>
 Auto-generated field.
