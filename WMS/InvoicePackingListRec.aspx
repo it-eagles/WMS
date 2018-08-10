@@ -26,21 +26,14 @@
           <div class="box box-default">
             <div class="box-body">
             <div class="col-xs-6">
-                <a class="btn btn-app" id="btnAddHead">
-                <i class="fa fa-inbox"></i> Add
-                </a>
-                <a class="btn btn-app" id="btnEditHead">
-                <i class="fa fa-edit"></i> Edit
-                </a>
+                <button class="btn btn-app" id="btnAddHead" runat="server" onserverclick="btnAddHead_ServerClick"><i class="fa fa-inbox"></i>Add</button>
+                <button class="btn btn-app" id="btnEditHead" runat="server" onserverclick="btnEditHead_ServerClick"><i class="fa fa-edit"></i>Edit</button>
             </div>
-            <div class="col-xs-6 text-right">
-                <a class="btn btn-app" id="btnSaveAddHead">
-                <i class="fa fa-save"></i> Save Add
-                </a>
-                <a class="btn btn-app" id="btnSaveEditHead">
-                <i class="fa fa-save"></i> Save Edit
-                </a>
-            </div>
+                <div class="col-xs-6 text-right">
+                    <button class="btn btn-app" id="btnSaveAddHead" runat="server" onserverclick="btnSaveAddHead_ServerClick" visible="false"><i class="fa fa-save"></i>Save Add</button>
+                    <button class="btn btn-app" id="btnSaveEditHead" runat="server" onserverclick="btnSaveEditHead_ServerClick" visible="false"><i class="fa fa-save"></i>Save Edit</button>
+
+                </div>
             </div>
           </div>
         </div>
@@ -549,9 +542,8 @@
                                                 <div class="col-lg-12 col-md-12">
                                                     <div class="form-group">
                                                         <div class="checkbox col-sm-6">
-                                                            <label>
-                                                                <input type="checkbox" runat="server" id="chkEnablebehalf_EASJOB" onclick="EnableOnBehalfOf();" checked="checked" />Enable On Behalf Of
-                                                            </label>
+                                                            <%--<label>Enable On Behalf Of</label>--%>
+                                                            <button class="btn btn-primary" type="submit" runat="server" id="btnEnablebehalf_EASJOB" onserverclick="btnEnablebehalf_EASJOB_ServerClick" >Enable on behalf of</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1883,21 +1875,5 @@
                         });
                     });
                 </script>
-
-        <script type="text/javascript">
-            function EnableOnBehalfOf() {
-                var status = document.getElementById('<%=chkEnablebehalf_EASJOB.ClientID%>').checked;
-
-                              if (status == true) {
-                                  document.getElementById('<%=LeftForm_EASJOB.ClientID%>').visible = false;
-                                  document.getElementById('<%=RightForm_EASJOB.ClientID%>').visible = false;
-                              } else if (status == false) {
-                                  document.getElementById('<%=LeftForm_EASJOB.ClientID%>').visible = true;
-                                  document.getElementById('<%=RightForm_EASJOB.ClientID%>').visible = true;
-            }
-
-    }
-        </script>
-
     </form>
 </asp:Content>

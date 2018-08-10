@@ -35,6 +35,7 @@ Public Class CreateRec
             showIEATPermit()
             showunitdimension()
             showcurrency()
+            btnGenIEATNo.Disabled = True
         End If
       
         'showListConsignee()
@@ -1297,38 +1298,27 @@ Public Class CreateRec
     Protected Sub btnSaveAddHead_ServerClick(sender As Object, e As EventArgs)
         MsgBox(ddlJobsite.Text)
         If ddlJobsite.Text = "LKB" Then
-            checkjobsite = "LKB"
-            GenNum()
+            Gentbl("ExpLOTOUT")
         ElseIf ddlJobsite.Text = "SBIA" Then
-            checkjobsite = "SBIA"
-            GenNum()
+            Gentbl("SBIALOTOUT")
         ElseIf ddlJobsite.Text = "HCR" Then
-            checkjobsite = "HCR"
-            GenNum()
+            Gentbl("HCRLOTOUT")
         ElseIf ddlJobsite.Text = "HTO" Then
-            checkjobsite = "HTO"
-            GenNum()
+            Gentbl("HTOLOTOUT")
         ElseIf ddlJobsite.Text = "AEC" Then
-            checkjobsite = "AEC"
-            GenNum()
+            Gentbl("AECLOTOUT")
         ElseIf ddlJobsite.Text = "MJB" Then
-            checkjobsite = "MJB"
-            GenNum()
+            Gentbl("MJBLOTOUT")
         ElseIf ddlJobsite.Text = "LEA" Then
-            checkjobsite = "LEA"
-            GenNum()
+            Gentbl("LEALOTOUT")
         ElseIf ddlJobsite.Text = "SPM" Then
-            checkjobsite = "SPM"
-            GenNum()
+            Gentbl("SPMLOTOUT")
         ElseIf ddlJobsite.Text = "PTN" Then
-            checkjobsite = "PTN"
-            GenNum()
+            Gentbl("PTNLOTOUT")
         ElseIf ddlJobsite.Text = "CKT" Then
-            checkjobsite = "CKT"
-            GenNum()
+            Gentbl("CKTLOTOUT")
         ElseIf ddlJobsite.Text = "WIP" Then
-            checkjobsite = "WIP"
-            GenNum()
+            Gentbl("WIPLOTOUT")
         End If
         'SaveDATA_New()
 
@@ -1340,15 +1330,158 @@ Public Class CreateRec
 
     Protected Sub btnAddHead_ServerClick(sender As Object, e As EventArgs)
 
+        btnSaveAddHead.Visible = True
+        btnSaveEditHead.Visible = False
+        btnJobSiteSeacrh.Visible = False
+
         FormLeft_MasterJob.Visible = True
         FormRight_MasterJob.Visible = True
     End Sub
 
     Protected Sub btnEditHead_ServerClick(sender As Object, e As EventArgs)
 
+        btnSaveEditHead.Visible = True
+        btnSaveAddHead.Visible = False
+
+        btnJobSiteSeacrh.Visible = True
+        txtJobno.Disabled = False
+
+    End Sub
+Private Sub Gentbl(type As String)
+        'Dim sqlSearch As String
+        Dim tmpDate As Single = CSng(Format(Now(), "dd"))
+        Dim Nmount As Single = CSng(Format(Now(), "MM"))
+        Dim Nyear As Single = CSng(Format(Now(), "yy")) + 43
+        Dim Nemount As String
+        Dim Neyear As String
+        Dim DigitNo_ As String = "000"
+        Dim LotNo As String
+        Dim Num As Single
+        Dim Mount As Single
+        Dim Year As Single
+        Dim Digit As Single
+        Dim Digit_ As Single
+        Dim JobSite As String
+        Dim num_ As String
+        Dim dunNo As String
+
+        Nemount = Nmount.ToString("0#")
+        Neyear = Nyear.ToString("0#")
+
+        Mount = CSng(Nemount)
+        Year = CSng(Neyear)
+        Digit = CSng(DigitNo_)
+
+        JobSite = ddlJobsite.Text.Trim
+        If JobSite = "SBIA" Then
+            LotNo = JobSite & "-" & Nyear.ToString("0#") & Nmount.ToString("0#")
+        Else
+            LotNo = JobSite & "-" & "OUT-" & Nyear.ToString("0#") & Nmount.ToString("0#")
+        End If
+
+        If chkNextmonth.Checked = True Then
+            Nmount = CSng(Format(Now(), "MM")) + 1
+            Nemount = Nmount.ToString("0#")
+            If Nemount > "12" Then
+                Nmount = 1
+                Nyear = CSng(Format(Now(), "yy")) + 44
+                Nemount = Nmount.ToString("0#")
+                Neyear = Nyear.ToString("0#")
+            End If
+        End If
+        Dim sqlSearch = (From ep In db.tblGenAutoRunNoes Where ep.TypeCode = type And ep.MountNo = Nemount And ep.YearNo = Neyear And ep.RunNo = LotNo
+                Group By TypeCode = ep.TypeCode,
+                MountNo = ep.MountNo,
+                YearNo = ep.YearNo,
+                DigitNo = ep.DigitNo Into g = Group, Count()).SingleOrDefault
+
+        If Not sqlSearch Is Nothing Then
+            Digit_ = CSng(sqlSearch.DigitNo)
+
+            If Nyear = Year Then
+                If Nmount = Mount Then
+                    Num = Digit_ + 1
+                ElseIf Nmount <> Mount Then
+                    Nmount = Mount
+                    Num = Digit_ + 1
+                End If
+
+            End If
+            If Nyear <> Year Then
+                Nmount = Year
+                If Nmount = Mount Then
+                    Num = Digit_ + 1
+                End If
+
+                If Nyear <> Mount Then
+                    Nmount = Mount
+                    Num = Digit + 1
+                End If
+
+            End If
+            num_ = Num.ToString("00#")
+            dunNo = LotNo & Num.ToString("00#")
+            upDateGenNum(type, Nemount, Neyear, num_)
+            txtJobno.Value = dunNo
+        Else
+
+            If Nyear = Year Then
+                If Nmount = Mount Then
+                    Digit = Digit + 1
+                    Num = Digit
+                ElseIf Nmount <> Mount Then
+                    Nmount = Mount
+                    Num = Digit + 1
+                End If
+
+            End If
+            If Nyear <> Year Then
+                Nmount = Year
+                If Nmount = Mount Then
+                    Digit = Digit + 1
+                    Num = Digit
+                End If
+
+                If Nyear <> Mount Then
+                    Nmount = Mount
+                    Num = Digit + 1
+                End If
+
+            End If
+            num_ = Num.ToString("00#")
+            dunNo = LotNo & Num.ToString("00#")
+
+            db.tblGenAutoRunNoes.Add(New tblGenAutoRunNo With { _
+                                .TypeCode = type, _
+                                .RunNo = LotNo, _
+                                .MountNo = Nemount, _
+                                .YearNo = Neyear, _
+                                .DigitNo = num_
+                            })
+            db.SaveChanges()
+            txtJobno.Value = dunNo
+
+        End If
+    End Sub
+    Private Sub upDateGenNum(type As String, Nemount As String, Neyear As String, DigitNo As String)
+        Try
+            Dim up = (From g In db.tblGenAutoRunNoes Where g.TypeCode = type And g.MountNo = Nemount And g.YearNo = Neyear Select g).First
+            If up IsNot Nothing Then
+
+                up.DigitNo = DigitNo
+
+                db.SaveChanges()
+            End If
+        Catch ex As Exception
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", ex.Message, True)
+        End Try
     End Sub
 
-    Private Sub GenNum()
+    Protected Sub btnJobSiteSeacrh_ServerClick(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Private Sub GenIEATNo()
         Dim tmpDate As Single
         Dim tmpMount As Single
         'Dim tmpYear As Single
@@ -1363,7 +1496,7 @@ Public Class CreateRec
         tmpMount = CSng(Format(Now(), "MM"))
         Nmount = CSng(Format(Now(), "yy")) + 43
         'tmpYear = Format(CDate(Nmount), "yy")
-        Gentbl()
+        GentblIEATNo()
         Mount = CSng(txtMountNo)
         Year = CSng(txtYearNo)
         Digit = CSng(txtDigitNo)
@@ -1386,39 +1519,14 @@ Public Class CreateRec
             End If
 
             If tmpMount <> Mount Then
-                tmpMount = Mount
+                Digit = 0
                 Num = Digit + 1
             End If
         End If
+        LotNo = Nmount.ToString("0#") & tmpMount.ToString("0#") & Num.ToString("00#")
+        txtIEATNo.Value = LotNo
 
-
-        LotNo = ddlJobsite.Text & "-" & "IN-" & Nmount.ToString("0#") & tmpMount.ToString("0#") & Num.ToString("00#")
-        txtJobno.Value = LotNo
-
-        If checkjobsite = "LKB" Then
-            txtTypeCode = "ImpLOTIN"
-        ElseIf checkjobsite = "SBIA" Then
-            txtTypeCode = "SBIALOTIN"
-        ElseIf checkjobsite = "HCR" Then
-            txtTypeCode = "HCRLOTIN"
-        ElseIf checkjobsite = "HTO" Then
-            txtTypeCode = "HTOLOTIN"
-        ElseIf checkjobsite = "AEC" Then
-            txtTypeCode = "AECLOTIN"
-        ElseIf checkjobsite = "MJB" Then
-            txtTypeCode = "MJBLOTIN"
-        ElseIf checkjobsite = "LEA" Then
-            txtTypeCode = "LEALOTIN"
-        ElseIf checkjobsite = "SPM" Then
-            txtTypeCode = "SPMLOTIN"
-        ElseIf checkjobsite = "PTN" Then
-            txtTypeCode = "PTNLOTIN"
-        ElseIf checkjobsite = "CKT" Then
-            txtTypeCode = "CKTLOTIN"
-        ElseIf checkjobsite = "WIP" Then
-            txtTypeCode = "WIPLOTIN"
-        End If
-
+        txtTypeCode = "IEATIN"
         txtRunNo = LotNo
         txtMountNo = tmpMount.ToString("0#")
         txtYearNo = Nmount.ToString("0#")
@@ -1450,10 +1558,10 @@ Public Class CreateRec
         End Using
     End Sub
 
-    Private Sub Gentbl()
+    Private Sub GentblIEATNo()
         'Dim sqlSearch As String
         Dim Nmount As Single = CSng(Format(Now(), "MM"))
-        Dim Nyear As Single = CSng(Format(Now(), "yy")) + 43
+        Dim Nyear As Single = CSng(Format(Now(), "yy"))
         Dim Nemount As String
         Dim Neyear As String
         Nemount = Nmount.ToString("0#")
@@ -1468,13 +1576,11 @@ Public Class CreateRec
                 Neyear = Nyear.ToString("0#")
             End If
         End If
-
-        'Dim sqlSearch = (From ep In db.tblGenAutoNoes Where ep.TypeCode = "ExpLOTOUT" And ep.MountNo = Nemount And ep.YearNo = Neyear
-        Dim sqlSearch = (From ep In db.tblGenAutoRunNoes Where ep.TypeCode = "ExpLOTOUT" And ep.MountNo = Nemount And ep.YearNo = Neyear
-                        Group By TypeCode = ep.TypeCode,
-                        MountNo = ep.MountNo,
-                        YearNo = ep.YearNo,
-                        DigitNo = ep.DigitNo.Max Into g = Group, Count()).SingleOrDefault
+        Dim sqlSearch = (From ep In db.tblGenAutoRunNoes Where ep.TypeCode = "IEATIN" And ep.MountNo = Nemount And ep.YearNo = Neyear
+                Group By TypeCode = ep.TypeCode,
+                MountNo = ep.MountNo,
+                YearNo = ep.YearNo,
+                DigitNo = ep.DigitNo.Max Into g = Group, Count()).SingleOrDefault
         If sqlSearch.Count > 0 Then
             txtTypeCode = sqlSearch.TypeCode
             txtMountNo = sqlSearch.MountNo
@@ -1482,7 +1588,7 @@ Public Class CreateRec
             txtDigitNo = sqlSearch.DigitNo
         End If
 
-        'sqlSearch = "SELECT TypeCode,MountNo,YearNo,max(DigitNo)DigitNo FROM tblGenAutoNo WHERE (TypeCode = '" & txtTypeCode & "' and MountNo='" & Nemount & "'and YearNo='" & Neyear & "')group by TypeCode,MountNo,YearNo"
+        'sqlSearch = "SELECT TypeCode,MountNo,YearNo,max(DigitNo)DigitNo FROM tblGenAutoNo WHERE (TypeCode = 'IEATIN' and MountNo='" & Nemount & "'and YearNo='" & Neyear & "')group by TypeCode,MountNo,YearNo"
         If txtMountNo = "" Then
             txtMountNo = Nemount
         End If
@@ -1492,5 +1598,187 @@ Public Class CreateRec
         If txtDigitNo = "" Then
             txtDigitNo = "000"
         End If
+    End Sub
+
+    Protected Sub btnGenIEATNo_ServerClick(sender As Object, e As EventArgs)
+        GenIEATNo()
+    End Sub
+    Private Sub CallculateValue()
+
+        If (txtQuantityInvoice.Value.Trim() = "") Then txtQuantityInvoice.Value = "0.0"
+        If (txtPriceForeignInvoice.Value.Trim() = "") Then txtPriceForeignInvoice.Value = "0.0"
+        If (txtAmountForeignInvoice.Value.Trim() = "") Then txtAmountForeignInvoice.Value = "0.0"
+
+        Dim ValueAmount As Double = 0.0
+        ValueAmount = CSng(txtQuantityInvoice.Value) * CSng(txtPriceForeignInvoice.Value)
+        txtAmountForeignInvoice.Value = ValueAmount.ToString("#,##0.00")
+    End Sub
+
+    Private Sub CallculateValueThai()
+
+        If (txtExchangeRateInvoice.Value.Trim() = "") Then txtExchangeRateInvoice.Value = "0.0"
+        If (txtPriceForeignInvoice.Value.Trim() = "") Then txtPriceForeignInvoice.Value = "0.0"
+        If (txtPriceBathInvoice.Value.Trim() = "") Then txtPriceBathInvoice.Value = "0.0"
+
+        Dim ValueThaiAmount As Double = 0.0
+        ValueThaiAmount = CSng(txtExchangeRateInvoice.Value) * CSng(txtPriceForeignInvoice.Value)
+        txtPriceBathInvoice.Value = ValueThaiAmount.ToString("#,##0.00")
+    End Sub
+
+    Private Sub CallculateValueThaiAmount()
+        If (txtQuantityInvoice.Value.Trim() = "") Then txtQuantityInvoice.Value = "0.0"
+        If (txtPriceBathInvoice.Value.Trim() = "") Then txtPriceBathInvoice.Value = "0.0"
+        If (txtAmountBathInvoice.Value.Trim() = "") Then txtAmountBathInvoice.Value = "0.0"
+
+        Dim ValueThaiValueAmount As Double = 0.0
+
+        ValueThaiValueAmount = CSng(txtQuantityInvoice.Value) * CSng(txtPriceBathInvoice.Value)
+        txtAmountBathInvoice.Value = ValueThaiValueAmount.ToString("#,##0.00")
+    End Sub
+
+    Private Sub txtPriceForeignInvoice_KeyUp(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtPriceForeignInvoice.Init
+        CallculateValue()
+        CallculateValueThai()
+        CallculateValueThaiAmount()
+    End Sub
+    Private Sub txtQuantityInvoice_KeyPress(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtQuantityInvoice.Init
+        'Select Case Asc(e.ToString)
+        '    Case 48 To 57 ' key โค๊ด ของตัวเลขจะอยู่ระหว่าง48-57ครับ 48คือเลข0 57คือเลข9ตามลำดับ
+        '        e.Equals = False
+        '    Case 8, 13, 46 ' ปุ่ม Backspace = 8,ปุ่ม Enter = 13, ปุ่มDelete = 46
+        '        e.Equals = False
+
+        '    Case Else
+        '        e.Handled = True
+        '        MessageBox.Show("สามารถกดได้แค่ตัวเลข")
+        '        Exit Sub
+        'End Select
+    End Sub
+    Private Sub ClearDATA()
+        chkNextmonth.Checked = False
+        chkGenerateIEATNo.Checked = False
+        txtJobno.Value = ""
+        ddlJobsite.Text = ""
+        txtdatepickerJobdate.Text = ""
+        ddlLotof.Text = ""
+        ddlSaleman.Text = ""
+        txtsalemandis.Value = ""
+        txtConsigneecode.Value = ""
+        txtNameEngConsign.Value = ""
+        txtAddress1.Value = ""
+        txtAddress2.Value = ""
+        txtAddress3.Value = ""
+        txtAddress4.Value = ""
+        txtAddress5.Value = ""
+        txtEmail.Value = ""
+        txtShippercode.Value = ""
+        txtNameEngShipper.Value = ""
+        txtAddress1Shipper.Value = ""
+        txtAddress2Shipper.Value = ""
+        txtAddress3Shipper.Value = ""
+        txtAddress4Shipper.Value = ""
+        txtAddress5Shipper.Value = ""
+        txtEmailShipper.Value = ""
+        ddlCommodity.Text = ""
+        txtQuantityOfPart.Value = ""
+        ddlQuantityOfParty.Text = ""
+        txtQuantity.Value = ""
+        ddlQuan.Text = ""
+        txtWeight.Value = ""
+        ddlWeight.Text = ""
+        txtQuantityBox.Value = ""
+        ddlquanbox.Text = ""
+        txtVolume.Value = ""
+        ddlvolume.Text = ""
+        txtMAWB_BL_TWB.Value = ""
+        txtFLT_Voy_TruckDate.Value = ""
+        ddlvolume2.Text = ""
+        txtVolume2.Value = ""
+        ddlFreight.Text = ""
+        txtShipto.Value = ""
+        txtBilling.Value = ""
+        txtActual1.Value = ""
+        txtActual2.Value = ""
+        txtActual3.Value = ""
+        txtActual4.Value = ""
+        txtdatepickerActualDate1.Text = ""
+        txtdatepickerActualDate2.Text = ""
+        txtdatepickerActualDate3.Text = ""
+        txtdatepickerActualDate4.Text = ""
+        txtORGN1.Value = ""
+        txtORGN2.Value = ""
+        txtORGN3.Value = ""
+        txtORGN4.Value = ""
+        txtDSTN1.Value = ""
+        txtDSTN2.Value = ""
+        txtDSTN3.Value = ""
+        txtDSTN4.Value = ""
+        txtpickupETD.Value = ""
+        txtpickupETD2.Value = ""
+        txtpickupETD3.Value = ""
+        txtpickupETD4.Value = ""
+        txtpickupETA.Value = ""
+        txtpickupETA2.Value = ""
+        txtpickupETA3.Value = ""
+        txtpickupETA4.Value = ""
+        txtPacket.Value = ""
+        txtPacket2.Value = ""
+        txtPacket3.Value = ""
+        txtPacket4.Value = ""
+        txtWeightActual.Value = ""
+        txtWeightActual2.Value = ""
+        txtWeightActual3.Value = ""
+        txtWeightActual4.Value = ""
+        txtTimePickUp.Value = ""
+        txtdatepickerActualPickUp.Text = ""
+        txtArrivalToEAS.Value = ""
+        txtdatepickerArrivalToEAS.Text = ""
+        txtRamarkActual.Value = ""
+        txtDeliverycode.Value = ""
+        txtNameEngDelivery.Value = ""
+        txtAddress1Delivery.Value = ""
+        txtAddress2Delivery.Value = ""
+        txtAddress3Delivery.Value = ""
+        txtAddress4Delivery.Value = ""
+        txtAddress5Delivery.Value = ""
+        txtEmailDelivery.Value = ""
+        txtContractPersonDelivery.Value = ""
+        txtCodePickUpPlace.Value = ""
+        txtNamePickUpPlace.Value = ""
+        txtAddress1PickUpPlace.Value = ""
+        txtAddress2PickUpPlace.Value = ""
+        txtAddress3PickUpPlace.Value = ""
+        txtAddress4PickUpPlace.Value = ""
+        txtAddress5PickUpPlace.Value = ""
+        txtEmailPickUpPlace.Value = ""
+        txtContractPersonPickUpPlace.Value = ""
+        txtCustomercode.Value = ""
+        txtNameEngCustomer.Value = ""
+        txtAddress1Custommer.Value = ""
+        txtAddress2Custommer.Value = ""
+        txtAddress3Custommer.Value = ""
+        txtAddress4Custommer.Value = ""
+        txtAddress5Custommer.Value = ""
+        txtEmailCustommer.Value = ""
+        txtContractPersonCustommer.Value = ""
+        txtCodeEndCustomer.Value = ""
+        txtNameEndCustomer.Value = ""
+        txtAddress1EndCustomer.Value = ""
+        txtAddress2EndCustomer.Value = ""
+        txtAddress3EndCustomer.Value = ""
+        txtAddress4EndCustomer.Value = ""
+        txtAddress5EndCustomer.Value = ""
+        txtEmailEndCustomer.Value = ""
+        txtContractPersonEndCustomer.Value = ""
+        txtCodeCustommerGroup.Value = ""
+        txtNameCustommerGroup.Value = ""
+        txtIEATNo.Value = ""
+        ddlIEATPermit.Text = ""
+        txtImportEntryNo.Value = ""
+        txtdatepickerImportEntryDate.Text = ""
+        ddlStatusIEAT1.Text = ""
+        ddlStatusIEAT2.Text = ""
+        ddlJobsite.Text = ""
+
     End Sub
 End Class
