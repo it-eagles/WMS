@@ -131,13 +131,13 @@ Partial Public Class ExpGenLot
     Protected WithEvents dcbSales As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''DropDownList5 control.
+    '''ComboBox2 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents DropDownList5 As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents ComboBox2 As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''txtSalesName control.

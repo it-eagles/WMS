@@ -123,7 +123,7 @@
                                                         <div class="form-group">
                                                             <label for="DropDownList5" class="col-sm-4 control-label">JOB of</label>
                                                             <div class="col-md-7">
-                                                                <asp:DropDownList ID="DropDownList5" CssClass="form-control" runat="server">
+                                                                <asp:DropDownList ID="ComboBox2" CssClass="form-control" runat="server">
                                                                     <asp:ListItem></asp:ListItem>
                                                                     <asp:ListItem>Air Out</asp:ListItem>
                                                                     <asp:ListItem>Sea Out</asp:ListItem>
@@ -299,7 +299,7 @@
                                                             </div>
                                                             <div class="form-group">
                                                                 <div class="col-md-4">
-                                                                    <asp:DropDownList ID="ComboBox7" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code">
+                                                                    <asp:DropDownList ID="ComboBox7" CssClass="form-control" runat="server">
                                                                         <asp:ListItem></asp:ListItem>
                                                                         <asp:ListItem>HAWB.</asp:ListItem>
                                                                         <asp:ListItem>HBL.</asp:ListItem>

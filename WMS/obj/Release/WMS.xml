@@ -702,9 +702,15 @@ dcboDriverName control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
+<<<<<<< HEAD
 </member><member name="F:WMS.CustomsInvoice.chkEnablebehalf_EASJOB">
 	<summary>
 chkEnablebehalf_EASJOB control.
+=======
+</member><member name="F:WMS.ExpGenLot.ComboBox2">
+	<summary>
+ComboBox2 control.
+>>>>>>> 2d6179e8b2502d3f43429b97fb100c822e715fdb
 </summary>
 	<remarks>
 Auto-generated field.
