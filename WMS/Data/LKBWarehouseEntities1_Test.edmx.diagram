@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fe5ae7eed10a4aceb192713c86463e1d" Name="Diagram1">
+        <EntityTypeShape EntityType="LKBWarehouseModel1.Branch" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.Department" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.sysdiagram" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblExpGenLOT" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblGenAutoRunNo" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblLogUser" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblMasterCode2" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblMenu" Width="1.5" PointX="6.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblMoneyConfig" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblParty" Width="1.5" PointX="2.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblProductDetail" Width="1.5" PointX="8.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblUser" Width="1.5" PointX="4.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblUserMenu" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblWHLocation" Width="1.5" PointX="10.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblWHStockCtrl" Width="1.5" PointX="10.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblBookingMessenger" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblCurrency" Width="1.5" PointX="12.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblDocTracking" Width="1.5" PointX="12.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblEntryManagementWH" Width="1.5" PointX="12.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblExchangeRate" Width="1.5" PointX="4.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblExpInvoice" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblExpInvoiceDetail" Width="1.5" PointX="16.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblExpPackingList" Width="1.5" PointX="16.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblGenAutoNo" Width="1.5" PointX="4.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblGroupMenu" Width="1.5" PointX="18.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblHAWBDetail" Width="1.5" PointX="18.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblImpBookingInvDetail" Width="1.5" PointX="18.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblImpGenLOT" Width="1.5" PointX="20.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblImpInvoice" Width="1.5" PointX="2.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblImpInvoiceDetail" Width="1.5" PointX="4.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblImpLogFlight" Width="1.5" PointX="10.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblImpPackingList" Width="1.5" PointX="22.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblInventoryItem" Width="1.5" PointX="22.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblLocation" Width="1.5" PointX="22.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblLocationArea" Width="1.5" PointX="22.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblLocationMaster" Width="1.5" PointX="22.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblLogBrand" Width="1.5" PointX="16.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblLogCarLicense" Width="1.5" PointX="22.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblLogConsignnee" Width="1.5" PointX="24.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblLogCountry" Width="1.5" PointX="24.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblLogCurrency" Width="1.5" PointX="24.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblLogDeliveryTerm" Width="1.5" PointX="6.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblLogDriver" Width="1.5" PointX="24.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblLogExpGenLOT" Width="1.5" PointX="24.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblLogExpInvoice" Width="1.5" PointX="24.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblLogExpInvoiceDetail" Width="1.5" PointX="24.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblLogExpPackingList" Width="1.5" PointX="8.75" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblLogImpGenLOT" Width="1.5" PointX="10.75" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblLogImpInvoice" Width="1.5" PointX="12.75" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblLogImpInvoiceDetail" Width="1.5" PointX="26.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblLogImpPackingList" Width="1.5" PointX="26.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblLogLocationArea" Width="1.5" PointX="26.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblLogLocationMaster" Width="1.5" PointX="14.75" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblLogPackageUnit" Width="1.5" PointX="26.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblLogProductDetail" Width="1.5" PointX="16.75" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblLogProductUnit" Width="1.5" PointX="26.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblLogProvince" Width="1.5" PointX="26.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblLogReferenceType" Width="1.5" PointX="26.75" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblLogShipper" Width="1.5" PointX="28.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblLogShippingMark" Width="1.5" PointX="28.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblLogtransportationMode" Width="1.5" PointX="28.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblLogTruckManifest" Width="1.5" PointX="28.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblLogTruckManifestDetail" Width="1.5" PointX="28.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblLogTruckOwner" Width="1.5" PointX="28.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblLogTruckType" Width="1.5" PointX="28.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblLogTruckWayBill" Width="1.5" PointX="28.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblLogTruckWayBillDetail" Width="1.5" PointX="28.75" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblLogTruckWayBillDetailImp" Width="1.5" PointX="26.75" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblLogTruckWayBillImp" Width="1.5" PointX="28.75" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblMasterCode" Width="1.5" PointX="14.75" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblPartyAddress" Width="1.5" PointX="16.75" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblRecEASInvoice" Width="1.5" PointX="22.75" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblRecINV" Width="1.5" PointX="30.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblRunningNumber" Width="1.5" PointX="30.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblShippingTranfer" Width="1.5" PointX="30.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblStatusBalance" Width="1.5" PointX="30.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblStatusIEAT107" Width="1.5" PointX="18.75" PointY="30.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblStockBalance" Width="1.5" PointX="30.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblStockWip" Width="1.5" PointX="30.75" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblStockWipDtl" Width="1.5" PointX="30.75" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblSummaryReport" Width="1.5" PointX="24.75" PointY="31.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblTempExpGenLOT" Width="1.5" PointX="26.75" PointY="31.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblTempImpGenLOT" Width="1.5" PointX="32.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblTempItemNo" Width="1.5" PointX="6.75" PointY="32.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblTruckManifest" Width="1.5" PointX="8.75" PointY="32.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblTruckManifestDetail" Width="1.5" PointX="10.75" PointY="32.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblTruckWayBill" Width="1.5" PointX="32.75" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblTruckWayBillDetail" Width="1.5" PointX="12.75" PointY="33.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblTruckWayBillDetailImp" Width="1.5" PointX="20.75" PointY="33.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblTruckWayBillImp" Width="1.5" PointX="28.75" PointY="33.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblUserGroup" Width="1.5" PointX="34.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblUserWebClient" Width="1.5" PointX="34.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblWarehouseType" Width="1.5" PointX="34.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblWHConfirmGoodsReceive" Width="1.5" PointX="34.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblWHConfirmGoodsReceiveDetail" Width="1.5" PointX="34.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblWHPickPackMaster" Width="1.5" PointX="34.75" PointY="34.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblWHPickPackNewProduct" Width="1.5" PointX="4.75" PointY="35.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblWHPrepairGoodsReceive" Width="1.5" PointX="14.75" PointY="35.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblWHPrepairGoodsReceiveDetail" Width="1.5" PointX="16.75" PointY="35.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblWHReceiveScantoTemp" Width="1.5" PointX="36.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblWHRemarkMoveJob" Width="1.5" PointX="36.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblWHRequestedISSUE" Width="1.5" PointX="36.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKBWarehouseModel1.tblWHStockMovement" Width="1.5" PointX="36.75" PointY="18.75" IsExpanded="true" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

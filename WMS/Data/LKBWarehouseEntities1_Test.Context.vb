@@ -10,8 +10,6 @@
 Imports System
 Imports System.Data.Entity
 Imports System.Data.Entity.Infrastructure
-Imports System.Data.Entity.Core.Objects
-Imports System.Linq
 
 Partial Public Class LKBWarehouseEntities1_Test
     Inherits DbContext
@@ -27,13 +25,17 @@ Partial Public Class LKBWarehouseEntities1_Test
     Public Overridable Property Branches() As DbSet(Of Branch)
     Public Overridable Property Departments() As DbSet(Of Department)
     Public Overridable Property sysdiagrams() As DbSet(Of sysdiagram)
+    Public Overridable Property tblExpGenLOTs() As DbSet(Of tblExpGenLOT)
+    Public Overridable Property tblGenAutoRunNoes() As DbSet(Of tblGenAutoRunNo)
     Public Overridable Property tblLogUsers() As DbSet(Of tblLogUser)
     Public Overridable Property tblMasterCode2() As DbSet(Of tblMasterCode2)
     Public Overridable Property tblMenus() As DbSet(Of tblMenu)
+    Public Overridable Property tblMoneyConfigs() As DbSet(Of tblMoneyConfig)
     Public Overridable Property tblParties() As DbSet(Of tblParty)
     Public Overridable Property tblProductDetails() As DbSet(Of tblProductDetail)
     Public Overridable Property tblUsers() As DbSet(Of tblUser)
     Public Overridable Property tblUserMenus() As DbSet(Of tblUserMenu)
+    Public Overridable Property tblWHLocations() As DbSet(Of tblWHLocation)
     Public Overridable Property tblWHStockCtrls() As DbSet(Of tblWHStockCtrl)
     Public Overridable Property tblBookingMessengers() As DbSet(Of tblBookingMessenger)
     Public Overridable Property tblCurrencies() As DbSet(Of tblCurrency)
@@ -43,6 +45,7 @@ Partial Public Class LKBWarehouseEntities1_Test
     Public Overridable Property tblExpInvoices() As DbSet(Of tblExpInvoice)
     Public Overridable Property tblExpInvoiceDetails() As DbSet(Of tblExpInvoiceDetail)
     Public Overridable Property tblExpPackingLists() As DbSet(Of tblExpPackingList)
+    Public Overridable Property tblGenAutoNoes() As DbSet(Of tblGenAutoNo)
     Public Overridable Property tblGroupMenus() As DbSet(Of tblGroupMenu)
     Public Overridable Property tblHAWBDetails() As DbSet(Of tblHAWBDetail)
     Public Overridable Property tblImpBookingInvDetails() As DbSet(Of tblImpBookingInvDetail)
@@ -122,71 +125,5 @@ Partial Public Class LKBWarehouseEntities1_Test
     Public Overridable Property tblWHRemarkMoveJobs() As DbSet(Of tblWHRemarkMoveJob)
     Public Overridable Property tblWHRequestedISSUEs() As DbSet(Of tblWHRequestedISSUE)
     Public Overridable Property tblWHStockMovements() As DbSet(Of tblWHStockMovement)
-    Public Overridable Property tblWHLocations() As DbSet(Of tblWHLocation)
-    Public Overridable Property tblMoneyConfigs() As DbSet(Of tblMoneyConfig)
-    Public Overridable Property tblGenAutoRunNoes() As DbSet(Of tblGenAutoRunNo)
-    Public Overridable Property tblExpGenLOTs() As DbSet(Of tblExpGenLOT)
-
-    Public Overridable Function sp_alterdiagram(diagramname As String, owner_id As Nullable(Of Integer), version As Nullable(Of Integer), definition As Byte()) As Integer
-        Dim diagramnameParameter As ObjectParameter = If(diagramname IsNot Nothing, New ObjectParameter("diagramname", diagramname), New ObjectParameter("diagramname", GetType(String)))
-
-        Dim owner_idParameter As ObjectParameter = If(owner_id.HasValue, New ObjectParameter("owner_id", owner_id), New ObjectParameter("owner_id", GetType(Integer)))
-
-        Dim versionParameter As ObjectParameter = If(version.HasValue, New ObjectParameter("version", version), New ObjectParameter("version", GetType(Integer)))
-
-        Dim definitionParameter As ObjectParameter = If(definition IsNot Nothing, New ObjectParameter("definition", definition), New ObjectParameter("definition", GetType(Byte())))
-
-        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction("sp_alterdiagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter)
-    End Function
-
-    Public Overridable Function sp_creatediagram(diagramname As String, owner_id As Nullable(Of Integer), version As Nullable(Of Integer), definition As Byte()) As Integer
-        Dim diagramnameParameter As ObjectParameter = If(diagramname IsNot Nothing, New ObjectParameter("diagramname", diagramname), New ObjectParameter("diagramname", GetType(String)))
-
-        Dim owner_idParameter As ObjectParameter = If(owner_id.HasValue, New ObjectParameter("owner_id", owner_id), New ObjectParameter("owner_id", GetType(Integer)))
-
-        Dim versionParameter As ObjectParameter = If(version.HasValue, New ObjectParameter("version", version), New ObjectParameter("version", GetType(Integer)))
-
-        Dim definitionParameter As ObjectParameter = If(definition IsNot Nothing, New ObjectParameter("definition", definition), New ObjectParameter("definition", GetType(Byte())))
-
-        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction("sp_creatediagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter)
-    End Function
-
-    Public Overridable Function sp_dropdiagram(diagramname As String, owner_id As Nullable(Of Integer)) As Integer
-        Dim diagramnameParameter As ObjectParameter = If(diagramname IsNot Nothing, New ObjectParameter("diagramname", diagramname), New ObjectParameter("diagramname", GetType(String)))
-
-        Dim owner_idParameter As ObjectParameter = If(owner_id.HasValue, New ObjectParameter("owner_id", owner_id), New ObjectParameter("owner_id", GetType(Integer)))
-
-        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction("sp_dropdiagram", diagramnameParameter, owner_idParameter)
-    End Function
-
-    Public Overridable Function sp_helpdiagramdefinition(diagramname As String, owner_id As Nullable(Of Integer)) As ObjectResult(Of sp_helpdiagramdefinition_Result)
-        Dim diagramnameParameter As ObjectParameter = If(diagramname IsNot Nothing, New ObjectParameter("diagramname", diagramname), New ObjectParameter("diagramname", GetType(String)))
-
-        Dim owner_idParameter As ObjectParameter = If(owner_id.HasValue, New ObjectParameter("owner_id", owner_id), New ObjectParameter("owner_id", GetType(Integer)))
-
-        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of sp_helpdiagramdefinition_Result)("sp_helpdiagramdefinition", diagramnameParameter, owner_idParameter)
-    End Function
-
-    Public Overridable Function sp_helpdiagrams(diagramname As String, owner_id As Nullable(Of Integer)) As ObjectResult(Of sp_helpdiagrams_Result)
-        Dim diagramnameParameter As ObjectParameter = If(diagramname IsNot Nothing, New ObjectParameter("diagramname", diagramname), New ObjectParameter("diagramname", GetType(String)))
-
-        Dim owner_idParameter As ObjectParameter = If(owner_id.HasValue, New ObjectParameter("owner_id", owner_id), New ObjectParameter("owner_id", GetType(Integer)))
-
-        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of sp_helpdiagrams_Result)("sp_helpdiagrams", diagramnameParameter, owner_idParameter)
-    End Function
-
-    Public Overridable Function sp_renamediagram(diagramname As String, owner_id As Nullable(Of Integer), new_diagramname As String) As Integer
-        Dim diagramnameParameter As ObjectParameter = If(diagramname IsNot Nothing, New ObjectParameter("diagramname", diagramname), New ObjectParameter("diagramname", GetType(String)))
-
-        Dim owner_idParameter As ObjectParameter = If(owner_id.HasValue, New ObjectParameter("owner_id", owner_id), New ObjectParameter("owner_id", GetType(Integer)))
-
-        Dim new_diagramnameParameter As ObjectParameter = If(new_diagramname IsNot Nothing, New ObjectParameter("new_diagramname", new_diagramname), New ObjectParameter("new_diagramname", GetType(String)))
-
-        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction("sp_renamediagram", diagramnameParameter, owner_idParameter, new_diagramnameParameter)
-    End Function
-
-    Public Overridable Function sp_upgraddiagrams() As Integer
-        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction("sp_upgraddiagrams")
-    End Function
 
 End Class

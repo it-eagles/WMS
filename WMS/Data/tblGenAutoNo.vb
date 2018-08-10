@@ -10,8 +10,12 @@
 Imports System
 Imports System.Collections.Generic
 
-Partial Public Class sp_helpdiagramdefinition_Result
-    Public Property version As Nullable(Of Integer)
-    Public Property definition As Byte()
+Partial Public Class tblGenAutoNo
+    Public Property TypeCode As String
+    Public Property RunNo As String
+    Public Property MountNo As String
+    Public Property YearNo As String
+    Public Property DigitNo As String
+    Public Property rowguid As System.Guid
 
 End Class
