@@ -702,15 +702,9 @@ dcboDriverName control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-<<<<<<< HEAD
 </member><member name="F:WMS.CustomsInvoice.chkEnablebehalf_EASJOB">
 	<summary>
 chkEnablebehalf_EASJOB control.
-=======
-</member><member name="F:WMS.ExpGenLot.ComboBox2">
-	<summary>
-ComboBox2 control.
->>>>>>> 2d6179e8b2502d3f43429b97fb100c822e715fdb
 </summary>
 	<remarks>
 Auto-generated field.
@@ -5173,9 +5167,9 @@ dcbSales control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.ExpGenLot.DropDownList5">
+</member><member name="F:WMS.ExpGenLot.ComboBox2">
 	<summary>
-DropDownList5 control.
+ComboBox2 control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -22296,6 +22290,14 @@ To modify move field declaration from designer file to code-behind file.
 </member><member name="F:WMS.TruckWaybillRec.btnCencel_Detail">
 	<summary>
 btnCencel_Detail control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.TruckWaybillRec.TabName">
+	<summary>
+TabName control.
 </summary>
 	<remarks>
 Auto-generated field.

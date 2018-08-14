@@ -37,7 +37,7 @@
 
                                         <div class="col-lg-8 col-md-8 col-md-offset-2">
                                             <!-- form start -->
-                                            <formview class="form-horizontal">
+                                            <div class="form-horizontal">
                                                 <div class="box-body">
 
                                                     <div class="form-group">
@@ -80,7 +80,7 @@
                                                     <!-- /.box-body -->
                                                 </div>
 
-                                            </formview>
+                                            </div>
                                         </div>
 
                                         <div class="col-lg-10 col-md-offset-1">
@@ -173,7 +173,7 @@
                                     <div class="row margin-bottom">
 
                                         <div class="col-lg-8 col-md-8 col-md-offset-2">
-                                            <formview class="form-horizontal">
+                                            <div class="form-horizontal">
                                                 <div class="box-body">
 
                                                     <div class="form-group">
@@ -202,7 +202,7 @@
                                                     <!-- /.box-body -->
                                                 </div>
 
-                                            </formview>
+                                            </div>
 
                                             <asp:Repeater ID="Repeater2" runat="server" OnItemCommand="Repeater2_ItemCommand">
                                                 <HeaderTemplate>
@@ -257,7 +257,7 @@
                                     <div class="row margin-bottom">
 
                                         <div class="col-lg-8 col-md-8 col-md-offset-2">
-                                            <formview class="form-horizontal">
+                                            <div class="form-horizontal">
                                                 <div class="box-body">
 
                                                     <div class="form-group">
@@ -275,7 +275,7 @@
                                                     </div>
                                                     <!-- /.box-body -->
                                                 </div>
-                                            </formview>
+                                            </div>
 
                                             <asp:Repeater ID="Repeater3" runat="server" OnItemDataBound="Repeater3_ItemDataBound">
                                                 <HeaderTemplate>

@@ -388,7 +388,7 @@
                                                                 <input class="form-control pull-right" id="txtPathFile" runat="server" type="text" autocomplete="off" />
                                                             </div>
                                                             <div class="col-md-4">
-                                                                <input type="file" id="exampleInputFile">
+                                                                <input type="file" id="exampleInputFile"/>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
@@ -923,7 +923,7 @@
                                                                 <div class="bootstrap-timepicker">
                                                                     <div class="form-group">
                                                                         <div class="input-group">
-                                                                            <input type="text" class="form-control timepicker" runat="server" autocomplete="off" id="txtDeliveryTime">
+                                                                            <input type="text" class="form-control timepicker" runat="server" autocomplete="off" id="txtDeliveryTime"/>
 
                                                                             <div class="input-group-addon">
                                                                                 <i class="fa fa-clock-o"></i>

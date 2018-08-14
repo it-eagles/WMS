@@ -76,11 +76,11 @@ Public Class CreateRec
     'End Sub
     '---------------------------------------------------------Show ddl Site----------------------------------------------------
     Private Sub showJobSite()
-        ddlJobsite.Items.Clear()
-        ddlJobsite.Items.Add(New ListItem("--Select Site--", ""))
-        ddlJobsite.AppendDataBoundItems = True
+        'ddlJobsite.Items.Clear()
+        'ddlJobsite.Items.Add(New ListItem("--Select Site--", ""))
+        'ddlJobsite.AppendDataBoundItems = True
 
-        Dim gg = From g In db.tblMasterCodes Where g.Type = "Site"
+        Dim gg = From g In db.tblMasterCodes Where g.Type = "JOBSITE"
                   Select g.Type, g.Code
         Try
             ddlJobsite.DataSource = gg.ToList
@@ -416,7 +416,7 @@ Public Class CreateRec
 
         Dim cons = From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
         Where (p.PartyCode = cons_code And p.Consignee = "0") Or p.Consignee = "0"
-        Select p.PartyCode, p.PartyFullName, pa.Address1, pa.Address2, pa.Address3
+        Select p.PartyCode, pa.PartyAddressCode, p.PartyFullName, pa.Address1, pa.Address2, pa.Address3
 
         If cons.Count > 0 Then
             Repeater1.DataSource = cons.ToList
@@ -435,23 +435,72 @@ Public Class CreateRec
     End Sub
     '--------------------------------------------------------Click Data Consignee In Modal-----------------------------------------
     Protected Sub Repeater1_ItemCommand(source As Object, e As RepeaterCommandEventArgs) Handles Repeater1.ItemCommand
-        Dim PartyCode As String = CStr(e.CommandArgument)
-        Try
-            If e.CommandName.Equals("SelectConsignee") Then
-                Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode Where u.PartyCode = PartyCode And u.Consignee = "0").SingleOrDefault
+        '    Dim PartyCode As String = CStr(e.CommandArgument)
+        '    Try
+        '        If e.CommandName.Equals("SelectConsignee") Then
+        '            Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode Where u.PartyCode = PartyCode And u.Consignee = "0").SingleOrDefault
 
-                txtConsigneecode.Value = user.u.PartyCode
-                txtNameEngConsign.Value = user.u.PartyFullName
-                txtAddress1.Value = user.br.Address1
-                txtAddress2.Value = user.br.Address2
-                txtAddress3.Value = user.br.Address3
-                txtAddress4.Value = user.br.Address4
-                txtAddress5.Value = user.br.ZipCode
-                txtEmail.Value = user.br.email
-            End If
-        Catch ex As Exception
-        End Try
+        '            txtConsigneecode.Value = user.u.PartyCode
+        '            txtNameEngConsign.Value = user.u.PartyFullName
+        '            txtAddress1.Value = user.br.Address1
+        '            txtAddress2.Value = user.br.Address2
+        '            txtAddress3.Value = user.br.Address3
+        '            txtAddress4.Value = user.br.Address4
+        '            txtAddress5.Value = user.br.ZipCode
+        '            txtEmail.Value = user.br.email
+        '        End If
+        '    Catch ex As Exception
+        '    End Try
     End Sub
+
+    '--------------------------------------------------------Click Data Consignee In Modal-----------------------------------------
+    Protected Sub Repeater1_ItemDataBound(sender As Object, e As RepeaterItemEventArgs) Handles Repeater1.ItemDataBound
+
+        If e.Item.ItemType = ListItemType.Item OrElse e.Item.ItemType = ListItemType.AlternatingItem Then
+            Dim lblPartyCode As Label = CType(e.Item.FindControl("lblPartyCode"), Label)
+            Dim lblPartyFullName As Label = CType(e.Item.FindControl("lblPartyFullName"), Label)
+            Dim lblAddress1 As Label = CType(e.Item.FindControl("lblAddress1"), Label)
+            Dim lblAddress2 As Label = CType(e.Item.FindControl("lblAddress2"), Label)
+            Dim lblAddress3 As Label = CType(e.Item.FindControl("lblAddress3"), Label)
+            Dim lblPartyAddressCode As Label = CType(e.Item.FindControl("lblPartyAddressCode"), Label)
+
+            If Not IsNothing(lblPartyCode) Then
+                lblPartyCode.Text = DataBinder.Eval(e.Item.DataItem, "PartyCode").ToString()
+            End If
+            If Not IsNothing(lblPartyCode) Then
+                lblPartyFullName.Text = DataBinder.Eval(e.Item.DataItem, "PartyFullName").ToString()
+            End If
+            If Not IsNothing(lblPartyCode) Then
+                lblAddress1.Text = DataBinder.Eval(e.Item.DataItem, "Address1").ToString()
+            End If
+            If Not IsNothing(lblPartyCode) Then
+                lblAddress2.Text = DataBinder.Eval(e.Item.DataItem, "Address2").ToString()
+            End If
+            If Not IsNothing(lblPartyCode) Then
+                lblAddress3.Text = DataBinder.Eval(e.Item.DataItem, "Address3").ToString()
+            End If
+            If Not IsNothing(lblPartyCode) Then
+                lblPartyAddressCode.Text = DataBinder.Eval(e.Item.DataItem, "PartyAddressCode").ToString()
+            End If
+        End If
+
+    End Sub
+    Protected Sub clickconsignee_Click(sender As Object, e As EventArgs)
+        Dim Item As RepeaterItem = TryCast(TryCast(sender, LinkButton).Parent, RepeaterItem)
+        Dim lblPartyCode As String = TryCast(Item.FindControl("lblPartyCode"), Label).Text.Trim
+        Dim lblPartyAddressCode As String = TryCast(Item.FindControl("lblPartyAddressCode"), Label).Text.Trim
+
+        Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode Where u.PartyCode = lblPartyCode And u.Consignee = "0").SingleOrDefault
+        txtConsigneecode.Value = user.u.PartyCode
+        txtNameEngConsign.Value = user.u.PartyFullName
+        txtAddress1.Value = user.br.Address1
+        txtAddress2.Value = user.br.Address2
+        txtAddress3.Value = user.br.Address3
+        txtAddress4.Value = user.br.Address4
+        txtAddress5.Value = user.br.ZipCode
+        txtEmail.Value = user.br.email
+    End Sub
+
     '--------------------------------------------------------Show Data Shipper In Modal-----------------------------------------
     Public Sub showListShipper()
         'Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode
@@ -483,7 +532,7 @@ Public Class CreateRec
 
         Dim cons = From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
         Where (p.PartyCode = Ship_code And p.Shipper = "0") Or p.Shipper = "0"
-        Select p.PartyCode, p.PartyFullName, pa.Address1, pa.Address2, pa.Address3
+        Select p.PartyCode, p.PartyFullName, pa.PartyAddressCode, pa.Address1, pa.Address2, pa.Address3
 
         If cons.Count > 0 Then
             Repeater2.DataSource = cons.ToList
@@ -502,29 +551,75 @@ Public Class CreateRec
     End Sub
     '--------------------------------------------------------Click Data Shipper In Modal-----------------------------------------
     Protected Sub Repeater2_ItemCommand(source As Object, e As RepeaterCommandEventArgs) Handles Repeater2.ItemCommand
-        Dim PartyCode As String = CStr(e.CommandArgument)
-        Try
-            If e.CommandName.Equals("SelectShipper") Then
+        'Dim PartyCode As String = CStr(e.CommandArgument)
+        'Try
+        '    If e.CommandName.Equals("SelectShipper") Then
 
-                If String.IsNullOrEmpty(PartyCode) Then
+        '        If String.IsNullOrEmpty(PartyCode) Then
 
-                    MsgBox("เป็นค่าว่าง")
-                Else
-                    Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode Where u.PartyCode = PartyCode And u.Consignee = "0").SingleOrDefault
+        '            MsgBox("เป็นค่าว่าง")
+        '        Else
+        '            Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode Where u.PartyCode = PartyCode And u.Consignee = "0").SingleOrDefault
 
-                    txtShippercode.Value = user.u.PartyCode
-                    txtNameEngShipper.Value = user.u.PartyFullName
-                    txtAddress1Shipper.Value = user.br.Address1
-                    txtAddress2Shipper.Value = user.br.Address2
-                    txtAddress3Shipper.Value = user.br.Address3
-                    txtAddress4Shipper.Value = user.br.Address4
-                    txtAddress5Shipper.Value = user.br.ZipCode
-                    txtEmailShipper.Value = user.br.email
+        '            txtShippercode.Value = user.u.PartyCode
+        '            txtNameEngShipper.Value = user.u.PartyFullName
+        '            txtAddress1Shipper.Value = user.br.Address1
+        '            txtAddress2Shipper.Value = user.br.Address2
+        '            txtAddress3Shipper.Value = user.br.Address3
+        '            txtAddress4Shipper.Value = user.br.Address4
+        '            txtAddress5Shipper.Value = user.br.ZipCode
+        '            txtEmailShipper.Value = user.br.email
 
-                End If
+        '        End If
+        '    End If
+        'Catch ex As Exception
+        'End Try
+    End Sub
+    Protected Sub Repeater2_ItemDataBound(sender As Object, e As RepeaterItemEventArgs) Handles Repeater2.ItemDataBound
+
+        If e.Item.ItemType = ListItemType.Item OrElse e.Item.ItemType = ListItemType.AlternatingItem Then
+            Dim lblPartyCode As Label = CType(e.Item.FindControl("lblPartyCode"), Label)
+            Dim lblPartyFullName As Label = CType(e.Item.FindControl("lblPartyFullName"), Label)
+            Dim lblAddress1 As Label = CType(e.Item.FindControl("lblAddress1"), Label)
+            Dim lblAddress2 As Label = CType(e.Item.FindControl("lblAddress2"), Label)
+            Dim lblAddress3 As Label = CType(e.Item.FindControl("lblAddress3"), Label)
+            Dim lblPartyAddressCode As Label = CType(e.Item.FindControl("lblPartyAddressCode"), Label)
+
+            If Not IsNothing(lblPartyCode) Then
+                lblPartyCode.Text = DataBinder.Eval(e.Item.DataItem, "PartyCode").ToString()
             End If
-        Catch ex As Exception
-        End Try
+            If Not IsNothing(lblPartyCode) Then
+                lblPartyFullName.Text = DataBinder.Eval(e.Item.DataItem, "PartyFullName").ToString()
+            End If
+            If Not IsNothing(lblPartyCode) Then
+                lblAddress1.Text = DataBinder.Eval(e.Item.DataItem, "Address1").ToString()
+            End If
+            If Not IsNothing(lblPartyCode) Then
+                lblAddress2.Text = DataBinder.Eval(e.Item.DataItem, "Address2").ToString()
+            End If
+            If Not IsNothing(lblPartyCode) Then
+                lblAddress3.Text = DataBinder.Eval(e.Item.DataItem, "Address3").ToString()
+            End If
+            If Not IsNothing(lblPartyCode) Then
+                lblPartyAddressCode.Text = DataBinder.Eval(e.Item.DataItem, "PartyAddressCode").ToString()
+            End If
+        End If
+
+    End Sub
+    Protected Sub clickshipper_Click(sender As Object, e As EventArgs)
+        Dim Item As RepeaterItem = TryCast(TryCast(sender, LinkButton).Parent, RepeaterItem)
+        Dim lblPartyCode As String = TryCast(Item.FindControl("lblPartyCode"), Label).Text.Trim
+        Dim lblPartyAddressCode As String = TryCast(Item.FindControl("lblPartyAddressCode"), Label).Text.Trim
+
+        Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode Where u.PartyCode = lblPartyCode And u.Consignee = "0").SingleOrDefault
+        txtShippercode.Value = user.u.PartyCode
+        txtNameEngShipper.Value = user.u.PartyFullName
+        txtAddress1Shipper.Value = user.br.Address1
+        txtAddress2Shipper.Value = user.br.Address2
+        txtAddress3Shipper.Value = user.br.Address3
+        txtAddress4Shipper.Value = user.br.Address4
+        txtAddress5Shipper.Value = user.br.ZipCode
+        txtEmailShipper.Value = user.br.email
     End Sub
     '--------------------------------------------------------Show Data Delivery In Modal-----------------------------------------
     Public Sub showListDelivery()
@@ -557,7 +652,7 @@ Public Class CreateRec
 
         Dim cons = From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
         Where (p.PartyCode = Delivery_code And p.Shipper = "0") Or p.Shipper = "0"
-        Select p.PartyCode, p.PartyFullName, pa.Address1, pa.Address2, pa.Address3
+        Select p.PartyCode, p.PartyFullName, pa.PartyAddressCode, pa.Address1, pa.Address2, pa.Address3
 
         If cons.Count > 0 Then
             Repeater3.DataSource = cons.ToList
@@ -576,30 +671,77 @@ Public Class CreateRec
     End Sub
     '--------------------------------------------------------Click Data Delivery In Modal-----------------------------------------
     Protected Sub Repeater3_ItemCommand(source As Object, e As RepeaterCommandEventArgs) Handles Repeater3.ItemCommand
-        Dim PartyCode As String = CStr(e.CommandArgument)
-        Try
-            If e.CommandName.Equals("SelectDelivery") Then
+        'Dim PartyCode As String = CStr(e.CommandArgument)
+        'Try
+        '    If e.CommandName.Equals("SelectDelivery") Then
 
-                If String.IsNullOrEmpty(PartyCode) Then
+        '        If String.IsNullOrEmpty(PartyCode) Then
 
-                    MsgBox("เป็นค่าว่าง")
-                Else
-                    Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode Where u.PartyCode = PartyCode And u.Consignee = "0").SingleOrDefault
+        '            MsgBox("เป็นค่าว่าง")
+        '        Else
+        '            Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode Where u.PartyCode = PartyCode And u.Consignee = "0").SingleOrDefault
 
-                    txtDeliverycode.Value = user.u.PartyCode
-                    txtNameEngDelivery.Value = user.u.PartyFullName
-                    txtAddress1Delivery.Value = user.br.Address1
-                    txtAddress2Delivery.Value = user.br.Address2
-                    txtAddress3Delivery.Value = user.br.Address3
-                    txtAddress4Delivery.Value = user.br.Address4
-                    txtAddress5Delivery.Value = user.br.ZipCode
-                    txtEmailDelivery.Value = user.br.email
-                    txtContractPersonDelivery.Value = user.br.Attn
+        '            txtDeliverycode.Value = user.u.PartyCode
+        '            txtNameEngDelivery.Value = user.u.PartyFullName
+        '            txtAddress1Delivery.Value = user.br.Address1
+        '            txtAddress2Delivery.Value = user.br.Address2
+        '            txtAddress3Delivery.Value = user.br.Address3
+        '            txtAddress4Delivery.Value = user.br.Address4
+        '            txtAddress5Delivery.Value = user.br.ZipCode
+        '            txtEmailDelivery.Value = user.br.email
+        '            txtContractPersonDelivery.Value = user.br.Attn
 
-                End If
+        '        End If
+        '    End If
+        'Catch ex As Exception
+        'End Try
+    End Sub
+    Protected Sub Repeater3_ItemDataBound(sender As Object, e As RepeaterItemEventArgs) Handles Repeater3.ItemDataBound
+
+        If e.Item.ItemType = ListItemType.Item OrElse e.Item.ItemType = ListItemType.AlternatingItem Then
+            Dim lblPartyCode As Label = CType(e.Item.FindControl("lblPartyCode"), Label)
+            Dim lblPartyFullName As Label = CType(e.Item.FindControl("lblPartyFullName"), Label)
+            Dim lblAddress1 As Label = CType(e.Item.FindControl("lblAddress1"), Label)
+            Dim lblAddress2 As Label = CType(e.Item.FindControl("lblAddress2"), Label)
+            Dim lblAddress3 As Label = CType(e.Item.FindControl("lblAddress3"), Label)
+            Dim lblPartyAddressCode As Label = CType(e.Item.FindControl("lblPartyAddressCode"), Label)
+
+            If Not IsNothing(lblPartyCode) Then
+                lblPartyCode.Text = DataBinder.Eval(e.Item.DataItem, "PartyCode").ToString()
             End If
-        Catch ex As Exception
-        End Try
+            If Not IsNothing(lblPartyCode) Then
+                lblPartyFullName.Text = DataBinder.Eval(e.Item.DataItem, "PartyFullName").ToString()
+            End If
+            If Not IsNothing(lblPartyCode) Then
+                lblAddress1.Text = DataBinder.Eval(e.Item.DataItem, "Address1").ToString()
+            End If
+            If Not IsNothing(lblPartyCode) Then
+                lblAddress2.Text = DataBinder.Eval(e.Item.DataItem, "Address2").ToString()
+            End If
+            If Not IsNothing(lblPartyCode) Then
+                lblAddress3.Text = DataBinder.Eval(e.Item.DataItem, "Address3").ToString()
+            End If
+            If Not IsNothing(lblPartyCode) Then
+                lblPartyAddressCode.Text = DataBinder.Eval(e.Item.DataItem, "PartyAddressCode").ToString()
+            End If
+        End If
+
+    End Sub
+    Protected Sub clickdelivery_Click(sender As Object, e As EventArgs)
+        Dim Item As RepeaterItem = TryCast(TryCast(sender, LinkButton).Parent, RepeaterItem)
+        Dim lblPartyCode As String = TryCast(Item.FindControl("lblPartyCode"), Label).Text.Trim
+        Dim lblPartyAddressCode As String = TryCast(Item.FindControl("lblPartyAddressCode"), Label).Text.Trim
+
+        Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode Where u.PartyCode = lblPartyCode And u.Consignee = "0").SingleOrDefault
+        txtDeliverycode.Value = user.u.PartyCode
+        txtNameEngDelivery.Value = user.u.PartyFullName
+        txtAddress1Delivery.Value = user.br.Address1
+        txtAddress2Delivery.Value = user.br.Address2
+        txtAddress3Delivery.Value = user.br.Address3
+        txtAddress4Delivery.Value = user.br.Address4
+        txtAddress5Delivery.Value = user.br.ZipCode
+        txtEmailDelivery.Value = user.br.email
+        txtContractPersonDelivery.Value = user.br.Attn
     End Sub
     '--------------------------------------------------------Show Data PickUp In Modal-----------------------------------------
     Public Sub showListPickUp()
@@ -632,7 +774,7 @@ Public Class CreateRec
 
         Dim cons = From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
         Where (p.PartyCode = Pickup_code And p.Shipper = "0") Or p.Shipper = "0"
-        Select p.PartyCode, p.PartyFullName, pa.Address1, pa.Address2, pa.Address3
+        Select p.PartyCode, p.PartyFullName, pa.PartyAddressCode, pa.Address1, pa.Address2, pa.Address3
 
         If cons.Count > 0 Then
             Repeater4.DataSource = cons.ToList
@@ -651,30 +793,77 @@ Public Class CreateRec
     End Sub
     '--------------------------------------------------------Click Data PickUp In Modal-----------------------------------------
     Protected Sub Repeater4_ItemCommand(source As Object, e As RepeaterCommandEventArgs) Handles Repeater4.ItemCommand
-        Dim PartyCode As String = CStr(e.CommandArgument)
-        Try
-            If e.CommandName.Equals("SelectPickUp") Then
+        'Dim PartyCode As String = CStr(e.CommandArgument)
+        'Try
+        '    If e.CommandName.Equals("SelectPickUp") Then
 
-                If String.IsNullOrEmpty(PartyCode) Then
+        '        If String.IsNullOrEmpty(PartyCode) Then
 
-                    MsgBox("เป็นค่าว่าง")
-                Else
-                    Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode Where u.PartyCode = PartyCode And u.Consignee = "0").SingleOrDefault
+        '            MsgBox("เป็นค่าว่าง")
+        '        Else
+        '            Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode Where u.PartyCode = PartyCode And u.Consignee = "0").SingleOrDefault
 
-                    txtCodePickUpPlace.Value = user.u.PartyCode
-                    txtNamePickUpPlace.Value = user.u.PartyFullName
-                    txtAddress1PickUpPlace.Value = user.br.Address1
-                    txtAddress2PickUpPlace.Value = user.br.Address2
-                    txtAddress3PickUpPlace.Value = user.br.Address3
-                    txtAddress4PickUpPlace.Value = user.br.Address4
-                    txtAddress5PickUpPlace.Value = user.br.ZipCode
-                    txtEmailPickUpPlace.Value = user.br.email
-                    txtContractPersonPickUpPlace.Value = user.br.Attn
+        '            txtCodePickUpPlace.Value = user.u.PartyCode
+        '            txtNamePickUpPlace.Value = user.u.PartyFullName
+        '            txtAddress1PickUpPlace.Value = user.br.Address1
+        '            txtAddress2PickUpPlace.Value = user.br.Address2
+        '            txtAddress3PickUpPlace.Value = user.br.Address3
+        '            txtAddress4PickUpPlace.Value = user.br.Address4
+        '            txtAddress5PickUpPlace.Value = user.br.ZipCode
+        '            txtEmailPickUpPlace.Value = user.br.email
+        '            txtContractPersonPickUpPlace.Value = user.br.Attn
 
-                End If
+        '        End If
+        '    End If
+        'Catch ex As Exception
+        'End Try
+    End Sub
+    Protected Sub Repeater4_ItemDataBound(sender As Object, e As RepeaterItemEventArgs) Handles Repeater4.ItemDataBound
+
+        If e.Item.ItemType = ListItemType.Item OrElse e.Item.ItemType = ListItemType.AlternatingItem Then
+            Dim lblPartyCode As Label = CType(e.Item.FindControl("lblPartyCode"), Label)
+            Dim lblPartyFullName As Label = CType(e.Item.FindControl("lblPartyFullName"), Label)
+            Dim lblAddress1 As Label = CType(e.Item.FindControl("lblAddress1"), Label)
+            Dim lblAddress2 As Label = CType(e.Item.FindControl("lblAddress2"), Label)
+            Dim lblAddress3 As Label = CType(e.Item.FindControl("lblAddress3"), Label)
+            Dim lblPartyAddressCode As Label = CType(e.Item.FindControl("lblPartyAddressCode"), Label)
+
+            If Not IsNothing(lblPartyCode) Then
+                lblPartyCode.Text = DataBinder.Eval(e.Item.DataItem, "PartyCode").ToString()
             End If
-        Catch ex As Exception
-        End Try
+            If Not IsNothing(lblPartyCode) Then
+                lblPartyFullName.Text = DataBinder.Eval(e.Item.DataItem, "PartyFullName").ToString()
+            End If
+            If Not IsNothing(lblPartyCode) Then
+                lblAddress1.Text = DataBinder.Eval(e.Item.DataItem, "Address1").ToString()
+            End If
+            If Not IsNothing(lblPartyCode) Then
+                lblAddress2.Text = DataBinder.Eval(e.Item.DataItem, "Address2").ToString()
+            End If
+            If Not IsNothing(lblPartyCode) Then
+                lblAddress3.Text = DataBinder.Eval(e.Item.DataItem, "Address3").ToString()
+            End If
+            If Not IsNothing(lblPartyCode) Then
+                lblPartyAddressCode.Text = DataBinder.Eval(e.Item.DataItem, "PartyAddressCode").ToString()
+            End If
+        End If
+
+    End Sub
+    Protected Sub clickpickup_Click(sender As Object, e As EventArgs)
+        Dim Item As RepeaterItem = TryCast(TryCast(sender, LinkButton).Parent, RepeaterItem)
+        Dim lblPartyCode As String = TryCast(Item.FindControl("lblPartyCode"), Label).Text.Trim
+        Dim lblPartyAddressCode As String = TryCast(Item.FindControl("lblPartyAddressCode"), Label).Text.Trim
+
+        Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode Where u.PartyCode = lblPartyCode And u.Consignee = "0").SingleOrDefault
+        txtCodePickUpPlace.Value = user.u.PartyCode
+        txtNamePickUpPlace.Value = user.u.PartyFullName
+        txtAddress1PickUpPlace.Value = user.br.Address1
+        txtAddress2PickUpPlace.Value = user.br.Address2
+        txtAddress3PickUpPlace.Value = user.br.Address3
+        txtAddress4PickUpPlace.Value = user.br.Address4
+        txtAddress5PickUpPlace.Value = user.br.ZipCode
+        txtEmailPickUpPlace.Value = user.br.email
+        txtContractPersonPickUpPlace.Value = user.br.Attn
     End Sub
     '--------------------------------------------------------Show Data Customer In Modal-----------------------------------------
     Public Sub showListCustomer()
@@ -707,7 +896,7 @@ Public Class CreateRec
 
         Dim cons = From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
         Where (p.PartyCode = Customer_code And p.Shipper = "0") Or p.Shipper = "0"
-        Select p.PartyCode, p.PartyFullName, pa.Address1, pa.Address2, pa.Address3
+        Select p.PartyCode, p.PartyFullName, pa.PartyAddressCode, pa.Address1, pa.Address2, pa.Address3
 
         If cons.Count > 0 Then
             Repeater5.DataSource = cons.ToList
@@ -726,30 +915,77 @@ Public Class CreateRec
     End Sub
     '--------------------------------------------------------Click Data Customer In Modal-----------------------------------------
     Protected Sub Repeater5_ItemCommand(source As Object, e As RepeaterCommandEventArgs) Handles Repeater5.ItemCommand
-        Dim PartyCode As String = CStr(e.CommandArgument)
-        Try
-            If e.CommandName.Equals("SelectCustomer") Then
+        'Dim PartyCode As String = CStr(e.CommandArgument)
+        'Try
+        '    If e.CommandName.Equals("SelectCustomer") Then
 
-                If String.IsNullOrEmpty(PartyCode) Then
+        '        If String.IsNullOrEmpty(PartyCode) Then
 
-                    MsgBox("เป็นค่าว่าง")
-                Else
-                    Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode Where u.PartyCode = PartyCode And u.Consignee = "0").SingleOrDefault
+        '            MsgBox("เป็นค่าว่าง")
+        '        Else
+        '            Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode Where u.PartyCode = PartyCode And u.Consignee = "0").SingleOrDefault
 
-                    txtCustomercode.Value = user.u.PartyCode
-                    txtNameEngCustomer.Value = user.u.PartyFullName
-                    txtAddress1Custommer.Value = user.br.Address1
-                    txtAddress2Custommer.Value = user.br.Address2
-                    txtAddress3Custommer.Value = user.br.Address3
-                    txtAddress4Custommer.Value = user.br.Address4
-                    txtAddress5Custommer.Value = user.br.ZipCode
-                    txtEmailCustommer.Value = user.br.email
-                    txtContractPersonCustommer.Value = user.br.Attn
+        '            txtCustomercode.Value = user.u.PartyCode
+        '            txtNameEngCustomer.Value = user.u.PartyFullName
+        '            txtAddress1Custommer.Value = user.br.Address1
+        '            txtAddress2Custommer.Value = user.br.Address2
+        '            txtAddress3Custommer.Value = user.br.Address3
+        '            txtAddress4Custommer.Value = user.br.Address4
+        '            txtAddress5Custommer.Value = user.br.ZipCode
+        '            txtEmailCustommer.Value = user.br.email
+        '            txtContractPersonCustommer.Value = user.br.Attn
 
-                End If
+        '        End If
+        '    End If
+        'Catch ex As Exception
+        'End Try
+    End Sub
+    Protected Sub Repeater5_ItemDataBound(sender As Object, e As RepeaterItemEventArgs) Handles Repeater5.ItemDataBound
+
+        If e.Item.ItemType = ListItemType.Item OrElse e.Item.ItemType = ListItemType.AlternatingItem Then
+            Dim lblPartyCode As Label = CType(e.Item.FindControl("lblPartyCode"), Label)
+            Dim lblPartyFullName As Label = CType(e.Item.FindControl("lblPartyFullName"), Label)
+            Dim lblAddress1 As Label = CType(e.Item.FindControl("lblAddress1"), Label)
+            Dim lblAddress2 As Label = CType(e.Item.FindControl("lblAddress2"), Label)
+            Dim lblAddress3 As Label = CType(e.Item.FindControl("lblAddress3"), Label)
+            Dim lblPartyAddressCode As Label = CType(e.Item.FindControl("lblPartyAddressCode"), Label)
+
+            If Not IsNothing(lblPartyCode) Then
+                lblPartyCode.Text = DataBinder.Eval(e.Item.DataItem, "PartyCode").ToString()
             End If
-        Catch ex As Exception
-        End Try
+            If Not IsNothing(lblPartyCode) Then
+                lblPartyFullName.Text = DataBinder.Eval(e.Item.DataItem, "PartyFullName").ToString()
+            End If
+            If Not IsNothing(lblPartyCode) Then
+                lblAddress1.Text = DataBinder.Eval(e.Item.DataItem, "Address1").ToString()
+            End If
+            If Not IsNothing(lblPartyCode) Then
+                lblAddress2.Text = DataBinder.Eval(e.Item.DataItem, "Address2").ToString()
+            End If
+            If Not IsNothing(lblPartyCode) Then
+                lblAddress3.Text = DataBinder.Eval(e.Item.DataItem, "Address3").ToString()
+            End If
+            If Not IsNothing(lblPartyCode) Then
+                lblPartyAddressCode.Text = DataBinder.Eval(e.Item.DataItem, "PartyAddressCode").ToString()
+            End If
+        End If
+
+    End Sub
+    Protected Sub clickcustomer_Click(sender As Object, e As EventArgs)
+        Dim Item As RepeaterItem = TryCast(TryCast(sender, LinkButton).Parent, RepeaterItem)
+        Dim lblPartyCode As String = TryCast(Item.FindControl("lblPartyCode"), Label).Text.Trim
+        Dim lblPartyAddressCode As String = TryCast(Item.FindControl("lblPartyAddressCode"), Label).Text.Trim
+
+        Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode Where u.PartyCode = lblPartyCode And u.Consignee = "0").SingleOrDefault
+        txtCustomercode.Value = user.u.PartyCode
+        txtNameEngCustomer.Value = user.u.PartyFullName
+        txtAddress1Custommer.Value = user.br.Address1
+        txtAddress2Custommer.Value = user.br.Address2
+        txtAddress3Custommer.Value = user.br.Address3
+        txtAddress4Custommer.Value = user.br.Address4
+        txtAddress5Custommer.Value = user.br.ZipCode
+        txtEmailCustommer.Value = user.br.email
+        txtContractPersonCustommer.Value = user.br.Attn
     End Sub
     '--------------------------------------------------------Show Data Customer In Modal-----------------------------------------
     Public Sub showListEndCustomer()
@@ -782,7 +1018,7 @@ Public Class CreateRec
 
         Dim cons = From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
         Where (p.PartyCode = EndCustomer_code And p.Shipper = "0") Or p.Shipper = "0"
-        Select p.PartyCode, p.PartyFullName, pa.Address1, pa.Address2, pa.Address3
+        Select p.PartyCode, p.PartyFullName, pa.PartyAddressCode, pa.Address1, pa.Address2, pa.Address3
 
         If cons.Count > 0 Then
             Repeater6.DataSource = cons.ToList
@@ -802,30 +1038,77 @@ Public Class CreateRec
 
     '--------------------------------------------------------Click Data EndCustomer In Modal-----------------------------------------
     Protected Sub Repeater6_ItemCommand(source As Object, e As RepeaterCommandEventArgs) Handles Repeater6.ItemCommand
-        Dim PartyCode As String = CStr(e.CommandArgument)
-        Try
-            If e.CommandName.Equals("SelectEndCustomer") Then
+        'Dim PartyCode As String = CStr(e.CommandArgument)
+        'Try
+        '    If e.CommandName.Equals("SelectEndCustomer") Then
 
-                If String.IsNullOrEmpty(PartyCode) Then
+        '        If String.IsNullOrEmpty(PartyCode) Then
 
-                    MsgBox("เป็นค่าว่าง")
-                Else
-                    Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode Where u.PartyCode = PartyCode And u.Consignee = "0").SingleOrDefault
+        '            MsgBox("เป็นค่าว่าง")
+        '        Else
+        '            Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode Where u.PartyCode = PartyCode And u.Consignee = "0").SingleOrDefault
 
-                    txtCodeEndCustomer.Value = user.u.PartyCode
-                    txtNameEndCustomer.Value = user.u.PartyFullName
-                    txtAddress1EndCustomer.Value = user.br.Address1
-                    txtAddress2EndCustomer.Value = user.br.Address2
-                    txtAddress3EndCustomer.Value = user.br.Address3
-                    txtAddress4EndCustomer.Value = user.br.Address4
-                    txtAddress5EndCustomer.Value = user.br.ZipCode
-                    txtEmailEndCustomer.Value = user.br.email
-                    txtContractPersonEndCustomer.Value = user.br.Attn
+        '            txtCodeEndCustomer.Value = user.u.PartyCode
+        '            txtNameEndCustomer.Value = user.u.PartyFullName
+        '            txtAddress1EndCustomer.Value = user.br.Address1
+        '            txtAddress2EndCustomer.Value = user.br.Address2
+        '            txtAddress3EndCustomer.Value = user.br.Address3
+        '            txtAddress4EndCustomer.Value = user.br.Address4
+        '            txtAddress5EndCustomer.Value = user.br.ZipCode
+        '            txtEmailEndCustomer.Value = user.br.email
+        '            txtContractPersonEndCustomer.Value = user.br.Attn
 
-                End If
+        '        End If
+        '    End If
+        'Catch ex As Exception
+        'End Try
+    End Sub
+    Protected Sub Repeater6_ItemDataBound(sender As Object, e As RepeaterItemEventArgs) Handles Repeater6.ItemDataBound
+
+        If e.Item.ItemType = ListItemType.Item OrElse e.Item.ItemType = ListItemType.AlternatingItem Then
+            Dim lblPartyCode As Label = CType(e.Item.FindControl("lblPartyCode"), Label)
+            Dim lblPartyFullName As Label = CType(e.Item.FindControl("lblPartyFullName"), Label)
+            Dim lblAddress1 As Label = CType(e.Item.FindControl("lblAddress1"), Label)
+            Dim lblAddress2 As Label = CType(e.Item.FindControl("lblAddress2"), Label)
+            Dim lblAddress3 As Label = CType(e.Item.FindControl("lblAddress3"), Label)
+            Dim lblPartyAddressCode As Label = CType(e.Item.FindControl("lblPartyAddressCode"), Label)
+
+            If Not IsNothing(lblPartyCode) Then
+                lblPartyCode.Text = DataBinder.Eval(e.Item.DataItem, "PartyCode").ToString()
             End If
-        Catch ex As Exception
-        End Try
+            If Not IsNothing(lblPartyCode) Then
+                lblPartyFullName.Text = DataBinder.Eval(e.Item.DataItem, "PartyFullName").ToString()
+            End If
+            If Not IsNothing(lblPartyCode) Then
+                lblAddress1.Text = DataBinder.Eval(e.Item.DataItem, "Address1").ToString()
+            End If
+            If Not IsNothing(lblPartyCode) Then
+                lblAddress2.Text = DataBinder.Eval(e.Item.DataItem, "Address2").ToString()
+            End If
+            If Not IsNothing(lblPartyCode) Then
+                lblAddress3.Text = DataBinder.Eval(e.Item.DataItem, "Address3").ToString()
+            End If
+            If Not IsNothing(lblPartyCode) Then
+                lblPartyAddressCode.Text = DataBinder.Eval(e.Item.DataItem, "PartyAddressCode").ToString()
+            End If
+        End If
+
+    End Sub
+    Protected Sub clickendcustomer_Click(sender As Object, e As EventArgs)
+        Dim Item As RepeaterItem = TryCast(TryCast(sender, LinkButton).Parent, RepeaterItem)
+        Dim lblPartyCode As String = TryCast(Item.FindControl("lblPartyCode"), Label).Text.Trim
+        Dim lblPartyAddressCode As String = TryCast(Item.FindControl("lblPartyAddressCode"), Label).Text.Trim
+
+        Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode Where u.PartyCode = lblPartyCode And u.Consignee = "0").SingleOrDefault
+        txtCodeEndCustomer.Value = user.u.PartyCode
+        txtNameEndCustomer.Value = user.u.PartyFullName
+        txtAddress1EndCustomer.Value = user.br.Address1
+        txtAddress2EndCustomer.Value = user.br.Address2
+        txtAddress3EndCustomer.Value = user.br.Address3
+        txtAddress4EndCustomer.Value = user.br.Address4
+        txtAddress5EndCustomer.Value = user.br.ZipCode
+        txtEmailEndCustomer.Value = user.br.email
+        txtContractPersonEndCustomer.Value = user.br.Attn
     End Sub
     '--------------------------------------------------------Show Data CustomerGroup In Modal-----------------------------------------
     Public Sub showListCustomerGroup()
@@ -1298,27 +1581,27 @@ Public Class CreateRec
     Protected Sub btnSaveAddHead_ServerClick(sender As Object, e As EventArgs)
         MsgBox(ddlJobsite.Text)
         If ddlJobsite.Text = "LKB" Then
-            Gentbl("ExpLOTOUT")
+            Gentbl("ExpLOTIN")
         ElseIf ddlJobsite.Text = "SBIA" Then
-            Gentbl("SBIALOTOUT")
+            Gentbl("SBIALOTIN")
         ElseIf ddlJobsite.Text = "HCR" Then
-            Gentbl("HCRLOTOUT")
+            Gentbl("HCRLOTIN")
         ElseIf ddlJobsite.Text = "HTO" Then
-            Gentbl("HTOLOTOUT")
+            Gentbl("HTOLOTIN")
         ElseIf ddlJobsite.Text = "AEC" Then
-            Gentbl("AECLOTOUT")
+            Gentbl("AECLOTIN")
         ElseIf ddlJobsite.Text = "MJB" Then
-            Gentbl("MJBLOTOUT")
+            Gentbl("MJBLOTIN")
         ElseIf ddlJobsite.Text = "LEA" Then
-            Gentbl("LEALOTOUT")
+            Gentbl("LEALOTIN")
         ElseIf ddlJobsite.Text = "SPM" Then
-            Gentbl("SPMLOTOUT")
+            Gentbl("SPMLOTIN")
         ElseIf ddlJobsite.Text = "PTN" Then
-            Gentbl("PTNLOTOUT")
+            Gentbl("PTNLOTIN")
         ElseIf ddlJobsite.Text = "CKT" Then
-            Gentbl("CKTLOTOUT")
+            Gentbl("CKTLOTIN")
         ElseIf ddlJobsite.Text = "WIP" Then
-            Gentbl("WIPLOTOUT")
+            Gentbl("WIPLOTIN")
         End If
         'SaveDATA_New()
 
@@ -1336,6 +1619,7 @@ Public Class CreateRec
 
         FormLeft_MasterJob.Visible = True
         FormRight_MasterJob.Visible = True
+        txtJobno.Disabled = True
     End Sub
 
     Protected Sub btnEditHead_ServerClick(sender As Object, e As EventArgs)
@@ -1347,7 +1631,7 @@ Public Class CreateRec
         txtJobno.Disabled = False
 
     End Sub
-Private Sub Gentbl(type As String)
+    Private Sub Gentbl(type As String)
         'Dim sqlSearch As String
         Dim tmpDate As Single = CSng(Format(Now(), "dd"))
         Dim Nmount As Single = CSng(Format(Now(), "MM"))
@@ -1376,7 +1660,7 @@ Private Sub Gentbl(type As String)
         If JobSite = "SBIA" Then
             LotNo = JobSite & "-" & Nyear.ToString("0#") & Nmount.ToString("0#")
         Else
-            LotNo = JobSite & "-" & "OUT-" & Nyear.ToString("0#") & Nmount.ToString("0#")
+            LotNo = JobSite & "-" & "IN-" & Nyear.ToString("0#") & Nmount.ToString("0#")
         End If
 
         If chkNextmonth.Checked = True Then
@@ -1580,7 +1864,8 @@ Private Sub Gentbl(type As String)
                 Group By TypeCode = ep.TypeCode,
                 MountNo = ep.MountNo,
                 YearNo = ep.YearNo,
-                DigitNo = ep.DigitNo.Max Into g = Group, Count()).SingleOrDefault
+                DigitNo = ep.DigitNo Into g = Group, Count()).SingleOrDefault
+        'DigitNo = ep.DigitNo.Max Into g = Group, Count()).SingleOrDefault
         If sqlSearch.Count > 0 Then
             txtTypeCode = sqlSearch.TypeCode
             txtMountNo = sqlSearch.MountNo
@@ -1680,15 +1965,15 @@ Private Sub Gentbl(type As String)
         txtAddress5Shipper.Value = ""
         txtEmailShipper.Value = ""
         ddlCommodity.Text = ""
-        txtQuantityOfPart.Value = ""
+        txtQuantityOfPart.Value = "0.0"
         ddlQuantityOfParty.Text = ""
-        txtQuantity.Value = ""
+        txtQuantity.Value = "0.0"
         ddlQuan.Text = ""
-        txtWeight.Value = ""
+        txtWeight.Value = "0.0"
         ddlWeight.Text = ""
-        txtQuantityBox.Value = ""
+        txtQuantityBox.Value = "0.0"
         ddlquanbox.Text = ""
-        txtVolume.Value = ""
+        txtVolume.Value = "0.0"
         ddlvolume.Text = ""
         txtMAWB_BL_TWB.Value = ""
         txtFLT_Voy_TruckDate.Value = ""
@@ -1721,14 +2006,14 @@ Private Sub Gentbl(type As String)
         txtpickupETA2.Value = ""
         txtpickupETA3.Value = ""
         txtpickupETA4.Value = ""
-        txtPacket.Value = ""
-        txtPacket2.Value = ""
-        txtPacket3.Value = ""
-        txtPacket4.Value = ""
-        txtWeightActual.Value = ""
-        txtWeightActual2.Value = ""
-        txtWeightActual3.Value = ""
-        txtWeightActual4.Value = ""
+        txtPacket.Value = "0"
+        txtPacket2.Value = "0"
+        txtPacket3.Value = "0"
+        txtPacket4.Value = "0"
+        txtWeightActual.Value = "0"
+        txtWeightActual2.Value = "0"
+        txtWeightActual3.Value = "0"
+        txtWeightActual4.Value = "0"
         txtTimePickUp.Value = ""
         txtdatepickerActualPickUp.Text = ""
         txtArrivalToEAS.Value = ""
