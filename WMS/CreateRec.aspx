@@ -1,4 +1,4 @@
-﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="CreateRec.aspx.vb" Inherits="WMS.CreateRec" MasterPageFile="~/Home.Master" %>
+﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="CreateRec.aspx.vb" Inherits="WMS.CreateRec" MasterPageFile="~/Home.Master" EnableEventValidation="false" EnableViewState="true" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
@@ -29,8 +29,8 @@
                                 <button class="btn btn-app" id="btnEditHead" runat="server" onserverclick="btnEditHead_ServerClick"><i class="fa fa-edit"></i>Edit</button>
                             </div>
                             <div class="col-xs-6 text-right">
-                                <button class="btn btn-app" id="btnSaveAddHead" runat="server" onserverclick="btnSaveAddHead_ServerClick"><i class="fa fa-save"></i>Save Add</button>
-                                <button class="btn btn-app" id="btnSaveEditHead" runat="server" onserverclick="btnSaveEditHead_ServerClick"><i class="fa fa-save"></i>Save Edit</button>
+                                <button class="btn btn-app" id="btnSaveAddHead" runat="server" onserverclick="btnSaveAddHead_ServerClick" visible="false"><i class="fa fa-save"></i>Save Add</button>
+                                <button class="btn btn-app" id="btnSaveEditHead" runat="server" onserverclick="btnSaveEditHead_ServerClick" visible="false"><i class="fa fa-save"></i>Save Edit</button>
                             </div>
                         </div>
                     </div>
@@ -63,43 +63,43 @@
                                                 <fieldset>
                                                     <legend>Job</legend>
                                                     <div class="box-body">
-                                                        <div class="col-md-4 col-sm-4">
+                                                        <div class="col-md-5 col-sm-5">
                                                             <div class="form-group">
-                                                                <label for="txtJobno" class="col-sm-4 control-label">Job No:</label>
-                                                                <div class="col-sm-8">
-                                                                    <input class="form-control" id="txtJobno" runat="server" placeholder="Job No" autocomplete="off" />
+                                                                <label for="txtJobno" class="col-sm-3 control-label">Job No:</label>
+                                                                <div class="col-sm-7">
+                                                                    <input class="form-control" id="txtJobno" runat="server" placeholder="Job No" autocomplete="off" disabled="disabled"/>
+                                                                </div>
+                                                                <div class="col-sm-2">
+                                                                    <button type="button" class="btn btn-block btn-primary" runat="server" id="btnJobSiteSeacrh" onserverclick="btnJobSiteSeacrh_ServerClick" visible="false" ><i class="glyphicon glyphicon-search"></i></button>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group">
-                                                                <label for="txtJobsite" class="col-sm-4 control-label">Job Site:</label>
-                                                                <div class="col-sm-8">
+                                                                <label for="txtJobsite" class="col-sm-3 control-label">Job Site:</label>
+                                                                <div class="col-sm-5">
                                                                     <asp:DropDownList ID="ddlJobsite" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code"></asp:DropDownList>
                                                                 </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-md-4">
-                                                            <div class="form-group">
-                                                                <label for="txtJobdate" class="col-sm-4 control-label">Job Date:</label>
-                                                                <div class="col-sm-8">
-                                                                    <%--<input type="text" class="form-control pull-right" id="datepickerJobdate"/>--%>
-                                                                    <asp:TextBox CssClass="form-control" ID="txtdatepickerJobdate" runat="server" placeholder="DD/MM/YYYY">
-                                                                    </asp:TextBox>
-                                                                    <asp:CalendarExtender ID="CalendarExtenderJobdate" runat="server" Enabled="True" TargetControlID="txtdatepickerJobdate" Format="dd/MM/yyyy"></asp:CalendarExtender>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group">
                                                                 <div class="checkbox col-sm-4">
                                                                     <label>
                                                                         <input type="checkbox" runat="server" id="chkNextmonth" />NextMonth
                                                                     </label>
                                                                 </div>
-                                                                <label for="txtSaleman" class="col-sm-3 control-label">SaleMan:</label>
-                                                                <div class="col-sm-5">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-md-3">
+                                                            <div class="form-group">
+                                                                <label for="txtJobdate" class="col-sm-4 control-label">Job Date:</label>
+                                                                <div class="col-sm-8">
+                                                                    <%--<input type="text" class="form-control pull-right" id="datepickerJobdate"/>--%>
+                                                                    <asp:TextBox CssClass="form-control" ID="txtdatepickerJobdate" runat="server" placeholder="DD/MM/YYYY" autocomplete="off"></asp:TextBox>
+                                                                    <asp:CalendarExtender ID="CalendarExtenderJobdate" runat="server" Enabled="True" TargetControlID="txtdatepickerJobdate" Format="dd/MM/yyyy"></asp:CalendarExtender>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">                                                                
+                                                                <label for="txtSaleman" class="col-sm-4 control-label">SaleMan:</label>
+                                                                <div class="col-sm-8">
                                                                     <asp:DropDownList ID="ddlSaleman" CssClass="form-control" runat="server"></asp:DropDownList>
                                                                 </div>
-
-
                                                             </div>
 
                                                         </div>
@@ -157,6 +157,8 @@
                                                         <div class="col-sm-2">
                                                             <%--<button type="button" id="btnconsigneecode" class="btn btn-block btn-primary" data-toggle="modal" data-target="#consigneeModal" runat="server"><i class="glyphicon glyphicon-search"></i></button>--%>
                                                             <button type="button" class="btn btn-block btn-primary" runat="server" onserverclick="Unnamed_ServerClick"><i class="glyphicon glyphicon-search"></i></button>
+                                                            
+
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
@@ -286,8 +288,7 @@
                                                         </div>
                                                         <div class="col-sm-3">
                                                             <%--<input type="text" class="form-control pull-right"  id="datepickerActualDate1" />--%>
-                                                            <asp:TextBox CssClass="form-control" ID="txtdatepickerActualDate1" runat="server" placeholder="DD/MM/YYYY">
-                                                            </asp:TextBox>
+                                                            <asp:TextBox CssClass="form-control" ID="txtdatepickerActualDate1" runat="server" placeholder="DD/MM/YYYY" autocomplete="off"></asp:TextBox>
                                                             <asp:CalendarExtender ID="CalendarExtenderActualDate1" runat="server" Enabled="True" TargetControlID="txtdatepickerActualDate1" Format="dd/MM/yyyy"></asp:CalendarExtender>
                                                         </div>
                                                         <div class="col-sm-3">
@@ -303,8 +304,7 @@
                                                         </div>
                                                         <div class="col-sm-3">
                                                             <%--<input type="text" class="form-control pull-right" id="datepickerActualDate2"/>--%>
-                                                            <asp:TextBox CssClass="form-control" ID="txtdatepickerActualDate2" runat="server" placeholder="DD/MM/YYYY">
-                                                            </asp:TextBox>
+                                                            <asp:TextBox CssClass="form-control" ID="txtdatepickerActualDate2" runat="server" placeholder="DD/MM/YYYY" autocomplete="off"></asp:TextBox>
                                                             <asp:CalendarExtender ID="CalendarExtenderActualDate2" runat="server" Enabled="True" TargetControlID="txtdatepickerActualDate2" Format="dd/MM/yyyy"></asp:CalendarExtender>
                                                         </div>
                                                         <div class="col-sm-3">
@@ -320,8 +320,7 @@
                                                         </div>
                                                         <div class="col-sm-3">
                                                             <%--<input type="text" class="form-control pull-right" id="datepickerActualDate3"/>--%>
-                                                            <asp:TextBox CssClass="form-control" ID="txtdatepickerActualDate3" runat="server" placeholder="DD/MM/YYYY">
-                                                            </asp:TextBox>
+                                                            <asp:TextBox CssClass="form-control" ID="txtdatepickerActualDate3" runat="server" placeholder="DD/MM/YYYY" autocomplete="off"></asp:TextBox>
                                                             <asp:CalendarExtender ID="CalendarExtenderActualDate3" runat="server" Enabled="True" TargetControlID="txtdatepickerActualDate3" Format="dd/MM/yyyy"></asp:CalendarExtender>
                                                         </div>
                                                         <div class="col-sm-3">
@@ -337,8 +336,7 @@
                                                         </div>
                                                         <div class="col-sm-3">
                                                             <%--<input type="text" class="form-control pull-right" id="datepickerActualDate4"/>--%>
-                                                            <asp:TextBox CssClass="form-control" ID="txtdatepickerActualDate4" runat="server" placeholder="DD/MM/YYYY">
-                                                            </asp:TextBox>
+                                                            <asp:TextBox CssClass="form-control" ID="txtdatepickerActualDate4" runat="server" placeholder="DD/MM/YYYY" autocomplete="off"></asp:TextBox>
                                                             <asp:CalendarExtender ID="CalendarExtenderActualDate4" runat="server" Enabled="True" TargetControlID="txtdatepickerActualDate4" Format="dd/MM/yyyy"></asp:CalendarExtender>
                                                         </div>
                                                         <div class="col-sm-3">
@@ -366,8 +364,7 @@
                                                         </div>
                                                         <div class="col-sm-4">
                                                             <%--<input type="text" class="form-control pull-right" id="datepickerActualPickUp"/>--%>
-                                                            <asp:TextBox CssClass="form-control" ID="txtdatepickerActualPickUp" runat="server" placeholder="DD/MM/YYYY">
-                                                            </asp:TextBox>
+                                                            <asp:TextBox CssClass="form-control" ID="txtdatepickerActualPickUp" runat="server" placeholder="DD/MM/YYYY" autocomplete="off"></asp:TextBox>
                                                             <asp:CalendarExtender ID="CalendarExtenderdatepickerActualPickUp" runat="server" Enabled="True" TargetControlID="txtdatepickerActualPickUp" Format="dd/MM/yyyy"></asp:CalendarExtender>
                                                         </div>
                                                     </div>
@@ -650,8 +647,7 @@
                                                         </div>
                                                         <div class="col-sm-4">
                                                             <%--<input type="text" class="form-control pull-right" id="datepickerArrivalToEAS"/>--%>
-                                                            <asp:TextBox CssClass="form-control" ID="txtdatepickerArrivalToEAS" runat="server" placeholder="DD/MM/YYYY">
-                                                            </asp:TextBox>
+                                                            <asp:TextBox CssClass="form-control" ID="txtdatepickerArrivalToEAS" runat="server" placeholder="DD/MM/YYYY" autocomplete="off"></asp:TextBox>
                                                             <asp:CalendarExtender ID="CalendarExtenderArrivalToEAS" runat="server" Enabled="True" TargetControlID="txtdatepickerArrivalToEAS" Format="DD/MM/yyyy"></asp:CalendarExtender>
                                                         </div>
                                                     </div>
@@ -1008,13 +1004,11 @@
                                                     <div class="form-group">
                                                         <label for="txtNameCustommerGroup" class="col-sm-4 control-label">Name(Eng):</label>
                                                         <div class="col-sm-4">
-                                                            <asp:TextBox CssClass="form-control" ID="txtdatepickerReturnDate" runat="server" placeholder="DD/MM/YYYY">
-                                                            </asp:TextBox>
+                                                            <asp:TextBox CssClass="form-control" ID="txtdatepickerReturnDate" runat="server" placeholder="DD/MM/YYYY" autocomplete="off"></asp:TextBox>
                                                             <asp:CalendarExtender ID="CalendarExtenderReturnDate" runat="server" Enabled="True" TargetControlID="txtdatepickerReturnDate" Format="dd/MM/yyyy"></asp:CalendarExtender>
                                                         </div>
                                                         <div class="col-sm-4">
-                                                            <asp:TextBox CssClass="form-control" ID="txtdatepickerReturnDate2" runat="server" placeholder="DD/MM/YYYY">
-                                                            </asp:TextBox>
+                                                            <asp:TextBox CssClass="form-control" ID="txtdatepickerReturnDate2" runat="server" placeholder="DD/MM/YYYY" autocomplete="off"></asp:TextBox>
                                                             <asp:CalendarExtender ID="CalendarExtenderReturnDate2" runat="server" Enabled="True" TargetControlID="txtdatepickerReturnDate2" Format="dd/MM/yyyy"></asp:CalendarExtender>
                                                         </div>
                                                     </div>
@@ -1072,11 +1066,11 @@
                                                         <div class="form-group">
                                                             <div class="col-sm-4">
                                                                 <%--<button runat="server" class="btn-primary" id="btnGenIEATNo" title="btnGenIEATNo">Generate </button>--%>
-                                                                <button type="submit" runat="server" class="btn btn-primary" id="btnGenIEATNo" title="btnGenIEATNo">Submit</button>
+                                                                <button type="submit" runat="server" class="btn btn-primary" id="btnGenIEATNo" title="btnGenIEATNo" onserverclick="btnGenIEATNo_ServerClick">Gen</button>
                                                             </div>
                                                             <div class="checkbox col-md-8">
                                                                 <label>
-                                                                    <input type="checkbox" runat="server" id="chkGenerateIEATNo" onclick="chkExpEnable2();" />
+                                                                    <input type="checkbox" runat="server" id="chkGenerateIEATNo" onclick="EnableDisableChkGenIEATNo();" />
                                                                     Request System Auto Generate IEAT No.
                                                                 </label>
                                                             </div>
@@ -1097,8 +1091,7 @@
                                                             <label for="txtImportEntryDate" class="col-sm-4 control-label">Import Entry Date:</label>
                                                             <div class="col-md-8">
                                                                 <%--<input type="text" class="form-control pull-right" id="datepickerJobdate"/>--%>
-                                                                <asp:TextBox CssClass="form-control" ID="txtdatepickerImportEntryDate" runat="server" placeholder="DD/MM/YYYY">
-                                                                </asp:TextBox>
+                                                                <asp:TextBox CssClass="form-control" ID="txtdatepickerImportEntryDate" runat="server" placeholder="DD/MM/YYYY" autocomplete="off"></asp:TextBox>
                                                                 <asp:CalendarExtender ID="CalendarExtenderImportEntryDate" runat="server" Enabled="True" TargetControlID="txtdatepickerImportEntryDate" Format="dd/MM/yyyy"></asp:CalendarExtender>
                                                             </div>
                                                         </div>
@@ -1266,8 +1259,7 @@
                                                     <div class="form-group">
                                                         <label for="txtFlightDateInvoice" class="col-sm-4 control-label">Flight Date:</label>
                                                         <div class="col-sm-8">
-                                                            <asp:TextBox CssClass="form-control" ID="txtdatepickerFlightDateInvoice" runat="server" placeholder="DD/MM/YYYY">
-                                                            </asp:TextBox>
+                                                            <asp:TextBox CssClass="form-control" ID="txtdatepickerFlightDateInvoice" runat="server" placeholder="DD/MM/YYYY" autocomplete="off"></asp:TextBox>
                                                             <asp:CalendarExtender ID="CalendarExtenderFlightDateInvoice" runat="server" Enabled="True" TargetControlID="txtdatepickerFlightDateInvoice" Format="DD/MM/yyyy"></asp:CalendarExtender>
                                                         </div>
                                                     </div>
@@ -1321,8 +1313,7 @@
                                                     <div class="form-group">
                                                         <label for="txtDataInvoice" class="col-sm-4 control-label">Data Invoice:</label>
                                                         <div class="col-sm-8">
-                                                            <asp:TextBox CssClass="form-control" ID="txtdatepickerDataInvoice" runat="server" placeholder="DD/MM/YYYY">
-                                                            </asp:TextBox>
+                                                            <asp:TextBox CssClass="form-control" ID="txtdatepickerDataInvoice" runat="server" placeholder="DD/MM/YYYY" autocomplete="off"></asp:TextBox>
                                                             <asp:CalendarExtender ID="CalendarExtenderDataInvoice" runat="server" Enabled="True" TargetControlID="txtdatepickerDataInvoice" Format="DD/MM/yyyy"></asp:CalendarExtender>
                                                         </div>
                                                     </div>
@@ -1391,13 +1382,13 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <div class="col-sm-4">
-                                                            <input class="form-control" id="txtPriceBathInvoice" runat="server" value="0.0" autocomplete="off" />
+                                                            <input class="form-control" id="txtPriceBathInvoice" runat="server" value="0.0" readonly="true" autocomplete="off" />
                                                         </div>
                                                         <div class="col-sm-4">
-                                                            <input class="form-control" id="txtAmountForeignInvoice" runat="server" value="0.0" autocomplete="off" />
+                                                            <input class="form-control" id="txtAmountForeignInvoice" runat="server" value="0.0" readonly="true" autocomplete="off" />
                                                         </div>
                                                         <div class="col-sm-4">
-                                                            <input class="form-control" id="txtAmountBathInvoice" runat="server" value="0.0" autocomplete="off" />
+                                                            <input class="form-control" id="txtAmountBathInvoice" runat="server" value="0.0" readonly="true" autocomplete="off" />
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
@@ -1659,7 +1650,7 @@
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 " style="overflow: auto;">
 
-                                            <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="Repeater1_ItemCommand">
+                                            <asp:Repeater ID="Repeater1" runat="server" >
                                                 <HeaderTemplate>
                                                     <table id="example1" class="table table-bordered table-striped table-responsive" style="overflow: auto;">
                                                         <thead>
@@ -1669,14 +1660,15 @@
                                                                 <th>Address1</th>
                                                                 <th>Address2</th>
                                                                 <th>Address3</th>
-                                                                <th>view</th>
+                                                                <th>PartyAddress</th>
+                                                                <th>Select</th>
                                                             </tr>
                                                         </thead>
                                                 </HeaderTemplate>
 
                                                 <ItemTemplate>
                                                     <tr>
-                                                        <td>
+                                                        <%--<td>
                                                             <asp:Label ID="lblPartyCode" runat="server" Text='<%# Bind("PartyCode")%>'></asp:Label></td>
                                                         <td>
                                                             <asp:Label ID="lblPartyFullName" runat="server" Text='<%# Bind("PartyFullName")%>'></asp:Label></td>
@@ -1685,10 +1677,24 @@
                                                         <td>
                                                             <asp:Label ID="lblAddress2" runat="server" Text='<%# Bind("Address2")%>'></asp:Label></td>
                                                         <td>
-                                                            <asp:Label ID="lblAddress3" runat="server" Text='<%# Bind("Address3")%>'></asp:Label></td>
+                                                            <asp:Label ID="lblAddress3" runat="server" Text='<%# Bind("Address3")%>'></asp:Label></td>--%>
+                                                        <td>
+                                                            <asp:Label ID="lblPartyCode" runat="server" ></asp:Label></td>
+                                                        <td>
+                                                            <asp:Label ID="lblPartyFullName" runat="server" ></asp:Label></td>
+                                                        <td>
+                                                            <asp:Label ID="lblAddress1" runat="server" ></asp:Label></td>
+                                                        <td>
+                                                            <asp:Label ID="lblAddress2" runat="server" ></asp:Label></td>
+                                                        <td>
+                                                            <asp:Label ID="lblAddress3" runat="server" ></asp:Label></td>
+                                                         <td>
+                                                            <asp:Label ID="lblPartyAddressCode" runat="server" ></asp:Label></td>
                                                         <td class="text-center">
-                                                            <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectConsignee" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-plus-square"></i></asp:LinkButton>
+                                                            <%--<asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectConsignee" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-plus-square"></i></asp:LinkButton>--%>
+                                                            <asp:LinkButton ID="LinkButton1" CssClass="btn bg-navy" runat="server" OnClick="clickconsignee_Click"><i class="fa fa-plus-square"></i></asp:LinkButton>
                                                         </td>
+                                                       
                                                     </tr>
                                                 </ItemTemplate>
                                                 <FooterTemplate>
@@ -1698,8 +1704,8 @@
                                                             <th>PartyFullName</th>
                                                             <th>Address1</th>
                                                             <th>Address2</th>
-                                                            <th>Address3</th>
-                                                            <th>view</th>
+                                                            <th>PartyAddress</th>
+                                                            <th>Select</th>
                                                         </tr>
                                                     </tfoot>
                                                     </table>
@@ -1737,7 +1743,7 @@
                                 <section class="content">
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 " style="overflow: auto;">
-                                            <asp:Repeater ID="Repeater2" runat="server" OnItemCommand="Repeater2_ItemCommand">
+                                            <asp:Repeater ID="Repeater2" runat="server">
                                                 <HeaderTemplate>
                                                     <table id="example2" class="table table-bordered table-striped table-responsive" style="overflow: auto;">
                                                         <thead>
@@ -1747,14 +1753,15 @@
                                                                 <th>Address1</th>
                                                                 <th>Address2</th>
                                                                 <th>Address3</th>
-                                                                <th>view</th>
+                                                                <th>PartyAddress</th>
+                                                                <th>Select</th>
                                                             </tr>
                                                         </thead>
                                                 </HeaderTemplate>
 
                                                 <ItemTemplate>
                                                     <tr>
-                                                        <td>
+                                                        <%--<td>
                                                             <asp:Label ID="lblPartyCode" runat="server" Text='<%# Bind("PartyCode")%>'></asp:Label></td>
                                                         <td>
                                                             <asp:Label ID="lblPartyFullName" runat="server" Text='<%# Bind("PartyFullName")%>'></asp:Label></td>
@@ -1763,9 +1770,22 @@
                                                         <td>
                                                             <asp:Label ID="lblAddress2" runat="server" Text='<%# Bind("Address2")%>'></asp:Label></td>
                                                         <td>
-                                                            <asp:Label ID="lblAddress3" runat="server" Text='<%# Bind("Address3")%>'></asp:Label></td>
+                                                            <asp:Label ID="lblAddress3" runat="server" Text='<%# Bind("Address3")%>'></asp:Label></td>--%>
+                                                        <td>
+                                                            <asp:Label ID="lblPartyCode" runat="server" ></asp:Label></td>
+                                                        <td>
+                                                            <asp:Label ID="lblPartyFullName" runat="server" ></asp:Label></td>
+                                                        <td>
+                                                            <asp:Label ID="lblAddress1" runat="server" ></asp:Label></td>
+                                                        <td>
+                                                            <asp:Label ID="lblAddress2" runat="server" ></asp:Label></td>
+                                                        <td>
+                                                            <asp:Label ID="lblAddress3" runat="server" ></asp:Label></td>
+                                                         <td>
+                                                            <asp:Label ID="lblPartyAddressCode" runat="server" ></asp:Label></td>
                                                         <td class="text-center">
-                                                            <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectShipper" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-plus-square"></i></asp:LinkButton>
+                                                            <%--<asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectShipper" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-plus-square"></i></asp:LinkButton>--%>
+                                                            <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" OnClick="clickshipper_Click"><i class="fa fa-plus-square"></i></asp:LinkButton>
                                                         </td>
                                                     </tr>
                                                 </ItemTemplate>
@@ -1777,7 +1797,8 @@
                                                             <th>Address1</th>
                                                             <th>Address2</th>
                                                             <th>Address3</th>
-                                                            <th>view</th>
+                                                            <th>PartyAddress</th>
+                                                            <th>Select</th>
                                                         </tr>
                                                     </tfoot>
                                                     </table>
@@ -1815,7 +1836,7 @@
                                 <section class="content">
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 " style="overflow: auto;">
-                                            <asp:Repeater ID="Repeater3" runat="server" OnItemCommand="Repeater3_ItemCommand">
+                                            <asp:Repeater ID="Repeater3" runat="server">
                                                 <HeaderTemplate>
                                                     <table id="example3" class="table table-bordered table-striped table-responsive" style="overflow: auto;">
                                                         <thead>
@@ -1825,14 +1846,15 @@
                                                                 <th>Address1</th>
                                                                 <th>Address2</th>
                                                                 <th>Address3</th>
-                                                                <th>view</th>
+                                                                <th>PartyAddress</th>
+                                                                <th>Select</th>
                                                             </tr>
                                                         </thead>
                                                 </HeaderTemplate>
 
                                                 <ItemTemplate>
                                                     <tr>
-                                                        <td>
+<%--                                                        <td>
                                                             <asp:Label ID="lblPartyCode" runat="server" Text='<%# Bind("PartyCode")%>'></asp:Label></td>
                                                         <td>
                                                             <asp:Label ID="lblPartyFullName" runat="server" Text='<%# Bind("PartyFullName")%>'></asp:Label></td>
@@ -1841,9 +1863,22 @@
                                                         <td>
                                                             <asp:Label ID="lblAddress2" runat="server" Text='<%# Bind("Address2")%>'></asp:Label></td>
                                                         <td>
-                                                            <asp:Label ID="lblAddress3" runat="server" Text='<%# Bind("Address3")%>'></asp:Label></td>
+                                                            <asp:Label ID="lblAddress3" runat="server" Text='<%# Bind("Address3")%>'></asp:Label></td>--%>
+                                                        <td>
+                                                            <asp:Label ID="lblPartyCode" runat="server" ></asp:Label></td>
+                                                        <td>
+                                                            <asp:Label ID="lblPartyFullName" runat="server" ></asp:Label></td>
+                                                        <td>
+                                                            <asp:Label ID="lblAddress1" runat="server" ></asp:Label></td>
+                                                        <td>
+                                                            <asp:Label ID="lblAddress2" runat="server" ></asp:Label></td>
+                                                        <td>
+                                                            <asp:Label ID="lblAddress3" runat="server" ></asp:Label></td>
+                                                         <td>
+                                                            <asp:Label ID="lblPartyAddressCode" runat="server" ></asp:Label></td>
                                                         <td class="text-center">
-                                                            <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectDelivery" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-plus-square"></i></asp:LinkButton>
+                                                            <%--<asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectDelivery" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-plus-square"></i></asp:LinkButton>--%>
+                                                            <asp:LinkButton ID="LinkButton3" CssClass="btn bg-navy" runat="server" OnClick="clickdelivery_Click"><i class="fa fa-plus-square"></i></asp:LinkButton>
                                                         </td>
                                                     </tr>
                                                 </ItemTemplate>
@@ -1855,7 +1890,8 @@
                                                             <th>Address1</th>
                                                             <th>Address2</th>
                                                             <th>Address3</th>
-                                                            <th>view</th>
+                                                            <th>PartyAddress</th>
+                                                            <th>Select</th>
                                                         </tr>
                                                     </tfoot>
                                                     </table>
@@ -1892,7 +1928,7 @@
                                 <section class="content">
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 " style="overflow: auto;">
-                                            <asp:Repeater ID="Repeater4" runat="server" OnItemCommand="Repeater4_ItemCommand">
+                                            <asp:Repeater ID="Repeater4" runat="server">
                                                 <HeaderTemplate>
                                                     <table id="example4" class="table table-bordered table-striped table-responsive" style="overflow: auto;">
                                                         <thead>
@@ -1902,14 +1938,15 @@
                                                                 <th>Address1</th>
                                                                 <th>Address2</th>
                                                                 <th>Address3</th>
-                                                                <th>view</th>
+                                                                <th>PartyAddress</th>
+                                                                <th>Select</th>
                                                             </tr>
                                                         </thead>
                                                 </HeaderTemplate>
 
                                                 <ItemTemplate>
                                                     <tr>
-                                                        <td>
+                                                        <%--<td>
                                                             <asp:Label ID="lblPartyCode" runat="server" Text='<%# Bind("PartyCode")%>'></asp:Label></td>
                                                         <td>
                                                             <asp:Label ID="lblPartyFullName" runat="server" Text='<%# Bind("PartyFullName")%>'></asp:Label></td>
@@ -1918,9 +1955,22 @@
                                                         <td>
                                                             <asp:Label ID="lblAddress2" runat="server" Text='<%# Bind("Address2")%>'></asp:Label></td>
                                                         <td>
-                                                            <asp:Label ID="lblAddress3" runat="server" Text='<%# Bind("Address3")%>'></asp:Label></td>
+                                                            <asp:Label ID="lblAddress3" runat="server" Text='<%# Bind("Address3")%>'></asp:Label></td>--%>
+                                                        <td>
+                                                            <asp:Label ID="lblPartyCode" runat="server" ></asp:Label></td>
+                                                        <td>
+                                                            <asp:Label ID="lblPartyFullName" runat="server" ></asp:Label></td>
+                                                        <td>
+                                                            <asp:Label ID="lblAddress1" runat="server" ></asp:Label></td>
+                                                        <td>
+                                                            <asp:Label ID="lblAddress2" runat="server" ></asp:Label></td>
+                                                        <td>
+                                                            <asp:Label ID="lblAddress3" runat="server" ></asp:Label></td>
+                                                         <td>
+                                                            <asp:Label ID="lblPartyAddressCode" runat="server" ></asp:Label></td>
                                                         <td class="text-center">
-                                                            <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectPickUp" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-plus-square"></i></asp:LinkButton>
+                                                            <%--<asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectPickUp" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-plus-square"></i></asp:LinkButton>--%>
+                                                            <asp:LinkButton ID="LinkButton4" CssClass="btn bg-navy" runat="server" OnClick="clickpickup_Click"><i class="fa fa-plus-square"></i></asp:LinkButton>
                                                         </td>
                                                     </tr>
                                                 </ItemTemplate>
@@ -1932,7 +1982,8 @@
                                                             <th>Address1</th>
                                                             <th>Address2</th>
                                                             <th>Address3</th>
-                                                            <th>view</th>
+                                                            <th>PartyAddress</th>
+                                                            <th>Select</th>
                                                         </tr>
                                                     </tfoot>
                                                     </table>
@@ -1969,7 +2020,7 @@
                                 <section class="content">
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 " style="overflow: auto;">
-                                            <asp:Repeater ID="Repeater5" runat="server" OnItemCommand="Repeater5_ItemCommand">
+                                            <asp:Repeater ID="Repeater5" runat="server">
                                                 <HeaderTemplate>
                                                     <table id="example5" class="table table-bordered table-striped table-responsive" style="overflow: auto;">
                                                         <thead>
@@ -1979,14 +2030,15 @@
                                                                 <th>Address1</th>
                                                                 <th>Address2</th>
                                                                 <th>Address3</th>
-                                                                <th>view</th>
+                                                                <th>PartyAddress</th>
+                                                                <th>Select</th>
                                                             </tr>
                                                         </thead>
                                                 </HeaderTemplate>
 
                                                 <ItemTemplate>
                                                     <tr>
-                                                        <td>
+                                                        <%--<td>
                                                             <asp:Label ID="lblPartyCode" runat="server" Text='<%# Bind("PartyCode")%>'></asp:Label></td>
                                                         <td>
                                                             <asp:Label ID="lblPartyFullName" runat="server" Text='<%# Bind("PartyFullName")%>'></asp:Label></td>
@@ -1995,9 +2047,22 @@
                                                         <td>
                                                             <asp:Label ID="lblAddress2" runat="server" Text='<%# Bind("Address2")%>'></asp:Label></td>
                                                         <td>
-                                                            <asp:Label ID="lblAddress3" runat="server" Text='<%# Bind("Address3")%>'></asp:Label></td>
+                                                            <asp:Label ID="lblAddress3" runat="server" Text='<%# Bind("Address3")%>'></asp:Label></td>--%>
+                                                        <td>
+                                                            <asp:Label ID="lblPartyCode" runat="server" ></asp:Label></td>
+                                                        <td>
+                                                            <asp:Label ID="lblPartyFullName" runat="server" ></asp:Label></td>
+                                                        <td>
+                                                            <asp:Label ID="lblAddress1" runat="server" ></asp:Label></td>
+                                                        <td>
+                                                            <asp:Label ID="lblAddress2" runat="server" ></asp:Label></td>
+                                                        <td>
+                                                            <asp:Label ID="lblAddress3" runat="server" ></asp:Label></td>
+                                                         <td>
+                                                            <asp:Label ID="lblPartyAddressCode" runat="server" ></asp:Label></td>
                                                         <td class="text-center">
-                                                            <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectCustomer" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-plus-square"></i></asp:LinkButton>
+                                                            <%--<asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectCustomer" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-plus-square"></i></asp:LinkButton>--%>
+                                                            <asp:LinkButton ID="LinkButton5" CssClass="btn bg-navy" runat="server" OnClick="clickcustomer_Click"><i class="fa fa-plus-square"></i></asp:LinkButton>
                                                         </td>
                                                     </tr>
                                                 </ItemTemplate>
@@ -2009,7 +2074,8 @@
                                                             <th>Address1</th>
                                                             <th>Address2</th>
                                                             <th>Address3</th>
-                                                            <th>view</th>
+                                                            <th>PartyAddress</th>
+                                                            <th>Select</th>
                                                         </tr>
                                                     </tfoot>
                                                     </table>
@@ -2046,7 +2112,7 @@
                                 <section class="content">
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 " style="overflow: auto;">
-                                            <asp:Repeater ID="Repeater6" runat="server" OnItemCommand="Repeater6_ItemCommand">
+                                            <asp:Repeater ID="Repeater6" runat="server">
                                                 <HeaderTemplate>
                                                     <table id="example6" class="table table-bordered table-striped table-responsive" style="overflow: auto;">
                                                         <thead>
@@ -2056,14 +2122,15 @@
                                                                 <th>Address1</th>
                                                                 <th>Address2</th>
                                                                 <th>Address3</th>
-                                                                <th>view</th>
+                                                                <th>PartyAddress</th>
+                                                                <th>Select</th>
                                                             </tr>
                                                         </thead>
                                                 </HeaderTemplate>
 
                                                 <ItemTemplate>
                                                     <tr>
-                                                        <td>
+                                                        <%--<td>
                                                             <asp:Label ID="lblPartyCode" runat="server" Text='<%# Bind("PartyCode")%>'></asp:Label></td>
                                                         <td>
                                                             <asp:Label ID="lblPartyFullName" runat="server" Text='<%# Bind("PartyFullName")%>'></asp:Label></td>
@@ -2072,9 +2139,22 @@
                                                         <td>
                                                             <asp:Label ID="lblAddress2" runat="server" Text='<%# Bind("Address2")%>'></asp:Label></td>
                                                         <td>
-                                                            <asp:Label ID="lblAddress3" runat="server" Text='<%# Bind("Address3")%>'></asp:Label></td>
+                                                            <asp:Label ID="lblAddress3" runat="server" Text='<%# Bind("Address3")%>'></asp:Label></td>--%>
+                                                        <td>
+                                                            <asp:Label ID="lblPartyCode" runat="server" ></asp:Label></td>
+                                                        <td>
+                                                            <asp:Label ID="lblPartyFullName" runat="server" ></asp:Label></td>
+                                                        <td>
+                                                            <asp:Label ID="lblAddress1" runat="server" ></asp:Label></td>
+                                                        <td>
+                                                            <asp:Label ID="lblAddress2" runat="server" ></asp:Label></td>
+                                                        <td>
+                                                            <asp:Label ID="lblAddress3" runat="server" ></asp:Label></td>
+                                                         <td>
+                                                            <asp:Label ID="lblPartyAddressCode" runat="server" ></asp:Label></td>
                                                         <td class="text-center">
-                                                            <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectEndCustomer" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-plus-square"></i></asp:LinkButton>
+                                                            <%--<asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectEndCustomer" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-plus-square"></i></asp:LinkButton>--%>
+                                                            <asp:LinkButton ID="LinkButton6" CssClass="btn bg-navy" runat="server" OnClick="clickendcustomer_Click"><i class="fa fa-plus-square"></i></asp:LinkButton>
                                                         </td>
                                                     </tr>
                                                 </ItemTemplate>
@@ -2086,7 +2166,8 @@
                                                             <th>Address1</th>
                                                             <th>Address2</th>
                                                             <th>Address3</th>
-                                                            <th>view</th>
+                                                            <th>PartyAddress</th>
+                                                            <th>Select</th>
                                                         </tr>
                                                     </tfoot>
                                                     </table>
@@ -2130,7 +2211,7 @@
                                                             <tr>
                                                                 <th>PartyCode</th>
                                                                 <th>PartyFullName</th>
-                                                                <th>view</th>
+                                                                <th>Select</th>
                                                             </tr>
                                                         </thead>
                                                 </HeaderTemplate>
@@ -2151,7 +2232,7 @@
                                                         <tr>
                                                             <th>PartyCode</th>
                                                             <th>PartyFullName</th>
-                                                            <th>view</th>
+                                                            <th>Select</th>
                                                         </tr>
                                                     </tfoot>
                                                     </table>
@@ -2256,5 +2337,20 @@
                 });
             });
         </script>
+
+        <script type="text/javascript">
+            function EnableDisableChkGenIEATNo() {
+                var status = document.getElementById('<%=chkGenerateIEATNo.ClientID%>').checked;
+
+                        if (status == true) {
+                            document.getElementById('<%=btnGenIEATNo.ClientID%>').disabled = false;
+
+                } else if (status == false) {
+                    document.getElementById('<%=btnGenIEATNo.ClientID%>').disabled = true;
+              }
+
+      }
+        </script>
+
     </form>
 </asp:Content>

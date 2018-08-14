@@ -77,6 +77,15 @@ Partial Public Class CreateRec
     Protected WithEvents txtJobno As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
+    '''btnJobSiteSeacrh control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnJobSiteSeacrh As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
     '''ddlJobsite control.
     '''</summary>
     '''<remarks>
@@ -84,6 +93,15 @@ Partial Public Class CreateRec
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents ddlJobsite As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''chkNextmonth control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents chkNextmonth As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
 
     '''<summary>
     '''txtdatepickerJobdate control.
@@ -102,15 +120,6 @@ Partial Public Class CreateRec
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents CalendarExtenderJobdate As Global.AjaxControlToolkit.CalendarExtender
-
-    '''<summary>
-    '''chkNextmonth control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents chkNextmonth As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
 
     '''<summary>
     '''ddlSaleman control.

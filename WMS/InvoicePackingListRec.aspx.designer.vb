@@ -32,6 +32,42 @@ Partial Public Class InvoicePackingListRec
     Protected WithEvents ScriptManager1 As Global.System.Web.UI.ScriptManager
 
     '''<summary>
+    '''btnAddHead control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnAddHead As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''btnEditHead control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnEditHead As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''btnSaveAddHead control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnSaveAddHead As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''btnSaveEditHead control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnSaveEditHead As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
     '''chkRCVDNo_BeforeTab control.
     '''</summary>
     '''<remarks>
@@ -707,13 +743,22 @@ Partial Public Class InvoicePackingListRec
     Protected WithEvents rdbOnBehalfOf As Global.System.Web.UI.WebControls.RadioButton
 
     '''<summary>
-    '''chkEnablebehalf_EASJOB control.
+    '''btnEnablebehalf_EASJOB control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents chkEnablebehalf_EASJOB As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
+    Protected WithEvents btnEnablebehalf_EASJOB As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''LeftForm_EASJOB control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents LeftForm_EASJOB As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
     '''ddlOwnerCode_EASJOB control.
@@ -849,6 +894,15 @@ Partial Public Class InvoicePackingListRec
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents txtContractPersonCustomer_EASJOB As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''RightForm_EASJOB control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents RightForm_EASJOB As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
     '''txtEASINV_EASJOB control.
@@ -1940,6 +1994,15 @@ Partial Public Class InvoicePackingListRec
     Protected WithEvents btnDelete_PACKINGLIST As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
+    '''TabName control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents TabName As Global.System.Web.UI.WebControls.HiddenField
+
+    '''<summary>
     '''ShipperPanel control.
     '''</summary>
     '''<remarks>
@@ -2021,7 +2084,7 @@ Partial Public Class InvoicePackingListRec
     Protected WithEvents Repeater3 As Global.System.Web.UI.WebControls.Repeater
 
     '''<summary>
-    ''' CustomerCode_BillToPanel control.
+    '''CustomerCode_BillToPanel control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
@@ -2030,7 +2093,7 @@ Partial Public Class InvoicePackingListRec
     Protected WithEvents CustomerCode_BillToPanel As Global.System.Web.UI.WebControls.Panel
 
     '''<summary>
-    ''' CustomerCode_BillToUpdatePanel control.
+    '''CustomerCode_BillToUpdatePanel control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.

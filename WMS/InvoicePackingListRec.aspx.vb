@@ -699,4 +699,27 @@
         End Try
     End Sub
 
+    Protected Sub btnEnablebehalf_EASJOB_ServerClick(sender As Object, e As EventArgs)
+        LeftForm_EASJOB.Visible = True
+        RightForm_EASJOB.Visible = True
+
+    End Sub
+
+    Protected Sub btnAddHead_ServerClick(sender As Object, e As EventArgs)
+        btnSaveAddHead.Visible = True
+        btnSaveEditHead.Visible = False
+    End Sub
+
+    Protected Sub btnEditHead_ServerClick(sender As Object, e As EventArgs)
+        btnSaveEditHead.Visible = True
+        btnSaveAddHead.Visible = False
+    End Sub
+
+    Protected Sub btnSaveAddHead_ServerClick(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Protected Sub btnSaveEditHead_ServerClick(sender As Object, e As EventArgs)
+
+    End Sub
 End Class
