@@ -1247,51 +1247,6 @@ Partial Public Class ExpGenLot
     Protected WithEvents dgvInvNo As Global.System.Web.UI.WebControls.Repeater
 
     '''<summary>
-    '''txtTypeCode control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtTypeCode As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''txtRunNo control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtRunNo As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''txtMountNo control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtMountNo As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''txtYearNo control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtYearNo As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''txtDigitNo control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtDigitNo As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
     '''TabName control.
     '''</summary>
     '''<remarks>

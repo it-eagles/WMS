@@ -14,19 +14,12 @@ Imports System.Nullable(Of Date)
 
 Public Class ExpGenLot
     Inherits System.Web.UI.Page
-    'Dim Conn As SqlConnection
-    'Dim com As SqlCommand
-    'Dim tr As SqlTransaction
+
     Dim sb As StringBuilder
-    'Dim dr As SqlDataReader
     Dim tmpButtonStatus As String
     Dim sqlDataComboList As String
     Dim JOB As String
-    'Public PV As New frmExpCustomsInvoiceRPT
-    'Dim ClassPermis As ClassPermis
-   
     Dim classPermis As New ClassPermis
-
     Dim db As New LKBWarehouseEntities1_Test
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
@@ -51,8 +44,6 @@ Public Class ExpGenLot
                     btnSaveNew.Visible = False
                     btnSaveEdit.Visible = False
                     btnSeletJob.Visible = False
-
-
                     TabName.Value = Request.Form(TabName.UniqueID)
                 End If
             Else
@@ -137,7 +128,6 @@ Public Class ExpGenLot
         'dcbVolume.Items.Clear()
         'dcbVolume.Items.Add(New ListItem("select Volume"))
         'dcbVolume.AppendDataBoundItems = True
-
         Dim qt = From q In db.tblMasterCode2 Where q.Type = "VOLUME" Select q.Code, q.Type
 
         Try
@@ -312,7 +302,6 @@ Public Class ExpGenLot
         End Try
     End Sub
     
-
     Private Sub showJobSite()
 
         'cboJobSite.Items.Clear()
@@ -348,7 +337,6 @@ Public Class ExpGenLot
             lot = txtLotNo.Value.Trim
         End If
 
-
         'Where e.LOTDate.Year = testdate
         Dim exl = (From e In db.tblExpGenLOTs Where e.EASLOTNo = txtLotNo.Value.Trim Or e.LOTDate.Year = testdate Order By e.EASLOTNo Descending
                  Select New With {
@@ -357,8 +345,6 @@ Public Class ExpGenLot
                  e.JobSite,
                  e.EndCusCode}).ToList
         Try
-
-          
                 If exl.Count > 0 Then
                 Me.dgvLot.DataSource = exl
                 Me.dgvLot.DataBind()
@@ -375,7 +361,6 @@ Public Class ExpGenLot
     End Sub
 
     Protected Sub Unnamed_ServerClick(sender As Object, e As EventArgs)
-
             selectExpGenLOT()
     End Sub
     Private Sub selectConsigneeCode()
@@ -390,7 +375,7 @@ Public Class ExpGenLot
 
         Dim cons = From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
         Where (p.PartyCode = cons_code And p.Consignee = "0") Or p.Consignee = "0"
-        Select p.PartyCode, p.PartyFullName, pa.Address1, pa.Address2
+        Select p.PartyCode, pa.PartyAddressCode, p.PartyFullName, pa.Address1, pa.Address2
 
         If cons.Count > 0 Then
             dgvConsigneeCode.DataSource = cons.ToList
@@ -402,8 +387,6 @@ Public Class ExpGenLot
             Exit Sub
 
         End If
-
-
     End Sub
 
     Protected Sub Unnamed_ServerClick1(sender As Object, e As EventArgs)
@@ -422,7 +405,7 @@ Public Class ExpGenLot
 
         Dim cons = From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
         Where (p.PartyCode = exp_code And p.Shipper = "0") Or p.Shipper = "0"
-        Select p.PartyCode, p.PartyFullName, pa.Address1, pa.Address2
+        Select p.PartyCode, pa.PartyAddressCode, p.PartyFullName, pa.Address1, pa.Address2
 
         If cons.Count > 0 Then
             dgvExporterCode.DataSource = cons.ToList
@@ -432,15 +415,12 @@ Public Class ExpGenLot
         Else
             ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('ไม่พบข้อมูล Exporter Code นี้')", True)
             Exit Sub
-
         End If
-
     End Sub
 
     Protected Sub Unnamed_ServerClick3(sender As Object, e As EventArgs)
         selectExporterCode()
     End Sub
- 
 
     Private Sub codeconsignnee()
         Dim code_code As String
@@ -455,7 +435,7 @@ Public Class ExpGenLot
         Dim cons = From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
         Where (p.PartyCode = code_code And p.Shipper = "0" And p.Consignee = "0" And p.EndCustomer = "0") Or
               (p.Consignee = "0" And p.EndCustomer = "0" And p.Shipper = "0")
-        Select p.PartyCode, p.PartyFullName, pa.Address1, pa.Address2
+        Select p.PartyCode, pa.PartyAddressCode, p.PartyFullName, pa.Address1, pa.Address2
 
         If cons.Count > 0 Then
             dgvcodeconsignnee.DataSource = cons.ToList
@@ -471,7 +451,6 @@ Public Class ExpGenLot
     Protected Sub Unnamed_ServerClick2(sender As Object, e As EventArgs)
         'selectExporterCode()
         codeconsignnee()
-
     End Sub
     Private Sub selectCustomerCode()
         Dim cum_code As String
@@ -485,7 +464,7 @@ Public Class ExpGenLot
 
         Dim cons = From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
         Where (p.PartyCode = cum_code And p.Consignee = "0") Or p.Consignee = "0"
-        Select p.PartyCode, p.PartyFullName, pa.Address1, pa.Address2
+        Select p.PartyCode, pa.PartyAddressCode, p.PartyFullName, pa.Address1, pa.Address2
 
         If cons.Count > 0 Then
             dgvCustomer.DataSource = cons.ToList
@@ -514,7 +493,7 @@ Public Class ExpGenLot
 
         Dim cons = From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
         Where p.PartyCode = pick_code Or p.Consignee = "0"
-        Select p.PartyCode, p.PartyFullName, pa.Address1, pa.Address2
+        Select p.PartyCode, pa.PartyAddressCode, p.PartyFullName, pa.Address1, pa.Address2
 
         If cons.Count > 0 Then
             dgvPickUp.DataSource = cons.ToList
@@ -542,7 +521,7 @@ Public Class ExpGenLot
 
         Dim cons = From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
         Where p.PartyCode = cus_code Or p.EndCustomer = "0"
-        Select p.PartyCode, p.PartyFullName, pa.Address1, pa.Address2
+        Select p.PartyCode, pa.PartyAddressCode, p.PartyFullName, pa.Address1, pa.Address2
 
         If cons.Count > 0 Then
             dgvEndCus.DataSource = cons.ToList
@@ -1096,406 +1075,13 @@ Public Class ExpGenLot
         End If
     End Sub
 
-    Protected Sub dgvConsigneeCode_ItemCommand(source As Object, e As RepeaterCommandEventArgs)
-        Dim PartyCode As String = CStr(e.CommandArgument)
-        If e.CommandName.Equals("SelectConsigneeCode") Then
-            Dim eano = (From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
-                  Where p.PartyCode = PartyCode).SingleOrDefault
-
-            'Dim eano = (From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
-            'Where p.PartyCode = EASLOTNo Select p).SingleOrDefault
-            If String.IsNullOrEmpty(eano.p.PartyCode) Then
-                txtConsigneeCode.Value = ""
-            Else
-                txtConsigneeCode.Value = eano.p.PartyCode
-            End If
-
-            If String.IsNullOrEmpty(eano.p.PartyFullName) Then
-                txtConsignneeEng.Value = ""
-            Else
-                txtConsignneeEng.Value = eano.p.PartyFullName
-            End If
-
-            If String.IsNullOrEmpty(eano.pa.Address1) Then
-                txtConsignneeStreet_Number.Value = ""
-            Else
-                txtConsignneeStreet_Number.Value = eano.pa.Address1
-            End If
-
-            If String.IsNullOrEmpty(eano.pa.Address2) Then
-                txtConsignneeDistrict.Value = ""
-            Else
-                txtConsignneeDistrict.Value = eano.pa.Address2
-            End If
-
-            If String.IsNullOrEmpty(eano.pa.Address3) Then
-                txtConsignneeSubProvince.Value = ""
-            Else
-                txtConsignneeSubProvince.Value = eano.pa.Address3
-            End If
-
-            If String.IsNullOrEmpty(eano.pa.Address4) Then
-                txtConsignneeProvince.Value = ""
-            Else
-                txtConsignneeProvince.Value = eano.pa.Address4
-            End If
-
-            If String.IsNullOrEmpty(eano.pa.ZipCode) Then
-                txtConsignneePostCode.Value = ""
-            Else
-                txtConsignneePostCode.Value = eano.pa.ZipCode
-            End If
-
-            If String.IsNullOrEmpty(eano.pa.email) Then
-                txtConsignneeEMail.Value = ""
-            Else
-                txtConsignneeEMail.Value = eano.pa.email
-            End If
-
-        End If
-    End Sub
-
-    Protected Sub dgvExporterCode_ItemCommand(source As Object, e As RepeaterCommandEventArgs)
-        Dim PartyCode As String = CStr(e.CommandArgument)
-        If e.CommandName.Equals("SelectExporterCode") Then
-            Dim eano = (From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
-                  Where p.PartyCode = PartyCode).SingleOrDefault
-
-            'Dim eano = (From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
-            'Where p.PartyCode = EASLOTNo Select p).SingleOrDefault
-            If String.IsNullOrEmpty(eano.p.PartyCode) Then
-                txtExporterCode.Value = ""
-            Else
-                txtExporterCode.Value = eano.p.PartyCode
-            End If
-
-            If String.IsNullOrEmpty(eano.p.PartyFullName) Then
-                txtExportEng.Value = ""
-            Else
-                txtExportEng.Value = eano.p.PartyFullName
-            End If
-
-            If String.IsNullOrEmpty(eano.pa.Address1) Then
-                txtStreet_Number.Value = ""
-            Else
-                txtStreet_Number.Value = eano.pa.Address1
-            End If
-
-            If String.IsNullOrEmpty(eano.pa.Address2) Then
-                txtDistrict.Value = ""
-            Else
-                txtDistrict.Value = eano.pa.Address2
-            End If
-
-            If String.IsNullOrEmpty(eano.pa.Address3) Then
-                txtSubProvince.Value = ""
-            Else
-                txtSubProvince.Value = eano.pa.Address3
-            End If
-
-            If String.IsNullOrEmpty(eano.pa.Address4) Then
-                txtProvince.Value = ""
-            Else
-                txtProvince.Value = eano.pa.Address4
-            End If
-
-            If String.IsNullOrEmpty(eano.pa.ZipCode) Then
-                txtPostCode.Value = ""
-            Else
-                txtPostCode.Value = eano.pa.ZipCode
-            End If
-
-            If String.IsNullOrEmpty(eano.pa.email) Then
-                txtCompensateCode.Value = ""
-            Else
-                txtCompensateCode.Value = eano.pa.email
-            End If
-
-        End If
-    End Sub
-
-    Protected Sub dgvcodeconsignnee_ItemCommand(source As Object, e As RepeaterCommandEventArgs)
-        Dim PartyCode As String = CStr(e.CommandArgument)
-        If e.CommandName.Equals("Selectcodeconsignnee") Then
-            Dim eano = (From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
-                  Where p.PartyCode = PartyCode).SingleOrDefault
-
-            'Dim eano = (From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
-            'Where p.PartyCode = EASLOTNo Select p).SingleOrDefault
-            If String.IsNullOrEmpty(eano.p.PartyCode) Then
-                txtDOCode.Value = ""
-            Else
-                txtDOCode.Value = eano.p.PartyCode
-            End If
-
-            If String.IsNullOrEmpty(eano.p.PartyFullName) Then
-                txtDONameENG.Value = ""
-            Else
-                txtDONameENG.Value = eano.p.PartyFullName
-            End If
-
-            If String.IsNullOrEmpty(eano.pa.Address1) Then
-                txtDOStreet.Value = ""
-            Else
-                txtDOStreet.Value = eano.pa.Address1
-            End If
-
-            If String.IsNullOrEmpty(eano.pa.Address2) Then
-                txtDODistrict.Value = ""
-            Else
-                txtDODistrict.Value = eano.pa.Address2
-            End If
-
-            If String.IsNullOrEmpty(eano.pa.Address3) Then
-                txtDOSubProvince.Value = ""
-            Else
-                txtDOSubProvince.Value = eano.pa.Address3
-            End If
-
-            If String.IsNullOrEmpty(eano.pa.Address4) Then
-                txtDOProvince.Value = ""
-            Else
-                txtDOProvince.Value = eano.pa.Address4
-            End If
-
-            If String.IsNullOrEmpty(eano.pa.ZipCode) Then
-                txtDOPostCode.Value = ""
-            Else
-                txtDOPostCode.Value = eano.pa.ZipCode
-            End If
-
-            If String.IsNullOrEmpty(eano.pa.email) Then
-                txtDOEmail.Value = ""
-            Else
-                txtDOEmail.Value = eano.pa.email
-            End If
-            If String.IsNullOrEmpty(eano.pa.Attn) Then
-                txtDOContactPerson.Value = ""
-            Else
-                txtDOContactPerson.Value = eano.pa.Attn
-            End If
-        End If
-    End Sub
-
-    Protected Sub dgvCustomer_ItemCommand(source As Object, e As RepeaterCommandEventArgs)
-        Dim PartyCode As String = CStr(e.CommandArgument)
-        If e.CommandName.Equals("SelectCustomer") Then
-            Dim eano = (From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
-                  Where p.PartyCode = PartyCode).SingleOrDefault
-
-            'Dim eano = (From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
-            'Where p.PartyCode = EASLOTNo Select p).SingleOrDefault
-            If String.IsNullOrEmpty(eano.p.PartyCode) Then
-                txtCustomerCode.Value = ""
-            Else
-                txtCustomerCode.Value = eano.p.PartyCode
-            End If
-
-            If String.IsNullOrEmpty(eano.p.PartyFullName) Then
-                txtCustomerENG.Value = ""
-            Else
-                txtCustomerENG.Value = eano.p.PartyFullName
-            End If
-
-            If String.IsNullOrEmpty(eano.pa.Address1) Then
-                txtCustomerStreet.Value = ""
-            Else
-                txtCustomerStreet.Value = eano.pa.Address1
-            End If
-
-            If String.IsNullOrEmpty(eano.pa.Address2) Then
-                txtCustomerDistrict.Value = ""
-            Else
-                txtCustomerDistrict.Value = eano.pa.Address2
-            End If
-
-            If String.IsNullOrEmpty(eano.pa.Address3) Then
-                txtCustomerSub.Value = ""
-            Else
-                txtCustomerSub.Value = eano.pa.Address3
-            End If
-
-            If String.IsNullOrEmpty(eano.pa.Address4) Then
-                txtCustomerProvince.Value = ""
-            Else
-                txtCustomerProvince.Value = eano.pa.Address4
-            End If
-
-            If String.IsNullOrEmpty(eano.pa.ZipCode) Then
-                txtCustomerPostCode.Value = ""
-            Else
-                txtCustomerPostCode.Value = eano.pa.ZipCode
-            End If
-
-            If String.IsNullOrEmpty(eano.pa.email) Then
-                txtCustomerEmail.Value = ""
-            Else
-                txtCustomerEmail.Value = eano.pa.email
-            End If
-            If String.IsNullOrEmpty(eano.pa.Attn) Then
-                txtCustomerContact.Value = ""
-            Else
-                txtCustomerContact.Value = eano.pa.Attn
-            End If
-        End If
-    End Sub
-
-    Protected Sub dgvPickUp_ItemCommand(source As Object, e As RepeaterCommandEventArgs)
-        Dim PartyCode As String = CStr(e.CommandArgument)
-        If e.CommandName.Equals("SelectPickUp") Then
-            Dim eano = (From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
-                  Where p.PartyCode = PartyCode).SingleOrDefault
-
-            'Dim eano = (From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
-            'Where p.PartyCode = EASLOTNo Select p).SingleOrDefault
-            If String.IsNullOrEmpty(eano.p.PartyCode) Then
-                txtPickUpCode.Value = ""
-            Else
-                txtPickUpCode.Value = eano.p.PartyCode
-            End If
-
-            If String.IsNullOrEmpty(eano.p.PartyFullName) Then
-                txtPickUpNameEng.Value = ""
-            Else
-                txtPickUpNameEng.Value = eano.p.PartyFullName
-            End If
-
-            If String.IsNullOrEmpty(eano.pa.Address1) Then
-                txtPickUpAddress1.Value = ""
-            Else
-                txtPickUpAddress1.Value = eano.pa.Address1
-            End If
-
-            If String.IsNullOrEmpty(eano.pa.Address2) Then
-                txtPickUpAddress2.Value = ""
-            Else
-                txtPickUpAddress2.Value = eano.pa.Address2
-            End If
-
-            If String.IsNullOrEmpty(eano.pa.Address3) Then
-                txtPickUpAddress3.Value = ""
-            Else
-                txtPickUpAddress3.Value = eano.pa.Address3
-            End If
-
-            If String.IsNullOrEmpty(eano.pa.Address4) Then
-                txtPickUpAddress4.Value = ""
-            Else
-                txtPickUpAddress4.Value = eano.pa.Address4
-            End If
-
-            If String.IsNullOrEmpty(eano.pa.ZipCode) Then
-                txtPickUpAddress5.Value = ""
-            Else
-                txtPickUpAddress5.Value = eano.pa.ZipCode
-            End If
-
-            If String.IsNullOrEmpty(eano.pa.email) Then
-                txtPickUpEmail.Value = ""
-            Else
-                txtPickUpEmail.Value = eano.pa.email
-            End If
-
-            If String.IsNullOrEmpty(eano.pa.Attn) Then
-                txtPickUpContact.Value = ""
-            Else
-                txtPickUpContact.Value = eano.pa.Attn
-            End If
-        End If
-    End Sub
-
-    Protected Sub dgvEndCus_ItemCommand(source As Object, e As RepeaterCommandEventArgs)
-        Dim PartyCode As String = CStr(e.CommandArgument)
-        If e.CommandName.Equals("SelectEndCus") Then
-            Dim eano = (From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
-                  Where p.PartyCode = PartyCode).SingleOrDefault
-
-            'Dim eano = (From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
-            'Where p.PartyCode = EASLOTNo Select p).SingleOrDefault
-            If String.IsNullOrEmpty(eano.p.PartyCode) Then
-                txtEndCusCode.Value = ""
-            Else
-                txtEndCusCode.Value = eano.p.PartyCode
-            End If
-
-            If String.IsNullOrEmpty(eano.p.PartyFullName) Then
-                txtEndCusNameEng.Value = ""
-            Else
-                txtEndCusNameEng.Value = eano.p.PartyFullName
-            End If
-
-            If String.IsNullOrEmpty(eano.pa.Address1) Then
-                txtEndCusAddress1.Value = ""
-            Else
-                txtEndCusAddress1.Value = eano.pa.Address1
-            End If
-
-            If String.IsNullOrEmpty(eano.pa.Address2) Then
-                txtEndCusAddress2.Value = ""
-            Else
-                txtEndCusAddress2.Value = eano.pa.Address2
-            End If
-
-            If String.IsNullOrEmpty(eano.pa.Address3) Then
-                txtEndCusAddress3.Value = ""
-            Else
-                txtEndCusAddress3.Value = eano.pa.Address3
-            End If
-
-            If String.IsNullOrEmpty(eano.pa.Address4) Then
-                txtEndCusAddress4.Value = ""
-            Else
-                txtEndCusAddress4.Value = eano.pa.Address4
-            End If
-
-            If String.IsNullOrEmpty(eano.pa.ZipCode) Then
-                txtEndCusAddress5.Value = ""
-            Else
-                txtEndCusAddress5.Value = eano.pa.ZipCode
-            End If
-
-            If String.IsNullOrEmpty(eano.pa.email) Then
-                txtEndCusEmail.Value = ""
-            Else
-                txtEndCusEmail.Value = eano.pa.email
-            End If
-
-            If String.IsNullOrEmpty(eano.pa.Attn) Then
-                txtEndCusContact.Value = ""
-            Else
-                txtEndCusContact.Value = eano.pa.Attn
-            End If
-        End If
-    End Sub
-
-    Protected Sub dgvCustomerGroup_ItemCommand(source As Object, e As RepeaterCommandEventArgs)
-        Dim PartyCode As String = CStr(e.CommandArgument)
-        If e.CommandName.Equals("SelectCustomerGroup") Then
-            Dim eano = (From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
-                  Where p.PartyCode = PartyCode).SingleOrDefault
-
-            'Dim eano = (From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
-            'Where p.PartyCode = EASLOTNo Select p).SingleOrDefault
-            If String.IsNullOrEmpty(eano.p.PartyCode) Then
-                txtCustomerCodeGroup.Value = ""
-            Else
-                txtCustomerCodeGroup.Value = eano.p.PartyCode
-            End If
-
-            If String.IsNullOrEmpty(eano.p.PartyFullName) Then
-                txtCustomerENGGroup.Value = ""
-            Else
-                txtCustomerENGGroup.Value = eano.p.PartyFullName
-            End If
-
-        End If
-    End Sub
-
     Protected Sub btnAddNew_ServerClick(sender As Object, e As EventArgs)
         showVisible()
         btnSeletJob.Visible = False
         btnSaveEdit.Visible = False
         btnSaveNew.Visible = True
+        txtLotNo.Disabled = True
+        ClearDATA()
     End Sub
 
     Protected Sub btnEdit_ServerClick(sender As Object, e As EventArgs)
@@ -1503,12 +1089,11 @@ Public Class ExpGenLot
         btnSeletJob.Visible = True
         btnSaveEdit.Visible = True
         btnSaveNew.Visible = False
+        txtLotNo.Disabled = False
+        ClearDATA()
     End Sub
     Private Sub showVisible()
         txtIEATNo.Disabled = True
-        'txtIEATPermit.Disabled = True
-        'txtEntryNo.Disabled = True
-        'txtDeliveryTime.Disabled = True
         txtGenInvNo.Disabled = True
         txtEASInv.Disabled = True
         Checkbox3.Disabled = True
@@ -1625,11 +1210,11 @@ Public Class ExpGenLot
                 Gentbl("WIPLOTOUT")
             End If
             SaveDATA_New()
-            'InsertData()
-            'ClearDATA()
-            'ReadDATA()
-            'ReadDATA2()
-            'ReadDATAEAS()
+            InsertData()
+            ClearDATA()
+            ReadDATA()
+            ReadDATA2()
+            ReadDATAEAS()
           
         Else
             ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ์เมนูนี้ !!!')", True)
@@ -1765,8 +1350,6 @@ Public Class ExpGenLot
         Catch ex As Exception
             ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", ex.Message, True)
         End Try
-       
-
     End Sub
 
     Protected Sub Gen_Click(sender As Object, e As EventArgs)
@@ -1775,7 +1358,6 @@ Public Class ExpGenLot
         Else
             ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('Gen สามารถซ้ำได้ !!!')", True)
         End If
-
     End Sub
     Private Sub GenNum1()
         Dim tmpDate As Single = CSng(Format(Now(), "dd"))
@@ -1898,7 +1480,6 @@ Public Class ExpGenLot
         Catch ex As Exception
             ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('ข้อมูล ที่คุณใส่ ไม่ถูกต้อง !!!')", True)
         End Try
-
     End Sub
 
     Protected Sub Button2_Click(sender As Object, e As EventArgs)
@@ -2073,6 +1654,7 @@ Public Class ExpGenLot
         Dim LOTDate As Date
         Dim DeliveryDate As Date
         Dim IEATDate As Date
+        Dim fwdstatus As String = "0"
         If String.IsNullOrEmpty(txtLotNo.Value.Trim) Then
             ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาป้อน LOT No ก่อน !!!');", True)
         Else
@@ -2087,7 +1669,7 @@ Public Class ExpGenLot
             Else
                 DeliveryDate = DateTime.ParseExact(dtpDeliveryDate.Text, "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US"))
             End If
-            If Not txtIEATDate.Text = "" Then
+            If txtIEATDate.Text = "" Then
                 IEATDate = CDate(Convert.ToDateTime(Date.Now).ToString("dd/MM/yyyy"))
             Else
                 IEATDate = DateTime.ParseExact(txtIEATDate.Text, "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US"))
@@ -2096,7 +1678,9 @@ Public Class ExpGenLot
             Select Case MsgBox("คุณต้องการเพิ่มรายการ LOT No ใหม่ ของ " & cboJobSite.Text.Trim & " ใช่หรือไม่ ?", MsgBoxStyle.YesNo, "คำยืนยัน")
                 Case MsgBoxResult.Yes
                     Try
-                        db.tblExpGenLOTs.Add(New tblExpGenLOT With { _
+                        db.Database.Connection.Open()
+
+                        db.tblExpGenLOTs.Add(New tblExpGenLOT() With { _
                                     .EASLOTNo = txtLotNo.Value.Trim, _
                                     .LOTDate = LOTDate, _
                                     .LOTBy = ComboBox2.Text.Trim, _
@@ -2187,30 +1771,23 @@ Public Class ExpGenLot
                                     .BillingNo = txtBillingNo.Value.Trim, _
                                     .CustomerCodeGroup = txtCustomerCodeGroup.Value.Trim, _
                                     .CustomerENGGroup = txtCustomerENGGroup.Value.Trim, _
-                                    .DeliveryTime = txtDeliveryTime.Value.Trim
+                                    .DeliveryTime = txtDeliveryTime.Value.Trim, _
+                                    .fwdstatus = fwdstatus
                 })
                         db.SaveChanges()
                         ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('บันทึกเสร็จเรียบร้อย !');", True)
                     Catch ex As Exception
-                        ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('" & ex.Message & "')", True)
+                        ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด !!!')", True)
                     End Try
                 Case MsgBoxResult.No
-
             End Select
         End If
-
     End Sub
     Private Sub ClearDATA()
         NextMonth.Checked = False
-        txtTypeCode.Value = ""
-        txtMountNo.Value = ""
-        txtYearNo.Value = ""
-        txtDigitNo.Value = ""
-        txtRunNo.Value = ""
         txtLotNo.Value = ""
         Checkbox3.Checked = False
         txtShipTo.Value = ""
-        dcbSales.Text = ""
         txtSalesName.Value = ""
         txtConsigneeCode.Value = ""
         txtConsignneeEng.Value = ""
@@ -2228,17 +1805,11 @@ Public Class ExpGenLot
         txtProvince.Value = ""
         txtPostCode.Value = ""
         txtCompensateCode.Value = ""
-        txtCommodity.Text = ""
         txtQuantityofPart.Value = "0.0"
-        dcbQuantity1.Text = ""
         txtQuantityPLT.Value = "0.0"
-        dcbQuantity2.Text = ""
         txtWeight.Value = "0.0"
-        dcbWeight.Text = ""
         txtVolume.Value = "0.0"
-        dcbVolume.Text = ""
         txtMAWB.Value = ""
-        ComboBox7.Text = ""
         txtDocumentCode.Value = ""
         txtFlight.Value = ""
         txtPathFile.Value = ""
@@ -2285,12 +1856,7 @@ Public Class ExpGenLot
         txtEndCusContact.Value = ""
         txtFreigh.Value = ""
         txtBox.Value = "0"
-        cdbBox1.Text = ""
-        dcbStatus1.Text = ""
-        dcbStatus2.Text = ""
-        dcbStatus3.Text = ""
         txtJobRemark.Value = ""
-        cboJobSite.Text = ""
         txtBillingNo.Value = ""
         txtCustomerCodeGroup.Value = ""
         txtCustomerENGGroup.Value = ""
@@ -2629,7 +2195,6 @@ Public Class ExpGenLot
         End If
     End Sub
     Private Sub InsertData()
-
         Dim time As Date
         Dim NameUser As String
         time = CDate((Format(Now)))
@@ -2646,7 +2211,6 @@ Public Class ExpGenLot
         Catch ex As Exception
             Throw ex
         End Try
-
     End Sub
 
     Protected Sub btnSaveEdit_ServerClick(sender As Object, e As EventArgs)
@@ -2710,5 +2274,565 @@ Public Class ExpGenLot
 
     Protected Sub cmdDeleteInv_ServerClick(sender As Object, e As EventArgs)
 
+    End Sub
+
+    Protected Sub dgvConsigneeCode_ItemDataBound(sender As Object, e As RepeaterItemEventArgs)
+        If e.Item.ItemType = ListItemType.Item OrElse e.Item.ItemType = ListItemType.AlternatingItem Then
+            Dim lblPartyCode As Label = CType(e.Item.FindControl("lblPartyCode"), Label)
+            Dim lblPartyAdd As Label = CType(e.Item.FindControl("lblPartyAdd"), Label)
+            Dim lblPartyFullName As Label = CType(e.Item.FindControl("lblPartyFullName"), Label)
+            Dim lblAddress1 As Label = CType(e.Item.FindControl("lblAddress1"), Label)
+            Dim lblAddress2 As Label = CType(e.Item.FindControl("lblAddress2"), Label)
+
+            If Not IsNothing(lblPartyCode) Then
+                lblPartyCode.Text = DataBinder.Eval(e.Item.DataItem, "PartyCode").ToString
+            End If
+            If Not IsNothing(lblPartyAdd) Then
+                lblPartyAdd.Text = DataBinder.Eval(e.Item.DataItem, "PartyAddressCode").ToString
+            End If
+            If Not IsNothing(lblPartyFullName) Then
+                lblPartyFullName.Text = DataBinder.Eval(e.Item.DataItem, "PartyFullName").ToString
+            End If
+            If Not IsNothing(lblAddress1) Then
+                lblAddress1.Text = DataBinder.Eval(e.Item.DataItem, "Address1").ToString
+            End If
+            If Not IsNothing(lblAddress2) Then
+                lblAddress2.Text = DataBinder.Eval(e.Item.DataItem, "Address2").ToString
+            End If
+        End If
+    End Sub
+    Protected Sub lnkPartyCode_Click(sender As Object, e As EventArgs)
+        Dim item As RepeaterItem = TryCast(TryCast(sender, LinkButton).Parent, RepeaterItem)
+        Dim PartyCode As String = TryCast(item.FindControl("lblPartyCode"), Label).Text.Trim
+        Dim PartyAdd As Double = CDbl(TryCast(item.FindControl("lblPartyAdd"), Label).Text.Trim)
+        Dim eano = (From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
+              Where p.PartyCode = PartyCode And pa.PartyAddressCode = PartyAdd).SingleOrDefault
+
+        If String.IsNullOrEmpty(eano.p.PartyCode) Then
+            txtConsigneeCode.Value = ""
+        Else
+            txtConsigneeCode.Value = eano.p.PartyCode
+        End If
+
+        If String.IsNullOrEmpty(eano.p.PartyFullName) Then
+            txtConsignneeEng.Value = ""
+        Else
+            txtConsignneeEng.Value = eano.p.PartyFullName
+        End If
+
+        If String.IsNullOrEmpty(eano.pa.Address1) Then
+            txtConsignneeStreet_Number.Value = ""
+        Else
+            txtConsignneeStreet_Number.Value = eano.pa.Address1
+        End If
+
+        If String.IsNullOrEmpty(eano.pa.Address2) Then
+            txtConsignneeDistrict.Value = ""
+        Else
+            txtConsignneeDistrict.Value = eano.pa.Address2
+        End If
+
+        If String.IsNullOrEmpty(eano.pa.Address3) Then
+            txtConsignneeSubProvince.Value = ""
+        Else
+            txtConsignneeSubProvince.Value = eano.pa.Address3
+        End If
+
+        If String.IsNullOrEmpty(eano.pa.Address4) Then
+            txtConsignneeProvince.Value = ""
+        Else
+            txtConsignneeProvince.Value = eano.pa.Address4
+        End If
+
+        If String.IsNullOrEmpty(eano.pa.ZipCode) Then
+            txtConsignneePostCode.Value = ""
+        Else
+            txtConsignneePostCode.Value = eano.pa.ZipCode
+        End If
+
+        If String.IsNullOrEmpty(eano.pa.email) Then
+            txtConsignneeEMail.Value = ""
+        Else
+            txtConsignneeEMail.Value = eano.pa.email
+        End If
+
+    End Sub
+
+    Protected Sub dgvExporterCode_ItemDataBound(sender As Object, e As RepeaterItemEventArgs)
+        If e.Item.ItemType = ListItemType.Item OrElse e.Item.ItemType = ListItemType.AlternatingItem Then
+            Dim lblPartyCode As Label = CType(e.Item.FindControl("lblPartyCode"), Label)
+            Dim lblPartyAdd As Label = CType(e.Item.FindControl("lblPartyAdd"), Label)
+            Dim lblPartyFullName As Label = CType(e.Item.FindControl("lblPartyFullName"), Label)
+            Dim lblAddress1 As Label = CType(e.Item.FindControl("lblAddress1"), Label)
+            Dim lblAddress2 As Label = CType(e.Item.FindControl("lblAddress2"), Label)
+
+            If Not IsNothing(lblPartyCode) Then
+                lblPartyCode.Text = DataBinder.Eval(e.Item.DataItem, "PartyCode").ToString
+            End If
+            If Not IsNothing(lblPartyAdd) Then
+                lblPartyAdd.Text = DataBinder.Eval(e.Item.DataItem, "PartyAddressCode").ToString
+            End If
+            If Not IsNothing(lblPartyFullName) Then
+                lblPartyFullName.Text = DataBinder.Eval(e.Item.DataItem, "PartyFullName").ToString
+            End If
+            If Not IsNothing(lblAddress1) Then
+                lblAddress1.Text = DataBinder.Eval(e.Item.DataItem, "Address1").ToString
+            End If
+            If Not IsNothing(lblAddress2) Then
+                lblAddress2.Text = DataBinder.Eval(e.Item.DataItem, "Address2").ToString
+            End If
+        End If
+    End Sub
+
+    Protected Sub lnkPartyCode_Ex_Click(sender As Object, e As EventArgs)
+        Dim item As RepeaterItem = TryCast(TryCast(sender, LinkButton).Parent, RepeaterItem)
+        Dim PartyCode As String = TryCast(item.FindControl("lblPartyCode"), Label).Text.Trim
+        Dim PartyAdd As Double = CDbl(TryCast(item.FindControl("lblPartyAdd"), Label).Text.Trim)
+        Dim eano = (From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
+                  Where p.PartyCode = PartyCode And pa.PartyAddressCode = PartyAdd).SingleOrDefault
+
+        If String.IsNullOrEmpty(eano.p.PartyCode) Then
+            txtExporterCode.Value = ""
+        Else
+            txtExporterCode.Value = eano.p.PartyCode
+        End If
+
+        If String.IsNullOrEmpty(eano.p.PartyFullName) Then
+            txtExportEng.Value = ""
+        Else
+            txtExportEng.Value = eano.p.PartyFullName
+        End If
+
+        If String.IsNullOrEmpty(eano.pa.Address1) Then
+            txtStreet_Number.Value = ""
+        Else
+            txtStreet_Number.Value = eano.pa.Address1
+        End If
+
+        If String.IsNullOrEmpty(eano.pa.Address2) Then
+            txtDistrict.Value = ""
+        Else
+            txtDistrict.Value = eano.pa.Address2
+        End If
+
+        If String.IsNullOrEmpty(eano.pa.Address3) Then
+            txtSubProvince.Value = ""
+        Else
+            txtSubProvince.Value = eano.pa.Address3
+        End If
+
+        If String.IsNullOrEmpty(eano.pa.Address4) Then
+            txtProvince.Value = ""
+        Else
+            txtProvince.Value = eano.pa.Address4
+        End If
+
+        If String.IsNullOrEmpty(eano.pa.ZipCode) Then
+            txtPostCode.Value = ""
+        Else
+            txtPostCode.Value = eano.pa.ZipCode
+        End If
+
+        If String.IsNullOrEmpty(eano.pa.email) Then
+            txtCompensateCode.Value = ""
+        Else
+            txtCompensateCode.Value = eano.pa.email
+        End If
+    End Sub
+
+    Protected Sub lnkPartyCode_code_Click(sender As Object, e As EventArgs)
+        Dim item As RepeaterItem = TryCast(TryCast(sender, LinkButton).Parent, RepeaterItem)
+
+        Dim PartyCode As String = TryCast(item.FindControl("lblPartyCode"), Label).Text.Trim
+        Dim PartyAdd As Double = CDbl(TryCast(item.FindControl("lblPartyAdd"), Label).Text.Trim)
+        Dim eano = (From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
+                 Where p.PartyCode = PartyCode).SingleOrDefault
+
+        If String.IsNullOrEmpty(eano.p.PartyCode) Then
+            txtDOCode.Value = ""
+        Else
+            txtDOCode.Value = eano.p.PartyCode
+        End If
+
+        If String.IsNullOrEmpty(eano.p.PartyFullName) Then
+            txtDONameENG.Value = ""
+        Else
+            txtDONameENG.Value = eano.p.PartyFullName
+        End If
+
+        If String.IsNullOrEmpty(eano.pa.Address1) Then
+            txtDOStreet.Value = ""
+        Else
+            txtDOStreet.Value = eano.pa.Address1
+        End If
+
+        If String.IsNullOrEmpty(eano.pa.Address2) Then
+            txtDODistrict.Value = ""
+        Else
+            txtDODistrict.Value = eano.pa.Address2
+        End If
+
+        If String.IsNullOrEmpty(eano.pa.Address3) Then
+            txtDOSubProvince.Value = ""
+        Else
+            txtDOSubProvince.Value = eano.pa.Address3
+        End If
+
+        If String.IsNullOrEmpty(eano.pa.Address4) Then
+            txtDOProvince.Value = ""
+        Else
+            txtDOProvince.Value = eano.pa.Address4
+        End If
+
+        If String.IsNullOrEmpty(eano.pa.ZipCode) Then
+            txtDOPostCode.Value = ""
+        Else
+            txtDOPostCode.Value = eano.pa.ZipCode
+        End If
+
+        If String.IsNullOrEmpty(eano.pa.email) Then
+            txtDOEmail.Value = ""
+        Else
+            txtDOEmail.Value = eano.pa.email
+        End If
+        If String.IsNullOrEmpty(eano.pa.Attn) Then
+            txtDOContactPerson.Value = ""
+        Else
+            txtDOContactPerson.Value = eano.pa.Attn
+        End If
+    End Sub
+
+    Protected Sub dgvcodeconsignnee_ItemDataBound(sender As Object, e As RepeaterItemEventArgs)
+        If e.Item.ItemType = ListItemType.Item OrElse e.Item.ItemType = ListItemType.AlternatingItem Then
+            Dim lblPartyCode As Label = CType(e.Item.FindControl("lblPartyCode"), Label)
+            Dim lblPartyAdd As Label = CType(e.Item.FindControl("lblPartyAdd"), Label)
+            Dim lblPartyFullName As Label = CType(e.Item.FindControl("lblPartyFullName"), Label)
+            Dim lblAddress1 As Label = CType(e.Item.FindControl("lblAddress1"), Label)
+            Dim lblAddress2 As Label = CType(e.Item.FindControl("lblAddress2"), Label)
+
+            If Not IsNothing(lblPartyCode) Then
+                lblPartyCode.Text = DataBinder.Eval(e.Item.DataItem, "PartyCode").ToString
+            End If
+            If Not IsNothing(lblPartyAdd) Then
+                lblPartyAdd.Text = DataBinder.Eval(e.Item.DataItem, "PartyAddressCode").ToString
+            End If
+            If Not IsNothing(lblPartyFullName) Then
+                lblPartyFullName.Text = DataBinder.Eval(e.Item.DataItem, "PartyFullName").ToString
+            End If
+            If Not IsNothing(lblAddress1) Then
+                lblAddress1.Text = DataBinder.Eval(e.Item.DataItem, "Address1").ToString
+            End If
+            If Not IsNothing(lblAddress2) Then
+                lblAddress2.Text = DataBinder.Eval(e.Item.DataItem, "Address2").ToString
+            End If
+        End If
+    End Sub
+
+    Protected Sub dgvCustomer_ItemDataBound(sender As Object, e As RepeaterItemEventArgs)
+        If e.Item.ItemType = ListItemType.Item OrElse e.Item.ItemType = ListItemType.AlternatingItem Then
+            Dim lblPartyCode As Label = CType(e.Item.FindControl("lblPartyCode"), Label)
+            Dim lblPartyAdd As Label = CType(e.Item.FindControl("lblPartyAdd"), Label)
+            Dim lblPartyFullName As Label = CType(e.Item.FindControl("lblPartyFullName"), Label)
+            Dim lblAddress1 As Label = CType(e.Item.FindControl("lblAddress1"), Label)
+            Dim lblAddress2 As Label = CType(e.Item.FindControl("lblAddress2"), Label)
+
+            If Not IsNothing(lblPartyCode) Then
+                lblPartyCode.Text = DataBinder.Eval(e.Item.DataItem, "PartyCode").ToString
+            End If
+            If Not IsNothing(lblPartyAdd) Then
+                lblPartyAdd.Text = DataBinder.Eval(e.Item.DataItem, "PartyAddressCode").ToString
+            End If
+            If Not IsNothing(lblPartyFullName) Then
+                lblPartyFullName.Text = DataBinder.Eval(e.Item.DataItem, "PartyFullName").ToString
+            End If
+            If Not IsNothing(lblAddress1) Then
+                lblAddress1.Text = DataBinder.Eval(e.Item.DataItem, "Address1").ToString
+            End If
+            If Not IsNothing(lblAddress2) Then
+                lblAddress2.Text = DataBinder.Eval(e.Item.DataItem, "Address2").ToString
+            End If
+        End If
+    End Sub
+
+    Protected Sub lnkPartyCode_cus_Click(sender As Object, e As EventArgs)
+        Dim item As RepeaterItem = TryCast(TryCast(sender, LinkButton).Parent, RepeaterItem)
+        Dim PartyCode As String = TryCast(item.FindControl("lblPartyCode"), Label).Text.Trim
+        Dim PartyAdd As Double = CDbl(TryCast(item.FindControl("lblPartyAdd"), Label).Text.Trim)
+        Dim eano = (From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
+                 Where p.PartyCode = PartyCode And pa.PartyAddressCode = PartyAdd).SingleOrDefault
+
+        If String.IsNullOrEmpty(eano.p.PartyCode) Then
+            txtCustomerCode.Value = ""
+        Else
+            txtCustomerCode.Value = eano.p.PartyCode
+        End If
+
+        If String.IsNullOrEmpty(eano.p.PartyFullName) Then
+            txtCustomerENG.Value = ""
+        Else
+            txtCustomerENG.Value = eano.p.PartyFullName
+        End If
+
+        If String.IsNullOrEmpty(eano.pa.Address1) Then
+            txtCustomerStreet.Value = ""
+        Else
+            txtCustomerStreet.Value = eano.pa.Address1
+        End If
+
+        If String.IsNullOrEmpty(eano.pa.Address2) Then
+            txtCustomerDistrict.Value = ""
+        Else
+            txtCustomerDistrict.Value = eano.pa.Address2
+        End If
+
+        If String.IsNullOrEmpty(eano.pa.Address3) Then
+            txtCustomerSub.Value = ""
+        Else
+            txtCustomerSub.Value = eano.pa.Address3
+        End If
+
+        If String.IsNullOrEmpty(eano.pa.Address4) Then
+            txtCustomerProvince.Value = ""
+        Else
+            txtCustomerProvince.Value = eano.pa.Address4
+        End If
+
+        If String.IsNullOrEmpty(eano.pa.ZipCode) Then
+            txtCustomerPostCode.Value = ""
+        Else
+            txtCustomerPostCode.Value = eano.pa.ZipCode
+        End If
+
+        If String.IsNullOrEmpty(eano.pa.email) Then
+            txtCustomerEmail.Value = ""
+        Else
+            txtCustomerEmail.Value = eano.pa.email
+        End If
+        If String.IsNullOrEmpty(eano.pa.Attn) Then
+            txtCustomerContact.Value = ""
+        Else
+            txtCustomerContact.Value = eano.pa.Attn
+        End If
+    End Sub
+
+    Protected Sub lnkPartyCode_pick_Click(sender As Object, e As EventArgs)
+        Dim item As RepeaterItem = TryCast(TryCast(sender, LinkButton).Parent, RepeaterItem)
+        Dim PartyCode As String = TryCast(item.FindControl("lblPartyCode"), Label).Text.Trim
+        Dim PartyAdd As Double = CDbl(TryCast(item.FindControl("lblPartyAdd"), Label).Text.Trim)
+        Dim eano = (From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
+                 Where p.PartyCode = PartyCode).SingleOrDefault
+
+        If String.IsNullOrEmpty(eano.p.PartyCode) Then
+            txtPickUpCode.Value = ""
+        Else
+            txtPickUpCode.Value = eano.p.PartyCode
+        End If
+
+        If String.IsNullOrEmpty(eano.p.PartyFullName) Then
+            txtPickUpNameEng.Value = ""
+        Else
+            txtPickUpNameEng.Value = eano.p.PartyFullName
+        End If
+
+        If String.IsNullOrEmpty(eano.pa.Address1) Then
+            txtPickUpAddress1.Value = ""
+        Else
+            txtPickUpAddress1.Value = eano.pa.Address1
+        End If
+
+        If String.IsNullOrEmpty(eano.pa.Address2) Then
+            txtPickUpAddress2.Value = ""
+        Else
+            txtPickUpAddress2.Value = eano.pa.Address2
+        End If
+
+        If String.IsNullOrEmpty(eano.pa.Address3) Then
+            txtPickUpAddress3.Value = ""
+        Else
+            txtPickUpAddress3.Value = eano.pa.Address3
+        End If
+
+        If String.IsNullOrEmpty(eano.pa.Address4) Then
+            txtPickUpAddress4.Value = ""
+        Else
+            txtPickUpAddress4.Value = eano.pa.Address4
+        End If
+
+        If String.IsNullOrEmpty(eano.pa.ZipCode) Then
+            txtPickUpAddress5.Value = ""
+        Else
+            txtPickUpAddress5.Value = eano.pa.ZipCode
+        End If
+
+        If String.IsNullOrEmpty(eano.pa.email) Then
+            txtPickUpEmail.Value = ""
+        Else
+            txtPickUpEmail.Value = eano.pa.email
+        End If
+
+        If String.IsNullOrEmpty(eano.pa.Attn) Then
+            txtPickUpContact.Value = ""
+        Else
+            txtPickUpContact.Value = eano.pa.Attn
+        End If
+    End Sub
+
+    Protected Sub dgvPickUp_ItemDataBound(sender As Object, e As RepeaterItemEventArgs)
+        If e.Item.ItemType = ListItemType.Item OrElse e.Item.ItemType = ListItemType.AlternatingItem Then
+            Dim lblPartyCode As Label = CType(e.Item.FindControl("lblPartyCode"), Label)
+            Dim lblPartyAdd As Label = CType(e.Item.FindControl("lblPartyAdd"), Label)
+            Dim lblPartyFullName As Label = CType(e.Item.FindControl("lblPartyFullName"), Label)
+            Dim lblAddress1 As Label = CType(e.Item.FindControl("lblAddress1"), Label)
+            Dim lblAddress2 As Label = CType(e.Item.FindControl("lblAddress2"), Label)
+
+            If Not IsNothing(lblPartyCode) Then
+                lblPartyCode.Text = DataBinder.Eval(e.Item.DataItem, "PartyCode").ToString
+            End If
+            If Not IsNothing(lblPartyAdd) Then
+                lblPartyAdd.Text = DataBinder.Eval(e.Item.DataItem, "PartyAddressCode").ToString
+            End If
+            If Not IsNothing(lblPartyFullName) Then
+                lblPartyFullName.Text = DataBinder.Eval(e.Item.DataItem, "PartyFullName").ToString
+            End If
+            If Not IsNothing(lblAddress1) Then
+                lblAddress1.Text = DataBinder.Eval(e.Item.DataItem, "Address1").ToString
+            End If
+            If Not IsNothing(lblAddress2) Then
+                lblAddress2.Text = DataBinder.Eval(e.Item.DataItem, "Address2").ToString
+            End If
+        End If
+    End Sub
+
+    Protected Sub dgvEndCus_ItemDataBound(sender As Object, e As RepeaterItemEventArgs)
+        If e.Item.ItemType = ListItemType.Item OrElse e.Item.ItemType = ListItemType.AlternatingItem Then
+            Dim lblPartyCode As Label = CType(e.Item.FindControl("lblPartyCode"), Label)
+            Dim lblPartyAdd As Label = CType(e.Item.FindControl("lblPartyAdd"), Label)
+            Dim lblPartyFullName As Label = CType(e.Item.FindControl("lblPartyFullName"), Label)
+            Dim lblAddress1 As Label = CType(e.Item.FindControl("lblAddress1"), Label)
+            Dim lblAddress2 As Label = CType(e.Item.FindControl("lblAddress2"), Label)
+
+            If Not IsNothing(lblPartyCode) Then
+                lblPartyCode.Text = DataBinder.Eval(e.Item.DataItem, "PartyCode").ToString
+            End If
+            If Not IsNothing(lblPartyAdd) Then
+                lblPartyAdd.Text = DataBinder.Eval(e.Item.DataItem, "PartyAddressCode").ToString
+            End If
+            If Not IsNothing(lblPartyFullName) Then
+                lblPartyFullName.Text = DataBinder.Eval(e.Item.DataItem, "PartyFullName").ToString
+            End If
+            If Not IsNothing(lblAddress1) Then
+                lblAddress1.Text = DataBinder.Eval(e.Item.DataItem, "Address1").ToString
+            End If
+            If Not IsNothing(lblAddress2) Then
+                lblAddress2.Text = DataBinder.Eval(e.Item.DataItem, "Address2").ToString
+            End If
+        End If
+    End Sub
+
+    Protected Sub lnkPartyCode_End_Click(sender As Object, e As EventArgs)
+        Dim item As RepeaterItem = TryCast(TryCast(sender, LinkButton).Parent, RepeaterItem)
+        Dim PartyCode As String = TryCast(item.FindControl("lblPartyCode"), Label).Text.Trim
+        Dim PartyAdd As Double = CDbl(TryCast(item.FindControl("lblPartyAdd"), Label).Text.Trim)
+        Dim eano = (From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
+                 Where p.PartyCode = PartyCode And pa.PartyAddressCode = PartyAdd).SingleOrDefault
+
+        If String.IsNullOrEmpty(eano.p.PartyCode) Then
+            txtEndCusCode.Value = ""
+        Else
+            txtEndCusCode.Value = eano.p.PartyCode
+        End If
+
+        If String.IsNullOrEmpty(eano.p.PartyFullName) Then
+            txtEndCusNameEng.Value = ""
+        Else
+            txtEndCusNameEng.Value = eano.p.PartyFullName
+        End If
+
+        If String.IsNullOrEmpty(eano.pa.Address1) Then
+            txtEndCusAddress1.Value = ""
+        Else
+            txtEndCusAddress1.Value = eano.pa.Address1
+        End If
+
+        If String.IsNullOrEmpty(eano.pa.Address2) Then
+            txtEndCusAddress2.Value = ""
+        Else
+            txtEndCusAddress2.Value = eano.pa.Address2
+        End If
+
+        If String.IsNullOrEmpty(eano.pa.Address3) Then
+            txtEndCusAddress3.Value = ""
+        Else
+            txtEndCusAddress3.Value = eano.pa.Address3
+        End If
+
+        If String.IsNullOrEmpty(eano.pa.Address4) Then
+            txtEndCusAddress4.Value = ""
+        Else
+            txtEndCusAddress4.Value = eano.pa.Address4
+        End If
+
+        If String.IsNullOrEmpty(eano.pa.ZipCode) Then
+            txtEndCusAddress5.Value = ""
+        Else
+            txtEndCusAddress5.Value = eano.pa.ZipCode
+        End If
+
+        If String.IsNullOrEmpty(eano.pa.email) Then
+            txtEndCusEmail.Value = ""
+        Else
+            txtEndCusEmail.Value = eano.pa.email
+        End If
+
+        If String.IsNullOrEmpty(eano.pa.Attn) Then
+            txtEndCusContact.Value = ""
+        Else
+            txtEndCusContact.Value = eano.pa.Attn
+        End If
+    End Sub
+
+    Protected Sub lnkPartyCode_Group_Click(sender As Object, e As EventArgs)
+        Dim item As RepeaterItem = TryCast(TryCast(sender, LinkButton).Parent, RepeaterItem)
+        Dim PartyCode As String = TryCast(item.FindControl("lblPartyCode"), Label).Text.Trim
+        Dim eano = (From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
+                 Where p.PartyCode = PartyCode).SingleOrDefault
+
+        If String.IsNullOrEmpty(eano.p.PartyCode) Then
+            txtCustomerCodeGroup.Value = ""
+        Else
+            txtCustomerCodeGroup.Value = eano.p.PartyCode
+        End If
+
+        If String.IsNullOrEmpty(eano.p.PartyFullName) Then
+            txtCustomerENGGroup.Value = ""
+        Else
+            txtCustomerENGGroup.Value = eano.p.PartyFullName
+        End If
+
+    End Sub
+
+    Protected Sub dgvCustomerGroup_ItemDataBound(sender As Object, e As RepeaterItemEventArgs)
+        If e.Item.ItemType = ListItemType.Item OrElse e.Item.ItemType = ListItemType.AlternatingItem Then
+            Dim lblPartyCode As Label = CType(e.Item.FindControl("lblPartyCode"), Label)
+            Dim lblPartyAdd As Label = CType(e.Item.FindControl("lblPartyAdd"), Label)
+            Dim lblPartyFullName As Label = CType(e.Item.FindControl("lblPartyFullName"), Label)
+           
+            If Not IsNothing(lblPartyCode) Then
+                lblPartyCode.Text = DataBinder.Eval(e.Item.DataItem, "PartyCode").ToString
+            End If
+            If Not IsNothing(lblPartyAdd) Then
+                lblPartyAdd.Text = DataBinder.Eval(e.Item.DataItem, "PartyAddressCode").ToString
+            End If
+            If Not IsNothing(lblPartyFullName) Then
+                lblPartyFullName.Text = DataBinder.Eval(e.Item.DataItem, "PartyFullName").ToString
+            End If
+            
+        End If
+    End Sub
+
+    Protected Sub dcbSales_SelectedIndexChanged(sender As Object, e As EventArgs)
+
+        Dim mas = (From m In db.tblMasterCode2 Where m.Code = dcbSales.Text.Trim Select m.Code, m.Description).SingleOrDefault
+        txtSalesName.Value = mas.Description
     End Sub
 End Class

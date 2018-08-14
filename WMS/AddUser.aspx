@@ -1,4 +1,4 @@
-﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="AddUser.aspx.vb" MasterPageFile="~/Home.Master" Inherits="WMS.AddUser"  %>
+﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="AddUser.aspx.vb" MasterPageFile="~/Home.Master" Inherits="WMS.AddUser" EnableEventValidation="false" EnableViewState="true"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <form id="form1" runat="server">

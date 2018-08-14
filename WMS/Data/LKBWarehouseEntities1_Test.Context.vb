@@ -25,7 +25,6 @@ Partial Public Class LKBWarehouseEntities1_Test
     Public Overridable Property Branches() As DbSet(Of Branch)
     Public Overridable Property Departments() As DbSet(Of Department)
     Public Overridable Property sysdiagrams() As DbSet(Of sysdiagram)
-    Public Overridable Property tblExpGenLOTs() As DbSet(Of tblExpGenLOT)
     Public Overridable Property tblGenAutoRunNoes() As DbSet(Of tblGenAutoRunNo)
     Public Overridable Property tblLogUsers() As DbSet(Of tblLogUser)
     Public Overridable Property tblMasterCode2() As DbSet(Of tblMasterCode2)
@@ -125,5 +124,6 @@ Partial Public Class LKBWarehouseEntities1_Test
     Public Overridable Property tblWHRemarkMoveJobs() As DbSet(Of tblWHRemarkMoveJob)
     Public Overridable Property tblWHRequestedISSUEs() As DbSet(Of tblWHRequestedISSUE)
     Public Overridable Property tblWHStockMovements() As DbSet(Of tblWHStockMovement)
+    Public Overridable Property tblExpGenLOTs() As DbSet(Of tblExpGenLOT)
 
 End Class

@@ -57,7 +57,7 @@ Partial Public Class tblExpGenLOT
     Public Property DOContactPerson As String
     Public Property IEATNo As String
     Public Property EntryNo As String
-    Public Property DeliveryDate As Date
+    Public Property DeliveryDate As Nullable(Of Date)
     Public Property CustomerCode As String
     Public Property CustomerENG As String
     Public Property CustomerStreet As String
@@ -92,7 +92,7 @@ Partial Public Class tblExpGenLOT
     Public Property Box As Nullable(Of Double)
     Public Property UnitBox As String
     Public Property JOBBranch As String
-    Public Property IEATDate As Date
+    Public Property IEATDate As Nullable(Of Date)
     Public Property Status As Nullable(Of Integer)
     Public Property Status1 As String
     Public Property Status2 As String

@@ -464,33 +464,6 @@ Partial Public Class CustomsInvoice
     Protected WithEvents txtForwardingAmount1 As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''DropDownList1 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents DropDownList1 As Global.System.Web.UI.WebControls.DropDownList
-
-    '''<summary>
-    '''txtForwardAmount control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtForwardAmount As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''txtForwardAmount1 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtForwardAmount1 As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
     '''DropDownList2 control.
     '''</summary>
     '''<remarks>
@@ -543,15 +516,6 @@ Partial Public Class CustomsInvoice
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents txtInsuranceAmount1 As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''dcboPackingCharge control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents dcboPackingCharge As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''DropDownList4 control.
@@ -608,13 +572,13 @@ Partial Public Class CustomsInvoice
     Protected WithEvents txtForeignInlandAmount1 As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''dcboLandingCharge control.
+    '''DropDownList6 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents dcboLandingCharge As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents DropDownList6 As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''txtLandingChargeAmount control.
@@ -626,42 +590,6 @@ Partial Public Class CustomsInvoice
     Protected WithEvents txtLandingChargeAmount As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''DropDownList5 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents DropDownList5 As Global.System.Web.UI.WebControls.DropDownList
-
-    '''<summary>
-    '''txtHandlingChargeAmount control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtHandlingChargeAmount As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''txtHandlingChargeAmount1 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtHandlingChargeAmount1 As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''DropDownList6 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents DropDownList6 As Global.System.Web.UI.WebControls.DropDownList
-
-    '''<summary>
     '''txtLandingChargeAmount1 control.
     '''</summary>
     '''<remarks>
@@ -669,33 +597,6 @@ Partial Public Class CustomsInvoice
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents txtLandingChargeAmount1 As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''dcboOtherCharge control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents dcboOtherCharge As Global.System.Web.UI.WebControls.DropDownList
-
-    '''<summary>
-    '''txtOtherChargeAmount control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtOtherChargeAmount As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''txtOtherChargeAmount1 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtOtherChargeAmount1 As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
     '''DropDownList7 control.
@@ -777,24 +678,6 @@ Partial Public Class CustomsInvoice
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents rdbOnBehalfOf As Global.System.Web.UI.WebControls.RadioButton
-
-    '''<summary>
-    '''dcboCarLicense control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents dcboCarLicense As Global.System.Web.UI.WebControls.DropDownList
-
-    '''<summary>
-    '''dcboDriverName control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents dcboDriverName As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''chkEnablebehalf_EASJOB control.
@@ -1823,24 +1706,6 @@ Partial Public Class CustomsInvoice
     Protected WithEvents txtVolumeCBM_PACKINGLIST As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtMeasurement_Width_PACKINGLIST control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtMeasurement_Width_PACKINGLIST As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''txtMeasurement_Height_PACKINGLIST control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtMeasurement_Height_PACKINGLIST As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
     '''rdbCM control.
     '''</summary>
     '''<remarks>
@@ -1857,33 +1722,6 @@ Partial Public Class CustomsInvoice
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents rdbInch As Global.System.Web.UI.WebControls.RadioButton
-
-    '''<summary>
-    '''txtPLTNetAmount_PACKINGLIST control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtPLTNetAmount_PACKINGLIST As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''txtCTNNetAmount_PACKINGLIST control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtCTNNetAmount_PACKINGLIST As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''txtTotal_PACKINGLIST control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtTotal_PACKINGLIST As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
     '''NetWeight_PACKINGLIST control.
@@ -1958,6 +1796,24 @@ Partial Public Class CustomsInvoice
     Protected WithEvents txtPONo_PACKINGLIST As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
+    '''txtMeasurement_Width_PACKINGLIST control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtMeasurement_Width_PACKINGLIST As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''txtMeasurement_Height_PACKINGLIST control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtMeasurement_Height_PACKINGLIST As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
     '''txtLenght_PACKINGLIST control.
     '''</summary>
     '''<remarks>
@@ -1967,40 +1823,31 @@ Partial Public Class CustomsInvoice
     Protected WithEvents txtLenght_PACKINGLIST As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''ddlPLTNetAmount_PACKINGLIST control.
+    '''txtPLTNetAmount_PACKINGLIST control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlPLTNetAmount_PACKINGLIST As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtPLTNetAmount_PACKINGLIST As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtPLTNetAmount2_PACKINGLIST control.
+    '''txtCTNNetAmount_PACKINGLIST control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtPLTNetAmount2_PACKINGLIST As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtCTNNetAmount_PACKINGLIST As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''ddlCTNNetAmount_PACKINGLIST control.
+    '''txtTotal_PACKINGLIST control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlCTNNetAmount_PACKINGLIST As Global.System.Web.UI.WebControls.DropDownList
-
-    '''<summary>
-    '''txtCTNNetAmount2_PACKINGLIST control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtCTNNetAmount2_PACKINGLIST As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtTotal_PACKINGLIST As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
     '''chkCopyToDetail control.
