@@ -1364,7 +1364,7 @@
 
                                             <asp:Repeater ID="dgvConsigneeCode" runat="server"  OnItemDataBound="dgvConsigneeCode_ItemDataBound">
                                                 <HeaderTemplate>
-                                                    <table id="example1" class="table table-bordered table-striped table-responsive" style="overflow: auto;">
+                                                    <table id="example2" class="table table-bordered table-striped table-responsive" style="overflow: auto;">
                                                         <thead>
                                                             <tr>
                                                                 <th>select</th>

@@ -406,30 +406,6 @@ txtForwardingAmount1 control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.CustomsInvoice.DropDownList1">
-	<summary>
-DropDownList1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.CustomsInvoice.txtForwardAmount">
-	<summary>
-txtForwardAmount control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.CustomsInvoice.txtForwardAmount1">
-	<summary>
-txtForwardAmount1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
 </member><member name="F:WMS.CustomsInvoice.DropDownList2">
 	<summary>
 DropDownList2 control.
@@ -473,14 +449,6 @@ To modify move field declaration from designer file to code-behind file.
 </member><member name="F:WMS.CustomsInvoice.txtInsuranceAmount1">
 	<summary>
 txtInsuranceAmount1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.CustomsInvoice.dcboPackingCharge">
-	<summary>
-dcboPackingCharge control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -534,9 +502,9 @@ txtForeignInlandAmount1 control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.CustomsInvoice.dcboLandingCharge">
+</member><member name="F:WMS.CustomsInvoice.DropDownList6">
 	<summary>
-dcboLandingCharge control.
+DropDownList6 control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -550,65 +518,9 @@ txtLandingChargeAmount control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.CustomsInvoice.DropDownList5">
-	<summary>
-DropDownList5 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.CustomsInvoice.txtHandlingChargeAmount">
-	<summary>
-txtHandlingChargeAmount control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.CustomsInvoice.txtHandlingChargeAmount1">
-	<summary>
-txtHandlingChargeAmount1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.CustomsInvoice.DropDownList6">
-	<summary>
-DropDownList6 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
 </member><member name="F:WMS.CustomsInvoice.txtLandingChargeAmount1">
 	<summary>
 txtLandingChargeAmount1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.CustomsInvoice.dcboOtherCharge">
-	<summary>
-dcboOtherCharge control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.CustomsInvoice.txtOtherChargeAmount">
-	<summary>
-txtOtherChargeAmount control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.CustomsInvoice.txtOtherChargeAmount1">
-	<summary>
-txtOtherChargeAmount1 control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -681,22 +593,6 @@ To modify move field declaration from designer file to code-behind file.
 </member><member name="F:WMS.CustomsInvoice.rdbOnBehalfOf">
 	<summary>
 rdbOnBehalfOf control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.CustomsInvoice.dcboCarLicense">
-	<summary>
-dcboCarLicense control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.CustomsInvoice.dcboDriverName">
-	<summary>
-dcboDriverName control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -1614,22 +1510,6 @@ txtVolumeCBM_PACKINGLIST control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.CustomsInvoice.txtMeasurement_Width_PACKINGLIST">
-	<summary>
-txtMeasurement_Width_PACKINGLIST control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.CustomsInvoice.txtMeasurement_Height_PACKINGLIST">
-	<summary>
-txtMeasurement_Height_PACKINGLIST control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
 </member><member name="F:WMS.CustomsInvoice.rdbCM">
 	<summary>
 rdbCM control.
@@ -1641,30 +1521,6 @@ To modify move field declaration from designer file to code-behind file.
 </member><member name="F:WMS.CustomsInvoice.rdbInch">
 	<summary>
 rdbInch control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.CustomsInvoice.txtPLTNetAmount_PACKINGLIST">
-	<summary>
-txtPLTNetAmount_PACKINGLIST control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.CustomsInvoice.txtCTNNetAmount_PACKINGLIST">
-	<summary>
-txtCTNNetAmount_PACKINGLIST control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.CustomsInvoice.txtTotal_PACKINGLIST">
-	<summary>
-txtTotal_PACKINGLIST control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -1694,9 +1550,6 @@ ddlUnit_PACKINGLIST control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-<<<<<<< HEAD
-</member><member name="F:WMS.ExpGenLot.TabName">
-=======
 </member><member name="F:WMS.CustomsInvoice.txtUnit_PACKINGLIST">
 	<summary>
 txtUnit_PACKINGLIST control.
@@ -1737,8 +1590,23 @@ txtPONo_PACKINGLIST control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
+</member><member name="F:WMS.CustomsInvoice.txtMeasurement_Width_PACKINGLIST">
+	<summary>
+txtMeasurement_Width_PACKINGLIST control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.CustomsInvoice.txtMeasurement_Height_PACKINGLIST">
+	<summary>
+txtMeasurement_Height_PACKINGLIST control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
 </member><member name="F:WMS.CustomsInvoice.txtLenght_PACKINGLIST">
->>>>>>> c16f266c6a7f979a8bb774486fb3aead2a3e9af3
 	<summary>
 txtLenght_PACKINGLIST control.
 </summary>
@@ -1746,33 +1614,25 @@ txtLenght_PACKINGLIST control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.CustomsInvoice.ddlPLTNetAmount_PACKINGLIST">
+</member><member name="F:WMS.CustomsInvoice.txtPLTNetAmount_PACKINGLIST">
 	<summary>
-ddlPLTNetAmount_PACKINGLIST control.
+txtPLTNetAmount_PACKINGLIST control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.CustomsInvoice.txtPLTNetAmount2_PACKINGLIST">
+</member><member name="F:WMS.CustomsInvoice.txtCTNNetAmount_PACKINGLIST">
 	<summary>
-txtPLTNetAmount2_PACKINGLIST control.
+txtCTNNetAmount_PACKINGLIST control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.CustomsInvoice.ddlCTNNetAmount_PACKINGLIST">
+</member><member name="F:WMS.CustomsInvoice.txtTotal_PACKINGLIST">
 	<summary>
-ddlCTNNetAmount_PACKINGLIST control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.CustomsInvoice.txtCTNNetAmount2_PACKINGLIST">
-	<summary>
-txtCTNNetAmount2_PACKINGLIST control.
+txtTotal_PACKINGLIST control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -6163,46 +6023,6 @@ dgvInvNo control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.ExpGenLot.txtTypeCode">
-	<summary>
-txtTypeCode control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.ExpGenLot.txtRunNo">
-	<summary>
-txtRunNo control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.ExpGenLot.txtMountNo">
-	<summary>
-txtMountNo control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.ExpGenLot.txtYearNo">
-	<summary>
-txtYearNo control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.ExpGenLot.txtDigitNo">
-	<summary>
-txtDigitNo control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
 </member><member name="F:WMS.ExpGenLot.TabName">
 	<summary>
 TabName control.
@@ -10195,9 +10015,6 @@ txtPackageWidth control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-<<<<<<< HEAD
-</member><member name="F:WMS.CustomsInvoice.DropDownList2">
-=======
 </member><member name="F:WMS.ViewGoods.txtPackageHeigh">
 	<summary>
 txtPackageHeigh control.
@@ -10223,7 +10040,6 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member><member name="F:WMS.ViewGoods.txtPackageVolume">
->>>>>>> c16f266c6a7f979a8bb774486fb3aead2a3e9af3
 	<summary>
 txtPackageVolume control.
 </summary>
@@ -10271,9 +10087,6 @@ txtOwner control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-<<<<<<< HEAD
-</member><member name="F:WMS.CustomsInvoice.DropDownList4">
-=======
 </member><member name="F:WMS.ViewGoods.txtQty">
 	<summary>
 txtQty control.
@@ -10283,7 +10096,6 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member><member name="F:WMS.ChkStatMoveWH.form1">
->>>>>>> c16f266c6a7f979a8bb774486fb3aead2a3e9af3
 	<summary>
 form1 control.
 </summary>
@@ -10331,15 +10143,9 @@ ScriptManager1 control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-<<<<<<< HEAD
-</member><member name="F:WMS.CustomsInvoice.DropDownList6">
-	<summary>
-DropDownList6 control.
-=======
 </member><member name="F:WMS.PrepareLotWH.ddlJobNo_PreGoodRec">
 	<summary>
 ddlJobNo_PreGoodRec control.
->>>>>>> c16f266c6a7f979a8bb774486fb3aead2a3e9af3
 </summary>
 	<remarks>
 Auto-generated field.
@@ -10353,9 +10159,6 @@ txtdatepickerJobdate_PreGoodRec control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-<<<<<<< HEAD
-</member><member name="F:WMS.CustomsInvoice.txtLandingChargeAmount1">
-=======
 </member><member name="F:WMS.PrepareLotWH.CalendarExtenderJobdate_PreGoodRec">
 	<summary>
 CalendarExtenderJobdate_PreGoodRec control.
@@ -10389,7 +10192,6 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member><member name="F:WMS.PrepareLotWH.txtAddress1Owner_PreGoodRec">
->>>>>>> c16f266c6a7f979a8bb774486fb3aead2a3e9af3
 	<summary>
 txtAddress1Owner_PreGoodRec control.
 </summary>
@@ -10397,9 +10199,6 @@ txtAddress1Owner_PreGoodRec control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-<<<<<<< HEAD
-</member><member name="F:WMS.CustomsInvoice.DropDownList7">
-=======
 </member><member name="F:WMS.PrepareLotWH.txtAddress2Owner_PreGoodRec">
 	<summary>
 txtAddress2Owner_PreGoodRec control.
@@ -10425,7 +10224,6 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member><member name="F:WMS.PrepareLotWH.ddlWHManagement_PreGoodRec">
->>>>>>> c16f266c6a7f979a8bb774486fb3aead2a3e9af3
 	<summary>
 ddlWHManagement_PreGoodRec control.
 </summary>
@@ -10497,9 +10295,6 @@ txtAddress1Customer_PreGoodRec control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-<<<<<<< HEAD
-</member><member name="F:WMS.CustomsInvoice.chkEnablebehalf_EASJOB">
-=======
 </member><member name="F:WMS.PrepareLotWH.txtAddress2Customer_PreGoodRec">
 	<summary>
 txtAddress2Customer_PreGoodRec control.
@@ -10517,7 +10312,6 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member><member name="F:WMS.PrepareLotWH.txtAddress4Customer_PreGoodRec">
->>>>>>> c16f266c6a7f979a8bb774486fb3aead2a3e9af3
 	<summary>
 txtAddress4Customer_PreGoodRec control.
 </summary>
@@ -11429,9 +11223,6 @@ CalendarExtender1 control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-<<<<<<< HEAD
-</member><member name="F:WMS.CustomsInvoice.rdbCM">
-=======
 </member><member name="F:WMS.RptStatusPick.form1">
 	<summary>
 form1 control.
@@ -11449,7 +11240,6 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member><member name="F:WMS.RptStatusPick.ddlBranch">
->>>>>>> c16f266c6a7f979a8bb774486fb3aead2a3e9af3
 	<summary>
 ddlBranch control.
 </summary>
@@ -11465,9 +11255,6 @@ ddlCusCode control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-<<<<<<< HEAD
-</member><member name="F:WMS.CustomsInvoice.NetWeight_PACKINGLIST">
-=======
 </member><member name="F:WMS.RptStatusPick.btnReport">
 	<summary>
 btnReport control.
@@ -11493,7 +11280,6 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member><member name="F:WMS.RptTranPick.txtReceiveNo">
->>>>>>> c16f266c6a7f979a8bb774486fb3aead2a3e9af3
 	<summary>
 txtReceiveNo control.
 </summary>
@@ -11557,79 +11343,41 @@ rdbPallet control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-<<<<<<< HEAD
-</member><member name="F:WMS.CustomsInvoice.txtMeasurement_Width_PACKINGLIST">
-	<summary>
-txtMeasurement_Width_PACKINGLIST control.
-=======
 </member><member name="F:WMS.MasterLocation.rdbPalletNone">
 	<summary>
 rdbPalletNone control.
->>>>>>> c16f266c6a7f979a8bb774486fb3aead2a3e9af3
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-<<<<<<< HEAD
-</member><member name="F:WMS.CustomsInvoice.txtMeasurement_Height_PACKINGLIST">
-	<summary>
-txtMeasurement_Height_PACKINGLIST control.
-=======
 </member><member name="F:WMS.MasterLocation.txtWidth">
 	<summary>
 txtWidth control.
->>>>>>> c16f266c6a7f979a8bb774486fb3aead2a3e9af3
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-<<<<<<< HEAD
-</member><member name="F:WMS.CustomsInvoice.txtLenght_PACKINGLIST">
-	<summary>
-txtLenght_PACKINGLIST control.
-=======
 </member><member name="F:WMS.MasterLocation.txtLong">
 	<summary>
 txtLong control.
->>>>>>> c16f266c6a7f979a8bb774486fb3aead2a3e9af3
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-<<<<<<< HEAD
-</member><member name="F:WMS.CustomsInvoice.txtPLTNetAmount_PACKINGLIST">
-	<summary>
-txtPLTNetAmount_PACKINGLIST control.
-=======
 </member><member name="F:WMS.MasterLocation.txtHeigth">
 	<summary>
 txtHeigth control.
->>>>>>> c16f266c6a7f979a8bb774486fb3aead2a3e9af3
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-<<<<<<< HEAD
-</member><member name="F:WMS.CustomsInvoice.txtCTNNetAmount_PACKINGLIST">
-	<summary>
-txtCTNNetAmount_PACKINGLIST control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.CustomsInvoice.txtTotal_PACKINGLIST">
-	<summary>
-txtTotal_PACKINGLIST control.
-=======
 </member><member name="F:WMS.MasterLocation.txtValume">
 	<summary>
 txtValume control.
->>>>>>> c16f266c6a7f979a8bb774486fb3aead2a3e9af3
 </summary>
 	<remarks>
 Auto-generated field.
@@ -15387,6 +15135,14 @@ ddlWeightInvoice control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
+</member><member name="F:WMS.CreateRec.txtRemarkInvoice">
+	<summary>
+txtRemarkInvoice control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
 </member><member name="F:WMS.CreateRec.txtShipmentInvoice">
 	<summary>
 txtShipmentInvoice control.
@@ -15950,6 +15706,30 @@ To modify move field declaration from designer file to code-behind file.
 </member><member name="F:WMS.CreateRec.Repeater8">
 	<summary>
 Repeater8 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.CreateRec.JobnoPanel">
+	<summary>
+JobnoPanel control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.CreateRec.JobnoUpdatePanel">
+	<summary>
+JobnoUpdatePanel control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.CreateRec.Repeater9">
+	<summary>
+Repeater9 control.
 </summary>
 	<remarks>
 Auto-generated field.
