@@ -1,39 +1,211 @@
-﻿Public Class CustomsInvoice
+﻿Option Explicit On
+Option Strict On
+
+
+Public Class CustomsInvoice
     Inherits System.Web.UI.Page
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        If Not Me.IsPostBack Then
+            header_.Disabled = True
+            job_1.Disabled = True
+            deetail_.Disabled = True
+            list_.Disabled = True
+            btnSaveNew.Visible = False
+            btnSaveEdit.Visible = False
+        End If
+    End Sub
+
+    Protected Sub btnAddNew_ServerClick(sender As Object, e As EventArgs)
+        UnlockDATA()
+        btnSaveNew.Visible = True
+        btnSaveEdit.Visible = False
+    End Sub
+
+    Protected Sub btnEdit_ServerClick(sender As Object, e As EventArgs)
+        btnSaveNew.Visible = False
+        btnSaveEdit.Visible = True
+    End Sub
+    Private Sub UnlockDATA()
+        header_.Disabled = False
 
     End Sub
 
-    Protected Sub btnAddNewItem_ItemDetail_ServerClick(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Protected Sub btnSaveModify_ItemDetail_ServerClick(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Protected Sub btnDelete_ItemDetail_ServerClick(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Protected Sub btnCreatePacking_ItemDetail_ServerClick(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Protected Sub NetWeight_PACKINGLIST_ServerClick(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Protected Sub btnAddNewItem_PACKINGLIST_ServerClick(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Protected Sub btnSaveModify_PACKINGLIST_ServerClick(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Protected Sub btnDelete_PACKINGLIST_ServerClick(sender As Object, e As EventArgs)
-
+    Private Sub ClearDATA()
+        'cdbFromprint.Text = ""
+        'cbExchange.Checked = False
+        'cbNoExchange.Checked = False
+        'cbRefNo.Checked = False
+        'cbNoRefNo.Checked = False
+        'cbInland.Checked = False
+        'cbNoInland.Checked = False
+        'txtInland.Text = ""
+        'txtApp.Text = ""
+        'txtReferenceNo.Text = ""
+        'txtInvoiceNo.Text = ""
+        'txtPurechaseOrderNo.Text = ""
+        'txtExporterCode.Text = ""
+        'txtExportEng.Text = ""
+        'txtStreet_Number.Text = ""
+        'txtDistrict.Text = ""
+        'txtSubProvince.Text = ""
+        'txtProvince.Text = ""
+        'txtPostCode.Text = ""
+        'txtCompensateCode.Text = ""
+        'txtConsignneeCode.Text = ""
+        'txtConsignneeEng.Text = ""
+        'txtConsignneeStreet_Number.Text = ""
+        'txtConsignneeDistrict.Text = ""
+        'txtConsignneeSubProvince.Text = ""
+        'txtConsignneeProvince.Text = ""
+        'txtConsignneePostCode.Text = ""
+        'txtConsignneeEMail.Text = ""
+        'dcboPurchaseCountry.Text = ""
+        'txtPurchaseCountry.Text = ""
+        'cboDestinationCountry.Text = ""
+        'txtDestinationCountry.Text = ""
+        'dcboCountry.Text = ""
+        'txtCountry.Text = ""
+        'dcboTermofPayment.Text = ""
+        'dcboTerm.Text = ""
+        'txtTotalNetWeight.Text = "0.0"
+        'txtSumItemWeight.Text = "0.0"
+        'dcboTotalInvoice.Text = ""
+        'txtTotalInvoiceAmount.Text = "0.0"
+        'txtTotalInvoiceAmount1.Text = "0.0"
+        'dcboForwarding.Text = ""
+        'txtForwardingAmount.Text = "0.0"
+        'txtForwardingAmount1.Text = "0.0"
+        'dcboFreight.Text = ""
+        'txtFreightAmount.Text = "0.0"
+        'txtFreightAmount1.Text = "0.0"
+        'dcboInsurance.Text = ""
+        'txtInsuranceAmount.Text = "0.0"
+        'txtInsuranceAmount1.Text = "0.0"
+        'dcboPackingCharge.Text = ""
+        'txtPackingChargeAmount.Text = "0.0"
+        'txtPackingChargeAmount1.Text = "0.0"
+        'dcboForeignInland.Text = ""
+        'txtForeignInlandAmount.Text = "0.0"
+        'txtForeignInlandAmount1.Text = "0.0"
+        'dcboLandingCharge.Text = ""
+        'txtLandingChargeAmount.Text = "0.0"
+        'txtLandingChargeAmount1.Text = "0.0"
+        'dcboOtherCharge.Text = ""
+        'txtOtherChargeAmount.Text = "0.0"
+        'txtOtherChargeAmount1.Text = "0.0"
+        'txtEASExporterCode.Text = ""
+        'txtEASNameEng.Text = ""
+        'txtEASStreet_Number.Text = ""
+        'txtEASDistrict.Text = ""
+        'txtEASSubProvince.Text = ""
+        'txtEASProvince.Text = ""
+        'txtEASPostCode.Text = ""
+        'txtEASCompensateCode.Text = ""
+        'txtEASPostCode.Text = ""
+        'txtCustomerCode.Text = ""
+        'txtCustomerEng.Text = ""
+        'txtCustomerAddress.Text = ""
+        'txtCustomerEMail.Text = ""
+        'txtCustomerTelNo.Text = ""
+        'txtCustomerFaxNo.Text = ""
+        'txtCustomerContactPerson.Text = ""
+        'txtEASInvREFNo.Text = ""
+        'txtEASLOTNo.Text = ""
+        'txtCustomerRefNo.Text = "0"
+        'txtSpecialInstruction.Text = ""
+        'dcboShipMode.Text = ""
+        'dcboDeliveryTerm.Text = ""
+        'dcboShippingMark.Text = ""
+        'txtEASRemark.Text = ""
+        'txtTotalCurrency.Text = ""
+        'txtEASCustomerCode.Text = ""
+        'txtEASCustomerEng1.Text = ""
+        'txtEASCustomerAddress.Text = ""
+        'txtEASEmail.Text = ""
+        'txtEASTelNo.Text = ""
+        'txtEASFaxNo.Text = ""
+        'txtEASContactPerson.Text = ""
+        'dcboBrand.Text = ""
+        'txtProductYear.Text = ""
+        'dcboNatureOfTrn.Text = ""
+        'dcboPurchaseCtry.Text = ""
+        'dcboOriginCtry.Text = ""
+        'txtItemNo.Text = ""
+        'txtProductCode.Text = ""
+        'txtProductDesc1.Text = ""
+        'txtProductDesc2.Text = ""
+        'txtProductDesc3.Text = ""
+        'txtInvQty.Text = ""
+        'dcboInvQtyUnit.Text = ""
+        'txtInvQtyUnit.Text = ""
+        'dcboCurrency.Text = ""
+        'txtExchangeRate.Text = "0.0"
+        'txtWeight.Text = "0.0"
+        'dcboWeightUnit.Text = ""
+        'txtWeightUnit.Text = ""
+        'txtPriceForeigh.Text = "0.0"
+        'txtPriceForeighAmount.Text = "0.0"
+        'txtQuantity.Text = "0.0"
+        'dcboQuantityUnit.Text = ""
+        'txtQuantityUnit.Text = ""
+        'txtPriceBath.Text = "0.0"
+        'txtPriceBathAmount.Text = "0.0"
+        'txtTariffCode.Text = ""
+        'txtStatisticalCode.Text = ""
+        'txtTariffSequence.Text = ""
+        'txtProductAttribute1.Text = ""
+        'txtProductAttribute2.Text = ""
+        'txtPriceIncreaseForeign.Text = "0.0"
+        'txtPriceIncreseBath.Text = "0.0"
+        'txtDeclarationLine.Text = ""
+        'txtFormulaNo.Text = ""
+        'txtBOILicenseNo.Text = ""
+        'txt19BisTransferNo.Text = ""
+        'txtBondFurmulaNo.Text = ""
+        'dcboForwardingCurrency.Text = ""
+        'txtForwardingForiegnAmount.Text = "0.0"
+        'txtForwardingExchangeRate.Text = "0.0"
+        'txtForwardingBathAmount.Text = "0.0"
+        'dcboFreight.Text = ""
+        'txtFreightForiegnAmount.Text = "0.0"
+        'txtFreightExchangeRate.Text = "0.0"
+        'txtFreightBathAmount.Text = "0.0"
+        'dcboInsurance.Text = ""
+        'txtInsuranceForiegnAmount.Text = "0.0"
+        'txtInsuranceExchangeRate.Text = "0.0"
+        'txtInsuranceBathAmount.Text = "0.0"
+        'dcboInsurance.Text = ""
+        'txtInsuranceForiegnAmount.Text = "0.0"
+        'txtInsuranceExchangeRate.Text = "0.0"
+        'txtInsuranceBathAmount.Text = "0.0"
+        'dcboPackingCharge.Text = ""
+        'txtPackageChargeFoiegnAmount.Text = "0.0"
+        'txtPackageChargeExchangeRate.Text = "0.0"
+        'txtPackageChargeBathAmount.Text = "0.0"
+        'dcboForeighnCurrency.Text = ""
+        'txtForeighnForiegnAmount.Text = "0.0"
+        'txtForeighnExchangeRate.Text = "0.0"
+        'txtForeighnBathAmount.Text = "0.0"
+        'dcboLandingCharge.Text = ""
+        'txtLandingChargeForiegnAmount.Text = "0.0"
+        'txtLandingChargeExchangeRate.Text = "0.0"
+        'txtLandingChargeBathAmount.Text = "0.0"
+        'dcboOtherCharge.Text = ""
+        'txtOtherChargeForiegnAmount.Text = "0.0"
+        'txtOtherChargeExchangeRate.Text = "0.0"
+        'txtOtherChargeBathAmount.Text = "0.0"
+        'txtItemRemark.Text = ""
+        'txtPLTNetAmount.Text = "0.0"
+        'dcboUnitPLT.Text = ""
+        'txtPLTUnit.Text = ""
+        'txtCTNNetAmount.Text = "0.0"
+        'dcboCTN.Text = ""
+        'txtCTNUnit.Text = ""
+        'txtTotalGrossWeight.Text = "0.0"
+        'txtTotalQuantity.Text = "0.0"
+        'txtTotalQuantityINV.Text = "0.0"
+        'txtVolumAmount.Text = "0.0"
+        'txtTotalText.Text = ""
     End Sub
 End Class

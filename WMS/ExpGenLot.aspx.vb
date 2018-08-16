@@ -40,10 +40,13 @@ Public Class ExpGenLot
                     showVolume()
                     showWeight()
                     showWeightINV()
-                    showVisible()
+                    master_.Disabled = True
+                    detail_.Disabled = True
+                    invoice_.Disabled = True
                     btnSaveNew.Visible = False
                     btnSaveEdit.Visible = False
                     btnSeletJob.Visible = False
+                    showVisible()
                     TabName.Value = Request.Form(TabName.UniqueID)
                 End If
             Else
@@ -1076,20 +1079,25 @@ Public Class ExpGenLot
     End Sub
 
     Protected Sub btnAddNew_ServerClick(sender As Object, e As EventArgs)
-        showVisible()
+        master_.Disabled = False
+        detail_.Disabled = True
         btnSeletJob.Visible = False
         btnSaveEdit.Visible = False
         btnSaveNew.Visible = True
         txtLotNo.Disabled = True
+        showVisible()
         ClearDATA()
     End Sub
 
     Protected Sub btnEdit_ServerClick(sender As Object, e As EventArgs)
-        showVisibleEdit()
+        master_.Disabled = False
+        detail_.Disabled = False
+        invoice_.Disabled = False
         btnSeletJob.Visible = True
         btnSaveEdit.Visible = True
         btnSaveNew.Visible = False
         txtLotNo.Disabled = False
+        showVisibleEdit()
         ClearDATA()
     End Sub
     Private Sub showVisible()

@@ -68,6 +68,15 @@ Partial Public Class ExpGenLot
     Protected WithEvents btnSaveEdit As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
+    '''master_ control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents master_ As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
     '''txtLotNo control.
     '''</summary>
     '''<remarks>
@@ -509,6 +518,15 @@ Partial Public Class ExpGenLot
     Protected WithEvents dgvLotNo As Global.System.Web.UI.WebControls.Repeater
 
     '''<summary>
+    '''detail_ control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents detail_ As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
     '''txtDOCode control.
     '''</summary>
     '''<remarks>
@@ -849,6 +867,15 @@ Partial Public Class ExpGenLot
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents txtCustomerENGGroup As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''invoice_ control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents invoice_ As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
     '''txtIEATNo control.

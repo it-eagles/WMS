@@ -60,7 +60,7 @@
                         <li><a href="#invoice" aria-controls="invoice" role="tab" data-toggle="tab">Invoice</a></li>
                     </ul>
                     <!-- Tab panes -->
-                    <div class="tab-content" style="padding-top: 20px">
+                    <div class="tab-content" style="padding-top: 10px">
                         <div role="tabpanel" class="tab-pane active" id="master">
                             <div class="post">
                                 <div class="row margin-bottom">
@@ -68,8 +68,10 @@
                                     <div class="col-lg-12 col-md-8 ">
                                         <!-- form start -->
                                         <div class="form-horizontal">
-
                                             <div class="box-body">
+                                                <fieldset runat="server" id="master_">
+                                                    <legend></legend>
+                                                    
                                                 <div class="col-lg-12">
                                                     <div class="col-md-5 col-lg-5">
                                                         <div class="form-group">
@@ -460,7 +462,10 @@
                                                         </asp:Repeater>
                                                     </fieldset>
                                                 </div>
+                                        
+                                                </fieldset>
                                             </div>
+                                            
                                         </div>
                                     </div>
                                     <!-- /.col-->
@@ -478,8 +483,9 @@
 
                                         <div class="form-horizontal">
                                             <div class="box-body">
-
-                                                <div class="col-lg-6 col-md-6">
+                                                <fieldset runat="server" id="detail_">
+                                                    <legend></legend>
+                                                    <div class="col-lg-6 col-md-6">
                                                     <fieldset>
                                                         <legend>Delivery Place</legend>
                                                         <div class="form-group">
@@ -567,8 +573,7 @@
 
                                                     </fieldset>
                                                 </div>
-
-                                                <div class="col-lg-6 col-md-6">
+                                                    <div class="col-lg-6 col-md-6">
                                                     <fieldset>
                                                         <legend>Customer</legend>
                                                         <div class="form-group">
@@ -652,7 +657,7 @@
                                                     </fieldset>
 
                                                 </div>
-                                                <div class="col-lg-6 col-md-6">
+                                                    <div class="col-lg-6 col-md-6">
                                                     <fieldset>
                                                         <legend>Pick Up Place</legend>
                                                         <div class="form-group">
@@ -735,7 +740,7 @@
                                                     </fieldset>
 
                                                 </div>
-                                                <div class="col-lg-6 col-md-6">
+                                                    <div class="col-lg-6 col-md-6">
                                                     <fieldset>
                                                         <legend>End Customer</legend>
                                                         <div class="form-group">
@@ -816,7 +821,7 @@
                                                         </div>
                                                     </fieldset>
                                                 </div>
-                                                <div class="col-lg-6 col-md-6">
+                                                    <div class="col-lg-6 col-md-6">
                                                     <fieldset>
                                                         <legend>Customer Group</legend>
                                                         <div class="form-group">
@@ -838,6 +843,8 @@
                                                     </fieldset>
 
                                                 </div>
+                                                </fieldset>
+                                                                                                                                                                                                                                 
                                                 <!-- /.box-body -->
                                             </div>
                                         </div>
@@ -855,8 +862,9 @@
                                     <div class="col-lg-12 col-md-12">
                                         <div class="form-horizontal">
                                             <div class="box-body">
-
-                                                <div class="col-lg-6">
+                                                <fieldset runat="server" id="invoice_"> 
+                                                    <legend></legend>
+                                                    <div class="col-lg-6">
                                                     <fieldset>
                                                         <legend></legend>
                                                         <div class="form-group">
@@ -1090,7 +1098,7 @@
 
                                                     </fieldset>
                                                 </div>
-                                                <div class="col-lg-6">
+                                                    <div class="col-lg-6">
                                                     <fieldset>
                                                         <legend></legend>
                                                         <div class="form-group">
@@ -1246,14 +1254,12 @@
                                                                         <th>Quantity</th>
                                                                         </table>
                                                                     </FooterTemplate>
-
                                                                 </asp:Repeater>
-
                                                             </div>
                                                         </div>
-                                                    </fieldset>
-                                                  
+                                                    </fieldset>                                                 
                                                 </div>
+                                                </fieldset>                                                                                              
                                             </div>
                                         </div>
                                         <!-- /.box-body -->
