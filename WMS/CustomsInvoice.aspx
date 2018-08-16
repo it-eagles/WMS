@@ -74,9 +74,12 @@
                                                     <input class="form-control" id="txtInvoiceNo" runat="server" autocomplete="off" />
                                                 </div>
 
-                                                <div class="col-md-3">
+                                                <div class="col-md-2">
                                                     <label for="txtPurechaseOrderNo">JOB No</label>
                                                     <input class="form-control" id="txtPurechaseOrderNo" runat="server" autocomplete="off" />
+                                                </div>
+                                                <div class="col-md-2">
+
                                                 </div>
                                             </div>
 
@@ -148,7 +151,7 @@
                                         <div class="form-horizontal ">
 
                                             <div class="box-body">
-                                                <fieldset runat="server" id="header_" >
+                                                <fieldset runat="server" id="header_">
                                                     <legend></legend>
                                                     <div class="col-lg-12 col-md-12">
                                                         <div class="col-md-6 col-lg-6">
@@ -352,13 +355,13 @@
                                                                         <div class="form-group">
                                                                             <label for="txtTruckLicense_Invoice" class="col-sm-4 control-label">Truck License:</label>
                                                                             <div class="col-sm-8">
-                                                                                <asp:DropDownList ID="ddlTruckLicense_Invoice" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                                                <asp:DropDownList ID="dcboCarLicense" CssClass="form-control" runat="server"></asp:DropDownList>
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group">
                                                                             <label for="txtDriverName_Invoice" class="col-sm-4 control-label">Driver Name:</label>
                                                                             <div class="col-sm-8">
-                                                                                <asp:DropDownList ID="ddlDriverName_Invoice" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                                                <asp:DropDownList ID="dcboDriverName" CssClass="form-control" runat="server"></asp:DropDownList>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -375,9 +378,9 @@
                                                                     <label for="txtAmount" class="col-sm-3 control-label">Amount:</label>
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <label for="txtConsigneeCode" class="col-sm-3 control-label">Total Invoice</label>
+                                                                    <label for="dcboTotalInvoice" class="col-sm-3 control-label">Total Invoice</label>
                                                                     <div class="col-md-3">
-                                                                        <asp:DropDownList ID="dcbQuantityUnit" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code">
+                                                                        <asp:DropDownList ID="dcboTotalInvoice" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code">
                                                                             <%--<asp:ListItem Text = "--Select Country--" Value = ""></asp:ListItem>--%>
                                                                         </asp:DropDownList>
                                                                     </div>
@@ -405,9 +408,9 @@
                                                                 </div>
                                                                 <div class="form-group">
 
-                                                                    <label for="txtConsignneeStreet_Number" class="col-sm-3 control-label">Freight</label>
+                                                                    <label for="dcboFreight" class="col-sm-3 control-label">Freight</label>
                                                                     <div class="col-md-3">
-                                                                        <asp:DropDownList ID="DropDownList2" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code">
+                                                                        <asp:DropDownList ID="dcboFreight" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code">
                                                                             <%--<asp:ListItem Text = "--Select Country--" Value = ""></asp:ListItem>--%>
                                                                         </asp:DropDownList>
                                                                     </div>
@@ -421,9 +424,9 @@
                                                                 </div>
                                                                 <div class="form-group">
 
-                                                                    <label for="txtConsignneeDistrict" class="col-sm-3 control-label">Insurance</label>
+                                                                    <label for="dcboInsurance" class="col-sm-3 control-label">Insurance</label>
                                                                     <div class="col-md-3">
-                                                                        <asp:DropDownList ID="DropDownList3" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code">
+                                                                        <asp:DropDownList ID="dcboInsurance" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code">
                                                                             <%--<asp:ListItem Text = "--Select Country--" Value = ""></asp:ListItem>--%>
                                                                         </asp:DropDownList>
                                                                     </div>
@@ -436,9 +439,9 @@
                                                                 </div>
                                                                 <div class="form-group">
 
-                                                                    <label for="txtConsignneeSubProvince" class="col-sm-3 control-label">Packing Charge</label>
+                                                                    <label for="dcboPackingCharge" class="col-sm-3 control-label">Packing Charge</label>
                                                                     <div class="col-md-3">
-                                                                        <asp:DropDownList ID="DropDownList4" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code">
+                                                                        <asp:DropDownList ID="dcboPackingCharge" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code">
                                                                             <%--<asp:ListItem Text = "--Select Country--" Value = ""></asp:ListItem>--%>
                                                                         </asp:DropDownList>
                                                                     </div>
@@ -471,7 +474,7 @@
                                                                 <div class="form-group">
                                                                     <label for="txtConsignneeProvince" class="col-sm-3 control-label">Landing Charge</label>
                                                                     <div class="col-md-3">
-                                                                        <asp:DropDownList ID="DropDownList6" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code">
+                                                                        <asp:DropDownList ID="dcboLandingCharge" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code">
                                                                             <%--<asp:ListItem Text = "--Select Country--" Value = ""></asp:ListItem>--%>
                                                                         </asp:DropDownList>
                                                                     </div>
@@ -487,7 +490,7 @@
 
                                                                     <label for="txtConsignneeEMail" class="col-sm-3 control-label">Total Invoice THB</label>
                                                                     <div class="col-md-3">
-                                                                        <asp:DropDownList ID="DropDownList7" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code">
+                                                                        <asp:DropDownList ID="dcboOtherCharge" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code">
                                                                             <%--<asp:ListItem Text = "--Select Country--" Value = ""></asp:ListItem>--%>
                                                                         </asp:DropDownList>
                                                                     </div>
@@ -571,7 +574,7 @@
                                                     <div class="form-group">
                                                         <div class="checkbox col-sm-6">
                                                             <label>
-                                                                <input type="checkbox" runat="server" id="chkEnablebehalf_EASJOB" />Enable On Behalf Of
+                                                                <input type="checkbox" runat="server" id="chkEnablebehalf_EASJOB" onclick="chkExpEnable2();" />Enable On Behalf Of
                                                             </label>
                                                         </div>
                                                     </div>
@@ -582,60 +585,60 @@
                                                     <fieldset runat="server" id="job_1">
                                                         <legend></legend>
                                                         <div class="col-md-6">
-                                                    <!-- Horizontal Form -->
-                                               
-                                                                <div class="form-group">
-                                                                    <label for="txtOwnerCode_EASJOB" class="col-sm-4 control-label">Owner Code:</label>
-                                                                    <div class="col-sm-8">
-                                                                        <asp:DropDownList ID="ddlOwnerCode_EASJOB" CssClass="form-control" runat="server"></asp:DropDownList>
-                                                                    </div>
+                                                            <!-- Horizontal Form -->
+
+                                                            <div class="form-group">
+                                                                <label for="txtOwnerCode_EASJOB" class="col-sm-4 control-label">Owner Code:</label>
+                                                                <div class="col-sm-8">
+                                                                    <asp:DropDownList ID="ddlOwnerCode_EASJOB" CssClass="form-control" runat="server"></asp:DropDownList>
                                                                 </div>
-                                                                <div class="form-group">
-                                                                    <label for="txtNameOwner_EASJOB" class="col-sm-4 control-label">Name English:</label>
-                                                                    <div class="col-sm-8">
-                                                                        <input class="form-control" id="txtNameOwner_EASJOB" runat="server" />
-                                                                    </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="txtNameOwner_EASJOB" class="col-sm-4 control-label">Name English:</label>
+                                                                <div class="col-sm-8">
+                                                                    <input class="form-control" id="txtNameOwner_EASJOB" runat="server" />
                                                                 </div>
-                                                                <div class="form-group">
-                                                                    <label for="txtAddress1Owner_EASJOB" class="col-sm-4 control-label">Address1:</label>
-                                                                    <div class="col-sm-8">
-                                                                        <input class="form-control" id="txtAddress1Owner_EASJOB" runat="server" />
-                                                                    </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="txtAddress1Owner_EASJOB" class="col-sm-4 control-label">Address1:</label>
+                                                                <div class="col-sm-8">
+                                                                    <input class="form-control" id="txtAddress1Owner_EASJOB" runat="server" />
                                                                 </div>
-                                                                <div class="form-group">
-                                                                    <label for="txtAddress2Owner_EASJOB" class="col-sm-4 control-label">Address2:</label>
-                                                                    <div class="col-sm-8">
-                                                                        <input class="form-control" id="txtAddress2Owner_EASJOB" runat="server" />
-                                                                    </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="txtAddress2Owner_EASJOB" class="col-sm-4 control-label">Address2:</label>
+                                                                <div class="col-sm-8">
+                                                                    <input class="form-control" id="txtAddress2Owner_EASJOB" runat="server" />
                                                                 </div>
-                                                                <div class="form-group">
-                                                                    <label for="txtAddress3Owner_EASJOB" class="col-sm-4 control-label">Address3:</label>
-                                                                    <div class="col-sm-8">
-                                                                        <input class="form-control" id="txtAddress3Owner_EASJOB" runat="server" />
-                                                                    </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="txtAddress3Owner_EASJOB" class="col-sm-4 control-label">Address3:</label>
+                                                                <div class="col-sm-8">
+                                                                    <input class="form-control" id="txtAddress3Owner_EASJOB" runat="server" />
                                                                 </div>
-                                                                <div class="form-group">
-                                                                    <label for="txtAddress4Owner_EASJOB" class="col-sm-4 control-label">Address4:</label>
-                                                                    <div class="col-sm-8">
-                                                                        <input class="form-control" id="txtAddress4Owner_EASJOB" runat="server" />
-                                                                    </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="txtAddress4Owner_EASJOB" class="col-sm-4 control-label">Address4:</label>
+                                                                <div class="col-sm-8">
+                                                                    <input class="form-control" id="txtAddress4Owner_EASJOB" runat="server" />
                                                                 </div>
-                                                                <div class="form-group">
-                                                                    <label for="txtAddress5Owner_EASJOB" class="col-sm-4 control-label">Address5:</label>
-                                                                    <div class="col-sm-8">
-                                                                        <input class="form-control" id="txtAddress5Owner_EASJOB" runat="server" />
-                                                                    </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="txtAddress5Owner_EASJOB" class="col-sm-4 control-label">Address5:</label>
+                                                                <div class="col-sm-8">
+                                                                    <input class="form-control" id="txtAddress5Owner_EASJOB" runat="server" />
                                                                 </div>
-                                                                <div class="form-group">
-                                                                    <label for="txtEmailOwner_EASJOB" class="col-sm-4 control-label">E-mail:</label>
-                                                                    <div class="col-sm-8">
-                                                                        <input class="form-control" id="txtEmailOwner_EASJOB" runat="server" />
-                                                                    </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="txtEmailOwner_EASJOB" class="col-sm-4 control-label">E-mail:</label>
+                                                                <div class="col-sm-8">
+                                                                    <input class="form-control" id="txtEmailOwner_EASJOB" runat="server" />
                                                                 </div>
-                                                               
+                                                            </div>
+
                                                             <fieldset>
                                                                 <legend>Ship TO</legend>
-                                                                  <div class="form-group">
+                                                                <div class="form-group">
                                                                     <label for="txtCustomerCode_EASJOB" class="col-sm-4 control-label">Customer Code:</label>
                                                                     <div class="col-sm-8">
                                                                         <asp:DropDownList ID="ddlCustomerCode_EASJOB" CssClass="form-control" runat="server"></asp:DropDownList>
@@ -677,151 +680,151 @@
                                                                         <input class="form-control" id="txtContractPersonCustomer_EASJOB" runat="server" />
                                                                     </div>
                                                                 </div>
-                                                          
+
                                                             </fieldset>
-                                                                                                                                                           
-                                                        <fieldset runat="server" id="chk">
-                                                            <legend>นำของออกชั่วคราว</legend>
-                                                            <div class="box-body">
 
-                                                                <div class="form-group">
-                                                                    <div class="checkbox col-sm-6">
-                                                                        <label>
-                                                                            <input type="checkbox" runat="server" id="chkcheckout" />นำของออกชั่วคราว
-                                                                        </label>
-                                                                    </div>
-                                                                    <div class="col-sm--">
-                                                                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">ใส่ยอดเงินที่ใช้</button>
+                                                            <fieldset runat="server" id="chk">
+                                                                <legend>นำของออกชั่วคราว</legend>
+                                                                <div class="box-body">
+
+                                                                    <div class="form-group">
+                                                                        <div class="checkbox col-sm-6">
+                                                                            <label>
+                                                                                <input type="checkbox" runat="server" id="chkcheckout" />นำของออกชั่วคราว
+                                                                            </label>
+                                                                        </div>
+                                                                        <div class="col-sm--">
+                                                                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">ใส่ยอดเงินที่ใช้</button>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                            <!-- /.box-body -->
-                                                        </fieldset>
-                                                 </div>
+                                                                <!-- /.box-body -->
+                                                            </fieldset>
+                                                        </div>
                                                         <div class="col-md-6">
-                                                   
-                                                                <div class="form-group">
-                                                                    <label for="txtEASINV_EASJOB" class="col-sm-3 control-label">EAS INV REF No:</label>
-                                                                    <div class="col-sm-8">
-                                                                        <input class="form-control" id="txtEASINV_EASJOB" runat="server" />
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label for="txtEASLOT_EASJOB" class="col-sm-3 control-label">EAS LOT No:</label>
-                                                                    <div class="col-sm-8">
-                                                                        <input class="form-control" id="txtEASLOT_EASJOB" runat="server" />
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label for="txtReferenceLine_EASJOB" class="col-sm-3 control-label">Reference Line:</label>
-                                                                    <div class="col-sm-8">
-                                                                        <input class="form-control" id="txtReferenceLine_EASJOB" runat="server" />
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label for="txtTruckWaybill_EASJOB" class="col-sm-3 control-label">Truck Waybill:</label>
-                                                                    <div class="col-sm-8">
-                                                                        <input class="form-control" id="txtTruckWaybill_EASJOB" runat="server" />
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label for="txtShipMode_EASJOB" class="col-sm-3 control-label">Ship Mode:</label>
-                                                                    <div class="col-sm-8">
-                                                                        <asp:DropDownList ID="ddlShipMode_EASJOB" CssClass="form-control" runat="server"></asp:DropDownList>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label for="txtDeliveryTerm_EASJOB" class="col-sm-3 control-label">Delivery Term:</label>
-                                                                    <div class="col-sm-8">
-                                                                        <asp:DropDownList ID="ddlDeliveryTerm_EASJOB" CssClass="form-control" runat="server"></asp:DropDownList>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label for="txtShippingMark_EASJOB" class="col-sm-3 control-label">Shipping Mark:</label>
-                                                                    <div class="col-sm-8">
-                                                                        <asp:DropDownList ID="ddlShippingMark_EASJOB" CssClass="form-control" runat="server"></asp:DropDownList>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label for="txtCompany_EASJOB" class="col-sm-3 control-label">Company:</label>
-                                                                    <div class="col-sm-8">
-                                                                        <input class="form-control" id="txtCompany_EASJOB" runat="server" />
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label for="txtAddressEAS_EASJOB" class="col-sm-3 control-label">Address:</label>
-                                                                    <div class="col-sm-8">
-                                                                        <textarea class="form-control" id="txtAddressEAS_EASJOB" rows="3" runat="server" name="txtRemarks" placeholder="Remarks ..."></textarea>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label for="txtRemarkEAS_EASJOB" class="col-sm-3 control-label">Remark:</label>
-                                                                    <div class="col-sm-8">
-                                                                        <textarea class="form-control" id="txtRemarkEAS_EASJOB" rows="2" runat="server" name="txtRemarks" placeholder="Remarks ..."></textarea>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label for="txtTotal_EASJOB" class="col-sm-3 control-label">Total:</label>
-                                                                    <div class="col-sm-8">
-                                                                        <input class="form-control" id="txtTotal_EASJOB" runat="server" />
-                                                                    </div>
-                                                                </div>
-                                                            
-                                                 
-                                                        <fieldset>
-                                                            <legend>Bill To</legend>
-                                                            <div class="box-body">
-                                                                <div class="form-group">
-                                                                    <label for="txtCustomerCode_BillTo_EASJOB" class="col-sm-3 control-label">Customer Code:</label>
-                                                                    <div class="col-sm-8">
-                                                                        <asp:DropDownList ID="ddlCustomerCode_BillTo_EASJOB" CssClass="form-control" runat="server"></asp:DropDownList>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label for="txtNameCustomer_BillTo_EASJOB" class="col-sm-3 control-label">Name English:</label>
-                                                                    <div class="col-sm-8">
-                                                                        <input class="form-control" id="txtNameCustomer_BillTo_EASJOB" runat="server" />
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label for="txtAddressCustomer_BillTo_EASJOB" class="col-sm-3 control-label">Address:</label>
-                                                                    <div class="col-sm-8">
-                                                                        <%--<input class="form-control" id="Text3" runat="server" />--%>
-                                                                        <textarea class="form-control" id="txtAddressCustomer_BillTo_EASJOB" rows="3" runat="server" name="txtRemarks" placeholder="Remarks ..."></textarea>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label for="txtEmailCustomer_BillTo_EASJOB" class="col-sm-3 control-label">E-mail:</label>
-                                                                    <div class="col-sm-8">
-                                                                        <input class="form-control" id="txtEmailCustomer_BillTo_EASJOB" runat="server" />
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label for="txtTelNoCustomer_BillTo_EASJOB" class="col-sm-3 control-label">Tel No:</label>
-                                                                    <div class="col-sm-8">
-                                                                        <input class="form-control" id="txtTelNoCustomer_BillTo_EASJOB" runat="server" />
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label for="txtFaxNoCustomer_BillTo_EASJOB" class="col-sm-3 control-label">Fax No:</label>
-                                                                    <div class="col-sm-8">
-                                                                        <input class="form-control" id="txtFaxNoCustomer_BillTo_EASJOB" runat="server" />
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label for="txtContractPersonCustomer_BillTo_EASJOB" class="col-sm-3 control-label">Contract Person:</label>
-                                                                    <div class="col-sm-8">
-                                                                        <input class="form-control" id="txtContractPersonCustomer_BillTo_EASJOB" runat="server" />
-                                                                    </div>
-                                                                </div>
 
-                                                                <h5></h5>
+                                                            <div class="form-group">
+                                                                <label for="txtEASINV_EASJOB" class="col-sm-3 control-label">EAS INV REF No:</label>
+                                                                <div class="col-sm-8">
+                                                                    <input class="form-control" id="txtEASINV_EASJOB" runat="server" />
+                                                                </div>
                                                             </div>
+                                                            <div class="form-group">
+                                                                <label for="txtEASLOT_EASJOB" class="col-sm-3 control-label">EAS LOT No:</label>
+                                                                <div class="col-sm-8">
+                                                                    <input class="form-control" id="txtEASLOT_EASJOB" runat="server" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="txtReferenceLine_EASJOB" class="col-sm-3 control-label">Reference Line:</label>
+                                                                <div class="col-sm-8">
+                                                                    <input class="form-control" id="txtReferenceLine_EASJOB" runat="server" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="txtTruckWaybill_EASJOB" class="col-sm-3 control-label">Truck Waybill:</label>
+                                                                <div class="col-sm-8">
+                                                                    <input class="form-control" id="txtTruckWaybill_EASJOB" runat="server" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="txtShipMode_EASJOB" class="col-sm-3 control-label">Ship Mode:</label>
+                                                                <div class="col-sm-8">
+                                                                    <asp:DropDownList ID="dcboShipMode" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="dcboDeliveryTerm" class="col-sm-3 control-label">Delivery Term:</label>
+                                                                <div class="col-sm-8">
+                                                                    <asp:DropDownList ID="dcboDeliveryTerm" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="dcboShippingMark" class="col-sm-3 control-label">Shipping Mark:</label>
+                                                                <div class="col-sm-8">
+                                                                    <asp:DropDownList ID="dcboShippingMark" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="txtCompany_EASJOB" class="col-sm-3 control-label">Company:</label>
+                                                                <div class="col-sm-8">
+                                                                    <input class="form-control" id="txtCompany_EASJOB" runat="server" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="txtAddressEAS_EASJOB" class="col-sm-3 control-label">Address:</label>
+                                                                <div class="col-sm-8">
+                                                                    <textarea class="form-control" id="txtAddressEAS_EASJOB" rows="3" runat="server" name="txtRemarks" placeholder="Remarks ..."></textarea>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="txtRemarkEAS_EASJOB" class="col-sm-3 control-label">Remark:</label>
+                                                                <div class="col-sm-8">
+                                                                    <textarea class="form-control" id="txtRemarkEAS_EASJOB" rows="2" runat="server" name="txtRemarks" placeholder="Remarks ..."></textarea>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="txtTotal_EASJOB" class="col-sm-3 control-label">Total:</label>
+                                                                <div class="col-sm-8">
+                                                                    <input class="form-control" id="txtTotal_EASJOB" runat="server" />
+                                                                </div>
+                                                            </div>
+
+
+                                                            <fieldset>
+                                                                <legend>Bill To</legend>
+                                                                <div class="box-body">
+                                                                    <div class="form-group">
+                                                                        <label for="txtCustomerCode_BillTo_EASJOB" class="col-sm-3 control-label">Customer Code:</label>
+                                                                        <div class="col-sm-8">
+                                                                            <asp:DropDownList ID="ddlCustomerCode_BillTo_EASJOB" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="txtNameCustomer_BillTo_EASJOB" class="col-sm-3 control-label">Name English:</label>
+                                                                        <div class="col-sm-8">
+                                                                            <input class="form-control" id="txtNameCustomer_BillTo_EASJOB" runat="server" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="txtAddressCustomer_BillTo_EASJOB" class="col-sm-3 control-label">Address:</label>
+                                                                        <div class="col-sm-8">
+                                                                            <%--<input class="form-control" id="Text3" runat="server" />--%>
+                                                                            <textarea class="form-control" id="txtAddressCustomer_BillTo_EASJOB" rows="3" runat="server" name="txtRemarks" placeholder="Remarks ..."></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="txtEmailCustomer_BillTo_EASJOB" class="col-sm-3 control-label">E-mail:</label>
+                                                                        <div class="col-sm-8">
+                                                                            <input class="form-control" id="txtEmailCustomer_BillTo_EASJOB" runat="server" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="txtTelNoCustomer_BillTo_EASJOB" class="col-sm-3 control-label">Tel No:</label>
+                                                                        <div class="col-sm-8">
+                                                                            <input class="form-control" id="txtTelNoCustomer_BillTo_EASJOB" runat="server" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="txtFaxNoCustomer_BillTo_EASJOB" class="col-sm-3 control-label">Fax No:</label>
+                                                                        <div class="col-sm-8">
+                                                                            <input class="form-control" id="txtFaxNoCustomer_BillTo_EASJOB" runat="server" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="txtContractPersonCustomer_BillTo_EASJOB" class="col-sm-3 control-label">Contract Person:</label>
+                                                                        <div class="col-sm-8">
+                                                                            <input class="form-control" id="txtContractPersonCustomer_BillTo_EASJOB" runat="server" />
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <h5></h5>
+                                                                </div>
+                                                                <!-- /.box-body -->
+                                                            </fieldset>
+
                                                             <!-- /.box-body -->
-                                                        </fieldset>
-                                                   
-                                                    <!-- /.box-body -->
-                                                </div>
+                                                        </div>
                                                     </fieldset>
                                                 </div>
                                             </div>
@@ -844,241 +847,361 @@
                                                     <legend></legend>
                                                     <div class="col-lg-12 col-md-12">
 
-                                                    <div class="form-group">
-                                                        <label for="txtBrand_ItemDetail" class="col-sm-3">Brand</label>
-                                                        <label for="txtProductYear_ItemDetail" class="col-sm-2">Product Year</label>
-                                                        <label for="txtNatureOfTM_ItemDetail" class="col-sm-2">Nature Of tm</label>
-                                                        <label for="txtPurchaseCtry_ItemDetail" class="col-sm-3">Purchase Ctry</label>
-                                                        <label for="txtOriginCtry_ItemDetail" class="col-sm-2">Origin Ctry</label>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <div class="col-sm-3">
-                                                            <asp:DropDownList ID="ddlBrand_ItemDetail" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                        <div class="form-group">
+                                                            <label for="txtBrand_ItemDetail" class="col-sm-3">Brand</label>
+                                                            <label for="txtProductYear_ItemDetail" class="col-sm-2">Product Year</label>
+                                                            <label for="txtNatureOfTM_ItemDetail" class="col-sm-2">Nature Of tm</label>
+                                                            <label for="txtPurchaseCtry_ItemDetail" class="col-sm-3">Purchase Ctry</label>
+                                                            <label for="txtOriginCtry_ItemDetail" class="col-sm-2">Origin Ctry</label>
                                                         </div>
-                                                        <div class="col-sm-2">
-                                                            <%--<asp:DropDownList ID="ddlProductYear_ItemDetail" CssClass="form-control" runat="server"></asp:DropDownList>--%>
-                                                            <input class="form-control" id="txtProductYear_ItemDetail" runat="server" />
+                                                        <div class="form-group">
+                                                            <div class="col-sm-3">
+                                                                <asp:DropDownList ID="dcboBrand" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                            </div>
+                                                            <div class="col-sm-2">
+                                                                <%--<asp:DropDownList ID="ddlProductYear_ItemDetail" CssClass="form-control" runat="server"></asp:DropDownList>--%>
+                                                                <input class="form-control" id="txtProductYear_ItemDetail" runat="server" />
+                                                            </div>
+                                                            <div class="col-sm-2">
+                                                                <asp:DropDownList ID="dcboNatureOfTrn" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                            </div>
+                                                            <div class="col-sm-3">
+                                                                <asp:DropDownList ID="dcboPurchaseCtry" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                            </div>
+                                                            <div class="col-sm-2">
+                                                                <asp:DropDownList ID="dcboOriginCtry" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                            </div>
                                                         </div>
-                                                        <div class="col-sm-2">
-                                                            <asp:DropDownList ID="ddlNatureOfTM_ItemDetail" CssClass="form-control" runat="server"></asp:DropDownList>
-                                                        </div>
-                                                        <div class="col-sm-3">
-                                                            <asp:DropDownList ID="ddlPurchaseCtry_ItemDetail" CssClass="form-control" runat="server"></asp:DropDownList>
-                                                        </div>
-                                                        <div class="col-sm-2">
-                                                            <asp:DropDownList ID="ddlOriginCtry_ItemDetail" CssClass="form-control" runat="server"></asp:DropDownList>
-                                                        </div>
-                                                    </div>
 
-                                                </div>
+                                                    </div>
                                                     <div class="col-lg-12 col-md-12">
-                                                    <div class="form-group">
-                                                        <label for="txtItemNo_ItemDetail" class="col-sm-1 control-label">Item No:</label>
-                                                        <div class="col-sm-4">
-                                                            <input class="form-control" id="txtItemNo_ItemDetail" runat="server" />
+                                                        <div class="form-group">
+                                                            <label for="txtItemNo_ItemDetail" class="col-sm-1 control-label">Item No:</label>
+                                                            <div class="col-sm-4">
+                                                                <input class="form-control" id="txtItemNo_ItemDetail" runat="server" />
+                                                            </div>
+                                                            <label for="txtProductCode_ItemDetail" class="col-sm-1 control-label">ProductCode:</label>
+                                                            <div class="col-sm-4">
+                                                                <asp:DropDownList ID="ddlProductCode_ItemDetail" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                            </div>
                                                         </div>
-                                                        <label for="txtProductCode_ItemDetail" class="col-sm-1 control-label">ProductCode:</label>
-                                                        <div class="col-sm-4">
-                                                            <asp:DropDownList ID="ddlProductCode_ItemDetail" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                        <div class="form-group">
+                                                            <label for="txtCustomerPN_ItemDetail" class="col-sm-2 control-label">Product Desc:</label>
+                                                            <div class="col-sm-8">
+                                                                <input class="form-control" id="txtProductDesc1" runat="server" />
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="txtCustomerPN_ItemDetail" class="col-sm-2 control-label">Product Desc:</label>
-                                                        <div class="col-sm-8">
-                                                            <input class="form-control" id="txtProductDesc1" runat="server" />
-                                                        </div>
-                                                    </div>
 
-                                                    <div class="form-group">
-                                                        <label for="txtCustomerPN_ItemDetail" class="col-sm-2 control-label">Customer P/N:</label>
-                                                        <div class="col-sm-8">
-                                                            <input class="form-control" id="txtProductDesc2" runat="server" />
+                                                        <div class="form-group">
+                                                            <label for="txtCustomerPN_ItemDetail" class="col-sm-2 control-label">Customer P/N:</label>
+                                                            <div class="col-sm-8">
+                                                                <input class="form-control" id="txtProductDesc2" runat="server" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="txtCustomerPN_ItemDetail" class="col-sm-2 control-label">Owner P/N :</label>
+                                                            <div class="col-sm-8">
+                                                                <input class="form-control" id="txtProductDesc3" runat="server" />
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group">
-                                                        <label for="txtCustomerPN_ItemDetail" class="col-sm-2 control-label">Owner P/N :</label>
-                                                        <div class="col-sm-8">
-                                                            <input class="form-control" id="txtProductDesc3" runat="server" />
-                                                        </div>
-                                                    </div>
-                                                </div>
                                                     <div class="col-lg-12 col-md-12">
-                                                    <div class="form-group">
-                                                        <label for="txtInvQty_ItemDetail" class="col-sm-2 control-label">Inv Qty:</label>
-                                                        <div class="col-sm-2">
-                                                            <input class="form-control" id="txtInvQty_ItemDetail" runat="server" value="0.0" />
+                                                        <div class="form-group">
+                                                            <label for="txtInvQty_ItemDetail" class="col-sm-2 control-label">Inv Qty:</label>
+                                                            <div class="col-sm-2">
+                                                                <input class="form-control" id="txtInvQty_ItemDetail" runat="server" value="0.0" />
+                                                            </div>
+                                                            <label for="txtUnit1_ItemDetail" class="col-sm-1 control-label">Unit:</label>
+                                                            <div class="col-sm-2">
+                                                                <asp:DropDownList ID="dcboInvQtyUnit" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                            </div>
+                                                            <div class="col-sm-3">
+                                                                <input class="form-control" id="txtUnit1_ItemDetail" runat="server" disabled="disabled" />
+                                                            </div>
                                                         </div>
-                                                        <label for="txtUnit1_ItemDetail" class="col-sm-1 control-label">Unit:</label>
-                                                        <div class="col-sm-2">
-                                                            <asp:DropDownList ID="ddlUnit1_ItemDetail" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                        <div class="form-group">
+                                                            <label for="txtWeight_ItemDetail" class="col-sm-2 control-label">Weight:</label>
+                                                            <div class="col-sm-2">
+                                                                <input class="form-control" id="txtWeight_ItemDetail" runat="server" value="0.0" />
+                                                            </div>
+                                                            <label for="txtUnit2_ItemDetail" class="col-sm-1 control-label">Unit:</label>
+                                                            <div class="col-sm-2">
+                                                                <asp:DropDownList ID="dcboWeightUnit" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                            </div>
+                                                            <div class="col-sm-3">
+                                                                <input class="form-control" id="txtUnit2_ItemDetail" runat="server" disabled="disabled" />
+                                                            </div>
                                                         </div>
-                                                        <div class="col-sm-3">
-                                                            <input class="form-control" id="txtUnit1_ItemDetail" runat="server" disabled="disabled" />
+                                                        <div class="form-group">
+                                                            <label for="txtQuantity_ItemDetail" class="col-sm-2 control-label">Quantity:</label>
+                                                            <div class="col-sm-2">
+                                                                <input class="form-control" id="txtQuantity_ItemDetail" runat="server" value="0.0" />
+                                                            </div>
+                                                            <label for="txtUnit3_ItemDetail" class="col-sm-1 control-label">Unit:</label>
+                                                            <div class="col-sm-2">
+                                                                <asp:DropDownList runat="server" ID="dcboQuantityUnit" CssClass="form-control" ></asp:DropDownList>
+                                                            </div>
+                                                            <div class="col-sm-3">
+                                                                <input class="form-control" id="txtUnit3_ItemDetail" runat="server" disabled="disabled" />
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="txtWeight_ItemDetail" class="col-sm-2 control-label">Weight:</label>
-                                                        <div class="col-sm-2">
-                                                            <input class="form-control" id="txtWeight_ItemDetail" runat="server" value="0.0" />
-                                                        </div>
-                                                        <label for="txtUnit2_ItemDetail" class="col-sm-1 control-label">Unit:</label>
-                                                        <div class="col-sm-2">
-                                                            <asp:DropDownList ID="ddlUnit2_ItemDetail" CssClass="form-control" runat="server"></asp:DropDownList>
-                                                        </div>
-                                                        <div class="col-sm-3">
-                                                            <input class="form-control" id="txtUnit2_ItemDetail" runat="server" disabled="disabled" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="txtQuantity_ItemDetail" class="col-sm-2 control-label">Quantity:</label>
-                                                        <div class="col-sm-2">
-                                                            <input class="form-control" id="txtQuantity_ItemDetail" runat="server" value="0.0" />
-                                                        </div>
-                                                        <label for="txtUnit3_ItemDetail" class="col-sm-1 control-label">Unit:</label>
-                                                        <div class="col-sm-2">
-                                                            <asp:DropDownList ID="ddlUnit3_ItemDetail" CssClass="form-control" runat="server"></asp:DropDownList>
-                                                        </div>
-                                                        <div class="col-sm-3">
-                                                            <input class="form-control" id="txtUnit3_ItemDetail" runat="server" disabled="disabled" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="txtQuantity_ItemDetail" class="col-sm-2 control-label">Currency :</label>
+                                                        <div class="form-group">
+                                                            <label for="txtQuantity_ItemDetail" class="col-sm-2 control-label">Currency :</label>
 
-                                                        <div class="col-sm-3">
-                                                            <asp:DropDownList ID="dcboCurrency" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                            <div class="col-sm-3">
+                                                                <asp:DropDownList ID="dcboCurrency" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                            </div>
+                                                            <label for="txtUnit3_ItemDetail" class="col-sm-2 control-label">Exchange Rate :</label>
+                                                            <div class="col-sm-3">
+                                                                <input class="form-control" id="txtExchangeRate" runat="server" value="0.0" />
+                                                            </div>
+
                                                         </div>
-                                                        <label for="txtUnit3_ItemDetail" class="col-sm-2 control-label">Exchange Rate :</label>
-                                                        <div class="col-sm-3">
-                                                            <input class="form-control" id="txtExchangeRate" runat="server" value="0.0" />
+                                                        <div class="form-group">
+                                                            <label for="txtPriceForeigh" class="col-sm-2 control-label">@Price(Foreigh)</label>
+                                                            <div class="col-sm-3">
+                                                                <input class="form-control" id="txtPriceForeigh" runat="server" value="0.0" />
+                                                            </div>
+                                                            <label for="txtPriceForeighAmount" class="col-sm-2 control-label">Amount :</label>
+
+                                                            <div class="col-sm-3">
+                                                                <input class="form-control" id="txtPriceForeighAmount" runat="server" disabled="disabled" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="txtPriceBath" class="col-sm-2 control-label">@Price(Bath)</label>
+                                                            <div class="col-sm-3">
+                                                                <input class="form-control" id="txtPriceBath" runat="server" value="0.0" />
+                                                            </div>
+                                                            <label for="txtUnit3_ItemDetail" class="col-sm-2 control-label">Amount :</label>
+                                                            <div class="col-sm-3">
+                                                                <input class="form-control" id="txtPriceBathAmount" runat="server" value="0.0" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="txtTariffCode" class="col-sm-2 control-label">Tariff Code:</label>
+                                                            <div class="col-sm-3">
+                                                                <input class="form-control" id="txtTariffCode" runat="server" />
+                                                            </div>
+                                                            <label for="txtStatisticalCode" class="col-sm-2 control-label">Statistical Code</label>
+                                                            <div class="col-sm-3">
+                                                                <input class="form-control" id="txtStatisticalCode" runat="server" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="txtTariffSequence" class="col-sm-2 control-label">Tariff Sequence</label>
+                                                            <div class="col-sm-3">
+                                                                <input class="form-control" id="txtTariffSequence" runat="server" disabled="disabled" />
+                                                            </div>
+                                                            <label for="txtProductAttribute1" class="col-sm-2 control-label">Product Attribute1</label>
+                                                            <div class="col-sm-3">
+                                                                <input class="form-control" id="txtProductAttribute1" runat="server" disabled="disabled" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="txtProductAttribute2" class="col-sm-2 control-label">PO No</label>
+                                                            <div class="col-sm-3">
+                                                                <input class="form-control" id="txtProductAttribute2" runat="server" disabled="disabled" />
+                                                            </div>
+                                                            <label for="txtPriceIncreaseForeign" class="col-sm-2 control-label">Price Increase(Foreign)</label>
+                                                            <div class="col-sm-3">
+                                                                <input class="form-control" id="txtPriceIncreaseForeign" runat="server" disabled="disabled" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="txtPriceIncreseBath" class="col-sm-2 control-label">Price Increse(Bath)</label>
+                                                            <div class="col-sm-3">
+                                                                <input class="form-control" id="txtPriceIncreseBath" runat="server" disabled="disabled" />
+                                                            </div>
+                                                            <label for="txtDeclarationLine" class="col-sm-2 control-label">Declaretion Line:</label>
+                                                            <div class="col-sm-3">
+                                                                <input class="form-control" id="txtDeclarationLine" runat="server" disabled="disabled" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="txtFormulaNo_ItemDetail" class="col-sm-2 control-label">Formula No:</label>
+                                                            <div class="col-sm-3">
+                                                                <input class="form-control" id="txtFormulaNo_ItemDetail" runat="server" disabled="disabled" />
+                                                            </div>
+                                                            <label for="txtBOILicenseNo" class="col-sm-2 control-label">BOI License No</label>
+                                                            <div class="col-sm-3">
+                                                                <input class="form-control" id="txtBOILicenseNo" runat="server" disabled="disabled" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="txt19BisTransferNo" class="col-sm-2 control-label">19 Bis Transfer No:</label>
+                                                            <div class="col-sm-3">
+                                                                <input class="form-control" id="txt19BisTransferNo" runat="server" disabled="disabled" />
+                                                            </div>
+                                                            <label for="txt19BisTransferNo" class="col-sm-2 control-label">Bond Formula No.</label>
+                                                            <div class="col-sm-3">
+                                                                <input class="form-control" id="txtBondFurmulaNo" runat="server" disabled="disabled" />
+                                                            </div>
                                                         </div>
 
                                                     </div>
-                                                    <div class="form-group">
-                                                        <label for="txtPriceForeigh" class="col-sm-2 control-label">@Price(Foreigh)</label>
-                                                        <div class="col-sm-3">
-                                                            <input class="form-control" id="txtPriceForeigh" runat="server" value="0.0" />
-                                                        </div>
-                                                        <label for="txtPriceForeighAmount" class="col-sm-2 control-label">Amount :</label>
 
-                                                        <div class="col-sm-3">
-                                                            <input class="form-control" id="txtPriceForeighAmount" runat="server" disabled="disabled" />
+                                                    <div class="col-lg-12 col-md-12">
+                                                        <div class="form-group">
+                                                            <label for="txtRemark_ItemDetail" class="col-sm-2 control-label">Remark:</label>
+                                                            <div class="col-sm-6">
+                                                                <textarea class="form-control" id="txtItemRemark" rows="3" runat="server" name="txtRemarks" style="height: 55px; width: 825px" placeholder="Remarks ..."></textarea>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group">
-                                                        <label for="txtPriceBath" class="col-sm-2 control-label">@Price(Bath)</label>
-                                                        <div class="col-sm-3">
-                                                            <input class="form-control" id="txtPriceBath" runat="server" value="0.0" />
+                                                    <div class="col-lg-12 col-md-12">
+                                                        <div class="form-group">
+                                                            <label for="txtBrand_ItemDetail" class="col-sm-2 col-md-offset-2">Currency</label>
+                                                            <label for="txtProductYear_ItemDetail" class="col-sm-2">Foriegn Amount</label>
+                                                            <label for="txtNatureOfTM_ItemDetail" class="col-sm-2">Exchange Rate</label>
+                                                            <label for="txtPurchaseCtry_ItemDetail" class="col-sm-3">Bath Amount</label>
                                                         </div>
-                                                        <label for="txtUnit3_ItemDetail" class="col-sm-2 control-label">Amount :</label>
-                                                        <div class="col-sm-3">
-                                                            <input class="form-control" id="txtPriceBathAmount" runat="server" value="0.0" />
+                                                        <div class="form-group">
+                                                            <label for="dcboForwardingCurrency" class="col-sm-2 control-label">Forwarding</label>
+                                                            <div class="col-sm-2">
+                                                                <asp:DropDownList ID="dcboForwardingCurrency" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                            </div>
+                                                            <div class="col-sm-2">
+                                                                <input class="form-control" id="txtForwardingForiegnAmount" runat="server" />
+                                                            </div>
+                                                            <div class="col-sm-2">
+                                                                <input class="form-control" id="txtForwardingExchangeRate" runat="server" disabled="disabled"/>
+                                                            </div>
+                                                            <div class="col-sm-2">
+                                                                <input class="form-control" id="txtForwardingBathAmount" runat="server" />
+                                                            </div>
+
                                                         </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="txtTariffCode" class="col-sm-2 control-label">Tariff Code:</label>
-                                                        <div class="col-sm-3">
-                                                            <input class="form-control" id="txtTariffCode" runat="server" />
+                                                        <div class="form-group">
+                                                            <label for="txtRemark_ItemDetail" class="col-sm-2 control-label">Freight</label>
+                                                            <div class="col-sm-2">
+                                                                <asp:DropDownList ID="dcboFreightCurrency" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                            </div>
+                                                            <div class="col-sm-2">
+                                                                <input class="form-control" id="txtFreightForiegnAmo" runat="server" />
+                                                            </div>
+                                                            <div class="col-sm-2">
+                                                                <input class="form-control" id="txtFreightExchangeRate" runat="server" disabled="disabled"/>
+                                                            </div>
+                                                            <div class="col-sm-2">
+                                                                <input class="form-control" id="txtFreightBathAmount" runat="server" />
+                                                            </div>
+
                                                         </div>
-                                                        <label for="txtStatisticalCode" class="col-sm-2 control-label">Statistical Code</label>
-                                                        <div class="col-sm-3">
-                                                            <input class="form-control" id="txtStatisticalCode" runat="server" />
+                                                        <div class="form-group">
+                                                            <label for="txtRemark_ItemDetail" class="col-sm-2 control-label">Insurance</label>
+                                                            <div class="col-sm-2">
+                                                                <asp:DropDownList ID="dcboInsuranceCurrency" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                            </div>
+                                                            <div class="col-sm-2">
+                                                                <input class="form-control" id="txtInsuranceForiegnAmount" runat="server" />
+                                                            </div>
+                                                            <div class="col-sm-2">
+                                                                <input class="form-control" id="txtInsuranceExchangeRate" runat="server" disabled="disabled"/>
+                                                            </div>
+                                                            <div class="col-sm-2">
+                                                                <input class="form-control" id="txtInsuranceBathAmount" runat="server" />
+                                                            </div>
+
                                                         </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="txtTariffSequence" class="col-sm-2 control-label">Tariff Sequence</label>
-                                                        <div class="col-sm-3">
-                                                            <input class="form-control" id="txtTariffSequence" runat="server" disabled="disabled" />
+                                                        <div class="form-group">
+                                                            <label for="txtRemark_ItemDetail" class="col-sm-2 control-label">Package Charge</label>
+                                                            <div class="col-sm-2">
+                                                                <asp:DropDownList ID="dcboPackageChargeCurrency" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                            </div>
+                                                            <div class="col-sm-2">
+                                                                <input class="form-control" id="txtPackageChargeFoiegnAmount" runat="server" />
+                                                            </div>
+                                                            <div class="col-sm-2">
+                                                                <input class="form-control" id="txtPackageChargeExchangeRate" runat="server" disabled="disabled"/>
+                                                            </div>
+                                                            <div class="col-sm-2">
+                                                                <input class="form-control" id="txtPackageChargeBathAmount" runat="server" />
+                                                            </div>
+
                                                         </div>
-                                                        <label for="txtProductAttribute1" class="col-sm-2 control-label">Product Attribute1</label>
-                                                        <div class="col-sm-3">
-                                                            <input class="form-control" id="txtProductAttribute1" runat="server" disabled="disabled" />
+                                                         <div class="form-group">
+                                                            <label for="txtRemark_ItemDetail" class="col-sm-2 control-label">Foreighn Inland Freidge</label>
+                                                            <div class="col-sm-2">
+                                                                <asp:DropDownList ID="dcboForeighnCurrency" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                            </div>
+                                                            <div class="col-sm-2">
+                                                                <input class="form-control" id="txtForeighnForiegnAmount" runat="server" />
+                                                            </div>
+                                                            <div class="col-sm-2">
+                                                                <input class="form-control" id="txtForeighnExchangeRate" runat="server" disabled="disabled"/>
+                                                            </div>
+                                                            <div class="col-sm-2">
+                                                                <input class="form-control" id="txtForeighnBathAmount" runat="server" />
+                                                            </div>
+
                                                         </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="txtProductAttribute2" class="col-sm-2 control-label">PO No</label>
-                                                        <div class="col-sm-3">
-                                                            <input class="form-control" id="txtProductAttribute2" runat="server" disabled="disabled" />
+                                                         <div class="form-group">
+                                                            <label for="txtRemark_ItemDetail" class="col-sm-2 control-label">Landing Charge</label>
+                                                            <div class="col-sm-2">
+                                                                <asp:DropDownList ID="dcboLandingChargeCurrency" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                            </div>
+                                                            <div class="col-sm-2">
+                                                                <input class="form-control" id="txtLandingChargeForiegnAmount" runat="server" />
+                                                            </div>
+                                                            <div class="col-sm-2">
+                                                                <input class="form-control" id="txtLandingChargeExchangeRate" runat="server" disabled="disabled"/>
+                                                            </div>
+                                                            <div class="col-sm-2">
+                                                                <input class="form-control" id="txtLandingChargeBathAmount" runat="server" />
+                                                            </div>
+
                                                         </div>
-                                                        <label for="txtPriceIncreaseForeign" class="col-sm-2 control-label">Price Increase(Foreign)</label>
-                                                        <div class="col-sm-3">
-                                                            <input class="form-control" id="txtPriceIncreaseForeign" runat="server" disabled="disabled" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="txtPriceIncreseBath" class="col-sm-2 control-label">Price Increse(Bath)</label>
-                                                        <div class="col-sm-3">
-                                                            <input class="form-control" id="txtPriceIncreseBath" runat="server" disabled="disabled" />
-                                                        </div>
-                                                        <label for="txtDeclarationLine" class="col-sm-2 control-label">Declaretion Line:</label>
-                                                        <div class="col-sm-3">
-                                                            <input class="form-control" id="txtDeclarationLine" runat="server" disabled="disabled" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="txtFormulaNo_ItemDetail" class="col-sm-2 control-label">Formula No:</label>
-                                                        <div class="col-sm-3">
-                                                            <input class="form-control" id="txtFormulaNo_ItemDetail" runat="server" disabled="disabled" />
-                                                        </div>
-                                                        <label for="txtBOILicenseNo" class="col-sm-2 control-label">BOI License No</label>
-                                                        <div class="col-sm-3">
-                                                            <input class="form-control" id="txtBOILicenseNo" runat="server" disabled="disabled" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="txt19BisTransferNo" class="col-sm-2 control-label">19 Bis Transfer No:</label>
-                                                        <div class="col-sm-3">
-                                                            <input class="form-control" id="txt19BisTransferNo" runat="server" disabled="disabled" />
-                                                        </div>
-                                                        <label for="txt19BisTransferNo" class="col-sm-2 control-label">Bond Formula No.</label>
-                                                        <div class="col-sm-3">
-                                                            <input class="form-control" id="txtBondFurmulaNo" runat="server" disabled="disabled" />
+                                                         <div class="form-group">
+                                                            <label for="txtRemark_ItemDetail" class="col-sm-2 control-label">Other Charge</label>
+                                                            <div class="col-sm-2">
+                                                                <asp:DropDownList ID="dcboOtherChargeCurrency" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                            </div>
+                                                            <div class="col-sm-2">
+                                                                <input class="form-control" id="txtOtherChargeForiegnAmount" runat="server" />
+                                                            </div>
+                                                            <div class="col-sm-2">
+                                                                <input class="form-control" id="txtOtherChargeExchangeRate" runat="server" disabled="disabled"/>
+                                                            </div>
+                                                            <div class="col-sm-2">
+                                                                <input class="form-control" id="txtOtherChargeBathAmount" runat="server" />
+                                                            </div>
+
                                                         </div>
                                                     </div>
 
-                                                </div>
-                                                              
-                                                <div class="col-lg-12 col-md-12">
-                                                    <div class="form-group">
-                                                        <label for="txtRemark_ItemDetail" class="col-sm-2 control-label">Remark:</label>
-                                                        <div class="col-sm-6">
-                                                            <textarea class="form-control" id="txtRemark_ItemDetail" rows="3" runat="server" name="txtRemarks" style="height: 55px; width: 825px" placeholder="Remarks ..."></textarea>
+                                                    <div class="col-lg-12 col-md-12">
+                                                        <div class="form-group">
+                                                            <div class="col-md-offset-6 col-lg-offset-7">
+                                                                <button type="submit" runat="server" class="btn btn-primary" id="btnAddNewItem_ItemDetail" title="btnAddNewItem_ItemDetail">AddNewItem</button>
+                                                                <button type="submit" runat="server" class="btn btn-primary" id="btnSaveModify_ItemDetail" title="btnSaveModify_ItemDetail">SaveModify</button>
+                                                                <button type="submit" runat="server" class="btn btn-primary" id="btnDelete_ItemDetail" title="btnDelete_ItemDetail">Delete</button>
+                                                                <button type="submit" runat="server" class="btn btn-primary" id="btnCreatePacking_ItemDetail" title="btnCreatePacking_ItemDetail">Create Packing</button>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-lg-12 col-md-12">
-                                                    <div class="form-group">
-                                                        <div class="col-md-offset-6 col-lg-offset-7">
-                                                            <button type="submit" runat="server" class="btn btn-primary" id="btnAddNewItem_ItemDetail" title="btnAddNewItem_ItemDetail">AddNewItem</button>
-                                                            <button type="submit" runat="server" class="btn btn-primary" id="btnSaveModify_ItemDetail" title="btnSaveModify_ItemDetail">SaveModify</button>
-                                                            <button type="submit" runat="server" class="btn btn-primary" id="btnDelete_ItemDetail" title="btnDelete_ItemDetail">Delete</button>
-                                                            <button type="submit" runat="server" class="btn btn-primary" id="btnCreatePacking_ItemDetail" title="btnCreatePacking_ItemDetail">Create Packing</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
                                                 </fieldset>
-                                                                                                                                
+
                                             </div>
-
-                                        </div>
                                     </div>
-                                    <!--/.col-lg-6 col-md-6--->
                                 </div>
-                                <!--/.row-->
+                                <!--/.col-lg-6 col-md-6--->
                             </div>
-                            <!-- /.post -->
+                            <!--/.row-->
                         </div>
+                        <!-- /.post -->
+                    </div>
 
-                        <div role="tabpanel" class="tab-pane" id="list">
-                            <!-- Post -->
-                            <div class="post">
-                                <div class="row margin-bottom">
-                                    <div class="col-lg-12 col-md-12">
-                                        <div class="form-horizontal">
-                                            <div class="box-body">
-                                                <fieldset runat="server" id="list_">
+                    <div role="tabpanel" class="tab-pane" id="list">
+                        <!-- Post -->
+                        <div class="post">
+                            <div class="row margin-bottom">
+                                <div class="col-lg-12 col-md-12">
+                                    <div class="form-horizontal">
+                                        <div class="box-body">
+                                            <fieldset runat="server" id="list_">
                                                 <legend></legend>
-                                              
+
                                                 <div class="col-lg-12 col-md-12">
                                                     <div class="form-group">
                                                         <label for="txtProductCode_PACKINGLIST" class="col-sm-2 control-label">Produce Code:</label>
@@ -1174,7 +1297,7 @@
                                                         <div class="form-group">
                                                             <label for="txtUnit_PACKINGLIST" class="col-sm-3 control-label">Unit:</label>
                                                             <div class="col-sm-4">
-                                                                <asp:DropDownList ID="ddlUnit_PACKINGLIST" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                                <asp:DropDownList ID="dcboPackUnit" CssClass="form-control" runat="server"></asp:DropDownList>
                                                             </div>
                                                             <div class="col-sm-4">
                                                                 <input class="form-control" id="txtUnit_PACKINGLIST" runat="server" disabled="disabled" />
@@ -1189,13 +1312,13 @@
                                                         <div class="form-group">
                                                             <label for="txtProductQuantity_PACKINGLIST" class="col-sm-3 control-label">Product Quantity:</label>
                                                             <div class="col-sm-8">
-                                                                <asp:DropDownList ID="ddlProductQuantity_PACKINGLIST" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                                <asp:DropDownList ID="dcboUnitPLT" CssClass="form-control" runat="server"></asp:DropDownList>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="txtGrossWeight_PACKINGLIST" class="col-sm-3 control-label">Gross Weight:</label>
                                                             <div class="col-sm-8">
-                                                                <asp:DropDownList ID="ddlGrossWeight_PACKINGLIST" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                                <asp:DropDownList ID="dcboCTN" CssClass="form-control" runat="server"></asp:DropDownList>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
@@ -1285,31 +1408,43 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                          
+
                                             </fieldset>
-                                            </div>                                          
-                                            <!-- /.box-body -->
                                         </div>
-
-                                        <!------- ./form-horizontal ----->
+                                        <!-- /.box-body -->
                                     </div>
-                                    <!--/.col-lg-12 col-md-12--->
-                                </div>
-                                <!--/.row-->
-                            </div>
-                            <!-- /.post -->
-                        </div>
-                        <!------ ./tab-content ----->
-                    </div>
-                </div>
-                <!--------- ./ Tabs------->
 
-                <%--<asp:Button ID="Button1" Text="Submit" runat="server" CssClass="btn btn-primary" />--%>
-                <asp:HiddenField ID="TabName" runat="server" />
+                                    <!------- ./form-horizontal ----->
+                                </div>
+                                <!--/.col-lg-12 col-md-12--->
+                            </div>
+                            <!--/.row-->
+                        </div>
+                        <!-- /.post -->
+                    </div>
+                    <!------ ./tab-content ----->
+                </div>
+            </div>
+            <!--------- ./ Tabs------->
+
+            <%--<asp:Button ID="Button1" Text="Submit" runat="server" CssClass="btn btn-primary" />--%>
+            <asp:HiddenField ID="TabName" runat="server" />
             </div>
             <!--------- ./ panel --------->
         </section>
+        <script type="text/javascript">
+            function chkExpEnable2() {
+                var status = document.getElementById('<%=chkEnablebehalf_EASJOB.ClientID%>').checked;
 
+                 if (status == true) {
+                     document.getElementById('<%=job_1.ClientID%>').disabled = false;
+
+                } else if (status == false) {
+                    document.getElementById('<%=job_1.ClientID%>').disabled = true;
+                  }
+
+          }
+        </script>
         <script type="text/javascript">
             $(function () {
                 var tabName = $("[id*=TabName]").val() != "" ? $("[id*=TabName]").val() : "header";

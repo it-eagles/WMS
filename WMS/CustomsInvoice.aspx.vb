@@ -4,16 +4,64 @@ Option Strict On
 
 Public Class CustomsInvoice
     Inherits System.Web.UI.Page
+    Dim classPermis As New ClassPermis
 
+    Dim formName As String = "frmCustomsInvoice"
+    Dim db As New LKBWarehouseEntities1_Test
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        Dim usename As String = CStr(Session("UserName"))
         If Not Me.IsPostBack Then
-            header_.Disabled = True
-            job_1.Disabled = True
-            deetail_.Disabled = True
-            list_.Disabled = True
-            btnSaveNew.Visible = False
-            btnSaveEdit.Visible = False
+            If classPermis.CheckRead(formName, usename) = True Then
+                If Not Me.IsPostBack Then
+                    header_.Disabled = True
+                    job_1.Disabled = True
+                    deetail_.Disabled = True
+                    list_.Disabled = True
+                    btnSaveNew.Visible = False
+                    btnSaveEdit.Visible = False
+                    PurchaseCountry()
+                    DestinationCountry()
+                    Country()
+                    TermofPayment()
+                    Term()
+                    TotalInvoice()
+                    FreightCurrency()
+                    ForwardingCurrency()
+                    InsuranceCurrency()
+                    PackingChargeCurrency()
+                    ForeignInlandCurrency()
+                    LandingChargeCharg()
+                    OtherChargeCurrency()
+                    ShipMode()
+                    DeliveryTerm()
+                    Brand()
+                    NatureOfTrn()
+                    PurchaseCtry()
+                    OriginCtry()
+                    InvUnit()
+                    WeightUnit()
+                    QuantityUnit()
+                    Currency()
+                    ForwardingCurrency1()
+                    FreightCurrency1()
+                    InsuranceCurrency1()
+                    PackageChargeCurrency1()
+                    ForeighnCurrency()
+                    LandingChargeCurrency()
+                    OtherChargeCurrency1()
+                    ShippingMark()
+                    ProductUnit1()
+                    DriverName()
+                    CarLicense()
+                    UnitPLT()
+                    CTN()
+                    TabName.Value = Request.Form(TabName.UniqueID)
+                End If
+            Else
+                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ เข้าโปรแกรมนี้' !!!');", True)
+            End If
         End If
+       
     End Sub
 
     Protected Sub btnAddNew_ServerClick(sender As Object, e As EventArgs)
@@ -207,5 +255,691 @@ Public Class CustomsInvoice
         'txtTotalQuantityINV.Text = "0.0"
         'txtVolumAmount.Text = "0.0"
         'txtTotalText.Text = ""
+    End Sub
+    Private Sub PurchaseCountry()
+        Dim qt = From q In db.tblMasterCode2 Where q.Type = "COUNTRY"
+                 Select q.Code, q.Type
+
+        Try
+            dcboPurchaseCountry.DataSource = qt.ToList
+            dcboPurchaseCountry.DataTextField = "Code"
+            dcboPurchaseCountry.DataValueField = "Code"
+            dcboPurchaseCountry.DataBind()
+            If dcboPurchaseCountry.Items.Count > 1 Then
+                dcboPurchaseCountry.Enabled = True
+            Else
+                dcboPurchaseCountry.Enabled = False
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+    Private Sub DestinationCountry()
+        Dim qt = From q In db.tblMasterCode2 Where q.Type = "COUNTRY"
+                 Select q.Code, q.Type
+
+        Try
+            cboDestinationCountry.DataSource = qt.ToList
+            cboDestinationCountry.DataTextField = "Code"
+            cboDestinationCountry.DataValueField = "Code"
+            cboDestinationCountry.DataBind()
+            If cboDestinationCountry.Items.Count > 1 Then
+                cboDestinationCountry.Enabled = True
+            Else
+                cboDestinationCountry.Enabled = False
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+    Private Sub Country()
+        Dim qt = From q In db.tblMasterCode2 Where q.Type = "COUNTRY"
+         Select q.Code, q.Type
+
+        Try
+
+            dcboCountry.DataSource = qt.ToList
+            dcboCountry.DataTextField = "Code"
+            dcboCountry.DataValueField = "Code"
+            dcboCountry.DataBind()
+            If dcboCountry.Items.Count > 1 Then
+                dcboCountry.Enabled = True
+            Else
+                dcboCountry.Enabled = False
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+    Private Sub TermofPayment()
+        Dim qt = From q In db.tblMasterCode2 Where q.Type = "PAYMENTTERM"
+                        Select q.Code, q.Type
+
+        Try
+
+            dcboTermofPayment.DataSource = qt.ToList
+            dcboTermofPayment.DataTextField = "Code"
+            dcboTermofPayment.DataValueField = "Code"
+            dcboTermofPayment.DataBind()
+            If dcboTermofPayment.Items.Count > 1 Then
+                dcboTermofPayment.Enabled = True
+            Else
+                dcboTermofPayment.Enabled = False
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+    Private Sub Term()
+        Dim qt = From q In db.tblMasterCode2 Where q.Type = "INCOTERM"
+                   Select q.Code, q.Type
+        Try
+
+            dcboTerm.DataSource = qt.ToList
+            dcboTerm.DataTextField = "Code"
+            dcboTerm.DataValueField = "Code"
+            dcboTerm.DataBind()
+            If dcboTerm.Items.Count > 1 Then
+                dcboTerm.Enabled = True
+            Else
+                dcboTerm.Enabled = False
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+    Private Sub TotalInvoice()
+        Dim qt = From q In db.tblMasterCode2 Where q.Type = "CURRENCY"
+              Select q.Code, q.Type
+        Try
+
+            dcboTotalInvoice.DataSource = qt.ToList
+            dcboTotalInvoice.DataTextField = "Code"
+            dcboTotalInvoice.DataValueField = "Code"
+            dcboTotalInvoice.DataBind()
+            If dcboTotalInvoice.Items.Count > 1 Then
+                dcboTotalInvoice.Enabled = True
+            Else
+                dcboTotalInvoice.Enabled = False
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+    Private Sub FreightCurrency()
+        Dim qt = From q In db.tblMasterCode2 Where q.Type = "CURRENCY"
+              Select q.Code, q.Type
+        Try
+
+            dcboFreight.DataSource = qt.ToList
+            dcboFreight.DataTextField = "Code"
+            dcboFreight.DataValueField = "Code"
+            dcboFreight.DataBind()
+            If dcboFreight.Items.Count > 1 Then
+                dcboFreight.Enabled = True
+            Else
+                dcboFreight.Enabled = False
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+    Private Sub ForwardingCurrency()
+        Dim qt = From q In db.tblMasterCode2 Where q.Type = "CURRENCY"
+          Select q.Code, q.Type
+        Try
+
+            dcboForwarding.DataSource = qt.ToList
+            dcboForwarding.DataTextField = "Code"
+            dcboForwarding.DataValueField = "Code"
+            dcboForwarding.DataBind()
+            If dcboForwarding.Items.Count > 1 Then
+                dcboForwarding.Enabled = True
+            Else
+                dcboForwarding.Enabled = False
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+    Private Sub InsuranceCurrency()
+        Dim qt = From q In db.tblMasterCode2 Where q.Type = "CURRENCY"
+         Select q.Code, q.Type
+        Try
+
+            dcboInsurance.DataSource = qt.ToList
+            dcboInsurance.DataTextField = "Code"
+            dcboInsurance.DataValueField = "Code"
+            dcboInsurance.DataBind()
+            If dcboInsurance.Items.Count > 1 Then
+                dcboInsurance.Enabled = True
+            Else
+                dcboInsurance.Enabled = False
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+    Private Sub PackingChargeCurrency()
+        Dim qt = From q In db.tblMasterCode2 Where q.Type = "CURRENCY"
+        Select q.Code, q.Type
+        Try
+
+            dcboPackingCharge.DataSource = qt.ToList
+            dcboPackingCharge.DataTextField = "Code"
+            dcboPackingCharge.DataValueField = "Code"
+            dcboPackingCharge.DataBind()
+            If dcboPackingCharge.Items.Count > 1 Then
+                dcboPackingCharge.Enabled = True
+            Else
+                dcboPackingCharge.Enabled = False
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+    Private Sub ForeignInlandCurrency()
+        Dim qt = From q In db.tblMasterCode2 Where q.Type = "CURRENCY"
+       Select q.Code, q.Type
+        Try
+
+            dcboForeignInland.DataSource = qt.ToList
+            dcboForeignInland.DataTextField = "Code"
+            dcboForeignInland.DataValueField = "Code"
+            dcboForeignInland.DataBind()
+            If dcboForeignInland.Items.Count > 1 Then
+                dcboForeignInland.Enabled = True
+            Else
+                dcboForeignInland.Enabled = False
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+    Private Sub LandingChargeCharg()
+        Dim qt = From q In db.tblMasterCode2 Where q.Type = "CURRENCY"
+       Select q.Code, q.Type
+        Try
+
+            dcboLandingCharge.DataSource = qt.ToList
+            dcboLandingCharge.DataTextField = "Code"
+            dcboLandingCharge.DataValueField = "Code"
+            dcboLandingCharge.DataBind()
+            If dcboLandingCharge.Items.Count > 1 Then
+                dcboLandingCharge.Enabled = True
+            Else
+                dcboLandingCharge.Enabled = False
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+    Private Sub OtherChargeCurrency()
+        Dim qt = From q In db.tblMasterCode2 Where q.Type = "CURRENCY"
+       Select q.Code, q.Type
+        Try
+
+            dcboOtherCharge.DataSource = qt.ToList
+            dcboOtherCharge.DataTextField = "Code"
+            dcboOtherCharge.DataValueField = "Code"
+            dcboOtherCharge.DataBind()
+            If dcboOtherCharge.Items.Count > 1 Then
+                dcboOtherCharge.Enabled = True
+            Else
+                dcboOtherCharge.Enabled = False
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+    Private Sub ShipMode()
+        Dim qt = From q In db.tblMasterCode2 Where q.Type = "TRANSMODE"
+      Select q.Code, q.Type
+        Try
+
+            dcboShipMode.DataSource = qt.ToList
+            dcboShipMode.DataTextField = "Code"
+            dcboShipMode.DataValueField = "Code"
+            dcboShipMode.DataBind()
+            If dcboShipMode.Items.Count > 1 Then
+                dcboShipMode.Enabled = True
+            Else
+                dcboShipMode.Enabled = False
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+    Private Sub DeliveryTerm()
+        Dim qt = From q In db.tblMasterCode2 Where q.Type = "PAYMENTTERM"
+      Select q.Code, q.Type
+        Try
+
+            dcboDeliveryTerm.DataSource = qt.ToList
+            dcboDeliveryTerm.DataTextField = "Code"
+            dcboDeliveryTerm.DataValueField = "Code"
+            dcboDeliveryTerm.DataBind()
+            If dcboDeliveryTerm.Items.Count > 1 Then
+                dcboDeliveryTerm.Enabled = True
+            Else
+                dcboDeliveryTerm.Enabled = False
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+    Private Sub Brand()
+        Dim qt = From q In db.tblMasterCode2 Where q.Type = "BRAND"
+            Select q.Code, q.Type
+        Try
+
+            dcboBrand.DataSource = qt.ToList
+            dcboBrand.DataTextField = "Code"
+            dcboBrand.DataValueField = "Code"
+            dcboBrand.DataBind()
+            If dcboBrand.Items.Count > 1 Then
+                dcboBrand.Enabled = True
+            Else
+                dcboBrand.Enabled = False
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+    Private Sub NatureOfTrn()
+        Dim qt = From q In db.tblMasterCode2 Where q.Type = "PAYMENTTERM"
+            Select q.Code, q.Type
+        Try
+
+            dcboNatureOfTrn.DataSource = qt.ToList
+            dcboNatureOfTrn.DataTextField = "Code"
+            dcboNatureOfTrn.DataValueField = "Code"
+            dcboNatureOfTrn.DataBind()
+            If dcboNatureOfTrn.Items.Count > 1 Then
+                dcboNatureOfTrn.Enabled = True
+            Else
+                dcboNatureOfTrn.Enabled = False
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+    Private Sub PurchaseCtry()
+        Dim qt = From q In db.tblMasterCode2 Where q.Type = "COUNTRY"
+           Select q.Code, q.Type
+        Try
+
+            dcboPurchaseCtry.DataSource = qt.ToList
+            dcboPurchaseCtry.DataTextField = "Code"
+            dcboPurchaseCtry.DataValueField = "Code"
+            dcboPurchaseCtry.DataBind()
+            If dcboPurchaseCtry.Items.Count > 1 Then
+                dcboPurchaseCtry.Enabled = True
+            Else
+                dcboPurchaseCtry.Enabled = False
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+    Private Sub OriginCtry()
+        Dim qt = From q In db.tblMasterCode2 Where q.Type = "COUNTRY"
+           Select q.Code, q.Type
+        Try
+
+            dcboOriginCtry.DataSource = qt.ToList
+            dcboOriginCtry.DataTextField = "Code"
+            dcboOriginCtry.DataValueField = "Code"
+            dcboOriginCtry.DataBind()
+            If dcboOriginCtry.Items.Count > 1 Then
+                dcboOriginCtry.Enabled = True
+            Else
+                dcboOriginCtry.Enabled = False
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+    Private Sub InvUnit()
+        Dim qt = From q In db.tblMasterCode2 Where q.Type = "UNIT"
+           Select q.Code, q.Type
+        Try
+
+            dcboInvQtyUnit.DataSource = qt.ToList
+            dcboInvQtyUnit.DataTextField = "Code"
+            dcboInvQtyUnit.DataValueField = "Code"
+            dcboInvQtyUnit.DataBind()
+            If dcboInvQtyUnit.Items.Count > 1 Then
+                dcboInvQtyUnit.Enabled = True
+            Else
+                dcboInvQtyUnit.Enabled = False
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+    Private Sub WeightUnit()
+        Dim qt = From q In db.tblMasterCode2 Where q.Type = "UNIT"
+          Select q.Code, q.Type
+        Try
+
+            dcboWeightUnit.DataSource = qt.ToList
+            dcboWeightUnit.DataTextField = "Code"
+            dcboWeightUnit.DataValueField = "Code"
+            dcboWeightUnit.DataBind()
+            If dcboWeightUnit.Items.Count > 1 Then
+                dcboWeightUnit.Enabled = True
+            Else
+                dcboWeightUnit.Enabled = False
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+    Private Sub QuantityUnit()
+        Dim qt = From q In db.tblMasterCode2 Where q.Type = "UNIT"
+          Select q.Code, q.Type
+        Try
+
+            dcboQuantityUnit.DataSource = qt.ToList
+            dcboQuantityUnit.DataTextField = "Code"
+            dcboQuantityUnit.DataValueField = "Code"
+            dcboQuantityUnit.DataBind()
+            If dcboQuantityUnit.Items.Count > 1 Then
+                dcboQuantityUnit.Enabled = True
+            Else
+                dcboQuantityUnit.Enabled = False
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+    Private Sub Currency()
+        Dim qt = From q In db.tblMasterCode2 Where q.Type = "CURRENCY"
+         Select q.Code, q.Type
+        Try
+
+            dcboCurrency.DataSource = qt.ToList
+            dcboCurrency.DataTextField = "Code"
+            dcboCurrency.DataValueField = "Code"
+            dcboCurrency.DataBind()
+            If dcboCurrency.Items.Count > 1 Then
+                dcboCurrency.Enabled = True
+            Else
+                dcboCurrency.Enabled = False
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+    Private Sub ForwardingCurrency1()
+        Dim qt = From q In db.tblMasterCode2 Where q.Type = "CURRENCY"
+         Select q.Code, q.Type
+        Try
+
+            dcboForwardingCurrency.DataSource = qt.ToList
+            dcboForwardingCurrency.DataTextField = "Code"
+            dcboForwardingCurrency.DataValueField = "Code"
+            dcboForwardingCurrency.DataBind()
+            If dcboForwardingCurrency.Items.Count > 1 Then
+                dcboForwardingCurrency.Enabled = True
+            Else
+                dcboForwardingCurrency.Enabled = False
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+    Private Sub FreightCurrency1()
+        Dim qt = From q In db.tblMasterCode2 Where q.Type = "CURRENCY"
+        Select q.Code, q.Type
+        Try
+
+            dcboFreightCurrency.DataSource = qt.ToList
+            dcboFreightCurrency.DataTextField = "Code"
+            dcboFreightCurrency.DataValueField = "Code"
+            dcboFreightCurrency.DataBind()
+            If dcboFreightCurrency.Items.Count > 1 Then
+                dcboFreightCurrency.Enabled = True
+            Else
+                dcboFreightCurrency.Enabled = False
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+    Private Sub InsuranceCurrency1()
+        Dim qt = From q In db.tblMasterCode2 Where q.Type = "CURRENCY"
+        Select q.Code, q.Type
+        Try
+
+            dcboInsuranceCurrency.DataSource = qt.ToList
+            dcboInsuranceCurrency.DataTextField = "Code"
+            dcboInsuranceCurrency.DataValueField = "Code"
+            dcboInsuranceCurrency.DataBind()
+            If dcboInsuranceCurrency.Items.Count > 1 Then
+                dcboInsuranceCurrency.Enabled = True
+            Else
+                dcboInsuranceCurrency.Enabled = False
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+    Private Sub PackageChargeCurrency1()
+        Dim qt = From q In db.tblMasterCode2 Where q.Type = "CURRENCY"
+        Select q.Code, q.Type
+        Try
+
+            dcboPackageChargeCurrency.DataSource = qt.ToList
+            dcboPackageChargeCurrency.DataTextField = "Code"
+            dcboPackageChargeCurrency.DataValueField = "Code"
+            dcboPackageChargeCurrency.DataBind()
+            If dcboPackageChargeCurrency.Items.Count > 1 Then
+                dcboPackageChargeCurrency.Enabled = True
+            Else
+                dcboPackageChargeCurrency.Enabled = False
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+    Private Sub ForeighnCurrency()
+        Dim qt = From q In db.tblMasterCode2 Where q.Type = "CURRENCY"
+            Select q.Code, q.Type
+        Try
+
+            dcboForeighnCurrency.DataSource = qt.ToList
+            dcboForeighnCurrency.DataTextField = "Code"
+            dcboForeighnCurrency.DataValueField = "Code"
+            dcboForeighnCurrency.DataBind()
+            If dcboForeighnCurrency.Items.Count > 1 Then
+                dcboForeighnCurrency.Enabled = True
+            Else
+                dcboForeighnCurrency.Enabled = False
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+    Private Sub LandingChargeCurrency()
+        Dim qt = From q In db.tblMasterCode2 Where q.Type = "CURRENCY"
+            Select q.Code, q.Type
+        Try
+
+            dcboLandingChargeCurrency.DataSource = qt.ToList
+            dcboLandingChargeCurrency.DataTextField = "Code"
+            dcboLandingChargeCurrency.DataValueField = "Code"
+            dcboLandingChargeCurrency.DataBind()
+            If dcboLandingChargeCurrency.Items.Count > 1 Then
+                dcboLandingChargeCurrency.Enabled = True
+            Else
+                dcboLandingChargeCurrency.Enabled = False
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+    Private Sub OtherChargeCurrency1()
+        Dim qt = From q In db.tblMasterCode2 Where q.Type = "CURRENCY"
+           Select q.Code, q.Type
+        Try
+
+            dcboOtherChargeCurrency.DataSource = qt.ToList
+            dcboOtherChargeCurrency.DataTextField = "Code"
+            dcboOtherChargeCurrency.DataValueField = "Code"
+            dcboOtherChargeCurrency.DataBind()
+            If dcboOtherChargeCurrency.Items.Count > 1 Then
+                dcboOtherChargeCurrency.Enabled = True
+            Else
+                dcboOtherChargeCurrency.Enabled = False
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+    Private Sub ShippingMark()
+        Dim qt = From q In db.tblMasterCode2 Where q.Type = "SHIPMARK"
+                Select q.Code, q.Type
+        Try
+
+            dcboShippingMark.DataSource = qt.ToList
+            dcboShippingMark.DataTextField = "Code"
+            dcboShippingMark.DataValueField = "Code"
+            dcboShippingMark.DataBind()
+            If dcboShippingMark.Items.Count > 1 Then
+                dcboShippingMark.Enabled = True
+            Else
+                dcboShippingMark.Enabled = False
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+    Private Sub ProductUnit1()
+        Dim qt = From q In db.tblMasterCode2 Where q.Type = "UNIT"
+                Select q.Code, q.Type
+        Try
+
+            dcboPackUnit.DataSource = qt.ToList
+            dcboPackUnit.DataTextField = "Code"
+            dcboPackUnit.DataValueField = "Code"
+            dcboPackUnit.DataBind()
+            If dcboPackUnit.Items.Count > 1 Then
+                dcboPackUnit.Enabled = True
+            Else
+                dcboPackUnit.Enabled = False
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+    Private Sub DriverName()
+        Dim qt = From q In db.tblMasterCode2 Where q.Type = "DRIVER"
+               Select q.Description, q.Type
+        Try
+
+            dcboDriverName.DataSource = qt.ToList
+            dcboDriverName.DataTextField = "Description"
+            dcboDriverName.DataValueField = "Description"
+            dcboDriverName.DataBind()
+            If dcboDriverName.Items.Count > 1 Then
+                dcboDriverName.Enabled = True
+            Else
+                dcboDriverName.Enabled = False
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+    Private Sub CarLicense()
+        Dim qt = From q In db.tblMasterCode2 Where q.Type = "TRUCKLICENSE"
+               Select q.Code, q.Type
+        Try
+
+            dcboCarLicense.DataSource = qt.ToList
+            dcboCarLicense.DataTextField = "Code"
+            dcboCarLicense.DataValueField = "Code"
+            dcboCarLicense.DataBind()
+            If dcboCarLicense.Items.Count > 1 Then
+                dcboCarLicense.Enabled = True
+            Else
+                dcboCarLicense.Enabled = False
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+    Private Sub FromInvoice()
+        'Dim qt = From q In db.tblMasterCode2 Where q.Type = "TRUCKLICENSE"
+        '      Select q.Code, q.Type
+        'Try
+
+        '    dcboFromInvoice.DataSource = qt.ToList
+        '    dcboFromInvoice.DataTextField = "InvoiceNo"
+        '    dcboFromInvoice.DataValueField = "InvoiceNo"
+        '    dcboFromInvoice.DataBind()
+        '    If dcboFromInvoice.Items.Count > 1 Then
+        '        dcboFromInvoice.Enabled = True
+        '    Else
+        '        dcboFromInvoice.Enabled = False
+        '    End If
+        'Catch ex As Exception
+        '    Throw ex
+        'End Try
+    End Sub
+    Private Sub ToInvoice()
+        'Dim qt = From q In db.tblMasterCode2 Where q.Type = "TRUCKLICENSE"
+        '      Select q.Code, q.Type
+        'Try
+
+        '    dcboToInvoice.DataSource = qt.ToList
+        '    dcboToInvoice.DataTextField = "InvoiceNo"
+        '    dcboToInvoice.DataValueField = "InvoiceNo"
+        '    dcboToInvoice.DataBind()
+        '    If dcboToInvoice.Items.Count > 1 Then
+        '        dcboToInvoice.Enabled = True
+        '    Else
+        '        dcboToInvoice.Enabled = False
+        '    End If
+        'Catch ex As Exception
+        '    Throw ex
+        'End Try
+    End Sub
+    Private Sub UnitPLT()
+        Dim qt = From q In db.tblMasterCode2 Where q.Type = "UNIT"
+              Select q.Code, q.Type
+        Try
+
+            dcboUnitPLT.DataSource = qt.ToList
+            dcboUnitPLT.DataTextField = "Code"
+            dcboUnitPLT.DataValueField = "Code"
+            dcboUnitPLT.DataBind()
+            If dcboUnitPLT.Items.Count > 1 Then
+                dcboUnitPLT.Enabled = True
+            Else
+                dcboUnitPLT.Enabled = False
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+    Private Sub CTN()
+        Dim qt = From q In db.tblMasterCode2 Where q.Type = "UNIT"
+              Select q.Code, q.Type
+        Try
+
+            dcboCTN.DataSource = qt.ToList
+            dcboCTN.DataTextField = "Code"
+            dcboCTN.DataValueField = "Code"
+            dcboCTN.DataBind()
+            If dcboCTN.Items.Count > 1 Then
+                dcboCTN.Enabled = True
+            Else
+                dcboCTN.Enabled = False
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
     End Sub
 End Class

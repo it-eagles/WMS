@@ -42,7 +42,7 @@ Public Class ExpGenLot
                     showWeightINV()
                     master_.Disabled = True
                     detail_.Disabled = True
-                    invoice_.Disabled = True
+                    'invoice_.Disabled = True
                     btnSaveNew.Visible = False
                     btnSaveEdit.Visible = False
                     btnSeletJob.Visible = False
