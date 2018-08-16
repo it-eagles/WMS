@@ -68,6 +68,15 @@ Partial Public Class CreateRec
     Protected WithEvents btnSaveEditHead As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
+    '''stockqty_fieldset control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents stockqty_fieldset As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
     '''txtJobno control.
     '''</summary>
     '''<remarks>
@@ -860,6 +869,15 @@ Partial Public Class CreateRec
     Protected WithEvents CalendarExtenderArrivalToEAS As Global.AjaxControlToolkit.CalendarExtender
 
     '''<summary>
+    '''importgoods_fieldset control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents importgoods_fieldset As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
     '''txtDeliverycode control.
     '''</summary>
     '''<remarks>
@@ -1328,13 +1346,31 @@ Partial Public Class CreateRec
     Protected WithEvents ddlStatusIEAT2 As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''ddlInvoiceNo control.
+    '''exportgoods_fieldset control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlInvoiceNo As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents exportgoods_fieldset As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
+    '''Repea2_Invoice control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Repea2_Invoice As Global.System.Web.UI.WebControls.Repeater
+
+    '''<summary>
+    '''txtInvoiceNo control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtInvoiceNo As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
     '''txtProductCodeInvoice control.
@@ -1751,6 +1787,15 @@ Partial Public Class CreateRec
     Protected WithEvents btnSaveToConfirmNJRCInvoice As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
+    '''detailofgoods_fieldset control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents detailofgoods_fieldset As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
     '''txtSelectFileForImport_Import control.
     '''</summary>
     '''<remarks>
@@ -1776,6 +1821,15 @@ Partial Public Class CreateRec
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents btnSaveToInvoice_Import As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''assembly_fieldset control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents assembly_fieldset As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
     '''txtSelectFileForImport_ImportFileNJR control.

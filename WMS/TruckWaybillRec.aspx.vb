@@ -1,17 +1,87 @@
 ﻿Imports System.Transactions
+Imports System.Globalization
 
 Public Class TruckWaybillRec
     Inherits System.Web.UI.Page
     Dim db As New LKBWarehouseEntities1_Test
+    Dim classPermis As New ClassPermis
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        Dim usename As String = CStr(Session("UserName"))
+        Dim form As String = "frmExpGenLot"
+        If Not Me.IsPostBack Then
+            If classPermis.CheckRead(form, usename) = True Then
+                If Not IsPostBack Then
+                    showUnit()
+                    showCounOfOri()
+                    btnSaveAddHead.Visible = False
+                    btnSaveEditHead.Visible = False
+                    btnSearchTruck.Visible = False
+
+                    truckwaybillhead_fieldset.Disabled = True
+                    truckwaybilldetail_fieldset.Disabled = True
+
+
+                End If
+            Else
+                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ เข้าโปรแกรมนี้' !!!');", True)
+            End If
+        End If
         'showListNotifyParty()
         'showListShipper()
         'showListConsignee()
         'showListInvoiceNo()
         'showListProductCode()
     End Sub
+    '----------------------------------------------------------------Show ddl Unit--------------------------------------------------------
+    Private Sub showUnit()
 
+        Dim gg = From g In db.tblMasterCodes Where g.Type = "Unit"
+                  Select g.Type, g.Code
+        Try
+            ddlUnit_GrossWeight.DataSource = gg.ToList
+            ddlUnit_GrossWeight.DataTextField = "Code"
+            ddlUnit_GrossWeight.DataValueField = "Code"
+            ddlUnit_GrossWeight.DataBind()
+
+            ddlUnitQuantity_Detail.DataSource = gg.ToList
+            ddlUnitQuantity_Detail.DataTextField = "Code"
+            ddlUnitQuantity_Detail.DataValueField = "Code"
+            ddlUnitQuantity_Detail.DataBind()
+
+            If ddlUnit_GrossWeight.Items.Count > 1 Then
+                ddlUnit_GrossWeight.Enabled = True
+            Else
+                ddlUnit_GrossWeight.Enabled = False
+            End If
+
+            If ddlUnitQuantity_Detail.Items.Count > 1 Then
+                ddlUnitQuantity_Detail.Enabled = True
+            Else
+                ddlUnitQuantity_Detail.Enabled = False
+            End If
+
+        Catch ex As Exception
+
+        End Try
+    End Sub
+    '----------------------------------------------------------------Show ddl Country Of Origin--------------------------------------------------------
+    Private Sub showCounOfOri()
+        Dim gg = From g In db.tblMasterCodes Where g.Type = "COUNTRY"
+                  Select g.Type, g.Code
+        Try
+            ddlCountryOfOrigin.DataSource = gg.ToList
+            ddlCountryOfOrigin.DataTextField = "Code"
+            ddlCountryOfOrigin.DataValueField = "Code"
+            ddlCountryOfOrigin.DataBind()
+            If ddlCountryOfOrigin.Items.Count > 1 Then
+                ddlCountryOfOrigin.Enabled = True
+            Else
+                ddlCountryOfOrigin.Enabled = False
+            End If
+        Catch ex As Exception
+        End Try
+    End Sub
 
     '--------------------------------------------------------Show Data NotifyParty In Modal-----------------------------------------
     Public Sub showListNotifyParty()
@@ -45,7 +115,7 @@ Public Class TruckWaybillRec
 
         Dim cons = From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
         Where (p.PartyCode = Nottify_code And p.Consignee = "0") Or p.Consignee = "0"
-        Select p.PartyCode, p.PartyFullName, pa.PartyAddressCode, pa.Address1, pa.Address2, pa.Address3
+        Select p.PartyCode, p.PartyFullName, pa.PartyAddressCode, pa.Address1, pa.Address2
 
         If cons.Count > 0 Then
             Repeater1.DataSource = cons.ToList
@@ -90,7 +160,6 @@ Public Class TruckWaybillRec
             Dim lblPartyFullName As Label = CType(e.Item.FindControl("lblPartyFullName"), Label)
             Dim lblAddress1 As Label = CType(e.Item.FindControl("lblAddress1"), Label)
             Dim lblAddress2 As Label = CType(e.Item.FindControl("lblAddress2"), Label)
-            Dim lblAddress3 As Label = CType(e.Item.FindControl("lblAddress3"), Label)
             Dim lblPartyAddressCode As Label = CType(e.Item.FindControl("lblPartyAddressCode"), Label)
 
             If Not IsNothing(lblPartyCode) Then
@@ -104,9 +173,6 @@ Public Class TruckWaybillRec
             End If
             If Not IsNothing(lblPartyCode) Then
                 lblAddress2.Text = DataBinder.Eval(e.Item.DataItem, "Address2").ToString()
-            End If
-            If Not IsNothing(lblPartyCode) Then
-                lblAddress3.Text = DataBinder.Eval(e.Item.DataItem, "Address3").ToString()
             End If
             If Not IsNothing(lblPartyCode) Then
                 lblPartyAddressCode.Text = DataBinder.Eval(e.Item.DataItem, "PartyAddressCode").ToString()
@@ -155,7 +221,7 @@ Public Class TruckWaybillRec
 
         Dim cons = From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
         Where (p.PartyCode = Ship_code And p.Shipper = "0") Or p.Shipper = "0"
-        Select p.PartyCode, p.PartyFullName, pa.PartyAddressCode, pa.Address1, pa.Address2, pa.Address3
+        Select p.PartyCode, p.PartyFullName, pa.PartyAddressCode, pa.Address1, pa.Address2
 
         If cons.Count > 0 Then
             Repeater2.DataSource = cons.ToList
@@ -205,7 +271,6 @@ Public Class TruckWaybillRec
             Dim lblPartyFullName As Label = CType(e.Item.FindControl("lblPartyFullName"), Label)
             Dim lblAddress1 As Label = CType(e.Item.FindControl("lblAddress1"), Label)
             Dim lblAddress2 As Label = CType(e.Item.FindControl("lblAddress2"), Label)
-            Dim lblAddress3 As Label = CType(e.Item.FindControl("lblAddress3"), Label)
             Dim lblPartyAddressCode As Label = CType(e.Item.FindControl("lblPartyAddressCode"), Label)
 
             If Not IsNothing(lblPartyCode) Then
@@ -219,9 +284,6 @@ Public Class TruckWaybillRec
             End If
             If Not IsNothing(lblPartyCode) Then
                 lblAddress2.Text = DataBinder.Eval(e.Item.DataItem, "Address2").ToString()
-            End If
-            If Not IsNothing(lblPartyCode) Then
-                lblAddress3.Text = DataBinder.Eval(e.Item.DataItem, "Address3").ToString()
             End If
             If Not IsNothing(lblPartyCode) Then
                 lblPartyAddressCode.Text = DataBinder.Eval(e.Item.DataItem, "PartyAddressCode").ToString()
@@ -276,7 +338,7 @@ Public Class TruckWaybillRec
 
         Dim cons = From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
         Where (p.PartyCode = cons_code And p.Consignee = "0") Or p.Consignee = "0"
-        Select p.PartyCode, p.PartyFullName, pa.PartyAddressCode, pa.Address1, pa.Address2, pa.Address3
+        Select p.PartyCode, p.PartyFullName, pa.PartyAddressCode, pa.Address1, pa.Address2
 
         If cons.Count > 0 Then
             Repeater3.DataSource = cons.ToList
@@ -326,7 +388,6 @@ Public Class TruckWaybillRec
             Dim lblPartyFullName As Label = CType(e.Item.FindControl("lblPartyFullName"), Label)
             Dim lblAddress1 As Label = CType(e.Item.FindControl("lblAddress1"), Label)
             Dim lblAddress2 As Label = CType(e.Item.FindControl("lblAddress2"), Label)
-            Dim lblAddress3 As Label = CType(e.Item.FindControl("lblAddress3"), Label)
             Dim lblPartyAddressCode As Label = CType(e.Item.FindControl("lblPartyAddressCode"), Label)
 
             If Not IsNothing(lblPartyCode) Then
@@ -340,9 +401,6 @@ Public Class TruckWaybillRec
             End If
             If Not IsNothing(lblPartyCode) Then
                 lblAddress2.Text = DataBinder.Eval(e.Item.DataItem, "Address2").ToString()
-            End If
-            If Not IsNothing(lblPartyCode) Then
-                lblAddress3.Text = DataBinder.Eval(e.Item.DataItem, "Address3").ToString()
             End If
             If Not IsNothing(lblPartyCode) Then
                 lblPartyAddressCode.Text = DataBinder.Eval(e.Item.DataItem, "PartyAddressCode").ToString()
@@ -480,6 +538,9 @@ Public Class TruckWaybillRec
     End Sub
 
     Private Sub SaveDATA_New()
+        Dim ReceivedDate As Date
+        Dim DateOfIssue As Date
+
 
         If txtTruckW_B.Value.Trim() = "" Then
             MsgBox("กรุณาป้อน TruckWayBill No ก่อน !!!")
@@ -502,12 +563,19 @@ Public Class TruckWaybillRec
             Exit Sub
         End If
 
+        If txtdatepickerReceivedDate.Text = "" Then
+            ReceivedDate = CDate(Convert.ToDateTime(Date.Now).ToString("dd/MM/yyyy"))
+        Else
+            ReceivedDate = DateTime.ParseExact(txtdatepickerReceivedDate.Text, "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US"))
+        End If
+        If txtdatepickerDateOfIssue.Text = "" Then
+            DateOfIssue = CDate(Convert.ToDateTime(Date.Now).ToString("dd/MM/yyyy"))
+        Else
+            DateOfIssue = DateTime.ParseExact(txtdatepickerDateOfIssue.Text, "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US"))
+        End If
+
         If MsgBox("คุณต้องการเพิ่มรายการ TruckWayBillImp ใหม่ ใช่หรือไม่ ?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
-
             Using tran As New TransactionScope()
-
-
-
                 Try
                     db.Database.Connection.Open()
                     'sb = New StringBuilder()
@@ -515,8 +583,8 @@ Public Class TruckWaybillRec
                     'sb.Append(" VALUES (@TruckWayBillNo,@ReceivedDate,@Dateofissue,@NoofOriginals,@NotifyPatty,@DeliveryofGoods,@CarLicense,@DriverName,@FreightCharges,@Prepaid,@QuantityAmount,@GrossWeightAmount,@Measurement,@ExporterCode,@NameEng,@StreetAddress,@District,@SubProvince,@Province,@PostCode,@CodeReturn,@ConsignneeCode,@ConsignNameEng,@ConsingStreetNumber,@ConsignDistrict,@ConsignSubProvince,@ConsgnProvince,@ConsignPostCode,@ConsignEmail,@PlaceCode,@PlaceName,@PlaceAddress,PlaceofReceipt)"
                     db.tblTruckWayBillImps.Add(New tblTruckWayBillImp With { _
                    .TruckWayBillNo = txtTruckW_B.Value.Trim, _
-                   .ReceivedDate = txtdatepickerReceivedDate.Text.Trim, _
-                   .Dateofissue = txtdatepickerDateOfIssue.Text.Trim, _
+                   .ReceivedDate = ReceivedDate, _
+                   .Dateofissue = DateOfIssue, _
                    .NoofOriginals = txtNoOfOriginals.Value.Trim, _
                    .NotifyPatty = txtNotifyParty.Value.Trim, _
                    .DeliveryofGoods = txtDeliveryOfGoods.Value.Trim, _
@@ -566,9 +634,137 @@ Public Class TruckWaybillRec
                 End Try
             End Using
         End If
-
         txtTruckW_B.Focus()
     End Sub
+    Private Sub GenNum()
+        'Dim tmpDate As Single
+        'Dim tmpMount As Single
+        'Dim tmpYear As Single
+        'Dim LotNo As String
+        'Dim Nmount As Single
+        'Dim Num As Single
+        'Dim Mount As Single
+        'Dim Year As Single
+        'Dim Digit As Single
+
+        'tmpDate = CSng(Format(Now(), "dd"))
+        'tmpMount = CSng(Format(Now(), "MM"))
+        'Nmount = CSng(Format(Now(), "yy")) + 43
+        ''tmpYear = Format(CDate(Nmount), "yy")
+        'Gentbl()
+        'Mount = CSng(txtMountNo.Text)
+        'Year = CSng(txtYearNo.Text)
+        'Digit = CSng(txtDigitNo.Text)
+        'If Nmount = Year Then
+        '    If tmpMount = Mount Then
+        '        Digit = Digit + 1
+        '        Num = Digit
+        '    End If
+
+        '    If tmpMount <> Mount Then
+        '        Digit = 0
+        '        Num = Digit + 1
+        '    End If
+        'End If
+        'If Nmount <> Year Then
+        '    Digit = 0
+        '    If tmpMount = Mount Then
+        '        Digit = Digit + 1
+        '        Num = Digit
+        '    End If
+
+        '    If tmpMount <> Mount Then
+        '        Digit = 0
+        '        Num = Digit + 1
+        '    End If
+        'End If
+        'LotNo = "TWB-" & Nmount.ToString("0#") & tmpMount.ToString("0#") & Num.ToString("00#")
+        'txtTruckWayBill.Text = LotNo
+
+        'txtTypeCode.Text = "TruckWayBill"
+        'txtRunNo.Text = LotNo
+        'txtMountNo.Text = tmpMount.ToString("0#")
+        'txtYearNo.Text = Nmount.ToString("0#")
+        'txtDigitNo.Text = Num.ToString("00#")
+
+        'tr = Conn.BeginTransaction()
+        'Try
+        '    sb = New StringBuilder()
+        '    sb.Append("UPDATE tblGenAutoNo")
+        '    sb.Append(" SET TypeCode=@TypeCode,RunNo=@RunNo,MountNo=@MountNo,YearNo=@YearNo,DigitNo=@DigitNo")
+        '    sb.Append(" WHERE (TypeCode=@TypeCode)")
+        '    Dim sqlEdit As String
+        '    sqlEdit = sb.ToString()
+
+        '    With com
+        '        .CommandText = sqlEdit
+        '        .CommandType = CommandType.Text
+        '        .Connection = Conn
+        '        .Transaction = tr
+        '        .Parameters.Clear()
+        '        .Parameters.Add("@TypeCode", SqlDbType.VarChar).Value = txtTypeCode.Text.Trim()
+        '        .Parameters.Add("@RunNo", SqlDbType.VarChar).Value = txtRunNo.Text.Trim()
+        '        .Parameters.Add("@MountNo", SqlDbType.VarChar).Value = txtMountNo.Text.Trim()
+        '        .Parameters.Add("@YearNo", SqlDbType.VarChar).Value = txtYearNo.Text.Trim()
+        '        .Parameters.Add("@DigitNo", SqlDbType.VarChar).Value = txtDigitNo.Text.Trim()
+        '        Dim result As Integer
+        '        result = .ExecuteNonQuery()
+        '        If result = 0 Then
+        '            tr.Rollback()
+        '            MessageBox.Show("ข้อมูล ที่คุณใส่ ไม่ถูกต้อง !!!", "ผลการทำงาน", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        '            txtTruckWayBill.SelectAll()
+        '        Else
+        '            tr.Commit()
+
+        '            MessageBox.Show("แก้ไขข้อมูล Gen No เรียบร้อยแล้ว !!!", "ผลการทำงาน", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+        '        End If
+        '    End With
+        'Catch ex As Exception
+        '    tr.Rollback()
+        '    MessageBox.Show("เกิดข้อผิดพลาด เนื่องจาก " & ex.Message, "ผลการทำงาน", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        'End Try
+    End Sub 'genNum
+
+    Private Sub Gentbl()
+        'Dim sqlSearch As String
+
+        'sqlSearch = "SELECT TypeCode,RunNo,MountNo,YearNo,DigitNo FROM tblGenAutoNo WHERE (TypeCode = 'TruckWayBill') "
+
+        'Dim dt As DataTable
+
+        'com = New SqlCommand()
+        'dtGenLotNo = New DataTable
+        'With com
+        '    .Parameters.Clear()
+        '    .Parameters.Add("@TypeCode", SqlDbType.NVarChar).Value = txtTypeCode.Text.Trim()
+        '    .Parameters.Add("@RunNo", SqlDbType.NVarChar).Value = txtRunNo.Text.Trim()
+        '    .Parameters.Add("@MountNo", SqlDbType.NVarChar).Value = txtMountNo.Text.Trim()
+        '    .Parameters.Add("@YearNo", SqlDbType.NVarChar).Value = txtYearNo.Text.Trim()
+        '    .Parameters.Add("@DigitNo", SqlDbType.NVarChar).Value = txtDigitNo.Text.Trim()
+        '    .CommandType = CommandType.Text
+        '    .CommandText = sqlSearch
+        '    .Connection = Conn
+        '    dr = .ExecuteReader()
+        '    If dr.HasRows Then
+        '        dt = New DataTable()
+        '        dtGenLotNo.Load(dr)
+        '        txtTypeCode.DataBindings.Clear()
+        '        txtRunNo.DataBindings.Clear()
+        '        txtMountNo.DataBindings.Clear()
+        '        txtYearNo.DataBindings.Clear()
+        '        txtDigitNo.DataBindings.Clear()
+
+        '        txtTypeCode.DataBindings.Add("Text", dtGenLotNo, "TypeCode")
+        '        txtRunNo.DataBindings.Add("Text", dtGenLotNo, "RunNo")
+        '        txtMountNo.DataBindings.Add("Text", dtGenLotNo, "MountNo")
+        '        txtYearNo.DataBindings.Add("Text", dtGenLotNo, "YearNo")
+        '        txtDigitNo.DataBindings.Add("Text", dtGenLotNo, "DigitNo")
+
+        '    End If
+        'End With
+        'dr.Close()
+    End Sub 'genNUm
     Private Sub ClearDATA()
         txtTruckW_B.Value = ""
         txtdatepickerReceivedDate.Text = ""
@@ -607,18 +803,37 @@ Public Class TruckWaybillRec
     End Sub
 
     Protected Sub btnAddHead_ServerClick(sender As Object, e As EventArgs)
+        truckwaybillhead_fieldset.Disabled = False
+        truckwaybilldetail_fieldset.Disabled = True
 
+        txtTruckW_B.Disabled = True
+        btnSaveAddHead.Visible = True
+        btnSaveEditHead.Visible = False
+        btnSearchTruck.Visible = False
+
+        ClearDATA()
     End Sub
 
     Protected Sub btnEditHead_ServerClick(sender As Object, e As EventArgs)
+        truckwaybillhead_fieldset.Disabled = False
+        truckwaybilldetail_fieldset.Disabled = False
 
+        btnSaveAddHead.Visible = False
+        btnSaveEditHead.Visible = True
+        btnSearchTruck.Visible = True
+
+        ClearDATA()
     End Sub
 
     Protected Sub btnSaveAddHead_ServerClick(sender As Object, e As EventArgs)
-
+        SaveDATA_New()
     End Sub
 
     Protected Sub btnSaveEditHead_ServerClick(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Protected Sub btnSearchTruck_ServerClick(sender As Object, e As EventArgs)
 
     End Sub
 End Class

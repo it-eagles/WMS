@@ -8,12 +8,12 @@ Imports System.Data.SqlClient
 Imports System.Diagnostics
 Imports CrystalDecisions.CrystalReports.Engine
 Imports System.Transactions
-
+Imports System.Globalization
 
 Public Class CreateRec
     Inherits System.Web.UI.Page
     Dim db As New LKBWarehouseEntities1_Test
-
+    Dim classPermis As New ClassPermis
     Dim checkclicksave As String
     Dim txtMountNo As String
     Dim txtYearNo As String
@@ -21,14 +21,15 @@ Public Class CreateRec
     Dim txtTypeCode As String
     Dim txtRunNo As String
     Dim checkjobsite As String
-    Dim classPermis As New ClassPermis
-
+    Dim endpart As String
+    Dim cuspart As String
+    Dim Prodes As String
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Dim usename As String = CStr(Session("UserName"))
         Dim form As String = "frmExpGenLot"
         If Not Me.IsPostBack Then
-            If ClassPermis.CheckRead(form, usename) = True Then
+            If classPermis.CheckRead(form, usename) = True Then
                 If Not IsPostBack Then
 
                     showJobSite()
@@ -42,6 +43,13 @@ Public Class CreateRec
                     showunitdimension()
                     showcurrency()
                     TabName.Value = Request.Form(TabName.UniqueID)
+
+                    stockqty_fieldset.Disabled = True
+                    importgoods_fieldset.Disabled = True
+                    exportgoods_fieldset.Disabled = True
+                    detailofgoods_fieldset.Disabled = True
+                    assembly_fieldset.Disabled = True
+
                 End If
             Else
                 ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ เข้าโปรแกรมนี้' !!!');", True)
@@ -110,7 +118,7 @@ Public Class CreateRec
         'ddlLotof.Items.Add(New ListItem("--Select LotOf--", ""))
         'ddlLotof.AppendDataBoundItems = True
 
-        Dim gg = From g In db.tblMasterCodes Where g.Type = "jobbt-in"
+        Dim gg = From g In db.tblMasterCodes Where g.Type = "jobby-in"
                   Select g.Type, g.Code
         Try
             ddlLotof.DataSource = gg.ToList
@@ -2215,32 +2223,90 @@ Public Class CreateRec
             End If
 
             'ReadDATA()
-            'ReadDATA2()
+            ReadDATA2()
             'ReadDATAEAS()
         End If
     End Sub
     '--------------------------------------------------Save Data News-----------------------------------------------
     Private Sub SaveDATA_New()
+        Dim Jobdate As Date
+        Dim ActualDate1 As Date
+        Dim ActualDate2 As Date
+        Dim ActualDate3 As Date
+        Dim ActualDate4 As Date
+        Dim ActualPickUp As Date
+        Dim ArrivalToEAS As Date
+        Dim ReturnDate As Date
+        Dim ReturnDate2 As Date
+        Dim ImportEntryDate As Date
+
         Dim fwdstatus As String = "0"
 
         If txtJobno.Value.Trim() = "" Then
             MsgBox("กรุณาป้อน LOT No ก่อน !!!")
-            'UnlockDATA()
             txtJobno.Focus()
             Exit Sub
         End If
-        'CJob()
+
+        If txtdatepickerJobdate.Text = "" Then
+            Jobdate = CDate(Convert.ToDateTime(Date.Now).ToString("dd/MM/yyyy"))
+        Else
+            Jobdate = DateTime.ParseExact(txtdatepickerJobdate.Text, "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US"))
+        End If
+        If txtdatepickerActualDate1.Text = "" Then
+            ActualDate1 = CDate(Convert.ToDateTime(Date.Now).ToString("dd/MM/yyyy"))
+        Else
+            ActualDate1 = DateTime.ParseExact(txtdatepickerActualDate1.Text, "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US"))
+        End If
+        If txtdatepickerActualDate2.Text = "" Then
+            ActualDate2 = CDate(Convert.ToDateTime(Date.Now).ToString("dd/MM/yyyy"))
+        Else
+            ActualDate2 = DateTime.ParseExact(txtdatepickerActualDate2.Text, "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US"))
+        End If
+        If txtdatepickerActualDate3.Text = "" Then
+            ActualDate3 = CDate(Convert.ToDateTime(Date.Now).ToString("dd/MM/yyyy"))
+        Else
+            ActualDate3 = DateTime.ParseExact(txtdatepickerActualDate3.Text, "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US"))
+        End If
+        If txtdatepickerActualDate4.Text = "" Then
+            ActualDate4 = CDate(Convert.ToDateTime(Date.Now).ToString("dd/MM/yyyy"))
+        Else
+            ActualDate4 = DateTime.ParseExact(txtdatepickerActualDate4.Text, "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US"))
+        End If
+        If txtdatepickerActualPickUp.Text = "" Then
+            ActualPickUp = CDate(Convert.ToDateTime(Date.Now).ToString("dd/MM/yyyy"))
+        Else
+            ActualPickUp = DateTime.ParseExact(txtdatepickerActualPickUp.Text, "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US"))
+        End If
+        If txtdatepickerArrivalToEAS.Text = "" Then
+            ArrivalToEAS = CDate(Convert.ToDateTime(Date.Now).ToString("dd/MM/yyyy"))
+        Else
+            ArrivalToEAS = DateTime.ParseExact(txtdatepickerArrivalToEAS.Text, "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US"))
+        End If
+        If txtdatepickerReturnDate.Text = "" Then
+            ReturnDate = CDate(Convert.ToDateTime(Date.Now).ToString("dd/MM/yyyy"))
+        Else
+            ReturnDate = DateTime.ParseExact(txtdatepickerReturnDate.Text, "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US"))
+        End If
+        If txtdatepickerReturnDate2.Text = "" Then
+            ReturnDate2 = CDate(Convert.ToDateTime(Date.Now).ToString("dd/MM/yyyy"))
+        Else
+            ReturnDate2 = DateTime.ParseExact(txtdatepickerReturnDate2.Text, "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US"))
+        End If
+        If txtdatepickerImportEntryDate.Text = "" Then
+            ImportEntryDate = CDate(Convert.ToDateTime(Date.Now).ToString("dd/MM/yyyy"))
+        Else
+            ImportEntryDate = DateTime.ParseExact(txtdatepickerImportEntryDate.Text, "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US"))
+        End If
+
         If MsgBox("คุณต้องการเพิ่มรายการ LOT No ใหม่ ใช่หรือไม่ ?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
-
             Using tran As New TransactionScope()
-
                 Try
                     db.Database.Connection.Open()
-
                     db.tblImpGenLOTs.Add(New tblImpGenLOT With { _
                                          .EASLOTNo = txtJobno.Value.Trim, _
                                          .JobSite = ddlJobsite.Text.Trim, _
-                                         .LOTDate = CDate(txtdatepickerJobdate.Text.Trim), _
+                                         .LOTDate = Jobdate, _
                                          .LOTBy = ddlLotof.Text.Trim, _
                                          .SalesCode = ddlSaleman.Text.Trim, _
                                          .SalesName = txtsalemandis.Value.Trim, _
@@ -2282,10 +2348,10 @@ Public Class CreateRec
                                          .FLT2 = txtActual2.Value.Trim, _
                                          .FLT3 = txtActual3.Value.Trim, _
                                          .FLT4 = txtActual4.Value.Trim, _
-                                         .DateFLT1 = CType(txtdatepickerActualDate1.Text.Trim, Date?), _
-                                         .DateFLT2 = CType(txtdatepickerActualDate2.Text.Trim, Date?), _
-                                         .DateFLT3 = CType(txtdatepickerActualDate3.Text.Trim, Date?), _
-                                         .DateFLT4 = CType(txtdatepickerActualDate4.Text.Trim, Date?), _
+                                         .DateFLT1 = ActualDate1, _
+                                         .DateFLT2 = ActualDate2, _
+                                         .DateFLT3 = ActualDate3, _
+                                         .DateFLT4 = ActualDate4, _
                                          .ORGN1 = txtORGN1.Value.Trim, _
                                          .ORGN2 = txtORGN2.Value.Trim, _
                                          .ORGN3 = txtORGN3.Value.Trim, _
@@ -2311,9 +2377,9 @@ Public Class CreateRec
                                          .Weight3 = CType(txtWeightActual3.Value.Trim, Double?), _
                                          .Weight4 = CType(txtWeightActual4.Value.Trim, Double?), _
                                          .TimeDTE = txtTimePickUp.Value.Trim, _
-                                         .DateDTE = CType(txtdatepickerActualPickUp.Text.Trim, Date?), _
+                                         .DateDTE = ActualPickUp, _
                                          .TimeATT = txtArrivalToEAS.Value.Trim, _
-                                         .DateATT = CType(txtdatepickerArrivalToEAS.Text.Trim, Date?), _
+                                         .DateATT = ArrivalToEAS, _
                                          .Remark = txtRamarkActual.Value.Trim, _
                                          .DOCode = txtDeliverycode.Value.Trim, _
                                          .DONameENG = txtNameEngDelivery.Value.Trim, _
@@ -2356,7 +2422,7 @@ Public Class CreateRec
                                          .IEATNo = txtIEATNo.Value.Trim, _
                                          .IEATPermit = ddlIEATPermit.Text.Trim, _
                                          .EntryNo = txtImportEntryNo.Value.Trim, _
-                                         .DeliveryDate = CType(txtdatepickerImportEntryDate.Text.Trim, Date?), _
+                                         .DeliveryDate = ImportEntryDate, _
                                          .Status1 = ddlStatusIEAT1.Text.Trim, _
                                          .Status2 = ddlStatusIEAT2.Text.Trim, _
                                          .Useby = CStr(Session("UserId")), _
@@ -2368,26 +2434,16 @@ Public Class CreateRec
                     tran.Complete()
                     ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('Add สำเร็จ !');", True)
 
-                    'End With
-                    'tr.Commit()
-
                 Catch ex As Exception
-                    'tr.Rollback()
-                    'MessageBox.Show(ex.Message, "ผลการทำงาน", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-                    ' UnlockDATA()
                     ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด กรุณาบันทึกข้อมูลใหม่อีกครั้ง');", True)
-
                 Finally
                     db.Database.Connection.Close()
                     db.Dispose()
                     tran.Dispose()
-
                 End Try
-
             End Using
         End If
         txtJobno.Focus()
-
     End Sub 'saveเข้าtblExpGenLOT
     '--------------------------------------------------Save Data Modify-----------------------------------------------
     Private Sub SaveDATA_Modify()
@@ -2400,24 +2456,16 @@ Public Class CreateRec
         End If
 
         If MsgBox("คุณต้องการแก้ไขรายการ LOT No ใหม่ ใช่หรือไม่ ?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
-
             Using tran As New TransactionScope()
-
-
                 Try
                     db.Database.Connection.Open()
                     'sb = New StringBuilder()
                     'sb.Append("UPDATE tblImpGenLOT")
                     'sb.Append(" SET EASLOTNo=@EASLOTNo,LOTDate=@LOTDate,LOTBy=@LOTBy,SalesCode=@SalesCode,SalesName=@SalesName,ConsigneeCode=@ConsigneeCode,ConsignNameEng=@ConsignNameEng,ConsignAddress=@ConsignAddress,ConsignDistrict=@ConsignDistrict,ConsignSubProvince=@ConsignSubProvince,ConsignProvince=@ConsignProvince,ConsignPostCode=@ConsignPostCode,ConsignEmail=@ConsignEmail,ShipperCode=@ShipperCode,ShipperNameEng=@ShipperNameEng,ShipperAddress=@ShipperAddress,ShipperDistrict=@ShipperDistrict,ShipperSubprovince=@ShipperSubprovince,ShipperProvince=@ShipperProvince,ShipperPostCode=@ShipperPostCode,ShipperReturnCode=@ShipperReturnCode,Commodity=@Commodity,QuantityofPart=@QuantityofPart,QuantityUnit=@QuantityUnit,QuantityPack=@QuantityPack,QuantityUnitPack=@QuantityUnitPack,Weight=@Weight,WeightUnit=@WeightUnit,Volume=@Volume,VolumeUnit=@VolumeUnit,MAWB=@MAWB,DocType=@DocType,DocCode=@DocCode,Flight=@Flight,DOCode=@DOCode,DONameENG=@DONameENG,DOStreet_Number=@DOStreet_Number,DODistrict=@DODistrict,DOSubProvince=@DOSubProvince,DOProvince=@DOProvince,DOPostCode=@DOPostCode,DOEmail=@DOEmail,DOContactPerson=@DOContactPerson,IEATNo=@IEATNo,EntryNo=@EntryNo,DeliveryDate=@DeliveryDate,CustomerCode=@CustomerCode,CustomerENG=@CustomerENG,CustomerStreet=@CustomerStreet,CustomerDistrict=@CustomerDistrict,CustomerSub=@CustomerSub,CustomerProvince=@CustomerProvince,CustomerPostCode=@CustomerPostCode,CustomerEmail=@CustomerEmail,CustomerContact=@CustomerContact,PickUpCode=@PickUpCode,PickUpENG=@PickUpENG,PickUpAddress1=@PickUpAddress1,PickUpAddress2=@PickUpAddress2,PickUpAddress3=@PickUpAddress3,PickUpAddress4=@PickUpAddress4,PickUpAddress5=@PickUpAddress5,PickUpEmail=@PickUpEmail,PickUpContact=@PickUpContact,EndCusCode=@EndCusCode,EndCusENG=@EndCusENG,EndCusAddress1=@EndCusAddress1,EndCusAddress2=@EndCusAddress2,EndCusAddress3=@EndCusAddress3,EndCusAddress4=@EndCusAddress4,EndCusAddress5=@EndCusAddress5,EndCusEmail=@EndCusEmail,EndCusContact=@EndCusContact,FreighForwarder=@FreighForwarder,Useby=@Useby,IEATPermit=@IEATPermit,ShipTo=@ShipTo,Remark=@Remark,FLT1=@FLT1,FLT2=@FLT2,FLT3=@FLT3,FLT4=@FLT4,DateFLT1=@DateFLT1,DateFLT2=@DateFLT2,DateFLT3=@DateFLT3,DateFLT4=@DateFLT4,ORGN1=@ORGN1,ORGN2=@ORGN2,ORGN3=@ORGN3,ORGN4=@ORGN4,DSTN1=@DSTN1,DSTN2=@DSTN2,DSTN3=@DSTN3,DSTN4=@DSTN4,ETD1=@ETD1,ETD2=@ETD2,ETD3=@ETD3,ETD4=@ETD4,ETA1=@ETA1,ETA2=@ETA2,ETA3=@ETA3,ETA4=@ETA4,PCS1=@PCS1,PCS2=@PCS2,PCS3=@PCS3,PCS4=@PCS4,Weight1=@Weight1,Weight2=@Weight2,Weight3=@Weight3,Weight4=@Weight4,QuantityPack1=@QuantityPack1,QuantityUnitPack1=@QuantityUnitPack1,TimeDTE=@TimeDTE,DateDTE=@DateDTE,TimeATT=@TimeATT,DateATT=@DateATT,Status1=@Status1,Status2=@Status2,JobSite=@JobSite,BillingNo=@BillingNo,CustomerCodeGroup=@CustomerCodeGroup,CustomerENGGroup=@CustomerENGGroup")
                     'sb.Append(" WHERE (EASLOTNo=@EASLOTNo)")
-                    Dim edit As tblImpGenLOT = (From c In db.tblImpGenLOTs Where c.EASLOTNo = JobNooo
+                    Dim edit As tblImpGenLOT = (From c In db.tblImpGenLOTs Where c.EASLOTNo = txtJobno.Value.Trim
                       Select c).First()
                     If edit IsNot Nothing Then
-                        '.CommandText = sqlEdit
-                        '.CommandType = CommandType.Text
-                        '.Connection = Conn
-                        '.Transaction = tr
-                        '.Parameters.Clear()
                         edit.EASLOTNo = txtJobno.Value.Trim
                         edit.JobSite = ddlJobsite.Text.Trim
                         edit.LOTDate = CDate(txtdatepickerJobdate.Text.Trim)
@@ -2544,7 +2592,6 @@ Public Class CreateRec
                         db.SaveChanges()
                         tran.Complete()
                         ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('แก้ไขข้อมูล สำเร็จ !');", True)
-
                     End If
                 Catch ex As Exception
                     ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด กรุณาบันทึกข้อมูลใหม่อีกครั้ง');", True)
@@ -2555,39 +2602,53 @@ Public Class CreateRec
     End Sub 'saveModifyเข้าที่tblExpGenLOT
 
     Protected Sub btnSaveAddHead_ServerClick(sender As Object, e As EventArgs)
-        MsgBox(ddlJobsite.Text)
-        If ddlJobsite.Text = "LKB" Then
-            Gentbl("ExpLOTIN")
-        ElseIf ddlJobsite.Text = "SBIA" Then
-            Gentbl("SBIALOTIN")
-        ElseIf ddlJobsite.Text = "HCR" Then
-            Gentbl("HCRLOTIN")
-        ElseIf ddlJobsite.Text = "HTO" Then
-            Gentbl("HTOLOTIN")
-        ElseIf ddlJobsite.Text = "AEC" Then
-            Gentbl("AECLOTIN")
-        ElseIf ddlJobsite.Text = "MJB" Then
-            Gentbl("MJBLOTIN")
-        ElseIf ddlJobsite.Text = "LEA" Then
-            Gentbl("LEALOTIN")
-        ElseIf ddlJobsite.Text = "SPM" Then
-            Gentbl("SPMLOTIN")
-        ElseIf ddlJobsite.Text = "PTN" Then
-            Gentbl("PTNLOTIN")
-        ElseIf ddlJobsite.Text = "CKT" Then
-            Gentbl("CKTLOTIN")
-        ElseIf ddlJobsite.Text = "WIP" Then
-            Gentbl("WIPLOTIN")
-        End If
-        SaveDATA_New()
-        'ClearDATA()
+        Dim user As String = CStr(Session("UserName"))
+        Dim form As String = "frmExpGenLot"
+        Dim cu = From um In db.tblUserMenus Where um.UserName = user And um.Form = form And um.Save_ = 1
+        If cu.Any Then
 
+            If ddlJobsite.Text = "LKB" Then
+                Gentbl("ExpLOTIN")
+            ElseIf ddlJobsite.Text = "SBIA" Then
+                Gentbl("SBIALOTIN")
+            ElseIf ddlJobsite.Text = "HCR" Then
+                Gentbl("HCRLOTIN")
+            ElseIf ddlJobsite.Text = "HTO" Then
+                Gentbl("HTOLOTIN")
+            ElseIf ddlJobsite.Text = "AEC" Then
+                Gentbl("AECLOTIN")
+            ElseIf ddlJobsite.Text = "MJB" Then
+                Gentbl("MJBLOTIN")
+            ElseIf ddlJobsite.Text = "LEA" Then
+                Gentbl("LEALOTIN")
+            ElseIf ddlJobsite.Text = "SPM" Then
+                Gentbl("SPMLOTIN")
+            ElseIf ddlJobsite.Text = "PTN" Then
+                Gentbl("PTNLOTIN")
+            ElseIf ddlJobsite.Text = "CKT" Then
+                Gentbl("CKTLOTIN")
+            ElseIf ddlJobsite.Text = "WIP" Then
+                Gentbl("WIPLOTIN")
+            End If
+            SaveDATA_New()
+            InsertData()
+            ClearDATA()
+            ReadDATA2()
+        Else
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ์เมนูนี้ !!!')", True)
+        End If
     End Sub
 
     Protected Sub btnSaveEditHead_ServerClick(sender As Object, e As EventArgs)
         SaveDATA_Modify()
+        ReadDATA2()
     End Sub
     Protected Sub btnAddHead_ServerClick(sender As Object, e As EventArgs)
+        stockqty_fieldset.Disabled = False
+        importgoods_fieldset.Disabled = False
+        exportgoods_fieldset.Disabled = False
+        detailofgoods_fieldset.Disabled = False
+        assembly_fieldset.Disabled = False
 
         btnSaveAddHead.Visible = True
         btnSaveEditHead.Visible = False
@@ -2598,6 +2659,11 @@ Public Class CreateRec
     End Sub
 
     Protected Sub btnEditHead_ServerClick(sender As Object, e As EventArgs)
+        stockqty_fieldset.Disabled = False
+        importgoods_fieldset.Disabled = False
+        exportgoods_fieldset.Disabled = False
+        detailofgoods_fieldset.Disabled = False
+        assembly_fieldset.Disabled = False
 
         btnSaveEditHead.Visible = True
         btnSaveAddHead.Visible = False
@@ -2607,12 +2673,12 @@ Public Class CreateRec
         ClearDATA()
     End Sub
     Private Sub showVisible()
-        FormLeft_MasterJob.Visible = True
-        FormRight_MasterJob.Visible = True
+        'FormLeft_MasterJob.Visible = True
+        'FormRight_MasterJob.Visible = True
         btnGenIEATNo.Disabled = True
 
         txtJobno.Disabled = True
-        ddlInvoiceNo.Enabled = False
+        txtInvoiceNo.Disabled = True
         txtPONoProductCode.Disabled = True
         txtQuantityInvoice.Disabled = True
         ddlQuantityInvoice.Enabled = False
@@ -2650,7 +2716,6 @@ Public Class CreateRec
         btnImport_Import.Disabled = True
     End Sub
     Private Sub Gentbl(type As String)
-        'Dim sqlSearch As String
         Dim tmpDate As Single = CSng(Format(Now(), "dd"))
         Dim Nmount As Single = CSng(Format(Now(), "MM"))
         Dim Nyear As Single = CSng(Format(Now(), "yy")) + 43
@@ -2780,84 +2845,118 @@ Public Class CreateRec
     End Sub
 
     Private Sub GenIEATNo()
-        Dim tmpDate As Single
-        Dim tmpMount As Single
-        'Dim tmpYear As Single
+        Dim tmpDate As Single = CSng(Format(Now(), "dd"))
+        Dim Nmount As Single = CSng(Format(Now(), "MM"))
+        Dim Nyear As Single = CSng(Format(Now(), "yy"))
+        Dim Nemount As String
+        Dim Neyear As String
+        Dim DigitNo_ As String = "000"
         Dim LotNo As String
-        Dim Nmount As Single
         Dim Num As Single
         Dim Mount As Single
         Dim Year As Single
         Dim Digit As Single
+        Dim Digit_ As Single
+        Dim num_ As String
+        Dim dunNo As String
+        Dim Type As String = "IEAT"
 
-        tmpDate = CSng(Format(Now(), "dd"))
-        tmpMount = CSng(Format(Now(), "MM"))
-        Nmount = CSng(Format(Now(), "yy")) + 43
-        'tmpYear = Format(CDate(Nmount), "yy")
-        GentblIEATNo()
-        Mount = CSng(txtMountNo)
-        Year = CSng(txtYearNo)
-        Digit = CSng(txtDigitNo)
-        If Nmount = Year Then
-            If tmpMount = Mount Then
-                Digit = Digit + 1
-                Num = Digit
-            End If
+        Nemount = Nmount.ToString("0#")
+        Neyear = Nyear.ToString("0#")
 
-            If tmpMount <> Mount Then
-                tmpMount = Mount
-                Num = Digit + 1
-            End If
-        End If
-        If Nmount <> Year Then
-            Nmount = Year
-            If tmpMount = Mount Then
-                Digit = Digit + 1
-                Num = Digit
-            End If
+        Mount = CSng(Nemount)
+        Year = CSng(Neyear)
+        Digit = CSng(DigitNo_)
 
-            If tmpMount <> Mount Then
-                Digit = 0
-                Num = Digit + 1
+        If chkNextmonth.Checked = True Then
+            Nmount = CSng(Format(Now(), "MM")) + 1
+            Nemount = Nmount.ToString("0#")
+            If Nemount > "12" Then
+                Nmount = 1
+                Nyear = CSng(Format(Now(), "yy")) + 44
+                Nemount = Nmount.ToString("0#")
+                Neyear = Nyear.ToString("0#")
             End If
         End If
-        LotNo = Nmount.ToString("0#") & tmpMount.ToString("0#") & Num.ToString("00#")
-        txtIEATNo.Value = LotNo
 
-        txtTypeCode = "IEATIN"
-        txtRunNo = LotNo
-        txtMountNo = tmpMount.ToString("0#")
-        txtYearNo = Nmount.ToString("0#")
-        txtDigitNo = Num.ToString("00#")
+        LotNo = Nyear.ToString("0#") & Nmount.ToString("0#")
 
-        Using tran As New TransactionScope()
-            Try
-                'sb = New StringBuilder()
-                'sb.Append("INSERT INTO tblGenAutoNo (TypeCode,RunNo,MountNo,YearNo,DigitNo)")
-                'sb.Append(" VALUES (@TypeCode,@RunNo,@MountNo,@YearNo,@DigitNo)")
+        Dim sqlSearch = (From ep In db.tblGenAutoRunNoes Where ep.TypeCode = Type And ep.MountNo = Nemount And ep.YearNo = Neyear And ep.RunNo = LotNo
+               Group By TypeCode = ep.TypeCode,
+               MountNo = ep.MountNo,
+               YearNo = ep.YearNo,
+               DigitNo = ep.DigitNo Into g = Group, Count()).SingleOrDefault
 
-                db.Database.Connection.Open()
-                'db.tblGenAutoNoes.Add(New tblGenAutoNo() With {
-                db.tblGenAutoRunNoes.Add(New tblGenAutoRunNo() With {
-                    .TypeCode = txtTypeCode.Trim, _
-                    .RunNo = txtRunNo.Trim, _
-                    .MountNo = txtMountNo.Trim, _
-                    .YearNo = txtYearNo.Trim, _
-                    .DigitNo = txtDigitNo.Trim
-                    })
-            Catch
-                'MessageBox.Show("คุณป้อน ข้อมูล. ซ้ำ !!!", "ผลการทำงาน", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-                ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "คุณป้อน ข้อมูล. ซ้ำ !!!", True)
-            Finally
-                db.Database.Connection.Close()
-                db.Dispose()
-                tran.Dispose()
-            End Try
-        End Using
+        If Not sqlSearch Is Nothing Then
+            Digit_ = CSng(sqlSearch.DigitNo)
+
+            If Nyear = Year Then
+                If Nmount = Mount Then
+                    Num = Digit_ + 1
+                ElseIf Nmount <> Mount Then
+                    Nmount = Mount
+                    Num = Digit_ + 1
+                End If
+
+            End If
+            If Nyear <> Year Then
+                Nmount = Year
+                If Nmount = Mount Then
+                    Num = Digit_ + 1
+                End If
+
+                If Nyear <> Mount Then
+                    Nmount = Mount
+                    Num = Digit + 1
+                End If
+
+            End If
+            num_ = Num.ToString("00#")
+            dunNo = LotNo & Num.ToString("00#")
+            upDateGenNum(Type, Nemount, Neyear, num_)
+            txtIEATNo.Value = dunNo
+        Else
+
+            If Nyear = Year Then
+                If Nmount = Mount Then
+                    Digit = Digit + 1
+                    Num = Digit
+                ElseIf Nmount <> Mount Then
+                    Nmount = Mount
+                    Num = Digit + 1
+                End If
+
+            End If
+            If Nyear <> Year Then
+                Nmount = Year
+                If Nmount = Mount Then
+                    Digit = Digit + 1
+                    Num = Digit
+                End If
+
+                If Nyear <> Mount Then
+                    Nmount = Mount
+                    Num = Digit + 1
+                End If
+
+            End If
+            num_ = Num.ToString("00#")
+            dunNo = LotNo & Num.ToString("00#")
+
+            db.tblGenAutoRunNoes.Add(New tblGenAutoRunNo With { _
+                                .TypeCode = Type, _
+                                .RunNo = LotNo, _
+                                .MountNo = Nemount, _
+                                .YearNo = Neyear, _
+                                .DigitNo = num_
+                            })
+            db.SaveChanges()
+            txtIEATNo.Value = dunNo
+
+        End If
     End Sub
 
     Private Sub GentblIEATNo()
-        'Dim sqlSearch As String
         Dim Nmount As Single = CSng(Format(Now(), "MM"))
         Dim Nyear As Single = CSng(Format(Now(), "yy"))
         Dim Nemount As String
@@ -2900,59 +2999,13 @@ Public Class CreateRec
     End Sub
 
     Protected Sub btnGenIEATNo_ServerClick(sender As Object, e As EventArgs)
-        GenIEATNo()
-    End Sub
-    Private Sub CallculateValue()
-
-        If (txtQuantityInvoice.Value.Trim() = "") Then txtQuantityInvoice.Value = "0.0"
-        If (txtPriceForeignInvoice.Value.Trim() = "") Then txtPriceForeignInvoice.Value = "0.0"
-        If (txtAmountForeignInvoice.Value.Trim() = "") Then txtAmountForeignInvoice.Value = "0.0"
-
-        Dim ValueAmount As Double = 0.0
-        ValueAmount = CSng(txtQuantityInvoice.Value) * CSng(txtPriceForeignInvoice.Value)
-        txtAmountForeignInvoice.Value = ValueAmount.ToString("#,##0.00")
+        If String.IsNullOrEmpty(txtIEATNo.Value) Then
+            GenIEATNo()
+        Else
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('Gen สามารถซ้ำได้ !!!')", True)
+        End If
     End Sub
 
-    Private Sub CallculateValueThai()
-
-        If (txtExchangeRateInvoice.Value.Trim() = "") Then txtExchangeRateInvoice.Value = "0.0"
-        If (txtPriceForeignInvoice.Value.Trim() = "") Then txtPriceForeignInvoice.Value = "0.0"
-        If (txtPriceBathInvoice.Value.Trim() = "") Then txtPriceBathInvoice.Value = "0.0"
-
-        Dim ValueThaiAmount As Double = 0.0
-        ValueThaiAmount = CSng(txtExchangeRateInvoice.Value) * CSng(txtPriceForeignInvoice.Value)
-        txtPriceBathInvoice.Value = ValueThaiAmount.ToString("#,##0.00")
-    End Sub
-
-    Private Sub CallculateValueThaiAmount()
-        If (txtQuantityInvoice.Value.Trim() = "") Then txtQuantityInvoice.Value = "0.0"
-        If (txtPriceBathInvoice.Value.Trim() = "") Then txtPriceBathInvoice.Value = "0.0"
-        If (txtAmountBathInvoice.Value.Trim() = "") Then txtAmountBathInvoice.Value = "0.0"
-
-        Dim ValueThaiValueAmount As Double = 0.0
-
-        ValueThaiValueAmount = CSng(txtQuantityInvoice.Value) * CSng(txtPriceBathInvoice.Value)
-        txtAmountBathInvoice.Value = ValueThaiValueAmount.ToString("#,##0.00")
-    End Sub
-
-    Private Sub txtPriceForeignInvoice_KeyUp(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtPriceForeignInvoice.Init
-        CallculateValue()
-        CallculateValueThai()
-        CallculateValueThaiAmount()
-    End Sub
-    Private Sub txtQuantityInvoice_KeyPress(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtQuantityInvoice.Init
-        'Select Case Asc(e.ToString)
-        '    Case 48 To 57 ' key โค๊ด ของตัวเลขจะอยู่ระหว่าง48-57ครับ 48คือเลข0 57คือเลข9ตามลำดับ
-        '        e.Equals = False
-        '    Case 8, 13, 46 ' ปุ่ม Backspace = 8,ปุ่ม Enter = 13, ปุ่มDelete = 46
-        '        e.Equals = False
-
-        '    Case Else
-        '        e.Handled = True
-        '        MessageBox.Show("สามารถกดได้แค่ตัวเลข")
-        '        Exit Sub
-        'End Select
-    End Sub
     Private Sub ClearDATA()
         chkNextmonth.Checked = False
         chkGenerateIEATNo.Checked = False
@@ -3080,4 +3133,221 @@ Public Class CreateRec
         'ddlJobsite.Text = ""
 
     End Sub
+    '---------------------------------------------------------------Show txt saleman when select ddl saleman---------------------------------------------
+    Protected Sub dllSaleman_SelectedIndexChanged(sender As Object, e As EventArgs)
+
+        Dim mas = (From m In db.tblMasterCode2 Where m.Code = ddlSaleman.Text.Trim Select m.Code, m.Description).SingleOrDefault
+        txtsalemandis.Value = mas.Description
+    End Sub
+    Private Sub InsertData()
+        Dim time As Date
+        Dim NameUser As String
+        time = CDate((Format(Now)))
+        NameUser = CStr(Session("UserName"))
+        Try
+            db.tblLogImpGenLOTs.Add(New tblLogImpGenLOT With { _
+                                .EASLOTNo = txtJobno.Value.Trim, _
+                                .ConsigneeCode = txtConsigneecode.Value.Trim, _
+                                .ShipperCode = txtShippercode.Value.Trim, _
+                                .UserBy = NameUser, _
+                                .LastUpDate = time
+                            })
+            db.SaveChanges()
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+    Private Sub CallculateValue()
+
+        If (txtQuantityInvoice.Value.Trim() = "") Then txtQuantityInvoice.Value = "0.0"
+        If (txtPriceForeignInvoice.Value.Trim() = "") Then txtPriceForeignInvoice.Value = "0.0"
+        If (txtAmountForeignInvoice.Value.Trim() = "") Then txtAmountForeignInvoice.Value = "0.0"
+
+        Dim ValueAmount As Double = 0.0
+        ValueAmount = CSng(txtQuantityInvoice.Value) * CSng(txtPriceForeignInvoice.Value)
+        txtAmountForeignInvoice.Value = ValueAmount.ToString("#,##0.00")
+    End Sub
+
+    Private Sub CallculateValueThai()
+
+        If (txtExchangeRateInvoice.Value.Trim() = "") Then txtExchangeRateInvoice.Value = "0.0"
+        If (txtPriceForeignInvoice.Value.Trim() = "") Then txtPriceForeignInvoice.Value = "0.0"
+        If (txtPriceBathInvoice.Value.Trim() = "") Then txtPriceBathInvoice.Value = "0.0"
+
+        Dim ValueThaiAmount As Double = 0.0
+        ValueThaiAmount = CSng(txtExchangeRateInvoice.Value) * CSng(txtPriceForeignInvoice.Value)
+        txtPriceBathInvoice.Value = ValueThaiAmount.ToString("#,##0.00")
+    End Sub
+
+    Private Sub CallculateValueThaiAmount()
+        If (txtQuantityInvoice.Value.Trim() = "") Then txtQuantityInvoice.Value = "0.0"
+        If (txtPriceBathInvoice.Value.Trim() = "") Then txtPriceBathInvoice.Value = "0.0"
+        If (txtAmountBathInvoice.Value.Trim() = "") Then txtAmountBathInvoice.Value = "0.0"
+
+        Dim ValueThaiValueAmount As Double = 0.0
+
+        ValueThaiValueAmount = CSng(txtQuantityInvoice.Value) * CSng(txtPriceBathInvoice.Value)
+        txtAmountBathInvoice.Value = ValueThaiValueAmount.ToString("#,##0.00")
+    End Sub
+
+    Private Sub txtPriceForeignInvoice_KeyUp(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtPriceForeignInvoice.Init
+        CallculateValue()
+        CallculateValueThai()
+        CallculateValueThaiAmount()
+    End Sub
+    Private Sub txtQuantityInvoice_KeyPress(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtQuantityInvoice.Init
+        'Select Case Asc(e.ToString)
+        '    Case 48 To 57 ' key โค๊ด ของตัวเลขจะอยู่ระหว่าง48-57ครับ 48คือเลข0 57คือเลข9ตามลำดับ
+        '        e.Equals = False
+        '    Case 8, 13, 46 ' ปุ่ม Backspace = 8,ปุ่ม Enter = 13, ปุ่มDelete = 46
+        '        e.Equals = False
+
+        '    Case Else
+        '        e.Handled = True
+        '        MessageBox.Show("สามารถกดได้แค่ตัวเลข")
+        '        Exit Sub
+        'End Select
+    End Sub
+    Private Sub SaveImpBookingInvDetail()
+        Dim DateInv As Date
+
+        If txtdatepickerDataInvoice.Text = "" Then
+            DateInv = CDate(Convert.ToDateTime(Date.Now).ToString("dd/MM/yyyy"))
+        Else
+            DateInv = DateTime.ParseExact(txtdatepickerDataInvoice.Text, "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US"))
+        End If
+
+        If txtJobno.Value.Trim() = "" Then
+            MsgBox("กรุณาป้อน LOT No ก่อน !!!")
+            txtJobno.Focus()
+            Exit Sub
+        End If
+
+        If txtInvoiceNo.Value.Trim() = "" Then
+            MsgBox("กรุณาป้อน Invoice No ก่อน !!!")
+            txtInvoiceNo.Focus()
+            Exit Sub
+        End If
+
+        If txtProductCodeInvoice.Value.Trim() = "" Then
+            MsgBox("กรุณาป้อน Product No ก่อน !!!")
+            txtProductCodeInvoice.Focus()
+            Exit Sub
+        End If
+
+        If MsgBox("คุณต้องการเพิ่มรายการ LOT No Invoice ใหม่ ใช่หรือไม่ ?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+
+            Using tran As New TransactionScope()
+
+                Try
+                    'sb = New StringBuilder()
+                    'sb.Append("INSERT INTO tblImpBookingInvDetail (InvoiceNo,LOTNo,DateInv,ProductCode,ProductName,Quantity,QuantityUnit,RemarkInv,PO,Pallet,UnitPallet,Weight,UnitWeight,Pallet1,UnitPallet1,UnitDimension,AmountPallet,Width,Height,Lenght,ExchangeRate,PriceForeigh,PriceForeighAmount,PriceBath,PriceBathAmount,UserBy,LastUpdate,Shipment,ItemNo,OwnerPN,CustomerPN,Prodes,EntryItemNo)")
+                    'sb.Append(" VALUES (@InvoiceNo,@LOTNo,@DateInv,@ProductCode,@ProductName,@Quantity,@QuantityUnit,@RemarkInv,@PO,@Pallet,@UnitPallet,@Weight,@UnitWeight,@Pallet1,@UnitPallet1,@UnitDimension,@AmountPallet,@Width,@Height,@Lenght,@ExchangeRate,@PriceForeigh,@PriceForeighAmount,@PriceBath,@PriceBathAmount,@UserBy,@LastUpdate,@Shipment,@ItemNo,@OwnerPN,@CustomerPN,@Prodes,@EntryItemNo )")
+                    db.Database.Connection.Open()
+
+                    db.tblImpBookingInvDetails.Add(New tblImpBookingInvDetail With { _
+                    .InvoiceNo = txtInvoiceNo.Value.Trim, _
+                    .LOTNo = txtJobno.Value.Trim, _
+                    .DateInv = DateInv, _
+                    .ProductCode = txtProductCodeInvoice.Value.Trim, _
+                    .ProductName = txtProductNameInvoice.Value.Trim, _
+                    .Quantity = CType(txtQuantityInvoice.Value.Trim, Double?), _
+                    .QuantityUnit = ddlQuantityInvoice.Text.Trim, _
+                    .RemarkInv = txtRemarkInvoice.Value.Trim, _
+                    .PO = txtPONoProductCode.Value.Trim, _
+                    .Pallet = CType(txtPallet_SKIDInvoice.Value.Trim, Double?), _
+                    .UnitPallet = ddlPallet_SKIDInvoice.Text.Trim, _
+                    .Weight = CType(txtWeightInvoice.Value.Trim, Double?), _
+                    .UnitWeight = ddlWeightInvoice.Text.Trim, _
+                    .Pallet1 = CType(txtBoxInvoice.Value.Trim, Double?), _
+                    .UnitPallet1 = ddlBoxInvoice.Text.Trim, _
+                    .UnitDimension = ddlUnitDimension.Text.Trim, _
+                    .AmountPallet = CType(txtPalletDimensionInvoice.Value.Trim, Double?), _
+                    .Width = CType(txtWidthInvoice.Value.Trim, Double?), _
+                    .Height = CType(txtHeightInvoice.Value.Trim, Double?), _
+                    .Lenght = CType(txtLenghtInvoice.Value.Trim, Double?), _
+                    .EntryItemNo = CType(txtEntryItemNoInvoice.Value.Trim, Integer?), _
+                    .Currency = ddlCurrencyInvoice.Text.Trim, _
+                    .ExchangeRate = CType(txtExchangeRateInvoice.Value.Trim, Double?), _
+                    .PriceForeigh = CType(txtPriceForeignInvoice.Value.Trim, Double?), _
+                    .PriceForeighAmount = CType(txtAmountForeignInvoice.Value.Trim, Double?), _
+                    .PriceBath = CType(txtPriceBathInvoice.Value.Trim, Double?), _
+                    .PriceBathAmount = CType(txtAmountBathInvoice.Value.Trim, Double?), _
+                    .UserBy = CStr(Session("UserId")), _
+                    .LastUpdate = Now, _
+                    .Shipment = txtShipmentInvoice.Value.Trim, _
+                    .ItemNo = CDec(txtItemNoInvoice.Value.Trim), _
+                    .OwnerPN = cuspart, _
+                    .CustomerPN = endpart, _
+                    .Prodes = Prodes
+                    })
+                    db.SaveChanges()
+                    tran.Complete()
+                    ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('Add สำเร็จ !');", True)
+
+                Catch ex As Exception
+
+                    ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด กรุณาบันทึกข้อมูลใหม่อีกครั้ง');", True)
+
+                Finally
+                    db.Database.Connection.Close()
+                    db.Dispose()
+                    tran.Dispose()
+                End Try
+            End Using
+        End If
+        txtJobno.Focus()
+    End Sub
+
+    Protected Sub btnSaveInvoice_ServerClick(sender As Object, e As EventArgs)
+        SaveImpBookingInvDetail()
+        ReadDATA2()
+    End Sub
+
+    Protected Sub btnModifyInvoice_ServerClick(sender As Object, e As EventArgs)
+        ReadDATA2()
+    End Sub
+
+    Protected Sub btnDeleteInvoice_ServerClick(sender As Object, e As EventArgs)
+        ReadDATA2()
+    End Sub
+
+    Protected Sub btnDeleteAllInvoice_ServerClick(sender As Object, e As EventArgs)
+        ReadDATA2()
+    End Sub
+    Private Sub ReadDATA2()
+        Dim sqlConsignnee = From ab In db.tblImpBookingInvDetails Where ab.LOTNo = txtJobno.Value.Trim Order By ab.ItemNo
+        Select ab.InvoiceNo,
+                 ab.LOTNo,
+                 ab.DateInv,
+                 ab.ProductCode,
+                 ab.ProductName,
+                 ab.OwnerPN,
+                 ab.CustomerPN,
+                 ab.Prodes
+        Try
+            If sqlConsignnee.Count > 0 Then
+                Repea2_Invoice.DataSource = sqlConsignnee.ToList
+                Repea2_Invoice.DataBind()
+            Else
+                Repea2_Invoice.DataSource = Nothing
+                Repea2_Invoice.DataBind()
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+            End Try
+    End Sub
+    'Private Sub dgvProduct_CellMouseClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellMouseEventArgs) Handles dgvProduct.CellMouseClick
+    '    If e.RowIndex = -1 Then Exit Sub
+    '    With dgvProduct
+    '        txtProductCode.Text = .Rows.Item(e.RowIndex).Cells(0).Value.ToString()
+    '        txtProductName.Text = .Rows.Item(e.RowIndex).Cells(1).Value.ToString()
+    '        Prodes = .Rows.Item(e.RowIndex).Cells(2).Value.ToString()
+    '        cuspart = .Rows.Item(e.RowIndex).Cells(3).Value.ToString()
+    '        endpart = .Rows.Item(e.RowIndex).Cells(4).Value.ToString()
+    '    End With
+    '    txtProductCode.Focus()
+    '    txtProductCode.SelectAll()
+    '    pnlProduct.Visible = False
+    'End Sub
 End Class
