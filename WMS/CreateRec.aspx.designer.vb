@@ -1391,6 +1391,15 @@ Partial Public Class CreateRec
     Protected WithEvents ddlWeightInvoice As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
+    '''txtRemarkInvoice control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtRemarkInvoice As Global.System.Web.UI.HtmlControls.HtmlTextArea
+
+    '''<summary>
     '''txtShipmentInvoice control.
     '''</summary>
     '''<remarks>
@@ -2028,4 +2037,31 @@ Partial Public Class CreateRec
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents Repeater8 As Global.System.Web.UI.WebControls.Repeater
+
+    '''<summary>
+    '''JobnoPanel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents JobnoPanel As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''JobnoUpdatePanel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents JobnoUpdatePanel As Global.System.Web.UI.UpdatePanel
+
+    '''<summary>
+    '''Repeater9 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Repeater9 As Global.System.Web.UI.WebControls.Repeater
 End Class

@@ -1181,7 +1181,7 @@
                                                     <div class="form-group">
                                                         <label for="txtRamarkInvoice" class="col-sm-3 control-label">Remark:</label>
                                                         <div class="col-sm-9">
-                                                            <textarea class="form-control" rows="3" id="txtRamarkInvoice" placeholder="Remark" style="height: 34px; width: 917px;"></textarea>
+                                                            <textarea class="form-control" rows="3" runat="server" id="txtRemarkInvoice" placeholder="Remark" style="height: 34px; width: 917px;"></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
@@ -1650,18 +1650,17 @@
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 " style="overflow: auto;">
 
-                                            <asp:Repeater ID="Repeater1" runat="server" >
+                                            <asp:Repeater ID="Repeater1" runat="server" OnItemDataBound="Repeater1_ItemDataBound" >
                                                 <HeaderTemplate>
                                                     <table id="example1" class="table table-bordered table-striped table-responsive" style="overflow: auto;">
                                                         <thead>
                                                             <tr>
+                                                                <th>Select</th>
                                                                 <th>PartyCode</th>
+                                                                <th>PartyAddress</th>
                                                                 <th>PartyFullName</th>
                                                                 <th>Address1</th>
-                                                                <th>Address2</th>
-                                                                <th>Address3</th>
-                                                                <th>PartyAddress</th>
-                                                                <th>Select</th>
+                                                                <th>Address2</th>                                                               
                                                             </tr>
                                                         </thead>
                                                 </HeaderTemplate>
@@ -1678,34 +1677,32 @@
                                                             <asp:Label ID="lblAddress2" runat="server" Text='<%# Bind("Address2")%>'></asp:Label></td>
                                                         <td>
                                                             <asp:Label ID="lblAddress3" runat="server" Text='<%# Bind("Address3")%>'></asp:Label></td>--%>
-                                                        <td>
-                                                            <asp:Label ID="lblPartyCode" runat="server" ></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblPartyFullName" runat="server" ></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblAddress1" runat="server" ></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblAddress2" runat="server" ></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblAddress3" runat="server" ></asp:Label></td>
-                                                         <td>
-                                                            <asp:Label ID="lblPartyAddressCode" runat="server" ></asp:Label></td>
                                                         <td class="text-center">
                                                             <%--<asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectConsignee" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-plus-square"></i></asp:LinkButton>--%>
-                                                            <asp:LinkButton ID="LinkButton1" CssClass="btn bg-navy" runat="server" OnClick="clickconsignee_Click"><i class="fa fa-plus-square"></i></asp:LinkButton>
+                                                            <asp:LinkButton ID="LinkButton1" CssClass="btn bg-navy" runat="server" OnClick="clickconsignee_Click"><i class="fa fa-hand-o-up"></i></asp:LinkButton>
                                                         </td>
-                                                       
+                                                        <td>
+                                                            <asp:Label ID="lblPartyCode" runat="server" Text="Label"></asp:Label></td>
+                                                         <td>
+                                                            <asp:Label ID="lblPartyAddressCode" runat="server" Text="Label"></asp:Label></td>
+                                                        <td>
+                                                            <asp:Label ID="lblPartyFullName" runat="server" Text="Label"></asp:Label></td>
+                                                        <td>
+                                                            <asp:Label ID="lblAddress1" runat="server" Text="Label"></asp:Label></td>
+                                                        <td>
+                                                            <asp:Label ID="lblAddress2" runat="server" Text="Label"></asp:Label></td>
+                                                         
                                                     </tr>
                                                 </ItemTemplate>
                                                 <FooterTemplate>
                                                     <tfoot>
                                                         <tr>
+                                                            <th>Select</th>
                                                             <th>PartyCode</th>
+                                                            <th>PartyAddress</th>
                                                             <th>PartyFullName</th>
                                                             <th>Address1</th>
                                                             <th>Address2</th>
-                                                            <th>PartyAddress</th>
-                                                            <th>Select</th>
                                                         </tr>
                                                     </tfoot>
                                                     </table>
@@ -1743,18 +1740,17 @@
                                 <section class="content">
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 " style="overflow: auto;">
-                                            <asp:Repeater ID="Repeater2" runat="server">
+                                            <asp:Repeater ID="Repeater2" runat="server" OnItemDataBound="Repeater2_ItemDataBound">
                                                 <HeaderTemplate>
                                                     <table id="example2" class="table table-bordered table-striped table-responsive" style="overflow: auto;">
                                                         <thead>
                                                             <tr>
-                                                                <th>PartyCode</th>
-                                                                <th>PartyFullName</th>
-                                                                <th>Address1</th>
-                                                                <th>Address2</th>
-                                                                <th>Address3</th>
-                                                                <th>PartyAddress</th>
-                                                                <th>Select</th>
+                                                            <th>Select</th>
+                                                            <th>PartyCode</th>
+                                                            <th>PartyAddress</th>
+                                                            <th>PartyFullName</th>
+                                                            <th>Address1</th>
+                                                            <th>Address2</th>
                                                             </tr>
                                                         </thead>
                                                 </HeaderTemplate>
@@ -1771,34 +1767,31 @@
                                                             <asp:Label ID="lblAddress2" runat="server" Text='<%# Bind("Address2")%>'></asp:Label></td>
                                                         <td>
                                                             <asp:Label ID="lblAddress3" runat="server" Text='<%# Bind("Address3")%>'></asp:Label></td>--%>
-                                                        <td>
-                                                            <asp:Label ID="lblPartyCode" runat="server" ></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblPartyFullName" runat="server" ></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblAddress1" runat="server" ></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblAddress2" runat="server" ></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblAddress3" runat="server" ></asp:Label></td>
-                                                         <td>
-                                                            <asp:Label ID="lblPartyAddressCode" runat="server" ></asp:Label></td>
                                                         <td class="text-center">
                                                             <%--<asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectShipper" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-plus-square"></i></asp:LinkButton>--%>
-                                                            <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" OnClick="clickshipper_Click"><i class="fa fa-plus-square"></i></asp:LinkButton>
+                                                            <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" OnClick="clickshipper_Click"><i class="fa fa-hand-o-up"></i></asp:LinkButton>
                                                         </td>
+                                                        <td>
+                                                            <asp:Label ID="lblPartyCode" runat="server" Text="Label"></asp:Label></td>
+                                                        <td>
+                                                            <asp:Label ID="lblPartyAddressCode" runat="server" Text="Label"></asp:Label></td>
+                                                        <td>
+                                                            <asp:Label ID="lblPartyFullName" runat="server" Text="Label"></asp:Label></td>
+                                                        <td>
+                                                            <asp:Label ID="lblAddress1" runat="server" Text="Label"></asp:Label></td>
+                                                        <td>
+                                                            <asp:Label ID="lblAddress2" runat="server" Text="Label"></asp:Label></td>
                                                     </tr>
                                                 </ItemTemplate>
                                                 <FooterTemplate>
                                                     <tfoot>
                                                         <tr>
+                                                            <th>Select</th>
                                                             <th>PartyCode</th>
+                                                            <th>PartyAddress</th>
                                                             <th>PartyFullName</th>
                                                             <th>Address1</th>
                                                             <th>Address2</th>
-                                                            <th>Address3</th>
-                                                            <th>PartyAddress</th>
-                                                            <th>Select</th>
                                                         </tr>
                                                     </tfoot>
                                                     </table>
@@ -1836,18 +1829,17 @@
                                 <section class="content">
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 " style="overflow: auto;">
-                                            <asp:Repeater ID="Repeater3" runat="server">
+                                            <asp:Repeater ID="Repeater3" runat="server" OnItemDataBound="Repeater3_ItemDataBound">
                                                 <HeaderTemplate>
                                                     <table id="example3" class="table table-bordered table-striped table-responsive" style="overflow: auto;">
                                                         <thead>
                                                             <tr>
-                                                                <th>PartyCode</th>
-                                                                <th>PartyFullName</th>
-                                                                <th>Address1</th>
-                                                                <th>Address2</th>
-                                                                <th>Address3</th>
-                                                                <th>PartyAddress</th>
-                                                                <th>Select</th>
+                                                            <th>Select</th>
+                                                            <th>PartyCode</th>
+                                                            <th>PartyAddress</th>
+                                                            <th>PartyFullName</th>
+                                                            <th>Address1</th>
+                                                            <th>Address2</th>
                                                             </tr>
                                                         </thead>
                                                 </HeaderTemplate>
@@ -1864,34 +1856,32 @@
                                                             <asp:Label ID="lblAddress2" runat="server" Text='<%# Bind("Address2")%>'></asp:Label></td>
                                                         <td>
                                                             <asp:Label ID="lblAddress3" runat="server" Text='<%# Bind("Address3")%>'></asp:Label></td>--%>
-                                                        <td>
-                                                            <asp:Label ID="lblPartyCode" runat="server" ></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblPartyFullName" runat="server" ></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblAddress1" runat="server" ></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblAddress2" runat="server" ></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblAddress3" runat="server" ></asp:Label></td>
-                                                         <td>
-                                                            <asp:Label ID="lblPartyAddressCode" runat="server" ></asp:Label></td>
                                                         <td class="text-center">
                                                             <%--<asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectDelivery" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-plus-square"></i></asp:LinkButton>--%>
-                                                            <asp:LinkButton ID="LinkButton3" CssClass="btn bg-navy" runat="server" OnClick="clickdelivery_Click"><i class="fa fa-plus-square"></i></asp:LinkButton>
+                                                            <asp:LinkButton ID="LinkButton3" CssClass="btn bg-navy" runat="server" OnClick="clickdelivery_Click"><i class="fa fa-hand-o-up"></i></asp:LinkButton>
                                                         </td>
+                                                        <td>
+                                                            <asp:Label ID="lblPartyCode" runat="server" Text="Label"></asp:Label></td>
+                                                        <td>
+                                                            <asp:Label ID="lblPartyAddressCode" runat="server" Text="Label"></asp:Label></td>
+                                                        <td>
+                                                            <asp:Label ID="lblPartyFullName" runat="server" Text="Label"></asp:Label></td>
+                                                        <td>
+                                                            <asp:Label ID="lblAddress1" runat="server" Text="Label"></asp:Label></td>
+                                                        <td>
+                                                            <asp:Label ID="lblAddress2" runat="server" Text="Label"></asp:Label></td>
+                                                        
                                                     </tr>
                                                 </ItemTemplate>
                                                 <FooterTemplate>
                                                     <tfoot>
                                                         <tr>
+                                                            <th>Select</th>
                                                             <th>PartyCode</th>
+                                                            <th>PartyAddress</th>
                                                             <th>PartyFullName</th>
                                                             <th>Address1</th>
                                                             <th>Address2</th>
-                                                            <th>Address3</th>
-                                                            <th>PartyAddress</th>
-                                                            <th>Select</th>
                                                         </tr>
                                                     </tfoot>
                                                     </table>
@@ -1928,18 +1918,17 @@
                                 <section class="content">
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 " style="overflow: auto;">
-                                            <asp:Repeater ID="Repeater4" runat="server">
+                                            <asp:Repeater ID="Repeater4" runat="server" OnItemDataBound="Repeater4_ItemDataBound">
                                                 <HeaderTemplate>
                                                     <table id="example4" class="table table-bordered table-striped table-responsive" style="overflow: auto;">
                                                         <thead>
                                                             <tr>
-                                                                <th>PartyCode</th>
-                                                                <th>PartyFullName</th>
-                                                                <th>Address1</th>
-                                                                <th>Address2</th>
-                                                                <th>Address3</th>
-                                                                <th>PartyAddress</th>
-                                                                <th>Select</th>
+                                                            <th>Select</th>
+                                                            <th>PartyCode</th>
+                                                            <th>PartyAddress</th>
+                                                            <th>PartyFullName</th>
+                                                            <th>Address1</th>
+                                                            <th>Address2</th>
                                                             </tr>
                                                         </thead>
                                                 </HeaderTemplate>
@@ -1956,34 +1945,32 @@
                                                             <asp:Label ID="lblAddress2" runat="server" Text='<%# Bind("Address2")%>'></asp:Label></td>
                                                         <td>
                                                             <asp:Label ID="lblAddress3" runat="server" Text='<%# Bind("Address3")%>'></asp:Label></td>--%>
-                                                        <td>
-                                                            <asp:Label ID="lblPartyCode" runat="server" ></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblPartyFullName" runat="server" ></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblAddress1" runat="server" ></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblAddress2" runat="server" ></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblAddress3" runat="server" ></asp:Label></td>
-                                                         <td>
-                                                            <asp:Label ID="lblPartyAddressCode" runat="server" ></asp:Label></td>
                                                         <td class="text-center">
                                                             <%--<asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectPickUp" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-plus-square"></i></asp:LinkButton>--%>
-                                                            <asp:LinkButton ID="LinkButton4" CssClass="btn bg-navy" runat="server" OnClick="clickpickup_Click"><i class="fa fa-plus-square"></i></asp:LinkButton>
+                                                            <asp:LinkButton ID="LinkButton4" CssClass="btn bg-navy" runat="server" OnClick="clickpickup_Click"><i class="fa fa-hand-o-up"></i></asp:LinkButton>
                                                         </td>
+                                                        <td>
+                                                            <asp:Label ID="lblPartyCode" runat="server" Text="Label"></asp:Label></td>
+                                                        <td>
+                                                            <asp:Label ID="lblPartyAddressCode" runat="server" Text="Label"></asp:Label></td>
+                                                        <td>
+                                                            <asp:Label ID="lblPartyFullName" runat="server" Text="Label"></asp:Label></td>
+                                                        <td>
+                                                            <asp:Label ID="lblAddress1" runat="server" Text="Label"></asp:Label></td>
+                                                        <td>
+                                                            <asp:Label ID="lblAddress2" runat="server" Text="Label"></asp:Label></td>
+   
                                                     </tr>
                                                 </ItemTemplate>
                                                 <FooterTemplate>
                                                     <tfoot>
                                                         <tr>
+                                                            <th>Select</th>
                                                             <th>PartyCode</th>
+                                                            <th>PartyAddress</th>
                                                             <th>PartyFullName</th>
                                                             <th>Address1</th>
                                                             <th>Address2</th>
-                                                            <th>Address3</th>
-                                                            <th>PartyAddress</th>
-                                                            <th>Select</th>
                                                         </tr>
                                                     </tfoot>
                                                     </table>
@@ -2020,18 +2007,17 @@
                                 <section class="content">
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 " style="overflow: auto;">
-                                            <asp:Repeater ID="Repeater5" runat="server">
+                                            <asp:Repeater ID="Repeater5" runat="server" OnItemDataBound="Repeater5_ItemDataBound">
                                                 <HeaderTemplate>
                                                     <table id="example5" class="table table-bordered table-striped table-responsive" style="overflow: auto;">
                                                         <thead>
                                                             <tr>
-                                                                <th>PartyCode</th>
-                                                                <th>PartyFullName</th>
-                                                                <th>Address1</th>
-                                                                <th>Address2</th>
-                                                                <th>Address3</th>
-                                                                <th>PartyAddress</th>
-                                                                <th>Select</th>
+                                                            <th>Select</th>
+                                                            <th>PartyCode</th>
+                                                            <th>PartyAddress</th>
+                                                            <th>PartyFullName</th>
+                                                            <th>Address1</th>
+                                                            <th>Address2</th>
                                                             </tr>
                                                         </thead>
                                                 </HeaderTemplate>
@@ -2048,34 +2034,32 @@
                                                             <asp:Label ID="lblAddress2" runat="server" Text='<%# Bind("Address2")%>'></asp:Label></td>
                                                         <td>
                                                             <asp:Label ID="lblAddress3" runat="server" Text='<%# Bind("Address3")%>'></asp:Label></td>--%>
-                                                        <td>
-                                                            <asp:Label ID="lblPartyCode" runat="server" ></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblPartyFullName" runat="server" ></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblAddress1" runat="server" ></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblAddress2" runat="server" ></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblAddress3" runat="server" ></asp:Label></td>
-                                                         <td>
-                                                            <asp:Label ID="lblPartyAddressCode" runat="server" ></asp:Label></td>
                                                         <td class="text-center">
                                                             <%--<asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectCustomer" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-plus-square"></i></asp:LinkButton>--%>
-                                                            <asp:LinkButton ID="LinkButton5" CssClass="btn bg-navy" runat="server" OnClick="clickcustomer_Click"><i class="fa fa-plus-square"></i></asp:LinkButton>
+                                                            <asp:LinkButton ID="LinkButton5" CssClass="btn bg-navy" runat="server" OnClick="clickcustomer_Click"><i class="fa fa-hand-o-up"></i></asp:LinkButton>
                                                         </td>
+                                                        <td>
+                                                            <asp:Label ID="lblPartyCode" runat="server" Text="Label"></asp:Label></td>
+                                                        <td>
+                                                            <asp:Label ID="lblPartyAddressCode" runat="server" Text="Label"></asp:Label></td>
+                                                        <td>
+                                                            <asp:Label ID="lblPartyFullName" runat="server" Text="Label"></asp:Label></td>
+                                                        <td>
+                                                            <asp:Label ID="lblAddress1" runat="server" Text="Label"></asp:Label></td>
+                                                        <td>
+                                                            <asp:Label ID="lblAddress2" runat="server" Text="Label"></asp:Label></td>
+   
                                                     </tr>
                                                 </ItemTemplate>
                                                 <FooterTemplate>
                                                     <tfoot>
                                                         <tr>
+                                                            <th>Select</th>
                                                             <th>PartyCode</th>
+                                                            <th>PartyAddress</th>
                                                             <th>PartyFullName</th>
                                                             <th>Address1</th>
                                                             <th>Address2</th>
-                                                            <th>Address3</th>
-                                                            <th>PartyAddress</th>
-                                                            <th>Select</th>
                                                         </tr>
                                                     </tfoot>
                                                     </table>
@@ -2112,18 +2096,17 @@
                                 <section class="content">
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 " style="overflow: auto;">
-                                            <asp:Repeater ID="Repeater6" runat="server">
+                                            <asp:Repeater ID="Repeater6" runat="server" OnItemDataBound="Repeater6_ItemDataBound">
                                                 <HeaderTemplate>
                                                     <table id="example6" class="table table-bordered table-striped table-responsive" style="overflow: auto;">
                                                         <thead>
                                                             <tr>
-                                                                <th>PartyCode</th>
-                                                                <th>PartyFullName</th>
-                                                                <th>Address1</th>
-                                                                <th>Address2</th>
-                                                                <th>Address3</th>
-                                                                <th>PartyAddress</th>
-                                                                <th>Select</th>
+                                                            <th>Select</th>
+                                                            <th>PartyCode</th>
+                                                            <th>PartyAddress</th>
+                                                            <th>PartyFullName</th>
+                                                            <th>Address1</th>
+                                                            <th>Address2</th>
                                                             </tr>
                                                         </thead>
                                                 </HeaderTemplate>
@@ -2140,34 +2123,31 @@
                                                             <asp:Label ID="lblAddress2" runat="server" Text='<%# Bind("Address2")%>'></asp:Label></td>
                                                         <td>
                                                             <asp:Label ID="lblAddress3" runat="server" Text='<%# Bind("Address3")%>'></asp:Label></td>--%>
-                                                        <td>
-                                                            <asp:Label ID="lblPartyCode" runat="server" ></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblPartyFullName" runat="server" ></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblAddress1" runat="server" ></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblAddress2" runat="server" ></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblAddress3" runat="server" ></asp:Label></td>
-                                                         <td>
-                                                            <asp:Label ID="lblPartyAddressCode" runat="server" ></asp:Label></td>
                                                         <td class="text-center">
                                                             <%--<asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectEndCustomer" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-plus-square"></i></asp:LinkButton>--%>
-                                                            <asp:LinkButton ID="LinkButton6" CssClass="btn bg-navy" runat="server" OnClick="clickendcustomer_Click"><i class="fa fa-plus-square"></i></asp:LinkButton>
+                                                            <asp:LinkButton ID="LinkButton6" CssClass="btn bg-navy" runat="server" OnClick="clickendcustomer_Click"><i class="fa fa-hand-o-up"></i></asp:LinkButton>
                                                         </td>
+                                                        <td>
+                                                            <asp:Label ID="lblPartyCode" runat="server" Text="Label"></asp:Label></td>
+                                                        <td>
+                                                            <asp:Label ID="lblPartyAddressCode" runat="server" Text="Label" ></asp:Label></td>
+                                                        <td>
+                                                            <asp:Label ID="lblPartyFullName" runat="server" Text="Label"></asp:Label></td>
+                                                        <td>
+                                                            <asp:Label ID="lblAddress1" runat="server" Text="Label"></asp:Label></td>
+                                                        <td>
+                                                            <asp:Label ID="lblAddress2" runat="server" Text="Label"></asp:Label></td>
                                                     </tr>
                                                 </ItemTemplate>
                                                 <FooterTemplate>
                                                     <tfoot>
                                                         <tr>
+                                                            <th>Select</th>
                                                             <th>PartyCode</th>
+                                                            <th>PartyAddress</th>
                                                             <th>PartyFullName</th>
                                                             <th>Address1</th>
                                                             <th>Address2</th>
-                                                            <th>Address3</th>
-                                                            <th>PartyAddress</th>
-                                                            <th>Select</th>
                                                         </tr>
                                                     </tfoot>
                                                     </table>
@@ -2327,6 +2307,78 @@
             <%--</div>--%>
         </asp:Panel>
         <!-- End ProductCode Modal -->
+
+        <!-- Modal JobNo-->
+        <asp:Panel ID="JobnoPanel" runat="server" CssClass="modal" TabIndex="-1" role="dialog" aria-labelledby="myLabe1">
+            <div class="modal-dialog modal-lg" role="dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel">Select JOB No</h4>
+                    </div>
+                    <asp:UpdatePanel ID="JobnoUpdatePanel" runat="server" UpdateMode="Conditional">
+                        <ContentTemplate>
+                            <div class="modal-body">
+                                <section class="content">
+                                    <form class="form-horizontal">
+                                        <div class="col-lg-12 col-md-12 " style="overflow: auto;">
+
+                                            <asp:Repeater ID="Repeater9" runat="server" OnItemCommand="Repeater9_ItemCommand">
+                                                <HeaderTemplate>
+                                                    <table id="example9" class="table table-bordered table-striped table-responsive" style="overflow: auto;">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>select</th>
+                                                                <th>EASLOTNo</th>
+                                                                <th>CustomerCode</th>
+                                                                <th>EndCusCode</th>
+                                                                <th>JobSite</th>
+                                                            </tr>
+                                                        </thead>
+                                                </HeaderTemplate>
+
+                                                <ItemTemplate>
+                                                    <tr>
+                                                        <td class="text-center">
+                                                            <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="selectLotNO" CommandArgument='<%# Eval("EASLOTNo")%>'><i class="fa fa-hand-o-up"></i></asp:LinkButton>
+                                                        </td>
+                                                        <td>
+                                                            <asp:Label ID="lblEASLOTNo" runat="server" Text='<%# Bind("EASLOTNo")%>'></asp:Label></td>
+                                                        <td>
+                                                            <asp:Label ID="lblCustomerCode" runat="server" Text='<%# Bind("CustomerCode")%>'></asp:Label></td>
+                                                        <td>
+                                                            <asp:Label ID="lblEndCusCode" runat="server" Text='<%# Bind("EndCusCode")%>'></asp:Label></td>
+                                                        <td>
+                                                            <asp:Label ID="lblJobSite" runat="server" Text='<%# Bind("JobSite")%>'></asp:Label></td>
+                                                    </tr>
+                                                </ItemTemplate>
+                                                <FooterTemplate>
+                                                    <tfoot>
+                                                        <tr>
+                                                            <th>select</th>
+                                                            <th>EASLOTNo</th>
+                                                            <th>CustomerCode</th>
+                                                            <th>EndCusCode</th>
+                                                            <th>JobSite</th>
+                                                        </tr>
+                                                    </tfoot>
+                                                    </table>
+                                                </FooterTemplate>
+                                            </asp:Repeater>
+                                        </div>
+                                    </form>
+                                </section>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                </div>
+            </div>
+        </asp:Panel>
+        <!-- End JobNo Modal -->
 
         <script type="text/javascript">
             $(function () {

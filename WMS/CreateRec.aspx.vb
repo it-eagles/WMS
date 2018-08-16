@@ -21,23 +21,36 @@ Public Class CreateRec
     Dim txtTypeCode As String
     Dim txtRunNo As String
     Dim checkjobsite As String
+    Dim classPermis As New ClassPermis
 
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        Dim usename As String = CStr(Session("UserName"))
+        Dim form As String = "frmExpGenLot"
         If Not Me.IsPostBack Then
-            showJobSite()
-            showSaleMan()
-            showLotof()
-            showCommodity()
-            showUnit()
-            showVolume()
-            showFreight()
-            showIEATPermit()
-            showunitdimension()
-            showcurrency()
-            btnGenIEATNo.Disabled = True
+            If ClassPermis.CheckRead(form, usename) = True Then
+                If Not IsPostBack Then
+
+                    showJobSite()
+                    showSaleMan()
+                    showLotof()
+                    showCommodity()
+                    showUnit()
+                    showVolume()
+                    showFreight()
+                    showIEATPermit()
+                    showunitdimension()
+                    showcurrency()
+                    TabName.Value = Request.Form(TabName.UniqueID)
+                End If
+            Else
+                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ เข้าโปรแกรมนี้' !!!');", True)
+                'Response.Redirect("HomeMain.aspx")
+                'btnAddNew.Disabled = True
+                'btnEdit.Disabled = True
+            End If
         End If
-      
+
         'showListConsignee()
         'showListShipper()
         'showListDelivery()
@@ -47,33 +60,6 @@ Public Class CreateRec
         'showListCustomerGroup()
         'showListProductCode()
     End Sub
-    'Private Sub Test_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnconsigneecode.Init
-
-    '    If String.IsNullOrEmpty(txtConsigneecode.Value) Then
-    '        showListConsignee()
-
-    '        'Else
-    '        '    Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode Where u.PartyCode Like "%" & txtConsigneecode.Value & "%" And u.Consignee = "0"
-    '        '          Select New With {u.PartyCode,
-    '        '                           u.PartyFullName,
-    '        '                           br.Address1,
-    '        '                           br.Address2,
-    '        '                           br.Address3}).ToList()
-    '        '    If user.Count > 0 Then
-    '        '        Repeater1.DataSource = user
-    '        '        Repeater1.DataBind()
-    '        '    Else
-    '        '        Me.Repeater1.DataSource = Nothing
-    '        '        Me.Repeater1.DataBind()
-    '        '    End If
-
-    '    End If
-    'End Sub
-    'Protected Sub Test_Load2(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnProductCode.Init
-    '    'If String.IsNullOrEmpty(txtConsigneecode.Value) Then
-    '    '    showListProductCode()
-    '    'End If
-    'End Sub
     '---------------------------------------------------------Show ddl Site----------------------------------------------------
     Private Sub showJobSite()
         'ddlJobsite.Items.Clear()
@@ -98,9 +84,9 @@ Public Class CreateRec
     End Sub
     '----------------------------------------------------------------Show ddl Sales--------------------------------------------------------
     Private Sub showSaleMan()
-        ddlSaleman.Items.Clear()
-        ddlSaleman.Items.Add(New ListItem("--Select SaleMan--", ""))
-        ddlSaleman.AppendDataBoundItems = True
+        'ddlSaleman.Items.Clear()
+        'ddlSaleman.Items.Add(New ListItem("--Select SaleMan--", ""))
+        'ddlSaleman.AppendDataBoundItems = True
 
         Dim gg = From g In db.tblMasterCodes Where g.Type = "Sales"
                   Select g.Type, g.Code
@@ -120,9 +106,9 @@ Public Class CreateRec
     End Sub
     '----------------------------------------------------------------Show ddl LotOf----------------------------------------------------------------
     Private Sub showLotof()
-        ddlLotof.Items.Clear()
-        ddlLotof.Items.Add(New ListItem("--Select LotOf--", ""))
-        ddlLotof.AppendDataBoundItems = True
+        'ddlLotof.Items.Clear()
+        'ddlLotof.Items.Add(New ListItem("--Select LotOf--", ""))
+        'ddlLotof.AppendDataBoundItems = True
 
         Dim gg = From g In db.tblMasterCodes Where g.Type = "jobbt-in"
                   Select g.Type, g.Code
@@ -142,9 +128,9 @@ Public Class CreateRec
     End Sub
     '----------------------------------------------------------------Show ddl Commodity----------------------------------------------------------------
     Private Sub showCommodity()
-        ddlCommodity.Items.Clear()
-        ddlCommodity.Items.Add(New ListItem("--Select Commodity--", ""))
-        ddlCommodity.AppendDataBoundItems = True
+        'ddlCommodity.Items.Clear()
+        'ddlCommodity.Items.Add(New ListItem("--Select Commodity--", ""))
+        'ddlCommodity.AppendDataBoundItems = True
 
         Dim gg = From g In db.tblMasterCodes Where g.Type = "Commodity"
                   Select g.Type, g.Code
@@ -164,13 +150,13 @@ Public Class CreateRec
     End Sub
     '----------------------------------------------------------------Show All ddl Unit-------------------------------------------------------
     Private Sub showUnit()
-        ddlQuan.Items.Clear()
-        ddlQuan.Items.Add(New ListItem("--Select Unit--", ""))
-        ddlQuan.AppendDataBoundItems = True
+        'ddlQuan.Items.Clear()
+        'ddlQuan.Items.Add(New ListItem("--Select Unit--", ""))
+        'ddlQuan.AppendDataBoundItems = True
 
-        ddlquanbox.Items.Clear()
-        ddlquanbox.Items.Add(New ListItem("--Select Unit--", ""))
-        ddlquanbox.AppendDataBoundItems = True
+        'ddlquanbox.Items.Clear()
+        'ddlquanbox.Items.Add(New ListItem("--Select Unit--", ""))
+        'ddlquanbox.AppendDataBoundItems = True
 
         Dim gg = From g In db.tblMasterCodes Where g.Type = "Unit"
                   Select g.Type, g.Code
@@ -279,9 +265,9 @@ Public Class CreateRec
     End Sub
     '----------------------------------------------------------------Show ddl Volume---------------------------------------------------
     Private Sub showVolume()
-        ddlvolume.Items.Clear()
-        ddlvolume.Items.Add(New ListItem("--Select Volume--", ""))
-        ddlvolume.AppendDataBoundItems = True
+        'ddlvolume.Items.Clear()
+        'ddlvolume.Items.Add(New ListItem("--Select Volume--", ""))
+        'ddlvolume.AppendDataBoundItems = True
 
         Dim gg = From g In db.tblMasterCodes Where g.Type = "Volume"
                   Select g.Type, g.Code
@@ -301,9 +287,9 @@ Public Class CreateRec
     End Sub
     '----------------------------------------------------------------Show ddl FREIGHTFORWARDER --------------------------------------------
     Private Sub showFreight()
-        ddlFreight.Items.Clear()
-        ddlFreight.Items.Add(New ListItem("--Select Freight--", ""))
-        ddlFreight.AppendDataBoundItems = True
+        'ddlFreight.Items.Clear()
+        'ddlFreight.Items.Add(New ListItem("--Select Freight--", ""))
+        'ddlFreight.AppendDataBoundItems = True
 
         Dim gg = From g In db.tblMasterCodes Where g.Type = "FREIGHTFORWARDER"
                   Select g.Type, g.Code
@@ -323,9 +309,9 @@ Public Class CreateRec
     End Sub
     '----------------------------------------------------------------Show ddl IEATPERMIT----------------------------------------------------------
     Private Sub showIEATPermit()
-        ddlIEATPermit.Items.Clear()
-        ddlIEATPermit.Items.Add(New ListItem("--Select Freight--", ""))
-        ddlIEATPermit.AppendDataBoundItems = True
+        'ddlIEATPermit.Items.Clear()
+        'ddlIEATPermit.Items.Add(New ListItem("--Select Freight--", ""))
+        'ddlIEATPermit.AppendDataBoundItems = True
 
         Dim gg = From g In db.tblMasterCodes Where g.Type = "IEATPERMIT"
                   Select g.Type, g.Code
@@ -345,9 +331,9 @@ Public Class CreateRec
     End Sub
     '----------------------------------------------------------------Show ddl Unit CM INC-------------------------------------------------------
     Private Sub showunitdimension()
-        ddlUnitDimension.Items.Clear()
-        ddlUnitDimension.Items.Add(New ListItem("--Select Unit--", ""))
-        ddlUnitDimension.AppendDataBoundItems = True
+        'ddlUnitDimension.Items.Clear()
+        'ddlUnitDimension.Items.Add(New ListItem("--Select Unit--", ""))
+        'ddlUnitDimension.AppendDataBoundItems = True
 
         Dim gg = From g In db.tblMasterCodes Where g.Code = "CM" Or g.Code = "INC"
                   Select g.Type, g.Code
@@ -367,9 +353,9 @@ Public Class CreateRec
     End Sub
     '----------------------------------------------------------------Show ddl Currency-----------------------------------------------------
     Private Sub showcurrency()
-        ddlCurrencyInvoice.Items.Clear()
-        ddlCurrencyInvoice.Items.Add(New ListItem("--Select Currency--", ""))
-        ddlCurrencyInvoice.AppendDataBoundItems = True
+        'ddlCurrencyInvoice.Items.Clear()
+        'ddlCurrencyInvoice.Items.Add(New ListItem("--Select Currency--", ""))
+        'ddlCurrencyInvoice.AppendDataBoundItems = True
 
         Dim gg = From g In db.tblMasterCodes Where g.Type = "Currency"
                   Select g.Type, g.Code
@@ -416,7 +402,7 @@ Public Class CreateRec
 
         Dim cons = From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
         Where (p.PartyCode = cons_code And p.Consignee = "0") Or p.Consignee = "0"
-        Select p.PartyCode, pa.PartyAddressCode, p.PartyFullName, pa.Address1, pa.Address2, pa.Address3
+        Select p.PartyCode, pa.PartyAddressCode, p.PartyFullName, pa.Address1, pa.Address2
 
         If cons.Count > 0 Then
             Repeater1.DataSource = cons.ToList
@@ -461,7 +447,7 @@ Public Class CreateRec
             Dim lblPartyFullName As Label = CType(e.Item.FindControl("lblPartyFullName"), Label)
             Dim lblAddress1 As Label = CType(e.Item.FindControl("lblAddress1"), Label)
             Dim lblAddress2 As Label = CType(e.Item.FindControl("lblAddress2"), Label)
-            Dim lblAddress3 As Label = CType(e.Item.FindControl("lblAddress3"), Label)
+            'Dim lblAddress3 As Label = CType(e.Item.FindControl("lblAddress3"), Label)
             Dim lblPartyAddressCode As Label = CType(e.Item.FindControl("lblPartyAddressCode"), Label)
 
             If Not IsNothing(lblPartyCode) Then
@@ -476,9 +462,9 @@ Public Class CreateRec
             If Not IsNothing(lblPartyCode) Then
                 lblAddress2.Text = DataBinder.Eval(e.Item.DataItem, "Address2").ToString()
             End If
-            If Not IsNothing(lblPartyCode) Then
-                lblAddress3.Text = DataBinder.Eval(e.Item.DataItem, "Address3").ToString()
-            End If
+            'If Not IsNothing(lblPartyCode) Then
+            '    lblAddress3.Text = DataBinder.Eval(e.Item.DataItem, "Address3").ToString()
+            'End If
             If Not IsNothing(lblPartyCode) Then
                 lblPartyAddressCode.Text = DataBinder.Eval(e.Item.DataItem, "PartyAddressCode").ToString()
             End If
@@ -488,17 +474,60 @@ Public Class CreateRec
     Protected Sub clickconsignee_Click(sender As Object, e As EventArgs)
         Dim Item As RepeaterItem = TryCast(TryCast(sender, LinkButton).Parent, RepeaterItem)
         Dim lblPartyCode As String = TryCast(Item.FindControl("lblPartyCode"), Label).Text.Trim
-        Dim lblPartyAddressCode As String = TryCast(Item.FindControl("lblPartyAddressCode"), Label).Text.Trim
+        Dim lblPartyAddressCode As Double = CDbl(TryCast(Item.FindControl("lblPartyAddressCode"), Label).Text.Trim)
+        'Dim lblPartyAddressCode As String = TryCast(Item.FindControl("lblPartyAddressCode"), Label).Text.Trim
 
-        Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode Where u.PartyCode = lblPartyCode And u.Consignee = "0").SingleOrDefault
-        txtConsigneecode.Value = user.u.PartyCode
-        txtNameEngConsign.Value = user.u.PartyFullName
-        txtAddress1.Value = user.br.Address1
-        txtAddress2.Value = user.br.Address2
-        txtAddress3.Value = user.br.Address3
-        txtAddress4.Value = user.br.Address4
-        txtAddress5.Value = user.br.ZipCode
-        txtEmail.Value = user.br.email
+        Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode
+                    Where u.PartyCode = lblPartyCode And br.PartyAddressCode = lblPartyAddressCode).SingleOrDefault
+
+        If String.IsNullOrEmpty(user.u.PartyCode) Then
+            txtConsigneecode.Value = ""
+        Else
+            txtConsigneecode.Value = user.u.PartyCode
+        End If
+
+        If String.IsNullOrEmpty(user.u.PartyFullName) Then
+            txtNameEngConsign.Value = ""
+        Else
+            txtNameEngConsign.Value = user.u.PartyFullName
+        End If
+
+        If String.IsNullOrEmpty(user.br.Address1) Then
+            txtAddress1.Value = ""
+        Else
+            txtAddress1.Value = user.br.Address1
+        End If
+
+        If String.IsNullOrEmpty(user.br.Address2) Then
+            txtAddress2.Value = ""
+        Else
+            txtAddress2.Value = user.br.Address2
+        End If
+
+        If String.IsNullOrEmpty(user.br.Address3) Then
+            txtAddress3.Value = ""
+        Else
+            txtAddress3.Value = user.br.Address3
+        End If
+
+        If String.IsNullOrEmpty(user.br.Address4) Then
+            txtAddress4.Value = ""
+        Else
+            txtAddress4.Value = user.br.Address4
+        End If
+
+        If String.IsNullOrEmpty(user.br.ZipCode) Then
+            txtAddress5.Value = ""
+        Else
+            txtAddress5.Value = user.br.ZipCode
+        End If
+
+        If String.IsNullOrEmpty(user.br.email) Then
+            txtEmail.Value = ""
+        Else
+            txtEmail.Value = user.br.email
+        End If
+
     End Sub
 
     '--------------------------------------------------------Show Data Shipper In Modal-----------------------------------------
@@ -532,7 +561,7 @@ Public Class CreateRec
 
         Dim cons = From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
         Where (p.PartyCode = Ship_code And p.Shipper = "0") Or p.Shipper = "0"
-        Select p.PartyCode, p.PartyFullName, pa.PartyAddressCode, pa.Address1, pa.Address2, pa.Address3
+        Select p.PartyCode, p.PartyFullName, pa.PartyAddressCode, pa.Address1, pa.Address2
 
         If cons.Count > 0 Then
             Repeater2.DataSource = cons.ToList
@@ -582,7 +611,7 @@ Public Class CreateRec
             Dim lblPartyFullName As Label = CType(e.Item.FindControl("lblPartyFullName"), Label)
             Dim lblAddress1 As Label = CType(e.Item.FindControl("lblAddress1"), Label)
             Dim lblAddress2 As Label = CType(e.Item.FindControl("lblAddress2"), Label)
-            Dim lblAddress3 As Label = CType(e.Item.FindControl("lblAddress3"), Label)
+
             Dim lblPartyAddressCode As Label = CType(e.Item.FindControl("lblPartyAddressCode"), Label)
 
             If Not IsNothing(lblPartyCode) Then
@@ -598,9 +627,6 @@ Public Class CreateRec
                 lblAddress2.Text = DataBinder.Eval(e.Item.DataItem, "Address2").ToString()
             End If
             If Not IsNothing(lblPartyCode) Then
-                lblAddress3.Text = DataBinder.Eval(e.Item.DataItem, "Address3").ToString()
-            End If
-            If Not IsNothing(lblPartyCode) Then
                 lblPartyAddressCode.Text = DataBinder.Eval(e.Item.DataItem, "PartyAddressCode").ToString()
             End If
         End If
@@ -609,17 +635,58 @@ Public Class CreateRec
     Protected Sub clickshipper_Click(sender As Object, e As EventArgs)
         Dim Item As RepeaterItem = TryCast(TryCast(sender, LinkButton).Parent, RepeaterItem)
         Dim lblPartyCode As String = TryCast(Item.FindControl("lblPartyCode"), Label).Text.Trim
-        Dim lblPartyAddressCode As String = TryCast(Item.FindControl("lblPartyAddressCode"), Label).Text.Trim
+        Dim lblPartyAddressCode As Double = CDbl(TryCast(Item.FindControl("lblPartyAddressCode"), Label).Text.Trim)
 
-        Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode Where u.PartyCode = lblPartyCode And u.Consignee = "0").SingleOrDefault
-        txtShippercode.Value = user.u.PartyCode
-        txtNameEngShipper.Value = user.u.PartyFullName
-        txtAddress1Shipper.Value = user.br.Address1
-        txtAddress2Shipper.Value = user.br.Address2
-        txtAddress3Shipper.Value = user.br.Address3
-        txtAddress4Shipper.Value = user.br.Address4
-        txtAddress5Shipper.Value = user.br.ZipCode
-        txtEmailShipper.Value = user.br.email
+        Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode
+                    Where u.PartyCode = lblPartyCode And br.PartyAddressCode = lblPartyAddressCode).SingleOrDefault
+        If String.IsNullOrEmpty(user.u.PartyCode) Then
+            txtShippercode.Value = ""
+        Else
+            txtShippercode.Value = user.u.PartyCode
+        End If
+
+        If String.IsNullOrEmpty(user.u.PartyFullName) Then
+            txtNameEngShipper.Value = ""
+        Else
+            txtNameEngShipper.Value = user.u.PartyFullName
+        End If
+
+        If String.IsNullOrEmpty(user.br.Address1) Then
+            txtAddress1Shipper.Value = ""
+        Else
+            txtAddress1Shipper.Value = user.br.Address1
+        End If
+
+        If String.IsNullOrEmpty(user.br.Address2) Then
+            txtAddress2Shipper.Value = ""
+        Else
+            txtAddress2Shipper.Value = user.br.Address2
+        End If
+
+        If String.IsNullOrEmpty(user.br.Address3) Then
+            txtAddress3Shipper.Value = ""
+        Else
+            txtAddress3Shipper.Value = user.br.Address3
+        End If
+
+        If String.IsNullOrEmpty(user.br.Address4) Then
+            txtAddress4Shipper.Value = ""
+        Else
+            txtAddress4Shipper.Value = user.br.Address4
+        End If
+
+        If String.IsNullOrEmpty(user.br.ZipCode) Then
+            txtAddress5Shipper.Value = ""
+        Else
+            txtAddress5Shipper.Value = user.br.ZipCode
+        End If
+
+        If String.IsNullOrEmpty(user.br.email) Then
+            txtEmailShipper.Value = ""
+        Else
+            txtEmailShipper.Value = user.br.email
+        End If
+
     End Sub
     '--------------------------------------------------------Show Data Delivery In Modal-----------------------------------------
     Public Sub showListDelivery()
@@ -652,7 +719,7 @@ Public Class CreateRec
 
         Dim cons = From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
         Where (p.PartyCode = Delivery_code And p.Shipper = "0") Or p.Shipper = "0"
-        Select p.PartyCode, p.PartyFullName, pa.PartyAddressCode, pa.Address1, pa.Address2, pa.Address3
+        Select p.PartyCode, p.PartyFullName, pa.PartyAddressCode, pa.Address1, pa.Address2
 
         If cons.Count > 0 Then
             Repeater3.DataSource = cons.ToList
@@ -703,7 +770,6 @@ Public Class CreateRec
             Dim lblPartyFullName As Label = CType(e.Item.FindControl("lblPartyFullName"), Label)
             Dim lblAddress1 As Label = CType(e.Item.FindControl("lblAddress1"), Label)
             Dim lblAddress2 As Label = CType(e.Item.FindControl("lblAddress2"), Label)
-            Dim lblAddress3 As Label = CType(e.Item.FindControl("lblAddress3"), Label)
             Dim lblPartyAddressCode As Label = CType(e.Item.FindControl("lblPartyAddressCode"), Label)
 
             If Not IsNothing(lblPartyCode) Then
@@ -719,9 +785,6 @@ Public Class CreateRec
                 lblAddress2.Text = DataBinder.Eval(e.Item.DataItem, "Address2").ToString()
             End If
             If Not IsNothing(lblPartyCode) Then
-                lblAddress3.Text = DataBinder.Eval(e.Item.DataItem, "Address3").ToString()
-            End If
-            If Not IsNothing(lblPartyCode) Then
                 lblPartyAddressCode.Text = DataBinder.Eval(e.Item.DataItem, "PartyAddressCode").ToString()
             End If
         End If
@@ -730,18 +793,64 @@ Public Class CreateRec
     Protected Sub clickdelivery_Click(sender As Object, e As EventArgs)
         Dim Item As RepeaterItem = TryCast(TryCast(sender, LinkButton).Parent, RepeaterItem)
         Dim lblPartyCode As String = TryCast(Item.FindControl("lblPartyCode"), Label).Text.Trim
-        Dim lblPartyAddressCode As String = TryCast(Item.FindControl("lblPartyAddressCode"), Label).Text.Trim
+        Dim lblPartyAddressCode As Double = CDbl(TryCast(Item.FindControl("lblPartyAddressCode"), Label).Text.Trim)
 
-        Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode Where u.PartyCode = lblPartyCode And u.Consignee = "0").SingleOrDefault
-        txtDeliverycode.Value = user.u.PartyCode
-        txtNameEngDelivery.Value = user.u.PartyFullName
-        txtAddress1Delivery.Value = user.br.Address1
-        txtAddress2Delivery.Value = user.br.Address2
-        txtAddress3Delivery.Value = user.br.Address3
-        txtAddress4Delivery.Value = user.br.Address4
-        txtAddress5Delivery.Value = user.br.ZipCode
-        txtEmailDelivery.Value = user.br.email
-        txtContractPersonDelivery.Value = user.br.Attn
+        Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode
+                    Where u.PartyCode = lblPartyCode And br.PartyAddressCode = lblPartyAddressCode).SingleOrDefault
+
+        If String.IsNullOrEmpty(user.u.PartyCode) Then
+            txtDeliverycode.Value = ""
+        Else
+            txtDeliverycode.Value = user.u.PartyCode
+        End If
+
+        If String.IsNullOrEmpty(user.u.PartyFullName) Then
+            txtNameEngDelivery.Value = ""
+        Else
+            txtNameEngDelivery.Value = user.u.PartyFullName
+        End If
+
+        If String.IsNullOrEmpty(user.br.Address1) Then
+            txtAddress1Delivery.Value = ""
+        Else
+            txtAddress1Delivery.Value = user.br.Address1
+        End If
+
+        If String.IsNullOrEmpty(user.br.Address2) Then
+            txtAddress2Delivery.Value = ""
+        Else
+            txtAddress2Delivery.Value = user.br.Address2
+        End If
+
+        If String.IsNullOrEmpty(user.br.Address3) Then
+            txtAddress3Delivery.Value = ""
+        Else
+            txtAddress3Delivery.Value = user.br.Address3
+        End If
+
+        If String.IsNullOrEmpty(user.br.Address4) Then
+            txtAddress4Delivery.Value = ""
+        Else
+            txtAddress4Delivery.Value = user.br.Address4
+        End If
+
+        If String.IsNullOrEmpty(user.br.ZipCode) Then
+            txtAddress5Delivery.Value = ""
+        Else
+            txtAddress5Delivery.Value = user.br.ZipCode
+        End If
+
+        If String.IsNullOrEmpty(user.br.email) Then
+            txtEmailDelivery.Value = ""
+        Else
+            txtEmailDelivery.Value = user.br.email
+        End If
+        If String.IsNullOrEmpty(user.br.Attn) Then
+            txtContractPersonDelivery.Value = ""
+        Else
+            txtContractPersonDelivery.Value = user.br.Attn
+        End If
+
     End Sub
     '--------------------------------------------------------Show Data PickUp In Modal-----------------------------------------
     Public Sub showListPickUp()
@@ -774,7 +883,7 @@ Public Class CreateRec
 
         Dim cons = From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
         Where (p.PartyCode = Pickup_code And p.Shipper = "0") Or p.Shipper = "0"
-        Select p.PartyCode, p.PartyFullName, pa.PartyAddressCode, pa.Address1, pa.Address2, pa.Address3
+        Select p.PartyCode, p.PartyFullName, pa.PartyAddressCode, pa.Address1, pa.Address2
 
         If cons.Count > 0 Then
             Repeater4.DataSource = cons.ToList
@@ -825,7 +934,6 @@ Public Class CreateRec
             Dim lblPartyFullName As Label = CType(e.Item.FindControl("lblPartyFullName"), Label)
             Dim lblAddress1 As Label = CType(e.Item.FindControl("lblAddress1"), Label)
             Dim lblAddress2 As Label = CType(e.Item.FindControl("lblAddress2"), Label)
-            Dim lblAddress3 As Label = CType(e.Item.FindControl("lblAddress3"), Label)
             Dim lblPartyAddressCode As Label = CType(e.Item.FindControl("lblPartyAddressCode"), Label)
 
             If Not IsNothing(lblPartyCode) Then
@@ -841,9 +949,6 @@ Public Class CreateRec
                 lblAddress2.Text = DataBinder.Eval(e.Item.DataItem, "Address2").ToString()
             End If
             If Not IsNothing(lblPartyCode) Then
-                lblAddress3.Text = DataBinder.Eval(e.Item.DataItem, "Address3").ToString()
-            End If
-            If Not IsNothing(lblPartyCode) Then
                 lblPartyAddressCode.Text = DataBinder.Eval(e.Item.DataItem, "PartyAddressCode").ToString()
             End If
         End If
@@ -852,18 +957,64 @@ Public Class CreateRec
     Protected Sub clickpickup_Click(sender As Object, e As EventArgs)
         Dim Item As RepeaterItem = TryCast(TryCast(sender, LinkButton).Parent, RepeaterItem)
         Dim lblPartyCode As String = TryCast(Item.FindControl("lblPartyCode"), Label).Text.Trim
-        Dim lblPartyAddressCode As String = TryCast(Item.FindControl("lblPartyAddressCode"), Label).Text.Trim
+        Dim lblPartyAddressCode As Double = CDbl(TryCast(Item.FindControl("lblPartyAddressCode"), Label).Text.Trim)
 
-        Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode Where u.PartyCode = lblPartyCode And u.Consignee = "0").SingleOrDefault
-        txtCodePickUpPlace.Value = user.u.PartyCode
-        txtNamePickUpPlace.Value = user.u.PartyFullName
-        txtAddress1PickUpPlace.Value = user.br.Address1
-        txtAddress2PickUpPlace.Value = user.br.Address2
-        txtAddress3PickUpPlace.Value = user.br.Address3
-        txtAddress4PickUpPlace.Value = user.br.Address4
-        txtAddress5PickUpPlace.Value = user.br.ZipCode
-        txtEmailPickUpPlace.Value = user.br.email
-        txtContractPersonPickUpPlace.Value = user.br.Attn
+        Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode
+                    Where u.PartyCode = lblPartyCode And br.PartyAddressCode = lblPartyAddressCode).SingleOrDefault
+
+        If String.IsNullOrEmpty(user.u.PartyCode) Then
+            txtCodePickUpPlace.Value = ""
+        Else
+            txtCodePickUpPlace.Value = user.u.PartyCode
+        End If
+
+        If String.IsNullOrEmpty(user.u.PartyFullName) Then
+            txtNamePickUpPlace.Value = ""
+        Else
+            txtNamePickUpPlace.Value = user.u.PartyFullName
+        End If
+
+        If String.IsNullOrEmpty(user.br.Address1) Then
+            txtAddress1PickUpPlace.Value = ""
+        Else
+            txtAddress1PickUpPlace.Value = user.br.Address1
+        End If
+
+        If String.IsNullOrEmpty(user.br.Address2) Then
+            txtAddress2PickUpPlace.Value = ""
+        Else
+            txtAddress2PickUpPlace.Value = user.br.Address2
+        End If
+
+        If String.IsNullOrEmpty(user.br.Address3) Then
+            txtAddress3PickUpPlace.Value = ""
+        Else
+            txtAddress3PickUpPlace.Value = user.br.Address3
+        End If
+
+        If String.IsNullOrEmpty(user.br.Address4) Then
+            txtAddress4PickUpPlace.Value = ""
+        Else
+            txtAddress4PickUpPlace.Value = user.br.Address4
+        End If
+
+        If String.IsNullOrEmpty(user.br.ZipCode) Then
+            txtAddress5PickUpPlace.Value = ""
+        Else
+            txtAddress5PickUpPlace.Value = user.br.ZipCode
+        End If
+
+        If String.IsNullOrEmpty(user.br.email) Then
+            txtEmailPickUpPlace.Value = ""
+        Else
+            txtEmailPickUpPlace.Value = user.br.email
+        End If
+        If String.IsNullOrEmpty(user.br.Attn) Then
+            txtContractPersonPickUpPlace.Value = ""
+        Else
+            txtContractPersonPickUpPlace.Value = user.br.Attn
+        End If
+
     End Sub
     '--------------------------------------------------------Show Data Customer In Modal-----------------------------------------
     Public Sub showListCustomer()
@@ -896,7 +1047,7 @@ Public Class CreateRec
 
         Dim cons = From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
         Where (p.PartyCode = Customer_code And p.Shipper = "0") Or p.Shipper = "0"
-        Select p.PartyCode, p.PartyFullName, pa.PartyAddressCode, pa.Address1, pa.Address2, pa.Address3
+        Select p.PartyCode, p.PartyFullName, pa.PartyAddressCode, pa.Address1, pa.Address2
 
         If cons.Count > 0 Then
             Repeater5.DataSource = cons.ToList
@@ -947,7 +1098,6 @@ Public Class CreateRec
             Dim lblPartyFullName As Label = CType(e.Item.FindControl("lblPartyFullName"), Label)
             Dim lblAddress1 As Label = CType(e.Item.FindControl("lblAddress1"), Label)
             Dim lblAddress2 As Label = CType(e.Item.FindControl("lblAddress2"), Label)
-            Dim lblAddress3 As Label = CType(e.Item.FindControl("lblAddress3"), Label)
             Dim lblPartyAddressCode As Label = CType(e.Item.FindControl("lblPartyAddressCode"), Label)
 
             If Not IsNothing(lblPartyCode) Then
@@ -963,9 +1113,6 @@ Public Class CreateRec
                 lblAddress2.Text = DataBinder.Eval(e.Item.DataItem, "Address2").ToString()
             End If
             If Not IsNothing(lblPartyCode) Then
-                lblAddress3.Text = DataBinder.Eval(e.Item.DataItem, "Address3").ToString()
-            End If
-            If Not IsNothing(lblPartyCode) Then
                 lblPartyAddressCode.Text = DataBinder.Eval(e.Item.DataItem, "PartyAddressCode").ToString()
             End If
         End If
@@ -974,18 +1121,64 @@ Public Class CreateRec
     Protected Sub clickcustomer_Click(sender As Object, e As EventArgs)
         Dim Item As RepeaterItem = TryCast(TryCast(sender, LinkButton).Parent, RepeaterItem)
         Dim lblPartyCode As String = TryCast(Item.FindControl("lblPartyCode"), Label).Text.Trim
-        Dim lblPartyAddressCode As String = TryCast(Item.FindControl("lblPartyAddressCode"), Label).Text.Trim
+        Dim lblPartyAddressCode As Double = CDbl(TryCast(Item.FindControl("lblPartyAddressCode"), Label).Text.Trim)
 
-        Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode Where u.PartyCode = lblPartyCode And u.Consignee = "0").SingleOrDefault
-        txtCustomercode.Value = user.u.PartyCode
-        txtNameEngCustomer.Value = user.u.PartyFullName
-        txtAddress1Custommer.Value = user.br.Address1
-        txtAddress2Custommer.Value = user.br.Address2
-        txtAddress3Custommer.Value = user.br.Address3
-        txtAddress4Custommer.Value = user.br.Address4
-        txtAddress5Custommer.Value = user.br.ZipCode
-        txtEmailCustommer.Value = user.br.email
-        txtContractPersonCustommer.Value = user.br.Attn
+        Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode
+                    Where u.PartyCode = lblPartyCode And br.PartyAddressCode = lblPartyAddressCode).SingleOrDefault
+
+        If String.IsNullOrEmpty(user.u.PartyCode) Then
+            txtCustomercode.Value = ""
+        Else
+            txtCustomercode.Value = user.u.PartyCode
+        End If
+
+        If String.IsNullOrEmpty(user.u.PartyFullName) Then
+            txtNameEngCustomer.Value = ""
+        Else
+            txtNameEngCustomer.Value = user.u.PartyFullName
+        End If
+
+        If String.IsNullOrEmpty(user.br.Address1) Then
+            txtAddress1Custommer.Value = ""
+        Else
+            txtAddress1Custommer.Value = user.br.Address1
+        End If
+
+        If String.IsNullOrEmpty(user.br.Address2) Then
+            txtAddress2Custommer.Value = ""
+        Else
+            txtAddress2Custommer.Value = user.br.Address2
+        End If
+
+        If String.IsNullOrEmpty(user.br.Address3) Then
+            txtAddress3Custommer.Value = ""
+        Else
+            txtAddress3Custommer.Value = user.br.Address3
+        End If
+
+        If String.IsNullOrEmpty(user.br.Address4) Then
+            txtAddress4Custommer.Value = ""
+        Else
+            txtAddress4Custommer.Value = user.br.Address4
+        End If
+
+        If String.IsNullOrEmpty(user.br.ZipCode) Then
+            txtAddress5Custommer.Value = ""
+        Else
+            txtAddress5Custommer.Value = user.br.ZipCode
+        End If
+
+        If String.IsNullOrEmpty(user.br.email) Then
+            txtEmailCustommer.Value = ""
+        Else
+            txtEmailCustommer.Value = user.br.email
+        End If
+        If String.IsNullOrEmpty(user.br.Attn) Then
+            txtContractPersonCustommer.Value = ""
+        Else
+            txtContractPersonCustommer.Value = user.br.Attn
+        End If
+
     End Sub
     '--------------------------------------------------------Show Data Customer In Modal-----------------------------------------
     Public Sub showListEndCustomer()
@@ -1018,7 +1211,7 @@ Public Class CreateRec
 
         Dim cons = From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
         Where (p.PartyCode = EndCustomer_code And p.Shipper = "0") Or p.Shipper = "0"
-        Select p.PartyCode, p.PartyFullName, pa.PartyAddressCode, pa.Address1, pa.Address2, pa.Address3
+        Select p.PartyCode, p.PartyFullName, pa.PartyAddressCode, pa.Address1, pa.Address2
 
         If cons.Count > 0 Then
             Repeater6.DataSource = cons.ToList
@@ -1070,7 +1263,6 @@ Public Class CreateRec
             Dim lblPartyFullName As Label = CType(e.Item.FindControl("lblPartyFullName"), Label)
             Dim lblAddress1 As Label = CType(e.Item.FindControl("lblAddress1"), Label)
             Dim lblAddress2 As Label = CType(e.Item.FindControl("lblAddress2"), Label)
-            Dim lblAddress3 As Label = CType(e.Item.FindControl("lblAddress3"), Label)
             Dim lblPartyAddressCode As Label = CType(e.Item.FindControl("lblPartyAddressCode"), Label)
 
             If Not IsNothing(lblPartyCode) Then
@@ -1086,9 +1278,6 @@ Public Class CreateRec
                 lblAddress2.Text = DataBinder.Eval(e.Item.DataItem, "Address2").ToString()
             End If
             If Not IsNothing(lblPartyCode) Then
-                lblAddress3.Text = DataBinder.Eval(e.Item.DataItem, "Address3").ToString()
-            End If
-            If Not IsNothing(lblPartyCode) Then
                 lblPartyAddressCode.Text = DataBinder.Eval(e.Item.DataItem, "PartyAddressCode").ToString()
             End If
         End If
@@ -1097,18 +1286,64 @@ Public Class CreateRec
     Protected Sub clickendcustomer_Click(sender As Object, e As EventArgs)
         Dim Item As RepeaterItem = TryCast(TryCast(sender, LinkButton).Parent, RepeaterItem)
         Dim lblPartyCode As String = TryCast(Item.FindControl("lblPartyCode"), Label).Text.Trim
-        Dim lblPartyAddressCode As String = TryCast(Item.FindControl("lblPartyAddressCode"), Label).Text.Trim
+        Dim lblPartyAddressCode As Double = CDbl(TryCast(Item.FindControl("lblPartyAddressCode"), Label).Text.Trim)
 
-        Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode Where u.PartyCode = lblPartyCode And u.Consignee = "0").SingleOrDefault
-        txtCodeEndCustomer.Value = user.u.PartyCode
-        txtNameEndCustomer.Value = user.u.PartyFullName
-        txtAddress1EndCustomer.Value = user.br.Address1
-        txtAddress2EndCustomer.Value = user.br.Address2
-        txtAddress3EndCustomer.Value = user.br.Address3
-        txtAddress4EndCustomer.Value = user.br.Address4
-        txtAddress5EndCustomer.Value = user.br.ZipCode
-        txtEmailEndCustomer.Value = user.br.email
-        txtContractPersonEndCustomer.Value = user.br.Attn
+        Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode
+                    Where u.PartyCode = lblPartyCode And br.PartyAddressCode = lblPartyAddressCode).SingleOrDefault
+
+        If String.IsNullOrEmpty(user.u.PartyCode) Then
+            txtCodeEndCustomer.Value = ""
+        Else
+            txtCodeEndCustomer.Value = user.u.PartyCode
+        End If
+
+        If String.IsNullOrEmpty(user.u.PartyFullName) Then
+            txtNameEndCustomer.Value = ""
+        Else
+            txtNameEndCustomer.Value = user.u.PartyFullName
+        End If
+
+        If String.IsNullOrEmpty(user.br.Address1) Then
+            txtAddress1EndCustomer.Value = ""
+        Else
+            txtAddress1EndCustomer.Value = user.br.Address1
+        End If
+
+        If String.IsNullOrEmpty(user.br.Address2) Then
+            txtAddress2EndCustomer.Value = ""
+        Else
+            txtAddress2EndCustomer.Value = user.br.Address2
+        End If
+
+        If String.IsNullOrEmpty(user.br.Address3) Then
+            txtAddress3EndCustomer.Value = ""
+        Else
+            txtAddress3EndCustomer.Value = user.br.Address3
+        End If
+
+        If String.IsNullOrEmpty(user.br.Address4) Then
+            txtAddress4EndCustomer.Value = ""
+        Else
+            txtAddress4EndCustomer.Value = user.br.Address4
+        End If
+
+        If String.IsNullOrEmpty(user.br.ZipCode) Then
+            txtAddress5EndCustomer.Value = ""
+        Else
+            txtAddress5EndCustomer.Value = user.br.ZipCode
+        End If
+
+        If String.IsNullOrEmpty(user.br.email) Then
+            txtEmailEndCustomer.Value = ""
+        Else
+            txtEmailEndCustomer.Value = user.br.email
+        End If
+        If String.IsNullOrEmpty(user.br.Attn) Then
+            txtContractPersonEndCustomer.Value = ""
+        Else
+            txtContractPersonEndCustomer.Value = user.br.Attn
+        End If
+
     End Sub
     '--------------------------------------------------------Show Data CustomerGroup In Modal-----------------------------------------
     Public Sub showListCustomerGroup()
@@ -1245,8 +1480,748 @@ Public Class CreateRec
         Catch ex As Exception
         End Try
     End Sub
+    Private Sub selectJobno()
+        Dim testdate As Integer
+        Dim lot As String
+        If String.IsNullOrEmpty(txtJobno.Value.Trim) Then
+            testdate = CInt(Convert.ToDateTime(Date.Now).ToString("yyyy"))
+        Else
+            lot = txtJobno.Value.Trim
+        End If
+
+        'Where e.LOTDate.Year = testdate
+        Dim exl = (From e In db.tblImpGenLOTs Where e.EASLOTNo = txtJobno.Value.Trim Or e.LOTDate.Year = testdate Order By e.EASLOTNo Descending
+                 Select New With {
+                 e.EASLOTNo,
+                 e.CustomerCode,
+                 e.JobSite,
+                 e.EndCusCode}).ToList
+        Try
+            If exl.Count > 0 Then
+                Me.Repeater9.DataSource = exl
+                Me.Repeater9.DataBind()
+                ScriptManager.RegisterStartupScript(JobnoUpdatePanel, JobnoUpdatePanel.GetType(), "show", "$(function () { $('#" + JobnoPanel.ClientID + "').modal('show'); });", True)
+                JobnoUpdatePanel.Update()
+            Else
+                ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('ไม่พบข้อมูล LOTNo นี้')", True)
+                Exit Sub
+            End If
+
+        Catch ex As Exception
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", ex.Message, True)
+        End Try
+    End Sub
+    Protected Sub btnJobSiteSeacrh_ServerClick(sender As Object, e As EventArgs)
+        selectJobno()
+    End Sub
+    Protected Sub Repeater9_ItemCommand(source As Object, e As RepeaterCommandEventArgs)
+        Dim EASLOTNo As String = CStr(e.CommandArgument)
+        If e.CommandName.Equals("selectLotNO") Then
+            Dim exp = (From ex In db.tblImpGenLOTs Where ex.EASLOTNo = EASLOTNo).SingleOrDefault
+
+            If String.IsNullOrEmpty(exp.EASLOTNo) Then
+                txtJobno.Value = ""
+            Else
+                txtJobno.Value = exp.EASLOTNo
+            End If
+
+            txtdatepickerJobdate.Text = Convert.ToDateTime(exp.LOTDate).ToString("dd/MM/yyyy")
+            ddlLotof.Text = exp.LOTBy
+            If String.IsNullOrEmpty(exp.SalesCode) Then
+                ddlSaleman.Text = ""
+            Else
+                ddlSaleman.Text = exp.SalesCode
+            End If
+            If String.IsNullOrEmpty(exp.SalesName) Then
+                txtsalemandis.Value = ""
+            Else
+                txtsalemandis.Value = exp.SalesName
+            End If
+            If String.IsNullOrEmpty(exp.ConsigneeCode) Then
+                txtConsigneecode.Value = ""
+            Else
+                txtConsigneecode.Value = exp.ConsigneeCode
+            End If
+            If String.IsNullOrEmpty(exp.ConsignNameEng) Then
+                txtNameEngConsign.Value = ""
+            Else
+                txtNameEngConsign.Value = exp.ConsignNameEng
+            End If
+
+            If String.IsNullOrEmpty(exp.ConsignAddress) Then
+                txtAddress1.Value = ""
+            Else
+                txtAddress1.Value = exp.ConsignAddress
+            End If
+
+            If String.IsNullOrEmpty(exp.ConsignDistrict) Then
+                txtAddress2.Value = ""
+            Else
+                txtAddress2.Value = exp.ConsignDistrict
+            End If
+
+            If String.IsNullOrEmpty(exp.ConsignSubProvince) Then
+                txtAddress3.Value = ""
+            Else
+                txtAddress3.Value = exp.ConsignSubProvince
+            End If
+            If String.IsNullOrEmpty(exp.ConsignProvince) Then
+                txtAddress4.Value = ""
+            Else
+                txtAddress4.Value = exp.ConsignProvince
+            End If
+
+            If String.IsNullOrEmpty(exp.ConsignPostCode) Then
+                txtAddress5.Value = ""
+            Else
+                txtAddress5.Value = exp.ConsignPostCode
+            End If
+
+            If String.IsNullOrEmpty(exp.ConsignEmail) Then
+                txtEmail.Value = ""
+            Else
+                txtEmail.Value = exp.ConsignEmail
+            End If
+
+            If String.IsNullOrEmpty(exp.ShipperCode) Then
+                txtShippercode.Value = ""
+            Else
+                txtShippercode.Value = exp.ShipperCode
+            End If
+
+            If String.IsNullOrEmpty(exp.ShipperNameEng) Then
+                txtNameEngShipper.Value = ""
+            Else
+                txtNameEngShipper.Value = exp.ShipperNameEng
+            End If
+
+            If String.IsNullOrEmpty(exp.ShipperAddress) Then
+                txtAddress1Shipper.Value = ""
+            Else
+                txtAddress1Shipper.Value = exp.ShipperAddress
+            End If
+            If String.IsNullOrEmpty(exp.ShipperDistrict) Then
+                txtAddress2Shipper.Value = ""
+            Else
+                txtAddress2Shipper.Value = exp.ShipperDistrict
+            End If
+            If String.IsNullOrEmpty(exp.ShipperSubprovince) Then
+                txtAddress3Shipper.Value = ""
+            Else
+                txtAddress3Shipper.Value = exp.ShipperSubprovince
+            End If
+            If String.IsNullOrEmpty(exp.ShipperProvince) Then
+                txtAddress4Shipper.Value = ""
+            Else
+                txtAddress4Shipper.Value = exp.ShipperProvince
+            End If
+            If String.IsNullOrEmpty(exp.ShipperPostCode) Then
+                txtAddress5Shipper.Value = ""
+            Else
+                txtAddress5Shipper.Value = exp.ShipperPostCode
+            End If
+
+            If String.IsNullOrEmpty(exp.ShipperReturnCode) Then
+                txtEmailShipper.Value = ""
+            Else
+                txtEmailShipper.Value = exp.ShipperReturnCode
+            End If
+            If String.IsNullOrEmpty(exp.Commodity) Then
+                'ddlCommodity.Text = ""
+            Else
+                ddlCommodity.Text = exp.Commodity
+            End If
+
+            If String.IsNullOrEmpty(CStr(exp.QuantityofPart)) Then
+                txtQuantityOfPart.Value = ""
+            Else
+                txtQuantityOfPart.Value = CStr(exp.QuantityofPart)
+            End If
+
+            If String.IsNullOrEmpty(exp.QuantityUnit) Then
+                'ddlQuantityOfParty.Text = ""
+            Else
+                ddlQuantityOfParty.Text = exp.QuantityUnit
+            End If
+
+            If String.IsNullOrEmpty(CStr(exp.QuantityPack)) Then
+                txtQuantity.Value = ""
+            Else
+                txtQuantity.Value = CStr(exp.QuantityPack)
+            End If
+
+            If String.IsNullOrEmpty(exp.QuantityUnitPack) Then
+                'ddlQuan.Text = ""
+            Else
+                ddlQuan.Text = exp.QuantityUnitPack
+            End If
+
+            If String.IsNullOrEmpty(CStr(exp.QuantityPack1)) Then
+                txtQuantityBox.Value = ""
+            Else
+                txtQuantityBox.Value = CStr(exp.QuantityPack1)
+            End If
+
+            If String.IsNullOrEmpty(exp.QuantityUnitPack1) Then
+                'ddlquanbox.Text = ""
+            Else
+                ddlquanbox.Text = exp.QuantityUnitPack1
+            End If
+
+            If String.IsNullOrEmpty(CStr(exp.Weight)) Then
+                txtWeight.Value = ""
+            Else
+                txtWeight.Value = String.Format("{0:0.00}", exp.Weight)
+            End If
+
+            If String.IsNullOrEmpty(exp.WeightUnit) Then
+                'ddlWeight.Text = ""
+            Else
+                ddlWeight.Text = exp.WeightUnit
+            End If
+
+            If String.IsNullOrEmpty(CStr(exp.Volume)) Then
+                txtVolume.Value = ""
+            Else
+                txtVolume.Value = CStr(exp.Volume)
+            End If
+
+            If String.IsNullOrEmpty(exp.VolumeUnit) Then
+                'ddlvolume.Text = ""
+            Else
+                ddlvolume.Text = exp.VolumeUnit
+            End If
+
+            If String.IsNullOrEmpty(exp.MAWB) Then
+                txtMAWB_BL_TWB.Value = ""
+            Else
+                txtMAWB_BL_TWB.Value = exp.MAWB
+            End If
+
+            ddlvolume2.Text = exp.DocType
+
+            If String.IsNullOrEmpty(exp.DocCode) Then
+                txtVolume2.Value = ""
+            Else
+                txtVolume2.Value = exp.DocCode
+            End If
+
+            If String.IsNullOrEmpty(exp.Flight) Then
+                txtFLT_Voy_TruckDate.Value = ""
+            Else
+                txtFLT_Voy_TruckDate.Value = exp.Flight
+            End If
+
+            If String.IsNullOrEmpty(exp.FreighForwarder) Then
+                'ddlFreight.Text = ""
+            Else
+                ddlFreight.Text = exp.FreighForwarder
+            End If
+
+            If String.IsNullOrEmpty(exp.ShipTo) Then
+                txtShipto.Value = ""
+            Else
+                txtShipto.Value = exp.ShipTo
+            End If
+
+            If String.IsNullOrEmpty(exp.BillingNo) Then
+                txtBilling.Value = ""
+            Else
+                txtBilling.Value = exp.BillingNo
+            End If
+
+            If String.IsNullOrEmpty(exp.FLT1) Then
+                txtActual1.Value = ""
+            Else
+                txtActual1.Value = exp.FLT1
+            End If
+
+            If String.IsNullOrEmpty(exp.FLT2) Then
+                txtActual2.Value = ""
+            Else
+                txtActual2.Value = exp.FLT2
+            End If
+
+            If String.IsNullOrEmpty(exp.FLT3) Then
+                txtActual3.Value = ""
+            Else
+                txtActual3.Value = exp.FLT3
+            End If
+
+            If String.IsNullOrEmpty(exp.FLT4) Then
+                txtActual4.Value = ""
+            Else
+                txtActual4.Value = exp.FLT4
+            End If
+
+            If String.IsNullOrEmpty(CStr(exp.DateFLT1)) Then
+                txtdatepickerActualDate1.Text = ""
+            Else
+                txtdatepickerActualDate1.Text = CStr(exp.DateFLT1)
+            End If
+
+            If String.IsNullOrEmpty(CStr(exp.DateFLT2)) Then
+                txtdatepickerActualDate2.Text = ""
+            Else
+                txtdatepickerActualDate2.Text = CStr(exp.DateFLT2)
+            End If
+
+            If String.IsNullOrEmpty(CStr(exp.DateFLT3)) Then
+                txtdatepickerActualDate3.Text = ""
+            Else
+                txtdatepickerActualDate3.Text = CStr(exp.DateFLT3)
+            End If
+
+            If String.IsNullOrEmpty(CStr(exp.DateFLT4)) Then
+                txtdatepickerActualDate4.Text = ""
+            Else
+                txtdatepickerActualDate4.Text = CStr(exp.DateFLT4)
+            End If
+
+            If String.IsNullOrEmpty(exp.ORGN1) Then
+                txtORGN1.Value = ""
+            Else
+                txtORGN1.Value = exp.ORGN1
+            End If
+
+            If String.IsNullOrEmpty(exp.ORGN2) Then
+                txtORGN2.Value = ""
+            Else
+                txtORGN2.Value = exp.ORGN2
+            End If
+
+            If String.IsNullOrEmpty(exp.ORGN3) Then
+                txtORGN3.Value = ""
+            Else
+                txtORGN3.Value = exp.ORGN3
+            End If
+
+            If String.IsNullOrEmpty(exp.ORGN4) Then
+                txtORGN4.Value = ""
+            Else
+                txtORGN4.Value = exp.ORGN4
+            End If
+
+            If String.IsNullOrEmpty(exp.DSTN1) Then
+                txtDSTN1.Value = ""
+            Else
+                txtDSTN1.Value = exp.DSTN1
+            End If
+
+            If String.IsNullOrEmpty(exp.DSTN2) Then
+                txtDSTN2.Value = ""
+            Else
+                txtDSTN2.Value = exp.DSTN2
+            End If
+
+            If String.IsNullOrEmpty(exp.DSTN3) Then
+                txtDSTN3.Value = ""
+            Else
+                txtDSTN3.Value = exp.DSTN3
+            End If
+
+            If String.IsNullOrEmpty(exp.DSTN4) Then
+                txtDSTN4.Value = ""
+            Else
+                txtDSTN4.Value = exp.DSTN4
+            End If
+
+            If String.IsNullOrEmpty(exp.ETD1) Then
+                txtpickupETD.Value = ""
+            Else
+                txtpickupETD.Value = exp.ETD1
+            End If
+
+            If String.IsNullOrEmpty(exp.ETD2) Then
+                txtpickupETD2.Value = ""
+            Else
+                txtpickupETD2.Value = exp.ETD2
+            End If
+
+            If String.IsNullOrEmpty(exp.ETD3) Then
+                txtpickupETD3.Value = ""
+            Else
+                txtpickupETD3.Value = exp.ETD3
+            End If
+
+            If String.IsNullOrEmpty(exp.ETD4) Then
+                txtpickupETD4.Value = ""
+            Else
+                txtpickupETD4.Value = exp.ETD4
+            End If
+
+            If String.IsNullOrEmpty(exp.ETA1) Then
+                txtpickupETA.Value = ""
+            Else
+                txtpickupETA.Value = exp.ETA1
+            End If
+
+            If String.IsNullOrEmpty(exp.ETA2) Then
+                txtpickupETA2.Value = ""
+            Else
+                txtpickupETA2.Value = exp.ETA2
+            End If
+
+            If String.IsNullOrEmpty(exp.ETA3) Then
+                txtpickupETA3.Value = ""
+            Else
+                txtpickupETA3.Value = exp.ETA3
+            End If
+
+            If String.IsNullOrEmpty(exp.ETA4) Then
+                txtpickupETA4.Value = ""
+            Else
+                txtpickupETA4.Value = exp.ETA4
+            End If
+
+            If String.IsNullOrEmpty(CStr(exp.PCS1)) Then
+                txtPacket.Value = ""
+            Else
+                txtPacket.Value = CStr(exp.PCS1)
+            End If
+
+            If String.IsNullOrEmpty(CStr(exp.PCS2)) Then
+                txtPacket2.Value = ""
+            Else
+                txtPacket2.Value = CStr(exp.PCS2)
+            End If
+
+            If String.IsNullOrEmpty(CStr(exp.PCS3)) Then
+                txtPacket3.Value = ""
+            Else
+                txtPacket3.Value = CStr(exp.PCS3)
+            End If
+
+            If String.IsNullOrEmpty(CStr(exp.PCS4)) Then
+                txtPacket4.Value = ""
+            Else
+                txtPacket4.Value = CStr(exp.PCS4)
+            End If
+
+            If String.IsNullOrEmpty(CStr(exp.Weight1)) Then
+                txtWeightActual.Value = ""
+            Else
+                txtWeightActual.Value = CStr(exp.Weight1)
+            End If
+
+            If String.IsNullOrEmpty(CStr(exp.Weight2)) Then
+                txtWeightActual2.Value = ""
+            Else
+                txtWeightActual2.Value = CStr(exp.Weight2)
+            End If
+
+            If String.IsNullOrEmpty(CStr(exp.Weight3)) Then
+                txtWeightActual3.Value = ""
+            Else
+                txtWeightActual3.Value = CStr(exp.Weight3)
+            End If
+
+            If String.IsNullOrEmpty(CStr(exp.Weight4)) Then
+                txtWeightActual4.Value = ""
+            Else
+                txtWeightActual4.Value = CStr(exp.Weight4)
+            End If
+
+            If String.IsNullOrEmpty(CStr(exp.TimeDTE)) Then
+                txtTimePickUp.Value = ""
+            Else
+                txtTimePickUp.Value = CStr(exp.TimeDTE)
+            End If
+
+            If String.IsNullOrEmpty(CStr(exp.DateDTE)) Then
+                txtdatepickerActualPickUp.Text = ""
+            Else
+                txtdatepickerActualPickUp.Text = CStr(exp.DateDTE)
+            End If
+
+            If String.IsNullOrEmpty(CStr(exp.TimeATT)) Then
+                txtArrivalToEAS.Value = ""
+            Else
+                txtArrivalToEAS.Value = CStr(exp.TimeATT)
+            End If
+
+            If String.IsNullOrEmpty(CStr(exp.DateATT)) Then
+                txtdatepickerArrivalToEAS.Text = ""
+            Else
+                txtdatepickerArrivalToEAS.Text = CStr(exp.DateATT)
+            End If
+
+            If String.IsNullOrEmpty(exp.Remark) Then
+                txtRemarkInvoice.Value = ""
+            Else
+                txtRemarkInvoice.Value = exp.Remark
+            End If
+
+            If String.IsNullOrEmpty(exp.DOCode) Then
+                txtDeliverycode.Value = ""
+            Else
+                txtDeliverycode.Value = exp.DOCode
+            End If
+
+            If String.IsNullOrEmpty(exp.DONameENG) Then
+                txtNameEngDelivery.Value = ""
+            Else
+                txtNameEngDelivery.Value = exp.DONameENG
+            End If
+
+            If String.IsNullOrEmpty(exp.DOStreet_Number) Then
+                txtAddress1Delivery.Value = ""
+            Else
+                txtAddress1Delivery.Value = exp.DOStreet_Number
+            End If
+
+            If String.IsNullOrEmpty(exp.DODistrict) Then
+                txtAddress2Delivery.Value = ""
+            Else
+                txtAddress2Delivery.Value = exp.DODistrict
+            End If
+
+            If String.IsNullOrEmpty(exp.DOSubProvince) Then
+                txtAddress3Delivery.Value = ""
+            Else
+                txtAddress3Delivery.Value = exp.DOSubProvince
+            End If
+
+            If String.IsNullOrEmpty(exp.DOProvince) Then
+                txtAddress4Delivery.Value = ""
+            Else
+                txtAddress4Delivery.Value = exp.DOProvince
+            End If
+
+            If String.IsNullOrEmpty(exp.DOPostCode) Then
+                txtAddress5Delivery.Value = ""
+            Else
+                txtAddress5Delivery.Value = exp.DOPostCode
+            End If
+
+            If String.IsNullOrEmpty(exp.DOEmail) Then
+                txtEmailDelivery.Value = ""
+            Else
+                txtEmailDelivery.Value = exp.DOEmail
+            End If
+
+            If String.IsNullOrEmpty(exp.DOContactPerson) Then
+                txtContractPersonDelivery.Value = ""
+            Else
+                txtContractPersonDelivery.Value = exp.DOContactPerson
+            End If
+
+            If String.IsNullOrEmpty(exp.IEATNo) Then
+                txtIEATNo.Value = ""
+            Else
+                txtIEATNo.Value = exp.IEATNo
+            End If
+
+            If String.IsNullOrEmpty(exp.EntryNo) Then
+                txtImportEntryNo.Value = ""
+            Else
+                txtImportEntryNo.Value = exp.EntryNo
+            End If
+
+            txtdatepickerImportEntryDate.Text = Convert.ToDateTime(exp.DeliveryDate).ToString("dd/MM/yyyy")
+
+            If String.IsNullOrEmpty(exp.CustomerCode) Then
+                txtCustomercode.Value = ""
+            Else
+                txtCustomercode.Value = exp.CustomerCode
+            End If
+
+            If String.IsNullOrEmpty(exp.CustomerENG) Then
+                txtNameEngCustomer.Value = ""
+            Else
+                txtNameEngCustomer.Value = exp.CustomerENG
+            End If
+
+            If String.IsNullOrEmpty(exp.CustomerStreet) Then
+                txtAddress1Custommer.Value = ""
+            Else
+                txtAddress1Custommer.Value = exp.CustomerStreet
+            End If
+
+            If String.IsNullOrEmpty(exp.CustomerDistrict) Then
+                txtAddress2Custommer.Value = ""
+            Else
+                txtAddress2Custommer.Value = exp.CustomerDistrict
+            End If
+
+            If String.IsNullOrEmpty(exp.CustomerSub) Then
+                txtAddress3Custommer.Value = ""
+            Else
+                txtAddress3Custommer.Value = exp.CustomerSub
+            End If
+
+            If String.IsNullOrEmpty(exp.CustomerProvince) Then
+                txtAddress4Custommer.Value = ""
+            Else
+                txtAddress4Custommer.Value = exp.CustomerProvince
+            End If
+
+            If String.IsNullOrEmpty(exp.CustomerPostCode) Then
+                txtAddress5Custommer.Value = ""
+            Else
+                txtAddress5Custommer.Value = exp.CustomerPostCode
+            End If
+
+            If String.IsNullOrEmpty(exp.CustomerEmail) Then
+                txtEmailCustommer.Value = ""
+            Else
+                txtEmailCustommer.Value = exp.CustomerEmail
+            End If
+
+            If String.IsNullOrEmpty(exp.CustomerContact) Then
+                txtContractPersonCustommer.Value = ""
+            Else
+                txtContractPersonCustommer.Value = exp.CustomerContact
+            End If
+
+            If String.IsNullOrEmpty(exp.PickUpCode) Then
+                txtCodePickUpPlace.Value = ""
+            Else
+                txtCodePickUpPlace.Value = exp.PickUpCode
+            End If
+
+            If String.IsNullOrEmpty(exp.PickUpENG) Then
+                txtNamePickUpPlace.Value = ""
+            Else
+                txtNamePickUpPlace.Value = exp.PickUpENG
+            End If
+
+            If String.IsNullOrEmpty(exp.PickUpAddress1) Then
+                txtAddress1PickUpPlace.Value = ""
+            Else
+                txtAddress1PickUpPlace.Value = exp.PickUpAddress1
+            End If
+
+            If String.IsNullOrEmpty(exp.PickUpAddress2) Then
+                txtAddress2PickUpPlace.Value = ""
+            Else
+                txtAddress2PickUpPlace.Value = exp.PickUpAddress2
+            End If
+            If String.IsNullOrEmpty(exp.PickUpAddress3) Then
+                txtAddress3PickUpPlace.Value = ""
+            Else
+                txtAddress3PickUpPlace.Value = exp.PickUpAddress3
+            End If
+
+            If String.IsNullOrEmpty(exp.PickUpAddress4) Then
+                txtAddress4PickUpPlace.Value = ""
+            Else
+                txtAddress4PickUpPlace.Value = exp.PickUpAddress4
+            End If
+
+            If String.IsNullOrEmpty(exp.PickUpAddress5) Then
+                txtAddress5PickUpPlace.Value = ""
+            Else
+                txtAddress5PickUpPlace.Value = exp.PickUpAddress5
+            End If
+
+            If String.IsNullOrEmpty(exp.PickUpEmail) Then
+                txtEmailPickUpPlace.Value = ""
+            Else
+                txtEmailPickUpPlace.Value = exp.PickUpEmail
+            End If
+
+            If String.IsNullOrEmpty(exp.PickUpContact) Then
+                txtContractPersonPickUpPlace.Value = ""
+            Else
+                txtContractPersonPickUpPlace.Value = exp.PickUpContact
+            End If
+
+            If String.IsNullOrEmpty(exp.EndCusCode) Then
+                txtCodeEndCustomer.Value = ""
+            Else
+                txtCodeEndCustomer.Value = exp.EndCusCode
+            End If
+
+            If String.IsNullOrEmpty(exp.EndCusENG) Then
+                txtNameEndCustomer.Value = ""
+            Else
+                txtNameEndCustomer.Value = exp.EndCusENG
+            End If
+
+            If String.IsNullOrEmpty(exp.EndCusAddress1) Then
+                txtAddress1EndCustomer.Value = ""
+            Else
+                txtAddress1EndCustomer.Value = exp.EndCusAddress1
+            End If
+
+            If String.IsNullOrEmpty(exp.EndCusAddress2) Then
+                txtAddress2EndCustomer.Value = ""
+            Else
+                txtAddress2EndCustomer.Value = exp.EndCusAddress2
+            End If
+            If String.IsNullOrEmpty(exp.EndCusAddress3) Then
+                txtAddress3EndCustomer.Value = ""
+            Else
+                txtAddress3EndCustomer.Value = exp.EndCusAddress3
+            End If
+            If String.IsNullOrEmpty(exp.EndCusAddress4) Then
+                txtAddress4EndCustomer.Value = ""
+            Else
+                txtAddress4EndCustomer.Value = exp.EndCusAddress4
+            End If
+
+            If String.IsNullOrEmpty(exp.EndCusAddress5) Then
+                txtAddress5EndCustomer.Value = ""
+            Else
+                txtAddress5EndCustomer.Value = exp.EndCusAddress5
+            End If
+
+            If String.IsNullOrEmpty(exp.EndCusEmail) Then
+                txtEmailEndCustomer.Value = ""
+            Else
+                txtEmailEndCustomer.Value = exp.EndCusEmail
+            End If
+
+            If String.IsNullOrEmpty(exp.EndCusContact) Then
+                txtContractPersonEndCustomer.Value = ""
+            Else
+                txtContractPersonEndCustomer.Value = exp.EndCusContact
+            End If
+
+
+            If String.IsNullOrEmpty(exp.IEATPermit) Then
+                'ddlIEATPermit.Text = ""
+            Else
+                ddlIEATPermit.Text = exp.IEATPermit
+            End If
+
+            If String.IsNullOrEmpty(exp.Status1) Then
+                'ddlStatusIEAT1.Text = ""
+            Else
+                ddlStatusIEAT1.Text = exp.Status1
+            End If
+            If String.IsNullOrEmpty(exp.Status2) Then
+                'ddlStatusIEAT2.Text = ""
+            Else
+                ddlStatusIEAT2.Text = exp.Status2
+            End If
+
+            If String.IsNullOrEmpty(exp.JobSite) Then
+                'ddlJobsite.Text = ""
+            Else
+                ddlJobsite.Text = exp.JobSite
+            End If
+
+            If String.IsNullOrEmpty(exp.CustomerCodeGroup) Then
+                txtCodeCustommerGroup.Value = ""
+            Else
+                txtCodeCustommerGroup.Value = exp.CustomerCodeGroup
+            End If
+            If String.IsNullOrEmpty(exp.CustomerENGGroup) Then
+                txtNameCustommerGroup.Value = ""
+            Else
+                txtNameCustommerGroup.Value = exp.CustomerENGGroup
+            End If
+
+            'ReadDATA()
+            'ReadDATA2()
+            'ReadDATAEAS()
+        End If
+    End Sub
     '--------------------------------------------------Save Data News-----------------------------------------------
     Private Sub SaveDATA_New()
+        Dim fwdstatus As String = "0"
 
         If txtJobno.Value.Trim() = "" Then
             MsgBox("กรุณาป้อน LOT No ก่อน !!!")
@@ -1265,7 +2240,7 @@ Public Class CreateRec
                     db.tblImpGenLOTs.Add(New tblImpGenLOT With { _
                                          .EASLOTNo = txtJobno.Value.Trim, _
                                          .JobSite = ddlJobsite.Text.Trim, _
-                                         .LOTDate = CType(txtdatepickerJobdate.Text.Trim, Date?), _
+                                         .LOTDate = CDate(txtdatepickerJobdate.Text.Trim), _
                                          .LOTBy = ddlLotof.Text.Trim, _
                                          .SalesCode = ddlSaleman.Text.Trim, _
                                          .SalesName = txtsalemandis.Value.Trim, _
@@ -1385,7 +2360,8 @@ Public Class CreateRec
                                          .Status1 = ddlStatusIEAT1.Text.Trim, _
                                          .Status2 = ddlStatusIEAT2.Text.Trim, _
                                          .Useby = CStr(Session("UserId")), _
-                                         .JOBBranch = ddlJobsite.Text.Trim
+                                         .JOBBranch = ddlJobsite.Text.Trim, _
+                                         .fwdstatus = fwdstatus
                                      })
 
                     db.SaveChanges()
@@ -1444,7 +2420,7 @@ Public Class CreateRec
                         '.Parameters.Clear()
                         edit.EASLOTNo = txtJobno.Value.Trim
                         edit.JobSite = ddlJobsite.Text.Trim
-                        edit.LOTDate = CType(txtdatepickerJobdate.Text.Trim, Date?)
+                        edit.LOTDate = CDate(txtdatepickerJobdate.Text.Trim)
                         edit.LOTBy = ddlLotof.Text.Trim
                         edit.SalesCode = ddlSaleman.Text.Trim
                         edit.SalesName = txtsalemandis.Value.Trim
@@ -1603,23 +2579,22 @@ Public Class CreateRec
         ElseIf ddlJobsite.Text = "WIP" Then
             Gentbl("WIPLOTIN")
         End If
-        'SaveDATA_New()
+        SaveDATA_New()
+        'ClearDATA()
 
     End Sub
 
     Protected Sub btnSaveEditHead_ServerClick(sender As Object, e As EventArgs)
         SaveDATA_Modify()
     End Sub
-
     Protected Sub btnAddHead_ServerClick(sender As Object, e As EventArgs)
 
         btnSaveAddHead.Visible = True
         btnSaveEditHead.Visible = False
         btnJobSiteSeacrh.Visible = False
 
-        FormLeft_MasterJob.Visible = True
-        FormRight_MasterJob.Visible = True
-        txtJobno.Disabled = True
+        showVisible()
+        ClearDATA()
     End Sub
 
     Protected Sub btnEditHead_ServerClick(sender As Object, e As EventArgs)
@@ -1629,7 +2604,50 @@ Public Class CreateRec
 
         btnJobSiteSeacrh.Visible = True
         txtJobno.Disabled = False
+        ClearDATA()
+    End Sub
+    Private Sub showVisible()
+        FormLeft_MasterJob.Visible = True
+        FormRight_MasterJob.Visible = True
+        btnGenIEATNo.Disabled = True
 
+        txtJobno.Disabled = True
+        ddlInvoiceNo.Enabled = False
+        txtPONoProductCode.Disabled = True
+        txtQuantityInvoice.Disabled = True
+        ddlQuantityInvoice.Enabled = False
+        txtWeightInvoice.Disabled = True
+        txtdatepickerDataInvoice.Enabled = False
+        txtProductNameInvoice.Disabled = True
+        txtPallet_SKIDInvoice.Disabled = True
+        ddlPallet_SKIDInvoice.Enabled = False
+        txtBoxInvoice.Disabled = True
+        ddlBoxInvoice.Enabled = False
+        txtRemarkInvoice.Disabled = True
+        txtShipmentInvoice.Disabled = True
+        txtItemNoInvoice.Disabled = True
+        txtWidthInvoice.Disabled = True
+        txtHeightInvoice.Disabled = True
+        ddlUnitDimension.Enabled = False
+        txtPalletDimensionInvoice.Disabled = True
+        txtLenghtInvoice.Disabled = True
+        txtEntryItemNoInvoice.Disabled = True
+        ddlCurrencyInvoice.Enabled = False
+        txtExchangeRateInvoice.Disabled = True
+        txtPriceForeignInvoice.Disabled = True
+        txtPriceBathInvoice.Disabled = True
+        txtAmountBathInvoice.Disabled = True
+        txtAmountForeignInvoice.Disabled = True
+        txtFlightNo.Disabled = True
+        txtdatepickerFlightDateInvoice.Enabled = False
+        txtQuantity_PLT_Skid_Invoice.Disabled = True
+        ddlQuantity_PLT_Skid_Invoice.Enabled = False
+        ddlQuantity_PLT_Skid_Invoice2.Enabled = False
+        txtQuantity_PLT_Skid_Invoice2.Disabled = True
+        txtQTYExportInvoice.Disabled = True
+
+        txtSelectFileForImport_Import.Disabled = True
+        btnImport_Import.Disabled = True
     End Sub
     Private Sub Gentbl(type As String)
         'Dim sqlSearch As String
@@ -1759,10 +2777,6 @@ Public Class CreateRec
         Catch ex As Exception
             ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", ex.Message, True)
         End Try
-    End Sub
-
-    Protected Sub btnJobSiteSeacrh_ServerClick(sender As Object, e As EventArgs)
-
     End Sub
 
     Private Sub GenIEATNo()
@@ -1943,10 +2957,10 @@ Public Class CreateRec
         chkNextmonth.Checked = False
         chkGenerateIEATNo.Checked = False
         txtJobno.Value = ""
-        ddlJobsite.Text = ""
+        'ddlJobsite.Text = ""
         txtdatepickerJobdate.Text = ""
-        ddlLotof.Text = ""
-        ddlSaleman.Text = ""
+        'ddlLotof.Text = ""
+        'ddlSaleman.Text = ""
         txtsalemandis.Value = ""
         txtConsigneecode.Value = ""
         txtNameEngConsign.Value = ""
@@ -1964,32 +2978,32 @@ Public Class CreateRec
         txtAddress4Shipper.Value = ""
         txtAddress5Shipper.Value = ""
         txtEmailShipper.Value = ""
-        ddlCommodity.Text = ""
+        'ddlCommodity.Text = ""
         txtQuantityOfPart.Value = "0.0"
-        ddlQuantityOfParty.Text = ""
+        'ddlQuantityOfParty.Text = ""
         txtQuantity.Value = "0.0"
-        ddlQuan.Text = ""
+        'ddlQuan.Text = ""
         txtWeight.Value = "0.0"
-        ddlWeight.Text = ""
+        'ddlWeight.Text = ""
         txtQuantityBox.Value = "0.0"
-        ddlquanbox.Text = ""
+        'ddlquanbox.Text = ""
         txtVolume.Value = "0.0"
-        ddlvolume.Text = ""
+        'ddlvolume.Text = ""
         txtMAWB_BL_TWB.Value = ""
         txtFLT_Voy_TruckDate.Value = ""
-        ddlvolume2.Text = ""
+        'ddlvolume2.Text = ""
         txtVolume2.Value = ""
-        ddlFreight.Text = ""
+        'ddlFreight.Text = ""
         txtShipto.Value = ""
         txtBilling.Value = ""
         txtActual1.Value = ""
         txtActual2.Value = ""
         txtActual3.Value = ""
         txtActual4.Value = ""
-        txtdatepickerActualDate1.Text = ""
-        txtdatepickerActualDate2.Text = ""
-        txtdatepickerActualDate3.Text = ""
-        txtdatepickerActualDate4.Text = ""
+        'txtdatepickerActualDate1.Text = ""
+        'txtdatepickerActualDate2.Text = ""
+        'txtdatepickerActualDate3.Text = ""
+        'txtdatepickerActualDate4.Text = ""
         txtORGN1.Value = ""
         txtORGN2.Value = ""
         txtORGN3.Value = ""
@@ -2015,9 +3029,9 @@ Public Class CreateRec
         txtWeightActual3.Value = "0"
         txtWeightActual4.Value = "0"
         txtTimePickUp.Value = ""
-        txtdatepickerActualPickUp.Text = ""
+        'txtdatepickerActualPickUp.Text = ""
         txtArrivalToEAS.Value = ""
-        txtdatepickerArrivalToEAS.Text = ""
+        'txtdatepickerArrivalToEAS.Text = ""
         txtRamarkActual.Value = ""
         txtDeliverycode.Value = ""
         txtNameEngDelivery.Value = ""
@@ -2058,12 +3072,12 @@ Public Class CreateRec
         txtCodeCustommerGroup.Value = ""
         txtNameCustommerGroup.Value = ""
         txtIEATNo.Value = ""
-        ddlIEATPermit.Text = ""
+        'ddlIEATPermit.Text = ""
         txtImportEntryNo.Value = ""
-        txtdatepickerImportEntryDate.Text = ""
-        ddlStatusIEAT1.Text = ""
-        ddlStatusIEAT2.Text = ""
-        ddlJobsite.Text = ""
+        'txtdatepickerImportEntryDate.Text = ""
+        'ddlStatusIEAT1.Text = ""
+        'ddlStatusIEAT2.Text = ""
+        'ddlJobsite.Text = ""
 
     End Sub
 End Class
