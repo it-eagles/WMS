@@ -53,13 +53,14 @@
                             <%--------------------------------------------------Start Stock TAB-------------------------------------------------%>
                             <!------- StockQTY ---------->
                             <div class="active tab-pane" id="stockqty" role="tabpanel">
+                                <fieldset runat="server" id="stockqty_fieldset">
                                 <!-- Post -->
                                 <div class="post">
-                                    <div class="row margin-bottom"> 
-
-                                        <div class="col-lg-12 col-md-12 ">
+                                    <div class="row margin-bottom">                                        
+                                        <div class="col-lg-12 col-md-12 ">                                            
                                             <!-- form start -->
                                             <div class="form-horizontal">
+                                                
                                                 <fieldset>
                                                     <legend>Job</legend>
                                                     <div class="box-body">
@@ -98,7 +99,7 @@
                                                             <div class="form-group">                                                                
                                                                 <label for="txtSaleman" class="col-sm-4 control-label">SaleMan:</label>
                                                                 <div class="col-sm-8">
-                                                                    <asp:DropDownList ID="ddlSaleman" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                                    <asp:DropDownList ID="ddlSaleman" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code" AutoPostBack="true" OnSelectedIndexChanged="dllSaleman_SelectedIndexChanged" ></asp:DropDownList>
                                                                 </div>
                                                             </div>
 
@@ -125,12 +126,13 @@
                                                     </div>
                                                     <!-- /.box-header -->
                                                 </fieldset>
+                                                
                                             </div>
                                             <!--/.col-lg-6 col-md-6 stockqty--->
-
+                                               
                                         </div>
                                         <!--/.row-->
-
+                                                                                                                                    
                                     </div>
 
                                 </div>
@@ -141,7 +143,7 @@
                                 <!-- /.box-header -->
                                 <div class="row">
                                     <%---------------------------------------------------------Start Left Form--------------------------------------------------------%>
-                                    <div class="col-md-6" id="FormLeft_MasterJob" runat="server" visible="false">
+                                    <div class="col-md-6" id="FormLeft_MasterJob" runat="server">
                                         <!-- Horizontal Form -->
 
                                         <!-- form start -->
@@ -384,7 +386,7 @@
                                     <%---------------------------------------------------------End Left Form--------------------------------------------------------%>
 
                                     <%------------------------------------------------------------Start Right Form------------------------------------------------%>
-                                    <div class="col-md-6" id="FormRight_MasterJob" runat="server" visible="false">
+                                    <div class="col-md-6" id="FormRight_MasterJob" runat="server">
                                         <!-- Horizontal Form -->
                                         <!-- form start -->
                                         <div class="form-horizontal">
@@ -664,6 +666,7 @@
                                     <!-- /.col -->
                                 </div>
                                 <!-- /.row -->
+                                </fieldset>  
                             </div>
                             <!------- /.MasterJob ---------->
                             <%-------------------------------------------------End MASTER JOB------------------------------------------------------------%>
@@ -673,6 +676,7 @@
                             <%-----------------------------------------------------Start JOB DETAIL-----------------------------------------------------------%>
                             <!------- Import Goods ------->
                             <div role="tabpanel" class="tab-pane" id="importgoods">
+                                <fieldset runat="server" id="importgoods_fieldset">
                                 <!-- Post -->
                                 <div class="row" runat="server">
 
@@ -1121,6 +1125,7 @@
                                     <!-- /.col -->
                                 </div>
                                 <!-- /.post -->
+                                </fieldset>
                             </div>
                             <!------- /. Import Goods ------->
                             <%-------------------------------------------------------------End Job Detail-------------------------------------------------------%>
@@ -1130,6 +1135,63 @@
                             <%--------------------------------------------------------------Start Invoice----------------------------------------------------------%>
                             <!-------- Export Goods --------->
                             <div role="tabpanel" class="tab-pane" id="exportgoods">
+                                <fieldset runat="server" id="exportgoods_fieldset">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="form-horizontal">
+                                                <asp:Repeater ID="Repea2_Invoice" runat="server">
+                                                                    <HeaderTemplate>
+                                                                        <table class="table table-bordered">
+                                                                            <th>InvoiceNo</th>
+                                                                            <th>LotNo</th>
+                                                                            <th>DateInv</th>
+                                                                            <th>ProduceCode</th>
+                                                                            <th>ProduceName</th>
+                                                                            <th>OwnerPN</th>
+                                                                            <th>CustomerPN</th>
+                                                                            <th>Prodes</th>
+                                                                    </HeaderTemplate>
+                                                                    <ItemTemplate>
+                                                                        <tr class="success">
+                                                                            <td><asp:Label ID="lblJobSite" runat="server" Text='<%# Bind("InvoiceNo")%>'></asp:Label></td>
+                                                                            <td><asp:Label ID="Label1" runat="server" Text='<%# Bind("LOTNo")%>'></asp:Label></td>
+                                                                            <td><asp:Label ID="Label2" runat="server" Text='<%# Bind("DateInv", "{0:dd/MM/yyyy}")%>'></asp:Label></td>
+                                                                            <td><asp:Label ID="Label5" runat="server" Text='<%# Bind("ProductCode")%>'></asp:Label></td>
+                                                                            <td><asp:Label ID="Label4" runat="server" Text='<%# Bind("ProductName")%>'></asp:Label></td>
+                                                                            <td><asp:Label ID="Label6" runat="server" Text='<%# Bind("OwnerPN")%>'></asp:Label></td>
+                                                                            <td><asp:Label ID="Label7" runat="server" Text='<%# Bind("CustomerPN")%>'></asp:Label></td>
+                                                                            <td><asp:Label ID="Label8" runat="server" Text='<%# Bind("Prodes")%>'></asp:Label></td>
+                                                                        </tr>
+                                                                    </ItemTemplate>
+                                                                    <AlternatingItemTemplate>
+                                                                        <tr class="info">
+                                                                            <td><asp:Label ID="lblJobSite" runat="server" Text='<%# Bind("InvoiceNo")%>'></asp:Label></td>
+                                                                            <td><asp:Label ID="Label1" runat="server" Text='<%# Bind("LOTNo")%>'></asp:Label></td>
+                                                                            <td><asp:Label ID="Label2" runat="server" Text='<%# Bind("DateInv", "{0:dd/MM/yyyy}")%>'></asp:Label></td>
+                                                                            <td><asp:Label ID="Label5" runat="server" Text='<%# Bind("ProductCode")%>'></asp:Label></td>
+                                                                            <td><asp:Label ID="Label4" runat="server" Text='<%# Bind("ProductName")%>'></asp:Label></td>
+                                                                            <td><asp:Label ID="Label6" runat="server" Text='<%# Bind("OwnerPN")%>'></asp:Label></td>
+                                                                            <td><asp:Label ID="Label7" runat="server" Text='<%# Bind("CustomerPN")%>'></asp:Label></td>
+                                                                            <td><asp:Label ID="Label8" runat="server" Text='<%# Bind("Prodes")%>'></asp:Label></td>
+                                                                        </tr>
+                                                                    </AlternatingItemTemplate>
+                                                                    <FooterTemplate>
+                                                                            <th>InvoiceNo</th>
+                                                                            <th>LotNo</th>
+                                                                            <th>DateInv</th>
+                                                                            <th>ProduceCode</th>
+                                                                            <th>ProduceName</th>
+                                                                            <th>OwnerPN</th>
+                                                                            <th>CustomerPN</th>
+                                                                            <th>Prodes</th>
+                                                                        </table>
+                                                                    </FooterTemplate>
+                                                                </asp:Repeater>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
                                 <!-- Post -->
                                 <div class="row">
                                     <%--------------------------------------------------------------------Start Left Form---------------------------------------------%>
@@ -1143,7 +1205,8 @@
                                                     <div class="form-group">
                                                         <label for="txtInvoiceNo" class="col-sm-4 control-label">Invoice No:</label>
                                                         <div class="col-sm-8">
-                                                            <asp:DropDownList ID="ddlInvoiceNo" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                            <input class="form-control" id="txtInvoiceNo" runat="server" autocomplete="off" />
+                                                            <%--<asp:DropDownList ID="ddlInvoiceNo" CssClass="form-control" runat="server"></asp:DropDownList>--%>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
@@ -1233,11 +1296,11 @@
                                                     <div class="form-group">
                                                         <div class="col-sm-6">
                                                             <%--<button runat="server" class="btn-primary" id="btnGenIEATNo" title="btnGenIEATNo">Generate </button>--%>
-                                                            <button type="submit" runat="server" class="btn btn-primary" id="btnSaveInvoice" title="btnSaveInvoice">Save Inv.</button>
+                                                            <button type="submit" runat="server" class="btn btn-primary" id="btnSaveInvoice" title="btnSaveInvoice" onserverclick="btnSaveInvoice_ServerClick">Save Inv.</button>
                                                         </div>
                                                         <div class="col-sm-6">
                                                             <%--<button runat="server" class="btn-primary" id="btnGenIEATNo" title="btnGenIEATNo">Generate </button>--%>
-                                                            <button type="submit" runat="server" class="btn btn-default" id="btnModifyInvoice" title="btnModifyInvoice">Modify Inv.</button>
+                                                            <button type="submit" runat="server" class="btn btn-default" id="btnModifyInvoice" title="btnModifyInvoice" onserverclick="btnModifyInvoice_ServerClick">Modify Inv.</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1394,11 +1457,11 @@
                                                     <div class="form-group">
                                                         <div class="col-sm-6">
                                                             <%--<button runat="server" class="btn-primary" id="btnGenIEATNo" title="btnGenIEATNo">Generate </button>--%>
-                                                            <button type="submit" runat="server" class="btn btn-warning" id="btnDeleteInvoice" title="btnDeleteInvoice">Delete Inv.</button>
+                                                            <button type="submit" runat="server" class="btn btn-warning" id="btnDeleteInvoice" title="btnDeleteInvoice" onserverclick="btnDeleteInvoice_ServerClick">Delete Inv.</button>
                                                         </div>
                                                         <div class="col-sm-6">
                                                             <%--<button runat="server" class="btn-primary" id="btnGenIEATNo" title="btnGenIEATNo">Generate </button>--%>
-                                                            <button type="submit" runat="server" class="btn btn-danger" id="btnDeleteAllInvoice" title="btnDeleteAllInvoice">Delete Inv. All</button>
+                                                            <button type="submit" runat="server" class="btn btn-danger" id="btnDeleteAllInvoice" title="btnDeleteAllInvoice" onserverclick="btnDeleteAllInvoice_ServerClick">Delete Inv. All</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1456,6 +1519,7 @@
                                     <!-- /.col -->
                                 </div>
                                 <!-- /.post -->
+                                </fieldset>
                             </div>
                             <!-----/ Export Goods----->
 
@@ -1465,6 +1529,7 @@
                             <%----------------------------------------------------------------------Start ImportFile--------------------------------------------------------%>
                             <!--- Detailof Goods --->
                             <div role="tabpanel" class="tab-pane" id="detailofgoods">
+                                <fieldset runat="server" id="detailofgoods_fieldset">
                                 <!-- Post -->
                                 <div class="post">
                                     <div class="row margin-bottom">
@@ -1528,6 +1593,7 @@
                                         <!--/.col-lg-6 col-md-6--->
                                     </div>
                                 </div>
+                                </fieldset>
                             </div>
                             <!----/Detailof Goods----->
                             <%---------------------------------------------------------------End Import File Tab----------------------------------------------%>
@@ -1536,6 +1602,7 @@
                             <%-------------------------------------------------------------Start Import File NJR Tab-------------------------------------------------%>
                             <!--- Asembly --->
                             <div role="tabpanel" class="tab-pane" id="assembly">
+                                <fieldset runat="server" id="assembly_fieldset">
                                 <!-- Post -->
                                 <div class="post">
                                     <div class="row margin-bottom">
@@ -1616,6 +1683,7 @@
                                     </div>
                                     <!-- /.post -->
                                 </div>
+                                </fieldset>
                             </div>
                             <!----/ .Asembly----->
 

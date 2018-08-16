@@ -627,8 +627,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblImpBookingInvDetail' does not 
           <Property Name="WHSource" Type="varchar" MaxLength="50" />
           <Property Name="EntryItemNo" Type="int" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblImpGenLOT' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tblImpGenLOT">
           <Key>
             <PropertyRef Name="EASLOTNo" />
@@ -1807,8 +1805,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblMasterCode' does not have a pr
           <Property Name="AmountUsed" Type="decimal" Precision="18" Scale="0" />
           <Property Name="Balance" Type="decimal" Precision="18" Scale="0" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblPartyAddress' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tblPartyAddress">
           <Key>
             <PropertyRef Name="PartyAddressCode" />
@@ -3115,11 +3111,13 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblExpGenLOT" EntityType="Self.tblExpGenLOT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblGenAutoRunNo" EntityType="Self.tblGenAutoRunNo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblImpGenLOT" EntityType="Self.tblImpGenLOT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblLogUser" EntityType="Self.tblLogUser" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblMasterCode2" EntityType="Self.tblMasterCode2" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblMenu" EntityType="Self.tblMenu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblMoneyConfig" EntityType="Self.tblMoneyConfig" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblParty" EntityType="Self.tblParty" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPartyAddress" EntityType="Self.tblPartyAddress" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblProductDetail" EntityType="Self.tblProductDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblUserMenu" EntityType="Self.tblUserMenu" Schema="dbo" store:Type="Tables" />
@@ -3532,152 +3530,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
     [tblImpBookingInvDetail].[WHSource] AS [WHSource], 
     [tblImpBookingInvDetail].[EntryItemNo] AS [EntryItemNo]
     FROM [dbo].[tblImpBookingInvDetail] AS [tblImpBookingInvDetail]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="tblImpGenLOT" EntityType="Self.tblImpGenLOT" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [tblImpGenLOT].[EASLOTNo] AS [EASLOTNo], 
-    [tblImpGenLOT].[LOTDate] AS [LOTDate], 
-    [tblImpGenLOT].[LOTBy] AS [LOTBy], 
-    [tblImpGenLOT].[SalesCode] AS [SalesCode], 
-    [tblImpGenLOT].[SalesName] AS [SalesName], 
-    [tblImpGenLOT].[ConsigneeCode] AS [ConsigneeCode], 
-    [tblImpGenLOT].[ConsignNameEng] AS [ConsignNameEng], 
-    [tblImpGenLOT].[ConsignAddress] AS [ConsignAddress], 
-    [tblImpGenLOT].[ConsignDistrict] AS [ConsignDistrict], 
-    [tblImpGenLOT].[ConsignSubProvince] AS [ConsignSubProvince], 
-    [tblImpGenLOT].[ConsignProvince] AS [ConsignProvince], 
-    [tblImpGenLOT].[ConsignPostCode] AS [ConsignPostCode], 
-    [tblImpGenLOT].[ConsignEmail] AS [ConsignEmail], 
-    [tblImpGenLOT].[ShipperCode] AS [ShipperCode], 
-    [tblImpGenLOT].[ShipperNameEng] AS [ShipperNameEng], 
-    [tblImpGenLOT].[ShipperAddress] AS [ShipperAddress], 
-    [tblImpGenLOT].[ShipperDistrict] AS [ShipperDistrict], 
-    [tblImpGenLOT].[ShipperSubprovince] AS [ShipperSubprovince], 
-    [tblImpGenLOT].[ShipperProvince] AS [ShipperProvince], 
-    [tblImpGenLOT].[ShipperPostCode] AS [ShipperPostCode], 
-    [tblImpGenLOT].[ShipperReturnCode] AS [ShipperReturnCode], 
-    [tblImpGenLOT].[Commodity] AS [Commodity], 
-    [tblImpGenLOT].[QuantityofPart] AS [QuantityofPart], 
-    [tblImpGenLOT].[QuantityUnit] AS [QuantityUnit], 
-    [tblImpGenLOT].[QuantityPack] AS [QuantityPack], 
-    [tblImpGenLOT].[QuantityUnitPack] AS [QuantityUnitPack], 
-    [tblImpGenLOT].[Weight] AS [Weight], 
-    [tblImpGenLOT].[WeightUnit] AS [WeightUnit], 
-    [tblImpGenLOT].[Volume] AS [Volume], 
-    [tblImpGenLOT].[VolumeUnit] AS [VolumeUnit], 
-    [tblImpGenLOT].[MAWB] AS [MAWB], 
-    [tblImpGenLOT].[DocType] AS [DocType], 
-    [tblImpGenLOT].[DocCode] AS [DocCode], 
-    [tblImpGenLOT].[Flight] AS [Flight], 
-    [tblImpGenLOT].[DOCode] AS [DOCode], 
-    [tblImpGenLOT].[DONameENG] AS [DONameENG], 
-    [tblImpGenLOT].[DOStreet_Number] AS [DOStreet_Number], 
-    [tblImpGenLOT].[DODistrict] AS [DODistrict], 
-    [tblImpGenLOT].[DOSubProvince] AS [DOSubProvince], 
-    [tblImpGenLOT].[DOProvince] AS [DOProvince], 
-    [tblImpGenLOT].[DOPostCode] AS [DOPostCode], 
-    [tblImpGenLOT].[DOEmail] AS [DOEmail], 
-    [tblImpGenLOT].[DOContactPerson] AS [DOContactPerson], 
-    [tblImpGenLOT].[IEATNo] AS [IEATNo], 
-    [tblImpGenLOT].[EntryNo] AS [EntryNo], 
-    [tblImpGenLOT].[DeliveryDate] AS [DeliveryDate], 
-    [tblImpGenLOT].[CustomerCode] AS [CustomerCode], 
-    [tblImpGenLOT].[CustomerENG] AS [CustomerENG], 
-    [tblImpGenLOT].[CustomerStreet] AS [CustomerStreet], 
-    [tblImpGenLOT].[CustomerDistrict] AS [CustomerDistrict], 
-    [tblImpGenLOT].[CustomerSub] AS [CustomerSub], 
-    [tblImpGenLOT].[CustomerProvince] AS [CustomerProvince], 
-    [tblImpGenLOT].[CustomerPostCode] AS [CustomerPostCode], 
-    [tblImpGenLOT].[CustomerEmail] AS [CustomerEmail], 
-    [tblImpGenLOT].[CustomerContact] AS [CustomerContact], 
-    [tblImpGenLOT].[PickUpCode] AS [PickUpCode], 
-    [tblImpGenLOT].[PickUpENG] AS [PickUpENG], 
-    [tblImpGenLOT].[PickUpAddress1] AS [PickUpAddress1], 
-    [tblImpGenLOT].[PickUpAddress2] AS [PickUpAddress2], 
-    [tblImpGenLOT].[PickUpAddress3] AS [PickUpAddress3], 
-    [tblImpGenLOT].[PickUpAddress4] AS [PickUpAddress4], 
-    [tblImpGenLOT].[PickUpAddress5] AS [PickUpAddress5], 
-    [tblImpGenLOT].[PickUpEmail] AS [PickUpEmail], 
-    [tblImpGenLOT].[PickUpContact] AS [PickUpContact], 
-    [tblImpGenLOT].[EndCusCode] AS [EndCusCode], 
-    [tblImpGenLOT].[EndCusENG] AS [EndCusENG], 
-    [tblImpGenLOT].[EndCusAddress1] AS [EndCusAddress1], 
-    [tblImpGenLOT].[EndCusAddress2] AS [EndCusAddress2], 
-    [tblImpGenLOT].[EndCusAddress3] AS [EndCusAddress3], 
-    [tblImpGenLOT].[EndCusAddress4] AS [EndCusAddress4], 
-    [tblImpGenLOT].[EndCusAddress5] AS [EndCusAddress5], 
-    [tblImpGenLOT].[EndCusEmail] AS [EndCusEmail], 
-    [tblImpGenLOT].[EndCusContact] AS [EndCusContact], 
-    [tblImpGenLOT].[FreighForwarder] AS [FreighForwarder], 
-    [tblImpGenLOT].[Useby] AS [Useby], 
-    [tblImpGenLOT].[IEATPermit] AS [IEATPermit], 
-    [tblImpGenLOT].[ShipTo] AS [ShipTo], 
-    [tblImpGenLOT].[Remark] AS [Remark], 
-    [tblImpGenLOT].[FLT1] AS [FLT1], 
-    [tblImpGenLOT].[FLT2] AS [FLT2], 
-    [tblImpGenLOT].[FLT3] AS [FLT3], 
-    [tblImpGenLOT].[FLT4] AS [FLT4], 
-    [tblImpGenLOT].[DateFLT1] AS [DateFLT1], 
-    [tblImpGenLOT].[DateFLT2] AS [DateFLT2], 
-    [tblImpGenLOT].[DateFLT3] AS [DateFLT3], 
-    [tblImpGenLOT].[DateFLT4] AS [DateFLT4], 
-    [tblImpGenLOT].[ORGN1] AS [ORGN1], 
-    [tblImpGenLOT].[ORGN2] AS [ORGN2], 
-    [tblImpGenLOT].[ORGN3] AS [ORGN3], 
-    [tblImpGenLOT].[ORGN4] AS [ORGN4], 
-    [tblImpGenLOT].[DSTN1] AS [DSTN1], 
-    [tblImpGenLOT].[DSTN2] AS [DSTN2], 
-    [tblImpGenLOT].[DSTN3] AS [DSTN3], 
-    [tblImpGenLOT].[DSTN4] AS [DSTN4], 
-    [tblImpGenLOT].[ETD1] AS [ETD1], 
-    [tblImpGenLOT].[ETD2] AS [ETD2], 
-    [tblImpGenLOT].[ETD3] AS [ETD3], 
-    [tblImpGenLOT].[ETD4] AS [ETD4], 
-    [tblImpGenLOT].[ETA1] AS [ETA1], 
-    [tblImpGenLOT].[ETA2] AS [ETA2], 
-    [tblImpGenLOT].[ETA3] AS [ETA3], 
-    [tblImpGenLOT].[ETA4] AS [ETA4], 
-    [tblImpGenLOT].[PCS1] AS [PCS1], 
-    [tblImpGenLOT].[PCS2] AS [PCS2], 
-    [tblImpGenLOT].[PCS3] AS [PCS3], 
-    [tblImpGenLOT].[PCS4] AS [PCS4], 
-    [tblImpGenLOT].[Weight1] AS [Weight1], 
-    [tblImpGenLOT].[Weight2] AS [Weight2], 
-    [tblImpGenLOT].[Weight3] AS [Weight3], 
-    [tblImpGenLOT].[Weight4] AS [Weight4], 
-    [tblImpGenLOT].[QuantityPack1] AS [QuantityPack1], 
-    [tblImpGenLOT].[QuantityUnitPack1] AS [QuantityUnitPack1], 
-    [tblImpGenLOT].[TimeDTE] AS [TimeDTE], 
-    [tblImpGenLOT].[DateDTE] AS [DateDTE], 
-    [tblImpGenLOT].[TimeATT] AS [TimeATT], 
-    [tblImpGenLOT].[DateATT] AS [DateATT], 
-    [tblImpGenLOT].[JOBBranch] AS [JOBBranch], 
-    [tblImpGenLOT].[Status] AS [Status], 
-    [tblImpGenLOT].[Status1] AS [Status1], 
-    [tblImpGenLOT].[Status2] AS [Status2], 
-    [tblImpGenLOT].[JobSite] AS [JobSite], 
-    [tblImpGenLOT].[BillingNo] AS [BillingNo], 
-    [tblImpGenLOT].[BookingNo] AS [BookingNo], 
-    [tblImpGenLOT].[OwnerCuscode] AS [OwnerCuscode], 
-    [tblImpGenLOT].[OwnerCusENG] AS [OwnerCusENG], 
-    [tblImpGenLOT].[OwnerCusAddress1] AS [OwnerCusAddress1], 
-    [tblImpGenLOT].[OwnerCusAddress2] AS [OwnerCusAddress2], 
-    [tblImpGenLOT].[OwnerCusAddress3] AS [OwnerCusAddress3], 
-    [tblImpGenLOT].[OwnerCusAddress4] AS [OwnerCusAddress4], 
-    [tblImpGenLOT].[OwnerCusAddress5] AS [OwnerCusAddress5], 
-    [tblImpGenLOT].[OwnerEmail] AS [OwnerEmail], 
-    [tblImpGenLOT].[OwnerContact] AS [OwnerContact], 
-    [tblImpGenLOT].[NetWeight] AS [NetWeight], 
-    [tblImpGenLOT].[NetWeightUnit] AS [NetWeightUnit], 
-    [tblImpGenLOT].[DeliveryTime] AS [DeliveryTime], 
-    [tblImpGenLOT].[ReturnRefInv] AS [ReturnRefInv], 
-    [tblImpGenLOT].[ReturnDate] AS [ReturnDate], 
-    [tblImpGenLOT].[ReturnDate1] AS [ReturnDate1], 
-    [tblImpGenLOT].[ReturnReceiveInv] AS [ReturnReceiveInv], 
-    [tblImpGenLOT].[fwdstatus] AS [fwdstatus], 
-    [tblImpGenLOT].[CustomerCodeGroup] AS [CustomerCodeGroup], 
-    [tblImpGenLOT].[CustomerENGGroup] AS [CustomerENGGroup]
-    FROM [dbo].[tblImpGenLOT] AS [tblImpGenLOT]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="tblImpInvoice" EntityType="Self.tblImpInvoice" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -4395,28 +4247,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
     [tblMasterCode].[UpdateDate] AS [UpdateDate], 
     [tblMasterCode].[MasterCodeID] AS [MasterCodeID]
     FROM [dbo].[tblMasterCode] AS [tblMasterCode]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="tblPartyAddress" EntityType="Self.tblPartyAddress" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [tblPartyAddress].[PartyAddressCode] AS [PartyAddressCode], 
-    [tblPartyAddress].[PartyCode] AS [PartyCode], 
-    [tblPartyAddress].[AddressType] AS [AddressType], 
-    [tblPartyAddress].[Address1] AS [Address1], 
-    [tblPartyAddress].[Address2] AS [Address2], 
-    [tblPartyAddress].[Address3] AS [Address3], 
-    [tblPartyAddress].[Address4] AS [Address4], 
-    [tblPartyAddress].[ZipCode] AS [ZipCode], 
-    [tblPartyAddress].[AreaCode] AS [AreaCode], 
-    [tblPartyAddress].[Attn] AS [Attn], 
-    [tblPartyAddress].[Tel] AS [Tel], 
-    [tblPartyAddress].[Fax] AS [Fax], 
-    [tblPartyAddress].[Web] AS [Web], 
-    [tblPartyAddress].[email] AS [email], 
-    [tblPartyAddress].[CreateBy] AS [CreateBy], 
-    [tblPartyAddress].[CreateDate] AS [CreateDate], 
-    [tblPartyAddress].[UpdateBy] AS [UpdateBy], 
-    [tblPartyAddress].[UpdateDate] AS [UpdateDate]
-    FROM [dbo].[tblPartyAddress] AS [tblPartyAddress]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="tblRecEASInvoice" EntityType="Self.tblRecEASInvoice" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 

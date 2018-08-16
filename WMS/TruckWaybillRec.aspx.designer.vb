@@ -68,6 +68,15 @@ Partial Public Class TruckWaybillRec
     Protected WithEvents btnSaveEditHead As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
+    '''truckwaybillhead_fieldset control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents truckwaybillhead_fieldset As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
     '''txtTruckW_B control.
     '''</summary>
     '''<remarks>
@@ -75,6 +84,15 @@ Partial Public Class TruckWaybillRec
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents txtTruckW_B As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''btnSearchTruck control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnSearchTruck As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
     '''txtNoOfOriginals control.
@@ -381,6 +399,15 @@ Partial Public Class TruckWaybillRec
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents txtEmailConsignee As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''truckwaybilldetail_fieldset control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents truckwaybilldetail_fieldset As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
     '''txtInvoiceNoo control.

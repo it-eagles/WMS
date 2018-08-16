@@ -53,6 +53,7 @@
                                         <%-----------------------------------------------------Start TRUCK WAY BILL HEAD-----------------------------------------------------------%>
                                         <!------- Import Goods ------->
                                         <div role="tabpanel" class="active tab-pane" id="truckwaybillhead">
+                                            <fieldset runat="server" id="truckwaybillhead_fieldset">
                                             <!-- Post -->
                                             <div class="row">
                                                 <%-----------------------------------------------------Start Left Form--------------------------------------------------%>
@@ -66,8 +67,11 @@
                                                             <div class="box-body">
                                                                 <div class="form-group">
                                                                     <label for="txtTruckW/B" class="col-sm-4 control-label">TruckW/B:</label>
-                                                                    <div class="col-sm-8">
+                                                                    <div class="col-sm-6">
                                                                         <input class="form-control" id="txtTruckW_B" runat="server" />
+                                                                    </div>
+                                                                    <div class="col-sm-2">
+                                                                        <button type="button" class="btn btn-block btn-primary" runat="server" id="btnSearchTruck" onserverclick="btnSearchTruck_ServerClick"><i class="glyphicon glyphicon-search"></i></button>
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group">
@@ -142,7 +146,7 @@
                                                                 <div class="form-group">
                                                                     <label for="txtShipperCode" class="col-sm-4 control-label">Shipper Code:</label>
                                                                     <div class="col-sm-6">
-                                                                        <input class="form-control" id="txtShippercode" runat="server" readonly="true" autocomplete="off" />
+                                                                        <input class="form-control" id="txtShippercode" runat="server"  autocomplete="off" />
                                                                     </div>
                                                                     <div class="col-sm-2">
                                                                         <%--<button type="button" class="btn btn-block btn-primary" data-toggle="modal" data-target="#ShipperModal" runat="server"><i class="glyphicon glyphicon-search"></i></button>--%>
@@ -278,7 +282,7 @@
                                                                 <div class="form-group">
                                                                     <label for="txtConsigneeCode" class="col-sm-4 control-label">Consignee Code:</label>
                                                                     <div class="col-sm-6">
-                                                                        <input class="form-control" id="txtConsigneeCodee" runat="server" readonly="true" autocomplete="off" />
+                                                                        <input class="form-control" id="txtConsigneeCodee" runat="server"  autocomplete="off" />
                                                                     </div>
                                                                     <div class="col-sm-2">
                                                                         <%--<button type="button" class="btn btn-block btn-primary" data-toggle="modal" data-target="#consigneeModal" runat="server"><i class="glyphicon glyphicon-search"></i></button>--%>
@@ -338,6 +342,7 @@
                                                 <%--------------------------------------------------------------------End Right Form------------------------------------------------------%>
                                             </div>
                                             <!-- /.post -->
+                                                </fieldset>
                                         </div>
                                         <!------- /. Import Goods ------->
                                         <%-------------------------------------------------------------End TRUCK WAY BILL HEAD-------------------------------------------------------%>
@@ -346,6 +351,7 @@
                                         <%--------------------------------------------------------------Start TRUCK WAY BILL DETAIL----------------------------------------------------------%>
                                         <!-------- Export Goods --------->
                                         <div role="tabpanel" class="tab-pane" id="truckwaybilldetail">
+                                            <fieldset runat="server" id="truckwaybilldetail_fieldset">
                                             <!-- Post -->
                                             <div class="row">
 
@@ -449,6 +455,7 @@
 
                                             </div>
                                             <!-- /.post -->
+                                            </fieldset>
                                         </div>
                                         <!-----/ Export Goods----->
 
@@ -491,13 +498,12 @@
                                         <table id="example1" class="table table-bordered table-striped table-responsive" style="overflow:auto;">
                                             <thead>
                                                 <tr>
-                                                    <th>PartyCode</th>
-                                                    <th>PartyFullName</th>
-                                                    <th>Address1</th>
-                                                    <th>Address2</th>
-                                                    <th>Address3</th>
-                                                    <th>PartyAddress</th>
-                                                    <th>Select</th>
+                                                            <th>Select</th>
+                                                            <th>PartyCode</th>
+                                                            <th>PartyAddress</th>
+                                                            <th>PartyFullName</th>
+                                                            <th>Address1</th>
+                                                            <th>Address2</th>
                                                 </tr>
                                             </thead>
                                     </HeaderTemplate>
@@ -514,34 +520,31 @@
                                                             <asp:Label ID="lblAddress2" runat="server" Text='<%# Bind("Address2")%>'></asp:Label></td>
                                                         <td>
                                                             <asp:Label ID="lblAddress3" runat="server" Text='<%# Bind("Address3")%>'></asp:Label></td>--%>
+                                                        <td class="text-center">
+                                                             <%--<asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectNotifyParty" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-plus-square"></i></asp:LinkButton>--%>
+                                                            <asp:LinkButton ID="LinkButton1" CssClass="btn bg-navy" runat="server" OnClick="clicknotifyparty_Click"><i class="fa fa-hand-o-up"></i></asp:LinkButton>
+                                                        </td>
                                                         <td>
                                                             <asp:Label ID="lblPartyCode" runat="server" ></asp:Label></td>
+                                                        <td>
+                                                            <asp:Label ID="lblPartyAddressCode" runat="server" ></asp:Label></td>
                                                         <td>
                                                             <asp:Label ID="lblPartyFullName" runat="server" ></asp:Label></td>
                                                         <td>
                                                             <asp:Label ID="lblAddress1" runat="server" ></asp:Label></td>
                                                         <td>
                                                             <asp:Label ID="lblAddress2" runat="server" ></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblAddress3" runat="server" ></asp:Label></td>
-                                                         <td>
-                                                            <asp:Label ID="lblPartyAddressCode" runat="server" ></asp:Label></td>
-                                            <td class="text-center">
-                                                 <%--<asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectNotifyParty" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-plus-square"></i></asp:LinkButton>--%>
-                                                <asp:LinkButton ID="LinkButton1" CssClass="btn bg-navy" runat="server" OnClick="clicknotifyparty_Click"><i class="fa fa-plus-square"></i></asp:LinkButton>
-                                            </td>
                                         </tr>
                                     </ItemTemplate>
                                     <FooterTemplate>
                                         <tfoot>
                                             <tr>
-                                                    <th>PartyCode</th>
-                                                    <th>PartyFullName</th>
-                                                    <th>Address1</th>
-                                                    <th>Address2</th>
-                                                    <th>Address3</th>
-                                                    <th>PartyAddress</th>
-                                                    <th>Select</th>
+                                                            <th>Select</th>
+                                                            <th>PartyCode</th>
+                                                            <th>PartyAddress</th>
+                                                            <th>PartyFullName</th>
+                                                            <th>Address1</th>
+                                                            <th>Address2</th>
                                             </tr>
                                         </tfoot>
                                         </table>
@@ -584,13 +587,12 @@
                                         <table id="example2" class="table table-bordered table-striped table-responsive" style="overflow:auto;">
                                             <thead>
                                                 <tr>
-                                                    <th>PartyCode</th>
-                                                    <th>PartyFullName</th>
-                                                    <th>Address1</th>
-                                                    <th>Address2</th>
-                                                    <th>Address3</th>
-                                                    <th>PartyAddress</th>
-                                                    <th>Select</th>
+                                                            <th>Select</th>
+                                                            <th>PartyCode</th>
+                                                            <th>PartyAddress</th>
+                                                            <th>PartyFullName</th>
+                                                            <th>Address1</th>
+                                                            <th>Address2</th>
                                                 </tr>
                                             </thead>
                                     </HeaderTemplate>
@@ -607,34 +609,31 @@
                                                             <asp:Label ID="lblAddress2" runat="server" Text='<%# Bind("Address2")%>'></asp:Label></td>
                                                         <td>
                                                             <asp:Label ID="lblAddress3" runat="server" Text='<%# Bind("Address3")%>'></asp:Label></td>--%>
+                                                        <td class="text-center">
+                                                             <%--<asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectShipper" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-plus-square"></i></asp:LinkButton>--%>
+                                                            <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" OnClick="clickshipper_Click"><i class="fa fa-hand-o-up"></i></asp:LinkButton>
+                                                        </td>
                                                         <td>
                                                             <asp:Label ID="lblPartyCode" runat="server" ></asp:Label></td>
+                                                        <td>
+                                                            <asp:Label ID="lblPartyAddressCode" runat="server" ></asp:Label></td>
                                                         <td>
                                                             <asp:Label ID="lblPartyFullName" runat="server" ></asp:Label></td>
                                                         <td>
                                                             <asp:Label ID="lblAddress1" runat="server" ></asp:Label></td>
                                                         <td>
                                                             <asp:Label ID="lblAddress2" runat="server" ></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblAddress3" runat="server" ></asp:Label></td>
-                                                         <td>
-                                                            <asp:Label ID="lblPartyAddressCode" runat="server" ></asp:Label></td>
-                                            <td class="text-center">
-                                                 <%--<asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectShipper" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-plus-square"></i></asp:LinkButton>--%>
-                                                <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" OnClick="clickshipper_Click"><i class="fa fa-plus-square"></i></asp:LinkButton>
-                                            </td>
                                         </tr>
                                     </ItemTemplate>
                                     <FooterTemplate>
                                         <tfoot>
                                             <tr>
-                                                    <th>PartyCode</th>
-                                                    <th>PartyFullName</th>
-                                                    <th>Address1</th>
-                                                    <th>Address2</th>
-                                                    <th>Address3</th>
-                                                    <th>PartyAddress</th>
-                                                    <th>Select</th>
+                                                            <th>Select</th>
+                                                            <th>PartyCode</th>
+                                                            <th>PartyAddress</th>
+                                                            <th>PartyFullName</th>
+                                                            <th>Address1</th>
+                                                            <th>Address2</th>
                                             </tr>
                                         </tfoot>
                                         </table>
@@ -677,13 +676,12 @@
                                         <table id="example3" class="table table-bordered table-striped table-responsive" style="overflow:auto;">
                                             <thead>
                                                 <tr>
-                                                    <th>PartyCode</th>
-                                                    <th>PartyFullName</th>
-                                                    <th>Address1</th>
-                                                    <th>Address2</th>
-                                                    <th>Address3</th>
-                                                    <th>PartyAddress</th>
-                                                    <th>Select</th>
+                                                            <th>Select</th>
+                                                            <th>PartyCode</th>
+                                                            <th>PartyAddress</th>
+                                                            <th>PartyFullName</th>
+                                                            <th>Address1</th>
+                                                            <th>Address2</th>
                                                 </tr>
                                             </thead>
                                     </HeaderTemplate>
@@ -700,34 +698,31 @@
                                                             <asp:Label ID="lblAddress2" runat="server" Text='<%# Bind("Address2")%>'></asp:Label></td>
                                                         <td>
                                                             <asp:Label ID="lblAddress3" runat="server" Text='<%# Bind("Address3")%>'></asp:Label></td>--%>
+                                                        <td class="text-center">
+                                                             <%--<asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectConsignee" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-plus-square"></i></asp:LinkButton>--%>
+                                                            <asp:LinkButton ID="LinkButton3" CssClass="btn bg-navy" runat="server" OnClick="clickconsignee_Click"><i class="fa fa-hand-o-up"></i></asp:LinkButton>
+                                                        </td>
                                                         <td>
                                                             <asp:Label ID="lblPartyCode" runat="server" ></asp:Label></td>
+                                                        <td>
+                                                            <asp:Label ID="lblPartyAddressCode" runat="server" ></asp:Label></td>
                                                         <td>
                                                             <asp:Label ID="lblPartyFullName" runat="server" ></asp:Label></td>
                                                         <td>
                                                             <asp:Label ID="lblAddress1" runat="server" ></asp:Label></td>
                                                         <td>
                                                             <asp:Label ID="lblAddress2" runat="server" ></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblAddress3" runat="server" ></asp:Label></td>
-                                                         <td>
-                                                            <asp:Label ID="lblPartyAddressCode" runat="server" ></asp:Label></td>
-                                            <td class="text-center">
-                                                 <%--<asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectConsignee" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-plus-square"></i></asp:LinkButton>--%>
-                                                <asp:LinkButton ID="LinkButton3" CssClass="btn bg-navy" runat="server" OnClick="clickconsignee_Click"><i class="fa fa-plus-square"></i></asp:LinkButton>
-                                            </td>
                                         </tr>
                                     </ItemTemplate>
                                     <FooterTemplate>
                                         <tfoot>
                                             <tr>
-                                                    <th>PartyCode</th>
-                                                    <th>PartyFullName</th>
-                                                    <th>Address1</th>
-                                                    <th>Address2</th>
-                                                    <th>Address3</th>
-                                                    <th>PartyAddress</th>
-                                                    <th>Select</th>
+                                                            <th>Select</th>
+                                                            <th>PartyCode</th>
+                                                            <th>PartyAddress</th>
+                                                            <th>PartyFullName</th>
+                                                            <th>Address1</th>
+                                                            <th>Address2</th>
                                             </tr>
                                         </tfoot>
                                         </table>
