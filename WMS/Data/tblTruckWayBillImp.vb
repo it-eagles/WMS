@@ -12,7 +12,7 @@ Imports System.Collections.Generic
 
 Partial Public Class tblTruckWayBillImp
     Public Property TruckWayBillNo As String
-    Public Property ReceivedDate As Nullable(Of Date)
+    Public Property ReceivedDate As Date
     Public Property Dateofissue As Nullable(Of Date)
     Public Property NoofOriginals As String
     Public Property NotifyPatty As String

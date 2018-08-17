@@ -101,7 +101,7 @@ Partial Public Class tblProductDetail
     Public Property ExpEstablishNo As String
     Public Property ExpFactoryNo As String
     Public Property CreateBy As String
-    Public Property CreateDate As Nullable(Of Date)
+    Public Property CreateDate As Date
     Public Property UpdateBy As String
     Public Property UpdateDate As Nullable(Of Date)
 

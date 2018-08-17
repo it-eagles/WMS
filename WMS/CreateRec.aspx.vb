@@ -400,16 +400,16 @@ Public Class CreateRec
     '--------------------------------------------------------Show Data Consignee In Modal-----------------------------------------
     Private Sub selectConsigneeCode()
         Dim cons_code As String
-
+        Dim shipper_ As String = ""
         If String.IsNullOrEmpty(txtConsigneecode.Value.Trim) Then
             cons_code = ""
-
+            shipper_ = "0"
         Else
             cons_code = txtConsigneecode.Value.Trim
         End If
 
         Dim cons = From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
-        Where (p.PartyCode = cons_code And p.Consignee = "0") Or p.Consignee = "0"
+        Where (p.PartyCode = cons_code And p.Consignee = "0") Or p.Consignee = shipper_
         Select p.PartyCode, pa.PartyAddressCode, p.PartyFullName, pa.Address1, pa.Address2
 
         If cons.Count > 0 Then
@@ -559,16 +559,16 @@ Public Class CreateRec
     '--------------------------------------------------------Show Data Shipper In Modal-----------------------------------------
     Private Sub selectShipperCode()
         Dim Ship_code As String
-
+        Dim shipper_ As String = ""
         If String.IsNullOrEmpty(txtShippercode.Value.Trim) Then
             Ship_code = ""
-
+            shipper_ = "0"
         Else
             Ship_code = txtShippercode.Value.Trim
         End If
 
         Dim cons = From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
-        Where (p.PartyCode = Ship_code And p.Shipper = "0") Or p.Shipper = "0"
+        Where (p.PartyCode = Ship_code And p.Shipper = "0") Or p.Shipper = shipper_
         Select p.PartyCode, p.PartyFullName, pa.PartyAddressCode, pa.Address1, pa.Address2
 
         If cons.Count > 0 Then
@@ -717,16 +717,16 @@ Public Class CreateRec
     '--------------------------------------------------------Show Data Delivery In Modal-----------------------------------------
     Private Sub selectDeliveryCode()
         Dim Delivery_code As String
-
+        Dim shipper_ As String = ""
         If String.IsNullOrEmpty(txtDeliverycode.Value.Trim) Then
             Delivery_code = ""
-
+            shipper_ = "0"
         Else
             Delivery_code = txtDeliverycode.Value.Trim
         End If
 
         Dim cons = From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
-        Where (p.PartyCode = Delivery_code And p.Shipper = "0") Or p.Shipper = "0"
+        Where (p.PartyCode = Delivery_code And p.Shipper = "0") Or p.Shipper = shipper_
         Select p.PartyCode, p.PartyFullName, pa.PartyAddressCode, pa.Address1, pa.Address2
 
         If cons.Count > 0 Then
@@ -881,16 +881,16 @@ Public Class CreateRec
     '--------------------------------------------------------Show Data PickUp In Modal-----------------------------------------
     Private Sub selectPickUpCode()
         Dim Pickup_code As String
-
+        Dim shipper_ As String = ""
         If String.IsNullOrEmpty(txtCodePickUpPlace.Value.Trim) Then
             Pickup_code = ""
-
+            shipper_ = "0"
         Else
             Pickup_code = txtCodePickUpPlace.Value.Trim
         End If
 
         Dim cons = From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
-        Where (p.PartyCode = Pickup_code And p.Shipper = "0") Or p.Shipper = "0"
+        Where (p.PartyCode = Pickup_code And p.Shipper = "0") Or p.Shipper = shipper_
         Select p.PartyCode, p.PartyFullName, pa.PartyAddressCode, pa.Address1, pa.Address2
 
         If cons.Count > 0 Then
@@ -1045,16 +1045,16 @@ Public Class CreateRec
     '--------------------------------------------------------Show Data Customer In Modal-----------------------------------------
     Private Sub selectCustomerCode()
         Dim Customer_code As String
-
+        Dim shipper_ As String = ""
         If String.IsNullOrEmpty(txtCustomercode.Value.Trim) Then
             Customer_code = ""
-
+            shipper_ = "0"
         Else
             Customer_code = txtCustomercode.Value.Trim
         End If
 
         Dim cons = From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
-        Where (p.PartyCode = Customer_code And p.Shipper = "0") Or p.Shipper = "0"
+        Where (p.PartyCode = Customer_code And p.Shipper = "0") Or p.Shipper = shipper_
         Select p.PartyCode, p.PartyFullName, pa.PartyAddressCode, pa.Address1, pa.Address2
 
         If cons.Count > 0 Then
@@ -1209,16 +1209,16 @@ Public Class CreateRec
     '--------------------------------------------------------Show Data EndCustomer In Modal-----------------------------------------
     Private Sub selectEndCustomerCode()
         Dim EndCustomer_code As String
-
+        Dim shipper_ As String = ""
         If String.IsNullOrEmpty(txtCodeEndCustomer.Value.Trim) Then
             EndCustomer_code = ""
-
+            shipper_ = "0"
         Else
             EndCustomer_code = txtCodeEndCustomer.Value.Trim
         End If
 
         Dim cons = From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
-        Where (p.PartyCode = EndCustomer_code And p.Shipper = "0") Or p.Shipper = "0"
+        Where (p.PartyCode = EndCustomer_code And p.Shipper = "0") Or p.Shipper = shipper_
         Select p.PartyCode, p.PartyFullName, pa.PartyAddressCode, pa.Address1, pa.Address2
 
         If cons.Count > 0 Then
@@ -1519,6 +1519,7 @@ Public Class CreateRec
             ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", ex.Message, True)
         End Try
     End Sub
+    '--------------------------------------------------------------Click Search JobSite--------------------------------------------------
     Protected Sub btnJobSiteSeacrh_ServerClick(sender As Object, e As EventArgs)
         selectJobno()
     End Sub

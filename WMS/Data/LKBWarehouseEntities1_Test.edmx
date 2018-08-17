@@ -2513,8 +2513,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblTruckWayBillDetail' does not h
           <Property Name="CountryofOrigin" Type="varchar" MaxLength="100" />
           <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblTruckWayBillDetailImp' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tblTruckWayBillDetailImp">
           <Key>
             <PropertyRef Name="CodeNo" />
@@ -2537,8 +2535,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblTruckWayBillDetailImp' does no
           <Property Name="CountryofOrigin" Type="varchar" MaxLength="100" />
           <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblTruckWayBillImp' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tblTruckWayBillImp">
           <Key>
             <PropertyRef Name="TruckWayBillNo" />
@@ -3119,6 +3115,8 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
           <EntitySet Name="tblParty" EntityType="Self.tblParty" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblPartyAddress" EntityType="Self.tblPartyAddress" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblProductDetail" EntityType="Self.tblProductDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTruckWayBillDetailImp" EntityType="Self.tblTruckWayBillDetailImp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTruckWayBillImp" EntityType="Self.tblTruckWayBillImp" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblUserMenu" EntityType="Self.tblUserMenu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblWHLocation" EntityType="Self.tblWHLocation" Schema="dbo" store:Type="Tables" />
@@ -4746,62 +4744,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
     [tblTruckWayBillDetail].[rowguid] AS [rowguid]
     FROM [dbo].[tblTruckWayBillDetail] AS [tblTruckWayBillDetail]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="tblTruckWayBillDetailImp" EntityType="Self.tblTruckWayBillDetailImp" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [tblTruckWayBillDetailImp].[CodeNo] AS [CodeNo], 
-    [tblTruckWayBillDetailImp].[TruckWayBillNo] AS [TruckWayBillNo], 
-    [tblTruckWayBillDetailImp].[InvoiceNo] AS [InvoiceNo], 
-    [tblTruckWayBillDetailImp].[LOTNo] AS [LOTNo], 
-    [tblTruckWayBillDetailImp].[PartDesc] AS [PartDesc], 
-    [tblTruckWayBillDetailImp].[OwnerPN] AS [OwnerPN], 
-    [tblTruckWayBillDetailImp].[CustomerPN] AS [CustomerPN], 
-    [tblTruckWayBillDetailImp].[Quantity] AS [Quantity], 
-    [tblTruckWayBillDetailImp].[QuantityUnit] AS [QuantityUnit], 
-    [tblTruckWayBillDetailImp].[GrossWeight] AS [GrossWeight], 
-    [tblTruckWayBillDetailImp].[WeightUnit] AS [WeightUnit], 
-    [tblTruckWayBillDetailImp].[Measurement] AS [Measurement], 
-    [tblTruckWayBillDetailImp].[CountryofOrigin] AS [CountryofOrigin], 
-    [tblTruckWayBillDetailImp].[rowguid] AS [rowguid]
-    FROM [dbo].[tblTruckWayBillDetailImp] AS [tblTruckWayBillDetailImp]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="tblTruckWayBillImp" EntityType="Self.tblTruckWayBillImp" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [tblTruckWayBillImp].[TruckWayBillNo] AS [TruckWayBillNo], 
-    [tblTruckWayBillImp].[ReceivedDate] AS [ReceivedDate], 
-    [tblTruckWayBillImp].[Dateofissue] AS [Dateofissue], 
-    [tblTruckWayBillImp].[NoofOriginals] AS [NoofOriginals], 
-    [tblTruckWayBillImp].[NotifyPatty] AS [NotifyPatty], 
-    [tblTruckWayBillImp].[DeliveryofGoods] AS [DeliveryofGoods], 
-    [tblTruckWayBillImp].[CarLicense] AS [CarLicense], 
-    [tblTruckWayBillImp].[DriverName] AS [DriverName], 
-    [tblTruckWayBillImp].[FreightCharges] AS [FreightCharges], 
-    [tblTruckWayBillImp].[Prepaid] AS [Prepaid], 
-    [tblTruckWayBillImp].[QuantityAmount] AS [QuantityAmount], 
-    [tblTruckWayBillImp].[GrossWeightAmount] AS [GrossWeightAmount], 
-    [tblTruckWayBillImp].[Measurement] AS [Measurement], 
-    [tblTruckWayBillImp].[ExporterCode] AS [ExporterCode], 
-    [tblTruckWayBillImp].[NameEng] AS [NameEng], 
-    [tblTruckWayBillImp].[StreetAddress] AS [StreetAddress], 
-    [tblTruckWayBillImp].[District] AS [District], 
-    [tblTruckWayBillImp].[SubProvince] AS [SubProvince], 
-    [tblTruckWayBillImp].[Province] AS [Province], 
-    [tblTruckWayBillImp].[PostCode] AS [PostCode], 
-    [tblTruckWayBillImp].[CodeReturn] AS [CodeReturn], 
-    [tblTruckWayBillImp].[ConsignneeCode] AS [ConsignneeCode], 
-    [tblTruckWayBillImp].[ConsignNameEng] AS [ConsignNameEng], 
-    [tblTruckWayBillImp].[ConsingStreetNumber] AS [ConsingStreetNumber], 
-    [tblTruckWayBillImp].[ConsignDistrict] AS [ConsignDistrict], 
-    [tblTruckWayBillImp].[ConsignSubProvince] AS [ConsignSubProvince], 
-    [tblTruckWayBillImp].[ConsgnProvince] AS [ConsgnProvince], 
-    [tblTruckWayBillImp].[ConsignPostCode] AS [ConsignPostCode], 
-    [tblTruckWayBillImp].[ConsignEmail] AS [ConsignEmail], 
-    [tblTruckWayBillImp].[PlaceCode] AS [PlaceCode], 
-    [tblTruckWayBillImp].[PlaceName] AS [PlaceName], 
-    [tblTruckWayBillImp].[PlaceAddress] AS [PlaceAddress], 
-    [tblTruckWayBillImp].[PlaceofReceipt] AS [PlaceofReceipt], 
-    [tblTruckWayBillImp].[rowguid] AS [rowguid]
-    FROM [dbo].[tblTruckWayBillImp] AS [tblTruckWayBillImp]</DefiningQuery>
-          </EntitySet>
           <EntitySet Name="tblUserGroup" EntityType="Self.tblUserGroup" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [tblUserGroup].[UserGroupCode] AS [UserGroupCode], 
@@ -5443,7 +5385,7 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
           <Property Name="ExpEstablishNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ExpFactoryNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="CreateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" Nullable="false" />
           <Property Name="UpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="UpdateDate" Type="DateTime" Precision="3" />
         </EntityType>
@@ -5745,7 +5687,7 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
           <Property Name="CustomsConfirmDate" Type="DateTime" Precision="3" />
           <Property Name="App" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="CreateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" Nullable="false" />
           <Property Name="UpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="UpdateDate" Type="DateTime" Precision="3" />
           <Property Name="OutItem" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -7560,7 +7502,7 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
             <PropertyRef Name="rowguid" />
           </Key>
           <Property Name="TruckWayBillNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ReceivedDate" Type="DateTime" Precision="3" />
+          <Property Name="ReceivedDate" Type="DateTime" Precision="3" Nullable="false" />
           <Property Name="Dateofissue" Type="DateTime" Precision="3" />
           <Property Name="NoofOriginals" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="NotifyPatty" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="TruckWaybillRec.aspx.vb" Inherits="WMS.TruckWaybillRec" MasterPageFile="~/Home.Master" %>
+﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="TruckWaybillRec.aspx.vb" Inherits="WMS.TruckWaybillRec" MasterPageFile="~/Home.Master" EnableEventValidation="false" EnableViewState="true" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -365,7 +365,7 @@
                                                                     <div class="form-group">
                                                                         <label for="txtInvoiceNo" class="col-sm-2 control-label">Invoice No:</label>
                                                                         <div class="col-sm-3">
-                                                                            <input class="form-control" id="txtInvoiceNoo" runat="server" readonly="true" autocomplete="off" />
+                                                                            <input class="form-control" id="txtInvoiceNoo" runat="server"  autocomplete="off" />
                                                                         </div>
                                                                         <div class="col-sm-1">
                                                                             <%--<button type="button" class="btn btn-block btn-primary" data-toggle="modal" data-target="#InvoiceNoModal" runat="server"><i class="glyphicon glyphicon-search"></i></button>--%>
@@ -380,10 +380,10 @@
                                                                     <div class="form-group">
                                                                         <label for="txtPartDesc" class="col-sm-2 control-label">Part Desc:</label>
                                                                         <div class="col-sm-3">
-                                                                            <input class="form-control" id="txtPartDesc" runat="server" readonly="true" autocomplete="off" />
+                                                                            <input class="form-control" id="txtPartDesc" runat="server"  autocomplete="off" />
                                                                         </div>
                                                                         <div class="col-sm-1">
-                                                                            <button type="button" class="btn btn-block btn-primary" data-toggle="modal" data-target="#PartDescModal" runat="server"><i class="glyphicon glyphicon-search"></i></button>
+                                                                            <button type="button" class="btn btn-block btn-primary" data-toggle="modal" data-target="#PartDescModal" runat="server" id="btnPartDesc" onserverclick="btnPartDesc_ServerClick"><i class="glyphicon glyphicon-search"></i></button>
                                                                         </div>
                                                                         <label for="txtMeasurement" class="col-sm-2 control-label">Measurement:</label>
                                                                         <div class="col-sm-4">
@@ -435,10 +435,10 @@
 
                                                                 <div class="form-group">
                                                                     <div class="col-sm-12 col-sm-offset-4">
-                                                                        <button type="submit" runat="server" class="btn btn-primary" id="btnSaveNew_Detail" title="btnSaveNew_Detail">Save New</button>
-                                                                        <button type="submit" runat="server" class="btn btn-primary" id="btnSaveModify_Detail" title="btnSaveModify_Detail">Save Modify</button>
-                                                                        <button type="submit" runat="server" class="btn btn-primary" id="btnDelete_Detail" title="btnDelete_Detail">Delete</button>
-                                                                        <button type="submit" runat="server" class="btn btn-primary" id="btnCencel_Detail" title="btnCencel_Detail">Cencel</button>
+                                                                        <button type="submit" runat="server" class="btn btn-primary" id="btnSaveNew_Detail" title="btnSaveNew_Detail" onserverclick="btnSaveNew_Detail_ServerClick">Save New</button>
+                                                                        <button type="submit" runat="server" class="btn btn-primary" id="btnSaveModify_Detail" title="btnSaveModify_Detail" onserverclick="btnSaveModify_Detail_ServerClick">Save Modify</button>
+                                                                        <button type="submit" runat="server" class="btn btn-primary" id="btnDelete_Detail" title="btnDelete_Detail" onserverclick="btnDelete_Detail_ServerClick">Delete</button>
+                                                                        <button type="submit" runat="server" class="btn btn-primary" id="btnCencel_Detail" title="btnCencel_Detail" onserverclick="btnCencel_Detail_ServerClick">Cencel</button>
                                                                     </div>
                                                                 </div>
 
@@ -822,7 +822,8 @@
         <!-- End InvoiceNo Modal -->
          <!--Start ProductCode Modal -->
         <!-- Modal -->
-        <div class="modal fade" id="PartDescModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <asp:Panel ID="PartDescPanel" runat="server" CssClass="modal" TabIndex="-1" role="dialog" aria-labelledby="myLabe1">
+        <%--<div class="modal fade" id="PartDescModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">--%>
             <div class="modal-dialog modal-lg" role="dialog">
                 <div class="modal-content">
               <div class="modal-header">
@@ -830,6 +831,8 @@
                   <span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title">Select Product Code</h4>
               </div>
+                    <asp:UpdatePanel ID="PartDescUpdatePanel" runat="server" UpdateMode="Conditional">
+                     <ContentTemplate>
               <div class="modal-body">
                 <section class="content">
                     <div class="row">
@@ -839,6 +842,7 @@
                                         <table id="example5" class="table table-bordered table-striped table-responsive" style="overflow:auto;">
                                             <thead>
                                                 <tr>
+                                                    <th>Select</th>
                                                     <th>ProductCode</th>
                                                     <th>ImpDesc1</th>
                                                     <th>CustomerPart</th>
@@ -849,6 +853,9 @@
 
                                     <ItemTemplate>
                                         <tr>
+                                            <td class="text-center">
+                                                 <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectProductCode" CommandArgument='<%# Eval("ProductCode")%>'><i class="fa fa-plus-square"></i></asp:LinkButton>
+                                            </td>
                                             <td>
                                                 <asp:Label ID="lblPartyCode" runat="server" Text='<%# Bind("ProductCode")%>'></asp:Label></td>
                                             <td>
@@ -856,15 +863,13 @@
                                             <td>
                                                 <asp:Label ID="Label2" runat="server" Text='<%# Bind("CustomerPart")%>'></asp:Label></td>
                                             <td>
-                                                <asp:Label ID="Label3" runat="server" Text='<%# Bind("EndUserPart")%>'></asp:Label></td>
-                                            <td class="text-center">
-                                                 <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectProductCode" CommandArgument='<%# Eval("ProductCode")%>'><i class="fa fa-plus-square"></i></asp:LinkButton>
-                                            </td>
+                                                <asp:Label ID="Label3" runat="server" Text='<%# Bind("EndUserPart")%>'></asp:Label></td                                            
                                         </tr>
                                     </ItemTemplate>
                                     <FooterTemplate>
                                         <tfoot>
                                             <tr>
+                                                    <th>Select</th>
                                                     <th>ProductCode</th>
                                                     <th>ImpDesc1</th>
                                                     <th>CustomerPart</th>
@@ -881,10 +886,85 @@
               <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
               </div>
+                         </ContentTemplate>
+                    </asp:UpdatePanel>
             </div>
             </div>
-</div>
+            <%--</div>--%>
+            </asp:Panel>
         <!-- End ProductCode Modal -->
+
+        <!-- Modal TruckNo-->
+        <asp:Panel ID="TrucknoPanel" runat="server" CssClass="modal" TabIndex="-1" role="dialog" aria-labelledby="myLabe1">
+            <div class="modal-dialog modal-lg" role="dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel">Select Truck No</h4>
+                    </div>
+                    <asp:UpdatePanel ID="TrucknoUpdatePanel" runat="server" UpdateMode="Conditional">
+                        <ContentTemplate>
+                            <div class="modal-body">
+                                <section class="content">
+                                    <form class="form-horizontal">
+                                        <div class="col-lg-12 col-md-12 " style="overflow: auto;">
+
+                                            <asp:Repeater ID="Repeater6" runat="server" OnItemCommand="Repeater6_ItemCommand">
+                                                <HeaderTemplate>
+                                                    <table id="example6" class="table table-bordered table-striped table-responsive" style="overflow: auto;">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>select</th>
+                                                                <th>TruckNo</th>
+                                                                <th>NotifyPartyCode</th>
+                                                                <th>ShipperCode</th>
+                                                                <th>ConsigneeCode</th>                                                                
+                                                            </tr>
+                                                        </thead>
+                                                </HeaderTemplate>
+
+                                                <ItemTemplate>
+                                                    <tr>
+                                                        <td class="text-center">
+                                                            <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="selectTruckNO" CommandArgument='<%# Eval("TruckWayBillNo")%>'><i class="fa fa-hand-o-up"></i></asp:LinkButton>
+                                                        </td>
+                                                        <td>
+                                                            <asp:Label ID="lblTruckWayBillNo" runat="server" Text='<%# Bind("TruckWayBillNo")%>'></asp:Label></td>
+                                                        <td>
+                                                            <asp:Label ID="lblNotifyPartyCode" runat="server" Text='<%# Bind("PlaceCode")%>'></asp:Label></td>
+                                                        <td>
+                                                            <asp:Label ID="lblShipperCode" runat="server" Text='<%# Bind("ExporterCode")%>'></asp:Label></td>
+                                                        <td>
+                                                            <asp:Label ID="lblConsigneeCode" runat="server" Text='<%# Bind("ConsignneeCode")%>'></asp:Label></td>
+                                                    </tr>
+                                                </ItemTemplate>
+                                                <FooterTemplate>
+                                                    <tfoot>
+                                                        <tr>
+                                                                <th>select</th>
+                                                                <th>TruckNo</th>
+                                                                <th>NotifyPartyCode</th>
+                                                                <th>ShipperCode</th>
+                                                                <th>ConsigneeCode</th> 
+                                                        </tr>
+                                                    </tfoot>
+                                                    </table>
+                                                </FooterTemplate>
+                                            </asp:Repeater>
+                                        </div>
+                                    </form>
+                                </section>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                </div>
+            </div>
+        </asp:Panel>
+        <!-- End TruckNo Modal -->
 
         <script type="text/javascript">
             $(function () {
