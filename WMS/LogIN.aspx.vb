@@ -27,6 +27,7 @@ Public Class LogIN
 
             Session("UserName") = ds.UserName
             Session("Name") = ds.Name
+            Session("UserGroup") = ds.UserGroup
             Session("StatusAdd") = ds.StatusAdd
             Session("StatusDelete") = ds.StatusDelete
             Session("StatusImport") = ds.StatusImport

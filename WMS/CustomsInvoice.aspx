@@ -71,16 +71,21 @@
                                                 </div>
                                                 <div class="col-md-3">
                                                     <label for="txtInvoiceNo">Invoice No</label>
-                                                    <input class="form-control" id="txtInvoiceNo" runat="server" autocomplete="off" />
+                                                    <div class="form-group">
+                                                        <div class="col-md-9">
+                                                            <input class="form-control" id="txtInvoiceNo" runat="server" autocomplete="off" />
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <button runat="server" class="btn btn-primary btn-block" type="button" id="btnInvoice" onserverclick="btnInvoice_ServerClick"><i class="fa fa-search"></i></button>
+                                                        </div>
+                                                    </div>
                                                 </div>
 
                                                 <div class="col-md-2">
                                                     <label for="txtPurechaseOrderNo">JOB No</label>
                                                     <input class="form-control" id="txtPurechaseOrderNo" runat="server" autocomplete="off" />
                                                 </div>
-                                                <div class="col-md-2">
 
-                                                </div>
                                             </div>
 
                                             <div class="form-group">
@@ -161,6 +166,9 @@
                                                                 <div class="col-md-6">
                                                                     <input class="form-control pull-right" id="txtExporterCode" runat="server" type="text" />
                                                                 </div>
+                                                                <%-- <div class="col-md-3">
+                                                                    <button runat="server" class="btn btn-primary btn-block" type="button" id="btnShipper" onserverclick="btnShipper_ServerClick"><i class="fa fa-search"></i></button>
+                                                                </div>--%>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="txtExportEng" class="col-sm-3 control-label">Name (Eng)</label>
@@ -939,7 +947,7 @@
                                                             </div>
                                                             <label for="txtUnit3_ItemDetail" class="col-sm-1 control-label">Unit:</label>
                                                             <div class="col-sm-2">
-                                                                <asp:DropDownList runat="server" ID="dcboQuantityUnit" CssClass="form-control" ></asp:DropDownList>
+                                                                <asp:DropDownList runat="server" ID="dcboQuantityUnit" CssClass="form-control"></asp:DropDownList>
                                                             </div>
                                                             <div class="col-sm-3">
                                                                 <input class="form-control" id="txtUnit3_ItemDetail" runat="server" disabled="disabled" />
@@ -1065,7 +1073,7 @@
                                                                 <input class="form-control" id="txtForwardingForiegnAmount" runat="server" />
                                                             </div>
                                                             <div class="col-sm-2">
-                                                                <input class="form-control" id="txtForwardingExchangeRate" runat="server" disabled="disabled"/>
+                                                                <input class="form-control" id="txtForwardingExchangeRate" runat="server" disabled="disabled" />
                                                             </div>
                                                             <div class="col-sm-2">
                                                                 <input class="form-control" id="txtForwardingBathAmount" runat="server" />
@@ -1081,7 +1089,7 @@
                                                                 <input class="form-control" id="txtFreightForiegnAmo" runat="server" />
                                                             </div>
                                                             <div class="col-sm-2">
-                                                                <input class="form-control" id="txtFreightExchangeRate" runat="server" disabled="disabled"/>
+                                                                <input class="form-control" id="txtFreightExchangeRate" runat="server" disabled="disabled" />
                                                             </div>
                                                             <div class="col-sm-2">
                                                                 <input class="form-control" id="txtFreightBathAmount" runat="server" />
@@ -1097,7 +1105,7 @@
                                                                 <input class="form-control" id="txtInsuranceForiegnAmount" runat="server" />
                                                             </div>
                                                             <div class="col-sm-2">
-                                                                <input class="form-control" id="txtInsuranceExchangeRate" runat="server" disabled="disabled"/>
+                                                                <input class="form-control" id="txtInsuranceExchangeRate" runat="server" disabled="disabled" />
                                                             </div>
                                                             <div class="col-sm-2">
                                                                 <input class="form-control" id="txtInsuranceBathAmount" runat="server" />
@@ -1113,14 +1121,14 @@
                                                                 <input class="form-control" id="txtPackageChargeFoiegnAmount" runat="server" />
                                                             </div>
                                                             <div class="col-sm-2">
-                                                                <input class="form-control" id="txtPackageChargeExchangeRate" runat="server" disabled="disabled"/>
+                                                                <input class="form-control" id="txtPackageChargeExchangeRate" runat="server" disabled="disabled" />
                                                             </div>
                                                             <div class="col-sm-2">
                                                                 <input class="form-control" id="txtPackageChargeBathAmount" runat="server" />
                                                             </div>
 
                                                         </div>
-                                                         <div class="form-group">
+                                                        <div class="form-group">
                                                             <label for="txtRemark_ItemDetail" class="col-sm-2 control-label">Foreighn Inland Freidge</label>
                                                             <div class="col-sm-2">
                                                                 <asp:DropDownList ID="dcboForeighnCurrency" CssClass="form-control" runat="server"></asp:DropDownList>
@@ -1129,14 +1137,14 @@
                                                                 <input class="form-control" id="txtForeighnForiegnAmount" runat="server" />
                                                             </div>
                                                             <div class="col-sm-2">
-                                                                <input class="form-control" id="txtForeighnExchangeRate" runat="server" disabled="disabled"/>
+                                                                <input class="form-control" id="txtForeighnExchangeRate" runat="server" disabled="disabled" />
                                                             </div>
                                                             <div class="col-sm-2">
                                                                 <input class="form-control" id="txtForeighnBathAmount" runat="server" />
                                                             </div>
 
                                                         </div>
-                                                         <div class="form-group">
+                                                        <div class="form-group">
                                                             <label for="txtRemark_ItemDetail" class="col-sm-2 control-label">Landing Charge</label>
                                                             <div class="col-sm-2">
                                                                 <asp:DropDownList ID="dcboLandingChargeCurrency" CssClass="form-control" runat="server"></asp:DropDownList>
@@ -1145,14 +1153,14 @@
                                                                 <input class="form-control" id="txtLandingChargeForiegnAmount" runat="server" />
                                                             </div>
                                                             <div class="col-sm-2">
-                                                                <input class="form-control" id="txtLandingChargeExchangeRate" runat="server" disabled="disabled"/>
+                                                                <input class="form-control" id="txtLandingChargeExchangeRate" runat="server" disabled="disabled" />
                                                             </div>
                                                             <div class="col-sm-2">
                                                                 <input class="form-control" id="txtLandingChargeBathAmount" runat="server" />
                                                             </div>
 
                                                         </div>
-                                                         <div class="form-group">
+                                                        <div class="form-group">
                                                             <label for="txtRemark_ItemDetail" class="col-sm-2 control-label">Other Charge</label>
                                                             <div class="col-sm-2">
                                                                 <asp:DropDownList ID="dcboOtherChargeCurrency" CssClass="form-control" runat="server"></asp:DropDownList>
@@ -1161,7 +1169,7 @@
                                                                 <input class="form-control" id="txtOtherChargeForiegnAmount" runat="server" />
                                                             </div>
                                                             <div class="col-sm-2">
-                                                                <input class="form-control" id="txtOtherChargeExchangeRate" runat="server" disabled="disabled"/>
+                                                                <input class="form-control" id="txtOtherChargeExchangeRate" runat="server" disabled="disabled" />
                                                             </div>
                                                             <div class="col-sm-2">
                                                                 <input class="form-control" id="txtOtherChargeBathAmount" runat="server" />
@@ -1183,267 +1191,407 @@
                                                 </fieldset>
 
                                             </div>
-                                    </div>
-                                </div>
-                                <!--/.col-lg-6 col-md-6--->
-                            </div>
-                            <!--/.row-->
-                        </div>
-                        <!-- /.post -->
-                    </div>
-
-                    <div role="tabpanel" class="tab-pane" id="list">
-                        <!-- Post -->
-                        <div class="post">
-                            <div class="row margin-bottom">
-                                <div class="col-lg-12 col-md-12">
-                                    <div class="form-horizontal">
-                                        <div class="box-body">
-                                            <fieldset runat="server" id="list_">
-                                                <legend></legend>
-
-                                                <div class="col-lg-12 col-md-12">
-                                                    <div class="form-group">
-                                                        <label for="txtProductCode_PACKINGLIST" class="col-sm-2 control-label">Produce Code:</label>
-                                                        <div class="col-sm-4">
-                                                            <asp:DropDownList ID="ddlProductCode_PACKINGLIST" CssClass="form-control" runat="server"></asp:DropDownList>
-                                                        </div>
-                                                        <div class="col-sm-4">
-                                                            <button type="submit" runat="server" class="btn btn-primary" id="NetWeight_PACKINGLIST" title="NetWeight_PACKINGLIST">Sum Net(W)</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12 col-lg-12">
-                                                    <div class="form-group">
-                                                        <label for="txtProductDesc_PACKINGLIST" class="col-sm-2 control-label">Produce Desc:</label>
-                                                        <div class="col-sm-10">
-                                                            <textarea class="form-control" id="txtProductDesc_PACKINGLIST" rows="1" runat="server" name="txtProductDesc_PACKINGLIST" style="height: 50px; width: 799px;" placeholder="Desc ..."></textarea>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12 col-md-12">
-
-                                                    <div class="col-md-6 col-lg-6">
-
-
-                                                        <div class="form-group">
-                                                            <label for="txtCustomerPN_PACKINGLIST" class="col-sm-4 control-label">Customer P/N:</label>
-                                                            <div class="col-sm-8">
-                                                                <input class="form-control" id="txtCustomerPN_PACKINGLIST" runat="server" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="txtOriginCtry_PACKINGLIST" class="col-sm-4 control-label">Origin Crty:</label>
-                                                            <div class="col-sm-4">
-                                                                <asp:DropDownList ID="ddlOriginCtry_PACKINGLIST" CssClass="form-control" runat="server"></asp:DropDownList>
-                                                            </div>
-                                                            <div class="col-sm-4">
-                                                                <input class="form-control" id="txtOriginCtry_PACKINGLIST" runat="server" disabled="disabled" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="txtNumberOfPLT_PACKINGLIST" class="col-sm-4 control-label">Number Of PLT:</label>
-                                                            <div class="col-sm-8">
-                                                                <asp:DropDownList ID="ddlNumberOfPLT_PACKINGLIST" CssClass="form-control" runat="server"></asp:DropDownList>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="txtPLTQuantity_PACKINGLIST" class="col-sm-4 control-label">PLT Quantity:</label>
-                                                            <div class="col-sm-8">
-                                                                <input class="form-control" id="txtPLTQuantity_PACKINGLIST" runat="server" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="txtNetWeight_PACKINGLIST" class="col-sm-4 control-label">Net Weight:</label>
-                                                            <div class="col-sm-8">
-                                                                <asp:DropDownList ID="ddlNetWeight_PACKINGLIST" CssClass="form-control" runat="server"></asp:DropDownList>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="txtVolumeCBM_PACKINGLIST" class="col-sm-4 control-label">Volume (CBM):</label>
-                                                            <div class="col-sm-8">
-                                                                <input class="form-control" id="txtVolumeCBM_PACKINGLIST" runat="server" value="0.000" />
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="form-group">
-                                                            <label for="txtspace" class="col-sm-4 control-label"></label>
-                                                            <div class="col-sm-4">
-                                                                <div class="radio">
-                                                                    <label>
-                                                                        <asp:RadioButton runat="server" ID="rdbCM" Text="CM" onclick="EnableDisableTextBox();" GroupName="option4" />
-                                                                    </label>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="col-sm-4">
-                                                                <div class="radio">
-                                                                    <label>
-                                                                        <asp:RadioButton runat="server" ID="rdbInch" Text="Inch" onclick="EnableDisableTextBox();" GroupName="option4" />
-                                                                    </label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-lg-6 col-md-6">
-
-                                                        <div class="form-group">
-                                                            <label for="txtOwnerPN_PACKINGLIST" class="col-sm-3 control-label">Owner P/N:</label>
-                                                            <div class="col-sm-8">
-                                                                <input class="form-control" id="txtOwnerPN_PACKINGLIST" runat="server" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="txtUnit_PACKINGLIST" class="col-sm-3 control-label">Unit:</label>
-                                                            <div class="col-sm-4">
-                                                                <asp:DropDownList ID="dcboPackUnit" CssClass="form-control" runat="server"></asp:DropDownList>
-                                                            </div>
-                                                            <div class="col-sm-4">
-                                                                <input class="form-control" id="txtUnit_PACKINGLIST" runat="server" disabled="disabled" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="txtTotalCTN_PACKINGLIST" class="col-sm-3 control-label">Total CTN:</label>
-                                                            <div class="col-sm-8">
-                                                                <input class="form-control" id="txtTotalCTN_PACKINGLIST" runat="server" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="txtProductQuantity_PACKINGLIST" class="col-sm-3 control-label">Product Quantity:</label>
-                                                            <div class="col-sm-8">
-                                                                <asp:DropDownList ID="dcboUnitPLT" CssClass="form-control" runat="server"></asp:DropDownList>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="txtGrossWeight_PACKINGLIST" class="col-sm-3 control-label">Gross Weight:</label>
-                                                            <div class="col-sm-8">
-                                                                <asp:DropDownList ID="dcboCTN" CssClass="form-control" runat="server"></asp:DropDownList>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="txtPONo_PACKINGLIST" class="col-sm-3 control-label">PO No:</label>
-                                                            <div class="col-sm-8">
-                                                                <input class="form-control" id="txtPONo_PACKINGLIST" runat="server" />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12 col-md-12">
-                                                    <div class="form-group">
-                                                        <label for="txtMeasurement_PACKINGLIST" class="col-sm-2 control-label">Measurement:</label>
-                                                        <div class="col-sm-3">
-                                                            <input class="form-control" id="txtMeasurement_Width_PACKINGLIST" runat="server" placeholder="Width" />
-                                                        </div>
-
-                                                        <div class="col-sm-3">
-                                                            <input class="form-control" id="txtMeasurement_Height_PACKINGLIST" runat="server" placeholder="Height" />
-                                                        </div>
-
-                                                        <div class="col-sm-3">
-                                                            <input class="form-control" id="txtLenght_PACKINGLIST" runat="server" placeholder="Lenght" />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12 col-md-12">
-                                                    <div class="form-horizontal">
-                                                        <fieldset>
-                                                            <legend>Amount</legend>
-                                                            <div class="box-body">
-                                                                <div class="form-group">
-                                                                    <label for="txtPLTNetAmount_PACKINGLIST" class="col-sm-2 control-label">PLT Net Amount:</label>
-                                                                    <div class="col-sm-3">
-                                                                        <input class="form-control" id="txtPLTNetAmount_PACKINGLIST" runat="server" value="0" />
-                                                                    </div>
-                                                                    <div class="col-sm-3">
-                                                                        <asp:DropDownList ID="ddlPLTNetAmount_PACKINGLIST" CssClass="form-control" runat="server"></asp:DropDownList>
-                                                                    </div>
-                                                                    <div class="col-sm-3">
-                                                                        <input class="form-control" id="txtPLTNetAmount2_PACKINGLIST" runat="server" disabled="disabled" />
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label for="txtCTNNetAmount_PACKINGLIST" class="col-sm-2 control-label">CTN Net Amount:</label>
-                                                                    <div class="col-sm-3">
-                                                                        <input class="form-control" id="txtCTNNetAmount_PACKINGLIST" runat="server" value="0" />
-                                                                    </div>
-                                                                    <div class="col-sm-3">
-                                                                        <asp:DropDownList ID="ddlCTNNetAmount_PACKINGLIST" CssClass="form-control" runat="server"></asp:DropDownList>
-                                                                    </div>
-                                                                    <div class="col-sm-3">
-                                                                        <input class="form-control" id="txtCTNNetAmount2_PACKINGLIST" runat="server" disabled="disabled" />
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label for="txtTotal_PACKINGLIST" class="col-sm-2 control-label">Total:</label>
-                                                                    <div class="col-sm-8">
-                                                                        <%-- <input class="form-control" id="txtTotal_PACKINGLIST" runat="server" />--%>
-                                                                        <textarea class="form-control" id="txtTotal_PACKINGLIST_" rows="1" runat="server" name="txtProductDesc_PACKINGLIST" style="height: 50px; width: 799px;" placeholder="Desc ..."></textarea>
-                                                                    </div>
-                                                                </div>
-
-                                                            </div>
-                                                            <!-- /.box-body -->
-                                                        </fieldset>
-                                                    </div>
-
-                                                </div>
-                                                <div class="col-lg-12 col-sm-12 col-lg-offset-6">
-                                                    <div class="form-horizontal">
-                                                        <div class="form-group">
-                                                            <div class="checkbox col-sm-2">
-                                                                <label>
-                                                                    <input type="checkbox" runat="server" id="chkCopyToDetail" />Copy To Detail
-                                                                </label>
-                                                            </div>
-                                                            <%--<div class="col-sm-3">--%>
-                                                            <button type="submit" runat="server" class="btn btn-primary" id="btnAddNewItem_PACKINGLIST" title="btnAddNewItem_PACKINGLIST">AddNewItem</button>
-                                                            <%--</div>--%>
-                                                            <%--<div class="col-sm-3">--%>
-                                                            <button type="submit" runat="server" class="btn btn-primary" id="btnSaveModify_PACKINGLIST" title="btnSaveModify_PACKINGLIST">SaveModify</button>
-                                                            <%--</div>--%>
-                                                            <%--<div class="col-sm-3">--%>
-                                                            <button type="submit" runat="server" class="btn btn-primary" id="btnDelete_PACKINGLIST" title="btnDelete_PACKINGLIST">Delete</button>
-                                                            <%--</div>--%>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                            </fieldset>
                                         </div>
-                                        <!-- /.box-body -->
                                     </div>
-
-                                    <!------- ./form-horizontal ----->
+                                    <!--/.col-lg-6 col-md-6--->
                                 </div>
-                                <!--/.col-lg-12 col-md-12--->
+                                <!--/.row-->
                             </div>
-                            <!--/.row-->
+                            <!-- /.post -->
                         </div>
-                        <!-- /.post -->
-                    </div>
-                    <!------ ./tab-content ----->
-                </div>
-            </div>
-            <!--------- ./ Tabs------->
 
-            <%--<asp:Button ID="Button1" Text="Submit" runat="server" CssClass="btn btn-primary" />--%>
-            <asp:HiddenField ID="TabName" runat="server" />
+                        <div role="tabpanel" class="tab-pane" id="list">
+                            <!-- Post -->
+                            <div class="post">
+                                <div class="row margin-bottom">
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="form-horizontal">
+                                            <div class="box-body">
+                                                <fieldset runat="server" id="list_">
+                                                    <legend></legend>
+
+                                                    <div class="col-lg-12 col-md-12">
+                                                        <div class="form-group">
+                                                            <label for="txtProductCode_PACKINGLIST" class="col-sm-2 control-label">Produce Code:</label>
+                                                            <div class="col-sm-4">
+                                                                <asp:DropDownList ID="ddlProductCode_PACKINGLIST" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                            </div>
+                                                            <div class="col-sm-4">
+                                                                <button type="submit" runat="server" class="btn btn-primary" id="NetWeight_PACKINGLIST" title="NetWeight_PACKINGLIST">Sum Net(W)</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12 col-lg-12">
+                                                        <div class="form-group">
+                                                            <label for="txtProductDesc_PACKINGLIST" class="col-sm-2 control-label">Produce Desc:</label>
+                                                            <div class="col-sm-10">
+                                                                <textarea class="form-control" id="txtProductDesc_PACKINGLIST" rows="1" runat="server" name="txtProductDesc_PACKINGLIST" style="height: 50px; width: 799px;" placeholder="Desc ..."></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-12 col-md-12">
+
+                                                        <div class="col-md-6 col-lg-6">
+
+
+                                                            <div class="form-group">
+                                                                <label for="txtCustomerPN_PACKINGLIST" class="col-sm-4 control-label">Customer P/N:</label>
+                                                                <div class="col-sm-8">
+                                                                    <input class="form-control" id="txtCustomerPN_PACKINGLIST" runat="server" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="txtOriginCtry_PACKINGLIST" class="col-sm-4 control-label">Origin Crty:</label>
+                                                                <div class="col-sm-4">
+                                                                    <asp:DropDownList ID="ddlOriginCtry_PACKINGLIST" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                                </div>
+                                                                <div class="col-sm-4">
+                                                                    <input class="form-control" id="txtOriginCtry_PACKINGLIST" runat="server" disabled="disabled" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="txtNumberOfPLT_PACKINGLIST" class="col-sm-4 control-label">Number Of PLT:</label>
+                                                                <div class="col-sm-8">
+                                                                    <asp:DropDownList ID="ddlNumberOfPLT_PACKINGLIST" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="txtPLTQuantity_PACKINGLIST" class="col-sm-4 control-label">PLT Quantity:</label>
+                                                                <div class="col-sm-8">
+                                                                    <input class="form-control" id="txtPLTQuantity_PACKINGLIST" runat="server" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="txtNetWeight_PACKINGLIST" class="col-sm-4 control-label">Net Weight:</label>
+                                                                <div class="col-sm-8">
+                                                                    <asp:DropDownList ID="ddlNetWeight_PACKINGLIST" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="txtVolumeCBM_PACKINGLIST" class="col-sm-4 control-label">Volume (CBM):</label>
+                                                                <div class="col-sm-8">
+                                                                    <input class="form-control" id="txtVolumeCBM_PACKINGLIST" runat="server" value="0.000" />
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label for="txtspace" class="col-sm-4 control-label"></label>
+                                                                <div class="col-sm-4">
+                                                                    <div class="radio">
+                                                                        <label>
+                                                                            <asp:RadioButton runat="server" ID="rdbCM" Text="CM" onclick="EnableDisableTextBox();" GroupName="option4" />
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-sm-4">
+                                                                    <div class="radio">
+                                                                        <label>
+                                                                            <asp:RadioButton runat="server" ID="rdbInch" Text="Inch" onclick="EnableDisableTextBox();" GroupName="option4" />
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-lg-6 col-md-6">
+
+                                                            <div class="form-group">
+                                                                <label for="txtOwnerPN_PACKINGLIST" class="col-sm-3 control-label">Owner P/N:</label>
+                                                                <div class="col-sm-8">
+                                                                    <input class="form-control" id="txtOwnerPN_PACKINGLIST" runat="server" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="txtUnit_PACKINGLIST" class="col-sm-3 control-label">Unit:</label>
+                                                                <div class="col-sm-4">
+                                                                    <asp:DropDownList ID="dcboPackUnit" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                                </div>
+                                                                <div class="col-sm-4">
+                                                                    <input class="form-control" id="txtUnit_PACKINGLIST" runat="server" disabled="disabled" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="txtTotalCTN_PACKINGLIST" class="col-sm-3 control-label">Total CTN:</label>
+                                                                <div class="col-sm-8">
+                                                                    <input class="form-control" id="txtTotalCTN_PACKINGLIST" runat="server" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="txtProductQuantity_PACKINGLIST" class="col-sm-3 control-label">Product Quantity:</label>
+                                                                <div class="col-sm-8">
+                                                                    <asp:DropDownList ID="dcboUnitPLT" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="txtGrossWeight_PACKINGLIST" class="col-sm-3 control-label">Gross Weight:</label>
+                                                                <div class="col-sm-8">
+                                                                    <asp:DropDownList ID="dcboCTN" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="txtPONo_PACKINGLIST" class="col-sm-3 control-label">PO No:</label>
+                                                                <div class="col-sm-8">
+                                                                    <input class="form-control" id="txtPONo_PACKINGLIST" runat="server" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-12 col-md-12">
+                                                        <div class="form-group">
+                                                            <label for="txtMeasurement_PACKINGLIST" class="col-sm-2 control-label">Measurement:</label>
+                                                            <div class="col-sm-3">
+                                                                <input class="form-control" id="txtMeasurement_Width_PACKINGLIST" runat="server" placeholder="Width" />
+                                                            </div>
+
+                                                            <div class="col-sm-3">
+                                                                <input class="form-control" id="txtMeasurement_Height_PACKINGLIST" runat="server" placeholder="Height" />
+                                                            </div>
+
+                                                            <div class="col-sm-3">
+                                                                <input class="form-control" id="txtLenght_PACKINGLIST" runat="server" placeholder="Lenght" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-12 col-md-12">
+                                                        <div class="form-horizontal">
+                                                            <fieldset>
+                                                                <legend>Amount</legend>
+                                                                <div class="box-body">
+                                                                    <div class="form-group">
+                                                                        <label for="txtPLTNetAmount_PACKINGLIST" class="col-sm-2 control-label">PLT Net Amount:</label>
+                                                                        <div class="col-sm-3">
+                                                                            <input class="form-control" id="txtPLTNetAmount_PACKINGLIST" runat="server" value="0" />
+                                                                        </div>
+                                                                        <div class="col-sm-3">
+                                                                            <asp:DropDownList ID="ddlPLTNetAmount_PACKINGLIST" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                                        </div>
+                                                                        <div class="col-sm-3">
+                                                                            <input class="form-control" id="txtPLTNetAmount2_PACKINGLIST" runat="server" disabled="disabled" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="txtCTNNetAmount_PACKINGLIST" class="col-sm-2 control-label">CTN Net Amount:</label>
+                                                                        <div class="col-sm-3">
+                                                                            <input class="form-control" id="txtCTNNetAmount_PACKINGLIST" runat="server" value="0" />
+                                                                        </div>
+                                                                        <div class="col-sm-3">
+                                                                            <asp:DropDownList ID="ddlCTNNetAmount_PACKINGLIST" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                                        </div>
+                                                                        <div class="col-sm-3">
+                                                                            <input class="form-control" id="txtCTNNetAmount2_PACKINGLIST" runat="server" disabled="disabled" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="txtTotal_PACKINGLIST" class="col-sm-2 control-label">Total:</label>
+                                                                        <div class="col-sm-8">
+                                                                            <%-- <input class="form-control" id="txtTotal_PACKINGLIST" runat="server" />--%>
+                                                                            <textarea class="form-control" id="txtTotal_PACKINGLIST_" rows="1" runat="server" name="txtProductDesc_PACKINGLIST" style="height: 50px; width: 799px;" placeholder="Desc ..."></textarea>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                                <!-- /.box-body -->
+                                                            </fieldset>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col-lg-12 col-sm-12 col-lg-offset-6">
+                                                        <div class="form-horizontal">
+                                                            <div class="form-group">
+                                                                <div class="checkbox col-sm-2">
+                                                                    <label>
+                                                                        <input type="checkbox" runat="server" id="chkCopyToDetail" />Copy To Detail
+                                                                    </label>
+                                                                </div>
+                                                                <%--<div class="col-sm-3">--%>
+                                                                <button type="submit" runat="server" class="btn btn-primary" id="btnAddNewItem_PACKINGLIST" title="btnAddNewItem_PACKINGLIST">AddNewItem</button>
+                                                                <%--</div>--%>
+                                                                <%--<div class="col-sm-3">--%>
+                                                                <button type="submit" runat="server" class="btn btn-primary" id="btnSaveModify_PACKINGLIST" title="btnSaveModify_PACKINGLIST">SaveModify</button>
+                                                                <%--</div>--%>
+                                                                <%--<div class="col-sm-3">--%>
+                                                                <button type="submit" runat="server" class="btn btn-primary" id="btnDelete_PACKINGLIST" title="btnDelete_PACKINGLIST">Delete</button>
+                                                                <%--</div>--%>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </fieldset>
+                                            </div>
+                                            <!-- /.box-body -->
+                                        </div>
+
+                                        <!------- ./form-horizontal ----->
+                                    </div>
+                                    <!--/.col-lg-12 col-md-12--->
+                                </div>
+                                <!--/.row-->
+                            </div>
+                            <!-- /.post -->
+                        </div>
+                        <!------ ./tab-content ----->
+                    </div>
+                </div>
+                <!--------- ./ Tabs------->
+
+                <%--<asp:Button ID="Button1" Text="Submit" runat="server" CssClass="btn btn-primary" />--%>
+                <asp:HiddenField ID="TabName" runat="server" />
             </div>
             <!--------- ./ panel --------->
         </section>
+
+        <!-- Modal JoB No-->
+        <asp:Panel ID="Search1" runat="server" CssClass="modal" TabIndex="-1" role="dialog" aria-labelledby="myLabe1">
+            <div class="modal-dialog modal-lg" role="dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel">Select Invoice No</h4>
+                    </div>
+                    <asp:UpdatePanel ID="upSearch1" runat="server" UpdateMode="Conditional">
+                        <ContentTemplate>
+                            <div class="modal-body">
+                                <section class="content">
+                                    <form class="form-horizontal">
+                                        <div class="box-body">
+                                            <div class="col-lg-12 col-md-12 " style="overflow: auto;">
+
+                                                <asp:Repeater ID="dgvSearch" runat="server" OnItemCommand="dgvSearch_ItemCommand">
+                                                    <HeaderTemplate>
+                                                        <table id="example1" class="table table-bordered table-striped table-responsive" style="overflow: auto;">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>select</th>
+                                                                    <th>InvoiceNo</th>
+                                                                    <th>ReferenceNo</th>
+                                                                    <th>PurchaseOrderNo</th>
+                                                                    <th>ExporterCode</th>
+                                                                </tr>
+                                                            </thead>
+                                                    </HeaderTemplate>
+
+                                                    <ItemTemplate>
+                                                        <tr>
+                                                            <td class="text-center">
+                                                                <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="selectInvoiceNo" CommandArgument='<%# Eval("InvoiceNo")%>'><i class="fa fa-hand-o-up"></i></asp:LinkButton>
+                                                            </td>
+                                                            <td>
+                                                                <asp:Label ID="lblInvoiceNo" runat="server" Text='<%# Bind("InvoiceNo")%>'></asp:Label></td>
+                                                            <td>
+                                                                <asp:Label ID="lblReferenceNo" runat="server" Text='<%# Bind("ReferenceNo")%>'></asp:Label></td>
+                                                            <td>
+                                                                <asp:Label ID="lblOrderNo" runat="server" Text='<%# Bind("PurchaseOrderNo")%>'></asp:Label></td>
+                                                            <td>
+                                                                <asp:Label ID="lblExp" runat="server" Text='<%# Bind("ExporterCode")%>'></asp:Label></td>
+                                                        </tr>
+                                                    </ItemTemplate>
+                                                    <FooterTemplate>
+                                                        <tfoot>
+                                                            <tr>
+                                                                <th>select</th>
+                                                                <th>InvoiceNo</th>
+                                                                <th>ReferenceNo</th>
+                                                                <th>PurchaseOrderNo</th>
+                                                                <th>ExporterCode</th>
+                                                            </tr>
+                                                        </tfoot>
+                                                        </table>
+                                                    </FooterTemplate>
+                                                </asp:Repeater>
+                                            </div>
+                                            <div class="col-lg-12 col-md-10">
+                                                <fieldset>
+                                                    <legend></legend>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="txtStartInvoiceNo" class="col-sm-4 control-label">Invoice No.</label>
+                                                            <div class="col-sm-8">
+                                                                <input class="form-control" id="txtStartInvoiceNo" runat="server" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="txtStartExporter" class="col-sm-4 control-label">Exporter</label>
+                                                            <div class="col-sm-8">
+                                                                <input class="form-control" id="txtStartExporter" runat="server" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="txtStartConsignnee" class="col-sm-4 control-label">Consignnees</label>
+                                                            <div class="col-sm-8">
+                                                                <input class="form-control" id="txtStartConsignnee" runat="server" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="txtStartInvoiceNo" class="col-sm-4 control-label">Invoice Date</label>
+                                                            <div class="col-sm-8">
+                                                                <asp:TextBox CssClass="form-control" ID="dtpStartInvoiceDate" runat="server" placeholder="MM/DD/YYYY" autocomplete="off">
+                                                                </asp:TextBox>
+                                                                <asp:CalendarExtender ID="CalendarExtender5" runat="server" Enabled="True" TargetControlID="dtpStartInvoiceDate" Format="dd/MM/yyyy"></asp:CalendarExtender>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="txtEndInvoiceNo" class="col-sm-4 control-label">To Invoice No.</label>
+                                                            <div class="col-sm-8">
+                                                                <input class="form-control" id="txtEndInvoiceNo" runat="server" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="txtStartExporter" class="col-sm-4 control-label">To Exporter</label>
+                                                            <div class="col-sm-8">
+                                                                <input class="form-control" id="txtEndExporter" runat="server" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="txtStartConsignnee" class="col-sm-4 control-label">To Consignnee</label>
+                                                            <div class="col-sm-8">
+                                                                <input class="form-control" id="txtToConsignnee" runat="server" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="txtStartInvoiceNo" class="col-sm-4 control-label">To Invoice Date</label>
+                                                            <div class="col-sm-8">
+                                                                <asp:TextBox CssClass="form-control" ID="dtpEndInvoiceDate" runat="server" placeholder="MM/DD/YYYY" autocomplete="off">
+                                                                </asp:TextBox>
+                                                                <asp:CalendarExtender ID="CalendarExtender6" runat="server" Enabled="True" TargetControlID="dtpEndInvoiceDate" Format="dd/MM/yyyy"></asp:CalendarExtender>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </fieldset>
+
+                                            </div>
+                                        </div>
+                                    </form>
+
+                                </section>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                </div>
+            </div>
+        </asp:Panel>
+        <!-- End Shipper Modal -->
+
+
         <script type="text/javascript">
             function chkExpEnable2() {
                 var status = document.getElementById('<%=chkEnablebehalf_EASJOB.ClientID%>').checked;
 
-                 if (status == true) {
-                     document.getElementById('<%=job_1.ClientID%>').disabled = false;
+                if (status == true) {
+                    document.getElementById('<%=job_1.ClientID%>').disabled = false;
 
                 } else if (status == false) {
                     document.getElementById('<%=job_1.ClientID%>').disabled = true;
-                  }
+                 }
 
-          }
+         }
         </script>
         <script type="text/javascript">
             $(function () {

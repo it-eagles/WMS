@@ -28,7 +28,7 @@
                         <div class="box">
                             <!-- /.box-header -->
                             <div class="box-body">
-                                <from class="form-horizontal">
+                                <div class="form-horizontal">
                            <div class="box-body">   
                                 <div class="form-group" >
                                         <label for="txtType" class="col-sm-3 control-label">Type</label>
@@ -80,7 +80,7 @@
                                     <!-- /.box-body -->
                              </div>
                           
-                       </from>               
+                       </div>               
 
                             </div>
                             <!-- /.box-body -->

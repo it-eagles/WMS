@@ -55,6 +55,7 @@ Public Class CustomsInvoice
                     CarLicense()
                     UnitPLT()
                     CTN()
+                    btnInvoice.Visible = False
                     TabName.Value = Request.Form(TabName.UniqueID)
                 End If
             Else
@@ -68,11 +69,13 @@ Public Class CustomsInvoice
         UnlockDATA()
         btnSaveNew.Visible = True
         btnSaveEdit.Visible = False
+        btnInvoice.Visible = False
     End Sub
 
     Protected Sub btnEdit_ServerClick(sender As Object, e As EventArgs)
         btnSaveNew.Visible = False
         btnSaveEdit.Visible = True
+        btnInvoice.Visible = True
     End Sub
     Private Sub UnlockDATA()
         header_.Disabled = False
@@ -941,5 +944,304 @@ Public Class CustomsInvoice
         Catch ex As Exception
             Throw ex
         End Try
+    End Sub
+
+    Protected Sub btnInvoice_ServerClick(sender As Object, e As EventArgs)
+
+        'ScriptManager.RegisterStartupScript(upSearch1, upSearch1.GetType(), "show", "$(function () { $('#" + Search1.ClientID + "').modal('show'); });", True)
+        'upSearch1.Update()
+        selectInvoiceNo()
+    End Sub
+
+    Protected Sub btnShipper_ServerClick(sender As Object, e As EventArgs)
+
+    End Sub
+    Private Sub selectInvoiceNo()
+        Dim gro_code As String
+        Dim UserGroup As String = CStr(Session("UserGroup"))
+        Dim cra As Integer
+        If String.IsNullOrEmpty(txtInvoiceNo.Value.Trim) Then
+            gro_code = ""
+            cra = CInt(Convert.ToDateTime(Date.Now).ToString("yyyy"))
+        Else
+            gro_code = txtInvoiceNo.Value.Trim
+
+        End If
+        If UserGroup = "SA" Then
+            Dim cons = From p In db.tblExpInvoices Where p.InvoiceNo = gro_code Or p.CreateDate.Year = cra
+                 Order By p.InvoiceNo Descending
+                 Select p.InvoiceNo, p.ReferenceNo, p.PurchaseOrderNo, p.ExporterCode
+            If cons.Count > 0 Then
+                dgvSearch.DataSource = cons.ToList
+                dgvSearch.DataBind()
+            Else
+                ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('ไม่พบข้อมูล Customer Code นี้')", True)
+                Exit Sub
+            End If
+        Else
+            Dim cons = From p In db.tblExpInvoices Where (p.InvoiceNo = gro_code And p.App = "Wait") Or p.App = "Wait" And p.CreateDate.Year = cra
+               Order By p.InvoiceNo Descending
+               Select p.InvoiceNo, p.ReferenceNo, p.PurchaseOrderNo, p.ExporterCode
+            If cons.Count > 0 Then
+                dgvSearch.DataSource = cons.ToList
+                dgvSearch.DataBind()
+            Else
+                ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('ไม่พบข้อมูล Customer Code นี้')", True)
+                Exit Sub
+            End If
+        End If
+    End Sub
+
+   
+    Protected Sub dgvSearch_ItemCommand(source As Object, e As RepeaterCommandEventArgs)
+        Dim Invoice As String = CStr(e.CommandArgument)
+        If e.CommandName.Equals("selectInvoiceNo") Then
+            Dim exp = (From ex In db.tblExpInvoices Where ex.InvoiceNo = Invoice Select ex).SingleOrDefault
+
+            txtInvoiceNo.Value = exp.InvoiceNo
+            txtReferenceNo.Value = exp.ReferenceNo
+            'txtReferenceDate
+            dtpReferenceDate.Text = CStr(exp.ReferenceDate)
+            txtPurechaseOrderNo.Value = exp.PurchaseOrderNo
+            'txtInvoiceDate()
+            dtpInvoiceDate.Text = CStr(exp.InvoiceDate)
+            'txtDeliveryDate()
+            dtpDeliveryDate.Text = CStr(exp.DeliveryDate)
+            txtExporterCode.Value = exp.ExporterCode
+
+            txtExportEng.Value = exp.ExporterENG
+            txtStreet_Number.Value = exp.Street_Number
+            txtDistrict.Value = exp.District
+            'txtSubProvince = exp.Subprovince
+
+            txtProvince.Value = exp.Province
+            txtPostCode.Value = exp.PostCode
+            txtCompensateCode.Value = exp.CompensateCode
+            txtConsigneeCode.Value = exp.CompensateCode
+            'txtConsignneeCode.Value = exp.ConsignneeCode
+            'txtConsignneeEng.Value=exp.ConsignneeENG
+            '=exp.ConsignneeStreet_Number
+            '=exp.ConsignneeDistrict
+            '=exp.ConsignneeSubProvince
+            '=exp.ConsignneeProvince
+            '=exp.ConsignneePostCode
+            '=exp.ConsignneeEMail
+            '=exp.PurchaseCountryCode
+            '=exp.PurchaseCountryName
+            '=exp.DestinationCountryCode
+            '=exp.DestinationCountryName
+            '=exp.CountryCode
+            '=exp.CountryName
+            '=exp.TermOfPayment
+            '=exp.Term
+            '=exp.TotalNetWeight
+            '=exp.SumItemWeight
+            '=exp.TotalInvoiceCurrency
+            '=exp.TotalInvoiceAmount
+            '=exp.TotalInvoiceAmount1
+            '=exp.ForwardingCurrency
+            '=exp.ForwardingAmount
+            '=exp.ForwardingAmount1
+            '=exp.FreightCurrency
+            '=exp.FreightAmount
+            '=exp.FreightAmount1
+            '=exp.InsuranceCurrency
+            '=exp.InsuranceAmount
+            '=exp.InsuranceAmount1
+            '=exp.PackingChargeCurrency
+            '=exp.PackingChargeAmount
+            '=exp.PackingChargeAmount1
+            '=exp.ForeignInlandCurrency
+            '=exp.ForeignInlandAmount
+            '=exp.ForeignInlandAmount1
+            '=exp.LandingChargeCurrency
+            '=exp.LandingChargeAmount
+            '=exp.LandingChargeAmount1
+            '=exp.OtherChargeCurrency
+            '=exp.OtherChargeAmount
+            '=exp.OtherChargeAmount1
+            '=exp.TransmitDate
+            '=exp.DiffBy
+            '=exp.TermforShip
+            '=exp.OnbehalfStatus
+            '=exp.EASExporterCode
+            '=exp.EASNameEng
+            '=exp.StreetAndNumber
+            '=exp.ESADistrict
+            '=exp.EASSubProvince
+            '=exp.EASProvince
+            '=exp.EASPostCode
+            '=exp.EASTCompensete
+            '=exp.EASCustomerCode
+            '=exp.EASCustomerENG
+            '=exp.EASCustomerAddress
+            '=exp.EASCustomerEMail
+            '=exp.EASCustomerTelNo
+            '=exp.EASCustomerFaxNo
+            '=exp.EASCustomerContactPerson
+            '=exp.EASInvRefNo
+            '=exp.EASLOTNo
+            '=exp.EASCustomerRefNo
+            '=exp.EASSpecialInstruction
+            '=exp.EASDeliveryTerm
+            '=exp.EASShippingMark
+            '=exp.EASShippingMarkCompany
+            '=exp.EASShippingMarkAddress
+            '=exp.EASRemark
+            '=exp.EASTotalCurrency
+            '=exp.EASBilltoCustomerCode
+            '=exp.EASBilltoCustomerENG
+            '=exp.EASBilltoCustomerAddress
+            '=exp.EASBilltoCustomerEMail
+            '=exp.EASBilltoCustomerTelNo
+            '=exp.EASBilltoCustomerFaxNo
+            '=exp.EASBilltoCustomerContactPerson
+            '=exp.PLTNetAmount
+            '=exp.UnitPLT
+            '=exp.CTNPLTName
+            '=exp.CTNNetAmount
+            '=exp.UnitCTN
+            '=exp.UnitCTNName
+            '=exp.GrossWeightAmount
+            '=exp.QountityAmount
+            '=exp.VolumAmount
+            '=exp.TotalTextPackL()
+            '=exp.CarLicense
+            '=exp.DriverName
+            '=exp.PrintCountInv
+            '=exp.PrintCountPack
+            '=exp.PrintCount107
+            '=exp.PrintCount108
+            '=exp.PrintCountDoc
+            '=exp.CustomsConfirmDate
+            '=exp.App
+            '=exp.CreateBy
+            '=exp.CreateDate
+            '=exp.UpdateBy
+            '=exp.UpdateDate
+            '=exp.OutItem
+            '=exp.PullSignal
+            '=exp.UnitQuantity
+            '=exp.UnitWeight
+
+
+            'txtConsignneeStreet_Number.Value
+            'txtConsignneeDistrict.Value
+            'txtConsignneeSubProvince.Value
+            'txtConsignneeProvince.Value
+            'txtConsignneePostCode.Value
+            'txtConsignneeEMail.Value
+            'dcboPurchaseCountry.Value
+            'txtPurchaseCountry.Value
+            'cboDestinationCountry.Text
+            'txtDestinationCountry.Value
+            'dcboCountry.Text
+            'txtCountry.Value
+            'dcboTermofPayment.Value
+            'dcboTerm.Text 
+            'txtTotalNetWeight.Value
+            'txtSumItemWeight.Value
+            'dcboTotalInvoice.Value 
+            'txtTotalInvoiceAmount.Value 
+            'txtTotalInvoiceAmount1.Value
+            'dcboForwarding.Value
+            'txtForwardingAmount.Value
+            'txtForwardingAmount1.Value
+            'dcboFreight.Value
+            'txtFreightAmount.Value 
+            'txtFreightAmount1.Value
+            'dcboInsurance.Value
+            'txtInsuranceAmount.Value
+            'txtInsuranceAmount1.Value
+            'dcboPackingCharge.Value
+            'txtPackingChargeAmount.Value
+            'txtPackingChargeAmount1.Value
+            'dcboForeignInland.Value
+            'txtForeignInlandAmount.Value 
+            'txtForeignInlandAmount1.Value
+            'dcboLandingCharge.Value
+            'txtLandingChargeAmount.Value
+            'txtLandingChargeAmount1.Value
+            'dcboOtherCharge.Value
+            'txtOtherChargeAmount.Value
+            'txtOtherChargeAmount1..Value
+            'txtTransmitDate.Value
+            'dtpTransmitDate.Text
+            'txtDiffBy.Value
+            'If txtDiffBy.Text = "Diff by items-amount" Then
+            '    optDiffAmount.Checked = True
+            'End If
+            'If txtDiffBy.Text = "Diff by items-Weight" Then
+            '    optDiffweight.Checked = True
+            'End If
+            'txtNotify.Text = .Rows.Item(e.RowIndex).Cells(58).Value.ToString()
+            'If txtNotify.Text = "Notfy Party" Then
+            '    optNotifyParty.Checked = True
+            'End If
+            'If txtNotify.Text = "On Behalf of" Then
+            '    optOnbehalfOf.Checked = True
+            'End If
+            'txtOnbehalfStatus.Text = .Rows.Item(e.RowIndex).Cells(59).Value.ToString()
+            'If txtOnbehalfStatus.Text = "Enable On behalf of" Then
+            '    ckbOnbehalfof.Checked = True
+            'Else
+            '    ckbOnbehalfof.Checked = False
+            'End If
+            'txtEASExporterCode.Text
+            'txtEASNameEng.Text 
+            'txtEASStreet_Number.Text
+            'txtEASDistrict.Text 
+            'txtEASSubProvince.Text
+            'txtEASProvince.Text 
+            'txtEASPostCode.Text 
+            'txtEASCompensateCode.Text 
+            'txtCustomerCode.Text 
+            'txtCustomerEng.Text 
+            'txtCustomerAddress.Text
+            'txtCustomerEMail.Text 
+            'txtCustomerTelNo.Text 
+            'txtCustomerFaxNo.Text 
+            'txtCustomerContactPerson.Text 
+            'txtEASInvREFNo.Text 
+            'txtEASLOTNo.Text 
+            'txtCustomerRefNo.Text 
+            'txtSpecialInstruction.Text
+            'dcboShipMode.Text 
+            'dcboDeliveryTerm.Text
+            'dcboShippingMark.Text 
+            'txtShippingCompany.Text 
+            'txtShippingAddress.Text 
+            'txtEASRemark.Text 
+            'txtTotalCurrency.Text 
+            'txtEASCustomerCode.Text 
+            'txtEASCustomerEng1.Text 
+            'txtEASCustomerAddress.Text 
+            'txtEASEmail.Text 
+            'txtEASTelNo.Text
+            'txtEASFaxNo.Text 
+            'txtEASContactPerson.Text
+            'txtPLTNetAmount.Text 
+            'dcboUnitPLT.Text 
+            'txtPLTUnit.Text
+            'txtCTNNetAmount.Text
+            'dcboCTN.Text 
+            'txtCTNUnit.Text 
+            'txtTotalGrossWeight.Text 
+            'txtTotalQuantity.Text 
+            'txtVolumAmount.Text
+            'txtTotalText.Text 
+            'dcboCarLicense.Text 
+            'dcboDriverName.Text 
+            'txtCustomsConfirmDate.Text
+            'CustomsConfirmDate.Value
+            'txtApp.Text 
+            'Item 
+            'If Item = "0" Then
+            '    CoutItem.Checked = False
+            'ElseIf Item = "1" Then
+            '    CoutItem.Checked = True
+            'End If
+
+        End If
     End Sub
 End Class

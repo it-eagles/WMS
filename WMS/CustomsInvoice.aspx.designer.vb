@@ -104,6 +104,15 @@ Partial Public Class CustomsInvoice
     Protected WithEvents txtInvoiceNo As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
+    '''btnInvoice control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnInvoice As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
     '''txtPurechaseOrderNo control.
     '''</summary>
     '''<remarks>
@@ -2010,4 +2019,121 @@ Partial Public Class CustomsInvoice
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents TabName As Global.System.Web.UI.WebControls.HiddenField
+
+    '''<summary>
+    '''Search1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Search1 As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''upSearch1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents upSearch1 As Global.System.Web.UI.UpdatePanel
+
+    '''<summary>
+    '''dgvSearch control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents dgvSearch As Global.System.Web.UI.WebControls.Repeater
+
+    '''<summary>
+    '''txtStartInvoiceNo control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtStartInvoiceNo As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''txtStartExporter control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtStartExporter As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''txtStartConsignnee control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtStartConsignnee As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''dtpStartInvoiceDate control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents dtpStartInvoiceDate As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''CalendarExtender5 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CalendarExtender5 As Global.AjaxControlToolkit.CalendarExtender
+
+    '''<summary>
+    '''txtEndInvoiceNo control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtEndInvoiceNo As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''txtEndExporter control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtEndExporter As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''txtToConsignnee control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtToConsignnee As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''dtpEndInvoiceDate control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents dtpEndInvoiceDate As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''CalendarExtender6 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CalendarExtender6 As Global.AjaxControlToolkit.CalendarExtender
 End Class

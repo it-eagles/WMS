@@ -5745,7 +5745,7 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
           <Property Name="CustomsConfirmDate" Type="DateTime" Precision="3" />
           <Property Name="App" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="CreateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" Nullable="false" />
           <Property Name="UpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="UpdateDate" Type="DateTime" Precision="3" />
           <Property Name="OutItem" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />

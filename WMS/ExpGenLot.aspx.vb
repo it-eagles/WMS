@@ -368,16 +368,16 @@ Public Class ExpGenLot
     End Sub
     Private Sub selectConsigneeCode()
         Dim cons_code As String
-
+        Dim consignee As String = ""
         If String.IsNullOrEmpty(txtConsigneeCode.Value.Trim) Then
             cons_code = ""
-
+            consignee = "0"
         Else
             cons_code = txtConsigneeCode.Value.Trim
         End If
 
         Dim cons = From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
-        Where (p.PartyCode = cons_code And p.Consignee = "0") Or p.Consignee = "0"
+        Where (p.PartyCode = cons_code And p.Consignee = "0") Or p.Consignee = consignee
         Select p.PartyCode, pa.PartyAddressCode, p.PartyFullName, pa.Address1, pa.Address2
 
         If cons.Count > 0 Then
@@ -398,16 +398,16 @@ Public Class ExpGenLot
 
     Private Sub selectExporterCode()
         Dim exp_code As String
-
+        Dim shipper As String = ""
         If String.IsNullOrEmpty(txtExporterCode.Value.Trim) Then
             exp_code = ""
-
+            shipper = "0"
         Else
             exp_code = txtExporterCode.Value.Trim
         End If
 
         Dim cons = From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
-        Where (p.PartyCode = exp_code And p.Shipper = "0") Or p.Shipper = "0"
+        Where (p.PartyCode = exp_code And p.Shipper = "0") Or p.Shipper = shipper
         Select p.PartyCode, pa.PartyAddressCode, p.PartyFullName, pa.Address1, pa.Address2
 
         If cons.Count > 0 Then
@@ -427,17 +427,21 @@ Public Class ExpGenLot
 
     Private Sub codeconsignnee()
         Dim code_code As String
-
+        Dim consignee As String = ""
+        Dim endCustomer As String = ""
+        Dim shipper As String = ""
         If String.IsNullOrEmpty(txtDOCode.Value.Trim) Then
             code_code = ""
-
+            consignee = "0"
+            endCustomer = "0"
+            shipper = "0"
         Else
             code_code = txtDOCode.Value.Trim
         End If
 
         Dim cons = From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
         Where (p.PartyCode = code_code And p.Shipper = "0" And p.Consignee = "0" And p.EndCustomer = "0") Or
-              (p.Consignee = "0" And p.EndCustomer = "0" And p.Shipper = "0")
+              (p.Consignee = consignee And p.EndCustomer = endCustomer And p.Shipper = shipper)
         Select p.PartyCode, pa.PartyAddressCode, p.PartyFullName, pa.Address1, pa.Address2
 
         If cons.Count > 0 Then
@@ -457,16 +461,16 @@ Public Class ExpGenLot
     End Sub
     Private Sub selectCustomerCode()
         Dim cum_code As String
-
+        Dim consignee As String = ""
         If String.IsNullOrEmpty(txtCustomerCode.Value.Trim) Then
             cum_code = ""
-
+            consignee = "0"
         Else
             cum_code = txtCustomerCode.Value.Trim
         End If
 
         Dim cons = From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
-        Where (p.PartyCode = cum_code And p.Consignee = "0") Or p.Consignee = "0"
+        Where (p.PartyCode = cum_code And p.Consignee = "0") Or p.Consignee = consignee
         Select p.PartyCode, pa.PartyAddressCode, p.PartyFullName, pa.Address1, pa.Address2
 
         If cons.Count > 0 Then
