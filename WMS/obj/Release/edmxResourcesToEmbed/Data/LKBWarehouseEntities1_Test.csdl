@@ -244,7 +244,7 @@
     <Property Name="ExpEstablishNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="ExpFactoryNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="CreateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" Nullable="false" />
     <Property Name="UpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="UpdateDate" Type="DateTime" Precision="3" />
   </EntityType>
@@ -546,7 +546,7 @@
     <Property Name="CustomsConfirmDate" Type="DateTime" Precision="3" />
     <Property Name="App" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="CreateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" Nullable="false" />
     <Property Name="UpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="UpdateDate" Type="DateTime" Precision="3" />
     <Property Name="OutItem" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -2361,7 +2361,7 @@
       <PropertyRef Name="rowguid" />
     </Key>
     <Property Name="TruckWayBillNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="ReceivedDate" Type="DateTime" Precision="3" />
+    <Property Name="ReceivedDate" Type="DateTime" Precision="3" Nullable="false" />
     <Property Name="Dateofissue" Type="DateTime" Precision="3" />
     <Property Name="NoofOriginals" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
     <Property Name="NotifyPatty" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />

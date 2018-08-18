@@ -437,6 +437,15 @@ Partial Public Class TruckWaybillRec
     Protected WithEvents txtPartDesc As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
+    '''btnPartDesc control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnPartDesc As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
     '''txtMeasurement_Detail control.
     '''</summary>
     '''<remarks>
@@ -662,6 +671,24 @@ Partial Public Class TruckWaybillRec
     Protected WithEvents Repeater4 As Global.System.Web.UI.WebControls.Repeater
 
     '''<summary>
+    '''PartDescPanel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents PartDescPanel As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''PartDescUpdatePanel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents PartDescUpdatePanel As Global.System.Web.UI.UpdatePanel
+
+    '''<summary>
     '''Repeater5 control.
     '''</summary>
     '''<remarks>
@@ -669,4 +696,31 @@ Partial Public Class TruckWaybillRec
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents Repeater5 As Global.System.Web.UI.WebControls.Repeater
+
+    '''<summary>
+    '''TrucknoPanel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents TrucknoPanel As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''TrucknoUpdatePanel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents TrucknoUpdatePanel As Global.System.Web.UI.UpdatePanel
+
+    '''<summary>
+    '''Repeater6 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Repeater6 As Global.System.Web.UI.WebControls.Repeater
 End Class
