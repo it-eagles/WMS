@@ -572,8 +572,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblHAWBDetail' does not have a pr
     <Property Name="UserBy" Type="varchar" MaxLength="50" />
     <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblImpBookingInvDetail' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblImpBookingInvDetail">
     <Key>
       <PropertyRef Name="InvoiceNo" />
@@ -973,8 +971,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblImpInvoiceDetail' does not hav
     <Property Name="ItemRemark" Type="varchar" MaxLength="200" />
     <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblImpLogFlight' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblImpLogFlight">
     <Key>
       <PropertyRef Name="LotNo" />
@@ -3102,7 +3098,9 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblExpGenLOT" EntityType="Self.tblExpGenLOT" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblGenAutoRunNo" EntityType="Self.tblGenAutoRunNo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblImpBookingInvDetail" EntityType="Self.tblImpBookingInvDetail" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblImpGenLOT" EntityType="Self.tblImpGenLOT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblImpLogFlight" EntityType="Self.tblImpLogFlight" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblLogUser" EntityType="Self.tblLogUser" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblMasterCode2" EntityType="Self.tblMasterCode2" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblMenu" EntityType="Self.tblMenu" Schema="dbo" store:Type="Tables" />
@@ -3482,48 +3480,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
     [tblHAWBDetail].[rowguid] AS [rowguid]
     FROM [dbo].[tblHAWBDetail] AS [tblHAWBDetail]</DefiningQuery>
     </EntitySet>
-    <EntitySet Name="tblImpBookingInvDetail" EntityType="Self.tblImpBookingInvDetail" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblImpBookingInvDetail].[InvoiceNo] AS [InvoiceNo], 
-    [tblImpBookingInvDetail].[LOTNo] AS [LOTNo], 
-    [tblImpBookingInvDetail].[DateInv] AS [DateInv], 
-    [tblImpBookingInvDetail].[ProductCode] AS [ProductCode], 
-    [tblImpBookingInvDetail].[ProductName] AS [ProductName], 
-    [tblImpBookingInvDetail].[Quantity] AS [Quantity], 
-    [tblImpBookingInvDetail].[QuantityUnit] AS [QuantityUnit], 
-    [tblImpBookingInvDetail].[RemarkInv] AS [RemarkInv], 
-    [tblImpBookingInvDetail].[PO] AS [PO], 
-    [tblImpBookingInvDetail].[Pallet] AS [Pallet], 
-    [tblImpBookingInvDetail].[UnitPallet] AS [UnitPallet], 
-    [tblImpBookingInvDetail].[Weight] AS [Weight], 
-    [tblImpBookingInvDetail].[UnitWeight] AS [UnitWeight], 
-    [tblImpBookingInvDetail].[Pallet1] AS [Pallet1], 
-    [tblImpBookingInvDetail].[UnitPallet1] AS [UnitPallet1], 
-    [tblImpBookingInvDetail].[UnitDimension] AS [UnitDimension], 
-    [tblImpBookingInvDetail].[AmountPallet] AS [AmountPallet], 
-    [tblImpBookingInvDetail].[Width] AS [Width], 
-    [tblImpBookingInvDetail].[Height] AS [Height], 
-    [tblImpBookingInvDetail].[Lenght] AS [Lenght], 
-    [tblImpBookingInvDetail].[Num] AS [Num], 
-    [tblImpBookingInvDetail].[Currency] AS [Currency], 
-    [tblImpBookingInvDetail].[ExchangeRate] AS [ExchangeRate], 
-    [tblImpBookingInvDetail].[PriceForeigh] AS [PriceForeigh], 
-    [tblImpBookingInvDetail].[PriceForeighAmount] AS [PriceForeighAmount], 
-    [tblImpBookingInvDetail].[PriceBath] AS [PriceBath], 
-    [tblImpBookingInvDetail].[PriceBathAmount] AS [PriceBathAmount], 
-    [tblImpBookingInvDetail].[rowguid] AS [rowguid], 
-    [tblImpBookingInvDetail].[ItemNo] AS [ItemNo], 
-    [tblImpBookingInvDetail].[UserBy] AS [UserBy], 
-    [tblImpBookingInvDetail].[LastUpdate] AS [LastUpdate], 
-    [tblImpBookingInvDetail].[Shipment] AS [Shipment], 
-    [tblImpBookingInvDetail].[OwnerPN] AS [OwnerPN], 
-    [tblImpBookingInvDetail].[CustomerPN] AS [CustomerPN], 
-    [tblImpBookingInvDetail].[Prodes] AS [Prodes], 
-    [tblImpBookingInvDetail].[ExpTariffCode] AS [ExpTariffCode], 
-    [tblImpBookingInvDetail].[WHSource] AS [WHSource], 
-    [tblImpBookingInvDetail].[EntryItemNo] AS [EntryItemNo]
-    FROM [dbo].[tblImpBookingInvDetail] AS [tblImpBookingInvDetail]</DefiningQuery>
-    </EntitySet>
     <EntitySet Name="tblImpInvoice" EntityType="Self.tblImpInvoice" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [tblImpInvoice].[InvoiceNo] AS [InvoiceNo], 
@@ -3716,21 +3672,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
     [tblImpInvoiceDetail].[ItemRemark] AS [ItemRemark], 
     [tblImpInvoiceDetail].[rowguid] AS [rowguid]
     FROM [dbo].[tblImpInvoiceDetail] AS [tblImpInvoiceDetail]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblImpLogFlight" EntityType="Self.tblImpLogFlight" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblImpLogFlight].[LotNo] AS [LotNo], 
-    [tblImpLogFlight].[Number] AS [Number], 
-    [tblImpLogFlight].[FlightNo] AS [FlightNo], 
-    [tblImpLogFlight].[DateFlight] AS [DateFlight], 
-    [tblImpLogFlight].[House] AS [House], 
-    [tblImpLogFlight].[HouseNo] AS [HouseNo], 
-    [tblImpLogFlight].[Quantity] AS [Quantity], 
-    [tblImpLogFlight].[UnitQuantity] AS [UnitQuantity], 
-    [tblImpLogFlight].[Userby] AS [Userby], 
-    [tblImpLogFlight].[Updateby] AS [Updateby], 
-    [tblImpLogFlight].[rowguid] AS [rowguid]
-    FROM [dbo].[tblImpLogFlight] AS [tblImpLogFlight]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="tblImpPackingList" EntityType="Self.tblImpPackingList" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 

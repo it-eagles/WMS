@@ -1,6 +1,11 @@
-﻿Public Class InvoicePackingListRec
+﻿Imports System.Transactions
+
+Public Class InvoicePackingListRec
     Inherits System.Web.UI.Page
     Dim db As New LKBWarehouseEntities1_Test
+    Dim DiffBy As String
+    Dim TermTransport As String
+    Dim OnbehalfStatus As String
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         showCountry()
@@ -12,6 +17,13 @@
         showshipmode()
         showdeliveryterm()
         showshipmark()
+
+        Head_fieldset.Disabled = True
+        invoiceheader_fieldset.Disabled = True
+        easjob_fieldset.Disabled = True
+        itemdetail_fieldset.Disabled = True
+        packinglist_fieldset.Disabled = True
+
         'showListShipper()
         'showListConsignee()
         'showListCustomerCode()
@@ -698,28 +710,233 @@
         Catch ex As Exception
         End Try
     End Sub
-
-    Protected Sub btnEnablebehalf_EASJOB_ServerClick(sender As Object, e As EventArgs)
-        LeftForm_EASJOB.Visible = True
-        RightForm_EASJOB.Visible = True
-
-    End Sub
-
+    '---------------------------------------------------------------------Click btn Add Method---------------------------------------------------
     Protected Sub btnAddHead_ServerClick(sender As Object, e As EventArgs)
         btnSaveAddHead.Visible = True
         btnSaveEditHead.Visible = False
-    End Sub
 
+        Head_fieldset.Disabled = False
+        invoiceheader_fieldset.Disabled = False
+        easjob_fieldset.Disabled = False
+        itemdetail_fieldset.Disabled = True
+        packinglist_fieldset.Disabled = True
+
+        owner_easjob_fieldset.Disabled = True
+        shipto_easjob_fieldset.Disabled = True
+        easinv_easjob_fieldset.Disabled = True
+        billto_easjob_fieldset.Disabled = True
+    End Sub
+    '---------------------------------------------------------------------Click btn Edit Method---------------------------------------------------
     Protected Sub btnEditHead_ServerClick(sender As Object, e As EventArgs)
         btnSaveEditHead.Visible = True
         btnSaveAddHead.Visible = False
-    End Sub
 
+        Head_fieldset.Disabled = False
+        invoiceheader_fieldset.Disabled = False
+        easjob_fieldset.Disabled = False
+        itemdetail_fieldset.Disabled = False
+        packinglist_fieldset.Disabled = False
+    End Sub
+    '---------------------------------------------------------------------Click btn SaveAdd Method---------------------------------------------------
     Protected Sub btnSaveAddHead_ServerClick(sender As Object, e As EventArgs)
 
     End Sub
-
+    '---------------------------------------------------------------------Click btn SaveEdit Method---------------------------------------------------
     Protected Sub btnSaveEditHead_ServerClick(sender As Object, e As EventArgs)
+
+    End Sub
+    '---------------------------------------------------------------------SaveData Add Method---------------------------------------------------
+    '   Private Sub SaveDATA_New()
+
+    '       If txtInvoiceNo_BeforeTab.Value.Trim, _ = "" Then
+    '           MsgBox("กรุณาป้อนรหัส Invoice No ก่อน !!!")
+    '           txtInvoiceNo_BeforeTab.Focus()
+    '           Exit Sub
+    '       End If
+
+    '       If txtShippercode.Value.Trim, _ = "" Then
+    '           MsgBox("กรุณาป้อนรหัส Shipper Code ก่อน !!!")
+    '           txtShippercode.Focus()
+    '           Exit Sub
+    '       End If
+
+    '       If txtConsigneeCode.Value.Trim, _ = "" Then
+    '           MsgBox("กรุณาป้อนรหัส Consignee Code ก่อน !!!")
+    '           txtConsigneeCode.Focus()
+    '           Exit Sub
+    '       End If
+
+    '       If rdbDiffAmount1.Checked = True Then
+    '           DiffBy = "Diff by items-amount"
+    '       End If
+
+    '       If rdbDiffWeight1.Checked = True Then
+    '           DiffBy = "Diff by items-Weight"
+    '       End If
+
+    '       If rdbNotifyParty1.Checked = True Then
+    '           TermTransport = "Notfy Party"
+    '       End If
+
+    '       If rdbOnBehalfOf1.Checked = True Then
+    '           TermTransport = "On Behalf of"
+    '       End If
+
+    '       If chkEnable.Checked = True Then
+    '           OnbehalfStatus = "Enable On behalf of"
+    '       Else
+    '           OnbehalfStatus = "Disable On behalf of"
+    '       End If
+
+    '       'sb = New StringBuilder()
+    '       'sb.Append("INSERT INTO tblImpInvoice (InvoiceNo,ReferenceNo,PurchaseOrderNo,InvoiceDate,DeliveryDate,ReferenceDate,ExporterCode,ExporterENG,Street_Number,District,Subprovince,Province,PostCode,CompensateCode,ConsignneeCode,ConsignneeENG,ConsignneeStreet_Number,ConsignneeDistrict,ConsignneeSubProvince,ConsignneeProvince,ConsignneePostCode,ConsignneeEMail,PurchaseCountryCode,PurchaseCountryName,DestinationCountryCode,")
+    '       'sb.Append(" DestinationCountryName,CountryCode,CountryName,TermOfPayment,Term,TotalNetWeight,SumItemWeight,TotalInvoiceCurrency,TotalInvoiceAmount,TotalInvoiceAmount1,ForwardingCurrency,ForwardingAmount,ForwardingAmount1,FreightCurrency,FreightAmount,FreightAmount1,InsuranceCurrency,InsuranceAmount,InsuranceAmount1,PackingChargeCurrency,PackingChargeAmount,PackingChargeAmount1,ForeignInlandCurrency,ForeignInlandAmount,ForeignInlandAmount1,LandingChargeCurrency,")
+    '       'sb.Append(" LandingChargeAmount,LandingChargeAmount1,OtherChargeCurrency,OtherChargeAmount,OtherChargeAmount1,TransmitDate,DiffBy,TermforShip,OnbehalfStatus,EASExporterCode,EASNameEng,StreetAndNumber,ESADistrict,EASSubProvince,EASProvince,EASPostCode,EASTCompensete,EASCustomerCode,EASCustomerENG,EASCustomerAddress,EASCustomerEMail,EASCustomerTelNo,EASCustomerFaxNo,")
+    '       'sb.Append(" EASCustomerContactPerson,EASInvRefNo,EASLOTNo,EASCustomerRefNo,EASSpecialInstruction,EASShipMode,EASDeliveryTerm,EASShippingMark,EASShippingMarkCompany,EASShippingMarkAddress,EASRemark,EASTotalCurrency,EASBilltoCustomerCode,EASBilltoCustomerENG,EASBilltoCustomerAddress,EASBilltoCustomerEMail,EASBilltoCustomerTelNo,EASBilltoCustomerFaxNo,EASBilltoCustomerContactPerson,PLTNetAmount,UnitPLT,CTNPLTName,CTNNetAmount,UnitCTN,UnitCTNName,GrossWeightAmount,QountityAmount,VolumAmount,TotalTextPack,CarLicense,DriverName,PrintCountInv,PrintCountPack,PrintCount107,PrintCount108,PrintCountDoc,CustomsConfirmDate,App,CreateBy,CreateDate)")
+    '       'sb.Append(" VALUES (@InvoiceNo,@ReferenceNo,@PurchaseOrderNo,@InvoiceDate,@DeliveryDate,@ReferenceDate,@ExporterCode,@ExporterENG,@Street_Number,@District,@Subprovince,@Province,@PostCode,@CompensateCode,@ConsignneeCode,@ConsignneeENG,@ConsignneeStreet_Number,@ConsignneeDistrict,@ConsignneeSubProvince,@ConsignneeProvince,@ConsignneePostCode,@ConsignneeEMail,@PurchaseCountryCode,@PurchaseCountryName,@DestinationCountryCode,")
+    '       'sb.Append(" @DestinationCountryName,@CountryCode,@CountryName,@TermOfPayment,@Term,@TotalNetWeight,@SumItemWeight,@TotalInvoiceCurrency,@TotalInvoiceAmount,@TotalInvoiceAmount1,@ForwardingCurrency,@ForwardingAmount,@ForwardingAmount1,@FreightCurrency,@FreightAmount,@FreightAmount1,@InsuranceCurrency,@InsuranceAmount,@InsuranceAmount1,@PackingChargeCurrency,@PackingChargeAmount,@PackingChargeAmount1,@ForeignInlandCurrency,@ForeignInlandAmount,@ForeignInlandAmount1,@LandingChargeCurrency,")
+    '       'sb.Append(" @LandingChargeAmount,@LandingChargeAmount1,@OtherChargeCurrency,@OtherChargeAmount,@OtherChargeAmount1,@TransmitDate,@DiffBy,@TermforShip,@OnbehalfStatus,@EASExporterCode,@EASNameEng,@StreetAndNumber,@ESADistrict,@EASSubProvince,@EASProvince,@EASPostCode,@EASTCompensete,@EASCustomerCode,@EASCustomerENG,@EASCustomerAddress,@EASCustomerEMail,@EASCustomerTelNo,@EASCustomerFaxNo,")
+    '       'sb.Append(" @EASCustomerContactPerson,@EASInvRefNo,@EASLOTNo,@EASCustomerRefNo,@EASSpecialInstruction,@EASShipMode,@EASDeliveryTerm,@EASShippingMark,@EASShippingMarkCompany,@EASShippingMarkAddress,@EASRemark,@EASTotalCurrency,@EASBilltoCustomerCode,@EASBilltoCustomerENG,@EASBilltoCustomerAddress,@EASBilltoCustomerEMail,@EASBilltoCustomerTelNo,@EASBilltoCustomerFaxNo,@EASBilltoCustomerContactPerson,@PLTNetAmount,@UnitPLT,@CTNPLTName,@CTNNetAmount,@UnitCTN,@UnitCTNName,@GrossWeightAmount,@QountityAmount,@VolumAmount,@TotalTextPack,@CarLicense,@DriverName,@PrintCountInv,@PrintCountPack,@PrintCount107,@PrintCount108,@PrintCountDoc,@CustomsConfirmDate,@App,@CreateBy,@CreateDate)")
+
+    '       If MsgBox("คุณต้องการเพิ่มรายการ LOT No ใหม่ ใช่หรือไม่ ?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+    '           Using tran As New TransactionScope()
+    '               Try
+    '                   db.Database.Connection.Open()
+    '                   db.tblImpInvoices.Add(New tblImpInvoice With { _
+    '                   .InvoiceNo = txtInvoiceNo_BeforeTab.Value.Trim, _
+    '                   .ReferenceNo  = txtDeclaretion_BeforeTab.Value.Trim, _
+    '                   .PurchaseOrderNo  = txtJobNo_BeforeTab.Value.Trim, _
+    '                   .InvoiceDate  = txtdatepickerInvoiceDate_beforeTab.Text.Trim, _
+    '                   .DeliveryDate  = txtdatepickerDeliveryDate_beforeTab.Text.Trim, _
+    '                   .ReferenceDate  = txtdatepickerCustomsRefDate_beforeTab.Text.Trim, _
+    '                   .ExporterCode  = txtShippercode.Value.Trim, _
+    '                   .ExporterENG  = txtNameShipper_Invoice.Value.Trim, _
+    '                   .Street_Number  = txtAddress1Shipper.Value.Trim, _
+    '                   .District  = txtAddress2Shipper.Value.Trim, _
+    '                   .Subprovince  = txtAddress3Shipper.Value.Trim, _
+    '                   .Province  = txtAddress4Shipper.Value.Trim, _
+    '                   .PostCode  = txtAddress5Shipper.Value.Trim, _
+    '                   .CompensateCode  = txtEmailShipper.Value.Trim, _
+    '                   .ConsignneeCode  = txtConsigneeCode.Value.Trim, _
+    '                   .ConsignneeENG  = txtNameConsignee_Invoice.Value.Trim, _
+    '                   .ConsignneeStreet_Number  = txtAddress1Consignee.Value.Trim, _
+    '                   .ConsignneeDistrict  = txtAddress2Consignee.Value.Trim, _
+    '                   .ConsignneeSubProvince  = txtAddress3Consignee.Value.Trim, _
+    '                   .ConsignneeProvince  = txtAddress4Consignee.Value.Trim, _
+    '                   .ConsignneePostCode  = txtAddress5Consignee.Value.Trim, _
+    '                   .ConsignneeEMail  = txtEmailConsignee.Value.Trim, _
+    '                   .PurchaseCountryCode  = ddlPurchaseCountry_Invoice.Text.Trim, _
+    '                   .PurchaseCountryName  = txtPurchaseCountry_Invoice.Value.Trim, _
+    '                   .DestinationCountryCode  = ddlDestinationCountry_Invoice.Text.Trim, _
+    '                   .DestinationCountryName  = txtDestinationCountry_Invoice.Value.Trim, _
+    '                   .CountryCode  = ddlOriginCountry_Invoice.Text.Trim, _
+    '                   .CountryName  = txtOriginCountry_Invoice.Value.Trim, _
+    '                   .TermOfPayment  = ddlTermOfPayment_Invoice.Text.Trim, _
+    '                   .Term  = ddlTerm_Invoice.Text.Trim, _
+    '                   .TotalNetWeight = CDbl(txtTotalNetWeight_Invoice.Value).ToString("#,##0.000"), _
+    '                   .SumItemWeight = CDbl(txtSumItemWeight_Invoice.Value).ToString("#,##0.000"), _
+    '                   .TotalInvoiceCurrency  = ddlTotalInvoice_Invoice.Text.Trim, _
+    '                   .TotalInvoiceAmount = CDbl(txtTotalInvoice1_Invoice.Value).ToString("#,##0.000"), _
+    '                   .TotalInvoiceAmount1 = CDbl(txtTotalInvoice2_Invoice.Value).ToString("#,##0.000"), _
+    '                   .ForwardingCurrency  = ddlForwarding_Invoice.Text.Trim, _
+    '                   .ForwardingAmount = CDbl(txtForwarding1_Invoice.Value).ToString("#,##0.000"), _
+    '                   .ForwardingAmount1 = CDbl(txtForwarding2_Invoice.Value).ToString("#,##0.000"), _
+    '                   .FreightCurrency  = ddlFreight_Invoice.Text.Trim, _
+    '                   .FreightAmount = CDbl(txtFreight1_Invoice.Value).ToString("#,##0.000"), _
+    '                   .FreightAmount1 = CDbl(txtFreight2_Invoice.Value).ToString("#,##0.000"), _
+    '                   .InsuranceCurrency  = ddlInsurance_Invoice.Text.Trim, _
+    '                   .InsuranceAmount = CDbl(txtInsurance1_Invoice.Value).ToString("#,##0.000"), _
+    '                   .InsuranceAmount1 = CDbl(txtInsurance2_Invoice.Value).ToString("#,##0.000"), _
+    '                   .PackingChargeCurrency  = ddlPackingCharge_Invoice.Text.Trim, _
+    '                   .PackingChargeAmount = CDbl(txtPackingCharge1_Invoice.Value).ToString("#,##0.000"), _
+    '                   .PackingChargeAmount1 = CDbl(txtPackingCharge2_Invoice.Value).ToString("#,##0.000"), _
+    '                   .ForeignInlandCurrency  = ddlHandingCharge_Invoice.Text.Trim, _
+    '                   .ForeignInlandAmount = CDbl(txtHandingCharge1_Invoice.Value).ToString("#,##0.000"), _
+    '                   .ForeignInlandAmount1 = CDbl(txtHandingCharge2_invoice.Value).ToString("#,##0.000"), _
+    '                   .LandingChargeCurrency  = ddlLandingCharge_Invoice.Text.Trim, _
+    '                   .LandingChargeAmount = CDbl(txtLandingCharge1_Invoice.Value).ToString("#,##0.000"), _
+    '                   .LandingChargeAmount1 = CDbl(txtLandingCharge2_Invoice.Value).ToString("#,##0.000"), _
+    '                   .OtherChargeCurrency  = ddlTotalInvoiceTHB_Invoice.Text.Trim, _
+    '                   .OtherChargeAmount = CDbl(txtTotalInvoiceTHB1_Invoice.Value).ToString("#,##0.000"), _
+    '                   .OtherChargeAmount1  = CDbl(txtTotalInvoiceTHB2_Invoice.Value).ToString("#,##0.000"), _
+    '                   .TransmitDate  = txtdatepickerTransmitDate.Text.Trim, _
+    '                   .DiffBy  = DiffBy, _
+    '                   .TermforShip  = TermTransport, _
+    '                   .OnbehalfStatus  = OnbehalfStatus, _
+    '                   .EASExporterCode  = txtOwnerCode_EASJOB.Value.Trim, _
+    '                   .EASNameEng  = txtNameOwner_EASJOB.Value.Trim, _
+    '                   .StreetAndNumber  = txtAddress1Owner_EASJOB.Value.Trim, _
+    '                   .ESADistrict  = txtAddress2Owner_EASJOB.Value.Trim, _
+    '                   .EASSubProvince  = txtAddress3Owner_EASJOB.Value.Trim, _
+    '                   .EASProvince  = txtAddress4Owner_EASJOB.Value.Trim, _
+    '                   .EASPostCode  = txtAddress5Owner_EASJOB.Value.Trim, _
+    '                   .EASTCompensete  = txtEmailOwner_EASJOB.Value.Trim, _
+    '                   .EASCustomerCode  = txtCustomerCode_EASJOB.Value.Trim, _
+    '                   .EASCustomerENG  = txtNameCustomer_EASJOB.Value.Trim, _
+    '                   .EASCustomerAddress  = txtAddressCustomer_EASJOB.Value.Trim, _
+    '                   .EASCustomerEMail  = txtEmailCustomer_EASJOB.Value.Trim, _
+    '                   .EASCustomerTelNo  = txtTelNoCustomer_EASJOB.Value.Trim, _
+    '                   .EASCustomerFaxNo  = txtFaxNoCustomer_EASJOB.Value.Trim, _
+    '                   .EASCustomerContactPerson  = txtContractPersonCustomer_EASJOB.Value.Trim, _
+    '                   .EASInvRefNo  = txtEASINV_EASJOB.Value.Trim, _
+    '                   .EASLOTNo  = txtEASLOT_EASJOB.Value.Trim, _
+    '                   .EASCustomerRefNo  = txtReferenceLine_EASJOB.Value.Trim, _
+    '                   .EASSpecialInstruction  = txtTruckWaybill_EASJOB.Value.Trim, _
+    '                   .EASShipMode  = ddlShipMode_EASJOB.Text.Trim, _
+    '                   .EASDeliveryTerm  = ddlDeliveryTerm_EASJOB.Text.Trim, _
+    '                   .EASShippingMark  = ddlShippingMark_EASJOB.Text.Trim, _
+    '                   .EASShippingMarkCompany  = txtCompany_EASJOB.Value.Trim, _
+    '                   .EASShippingMarkAddress  = txtAddressEAS_EASJOB.Value.Trim, _
+    '                   .EASRemark  = txtRemarkEAS_EASJOB.Value.Trim, _
+    '                   .EASTotalCurrency  = txtTotal_EASJOB.Value.Trim, _
+    '                   .EASBilltoCustomerCode  = txtCustomerCode_BillTo_EASJOB.Value.Trim, _
+    '                   .EASBilltoCustomerENG  = txtNameCustomer_BillTo_EASJOB.Value.Trim, _
+    '                   .EASBilltoCustomerAddress  = txtAddressCustomer_BillTo_EASJOB.Value.Trim, _
+    '                   .EASBilltoCustomerEMail  = txtEmailCustomer_BillTo_EASJOB.Value.Trim, _
+    '                   .EASBilltoCustomerTelNo  = txtTelNoCustomer_BillTo_EASJOB.Value.Trim, _
+    '                   .EASBilltoCustomerFaxNo  = txtFaxNoCustomer_BillTo_EASJOB.Value.Trim, _
+    '                   .EASBilltoCustomerContactPerson  = txtContractPersonCustomer_BillTo_EASJOB.Value.Trim, _
+    '                   .PLTNetAmount = CDbl(txtPLTNetAmount_PACKINGLIST.Value).ToString("#,##0.000"), _
+    '                   .UnitPLT  = ddlPLTNetAmount_PACKINGLIST.Text.Trim, _
+    '                   .CTNPLTName  = txtPLTNetAmount2_PACKINGLIST.Value.Trim, _
+    '                   .CTNNetAmount = CDbl(txtCTNNetAmount_PACKINGLIST.Value).ToString("#,##0.000"), _
+    '                   .UnitCTN  = ddlCTNNetAmount_PACKINGLIST.Text.Trim, _
+    '                   .UnitCTNName  = txtCTNNetAmount2_PACKINGLIST.Value.Trim, _
+    '                   '.GrossWeightAmount = CDbl(txtTotalGrossWeight.Text).ToString("#,##0.000"), _
+    '                   '.QountityAmount = CDbl(txtTotalQuantity.Text).ToString("#,##0.000"), _
+    '                   '.VolumAmount = CDbl(txtVolumAmount.Text).ToString("#,##0.000"), _
+    '                   '.TotalTextPack  = txtTotalText.Text.Trim, _
+    '                   '.CarLicense  = dcboCarLicense.Text.Trim, _
+    '                   '.DriverName  = dcboDriverName.Text.Trim, _
+    '                   '.PrintCountInv = "0"
+    '                   '.PrintCountPack = "0"
+    '                   '.PrintCount107 = "0"
+    '                   '.PrintCount108 = "0"
+    '                   '.PrintCountDoc = "0"
+    '                   '.CustomsConfirmDate  = CustomsConfirmDate.Value.Trim, _
+    '                   '.App = "Wait"
+    '                   '.CreateBy  = DBConnString.UserName"
+    '                   '.CreateDate  = Now"
+    '                   '.ExecuteNonQuery()
+    '})
+
+    '                   db.SaveChanges()
+    '                   tran.Complete()
+    '                   ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('Add สำเร็จ !');", True)
+
+    '               Catch ex As Exception
+    '                   ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด กรุณาบันทึกข้อมูลใหม่อีกครั้ง');", True)
+    '               Finally
+    '                   db.Database.Connection.Close()
+    '                   db.Dispose()
+    '                   tran.Dispose()
+    '               End Try
+    '           End Using
+    '       End If
+    '       txtInvoiceNo_BeforeTab.Focus()
+    '   End Sub 'saveเข้าtblImpInvoice
+
+    Protected Sub Unnamed_ServerClick4(sender As Object, e As EventArgs)
 
     End Sub
 End Class

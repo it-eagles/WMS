@@ -978,6 +978,7 @@ Public Class TruckWaybillRec
         truckwaybillhead_fieldset.Disabled = False
         truckwaybilldetail_fieldset.Disabled = False
 
+        txtTruckW_B.Disabled = False
         btnSaveAddHead.Visible = False
         btnSaveEditHead.Visible = True
         btnSearchTruck.Visible = True
@@ -1003,8 +1004,17 @@ Public Class TruckWaybillRec
     End Sub
     '------------------------------------------------------------Click btn SaveEdit Truck Way Bill Head--------------------------------------
     Protected Sub btnSaveEditHead_ServerClick(sender As Object, e As EventArgs)
-        SaveDATA_Modify()
-        ClearDATA()
+        Dim user As String = CStr(Session("UserName"))
+        Dim form As String = "frmTruckWayBillImp"
+        Dim cu = From um In db.tblUserMenus Where um.UserName = user And um.Form = form And um.Save_ = 1
+        If cu.Any Then
+
+            SaveDATA_Modify()
+            ClearDATA()
+        Else
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ์เมนูนี้ !!!')", True)
+        End If
+
     End Sub
     '------------------------------------------------------------Click btn SaveNew Truck Way Bill Datail--------------------------------------
     Protected Sub btnSaveNew_Detail_ServerClick(sender As Object, e As EventArgs)

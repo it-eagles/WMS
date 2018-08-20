@@ -42,7 +42,7 @@
                 <!-- left column -->
 
                 <div class="panel panel-default">
-
+                    <fieldset runat="server" id="Head_fieldset">
                     <div class="col-md-12">
                         <h1></h1>
                     <div class="col-sm-6">
@@ -105,6 +105,7 @@
                         <div class="form-group" style="height:22px;"></div>
                         <div class="form-group" style="height:22px;"></div>
                     </div>
+                    </fieldset>
 
                                 <div id="Tabs" role="tabpanel" class="nav-tabs-custom">
                                     <!-- Nav tabs -->
@@ -120,6 +121,7 @@
                                         <%-----------------------------------------------------Start INVOICE HEADER-----------------------------------------------------------%>
                                         <!------- Import Goods ------->
                                         <div class="active tab-pane" id="invoiceheader">
+                                            <fieldset runat="server" id="invoiceheader_fieldset">
                                             <!-- Post -->
                                             <div class="row">
                                                 <%-----------------------------------------------------Start Left Form--------------------------------------------------%>
@@ -327,9 +329,9 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <label for="txtTotalNewWeight" class="col-sm-4 control-label">Total New Weight:</label>
+                                                                    <label for="txtTotalNetWeight" class="col-sm-4 control-label">Total Net Weight:</label>
                                                                     <div class="col-sm-2">
-                                                                        <input class="form-control" id="txtTotalNewWeight_Invoice" runat="server" value="0.0" />
+                                                                        <input class="form-control" id="txtTotalNetWeight_Invoice" runat="server" value="0.0" />
                                                                     </div>
                                                                     <label for="txtSumItemWeight" class="col-sm-4 control-label">Sum Item Weight:</label>
                                                                     <div class="col-sm-2">
@@ -482,8 +484,9 @@
                                                                     <div class="col-sm-5">
                                                                         <div class="radio">
                                                                             <label>
-                                                                                <asp:RadioButton runat="server" ID="rdbDiffAmount" Text="Diff By Item-Amount" onclick="EnableDisableTextBox();" GroupName="option2" />
-                                                                            </label>
+                                                                                <input type="radio" name="optionsRadios" runat="server" id="rdbDiffAmount1" value="option1" />
+                                                                                Diff By Item-Amount
+                                                                            </label>                                                                            
                                                                         </div>
                                                                     </div>
                                                                     <label for="txtTransmitDate" class="col-sm-3 control-label">Transmit Date:</label>
@@ -497,21 +500,24 @@
                                                                     <div class="col-sm-5">
                                                                         <div class="radio">
                                                                             <label>
-                                                                                <asp:RadioButton runat="server" ID="rdbDiffWeight" Text="Diff By Item-Weight" onclick="EnableDisableTextBox();" GroupName="option2" />
-                                                                            </label>
+                                                                                <input type="radio" name="optionsRadios" runat="server" id="rdbDiffWeight1" value="option2" />
+                                                                                Diff By Item-Weight
+                                                                            </label>                                                                            
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-sm-3">
                                                                         <div class="radio">
                                                                             <label>
-                                                                                <asp:RadioButton runat="server" ID="rdbNotifyParty" Text="Notify Party" onclick="EnableDisableTextBox();" GroupName="option3" />
-                                                                            </label>
+                                                                                <input type="radio" name="optionsRadios" runat="server" id="rdbNotifyParty1" value="option3" />
+                                                                                Notify Party
+                                                                            </label>                                                                            
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-sm-3">
                                                                         <div class="radio">
                                                                             <label>
-                                                                                <asp:RadioButton runat="server" ID="rdbOnBehalfOf" Text="On Behalf Of" onclick="EnableDisableTextBox();" GroupName="option3" />
+                                                                                <input type="radio" name="optionsRadios" runat="server" id="rdbOnBehalfOf1" value="option4" />
+                                                                                On Behalf Of
                                                                             </label>
                                                                         </div>
                                                                     </div>
@@ -528,6 +534,7 @@
                                                 <%--------------------------------------------------------------------End Right Form------------------------------------------------------%>
                                             </div>
                                             <!-- /.post -->
+                                            </fieldset>
                                         </div>
                                         <!------- /. Import Goods ------->
                                         <%-------------------------------------------------------------End INVOICE HEADER-------------------------------------------------------%>
@@ -536,31 +543,38 @@
                                         <%--------------------------------------------------------------Start EAS JOB----------------------------------------------------------%>
                                         <!-------- Export Goods --------->
                                         <div role="tabpanel" class="tab-pane" id="easjob">
+                                            <fieldset runat="server" id="easjob_fieldset">
                                             <!-- Post -->
                                             <div class="row">
 
                                                 <div class="col-lg-12 col-md-12">
                                                     <div class="form-group">
-                                                        <div class="checkbox col-sm-6">
-                                                            <%--<label>Enable On Behalf Of</label>--%>
-                                                            <button class="btn btn-primary" type="submit" runat="server" id="btnEnablebehalf_EASJOB" onserverclick="btnEnablebehalf_EASJOB_ServerClick" >Enable on behalf of</button>
+                                                        <div class="col-sm-1"></div>
+                                                        <div class="checkbox col-sm-6">                                                            
+                                                            <label>
+                                                                <input type="checkbox" runat="server" id="chkEnable" onclick="EnableDisablechkEnable();" />
+                                                                Enable On Behalf Of
+                                                            </label>                                                            
                                                         </div>
                                                     </div>
                                                 </div>
 
                                                 <%-----------------------------------------------------Start Left Form--------------------------------------------------%>
-                                                <div class="col-md-6 visible-lg-block" id="LeftForm_EASJOB" runat="server" visible="false">
+                                                <div class="col-md-6">
                                                     <!-- Horizontal Form -->
 
                                                     <!-- form start -->
                                                     <div class="form-horizontal">
-                                                        <fieldset>
+                                                        <fieldset runat="server" id="owner_easjob_fieldset">
                                                             <legend>Owner</legend>
                                                             <div class="box-body">
                                                                 <div class="form-group">
                                                                     <label for="txtOwnerCode_EASJOB" class="col-sm-4 control-label">Owner Code:</label>
-                                                                    <div class="col-sm-8">
-                                                                        <asp:DropDownList ID="ddlOwnerCode_EASJOB" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                                    <div class="col-sm-6">
+                                                                        <input class="form-control" id="txtOwnerCode_EASJOB" runat="server" autocomplete="off" />
+                                                                    </div>
+                                                                    <div class="col-sm-2">
+                                                                        <button type="button" class="btn btn-block btn-primary" runat="server" onserverclick="Unnamed_ServerClick4"><i class="glyphicon glyphicon-search"></i></button>
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group">
@@ -614,7 +628,7 @@
 
                                                     <!-- general form Commodity -->
                                                     <div class="form-horizontal">
-                                                        <fieldset>
+                                                        <fieldset runat="server" id="shipto_easjob_fieldset">
                                                             <legend>Ship To</legend>
                                                             <div class="box-body">
                                                                 <div class="form-group">
@@ -676,12 +690,12 @@
                                                 <!-- /.col -->
 
                                                 <%-----------------------------------------------------Start Right Form--------------------------------------------------%>
-                                                <div class="col-md-6" id="RightForm_EASJOB" runat="server" visible="false">
+                                                <div class="col-md-6">
                                                     <!-- Horizontal Form -->
 
                                                     <!-- form start -->
                                                     <div class="form-horizontal">
-                                                        <fieldset>
+                                                        <fieldset runat="server" id="easinv_easjob_fieldset">
                                                             <legend>EAS</legend>
                                                             <div class="box-body">
                                                                 <div class="form-group">
@@ -758,7 +772,7 @@
 
                                                     <!-- general form Commodity -->
                                                     <div class="form-horizontal">
-                                                        <fieldset>
+                                                        <fieldset runat="server" id="billto_easjob_fieldset">
                                                             <legend>Bill To</legend>
                                                             <div class="box-body">
                                                                 <div class="form-group">
@@ -819,6 +833,7 @@
                                                 <%---------------------------------------------------------------End Right Form------------------------------------------------%>
                                             </div>
                                             <!-- /.post -->
+                                            </fieldset>
                                         </div>
                                         <!-----/ Export Goods----->
 
@@ -828,6 +843,8 @@
                                         <%--------------------------------------------------------------Start ITEM DETAIL JOB----------------------------------------------------------%>
                                         <!-------- Export Goods --------->
                                         <div role="tabpanel" class="tab-pane" id="itemdetail">
+                                            <fieldset runat="server" id="itemdetail_fieldset">
+
                                             <!-- Post -->
                                             <div class="row">
 
@@ -1277,6 +1294,7 @@
 
                                             </div>
                                             <!-- /.post -->
+                                            </fieldset>
                                         </div>
                                         <!-----/ Export Goods----->
 
@@ -1286,6 +1304,7 @@
                                         <%--------------------------------------------------------------Start Packing List----------------------------------------------------------%>
                                         <!-------- Export Goods --------->
                                         <div role="tabpanel" class="tab-pane" id="packinglist">
+                                            <fieldset runat="server" id="packinglist_fieldset">
                                             <!-- Post -->
                                             <div class="row">
 
@@ -1537,6 +1556,7 @@
 
                                             </div>
                                             <!-- /.post -->
+                                            </fieldset>
                                         </div>
                                         <!-----/ Export Goods----->
 
@@ -1874,6 +1894,23 @@
                             $("[id*=TabName]").val($(this).attr("href").replace("#", ""));
                         });
                     });
+                </script>
+
+                <script type="text/javascript">
+                    function EnableDisablechkEnable() {
+                        var status = document.getElementById('<%=chkEnable.ClientID%>').checked;
+                        if (status == true) {
+                            document.getElementById('<%=owner_easjob_fieldset.ClientID%>').disabled = true;
+                            document.getElementById('<%=shipto_easjob_fieldset.ClientID%>').disabled = false;
+                            document.getElementById('<%=easinv_easjob_fieldset.ClientID%>').disabled = false;
+                            document.getElementById('<%=billto_easjob_fieldset.ClientID%>').disabled = false;
+                        } else if (status == false) {
+                            document.getElementById('<%=owner_easjob_fieldset.ClientID%>').disabled = true;
+                            document.getElementById('<%=shipto_easjob_fieldset.ClientID%>').disabled = true;
+                            document.getElementById('<%=easinv_easjob_fieldset.ClientID%>').disabled = true;
+                            document.getElementById('<%=billto_easjob_fieldset.ClientID%>').disabled = true;
+                        }
+                }
                 </script>
     </form>
 </asp:Content>

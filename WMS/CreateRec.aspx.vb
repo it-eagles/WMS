@@ -27,7 +27,7 @@ Public Class CreateRec
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Dim usename As String = CStr(Session("UserName"))
-        Dim form As String = "frmExpGenLot"
+        Dim form As String = "frmImpGenLot"
         If Not Me.IsPostBack Then
             If classPermis.CheckRead(form, usename) = True Then
                 If Not IsPostBack Then
@@ -1437,17 +1437,16 @@ Public Class CreateRec
     End Sub
     '--------------------------------------------------------Show Data ProductCode In Modal-----------------------------------------
     Private Sub selectProductCode()
-        Dim ProductCode_code As String
-
+        Dim testdate As Integer
+        Dim ProCode As String = ""
         If String.IsNullOrEmpty(txtCodeCustommerGroup.Value.Trim) Then
-            ProductCode_code = ""
-
+            testdate = CInt(Convert.ToDateTime(Date.Now).ToString("yyyy"))
         Else
-            ProductCode_code = txtCodeCustommerGroup.Value.Trim
+            ProCode = txtCodeCustommerGroup.Value.Trim
         End If
 
         Dim cons = (From u In db.tblProductDetails
-                    Where (u.ProductCode = ProductCode_code) Or ProductCode_code = ""
+                    Where u.ProductCode = ProCode Or u.CreateDate.Year = testdate
                    Select New With {u.ProductCode,
                                     u.ImpDesc1,
                                     u.PONo,
@@ -2604,7 +2603,7 @@ Public Class CreateRec
 
     Protected Sub btnSaveAddHead_ServerClick(sender As Object, e As EventArgs)
         Dim user As String = CStr(Session("UserName"))
-        Dim form As String = "frmExpGenLot"
+        Dim form As String = "frmImpGenLot"
         Dim cu = From um In db.tblUserMenus Where um.UserName = user And um.Form = form And um.Save_ = 1
         If cu.Any Then
 
@@ -2641,14 +2640,21 @@ Public Class CreateRec
     End Sub
 
     Protected Sub btnSaveEditHead_ServerClick(sender As Object, e As EventArgs)
-        SaveDATA_Modify()
-        ReadDATA2()
+        Dim user As String = CStr(Session("UserName"))
+        Dim form As String = "frmImpGenLot"
+        Dim cu = From um In db.tblUserMenus Where um.UserName = user And um.Form = form And um.Save_ = 1
+        If cu.Any Then
+            SaveDATA_Modify()
+            ReadDATA2()
+        Else
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ์เมนูนี้ !!!')", True)
+        End If
     End Sub
     Protected Sub btnAddHead_ServerClick(sender As Object, e As EventArgs)
         stockqty_fieldset.Disabled = False
         importgoods_fieldset.Disabled = False
-        exportgoods_fieldset.Disabled = False
-        detailofgoods_fieldset.Disabled = False
+        exportgoods_fieldset.Disabled = True
+        detailofgoods_fieldset.Disabled = True
         assembly_fieldset.Disabled = False
 
         btnSaveAddHead.Visible = True
@@ -2671,6 +2677,11 @@ Public Class CreateRec
 
         btnJobSiteSeacrh.Visible = True
         txtJobno.Disabled = False
+
+        'txtInvoiceNo.Disabled = True
+        'txtProductCodeInvoice.Disabled = True
+        'txtItemNoInvoice.Disabled = True
+
         ClearDATA()
     End Sub
     Private Sub showVisible()
@@ -2679,42 +2690,42 @@ Public Class CreateRec
         btnGenIEATNo.Disabled = True
 
         txtJobno.Disabled = True
-        txtInvoiceNo.Disabled = True
-        txtPONoProductCode.Disabled = True
-        txtQuantityInvoice.Disabled = True
-        ddlQuantityInvoice.Enabled = False
-        txtWeightInvoice.Disabled = True
-        txtdatepickerDataInvoice.Enabled = False
-        txtProductNameInvoice.Disabled = True
-        txtPallet_SKIDInvoice.Disabled = True
-        ddlPallet_SKIDInvoice.Enabled = False
-        txtBoxInvoice.Disabled = True
-        ddlBoxInvoice.Enabled = False
-        txtRemarkInvoice.Disabled = True
-        txtShipmentInvoice.Disabled = True
-        txtItemNoInvoice.Disabled = True
-        txtWidthInvoice.Disabled = True
-        txtHeightInvoice.Disabled = True
-        ddlUnitDimension.Enabled = False
-        txtPalletDimensionInvoice.Disabled = True
-        txtLenghtInvoice.Disabled = True
-        txtEntryItemNoInvoice.Disabled = True
-        ddlCurrencyInvoice.Enabled = False
-        txtExchangeRateInvoice.Disabled = True
-        txtPriceForeignInvoice.Disabled = True
-        txtPriceBathInvoice.Disabled = True
-        txtAmountBathInvoice.Disabled = True
-        txtAmountForeignInvoice.Disabled = True
-        txtFlightNo.Disabled = True
-        txtdatepickerFlightDateInvoice.Enabled = False
-        txtQuantity_PLT_Skid_Invoice.Disabled = True
-        ddlQuantity_PLT_Skid_Invoice.Enabled = False
-        ddlQuantity_PLT_Skid_Invoice2.Enabled = False
-        txtQuantity_PLT_Skid_Invoice2.Disabled = True
-        txtQTYExportInvoice.Disabled = True
+        'txtInvoiceNo.Disabled = True
+        'txtPONoProductCode.Disabled = True
+        'txtQuantityInvoice.Disabled = True
+        'ddlQuantityInvoice.Enabled = False
+        'txtWeightInvoice.Disabled = True
+        'txtdatepickerDataInvoice.Enabled = False
+        'txtProductNameInvoice.Disabled = True
+        'txtPallet_SKIDInvoice.Disabled = True
+        'ddlPallet_SKIDInvoice.Enabled = False
+        'txtBoxInvoice.Disabled = True
+        'ddlBoxInvoice.Enabled = False
+        'txtRemarkInvoice.Disabled = True
+        'txtShipmentInvoice.Disabled = True
+        'txtItemNoInvoice.Disabled = True
+        'txtWidthInvoice.Disabled = True
+        'txtHeightInvoice.Disabled = True
+        'ddlUnitDimension.Enabled = False
+        'txtPalletDimensionInvoice.Disabled = True
+        'txtLenghtInvoice.Disabled = True
+        'txtEntryItemNoInvoice.Disabled = True
+        'ddlCurrencyInvoice.Enabled = False
+        'txtExchangeRateInvoice.Disabled = True
+        'txtPriceForeignInvoice.Disabled = True
+        'txtPriceBathInvoice.Disabled = True
+        'txtAmountBathInvoice.Disabled = True
+        'txtAmountForeignInvoice.Disabled = True
+        'txtFlightNo.Disabled = True
+        'txtdatepickerFlightDateInvoice.Enabled = False
+        'txtQuantity_PLT_Skid_Invoice.Disabled = True
+        'ddlQuantity_PLT_Skid_Invoice.Enabled = False
+        'ddlQuantity_PLT_Skid_Invoice2.Enabled = False
+        'txtQuantity_PLT_Skid_Invoice2.Disabled = True
+        'txtQTYExportInvoice.Disabled = True
 
-        txtSelectFileForImport_Import.Disabled = True
-        btnImport_Import.Disabled = True
+        'txtSelectFileForImport_Import.Disabled = True
+        'btnImport_Import.Disabled = True
     End Sub
     Private Sub Gentbl(type As String)
         Dim tmpDate As Single = CSng(Format(Now(), "dd"))
@@ -3158,6 +3169,7 @@ Public Class CreateRec
             Throw ex
         End Try
     End Sub
+    '-----------------------------------------------------------------Calculete Value in Invoice TAB------------------------------------------
     Private Sub CallculateValue()
 
         If (txtQuantityInvoice.Value.Trim() = "") Then txtQuantityInvoice.Value = "0.0"
@@ -3168,7 +3180,7 @@ Public Class CreateRec
         ValueAmount = CSng(txtQuantityInvoice.Value) * CSng(txtPriceForeignInvoice.Value)
         txtAmountForeignInvoice.Value = ValueAmount.ToString("#,##0.00")
     End Sub
-
+    '-----------------------------------------------------------------Calculete Value in Invoice TAB------------------------------------------
     Private Sub CallculateValueThai()
 
         If (txtExchangeRateInvoice.Value.Trim() = "") Then txtExchangeRateInvoice.Value = "0.0"
@@ -3179,7 +3191,7 @@ Public Class CreateRec
         ValueThaiAmount = CSng(txtExchangeRateInvoice.Value) * CSng(txtPriceForeignInvoice.Value)
         txtPriceBathInvoice.Value = ValueThaiAmount.ToString("#,##0.00")
     End Sub
-
+    '-----------------------------------------------------------------Calculete Value in Invoice TAB------------------------------------------
     Private Sub CallculateValueThaiAmount()
         If (txtQuantityInvoice.Value.Trim() = "") Then txtQuantityInvoice.Value = "0.0"
         If (txtPriceBathInvoice.Value.Trim() = "") Then txtPriceBathInvoice.Value = "0.0"
@@ -3190,7 +3202,7 @@ Public Class CreateRec
         ValueThaiValueAmount = CSng(txtQuantityInvoice.Value) * CSng(txtPriceBathInvoice.Value)
         txtAmountBathInvoice.Value = ValueThaiValueAmount.ToString("#,##0.00")
     End Sub
-
+    '-----------------------------------------------------------------Calculete Value in Invoice TAB------------------------------------------
     Private Sub txtPriceForeignInvoice_KeyUp(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtPriceForeignInvoice.Init
         CallculateValue()
         CallculateValueThai()
@@ -3209,6 +3221,7 @@ Public Class CreateRec
         '        Exit Sub
         'End Select
     End Sub
+    '----------------------------------------------------------------Save New Invoice Data-----------------------------------------------
     Private Sub SaveImpBookingInvDetail()
         Dim DateInv As Date
 
@@ -3299,23 +3312,132 @@ Public Class CreateRec
         End If
         txtJobno.Focus()
     End Sub
+    '----------------------------------------------------------------Save Invoice Data Modify-----------------------------------------------
+    Private Sub SaveImpBookingInvDetail_Modify()
 
+        If txtJobno.Value.Trim() = "" Then
+            MsgBox("กรุณาป้อน LOT No ก่อน !!!")
+            txtJobno.Focus()
+            Exit Sub
+        End If
+
+        If txtInvoiceNo.Value.Trim() = "" Then
+            MsgBox("กรุณาป้อน Invoice No ก่อน !!!")
+            txtInvoiceNo.Focus()
+            Exit Sub
+        End If
+
+        If txtProductCodeInvoice.Value.Trim() = "" Then
+            MsgBox("กรุณาป้อน Product No ก่อน !!!")
+            txtProductCodeInvoice.Focus()
+            Exit Sub
+        End If
+
+        If MsgBox("คุณต้องการแก้ไขรายการ Invoice No ใหม่ ใช่หรือไม่ ?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+            Using tran As New TransactionScope()
+                Try
+                    db.Database.Connection.Open()
+                    'sb = New StringBuilder()
+                    'sb.Append("UPDATE tblImpGenLOT")
+                    'sb.Append(" SET EASLOTNo=@EASLOTNo,LOTDate=@LOTDate,LOTBy=@LOTBy,SalesCode=@SalesCode,SalesName=@SalesName,ConsigneeCode=@ConsigneeCode,ConsignNameEng=@ConsignNameEng,ConsignAddress=@ConsignAddress,ConsignDistrict=@ConsignDistrict,ConsignSubProvince=@ConsignSubProvince,ConsignProvince=@ConsignProvince,ConsignPostCode=@ConsignPostCode,ConsignEmail=@ConsignEmail,ShipperCode=@ShipperCode,ShipperNameEng=@ShipperNameEng,ShipperAddress=@ShipperAddress,ShipperDistrict=@ShipperDistrict,ShipperSubprovince=@ShipperSubprovince,ShipperProvince=@ShipperProvince,ShipperPostCode=@ShipperPostCode,ShipperReturnCode=@ShipperReturnCode,Commodity=@Commodity,QuantityofPart=@QuantityofPart,QuantityUnit=@QuantityUnit,QuantityPack=@QuantityPack,QuantityUnitPack=@QuantityUnitPack,Weight=@Weight,WeightUnit=@WeightUnit,Volume=@Volume,VolumeUnit=@VolumeUnit,MAWB=@MAWB,DocType=@DocType,DocCode=@DocCode,Flight=@Flight,DOCode=@DOCode,DONameENG=@DONameENG,DOStreet_Number=@DOStreet_Number,DODistrict=@DODistrict,DOSubProvince=@DOSubProvince,DOProvince=@DOProvince,DOPostCode=@DOPostCode,DOEmail=@DOEmail,DOContactPerson=@DOContactPerson,IEATNo=@IEATNo,EntryNo=@EntryNo,DeliveryDate=@DeliveryDate,CustomerCode=@CustomerCode,CustomerENG=@CustomerENG,CustomerStreet=@CustomerStreet,CustomerDistrict=@CustomerDistrict,CustomerSub=@CustomerSub,CustomerProvince=@CustomerProvince,CustomerPostCode=@CustomerPostCode,CustomerEmail=@CustomerEmail,CustomerContact=@CustomerContact,PickUpCode=@PickUpCode,PickUpENG=@PickUpENG,PickUpAddress1=@PickUpAddress1,PickUpAddress2=@PickUpAddress2,PickUpAddress3=@PickUpAddress3,PickUpAddress4=@PickUpAddress4,PickUpAddress5=@PickUpAddress5,PickUpEmail=@PickUpEmail,PickUpContact=@PickUpContact,EndCusCode=@EndCusCode,EndCusENG=@EndCusENG,EndCusAddress1=@EndCusAddress1,EndCusAddress2=@EndCusAddress2,EndCusAddress3=@EndCusAddress3,EndCusAddress4=@EndCusAddress4,EndCusAddress5=@EndCusAddress5,EndCusEmail=@EndCusEmail,EndCusContact=@EndCusContact,FreighForwarder=@FreighForwarder,Useby=@Useby,IEATPermit=@IEATPermit,ShipTo=@ShipTo,Remark=@Remark,FLT1=@FLT1,FLT2=@FLT2,FLT3=@FLT3,FLT4=@FLT4,DateFLT1=@DateFLT1,DateFLT2=@DateFLT2,DateFLT3=@DateFLT3,DateFLT4=@DateFLT4,ORGN1=@ORGN1,ORGN2=@ORGN2,ORGN3=@ORGN3,ORGN4=@ORGN4,DSTN1=@DSTN1,DSTN2=@DSTN2,DSTN3=@DSTN3,DSTN4=@DSTN4,ETD1=@ETD1,ETD2=@ETD2,ETD3=@ETD3,ETD4=@ETD4,ETA1=@ETA1,ETA2=@ETA2,ETA3=@ETA3,ETA4=@ETA4,PCS1=@PCS1,PCS2=@PCS2,PCS3=@PCS3,PCS4=@PCS4,Weight1=@Weight1,Weight2=@Weight2,Weight3=@Weight3,Weight4=@Weight4,QuantityPack1=@QuantityPack1,QuantityUnitPack1=@QuantityUnitPack1,TimeDTE=@TimeDTE,DateDTE=@DateDTE,TimeATT=@TimeATT,DateATT=@DateATT,Status1=@Status1,Status2=@Status2,JobSite=@JobSite,BillingNo=@BillingNo,CustomerCodeGroup=@CustomerCodeGroup,CustomerENGGroup=@CustomerENGGroup")
+                    'sb.Append(" WHERE (EASLOTNo=@EASLOTNo)")
+                    Dim edit As tblImpBookingInvDetail = (From c In db.tblImpBookingInvDetails Join z In db.tblImpGenLOTs On z.EASLOTNo Equals c.LOTNo
+                      Select c).First()
+                    If edit IsNot Nothing Then
+                        'edit.InvoiceNo = txtInvoiceNo.Value.Trim
+                        'edit.LOTNo = txtJobno.Value.Trim
+                        edit.DateInv = CType(txtdatepickerDataInvoice.Text.Trim, Date?)
+                        'edit.ProductCode = txtProductCodeInvoice.Value.Trim
+                        edit.ProductName = txtProductNameInvoice.Value.Trim
+                        edit.Quantity = CType(txtQuantityInvoice.Value.Trim, Double?)
+                        edit.QuantityUnit = ddlQuantityInvoice.Text.Trim
+                        edit.RemarkInv = txtRemarkInvoice.Value.Trim
+                        edit.PO = txtPONoProductCode.Value.Trim
+                        edit.Pallet = CType(txtPallet_SKIDInvoice.Value.Trim, Double?)
+                        edit.UnitPallet = ddlPallet_SKIDInvoice.Text.Trim
+                        edit.Weight = CType(txtWeightInvoice.Value.Trim, Double?)
+                        edit.UnitWeight = ddlWeightInvoice.Text.Trim
+                        edit.Pallet1 = CType(txtBoxInvoice.Value.Trim, Double?)
+                        edit.UnitPallet1 = ddlBoxInvoice.Text.Trim
+                        edit.UnitDimension = ddlUnitDimension.Text.Trim
+                        edit.AmountPallet = CType(txtPalletDimensionInvoice.Value.Trim, Double?)
+                        edit.Width = CType(txtWidthInvoice.Value.Trim, Double?)
+                        edit.Height = CType(txtHeightInvoice.Value.Trim, Double?)
+                        edit.Lenght = CType(txtLenghtInvoice.Value.Trim, Double?)
+                        edit.EntryItemNo = CType(txtEntryItemNoInvoice.Value.Trim, Integer?)
+                        edit.Currency = ddlCurrencyInvoice.Text.Trim
+                        edit.ExchangeRate = CType(txtExchangeRateInvoice.Value.Trim, Double?)
+                        edit.PriceForeigh = CType(txtPriceForeignInvoice.Value.Trim, Double?)
+                        edit.PriceForeighAmount = CType(txtAmountForeignInvoice.Value.Trim, Double?)
+                        edit.PriceBath = CType(txtPriceBathInvoice.Value.Trim, Double?)
+                        edit.PriceBathAmount = CType(txtAmountBathInvoice.Value.Trim, Double?)
+                        edit.UserBy = CStr(Session("UserId"))
+                        edit.LastUpdate = Now
+                        edit.Shipment = txtShipmentInvoice.Value.Trim
+                        'edit.ItemNo = CDec(txtItemNoInvoice.Value.Trim)
+                        edit.OwnerPN = cuspart
+                        edit.CustomerPN = endpart
+                        edit.Prodes = Prodes
+                        edit.UserBy = CStr(Session("UserId"))
+
+                        db.SaveChanges()
+                        tran.Complete()
+                        ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('แก้ไขข้อมูล สำเร็จ !');", True)
+                    End If
+                Catch ex As Exception
+                    ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด กรุณาบันทึกข้อมูลใหม่อีกครั้ง');", True)
+                End Try
+            End Using
+        End If
+        txtJobno.Focus()
+    End Sub 'saveModifyเข้าที่tblImpBookingInvDetail
+    '----------------------------------------------------------------Click btn Save Inv------------------------------------------
     Protected Sub btnSaveInvoice_ServerClick(sender As Object, e As EventArgs)
-        SaveImpBookingInvDetail()
-        ReadDATA2()
+        Dim user As String = CStr(Session("UserName"))
+        Dim form As String = "frmImpGenLot"
+        Dim cu = From um In db.tblUserMenus Where um.UserName = user And um.Form = form And um.Save_ = 1
+        If cu.Any Then
+            SaveImpBookingInvDetail()
+            ReadDATA2()
+        Else
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ์เมนูนี้ !!!')", True)
+        End If
     End Sub
-
+    '----------------------------------------------------------------Click btn Modify Inv------------------------------------------
     Protected Sub btnModifyInvoice_ServerClick(sender As Object, e As EventArgs)
-        ReadDATA2()
+        Dim user As String = CStr(Session("UserName"))
+        Dim form As String = "frmImpGenLot"
+        Dim cu = From um In db.tblUserMenus Where um.UserName = user And um.Form = form And um.Save_ = 1
+        If cu.Any Then
+            SaveImpBookingInvDetail_Modify()
+            ReadDATA2()
+        Else
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ์เมนูนี้ !!!')", True)
+        End If
     End Sub
-
+    '----------------------------------------------------------------Click btn Delete Inv------------------------------------------
     Protected Sub btnDeleteInvoice_ServerClick(sender As Object, e As EventArgs)
-        ReadDATA2()
+        Dim user As String = CStr(Session("UserName"))
+        Dim form As String = "frmImpGenLot"
+        Dim cu = From um In db.tblUserMenus Where um.UserName = user And um.Form = form And um.Save_ = 1
+        If cu.Any Then
+            ReadDATA2()
+        Else
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ์เมนูนี้ !!!')", True)
+        End If
     End Sub
-
+    '----------------------------------------------------------------Click btn DeleteAll Inv------------------------------------------
     Protected Sub btnDeleteAllInvoice_ServerClick(sender As Object, e As EventArgs)
-        ReadDATA2()
+        Dim user As String = CStr(Session("UserName"))
+        Dim form As String = "frmImpGenLot"
+        Dim cu = From um In db.tblUserMenus Where um.UserName = user And um.Form = form And um.Save_ = 1
+        If cu.Any Then
+            ReadDATA2()
+        Else
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ์เมนูนี้ !!!')", True)
+        End If
     End Sub
+    '-----------------------------------------------------------------Show Repeater in Invoice TAB------------------------------------------
     Private Sub ReadDATA2()
         Dim sqlConsignnee = From ab In db.tblImpBookingInvDetails Where ab.LOTNo = txtJobno.Value.Trim Order By ab.ItemNo
         Select ab.InvoiceNo,
@@ -3330,6 +3452,8 @@ Public Class CreateRec
             If sqlConsignnee.Count > 0 Then
                 Repea2_Invoice.DataSource = sqlConsignnee.ToList
                 Repea2_Invoice.DataBind()
+                'ScriptManager.RegisterStartupScript(Repea2UpdatePanel.GetType(), Repea2Panel.ClientID, True)
+                Repea2UpdatePanel.Update()
             Else
                 Repea2_Invoice.DataSource = Nothing
                 Repea2_Invoice.DataBind()
@@ -3338,6 +3462,51 @@ Public Class CreateRec
             MsgBox(ex.Message)
             End Try
     End Sub
+    Protected Sub Repea2_Invoice_ItemCommand(source As Object, e As RepeaterCommandEventArgs) Handles Repea2_Invoice.ItemCommand
+        Dim InvoiceNo As String = CStr(e.CommandArgument)
+        Try
+            If e.CommandName.Equals("SelectInvoiceNo") Then
+
+                If String.IsNullOrEmpty(InvoiceNo) Then
+
+                    MsgBox("เป็นค่าว่าง")
+                Else
+                    Dim user = (From u In db.tblImpBookingInvDetails Where u.InvoiceNo = InvoiceNo).SingleOrDefault
+
+                    txtInvoiceNo.Value = user.InvoiceNo
+                    txtProductCodeInvoice.Value = user.ProductCode
+                    txtPONoProductCode.Value = user.PO
+                    txtdatepickerDataInvoice.Text = CStr(user.DateInv)
+                    txtProductNameInvoice.Value = user.ProductName
+                    txtQuantityInvoice.Value = CStr(user.Quantity)
+                    ddlQuantityInvoice.Text = user.QuantityUnit
+                    txtWeightInvoice.Value = CStr(user.Weight)
+                    ddlWeightInvoice.Text = user.UnitWeight
+                    txtPallet_SKIDInvoice.Value = CStr(user.Pallet)
+                    ddlPallet_SKIDInvoice.Text = user.UnitPallet
+                    txtBoxInvoice.Value = CStr(user.Pallet1)
+                    ddlBoxInvoice.Text = user.UnitPallet1
+                    txtRemarkInvoice.Value = user.RemarkInv
+                    txtShipmentInvoice.Value = user.Shipment
+                    txtItemNoInvoice.Value = CStr(user.ItemNo)
+                    ddlUnitDimension.Text = user.UnitDimension
+                    txtPalletDimensionInvoice.Value = CStr(user.AmountPallet)
+                    txtWidthInvoice.Value = CStr(user.Width)
+                    txtHeightInvoice.Value = CStr(user.Height)
+                    txtLenghtInvoice.Value = CStr(user.Lenght)
+                    txtEntryItemNoInvoice.Value = CStr(user.EntryItemNo)
+                    ddlCurrencyInvoice.Text = user.Currency
+                    txtExchangeRateInvoice.Value = CStr(user.ExchangeRate)
+                    txtPriceForeignInvoice.Value = CStr(user.PriceForeigh)
+                    txtAmountForeignInvoice.Value = CStr(user.PriceForeighAmount)
+                    txtPriceBathInvoice.Value = CStr(user.PriceBath)
+                    txtAmountBathInvoice.Value = CStr(user.PriceBathAmount)
+                End If
+            End If
+        Catch ex As Exception
+        End Try
+    End Sub
+
     'Private Sub dgvProduct_CellMouseClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellMouseEventArgs) Handles dgvProduct.CellMouseClick
     '    If e.RowIndex = -1 Then Exit Sub
     '    With dgvProduct
@@ -3351,4 +3520,89 @@ Public Class CreateRec
     '    txtProductCode.SelectAll()
     '    pnlProduct.Visible = False
     'End Sub
+
+    '---------------------------------------------------------------------Click btn SaveFlight--------------------------------------------
+    Protected Sub btnSaveFlightNoInvoice_ServerClick(sender As Object, e As EventArgs)
+        Dim user As String = CStr(Session("UserName"))
+        Dim form As String = "frmImpGenLot"
+        Dim cu = From um In db.tblUserMenus Where um.UserName = user And um.Form = form And um.Save_ = 1
+        If cu.Any Then
+
+            SaveFlightInvDetail()
+
+        Else
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ์เมนูนี้ !!!')", True)
+        End If
+    End Sub
+    '---------------------------------------------------------------------Click btn DeleteFlight--------------------------------------------
+    Protected Sub btnDeleteFlightNoInvoice_ServerClick(sender As Object, e As EventArgs)
+        Dim user As String = CStr(Session("UserName"))
+        Dim form As String = "frmImpGenLot"
+        Dim cu = From um In db.tblUserMenus Where um.UserName = user And um.Form = form And um.Save_ = 1
+        If cu.Any Then
+
+
+
+
+        Else
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ์เมนูนี้ !!!')", True)
+        End If
+
+    End Sub
+    '----------------------------------------------------------------Save New Flight Data-----------------------------------------------
+    Private Sub SaveFlightInvDetail()
+        Dim FlightDate As Date
+
+        If txtdatepickerDataInvoice.Text = "" Then
+            FlightDate = CDate(Convert.ToDateTime(Date.Now).ToString("dd/MM/yyyy"))
+        Else
+            FlightDate = DateTime.ParseExact(txtdatepickerFlightDateInvoice.Text, "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US"))
+        End If
+
+        If txtJobno.Value.Trim() = "" Then
+            MsgBox("กรุณาป้อน LOT No ก่อน !!!")
+            txtJobno.Focus()
+            Exit Sub
+        End If
+
+        If txtFlightNo.Value.Trim() = "" Then
+            MsgBox("กรุณาป้อน Flight No ก่อน !!!")
+            txtFlightNo.Focus()
+            Exit Sub
+        End If
+
+        If MsgBox("คุณต้องการเพิ่มรายการ Flight No Invoice ใหม่ ใช่หรือไม่ ?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+
+            Using tran As New TransactionScope()
+
+                Try
+                    db.Database.Connection.Open()
+
+                    db.tblImpLogFlights.Add(New tblImpLogFlight With { _
+                    .LotNo = txtJobno.Value.Trim, _
+                    .FlightNo = txtFlightNo.Value.Trim, _
+                    .DateFlight = FlightDate, _
+                    .House = ddlQuantity_PLT_Skid_Invoice2.Text.Trim, _
+                    .HouseNo = txtQuantity_PLT_Skid_Invoice2.Value.Trim, _
+                    .Quantity = CType(txtQuantity_PLT_Skid_Invoice.Value.Trim, Double?), _
+                    .UnitQuantity = ddlQuantity_PLT_Skid_Invoice.Text.Trim, _
+                    .Userby = CStr(Session("UserId"))
+                    })
+                    db.SaveChanges()
+                    tran.Complete()
+                    ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('Add สำเร็จ !');", True)
+
+                Catch ex As Exception
+
+                    ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด กรุณาบันทึกข้อมูลใหม่อีกครั้ง');", True)
+
+                Finally
+                    db.Database.Connection.Close()
+                    db.Dispose()
+                    tran.Dispose()
+                End Try
+            End Using
+        End If
+        txtJobno.Focus()
+    End Sub
 End Class

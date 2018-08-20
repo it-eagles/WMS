@@ -650,7 +650,7 @@
                                                         <div class="col-sm-4">
                                                             <%--<input type="text" class="form-control pull-right" id="datepickerArrivalToEAS"/>--%>
                                                             <asp:TextBox CssClass="form-control" ID="txtdatepickerArrivalToEAS" runat="server" placeholder="DD/MM/YYYY" autocomplete="off"></asp:TextBox>
-                                                            <asp:CalendarExtender ID="CalendarExtenderArrivalToEAS" runat="server" Enabled="True" TargetControlID="txtdatepickerArrivalToEAS" Format="DD/MM/yyyy"></asp:CalendarExtender>
+                                                            <asp:CalendarExtender ID="CalendarExtenderArrivalToEAS" runat="server" Enabled="True" TargetControlID="txtdatepickerArrivalToEAS" Format="dd/MM/yyyy"></asp:CalendarExtender>
                                                         </div>
                                                     </div>
 
@@ -760,7 +760,7 @@
                                                     <div class="form-group">
                                                         <label for="txtCodePickUpPlace" class="col-sm-4 control-label">Pick Up Place:</label>
                                                         <div class="col-sm-6">
-                                                            <input class="form-control" id="txtCodePickUpPlace" runat="server" readonly="true" autocomplete="off" />
+                                                            <input class="form-control" id="txtCodePickUpPlace" runat="server"  autocomplete="off" />
                                                         </div>
                                                         <div class="col-sm-2">
                                                             <%--<button type="button" class="btn btn-block btn-primary" data-toggle="modal" data-target="#PickUpModal" runat="server"><i class="glyphicon glyphicon-search"></i></button>--%>
@@ -829,7 +829,7 @@
                                                     <div class="form-group">
                                                         <label for="txtCodeCustommerGroup" class="col-sm-4 control-label">Code Group:</label>
                                                         <div class="col-sm-6">
-                                                            <input class="form-control" id="txtCodeCustommerGroup" runat="server" readonly="true" autocomplete="off" />
+                                                            <input class="form-control" id="txtCodeCustommerGroup" runat="server" autocomplete="off" />
                                                         </div>
                                                         <div class="col-sm-2">
                                                             <%--<button type="button" class="btn btn-block btn-primary" data-toggle="modal" data-target="#CustomerGroupModal" runat="server"><i class="glyphicon glyphicon-search"></i></button>--%>
@@ -933,7 +933,7 @@
                                                     <div class="form-group">
                                                         <label for="txtCodeEndCustomer" class="col-sm-4 control-label">End Customer Code:</label>
                                                         <div class="col-sm-6">
-                                                            <input class="form-control" id="txtCodeEndCustomer" runat="server" readonly="true" autocomplete="off" />
+                                                            <input class="form-control" id="txtCodeEndCustomer" runat="server"  autocomplete="off" />
                                                         </div>
                                                         <div class="col-sm-2">
                                                             <%--<button type="button" class="btn btn-block btn-primary" data-toggle="modal" data-target="#EndCustomerModal" runat="server"><i class="glyphicon glyphicon-search"></i></button>--%>
@@ -1139,9 +1139,13 @@
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="form-horizontal">
-                                                <asp:Repeater ID="Repea2_Invoice" runat="server">
+                                                <asp:Panel ID="Repea2Panel" runat="server" >
+                                                    <asp:UpdatePanel ID="Repea2UpdatePanel" runat="server" UpdateMode="Conditional">
+                                                    <ContentTemplate>
+                                                <asp:Repeater ID="Repea2_Invoice" runat="server" OnItemCommand="Repea2_Invoice_ItemCommand">
                                                                     <HeaderTemplate>
                                                                         <table class="table table-bordered">
+                                                                            <th>Select</th>
                                                                             <th>InvoiceNo</th>
                                                                             <th>LotNo</th>
                                                                             <th>DateInv</th>
@@ -1153,6 +1157,9 @@
                                                                     </HeaderTemplate>
                                                                     <ItemTemplate>
                                                                         <tr class="success">
+                                                                            <td class="text-center">
+                                                                            <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectInvoiceNo" CommandArgument='<%# Eval("InvoiceNo")%>'><i class="fa fa-hand-o-up"></i></asp:LinkButton>
+                                                                            </td>
                                                                             <td><asp:Label ID="lblJobSite" runat="server" Text='<%# Bind("InvoiceNo")%>'></asp:Label></td>
                                                                             <td><asp:Label ID="Label1" runat="server" Text='<%# Bind("LOTNo")%>'></asp:Label></td>
                                                                             <td><asp:Label ID="Label2" runat="server" Text='<%# Bind("DateInv", "{0:dd/MM/yyyy}")%>'></asp:Label></td>
@@ -1165,6 +1172,9 @@
                                                                     </ItemTemplate>
                                                                     <AlternatingItemTemplate>
                                                                         <tr class="info">
+                                                                            <td class="text-center">
+                                                                            <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectInvoiceNo" CommandArgument='<%# Eval("InvoiceNo")%>'><i class="fa fa-hand-o-up"></i></asp:LinkButton>
+                                                                            </td>
                                                                             <td><asp:Label ID="lblJobSite" runat="server" Text='<%# Bind("InvoiceNo")%>'></asp:Label></td>
                                                                             <td><asp:Label ID="Label1" runat="server" Text='<%# Bind("LOTNo")%>'></asp:Label></td>
                                                                             <td><asp:Label ID="Label2" runat="server" Text='<%# Bind("DateInv", "{0:dd/MM/yyyy}")%>'></asp:Label></td>
@@ -1176,6 +1186,7 @@
                                                                         </tr>
                                                                     </AlternatingItemTemplate>
                                                                     <FooterTemplate>
+                                                                            <th>Select</th>
                                                                             <th>InvoiceNo</th>
                                                                             <th>LotNo</th>
                                                                             <th>DateInv</th>
@@ -1187,6 +1198,9 @@
                                                                         </table>
                                                                     </FooterTemplate>
                                                                 </asp:Repeater>
+                                                </ContentTemplate>
+                                                </asp:UpdatePanel>
+                                                </asp:Panel>
                                             </div>
                                         </div>
                                     </div>
@@ -1211,22 +1225,22 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="txtProductCodeInvoice" class="col-sm-3 control-label">Product Code:</label>
-                                                        <div class="col-sm-2">
-                                                            <input class="form-control" id="txtProductCodeInvoice" runat="server" readonly="true" autocomplete="off" />
+                                                        <div class="col-sm-3">
+                                                            <input class="form-control" id="txtProductCodeInvoice" runat="server" autocomplete="off" />
                                                         </div>
                                                         <div class="col-sm-2">
                                                             <%--<button type="button" id="btnProductCode" class="btn btn-block btn-primary" data-toggle="modal" data-target="#ProductCodeModal" runat="server"><i class="glyphicon glyphicon-search"></i></button>--%>
                                                             <button type="button" class="btn btn-block btn-primary" runat="server" onserverclick="Unnamed_ServerClick7"><i class="glyphicon glyphicon-search"></i></button>
                                                         </div>
                                                         <label for="txtPONoProductCode" class="col-sm-2 control-label">PO No:</label>
-                                                        <div class="col-sm-3">
+                                                        <div class="col-sm-2">
                                                             <input class="form-control" id="txtPONoProductCode" runat="server" autocomplete="off" />
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="txtQuantityInvoice" class="col-sm-3 control-label">Quantity:</label>
                                                         <div class="col-sm-4">
-                                                            <input class="form-control" id="txtQuantityInvoice" runat="server" value="0" autocomplete="off" />
+                                                            <input class="form-control" id="txtQuantityInvoice" runat="server" value="0" autocomplete="off" autofocus="autofocus" />
                                                         </div>
                                                         <div class="col-sm-5">
                                                             <asp:DropDownList ID="ddlQuantityInvoice" CssClass="form-control" runat="server"></asp:DropDownList>
@@ -1323,7 +1337,7 @@
                                                         <label for="txtFlightDateInvoice" class="col-sm-4 control-label">Flight Date:</label>
                                                         <div class="col-sm-8">
                                                             <asp:TextBox CssClass="form-control" ID="txtdatepickerFlightDateInvoice" runat="server" placeholder="DD/MM/YYYY" autocomplete="off"></asp:TextBox>
-                                                            <asp:CalendarExtender ID="CalendarExtenderFlightDateInvoice" runat="server" Enabled="True" TargetControlID="txtdatepickerFlightDateInvoice" Format="DD/MM/yyyy"></asp:CalendarExtender>
+                                                            <asp:CalendarExtender ID="CalendarExtenderFlightDateInvoice" runat="server" Enabled="True" TargetControlID="txtdatepickerFlightDateInvoice" Format="dd/MM/yyyy"></asp:CalendarExtender>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
@@ -1349,10 +1363,10 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <div class="col-sm-4 col-sm-offset-4">
-                                                            <button type="submit" runat="server" class="btn btn-primary" id="btnSaveFlightNoInvoice" title="btnSaveFlightNoInvoice">Save Flight No</button>
+                                                            <button type="submit" runat="server" class="btn btn-primary" id="btnSaveFlightNoInvoice" title="btnSaveFlightNoInvoice" onserverclick="btnSaveFlightNoInvoice_ServerClick">Save Flight No</button>
                                                         </div>
                                                         <div class="col-sm-4 ">
-                                                            <button type="submit" runat="server" class="btn btn-warning" id="btnDeleteFlightNoInvoice" title="btnDeleteFlightNoInvoice">Delete Flight No</button>
+                                                            <button type="submit" runat="server" class="btn btn-warning" id="btnDeleteFlightNoInvoice" title="btnDeleteFlightNoInvoice" onserverclick="btnDeleteFlightNoInvoice_ServerClick">Delete Flight No</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1377,7 +1391,7 @@
                                                         <label for="txtDataInvoice" class="col-sm-4 control-label">Data Invoice:</label>
                                                         <div class="col-sm-8">
                                                             <asp:TextBox CssClass="form-control" ID="txtdatepickerDataInvoice" runat="server" placeholder="DD/MM/YYYY" autocomplete="off"></asp:TextBox>
-                                                            <asp:CalendarExtender ID="CalendarExtenderDataInvoice" runat="server" Enabled="True" TargetControlID="txtdatepickerDataInvoice" Format="DD/MM/yyyy"></asp:CalendarExtender>
+                                                            <asp:CalendarExtender ID="CalendarExtenderDataInvoice" runat="server" Enabled="True" TargetControlID="txtdatepickerDataInvoice" Format="dd/MM/yyyy"></asp:CalendarExtender>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
@@ -1420,7 +1434,7 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <div class="col-sm-4">
-                                                            <input class="form-control" id="txtLenghtInvoice" runat="server" placeholder="Lenght" />
+                                                            <input class="form-control" id="txtLenghtInvoice" runat="server" placeholder="Lenght" autocomplete="off" />
                                                         </div>
                                                         <label for="txtEntryItemNoInvoice" class="col-sm-4 control-label">EntryItemNo:</label>
                                                         <div class="col-sm-4">
@@ -2322,6 +2336,7 @@
                                                     <table id="example8" class="table table-bordered table-striped table-responsive" style="overflow: auto;">
                                                         <thead>
                                                             <tr>
+                                                                <th>Select</th>
                                                                 <th>ProductCode</th>
                                                                 <th>ImpDesc1</th>
                                                                 <th>PONo</th>
@@ -2333,6 +2348,9 @@
 
                                                 <ItemTemplate>
                                                     <tr>
+                                                        <td class="text-center">
+                                                            <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectProductCode" CommandArgument='<%# Eval("ProductCode")%>'><i class="fa fa-hand-o-up"></i></asp:LinkButton>
+                                                        </td>
                                                         <td>
                                                             <asp:Label ID="lblPartyCode" runat="server" Text='<%# Bind("ProductCode")%>'></asp:Label></td>
                                                         <td>
@@ -2342,15 +2360,13 @@
                                                         <td>
                                                             <asp:Label ID="Label2" runat="server" Text='<%# Bind("CustomerPart")%>'></asp:Label></td>
                                                         <td>
-                                                            <asp:Label ID="Label3" runat="server" Text='<%# Bind("EndUserPart")%>'></asp:Label></td>
-                                                        <td class="text-center">
-                                                            <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectProductCode" CommandArgument='<%# Eval("ProductCode")%>'><i class="fa fa-plus-square"></i></asp:LinkButton>
-                                                        </td>
+                                                            <asp:Label ID="Label3" runat="server" Text='<%# Bind("EndUserPart")%>'></asp:Label></td>                                                        
                                                     </tr>
                                                 </ItemTemplate>
                                                 <FooterTemplate>
                                                     <tfoot>
                                                         <tr>
+                                                            <th>Select</th>
                                                             <th>ProductCode</th>
                                                             <th>ImpDesc1</th>
                                                             <th>PONo</th>
@@ -2461,16 +2477,12 @@
         <script type="text/javascript">
             function EnableDisableChkGenIEATNo() {
                 var status = document.getElementById('<%=chkGenerateIEATNo.ClientID%>').checked;
-
                         if (status == true) {
                             document.getElementById('<%=btnGenIEATNo.ClientID%>').disabled = false;
-
                 } else if (status == false) {
                     document.getElementById('<%=btnGenIEATNo.ClientID%>').disabled = true;
               }
-
       }
         </script>
-
     </form>
 </asp:Content>

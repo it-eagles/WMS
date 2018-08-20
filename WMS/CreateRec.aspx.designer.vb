@@ -1355,6 +1355,24 @@ Partial Public Class CreateRec
     Protected WithEvents exportgoods_fieldset As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
+    '''Repea2Panel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Repea2Panel As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''Repea2UpdatePanel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Repea2UpdatePanel As Global.System.Web.UI.UpdatePanel
+
+    '''<summary>
     '''Repea2_Invoice control.
     '''</summary>
     '''<remarks>

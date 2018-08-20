@@ -8,6 +8,11 @@ Public Class MasterLocation
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If Not Me.IsPostBack Then
             showListLocation()
+            txtWidth.Disabled = True
+            txtLong.Disabled = True
+            txtHeigth.Disabled = True
+            txtValume.Disabled = True
+            txtUsedStatus.Disabled = True
         End If
     End Sub
     '---------------------------------------------------------------btnAddClick-------------------------------------------------
@@ -78,11 +83,10 @@ Public Class MasterLocation
                              .Remark = txtRemark.Text.Trim, _
                              .CreateBy = CStr(Session("UserId")), _
                              .CreateDate = Now})
-
                 db.SaveChanges()
                 tran.Complete()
                 ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('เพิ่ม Location สำเร็จ !');", True)
-                Response.Redirect("MasterLocation.aspx")
+                'Response.Redirect("MasterLocation.aspx")
             Catch ex As Exception
                 ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด กรุณาบันทึกข้อมูลใหม่อีกครั้ง');", True)
             Finally

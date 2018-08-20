@@ -68,6 +68,15 @@ Partial Public Class InvoicePackingListRec
     Protected WithEvents btnSaveEditHead As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
+    '''Head_fieldset control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Head_fieldset As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
     '''chkRCVDNo_BeforeTab control.
     '''</summary>
     '''<remarks>
@@ -183,6 +192,15 @@ Partial Public Class InvoicePackingListRec
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents CalendarExtenderCustomsRefDate_beforeTab As Global.AjaxControlToolkit.CalendarExtender
+
+    '''<summary>
+    '''invoiceheader_fieldset control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents invoiceheader_fieldset As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
     '''txtShippercode control.
@@ -419,13 +437,13 @@ Partial Public Class InvoicePackingListRec
     Protected WithEvents ddlTerm_Invoice As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''txtTotalNewWeight_Invoice control.
+    '''txtTotalNetWeight_Invoice control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtTotalNewWeight_Invoice As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtTotalNetWeight_Invoice As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
     '''txtSumItemWeight_Invoice control.
@@ -689,13 +707,13 @@ Partial Public Class InvoicePackingListRec
     Protected WithEvents txtTotalInvoiceTHB2_Invoice As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''rdbDiffAmount control.
+    '''rdbDiffAmount1 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents rdbDiffAmount As Global.System.Web.UI.WebControls.RadioButton
+    Protected WithEvents rdbDiffAmount1 As Global.System.Web.UI.HtmlControls.HtmlInputRadioButton
 
     '''<summary>
     '''txtdatepickerTransmitDate control.
@@ -716,58 +734,67 @@ Partial Public Class InvoicePackingListRec
     Protected WithEvents CalendarExtenderTransmitDate As Global.AjaxControlToolkit.CalendarExtender
 
     '''<summary>
-    '''rdbDiffWeight control.
+    '''rdbDiffWeight1 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents rdbDiffWeight As Global.System.Web.UI.WebControls.RadioButton
+    Protected WithEvents rdbDiffWeight1 As Global.System.Web.UI.HtmlControls.HtmlInputRadioButton
 
     '''<summary>
-    '''rdbNotifyParty control.
+    '''rdbNotifyParty1 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents rdbNotifyParty As Global.System.Web.UI.WebControls.RadioButton
+    Protected WithEvents rdbNotifyParty1 As Global.System.Web.UI.HtmlControls.HtmlInputRadioButton
 
     '''<summary>
-    '''rdbOnBehalfOf control.
+    '''rdbOnBehalfOf1 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents rdbOnBehalfOf As Global.System.Web.UI.WebControls.RadioButton
+    Protected WithEvents rdbOnBehalfOf1 As Global.System.Web.UI.HtmlControls.HtmlInputRadioButton
 
     '''<summary>
-    '''btnEnablebehalf_EASJOB control.
+    '''easjob_fieldset control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents btnEnablebehalf_EASJOB As Global.System.Web.UI.HtmlControls.HtmlButton
+    Protected WithEvents easjob_fieldset As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
-    '''LeftForm_EASJOB control.
+    '''chkEnable control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents LeftForm_EASJOB As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+    Protected WithEvents chkEnable As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
 
     '''<summary>
-    '''ddlOwnerCode_EASJOB control.
+    '''owner_easjob_fieldset control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlOwnerCode_EASJOB As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents owner_easjob_fieldset As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
+    '''txtOwnerCode_EASJOB control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtOwnerCode_EASJOB As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
     '''txtNameOwner_EASJOB control.
@@ -833,6 +860,15 @@ Partial Public Class InvoicePackingListRec
     Protected WithEvents txtEmailOwner_EASJOB As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
+    '''shipto_easjob_fieldset control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents shipto_easjob_fieldset As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
     '''txtCustomerCode_EASJOB control.
     '''</summary>
     '''<remarks>
@@ -896,13 +932,13 @@ Partial Public Class InvoicePackingListRec
     Protected WithEvents txtContractPersonCustomer_EASJOB As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''RightForm_EASJOB control.
+    '''easinv_easjob_fieldset control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents RightForm_EASJOB As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+    Protected WithEvents easinv_easjob_fieldset As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
     '''txtEASINV_EASJOB control.
@@ -1004,6 +1040,15 @@ Partial Public Class InvoicePackingListRec
     Protected WithEvents txtTotal_EASJOB As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
+    '''billto_easjob_fieldset control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents billto_easjob_fieldset As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
     '''txtCustomerCode_BillTo_EASJOB control.
     '''</summary>
     '''<remarks>
@@ -1065,6 +1110,15 @@ Partial Public Class InvoicePackingListRec
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents txtContractPersonCustomer_BillTo_EASJOB As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''itemdetail_fieldset control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents itemdetail_fieldset As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
     '''ddlBrand_ItemDetail control.
@@ -1695,6 +1749,15 @@ Partial Public Class InvoicePackingListRec
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents btnCreatePacking_ItemDetail As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''packinglist_fieldset control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents packinglist_fieldset As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
     '''ddlProductCode_PACKINGLIST control.
