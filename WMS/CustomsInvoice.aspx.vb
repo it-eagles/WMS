@@ -1,10 +1,28 @@
 ﻿Option Explicit On
 Option Strict On
 
+Imports System.Globalization
+
 
 Public Class CustomsInvoice
     Inherits System.Web.UI.Page
     Dim classPermis As New ClassPermis
+    Dim tmpButtonStatus As String
+    Dim DiffBy As String
+    Dim TermTransport As String
+    Dim OnbehalfStatus As String
+    Dim sqlDataComboList As String
+    Dim TotalRecord As Integer
+    Dim PageCount As Integer
+    Dim CurrentPage As Integer
+    Dim RecordToDisplay As Integer
+    Dim PageSize As Integer
+    Dim SumPLT As Integer = 0
+    'Dim p As Point
+    Dim CurrentProduct(10) As String
+    Dim dtGenLotNo As DataTable
+    'Public PV As New frmExpCustomsInvoiceRPT
+    'Public PV1 As New frmExpCustomsInvoiceRPT1
 
     Dim formName As String = "frmCustomsInvoice"
     Dim db As New LKBWarehouseEntities1_Test
@@ -62,7 +80,7 @@ Public Class CustomsInvoice
                 ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ เข้าโปรแกรมนี้' !!!');", True)
             End If
         End If
-       
+
     End Sub
 
     Protected Sub btnAddNew_ServerClick(sender As Object, e As EventArgs)
@@ -70,194 +88,198 @@ Public Class CustomsInvoice
         btnSaveNew.Visible = True
         btnSaveEdit.Visible = False
         btnInvoice.Visible = False
+        ClearDATA()
     End Sub
 
     Protected Sub btnEdit_ServerClick(sender As Object, e As EventArgs)
         btnSaveNew.Visible = False
         btnSaveEdit.Visible = True
         btnInvoice.Visible = True
+        header_.Disabled = False
     End Sub
     Private Sub UnlockDATA()
         header_.Disabled = False
-
+        job_1.Disabled = True
+        deetail_.Disabled = True
+        list_.Disabled = True
     End Sub
 
     Private Sub ClearDATA()
-        'cdbFromprint.Text = ""
+        'cdbFromprint. = ""
         'cbExchange.Checked = False
         'cbNoExchange.Checked = False
         'cbRefNo.Checked = False
         'cbNoRefNo.Checked = False
         'cbInland.Checked = False
         'cbNoInland.Checked = False
-        'txtInland.Text = ""
-        'txtApp.Text = ""
-        'txtReferenceNo.Text = ""
-        'txtInvoiceNo.Text = ""
-        'txtPurechaseOrderNo.Text = ""
-        'txtExporterCode.Text = ""
-        'txtExportEng.Text = ""
-        'txtStreet_Number.Text = ""
-        'txtDistrict.Text = ""
-        'txtSubProvince.Text = ""
-        'txtProvince.Text = ""
-        'txtPostCode.Text = ""
-        'txtCompensateCode.Text = ""
-        'txtConsignneeCode.Text = ""
-        'txtConsignneeEng.Text = ""
-        'txtConsignneeStreet_Number.Text = ""
-        'txtConsignneeDistrict.Text = ""
-        'txtConsignneeSubProvince.Text = ""
-        'txtConsignneeProvince.Text = ""
-        'txtConsignneePostCode.Text = ""
-        'txtConsignneeEMail.Text = ""
+        'txtInland = ""
+        'txtApp = ""
+        txtReferenceNo.Value = ""
+        txtInvoiceNo.Value = ""
+        txtPurechaseOrderNo.Value = ""
+        txtExporterCode.Value = ""
+        txtExportEng.Value = ""
+        txtStreet_Number.Value = ""
+        txtDistrict.Value = ""
+        txtSubProvince.Value = ""
+        txtProvince.Value = ""
+        txtPostCode.Value = ""
+        txtCompensateCode.Value = ""
+        txtConsigneeCode.Value = ""
+        txtConsignneeEng.Value = ""
+        txtConsignneeStreet_Number.Value = ""
+        txtConsignneeDistrict.Value = ""
+        txtConsignneeSubProvince.Value = ""
+        txtConsignneeProvince.Value = ""
+        txtConsignneePostCode.Value = ""
+        txtConsignneeEMail.Value = ""
         'dcboPurchaseCountry.Text = ""
-        'txtPurchaseCountry.Text = ""
+        txtPurchaseCountry.Value = ""
         'cboDestinationCountry.Text = ""
-        'txtDestinationCountry.Text = ""
+        txtDestinationCountry.Value = ""
         'dcboCountry.Text = ""
-        'txtCountry.Text = ""
+        txtCountry.Value = ""
         'dcboTermofPayment.Text = ""
         'dcboTerm.Text = ""
-        'txtTotalNetWeight.Text = "0.0"
-        'txtSumItemWeight.Text = "0.0"
+        txtTotalNetWeight.Value = "0.0"
+        txtSumItemWeight.Value = "0.0"
         'dcboTotalInvoice.Text = ""
-        'txtTotalInvoiceAmount.Text = "0.0"
-        'txtTotalInvoiceAmount1.Text = "0.0"
+        txtTotalInvoiceAmount.Value = "0.0"
+        txtTotalInvoiceAmount1.Value = "0.0"
         'dcboForwarding.Text = ""
-        'txtForwardingAmount.Text = "0.0"
-        'txtForwardingAmount1.Text = "0.0"
+        txtForwardingAmount.Value = "0.0"
+        txtForwardingAmount1.Value = "0.0"
         'dcboFreight.Text = ""
-        'txtFreightAmount.Text = "0.0"
-        'txtFreightAmount1.Text = "0.0"
+        txtFreightAmount.Value = "0.0"
+        txtFreightAmount1.Value = "0.0"
         'dcboInsurance.Text = ""
-        'txtInsuranceAmount.Text = "0.0"
-        'txtInsuranceAmount1.Text = "0.0"
+        txtInsuranceAmount.Value = "0.0"
+        txtInsuranceAmount1.Value = "0.0"
         'dcboPackingCharge.Text = ""
-        'txtPackingChargeAmount.Text = "0.0"
-        'txtPackingChargeAmount1.Text = "0.0"
+        txtPackingChargeAmount.Value = "0.0"
+        txtPackingChargeAmount1.Value = "0.0"
         'dcboForeignInland.Text = ""
-        'txtForeignInlandAmount.Text = "0.0"
-        'txtForeignInlandAmount1.Text = "0.0"
+        txtForeignInlandAmount.Value = "0.0"
+        txtForeignInlandAmount1.Value = "0.0"
         'dcboLandingCharge.Text = ""
-        'txtLandingChargeAmount.Text = "0.0"
-        'txtLandingChargeAmount1.Text = "0.0"
+        txtLandingChargeAmount.Value = "0.0"
+        txtLandingChargeAmount1.Value = "0.0"
         'dcboOtherCharge.Text = ""
-        'txtOtherChargeAmount.Text = "0.0"
-        'txtOtherChargeAmount1.Text = "0.0"
-        'txtEASExporterCode.Text = ""
-        'txtEASNameEng.Text = ""
-        'txtEASStreet_Number.Text = ""
-        'txtEASDistrict.Text = ""
-        'txtEASSubProvince.Text = ""
-        'txtEASProvince.Text = ""
-        'txtEASPostCode.Text = ""
-        'txtEASCompensateCode.Text = ""
-        'txtEASPostCode.Text = ""
-        'txtCustomerCode.Text = ""
-        'txtCustomerEng.Text = ""
-        'txtCustomerAddress.Text = ""
-        'txtCustomerEMail.Text = ""
-        'txtCustomerTelNo.Text = ""
-        'txtCustomerFaxNo.Text = ""
-        'txtCustomerContactPerson.Text = ""
-        'txtEASInvREFNo.Text = ""
-        'txtEASLOTNo.Text = ""
-        'txtCustomerRefNo.Text = "0"
-        'txtSpecialInstruction.Text = ""
+        'txtOtherChargeAmount.Value = "0.0"
+        'txtOtherChargeAmount1.Value = "0.0"
+        txtEASExporterCode.Value = ""
+        txtEASNameEng.Value = ""
+        txtEASStreet_Number.Value = ""
+        txtEASDistrict.Value = ""
+        txtEASSubProvince.Value = ""
+        txtEASProvince.Value = ""
+        txtEASPostCode.Value = ""
+        txtEASCompensateCode.Value = ""
+        txtEASPostCode.Value = ""
+        txtCustomerCode.Value = ""
+        txtCustomerEng.Value = ""
+        txtCustomerAddress.Value = ""
+        txtCustomerEMail.Value = ""
+        txtCustomerTelNo.Value = ""
+        txtCustomerFaxNo.Value = ""
+        txtCustomerContactPerson.Value = ""
+        txtEASInvREFNo.Value = ""
+        txtEASLOTNo.Value = ""
+        txtCustomerRefNo.Value = "0"
+        txtSpecialInstruction.Value = ""
         'dcboShipMode.Text = ""
         'dcboDeliveryTerm.Text = ""
         'dcboShippingMark.Text = ""
-        'txtEASRemark.Text = ""
-        'txtTotalCurrency.Text = ""
-        'txtEASCustomerCode.Text = ""
-        'txtEASCustomerEng1.Text = ""
-        'txtEASCustomerAddress.Text = ""
-        'txtEASEmail.Text = ""
-        'txtEASTelNo.Text = ""
-        'txtEASFaxNo.Text = ""
-        'txtEASContactPerson.Text = ""
+        txtEASRemark.Value = ""
+        txtTotalCurrency.Value = ""
+        txtEASCustomerCode.Value = ""
+        txtEASCustomerEng1.Value = ""
+        txtEASCustomerAddress.Value = ""
+        txtEASEmail.Value = ""
+        txtEASTelNo.Value = ""
+        txtEASFaxNo.Value = ""
+        txtEASContactPerson.Value = ""
         'dcboBrand.Text = ""
-        'txtProductYear.Text = ""
+        'txtProductYear.Value = ""
         'dcboNatureOfTrn.Text = ""
         'dcboPurchaseCtry.Text = ""
         'dcboOriginCtry.Text = ""
-        'txtItemNo.Text = ""
-        'txtProductCode.Text = ""
-        'txtProductDesc1.Text = ""
-        'txtProductDesc2.Text = ""
-        'txtProductDesc3.Text = ""
-        'txtInvQty.Text = ""
+        txtItemNo.Value = ""
+        'txtProductCode.Value = ""
+        txtProductDesc1.Value = ""
+        txtProductDesc2.Value = ""
+        txtProductDesc3.Value = ""
+        txtInvQty.Value = ""
         'dcboInvQtyUnit.Text = ""
-        'txtInvQtyUnit.Text = ""
+        txtInvQtyUnit.Value = ""
         'dcboCurrency.Text = ""
-        'txtExchangeRate.Text = "0.0"
-        'txtWeight.Text = "0.0"
+        txtExchangeRate.Value = "0.0"
+        txtWeight.Value = "0.0"
         'dcboWeightUnit.Text = ""
-        'txtWeightUnit.Text = ""
-        'txtPriceForeigh.Text = "0.0"
-        'txtPriceForeighAmount.Text = "0.0"
-        'txtQuantity.Text = "0.0"
+        txtWeightUnit.Value = ""
+        txtPriceForeigh.Value = "0.0"
+        txtPriceForeighAmount.Value = "0.0"
+        txtQuantity.Value = "0.0"
         'dcboQuantityUnit.Text = ""
-        'txtQuantityUnit.Text = ""
-        'txtPriceBath.Text = "0.0"
-        'txtPriceBathAmount.Text = "0.0"
-        'txtTariffCode.Text = ""
-        'txtStatisticalCode.Text = ""
-        'txtTariffSequence.Text = ""
-        'txtProductAttribute1.Text = ""
-        'txtProductAttribute2.Text = ""
-        'txtPriceIncreaseForeign.Text = "0.0"
-        'txtPriceIncreseBath.Text = "0.0"
-        'txtDeclarationLine.Text = ""
-        'txtFormulaNo.Text = ""
-        'txtBOILicenseNo.Text = ""
-        'txt19BisTransferNo.Text = ""
-        'txtBondFurmulaNo.Text = ""
-        'dcboForwardingCurrency.Text = ""
-        'txtForwardingForiegnAmount.Text = "0.0"
-        'txtForwardingExchangeRate.Text = "0.0"
-        'txtForwardingBathAmount.Text = "0.0"
+        txtQuantityUnit.Value = ""
+        txtPriceBath.Value = "0.0"
+        txtPriceBathAmount.Value = "0.0"
+        txtTariffCode.Value = ""
+        txtStatisticalCode.Value = ""
+        txtTariffSequence.Value = ""
+        txtProductAttribute1.Value = ""
+        txtProductAttribute2.Value = ""
+        txtPriceIncreaseForeign.Value = "0.0"
+        txtPriceIncreseBath.Value = "0.0"
+        txtDeclarationLine.Value = ""
+        'txtFormulaNo.Value = ""
+        txtBOILicenseNo.Value = ""
+        txt19BisTransferNo.Value = ""
+        txtBondFurmulaNo.Value = ""
+        dcboForwardingCurrency.Text = ""
+        txtForwardingForiegnAmount.Value = "0.0"
+        txtForwardingExchangeRate.Value = "0.0"
+        txtForwardingBathAmount.Value = "0.0"
         'dcboFreight.Text = ""
-        'txtFreightForiegnAmount.Text = "0.0"
-        'txtFreightExchangeRate.Text = "0.0"
-        'txtFreightBathAmount.Text = "0.0"
+        'txtFreightForiegnAmount.Value = "0.0"
+        txtFreightExchangeRate.Value = "0.0"
+        txtFreightBathAmount.Value = "0.0"
         'dcboInsurance.Text = ""
-        'txtInsuranceForiegnAmount.Text = "0.0"
-        'txtInsuranceExchangeRate.Text = "0.0"
-        'txtInsuranceBathAmount.Text = "0.0"
+        txtInsuranceForiegnAmount.Value = "0.0"
+        txtInsuranceExchangeRate.Value = "0.0"
+        txtInsuranceBathAmount.Value = "0.0"
         'dcboInsurance.Text = ""
-        'txtInsuranceForiegnAmount.Text = "0.0"
-        'txtInsuranceExchangeRate.Text = "0.0"
-        'txtInsuranceBathAmount.Text = "0.0"
+        txtInsuranceForiegnAmount.Value = "0.0"
+        txtInsuranceExchangeRate.Value = "0.0"
+        txtInsuranceBathAmount.Value = "0.0"
         'dcboPackingCharge.Text = ""
-        'txtPackageChargeFoiegnAmount.Text = "0.0"
-        'txtPackageChargeExchangeRate.Text = "0.0"
-        'txtPackageChargeBathAmount.Text = "0.0"
+        txtPackageChargeFoiegnAmount.Value = "0.0"
+        txtPackageChargeExchangeRate.Value = "0.0"
+        txtPackageChargeBathAmount.Value = "0.0"
         'dcboForeighnCurrency.Text = ""
-        'txtForeighnForiegnAmount.Text = "0.0"
-        'txtForeighnExchangeRate.Text = "0.0"
-        'txtForeighnBathAmount.Text = "0.0"
+        txtForeighnForiegnAmount.Value = "0.0"
+        txtForeighnExchangeRate.Value = "0.0"
+        txtForeighnBathAmount.Value = "0.0"
         'dcboLandingCharge.Text = ""
-        'txtLandingChargeForiegnAmount.Text = "0.0"
-        'txtLandingChargeExchangeRate.Text = "0.0"
-        'txtLandingChargeBathAmount.Text = "0.0"
+        txtLandingChargeForiegnAmount.Value = "0.0"
+        txtLandingChargeExchangeRate.Value = "0.0"
+        txtLandingChargeBathAmount.Value = "0.0"
         'dcboOtherCharge.Text = ""
-        'txtOtherChargeForiegnAmount.Text = "0.0"
-        'txtOtherChargeExchangeRate.Text = "0.0"
-        'txtOtherChargeBathAmount.Text = "0.0"
-        'txtItemRemark.Text = ""
-        'txtPLTNetAmount.Text = "0.0"
+        txtOtherChargeForiegnAmount.Value = "0.0"
+        txtOtherChargeExchangeRate.Value = "0.0"
+        txtOtherChargeBathAmount.Value = "0.0"
+        txtItemRemark.Value = ""
+        txtPLTNetAmount.Value = "0.0"
         'dcboUnitPLT.Text = ""
-        'txtPLTUnit.Text = ""
-        'txtCTNNetAmount.Text = "0.0"
+        txtPLTUnit.Value = ""
+        txtCTNNetAmount.Value = "0.0"
         'dcboCTN.Text = ""
-        'txtCTNUnit.Text = ""
-        'txtTotalGrossWeight.Text = "0.0"
-        'txtTotalQuantity.Text = "0.0"
-        'txtTotalQuantityINV.Text = "0.0"
-        'txtVolumAmount.Text = "0.0"
-        'txtTotalText.Text = ""
+        txtCTNUnit.Value = ""
+        txtTotalGrossWeight.Value = "0.0"
+        txtTotalQuantity.Value = "0.0"
+        txtTotalQuantityINV.Value = "0.0"
+        txtVolumAmount.Value = "0.0"
+        txtTotalText.Value = ""
     End Sub
     Private Sub PurchaseCountry()
         Dim qt = From q In db.tblMasterCode2 Where q.Type = "COUNTRY"
@@ -974,6 +996,8 @@ Public Class CustomsInvoice
             If cons.Count > 0 Then
                 dgvSearch.DataSource = cons.ToList
                 dgvSearch.DataBind()
+                ScriptManager.RegisterStartupScript(upSearch1, upSearch1.GetType(), "show", "$(function () { $('#" + Search1.ClientID + "').modal('show'); });", True)
+                upSearch1.Update()
             Else
                 ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('ไม่พบข้อมูล Customer Code นี้')", True)
                 Exit Sub
@@ -985,6 +1009,8 @@ Public Class CustomsInvoice
             If cons.Count > 0 Then
                 dgvSearch.DataSource = cons.ToList
                 dgvSearch.DataBind()
+                ScriptManager.RegisterStartupScript(upSearch1, upSearch1.GetType(), "show", "$(function () { $('#" + Search1.ClientID + "').modal('show'); });", True)
+                upSearch1.Update()
             Else
                 ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('ไม่พบข้อมูล Customer Code นี้')", True)
                 Exit Sub
@@ -992,256 +1018,474 @@ Public Class CustomsInvoice
         End If
     End Sub
 
-   
+
     Protected Sub dgvSearch_ItemCommand(source As Object, e As RepeaterCommandEventArgs)
+        Dim referenceDate As String
+        Dim Item As String
+        Dim DiffBy As String
+        Dim Notify As String
+        Dim OnbehalfStatus As String
         Dim Invoice As String = CStr(e.CommandArgument)
         If e.CommandName.Equals("selectInvoiceNo") Then
-            Dim exp = (From ex In db.tblExpInvoices Where ex.InvoiceNo = Invoice Select ex).SingleOrDefault
+           
+            Try
+                Dim exp = (From ex In db.tblExpInvoices Where ex.InvoiceNo = Invoice Select ex).SingleOrDefault
 
-            txtInvoiceNo.Value = exp.InvoiceNo
-            txtReferenceNo.Value = exp.ReferenceNo
-            'txtReferenceDate
-            dtpReferenceDate.Text = CStr(exp.ReferenceDate)
-            txtPurechaseOrderNo.Value = exp.PurchaseOrderNo
-            'txtInvoiceDate()
-            dtpInvoiceDate.Text = CStr(exp.InvoiceDate)
-            'txtDeliveryDate()
-            dtpDeliveryDate.Text = CStr(exp.DeliveryDate)
-            txtExporterCode.Value = exp.ExporterCode
+                txtInvoiceNo.Value = exp.InvoiceNo
+                txtReferenceNo.Value = exp.ReferenceNo
+                referenceDate = Convert.ToDateTime(exp.ReferenceDate).ToString("dd/MM/yyyy")
+                dtpReferenceDate.Text = CStr(DateTime.ParseExact(referenceDate, "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US")))
+                txtPurechaseOrderNo.Value = exp.PurchaseOrderNo
+                dtpInvoiceDate.Text = Convert.ToDateTime(exp.InvoiceDate).ToString("dd/MM/yyyy")
+                dtpDeliveryDate.Text = Convert.ToDateTime(exp.DeliveryDate).ToString("dd/MM/yyyy")
+                txtExporterCode.Value = exp.ExporterCode
+                txtExportEng.Value = exp.ExporterENG
+                txtStreet_Number.Value = exp.Street_Number
+                txtDistrict.Value = exp.District
+                txtSubProvince.Value = exp.Subprovince
+                txtProvince.Value = exp.Province
+                txtPostCode.Value = exp.PostCode
+                txtCompensateCode.Value = exp.CompensateCode
+                txtConsigneeCode.Value = exp.ConsignneeCode
+                txtConsignneeEng.Value = exp.ConsignneeENG
+                txtConsignneeStreet_Number.Value = exp.ConsignneeStreet_Number
+                txtConsignneeDistrict.Value = exp.ConsignneeDistrict
+                txtConsignneeSubProvince.Value = exp.ConsignneeSubProvince
+                txtConsignneeProvince.Value = exp.ConsignneeProvince
+                txtConsignneePostCode.Value = exp.ConsignneePostCode
+                txtConsignneeEMail.Value = exp.ConsignneeEMail
 
-            txtExportEng.Value = exp.ExporterENG
-            txtStreet_Number.Value = exp.Street_Number
-            txtDistrict.Value = exp.District
-            'txtSubProvince = exp.Subprovince
+                If String.IsNullOrEmpty(exp.PurchaseCountryCode) Then
 
-            txtProvince.Value = exp.Province
-            txtPostCode.Value = exp.PostCode
-            txtCompensateCode.Value = exp.CompensateCode
-            txtConsigneeCode.Value = exp.CompensateCode
-            'txtConsignneeCode.Value = exp.ConsignneeCode
-            'txtConsignneeEng.Value=exp.ConsignneeENG
-            '=exp.ConsignneeStreet_Number
-            '=exp.ConsignneeDistrict
-            '=exp.ConsignneeSubProvince
-            '=exp.ConsignneeProvince
-            '=exp.ConsignneePostCode
-            '=exp.ConsignneeEMail
-            '=exp.PurchaseCountryCode
-            '=exp.PurchaseCountryName
-            '=exp.DestinationCountryCode
-            '=exp.DestinationCountryName
-            '=exp.CountryCode
-            '=exp.CountryName
-            '=exp.TermOfPayment
-            '=exp.Term
-            '=exp.TotalNetWeight
-            '=exp.SumItemWeight
-            '=exp.TotalInvoiceCurrency
-            '=exp.TotalInvoiceAmount
-            '=exp.TotalInvoiceAmount1
-            '=exp.ForwardingCurrency
-            '=exp.ForwardingAmount
-            '=exp.ForwardingAmount1
-            '=exp.FreightCurrency
-            '=exp.FreightAmount
-            '=exp.FreightAmount1
-            '=exp.InsuranceCurrency
-            '=exp.InsuranceAmount
-            '=exp.InsuranceAmount1
-            '=exp.PackingChargeCurrency
-            '=exp.PackingChargeAmount
-            '=exp.PackingChargeAmount1
-            '=exp.ForeignInlandCurrency
-            '=exp.ForeignInlandAmount
-            '=exp.ForeignInlandAmount1
-            '=exp.LandingChargeCurrency
-            '=exp.LandingChargeAmount
-            '=exp.LandingChargeAmount1
-            '=exp.OtherChargeCurrency
-            '=exp.OtherChargeAmount
-            '=exp.OtherChargeAmount1
-            '=exp.TransmitDate
-            '=exp.DiffBy
-            '=exp.TermforShip
-            '=exp.OnbehalfStatus
-            '=exp.EASExporterCode
-            '=exp.EASNameEng
-            '=exp.StreetAndNumber
-            '=exp.ESADistrict
-            '=exp.EASSubProvince
-            '=exp.EASProvince
-            '=exp.EASPostCode
-            '=exp.EASTCompensete
-            '=exp.EASCustomerCode
-            '=exp.EASCustomerENG
-            '=exp.EASCustomerAddress
-            '=exp.EASCustomerEMail
-            '=exp.EASCustomerTelNo
-            '=exp.EASCustomerFaxNo
-            '=exp.EASCustomerContactPerson
-            '=exp.EASInvRefNo
-            '=exp.EASLOTNo
-            '=exp.EASCustomerRefNo
-            '=exp.EASSpecialInstruction
-            '=exp.EASDeliveryTerm
-            '=exp.EASShippingMark
-            '=exp.EASShippingMarkCompany
-            '=exp.EASShippingMarkAddress
-            '=exp.EASRemark
-            '=exp.EASTotalCurrency
-            '=exp.EASBilltoCustomerCode
-            '=exp.EASBilltoCustomerENG
-            '=exp.EASBilltoCustomerAddress
-            '=exp.EASBilltoCustomerEMail
-            '=exp.EASBilltoCustomerTelNo
-            '=exp.EASBilltoCustomerFaxNo
-            '=exp.EASBilltoCustomerContactPerson
-            '=exp.PLTNetAmount
-            '=exp.UnitPLT
-            '=exp.CTNPLTName
-            '=exp.CTNNetAmount
-            '=exp.UnitCTN
-            '=exp.UnitCTNName
-            '=exp.GrossWeightAmount
-            '=exp.QountityAmount
-            '=exp.VolumAmount
-            '=exp.TotalTextPackL()
-            '=exp.CarLicense
-            '=exp.DriverName
-            '=exp.PrintCountInv
-            '=exp.PrintCountPack
-            '=exp.PrintCount107
-            '=exp.PrintCount108
-            '=exp.PrintCountDoc
-            '=exp.CustomsConfirmDate
-            '=exp.App
-            '=exp.CreateBy
-            '=exp.CreateDate
-            '=exp.UpdateBy
-            '=exp.UpdateDate
-            '=exp.OutItem
-            '=exp.PullSignal
-            '=exp.UnitQuantity
-            '=exp.UnitWeight
+                Else
+                    dcboPurchaseCountry.Text = exp.PurchaseCountryCode
+                End If
+                txtPurchaseCountry.Value = exp.PurchaseCountryName
 
+                If String.IsNullOrEmpty(exp.DestinationCountryCode) Then
+                Else
+                    cboDestinationCountry.Text = exp.DestinationCountryCode
+                End If
+                txtDestinationCountry.Value = exp.DestinationCountryName
+                dcboCountry.Text = exp.CountryCode
+                txtCountry.Value = exp.CountryName
+                dcboTermofPayment.Text = exp.TermOfPayment
+                dcboTerm.Text = exp.Term
+                txtTotalNetWeight.Value = String.Format("{0:0.00}", exp.TotalNetWeight)
+                txtSumItemWeight.Value = String.Format("{0:0.00}", exp.SumItemWeight)
+                If String.IsNullOrWhiteSpace(exp.TotalInvoiceCurrency) Then
 
-            'txtConsignneeStreet_Number.Value
-            'txtConsignneeDistrict.Value
-            'txtConsignneeSubProvince.Value
-            'txtConsignneeProvince.Value
-            'txtConsignneePostCode.Value
-            'txtConsignneeEMail.Value
-            'dcboPurchaseCountry.Value
-            'txtPurchaseCountry.Value
-            'cboDestinationCountry.Text
-            'txtDestinationCountry.Value
-            'dcboCountry.Text
-            'txtCountry.Value
-            'dcboTermofPayment.Value
-            'dcboTerm.Text 
-            'txtTotalNetWeight.Value
-            'txtSumItemWeight.Value
-            'dcboTotalInvoice.Value 
-            'txtTotalInvoiceAmount.Value 
-            'txtTotalInvoiceAmount1.Value
-            'dcboForwarding.Value
-            'txtForwardingAmount.Value
-            'txtForwardingAmount1.Value
-            'dcboFreight.Value
-            'txtFreightAmount.Value 
-            'txtFreightAmount1.Value
-            'dcboInsurance.Value
-            'txtInsuranceAmount.Value
-            'txtInsuranceAmount1.Value
-            'dcboPackingCharge.Value
-            'txtPackingChargeAmount.Value
-            'txtPackingChargeAmount1.Value
-            'dcboForeignInland.Value
-            'txtForeignInlandAmount.Value 
-            'txtForeignInlandAmount1.Value
-            'dcboLandingCharge.Value
-            'txtLandingChargeAmount.Value
-            'txtLandingChargeAmount1.Value
-            'dcboOtherCharge.Value
-            'txtOtherChargeAmount.Value
-            'txtOtherChargeAmount1..Value
-            'txtTransmitDate.Value
-            'dtpTransmitDate.Text
-            'txtDiffBy.Value
-            'If txtDiffBy.Text = "Diff by items-amount" Then
-            '    optDiffAmount.Checked = True
-            'End If
-            'If txtDiffBy.Text = "Diff by items-Weight" Then
-            '    optDiffweight.Checked = True
-            'End If
-            'txtNotify.Text = .Rows.Item(e.RowIndex).Cells(58).Value.ToString()
-            'If txtNotify.Text = "Notfy Party" Then
-            '    optNotifyParty.Checked = True
-            'End If
-            'If txtNotify.Text = "On Behalf of" Then
-            '    optOnbehalfOf.Checked = True
-            'End If
-            'txtOnbehalfStatus.Text = .Rows.Item(e.RowIndex).Cells(59).Value.ToString()
-            'If txtOnbehalfStatus.Text = "Enable On behalf of" Then
-            '    ckbOnbehalfof.Checked = True
-            'Else
-            '    ckbOnbehalfof.Checked = False
-            'End If
-            'txtEASExporterCode.Text
-            'txtEASNameEng.Text 
-            'txtEASStreet_Number.Text
-            'txtEASDistrict.Text 
-            'txtEASSubProvince.Text
-            'txtEASProvince.Text 
-            'txtEASPostCode.Text 
-            'txtEASCompensateCode.Text 
-            'txtCustomerCode.Text 
-            'txtCustomerEng.Text 
-            'txtCustomerAddress.Text
-            'txtCustomerEMail.Text 
-            'txtCustomerTelNo.Text 
-            'txtCustomerFaxNo.Text 
-            'txtCustomerContactPerson.Text 
-            'txtEASInvREFNo.Text 
-            'txtEASLOTNo.Text 
-            'txtCustomerRefNo.Text 
-            'txtSpecialInstruction.Text
-            'dcboShipMode.Text 
-            'dcboDeliveryTerm.Text
-            'dcboShippingMark.Text 
-            'txtShippingCompany.Text 
-            'txtShippingAddress.Text 
-            'txtEASRemark.Text 
-            'txtTotalCurrency.Text 
-            'txtEASCustomerCode.Text 
-            'txtEASCustomerEng1.Text 
-            'txtEASCustomerAddress.Text 
-            'txtEASEmail.Text 
-            'txtEASTelNo.Text
-            'txtEASFaxNo.Text 
-            'txtEASContactPerson.Text
-            'txtPLTNetAmount.Text 
-            'dcboUnitPLT.Text 
-            'txtPLTUnit.Text
-            'txtCTNNetAmount.Text
-            'dcboCTN.Text 
-            'txtCTNUnit.Text 
-            'txtTotalGrossWeight.Text 
-            'txtTotalQuantity.Text 
-            'txtVolumAmount.Text
-            'txtTotalText.Text 
-            'dcboCarLicense.Text 
-            'dcboDriverName.Text 
-            'txtCustomsConfirmDate.Text
-            'CustomsConfirmDate.Value
-            'txtApp.Text 
-            'Item 
-            'If Item = "0" Then
-            '    CoutItem.Checked = False
-            'ElseIf Item = "1" Then
-            '    CoutItem.Checked = True
-            'End If
+                Else
+                    dcboTotalInvoice.Text = exp.TotalInvoiceCurrency
+                End If
 
+                txtTotalInvoiceAmount.Value = String.Format("{0:0.00}", exp.TotalInvoiceAmount)
+                txtTotalInvoiceAmount1.Value = String.Format("{0:0.00}", exp.TotalInvoiceAmount1)
+
+                If String.IsNullOrEmpty(exp.ForwardingCurrency) Then
+
+                Else
+                    dcboForwarding.Text = exp.ForwardingCurrency
+                End If
+                txtForwardingAmount.Value = String.Format("{0:0.00}", exp.ForwardingAmount)
+                txtForwardingAmount1.Value = String.Format("{0:0.00}", exp.ForwardingAmount1)
+
+                If String.IsNullOrEmpty(exp.FreightCurrency) Then
+
+                Else
+
+                    dcboFreight.Text = exp.FreightCurrency
+                End If
+                txtFreightAmount.Value = String.Format("{0:0.00}", exp.FreightAmount)
+                txtFreightAmount1.Value = String.Format("{0:0.00}", exp.FreightAmount1)
+                If String.IsNullOrEmpty(exp.InsuranceCurrency) Then
+
+                Else
+                    dcboInsurance.Text = exp.InsuranceCurrency
+                End If
+                txtInsuranceAmount.Value = String.Format("{0:0.00}", exp.InsuranceAmount)
+                txtInsuranceAmount1.Value = String.Format("{0:0.00}", exp.InsuranceAmount1)
+
+                If String.IsNullOrEmpty(exp.PackingChargeCurrency) Then
+
+                Else
+                    dcboPackingCharge.Text = exp.PackingChargeCurrency
+                End If
+                txtPackingChargeAmount.Value = String.Format("{0:0.00}", exp.PackingChargeAmount)
+                txtPackingChargeAmount1.Value = String.Format("{0:0.00}", exp.PackingChargeAmount1)
+
+                If String.IsNullOrEmpty(exp.ForeignInlandCurrency) Then
+
+                Else
+                    dcboForeignInland.Text = exp.ForeignInlandCurrency
+                End If
+                txtForeignInlandAmount.Value = String.Format("{0:0.00}", exp.ForeignInlandAmount)
+                txtForeignInlandAmount1.Value = String.Format("{0:0.00}", exp.ForeignInlandAmount1)
+
+                If String.IsNullOrEmpty(exp.LandingChargeCurrency) Then
+
+                Else
+                    dcboLandingCharge.Text = exp.LandingChargeCurrency
+                End If
+                txtLandingChargeAmount.Value = String.Format("{0:0.00}", exp.LandingChargeAmount)
+                txtLandingChargeAmount1.Value = String.Format("{0:0.00}", exp.LandingChargeAmount1)
+
+                If String.IsNullOrEmpty(exp.OtherChargeCurrency) Then
+
+                Else
+                    dcboOtherCharge.Text = exp.OtherChargeCurrency
+                End If
+                'txtOtherChargeAmount. = exp.OtherChargeAmount
+                'txtOtherChargeAmount1.Value = exp.OtherChargeAmount1
+                'dtpTransmitDate	TransmitDate
+                DiffBy = exp.DiffBy
+                If DiffBy = "Diff by items-amount" Then
+                    rdbDiffAmount.Checked = True
+                End If
+                If DiffBy = "Diff by items-Weight" Then
+                    rdbDiffWeight.Checked = True
+                End If
+                Notify = exp.TermforShip
+                If Notify = "Notfy Party" Then
+                    rdbNotifyParty.Checked = True
+                End If
+                If Notify = "On Behalf of" Then
+                    rdbOnBehalfOf.Checked = True
+                End If
+                OnbehalfStatus = exp.OnbehalfStatus
+                If OnbehalfStatus = "Enable On behalf of" Then
+                    rdbOnBehalfOf.Checked = True
+                Else
+                    rdbOnBehalfOf.Checked = False
+                End If
+
+                txtEASExporterCode.Value = exp.EASExporterCode
+                txtEASNameEng.Value = exp.EASNameEng
+                txtEASStreet_Number.Value = exp.StreetAndNumber
+                txtEASDistrict.Value = exp.ESADistrict
+                txtEASSubProvince.Value = exp.EASSubProvince
+                txtEASProvince.Value = exp.EASProvince
+                txtEASPostCode.Value = exp.EASPostCode
+                txtEASCompensateCode.Value = exp.EASTCompensete
+                txtCustomerCode.Value = exp.EASCustomerCode
+                txtCustomerEng.Value = exp.EASCustomerENG
+                txtCustomerAddress.Value = exp.EASCustomerAddress
+                txtCustomerEMail.Value = exp.EASCustomerEMail
+                txtCustomerTelNo.Value = exp.EASCustomerTelNo
+                txtCustomerFaxNo.Value = exp.EASCustomerFaxNo
+                txtCustomerContactPerson.Value = exp.EASCustomerContactPerson
+                txtEASInvREFNo.Value = exp.EASInvRefNo
+                txtEASLOTNo.Value = exp.EASLOTNo
+                txtCustomerRefNo.Value = String.Format("{0:0.00}", exp.EASCustomerRefNo)
+                txtSpecialInstruction.Value = exp.EASSpecialInstruction
+
+                If String.IsNullOrEmpty(exp.EASShipMode) Then
+
+                Else
+                    dcboShipMode.Text = exp.EASShipMode
+                End If
+
+                If String.IsNullOrEmpty(exp.EASDeliveryTerm) Then
+
+                Else
+                    dcboDeliveryTerm.Text = exp.EASDeliveryTerm
+                End If
+
+                If String.IsNullOrEmpty(exp.EASShippingMark) Then
+
+                Else
+                    dcboShippingMark.Text = exp.EASShippingMark
+                End If
+                txtShippingCompany.Value = exp.EASShippingMarkCompany
+                txtShippingAddress.Value = exp.EASShippingMarkAddress
+                txtEASRemark.Value = exp.EASRemark
+                txtTotalCurrency.Value = exp.EASTotalCurrency
+                txtEASCustomerCode.Value = exp.EASBilltoCustomerCode
+                txtEASCustomerEng1.Value = exp.EASBilltoCustomerENG
+                txtEASCustomerAddress.Value = exp.EASBilltoCustomerAddress
+                txtEASEmail.Value = exp.EASBilltoCustomerEMail
+                txtEASTelNo.Value = exp.EASBilltoCustomerTelNo
+                txtEASFaxNo.Value = exp.EASBilltoCustomerFaxNo
+                txtEASContactPerson.Value = exp.EASBilltoCustomerContactPerson
+                txtPLTNetAmount.Value = String.Format("{0:0.00}", exp.PLTNetAmount)
+
+                If String.IsNullOrEmpty(exp.UnitPLT) Then
+
+                Else
+                    dcboUnitPLT.Text = exp.UnitPLT
+                End If
+                txtPLTUnit.Value = exp.CTNPLTName
+                txtCTNNetAmount.Value = String.Format("{0:0.00}", exp.CTNNetAmount)
+
+                If String.IsNullOrEmpty(exp.UnitCTN) Then
+
+                Else
+                    dcboCTN.Text = exp.UnitCTN
+                End If
+                txtCTNUnit.Value = exp.UnitCTNName
+                txtTotalGrossWeight.Value = String.Format("{0:0.00}", exp.GrossWeightAmount)
+                txtTotalQuantity.Value = String.Format("{0:0.00}", exp.QountityAmount)
+                txtVolumAmount.Value = String.Format("{0:0.00}", exp.VolumAmount)
+                txtTotalText.Value = exp.TotalTextPack
+
+                If String.IsNullOrEmpty(exp.CarLicense) Then
+
+                Else
+                    dcboCarLicense.Text = exp.CarLicense
+                End If
+
+                If String.IsNullOrEmpty(exp.DriverName) Then
+
+                Else
+                    dcboDriverName.Text = exp.DriverName
+                End If
+                CustomsConfirmDate.Text = Convert.ToDateTime(exp.CustomsConfirmDate).ToString("dd/MM/yyyy")
+                'txtApp = exp.App
+                Item = exp.OutItem
+                If Item = "0" Then
+                    CoutItem.Checked = False
+                ElseIf Item = "1" Then
+                    CoutItem.Checked = True
+                End If
+
+            Catch ex As Exception
+                ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('" & ex.Message & "')", True)
+            End Try
         End If
+    End Sub
+    Private Sub SavaDATA_New()
+        If String.IsNullOrEmpty(txtInvoiceNo.Value.Trim) Then
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('กรุณาป้อน รหัส Invoice No. ก่อน !!!')", True)
+            Exit Sub
+        End If
+        If String.IsNullOrEmpty(txtExporterCode.Value.Trim) Then
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('กรุณาป้อน Exporter Code ก่อน !!!')", True)
+            Exit Sub
+        End If
+        If String.IsNullOrEmpty(txtConsigneeCode.Value.Trim) Then
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('กรุณาป้อน Consignnee Code ก่อน !!!')", True)
+            Exit Sub
+        End If
+
+        If rdbDiffAmount.Checked = True Then
+
+            DiffBy = "Diff by items-amount"
+
+        ElseIf rdbDiffWeight.Checked = True Then
+            DiffBy = "Diff by items-Weight"
+        Else
+            DiffBy = ""
+        End If
+
+        If rdbNotifyParty.Checked = True Then
+            TermTransport = "Notfy Party"
+        ElseIf rdbOnBehalfOf.Checked = True Then
+            TermTransport = "On Behalf of"
+        Else
+            TermTransport = ""
+        End If
+        If rdbOnBehalfOf.Checked = True Then
+            OnbehalfStatus = "Enable On behalf of"
+        Else
+            OnbehalfStatus = "Disable On behalf of"
+        End If
+
+        Dim item As String
+        If CoutItem.Checked = False Then
+            item = "0"
+        Else
+            item = "1"
+        End If
+
+        Select Case MsgBox("คุณต้องการเพิ่มรายการ Export Customs Invoice ใหม่ ใช่หรือไม่ ?", MsgBoxStyle.YesNo, "คำยืนยัน")
+            Case MsgBoxResult.Yes
+                checkExpInvoice(txtInvoiceNo.Value.Trim)
+                Try
+
+                    db.tblExpInvoices.Add(New tblExpInvoice With { _
+                        .InvoiceNo = txtInvoiceNo.Value.Trim, _
+                        .ReferenceNo = txtReferenceNo.Value.Trim, _
+                        .PurchaseOrderNo = txtPurechaseOrderNo.Value.Trim, _
+                        .InvoiceDate = DateTime.ParseExact(dtpInvoiceDate.Text, "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US")), _
+                        .DeliveryDate = DateTime.ParseExact(dtpDeliveryDate.Text, "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US")), _
+                        .ReferenceDate = DateTime.ParseExact(dtpReferenceDate.Text, "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US")), _
+                        .ExporterCode = txtExporterCode.Value.Trim, _
+                        .ExporterENG = txtExportEng.Value.Trim, _
+                        .Street_Number = txtStreet_Number.Value.Trim, _
+                        .District = txtDistrict.Value.Trim, _
+                        .Subprovince = txtSubProvince.Value.Trim, _
+                        .Province = txtProvince.Value.Trim, _
+                        .PostCode = txtPostCode.Value.Trim, _
+                        .CompensateCode = txtCompensateCode.Value.Trim, _
+                        .ConsignneeCode = txtConsigneeCode.Value.Trim, _
+                        .ConsignneeENG = txtConsignneeEng.Value.Trim, _
+                        .ConsignneeStreet_Number = txtConsignneeStreet_Number.Value.Trim, _
+                        .ConsignneeDistrict = txtConsignneeDistrict.Value.Trim, _
+                        .ConsignneeSubProvince = txtConsignneeSubProvince.Value.Trim, _
+                        .ConsignneeProvince = txtConsignneeProvince.Value.Trim, _
+                        .ConsignneePostCode = txtConsignneePostCode.Value.Trim, _
+                        .ConsignneeEMail = txtConsignneeEMail.Value.Trim, _
+                        .PurchaseCountryCode = dcboPurchaseCountry.Text.Trim, _
+                        .PurchaseCountryName = txtPurchaseCountry.Value.Trim, _
+                        .DestinationCountryCode = cboDestinationCountry.Text, _
+                        .DestinationCountryName = txtDestinationCountry.Value.Trim, _
+                        .CountryCode = dcboCountry.Text, _
+                        .CountryName = txtCountry.Value.Trim, _
+                        .TermOfPayment = dcboTermofPayment.Text.Trim, _
+                        .Term = dcboTerm.Text, _
+                        .TotalNetWeight = CType(CDbl(txtTotalNetWeight.Value.Trim).ToString("#,##0.000"), Double?), _
+                        .SumItemWeight = CType(CDbl(txtSumItemWeight.Value.Trim).ToString("#,##0.000"), Double?), _
+                        .TotalInvoiceCurrency = dcboTotalInvoice.Text.Trim, _
+                        .TotalInvoiceAmount = CType(CDbl(txtTotalInvoiceAmount.Value.Trim).ToString("#,##0.000"), Double?), _
+                        .TotalInvoiceAmount1 = CType(CDbl(txtTotalInvoiceAmount1.Value.Trim).ToString("#,##0.000"), Double?), _
+                        .ForwardingCurrency = dcboForwarding.Text.Trim, _
+                        .ForwardingAmount = CType(CDbl(txtForwardingAmount.Value.Trim).ToString("#,##0.000"), Double?), _
+                        .ForwardingAmount1 = CType(CDbl(txtForwardingAmount1.Value.Trim).ToString("#,##0.000"), Double?), _
+                        .FreightCurrency = dcboFreight.Text.Trim, _
+                        .FreightAmount = CType(CDbl(txtFreightAmount.Value.Trim).ToString("#,##0.000"), Double?), _
+                        .FreightAmount1 = CType(CDbl(txtFreightAmount1.Value.Trim).ToString("#,##0.000"), Double?), _
+                        .InsuranceCurrency = dcboInsurance.Text.Trim, _
+                        .InsuranceAmount = CType(CDbl(txtInsuranceAmount.Value.Trim).ToString("#,##0.000"), Double?), _
+                        .InsuranceAmount1 = CType(CDbl(txtInsuranceAmount1.Value.Trim).ToString("#,##0.000"), Double?), _
+                        .PackingChargeCurrency = dcboPackingCharge.Text.Trim, _
+                        .PackingChargeAmount = CType(CDbl(txtPackingChargeAmount.Value.Trim).ToString("#,##0.0000"), Double?), _
+                        .PackingChargeAmount1 = CType(CDbl(txtPackingChargeAmount1.Value.Trim).ToString("#,##0.0000"), Double?), _
+                        .ForeignInlandCurrency = dcboForeignInland.Text.Trim, _
+                        .ForeignInlandAmount = CType(CDbl(txtForeignInlandAmount.Value.Trim).ToString("#,##0.000"), Double?), _
+                        .ForeignInlandAmount1 = CType(CDbl(txtForeignInlandAmount1.Value.Trim).ToString("#,##0.000"), Double?), _
+                        .LandingChargeCurrency = dcboLandingCharge.Text.Trim, _
+                        .LandingChargeAmount = CType(CDbl(txtLandingChargeAmount.Value.Trim).ToString("#,##0.000"), Double?), _
+                        .LandingChargeAmount1 = CType(CDbl(txtLandingChargeAmount1.Value.Trim).ToString("#,##0.000"), Double?), _
+                        .OtherChargeCurrency = dcboOtherCharge.Text.Trim, _
+                        .DiffBy = DiffBy, _
+                        .TermforShip = TermTransport, _
+                        .OnbehalfStatus = OnbehalfStatus, _
+                        .EASExporterCode = txtEASExporterCode.Value.Trim, _
+                        .EASNameEng = txtEASNameEng.Value.Trim, _
+                        .StreetAndNumber = txtEASStreet_Number.Value.Trim, _
+                        .ESADistrict = txtEASDistrict.Value.Trim, _
+                        .EASSubProvince = txtEASSubProvince.Value.Trim, _
+                        .EASProvince = txtEASProvince.Value.Trim, _
+                        .EASPostCode = txtEASPostCode.Value.Trim, _
+                        .EASTCompensete = txtEASCompensateCode.Value.Trim, _
+                        .EASCustomerCode = txtCustomerCode.Value.Trim, _
+                        .EASCustomerENG = txtCustomerEng.Value.Trim, _
+                        .EASCustomerAddress = txtCustomerAddress.Value.Trim, _
+                        .EASCustomerEMail = txtCustomerEMail.Value.Trim, _
+                        .EASCustomerTelNo = txtCustomerTelNo.Value.Trim, _
+                        .EASCustomerFaxNo = txtCustomerFaxNo.Value.Trim, _
+                        .EASCustomerContactPerson = txtCustomerContactPerson.Value.Trim, _
+                        .EASInvRefNo = txtEASInvREFNo.Value.Trim, _
+                        .EASLOTNo = txtEASLOTNo.Value.Trim, _
+                        .EASCustomerRefNo = CInt(txtCustomerRefNo.Value.Trim), _
+                        .EASSpecialInstruction = txtSpecialInstruction.Value.Trim, _
+                        .EASShipMode = dcboShipMode.Text.Trim, _
+                        .EASDeliveryTerm = dcboDeliveryTerm.Text.Trim, _
+                        .EASShippingMark = dcboShippingMark.Text.Trim, _
+                        .EASShippingMarkCompany = txtShippingCompany.Value.Trim, _
+                        .EASShippingMarkAddress = txtShippingAddress.Value.Trim, _
+                        .EASRemark = txtEASRemark.Value.Trim, _
+                        .EASTotalCurrency = txtTotalCurrency.Value.Trim, _
+                        .EASBilltoCustomerCode = txtEASCustomerCode.Value.Trim, _
+                        .EASBilltoCustomerENG = txtEASCustomerEng1.Value.Trim, _
+                        .EASBilltoCustomerAddress = txtEASCustomerAddress.Value.Trim, _
+                        .EASBilltoCustomerEMail = txtEASEmail.Value.Trim, _
+                        .EASBilltoCustomerTelNo = txtEASTelNo.Value.Trim, _
+                        .EASBilltoCustomerFaxNo = txtEASFaxNo.Value.Trim, _
+                        .EASBilltoCustomerContactPerson = txtEASContactPerson.Value.Trim, _
+                        .PLTNetAmount = CType(CDbl(txtPLTNetAmount.Value.Trim).ToString("#,##0.000"), Double?), _
+                        .UnitPLT = dcboUnitPLT.Text.Trim, _
+                        .CTNPLTName = txtPLTUnit.Value.Trim, _
+                        .CTNNetAmount = CType(CDbl(txtCTNNetAmount.Value.Trim).ToString("#,##0.000"), Double?), _
+                        .UnitCTN = dcboCTN.Text.Trim, _
+                        .UnitCTNName = txtCTNUnit.Value.Trim, _
+                        .GrossWeightAmount = CType(CDbl(txtTotalGrossWeight.Value.Trim).ToString("#,##0.000"), Double?), _
+                        .QountityAmount = CType(CDbl(txtTotalQuantity.Value.Trim).ToString("#,##0.000"), Double?), _
+                        .VolumAmount = CType(CDbl(txtVolumAmount.Value.Trim).ToString("#,##0.000"), Double?), _
+                        .TotalTextPack = txtTotalText.Value.Trim, _
+                        .CarLicense = dcboCarLicense.Text.Trim, _
+                        .DriverName = dcboDriverName.Text, _
+                        .PrintCountInv = "0", _
+                        .PrintCountPack = "0", _
+                        .PrintCount107 = "0", _
+                        .PrintCount108 = "0", _
+                        .PrintCountDoc = "0", _
+                        .CustomsConfirmDate = DateTime.ParseExact(CustomsConfirmDate.Text.Trim, "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US")), _
+                        .App = "Wait", _
+                        .CreateBy = Session("UserName").ToString, _
+                        .CreateDate = Now, _
+                        .OutItem = item
+                })
+                    db.SaveChanges()
+
+                Catch ex As Exception
+                    ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('" & ex.Message & "')", True)
+                End Try
+            Case MsgBoxResult.No
+
+        End Select
+
+        '.OtherChargeAmount = CDbl(txtOtherChargeAmount.Value.Trim).ToString("#,##0.000"), _
+        '     .OtherChargeAmount1  = txtOtherChargeAmount1.Value.Trim, _
+        '     .TransmitDate  = dtpTransmitDate.Value.Date, _
+    End Sub
+    Private Sub checkExpInvoice(InvoiceNo As String)
+
+        Dim invoiec = (From exp In db.tblExpInvoices Where exp.InvoiceNo = InvoiceNo Select exp).FirstOrDefault
+
+        If Not IsNothing(invoiec) Then
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert(' มี Invoice No นี้" & invoiec.InvoiceNo & " อยู่แล้ว')", True)
+        End If
+    End Sub
+    Private Sub InsertData()
+        Dim time As Date
+        Dim NameUser As String
+        time = CDate((Format(Now)))
+        NameUser = Session("UserName").ToString
+
+        db.tblLogExpInvoices.Add(New tblLogExpInvoice With { _
+                                 .InvoiceNo = txtInvoiceNo.Value.Trim, _
+                                 .InvoiceDate = CType(dtpInvoiceDate.Text, Date?), _
+                                 .ConsignneeCode = txtConsigneeCode.Value.Trim, _
+                                 .EASExporterCode = txtEASExporterCode.Value.Trim, _
+                                 .EASInvRefNo = txtEASInvREFNo.Value.Trim, _
+                                 .EASLOTNo = txtEASLOTNo.Value.Trim, _
+                                 .EASShipMode = dcboShipMode.Text.Trim, _
+                                 .EASDeliveryTerm = dcboDeliveryTerm.Text.Trim, _
+                                 .ProductDesc1 = txtProductDesc1.Value.Trim, _
+                                 .ProductDesc2 = txtProductDesc2.Value.Trim, _
+                                 .ProductDesc3 = txtProductDesc3.Value.Trim, _
+                                 .OriginCountry = dcboOriginCtry.Text.Trim, _
+                                 .Quantity = CType(CDbl(txtQuantity.Value.Trim).ToString("#,##0.00000"), Decimal?), _
+                                 .PriceForeigh = CType(CDbl(txtPriceForeigh.Value.Trim).ToString("#,##0.000"), Decimal?), _
+                                 .PriceForeighAmount = CType(CDbl(txtPriceForeighAmount.Value).ToString("#,##0.000"), Decimal?), _
+                                 .PriceBathAmount = CType(txtPriceBathAmount.Value.Trim, Decimal?), _
+                                 .ExchangeRate = CType(CDbl(txtExchangeRate.Value.Trim).ToString("#,##0.0000"), Decimal?), _
+                                 .PLTNetAmount = CType(CDbl(txtPLTNetAmount.Value.Trim).ToString("#,##0.000"), Decimal?), _
+                                 .CTNPLTName = txtPLTUnit.Value.Trim, _
+                                 .CTNNetAmount = CType(CDbl(txtCTNNetAmount.Value.Trim).ToString("#,##0.000"), Decimal?), _
+                                 .UnitCTNName = txtCTNUnit.Value.Trim, _
+                                 .NetWeight = CType(CDbl(txtPackWeight.Text).ToString("#,##0.00"), Decimal?), _
+                                 .GrossWeight = CType(CDbl(txtPackGross.Value.Trim).ToString("#,##0.00"), Decimal?), _
+                                 .UserBy = NameUser, _
+                                 .LastUpDate = time
+                                })
+        db.SaveChanges()
+
+    End Sub
+
+    Protected Sub dcboPurchaseCountry_SelectedIndexChanged(sender As Object, e As EventArgs)
+        Dim pu = (From p In db.tblMasterCode2 Where p.Code = dcboPurchaseCountry.Text.Trim).FirstOrDefault
+        txtPurchaseCountry.Value = pu.Description
+    End Sub
+
+    Protected Sub dcboCountry_SelectedIndexChanged(sender As Object, e As EventArgs)
+        Dim pu = (From p In db.tblMasterCode2 Where p.Code = dcboCountry.Text.Trim).FirstOrDefault
+        txtCountry.Value = pu.Description
+    End Sub
+
+    Protected Sub cboDestinationCountry_SelectedIndexChanged(sender As Object, e As EventArgs)
+        Dim pu = (From p In db.tblMasterCode2 Where p.Code = cboDestinationCountry.Text.Trim).FirstOrDefault
+        txtDestinationCountry.Value = pu.Description
     End Sub
 End Class
