@@ -16,7 +16,7 @@ Public Class AddUser
     Inherits System.Web.UI.Page
    
     'Dim db As New LKBWarehouseEntities
-    Dim db As New LKBWarehouseEntities1_Test
+    Dim db As New LKBWarehouseEntities1
     'Dim usename As String = CStr(Session("UserName"))
     'Dim form As String = "frmExpGenLot"
     'Dim ClassPermis As ClassPermis

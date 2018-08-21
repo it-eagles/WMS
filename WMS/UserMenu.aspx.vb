@@ -15,7 +15,7 @@ Imports System.Configuration
 
 Public Class UserMenu
     Inherits System.Web.UI.Page
-    Dim db As New LKBWarehouseEntities1_Test
+    Dim db As New LKBWarehouseEntities1
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If Not Me.IsPostBack Then
@@ -140,7 +140,7 @@ Public Class UserMenu
     Protected Sub btnAddUp1_Click(sender As Object, e As EventArgs) Handles btnAddUp1.ServerClick
 
         Try
-            Using db = New LKBWarehouseEntities1_Test
+            Using db = New LKBWarehouseEntities1
                 Dim Form = (From u In db.tblMenus Where u.Form = txtForm.Value
                 Select u).FirstOrDefault
 

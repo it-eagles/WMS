@@ -23,7 +23,7 @@ Public Class MasterPartyEdit
     Dim RoleAirline As String = "1"
     Dim RoleEndCustomer As String = "1"
     'Dim db As New LKBwarehouseEntities
-    Dim db As New LKBWarehouseEntities1_Test
+    Dim db As New LKBWarehouseEntities1
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
         If Not Me.IsPostBack Then

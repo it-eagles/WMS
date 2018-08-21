@@ -6864,10 +6864,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>LKBWarehouseEntities1_Test.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\sysdiagram.vb">
+    <Compile Include="Data\tblBookingMessenger.vb">
       <DependentUpon>LKBWarehouseEntities1_Test.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\tblBookingMessenger.vb">
+    <Compile Include="Data\tblCompanyGuarantee1.vb">
       <DependentUpon>LKBWarehouseEntities1_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblCurrency.vb">

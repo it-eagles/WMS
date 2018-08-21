@@ -31,4 +31,6 @@ Partial Public Class tblStatusBalance
     Public Property UpdateDate As Nullable(Of Date)
     Public Property StatusRenew As Nullable(Of Integer)
 
+    Public Overridable Property tblCompanyGuarantee1 As ICollection(Of tblCompanyGuarantee1) = New HashSet(Of tblCompanyGuarantee1)
+
 End Class

@@ -4,7 +4,7 @@ Option Explicit On
 Public Class ViewUserProfile
     Inherits System.Web.UI.Page
 
-    Dim db As New LKBWarehouseEntities1_Test
+    Dim db As New LKBWarehouseEntities1
     'Dim db As New LKBwarehouseEntities
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load

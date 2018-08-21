@@ -2,7 +2,7 @@
 Option Strict On
 
 Public Class ClassPermis
-    Dim db As New LKBWarehouseEntities1_Test
+    Dim db As New LKBWarehouseEntities1
     'Dim usename As String = Session("UserName")
 
     Public Function CheckRead(NameFrom As String, userName As String) As Boolean

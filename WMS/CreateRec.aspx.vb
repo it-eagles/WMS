@@ -12,7 +12,7 @@ Imports System.Globalization
 
 Public Class CreateRec
     Inherits System.Web.UI.Page
-    Dim db As New LKBWarehouseEntities1_Test
+    Dim db As New LKBWarehouseEntities1
     Dim classPermis As New ClassPermis
     Dim checkclicksave As String
     Dim txtMountNo As String

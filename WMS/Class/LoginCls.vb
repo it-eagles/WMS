@@ -64,7 +64,7 @@ Public Class LoginCls
         PwdWithEncrypt = Convert.ToBase64String(ms.ToArray())
         'Dim passEn As String = Encrypt(password, EncryptPass)
 
-        Using db As New LKBWarehouseEntities1_Test
+        Using db As New LKBWarehouseEntities1
             Try
                 'Using db As New LKBWarehouseEntities
                 Dim q = (From p In db.tblUsers _

@@ -132,8 +132,4 @@ Partial Public Class tblExpInvoice
     Public Property UnitQuantity As String
     Public Property UnitWeight As String
 
-    Function ForeignInlandCurrencyh() As String
-        Throw New NotImplementedException
-    End Function
-
 End Class

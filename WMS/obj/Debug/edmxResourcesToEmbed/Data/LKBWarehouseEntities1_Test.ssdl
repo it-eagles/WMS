@@ -22,22 +22,9 @@
     <Property Name="Status" Type="varchar" MaxLength="50" />
     <Property Name="SideID" Type="varchar" MaxLength="50" />
   </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="principal_id" Type="int" Nullable="false" />
-    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="version" Type="int" />
-    <Property Name="definition" Type="varbinary(max)" />
-  </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblBookingMessenger' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblBookingMessenger">
     <Key>
       <PropertyRef Name="RecNo" />
-      <PropertyRef Name="rowguid" />
     </Key>
     <Property Name="RecNo" Type="numeric" Precision="18" Scale="0" Nullable="false" />
     <Property Name="BookingDate" Type="datetime" />
@@ -60,12 +47,19 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblBookingMessenger' does not hav
     <Property Name="CreateDate" Type="datetime" />
     <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblCurrency' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="tblCompanyGuarantee1">
+    <Key>
+      <PropertyRef Name="AmountGuaranteeID" />
+    </Key>
+    <Property Name="AmountGuaranteeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AmountGuarantee" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="AmountUsed" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Balance" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="InvoiceNo" Type="varchar" MaxLength="30" />
+  </EntityType>
   <EntityType Name="tblCurrency">
     <Key>
       <PropertyRef Name="CurrencyCode" />
-      <PropertyRef Name="rowguid" />
     </Key>
     <Property Name="CurrencyCode" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="CurrencyTH" Type="varchar" MaxLength="200" />
@@ -73,8 +67,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblCurrency' does not have a prim
     <Property Name="CurrencyRate" Type="varchar" MaxLength="50" />
     <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblDocTracking' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblDocTracking">
     <Key>
       <PropertyRef Name="RowID" />
@@ -85,12 +77,9 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblDocTracking' does not have a p
     <Property Name="UploadDate" Type="datetime" />
     <Property Name="CustomerCode" Type="varchar" MaxLength="50" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblEntryManagementWH' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblEntryManagementWH">
     <Key>
       <PropertyRef Name="LotNo" />
-      <PropertyRef Name="rowguid" />
     </Key>
     <Property Name="LotNo" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="EntryDate" Type="varchar" MaxLength="50" />
@@ -127,14 +116,11 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblEntryManagementWH' does not ha
     <Property Name="Editby" Type="varchar" MaxLength="50" />
     <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblExchangeRate' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblExchangeRate">
     <Key>
       <PropertyRef Name="Currency" />
       <PropertyRef Name="StartDate" />
       <PropertyRef Name="Status" />
-      <PropertyRef Name="rowguid" />
     </Key>
     <Property Name="Currency" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="StartDate" Type="varchar" MaxLength="50" Nullable="false" />
@@ -256,8 +242,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblExchangeRate' does not have a 
     <Property Name="CustomerCodeGroup" Type="varchar" MaxLength="50" />
     <Property Name="CustomerENGGroup" Type="varchar" MaxLength="200" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblExpInvoice' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblExpInvoice">
     <Key>
       <PropertyRef Name="InvoiceNo" />
@@ -383,14 +367,11 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblExpInvoice' does not have a pr
     <Property Name="UnitQuantity" Type="varchar" MaxLength="50" />
     <Property Name="UnitWeight" Type="varchar" MaxLength="50" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblExpInvoiceDetail' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblExpInvoiceDetail">
     <Key>
       <PropertyRef Name="InvoiceNo" />
       <PropertyRef Name="Product" />
       <PropertyRef Name="ItemNo" />
-      <PropertyRef Name="rowguid" />
     </Key>
     <Property Name="InvoiceNo" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Product" Type="varchar" MaxLength="50" Nullable="false" />
@@ -462,14 +443,11 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblExpInvoiceDetail' does not hav
     <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
     <Property Name="BoiDate" Type="datetime" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblExpPackingList' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblExpPackingList">
     <Key>
       <PropertyRef Name="RowNo" />
       <PropertyRef Name="InvoiceNo" />
       <PropertyRef Name="PackProductCode" />
-      <PropertyRef Name="rowguid" />
     </Key>
     <Property Name="RowNo" Type="decimal" Precision="18" Scale="0" Nullable="false" />
     <Property Name="InvoiceNo" Type="varchar" MaxLength="50" Nullable="false" />
@@ -523,8 +501,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblGenAutoNo' does not have a pri
     <Property Name="DigitNo" Type="varchar" MaxLength="50" />
     <Property Name="rowguid" Type="uniqueidentifier" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblGroupMenu' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblGroupMenu">
     <Key>
       <PropertyRef Name="GroupName" />
@@ -537,14 +513,11 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblGroupMenu' does not have a pri
     <Property Name="UserBy" Type="varchar" MaxLength="50" />
     <Property Name="UpdateBy" Type="datetime" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblHAWBDetail' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblHAWBDetail">
     <Key>
       <PropertyRef Name="HouseLine" />
       <PropertyRef Name="InvoiceNo" />
       <PropertyRef Name="HAWB" />
-      <PropertyRef Name="rowguid" />
     </Key>
     <Property Name="HouseLine" Type="decimal" Precision="18" Scale="0" Nullable="false" />
     <Property Name="InvoiceNo" Type="varchar" MaxLength="50" Nullable="false" />
@@ -572,8 +545,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblHAWBDetail' does not have a pr
     <Property Name="UserBy" Type="varchar" MaxLength="50" />
     <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblImpBookingInvDetail' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblImpBookingInvDetail">
     <Key>
       <PropertyRef Name="InvoiceNo" />
@@ -770,12 +741,9 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblImpBookingInvDetail' does not 
     <Property Name="CustomerCodeGroup" Type="varchar" MaxLength="50" />
     <Property Name="CustomerENGGroup" Type="varchar" MaxLength="200" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblImpInvoice' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblImpInvoice">
     <Key>
       <PropertyRef Name="InvoiceNo" />
-      <PropertyRef Name="rowguid" />
     </Key>
     <Property Name="InvoiceNo" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="ReferenceNo" Type="varchar" MaxLength="50" />
@@ -895,14 +863,11 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblImpInvoice' does not have a pr
     <Property Name="UpdateDate" Type="datetime" />
     <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblImpInvoiceDetail' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblImpInvoiceDetail">
     <Key>
       <PropertyRef Name="InvoiceNo" />
       <PropertyRef Name="Product" />
       <PropertyRef Name="ItemNo" />
-      <PropertyRef Name="rowguid" />
     </Key>
     <Property Name="InvoiceNo" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Product" Type="varchar" MaxLength="50" Nullable="false" />
@@ -973,8 +938,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblImpInvoiceDetail' does not hav
     <Property Name="ItemRemark" Type="varchar" MaxLength="200" />
     <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblImpLogFlight' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblImpLogFlight">
     <Key>
       <PropertyRef Name="LotNo" />
@@ -994,14 +957,11 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblImpLogFlight' does not have a 
     <Property Name="Updateby" Type="datetime" />
     <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblImpPackingList' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblImpPackingList">
     <Key>
       <PropertyRef Name="RowNo" />
       <PropertyRef Name="InvoiceNo" />
       <PropertyRef Name="PackProductCode" />
-      <PropertyRef Name="rowguid" />
     </Key>
     <Property Name="RowNo" Type="decimal" Precision="18" Scale="0" Nullable="false" />
     <Property Name="InvoiceNo" Type="varchar" MaxLength="50" Nullable="false" />
@@ -1027,8 +987,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblImpPackingList' does not have 
     <Property Name="PONo" Type="varchar" MaxLength="50" />
     <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblInventoryItem' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblInventoryItem">
     <Key>
       <PropertyRef Name="Itemcode" />
@@ -1040,23 +998,17 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblInventoryItem' does not have a
     <Property Name="Userby" Type="varchar" MaxLength="50" />
     <Property Name="Lastupdate" Type="datetime" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblLocation' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblLocation">
     <Key>
       <PropertyRef Name="LocationCode" />
-      <PropertyRef Name="rowguid" />
     </Key>
     <Property Name="LocationCode" Type="varchar" MaxLength="200" Nullable="false" />
     <Property Name="LocationName" Type="varchar" MaxLength="200" />
     <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblLocationArea' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblLocationArea">
     <Key>
       <PropertyRef Name="AreaCode" />
-      <PropertyRef Name="rowguid" />
     </Key>
     <Property Name="AreaCode" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="AreaName" Type="varchar" MaxLength="200" />
@@ -1073,12 +1025,9 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblLocationArea' does not have a 
     <Property Name="UnitWeight" Type="varchar" MaxLength="50" />
     <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblLocationMaster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblLocationMaster">
     <Key>
       <PropertyRef Name="LocationCode" />
-      <PropertyRef Name="rowguid" />
     </Key>
     <Property Name="LocationCode" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="WarehouseCode" Type="varchar" MaxLength="50" />
@@ -1094,13 +1043,10 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblLocationMaster' does not have 
     <Property Name="LocationCost" Type="numeric" Precision="18" Scale="0" />
     <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblLogBrand' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblLogBrand">
     <Key>
       <PropertyRef Name="LowBrand" />
       <PropertyRef Name="BrandCode" />
-      <PropertyRef Name="rowguid" />
     </Key>
     <Property Name="LowBrand" Type="numeric" Precision="18" Scale="0" Nullable="false" />
     <Property Name="BrandCode" Type="varchar" MaxLength="50" Nullable="false" />
@@ -1108,13 +1054,10 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblLogBrand' does not have a prim
     <Property Name="LastUpDate" Type="datetime" />
     <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblLogCarLicense' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblLogCarLicense">
     <Key>
       <PropertyRef Name="LowBrand" />
       <PropertyRef Name="CarLicense" />
-      <PropertyRef Name="rowguid" />
     </Key>
     <Property Name="LowBrand" Type="numeric" Precision="18" Scale="0" Nullable="false" />
     <Property Name="CarLicense" Type="varchar" MaxLength="50" Nullable="false" />
@@ -1122,13 +1065,10 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblLogCarLicense' does not have a
     <Property Name="LastUpDate" Type="datetime" />
     <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblLogConsignnee' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblLogConsignnee">
     <Key>
       <PropertyRef Name="LowBrand" />
       <PropertyRef Name="ConsignneeCode" />
-      <PropertyRef Name="rowguid" />
     </Key>
     <Property Name="LowBrand" Type="numeric" Precision="18" Scale="0" Nullable="false" />
     <Property Name="ConsignneeCode" Type="varchar" MaxLength="50" Nullable="false" />
@@ -1136,13 +1076,10 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblLogConsignnee' does not have a
     <Property Name="LastUpDate" Type="datetime" />
     <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblLogCountry' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblLogCountry">
     <Key>
       <PropertyRef Name="LowBrand" />
       <PropertyRef Name="CountryCode" />
-      <PropertyRef Name="rowguid" />
     </Key>
     <Property Name="LowBrand" Type="numeric" Precision="18" Scale="0" Nullable="false" />
     <Property Name="CountryCode" Type="varchar" MaxLength="50" Nullable="false" />
@@ -1150,13 +1087,10 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblLogCountry' does not have a pr
     <Property Name="LastUpDate" Type="datetime" />
     <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblLogCurrency' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblLogCurrency">
     <Key>
       <PropertyRef Name="LowBrand" />
       <PropertyRef Name="CurrencyCode" />
-      <PropertyRef Name="rowguid" />
     </Key>
     <Property Name="LowBrand" Type="numeric" Precision="18" Scale="0" Nullable="false" />
     <Property Name="CurrencyCode" Type="varchar" MaxLength="50" Nullable="false" />
@@ -1164,13 +1098,10 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblLogCurrency' does not have a p
     <Property Name="LastUpDate" Type="datetime" />
     <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblLogDeliveryTerm' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblLogDeliveryTerm">
     <Key>
       <PropertyRef Name="LowBrand" />
       <PropertyRef Name="TermCode" />
-      <PropertyRef Name="rowguid" />
     </Key>
     <Property Name="LowBrand" Type="numeric" Precision="18" Scale="0" Nullable="false" />
     <Property Name="TermCode" Type="varchar" MaxLength="50" Nullable="false" />
@@ -1178,13 +1109,10 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblLogDeliveryTerm' does not have
     <Property Name="LastUpDate" Type="datetime" />
     <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblLogDriver' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblLogDriver">
     <Key>
       <PropertyRef Name="LowBrand" />
       <PropertyRef Name="DriverCode" />
-      <PropertyRef Name="rowguid" />
     </Key>
     <Property Name="LowBrand" Type="numeric" Precision="18" Scale="0" Nullable="false" />
     <Property Name="DriverCode" Type="varchar" MaxLength="50" Nullable="false" />
@@ -1192,13 +1120,10 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblLogDriver' does not have a pri
     <Property Name="LastUpDate" Type="datetime" />
     <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblLogExpGenLOT' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblLogExpGenLOT">
     <Key>
       <PropertyRef Name="LowBrand" />
       <PropertyRef Name="EASLOTNo" />
-      <PropertyRef Name="rowguid" />
     </Key>
     <Property Name="LowBrand" Type="numeric" Precision="18" Scale="0" Nullable="false" />
     <Property Name="EASLOTNo" Type="varchar" MaxLength="50" Nullable="false" />
@@ -1208,13 +1133,10 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblLogExpGenLOT' does not have a 
     <Property Name="LastUpDate" Type="datetime" />
     <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblLogExpInvoice' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblLogExpInvoice">
     <Key>
       <PropertyRef Name="LowBrand" />
       <PropertyRef Name="InvoiceNo" />
-      <PropertyRef Name="rowguid" />
     </Key>
     <Property Name="LowBrand" Type="numeric" Precision="18" Scale="0" Nullable="false" />
     <Property Name="InvoiceNo" Type="varchar" MaxLength="50" Nullable="false" />
@@ -1244,13 +1166,10 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblLogExpInvoice' does not have a
     <Property Name="LastUpDate" Type="datetime" />
     <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblLogExpInvoiceDetail' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblLogExpInvoiceDetail">
     <Key>
       <PropertyRef Name="LowBrand" />
       <PropertyRef Name="InvoiceNo" />
-      <PropertyRef Name="rowguid" />
     </Key>
     <Property Name="LowBrand" Type="numeric" Precision="18" Scale="0" Nullable="false" />
     <Property Name="InvoiceNo" Type="varchar" MaxLength="50" Nullable="false" />
@@ -1272,13 +1191,10 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblLogExpInvoiceDetail' does not 
     <Property Name="LastUpDate" Type="datetime" />
     <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblLogExpPackingList' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblLogExpPackingList">
     <Key>
       <PropertyRef Name="LowBrand" />
       <PropertyRef Name="InvoiceNo" />
-      <PropertyRef Name="rowguid" />
     </Key>
     <Property Name="LowBrand" Type="numeric" Precision="18" Scale="0" Nullable="false" />
     <Property Name="InvoiceNo" Type="varchar" MaxLength="50" Nullable="false" />
@@ -1306,13 +1222,10 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblLogExpPackingList' does not ha
     <Property Name="LastUpDate" Type="datetime" />
     <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblLogImpGenLOT' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblLogImpGenLOT">
     <Key>
       <PropertyRef Name="LowBrand" />
       <PropertyRef Name="EASLOTNo" />
-      <PropertyRef Name="rowguid" />
     </Key>
     <Property Name="LowBrand" Type="numeric" Precision="18" Scale="0" Nullable="false" />
     <Property Name="EASLOTNo" Type="varchar" MaxLength="50" Nullable="false" />
@@ -1322,13 +1235,10 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblLogImpGenLOT' does not have a 
     <Property Name="LastUpDate" Type="datetime" />
     <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblLogImpInvoice' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblLogImpInvoice">
     <Key>
       <PropertyRef Name="LowBrand" />
       <PropertyRef Name="InvoiceNo" />
-      <PropertyRef Name="rowguid" />
     </Key>
     <Property Name="LowBrand" Type="numeric" Precision="18" Scale="0" Nullable="false" />
     <Property Name="InvoiceNo" Type="varchar" MaxLength="50" Nullable="false" />
@@ -1386,13 +1296,10 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblLogImpInvoiceDetail' does not 
     <Property Name="LastUpDate" Type="datetime" />
     <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblLogImpPackingList' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblLogImpPackingList">
     <Key>
       <PropertyRef Name="LowBrand" />
       <PropertyRef Name="InvoiceNo" />
-      <PropertyRef Name="rowguid" />
     </Key>
     <Property Name="LowBrand" Type="numeric" Precision="18" Scale="0" Nullable="false" />
     <Property Name="InvoiceNo" Type="varchar" MaxLength="50" Nullable="false" />
@@ -1420,37 +1327,28 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblLogImpPackingList' does not ha
     <Property Name="LastUpDate" Type="datetime" />
     <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblLogLocationArea' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblLogLocationArea">
     <Key>
       <PropertyRef Name="AreaCode" />
-      <PropertyRef Name="rowguid" />
     </Key>
     <Property Name="AreaCode" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="UserBy" Type="varchar" MaxLength="50" />
     <Property Name="LastUpDate" Type="datetime" />
     <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblLogLocationMaster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblLogLocationMaster">
     <Key>
       <PropertyRef Name="LocationCode" />
-      <PropertyRef Name="rowguid" />
     </Key>
     <Property Name="LocationCode" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="UserBy" Type="varchar" MaxLength="50" />
     <Property Name="LastUpDate" Type="datetime" />
     <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblLogPackageUnit' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblLogPackageUnit">
     <Key>
       <PropertyRef Name="LowBrand" />
       <PropertyRef Name="PackageUnitCode" />
-      <PropertyRef Name="rowguid" />
     </Key>
     <Property Name="LowBrand" Type="numeric" Precision="18" Scale="0" Nullable="false" />
     <Property Name="PackageUnitCode" Type="varchar" MaxLength="50" Nullable="false" />
@@ -1458,13 +1356,10 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblLogPackageUnit' does not have 
     <Property Name="LastUpDate" Type="datetime" />
     <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblLogProductDetail' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblLogProductDetail">
     <Key>
       <PropertyRef Name="LowBrand" />
       <PropertyRef Name="ProductCode" />
-      <PropertyRef Name="rowguid" />
     </Key>
     <Property Name="LowBrand" Type="numeric" Precision="18" Scale="0" Nullable="false" />
     <Property Name="ProductCode" Type="varchar" MaxLength="50" Nullable="false" />
@@ -1472,13 +1367,10 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblLogProductDetail' does not hav
     <Property Name="LastUpDate" Type="datetime" />
     <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblLogProductUnit' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblLogProductUnit">
     <Key>
       <PropertyRef Name="LowBrand" />
       <PropertyRef Name="ProductUnitCode" />
-      <PropertyRef Name="rowguid" />
     </Key>
     <Property Name="LowBrand" Type="numeric" Precision="18" Scale="0" Nullable="false" />
     <Property Name="ProductUnitCode" Type="varchar" MaxLength="50" Nullable="false" />
@@ -1486,13 +1378,10 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblLogProductUnit' does not have 
     <Property Name="LastUpDate" Type="datetime" />
     <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblLogProvince' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblLogProvince">
     <Key>
       <PropertyRef Name="LowBrand" />
       <PropertyRef Name="ProvinceCode" />
-      <PropertyRef Name="rowguid" />
     </Key>
     <Property Name="LowBrand" Type="numeric" Precision="18" Scale="0" Nullable="false" />
     <Property Name="ProvinceCode" Type="varchar" MaxLength="50" Nullable="false" />
@@ -1500,13 +1389,10 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblLogProvince' does not have a p
     <Property Name="LastUpDate" Type="datetime" />
     <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblLogReferenceType' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblLogReferenceType">
     <Key>
       <PropertyRef Name="LogBrand" />
       <PropertyRef Name="ReferenceTypeCode" />
-      <PropertyRef Name="rowguid" />
     </Key>
     <Property Name="LogBrand" Type="numeric" Precision="18" Scale="0" Nullable="false" />
     <Property Name="ReferenceTypeCode" Type="varchar" MaxLength="50" Nullable="false" />
@@ -1514,13 +1400,10 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblLogReferenceType' does not hav
     <Property Name="LastUpDate" Type="datetime" />
     <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblLogShipper' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblLogShipper">
     <Key>
       <PropertyRef Name="LowBrand" />
       <PropertyRef Name="ShipperCode" />
-      <PropertyRef Name="rowguid" />
     </Key>
     <Property Name="LowBrand" Type="numeric" Precision="18" Scale="0" Nullable="false" />
     <Property Name="ShipperCode" Type="varchar" MaxLength="50" Nullable="false" />
@@ -1528,13 +1411,10 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblLogShipper' does not have a pr
     <Property Name="LastUpDate" Type="datetime" />
     <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblLogShippingMark' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblLogShippingMark">
     <Key>
       <PropertyRef Name="LowBrand" />
       <PropertyRef Name="ShippingMarkCode" />
-      <PropertyRef Name="rowguid" />
     </Key>
     <Property Name="LowBrand" Type="numeric" Precision="18" Scale="0" Nullable="false" />
     <Property Name="ShippingMarkCode" Type="varchar" MaxLength="50" Nullable="false" />
@@ -1542,13 +1422,10 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblLogShippingMark' does not have
     <Property Name="LastUpDate" Type="datetime" />
     <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblLogtransportationMode' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblLogtransportationMode">
     <Key>
       <PropertyRef Name="LowBrand" />
       <PropertyRef Name="TransportCode" />
-      <PropertyRef Name="rowguid" />
     </Key>
     <Property Name="LowBrand" Type="numeric" Precision="18" Scale="0" Nullable="false" />
     <Property Name="TransportCode" Type="varchar" MaxLength="50" Nullable="false" />
@@ -1556,13 +1433,10 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblLogtransportationMode' does no
     <Property Name="LastUpDate" Type="datetime" />
     <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblLogTruckManifest' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblLogTruckManifest">
     <Key>
       <PropertyRef Name="LogNum" />
       <PropertyRef Name="TruckManifestCode" />
-      <PropertyRef Name="rowguid" />
     </Key>
     <Property Name="LogNum" Type="numeric" Precision="18" Scale="0" Nullable="false" />
     <Property Name="TruckManifestCode" Type="varchar" MaxLength="90" Nullable="false" />
@@ -1570,13 +1444,10 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblLogTruckManifest' does not hav
     <Property Name="LastUpDate" Type="datetime" />
     <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblLogTruckManifestDetail' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblLogTruckManifestDetail">
     <Key>
       <PropertyRef Name="LogNum" />
       <PropertyRef Name="TruckManifestCode" />
-      <PropertyRef Name="rowguid" />
     </Key>
     <Property Name="LogNum" Type="numeric" Precision="18" Scale="0" Nullable="false" />
     <Property Name="TruckManifestCode" Type="varchar" MaxLength="90" Nullable="false" />
@@ -1587,13 +1458,10 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblLogTruckManifestDetail' does n
     <Property Name="LastUpDate" Type="datetime" />
     <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblLogTruckOwner' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblLogTruckOwner">
     <Key>
       <PropertyRef Name="LogNum" />
       <PropertyRef Name="TruckOwnerCode" />
-      <PropertyRef Name="rowguid" />
     </Key>
     <Property Name="LogNum" Type="numeric" Precision="18" Scale="0" Nullable="false" />
     <Property Name="TruckOwnerCode" Type="varchar" MaxLength="90" Nullable="false" />
@@ -1601,13 +1469,10 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblLogTruckOwner' does not have a
     <Property Name="LastUpDate" Type="datetime" />
     <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblLogTruckType' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblLogTruckType">
     <Key>
       <PropertyRef Name="LogNum" />
       <PropertyRef Name="TruckTypeCode" />
-      <PropertyRef Name="rowguid" />
     </Key>
     <Property Name="LogNum" Type="numeric" Precision="18" Scale="0" Nullable="false" />
     <Property Name="TruckTypeCode" Type="varchar" MaxLength="90" Nullable="false" />
@@ -1615,13 +1480,10 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblLogTruckType' does not have a 
     <Property Name="LastUpDate" Type="datetime" />
     <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblLogTruckWayBill' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblLogTruckWayBill">
     <Key>
       <PropertyRef Name="LogBrand" />
       <PropertyRef Name="TruckWayBillNo" />
-      <PropertyRef Name="rowguid" />
     </Key>
     <Property Name="LogBrand" Type="numeric" Precision="18" Scale="0" Nullable="false" />
     <Property Name="TruckWayBillNo" Type="varchar" MaxLength="50" Nullable="false" />
@@ -1629,14 +1491,11 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblLogTruckWayBill' does not have
     <Property Name="LastUpDate" Type="datetime" />
     <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblLogTruckWayBillDetail' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblLogTruckWayBillDetail">
     <Key>
       <PropertyRef Name="LowBrand" />
       <PropertyRef Name="TruckWayBillNo" />
       <PropertyRef Name="InvoiceNo" />
-      <PropertyRef Name="rowguid" />
     </Key>
     <Property Name="LowBrand" Type="numeric" Precision="18" Scale="0" Nullable="false" />
     <Property Name="TruckWayBillNo" Type="varchar" MaxLength="50" Nullable="false" />
@@ -1645,14 +1504,11 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblLogTruckWayBillDetail' does no
     <Property Name="LastUpDate" Type="datetime" />
     <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblLogTruckWayBillDetailImp' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblLogTruckWayBillDetailImp">
     <Key>
       <PropertyRef Name="LowBrand" />
       <PropertyRef Name="TruckWayBillNo" />
       <PropertyRef Name="InvoiceNo" />
-      <PropertyRef Name="rowguid" />
     </Key>
     <Property Name="LowBrand" Type="numeric" Precision="18" Scale="0" Nullable="false" />
     <Property Name="TruckWayBillNo" Type="varchar" MaxLength="50" Nullable="false" />
@@ -1661,13 +1517,10 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblLogTruckWayBillDetailImp' does
     <Property Name="LastUpDate" Type="datetime" />
     <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblLogTruckWayBillImp' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblLogTruckWayBillImp">
     <Key>
       <PropertyRef Name="LogBrand" />
       <PropertyRef Name="TruckWayBillNo" />
-      <PropertyRef Name="rowguid" />
     </Key>
     <Property Name="LogBrand" Type="numeric" Precision="18" Scale="0" Nullable="false" />
     <Property Name="TruckWayBillNo" Type="varchar" MaxLength="50" Nullable="false" />
@@ -1678,6 +1531,7 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblLogTruckWayBillImp' does not h
   <EntityType Name="tblLogUser">
     <Key>
       <PropertyRef Name="LowNumber" />
+      <PropertyRef Name="UserName" />
     </Key>
     <Property Name="LowNumber" Type="numeric" Precision="18" Scale="0" Nullable="false" />
     <Property Name="UserName" Type="varchar" MaxLength="100" Nullable="false" />
@@ -1922,12 +1776,9 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblMasterCode' does not have a pr
     <Property Name="UpdateBy" Type="varchar" MaxLength="50" />
     <Property Name="UpdateDate" Type="datetime" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblRecEASInvoice' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblRecEASInvoice">
     <Key>
       <PropertyRef Name="InvoiceNo" />
-      <PropertyRef Name="rowguid" />
     </Key>
     <Property Name="InvoiceNo" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="LOTNo" Type="varchar" MaxLength="50" />
@@ -1937,13 +1788,10 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblRecEASInvoice' does not have a
     <Property Name="CancleIEAT" Type="varchar" MaxLength="50" />
     <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblRecINV' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblRecINV">
     <Key>
       <PropertyRef Name="InvoiceNo" />
       <PropertyRef Name="LOTNo" />
-      <PropertyRef Name="rowguid" />
     </Key>
     <Property Name="InvoiceNo" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="LOTNo" Type="varchar" MaxLength="50" Nullable="false" />
@@ -1968,8 +1816,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblRecINV' does not have a primar
     <Property Name="PriceForeign" Type="float" />
     <Property Name="ItemNo" Type="int" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblRunningNumber' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblRunningNumber">
     <Key>
       <PropertyRef Name="Name" />
@@ -1977,8 +1823,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblRunningNumber' does not have a
     <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="RunNo" Type="numeric" Precision="18" Scale="0" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblShippingTranfer' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblShippingTranfer">
     <Key>
       <PropertyRef Name="JobNo" />
@@ -2009,8 +1853,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblShippingTranfer' does not have
     <Property Name="status8" Type="char" MaxLength="10" />
     <Property Name="status9" Type="char" MaxLength="10" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblStatusBalance' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblStatusBalance">
     <Key>
       <PropertyRef Name="InvoiceNo" />
@@ -2035,12 +1877,9 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblStatusBalance' does not have a
     <Property Name="UpdateDate" Type="datetime" />
     <Property Name="StatusRenew" Type="int" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblStatusIEAT107' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblStatusIEAT107">
     <Key>
       <PropertyRef Name="Invoice" />
-      <PropertyRef Name="rowguid" />
     </Key>
     <Property Name="Invoice" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="UseAmount" Type="float" />
@@ -2055,25 +1894,19 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblStatusIEAT107' does not have a
     <Property Name="TOEASDate" Type="datetime" />
     <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblStockBalance' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblStockBalance">
     <Key>
       <PropertyRef Name="ProductOwner" />
-      <PropertyRef Name="rowguid" />
     </Key>
     <Property Name="ProductOwner" Type="char" MaxLength="10" Nullable="false" />
     <Property Name="ProductBalance" Type="varchar" MaxLength="50" />
     <Property Name="Editby" Type="varchar" MaxLength="50" />
     <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblStockWip' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblStockWip">
     <Key>
       <PropertyRef Name="Pullsignal" />
       <PropertyRef Name="Lotno" />
-      <PropertyRef Name="ItemRefer" />
     </Key>
     <Property Name="Pullsignal" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Lotno" Type="varchar" MaxLength="50" Nullable="false" />
@@ -2084,8 +1917,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblStockWip' does not have a prim
     <Property Name="UpdateDate" Type="datetime" />
     <Property Name="StatusConfirm" Type="int" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblStockWipDtl' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblStockWipDtl">
     <Key>
       <PropertyRef Name="Pullsignal" />
@@ -2103,12 +1934,9 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblStockWipDtl' does not have a p
     <Property Name="ReferNo" Type="varchar" MaxLength="50" />
     <Property Name="ItemRefer" Type="int" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblSummaryReport' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblSummaryReport">
     <Key>
       <PropertyRef Name="Number" />
-      <PropertyRef Name="rowguid" />
     </Key>
     <Property Name="Number" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="FromDate" Type="datetime" />
@@ -2123,19 +1951,9 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblSummaryReport' does not have a
     <Property Name="Status" Type="varchar" MaxLength="50" />
     <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblTempExpGenLOT' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblTempExpGenLOT">
     <Key>
       <PropertyRef Name="EASLOTNo" />
-      <PropertyRef Name="LOTDate" />
-      <PropertyRef Name="Commodity" />
-      <PropertyRef Name="QuantityofPart" />
-      <PropertyRef Name="QuantityPack" />
-      <PropertyRef Name="Weight" />
-      <PropertyRef Name="Volume" />
-      <PropertyRef Name="Box" />
-      <PropertyRef Name="JobSite" />
     </Key>
     <Property Name="EASLOTNo" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="LOTDate" Type="datetime" Nullable="false" />
@@ -2237,20 +2055,9 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblTempExpGenLOT' does not have a
     <Property Name="OwnerEmail" Type="varchar" MaxLength="100" />
     <Property Name="OwnerContact" Type="varchar" MaxLength="200" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblTempImpGenLOT' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblTempImpGenLOT">
     <Key>
       <PropertyRef Name="EASLOTNo" />
-      <PropertyRef Name="LOTDate" />
-      <PropertyRef Name="Commodity" />
-      <PropertyRef Name="QuantityofPart" />
-      <PropertyRef Name="QuantityPack" />
-      <PropertyRef Name="Weight" />
-      <PropertyRef Name="Volume" />
-      <PropertyRef Name="QuantityPack1" />
-      <PropertyRef Name="JobSite" />
-      <PropertyRef Name="BookingNo" />
     </Key>
     <Property Name="EASLOTNo" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="LOTDate" Type="datetime" Nullable="false" />
@@ -2397,12 +2204,9 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblTempItemNo' does not have a pr
     <Property Name="PullSignal" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="ItemNo" Type="float" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblTruckManifest' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblTruckManifest">
     <Key>
       <PropertyRef Name="TruckManifestCode" />
-      <PropertyRef Name="rowguid" />
     </Key>
     <Property Name="TruckManifestCode" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="TruckOwner" Type="varchar" MaxLength="200" />
@@ -2421,13 +2225,10 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblTruckManifest' does not have a
     <Property Name="EasTel" Type="varchar" MaxLength="100" />
     <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblTruckManifestDetail' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblTruckManifestDetail">
     <Key>
       <PropertyRef Name="TruckManifestCode" />
       <PropertyRef Name="RowTruckNo" />
-      <PropertyRef Name="InvoiceNo" />
     </Key>
     <Property Name="TruckManifestCode" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="RowTruckNo" Type="decimal" Precision="18" Scale="0" Nullable="false" />
@@ -2443,12 +2244,9 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblTruckManifestDetail' does not 
     <Property Name="Dimension" Type="varchar" MaxLength="150" />
     <Property Name="HAWB" Type="varchar" MaxLength="100" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblTruckWayBill' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblTruckWayBill">
     <Key>
       <PropertyRef Name="TruckWayBillNo" />
-      <PropertyRef Name="rowguid" />
     </Key>
     <Property Name="TruckWayBillNo" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="ReceivedDate" Type="datetime" />
@@ -2484,14 +2282,9 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblTruckWayBill' does not have a 
     <Property Name="PlaceAddress" Type="varchar" MaxLength="200" />
     <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblTruckWayBillDetail' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblTruckWayBillDetail">
     <Key>
       <PropertyRef Name="CodeNo" />
-      <PropertyRef Name="TruckWayBillNo" />
-      <PropertyRef Name="InvoiceNo" />
-      <PropertyRef Name="rowguid" />
     </Key>
     <Property Name="CodeNo" Type="decimal" Precision="18" Scale="0" Nullable="false" />
     <Property Name="TruckWayBillNo" Type="varchar" MaxLength="50" Nullable="false" />
@@ -2591,12 +2384,9 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblTruckWayBillDetail' does not h
     <Property Name="UserStatus" Type="varchar" MaxLength="50" />
     <Property Name="RejectStatus" Type="varchar" MaxLength="50" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblUserGroup' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblUserGroup">
     <Key>
       <PropertyRef Name="UserGroupCode" />
-      <PropertyRef Name="rowguid" />
     </Key>
     <Property Name="UserGroupCode" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="UserGroupName" Type="varchar" MaxLength="100" />
@@ -2617,8 +2407,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblUserGroup' does not have a pri
     <Property Name="UserBy" Type="varchar" MaxLength="50" />
     <Property Name="LastUpdate" Type="datetime" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblUserWebClient' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblUserWebClient">
     <Key>
       <PropertyRef Name="UserName" />
@@ -2628,20 +2416,15 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblUserWebClient' does not have a
     <Property Name="CusGroup" Type="varchar" MaxLength="200" />
     <Property Name="CusName" Type="varchar" MaxLength="200" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblWarehouseType' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblWarehouseType">
     <Key>
       <PropertyRef Name="WarehouseTypeCode" />
-      <PropertyRef Name="rowguid" />
     </Key>
     <Property Name="WarehouseTypeCode" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="WarehouseTypeTH" Type="varchar" MaxLength="200" />
     <Property Name="WarehouseTypeENG" Type="varchar" MaxLength="200" />
     <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblWHConfirmGoodsReceive' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblWHConfirmGoodsReceive">
     <Key>
       <PropertyRef Name="LOTNo" />
@@ -2697,8 +2480,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHConfirmGoodsReceive' does no
     <Property Name="QuantityDiscrepancy" Type="float" />
     <Property Name="DiscrepancyUNIT" Type="varchar" MaxLength="50" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblWHConfirmGoodsReceiveDetail' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblWHConfirmGoodsReceiveDetail">
     <Key>
       <PropertyRef Name="LOTNo" />
@@ -2781,12 +2562,9 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHConfirmGoodsReceiveDetail' d
     <Property Name="UpdateBy" Type="varchar" MaxLength="50" />
     <Property Name="UpdateDate" Type="datetime" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblWHPickPackMaster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblWHPickPackMaster">
     <Key>
       <PropertyRef Name="NewProductCode" />
-      <PropertyRef Name="rowguid" />
     </Key>
     <Property Name="NewProductCode" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="NewPO" Type="varchar" MaxLength="50" />
@@ -2801,13 +2579,9 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHPickPackMaster' does not hav
     <Property Name="LastUpdate" Type="datetime" />
     <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblWHPickPackNewProduct' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblWHPickPackNewProduct">
     <Key>
       <PropertyRef Name="NewProductCode" />
-      <PropertyRef Name="UseProductCode" />
-      <PropertyRef Name="rowguid" />
     </Key>
     <Property Name="NewProductCode" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="UseProductCode" Type="varchar" MaxLength="50" Nullable="false" />
@@ -2821,8 +2595,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHPickPackNewProduct' does not
     <Property Name="LastUpdate" Type="datetime" />
     <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblWHPrepairGoodsReceive' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblWHPrepairGoodsReceive">
     <Key>
       <PropertyRef Name="LOTNo" />
@@ -3096,13 +2868,76 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
     <Property Name="OrderFrmOnline" Type="varchar" MaxLength="50" />
     <Property Name="CustFrmOnline" Type="varchar" MaxLength="50" />
   </EntityType>
+  <Association Name="FK_tblCompanyGuarantee1_tblStatusBalance">
+    <End Role="tblStatusBalance" Type="Self.tblStatusBalance" Multiplicity="0..1" />
+    <End Role="tblCompanyGuarantee1" Type="Self.tblCompanyGuarantee1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblStatusBalance">
+        <PropertyRef Name="InvoiceNo" />
+      </Principal>
+      <Dependent Role="tblCompanyGuarantee1">
+        <PropertyRef Name="InvoiceNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="LKBWarehouseModel1StoreContainer">
     <EntitySet Name="Branch" EntityType="Self.Branch" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblBookingMessenger" EntityType="Self.tblBookingMessenger" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblCompanyGuarantee1" EntityType="Self.tblCompanyGuarantee1" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblCurrency" EntityType="Self.tblCurrency" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblDocTracking" EntityType="Self.tblDocTracking" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblEntryManagementWH" EntityType="Self.tblEntryManagementWH" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblExchangeRate" EntityType="Self.tblExchangeRate" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblExpGenLOT" EntityType="Self.tblExpGenLOT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblExpInvoice" EntityType="Self.tblExpInvoice" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblExpInvoiceDetail" EntityType="Self.tblExpInvoiceDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblExpPackingList" EntityType="Self.tblExpPackingList" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblGenAutoRunNo" EntityType="Self.tblGenAutoRunNo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblGroupMenu" EntityType="Self.tblGroupMenu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblHAWBDetail" EntityType="Self.tblHAWBDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblImpBookingInvDetail" EntityType="Self.tblImpBookingInvDetail" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblImpGenLOT" EntityType="Self.tblImpGenLOT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblImpInvoice" EntityType="Self.tblImpInvoice" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblImpInvoiceDetail" EntityType="Self.tblImpInvoiceDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblImpLogFlight" EntityType="Self.tblImpLogFlight" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblImpPackingList" EntityType="Self.tblImpPackingList" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblInventoryItem" EntityType="Self.tblInventoryItem" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblLocation" EntityType="Self.tblLocation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblLocationArea" EntityType="Self.tblLocationArea" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblLocationMaster" EntityType="Self.tblLocationMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblLogBrand" EntityType="Self.tblLogBrand" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblLogCarLicense" EntityType="Self.tblLogCarLicense" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblLogConsignnee" EntityType="Self.tblLogConsignnee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblLogCountry" EntityType="Self.tblLogCountry" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblLogCurrency" EntityType="Self.tblLogCurrency" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblLogDeliveryTerm" EntityType="Self.tblLogDeliveryTerm" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblLogDriver" EntityType="Self.tblLogDriver" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblLogExpGenLOT" EntityType="Self.tblLogExpGenLOT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblLogExpInvoice" EntityType="Self.tblLogExpInvoice" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblLogExpInvoiceDetail" EntityType="Self.tblLogExpInvoiceDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblLogExpPackingList" EntityType="Self.tblLogExpPackingList" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblLogImpGenLOT" EntityType="Self.tblLogImpGenLOT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblLogImpInvoice" EntityType="Self.tblLogImpInvoice" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblLogImpPackingList" EntityType="Self.tblLogImpPackingList" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblLogLocationArea" EntityType="Self.tblLogLocationArea" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblLogLocationMaster" EntityType="Self.tblLogLocationMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblLogPackageUnit" EntityType="Self.tblLogPackageUnit" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblLogProductDetail" EntityType="Self.tblLogProductDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblLogProductUnit" EntityType="Self.tblLogProductUnit" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblLogProvince" EntityType="Self.tblLogProvince" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblLogReferenceType" EntityType="Self.tblLogReferenceType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblLogShipper" EntityType="Self.tblLogShipper" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblLogShippingMark" EntityType="Self.tblLogShippingMark" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblLogtransportationMode" EntityType="Self.tblLogtransportationMode" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblLogTruckManifest" EntityType="Self.tblLogTruckManifest" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblLogTruckManifestDetail" EntityType="Self.tblLogTruckManifestDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblLogTruckOwner" EntityType="Self.tblLogTruckOwner" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblLogTruckType" EntityType="Self.tblLogTruckType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblLogTruckWayBill" EntityType="Self.tblLogTruckWayBill" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblLogTruckWayBillDetail" EntityType="Self.tblLogTruckWayBillDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblLogTruckWayBillDetailImp" EntityType="Self.tblLogTruckWayBillDetailImp" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblLogTruckWayBillImp" EntityType="Self.tblLogTruckWayBillImp" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblLogUser" EntityType="Self.tblLogUser" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblMasterCode2" EntityType="Self.tblMasterCode2" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblMenu" EntityType="Self.tblMenu" Schema="dbo" store:Type="Tables" />
@@ -3110,329 +2945,36 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
     <EntitySet Name="tblParty" EntityType="Self.tblParty" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblPartyAddress" EntityType="Self.tblPartyAddress" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblProductDetail" EntityType="Self.tblProductDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblRecEASInvoice" EntityType="Self.tblRecEASInvoice" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblRecINV" EntityType="Self.tblRecINV" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblRunningNumber" EntityType="Self.tblRunningNumber" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblShippingTranfer" EntityType="Self.tblShippingTranfer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblStatusBalance" EntityType="Self.tblStatusBalance" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblStatusIEAT107" EntityType="Self.tblStatusIEAT107" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblStockBalance" EntityType="Self.tblStockBalance" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblStockWip" EntityType="Self.tblStockWip" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblStockWipDtl" EntityType="Self.tblStockWipDtl" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblSummaryReport" EntityType="Self.tblSummaryReport" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblTempExpGenLOT" EntityType="Self.tblTempExpGenLOT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblTempImpGenLOT" EntityType="Self.tblTempImpGenLOT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblTruckManifest" EntityType="Self.tblTruckManifest" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblTruckManifestDetail" EntityType="Self.tblTruckManifestDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblTruckWayBill" EntityType="Self.tblTruckWayBill" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblTruckWayBillDetail" EntityType="Self.tblTruckWayBillDetail" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblTruckWayBillDetailImp" EntityType="Self.tblTruckWayBillDetailImp" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblTruckWayBillImp" EntityType="Self.tblTruckWayBillImp" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblUserGroup" EntityType="Self.tblUserGroup" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblUserMenu" EntityType="Self.tblUserMenu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblUserWebClient" EntityType="Self.tblUserWebClient" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblWarehouseType" EntityType="Self.tblWarehouseType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblWHConfirmGoodsReceive" EntityType="Self.tblWHConfirmGoodsReceive" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblWHConfirmGoodsReceiveDetail" EntityType="Self.tblWHConfirmGoodsReceiveDetail" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblWHLocation" EntityType="Self.tblWHLocation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblWHPickPackMaster" EntityType="Self.tblWHPickPackMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblWHPickPackNewProduct" EntityType="Self.tblWHPickPackNewProduct" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblWHPrepairGoodsReceive" EntityType="Self.tblWHPrepairGoodsReceive" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblWHStockCtrl" EntityType="Self.tblWHStockCtrl" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="tblBookingMessenger" EntityType="Self.tblBookingMessenger" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblBookingMessenger].[RecNo] AS [RecNo], 
-    [tblBookingMessenger].[BookingDate] AS [BookingDate], 
-    [tblBookingMessenger].[BookingTime] AS [BookingTime], 
-    [tblBookingMessenger].[CusTel] AS [CusTel], 
-    [tblBookingMessenger].[ContactPerson] AS [ContactPerson], 
-    [tblBookingMessenger].[CustomerName] AS [CustomerName], 
-    [tblBookingMessenger].[Location] AS [Location], 
-    [tblBookingMessenger].[JobType1] AS [JobType1], 
-    [tblBookingMessenger].[JobType2] AS [JobType2], 
-    [tblBookingMessenger].[JobType3] AS [JobType3], 
-    [tblBookingMessenger].[JobDesc] AS [JobDesc], 
-    [tblBookingMessenger].[ReceiveComback] AS [ReceiveComback], 
-    [tblBookingMessenger].[BookingBy] AS [BookingBy], 
-    [tblBookingMessenger].[Branch] AS [Branch], 
-    [tblBookingMessenger].[Messenger] AS [Messenger], 
-    [tblBookingMessenger].[Status] AS [Status], 
-    [tblBookingMessenger].[Remark] AS [Remark], 
-    [tblBookingMessenger].[ReceiveBy] AS [ReceiveBy], 
-    [tblBookingMessenger].[CreateDate] AS [CreateDate], 
-    [tblBookingMessenger].[rowguid] AS [rowguid]
-    FROM [dbo].[tblBookingMessenger] AS [tblBookingMessenger]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblCurrency" EntityType="Self.tblCurrency" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblCurrency].[CurrencyCode] AS [CurrencyCode], 
-    [tblCurrency].[CurrencyTH] AS [CurrencyTH], 
-    [tblCurrency].[CurrencyENG] AS [CurrencyENG], 
-    [tblCurrency].[CurrencyRate] AS [CurrencyRate], 
-    [tblCurrency].[rowguid] AS [rowguid]
-    FROM [dbo].[tblCurrency] AS [tblCurrency]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblDocTracking" EntityType="Self.tblDocTracking" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblDocTracking].[RowID] AS [RowID], 
-    [tblDocTracking].[DocName] AS [DocName], 
-    [tblDocTracking].[URLDoc] AS [URLDoc], 
-    [tblDocTracking].[UploadDate] AS [UploadDate], 
-    [tblDocTracking].[CustomerCode] AS [CustomerCode]
-    FROM [dbo].[tblDocTracking] AS [tblDocTracking]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblEntryManagementWH" EntityType="Self.tblEntryManagementWH" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblEntryManagementWH].[LotNo] AS [LotNo], 
-    [tblEntryManagementWH].[EntryDate] AS [EntryDate], 
-    [tblEntryManagementWH].[ProductOwner] AS [ProductOwner], 
-    [tblEntryManagementWH].[InvoiceNumber] AS [InvoiceNumber], 
-    [tblEntryManagementWH].[TransportationMode] AS [TransportationMode], 
-    [tblEntryManagementWH].[EDINo] AS [EDINo], 
-    [tblEntryManagementWH].[MAWB] AS [MAWB], 
-    [tblEntryManagementWH].[HAWB] AS [HAWB], 
-    [tblEntryManagementWH].[TruckWaybill] AS [TruckWaybill], 
-    [tblEntryManagementWH].[BL] AS [BL], 
-    [tblEntryManagementWH].[PullSignalNo] AS [PullSignalNo], 
-    [tblEntryManagementWH].[ProductDescription] AS [ProductDescription], 
-    [tblEntryManagementWH].[Package_Quantity] AS [Package_Quantity], 
-    [tblEntryManagementWH].[Package_Unit] AS [Package_Unit], 
-    [tblEntryManagementWH].[Product_Quantity] AS [Product_Quantity], 
-    [tblEntryManagementWH].[Product_Unit] AS [Product_Unit], 
-    [tblEntryManagementWH].[GrossWT] AS [GrossWT], 
-    [tblEntryManagementWH].[NetWT] AS [NetWT], 
-    [tblEntryManagementWH].[Volume] AS [Volume], 
-    [tblEntryManagementWH].[UnitPrice_THB] AS [UnitPrice_THB], 
-    [tblEntryManagementWH].[UnitPrice_USD] AS [UnitPrice_USD], 
-    [tblEntryManagementWH].[InvoiceValue_USD] AS [InvoiceValue_USD], 
-    [tblEntryManagementWH].[InvoiceValue_ExchangeRate] AS [InvoiceValue_ExchangeRate], 
-    [tblEntryManagementWH].[InvoiceValue_THB] AS [InvoiceValue_THB], 
-    [tblEntryManagementWH].[InvoiceBalance] AS [InvoiceBalance], 
-    [tblEntryManagementWH].[CustomsValue_Total_THB] AS [CustomsValue_Total_THB], 
-    [tblEntryManagementWH].[CustomsValue_Balance_THB] AS [CustomsValue_Balance_THB], 
-    [tblEntryManagementWH].[CustomerName] AS [CustomerName], 
-    [tblEntryManagementWH].[ActiveDate_Receiving] AS [ActiveDate_Receiving], 
-    [tblEntryManagementWH].[ActiveDate_Issuign] AS [ActiveDate_Issuign], 
-    [tblEntryManagementWH].[Remarks] AS [Remarks], 
-    [tblEntryManagementWH].[StockBalance] AS [StockBalance], 
-    [tblEntryManagementWH].[Editby] AS [Editby], 
-    [tblEntryManagementWH].[rowguid] AS [rowguid]
-    FROM [dbo].[tblEntryManagementWH] AS [tblEntryManagementWH]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblExchangeRate" EntityType="Self.tblExchangeRate" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblExchangeRate].[Currency] AS [Currency], 
-    [tblExchangeRate].[StartDate] AS [StartDate], 
-    [tblExchangeRate].[EndDate] AS [EndDate], 
-    [tblExchangeRate].[ExchangeRate] AS [ExchangeRate], 
-    [tblExchangeRate].[BathAmount] AS [BathAmount], 
-    [tblExchangeRate].[TempText] AS [TempText], 
-    [tblExchangeRate].[Status] AS [Status], 
-    [tblExchangeRate].[Mount] AS [Mount], 
-    [tblExchangeRate].[rowguid] AS [rowguid]
-    FROM [dbo].[tblExchangeRate] AS [tblExchangeRate]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblExpInvoice" EntityType="Self.tblExpInvoice" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblExpInvoice].[InvoiceNo] AS [InvoiceNo], 
-    [tblExpInvoice].[ReferenceNo] AS [ReferenceNo], 
-    [tblExpInvoice].[ReferenceDate] AS [ReferenceDate], 
-    [tblExpInvoice].[PurchaseOrderNo] AS [PurchaseOrderNo], 
-    [tblExpInvoice].[InvoiceDate] AS [InvoiceDate], 
-    [tblExpInvoice].[DeliveryDate] AS [DeliveryDate], 
-    [tblExpInvoice].[ExporterCode] AS [ExporterCode], 
-    [tblExpInvoice].[ExporterENG] AS [ExporterENG], 
-    [tblExpInvoice].[Street_Number] AS [Street_Number], 
-    [tblExpInvoice].[District] AS [District], 
-    [tblExpInvoice].[Subprovince] AS [Subprovince], 
-    [tblExpInvoice].[Province] AS [Province], 
-    [tblExpInvoice].[PostCode] AS [PostCode], 
-    [tblExpInvoice].[CompensateCode] AS [CompensateCode], 
-    [tblExpInvoice].[ConsignneeCode] AS [ConsignneeCode], 
-    [tblExpInvoice].[ConsignneeENG] AS [ConsignneeENG], 
-    [tblExpInvoice].[ConsignneeStreet_Number] AS [ConsignneeStreet_Number], 
-    [tblExpInvoice].[ConsignneeDistrict] AS [ConsignneeDistrict], 
-    [tblExpInvoice].[ConsignneeSubProvince] AS [ConsignneeSubProvince], 
-    [tblExpInvoice].[ConsignneeProvince] AS [ConsignneeProvince], 
-    [tblExpInvoice].[ConsignneePostCode] AS [ConsignneePostCode], 
-    [tblExpInvoice].[ConsignneeEMail] AS [ConsignneeEMail], 
-    [tblExpInvoice].[PurchaseCountryCode] AS [PurchaseCountryCode], 
-    [tblExpInvoice].[PurchaseCountryName] AS [PurchaseCountryName], 
-    [tblExpInvoice].[DestinationCountryCode] AS [DestinationCountryCode], 
-    [tblExpInvoice].[DestinationCountryName] AS [DestinationCountryName], 
-    [tblExpInvoice].[CountryCode] AS [CountryCode], 
-    [tblExpInvoice].[CountryName] AS [CountryName], 
-    [tblExpInvoice].[TermOfPayment] AS [TermOfPayment], 
-    [tblExpInvoice].[Term] AS [Term], 
-    [tblExpInvoice].[TotalNetWeight] AS [TotalNetWeight], 
-    [tblExpInvoice].[SumItemWeight] AS [SumItemWeight], 
-    [tblExpInvoice].[TotalInvoiceCurrency] AS [TotalInvoiceCurrency], 
-    [tblExpInvoice].[TotalInvoiceAmount] AS [TotalInvoiceAmount], 
-    [tblExpInvoice].[TotalInvoiceAmount1] AS [TotalInvoiceAmount1], 
-    [tblExpInvoice].[ForwardingCurrency] AS [ForwardingCurrency], 
-    [tblExpInvoice].[ForwardingAmount] AS [ForwardingAmount], 
-    [tblExpInvoice].[ForwardingAmount1] AS [ForwardingAmount1], 
-    [tblExpInvoice].[FreightCurrency] AS [FreightCurrency], 
-    [tblExpInvoice].[FreightAmount] AS [FreightAmount], 
-    [tblExpInvoice].[FreightAmount1] AS [FreightAmount1], 
-    [tblExpInvoice].[InsuranceCurrency] AS [InsuranceCurrency], 
-    [tblExpInvoice].[InsuranceAmount] AS [InsuranceAmount], 
-    [tblExpInvoice].[InsuranceAmount1] AS [InsuranceAmount1], 
-    [tblExpInvoice].[PackingChargeCurrency] AS [PackingChargeCurrency], 
-    [tblExpInvoice].[PackingChargeAmount] AS [PackingChargeAmount], 
-    [tblExpInvoice].[PackingChargeAmount1] AS [PackingChargeAmount1], 
-    [tblExpInvoice].[ForeignInlandCurrency] AS [ForeignInlandCurrency], 
-    [tblExpInvoice].[ForeignInlandAmount] AS [ForeignInlandAmount], 
-    [tblExpInvoice].[ForeignInlandAmount1] AS [ForeignInlandAmount1], 
-    [tblExpInvoice].[LandingChargeCurrency] AS [LandingChargeCurrency], 
-    [tblExpInvoice].[LandingChargeAmount] AS [LandingChargeAmount], 
-    [tblExpInvoice].[LandingChargeAmount1] AS [LandingChargeAmount1], 
-    [tblExpInvoice].[OtherChargeCurrency] AS [OtherChargeCurrency], 
-    [tblExpInvoice].[OtherChargeAmount] AS [OtherChargeAmount], 
-    [tblExpInvoice].[OtherChargeAmount1] AS [OtherChargeAmount1], 
-    [tblExpInvoice].[TransmitDate] AS [TransmitDate], 
-    [tblExpInvoice].[DiffBy] AS [DiffBy], 
-    [tblExpInvoice].[TermforShip] AS [TermforShip], 
-    [tblExpInvoice].[OnbehalfStatus] AS [OnbehalfStatus], 
-    [tblExpInvoice].[EASExporterCode] AS [EASExporterCode], 
-    [tblExpInvoice].[EASNameEng] AS [EASNameEng], 
-    [tblExpInvoice].[StreetAndNumber] AS [StreetAndNumber], 
-    [tblExpInvoice].[ESADistrict] AS [ESADistrict], 
-    [tblExpInvoice].[EASSubProvince] AS [EASSubProvince], 
-    [tblExpInvoice].[EASProvince] AS [EASProvince], 
-    [tblExpInvoice].[EASPostCode] AS [EASPostCode], 
-    [tblExpInvoice].[EASTCompensete] AS [EASTCompensete], 
-    [tblExpInvoice].[EASCustomerCode] AS [EASCustomerCode], 
-    [tblExpInvoice].[EASCustomerENG] AS [EASCustomerENG], 
-    [tblExpInvoice].[EASCustomerAddress] AS [EASCustomerAddress], 
-    [tblExpInvoice].[EASCustomerEMail] AS [EASCustomerEMail], 
-    [tblExpInvoice].[EASCustomerTelNo] AS [EASCustomerTelNo], 
-    [tblExpInvoice].[EASCustomerFaxNo] AS [EASCustomerFaxNo], 
-    [tblExpInvoice].[EASCustomerContactPerson] AS [EASCustomerContactPerson], 
-    [tblExpInvoice].[EASInvRefNo] AS [EASInvRefNo], 
-    [tblExpInvoice].[EASLOTNo] AS [EASLOTNo], 
-    [tblExpInvoice].[EASCustomerRefNo] AS [EASCustomerRefNo], 
-    [tblExpInvoice].[EASSpecialInstruction] AS [EASSpecialInstruction], 
-    [tblExpInvoice].[EASShipMode] AS [EASShipMode], 
-    [tblExpInvoice].[EASDeliveryTerm] AS [EASDeliveryTerm], 
-    [tblExpInvoice].[EASShippingMark] AS [EASShippingMark], 
-    [tblExpInvoice].[EASShippingMarkCompany] AS [EASShippingMarkCompany], 
-    [tblExpInvoice].[EASShippingMarkAddress] AS [EASShippingMarkAddress], 
-    [tblExpInvoice].[EASRemark] AS [EASRemark], 
-    [tblExpInvoice].[EASTotalCurrency] AS [EASTotalCurrency], 
-    [tblExpInvoice].[EASBilltoCustomerCode] AS [EASBilltoCustomerCode], 
-    [tblExpInvoice].[EASBilltoCustomerENG] AS [EASBilltoCustomerENG], 
-    [tblExpInvoice].[EASBilltoCustomerAddress] AS [EASBilltoCustomerAddress], 
-    [tblExpInvoice].[EASBilltoCustomerEMail] AS [EASBilltoCustomerEMail], 
-    [tblExpInvoice].[EASBilltoCustomerTelNo] AS [EASBilltoCustomerTelNo], 
-    [tblExpInvoice].[EASBilltoCustomerFaxNo] AS [EASBilltoCustomerFaxNo], 
-    [tblExpInvoice].[EASBilltoCustomerContactPerson] AS [EASBilltoCustomerContactPerson], 
-    [tblExpInvoice].[PLTNetAmount] AS [PLTNetAmount], 
-    [tblExpInvoice].[UnitPLT] AS [UnitPLT], 
-    [tblExpInvoice].[CTNPLTName] AS [CTNPLTName], 
-    [tblExpInvoice].[CTNNetAmount] AS [CTNNetAmount], 
-    [tblExpInvoice].[UnitCTN] AS [UnitCTN], 
-    [tblExpInvoice].[UnitCTNName] AS [UnitCTNName], 
-    [tblExpInvoice].[GrossWeightAmount] AS [GrossWeightAmount], 
-    [tblExpInvoice].[QountityAmount] AS [QountityAmount], 
-    [tblExpInvoice].[VolumAmount] AS [VolumAmount], 
-    [tblExpInvoice].[TotalTextPack] AS [TotalTextPack], 
-    [tblExpInvoice].[CarLicense] AS [CarLicense], 
-    [tblExpInvoice].[DriverName] AS [DriverName], 
-    [tblExpInvoice].[PrintCountInv] AS [PrintCountInv], 
-    [tblExpInvoice].[PrintCountPack] AS [PrintCountPack], 
-    [tblExpInvoice].[PrintCount107] AS [PrintCount107], 
-    [tblExpInvoice].[PrintCount108] AS [PrintCount108], 
-    [tblExpInvoice].[PrintCountDoc] AS [PrintCountDoc], 
-    [tblExpInvoice].[CustomsConfirmDate] AS [CustomsConfirmDate], 
-    [tblExpInvoice].[App] AS [App], 
-    [tblExpInvoice].[CreateBy] AS [CreateBy], 
-    [tblExpInvoice].[CreateDate] AS [CreateDate], 
-    [tblExpInvoice].[UpdateBy] AS [UpdateBy], 
-    [tblExpInvoice].[UpdateDate] AS [UpdateDate], 
-    [tblExpInvoice].[OutItem] AS [OutItem], 
-    [tblExpInvoice].[PullSignal] AS [PullSignal], 
-    [tblExpInvoice].[UnitQuantity] AS [UnitQuantity], 
-    [tblExpInvoice].[UnitWeight] AS [UnitWeight]
-    FROM [dbo].[tblExpInvoice] AS [tblExpInvoice]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblExpInvoiceDetail" EntityType="Self.tblExpInvoiceDetail" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblExpInvoiceDetail].[InvoiceNo] AS [InvoiceNo], 
-    [tblExpInvoiceDetail].[Product] AS [Product], 
-    [tblExpInvoiceDetail].[ItemNo] AS [ItemNo], 
-    [tblExpInvoiceDetail].[ProductYear] AS [ProductYear], 
-    [tblExpInvoiceDetail].[Brand] AS [Brand], 
-    [tblExpInvoiceDetail].[NatureofTrn] AS [NatureofTrn], 
-    [tblExpInvoiceDetail].[PurchaseCountry] AS [PurchaseCountry], 
-    [tblExpInvoiceDetail].[OriginCountry] AS [OriginCountry], 
-    [tblExpInvoiceDetail].[ProductDesc1] AS [ProductDesc1], 
-    [tblExpInvoiceDetail].[ProductDesc2] AS [ProductDesc2], 
-    [tblExpInvoiceDetail].[ProductDesc3] AS [ProductDesc3], 
-    [tblExpInvoiceDetail].[InvQty] AS [InvQty], 
-    [tblExpInvoiceDetail].[InvUnit] AS [InvUnit], 
-    [tblExpInvoiceDetail].[InvUnitDetail] AS [InvUnitDetail], 
-    [tblExpInvoiceDetail].[Weight] AS [Weight], 
-    [tblExpInvoiceDetail].[WeightUnit] AS [WeightUnit], 
-    [tblExpInvoiceDetail].[WeightUnitDetail] AS [WeightUnitDetail], 
-    [tblExpInvoiceDetail].[Quantity] AS [Quantity], 
-    [tblExpInvoiceDetail].[QuantityUnit] AS [QuantityUnit], 
-    [tblExpInvoiceDetail].[QuantityUnitDetail] AS [QuantityUnitDetail], 
-    [tblExpInvoiceDetail].[TariffCode] AS [TariffCode], 
-    [tblExpInvoiceDetail].[StatisticalCode] AS [StatisticalCode], 
-    [tblExpInvoiceDetail].[TariffSequence] AS [TariffSequence], 
-    [tblExpInvoiceDetail].[ProductAttribute1] AS [ProductAttribute1], 
-    [tblExpInvoiceDetail].[ProductAttribute2] AS [ProductAttribute2], 
-    [tblExpInvoiceDetail].[PriceIncreaseForeign] AS [PriceIncreaseForeign], 
-    [tblExpInvoiceDetail].[PriceIncreseBath] AS [PriceIncreseBath], 
-    [tblExpInvoiceDetail].[DeclarationLine] AS [DeclarationLine], 
-    [tblExpInvoiceDetail].[FormulaNo] AS [FormulaNo], 
-    [tblExpInvoiceDetail].[BOILicenseNo] AS [BOILicenseNo], 
-    [tblExpInvoiceDetail].[X19BisTransferNo] AS [X19BisTransferNo], 
-    [tblExpInvoiceDetail].[BondFormulaNo] AS [BondFormulaNo], 
-    [tblExpInvoiceDetail].[Currency] AS [Currency], 
-    [tblExpInvoiceDetail].[ExchangeRate] AS [ExchangeRate], 
-    [tblExpInvoiceDetail].[PriceForeigh] AS [PriceForeigh], 
-    [tblExpInvoiceDetail].[PriceForeighAmount] AS [PriceForeighAmount], 
-    [tblExpInvoiceDetail].[PriceBath] AS [PriceBath], 
-    [tblExpInvoiceDetail].[PriceBathAmount] AS [PriceBathAmount], 
-    [tblExpInvoiceDetail].[ForwardingCurrency] AS [ForwardingCurrency], 
-    [tblExpInvoiceDetail].[ForwardingForiegnAmount] AS [ForwardingForiegnAmount], 
-    [tblExpInvoiceDetail].[ForwardingExchangeRate] AS [ForwardingExchangeRate], 
-    [tblExpInvoiceDetail].[ForwardBathAmount] AS [ForwardBathAmount], 
-    [tblExpInvoiceDetail].[FreightCurrency] AS [FreightCurrency], 
-    [tblExpInvoiceDetail].[FreightForiegnAmount] AS [FreightForiegnAmount], 
-    [tblExpInvoiceDetail].[FreightExchangeRate] AS [FreightExchangeRate], 
-    [tblExpInvoiceDetail].[FreightBathAmount] AS [FreightBathAmount], 
-    [tblExpInvoiceDetail].[InsuranceCurrency] AS [InsuranceCurrency], 
-    [tblExpInvoiceDetail].[InsuranceForiegnAmount] AS [InsuranceForiegnAmount], 
-    [tblExpInvoiceDetail].[InsuranceExchangeRate] AS [InsuranceExchangeRate], 
-    [tblExpInvoiceDetail].[InsuranceBathAmount] AS [InsuranceBathAmount], 
-    [tblExpInvoiceDetail].[PackageChargeCurrency] AS [PackageChargeCurrency], 
-    [tblExpInvoiceDetail].[PackageChargeForiegnAmount] AS [PackageChargeForiegnAmount], 
-    [tblExpInvoiceDetail].[PackageChargeExchangeRate] AS [PackageChargeExchangeRate], 
-    [tblExpInvoiceDetail].[PackageChargeBathAmount] AS [PackageChargeBathAmount], 
-    [tblExpInvoiceDetail].[ForeighnInlandFreidgeCurrency] AS [ForeighnInlandFreidgeCurrency], 
-    [tblExpInvoiceDetail].[ForeighnInlandFreidgeForiegnAmount] AS [ForeighnInlandFreidgeForiegnAmount], 
-    [tblExpInvoiceDetail].[ForeighnInlandFreidgeExchangeRate] AS [ForeighnInlandFreidgeExchangeRate], 
-    [tblExpInvoiceDetail].[ForeighnInlandFreidgeBathAmount] AS [ForeighnInlandFreidgeBathAmount], 
-    [tblExpInvoiceDetail].[LandingChargeCurrency] AS [LandingChargeCurrency], 
-    [tblExpInvoiceDetail].[LandingChargeForiegnAmount] AS [LandingChargeForiegnAmount], 
-    [tblExpInvoiceDetail].[LandingChargeExchangeRate] AS [LandingChargeExchangeRate], 
-    [tblExpInvoiceDetail].[LandingChargeBathAmount] AS [LandingChargeBathAmount], 
-    [tblExpInvoiceDetail].[OtherChargeCurrency] AS [OtherChargeCurrency], 
-    [tblExpInvoiceDetail].[OtherChargeForiegnAmount] AS [OtherChargeForiegnAmount], 
-    [tblExpInvoiceDetail].[OtherChargeExchangeRate] AS [OtherChargeExchangeRate], 
-    [tblExpInvoiceDetail].[OtherChargeBathAmount] AS [OtherChargeBathAmount], 
-    [tblExpInvoiceDetail].[ItemRemark] AS [ItemRemark], 
-    [tblExpInvoiceDetail].[rowguid] AS [rowguid], 
-    [tblExpInvoiceDetail].[BoiDate] AS [BoiDate]
-    FROM [dbo].[tblExpInvoiceDetail] AS [tblExpInvoiceDetail]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblExpPackingList" EntityType="Self.tblExpPackingList" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblExpPackingList].[RowNo] AS [RowNo], 
-    [tblExpPackingList].[InvoiceNo] AS [InvoiceNo], 
-    [tblExpPackingList].[PLTAmount] AS [PLTAmount], 
-    [tblExpPackingList].[CTNAmount] AS [CTNAmount], 
-    [tblExpPackingList].[PLTQuantity] AS [PLTQuantity], 
-    [tblExpPackingList].[PackProductCode] AS [PackProductCode], 
-    [tblExpPackingList].[PackProductDesc] AS [PackProductDesc], 
-    [tblExpPackingList].[CustomerPN] AS [CustomerPN], 
-    [tblExpPackingList].[OwnerPN] AS [OwnerPN], 
-    [tblExpPackingList].[OriginCtry] AS [OriginCtry], 
-    [tblExpPackingList].[OriginCtryName] AS [OriginCtryName], 
-    [tblExpPackingList].[PartUnitCode] AS [PartUnitCode], 
-    [tblExpPackingList].[PartUnitName] AS [PartUnitName], 
-    [tblExpPackingList].[Quantity] AS [Quantity], 
-    [tblExpPackingList].[NetWeight] AS [NetWeight], 
-    [tblExpPackingList].[GrossWeight] AS [GrossWeight], 
-    [tblExpPackingList].[PackVolume] AS [PackVolume], 
-    [tblExpPackingList].[Unit] AS [Unit], 
-    [tblExpPackingList].[Width] AS [Width], 
-    [tblExpPackingList].[Hight] AS [Hight], 
-    [tblExpPackingList].[Leng] AS [Leng], 
-    [tblExpPackingList].[PONo] AS [PONo], 
-    [tblExpPackingList].[rowguid] AS [rowguid]
-    FROM [dbo].[tblExpPackingList] AS [tblExpPackingList]</DefiningQuery>
-    </EntitySet>
     <EntitySet Name="tblGenAutoNo" EntityType="Self.tblGenAutoNo" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [tblGenAutoNo].[TypeCode] AS [TypeCode], 
@@ -3442,573 +2984,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
     [tblGenAutoNo].[DigitNo] AS [DigitNo], 
     [tblGenAutoNo].[rowguid] AS [rowguid]
     FROM [dbo].[tblGenAutoNo] AS [tblGenAutoNo]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblGroupMenu" EntityType="Self.tblGroupMenu" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblGroupMenu].[GroupName] AS [GroupName], 
-    [tblGroupMenu].[Form] AS [Form], 
-    [tblGroupMenu].[Menu] AS [Menu], 
-    [tblGroupMenu].[Status] AS [Status], 
-    [tblGroupMenu].[UserBy] AS [UserBy], 
-    [tblGroupMenu].[UpdateBy] AS [UpdateBy]
-    FROM [dbo].[tblGroupMenu] AS [tblGroupMenu]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblHAWBDetail" EntityType="Self.tblHAWBDetail" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblHAWBDetail].[HouseLine] AS [HouseLine], 
-    [tblHAWBDetail].[InvoiceNo] AS [InvoiceNo], 
-    [tblHAWBDetail].[LotNo] AS [LotNo], 
-    [tblHAWBDetail].[HAWB] AS [HAWB], 
-    [tblHAWBDetail].[ProductDesc] AS [ProductDesc], 
-    [tblHAWBDetail].[PackageQuantity] AS [PackageQuantity], 
-    [tblHAWBDetail].[PackageUnit] AS [PackageUnit], 
-    [tblHAWBDetail].[ProductQuantity] AS [ProductQuantity], 
-    [tblHAWBDetail].[ProductUnit] AS [ProductUnit], 
-    [tblHAWBDetail].[GrossWT] AS [GrossWT], 
-    [tblHAWBDetail].[NetWT] AS [NetWT], 
-    [tblHAWBDetail].[UnitPriceTH] AS [UnitPriceTH], 
-    [tblHAWBDetail].[Currency] AS [Currency], 
-    [tblHAWBDetail].[UnitPriceUSD] AS [UnitPriceUSD], 
-    [tblHAWBDetail].[InvoiceValue] AS [InvoiceValue], 
-    [tblHAWBDetail].[ExchangeRate] AS [ExchangeRate], 
-    [tblHAWBDetail].[InvoiceValueTH] AS [InvoiceValueTH], 
-    [tblHAWBDetail].[CustomsValueCIF] AS [CustomsValueCIF], 
-    [tblHAWBDetail].[CustomsValueBalanceTH] AS [CustomsValueBalanceTH], 
-    [tblHAWBDetail].[CustomerName] AS [CustomerName], 
-    [tblHAWBDetail].[EDINo] AS [EDINo], 
-    [tblHAWBDetail].[ReceivingDate] AS [ReceivingDate], 
-    [tblHAWBDetail].[EssuignDate] AS [EssuignDate], 
-    [tblHAWBDetail].[UserBy] AS [UserBy], 
-    [tblHAWBDetail].[rowguid] AS [rowguid]
-    FROM [dbo].[tblHAWBDetail] AS [tblHAWBDetail]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblImpBookingInvDetail" EntityType="Self.tblImpBookingInvDetail" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblImpBookingInvDetail].[InvoiceNo] AS [InvoiceNo], 
-    [tblImpBookingInvDetail].[LOTNo] AS [LOTNo], 
-    [tblImpBookingInvDetail].[DateInv] AS [DateInv], 
-    [tblImpBookingInvDetail].[ProductCode] AS [ProductCode], 
-    [tblImpBookingInvDetail].[ProductName] AS [ProductName], 
-    [tblImpBookingInvDetail].[Quantity] AS [Quantity], 
-    [tblImpBookingInvDetail].[QuantityUnit] AS [QuantityUnit], 
-    [tblImpBookingInvDetail].[RemarkInv] AS [RemarkInv], 
-    [tblImpBookingInvDetail].[PO] AS [PO], 
-    [tblImpBookingInvDetail].[Pallet] AS [Pallet], 
-    [tblImpBookingInvDetail].[UnitPallet] AS [UnitPallet], 
-    [tblImpBookingInvDetail].[Weight] AS [Weight], 
-    [tblImpBookingInvDetail].[UnitWeight] AS [UnitWeight], 
-    [tblImpBookingInvDetail].[Pallet1] AS [Pallet1], 
-    [tblImpBookingInvDetail].[UnitPallet1] AS [UnitPallet1], 
-    [tblImpBookingInvDetail].[UnitDimension] AS [UnitDimension], 
-    [tblImpBookingInvDetail].[AmountPallet] AS [AmountPallet], 
-    [tblImpBookingInvDetail].[Width] AS [Width], 
-    [tblImpBookingInvDetail].[Height] AS [Height], 
-    [tblImpBookingInvDetail].[Lenght] AS [Lenght], 
-    [tblImpBookingInvDetail].[Num] AS [Num], 
-    [tblImpBookingInvDetail].[Currency] AS [Currency], 
-    [tblImpBookingInvDetail].[ExchangeRate] AS [ExchangeRate], 
-    [tblImpBookingInvDetail].[PriceForeigh] AS [PriceForeigh], 
-    [tblImpBookingInvDetail].[PriceForeighAmount] AS [PriceForeighAmount], 
-    [tblImpBookingInvDetail].[PriceBath] AS [PriceBath], 
-    [tblImpBookingInvDetail].[PriceBathAmount] AS [PriceBathAmount], 
-    [tblImpBookingInvDetail].[rowguid] AS [rowguid], 
-    [tblImpBookingInvDetail].[ItemNo] AS [ItemNo], 
-    [tblImpBookingInvDetail].[UserBy] AS [UserBy], 
-    [tblImpBookingInvDetail].[LastUpdate] AS [LastUpdate], 
-    [tblImpBookingInvDetail].[Shipment] AS [Shipment], 
-    [tblImpBookingInvDetail].[OwnerPN] AS [OwnerPN], 
-    [tblImpBookingInvDetail].[CustomerPN] AS [CustomerPN], 
-    [tblImpBookingInvDetail].[Prodes] AS [Prodes], 
-    [tblImpBookingInvDetail].[ExpTariffCode] AS [ExpTariffCode], 
-    [tblImpBookingInvDetail].[WHSource] AS [WHSource], 
-    [tblImpBookingInvDetail].[EntryItemNo] AS [EntryItemNo]
-    FROM [dbo].[tblImpBookingInvDetail] AS [tblImpBookingInvDetail]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblImpInvoice" EntityType="Self.tblImpInvoice" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblImpInvoice].[InvoiceNo] AS [InvoiceNo], 
-    [tblImpInvoice].[ReferenceNo] AS [ReferenceNo], 
-    [tblImpInvoice].[ReferenceDate] AS [ReferenceDate], 
-    [tblImpInvoice].[PurchaseOrderNo] AS [PurchaseOrderNo], 
-    [tblImpInvoice].[InvoiceDate] AS [InvoiceDate], 
-    [tblImpInvoice].[DeliveryDate] AS [DeliveryDate], 
-    [tblImpInvoice].[ExporterCode] AS [ExporterCode], 
-    [tblImpInvoice].[ExporterENG] AS [ExporterENG], 
-    [tblImpInvoice].[Street_Number] AS [Street_Number], 
-    [tblImpInvoice].[District] AS [District], 
-    [tblImpInvoice].[Subprovince] AS [Subprovince], 
-    [tblImpInvoice].[Province] AS [Province], 
-    [tblImpInvoice].[PostCode] AS [PostCode], 
-    [tblImpInvoice].[CompensateCode] AS [CompensateCode], 
-    [tblImpInvoice].[ConsignneeCode] AS [ConsignneeCode], 
-    [tblImpInvoice].[ConsignneeENG] AS [ConsignneeENG], 
-    [tblImpInvoice].[ConsignneeStreet_Number] AS [ConsignneeStreet_Number], 
-    [tblImpInvoice].[ConsignneeDistrict] AS [ConsignneeDistrict], 
-    [tblImpInvoice].[ConsignneeSubProvince] AS [ConsignneeSubProvince], 
-    [tblImpInvoice].[ConsignneeProvince] AS [ConsignneeProvince], 
-    [tblImpInvoice].[ConsignneePostCode] AS [ConsignneePostCode], 
-    [tblImpInvoice].[ConsignneeEMail] AS [ConsignneeEMail], 
-    [tblImpInvoice].[PurchaseCountryCode] AS [PurchaseCountryCode], 
-    [tblImpInvoice].[PurchaseCountryName] AS [PurchaseCountryName], 
-    [tblImpInvoice].[DestinationCountryCode] AS [DestinationCountryCode], 
-    [tblImpInvoice].[DestinationCountryName] AS [DestinationCountryName], 
-    [tblImpInvoice].[CountryCode] AS [CountryCode], 
-    [tblImpInvoice].[CountryName] AS [CountryName], 
-    [tblImpInvoice].[TermOfPayment] AS [TermOfPayment], 
-    [tblImpInvoice].[Term] AS [Term], 
-    [tblImpInvoice].[TotalNetWeight] AS [TotalNetWeight], 
-    [tblImpInvoice].[SumItemWeight] AS [SumItemWeight], 
-    [tblImpInvoice].[TotalInvoiceCurrency] AS [TotalInvoiceCurrency], 
-    [tblImpInvoice].[TotalInvoiceAmount] AS [TotalInvoiceAmount], 
-    [tblImpInvoice].[TotalInvoiceAmount1] AS [TotalInvoiceAmount1], 
-    [tblImpInvoice].[ForwardingCurrency] AS [ForwardingCurrency], 
-    [tblImpInvoice].[ForwardingAmount] AS [ForwardingAmount], 
-    [tblImpInvoice].[ForwardingAmount1] AS [ForwardingAmount1], 
-    [tblImpInvoice].[FreightCurrency] AS [FreightCurrency], 
-    [tblImpInvoice].[FreightAmount] AS [FreightAmount], 
-    [tblImpInvoice].[FreightAmount1] AS [FreightAmount1], 
-    [tblImpInvoice].[InsuranceCurrency] AS [InsuranceCurrency], 
-    [tblImpInvoice].[InsuranceAmount] AS [InsuranceAmount], 
-    [tblImpInvoice].[InsuranceAmount1] AS [InsuranceAmount1], 
-    [tblImpInvoice].[PackingChargeCurrency] AS [PackingChargeCurrency], 
-    [tblImpInvoice].[PackingChargeAmount] AS [PackingChargeAmount], 
-    [tblImpInvoice].[PackingChargeAmount1] AS [PackingChargeAmount1], 
-    [tblImpInvoice].[ForeignInlandCurrency] AS [ForeignInlandCurrency], 
-    [tblImpInvoice].[ForeignInlandAmount] AS [ForeignInlandAmount], 
-    [tblImpInvoice].[ForeignInlandAmount1] AS [ForeignInlandAmount1], 
-    [tblImpInvoice].[LandingChargeCurrency] AS [LandingChargeCurrency], 
-    [tblImpInvoice].[LandingChargeAmount] AS [LandingChargeAmount], 
-    [tblImpInvoice].[LandingChargeAmount1] AS [LandingChargeAmount1], 
-    [tblImpInvoice].[OtherChargeCurrency] AS [OtherChargeCurrency], 
-    [tblImpInvoice].[OtherChargeAmount] AS [OtherChargeAmount], 
-    [tblImpInvoice].[OtherChargeAmount1] AS [OtherChargeAmount1], 
-    [tblImpInvoice].[TransmitDate] AS [TransmitDate], 
-    [tblImpInvoice].[DiffBy] AS [DiffBy], 
-    [tblImpInvoice].[TermforShip] AS [TermforShip], 
-    [tblImpInvoice].[OnbehalfStatus] AS [OnbehalfStatus], 
-    [tblImpInvoice].[EASExporterCode] AS [EASExporterCode], 
-    [tblImpInvoice].[EASNameEng] AS [EASNameEng], 
-    [tblImpInvoice].[StreetAndNumber] AS [StreetAndNumber], 
-    [tblImpInvoice].[ESADistrict] AS [ESADistrict], 
-    [tblImpInvoice].[EASSubProvince] AS [EASSubProvince], 
-    [tblImpInvoice].[EASProvince] AS [EASProvince], 
-    [tblImpInvoice].[EASPostCode] AS [EASPostCode], 
-    [tblImpInvoice].[EASTCompensete] AS [EASTCompensete], 
-    [tblImpInvoice].[EASCustomerCode] AS [EASCustomerCode], 
-    [tblImpInvoice].[EASCustomerENG] AS [EASCustomerENG], 
-    [tblImpInvoice].[EASCustomerAddress] AS [EASCustomerAddress], 
-    [tblImpInvoice].[EASCustomerEMail] AS [EASCustomerEMail], 
-    [tblImpInvoice].[EASCustomerTelNo] AS [EASCustomerTelNo], 
-    [tblImpInvoice].[EASCustomerFaxNo] AS [EASCustomerFaxNo], 
-    [tblImpInvoice].[EASCustomerContactPerson] AS [EASCustomerContactPerson], 
-    [tblImpInvoice].[EASInvRefNo] AS [EASInvRefNo], 
-    [tblImpInvoice].[EASLOTNo] AS [EASLOTNo], 
-    [tblImpInvoice].[EASCustomerRefNo] AS [EASCustomerRefNo], 
-    [tblImpInvoice].[EASSpecialInstruction] AS [EASSpecialInstruction], 
-    [tblImpInvoice].[EASShipMode] AS [EASShipMode], 
-    [tblImpInvoice].[EASDeliveryTerm] AS [EASDeliveryTerm], 
-    [tblImpInvoice].[EASShippingMark] AS [EASShippingMark], 
-    [tblImpInvoice].[EASShippingMarkCompany] AS [EASShippingMarkCompany], 
-    [tblImpInvoice].[EASShippingMarkAddress] AS [EASShippingMarkAddress], 
-    [tblImpInvoice].[EASRemark] AS [EASRemark], 
-    [tblImpInvoice].[EASTotalCurrency] AS [EASTotalCurrency], 
-    [tblImpInvoice].[EASBilltoCustomerCode] AS [EASBilltoCustomerCode], 
-    [tblImpInvoice].[EASBilltoCustomerENG] AS [EASBilltoCustomerENG], 
-    [tblImpInvoice].[EASBilltoCustomerAddress] AS [EASBilltoCustomerAddress], 
-    [tblImpInvoice].[EASBilltoCustomerEMail] AS [EASBilltoCustomerEMail], 
-    [tblImpInvoice].[EASBilltoCustomerTelNo] AS [EASBilltoCustomerTelNo], 
-    [tblImpInvoice].[EASBilltoCustomerFaxNo] AS [EASBilltoCustomerFaxNo], 
-    [tblImpInvoice].[EASBilltoCustomerContactPerson] AS [EASBilltoCustomerContactPerson], 
-    [tblImpInvoice].[PLTNetAmount] AS [PLTNetAmount], 
-    [tblImpInvoice].[UnitPLT] AS [UnitPLT], 
-    [tblImpInvoice].[CTNPLTName] AS [CTNPLTName], 
-    [tblImpInvoice].[CTNNetAmount] AS [CTNNetAmount], 
-    [tblImpInvoice].[UnitCTN] AS [UnitCTN], 
-    [tblImpInvoice].[UnitCTNName] AS [UnitCTNName], 
-    [tblImpInvoice].[GrossWeightAmount] AS [GrossWeightAmount], 
-    [tblImpInvoice].[QountityAmount] AS [QountityAmount], 
-    [tblImpInvoice].[VolumAmount] AS [VolumAmount], 
-    [tblImpInvoice].[TotalTextPack] AS [TotalTextPack], 
-    [tblImpInvoice].[CarLicense] AS [CarLicense], 
-    [tblImpInvoice].[DriverName] AS [DriverName], 
-    [tblImpInvoice].[PrintCountInv] AS [PrintCountInv], 
-    [tblImpInvoice].[PrintCountPack] AS [PrintCountPack], 
-    [tblImpInvoice].[PrintCount107] AS [PrintCount107], 
-    [tblImpInvoice].[PrintCount108] AS [PrintCount108], 
-    [tblImpInvoice].[PrintCountDoc] AS [PrintCountDoc], 
-    [tblImpInvoice].[CustomsConfirmDate] AS [CustomsConfirmDate], 
-    [tblImpInvoice].[App] AS [App], 
-    [tblImpInvoice].[CreateBy] AS [CreateBy], 
-    [tblImpInvoice].[CreateDate] AS [CreateDate], 
-    [tblImpInvoice].[UpdateBy] AS [UpdateBy], 
-    [tblImpInvoice].[UpdateDate] AS [UpdateDate], 
-    [tblImpInvoice].[rowguid] AS [rowguid]
-    FROM [dbo].[tblImpInvoice] AS [tblImpInvoice]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblImpInvoiceDetail" EntityType="Self.tblImpInvoiceDetail" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblImpInvoiceDetail].[InvoiceNo] AS [InvoiceNo], 
-    [tblImpInvoiceDetail].[Product] AS [Product], 
-    [tblImpInvoiceDetail].[ItemNo] AS [ItemNo], 
-    [tblImpInvoiceDetail].[ProductYear] AS [ProductYear], 
-    [tblImpInvoiceDetail].[Brand] AS [Brand], 
-    [tblImpInvoiceDetail].[NatureofTrn] AS [NatureofTrn], 
-    [tblImpInvoiceDetail].[PurchaseCountry] AS [PurchaseCountry], 
-    [tblImpInvoiceDetail].[OriginCountry] AS [OriginCountry], 
-    [tblImpInvoiceDetail].[ProductDesc1] AS [ProductDesc1], 
-    [tblImpInvoiceDetail].[ProductDesc2] AS [ProductDesc2], 
-    [tblImpInvoiceDetail].[ProductDesc3] AS [ProductDesc3], 
-    [tblImpInvoiceDetail].[InvQty] AS [InvQty], 
-    [tblImpInvoiceDetail].[InvUnit] AS [InvUnit], 
-    [tblImpInvoiceDetail].[InvUnitDetail] AS [InvUnitDetail], 
-    [tblImpInvoiceDetail].[Weight] AS [Weight], 
-    [tblImpInvoiceDetail].[WeightUnit] AS [WeightUnit], 
-    [tblImpInvoiceDetail].[WeightUnitDetail] AS [WeightUnitDetail], 
-    [tblImpInvoiceDetail].[Quantity] AS [Quantity], 
-    [tblImpInvoiceDetail].[QuantityUnit] AS [QuantityUnit], 
-    [tblImpInvoiceDetail].[QuantityUnitDetail] AS [QuantityUnitDetail], 
-    [tblImpInvoiceDetail].[TariffCode] AS [TariffCode], 
-    [tblImpInvoiceDetail].[StatisticalCode] AS [StatisticalCode], 
-    [tblImpInvoiceDetail].[TariffSequence] AS [TariffSequence], 
-    [tblImpInvoiceDetail].[ProductAttribute1] AS [ProductAttribute1], 
-    [tblImpInvoiceDetail].[ProductAttribute2] AS [ProductAttribute2], 
-    [tblImpInvoiceDetail].[PriceIncreaseForeign] AS [PriceIncreaseForeign], 
-    [tblImpInvoiceDetail].[PriceIncreseBath] AS [PriceIncreseBath], 
-    [tblImpInvoiceDetail].[DeclarationLine] AS [DeclarationLine], 
-    [tblImpInvoiceDetail].[FormulaNo] AS [FormulaNo], 
-    [tblImpInvoiceDetail].[BOILicenseNo] AS [BOILicenseNo], 
-    [tblImpInvoiceDetail].[X19BisTransferNo] AS [X19BisTransferNo], 
-    [tblImpInvoiceDetail].[BondFormulaNo] AS [BondFormulaNo], 
-    [tblImpInvoiceDetail].[Currency] AS [Currency], 
-    [tblImpInvoiceDetail].[ExchangeRate] AS [ExchangeRate], 
-    [tblImpInvoiceDetail].[PriceForeigh] AS [PriceForeigh], 
-    [tblImpInvoiceDetail].[PriceForeighAmount] AS [PriceForeighAmount], 
-    [tblImpInvoiceDetail].[PriceBath] AS [PriceBath], 
-    [tblImpInvoiceDetail].[PriceBathAmount] AS [PriceBathAmount], 
-    [tblImpInvoiceDetail].[ForwardingCurrency] AS [ForwardingCurrency], 
-    [tblImpInvoiceDetail].[ForwardingForiegnAmount] AS [ForwardingForiegnAmount], 
-    [tblImpInvoiceDetail].[ForwardingExchangeRate] AS [ForwardingExchangeRate], 
-    [tblImpInvoiceDetail].[ForwardBathAmount] AS [ForwardBathAmount], 
-    [tblImpInvoiceDetail].[FreightCurrency] AS [FreightCurrency], 
-    [tblImpInvoiceDetail].[FreightForiegnAmount] AS [FreightForiegnAmount], 
-    [tblImpInvoiceDetail].[FreightExchangeRate] AS [FreightExchangeRate], 
-    [tblImpInvoiceDetail].[FreightBathAmount] AS [FreightBathAmount], 
-    [tblImpInvoiceDetail].[InsuranceCurrency] AS [InsuranceCurrency], 
-    [tblImpInvoiceDetail].[InsuranceForiegnAmount] AS [InsuranceForiegnAmount], 
-    [tblImpInvoiceDetail].[InsuranceExchangeRate] AS [InsuranceExchangeRate], 
-    [tblImpInvoiceDetail].[InsuranceBathAmount] AS [InsuranceBathAmount], 
-    [tblImpInvoiceDetail].[PackageChargeCurrency] AS [PackageChargeCurrency], 
-    [tblImpInvoiceDetail].[PackageChargeForiegnAmount] AS [PackageChargeForiegnAmount], 
-    [tblImpInvoiceDetail].[PackageChargeExchangeRate] AS [PackageChargeExchangeRate], 
-    [tblImpInvoiceDetail].[PackageChargeBathAmount] AS [PackageChargeBathAmount], 
-    [tblImpInvoiceDetail].[ForeighnInlandFreidgeCurrency] AS [ForeighnInlandFreidgeCurrency], 
-    [tblImpInvoiceDetail].[ForeighnInlandFreidgeForiegnAmount] AS [ForeighnInlandFreidgeForiegnAmount], 
-    [tblImpInvoiceDetail].[ForeighnInlandFreidgeExchangeRate] AS [ForeighnInlandFreidgeExchangeRate], 
-    [tblImpInvoiceDetail].[ForeighnInlandFreidgeBathAmount] AS [ForeighnInlandFreidgeBathAmount], 
-    [tblImpInvoiceDetail].[LandingChargeCurrency] AS [LandingChargeCurrency], 
-    [tblImpInvoiceDetail].[LandingChargeForiegnAmount] AS [LandingChargeForiegnAmount], 
-    [tblImpInvoiceDetail].[LandingChargeExchangeRate] AS [LandingChargeExchangeRate], 
-    [tblImpInvoiceDetail].[LandingChargeBathAmount] AS [LandingChargeBathAmount], 
-    [tblImpInvoiceDetail].[OtherChargeCurrency] AS [OtherChargeCurrency], 
-    [tblImpInvoiceDetail].[OtherChargeForiegnAmount] AS [OtherChargeForiegnAmount], 
-    [tblImpInvoiceDetail].[OtherChargeExchangeRate] AS [OtherChargeExchangeRate], 
-    [tblImpInvoiceDetail].[OtherChargeBathAmount] AS [OtherChargeBathAmount], 
-    [tblImpInvoiceDetail].[ItemRemark] AS [ItemRemark], 
-    [tblImpInvoiceDetail].[rowguid] AS [rowguid]
-    FROM [dbo].[tblImpInvoiceDetail] AS [tblImpInvoiceDetail]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblImpLogFlight" EntityType="Self.tblImpLogFlight" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblImpLogFlight].[LotNo] AS [LotNo], 
-    [tblImpLogFlight].[Number] AS [Number], 
-    [tblImpLogFlight].[FlightNo] AS [FlightNo], 
-    [tblImpLogFlight].[DateFlight] AS [DateFlight], 
-    [tblImpLogFlight].[House] AS [House], 
-    [tblImpLogFlight].[HouseNo] AS [HouseNo], 
-    [tblImpLogFlight].[Quantity] AS [Quantity], 
-    [tblImpLogFlight].[UnitQuantity] AS [UnitQuantity], 
-    [tblImpLogFlight].[Userby] AS [Userby], 
-    [tblImpLogFlight].[Updateby] AS [Updateby], 
-    [tblImpLogFlight].[rowguid] AS [rowguid]
-    FROM [dbo].[tblImpLogFlight] AS [tblImpLogFlight]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblImpPackingList" EntityType="Self.tblImpPackingList" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblImpPackingList].[RowNo] AS [RowNo], 
-    [tblImpPackingList].[InvoiceNo] AS [InvoiceNo], 
-    [tblImpPackingList].[PLTAmount] AS [PLTAmount], 
-    [tblImpPackingList].[CTNAmount] AS [CTNAmount], 
-    [tblImpPackingList].[PLTQuantity] AS [PLTQuantity], 
-    [tblImpPackingList].[PackProductCode] AS [PackProductCode], 
-    [tblImpPackingList].[PackProductDesc] AS [PackProductDesc], 
-    [tblImpPackingList].[CustomerPN] AS [CustomerPN], 
-    [tblImpPackingList].[OwnerPN] AS [OwnerPN], 
-    [tblImpPackingList].[OriginCtry] AS [OriginCtry], 
-    [tblImpPackingList].[OriginCtryName] AS [OriginCtryName], 
-    [tblImpPackingList].[PartUnitCode] AS [PartUnitCode], 
-    [tblImpPackingList].[PartUnitName] AS [PartUnitName], 
-    [tblImpPackingList].[Quantity] AS [Quantity], 
-    [tblImpPackingList].[NetWeight] AS [NetWeight], 
-    [tblImpPackingList].[GrossWeight] AS [GrossWeight], 
-    [tblImpPackingList].[PackVolume] AS [PackVolume], 
-    [tblImpPackingList].[Unit] AS [Unit], 
-    [tblImpPackingList].[Width] AS [Width], 
-    [tblImpPackingList].[Hight] AS [Hight], 
-    [tblImpPackingList].[Leng] AS [Leng], 
-    [tblImpPackingList].[PONo] AS [PONo], 
-    [tblImpPackingList].[rowguid] AS [rowguid]
-    FROM [dbo].[tblImpPackingList] AS [tblImpPackingList]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblInventoryItem" EntityType="Self.tblInventoryItem" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblInventoryItem].[Itemcode] AS [Itemcode], 
-    [tblInventoryItem].[Itemname] AS [Itemname], 
-    [tblInventoryItem].[TypeUse] AS [TypeUse], 
-    [tblInventoryItem].[TypeEquipment] AS [TypeEquipment], 
-    [tblInventoryItem].[Userby] AS [Userby], 
-    [tblInventoryItem].[Lastupdate] AS [Lastupdate]
-    FROM [dbo].[tblInventoryItem] AS [tblInventoryItem]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblLocation" EntityType="Self.tblLocation" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblLocation].[LocationCode] AS [LocationCode], 
-    [tblLocation].[LocationName] AS [LocationName], 
-    [tblLocation].[rowguid] AS [rowguid]
-    FROM [dbo].[tblLocation] AS [tblLocation]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblLocationArea" EntityType="Self.tblLocationArea" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblLocationArea].[AreaCode] AS [AreaCode], 
-    [tblLocationArea].[AreaName] AS [AreaName], 
-    [tblLocationArea].[LocationTypeCode] AS [LocationTypeCode], 
-    [tblLocationArea].[LocationTypeName] AS [LocationTypeName], 
-    [tblLocationArea].[LocationSecCode] AS [LocationSecCode], 
-    [tblLocationArea].[LocationSecName] AS [LocationSecName], 
-    [tblLocationArea].[Volume] AS [Volume], 
-    [tblLocationArea].[UnitVolume] AS [UnitVolume], 
-    [tblLocationArea].[Width] AS [Width], 
-    [tblLocationArea].[Height] AS [Height], 
-    [tblLocationArea].[Leng] AS [Leng], 
-    [tblLocationArea].[Weight] AS [Weight], 
-    [tblLocationArea].[UnitWeight] AS [UnitWeight], 
-    [tblLocationArea].[rowguid] AS [rowguid]
-    FROM [dbo].[tblLocationArea] AS [tblLocationArea]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblLocationMaster" EntityType="Self.tblLocationMaster" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblLocationMaster].[LocationCode] AS [LocationCode], 
-    [tblLocationMaster].[WarehouseCode] AS [WarehouseCode], 
-    [tblLocationMaster].[LocationAreaCode] AS [LocationAreaCode], 
-    [tblLocationMaster].[LocationAreaName] AS [LocationAreaName], 
-    [tblLocationMaster].[LocationTypeCode] AS [LocationTypeCode], 
-    [tblLocationMaster].[LocationTypeName] AS [LocationTypeName], 
-    [tblLocationMaster].[MaximumVol] AS [MaximumVol], 
-    [tblLocationMaster].[BalanceVol] AS [BalanceVol], 
-    [tblLocationMaster].[MaximumWeight] AS [MaximumWeight], 
-    [tblLocationMaster].[BalanceWeight] AS [BalanceWeight], 
-    [tblLocationMaster].[Currency] AS [Currency], 
-    [tblLocationMaster].[LocationCost] AS [LocationCost], 
-    [tblLocationMaster].[rowguid] AS [rowguid]
-    FROM [dbo].[tblLocationMaster] AS [tblLocationMaster]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblLogBrand" EntityType="Self.tblLogBrand" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblLogBrand].[LowBrand] AS [LowBrand], 
-    [tblLogBrand].[BrandCode] AS [BrandCode], 
-    [tblLogBrand].[UserBy] AS [UserBy], 
-    [tblLogBrand].[LastUpDate] AS [LastUpDate], 
-    [tblLogBrand].[rowguid] AS [rowguid]
-    FROM [dbo].[tblLogBrand] AS [tblLogBrand]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblLogCarLicense" EntityType="Self.tblLogCarLicense" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblLogCarLicense].[LowBrand] AS [LowBrand], 
-    [tblLogCarLicense].[CarLicense] AS [CarLicense], 
-    [tblLogCarLicense].[UserBy] AS [UserBy], 
-    [tblLogCarLicense].[LastUpDate] AS [LastUpDate], 
-    [tblLogCarLicense].[rowguid] AS [rowguid]
-    FROM [dbo].[tblLogCarLicense] AS [tblLogCarLicense]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblLogConsignnee" EntityType="Self.tblLogConsignnee" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblLogConsignnee].[LowBrand] AS [LowBrand], 
-    [tblLogConsignnee].[ConsignneeCode] AS [ConsignneeCode], 
-    [tblLogConsignnee].[UserBy] AS [UserBy], 
-    [tblLogConsignnee].[LastUpDate] AS [LastUpDate], 
-    [tblLogConsignnee].[rowguid] AS [rowguid]
-    FROM [dbo].[tblLogConsignnee] AS [tblLogConsignnee]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblLogCountry" EntityType="Self.tblLogCountry" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblLogCountry].[LowBrand] AS [LowBrand], 
-    [tblLogCountry].[CountryCode] AS [CountryCode], 
-    [tblLogCountry].[UserBy] AS [UserBy], 
-    [tblLogCountry].[LastUpDate] AS [LastUpDate], 
-    [tblLogCountry].[rowguid] AS [rowguid]
-    FROM [dbo].[tblLogCountry] AS [tblLogCountry]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblLogCurrency" EntityType="Self.tblLogCurrency" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblLogCurrency].[LowBrand] AS [LowBrand], 
-    [tblLogCurrency].[CurrencyCode] AS [CurrencyCode], 
-    [tblLogCurrency].[UserBy] AS [UserBy], 
-    [tblLogCurrency].[LastUpDate] AS [LastUpDate], 
-    [tblLogCurrency].[rowguid] AS [rowguid]
-    FROM [dbo].[tblLogCurrency] AS [tblLogCurrency]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblLogDeliveryTerm" EntityType="Self.tblLogDeliveryTerm" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblLogDeliveryTerm].[LowBrand] AS [LowBrand], 
-    [tblLogDeliveryTerm].[TermCode] AS [TermCode], 
-    [tblLogDeliveryTerm].[UserBy] AS [UserBy], 
-    [tblLogDeliveryTerm].[LastUpDate] AS [LastUpDate], 
-    [tblLogDeliveryTerm].[rowguid] AS [rowguid]
-    FROM [dbo].[tblLogDeliveryTerm] AS [tblLogDeliveryTerm]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblLogDriver" EntityType="Self.tblLogDriver" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblLogDriver].[LowBrand] AS [LowBrand], 
-    [tblLogDriver].[DriverCode] AS [DriverCode], 
-    [tblLogDriver].[UserBy] AS [UserBy], 
-    [tblLogDriver].[LastUpDate] AS [LastUpDate], 
-    [tblLogDriver].[rowguid] AS [rowguid]
-    FROM [dbo].[tblLogDriver] AS [tblLogDriver]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblLogExpGenLOT" EntityType="Self.tblLogExpGenLOT" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblLogExpGenLOT].[LowBrand] AS [LowBrand], 
-    [tblLogExpGenLOT].[EASLOTNo] AS [EASLOTNo], 
-    [tblLogExpGenLOT].[ConsigneeCode] AS [ConsigneeCode], 
-    [tblLogExpGenLOT].[ShipperCode] AS [ShipperCode], 
-    [tblLogExpGenLOT].[UserBy] AS [UserBy], 
-    [tblLogExpGenLOT].[LastUpDate] AS [LastUpDate], 
-    [tblLogExpGenLOT].[rowguid] AS [rowguid]
-    FROM [dbo].[tblLogExpGenLOT] AS [tblLogExpGenLOT]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblLogExpInvoice" EntityType="Self.tblLogExpInvoice" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblLogExpInvoice].[LowBrand] AS [LowBrand], 
-    [tblLogExpInvoice].[InvoiceNo] AS [InvoiceNo], 
-    [tblLogExpInvoice].[InvoiceDate] AS [InvoiceDate], 
-    [tblLogExpInvoice].[ConsignneeCode] AS [ConsignneeCode], 
-    [tblLogExpInvoice].[EASExporterCode] AS [EASExporterCode], 
-    [tblLogExpInvoice].[EASInvRefNo] AS [EASInvRefNo], 
-    [tblLogExpInvoice].[EASLOTNo] AS [EASLOTNo], 
-    [tblLogExpInvoice].[EASShipMode] AS [EASShipMode], 
-    [tblLogExpInvoice].[EASDeliveryTerm] AS [EASDeliveryTerm], 
-    [tblLogExpInvoice].[ProductDesc1] AS [ProductDesc1], 
-    [tblLogExpInvoice].[ProductDesc2] AS [ProductDesc2], 
-    [tblLogExpInvoice].[ProductDesc3] AS [ProductDesc3], 
-    [tblLogExpInvoice].[OriginCountry] AS [OriginCountry], 
-    [tblLogExpInvoice].[Quantity] AS [Quantity], 
-    [tblLogExpInvoice].[PriceForeigh] AS [PriceForeigh], 
-    [tblLogExpInvoice].[PriceForeighAmount] AS [PriceForeighAmount], 
-    [tblLogExpInvoice].[PriceBathAmount] AS [PriceBathAmount], 
-    [tblLogExpInvoice].[ExchangeRate] AS [ExchangeRate], 
-    [tblLogExpInvoice].[PLTNetAmount] AS [PLTNetAmount], 
-    [tblLogExpInvoice].[CTNPLTName] AS [CTNPLTName], 
-    [tblLogExpInvoice].[CTNNetAmount] AS [CTNNetAmount], 
-    [tblLogExpInvoice].[UnitCTNName] AS [UnitCTNName], 
-    [tblLogExpInvoice].[NetWeight] AS [NetWeight], 
-    [tblLogExpInvoice].[GrossWeight] AS [GrossWeight], 
-    [tblLogExpInvoice].[UserBy] AS [UserBy], 
-    [tblLogExpInvoice].[LastUpDate] AS [LastUpDate], 
-    [tblLogExpInvoice].[rowguid] AS [rowguid]
-    FROM [dbo].[tblLogExpInvoice] AS [tblLogExpInvoice]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblLogExpInvoiceDetail" EntityType="Self.tblLogExpInvoiceDetail" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblLogExpInvoiceDetail].[LowBrand] AS [LowBrand], 
-    [tblLogExpInvoiceDetail].[InvoiceNo] AS [InvoiceNo], 
-    [tblLogExpInvoiceDetail].[InvoiceDate] AS [InvoiceDate], 
-    [tblLogExpInvoiceDetail].[PLTAmount] AS [PLTAmount], 
-    [tblLogExpInvoiceDetail].[CTNAmount] AS [CTNAmount], 
-    [tblLogExpInvoiceDetail].[ProductDesc1] AS [ProductDesc1], 
-    [tblLogExpInvoiceDetail].[ProductDesc2] AS [ProductDesc2], 
-    [tblLogExpInvoiceDetail].[ProductDesc3] AS [ProductDesc3], 
-    [tblLogExpInvoiceDetail].[OriginCountry] AS [OriginCountry], 
-    [tblLogExpInvoiceDetail].[Quantity] AS [Quantity], 
-    [tblLogExpInvoiceDetail].[NetWeight] AS [NetWeight], 
-    [tblLogExpInvoiceDetail].[GrossWeight] AS [GrossWeight], 
-    [tblLogExpInvoiceDetail].[Width] AS [Width], 
-    [tblLogExpInvoiceDetail].[Hight] AS [Hight], 
-    [tblLogExpInvoiceDetail].[Leng] AS [Leng], 
-    [tblLogExpInvoiceDetail].[PackVolume] AS [PackVolume], 
-    [tblLogExpInvoiceDetail].[UserBy] AS [UserBy], 
-    [tblLogExpInvoiceDetail].[LastUpDate] AS [LastUpDate], 
-    [tblLogExpInvoiceDetail].[rowguid] AS [rowguid]
-    FROM [dbo].[tblLogExpInvoiceDetail] AS [tblLogExpInvoiceDetail]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblLogExpPackingList" EntityType="Self.tblLogExpPackingList" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblLogExpPackingList].[LowBrand] AS [LowBrand], 
-    [tblLogExpPackingList].[InvoiceNo] AS [InvoiceNo], 
-    [tblLogExpPackingList].[InvoiceDate] AS [InvoiceDate], 
-    [tblLogExpPackingList].[ConsignneeCode] AS [ConsignneeCode], 
-    [tblLogExpPackingList].[EASExporterCode] AS [EASExporterCode], 
-    [tblLogExpPackingList].[EASInvRefNo] AS [EASInvRefNo], 
-    [tblLogExpPackingList].[EASLOTNo] AS [EASLOTNo], 
-    [tblLogExpPackingList].[EASShipMode] AS [EASShipMode], 
-    [tblLogExpPackingList].[EASDeliveryTerm] AS [EASDeliveryTerm], 
-    [tblLogExpPackingList].[PLTAmount] AS [PLTAmount], 
-    [tblLogExpPackingList].[CTNAmount] AS [CTNAmount], 
-    [tblLogExpPackingList].[ProductDesc1] AS [ProductDesc1], 
-    [tblLogExpPackingList].[ProductDesc2] AS [ProductDesc2], 
-    [tblLogExpPackingList].[ProductDesc3] AS [ProductDesc3], 
-    [tblLogExpPackingList].[OriginCountry] AS [OriginCountry], 
-    [tblLogExpPackingList].[Quantity] AS [Quantity], 
-    [tblLogExpPackingList].[NetWeight] AS [NetWeight], 
-    [tblLogExpPackingList].[GrossWeight] AS [GrossWeight], 
-    [tblLogExpPackingList].[Width] AS [Width], 
-    [tblLogExpPackingList].[Hight] AS [Hight], 
-    [tblLogExpPackingList].[Leng] AS [Leng], 
-    [tblLogExpPackingList].[PackVolume] AS [PackVolume], 
-    [tblLogExpPackingList].[UserBy] AS [UserBy], 
-    [tblLogExpPackingList].[LastUpDate] AS [LastUpDate], 
-    [tblLogExpPackingList].[rowguid] AS [rowguid]
-    FROM [dbo].[tblLogExpPackingList] AS [tblLogExpPackingList]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblLogImpGenLOT" EntityType="Self.tblLogImpGenLOT" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblLogImpGenLOT].[LowBrand] AS [LowBrand], 
-    [tblLogImpGenLOT].[EASLOTNo] AS [EASLOTNo], 
-    [tblLogImpGenLOT].[ConsigneeCode] AS [ConsigneeCode], 
-    [tblLogImpGenLOT].[ShipperCode] AS [ShipperCode], 
-    [tblLogImpGenLOT].[UserBy] AS [UserBy], 
-    [tblLogImpGenLOT].[LastUpDate] AS [LastUpDate], 
-    [tblLogImpGenLOT].[rowguid] AS [rowguid]
-    FROM [dbo].[tblLogImpGenLOT] AS [tblLogImpGenLOT]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblLogImpInvoice" EntityType="Self.tblLogImpInvoice" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblLogImpInvoice].[LowBrand] AS [LowBrand], 
-    [tblLogImpInvoice].[InvoiceNo] AS [InvoiceNo], 
-    [tblLogImpInvoice].[InvoiceDate] AS [InvoiceDate], 
-    [tblLogImpInvoice].[ConsignneeCode] AS [ConsignneeCode], 
-    [tblLogImpInvoice].[EASExporterCode] AS [EASExporterCode], 
-    [tblLogImpInvoice].[EASInvRefNo] AS [EASInvRefNo], 
-    [tblLogImpInvoice].[EASLOTNo] AS [EASLOTNo], 
-    [tblLogImpInvoice].[EASShipMode] AS [EASShipMode], 
-    [tblLogImpInvoice].[EASDeliveryTerm] AS [EASDeliveryTerm], 
-    [tblLogImpInvoice].[ProductDesc1] AS [ProductDesc1], 
-    [tblLogImpInvoice].[ProductDesc2] AS [ProductDesc2], 
-    [tblLogImpInvoice].[ProductDesc3] AS [ProductDesc3], 
-    [tblLogImpInvoice].[OriginCountry] AS [OriginCountry], 
-    [tblLogImpInvoice].[Quantity] AS [Quantity], 
-    [tblLogImpInvoice].[PriceForeigh] AS [PriceForeigh], 
-    [tblLogImpInvoice].[PriceForeighAmount] AS [PriceForeighAmount], 
-    [tblLogImpInvoice].[PriceBathAmount] AS [PriceBathAmount], 
-    [tblLogImpInvoice].[ExchangeRate] AS [ExchangeRate], 
-    [tblLogImpInvoice].[PLTNetAmount] AS [PLTNetAmount], 
-    [tblLogImpInvoice].[CTNPLTName] AS [CTNPLTName], 
-    [tblLogImpInvoice].[CTNNetAmount] AS [CTNNetAmount], 
-    [tblLogImpInvoice].[UnitCTNName] AS [UnitCTNName], 
-    [tblLogImpInvoice].[NetWeight] AS [NetWeight], 
-    [tblLogImpInvoice].[GrossWeight] AS [GrossWeight], 
-    [tblLogImpInvoice].[UserBy] AS [UserBy], 
-    [tblLogImpInvoice].[LastUpDate] AS [LastUpDate], 
-    [tblLogImpInvoice].[rowguid] AS [rowguid]
-    FROM [dbo].[tblLogImpInvoice] AS [tblLogImpInvoice]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="tblLogImpInvoiceDetail" EntityType="Self.tblLogImpInvoiceDetail" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
@@ -4033,200 +3008,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
     [tblLogImpInvoiceDetail].[rowguid] AS [rowguid]
     FROM [dbo].[tblLogImpInvoiceDetail] AS [tblLogImpInvoiceDetail]</DefiningQuery>
     </EntitySet>
-    <EntitySet Name="tblLogImpPackingList" EntityType="Self.tblLogImpPackingList" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblLogImpPackingList].[LowBrand] AS [LowBrand], 
-    [tblLogImpPackingList].[InvoiceNo] AS [InvoiceNo], 
-    [tblLogImpPackingList].[InvoiceDate] AS [InvoiceDate], 
-    [tblLogImpPackingList].[ConsignneeCode] AS [ConsignneeCode], 
-    [tblLogImpPackingList].[EASExporterCode] AS [EASExporterCode], 
-    [tblLogImpPackingList].[EASInvRefNo] AS [EASInvRefNo], 
-    [tblLogImpPackingList].[EASLOTNo] AS [EASLOTNo], 
-    [tblLogImpPackingList].[EASShipMode] AS [EASShipMode], 
-    [tblLogImpPackingList].[EASDeliveryTerm] AS [EASDeliveryTerm], 
-    [tblLogImpPackingList].[PLTAmount] AS [PLTAmount], 
-    [tblLogImpPackingList].[CTNAmount] AS [CTNAmount], 
-    [tblLogImpPackingList].[ProductDesc1] AS [ProductDesc1], 
-    [tblLogImpPackingList].[ProductDesc2] AS [ProductDesc2], 
-    [tblLogImpPackingList].[ProductDesc3] AS [ProductDesc3], 
-    [tblLogImpPackingList].[OriginCountry] AS [OriginCountry], 
-    [tblLogImpPackingList].[Quantity] AS [Quantity], 
-    [tblLogImpPackingList].[NetWeight] AS [NetWeight], 
-    [tblLogImpPackingList].[GrossWeight] AS [GrossWeight], 
-    [tblLogImpPackingList].[Width] AS [Width], 
-    [tblLogImpPackingList].[Hight] AS [Hight], 
-    [tblLogImpPackingList].[Leng] AS [Leng], 
-    [tblLogImpPackingList].[PackVolume] AS [PackVolume], 
-    [tblLogImpPackingList].[UserBy] AS [UserBy], 
-    [tblLogImpPackingList].[LastUpDate] AS [LastUpDate], 
-    [tblLogImpPackingList].[rowguid] AS [rowguid]
-    FROM [dbo].[tblLogImpPackingList] AS [tblLogImpPackingList]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblLogLocationArea" EntityType="Self.tblLogLocationArea" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblLogLocationArea].[AreaCode] AS [AreaCode], 
-    [tblLogLocationArea].[UserBy] AS [UserBy], 
-    [tblLogLocationArea].[LastUpDate] AS [LastUpDate], 
-    [tblLogLocationArea].[rowguid] AS [rowguid]
-    FROM [dbo].[tblLogLocationArea] AS [tblLogLocationArea]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblLogLocationMaster" EntityType="Self.tblLogLocationMaster" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblLogLocationMaster].[LocationCode] AS [LocationCode], 
-    [tblLogLocationMaster].[UserBy] AS [UserBy], 
-    [tblLogLocationMaster].[LastUpDate] AS [LastUpDate], 
-    [tblLogLocationMaster].[rowguid] AS [rowguid]
-    FROM [dbo].[tblLogLocationMaster] AS [tblLogLocationMaster]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblLogPackageUnit" EntityType="Self.tblLogPackageUnit" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblLogPackageUnit].[LowBrand] AS [LowBrand], 
-    [tblLogPackageUnit].[PackageUnitCode] AS [PackageUnitCode], 
-    [tblLogPackageUnit].[UserBy] AS [UserBy], 
-    [tblLogPackageUnit].[LastUpDate] AS [LastUpDate], 
-    [tblLogPackageUnit].[rowguid] AS [rowguid]
-    FROM [dbo].[tblLogPackageUnit] AS [tblLogPackageUnit]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblLogProductDetail" EntityType="Self.tblLogProductDetail" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblLogProductDetail].[LowBrand] AS [LowBrand], 
-    [tblLogProductDetail].[ProductCode] AS [ProductCode], 
-    [tblLogProductDetail].[UserBy] AS [UserBy], 
-    [tblLogProductDetail].[LastUpDate] AS [LastUpDate], 
-    [tblLogProductDetail].[rowguid] AS [rowguid]
-    FROM [dbo].[tblLogProductDetail] AS [tblLogProductDetail]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblLogProductUnit" EntityType="Self.tblLogProductUnit" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblLogProductUnit].[LowBrand] AS [LowBrand], 
-    [tblLogProductUnit].[ProductUnitCode] AS [ProductUnitCode], 
-    [tblLogProductUnit].[UserBy] AS [UserBy], 
-    [tblLogProductUnit].[LastUpDate] AS [LastUpDate], 
-    [tblLogProductUnit].[rowguid] AS [rowguid]
-    FROM [dbo].[tblLogProductUnit] AS [tblLogProductUnit]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblLogProvince" EntityType="Self.tblLogProvince" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblLogProvince].[LowBrand] AS [LowBrand], 
-    [tblLogProvince].[ProvinceCode] AS [ProvinceCode], 
-    [tblLogProvince].[UserBy] AS [UserBy], 
-    [tblLogProvince].[LastUpDate] AS [LastUpDate], 
-    [tblLogProvince].[rowguid] AS [rowguid]
-    FROM [dbo].[tblLogProvince] AS [tblLogProvince]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblLogReferenceType" EntityType="Self.tblLogReferenceType" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblLogReferenceType].[LogBrand] AS [LogBrand], 
-    [tblLogReferenceType].[ReferenceTypeCode] AS [ReferenceTypeCode], 
-    [tblLogReferenceType].[UserBy] AS [UserBy], 
-    [tblLogReferenceType].[LastUpDate] AS [LastUpDate], 
-    [tblLogReferenceType].[rowguid] AS [rowguid]
-    FROM [dbo].[tblLogReferenceType] AS [tblLogReferenceType]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblLogShipper" EntityType="Self.tblLogShipper" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblLogShipper].[LowBrand] AS [LowBrand], 
-    [tblLogShipper].[ShipperCode] AS [ShipperCode], 
-    [tblLogShipper].[UserBy] AS [UserBy], 
-    [tblLogShipper].[LastUpDate] AS [LastUpDate], 
-    [tblLogShipper].[rowguid] AS [rowguid]
-    FROM [dbo].[tblLogShipper] AS [tblLogShipper]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblLogShippingMark" EntityType="Self.tblLogShippingMark" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblLogShippingMark].[LowBrand] AS [LowBrand], 
-    [tblLogShippingMark].[ShippingMarkCode] AS [ShippingMarkCode], 
-    [tblLogShippingMark].[UserBy] AS [UserBy], 
-    [tblLogShippingMark].[LastUpDate] AS [LastUpDate], 
-    [tblLogShippingMark].[rowguid] AS [rowguid]
-    FROM [dbo].[tblLogShippingMark] AS [tblLogShippingMark]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblLogtransportationMode" EntityType="Self.tblLogtransportationMode" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblLogtransportationMode].[LowBrand] AS [LowBrand], 
-    [tblLogtransportationMode].[TransportCode] AS [TransportCode], 
-    [tblLogtransportationMode].[UserBy] AS [UserBy], 
-    [tblLogtransportationMode].[LastUpDate] AS [LastUpDate], 
-    [tblLogtransportationMode].[rowguid] AS [rowguid]
-    FROM [dbo].[tblLogtransportationMode] AS [tblLogtransportationMode]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblLogTruckManifest" EntityType="Self.tblLogTruckManifest" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblLogTruckManifest].[LogNum] AS [LogNum], 
-    [tblLogTruckManifest].[TruckManifestCode] AS [TruckManifestCode], 
-    [tblLogTruckManifest].[UserBy] AS [UserBy], 
-    [tblLogTruckManifest].[LastUpDate] AS [LastUpDate], 
-    [tblLogTruckManifest].[rowguid] AS [rowguid]
-    FROM [dbo].[tblLogTruckManifest] AS [tblLogTruckManifest]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblLogTruckManifestDetail" EntityType="Self.tblLogTruckManifestDetail" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblLogTruckManifestDetail].[LogNum] AS [LogNum], 
-    [tblLogTruckManifestDetail].[TruckManifestCode] AS [TruckManifestCode], 
-    [tblLogTruckManifestDetail].[InvoiceNo] AS [InvoiceNo], 
-    [tblLogTruckManifestDetail].[Quantity] AS [Quantity], 
-    [tblLogTruckManifestDetail].[Weight] AS [Weight], 
-    [tblLogTruckManifestDetail].[UserBy] AS [UserBy], 
-    [tblLogTruckManifestDetail].[LastUpDate] AS [LastUpDate], 
-    [tblLogTruckManifestDetail].[rowguid] AS [rowguid]
-    FROM [dbo].[tblLogTruckManifestDetail] AS [tblLogTruckManifestDetail]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblLogTruckOwner" EntityType="Self.tblLogTruckOwner" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblLogTruckOwner].[LogNum] AS [LogNum], 
-    [tblLogTruckOwner].[TruckOwnerCode] AS [TruckOwnerCode], 
-    [tblLogTruckOwner].[UserBy] AS [UserBy], 
-    [tblLogTruckOwner].[LastUpDate] AS [LastUpDate], 
-    [tblLogTruckOwner].[rowguid] AS [rowguid]
-    FROM [dbo].[tblLogTruckOwner] AS [tblLogTruckOwner]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblLogTruckType" EntityType="Self.tblLogTruckType" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblLogTruckType].[LogNum] AS [LogNum], 
-    [tblLogTruckType].[TruckTypeCode] AS [TruckTypeCode], 
-    [tblLogTruckType].[UserBy] AS [UserBy], 
-    [tblLogTruckType].[LastUpDate] AS [LastUpDate], 
-    [tblLogTruckType].[rowguid] AS [rowguid]
-    FROM [dbo].[tblLogTruckType] AS [tblLogTruckType]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblLogTruckWayBill" EntityType="Self.tblLogTruckWayBill" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblLogTruckWayBill].[LogBrand] AS [LogBrand], 
-    [tblLogTruckWayBill].[TruckWayBillNo] AS [TruckWayBillNo], 
-    [tblLogTruckWayBill].[UserBy] AS [UserBy], 
-    [tblLogTruckWayBill].[LastUpDate] AS [LastUpDate], 
-    [tblLogTruckWayBill].[rowguid] AS [rowguid]
-    FROM [dbo].[tblLogTruckWayBill] AS [tblLogTruckWayBill]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblLogTruckWayBillDetail" EntityType="Self.tblLogTruckWayBillDetail" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblLogTruckWayBillDetail].[LowBrand] AS [LowBrand], 
-    [tblLogTruckWayBillDetail].[TruckWayBillNo] AS [TruckWayBillNo], 
-    [tblLogTruckWayBillDetail].[InvoiceNo] AS [InvoiceNo], 
-    [tblLogTruckWayBillDetail].[UserBy] AS [UserBy], 
-    [tblLogTruckWayBillDetail].[LastUpDate] AS [LastUpDate], 
-    [tblLogTruckWayBillDetail].[rowguid] AS [rowguid]
-    FROM [dbo].[tblLogTruckWayBillDetail] AS [tblLogTruckWayBillDetail]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblLogTruckWayBillDetailImp" EntityType="Self.tblLogTruckWayBillDetailImp" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblLogTruckWayBillDetailImp].[LowBrand] AS [LowBrand], 
-    [tblLogTruckWayBillDetailImp].[TruckWayBillNo] AS [TruckWayBillNo], 
-    [tblLogTruckWayBillDetailImp].[InvoiceNo] AS [InvoiceNo], 
-    [tblLogTruckWayBillDetailImp].[UserBy] AS [UserBy], 
-    [tblLogTruckWayBillDetailImp].[LastUpDate] AS [LastUpDate], 
-    [tblLogTruckWayBillDetailImp].[rowguid] AS [rowguid]
-    FROM [dbo].[tblLogTruckWayBillDetailImp] AS [tblLogTruckWayBillDetailImp]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblLogTruckWayBillImp" EntityType="Self.tblLogTruckWayBillImp" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblLogTruckWayBillImp].[LogBrand] AS [LogBrand], 
-    [tblLogTruckWayBillImp].[TruckWayBillNo] AS [TruckWayBillNo], 
-    [tblLogTruckWayBillImp].[UserBy] AS [UserBy], 
-    [tblLogTruckWayBillImp].[LastUpDate] AS [LastUpDate], 
-    [tblLogTruckWayBillImp].[rowguid] AS [rowguid]
-    FROM [dbo].[tblLogTruckWayBillImp] AS [tblLogTruckWayBillImp]</DefiningQuery>
-    </EntitySet>
     <EntitySet Name="tblMasterCode" EntityType="Self.tblMasterCode" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [tblMasterCode].[Type] AS [Type], 
@@ -4241,717 +3022,12 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
     [tblMasterCode].[MasterCodeID] AS [MasterCodeID]
     FROM [dbo].[tblMasterCode] AS [tblMasterCode]</DefiningQuery>
     </EntitySet>
-    <EntitySet Name="tblRecEASInvoice" EntityType="Self.tblRecEASInvoice" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblRecEASInvoice].[InvoiceNo] AS [InvoiceNo], 
-    [tblRecEASInvoice].[LOTNo] AS [LOTNo], 
-    [tblRecEASInvoice].[PullSignal] AS [PullSignal], 
-    [tblRecEASInvoice].[Remark] AS [Remark], 
-    [tblRecEASInvoice].[CustomerINV] AS [CustomerINV], 
-    [tblRecEASInvoice].[CancleIEAT] AS [CancleIEAT], 
-    [tblRecEASInvoice].[rowguid] AS [rowguid]
-    FROM [dbo].[tblRecEASInvoice] AS [tblRecEASInvoice]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblRecINV" EntityType="Self.tblRecINV" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblRecINV].[InvoiceNo] AS [InvoiceNo], 
-    [tblRecINV].[LOTNo] AS [LOTNo], 
-    [tblRecINV].[DateInv] AS [DateInv], 
-    [tblRecINV].[Quantity] AS [Quantity], 
-    [tblRecINV].[QuantityUnit] AS [QuantityUnit], 
-    [tblRecINV].[Pallet] AS [Pallet], 
-    [tblRecINV].[PalletUnit] AS [PalletUnit], 
-    [tblRecINV].[Box] AS [Box], 
-    [tblRecINV].[BoxUnit] AS [BoxUnit], 
-    [tblRecINV].[Weight] AS [Weight], 
-    [tblRecINV].[WeightUnit] AS [WeightUnit], 
-    [tblRecINV].[Pull] AS [Pull], 
-    [tblRecINV].[rowguid] AS [rowguid], 
-    [tblRecINV].[Dimensions] AS [Dimensions], 
-    [tblRecINV].[Remarks] AS [Remarks], 
-    [tblRecINV].[StatusTruck] AS [StatusTruck], 
-    [tblRecINV].[Userby] AS [Userby], 
-    [tblRecINV].[LastUpdate] AS [LastUpdate], 
-    [tblRecINV].[Shipment] AS [Shipment], 
-    [tblRecINV].[PriceBath] AS [PriceBath], 
-    [tblRecINV].[PriceForeign] AS [PriceForeign], 
-    [tblRecINV].[ItemNo] AS [ItemNo]
-    FROM [dbo].[tblRecINV] AS [tblRecINV]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblRunningNumber" EntityType="Self.tblRunningNumber" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblRunningNumber].[Name] AS [Name], 
-    [tblRunningNumber].[RunNo] AS [RunNo]
-    FROM [dbo].[tblRunningNumber] AS [tblRunningNumber]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblShippingTranfer" EntityType="Self.tblShippingTranfer" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblShippingTranfer].[JobNo] AS [JobNo], 
-    [tblShippingTranfer].[ShippingName] AS [ShippingName], 
-    [tblShippingTranfer].[ShippingID] AS [ShippingID], 
-    [tblShippingTranfer].[ShippingTelNo] AS [ShippingTelNo], 
-    [tblShippingTranfer].[ManagerName] AS [ManagerName], 
-    [tblShippingTranfer].[CreateBy] AS [CreateBy], 
-    [tblShippingTranfer].[CreateDate] AS [CreateDate], 
-    [tblShippingTranfer].[UpdateBy] AS [UpdateBy], 
-    [tblShippingTranfer].[UpdateDate] AS [UpdateDate], 
-    [tblShippingTranfer].[StatusOperation] AS [StatusOperation], 
-    [tblShippingTranfer].[TypeShipping] AS [TypeShipping], 
-    [tblShippingTranfer].[PratyShippingCode] AS [PratyShippingCode], 
-    [tblShippingTranfer].[PratyShippingName] AS [PratyShippingName], 
-    [tblShippingTranfer].[PratyShippingName1] AS [PratyShippingName1], 
-    [tblShippingTranfer].[PratyShippingName2] AS [PratyShippingName2], 
-    [tblShippingTranfer].[status1] AS [status1], 
-    [tblShippingTranfer].[status2] AS [status2], 
-    [tblShippingTranfer].[status3] AS [status3], 
-    [tblShippingTranfer].[status4] AS [status4], 
-    [tblShippingTranfer].[status5] AS [status5], 
-    [tblShippingTranfer].[status6] AS [status6], 
-    [tblShippingTranfer].[status7] AS [status7], 
-    [tblShippingTranfer].[status8] AS [status8], 
-    [tblShippingTranfer].[status9] AS [status9]
-    FROM [dbo].[tblShippingTranfer] AS [tblShippingTranfer]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblStatusBalance" EntityType="Self.tblStatusBalance" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblStatusBalance].[PartyCode] AS [PartyCode], 
-    [tblStatusBalance].[JobNo] AS [JobNo], 
-    [tblStatusBalance].[InvoiceNo] AS [InvoiceNo], 
-    [tblStatusBalance].[Status] AS [Status], 
-    [tblStatusBalance].[InvoiceDate] AS [InvoiceDate], 
-    [tblStatusBalance].[JobDate] AS [JobDate], 
-    [tblStatusBalance].[UseAmount] AS [UseAmount], 
-    [tblStatusBalance].[DeliveryDate] AS [DeliveryDate], 
-    [tblStatusBalance].[ReturnDate] AS [ReturnDate], 
-    [tblStatusBalance].[RenewDate] AS [RenewDate], 
-    [tblStatusBalance].[Qty] AS [Qty], 
-    [tblStatusBalance].[QtyUnit] AS [QtyUnit], 
-    [tblStatusBalance].[ReturnInvNo] AS [ReturnInvNo], 
-    [tblStatusBalance].[ActualReturnDate] AS [ActualReturnDate], 
-    [tblStatusBalance].[CreateBy] AS [CreateBy], 
-    [tblStatusBalance].[CreateDate] AS [CreateDate], 
-    [tblStatusBalance].[UpdateBy] AS [UpdateBy], 
-    [tblStatusBalance].[UpdateDate] AS [UpdateDate], 
-    [tblStatusBalance].[StatusRenew] AS [StatusRenew]
-    FROM [dbo].[tblStatusBalance] AS [tblStatusBalance]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblStatusIEAT107" EntityType="Self.tblStatusIEAT107" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblStatusIEAT107].[Invoice] AS [Invoice], 
-    [tblStatusIEAT107].[UseAmount] AS [UseAmount], 
-    [tblStatusIEAT107].[FromDate] AS [FromDate], 
-    [tblStatusIEAT107].[ToDate] AS [ToDate], 
-    [tblStatusIEAT107].[ExtansionDate] AS [ExtansionDate], 
-    [tblStatusIEAT107].[Status] AS [Status], 
-    [tblStatusIEAT107].[CreateBy] AS [CreateBy], 
-    [tblStatusIEAT107].[CreateDate] AS [CreateDate], 
-    [tblStatusIEAT107].[UpdateBy] AS [UpdateBy], 
-    [tblStatusIEAT107].[UpdateDate] AS [UpdateDate], 
-    [tblStatusIEAT107].[TOEASDate] AS [TOEASDate], 
-    [tblStatusIEAT107].[rowguid] AS [rowguid]
-    FROM [dbo].[tblStatusIEAT107] AS [tblStatusIEAT107]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblStockBalance" EntityType="Self.tblStockBalance" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblStockBalance].[ProductOwner] AS [ProductOwner], 
-    [tblStockBalance].[ProductBalance] AS [ProductBalance], 
-    [tblStockBalance].[Editby] AS [Editby], 
-    [tblStockBalance].[rowguid] AS [rowguid]
-    FROM [dbo].[tblStockBalance] AS [tblStockBalance]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblStockWip" EntityType="Self.tblStockWip" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblStockWip].[Pullsignal] AS [Pullsignal], 
-    [tblStockWip].[Lotno] AS [Lotno], 
-    [tblStockWip].[ProductNo] AS [ProductNo], 
-    [tblStockWip].[ItemRefer] AS [ItemRefer], 
-    [tblStockWip].[QtyWip] AS [QtyWip], 
-    [tblStockWip].[Userby] AS [Userby], 
-    [tblStockWip].[UpdateDate] AS [UpdateDate], 
-    [tblStockWip].[StatusConfirm] AS [StatusConfirm]
-    FROM [dbo].[tblStockWip] AS [tblStockWip]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblStockWipDtl" EntityType="Self.tblStockWipDtl" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblStockWipDtl].[Pullsignal] AS [Pullsignal], 
-    [tblStockWipDtl].[Lotno] AS [Lotno], 
-    [tblStockWipDtl].[ItemNo] AS [ItemNo], 
-    [tblStockWipDtl].[QTYofPick] AS [QTYofPick], 
-    [tblStockWipDtl].[ReceiveNo] AS [ReceiveNo], 
-    [tblStockWipDtl].[ItemReceive] AS [ItemReceive], 
-    [tblStockWipDtl].[DateIn] AS [DateIn], 
-    [tblStockWipDtl].[DateOut] AS [DateOut], 
-    [tblStockWipDtl].[ReferNo] AS [ReferNo], 
-    [tblStockWipDtl].[ItemRefer] AS [ItemRefer]
-    FROM [dbo].[tblStockWipDtl] AS [tblStockWipDtl]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblSummaryReport" EntityType="Self.tblSummaryReport" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblSummaryReport].[Number] AS [Number], 
-    [tblSummaryReport].[FromDate] AS [FromDate], 
-    [tblSummaryReport].[ToDate] AS [ToDate], 
-    [tblSummaryReport].[FromConsignee] AS [FromConsignee], 
-    [tblSummaryReport].[ToConsignee] AS [ToConsignee], 
-    [tblSummaryReport].[Balance] AS [Balance], 
-    [tblSummaryReport].[CreateBy] AS [CreateBy], 
-    [tblSummaryReport].[CreateDate] AS [CreateDate], 
-    [tblSummaryReport].[AppBy] AS [AppBy], 
-    [tblSummaryReport].[Remark] AS [Remark], 
-    [tblSummaryReport].[Status] AS [Status], 
-    [tblSummaryReport].[rowguid] AS [rowguid]
-    FROM [dbo].[tblSummaryReport] AS [tblSummaryReport]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblTempExpGenLOT" EntityType="Self.tblTempExpGenLOT" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblTempExpGenLOT].[EASLOTNo] AS [EASLOTNo], 
-    [tblTempExpGenLOT].[LOTDate] AS [LOTDate], 
-    [tblTempExpGenLOT].[LOTBy] AS [LOTBy], 
-    [tblTempExpGenLOT].[SalesCode] AS [SalesCode], 
-    [tblTempExpGenLOT].[SalesName] AS [SalesName], 
-    [tblTempExpGenLOT].[ConsigneeCode] AS [ConsigneeCode], 
-    [tblTempExpGenLOT].[ConsignNameEng] AS [ConsignNameEng], 
-    [tblTempExpGenLOT].[ConsignAddress] AS [ConsignAddress], 
-    [tblTempExpGenLOT].[ConsignDistrict] AS [ConsignDistrict], 
-    [tblTempExpGenLOT].[ConsignSubProvince] AS [ConsignSubProvince], 
-    [tblTempExpGenLOT].[ConsignProvince] AS [ConsignProvince], 
-    [tblTempExpGenLOT].[ConsignPostCode] AS [ConsignPostCode], 
-    [tblTempExpGenLOT].[ConsignEmail] AS [ConsignEmail], 
-    [tblTempExpGenLOT].[ShipperCode] AS [ShipperCode], 
-    [tblTempExpGenLOT].[ShipperNameEng] AS [ShipperNameEng], 
-    [tblTempExpGenLOT].[ShipperAddress] AS [ShipperAddress], 
-    [tblTempExpGenLOT].[ShipperDistrict] AS [ShipperDistrict], 
-    [tblTempExpGenLOT].[ShipperSubprovince] AS [ShipperSubprovince], 
-    [tblTempExpGenLOT].[ShipperProvince] AS [ShipperProvince], 
-    [tblTempExpGenLOT].[ShipperPostCode] AS [ShipperPostCode], 
-    [tblTempExpGenLOT].[ShipperReturnCode] AS [ShipperReturnCode], 
-    [tblTempExpGenLOT].[Commodity] AS [Commodity], 
-    [tblTempExpGenLOT].[QuantityofPart] AS [QuantityofPart], 
-    [tblTempExpGenLOT].[QuantityUnit] AS [QuantityUnit], 
-    [tblTempExpGenLOT].[QuantityPack] AS [QuantityPack], 
-    [tblTempExpGenLOT].[QuantityUnitPack] AS [QuantityUnitPack], 
-    [tblTempExpGenLOT].[Weight] AS [Weight], 
-    [tblTempExpGenLOT].[WeightUnit] AS [WeightUnit], 
-    [tblTempExpGenLOT].[Volume] AS [Volume], 
-    [tblTempExpGenLOT].[VolumeUnit] AS [VolumeUnit], 
-    [tblTempExpGenLOT].[MAWB] AS [MAWB], 
-    [tblTempExpGenLOT].[DocType] AS [DocType], 
-    [tblTempExpGenLOT].[DocCode] AS [DocCode], 
-    [tblTempExpGenLOT].[Flight] AS [Flight], 
-    [tblTempExpGenLOT].[ScanPathFile] AS [ScanPathFile], 
-    [tblTempExpGenLOT].[DOCode] AS [DOCode], 
-    [tblTempExpGenLOT].[DONameENG] AS [DONameENG], 
-    [tblTempExpGenLOT].[DOStreet_Number] AS [DOStreet_Number], 
-    [tblTempExpGenLOT].[DODistrict] AS [DODistrict], 
-    [tblTempExpGenLOT].[DOSubProvince] AS [DOSubProvince], 
-    [tblTempExpGenLOT].[DOProvince] AS [DOProvince], 
-    [tblTempExpGenLOT].[DOPostCode] AS [DOPostCode], 
-    [tblTempExpGenLOT].[DOEmail] AS [DOEmail], 
-    [tblTempExpGenLOT].[DOContactPerson] AS [DOContactPerson], 
-    [tblTempExpGenLOT].[IEATNo] AS [IEATNo], 
-    [tblTempExpGenLOT].[EntryNo] AS [EntryNo], 
-    [tblTempExpGenLOT].[DeliveryDate] AS [DeliveryDate], 
-    [tblTempExpGenLOT].[CustomerCode] AS [CustomerCode], 
-    [tblTempExpGenLOT].[CustomerENG] AS [CustomerENG], 
-    [tblTempExpGenLOT].[CustomerStreet] AS [CustomerStreet], 
-    [tblTempExpGenLOT].[CustomerDistrict] AS [CustomerDistrict], 
-    [tblTempExpGenLOT].[CustomerSub] AS [CustomerSub], 
-    [tblTempExpGenLOT].[CustomerProvince] AS [CustomerProvince], 
-    [tblTempExpGenLOT].[CustomerPostCode] AS [CustomerPostCode], 
-    [tblTempExpGenLOT].[CustomerEmail] AS [CustomerEmail], 
-    [tblTempExpGenLOT].[CustomerContact] AS [CustomerContact], 
-    [tblTempExpGenLOT].[PickUpCode] AS [PickUpCode], 
-    [tblTempExpGenLOT].[PickUpENG] AS [PickUpENG], 
-    [tblTempExpGenLOT].[PickUpAddress1] AS [PickUpAddress1], 
-    [tblTempExpGenLOT].[PickUpAddress2] AS [PickUpAddress2], 
-    [tblTempExpGenLOT].[PickUpAddress3] AS [PickUpAddress3], 
-    [tblTempExpGenLOT].[PickUpAddress4] AS [PickUpAddress4], 
-    [tblTempExpGenLOT].[PickUpAddress5] AS [PickUpAddress5], 
-    [tblTempExpGenLOT].[PickUpEmail] AS [PickUpEmail], 
-    [tblTempExpGenLOT].[PickUpContact] AS [PickUpContact], 
-    [tblTempExpGenLOT].[EndCusCode] AS [EndCusCode], 
-    [tblTempExpGenLOT].[EndCusENG] AS [EndCusENG], 
-    [tblTempExpGenLOT].[EndCusAddress1] AS [EndCusAddress1], 
-    [tblTempExpGenLOT].[EndCusAddress2] AS [EndCusAddress2], 
-    [tblTempExpGenLOT].[EndCusAddress3] AS [EndCusAddress3], 
-    [tblTempExpGenLOT].[EndCusAddress4] AS [EndCusAddress4], 
-    [tblTempExpGenLOT].[EndCusAddress5] AS [EndCusAddress5], 
-    [tblTempExpGenLOT].[EndCusEmail] AS [EndCusEmail], 
-    [tblTempExpGenLOT].[EndCusContact] AS [EndCusContact], 
-    [tblTempExpGenLOT].[FreighForwarder] AS [FreighForwarder], 
-    [tblTempExpGenLOT].[Useby] AS [Useby], 
-    [tblTempExpGenLOT].[IEATPermit] AS [IEATPermit], 
-    [tblTempExpGenLOT].[ShipTo] AS [ShipTo], 
-    [tblTempExpGenLOT].[Box] AS [Box], 
-    [tblTempExpGenLOT].[UnitBox] AS [UnitBox], 
-    [tblTempExpGenLOT].[JOBBranch] AS [JOBBranch], 
-    [tblTempExpGenLOT].[IEATDate] AS [IEATDate], 
-    [tblTempExpGenLOT].[Status] AS [Status], 
-    [tblTempExpGenLOT].[Status1] AS [Status1], 
-    [tblTempExpGenLOT].[Status2] AS [Status2], 
-    [tblTempExpGenLOT].[Status3] AS [Status3], 
-    [tblTempExpGenLOT].[Remark] AS [Remark], 
-    [tblTempExpGenLOT].[JobSite] AS [JobSite], 
-    [tblTempExpGenLOT].[BillingNo] AS [BillingNo], 
-    [tblTempExpGenLOT].[BookingNo] AS [BookingNo], 
-    [tblTempExpGenLOT].[OwnerCode] AS [OwnerCode], 
-    [tblTempExpGenLOT].[OwnerENG] AS [OwnerENG], 
-    [tblTempExpGenLOT].[OwnerAddress1] AS [OwnerAddress1], 
-    [tblTempExpGenLOT].[OwnerAddress2] AS [OwnerAddress2], 
-    [tblTempExpGenLOT].[OwnerAddress3] AS [OwnerAddress3], 
-    [tblTempExpGenLOT].[OwnerAddress4] AS [OwnerAddress4], 
-    [tblTempExpGenLOT].[OwnerAddress5] AS [OwnerAddress5], 
-    [tblTempExpGenLOT].[OwnerEmail] AS [OwnerEmail], 
-    [tblTempExpGenLOT].[OwnerContact] AS [OwnerContact]
-    FROM [dbo].[tblTempExpGenLOT] AS [tblTempExpGenLOT]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblTempImpGenLOT" EntityType="Self.tblTempImpGenLOT" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblTempImpGenLOT].[EASLOTNo] AS [EASLOTNo], 
-    [tblTempImpGenLOT].[LOTDate] AS [LOTDate], 
-    [tblTempImpGenLOT].[LOTBy] AS [LOTBy], 
-    [tblTempImpGenLOT].[SalesCode] AS [SalesCode], 
-    [tblTempImpGenLOT].[SalesName] AS [SalesName], 
-    [tblTempImpGenLOT].[ConsigneeCode] AS [ConsigneeCode], 
-    [tblTempImpGenLOT].[ConsignNameEng] AS [ConsignNameEng], 
-    [tblTempImpGenLOT].[ConsignAddress] AS [ConsignAddress], 
-    [tblTempImpGenLOT].[ConsignDistrict] AS [ConsignDistrict], 
-    [tblTempImpGenLOT].[ConsignSubProvince] AS [ConsignSubProvince], 
-    [tblTempImpGenLOT].[ConsignProvince] AS [ConsignProvince], 
-    [tblTempImpGenLOT].[ConsignPostCode] AS [ConsignPostCode], 
-    [tblTempImpGenLOT].[ConsignEmail] AS [ConsignEmail], 
-    [tblTempImpGenLOT].[ShipperCode] AS [ShipperCode], 
-    [tblTempImpGenLOT].[ShipperNameEng] AS [ShipperNameEng], 
-    [tblTempImpGenLOT].[ShipperAddress] AS [ShipperAddress], 
-    [tblTempImpGenLOT].[ShipperDistrict] AS [ShipperDistrict], 
-    [tblTempImpGenLOT].[ShipperSubprovince] AS [ShipperSubprovince], 
-    [tblTempImpGenLOT].[ShipperProvince] AS [ShipperProvince], 
-    [tblTempImpGenLOT].[ShipperPostCode] AS [ShipperPostCode], 
-    [tblTempImpGenLOT].[ShipperReturnCode] AS [ShipperReturnCode], 
-    [tblTempImpGenLOT].[Commodity] AS [Commodity], 
-    [tblTempImpGenLOT].[QuantityofPart] AS [QuantityofPart], 
-    [tblTempImpGenLOT].[QuantityUnit] AS [QuantityUnit], 
-    [tblTempImpGenLOT].[QuantityPack] AS [QuantityPack], 
-    [tblTempImpGenLOT].[QuantityUnitPack] AS [QuantityUnitPack], 
-    [tblTempImpGenLOT].[Weight] AS [Weight], 
-    [tblTempImpGenLOT].[WeightUnit] AS [WeightUnit], 
-    [tblTempImpGenLOT].[Volume] AS [Volume], 
-    [tblTempImpGenLOT].[VolumeUnit] AS [VolumeUnit], 
-    [tblTempImpGenLOT].[MAWB] AS [MAWB], 
-    [tblTempImpGenLOT].[DocType] AS [DocType], 
-    [tblTempImpGenLOT].[DocCode] AS [DocCode], 
-    [tblTempImpGenLOT].[Flight] AS [Flight], 
-    [tblTempImpGenLOT].[DOCode] AS [DOCode], 
-    [tblTempImpGenLOT].[DONameENG] AS [DONameENG], 
-    [tblTempImpGenLOT].[DOStreet_Number] AS [DOStreet_Number], 
-    [tblTempImpGenLOT].[DODistrict] AS [DODistrict], 
-    [tblTempImpGenLOT].[DOSubProvince] AS [DOSubProvince], 
-    [tblTempImpGenLOT].[DOProvince] AS [DOProvince], 
-    [tblTempImpGenLOT].[DOPostCode] AS [DOPostCode], 
-    [tblTempImpGenLOT].[DOEmail] AS [DOEmail], 
-    [tblTempImpGenLOT].[DOContactPerson] AS [DOContactPerson], 
-    [tblTempImpGenLOT].[IEATNo] AS [IEATNo], 
-    [tblTempImpGenLOT].[EntryNo] AS [EntryNo], 
-    [tblTempImpGenLOT].[DeliveryDate] AS [DeliveryDate], 
-    [tblTempImpGenLOT].[CustomerCode] AS [CustomerCode], 
-    [tblTempImpGenLOT].[CustomerENG] AS [CustomerENG], 
-    [tblTempImpGenLOT].[CustomerStreet] AS [CustomerStreet], 
-    [tblTempImpGenLOT].[CustomerDistrict] AS [CustomerDistrict], 
-    [tblTempImpGenLOT].[CustomerSub] AS [CustomerSub], 
-    [tblTempImpGenLOT].[CustomerProvince] AS [CustomerProvince], 
-    [tblTempImpGenLOT].[CustomerPostCode] AS [CustomerPostCode], 
-    [tblTempImpGenLOT].[CustomerEmail] AS [CustomerEmail], 
-    [tblTempImpGenLOT].[CustomerContact] AS [CustomerContact], 
-    [tblTempImpGenLOT].[PickUpCode] AS [PickUpCode], 
-    [tblTempImpGenLOT].[PickUpENG] AS [PickUpENG], 
-    [tblTempImpGenLOT].[PickUpAddress1] AS [PickUpAddress1], 
-    [tblTempImpGenLOT].[PickUpAddress2] AS [PickUpAddress2], 
-    [tblTempImpGenLOT].[PickUpAddress3] AS [PickUpAddress3], 
-    [tblTempImpGenLOT].[PickUpAddress4] AS [PickUpAddress4], 
-    [tblTempImpGenLOT].[PickUpAddress5] AS [PickUpAddress5], 
-    [tblTempImpGenLOT].[PickUpEmail] AS [PickUpEmail], 
-    [tblTempImpGenLOT].[PickUpContact] AS [PickUpContact], 
-    [tblTempImpGenLOT].[EndCusCode] AS [EndCusCode], 
-    [tblTempImpGenLOT].[EndCusENG] AS [EndCusENG], 
-    [tblTempImpGenLOT].[EndCusAddress1] AS [EndCusAddress1], 
-    [tblTempImpGenLOT].[EndCusAddress2] AS [EndCusAddress2], 
-    [tblTempImpGenLOT].[EndCusAddress3] AS [EndCusAddress3], 
-    [tblTempImpGenLOT].[EndCusAddress4] AS [EndCusAddress4], 
-    [tblTempImpGenLOT].[EndCusAddress5] AS [EndCusAddress5], 
-    [tblTempImpGenLOT].[EndCusEmail] AS [EndCusEmail], 
-    [tblTempImpGenLOT].[EndCusContact] AS [EndCusContact], 
-    [tblTempImpGenLOT].[FreighForwarder] AS [FreighForwarder], 
-    [tblTempImpGenLOT].[Useby] AS [Useby], 
-    [tblTempImpGenLOT].[IEATPermit] AS [IEATPermit], 
-    [tblTempImpGenLOT].[ShipTo] AS [ShipTo], 
-    [tblTempImpGenLOT].[Remark] AS [Remark], 
-    [tblTempImpGenLOT].[FLT1] AS [FLT1], 
-    [tblTempImpGenLOT].[FLT2] AS [FLT2], 
-    [tblTempImpGenLOT].[FLT3] AS [FLT3], 
-    [tblTempImpGenLOT].[FLT4] AS [FLT4], 
-    [tblTempImpGenLOT].[DateFLT1] AS [DateFLT1], 
-    [tblTempImpGenLOT].[DateFLT2] AS [DateFLT2], 
-    [tblTempImpGenLOT].[DateFLT3] AS [DateFLT3], 
-    [tblTempImpGenLOT].[DateFLT4] AS [DateFLT4], 
-    [tblTempImpGenLOT].[ORGN1] AS [ORGN1], 
-    [tblTempImpGenLOT].[ORGN2] AS [ORGN2], 
-    [tblTempImpGenLOT].[ORGN3] AS [ORGN3], 
-    [tblTempImpGenLOT].[ORGN4] AS [ORGN4], 
-    [tblTempImpGenLOT].[DSTN1] AS [DSTN1], 
-    [tblTempImpGenLOT].[DSTN2] AS [DSTN2], 
-    [tblTempImpGenLOT].[DSTN3] AS [DSTN3], 
-    [tblTempImpGenLOT].[DSTN4] AS [DSTN4], 
-    [tblTempImpGenLOT].[ETD1] AS [ETD1], 
-    [tblTempImpGenLOT].[ETD2] AS [ETD2], 
-    [tblTempImpGenLOT].[ETD3] AS [ETD3], 
-    [tblTempImpGenLOT].[ETD4] AS [ETD4], 
-    [tblTempImpGenLOT].[ETA1] AS [ETA1], 
-    [tblTempImpGenLOT].[ETA2] AS [ETA2], 
-    [tblTempImpGenLOT].[ETA3] AS [ETA3], 
-    [tblTempImpGenLOT].[ETA4] AS [ETA4], 
-    [tblTempImpGenLOT].[PCS1] AS [PCS1], 
-    [tblTempImpGenLOT].[PCS2] AS [PCS2], 
-    [tblTempImpGenLOT].[PCS3] AS [PCS3], 
-    [tblTempImpGenLOT].[PCS4] AS [PCS4], 
-    [tblTempImpGenLOT].[Weight1] AS [Weight1], 
-    [tblTempImpGenLOT].[Weight2] AS [Weight2], 
-    [tblTempImpGenLOT].[Weight3] AS [Weight3], 
-    [tblTempImpGenLOT].[Weight4] AS [Weight4], 
-    [tblTempImpGenLOT].[QuantityPack1] AS [QuantityPack1], 
-    [tblTempImpGenLOT].[QuantityUnitPack1] AS [QuantityUnitPack1], 
-    [tblTempImpGenLOT].[TimeDTE] AS [TimeDTE], 
-    [tblTempImpGenLOT].[DateDTE] AS [DateDTE], 
-    [tblTempImpGenLOT].[TimeATT] AS [TimeATT], 
-    [tblTempImpGenLOT].[DateATT] AS [DateATT], 
-    [tblTempImpGenLOT].[JOBBranch] AS [JOBBranch], 
-    [tblTempImpGenLOT].[Status] AS [Status], 
-    [tblTempImpGenLOT].[Status1] AS [Status1], 
-    [tblTempImpGenLOT].[Status2] AS [Status2], 
-    [tblTempImpGenLOT].[JobSite] AS [JobSite], 
-    [tblTempImpGenLOT].[BillingNo] AS [BillingNo], 
-    [tblTempImpGenLOT].[BookingNo] AS [BookingNo], 
-    [tblTempImpGenLOT].[OwnerCusCode] AS [OwnerCusCode], 
-    [tblTempImpGenLOT].[OwnerCusENG] AS [OwnerCusENG], 
-    [tblTempImpGenLOT].[OwnerCusAddress1] AS [OwnerCusAddress1], 
-    [tblTempImpGenLOT].[OwnerCusAddress2] AS [OwnerCusAddress2], 
-    [tblTempImpGenLOT].[OwnerCusAddress3] AS [OwnerCusAddress3], 
-    [tblTempImpGenLOT].[OwnerCusAddress4] AS [OwnerCusAddress4], 
-    [tblTempImpGenLOT].[OwnerCusAddress5] AS [OwnerCusAddress5], 
-    [tblTempImpGenLOT].[OwnerEmail] AS [OwnerEmail], 
-    [tblTempImpGenLOT].[OwnerContact] AS [OwnerContact]
-    FROM [dbo].[tblTempImpGenLOT] AS [tblTempImpGenLOT]</DefiningQuery>
-    </EntitySet>
     <EntitySet Name="tblTempItemNo" EntityType="Self.tblTempItemNo" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [tblTempItemNo].[LotNo] AS [LotNo], 
     [tblTempItemNo].[PullSignal] AS [PullSignal], 
     [tblTempItemNo].[ItemNo] AS [ItemNo]
     FROM [dbo].[tblTempItemNo] AS [tblTempItemNo]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblTruckManifest" EntityType="Self.tblTruckManifest" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblTruckManifest].[TruckManifestCode] AS [TruckManifestCode], 
-    [tblTruckManifest].[TruckOwner] AS [TruckOwner], 
-    [tblTruckManifest].[TruckType] AS [TruckType], 
-    [tblTruckManifest].[CarLicense] AS [CarLicense], 
-    [tblTruckManifest].[DriverName] AS [DriverName], 
-    [tblTruckManifest].[Origin] AS [Origin], 
-    [tblTruckManifest].[Destination] AS [Destination], 
-    [tblTruckManifest].[OriginDate] AS [OriginDate], 
-    [tblTruckManifest].[OriginTime] AS [OriginTime], 
-    [tblTruckManifest].[Consignnee] AS [Consignnee], 
-    [tblTruckManifest].[Contact] AS [Contact], 
-    [tblTruckManifest].[Tel] AS [Tel], 
-    [tblTruckManifest].[IssuedBy] AS [IssuedBy], 
-    [tblTruckManifest].[EasName] AS [EasName], 
-    [tblTruckManifest].[EasTel] AS [EasTel], 
-    [tblTruckManifest].[rowguid] AS [rowguid]
-    FROM [dbo].[tblTruckManifest] AS [tblTruckManifest]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblTruckManifestDetail" EntityType="Self.tblTruckManifestDetail" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblTruckManifestDetail].[TruckManifestCode] AS [TruckManifestCode], 
-    [tblTruckManifestDetail].[RowTruckNo] AS [RowTruckNo], 
-    [tblTruckManifestDetail].[InvoiceNo] AS [InvoiceNo], 
-    [tblTruckManifestDetail].[TruckWayBill] AS [TruckWayBill], 
-    [tblTruckManifestDetail].[Quantity] AS [Quantity], 
-    [tblTruckManifestDetail].[UnitQuantity] AS [UnitQuantity], 
-    [tblTruckManifestDetail].[Weight] AS [Weight], 
-    [tblTruckManifestDetail].[UnitWeight] AS [UnitWeight], 
-    [tblTruckManifestDetail].[Remark] AS [Remark], 
-    [tblTruckManifestDetail].[QuantityFull] AS [QuantityFull], 
-    [tblTruckManifestDetail].[UnitQuantityFull] AS [UnitQuantityFull], 
-    [tblTruckManifestDetail].[Dimension] AS [Dimension], 
-    [tblTruckManifestDetail].[HAWB] AS [HAWB]
-    FROM [dbo].[tblTruckManifestDetail] AS [tblTruckManifestDetail]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblTruckWayBill" EntityType="Self.tblTruckWayBill" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblTruckWayBill].[TruckWayBillNo] AS [TruckWayBillNo], 
-    [tblTruckWayBill].[ReceivedDate] AS [ReceivedDate], 
-    [tblTruckWayBill].[Dateofissue] AS [Dateofissue], 
-    [tblTruckWayBill].[NoofOriginals] AS [NoofOriginals], 
-    [tblTruckWayBill].[NotifyPatty] AS [NotifyPatty], 
-    [tblTruckWayBill].[DeliveryofGoods] AS [DeliveryofGoods], 
-    [tblTruckWayBill].[CarLicense] AS [CarLicense], 
-    [tblTruckWayBill].[DriverName] AS [DriverName], 
-    [tblTruckWayBill].[FreightCharges] AS [FreightCharges], 
-    [tblTruckWayBill].[Prepaid] AS [Prepaid], 
-    [tblTruckWayBill].[QuantityAmount] AS [QuantityAmount], 
-    [tblTruckWayBill].[GrossWeightAmount] AS [GrossWeightAmount], 
-    [tblTruckWayBill].[Measurement] AS [Measurement], 
-    [tblTruckWayBill].[ExporterCode] AS [ExporterCode], 
-    [tblTruckWayBill].[NameEng] AS [NameEng], 
-    [tblTruckWayBill].[StreetAddress] AS [StreetAddress], 
-    [tblTruckWayBill].[District] AS [District], 
-    [tblTruckWayBill].[SubProvince] AS [SubProvince], 
-    [tblTruckWayBill].[Province] AS [Province], 
-    [tblTruckWayBill].[PostCode] AS [PostCode], 
-    [tblTruckWayBill].[CodeReturn] AS [CodeReturn], 
-    [tblTruckWayBill].[ConsignneeCode] AS [ConsignneeCode], 
-    [tblTruckWayBill].[ConsignNameEng] AS [ConsignNameEng], 
-    [tblTruckWayBill].[ConsingStreetNumber] AS [ConsingStreetNumber], 
-    [tblTruckWayBill].[ConsignDistrict] AS [ConsignDistrict], 
-    [tblTruckWayBill].[ConsignSubProvince] AS [ConsignSubProvince], 
-    [tblTruckWayBill].[ConsgnProvince] AS [ConsgnProvince], 
-    [tblTruckWayBill].[ConsignPostCode] AS [ConsignPostCode], 
-    [tblTruckWayBill].[ConsignEmail] AS [ConsignEmail], 
-    [tblTruckWayBill].[PlaceCode] AS [PlaceCode], 
-    [tblTruckWayBill].[PlaceName] AS [PlaceName], 
-    [tblTruckWayBill].[PlaceAddress] AS [PlaceAddress], 
-    [tblTruckWayBill].[rowguid] AS [rowguid]
-    FROM [dbo].[tblTruckWayBill] AS [tblTruckWayBill]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblTruckWayBillDetail" EntityType="Self.tblTruckWayBillDetail" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblTruckWayBillDetail].[CodeNo] AS [CodeNo], 
-    [tblTruckWayBillDetail].[TruckWayBillNo] AS [TruckWayBillNo], 
-    [tblTruckWayBillDetail].[InvoiceNo] AS [InvoiceNo], 
-    [tblTruckWayBillDetail].[LOTNo] AS [LOTNo], 
-    [tblTruckWayBillDetail].[PartDesc] AS [PartDesc], 
-    [tblTruckWayBillDetail].[OwnerPN] AS [OwnerPN], 
-    [tblTruckWayBillDetail].[CustomerPN] AS [CustomerPN], 
-    [tblTruckWayBillDetail].[Quantity] AS [Quantity], 
-    [tblTruckWayBillDetail].[QuantityUnit] AS [QuantityUnit], 
-    [tblTruckWayBillDetail].[GrossWeight] AS [GrossWeight], 
-    [tblTruckWayBillDetail].[WeightUnit] AS [WeightUnit], 
-    [tblTruckWayBillDetail].[Measurement] AS [Measurement], 
-    [tblTruckWayBillDetail].[CountryofOrigin] AS [CountryofOrigin], 
-    [tblTruckWayBillDetail].[rowguid] AS [rowguid]
-    FROM [dbo].[tblTruckWayBillDetail] AS [tblTruckWayBillDetail]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblUserGroup" EntityType="Self.tblUserGroup" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblUserGroup].[UserGroupCode] AS [UserGroupCode], 
-    [tblUserGroup].[UserGroupName] AS [UserGroupName], 
-    [tblUserGroup].[rowguid] AS [rowguid]
-    FROM [dbo].[tblUserGroup] AS [tblUserGroup]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblUserWebClient" EntityType="Self.tblUserWebClient" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblUserWebClient].[UserName] AS [UserName], 
-    [tblUserWebClient].[Password] AS [Password], 
-    [tblUserWebClient].[CusGroup] AS [CusGroup], 
-    [tblUserWebClient].[CusName] AS [CusName]
-    FROM [dbo].[tblUserWebClient] AS [tblUserWebClient]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblWarehouseType" EntityType="Self.tblWarehouseType" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblWarehouseType].[WarehouseTypeCode] AS [WarehouseTypeCode], 
-    [tblWarehouseType].[WarehouseTypeTH] AS [WarehouseTypeTH], 
-    [tblWarehouseType].[WarehouseTypeENG] AS [WarehouseTypeENG], 
-    [tblWarehouseType].[rowguid] AS [rowguid]
-    FROM [dbo].[tblWarehouseType] AS [tblWarehouseType]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblWHConfirmGoodsReceive" EntityType="Self.tblWHConfirmGoodsReceive" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblWHConfirmGoodsReceive].[LOTNo] AS [LOTNo], 
-    [tblWHConfirmGoodsReceive].[LOTDate] AS [LOTDate], 
-    [tblWHConfirmGoodsReceive].[CustREFNo] AS [CustREFNo], 
-    [tblWHConfirmGoodsReceive].[OwnerCode] AS [OwnerCode], 
-    [tblWHConfirmGoodsReceive].[OwnerNameENG] AS [OwnerNameENG], 
-    [tblWHConfirmGoodsReceive].[OwnerStreet_Number] AS [OwnerStreet_Number], 
-    [tblWHConfirmGoodsReceive].[OwnerDistrict] AS [OwnerDistrict], 
-    [tblWHConfirmGoodsReceive].[OwnerSubProvince] AS [OwnerSubProvince], 
-    [tblWHConfirmGoodsReceive].[OwnerProvince] AS [OwnerProvince], 
-    [tblWHConfirmGoodsReceive].[CustomerCode] AS [CustomerCode], 
-    [tblWHConfirmGoodsReceive].[CustomerNameENG] AS [CustomerNameENG], 
-    [tblWHConfirmGoodsReceive].[CustomerStreet_Number] AS [CustomerStreet_Number], 
-    [tblWHConfirmGoodsReceive].[CustomerDistrict] AS [CustomerDistrict], 
-    [tblWHConfirmGoodsReceive].[CustomerSubProvince] AS [CustomerSubProvince], 
-    [tblWHConfirmGoodsReceive].[CustomerProvince] AS [CustomerProvince], 
-    [tblWHConfirmGoodsReceive].[BrokerCode] AS [BrokerCode], 
-    [tblWHConfirmGoodsReceive].[BrokerNameENG] AS [BrokerNameENG], 
-    [tblWHConfirmGoodsReceive].[BrokerStreet_Number] AS [BrokerStreet_Number], 
-    [tblWHConfirmGoodsReceive].[BrokerDistrict] AS [BrokerDistrict], 
-    [tblWHConfirmGoodsReceive].[BrokerSubprovince] AS [BrokerSubprovince], 
-    [tblWHConfirmGoodsReceive].[BrokerProvince] AS [BrokerProvince], 
-    [tblWHConfirmGoodsReceive].[ENDUserCode] AS [ENDUserCode], 
-    [tblWHConfirmGoodsReceive].[ENDNameENG] AS [ENDNameENG], 
-    [tblWHConfirmGoodsReceive].[ENDStreet_Number] AS [ENDStreet_Number], 
-    [tblWHConfirmGoodsReceive].[ENDDistrict] AS [ENDDistrict], 
-    [tblWHConfirmGoodsReceive].[ENDSubprovince] AS [ENDSubprovince], 
-    [tblWHConfirmGoodsReceive].[ENDProvince] AS [ENDProvince], 
-    [tblWHConfirmGoodsReceive].[Commodity] AS [Commodity], 
-    [tblWHConfirmGoodsReceive].[QuantityOfPart] AS [QuantityOfPart], 
-    [tblWHConfirmGoodsReceive].[QuantityUnit] AS [QuantityUnit], 
-    [tblWHConfirmGoodsReceive].[QuantityPackage] AS [QuantityPackage], 
-    [tblWHConfirmGoodsReceive].[PackageUNIT] AS [PackageUNIT], 
-    [tblWHConfirmGoodsReceive].[QuantityPLT] AS [QuantityPLT], 
-    [tblWHConfirmGoodsReceive].[QuantityPLTUnit] AS [QuantityPLTUnit], 
-    [tblWHConfirmGoodsReceive].[Weigth] AS [Weigth], 
-    [tblWHConfirmGoodsReceive].[WeigthUnit] AS [WeigthUnit], 
-    [tblWHConfirmGoodsReceive].[Volume] AS [Volume], 
-    [tblWHConfirmGoodsReceive].[VolumeUnit] AS [VolumeUnit], 
-    [tblWHConfirmGoodsReceive].[Remark] AS [Remark], 
-    [tblWHConfirmGoodsReceive].[UserBy] AS [UserBy], 
-    [tblWHConfirmGoodsReceive].[LastUpdate] AS [LastUpdate], 
-    [tblWHConfirmGoodsReceive].[PrintCount] AS [PrintCount], 
-    [tblWHConfirmGoodsReceive].[QuantityReceived] AS [QuantityReceived], 
-    [tblWHConfirmGoodsReceive].[ReceivedUNIT] AS [ReceivedUNIT], 
-    [tblWHConfirmGoodsReceive].[QuantityWaitReceive] AS [QuantityWaitReceive], 
-    [tblWHConfirmGoodsReceive].[WaitUNIT] AS [WaitUNIT], 
-    [tblWHConfirmGoodsReceive].[QuantityDamage] AS [QuantityDamage], 
-    [tblWHConfirmGoodsReceive].[DamageUNIT] AS [DamageUNIT], 
-    [tblWHConfirmGoodsReceive].[QuantityDiscrepancy] AS [QuantityDiscrepancy], 
-    [tblWHConfirmGoodsReceive].[DiscrepancyUNIT] AS [DiscrepancyUNIT]
-    FROM [dbo].[tblWHConfirmGoodsReceive] AS [tblWHConfirmGoodsReceive]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblWHConfirmGoodsReceiveDetail" EntityType="Self.tblWHConfirmGoodsReceiveDetail" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblWHConfirmGoodsReceiveDetail].[LOTNo] AS [LOTNo], 
-    [tblWHConfirmGoodsReceiveDetail].[WHSite] AS [WHSite], 
-    [tblWHConfirmGoodsReceiveDetail].[WHLocation] AS [WHLocation], 
-    [tblWHConfirmGoodsReceiveDetail].[ENDCustomer] AS [ENDCustomer], 
-    [tblWHConfirmGoodsReceiveDetail].[CustomerLOTNo] AS [CustomerLOTNo], 
-    [tblWHConfirmGoodsReceiveDetail].[WHSource] AS [WHSource], 
-    [tblWHConfirmGoodsReceiveDetail].[ItemNo] AS [ItemNo], 
-    [tblWHConfirmGoodsReceiveDetail].[ProductCode] AS [ProductCode], 
-    [tblWHConfirmGoodsReceiveDetail].[CustomerPN] AS [CustomerPN], 
-    [tblWHConfirmGoodsReceiveDetail].[OwnerPN] AS [OwnerPN], 
-    [tblWHConfirmGoodsReceiveDetail].[ProductDesc] AS [ProductDesc], 
-    [tblWHConfirmGoodsReceiveDetail].[Measurement] AS [Measurement], 
-    [tblWHConfirmGoodsReceiveDetail].[ProductWidth] AS [ProductWidth], 
-    [tblWHConfirmGoodsReceiveDetail].[ProductLength] AS [ProductLength], 
-    [tblWHConfirmGoodsReceiveDetail].[ProductHeight] AS [ProductHeight], 
-    [tblWHConfirmGoodsReceiveDetail].[ProductVolume] AS [ProductVolume], 
-    [tblWHConfirmGoodsReceiveDetail].[OrderNo] AS [OrderNo], 
-    [tblWHConfirmGoodsReceiveDetail].[ReceiveNo] AS [ReceiveNo], 
-    [tblWHConfirmGoodsReceiveDetail].[Type] AS [Type], 
-    [tblWHConfirmGoodsReceiveDetail].[ManufacturingDate] AS [ManufacturingDate], 
-    [tblWHConfirmGoodsReceiveDetail].[ExpiredDate] AS [ExpiredDate], 
-    [tblWHConfirmGoodsReceiveDetail].[ReceiveDate] AS [ReceiveDate], 
-    [tblWHConfirmGoodsReceiveDetail].[Quantity] AS [Quantity], 
-    [tblWHConfirmGoodsReceiveDetail].[QuantityUnit] AS [QuantityUnit], 
-    [tblWHConfirmGoodsReceiveDetail].[AvailableQuantity] AS [AvailableQuantity], 
-    [tblWHConfirmGoodsReceiveDetail].[Weigth] AS [Weigth], 
-    [tblWHConfirmGoodsReceiveDetail].[WeigthUnit] AS [WeigthUnit], 
-    [tblWHConfirmGoodsReceiveDetail].[Currency] AS [Currency], 
-    [tblWHConfirmGoodsReceiveDetail].[ExchangeRate] AS [ExchangeRate], 
-    [tblWHConfirmGoodsReceiveDetail].[PriceForeigh] AS [PriceForeigh], 
-    [tblWHConfirmGoodsReceiveDetail].[PriceForeighAmount] AS [PriceForeighAmount], 
-    [tblWHConfirmGoodsReceiveDetail].[PriceBath] AS [PriceBath], 
-    [tblWHConfirmGoodsReceiveDetail].[PriceBathAmount] AS [PriceBathAmount], 
-    [tblWHConfirmGoodsReceiveDetail].[StatusAvailable] AS [StatusAvailable], 
-    [tblWHConfirmGoodsReceiveDetail].[PalletNo] AS [PalletNo], 
-    [tblWHConfirmGoodsReceiveDetail].[UserBy] AS [UserBy], 
-    [tblWHConfirmGoodsReceiveDetail].[LastUpdate] AS [LastUpdate], 
-    [tblWHConfirmGoodsReceiveDetail].[ExpectedDate] AS [ExpectedDate], 
-    [tblWHConfirmGoodsReceiveDetail].[TypeDamage] AS [TypeDamage], 
-    [tblWHConfirmGoodsReceiveDetail].[Item] AS [Item], 
-    [tblWHConfirmGoodsReceiveDetail].[Supplier] AS [Supplier], 
-    [tblWHConfirmGoodsReceiveDetail].[Buyer] AS [Buyer], 
-    [tblWHConfirmGoodsReceiveDetail].[Exporter] AS [Exporter], 
-    [tblWHConfirmGoodsReceiveDetail].[Destination] AS [Destination], 
-    [tblWHConfirmGoodsReceiveDetail].[Consignee] AS [Consignee], 
-    [tblWHConfirmGoodsReceiveDetail].[ShippingMark] AS [ShippingMark], 
-    [tblWHConfirmGoodsReceiveDetail].[StatusPutAlway] AS [StatusPutAlway], 
-    [tblWHConfirmGoodsReceiveDetail].[IsFG] AS [IsFG], 
-    [tblWHConfirmGoodsReceiveDetail].[RefLot] AS [RefLot], 
-    [tblWHConfirmGoodsReceiveDetail].[EntryNo] AS [EntryNo], 
-    [tblWHConfirmGoodsReceiveDetail].[EntryItemNo] AS [EntryItemNo], 
-    [tblWHConfirmGoodsReceiveDetail].[Remark] AS [Remark], 
-    [tblWHConfirmGoodsReceiveDetail].[Invoice] AS [Invoice], 
-    [tblWHConfirmGoodsReceiveDetail].[OrderFrmOnline] AS [OrderFrmOnline], 
-    [tblWHConfirmGoodsReceiveDetail].[CustFrmOnline] AS [CustFrmOnline]
-    FROM [dbo].[tblWHConfirmGoodsReceiveDetail] AS [tblWHConfirmGoodsReceiveDetail]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblWHPickPackMaster" EntityType="Self.tblWHPickPackMaster" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblWHPickPackMaster].[NewProductCode] AS [NewProductCode], 
-    [tblWHPickPackMaster].[NewPO] AS [NewPO], 
-    [tblWHPickPackMaster].[NewOwnerPart] AS [NewOwnerPart], 
-    [tblWHPickPackMaster].[NewEndUserPart] AS [NewEndUserPart], 
-    [tblWHPickPackMaster].[NewProductName] AS [NewProductName], 
-    [tblWHPickPackMaster].[DateProduct] AS [DateProduct], 
-    [tblWHPickPackMaster].[Quantity] AS [Quantity], 
-    [tblWHPickPackMaster].[UnitQuantity] AS [UnitQuantity], 
-    [tblWHPickPackMaster].[Status] AS [Status], 
-    [tblWHPickPackMaster].[Userby] AS [Userby], 
-    [tblWHPickPackMaster].[LastUpdate] AS [LastUpdate], 
-    [tblWHPickPackMaster].[rowguid] AS [rowguid]
-    FROM [dbo].[tblWHPickPackMaster] AS [tblWHPickPackMaster]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblWHPickPackNewProduct" EntityType="Self.tblWHPickPackNewProduct" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblWHPickPackNewProduct].[NewProductCode] AS [NewProductCode], 
-    [tblWHPickPackNewProduct].[UseProductCode] AS [UseProductCode], 
-    [tblWHPickPackNewProduct].[UsePO] AS [UsePO], 
-    [tblWHPickPackNewProduct].[UseOwnerPart] AS [UseOwnerPart], 
-    [tblWHPickPackNewProduct].[UseEndUserPart] AS [UseEndUserPart], 
-    [tblWHPickPackNewProduct].[UseProductName] AS [UseProductName], 
-    [tblWHPickPackNewProduct].[QuantityUse] AS [QuantityUse], 
-    [tblWHPickPackNewProduct].[UnitQuantityUse] AS [UnitQuantityUse], 
-    [tblWHPickPackNewProduct].[Userby] AS [Userby], 
-    [tblWHPickPackNewProduct].[LastUpdate] AS [LastUpdate], 
-    [tblWHPickPackNewProduct].[rowguid] AS [rowguid]
-    FROM [dbo].[tblWHPickPackNewProduct] AS [tblWHPickPackNewProduct]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblWHPrepairGoodsReceive" EntityType="Self.tblWHPrepairGoodsReceive" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblWHPrepairGoodsReceive].[LOTNo] AS [LOTNo], 
-    [tblWHPrepairGoodsReceive].[LOTDate] AS [LOTDate], 
-    [tblWHPrepairGoodsReceive].[CustREFNo] AS [CustREFNo], 
-    [tblWHPrepairGoodsReceive].[OwnerCode] AS [OwnerCode], 
-    [tblWHPrepairGoodsReceive].[OwnerNameENG] AS [OwnerNameENG], 
-    [tblWHPrepairGoodsReceive].[OwnerStreet_Number] AS [OwnerStreet_Number], 
-    [tblWHPrepairGoodsReceive].[OwnerDistrict] AS [OwnerDistrict], 
-    [tblWHPrepairGoodsReceive].[OwnerSubProvince] AS [OwnerSubProvince], 
-    [tblWHPrepairGoodsReceive].[OwnerProvince] AS [OwnerProvince], 
-    [tblWHPrepairGoodsReceive].[CustomerCode] AS [CustomerCode], 
-    [tblWHPrepairGoodsReceive].[CustomerNameENG] AS [CustomerNameENG], 
-    [tblWHPrepairGoodsReceive].[CustomerStreet_Number] AS [CustomerStreet_Number], 
-    [tblWHPrepairGoodsReceive].[CustomerDistrict] AS [CustomerDistrict], 
-    [tblWHPrepairGoodsReceive].[CustomerSubProvince] AS [CustomerSubProvince], 
-    [tblWHPrepairGoodsReceive].[CustomerProvince] AS [CustomerProvince], 
-    [tblWHPrepairGoodsReceive].[BrokerCode] AS [BrokerCode], 
-    [tblWHPrepairGoodsReceive].[BrokerNameENG] AS [BrokerNameENG], 
-    [tblWHPrepairGoodsReceive].[BrokerStreet_Number] AS [BrokerStreet_Number], 
-    [tblWHPrepairGoodsReceive].[BrokerDistrict] AS [BrokerDistrict], 
-    [tblWHPrepairGoodsReceive].[BrokerSubprovince] AS [BrokerSubprovince], 
-    [tblWHPrepairGoodsReceive].[BrokerProvince] AS [BrokerProvince], 
-    [tblWHPrepairGoodsReceive].[ENDUserCode] AS [ENDUserCode], 
-    [tblWHPrepairGoodsReceive].[ENDNameENG] AS [ENDNameENG], 
-    [tblWHPrepairGoodsReceive].[ENDStreet_Number] AS [ENDStreet_Number], 
-    [tblWHPrepairGoodsReceive].[ENDDistrict] AS [ENDDistrict], 
-    [tblWHPrepairGoodsReceive].[ENDSubprovince] AS [ENDSubprovince], 
-    [tblWHPrepairGoodsReceive].[ENDProvince] AS [ENDProvince], 
-    [tblWHPrepairGoodsReceive].[Commodity] AS [Commodity], 
-    [tblWHPrepairGoodsReceive].[QuantityOfPart] AS [QuantityOfPart], 
-    [tblWHPrepairGoodsReceive].[QuantityUnit] AS [QuantityUnit], 
-    [tblWHPrepairGoodsReceive].[QuantityPackage] AS [QuantityPackage], 
-    [tblWHPrepairGoodsReceive].[PackageUNIT] AS [PackageUNIT], 
-    [tblWHPrepairGoodsReceive].[QuantityPLT] AS [QuantityPLT], 
-    [tblWHPrepairGoodsReceive].[QuantityPLTUnit] AS [QuantityPLTUnit], 
-    [tblWHPrepairGoodsReceive].[Weigth] AS [Weigth], 
-    [tblWHPrepairGoodsReceive].[WeigthUnit] AS [WeigthUnit], 
-    [tblWHPrepairGoodsReceive].[Volume] AS [Volume], 
-    [tblWHPrepairGoodsReceive].[VolumeUnit] AS [VolumeUnit], 
-    [tblWHPrepairGoodsReceive].[Remark] AS [Remark], 
-    [tblWHPrepairGoodsReceive].[UserBy] AS [UserBy], 
-    [tblWHPrepairGoodsReceive].[LastUpdate] AS [LastUpdate], 
-    [tblWHPrepairGoodsReceive].[PrintCount] AS [PrintCount], 
-    [tblWHPrepairGoodsReceive].[UsedStatus] AS [UsedStatus]
-    FROM [dbo].[tblWHPrepairGoodsReceive] AS [tblWHPrepairGoodsReceive]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="tblWHPrepairGoodsReceiveDetail" EntityType="Self.tblWHPrepairGoodsReceiveDetail" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
@@ -5131,5 +3207,9 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
     [tblWHStockMovement].[CustFrmOnline] AS [CustFrmOnline]
     FROM [dbo].[tblWHStockMovement] AS [tblWHStockMovement]</DefiningQuery>
     </EntitySet>
+    <AssociationSet Name="FK_tblCompanyGuarantee1_tblStatusBalance" Association="Self.FK_tblCompanyGuarantee1_tblStatusBalance">
+      <End Role="tblStatusBalance" EntitySet="tblStatusBalance" />
+      <End Role="tblCompanyGuarantee1" EntitySet="tblCompanyGuarantee1" />
+    </AssociationSet>
   </EntityContainer>
 </Schema>

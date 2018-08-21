@@ -4,7 +4,7 @@ Imports System.IO
 Public Class MasterExchangeRate
     Inherits System.Web.UI.Page
     Dim tmpSQLScript As String
-    Dim db As New LKBWarehouseEntities1_Test
+    Dim db As New LKBWarehouseEntities1
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If Not Me.IsPostBack Then

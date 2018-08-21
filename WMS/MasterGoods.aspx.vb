@@ -12,7 +12,7 @@ Imports System.Transactions
 
 Public Class MasterGoods
     Inherits System.Web.UI.Page
-    Dim db As New LKBWarehouseEntities1_Test
+    Dim db As New LKBWarehouseEntities1
     Dim ImpStatus1 As String = "0"
     Dim ImpStatus2 As String = "0"
     Dim ImpStatus3 As String = "0"

@@ -2,7 +2,7 @@
 
 Public Class InvoicePackingListRec
     Inherits System.Web.UI.Page
-    Dim db As New LKBWarehouseEntities1_Test
+    Dim db As New LKBWarehouseEntities1
     Dim DiffBy As String
     Dim TermTransport As String
     Dim OnbehalfStatus As String
