@@ -6812,6 +6812,7 @@
     </Compile>
     <Compile Include="Class\ClassPermis.vb" />
     <Compile Include="Class\LoginCls.vb" />
+    <Compile Include="Class\MoneyExt.vb" />
     <Compile Include="CustomsInvoice.aspx.designer.vb">
       <DependentUpon>CustomsInvoice.aspx</DependentUpon>
     </Compile>

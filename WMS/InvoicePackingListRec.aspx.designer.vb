@@ -1139,13 +1139,13 @@ Partial Public Class InvoicePackingListRec
     Protected WithEvents txtProductYear_ItemDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''ddlNatureOfTM_ItemDetail control.
+    '''ddlNatureOfTRN_ItemDetail control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlNatureOfTM_ItemDetail As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents ddlNatureOfTRN_ItemDetail As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''ddlPurchaseCtry_ItemDetail control.
@@ -1175,15 +1175,6 @@ Partial Public Class InvoicePackingListRec
     Protected WithEvents txtItemNo_ItemDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''ddlProductCode_ItemDetail control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents ddlProductCode_ItemDetail As Global.System.Web.UI.WebControls.DropDownList
-
-    '''<summary>
     '''txtCustomerPN_ItemDetail control.
     '''</summary>
     '''<remarks>
@@ -1191,6 +1182,15 @@ Partial Public Class InvoicePackingListRec
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents txtCustomerPN_ItemDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''txtProductCode_ItemDetail control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtProductCode_ItemDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
     '''txtInvQty_ItemDetail control.
@@ -1760,13 +1760,13 @@ Partial Public Class InvoicePackingListRec
     Protected WithEvents packinglist_fieldset As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
-    '''ddlProductCode_PACKINGLIST control.
+    '''txtProductCode_PACKINGLIST control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlProductCode_PACKINGLIST As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtProductCode_PACKINGLIST As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
     '''txtProductDesc_PACKINGLIST control.
@@ -1787,15 +1787,6 @@ Partial Public Class InvoicePackingListRec
     Protected WithEvents txtCustomerPN_PACKINGLIST As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''ddlOriginCtry_PACKINGLIST control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents ddlOriginCtry_PACKINGLIST As Global.System.Web.UI.WebControls.DropDownList
-
-    '''<summary>
     '''txtOriginCtry_PACKINGLIST control.
     '''</summary>
     '''<remarks>
@@ -1805,13 +1796,22 @@ Partial Public Class InvoicePackingListRec
     Protected WithEvents txtOriginCtry_PACKINGLIST As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''ddlNumberOfPLT_PACKINGLIST control.
+    '''txtOriginCtry2_PACKINGLIST control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlNumberOfPLT_PACKINGLIST As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtOriginCtry2_PACKINGLIST As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''txtNumberOfPLT_PACKINGLIST control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtNumberOfPLT_PACKINGLIST As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
     '''txtPLTQuantity_PACKINGLIST control.
@@ -1823,13 +1823,13 @@ Partial Public Class InvoicePackingListRec
     Protected WithEvents txtPLTQuantity_PACKINGLIST As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''ddlNetWeight_PACKINGLIST control.
+    '''txtNetWeight_PACKINGLIST control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlNetWeight_PACKINGLIST As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtNetWeight_PACKINGLIST As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
     '''txtVolumeCBM_PACKINGLIST control.
@@ -1949,22 +1949,22 @@ Partial Public Class InvoicePackingListRec
     Protected WithEvents txtTotalCTN_PACKINGLIST As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''ddlProductQuantity_PACKINGLIST control.
+    '''txtProductQuantity_PACKINGLIST control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlProductQuantity_PACKINGLIST As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtProductQuantity_PACKINGLIST As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''ddlGrossWeight_PACKINGLIST control.
+    '''txtGrossWeight_PACKINGLIST control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlGrossWeight_PACKINGLIST As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtGrossWeight_PACKINGLIST As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
     '''txtPONo_PACKINGLIST control.
