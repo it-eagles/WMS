@@ -11631,9 +11631,9 @@ TabName control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.CustomsInvoice.Search1">
+</member><member name="F:WMS.CustomsInvoice.plSearch1">
 	<summary>
-Search1 control.
+plSearch1 control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -11695,41 +11695,9 @@ CalendarExtender5 control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.CustomsInvoice.txtEndInvoiceNo">
+</member><member name="F:WMS.CustomsInvoice.btnadd_">
 	<summary>
-txtEndInvoiceNo control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.CustomsInvoice.txtEndExporter">
-	<summary>
-txtEndExporter control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.CustomsInvoice.txtToConsignnee">
-	<summary>
-txtToConsignnee control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.CustomsInvoice.dtpEndInvoiceDate">
-	<summary>
-dtpEndInvoiceDate control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.CustomsInvoice.CalendarExtender6">
-	<summary>
-CalendarExtender6 control.
+btnadd_ control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -18991,9 +18959,9 @@ txtProductYear_ItemDetail control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.InvoicePackingListRec.ddlNatureOfTM_ItemDetail">
+</member><member name="F:WMS.InvoicePackingListRec.ddlNatureOfTRN_ItemDetail">
 	<summary>
-ddlNatureOfTM_ItemDetail control.
+ddlNatureOfTRN_ItemDetail control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -19023,17 +18991,17 @@ txtItemNo_ItemDetail control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.InvoicePackingListRec.ddlProductCode_ItemDetail">
+</member><member name="F:WMS.InvoicePackingListRec.txtCustomerPN_ItemDetail">
 	<summary>
-ddlProductCode_ItemDetail control.
+txtCustomerPN_ItemDetail control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.InvoicePackingListRec.txtCustomerPN_ItemDetail">
+</member><member name="F:WMS.InvoicePackingListRec.txtProductCode_ItemDetail">
 	<summary>
-txtCustomerPN_ItemDetail control.
+txtProductCode_ItemDetail control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -19543,9 +19511,9 @@ packinglist_fieldset control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.InvoicePackingListRec.ddlProductCode_PACKINGLIST">
+</member><member name="F:WMS.InvoicePackingListRec.txtProductCode_PACKINGLIST">
 	<summary>
-ddlProductCode_PACKINGLIST control.
+txtProductCode_PACKINGLIST control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -19567,14 +19535,6 @@ txtCustomerPN_PACKINGLIST control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.InvoicePackingListRec.ddlOriginCtry_PACKINGLIST">
-	<summary>
-ddlOriginCtry_PACKINGLIST control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
 </member><member name="F:WMS.InvoicePackingListRec.txtOriginCtry_PACKINGLIST">
 	<summary>
 txtOriginCtry_PACKINGLIST control.
@@ -19583,9 +19543,17 @@ txtOriginCtry_PACKINGLIST control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.InvoicePackingListRec.ddlNumberOfPLT_PACKINGLIST">
+</member><member name="F:WMS.InvoicePackingListRec.txtOriginCtry2_PACKINGLIST">
 	<summary>
-ddlNumberOfPLT_PACKINGLIST control.
+txtOriginCtry2_PACKINGLIST control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.InvoicePackingListRec.txtNumberOfPLT_PACKINGLIST">
+	<summary>
+txtNumberOfPLT_PACKINGLIST control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -19599,9 +19567,9 @@ txtPLTQuantity_PACKINGLIST control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.InvoicePackingListRec.ddlNetWeight_PACKINGLIST">
+</member><member name="F:WMS.InvoicePackingListRec.txtNetWeight_PACKINGLIST">
 	<summary>
-ddlNetWeight_PACKINGLIST control.
+txtNetWeight_PACKINGLIST control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -19711,17 +19679,17 @@ txtTotalCTN_PACKINGLIST control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.InvoicePackingListRec.ddlProductQuantity_PACKINGLIST">
+</member><member name="F:WMS.InvoicePackingListRec.txtProductQuantity_PACKINGLIST">
 	<summary>
-ddlProductQuantity_PACKINGLIST control.
+txtProductQuantity_PACKINGLIST control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.InvoicePackingListRec.ddlGrossWeight_PACKINGLIST">
+</member><member name="F:WMS.InvoicePackingListRec.txtGrossWeight_PACKINGLIST">
 	<summary>
-ddlGrossWeight_PACKINGLIST control.
+txtGrossWeight_PACKINGLIST control.
 </summary>
 	<remarks>
 Auto-generated field.

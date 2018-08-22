@@ -975,12 +975,11 @@ Public Class CustomsInvoice
         selectInvoiceNo()
     End Sub
 
-    Protected Sub btnShipper_ServerClick(sender As Object, e As EventArgs)
-       
-          selectExporter()
-
+    Protected Sub btnShipper_ServerClick(sender As Object, e As EventArgs)  
+        selectExporter()
     End Sub
     Private Sub selectInvoiceNo()
+       
         Dim gro_code As String
         Dim UserGroup As String = CStr(Session("UserGroup"))
         Dim cra As Integer
@@ -998,7 +997,7 @@ Public Class CustomsInvoice
             If cons.Count > 0 Then
                 dgvSearch.DataSource = cons.ToList
                 dgvSearch.DataBind()
-                ScriptManager.RegisterStartupScript(upSearch1, upSearch1.GetType(), "show", "$(function () { $('#" + Search1.ClientID + "').modal('show'); });", True)
+                ScriptManager.RegisterStartupScript(upSearch1, upSearch1.GetType(), "show", "$(function () { $('#" + plSearch1.ClientID + "').modal('show'); });", True)
                 upSearch1.Update()
             Else
                 ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('ไม่พบข้อมูล Customer Code นี้')", True)
@@ -1011,7 +1010,7 @@ Public Class CustomsInvoice
             If cons.Count > 0 Then
                 dgvSearch.DataSource = cons.ToList
                 dgvSearch.DataBind()
-                ScriptManager.RegisterStartupScript(upSearch1, upSearch1.GetType(), "show", "$(function () { $('#" + Search1.ClientID + "').modal('show'); });", True)
+                ScriptManager.RegisterStartupScript(upSearch1, upSearch1.GetType(), "show", "$(function () { $('#" + plSearch1.ClientID + "').modal('show'); });", True)
                 upSearch1.Update()
             Else
                 ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('ไม่พบข้อมูล Customer Code นี้')", True)
@@ -1019,7 +1018,6 @@ Public Class CustomsInvoice
             End If
         End If
     End Sub
-
 
     Protected Sub dgvSearch_ItemCommand(source As Object, e As RepeaterCommandEventArgs)
         Dim referenceDate As String
@@ -2070,36 +2068,7 @@ Public Class CustomsInvoice
     End Sub
 
     Protected Sub AddIEAT107_Click(sender As Object, e As EventArgs)
-        Dim StatusRenew As Integer = 0
-        If String.IsNullOrEmpty(txtInvoiceNo.Value.Trim) Then
-            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('กรุณาป้อน Invoice ก่อน !!!')", True)
-            Exit Sub
-        Else
-            If Checkbox1.Checked = True Then
-                StatusRenew = 1
-            Else
-                StatusRenew = 0
-            End If
-            Select Case MsgBox("คุณต้องการเพิ่มรายการ Invoice ใหม่ ใช่หรือไม่ ?", MsgBoxStyle.YesNo, "คำยืนยัน")
-                Case MsgBoxResult.Yes
-                    db.tblStatusBalances.Add(New tblStatusBalance With { _
-                                    .PartyCode = txtCustomerCode.Value.Trim, _
-                                    .JobNo = txtPurechaseOrderNo.Value.Trim, _
-                                    .InvoiceNo = txtInvoiceNo.Value.Trim, _
-                                    .InvoiceDate = DateTime.ParseExact(dtpInvoiceDate.Text, "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US")), _
-                                    .UseAmount = CType(txtUseAmonut.Value.Trim, Decimal?), _
-                                    .DeliveryDate = DateTime.ParseExact(dtpForm.Text, "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US")), _
-                                    .ReturnDate = DateTime.ParseExact(dtpTo.Text, "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US")), _
-                                    .RenewDate = DateTime.ParseExact(dtpEx.Text, "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US")), _
-                                    .CreateBy = Session("UserName").ToString, _
-                                    .CreateDate = Now, _
-                                    .StatusRenew = StatusRenew
-                                     })
-                    db.SaveChanges()
-                    SavaAmountGuarantee()
-                    ReadDATAIEAT107(txtInvoiceNo.Value.Trim)
-            End Select
-        End If
+        savaStatusBalance()
     End Sub
     Private Sub ClareDataIEAT107()
         txtUseAmonut.Value = "0"
@@ -2115,5 +2084,48 @@ Public Class CustomsInvoice
                                     .InvoiceNo = txtInvoiceNo.Value.Trim
                                     })
         db.SaveChanges()
+    End Sub
+
+    Private Sub savaStatusBalance()
+        Dim StatusRenew As Integer = 0
+        Dim UseAmonut As String = ""
+        If String.IsNullOrEmpty(txtInvoiceNo.Value.Trim) Then
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('กรุณาป้อน Invoice ก่อน !!!')", True)
+            Exit Sub
+        Else
+            If Checkbox1.Checked = True Then
+                StatusRenew = 1
+            Else
+                StatusRenew = 0
+            End If
+            Select Case MsgBox("คุณต้องการเพิ่มรายการ Invoice ใหม่ ใช่หรือไม่ ?", MsgBoxStyle.YesNo, "คำยืนยัน")
+                Case MsgBoxResult.Yes
+
+                    db.tblStatusBalances.Add(New tblStatusBalance With { _
+                                    .PartyCode = txtCustomerCode.Value.Trim, _
+                                    .JobNo = txtPurechaseOrderNo.Value.Trim, _
+                                    .InvoiceNo = txtInvoiceNo.Value.Trim, _
+                                    .InvoiceDate = DateTime.ParseExact(dtpInvoiceDate.Text, "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US")), _
+                                    .UseAmount = CType(CDbl(txtUseAmonut.Value.Trim).ToString("#,##0.000"), Decimal?), _
+                                    .DeliveryDate = DateTime.ParseExact(dtpForm.Text, "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US")), _
+                                    .ReturnDate = DateTime.ParseExact(dtpTo.Text, "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US")), _
+                                    .RenewDate = DateTime.ParseExact(dtpEx.Text, "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US")), _
+                                    .CreateBy = Session("UserName").ToString, _
+                                    .CreateDate = Now, _
+                                    .StatusRenew = StatusRenew
+                                     })
+                    db.SaveChanges()
+                    SavaAmountGuarantee()
+                    ReadDATAIEAT107(txtInvoiceNo.Value.Trim)
+            End Select
+        End If
+    End Sub
+
+    Protected Sub btnadd__ServerClick(sender As Object, e As EventArgs)
+        If String.IsNullOrEmpty(txtStartInvoiceNo.Value.Trim) Then
+            MsgBox("1")
+        Else
+            MsgBox("2")
+        End If
     End Sub
 End Class

@@ -2093,13 +2093,13 @@ Partial Public Class CustomsInvoice
     Protected WithEvents TabName As Global.System.Web.UI.WebControls.HiddenField
 
     '''<summary>
-    '''Search1 control.
+    '''plSearch1 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Search1 As Global.System.Web.UI.WebControls.Panel
+    Protected WithEvents plSearch1 As Global.System.Web.UI.WebControls.Panel
 
     '''<summary>
     '''upSearch1 control.
@@ -2165,49 +2165,13 @@ Partial Public Class CustomsInvoice
     Protected WithEvents CalendarExtender5 As Global.AjaxControlToolkit.CalendarExtender
 
     '''<summary>
-    '''txtEndInvoiceNo control.
+    '''btnadd_ control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtEndInvoiceNo As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''txtEndExporter control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtEndExporter As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''txtToConsignnee control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtToConsignnee As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''dtpEndInvoiceDate control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents dtpEndInvoiceDate As Global.System.Web.UI.WebControls.TextBox
-
-    '''<summary>
-    '''CalendarExtender6 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents CalendarExtender6 As Global.AjaxControlToolkit.CalendarExtender
+    Protected WithEvents btnadd_ As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
     '''plExporter control.

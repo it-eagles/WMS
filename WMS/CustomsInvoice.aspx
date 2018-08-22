@@ -4,7 +4,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <form id="form1" runat="server">
-        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+        <asp:ScriptManager ID="ScriptManager1" runat="server" AsyncPostBackTimeout="360000"></asp:ScriptManager>
         <section class="content-header">
             <h1>Export Customs Invoice & Packing List
             </h1>
@@ -677,7 +677,7 @@
                                                                 <div class="form-group">
                                                                     <label for="txtCustomerAddress" class="col-sm-4 control-label">Address:</label>
                                                                     <div class="col-sm-8">
-                                                                        <textarea class="form-control" id="txtCustomerAddress" rows="3" runat="server" name="txtRemarks" placeholder="Remarks ..." autocomplete="off"></textarea>
+                                                                        <textarea class="form-control" id="txtCustomerAddress" rows="3" runat="server" name="txtRemarks" placeholder="Remarks ..."></textarea>
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group">
@@ -1527,7 +1527,7 @@
         </section>
 
         <!-- Modal JoB No-->
-        <asp:Panel ID="Search1" runat="server" CssClass="modal" TabIndex="-1" role="dialog" aria-labelledby="myLabe1">
+        <asp:Panel ID="plSearch1" runat="server" CssClass="modal" TabIndex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -1538,12 +1538,10 @@
                     <asp:UpdatePanel ID="upSearch1" runat="server" UpdateMode="Conditional">
                         <ContentTemplate>
                             <div class="modal-body">
-                                <section class="content">
+                                  <section class="content">
                                     <form class="form-horizontal">
                                         <div class="box-body">
-                                            <div class="col-lg-12 col-md-12 " style="overflow: auto;">
-
-                                                <asp:Repeater ID="dgvSearch" runat="server" OnItemCommand="dgvSearch_ItemCommand">
+                                             <asp:Repeater ID="dgvSearch" runat="server" OnItemCommand="dgvSearch_ItemCommand">
                                                     <HeaderTemplate>
                                                         <table id="example1" class="table table-bordered table-striped table-responsive" style="overflow: auto;">
                                                             <thead>
@@ -1585,39 +1583,44 @@
                                                         </table>
                                                     </FooterTemplate>
                                                 </asp:Repeater>
-                                            </div>
-                                            <div class="col-lg-12 col-md-10">
+                                      
                                                 <fieldset>
                                                     <legend></legend>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="txtStartInvoiceNo" class="col-sm-4 control-label">Invoice No.</label>
-                                                            <div class="col-sm-8">
+                                                   <div class="col-md-12">
+                                                       
+                                                       <div class="col-md-6">
+                                                           <div class="form-group">
+                                                               <label for="txtStartInvoiceNo" class="col-sm-4 control-label">Invoice No.</label>
+                                                            <div class="col-md-8">
                                                                 <input class="form-control" id="txtStartInvoiceNo" runat="server" autocomplete="off" />
                                                             </div>
-                                                        </div>
+                                                           </div>
+                                                            
                                                         <div class="form-group">
-                                                            <label for="txtStartExporter" class="col-sm-4 control-label">Exporter</label>
-                                                            <div class="col-sm-8">
+                                                             <label for="txtStartExporter" class="col-sm-4 control-label">Exporter</label>
+                                                            <div class="col-md-8">
                                                                 <input class="form-control" id="txtStartExporter" runat="server" autocomplete="off" />
                                                             </div>
                                                         </div>
+                                                           
                                                         <div class="form-group">
-                                                            <label for="txtStartConsignnee" class="col-sm-4 control-label">Consignnees</label>
-                                                            <div class="col-sm-8">
+                                                             <label for="txtStartConsignnee" class="col-sm-4 control-label">Consignnees</label>
+                                                            <div class="col-md-8">
                                                                 <input class="form-control" id="txtStartConsignnee" runat="server" autocomplete="off" />
                                                             </div>
                                                         </div>
+                                                           
                                                         <div class="form-group">
                                                             <label for="txtStartInvoiceNo" class="col-sm-4 control-label">Invoice Date</label>
-                                                            <div class="col-sm-8">
+                                                            <div class="col-md-8">
                                                                 <asp:TextBox CssClass="form-control" ID="dtpStartInvoiceDate" runat="server" placeholder="MM/DD/YYYY" autocomplete="off">
                                                                 </asp:TextBox>
                                                                 <asp:CalendarExtender ID="CalendarExtender5" runat="server" Enabled="True" TargetControlID="dtpStartInvoiceDate" Format="dd/MM/yyyy"></asp:CalendarExtender>
                                                             </div>
                                                         </div>
+                                                                                                        
                                                     </div>
-                                                    <div class="col-md-6">
+                                                       <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="txtEndInvoiceNo" class="col-sm-4 control-label">To Invoice No.</label>
                                                             <div class="col-sm-8">
@@ -1625,19 +1628,19 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="txtStartExporter" class="col-sm-4 control-label">To Exporter</label>
+                                                            <label for="txtEndExporter" class="col-sm-4 control-label">To Exporter</label>
                                                             <div class="col-sm-8">
                                                                 <input class="form-control" id="txtEndExporter" runat="server" autocomplete="off" />
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="txtStartConsignnee" class="col-sm-4 control-label">To Consignnee</label>
+                                                            <label for="txtToConsignnee" class="col-sm-4 control-label">To Consignnee</label>
                                                             <div class="col-sm-8">
                                                                 <input class="form-control" id="txtToConsignnee" runat="server" autocomplete="off" />
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="txtStartInvoiceNo" class="col-sm-4 control-label">To Invoice Date</label>
+                                                            <label for="dtpEndInvoiceDate" class="col-sm-4 control-label">To Invoice Date</label>
                                                             <div class="col-sm-8">
                                                                 <asp:TextBox CssClass="form-control" ID="dtpEndInvoiceDate" runat="server" placeholder="MM/DD/YYYY" autocomplete="off">
                                                                 </asp:TextBox>
@@ -1646,15 +1649,28 @@
                                                         </div>
 
                                                     </div>
-                                                </fieldset>
-
-                                            </div>
+                                                   </div>
+                                                                                                  
+                                                </fieldset>                                       
                                         </div>
                                     </form>
 
-                                </section>
+                                </section>    
+                                               
+                                         
                             </div>
+                           <%-- <section class="content">
+                                    <form class="form-horizontal">
+                                       <div class="box-body">
+                                            
+                                             
+                                             </div>
+                                      
+                                    </form>
+
+                                </section>--%>
                             <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" id="btnadd_" runat="server" onserverclick="btnadd__ServerClick">Add</button>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             </div>
                         </ContentTemplate>
@@ -1663,8 +1679,8 @@
             </div>
         </asp:Panel>
         <!-- End Shipper Modal -->
-         <!-- Modal ConsigneeCode-->
-        <asp:Panel ID="plExporter" runat="server" CssClass="modal" TabIndex="-1" role="dialog" aria-labelledby="myLabe1">
+        <!-- Modal ConsigneeCode-->
+        <asp:Panel ID="plExporter" runat="server" CssClass="modal" TabIndex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -1679,7 +1695,7 @@
                                     <form class="form-horizontal">
                                         <div class="col-lg-12 col-md-12 " style="overflow: auto;">
 
-                                            <asp:Repeater ID="dgvExporter" runat="server"  OnItemDataBound="dgvExporter_ItemDataBound">
+                                            <asp:Repeater ID="dgvExporter" runat="server" OnItemDataBound="dgvExporter_ItemDataBound">
                                                 <HeaderTemplate>
                                                     <table id="example2" class="table table-bordered table-striped table-responsive" style="overflow: auto;">
                                                         <thead>
@@ -1714,7 +1730,7 @@
                                                 <FooterTemplate>
                                                     <tfoot>
                                                         <tr>
-                                                           <th>select</th>
+                                                            <th>select</th>
                                                             <th>PartyCode</th>
                                                             <th>PartyAddressCode</th>
                                                             <th>PartyFullName</th>
@@ -1740,7 +1756,7 @@
         <!-- End Shipper Modal -->
 
         <!-- Modal ExporterCode-->
-        <asp:Panel ID="plExporterCode" runat="server" CssClass="modal" TabIndex="-1" role="dialog" aria-labelledby="myLabe1">
+        <asp:Panel ID="plExporterCode" runat="server" CssClass="modal" TabIndex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -1755,12 +1771,12 @@
                                     <form class="form-horizontal">
                                         <div class="col-lg-12 col-md-12 " style="overflow: auto;">
 
-                                            <asp:Repeater ID="dgvExporterCode" runat="server" >
+                                            <asp:Repeater ID="dgvExporterCode" runat="server">
                                                 <HeaderTemplate>
                                                     <table id="example3" class="table table-bordered table-striped table-responsive" style="overflow: auto;">
                                                         <thead>
                                                             <tr>
-                                                               <th>select</th>
+                                                                <th>select</th>
                                                                 <th>PartyCode</th>
                                                                 <th>PartyAddressCode</th>
                                                                 <th>PartyFullName</th>
@@ -1816,7 +1832,7 @@
         <!-- End Shipper Modal -->
 
         <!-- Modal-->
-        <asp:Panel ID="plConsignnee" runat="server" CssClass="modal" TabIndex="-1" role="dialog" aria-labelledby="myLabe1">
+        <asp:Panel ID="plConsignnee" runat="server" CssClass="modal" TabIndex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -1847,19 +1863,19 @@
                                                 </HeaderTemplate>
 
                                                 <ItemTemplate>
-                                                     <td class="text-center">
-                                                            <asp:LinkButton ID="lnkPartyCode_Con" CssClass="btn bg-navy" runat="server" OnClick="lnkPartyCode_Con_Click"><i class="fa fa-hand-o-up"></i></asp:LinkButton>
-                                                        </td>
-                                                        <td>
-                                                            <asp:Label ID="lblPartyCode" runat="server" Text="Label"></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblPartyAdd" runat="server" Text="Label"></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblPartyFullName" runat="server" Text="Label"></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblAddress1" runat="server" Text="Label"></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblAddress2" runat="server" Text="Label"></asp:Label></td>
+                                                    <td class="text-center">
+                                                        <asp:LinkButton ID="lnkPartyCode_Con" CssClass="btn bg-navy" runat="server" OnClick="lnkPartyCode_Con_Click"><i class="fa fa-hand-o-up"></i></asp:LinkButton>
+                                                    </td>
+                                                    <td>
+                                                        <asp:Label ID="lblPartyCode" runat="server" Text="Label"></asp:Label></td>
+                                                    <td>
+                                                        <asp:Label ID="lblPartyAdd" runat="server" Text="Label"></asp:Label></td>
+                                                    <td>
+                                                        <asp:Label ID="lblPartyFullName" runat="server" Text="Label"></asp:Label></td>
+                                                    <td>
+                                                        <asp:Label ID="lblAddress1" runat="server" Text="Label"></asp:Label></td>
+                                                    <td>
+                                                        <asp:Label ID="lblAddress2" runat="server" Text="Label"></asp:Label></td>
                                                     </tr>
                                                 </ItemTemplate>
                                                 <FooterTemplate>
@@ -1892,7 +1908,7 @@
         </asp:Panel>
         <!-- End Shipper Modal -->
         <!-- Modal-->
-        <asp:Panel ID="plExporter1" runat="server" CssClass="modal" TabIndex="-1" role="dialog" aria-labelledby="myLabe1">
+        <asp:Panel ID="plExporter1" runat="server" CssClass="modal" TabIndex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -1907,12 +1923,12 @@
                                     <form class="form-horizontal">
                                         <div class="col-lg-12 col-md-12 " style="overflow: auto;">
 
-                                            <asp:Repeater ID="dgvExporter1" runat="server"  OnItemDataBound="dgvExporter1_ItemDataBound">
+                                            <asp:Repeater ID="dgvExporter1" runat="server" OnItemDataBound="dgvExporter1_ItemDataBound">
                                                 <HeaderTemplate>
                                                     <table id="example5" class="table table-bordered table-striped table-responsive" style="overflow: auto;">
                                                         <thead>
                                                             <tr>
-                                                                 <th>select</th>
+                                                                <th>select</th>
                                                                 <th>PartyCode</th>
                                                                 <th>PartyAddressCode</th>
                                                                 <th>PartyFullName</th>
@@ -1924,18 +1940,18 @@
 
                                                 <ItemTemplate>
                                                     <td class="text-center">
-                                                            <asp:LinkButton ID="lnkPartyCode_Exp1" CssClass="btn bg-navy" runat="server" OnClick="lnkPartyCode_Exp1_Click"><i class="fa fa-hand-o-up"></i></asp:LinkButton>
-                                                        </td>
-                                                        <td>
-                                                            <asp:Label ID="lblPartyCode" runat="server" Text="Label"></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblPartyAdd" runat="server" Text="Label"></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblPartyFullName" runat="server" Text="Label"></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblAddress1" runat="server" Text="Label"></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblAddress2" runat="server" Text="Label"></asp:Label></td>
+                                                        <asp:LinkButton ID="lnkPartyCode_Exp1" CssClass="btn bg-navy" runat="server" OnClick="lnkPartyCode_Exp1_Click"><i class="fa fa-hand-o-up"></i></asp:LinkButton>
+                                                    </td>
+                                                    <td>
+                                                        <asp:Label ID="lblPartyCode" runat="server" Text="Label"></asp:Label></td>
+                                                    <td>
+                                                        <asp:Label ID="lblPartyAdd" runat="server" Text="Label"></asp:Label></td>
+                                                    <td>
+                                                        <asp:Label ID="lblPartyFullName" runat="server" Text="Label"></asp:Label></td>
+                                                    <td>
+                                                        <asp:Label ID="lblAddress1" runat="server" Text="Label"></asp:Label></td>
+                                                    <td>
+                                                        <asp:Label ID="lblAddress2" runat="server" Text="Label"></asp:Label></td>
                                                     </tr>
                                                 </ItemTemplate>
                                                 <FooterTemplate>
@@ -1966,8 +1982,8 @@
         </asp:Panel>
         <!-- End Shipper Modal -->
 
-         <!-- Modal-->
-        <asp:Panel ID="plShipTo" runat="server" CssClass="modal" TabIndex="-1" role="dialog" aria-labelledby="myLabe1">
+        <!-- Modal-->
+        <asp:Panel ID="plShipTo" runat="server" CssClass="modal" TabIndex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -1982,12 +1998,12 @@
                                     <form class="form-horizontal">
                                         <div class="col-lg-12 col-md-12 " style="overflow: auto;">
 
-                                            <asp:Repeater ID="dgvShipTo" runat="server"  OnItemDataBound="dgvShipTo_ItemDataBound">
+                                            <asp:Repeater ID="dgvShipTo" runat="server" OnItemDataBound="dgvShipTo_ItemDataBound">
                                                 <HeaderTemplate>
                                                     <table id="example6" class="table table-bordered table-striped table-responsive" style="overflow: auto;">
                                                         <thead>
                                                             <tr>
-                                                                 <th>select</th>
+                                                                <th>select</th>
                                                                 <th>PartyCode</th>
                                                                 <th>PartyAddressCode</th>
                                                                 <th>PartyFullName</th>
@@ -1999,18 +2015,18 @@
 
                                                 <ItemTemplate>
                                                     <td class="text-center">
-                                                            <asp:LinkButton ID="lnkPartyCode_ShipTo" CssClass="btn bg-navy" runat="server" OnClick="lnkPartyCode_ShipTo_Click"><i class="fa fa-hand-o-up"></i></asp:LinkButton>
-                                                        </td>
-                                                        <td>
-                                                            <asp:Label ID="lblPartyCode" runat="server" Text="Label"></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblPartyAdd" runat="server" Text="Label"></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblPartyFullName" runat="server" Text="Label"></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblAddress1" runat="server" Text="Label"></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblAddress2" runat="server" Text="Label"></asp:Label></td>
+                                                        <asp:LinkButton ID="lnkPartyCode_ShipTo" CssClass="btn bg-navy" runat="server" OnClick="lnkPartyCode_ShipTo_Click"><i class="fa fa-hand-o-up"></i></asp:LinkButton>
+                                                    </td>
+                                                    <td>
+                                                        <asp:Label ID="lblPartyCode" runat="server" Text="Label"></asp:Label></td>
+                                                    <td>
+                                                        <asp:Label ID="lblPartyAdd" runat="server" Text="Label"></asp:Label></td>
+                                                    <td>
+                                                        <asp:Label ID="lblPartyFullName" runat="server" Text="Label"></asp:Label></td>
+                                                    <td>
+                                                        <asp:Label ID="lblAddress1" runat="server" Text="Label"></asp:Label></td>
+                                                    <td>
+                                                        <asp:Label ID="lblAddress2" runat="server" Text="Label"></asp:Label></td>
                                                     </tr>
                                                 </ItemTemplate>
                                                 <FooterTemplate>
@@ -2041,8 +2057,8 @@
         </asp:Panel>
         <!-- End Shipper Modal -->
 
-         <!-- Modal-->
-        <asp:Panel ID="plBillTo" runat="server" CssClass="modal" TabIndex="-1" role="dialog" aria-labelledby="myLabe1">
+        <!-- Modal-->
+        <asp:Panel ID="plBillTo" runat="server" CssClass="modal" TabIndex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -2057,12 +2073,12 @@
                                     <form class="form-horizontal">
                                         <div class="col-lg-12 col-md-12 " style="overflow: auto;">
 
-                                            <asp:Repeater ID="dgvBillTo" runat="server"  OnItemDataBound="dgvBillTo_ItemDataBound">
+                                            <asp:Repeater ID="dgvBillTo" runat="server" OnItemDataBound="dgvBillTo_ItemDataBound">
                                                 <HeaderTemplate>
                                                     <table id="example7" class="table table-bordered table-striped table-responsive" style="overflow: auto;">
                                                         <thead>
                                                             <tr>
-                                                                 <th>select</th>
+                                                                <th>select</th>
                                                                 <th>PartyCode</th>
                                                                 <th>PartyAddressCode</th>
                                                                 <th>PartyFullName</th>
@@ -2074,18 +2090,18 @@
 
                                                 <ItemTemplate>
                                                     <td class="text-center">
-                                                            <asp:LinkButton ID="lnkPartyCode_BillTo" CssClass="btn bg-navy" runat="server" OnClick="lnkPartyCode_BillTo_Click"><i class="fa fa-hand-o-up"></i></asp:LinkButton>
-                                                        </td>
-                                                        <td>
-                                                            <asp:Label ID="lblPartyCode" runat="server" Text="Label"></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblPartyAdd" runat="server" Text="Label"></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblPartyFullName" runat="server" Text="Label"></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblAddress1" runat="server" Text="Label"></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblAddress2" runat="server" Text="Label"></asp:Label></td>
+                                                        <asp:LinkButton ID="lnkPartyCode_BillTo" CssClass="btn bg-navy" runat="server" OnClick="lnkPartyCode_BillTo_Click"><i class="fa fa-hand-o-up"></i></asp:LinkButton>
+                                                    </td>
+                                                    <td>
+                                                        <asp:Label ID="lblPartyCode" runat="server" Text="Label"></asp:Label></td>
+                                                    <td>
+                                                        <asp:Label ID="lblPartyAdd" runat="server" Text="Label"></asp:Label></td>
+                                                    <td>
+                                                        <asp:Label ID="lblPartyFullName" runat="server" Text="Label"></asp:Label></td>
+                                                    <td>
+                                                        <asp:Label ID="lblAddress1" runat="server" Text="Label"></asp:Label></td>
+                                                    <td>
+                                                        <asp:Label ID="lblAddress2" runat="server" Text="Label"></asp:Label></td>
                                                     </tr>
                                                 </ItemTemplate>
                                                 <FooterTemplate>
@@ -2115,14 +2131,14 @@
             </div>
         </asp:Panel>
         <!-- End Shipper Modal -->
-        
+
         <!-- Modal JoB No-->
-        <asp:Panel ID="plIEAT107" runat="server" CssClass="modal" TabIndex="-1" role="dialog" aria-labelledby="myLabe1">
+        <asp:Panel ID="plIEAT107" runat="server" CssClass="modal" TabIndex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span></button>
+                            <span aria-hidden="true"></span></button>
                         <h4 class="modal-title">Select Invoice No</h4>
                     </div>
                     <asp:UpdatePanel ID="upIEAT107" runat="server" UpdateMode="Conditional">
@@ -2181,33 +2197,37 @@
                                                     <legend></legend>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="txtStartInvoiceNo" class="col-sm-4 control-label">ยอดทั้งหมด</label>
+                                                            <label for="txtTotalAmonut" class="col-sm-4 control-label">ยอดทั้งหมด</label>
                                                             <div class="col-sm-8">
-                                                                <input class="form-control" id="txtTotalAmonut" runat="server" autocomplete="off" />
+                                                                <input runat="server" class="form-control" id="txtTotalAmonut" type="text" autocomplete="off"/>
+                                                               
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="txtStartExporter" class="col-sm-4 control-label">ยอดที่ใช้ไปทั้งหมด</label>
+                                                            <label for="txtTotalUseAmonut" class="col-sm-4 control-label">ยอดที่ใช้ไปทั้งหมด</label>
                                                             <div class="col-sm-8">
-                                                                <input class="form-control" id="txtTotalUseAmonut" runat="server" autocomplete="off" />
+                                                                <input runat="server" class="form-control" id="txtTotalUseAmonut" type="text" autocomplete="off"/>
+                                                            
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="txtStartConsignnee" class="col-sm-4 control-label">ยอดคงเหลือ</label>
+                                                            <label for="txtAmonut" class="col-sm-4 control-label">ยอดคงเหลือ</label>
                                                             <div class="col-sm-8">
-                                                                <input class="form-control" id="txtAmonut" runat="server" autocomplete="off" />
+                                                                <input runat="server" class="form-control" id="txtAmonut"  type="text" autocomplete="off"/>
+                                                               
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="txtStartInvoiceNo" class="col-sm-4 control-label">ยอดที่ใช้ Inv นี้</label>
+                                                            <label for="txtUseAmonut" class="col-sm-4 control-label">ยอดที่ใช้ Inv นี้</label>
                                                             <div class="col-sm-8">
-                                                                <input class="form-control" id="txtUseAmonut" runat="server" autocomplete="off" />
+                                                                 <input  runat="server" id="txtUseAmonut"  class="form-control"  type="text" autocomplete="off"/>
+                                                              
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="txtEndInvoiceNo" class="col-sm-4 control-label">วันที่ของออก</label>
+                                                            <label for="dtpForm" class="col-sm-4 control-label">วันที่ของออก</label>
                                                             <div class="col-sm-8">
                                                                 <asp:TextBox CssClass="form-control" ID="dtpForm" runat="server" placeholder="MM/DD/YYYY" autocomplete="off">
                                                                 </asp:TextBox>
@@ -2215,24 +2235,23 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="txtStartExporter" class="col-sm-4 control-label">วันที่ของกลับ</label>
+                                                            <label for="dtpTo" class="col-sm-4 control-label">วันที่ของกลับ</label>
                                                             <div class="col-sm-8">
-                                                               <asp:TextBox CssClass="form-control" ID="dtpTo" runat="server" placeholder="MM/DD/YYYY" autocomplete="off">
+                                                                <asp:TextBox CssClass="form-control" ID="dtpTo" runat="server" placeholder="MM/DD/YYYY" autocomplete="off">
                                                                 </asp:TextBox>
                                                                 <asp:CalendarExtender ID="CalendarExtender9" runat="server" Enabled="True" TargetControlID="dtpTo" Format="dd/MM/yyyy"></asp:CalendarExtender>
                                                             </div>
                                                         </div>
-                                                       
+
                                                         <div class="form-group">
-                                                             <div class="checkbox col-sm-4">
-                                                                            <label>
-                                                                                <input type="checkbox" runat="server" id="Checkbox1" onclick="chkExpEnable3();" />ต่ออายุ
-                                                                            </label>
-                                                                        </div>
+                                                            <div class="checkbox col-sm-4">
+                                                                <label>
+                                                                    <input type="checkbox" runat="server" id="Checkbox1" onclick="chkExpEnable3();" />ต่ออายุ
+                                                                </label>
+                                                            </div>
                                                             <div class="col-sm-8">
                                                                 <asp:TextBox CssClass="form-control" ID="dtpEx" runat="server" placeholder="MM/DD/YYYY" autocomplete="off" disabled="disabled">
-                                                                </asp:TextBox>
-                                                                <%--<input runat="server" id="dtpEx_" placeholder="MM/DD/YYYY" autocomplete="off" disabled="disabled"/>--%>
+                                                                </asp:TextBox>                                                            
                                                                 <asp:CalendarExtender ID="CalendarExtender8" runat="server" Enabled="True" TargetControlID="dtpEx" Format="dd/MM/yyyy"></asp:CalendarExtender>
                                                             </div>
                                                         </div>
@@ -2247,8 +2266,7 @@
                                 </section>
                             </div>
                             <div class="modal-footer">
-                               <%-- <asp:Button runat="server" ID="AddIEAT107" CssClass="btn btn-primary" Text="Add" OnClick="AddIEAT107_Click"/>--%>
-                                <button type="submit" runat="server" class="btn btn-primary" id="AddIEAT107_" title="btnAddUser" onserverclick="AddIEAT107_Click">Add</button>
+                                <button type="submit" runat="server" class="btn btn-primary" id="AddIEAT107_" title="AddIEAT107_" onserverclick="AddIEAT107_Click">Add</button>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             </div>
                         </ContentTemplate>
@@ -2257,6 +2275,7 @@
             </div>
         </asp:Panel>
         <!-- End Shipper Modal -->
+      
         <script type="text/javascript">
             function chkExpEnable2() {
                 var status = document.getElementById('<%=chkEnablebehalf_EASJOB.ClientID%>').checked;
@@ -2275,28 +2294,28 @@
             function chkExpEnable2() {
                 var status = document.getElementById('<%=CoutItem.ClientID%>').checked;
 
-                      if (status == true) {
-                          document.getElementById('<%=Use.ClientID%>').disabled = false;
+                if (status == true) {
+                    document.getElementById('<%=Use.ClientID%>').disabled = false;
 
-                } else if (status == false) {
-                    document.getElementById('<%=Use.ClientID%>').disabled = true;
+                      } else if (status == false) {
+                          document.getElementById('<%=Use.ClientID%>').disabled = true;
                 }
 
         }
         </script>
 
-         <script type="text/javascript">
-             function chkExpEnable3() {
-                 var status = document.getElementById('<%=Checkbox1.ClientID%>').checked;
+        <script type="text/javascript">
+            function chkExpEnable3() {
+                var status = document.getElementById('<%=Checkbox1.ClientID%>').checked;
 
-                if (status == true) {
-                    document.getElementById('<%=dtpEx.ClientID%>').disabled = false;
+                 if (status == true) {
+                     document.getElementById('<%=dtpEx.ClientID%>').disabled = false;
 
-                      } else if (status == false) {
-                          document.getElementById('<%=dtpEx.ClientID%>').disabled = true;
-                }
+                } else if (status == false) {
+                    document.getElementById('<%=dtpEx.ClientID%>').disabled = true;
+                      }
 
-        }
+              }
         </script>
         <script type="text/javascript">
             $(function () {
