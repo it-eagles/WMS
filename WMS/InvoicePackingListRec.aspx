@@ -52,7 +52,7 @@
                             <label for="txtInvoiceNo" class="col-sm-3 control-label">Invoice No:</label>
                             <div class="col-sm-3">
                               <label>
-                                   <input type="checkbox" runat="server" id="chkRCVDNo_BeforeTab" /> RCVD No
+                                   <input type="checkbox" runat="server" id="chkRCVDNo_BeforeTab" onclick="EnableDisablechkGen();" /> RCVD No
                               </label>
                             </div>
                         </div>
@@ -484,8 +484,8 @@
                                                                     <div class="col-sm-5">
                                                                         <div class="radio">
                                                                             <label>
-                                                                                <input type="radio" name="optionsRadios" runat="server" id="rdbDiffAmount1" value="option1" />
-                                                                                Diff By Item-Amount
+                                                                                <%--<input type="radio" name="optionsRadios" runat="server" id="rdbDiffAmount1" value="option1" />Diff By Item-Amount--%>
+                                                                                <asp:RadioButton runat="server" ID="rdbDiffAmount2" Text="Diff By Item-Amount" GroupName="option1"/>
                                                                             </label>                                                                            
                                                                         </div>
                                                                     </div>
@@ -500,24 +500,24 @@
                                                                     <div class="col-sm-5">
                                                                         <div class="radio">
                                                                             <label>
-                                                                                <input type="radio" name="optionsRadios" runat="server" id="rdbDiffWeight1" value="option2" />
-                                                                                Diff By Item-Weight
+                                                                                <%--<input type="radio" name="optionsRadios" runat="server" id="rdbDiffWeight1" value="option2"  />Diff By Item-Weight--%>
+                                                                                <asp:RadioButton runat="server" ID="rdbDiffWeight2" Text="Diff By Item-Weight" GroupName="option1"/>
                                                                             </label>                                                                            
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-sm-3">
                                                                         <div class="radio">
                                                                             <label>
-                                                                                <input type="radio" name="optionsRadios" runat="server" id="rdbNotifyParty1" value="option3" />
-                                                                                Notify Party
+                                                                                <%--<input type="radio" name="optionsRadios" runat="server" id="rdbNotifyParty1" value="option3" />Notify Party--%>
+                                                                                <asp:RadioButton runat="server" ID="rdbNotifyParty2" Text="Notify Party" GroupName="option2"/>
                                                                             </label>                                                                            
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-sm-3">
                                                                         <div class="radio">
                                                                             <label>
-                                                                                <input type="radio" name="optionsRadios" runat="server" id="rdbOnBehalfOf1" value="option4" />
-                                                                                On Behalf Of
+                                                                                <%--<input type="radio" name="optionsRadios" runat="server" id="rdbOnBehalfOf1" value="option4" />On Behalf Of--%>
+                                                                                <asp:RadioButton runat="server" ID="rdbOnBehalfOf2" Text="On Behalf Of" GroupName="option2"/>
                                                                             </label>
                                                                         </div>
                                                                     </div>
@@ -1545,6 +1545,11 @@
                                                                         <input class="form-control" id="txtCTNNetAmount2_PACKINGLIST" runat="server" autocomplete="off" disabled="disabled" />
                                                                     </div>
                                                                 </div>
+                                                                <div class="form-group">                                                                    
+                                                                    <div class="col-sm-3">
+                                                                        <input class="form-control" id="txtRowNo_PACKINGLIST" runat="server" autocomplete="off" disabled="disabled" visible="false" />
+                                                                    </div>
+                                                                </div>
 
                                                             </div>
                                                             <!-- /.box-body -->
@@ -1618,42 +1623,42 @@
                                         <table id="example1" class="table table-bordered table-striped table-responsive" style="overflow:auto;">
                                             <thead>
                                                 <tr>
+                                                    <th>Select</th>
                                                     <th>PartyCode</th>
+                                                    <th>PartyAddress</th>
                                                     <th>PartyFullName</th>
                                                     <th>Address1</th>
                                                     <th>Address2</th>
-                                                    <th>Address3</th>
-                                                    <th>view</th>
                                                 </tr>
                                             </thead>
                                     </HeaderTemplate>
 
                                     <ItemTemplate>
                                         <tr>
+                                            <td class="text-center">
+                                                 <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectShipper" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-hand-o-up"></i></asp:LinkButton>
+                                            </td>
                                             <td>
                                                 <asp:Label ID="lblPartyCode" runat="server" Text='<%# Bind("PartyCode")%>'></asp:Label></td>
+                                            <td>
+                                                <asp:Label ID="lblAddress3" runat="server" Text='<%# Bind("PartyAddressCode")%>'></asp:Label></td>
                                             <td>
                                                 <asp:Label ID="lblPartyFullName" runat="server" Text='<%# Bind("PartyFullName")%>'></asp:Label></td>
                                             <td>
                                                 <asp:Label ID="lblAddress1" runat="server" Text='<%# Bind("Address1")%>'></asp:Label></td>
                                             <td>
-                                                <asp:Label ID="lblAddress2" runat="server" Text='<%# Bind("Address2")%>'></asp:Label></td>
-                                            <td>
-                                                <asp:Label ID="lblAddress3" runat="server" Text='<%# Bind("Address3")%>'></asp:Label></td>
-                                            <td class="text-center">
-                                                 <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectShipper" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-plus-square"></i></asp:LinkButton>
-                                            </td>
+                                                <asp:Label ID="lblAddress2" runat="server" Text='<%# Bind("Address2")%>'></asp:Label></td>                         
                                         </tr>
                                     </ItemTemplate>
                                     <FooterTemplate>
                                         <tfoot>
                                             <tr>
+                                                    <th>Select</th>
                                                     <th>PartyCode</th>
+                                                    <th>PartyAddress</th>
                                                     <th>PartyFullName</th>
                                                     <th>Address1</th>
                                                     <th>Address2</th>
-                                                    <th>Address3</th>
-                                                    <th>view</th>
                                             </tr>
                                         </tfoot>
                                         </table>
@@ -1696,42 +1701,43 @@
                                         <table id="example2" class="table table-bordered table-striped table-responsive" style="overflow:auto;">
                                             <thead>
                                                 <tr>
+                                                    <th>Select</th>
                                                     <th>PartyCode</th>
+                                                    <th>PartyAddress</th>
                                                     <th>PartyFullName</th>
                                                     <th>Address1</th>
                                                     <th>Address2</th>
-                                                    <th>Address3</th>
-                                                    <th>view</th>
                                                 </tr>
                                             </thead>
                                     </HeaderTemplate>
 
                                     <ItemTemplate>
                                         <tr>
+                                            <td class="text-center">
+                                                 <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectConsignee" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-hand-o-up"></i></asp:LinkButton>
+                                            </td>
                                             <td>
                                                 <asp:Label ID="lblPartyCode" runat="server" Text='<%# Bind("PartyCode")%>'></asp:Label></td>
+                                            <td>
+                                                <asp:Label ID="lblAddress3" runat="server" Text='<%# Bind("PartyAddressCode")%>'></asp:Label></td>
                                             <td>
                                                 <asp:Label ID="lblPartyFullName" runat="server" Text='<%# Bind("PartyFullName")%>'></asp:Label></td>
                                             <td>
                                                 <asp:Label ID="lblAddress1" runat="server" Text='<%# Bind("Address1")%>'></asp:Label></td>
                                             <td>
                                                 <asp:Label ID="lblAddress2" runat="server" Text='<%# Bind("Address2")%>'></asp:Label></td>
-                                            <td>
-                                                <asp:Label ID="lblAddress3" runat="server" Text='<%# Bind("Address3")%>'></asp:Label></td>
-                                            <td class="text-center">
-                                                 <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectConsignee" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-plus-square"></i></asp:LinkButton>
-                                            </td>
+                                            
                                         </tr>
                                     </ItemTemplate>
                                     <FooterTemplate>
                                         <tfoot>
                                             <tr>
+                                                    <th>Select</th>
                                                     <th>PartyCode</th>
+                                                    <th>PartyAddress</th>
                                                     <th>PartyFullName</th>
                                                     <th>Address1</th>
                                                     <th>Address2</th>
-                                                    <th>Address3</th>
-                                                    <th>view</th>
                                             </tr>
                                         </tfoot>
                                         </table>
@@ -1774,42 +1780,42 @@
                                         <table id="example3" class="table table-bordered table-striped table-responsive" style="overflow:auto;">
                                             <thead>
                                                 <tr>
+                                                    <th>Select</th>
                                                     <th>PartyCode</th>
+                                                    <th>PartyAddress</th>
                                                     <th>PartyFullName</th>
                                                     <th>Address1</th>
                                                     <th>Address2</th>
-                                                    <th>Address3</th>
-                                                    <th>view</th>
                                                 </tr>
                                             </thead>
                                     </HeaderTemplate>
 
                                     <ItemTemplate>
                                         <tr>
+                                            <td class="text-center">
+                                                 <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectCustomerCode" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-hand-o-up"></i></asp:LinkButton>
+                                            </td>
                                             <td>
                                                 <asp:Label ID="lblPartyCode" runat="server" Text='<%# Bind("PartyCode")%>'></asp:Label></td>
+                                            <td>
+                                                <asp:Label ID="lblAddress3" runat="server" Text='<%# Bind("PartyAddressCode")%>'></asp:Label></td>
                                             <td>
                                                 <asp:Label ID="lblPartyFullName" runat="server" Text='<%# Bind("PartyFullName")%>'></asp:Label></td>
                                             <td>
                                                 <asp:Label ID="lblAddress1" runat="server" Text='<%# Bind("Address1")%>'></asp:Label></td>
                                             <td>
                                                 <asp:Label ID="lblAddress2" runat="server" Text='<%# Bind("Address2")%>'></asp:Label></td>
-                                            <td>
-                                                <asp:Label ID="lblAddress3" runat="server" Text='<%# Bind("Address3")%>'></asp:Label></td>
-                                            <td class="text-center">
-                                                 <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectCustomerCode" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-plus-square"></i></asp:LinkButton>
-                                            </td>
                                         </tr>
                                     </ItemTemplate>
                                     <FooterTemplate>
                                         <tfoot>
                                             <tr>
+                                                    <th>Select</th>
                                                     <th>PartyCode</th>
+                                                    <th>PartyAddress</th>
                                                     <th>PartyFullName</th>
                                                     <th>Address1</th>
                                                     <th>Address2</th>
-                                                    <th>Address3</th>
-                                                    <th>view</th>
                                             </tr>
                                         </tfoot>
                                         </table>
@@ -1851,42 +1857,42 @@
                                         <table id="example4" class="table table-bordered table-striped table-responsive" style="overflow:auto;">
                                             <thead>
                                                 <tr>
+                                                    <th>Select</th>
                                                     <th>PartyCode</th>
+                                                    <th>PartyAddress</th>
                                                     <th>PartyFullName</th>
                                                     <th>Address1</th>
                                                     <th>Address2</th>
-                                                    <th>Address3</th>
-                                                    <th>view</th>
                                                 </tr>
                                             </thead>
                                     </HeaderTemplate>
 
                                     <ItemTemplate>
                                         <tr>
+                                            <td class="text-center">
+                                                 <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectCustomerCode_BillTo" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-hand-o-up"></i></asp:LinkButton>
+                                            </td>
                                             <td>
                                                 <asp:Label ID="lblPartyCode" runat="server" Text='<%# Bind("PartyCode")%>'></asp:Label></td>
+                                            <td>
+                                                <asp:Label ID="lblAddress3" runat="server" Text='<%# Bind("PartyAddressCode")%>'></asp:Label></td>
                                             <td>
                                                 <asp:Label ID="lblPartyFullName" runat="server" Text='<%# Bind("PartyFullName")%>'></asp:Label></td>
                                             <td>
                                                 <asp:Label ID="lblAddress1" runat="server" Text='<%# Bind("Address1")%>'></asp:Label></td>
                                             <td>
                                                 <asp:Label ID="lblAddress2" runat="server" Text='<%# Bind("Address2")%>'></asp:Label></td>
-                                            <td>
-                                                <asp:Label ID="lblAddress3" runat="server" Text='<%# Bind("Address3")%>'></asp:Label></td>
-                                            <td class="text-center">
-                                                 <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectCustomerCode_BillTo" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-plus-square"></i></asp:LinkButton>
-                                            </td>
                                         </tr>
                                     </ItemTemplate>
                                     <FooterTemplate>
                                         <tfoot>
                                             <tr>
+                                                    <th>Select</th>
                                                     <th>PartyCode</th>
+                                                    <th>PartyAddress</th>
                                                     <th>PartyFullName</th>
                                                     <th>Address1</th>
                                                     <th>Address2</th>
-                                                    <th>Address3</th>
-                                                    <th>view</th>
                                             </tr>
                                         </tfoot>
                                         </table>
@@ -1930,6 +1936,17 @@
                             document.getElementById('<%=shipto_easjob_fieldset.ClientID%>').disabled = true;
                             document.getElementById('<%=easinv_easjob_fieldset.ClientID%>').disabled = true;
                             document.getElementById('<%=billto_easjob_fieldset.ClientID%>').disabled = true;
+                        }
+                }
+                </script> 
+
+                <script type="text/javascript">
+                    function EnableDisablechkGen() {
+                        var status = document.getElementById('<%=chkRCVDNo_BeforeTab.ClientID%>').checked;
+                        if (status == true) {
+                            document.getElementById('<%=btnGen_BeforeTab.ClientID%>').disabled = false;
+                        } else if (status == false) {
+                            document.getElementById('<%=btnGen_BeforeTab.ClientID%>').disabled = true;
                         }
                 }
                 </script>
