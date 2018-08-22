@@ -707,13 +707,13 @@ Partial Public Class InvoicePackingListRec
     Protected WithEvents txtTotalInvoiceTHB2_Invoice As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''rdbDiffAmount1 control.
+    '''rdbDiffAmount2 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents rdbDiffAmount1 As Global.System.Web.UI.HtmlControls.HtmlInputRadioButton
+    Protected WithEvents rdbDiffAmount2 As Global.System.Web.UI.WebControls.RadioButton
 
     '''<summary>
     '''txtdatepickerTransmitDate control.
@@ -734,31 +734,31 @@ Partial Public Class InvoicePackingListRec
     Protected WithEvents CalendarExtenderTransmitDate As Global.AjaxControlToolkit.CalendarExtender
 
     '''<summary>
-    '''rdbDiffWeight1 control.
+    '''rdbDiffWeight2 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents rdbDiffWeight1 As Global.System.Web.UI.HtmlControls.HtmlInputRadioButton
+    Protected WithEvents rdbDiffWeight2 As Global.System.Web.UI.WebControls.RadioButton
 
     '''<summary>
-    '''rdbNotifyParty1 control.
+    '''rdbNotifyParty2 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents rdbNotifyParty1 As Global.System.Web.UI.HtmlControls.HtmlInputRadioButton
+    Protected WithEvents rdbNotifyParty2 As Global.System.Web.UI.WebControls.RadioButton
 
     '''<summary>
-    '''rdbOnBehalfOf1 control.
+    '''rdbOnBehalfOf2 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents rdbOnBehalfOf1 As Global.System.Web.UI.HtmlControls.HtmlInputRadioButton
+    Protected WithEvents rdbOnBehalfOf2 As Global.System.Web.UI.WebControls.RadioButton
 
     '''<summary>
     '''easjob_fieldset control.
@@ -2019,6 +2019,15 @@ Partial Public Class InvoicePackingListRec
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents txtCTNNetAmount2_PACKINGLIST As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''txtRowNo_PACKINGLIST control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtRowNo_PACKINGLIST As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
     '''chkCopyToDetail control.

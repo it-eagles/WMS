@@ -1,29 +1,45 @@
-﻿Imports System.Transactions
+﻿Option Explicit On
+Option Strict On
+
+Imports System.Transactions
 
 Public Class InvoicePackingListRec
     Inherits System.Web.UI.Page
     Dim db As New LKBWarehouseEntities1
+    Dim classPermis As New ClassPermis
     Dim DiffBy As String
     Dim TermTransport As String
     Dim OnbehalfStatus As String
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        showCountry()
-        showpaymenterm()
-        showincoterm()
-        showcurrency()
-        showtrucklicense()
-        showtruckdriver()
-        showshipmode()
-        showdeliveryterm()
-        showshipmark()
+        Dim usename As String = CStr(Session("UserName"))
+        Dim form As String = "frmImpCustomsInvoice"
+        If Not Me.IsPostBack Then
+            If ClassPermis.CheckRead(form, usename) = True Then
+                If Not IsPostBack Then
+                    showCountry()
+                    showpaymenterm()
+                    showincoterm()
+                    showcurrency()
+                    showtrucklicense()
+                    showtruckdriver()
+                    showshipmode()
+                    showdeliveryterm()
+                    showshipmark()
 
-        Head_fieldset.Disabled = True
-        invoiceheader_fieldset.Disabled = True
-        easjob_fieldset.Disabled = True
-        itemdetail_fieldset.Disabled = True
-        packinglist_fieldset.Disabled = True
+                    btnGen_BeforeTab.Disabled = True
+                    Head_fieldset.Disabled = True
+                    invoiceheader_fieldset.Disabled = True
+                    easjob_fieldset.Disabled = True
+                    itemdetail_fieldset.Disabled = True
+                    packinglist_fieldset.Disabled = True
 
+                   
+                End If
+            Else
+                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ เข้าโปรแกรมนี้' !!!');", True)
+            End If
+        End If
         'showListShipper()
         'showListConsignee()
         'showListCustomerCode()
@@ -39,10 +55,10 @@ Public Class InvoicePackingListRec
         Dim form As String = "frmImpCustomsInvoice"
         Dim cu = From um In db.tblUserMenus Where um.UserName = user And um.Form = form And um.Save_ = 1
         If cu.Any Then
+            CopytoDetail()
             SaveDATANew_Packing()
             InsertDataPackingList()
             Clear_PackingDATA()
-
         Else
             ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ์เมนูนี้ !!!')", True)
         End If
@@ -53,8 +69,10 @@ Public Class InvoicePackingListRec
         Dim form As String = "frmImpCustomsInvoice"
         Dim cu = From um In db.tblUserMenus Where um.UserName = user And um.Form = form And um.Save_ = 1
         If cu.Any Then
-
-
+            CopytoDetail()
+            SavePacking_Modify()
+            InsertDataPackingList()
+            Clear_PackingDATA()
         Else
             ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ์เมนูนี้ !!!')", True)
         End If
@@ -94,11 +112,17 @@ Public Class InvoicePackingListRec
     End Sub
 
     Protected Sub btnCreatePacking_ItemDetail_ServerClick(sender As Object, e As EventArgs)
+        Clear_PackingDATA()
+        itemdetail_fieldset.Disabled = False
 
     End Sub
 
     Protected Sub btnGen_BeforeTab_ServerClick(sender As Object, e As EventArgs)
+        If String.IsNullOrEmpty(txtInvoiceNo_BeforeTab.Value) Then
+            GenNum()
+        Else
 
+        End If
     End Sub
     '---------------------------------------------Show All dll Country--------------------------------------------
     Private Sub showCountry()
@@ -471,17 +495,17 @@ Public Class InvoicePackingListRec
     '--------------------------------------------------------Show Data Shipper In Modal-----------------------------------------
     Private Sub selectShipperCode()
         Dim Ship_code As String
-
+        Dim shipper_ As String = ""
         If String.IsNullOrEmpty(txtShippercode.Value.Trim) Then
             Ship_code = ""
-
+            shipper_ = "0"
         Else
             Ship_code = txtShippercode.Value.Trim
         End If
 
         Dim cons = From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
-        Where (p.PartyCode = Ship_code And p.Shipper = "0") Or p.Shipper = "0"
-        Select p.PartyCode, p.PartyFullName, pa.Address1, pa.Address2, pa.Address3
+        Where (p.PartyCode = Ship_code And p.Shipper = "0") Or p.Shipper = shipper_
+        Select p.PartyCode, p.PartyFullName, pa.PartyAddressCode, pa.Address1, pa.Address2
 
         If cons.Count > 0 Then
             Repeater1.DataSource = cons.ToList
@@ -546,17 +570,17 @@ Public Class InvoicePackingListRec
     '--------------------------------------------------------Show Data Consignee In Modal-----------------------------------------
     Private Sub selectConsigneeCode()
         Dim cons_code As String
-
+        Dim shipper_ As String = ""
         If String.IsNullOrEmpty(txtConsigneeCode.Value.Trim) Then
             cons_code = ""
-
+            shipper_ = "0"
         Else
             cons_code = txtConsigneeCode.Value.Trim
         End If
 
         Dim cons = From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
-        Where (p.PartyCode = cons_code And p.Consignee = "0") Or p.Consignee = "0"
-        Select p.PartyCode, p.PartyFullName, pa.Address1, pa.Address2, pa.Address3
+        Where (p.PartyCode = cons_code And p.Consignee = "0") Or p.Consignee = shipper_
+        Select p.PartyCode, p.PartyFullName, pa.Address1, pa.Address2, pa.PartyAddressCode
 
         If cons.Count > 0 Then
             Repeater2.DataSource = cons.ToList
@@ -621,17 +645,17 @@ Public Class InvoicePackingListRec
     '--------------------------------------------------------Show Data CustomerCode In Modal-----------------------------------------
     Private Sub selectCustomerCode()
         Dim cus_code As String
-
+        Dim shipper_ As String = ""
         If String.IsNullOrEmpty(txtCustomerCode_EASJOB.Value.Trim) Then
             cus_code = ""
-
+            shipper_ = "0"
         Else
             cus_code = txtCustomerCode_EASJOB.Value.Trim
         End If
 
         Dim cons = From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
-        Where (p.PartyCode = cus_code And p.Consignee = "0") Or p.Consignee = "0"
-        Select p.PartyCode, p.PartyFullName, pa.Address1, pa.Address2, pa.Address3
+        Where (p.PartyCode = cus_code And p.Consignee = "0") Or p.Consignee = shipper_
+        Select p.PartyCode, p.PartyFullName, pa.Address1, pa.Address2, pa.PartyAddressCode
 
         If cons.Count > 0 Then
             Repeater3.DataSource = cons.ToList
@@ -667,6 +691,10 @@ Public Class InvoicePackingListRec
                     txtTelNoCustomer_EASJOB.Value = user.br.Tel
                     txtFaxNoCustomer_EASJOB.Value = user.br.Fax
                     txtContractPersonCustomer_EASJOB.Value = user.br.Attn
+                    owner_easjob_fieldset.Disabled = True
+                    shipto_easjob_fieldset.Disabled = False
+                    easinv_easjob_fieldset.Disabled = False
+                    billto_easjob_fieldset.Disabled = False
                 End If
             End If
         Catch ex As Exception
@@ -694,17 +722,17 @@ Public Class InvoicePackingListRec
     '--------------------------------------------------------Show Data CustomerCode_BillTo In Modal-----------------------------------------
     Private Sub selectCustomerCode_BillTo()
         Dim cus_billto_code As String
-
-        If String.IsNullOrEmpty(txtCustomerCode_EASJOB.Value.Trim) Then
+        Dim shipper_ As String = ""
+        If String.IsNullOrEmpty(txtCustomerCode_BillTo_EASJOB.Value.Trim) Then
             cus_billto_code = ""
-
+            shipper_ = "0"
         Else
-            cus_billto_code = txtCustomerCode_EASJOB.Value.Trim
+            cus_billto_code = txtCustomerCode_BillTo_EASJOB.Value.Trim
         End If
 
         Dim cons = From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
-        Where (p.PartyCode = cus_billto_code And p.Consignee = "0") Or p.Consignee = "0"
-        Select p.PartyCode, p.PartyFullName, pa.Address1, pa.Address2, pa.Address3
+        Where (p.PartyCode = cus_billto_code And p.Consignee = "0") Or p.Consignee = shipper_
+        Select p.PartyCode, p.PartyFullName, pa.Address1, pa.Address2, pa.PartyAddressCode
 
         If cons.Count > 0 Then
             Repeater4.DataSource = cons.ToList
@@ -740,6 +768,11 @@ Public Class InvoicePackingListRec
                     txtTelNoCustomer_BillTo_EASJOB.Value = user.br.Tel
                     txtFaxNoCustomer_BillTo_EASJOB.Value = user.br.Fax
                     txtContractPersonCustomer_BillTo_EASJOB.Value = user.br.Attn
+
+                    owner_easjob_fieldset.Disabled = True
+                    shipto_easjob_fieldset.Disabled = False
+                    easinv_easjob_fieldset.Disabled = False
+                    billto_easjob_fieldset.Disabled = False
                 End If
             End If
         Catch ex As Exception
@@ -755,7 +788,7 @@ Public Class InvoicePackingListRec
         easjob_fieldset.Disabled = False
         itemdetail_fieldset.Disabled = True
         packinglist_fieldset.Disabled = True
-
+        chkEnable.Checked = False
         owner_easjob_fieldset.Disabled = True
         shipto_easjob_fieldset.Disabled = True
         easinv_easjob_fieldset.Disabled = True
@@ -765,12 +798,17 @@ Public Class InvoicePackingListRec
     Protected Sub btnEditHead_ServerClick(sender As Object, e As EventArgs)
         btnSaveEditHead.Visible = True
         btnSaveAddHead.Visible = False
-
+         chkEnable.Checked = False
         Head_fieldset.Disabled = False
         invoiceheader_fieldset.Disabled = False
         easjob_fieldset.Disabled = False
         itemdetail_fieldset.Disabled = False
         packinglist_fieldset.Disabled = False
+
+        owner_easjob_fieldset.Disabled = True
+        shipto_easjob_fieldset.Disabled = False
+        easinv_easjob_fieldset.Disabled = False
+        billto_easjob_fieldset.Disabled = False
     End Sub
     '---------------------------------------------------------------------Click btn SaveAdd Method---------------------------------------------------
     Protected Sub btnSaveAddHead_ServerClick(sender As Object, e As EventArgs)
@@ -779,8 +817,10 @@ Public Class InvoicePackingListRec
         Dim cu = From um In db.tblUserMenus Where um.UserName = user And um.Form = form And um.Save_ = 1
         If cu.Any Then
             SaveDATA_New()
-            ClearDATA()
+            'ClearDATA()
             InsertData()
+            itemdetail_fieldset.Disabled = False
+
         Else
             ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ์เมนูนี้ !!!')", True)
         End If
@@ -791,8 +831,10 @@ Public Class InvoicePackingListRec
         Dim form As String = "frmImpCustomsInvoice"
         Dim cu = From um In db.tblUserMenus Where um.UserName = user And um.Form = form And um.Save_ = 1
         If cu.Any Then
-
-
+            SaveDATA_Modify()
+            'ClearDATA()
+            InsertData()
+            itemdetail_fieldset.Disabled = False
         Else
             ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ์เมนูนี้ !!!')", True)
         End If
@@ -821,19 +863,19 @@ Public Class InvoicePackingListRec
             Exit Sub
         End If
 
-        If rdbDiffAmount1.Checked = True Then
+        If rdbDiffAmount2.Checked = True Then
             DiffBy = "Diff by items-amount"
         End If
 
-        If rdbDiffWeight1.Checked = True Then
+        If rdbDiffWeight2.Checked = True Then
             DiffBy = "Diff by items-Weight"
         End If
 
-        If rdbNotifyParty1.Checked = True Then
+        If rdbNotifyParty2.Checked = True Then
             TermTransport = "Notfy Party"
         End If
 
-        If rdbOnBehalfOf1.Checked = True Then
+        If rdbOnBehalfOf2.Checked = True Then
             TermTransport = "On Behalf of"
         End If
 
@@ -861,9 +903,9 @@ Public Class InvoicePackingListRec
                     .InvoiceNo = txtInvoiceNo_BeforeTab.Value.Trim, _
                     .ReferenceNo = txtDeclaretion_BeforeTab.Value.Trim, _
                     .PurchaseOrderNo = txtJobNo_BeforeTab.Value.Trim, _
-                    .InvoiceDate = txtdatepickerInvoiceDate_beforeTab.Text.Trim, _
-                    .DeliveryDate = txtdatepickerDeliveryDate_beforeTab.Text.Trim, _
-                    .ReferenceDate = txtdatepickerCustomsRefDate_beforeTab.Text.Trim, _
+                    .InvoiceDate = CType(txtdatepickerInvoiceDate_beforeTab.Text.Trim, Date?), _
+                    .DeliveryDate = CType(txtdatepickerDeliveryDate_beforeTab.Text.Trim, Date?), _
+                    .ReferenceDate = CType(txtdatepickerCustomsRefDate_beforeTab.Text.Trim, Date?), _
                     .ExporterCode = txtShippercode.Value.Trim, _
                     .ExporterENG = txtNameShipper_Invoice.Value.Trim, _
                     .Street_Number = txtAddress1Shipper.Value.Trim, _
@@ -888,33 +930,33 @@ Public Class InvoicePackingListRec
                     .CountryName = txtOriginCountry_Invoice.Value.Trim, _
                     .TermOfPayment = ddlTermOfPayment_Invoice.Text.Trim, _
                     .Term = ddlTerm_Invoice.Text.Trim, _
-                    .TotalNetWeight = CDbl(txtTotalNetWeight_Invoice.Value).ToString("#,##0.000"), _
-                    .SumItemWeight = CDbl(txtSumItemWeight_Invoice.Value).ToString("#,##0.000"), _
+                    .TotalNetWeight = CType(CDbl(txtTotalNetWeight_Invoice.Value).ToString("#,##0.000"), Double?), _
+                    .SumItemWeight = CType(CDbl(txtSumItemWeight_Invoice.Value).ToString("#,##0.000"), Double?), _
                     .TotalInvoiceCurrency = ddlTotalInvoice_Invoice.Text.Trim, _
-                    .TotalInvoiceAmount = CDbl(txtTotalInvoice1_Invoice.Value).ToString("#,##0.000"), _
-                    .TotalInvoiceAmount1 = CDbl(txtTotalInvoice2_Invoice.Value).ToString("#,##0.000"), _
+                    .TotalInvoiceAmount = CType(CDbl(txtTotalInvoice1_Invoice.Value).ToString("#,##0.000"), Double?), _
+                    .TotalInvoiceAmount1 = CType(CDbl(txtTotalInvoice2_Invoice.Value).ToString("#,##0.000"), Double?), _
                     .ForwardingCurrency = ddlForwarding_Invoice.Text.Trim, _
-                    .ForwardingAmount = CDbl(txtForwarding1_Invoice.Value).ToString("#,##0.000"), _
-                    .ForwardingAmount1 = CDbl(txtForwarding2_Invoice.Value).ToString("#,##0.000"), _
+                    .ForwardingAmount = CType(CDbl(txtForwarding1_Invoice.Value).ToString("#,##0.000"), Double?), _
+                    .ForwardingAmount1 = CType(CDbl(txtForwarding2_Invoice.Value).ToString("#,##0.000"), Double?), _
                     .FreightCurrency = ddlFreight_Invoice.Text.Trim, _
-                    .FreightAmount = CDbl(txtFreight1_Invoice.Value).ToString("#,##0.000"), _
-                    .FreightAmount1 = CDbl(txtFreight2_Invoice.Value).ToString("#,##0.000"), _
+                    .FreightAmount = CType(CDbl(txtFreight1_Invoice.Value).ToString("#,##0.000"), Double?), _
+                    .FreightAmount1 = CType(CDbl(txtFreight2_Invoice.Value).ToString("#,##0.000"), Double?), _
                     .InsuranceCurrency = ddlInsurance_Invoice.Text.Trim, _
-                    .InsuranceAmount = CDbl(txtInsurance1_Invoice.Value).ToString("#,##0.000"), _
-                    .InsuranceAmount1 = CDbl(txtInsurance2_Invoice.Value).ToString("#,##0.000"), _
+                    .InsuranceAmount = CType(CDbl(txtInsurance1_Invoice.Value).ToString("#,##0.000"), Double?), _
+                    .InsuranceAmount1 = CType(CDbl(txtInsurance2_Invoice.Value).ToString("#,##0.000"), Double?), _
                     .PackingChargeCurrency = ddlPackingCharge_Invoice.Text.Trim, _
-                    .PackingChargeAmount = CDbl(txtPackingCharge1_Invoice.Value).ToString("#,##0.000"), _
-                    .PackingChargeAmount1 = CDbl(txtPackingCharge2_Invoice.Value).ToString("#,##0.000"), _
+                    .PackingChargeAmount = CType(CDbl(txtPackingCharge1_Invoice.Value).ToString("#,##0.000"), Double?), _
+                    .PackingChargeAmount1 = CType(CDbl(txtPackingCharge2_Invoice.Value).ToString("#,##0.000"), Double?), _
                     .ForeignInlandCurrency = ddlHandingCharge_Invoice.Text.Trim, _
-                    .ForeignInlandAmount = CDbl(txtHandingCharge1_Invoice.Value).ToString("#,##0.000"), _
-                    .ForeignInlandAmount1 = CDbl(txtHandingCharge2_invoice.Value).ToString("#,##0.000"), _
+                    .ForeignInlandAmount = CType(CDbl(txtHandingCharge1_Invoice.Value).ToString("#,##0.000"), Double?), _
+                    .ForeignInlandAmount1 = CType(CDbl(txtHandingCharge2_invoice.Value).ToString("#,##0.000"), Double?), _
                     .LandingChargeCurrency = ddlLandingCharge_Invoice.Text.Trim, _
-                    .LandingChargeAmount = CDbl(txtLandingCharge1_Invoice.Value).ToString("#,##0.000"), _
-                    .LandingChargeAmount1 = CDbl(txtLandingCharge2_Invoice.Value).ToString("#,##0.000"), _
+                    .LandingChargeAmount = CType(CDbl(txtLandingCharge1_Invoice.Value).ToString("#,##0.000"), Double?), _
+                    .LandingChargeAmount1 = CType(CDbl(txtLandingCharge2_Invoice.Value).ToString("#,##0.000"), Double?), _
                     .OtherChargeCurrency = ddlTotalInvoiceTHB_Invoice.Text.Trim, _
-                    .OtherChargeAmount = CDbl(txtTotalInvoiceTHB1_Invoice.Value).ToString("#,##0.000"), _
+                    .OtherChargeAmount = CType(CDbl(txtTotalInvoiceTHB1_Invoice.Value).ToString("#,##0.000"), Double?), _
                     .OtherChargeAmount1 = CDbl(txtTotalInvoiceTHB2_Invoice.Value).ToString("#,##0.000"), _
-                    .TransmitDate = txtdatepickerTransmitDate.Text.Trim, _
+                    .TransmitDate = CType(txtdatepickerTransmitDate.Text.Trim, Date?), _
                     .DiffBy = DiffBy, _
                     .TermforShip = TermTransport, _
                     .OnbehalfStatus = OnbehalfStatus, _
@@ -951,15 +993,15 @@ Public Class InvoicePackingListRec
                     .EASBilltoCustomerTelNo = txtTelNoCustomer_BillTo_EASJOB.Value.Trim, _
                     .EASBilltoCustomerFaxNo = txtFaxNoCustomer_BillTo_EASJOB.Value.Trim, _
                     .EASBilltoCustomerContactPerson = txtContractPersonCustomer_BillTo_EASJOB.Value.Trim, _
-                    .PLTNetAmount = CDbl(txtPLTNetAmount_PACKINGLIST.Value).ToString("#,##0.000"), _
+                    .PLTNetAmount = CType(CDbl(txtPLTNetAmount_PACKINGLIST.Value).ToString("#,##0.000"), Double?), _
                     .UnitPLT = ddlPLTNetAmount_PACKINGLIST.Text.Trim, _
                     .CTNPLTName = txtPLTNetAmount2_PACKINGLIST.Value.Trim, _
-                    .CTNNetAmount = CDbl(txtCTNNetAmount_PACKINGLIST.Value).ToString("#,##0.000"), _
+                    .CTNNetAmount = CType(CDbl(txtCTNNetAmount_PACKINGLIST.Value).ToString("#,##0.000"), Double?), _
                     .UnitCTN = ddlCTNNetAmount_PACKINGLIST.Text.Trim, _
                     .UnitCTNName = txtCTNNetAmount2_PACKINGLIST.Value.Trim, _
-                    .GrossWeightAmount = CDbl(txtTotalGrossWeight_Invoice.Value).ToString("#,##0.000"), _
-                 .QountityAmount = CDbl(txtTotalQuantityPack_Invoice.Value).ToString("#,##0.000"), _
-                 .VolumAmount = CDbl(txtTotalVolume_Invoice.Value).ToString("#,##0.000"), _
+                    .GrossWeightAmount = CType(CDbl(txtTotalGrossWeight_Invoice.Value).ToString("#,##0.000"), Double?), _
+                 .QountityAmount = CType(CDbl(txtTotalQuantityPack_Invoice.Value).ToString("#,##0.000"), Double?), _
+                 .VolumAmount = CType(CDbl(txtTotalVolume_Invoice.Value).ToString("#,##0.000"), Double?), _
                  .TotalTextPack = txtTotal_PACKINGLIST.Value.Trim, _
                  .CarLicense = ddlTruckLicense_Invoice.Text.Trim, _
                  .DriverName = ddlDriverName_Invoice.Text.Trim, _
@@ -968,7 +1010,7 @@ Public Class InvoicePackingListRec
                  .PrintCount107 = "0", _
                  .PrintCount108 = "0", _
                  .PrintCountDoc = "0", _
-                 .CustomsConfirmDate = txtdatepickerNoDate_beforeTab.Text.Trim, _
+                 .CustomsConfirmDate = CType(txtdatepickerNoDate_beforeTab.Text.Trim, Date?), _
                  .App = "Wait", _
                  .CreateBy = CStr(Session("UserName")), _
                  .CreateDate = Now
@@ -1024,13 +1066,13 @@ Public Class InvoicePackingListRec
                     .ProductDesc1 = txtProductDesc_ItemDetail.Value.Trim, _
                     .ProductDesc2 = txtCustomerPN_ItemDetail.Value.Trim, _
                     .ProductDesc3 = txtOwnerPN_ItemDetail.Value.Trim, _
-                    .InvQty = CDbl(txtInvQty_ItemDetail.Value).ToString("#,##0.00000"), _
+                    .InvQty = CType(CDbl(txtInvQty_ItemDetail.Value).ToString("#,##0.00000"), Double?), _
                     .InvUnit = ddlUnit1_ItemDetail.Text.Trim, _
                     .InvUnitDetail = txtUnit1_ItemDetail.Value.Trim, _
-                    .Weight = CDbl(txtWeight_ItemDetail.Value).ToString("#,##0.00000"), _
+                    .Weight = CType(CDbl(txtWeight_ItemDetail.Value).ToString("#,##0.00000"), Double?), _
                     .WeightUnit = ddlUnit2_ItemDetail.Text.Trim, _
                     .WeightUnitDetail = txtUnit2_ItemDetail.Value.Trim, _
-                    .Quantity = CDbl(txtQuantity_ItemDetail.Value).ToString("#,##0.00000"), _
+                    .Quantity = CType(CDbl(txtQuantity_ItemDetail.Value).ToString("#,##0.00000"), Double?), _
                     .QuantityUnit = ddlUnit3_ItemDetail.Text.Trim, _
                     .QuantityUnitDetail = txtUnit3_ItemDetail.Value.Trim, _
                     .TariffCode = txtTariffCode_ItemDetail.Value.Trim, _
@@ -1038,69 +1080,69 @@ Public Class InvoicePackingListRec
                     .TariffSequence = txtTariffSequence_ItemDetail.Value.Trim, _
                     .ProductAttribute1 = txtProductAttribute1_ItemDetail.Value.Trim, _
                     .ProductAttribute2 = txtPONo_ItemDetail.Value.Trim, _
-                    .PriceIncreaseForeign = txtPriceIncreaseForreign_ItemDetail.Value.Trim, _
-                    .PriceIncreseBath = txtPriceIncreaseBath_ItemDetail.Value.Trim, _
+                    .PriceIncreaseForeign = CType(txtPriceIncreaseForreign_ItemDetail.Value.Trim, Double?), _
+                    .PriceIncreseBath = CType(txtPriceIncreaseBath_ItemDetail.Value.Trim, Double?), _
                     .DeclarationLine = txtDeclaretionLine_ItemDetail.Value.Trim, _
                     .FormulaNo = txtFormulaNo_ItemDetail.Value.Trim, _
                     .BOILicenseNo = txtBOILicenseNo_ItemDetail.Value.Trim, _
                     .X19BisTransferNo = txt19BisTransferNo_ItemDetail.Value.Trim, _
                     .BondFormulaNo = txtBondFormulaNo_ItemDetail.Value.Trim, _
                     .Currency = ddlCurrency_ItemDetail.Text.Trim, _
-                    .ExchangeRate = CDbl(txtExchangeRate_ItemDetail.Value).ToString("#,##0.0000"), _
-                    .PriceForeigh = CDbl(txtPriceForeign_ItemDetail.Value).ToString("#,##0.000"), _
-                    .PriceForeighAmount = CDbl(txtAmountForeign_ItemDetail.Value).ToString("#,##0.000"), _
-                    .PriceBath = CDbl(txtPriceBath_ItemDetail.Value).ToString("#,##0.000"), _
-                    .PriceBathAmount = txtAmountBath_ItemDetail.Value.Trim, _
+                    .ExchangeRate = CType(CDbl(txtExchangeRate_ItemDetail.Value).ToString("#,##0.0000"), Double?), _
+                    .PriceForeigh = CType(CDbl(txtPriceForeign_ItemDetail.Value).ToString("#,##0.000"), Double?), _
+                    .PriceForeighAmount = CType(CDbl(txtAmountForeign_ItemDetail.Value).ToString("#,##0.000"), Double?), _
+                    .PriceBath = CType(CDbl(txtPriceBath_ItemDetail.Value).ToString("#,##0.000"), Double?), _
+                    .PriceBathAmount = CType(txtAmountBath_ItemDetail.Value.Trim, Double?), _
                     .ForwardingCurrency = ddlForwarding_Currency_ItemDetail.Text.Trim, _
-                    .ForwardingForiegnAmount = CDbl(txtForwarding_ForeignAmount_ItemDetail.Value).ToString("#,##0.000"), _
-                    .ForwardingExchangeRate = CDbl(txtForwarding_Exchange_ItemDetail.Value).ToString("#,##0.0000"), _
-                    .ForwardBathAmount = CDbl(txtForwarding_BathAmount_ItemDetail.Value).ToString("#,##0.000"), _
+                    .ForwardingForiegnAmount = CType(CDbl(txtForwarding_ForeignAmount_ItemDetail.Value).ToString("#,##0.000"), Double?), _
+                    .ForwardingExchangeRate = CType(CDbl(txtForwarding_Exchange_ItemDetail.Value).ToString("#,##0.0000"), Double?), _
+                    .ForwardBathAmount = CType(CDbl(txtForwarding_BathAmount_ItemDetail.Value).ToString("#,##0.000"), Double?), _
                     .FreightCurrency = ddlFreight_Currency_ItemDetail.Text.Trim, _
-                    .FreightForiegnAmount = CDbl(txtFreight_ForeignAmount_ItemDetail.Value).ToString("#,##0.000"), _
-                    .FreightExchangeRate = CDbl(txtFreight_Exchange_ItemDetail.Value).ToString("#,##0.0000"), _
+                    .FreightForiegnAmount = CType(CDbl(txtFreight_ForeignAmount_ItemDetail.Value).ToString("#,##0.000"), Double?), _
+                    .FreightExchangeRate = CType(CDbl(txtFreight_Exchange_ItemDetail.Value).ToString("#,##0.0000"), Double?), _
                     .FreightBathAmount = CDbl(txtFreight_BathAmount_ItemDetail.Value).ToString("#,##0.000"), _
                     .InsuranceCurrency = ddlInsurance_Currency_ItemDetail.Text.Trim, _
-                    .InsuranceForiegnAmount = CDbl(txtInsurance_ForeignAmount_ItemDetail.Value).ToString("#,##0.000"), _
-                    .InsuranceExchangeRate = CDbl(txtInsurance_Exchange_ItemDetail.Value).ToString("#,##0.0000"), _
-                    .InsuranceBathAmount = CDbl(txtInsurance_BathAmount_ItemDetail.Value).ToString("#,##0.000"), _
+                    .InsuranceForiegnAmount = CType(CDbl(txtInsurance_ForeignAmount_ItemDetail.Value).ToString("#,##0.000"), Double?), _
+                    .InsuranceExchangeRate = CType(CDbl(txtInsurance_Exchange_ItemDetail.Value).ToString("#,##0.0000"), Double?), _
+                    .InsuranceBathAmount = CType(CDbl(txtInsurance_BathAmount_ItemDetail.Value).ToString("#,##0.000"), Double?), _
                     .PackageChargeCurrency = ddlPackageCharge_Currency_ItemDetail1.Text.Trim, _
-                    .PackageChargeForiegnAmount = CDbl(txtPackageCharge_ForeignAmount_ItemDetail.Value).ToString("#,##0.000"), _
-                    .PackageChargeExchangeRate = CDbl(txtPackageCharge_Exchange_ItemDetail.Value).ToString("#,##0.0000"), _
-                    .PackageChargeBathAmount = CDbl(txtPackageCharge_BathAmount_ItemDetail.Value).ToString("#,##0.000"), _
+                    .PackageChargeForiegnAmount = CType(CDbl(txtPackageCharge_ForeignAmount_ItemDetail.Value).ToString("#,##0.000"), Double?), _
+                    .PackageChargeExchangeRate = CType(CDbl(txtPackageCharge_Exchange_ItemDetail.Value).ToString("#,##0.0000"), Double?), _
+                    .PackageChargeBathAmount = CType(CDbl(txtPackageCharge_BathAmount_ItemDetail.Value).ToString("#,##0.000"), Double?), _
                     .ForeighnInlandFreidgeCurrency = ddlForeignInlandFreidge_Currency_ItemDetail1.Text.Trim, _
-                    .ForeighnInlandFreidgeForiegnAmount = CDbl(txtForeignInlandFreidge_ForeignAmount_ItemDetail.Value).ToString("#,##0.000"), _
-                    .ForeighnInlandFreidgeExchangeRate = CDbl(txtForeignInlandFreidge_Exchange_ItemDetail.Value).ToString("#,##0.0000"), _
-                    .ForeighnInlandFreidgeBathAmount = CDbl(txtForeignInlandFreidge_BathAmount_ItemDetail.Value).ToString("#,##0.000"), _
+                    .ForeighnInlandFreidgeForiegnAmount = CType(CDbl(txtForeignInlandFreidge_ForeignAmount_ItemDetail.Value).ToString("#,##0.000"), Double?), _
+                    .ForeighnInlandFreidgeExchangeRate = CType(CDbl(txtForeignInlandFreidge_Exchange_ItemDetail.Value).ToString("#,##0.0000"), Double?), _
+                    .ForeighnInlandFreidgeBathAmount = CType(CDbl(txtForeignInlandFreidge_BathAmount_ItemDetail.Value).ToString("#,##0.000"), Double?), _
                     .LandingChargeCurrency = ddlLandingCharge_Currency_ItemDetail1.Text.Trim, _
-                    .LandingChargeForiegnAmount = CDbl(txtLandingCharge_ForeignAmount_ItemDetail.Value).ToString("#,##0.000"), _
-                    .LandingChargeExchangeRate = CDbl(txtLandingCharge_Exchange_ItemDetail.Value).ToString("#,##0.0000"), _
-                    .LandingChargeBathAmount = CDbl(txtLandingCharge_BathAmount_ItemDetail.Value).ToString("#,##0.000"), _
+                    .LandingChargeForiegnAmount = CType(CDbl(txtLandingCharge_ForeignAmount_ItemDetail.Value).ToString("#,##0.000"), Double?), _
+                    .LandingChargeExchangeRate = CType(CDbl(txtLandingCharge_Exchange_ItemDetail.Value).ToString("#,##0.0000"), Double?), _
+                    .LandingChargeBathAmount = CType(CDbl(txtLandingCharge_BathAmount_ItemDetail.Value).ToString("#,##0.000"), Double?), _
                     .OtherChargeCurrency = ddlOtherCharge_Currency_ItemDetail1.Text.Trim, _
-                    .OtherChargeForiegnAmount = CDbl(txtOtherCharge_ForeignAmount_ItemDetail.Value).ToString("#,##0.000"), _
-                    .OtherChargeExchangeRate = CDbl(txtOtherCharge_Exchange_ItemDetail.Value).ToString("#,##0.0000"), _
-                    .OtherChargeBathAmount = CDbl(txtOtherCharge_BathAmount_ItemDetail.Value).ToString("#,##0.000"), _
+                    .OtherChargeForiegnAmount = CType(CDbl(txtOtherCharge_ForeignAmount_ItemDetail.Value).ToString("#,##0.000"), Double?), _
+                    .OtherChargeExchangeRate = CType(CDbl(txtOtherCharge_Exchange_ItemDetail.Value).ToString("#,##0.0000"), Double?), _
+                    .OtherChargeBathAmount = CType(CDbl(txtOtherCharge_BathAmount_ItemDetail.Value).ToString("#,##0.000"), Double?), _
                     .ItemRemark = txtRemark_ItemDetail.Value.Trim
                     })
 
                     db.SaveChanges()
                     tran.Complete()
 
-                    
+
                     Dim MtoT As New MoneyExt()
 
                     Select Case txtConsigneeCode.Value
                         Case "SG-1"
-                            txtTotal_EASJOB.Value = "USD." & MoneyExt.NumToEng(CDbl(txtTotalInvoice2_Invoice.Value))
+                            txtTotal_EASJOB.Value = "USD." & MoneyExt.NumToEng(CDec(CDbl(txtTotalInvoice2_Invoice.Value)))
                         Case "SG-2"
-                            txtTotal_EASJOB.Value = "USD." & MoneyExt.NumToEng(CDbl(txtTotalInvoice2_Invoice.Value))
+                            txtTotal_EASJOB.Value = "USD." & MoneyExt.NumToEng(CDec(CDbl(txtTotalInvoice2_Invoice.Value)))
                         Case "WD-1"
-                            txtTotal_EASJOB.Value = "BAHT:" & MoneyExt.NumToEng(CDbl(txtTotalInvoice2_Invoice.Value))
+                            txtTotal_EASJOB.Value = "BAHT:" & MoneyExt.NumToEng(CDec(CDbl(txtTotalInvoice2_Invoice.Value)))
                         Case "WD-2"
-                            txtTotal_EASJOB.Value = "USD." & MoneyExt.NumToEng(CDbl(txtTotalInvoice2_Invoice.Value))
+                            txtTotal_EASJOB.Value = "USD." & MoneyExt.NumToEng(CDec(CDbl(txtTotalInvoice2_Invoice.Value)))
                         Case "HTI-01"
-                            txtTotal_EASJOB.Value = "USD." & MoneyExt.NumToEng(CDbl(txtTotalInvoice2_Invoice.Value))
+                            txtTotal_EASJOB.Value = "USD." & MoneyExt.NumToEng(CDec(CDbl(txtTotalInvoice2_Invoice.Value)))
                         Case "HTI"
-                            txtTotal_EASJOB.Value = "USD." & MoneyExt.NumToEng(CDbl(txtTotalInvoice2_Invoice.Value))
+                            txtTotal_EASJOB.Value = "USD." & MoneyExt.NumToEng(CDec(CDbl(txtTotalInvoice2_Invoice.Value)))
                     End Select
 
                     ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('Add สำเร็จ !');", True)
@@ -1148,8 +1190,8 @@ Public Class InvoicePackingListRec
             UnitStatus = "INC"
         End If
 
-                    'sb.Append("INSERT INTO tblImpPackingList (InvoiceNo,PLTAmount,CTNAmount,PLTQuantity,PackProductCode,PackProductDesc,CustomerPN,OwnerPN,OriginCtry,OriginCtryName,PartUnitCode,PartUnitName,Quantity,NetWeight,GrossWeight,PackVolume,Unit,Width,Hight,Leng,PONo)")
-                    'sb.Append(" VALUES (@InvoiceNo,@PLTAmount,@CTNAmount,@PLTQuantity,@PackProductCode,@PackProductDesc,@CustomerPN,@OwnerPN,@OriginCtry,@OriginCtryName,@PartUnitCode,@PartUnitName,@Quantity,@NetWeight,@GrossWeight,@PackVolume,@Unit,@Width,@Hight,@Leng,@PONo)")
+        'sb.Append("INSERT INTO tblImpPackingList (InvoiceNo,PLTAmount,CTNAmount,PLTQuantity,PackProductCode,PackProductDesc,CustomerPN,OwnerPN,OriginCtry,OriginCtryName,PartUnitCode,PartUnitName,Quantity,NetWeight,GrossWeight,PackVolume,Unit,Width,Hight,Leng,PONo)")
+        'sb.Append(" VALUES (@InvoiceNo,@PLTAmount,@CTNAmount,@PLTQuantity,@PackProductCode,@PackProductDesc,@CustomerPN,@OwnerPN,@OriginCtry,@OriginCtryName,@PartUnitCode,@PartUnitName,@Quantity,@NetWeight,@GrossWeight,@PackVolume,@Unit,@Width,@Hight,@Leng,@PONo)")
         If MsgBox("คุณต้องการเพิ่มรายการ Item No ใหม่ ใช่หรือไม่ ?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
             Using tran As New TransactionScope()
                 Try
@@ -1158,7 +1200,7 @@ Public Class InvoicePackingListRec
                 .InvoiceNo = txtInvoiceNo_BeforeTab.Value.Trim, _
                 .PLTAmount = txtNumberOfPLT_PACKINGLIST.Value.Trim, _
                 .CTNAmount = txtTotalCTN_PACKINGLIST.Value.Trim, _
-                .PLTQuantity = CDbl(txtPLTQuantity_PACKINGLIST.Value).ToString("#,##0"), _
+                .PLTQuantity = CType(CDbl(txtPLTQuantity_PACKINGLIST.Value).ToString("#,##0"), Double?), _
                 .PackProductCode = txtProductCode_PACKINGLIST.Value.Trim, _
                 .PackProductDesc = txtProductDesc_PACKINGLIST.Value.Trim, _
                 .CustomerPN = txtCustomerPN_PACKINGLIST.Value.Trim, _
@@ -1167,14 +1209,14 @@ Public Class InvoicePackingListRec
                 .OriginCtryName = txtOriginCtry2_PACKINGLIST.Value.Trim, _
                 .PartUnitCode = ddlUnit_PACKINGLIST.Text.Trim, _
                 .PartUnitName = txtUnit_PACKINGLIST.Value.Trim, _
-                .Quantity = CDbl(txtProductQuantity_PACKINGLIST.Value).ToString("#,##0"), _
-                .NetWeight = CDbl(txtNetWeight_PACKINGLIST.Value).ToString("#,##0.00"), _
-                .GrossWeight = CDbl(txtGrossWeight_PACKINGLIST.Value).ToString("#,##0.00"), _
-                .PackVolume = CDbl(txtVolumeCBM_PACKINGLIST.Value).ToString("#,##0.000"), _
+                .Quantity = CType(CDbl(txtProductQuantity_PACKINGLIST.Value).ToString("#,##0"), Double?), _
+                .NetWeight = CType(CDbl(txtNetWeight_PACKINGLIST.Value).ToString("#,##0.00"), Double?), _
+                .GrossWeight = CType(CDbl(txtGrossWeight_PACKINGLIST.Value).ToString("#,##0.00"), Double?), _
+                .PackVolume = CType(CDbl(txtVolumeCBM_PACKINGLIST.Value).ToString("#,##0.000"), Double?), _
                 .Unit = UnitStatus, _
-                .Width = CDbl(txtMeasurement_Width_PACKINGLIST.Value).ToString("#,##0"), _
-                .Hight = CDbl(txtMeasurement_Height_PACKINGLIST.Value).ToString("#,##0"), _
-                .Leng = CDbl(txtLenght_PACKINGLIST.Value).ToString("#,##0"), _
+                .Width = CType(CDbl(txtMeasurement_Width_PACKINGLIST.Value).ToString("#,##0"), Double?), _
+                .Hight = CType(CDbl(txtMeasurement_Height_PACKINGLIST.Value).ToString("#,##0"), Double?), _
+                .Leng = CType(CDbl(txtLenght_PACKINGLIST.Value).ToString("#,##0"), Double?), _
                 .PONo = txtPONo_PACKINGLIST.Value.Trim
                 })
 
@@ -1239,19 +1281,19 @@ Public Class InvoicePackingListRec
             Exit Sub
         End If
 
-        If rdbDiffAmount1.Checked = True Then
+        If rdbDiffAmount2.Checked = True Then
             DiffBy = "Diff by items-amount"
         End If
 
-        If rdbDiffWeight1.Checked = True Then
+        If rdbDiffWeight2.Checked = True Then
             DiffBy = "Diff by items-Weight"
         End If
 
-        If rdbNotifyParty1.Checked = True Then
+        If rdbNotifyParty2.Checked = True Then
             TermTransport = "Notfy Party"
         End If
 
-        If rdbOnBehalfOf1.Checked = True Then
+        If rdbOnBehalfOf2.Checked = True Then
             TermTransport = "On Behalf of"
         End If
 
@@ -1282,9 +1324,9 @@ Public Class InvoicePackingListRec
                         edit.InvoiceNo = txtInvoiceNo_BeforeTab.Value.Trim
                         edit.ReferenceNo = txtDeclaretion_BeforeTab.Value.Trim
                         edit.PurchaseOrderNo = txtJobNo_BeforeTab.Value.Trim
-                        edit.InvoiceDate = txtdatepickerInvoiceDate_beforeTab.Text.Trim
-                        edit.DeliveryDate = txtdatepickerDeliveryDate_beforeTab.Text.Trim
-                        edit.ReferenceDate = txtdatepickerCustomsRefDate_beforeTab.Text.Trim
+                        edit.InvoiceDate = CType(txtdatepickerInvoiceDate_beforeTab.Text.Trim, Date?)
+                        edit.DeliveryDate = CType(txtdatepickerDeliveryDate_beforeTab.Text.Trim, Date?)
+                        edit.ReferenceDate = CType(txtdatepickerCustomsRefDate_beforeTab.Text.Trim, Date?)
                         edit.ExporterCode = txtShippercode.Value.Trim
                         edit.ExporterENG = txtNameShipper_Invoice.Value.Trim
                         edit.Street_Number = txtAddress1Shipper.Value.Trim
@@ -1309,33 +1351,33 @@ Public Class InvoicePackingListRec
                         edit.CountryName = txtOriginCountry_Invoice.Value.Trim
                         edit.TermOfPayment = ddlTermOfPayment_Invoice.Text.Trim
                         edit.Term = ddlTerm_Invoice.Text.Trim
-                        edit.TotalNetWeight = CDbl(txtTotalNetWeight_Invoice.Value).ToString("#,##0.000")
-                        edit.SumItemWeight = CDbl(txtSumItemWeight_Invoice.Value).ToString("#,##0.000")
+                        edit.TotalNetWeight = CType(CDbl(txtTotalNetWeight_Invoice.Value).ToString("#,##0.000"), Double?)
+                        edit.SumItemWeight = CType(CDbl(txtSumItemWeight_Invoice.Value).ToString("#,##0.000"), Double?)
                         edit.TotalInvoiceCurrency = ddlTotalInvoice_Invoice.Text.Trim
-                        edit.TotalInvoiceAmount = CDbl(txtTotalInvoice1_Invoice.Value).ToString("#,##0.000")
-                        edit.TotalInvoiceAmount1 = CDbl(txtTotalInvoice2_Invoice.Value).ToString("#,##0.000")
+                        edit.TotalInvoiceAmount = CType(CDbl(txtTotalInvoice1_Invoice.Value).ToString("#,##0.000"), Double?)
+                        edit.TotalInvoiceAmount1 = CType(CDbl(txtTotalInvoice2_Invoice.Value).ToString("#,##0.000"), Double?)
                         edit.ForwardingCurrency = ddlForwarding_Invoice.Text.Trim
-                        edit.ForwardingAmount = CDbl(txtForwarding1_Invoice.Value).ToString("#,##0.000")
-                        edit.ForwardingAmount1 = CDbl(txtForwarding2_Invoice.Value).ToString("#,##0.000")
+                        edit.ForwardingAmount = CType(CDbl(txtForwarding1_Invoice.Value).ToString("#,##0.000"), Double?)
+                        edit.ForwardingAmount1 = CType(CDbl(txtForwarding2_Invoice.Value).ToString("#,##0.000"), Double?)
                         edit.FreightCurrency = ddlFreight_Invoice.Text.Trim
-                        edit.FreightAmount = CDbl(txtFreight1_Invoice.Value).ToString("#,##0.000")
-                        edit.FreightAmount1 = CDbl(txtFreight2_Invoice.Value).ToString("#,##0.000")
+                        edit.FreightAmount = CType(CDbl(txtFreight1_Invoice.Value).ToString("#,##0.000"), Double?)
+                        edit.FreightAmount1 = CType(CDbl(txtFreight2_Invoice.Value).ToString("#,##0.000"), Double?)
                         edit.InsuranceCurrency = ddlInsurance_Invoice.Text.Trim
-                        edit.InsuranceAmount = CDbl(txtInsurance1_Invoice.Value).ToString("#,##0.000")
-                        edit.InsuranceAmount1 = CDbl(txtInsurance2_Invoice.Value).ToString("#,##0.000")
+                        edit.InsuranceAmount = CType(CDbl(txtInsurance1_Invoice.Value).ToString("#,##0.000"), Double?)
+                        edit.InsuranceAmount1 = CType(CDbl(txtInsurance2_Invoice.Value).ToString("#,##0.000"), Double?)
                         edit.PackingChargeCurrency = ddlPackingCharge_Invoice.Text.Trim
-                        edit.PackingChargeAmount = CDbl(txtPackingCharge1_Invoice.Value).ToString("#,##0.000")
-                        edit.PackingChargeAmount1 = CDbl(txtPackingCharge2_Invoice.Value).ToString("#,##0.000")
+                        edit.PackingChargeAmount = CType(CDbl(txtPackingCharge1_Invoice.Value).ToString("#,##0.000"), Double?)
+                        edit.PackingChargeAmount1 = CType(CDbl(txtPackingCharge2_Invoice.Value).ToString("#,##0.000"), Double?)
                         edit.ForeignInlandCurrency = ddlHandingCharge_Invoice.Text.Trim
-                        edit.ForeignInlandAmount = CDbl(txtHandingCharge1_Invoice.Value).ToString("#,##0.000")
-                        edit.ForeignInlandAmount1 = CDbl(txtHandingCharge2_invoice.Value).ToString("#,##0.000")
+                        edit.ForeignInlandAmount = CType(CDbl(txtHandingCharge1_Invoice.Value).ToString("#,##0.000"), Double?)
+                        edit.ForeignInlandAmount1 = CType(CDbl(txtHandingCharge2_invoice.Value).ToString("#,##0.000"), Double?)
                         edit.LandingChargeCurrency = ddlLandingCharge_Invoice.Text.Trim
-                        edit.LandingChargeAmount = CDbl(txtLandingCharge1_Invoice.Value).ToString("#,##0.000")
-                        edit.LandingChargeAmount1 = CDbl(txtLandingCharge2_Invoice.Value).ToString("#,##0.000")
+                        edit.LandingChargeAmount = CType(CDbl(txtLandingCharge1_Invoice.Value).ToString("#,##0.000"), Double?)
+                        edit.LandingChargeAmount1 = CType(CDbl(txtLandingCharge2_Invoice.Value).ToString("#,##0.000"), Double?)
                         edit.OtherChargeCurrency = ddlTotalInvoiceTHB_Invoice.Text.Trim
-                        edit.OtherChargeAmount = CDbl(txtTotalInvoiceTHB1_Invoice.Value).ToString("#,##0.000")
+                        edit.OtherChargeAmount = CType(CDbl(txtTotalInvoiceTHB1_Invoice.Value).ToString("#,##0.000"), Double?)
                         edit.OtherChargeAmount1 = CDbl(txtTotalInvoiceTHB2_Invoice.Value).ToString("#,##0.000")
-                        edit.TransmitDate = txtdatepickerTransmitDate.Text.Trim
+                        edit.TransmitDate = CType(txtdatepickerTransmitDate.Text.Trim, Date?)
                         edit.DiffBy = DiffBy
                         edit.TermforShip = TermTransport
                         edit.OnbehalfStatus = OnbehalfStatus
@@ -1372,19 +1414,19 @@ Public Class InvoicePackingListRec
                         edit.EASBilltoCustomerTelNo = txtTelNoCustomer_BillTo_EASJOB.Value.Trim
                         edit.EASBilltoCustomerFaxNo = txtFaxNoCustomer_BillTo_EASJOB.Value.Trim
                         edit.EASBilltoCustomerContactPerson = txtContractPersonCustomer_BillTo_EASJOB.Value.Trim
-                        edit.PLTNetAmount = CDbl(txtPLTNetAmount_PACKINGLIST.Value).ToString("#,##0.000")
+                        edit.PLTNetAmount = CType(CDbl(txtPLTNetAmount_PACKINGLIST.Value).ToString("#,##0.000"), Double?)
                         edit.UnitPLT = ddlPLTNetAmount_PACKINGLIST.Text.Trim
                         edit.CTNPLTName = txtPLTNetAmount2_PACKINGLIST.Value.Trim
-                        edit.CTNNetAmount = CDbl(txtCTNNetAmount_PACKINGLIST.Value).ToString("#,##0.000")
+                        edit.CTNNetAmount = CType(CDbl(txtCTNNetAmount_PACKINGLIST.Value).ToString("#,##0.000"), Double?)
                         edit.UnitCTN = ddlCTNNetAmount_PACKINGLIST.Text.Trim
                         edit.UnitCTNName = txtCTNNetAmount2_PACKINGLIST.Value.Trim
-                        edit.GrossWeightAmount = CDbl(txtTotalGrossWeight_Invoice.Value).ToString("#,##0.000")
-                        edit.QountityAmount = CDbl(txtTotalQuantityPack_Invoice.Value).ToString("#,##0.000")
-                        edit.VolumAmount = CDbl(txtTotalVolume_Invoice.Value).ToString("#,##0.000")
+                        edit.GrossWeightAmount = CType(CDbl(txtTotalGrossWeight_Invoice.Value).ToString("#,##0.000"), Double?)
+                        edit.QountityAmount = CType(CDbl(txtTotalQuantityPack_Invoice.Value).ToString("#,##0.000"), Double?)
+                        edit.VolumAmount = CType(CDbl(txtTotalVolume_Invoice.Value).ToString("#,##0.000"), Double?)
                         edit.TotalTextPack = txtTotal_PACKINGLIST.Value.Trim
                         edit.CarLicense = ddlTruckLicense_Invoice.Text.Trim
                         edit.DriverName = ddlDriverName_Invoice.Text.Trim
-                        edit.CustomsConfirmDate = txtdatepickerNoDate_beforeTab.Text.Trim
+                        edit.CustomsConfirmDate = CType(txtdatepickerNoDate_beforeTab.Text.Trim, Date?)
                         edit.UpdateBy = CStr(Session("UserName"))
                         edit.UpdateDate = Now
 
@@ -1461,13 +1503,13 @@ Public Class InvoicePackingListRec
                         edit.ProductDesc1 = txtProductDesc_ItemDetail.Value.Trim
                         edit.ProductDesc2 = txtCustomerPN_ItemDetail.Value.Trim
                         edit.ProductDesc3 = txtOwnerPN_ItemDetail.Value.Trim
-                        edit.InvQty = CDbl(txtInvQty_ItemDetail.Value).ToString("#,##0.00000")
+                        edit.InvQty = CType(CDbl(txtInvQty_ItemDetail.Value).ToString("#,##0.00000"), Double?)
                         edit.InvUnit = ddlUnit1_ItemDetail.Text.Trim
                         edit.InvUnitDetail = txtUnit1_ItemDetail.Value.Trim
-                        edit.Weight = CDbl(txtWeight_ItemDetail.Value).ToString("#,##0.00000")
+                        edit.Weight = CType(CDbl(txtWeight_ItemDetail.Value).ToString("#,##0.00000"), Double?)
                         edit.WeightUnit = ddlUnit2_ItemDetail.Text.Trim
                         edit.WeightUnitDetail = txtUnit2_ItemDetail.Value.Trim
-                        edit.Quantity = CDbl(txtQuantity_ItemDetail.Value).ToString("#,##0.00000")
+                        edit.Quantity = CType(CDbl(txtQuantity_ItemDetail.Value).ToString("#,##0.00000"), Double?)
                         edit.QuantityUnit = ddlUnit3_ItemDetail.Text.Trim
                         edit.QuantityUnitDetail = txtUnit3_ItemDetail.Value.Trim
                         edit.TariffCode = txtTariffCode_ItemDetail.Value.Trim
@@ -1475,47 +1517,47 @@ Public Class InvoicePackingListRec
                         edit.TariffSequence = txtTariffSequence_ItemDetail.Value.Trim
                         edit.ProductAttribute1 = txtProductAttribute1_ItemDetail.Value.Trim
                         edit.ProductAttribute2 = txtPONo_ItemDetail.Value.Trim
-                        edit.PriceIncreaseForeign = txtPriceIncreaseForreign_ItemDetail.Value.Trim
-                        edit.PriceIncreseBath = txtPriceIncreaseBath_ItemDetail.Value.Trim
+                        edit.PriceIncreaseForeign = CType(txtPriceIncreaseForreign_ItemDetail.Value.Trim, Double?)
+                        edit.PriceIncreseBath = CType(txtPriceIncreaseBath_ItemDetail.Value.Trim, Double?)
                         edit.DeclarationLine = txtDeclaretionLine_ItemDetail.Value.Trim
                         edit.FormulaNo = txtFormulaNo_ItemDetail.Value.Trim
                         edit.BOILicenseNo = txtBOILicenseNo_ItemDetail.Value.Trim
                         edit.X19BisTransferNo = txt19BisTransferNo_ItemDetail.Value.Trim
                         edit.BondFormulaNo = txtBondFormulaNo_ItemDetail.Value.Trim
                         edit.Currency = ddlCurrency_ItemDetail.Text.Trim
-                        edit.ExchangeRate = CDbl(txtExchangeRate_ItemDetail.Value).ToString("#,##0.0000")
-                        edit.PriceForeigh = CDbl(txtPriceForeign_ItemDetail.Value).ToString("#,##0.000")
-                        edit.PriceForeighAmount = CDbl(txtAmountForeign_ItemDetail.Value).ToString("#,##0.000")
-                        edit.PriceBath = CDbl(txtPriceBath_ItemDetail.Value).ToString("#,##0.000")
-                        edit.PriceBathAmount = txtAmountBath_ItemDetail.Value.Trim
+                        edit.ExchangeRate = CType(CDbl(txtExchangeRate_ItemDetail.Value).ToString("#,##0.0000"), Double?)
+                        edit.PriceForeigh = CType(CDbl(txtPriceForeign_ItemDetail.Value).ToString("#,##0.000"), Double?)
+                        edit.PriceForeighAmount = CType(CDbl(txtAmountForeign_ItemDetail.Value).ToString("#,##0.000"), Double?)
+                        edit.PriceBath = CType(CDbl(txtPriceBath_ItemDetail.Value).ToString("#,##0.000"), Double?)
+                        edit.PriceBathAmount = CType(txtAmountBath_ItemDetail.Value.Trim, Double?)
                         edit.ForwardingCurrency = ddlForwarding_Currency_ItemDetail.Text.Trim
-                        edit.ForwardingForiegnAmount = CDbl(txtForwarding_ForeignAmount_ItemDetail.Value).ToString("#,##0.000")
-                        edit.ForwardingExchangeRate = CDbl(txtForwarding_Exchange_ItemDetail.Value).ToString("#,##0.0000")
-                        edit.ForwardBathAmount = CDbl(txtForwarding_BathAmount_ItemDetail.Value).ToString("#,##0.000")
+                        edit.ForwardingForiegnAmount = CType(CDbl(txtForwarding_ForeignAmount_ItemDetail.Value).ToString("#,##0.000"), Double?)
+                        edit.ForwardingExchangeRate = CType(CDbl(txtForwarding_Exchange_ItemDetail.Value).ToString("#,##0.0000"), Double?)
+                        edit.ForwardBathAmount = CType(CDbl(txtForwarding_BathAmount_ItemDetail.Value).ToString("#,##0.000"), Double?)
                         edit.FreightCurrency = ddlFreight_Currency_ItemDetail.Text.Trim
-                        edit.FreightForiegnAmount = CDbl(txtFreight_ForeignAmount_ItemDetail.Value).ToString("#,##0.000")
-                        edit.FreightExchangeRate = CDbl(txtFreight_Exchange_ItemDetail.Value).ToString("#,##0.0000")
+                        edit.FreightForiegnAmount = CType(CDbl(txtFreight_ForeignAmount_ItemDetail.Value).ToString("#,##0.000"), Double?)
+                        edit.FreightExchangeRate = CType(CDbl(txtFreight_Exchange_ItemDetail.Value).ToString("#,##0.0000"), Double?)
                         edit.FreightBathAmount = CDbl(txtFreight_BathAmount_ItemDetail.Value).ToString("#,##0.000")
                         edit.InsuranceCurrency = ddlInsurance_Currency_ItemDetail.Text.Trim
-                        edit.InsuranceForiegnAmount = CDbl(txtInsurance_ForeignAmount_ItemDetail.Value).ToString("#,##0.000")
-                        edit.InsuranceExchangeRate = CDbl(txtInsurance_Exchange_ItemDetail.Value).ToString("#,##0.0000")
-                        edit.InsuranceBathAmount = CDbl(txtInsurance_BathAmount_ItemDetail.Value).ToString("#,##0.000")
+                        edit.InsuranceForiegnAmount = CType(CDbl(txtInsurance_ForeignAmount_ItemDetail.Value).ToString("#,##0.000"), Double?)
+                        edit.InsuranceExchangeRate = CType(CDbl(txtInsurance_Exchange_ItemDetail.Value).ToString("#,##0.0000"), Double?)
+                        edit.InsuranceBathAmount = CType(CDbl(txtInsurance_BathAmount_ItemDetail.Value).ToString("#,##0.000"), Double?)
                         edit.PackageChargeCurrency = ddlPackageCharge_Currency_ItemDetail1.Text.Trim
-                        edit.PackageChargeForiegnAmount = CDbl(txtPackageCharge_ForeignAmount_ItemDetail.Value).ToString("#,##0.000")
-                        edit.PackageChargeExchangeRate = CDbl(txtPackageCharge_Exchange_ItemDetail.Value).ToString("#,##0.0000")
-                        edit.PackageChargeBathAmount = CDbl(txtPackageCharge_BathAmount_ItemDetail.Value).ToString("#,##0.000")
+                        edit.PackageChargeForiegnAmount = CType(CDbl(txtPackageCharge_ForeignAmount_ItemDetail.Value).ToString("#,##0.000"), Double?)
+                        edit.PackageChargeExchangeRate = CType(CDbl(txtPackageCharge_Exchange_ItemDetail.Value).ToString("#,##0.0000"), Double?)
+                        edit.PackageChargeBathAmount = CType(CDbl(txtPackageCharge_BathAmount_ItemDetail.Value).ToString("#,##0.000"), Double?)
                         edit.ForeighnInlandFreidgeCurrency = ddlForeignInlandFreidge_Currency_ItemDetail1.Text.Trim
-                        edit.ForeighnInlandFreidgeForiegnAmount = CDbl(txtForeignInlandFreidge_ForeignAmount_ItemDetail.Value).ToString("#,##0.000")
-                        edit.ForeighnInlandFreidgeExchangeRate = CDbl(txtForeignInlandFreidge_Exchange_ItemDetail.Value).ToString("#,##0.0000")
-                        edit.ForeighnInlandFreidgeBathAmount = CDbl(txtForeignInlandFreidge_BathAmount_ItemDetail.Value).ToString("#,##0.000")
+                        edit.ForeighnInlandFreidgeForiegnAmount = CType(CDbl(txtForeignInlandFreidge_ForeignAmount_ItemDetail.Value).ToString("#,##0.000"), Double?)
+                        edit.ForeighnInlandFreidgeExchangeRate = CType(CDbl(txtForeignInlandFreidge_Exchange_ItemDetail.Value).ToString("#,##0.0000"), Double?)
+                        edit.ForeighnInlandFreidgeBathAmount = CType(CDbl(txtForeignInlandFreidge_BathAmount_ItemDetail.Value).ToString("#,##0.000"), Double?)
                         edit.LandingChargeCurrency = ddlLandingCharge_Currency_ItemDetail1.Text.Trim
-                        edit.LandingChargeForiegnAmount = CDbl(txtLandingCharge_ForeignAmount_ItemDetail.Value).ToString("#,##0.000")
-                        edit.LandingChargeExchangeRate = CDbl(txtLandingCharge_Exchange_ItemDetail.Value).ToString("#,##0.0000")
-                        edit.LandingChargeBathAmount = CDbl(txtLandingCharge_BathAmount_ItemDetail.Value).ToString("#,##0.000")
+                        edit.LandingChargeForiegnAmount = CType(CDbl(txtLandingCharge_ForeignAmount_ItemDetail.Value).ToString("#,##0.000"), Double?)
+                        edit.LandingChargeExchangeRate = CType(CDbl(txtLandingCharge_Exchange_ItemDetail.Value).ToString("#,##0.0000"), Double?)
+                        edit.LandingChargeBathAmount = CType(CDbl(txtLandingCharge_BathAmount_ItemDetail.Value).ToString("#,##0.000"), Double?)
                         edit.OtherChargeCurrency = ddlOtherCharge_Currency_ItemDetail1.Text.Trim
-                        edit.OtherChargeForiegnAmount = CDbl(txtOtherCharge_ForeignAmount_ItemDetail.Value).ToString("#,##0.000")
-                        edit.OtherChargeExchangeRate = CDbl(txtOtherCharge_Exchange_ItemDetail.Value).ToString("#,##0.0000")
-                        edit.OtherChargeBathAmount = CDbl(txtOtherCharge_BathAmount_ItemDetail.Value).ToString("#,##0.000")
+                        edit.OtherChargeForiegnAmount = CType(CDbl(txtOtherCharge_ForeignAmount_ItemDetail.Value).ToString("#,##0.000"), Double?)
+                        edit.OtherChargeExchangeRate = CType(CDbl(txtOtherCharge_Exchange_ItemDetail.Value).ToString("#,##0.0000"), Double?)
+                        edit.OtherChargeBathAmount = CType(CDbl(txtOtherCharge_BathAmount_ItemDetail.Value).ToString("#,##0.000"), Double?)
                         edit.ItemRemark = txtRemark_ItemDetail.Value.Trim
 
                         db.SaveChanges()
@@ -1524,17 +1566,17 @@ Public Class InvoicePackingListRec
                         Dim MtoT As New MoneyExt()
                         Select Case txtConsigneeCode.Value
                             Case "SG-1"
-                                txtTotal_EASJOB.Value = "USD." & MoneyExt.NumToEng(CDbl(txtTotalInvoice2_Invoice.Value))
+                                txtTotal_EASJOB.Value = "USD." & MoneyExt.NumToEng(CDec(CDbl(txtTotalInvoice2_Invoice.Value)))
                             Case "SG-2"
-                                txtTotal_EASJOB.Value = "USD." & MoneyExt.NumToEng(CDbl(txtTotalInvoice2_Invoice.Value))
+                                txtTotal_EASJOB.Value = "USD." & MoneyExt.NumToEng(CDec(CDbl(txtTotalInvoice2_Invoice.Value)))
                             Case "WD-1"
-                                txtTotal_EASJOB.Value = "BAHT:" & MoneyExt.NumToEng(CDbl(txtTotalInvoice2_Invoice.Value))
+                                txtTotal_EASJOB.Value = "BAHT:" & MoneyExt.NumToEng(CDec(CDbl(txtTotalInvoice2_Invoice.Value)))
                             Case "WD-2"
-                                txtTotal_EASJOB.Value = "USD." & MoneyExt.NumToEng(CDbl(txtTotalInvoice2_Invoice.Value))
+                                txtTotal_EASJOB.Value = "USD." & MoneyExt.NumToEng(CDec(CDbl(txtTotalInvoice2_Invoice.Value)))
                             Case "HTI-01"
-                                txtTotal_EASJOB.Value = "USD." & MoneyExt.NumToEng(CDbl(txtTotalInvoice2_Invoice.Value))
+                                txtTotal_EASJOB.Value = "USD." & MoneyExt.NumToEng(CDec(CDbl(txtTotalInvoice2_Invoice.Value)))
                             Case "HTI"
-                                txtTotal_EASJOB.Value = "USD." & MoneyExt.NumToEng(CDbl(txtTotalInvoice2_Invoice.Value))
+                                txtTotal_EASJOB.Value = "USD." & MoneyExt.NumToEng(CDec(CDbl(txtTotalInvoice2_Invoice.Value)))
                         End Select
 
                         ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('แก้ไขข้อมูล สำเร็จ !');", True)
@@ -1546,6 +1588,88 @@ Public Class InvoicePackingListRec
         End If
         txtProductCode_ItemDetail.Focus()
     End Sub
+    Private Sub SavePacking_Modify()
+
+        If txtInvoiceNo_BeforeTab.Value.Trim = "" Then
+            MsgBox("กรุณาป้อนรหัส Invoice No ก่อน !!!")
+            txtInvoiceNo_BeforeTab.Focus()
+            Exit Sub
+        End If
+        If txtProductCode_PACKINGLIST.Value.Trim = "" Then
+            MsgBox("กรุณาป้อนรหัส Product Code ก่อน !!!")
+            txtProductCode_PACKINGLIST.Focus()
+            Exit Sub
+        End If
+        If txtProductDesc_ItemDetail.Value.Trim = "" Then
+            MsgBox("กรุณาป้อนรหัส Product Desc. ก่อน !!!")
+            txtProductDesc_ItemDetail.Focus()
+            Exit Sub
+        End If
+        Dim UnitStatus As String = ""
+
+        If rdbCM.Checked = True Then
+            UnitStatus = "CM"
+        ElseIf rdbInch.Checked = True Then
+            UnitStatus = "INC"
+        End If
+
+
+        'sb.Append("UPDATE tblImpPackingList")
+        'sb.Append(" SET InvoiceNo=@InvoiceNo,PLTAmount=@PLTAmount,CTNAmount=@CTNAmount,PLTQuantity=@PLTQuantity,PackProductCode=@PackProductCode,PackProductDesc=@PackProductDesc,CustomerPN=@CustomerPN,OwnerPN=@OwnerPN,OriginCtry=@OriginCtry,OriginCtryName=@OriginCtryName,PartUnitCode=@PartUnitCode,PartUnitName=@PartUnitName,Quantity=@Quantity,NetWeight=@Netweight,GrossWeight=@GrossWeight,PackVolume=@PackVolume,Unit=@Unit,Width=@Width,Hight=@Hight,Leng=@Leng,PONo=@PONo")
+        'sb.Append(" WHERE (InvoiceNo=@InvoiceNo and RowNo=@RowNo) ")
+
+        If MsgBox("คุณต้องการแก้ไขรายการ Truck No ใหม่ ใช่หรือไม่ ?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+            Using tran As New TransactionScope()
+                Try
+                    db.Database.Connection.Open()
+                    Dim edit As tblImpPackingList = (From c In db.tblImpPackingLists Where c.InvoiceNo = txtInvoiceNo_BeforeTab.Value.Trim And c.RowNo = CDbl(txtRowNo_PACKINGLIST.Value.Trim)
+                      Select c).First()
+                    If edit IsNot Nothing Then
+                        edit.InvoiceNo = txtInvoiceNo_BeforeTab.Value.Trim
+                        edit.PLTAmount = txtNumberOfPLT_PACKINGLIST.Value.Trim
+                        edit.CTNAmount = txtTotalCTN_PACKINGLIST.Value.Trim
+                        edit.PLTQuantity = CType(CDbl(txtPLTQuantity_PACKINGLIST.Value).ToString("#,##0"), Double?)
+                        edit.PackProductCode = txtProductCode_PACKINGLIST.Value.Trim
+                        edit.PackProductDesc = txtProductDesc_PACKINGLIST.Value.Trim
+                        edit.CustomerPN = txtCustomerPN_PACKINGLIST.Value.Trim
+                        edit.OwnerPN = txtOwnerPN_PACKINGLIST.Value.Trim
+                        edit.OriginCtry = txtOriginCtry_PACKINGLIST.Value.Trim
+                        edit.OriginCtryName = txtOriginCtry2_PACKINGLIST.Value.Trim
+                        edit.PartUnitCode = ddlUnit_PACKINGLIST.Text.Trim
+                        edit.PartUnitName = txtUnit_PACKINGLIST.Value.Trim
+                        edit.Quantity = CType(CDbl(txtProductQuantity_PACKINGLIST.Value).ToString("#,##0"), Double?)
+                        edit.NetWeight = CType(CDbl(txtNetWeight_PACKINGLIST.Value).ToString("#,##0.00"), Double?)
+                        edit.GrossWeight = CType(CDbl(txtGrossWeight_PACKINGLIST.Value).ToString("#,##0.00"), Double?)
+                        edit.PackVolume = CType(CDbl(txtVolumeCBM_PACKINGLIST.Value).ToString("#,##0.000"), Double?)
+                        edit.Unit = UnitStatus
+                        edit.Width = CType(CDbl(txtMeasurement_Width_PACKINGLIST.Value).ToString("#,##0"), Double?)
+                        edit.Hight = CType(CDbl(txtMeasurement_Height_PACKINGLIST.Value).ToString("#,##0"), Double?)
+                        edit.Leng = CType(CDbl(txtLenght_PACKINGLIST.Value).ToString("#,##0"), Double?)
+                        edit.PONo = txtPONo_PACKINGLIST.Value.Trim
+                        edit.RowNo = CDec(txtRowNo_PACKINGLIST.Value.Trim)
+
+                        db.SaveChanges()
+                        tran.Complete()
+
+                        Dim MtoT As New MoneyExt()
+                        Dim tmpNumToText1 As String
+                        Dim tmpNumToText2 As String
+                        Dim Contain As String = " CONTAIN "
+                        If txtPLTNetAmount_PACKINGLIST.Value = "1" Then
+                            Contain = " CONTAINS "
+                        End If
+                        tmpNumToText1 = MoneyExt.NumToEngCarton(CDec(CDbl(txtPLTNetAmount_PACKINGLIST.Value))) & "" & ddlPLTNetAmount_PACKINGLIST.Text & Contain
+                        tmpNumToText2 = MoneyExt.NumToEngPallet(CDec(CDbl(txtCTNNetAmount_PACKINGLIST.Value))) & " " & ddlCTNNetAmount_PACKINGLIST.Text
+                        txtTotal_PACKINGLIST.Value = tmpNumToText1 & tmpNumToText2
+
+                        ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('แก้ไขข้อมูล สำเร็จ !');", True)
+                    End If
+                Catch ex As Exception
+                    ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด กรุณาบันทึกข้อมูลใหม่อีกครั้ง');", True)
+                End Try
+            End Using
+        End If
+    End Sub 'แก้ไข
     Private Sub InsertData()
         'sb.Append("INSERT INTO tblLogImpInvoice (InvoiceNo,InvoiceDate,ConsignneeCode,EASExporterCode,EASInvRefNo,EASLOTNo,EASShipMode,EASDeliveryTerm,ProductDesc1,ProductDesc2,ProductDesc3,OriginCountry,Quantity,PriceForeigh,PriceForeighAmount,PriceBathAmount,ExchangeRate,PLTNetAmount,CTNPLTName,CTNNetAmount,UnitCTNName,NetWeight,GrossWeight,UserBy,LastUpDate) ")
         'sb.Append(" VALUES (@InvoiceNo,@InvoiceDate,@ConsignneeCode,@EASExporterCode,@EASInvRefNo,@EASLOTNo,@EASShipMode,@EASDeliveryTerm,@ProductDesc1,@ProductDesc2,@ProductDesc3,@OriginCountry,@Quantity,@PriceForeigh,@PriceForeighAmount,@PriceBathAmount,@ExchangeRate,@PLTNetAmount,@CTNPLTName,@CTNNetAmount,@UnitCTNName,@NetWeight,@GrossWeight,@UserBy,@LastUpDate)")
@@ -1554,7 +1678,7 @@ Public Class InvoicePackingListRec
                 db.Database.Connection.Open()
                 db.tblLogImpInvoices.Add(New tblLogImpInvoice With { _
                     .InvoiceNo = txtInvoiceNo_BeforeTab.Value.Trim, _
-                    .InvoiceDate = txtdatepickerInvoiceDate_beforeTab.Text.Trim, _
+                    .InvoiceDate = CType(txtdatepickerInvoiceDate_beforeTab.Text.Trim, Date?), _
                     .ConsignneeCode = txtConsigneeCode.Value.Trim, _
                     .EASExporterCode = txtOwnerCode_EASJOB.Value.Trim, _
                     .EASInvRefNo = txtEASINV_EASJOB.Value.Trim, _
@@ -1565,17 +1689,17 @@ Public Class InvoicePackingListRec
                     .ProductDesc2 = txtCustomerPN_ItemDetail.Value.Trim, _
                     .ProductDesc3 = txtOwnerPN_ItemDetail.Value.Trim, _
                     .OriginCountry = ddlOriginCtry_ItemDetail.Text.Trim, _
-                    .Quantity = CDbl(txtQuantity_ItemDetail.Value).ToString("#,##0.00000"), _
-                    .PriceForeigh = CDbl(txtPriceForeign_ItemDetail.Value).ToString("#,##0.000"), _
-                    .PriceForeighAmount = CDbl(txtAmountForeign_ItemDetail.Value).ToString("#,##0.000"), _
-                    .PriceBathAmount = txtAmountBath_ItemDetail.Value.Trim, _
-                    .ExchangeRate = CDbl(txtExchangeRate_ItemDetail.Value).ToString("#,##0.0000"), _
-                    .PLTNetAmount = CDbl(txtPLTNetAmount_PACKINGLIST.Value).ToString("#,##0.000"), _
+                    .Quantity = CType(CDbl(txtQuantity_ItemDetail.Value).ToString("#,##0.00000"), Decimal?), _
+                    .PriceForeigh = CType(CDbl(txtPriceForeign_ItemDetail.Value).ToString("#,##0.000"), Decimal?), _
+                    .PriceForeighAmount = CType(CDbl(txtAmountForeign_ItemDetail.Value).ToString("#,##0.000"), Decimal?), _
+                    .PriceBathAmount = CType(txtAmountBath_ItemDetail.Value.Trim, Decimal?), _
+                    .ExchangeRate = CType(CDbl(txtExchangeRate_ItemDetail.Value).ToString("#,##0.0000"), Decimal?), _
+                    .PLTNetAmount = CType(CDbl(txtPLTNetAmount_PACKINGLIST.Value).ToString("#,##0.000"), Decimal?), _
                     .CTNPLTName = txtPLTNetAmount2_PACKINGLIST.Value.Trim, _
-                    .CTNNetAmount = CDbl(txtCTNNetAmount_PACKINGLIST.Value).ToString("#,##0.000"), _
+                    .CTNNetAmount = CType(CDbl(txtCTNNetAmount_PACKINGLIST.Value).ToString("#,##0.000"), Decimal?), _
                     .UnitCTNName = txtCTNNetAmount2_PACKINGLIST.Value.Trim, _
-                    .NetWeight = CDbl(txtNetWeight_PACKINGLIST.Value).ToString("#,##0.00"), _
-                    .GrossWeight = CDbl(txtGrossWeight_PACKINGLIST.Value).ToString("#,##0.00"), _
+                    .NetWeight = CType(CDbl(txtNetWeight_PACKINGLIST.Value).ToString("#,##0.00"), Decimal?), _
+                    .GrossWeight = CType(CDbl(txtGrossWeight_PACKINGLIST.Value).ToString("#,##0.00"), Decimal?), _
                     .UserBy = CStr(Session("UserId")), _
                     .LastUpDate = Now
                             })
@@ -1584,10 +1708,10 @@ Public Class InvoicePackingListRec
                 tran.Complete()
             Catch ex As Exception
                 'ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด กรุณาบันทึกข้อมูลใหม่อีกครั้ง');", True)
-            Finally
-                db.Database.Connection.Close()
-                db.Dispose()
-                tran.Dispose()
+                'Finally
+                '    db.Database.Connection.Close()
+                '    db.Dispose()
+                '    tran.Dispose()
             End Try
         End Using
     End Sub
@@ -1600,20 +1724,20 @@ Public Class InvoicePackingListRec
                 db.Database.Connection.Open()
                 db.tblLogImpInvoiceDetails.Add(New tblLogImpInvoiceDetail With { _
                     .InvoiceNo = txtInvoiceNo_BeforeTab.Value.Trim, _
-                    .InvoiceDate = txtdatepickerInvoiceDate_beforeTab.Text.Trim, _
+                    .InvoiceDate = CType(txtdatepickerInvoiceDate_beforeTab.Text.Trim, Date?), _
                     .PLTAmount = txtPLTNetAmount_PACKINGLIST.Value.Trim, _
                     .CTNAmount = txtTotalCTN_PACKINGLIST.Value.Trim, _
                     .ProductDesc1 = txtProductDesc_ItemDetail.Value.Trim, _
                     .ProductDesc2 = txtCustomerPN_ItemDetail.Value.Trim, _
                     .ProductDesc3 = txtOwnerPN_ItemDetail.Value.Trim, _
                     .OriginCountry = ddlOriginCtry_ItemDetail.Text.Trim, _
-                    .Quantity = CDbl(txtQuantity_ItemDetail.Value).ToString("#,##0.00000"), _
-                    .NetWeight = CDbl(txtNetWeight_PACKINGLIST.Value).ToString("#,##0.00"), _
-                    .GrossWeight = CDbl(txtGrossWeight_PACKINGLIST.Value).ToString("#,##0.00"), _
-                    .Width = CDbl(txtMeasurement_Width_PACKINGLIST.Value).ToString("#,##0"), _
-                    .Hight = CDbl(txtMeasurement_Height_PACKINGLIST.Value).ToString("#,##0"), _
-                    .Leng = CDbl(txtLenght_PACKINGLIST.Value).ToString("#,##0"), _
-                    .PackVolume = CDbl(txtVolumeCBM_PACKINGLIST.Value).ToString("#,##0.000"), _
+                    .Quantity = CType(CDbl(txtQuantity_ItemDetail.Value).ToString("#,##0.00000"), Decimal?), _
+                    .NetWeight = CType(CDbl(txtNetWeight_PACKINGLIST.Value).ToString("#,##0.00"), Decimal?), _
+                    .GrossWeight = CType(CDbl(txtGrossWeight_PACKINGLIST.Value).ToString("#,##0.00"), Decimal?), _
+                    .Width = CType(CDbl(txtMeasurement_Width_PACKINGLIST.Value).ToString("#,##0"), Decimal?), _
+                    .Hight = CType(CDbl(txtMeasurement_Height_PACKINGLIST.Value).ToString("#,##0"), Decimal?), _
+                    .Leng = CType(CDbl(txtLenght_PACKINGLIST.Value).ToString("#,##0"), Decimal?), _
+                    .PackVolume = CType(CDbl(txtVolumeCBM_PACKINGLIST.Value).ToString("#,##0.000"), Decimal?), _
                     .UserBy = CStr(Session("UserId")), _
                     .LastUpDate = Now
                 })
@@ -1638,7 +1762,7 @@ Public Class InvoicePackingListRec
                 db.Database.Connection.Open()
                 db.tblLogImpPackingLists.Add(New tblLogImpPackingList With { _
                 .InvoiceNo = txtInvoiceNo_BeforeTab.Value.Trim, _
-                .InvoiceDate = txtdatepickerInvoiceDate_beforeTab.Text.Trim, _
+                .InvoiceDate = CType(txtdatepickerInvoiceDate_beforeTab.Text.Trim, Date?), _
                 .ConsignneeCode = txtConsigneeCode.Value.Trim, _
                 .EASExporterCode = txtOwnerCode_EASJOB.Value.Trim, _
                 .EASInvRefNo = txtEASINV_EASJOB.Value.Trim, _
@@ -1651,13 +1775,13 @@ Public Class InvoicePackingListRec
                 .ProductDesc2 = txtCustomerPN_ItemDetail.Value.Trim, _
                 .ProductDesc3 = txtOwnerPN_ItemDetail.Value.Trim, _
                 .OriginCountry = ddlOriginCtry_ItemDetail.Text.Trim, _
-                .Quantity = CDbl(txtQuantity_ItemDetail.Value).ToString("#,##0.00000"), _
-                .NetWeight = CDbl(txtNetWeight_PACKINGLIST.Value).ToString("#,##0.00"), _
-                .GrossWeight = CDbl(txtGrossWeight_PACKINGLIST.Value).ToString("#,##0.00"), _
-                .Width = CDbl(txtMeasurement_Width_PACKINGLIST.Value).ToString("#,##0"), _
-                .Hight = CDbl(txtMeasurement_Height_PACKINGLIST.Value).ToString("#,##0"), _
-                .Leng = CDbl(txtLenght_PACKINGLIST.Value).ToString("#,##0"), _
-                .PackVolume = CDbl(txtVolumeCBM_PACKINGLIST.Value).ToString("#,##0.000"), _
+                .Quantity = CType(CDbl(txtQuantity_ItemDetail.Value).ToString("#,##0.00000"), Decimal?), _
+                .NetWeight = CType(CDbl(txtNetWeight_PACKINGLIST.Value).ToString("#,##0.00"), Decimal?), _
+                .GrossWeight = CType(CDbl(txtGrossWeight_PACKINGLIST.Value).ToString("#,##0.00"), Decimal?), _
+                .Width = CType(CDbl(txtMeasurement_Width_PACKINGLIST.Value).ToString("#,##0"), Decimal?), _
+                .Hight = CType(CDbl(txtMeasurement_Height_PACKINGLIST.Value).ToString("#,##0"), Decimal?), _
+                .Leng = CType(CDbl(txtLenght_PACKINGLIST.Value).ToString("#,##0"), Decimal?), _
+                .PackVolume = CType(CDbl(txtVolumeCBM_PACKINGLIST.Value).ToString("#,##0.000"), Decimal?), _
                 .UserBy = CStr(Session("UserId")), _
                 .LastUpDate = Now
                 })
@@ -1675,7 +1799,7 @@ Public Class InvoicePackingListRec
     End Sub
 
     Private Sub ClearDATA()
-        
+
         txtInvoiceNo_BeforeTab.Value = ""
         txtDeclaretion_BeforeTab.Value = ""
         txtJobNo_BeforeTab.Value = ""
@@ -1733,10 +1857,10 @@ Public Class InvoicePackingListRec
         txtTotalInvoiceTHB1_Invoice.Value = ""
         txtTotalInvoiceTHB2_Invoice.Value = ""
         txtdatepickerTransmitDate.Text = ""
-        rdbDiffAmount1.Checked = False
-        rdbDiffWeight1.Checked = False
-        rdbNotifyParty1.Checked = False
-        rdbOnBehalfOf1.Checked = False
+        rdbDiffAmount2.Checked = False
+        rdbDiffWeight2.Checked = False
+        rdbNotifyParty2.Checked = False
+        rdbOnBehalfOf2.Checked = False
         chkEnable.Checked = False
         txtOwnerCode_EASJOB.Value = ""
         txtNameOwner_EASJOB.Value = ""
@@ -1879,6 +2003,7 @@ Public Class InvoicePackingListRec
         txtPONo_PACKINGLIST.Value = ""
         rdbCM.Checked = False
         rdbInch.Checked = False
+        chkCopyToDetail.Checked = False
     End Sub
     Protected Sub Unnamed_ServerClick5(sender As Object, e As EventArgs)
 
@@ -1902,5 +2027,148 @@ Public Class InvoicePackingListRec
 
     Protected Sub Unnamed_ServerClick10(sender As Object, e As EventArgs)
 
+    End Sub
+    '-------------------------------------------------------------Check CopytoDetail IN PACKINGLIST TAB---------------------------------
+    Private Sub CopytoDetail()
+        Dim RC As String
+
+        If chkCopyToDetail.Checked = False Then
+            RC = "1" 'ไม่ทำงาน
+        End If
+        If chkCopyToDetail.Checked = True Then
+            RC = "0" 'ทำงาน
+            txtProductCode_ItemDetail.Value = txtProductCode_PACKINGLIST.Value.Trim
+            txtProductDesc_ItemDetail.Value = txtProductDesc_PACKINGLIST.Value.Trim
+            txtCustomerPN_ItemDetail.Value = txtCustomerPN_PACKINGLIST.Value.Trim
+            txtOwnerPN_ItemDetail.Value = txtOwnerPN_PACKINGLIST.Value.Trim
+            ddlOriginCtry_ItemDetail.Text = txtOriginCtry_PACKINGLIST.Value.Trim
+            ddlUnit1_ItemDetail.Text = ddlUnit_PACKINGLIST.Text.Trim
+            ddlUnit3_ItemDetail.Text = ddlUnit_PACKINGLIST.Text.Trim
+            txtInvQty_ItemDetail.Value = txtProductQuantity_PACKINGLIST.Value.Trim
+            txtQuantity_ItemDetail.Value = txtProductQuantity_PACKINGLIST.Value.Trim
+            txtWeight_ItemDetail.Value = txtNetWeight_PACKINGLIST.Value.Trim
+            itemdetail_fieldset.Disabled = False
+        End If
+    End Sub
+    '-----------------------------------------------------------------Gen Invoice No------------------------------------------------------
+    Private Sub GenNum()
+        Dim tmpDate As Single
+        Dim tmpMount As Single
+        'Dim tmpYear As Single
+        Dim Nemount As String
+        Dim Neyear As String
+        Dim DigitNo_ As String = "000"
+        Dim LotNo As String
+        Dim Nmount As Single
+        Dim Num As Single
+        Dim Mount As Single
+        Dim Year As Single
+        Dim Digit As Single
+        Dim Type As String = "LKBRCB"
+        Dim num_ As String
+        Dim dunNo As String
+
+        Nemount = tmpMount.ToString("0#")
+        Neyear = Nmount.ToString("0#")
+
+        tmpDate = CSng(Format(Now(), "dd"))
+        tmpMount = CSng(Format(Now(), "MM"))
+        Nmount = CSng(Format(Now(), "yy")) + 43
+        'tmpYear = Format(CDate(Nmount), "yy")
+        Mount = CSng(Nemount)
+        Year = CSng(Neyear)
+        Digit = CSng(DigitNo_)
+
+        LotNo = "LKB-" & "RCB-" & Nmount.ToString("0#") & tmpMount.ToString("0#") & Num.ToString("00#")
+
+        Dim sqlSearch = (From ep In db.tblGenAutoRunNoes Where ep.TypeCode = Type And ep.MountNo = Nemount And ep.YearNo = Neyear And ep.RunNo = LotNo
+               Group By TypeCode = ep.TypeCode,
+               MountNo = ep.MountNo,
+               YearNo = ep.YearNo,
+               DigitNo = ep.DigitNo Into g = Group, Count()).SingleOrDefault
+
+        If Not sqlSearch Is Nothing Then
+            Digit = CSng(sqlSearch.DigitNo)
+
+            If Nmount = Year Then
+                If tmpMount = Mount Then
+                    Digit = Digit + 1
+                    Num = Digit
+                End If
+
+                If tmpMount <> Mount Then
+                    Digit = 0
+                    Num = Digit + 1
+                End If
+            End If
+            If Nmount <> Year Then
+                Digit = 0
+                If tmpMount = Mount Then
+                    Digit = Digit + 1
+                    Num = Digit
+                End If
+
+                If tmpMount <> Mount Then
+                    Digit = 0
+                    Num = Digit + 1
+                End If
+            End If
+            num_ = Num.ToString("00#")
+            dunNo = LotNo & Num.ToString("00#")
+            upDateGenNum(Type, Nemount, Neyear, num_)
+            txtInvoiceNo_BeforeTab.Value = dunNo
+        Else
+
+            If Nmount = Year Then
+                If tmpMount = Mount Then
+                    Digit = Digit + 1
+                    Num = Digit
+                ElseIf tmpMount <> Mount Then
+                    tmpMount = Mount
+                    Num = Digit + 1
+                End If
+
+            End If
+            If Nmount <> Year Then
+                tmpMount = Year
+                If tmpMount = Mount Then
+                    Digit = Digit + 1
+                    Num = Digit
+                End If
+
+                If Nmount <> Mount Then
+                    tmpMount = Mount
+                    Num = Digit + 1
+                End If
+
+            End If
+            num_ = Num.ToString("00#")
+            dunNo = LotNo & Num.ToString("00#")
+
+            db.tblGenAutoRunNoes.Add(New tblGenAutoRunNo With { _
+                                .TypeCode = Type, _
+                                .RunNo = LotNo, _
+                                .MountNo = Nemount, _
+                                .YearNo = Neyear, _
+                                .DigitNo = num_
+                            })
+            db.SaveChanges()
+            txtInvoiceNo_BeforeTab.Value = dunNo
+
+        End If
+    End Sub
+
+    Private Sub upDateGenNum(type As String, Nemount As String, Neyear As String, DigitNo As String)
+        Try
+            Dim up = (From g In db.tblGenAutoRunNoes Where g.TypeCode = type And g.MountNo = Nemount And g.YearNo = Neyear Select g).First
+            If up IsNot Nothing Then
+
+                up.DigitNo = DigitNo
+
+                db.SaveChanges()
+            End If
+        Catch ex As Exception
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", ex.Message, True)
+        End Try
     End Sub
 End Class
