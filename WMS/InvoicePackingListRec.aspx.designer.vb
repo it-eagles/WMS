@@ -1121,6 +1121,33 @@ Partial Public Class InvoicePackingListRec
     Protected WithEvents itemdetail_fieldset As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
+    '''Repea1Panel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Repea1Panel As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''Repea1UpdatePanel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Repea1UpdatePanel As Global.System.Web.UI.UpdatePanel
+
+    '''<summary>
+    '''Repea1_Itemdetail control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Repea1_Itemdetail As Global.System.Web.UI.WebControls.Repeater
+
+    '''<summary>
     '''ddlBrand_ItemDetail control.
     '''</summary>
     '''<remarks>
@@ -2181,4 +2208,31 @@ Partial Public Class InvoicePackingListRec
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents Repeater4 As Global.System.Web.UI.WebControls.Repeater
+
+    '''<summary>
+    '''ProductCode_ItemdetailPanel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ProductCode_ItemdetailPanel As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''ProductCode_ItemdetailUpdatePanel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ProductCode_ItemdetailUpdatePanel As Global.System.Web.UI.UpdatePanel
+
+    '''<summary>
+    '''Repeater5 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Repeater5 As Global.System.Web.UI.WebControls.Repeater
 End Class

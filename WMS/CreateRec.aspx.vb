@@ -2645,6 +2645,8 @@ Public Class CreateRec
         Dim cu = From um In db.tblUserMenus Where um.UserName = user And um.Form = form And um.Save_ = 1
         If cu.Any Then
             SaveDATA_Modify()
+            InsertData()
+            ClearDATA()
             ReadDATA2()
         Else
             ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ์เมนูนี้ !!!')", True)
@@ -3605,4 +3607,5 @@ Public Class CreateRec
         End If
         txtJobno.Focus()
     End Sub
+
 End Class
