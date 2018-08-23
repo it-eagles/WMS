@@ -27,6 +27,12 @@ Public Class InvoicePackingListRec
                     showshipmode()
                     showdeliveryterm()
                     showshipmark()
+                    showBrand()
+                    showNatureOfTrn()
+                    showPurcharseCtry()
+                    showOriginCtry()
+                    showUnitItemdetail()
+                    showCurrency_Itemdetail()
 
                     btnGen_BeforeTab.Disabled = True
                     Head_fieldset.Disabled = True
@@ -474,6 +480,225 @@ Public Class InvoicePackingListRec
         Catch ex As Exception
         End Try
     End Sub
+    '------------------------------------------------------------Show ddl Brand-----------------------------------------------------
+    Private Sub showBrand()
+
+        Dim gg = From g In db.tblMasterCodes Where g.Type = "BRAND"
+                  Select g.Type, g.Code
+        Try
+            ddlBrand_ItemDetail.DataSource = gg.ToList
+            ddlBrand_ItemDetail.DataTextField = "Code"
+            ddlBrand_ItemDetail.DataValueField = "Code"
+            ddlBrand_ItemDetail.DataBind()
+
+            If ddlBrand_ItemDetail.Items.Count > 1 Then
+                ddlBrand_ItemDetail.Enabled = True
+            Else
+                ddlBrand_ItemDetail.Enabled = False
+            End If
+
+        Catch ex As Exception
+        End Try
+    End Sub
+    '------------------------------------------------------------Show ddl Nature of trn-----------------------------------------------------
+    Private Sub showNatureOfTrn()
+
+        Dim gg = From g In db.tblMasterCodes Where g.Type = "PAYMENTTERM"
+                  Select g.Type, g.Code
+        Try
+            ddlNatureOfTRN_ItemDetail.DataSource = gg.ToList
+            ddlNatureOfTRN_ItemDetail.DataTextField = "Code"
+            ddlNatureOfTRN_ItemDetail.DataValueField = "Code"
+            ddlNatureOfTRN_ItemDetail.DataBind()
+
+            If ddlNatureOfTRN_ItemDetail.Items.Count > 1 Then
+                ddlNatureOfTRN_ItemDetail.Enabled = True
+            Else
+                ddlNatureOfTRN_ItemDetail.Enabled = False
+            End If
+
+        Catch ex As Exception
+        End Try
+    End Sub
+    '------------------------------------------------------------Show ddl Purcharse Ctry-----------------------------------------------------
+    Private Sub showPurcharseCtry()
+
+        Dim gg = From g In db.tblMasterCodes Where g.Type = "Country"
+                  Select g.Type, g.Code
+        Try
+            ddlPurchaseCtry_ItemDetail.DataSource = gg.ToList
+            ddlPurchaseCtry_ItemDetail.DataTextField = "Code"
+            ddlPurchaseCtry_ItemDetail.DataValueField = "Code"
+            ddlPurchaseCtry_ItemDetail.DataBind()
+
+            If ddlPurchaseCtry_ItemDetail.Items.Count > 1 Then
+                ddlPurchaseCtry_ItemDetail.Enabled = True
+            Else
+                ddlPurchaseCtry_ItemDetail.Enabled = False
+            End If
+
+        Catch ex As Exception
+        End Try
+    End Sub
+    '------------------------------------------------------------Show ddl Origin_Itemdetail Ctry-----------------------------------------------------
+    Private Sub showOriginCtry()
+
+        Dim gg = From g In db.tblMasterCodes Where g.Type = "Country"
+                  Select g.Type, g.Code
+        Try
+            ddlOriginCtry_ItemDetail.DataSource = gg.ToList
+            ddlOriginCtry_ItemDetail.DataTextField = "Code"
+            ddlOriginCtry_ItemDetail.DataValueField = "Code"
+            ddlOriginCtry_ItemDetail.DataBind()
+
+            If ddlOriginCtry_ItemDetail.Items.Count > 1 Then
+                ddlOriginCtry_ItemDetail.Enabled = True
+            Else
+                ddlOriginCtry_ItemDetail.Enabled = False
+            End If
+
+        Catch ex As Exception
+        End Try
+    End Sub
+    '------------------------------------------------------------Show ddl Unit_Itemdetail-----------------------------------------------------
+    Private Sub showUnitItemdetail()
+
+        Dim gg = From g In db.tblMasterCodes Where g.Type = "UNIT"
+                  Select g.Type, g.Code
+        Try
+            ddlUnit1_ItemDetail.DataSource = gg.ToList
+            ddlUnit1_ItemDetail.DataTextField = "Code"
+            ddlUnit1_ItemDetail.DataValueField = "Code"
+            ddlUnit1_ItemDetail.DataBind()
+
+            ddlUnit2_ItemDetail.DataSource = gg.ToList
+            ddlUnit2_ItemDetail.DataTextField = "Code"
+            ddlUnit2_ItemDetail.DataValueField = "Code"
+            ddlUnit2_ItemDetail.DataBind()
+
+            ddlUnit3_ItemDetail.DataSource = gg.ToList
+            ddlUnit3_ItemDetail.DataTextField = "Code"
+            ddlUnit3_ItemDetail.DataValueField = "Code"
+            ddlUnit3_ItemDetail.DataBind()
+
+            If ddlUnit1_ItemDetail.Items.Count > 1 Then
+                ddlUnit1_ItemDetail.Enabled = True
+            Else
+                ddlUnit1_ItemDetail.Enabled = False
+            End If
+
+            If ddlUnit2_ItemDetail.Items.Count > 1 Then
+                ddlUnit2_ItemDetail.Enabled = True
+            Else
+                ddlUnit2_ItemDetail.Enabled = False
+            End If
+
+            If ddlUnit3_ItemDetail.Items.Count > 1 Then
+                ddlUnit3_ItemDetail.Enabled = True
+            Else
+                ddlUnit3_ItemDetail.Enabled = False
+            End If
+
+        Catch ex As Exception
+        End Try
+    End Sub
+    '------------------------------------------------------------Show ddl Currency_Itemdetail-----------------------------------------------------
+    Private Sub showCurrency_Itemdetail()
+
+        Dim gg = From g In db.tblMasterCodes Where g.Type = "Currency"
+                  Select g.Type, g.Code
+        Try
+            ddlCurrency_ItemDetail.DataSource = gg.ToList
+            ddlCurrency_ItemDetail.DataTextField = "Code"
+            ddlCurrency_ItemDetail.DataValueField = "Code"
+            ddlCurrency_ItemDetail.DataBind()
+
+            ddlForwarding_Currency_ItemDetail.DataSource = gg.ToList
+            ddlForwarding_Currency_ItemDetail.DataTextField = "Code"
+            ddlForwarding_Currency_ItemDetail.DataValueField = "Code"
+            ddlForwarding_Currency_ItemDetail.DataBind()
+
+            ddlInsurance_Currency_ItemDetail.DataSource = gg.ToList
+            ddlInsurance_Currency_ItemDetail.DataTextField = "Code"
+            ddlInsurance_Currency_ItemDetail.DataValueField = "Code"
+            ddlInsurance_Currency_ItemDetail.DataBind()
+
+            ddlFreight_Currency_ItemDetail.DataSource = gg.ToList
+            ddlFreight_Currency_ItemDetail.DataTextField = "Code"
+            ddlFreight_Currency_ItemDetail.DataValueField = "Code"
+            ddlFreight_Currency_ItemDetail.DataBind()
+
+            ddlPackageCharge_Currency_ItemDetail1.DataSource = gg.ToList
+            ddlPackageCharge_Currency_ItemDetail1.DataTextField = "Code"
+            ddlPackageCharge_Currency_ItemDetail1.DataValueField = "Code"
+            ddlPackageCharge_Currency_ItemDetail1.DataBind()
+
+            ddlForeignInlandFreidge_Currency_ItemDetail1.DataSource = gg.ToList
+            ddlForeignInlandFreidge_Currency_ItemDetail1.DataTextField = "Code"
+            ddlForeignInlandFreidge_Currency_ItemDetail1.DataValueField = "Code"
+            ddlForeignInlandFreidge_Currency_ItemDetail1.DataBind()
+
+            ddlLandingCharge_Currency_ItemDetail1.DataSource = gg.ToList
+            ddlLandingCharge_Currency_ItemDetail1.DataTextField = "Code"
+            ddlLandingCharge_Currency_ItemDetail1.DataValueField = "Code"
+            ddlLandingCharge_Currency_ItemDetail1.DataBind()
+
+            ddlOtherCharge_Currency_ItemDetail1.DataSource = gg.ToList
+            ddlOtherCharge_Currency_ItemDetail1.DataTextField = "Code"
+            ddlOtherCharge_Currency_ItemDetail1.DataValueField = "Code"
+            ddlOtherCharge_Currency_ItemDetail1.DataBind()
+
+            If ddlCurrency_ItemDetail.Items.Count > 1 Then
+                ddlCurrency_ItemDetail.Enabled = True
+            Else
+                ddlCurrency_ItemDetail.Enabled = False
+            End If
+
+            If ddlForwarding_Currency_ItemDetail.Items.Count > 1 Then
+                ddlForwarding_Currency_ItemDetail.Enabled = True
+            Else
+                ddlForwarding_Currency_ItemDetail.Enabled = False
+            End If
+
+            If ddlInsurance_Currency_ItemDetail.Items.Count > 1 Then
+                ddlInsurance_Currency_ItemDetail.Enabled = True
+            Else
+                ddlInsurance_Currency_ItemDetail.Enabled = False
+            End If
+
+            If ddlFreight_Currency_ItemDetail.Items.Count > 1 Then
+                ddlFreight_Currency_ItemDetail.Enabled = True
+            Else
+                ddlFreight_Currency_ItemDetail.Enabled = False
+            End If
+
+            If ddlPackageCharge_Currency_ItemDetail1.Items.Count > 1 Then
+                ddlPackageCharge_Currency_ItemDetail1.Enabled = True
+            Else
+                ddlPackageCharge_Currency_ItemDetail1.Enabled = False
+            End If
+
+            If ddlForeignInlandFreidge_Currency_ItemDetail1.Items.Count > 1 Then
+                ddlForeignInlandFreidge_Currency_ItemDetail1.Enabled = True
+            Else
+                ddlForeignInlandFreidge_Currency_ItemDetail1.Enabled = False
+            End If
+
+            If ddlLandingCharge_Currency_ItemDetail1.Items.Count > 1 Then
+                ddlLandingCharge_Currency_ItemDetail1.Enabled = True
+            Else
+                ddlLandingCharge_Currency_ItemDetail1.Enabled = False
+            End If
+
+            If ddlOtherCharge_Currency_ItemDetail1.Items.Count > 1 Then
+                ddlOtherCharge_Currency_ItemDetail1.Enabled = True
+            Else
+                ddlOtherCharge_Currency_ItemDetail1.Enabled = False
+            End If
+
+        Catch ex As Exception
+        End Try
+    End Sub
     '--------------------------------------------------------Show Data Shipper In Modal-----------------------------------------
     Public Sub showListShipper()
 
@@ -779,6 +1004,177 @@ Public Class InvoicePackingListRec
         Catch ex As Exception
         End Try
     End Sub
+    '--------------------------------------------------------Show Data ProductCode_Itemdetail In Modal-----------------------------------------
+    Private Sub SelectProductCode_Itemdetail()
+        Dim testdate As Integer
+        Dim ProCode As String = ""
+        If String.IsNullOrEmpty(txtProductCode_ItemDetail.Value.Trim) Then
+            testdate = CInt(Convert.ToDateTime(Date.Now).ToString("yyyy"))
+        Else
+            ProCode = txtProductCode_ItemDetail.Value.Trim
+        End If
+
+        Dim cons = (From u In db.tblProductDetails
+                     Where u.ProductCode = ProCode Or u.CreateDate.Year = testdate
+                    Select New With {u.ProductCode,
+                                     u.ExpDesc1,
+                                     u.EndUserPart,
+                                     u.CustomerPart,
+                                     u.ExpProductAttribute1}).ToList()
+
+        If cons.Count > 0 Then
+            Repeater5.DataSource = cons.ToList
+            Repeater5.DataBind()
+            ScriptManager.RegisterStartupScript(ProductCode_ItemdetailUpdatePanel, ProductCode_ItemdetailUpdatePanel.GetType(), "show", "$(function () { $('#" + ProductCode_ItemdetailPanel.ClientID + "').modal('show'); });", True)
+            ProductCode_ItemdetailUpdatePanel.Update()
+        Else
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('ไม่พบข้อมูล Product Code นี้')", True)
+            Exit Sub
+
+        End If
+    End Sub
+    '--------------------------------------------------------------Click Search CustomerCode_BillTo-----------------------------------------------
+    Protected Sub Unnamed_ServerClick5(sender As Object, e As EventArgs)
+        SelectProductCode_Itemdetail()
+    End Sub
+    '--------------------------------------------------------Click Data CustomerCode_BillTo In Modal-----------------------------------------
+    Protected Sub Repeater5_ItemCommand(source As Object, e As RepeaterCommandEventArgs) Handles Repeater5.ItemCommand
+        Dim ProductCode As String = CStr(e.CommandArgument)
+        Try
+            If e.CommandName.Equals("SelectProductCode_Itemdetail") Then
+
+                If String.IsNullOrEmpty(ProductCode) Then
+
+                    MsgBox("เป็นค่าว่าง")
+                Else
+                    Dim user = (From u In db.tblProductDetails Where u.ProductCode = ProductCode).SingleOrDefault
+
+                    txtProductCode_ItemDetail.Value = user.ProductCode
+                    txtProductDesc_ItemDetail.Value = user.ImpDesc1
+                    txtCustomerPN_ItemDetail.Value = user.EndUserPart
+                    txtOwnerPN_ItemDetail.Value = user.CustomerPart
+                    txtProductAttribute1_ItemDetail.Value = user.ExpProductAttribute1
+                    txtPONo_ItemDetail.Value = user.PONo
+                    txtFormulaNo_ItemDetail.Value = user.ExpFomulaNo
+                    txt19BisTransferNo_ItemDetail.Value = user.Exp19BisTranNo
+                    txtBOILicenseNo_ItemDetail.Value = user.ExpBOINo
+                    txtBondFormulaNo_ItemDetail.Value = user.ExpBondFormulaNo
+                    txtProductYear_ItemDetail.Value = user.ExpProductYear
+                    txtTariffSequence_ItemDetail.Value = user.ExpTariffSequence
+                    txtTariffCode_ItemDetail.Value = user.ExpTariffCode
+                End If
+            End If
+        Catch ex As Exception
+        End Try
+    End Sub
+    '-----------------------------------------------------------------Show Repea1 ProductCode ITEMDETAIL TAB------------------------------------------
+    Private Sub ReadDATA()
+        Dim sqlConsignnee = From ab In db.tblImpInvoiceDetails Where ab.InvoiceNo = txtInvoiceNo_BeforeTab.Value.Trim Order By ab.ItemNo Ascending
+        Select ab.ItemNo,
+                 ab.Product,
+                 ab.ProductYear,
+                 ab.Brand,
+                 ab.NatureofTrn,
+                 ab.PurchaseCountry,
+                 ab.OriginCountry,
+                 ab.InvoiceNo
+        Try
+            If sqlConsignnee.Count > 0 Then
+                Repea1_Itemdetail.DataSource = sqlConsignnee.ToList
+                Repea1_Itemdetail.DataBind()
+                'ScriptManager.RegisterStartupScript(Repea2UpdatePanel.GetType(), Repea2Panel.ClientID, True)
+                Repea1UpdatePanel.Update()
+            Else
+                Repea1_Itemdetail.DataSource = Nothing
+                Repea1_Itemdetail.DataBind()
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+    Protected Sub Repea1_Itemdetail_ItemCommand(source As Object, e As RepeaterCommandEventArgs) Handles Repea1_Itemdetail.ItemCommand
+        Dim InvoiceNo As String = CStr(e.CommandArgument)
+        Try
+            If e.CommandName.Equals("SelectProductCode_Repea1_Itemdetail") Then
+
+                If String.IsNullOrEmpty(InvoiceNo) Then
+
+                    MsgBox("เป็นค่าว่าง")
+                Else
+                    Dim user = (From u In db.tblImpInvoiceDetails Where u.InvoiceNo = InvoiceNo).SingleOrDefault
+
+                    'txtInvoiceNo_BeforeTab.Value = user.InvoiceNo
+                    txtItemNo_ItemDetail.Value = user.ItemNo
+                    txtProductCode_ItemDetail.Value = user.Product
+                    txtProductYear_ItemDetail.Value = user.ProductYear
+                    ddlBrand_ItemDetail.Text = user.Brand
+                    ddlNatureOfTRN_ItemDetail.Text = user.NatureofTrn
+                    ddlPurchaseCtry_ItemDetail.Text = user.PurchaseCountry
+                    ddlOriginCtry_ItemDetail.Text = user.OriginCountry
+                    txtProductDesc_ItemDetail.Value = user.ProductDesc1
+                    txtCustomerPN_ItemDetail.Value = user.ProductDesc2
+                    txtOwnerPN_ItemDetail.Value = user.ProductDesc3
+                    txtInvQty_ItemDetail.Value = CStr(user.InvQty)
+                    ddlUnit1_ItemDetail.Text = user.InvUnit
+                    txtUnit1_ItemDetail.Value = user.InvUnitDetail
+                    txtWeight_ItemDetail.Value = CStr(user.Weight)
+                    ddlUnit2_ItemDetail.Text = user.WeightUnit
+                    txtUnit2_ItemDetail.Value = user.WeightUnitDetail
+                    txtQuantity_ItemDetail.Value = CStr(user.Quantity)
+                    ddlUnit3_ItemDetail.Text = user.QuantityUnit
+                    txtUnit3_ItemDetail.Value = user.QuantityUnitDetail
+                    txtTariffCode_ItemDetail.Value = user.TariffCode
+                    txtStatisticalCode_ItemDetail.Value = user.StatisticalCode
+                    txtTariffSequence_ItemDetail.Value = user.TariffSequence
+                    txtProductAttribute1_ItemDetail.Value = user.ProductAttribute1
+                    txtPONo_ItemDetail.Value = user.ProductAttribute2
+                    txtPriceIncreaseForreign_ItemDetail.Value = CStr(user.PriceIncreaseForeign)
+                    txtPriceIncreaseBath_ItemDetail.Value = CStr(user.PriceIncreseBath)
+                    txtDeclaretionLine_ItemDetail.Value = user.DeclarationLine
+                    txtFormulaNo_ItemDetail.Value = user.FormulaNo
+                    txtBOILicenseNo_ItemDetail.Value = user.BOILicenseNo
+                    txt19BisTransferNo_ItemDetail.Value = user.X19BisTransferNo
+                    txtBondFormulaNo_ItemDetail.Value = user.BondFormulaNo
+                    ddlCurrency_ItemDetail.Text = user.Currency
+                    txtExchangeRate_ItemDetail.Value = CStr(user.ExchangeRate)
+                    txtPriceForeign_ItemDetail.Value = CStr(user.PriceForeigh)
+                    txtAmountForeign_ItemDetail.Value = CStr(user.PriceForeighAmount)
+                    txtPriceBath_ItemDetail.Value = CStr(user.PriceBath)
+                    txtAmountBath_ItemDetail.Value = CStr(user.PriceBathAmount)
+                    ddlForwarding_Currency_ItemDetail.Text = user.ForwardingCurrency
+                    txtForwarding_ForeignAmount_ItemDetail.Value = CStr(user.ForwardingForiegnAmount)
+                    txtForwarding_Exchange_ItemDetail.Value = CStr(user.ForwardingExchangeRate)
+                    txtForwarding_BathAmount_ItemDetail.Value = CStr(user.ForwardBathAmount)
+                    ddlFreight_Currency_ItemDetail.Text = user.FreightCurrency
+                    txtFreight_ForeignAmount_ItemDetail.Value = CStr(user.FreightForiegnAmount)
+                    txtFreight_Exchange_ItemDetail.Value = CStr(user.FreightExchangeRate)
+                    txtFreight_BathAmount_ItemDetail.Value = CStr(user.FreightBathAmount)
+                    ddlInsurance_Currency_ItemDetail.Text = user.InsuranceCurrency
+                    txtInsurance_ForeignAmount_ItemDetail.Value = CStr(user.InsuranceForiegnAmount)
+                    txtInsurance_Exchange_ItemDetail.Value = CStr(user.InsuranceExchangeRate)
+                    txtInsurance_BathAmount_ItemDetail.Value = CStr(user.InsuranceBathAmount)
+                    ddlPackageCharge_Currency_ItemDetail1.Text = user.PackageChargeCurrency
+                    txtPackageCharge_ForeignAmount_ItemDetail.Value = CStr(user.PackageChargeForiegnAmount)
+                    txtPackageCharge_Exchange_ItemDetail.Value = CStr(user.PackageChargeExchangeRate)
+                    txtPackageCharge_BathAmount_ItemDetail.Value = CStr(user.PackageChargeBathAmount)
+                    ddlForeignInlandFreidge_Currency_ItemDetail1.Text = user.ForeighnInlandFreidgeCurrency
+                    txtForeignInlandFreidge_ForeignAmount_ItemDetail.Value = CStr(user.ForeighnInlandFreidgeForiegnAmount)
+                    txtForeignInlandFreidge_Exchange_ItemDetail.Value = CStr(user.ForeighnInlandFreidgeExchangeRate)
+                    txtForeignInlandFreidge_BathAmount_ItemDetail.Value = CStr(user.ForeighnInlandFreidgeBathAmount)
+                    ddlLandingCharge_Currency_ItemDetail1.Text = user.LandingChargeCurrency
+                    txtLandingCharge_ForeignAmount_ItemDetail.Value = CStr(user.LandingChargeForiegnAmount)
+                    txtLandingCharge_Exchange_ItemDetail.Value = CStr(user.LandingChargeExchangeRate)
+                    txtLandingCharge_BathAmount_ItemDetail.Value = CStr(user.LandingChargeBathAmount)
+                    ddlOtherCharge_Currency_ItemDetail1.Text = user.OtherChargeCurrency
+                    txtOtherCharge_ForeignAmount_ItemDetail.Value = CStr(user.OtherChargeForiegnAmount)
+                    txtOtherCharge_Exchange_ItemDetail.Value = CStr(user.OtherChargeExchangeRate)
+                    txtOtherCharge_BathAmount_ItemDetail.Value = CStr(user.OtherChargeBathAmount)
+                    txtRemark_ItemDetail.Value = user.ItemRemark
+                End If
+            End If
+        Catch ex As Exception
+        End Try
+    End Sub
     '---------------------------------------------------------------------Click btn Add Method---------------------------------------------------
     Protected Sub btnAddHead_ServerClick(sender As Object, e As EventArgs)
         btnSaveAddHead.Visible = True
@@ -817,9 +1213,10 @@ Public Class InvoicePackingListRec
         Dim form As String = "frmImpCustomsInvoice"
         Dim cu = From um In db.tblUserMenus Where um.UserName = user And um.Form = form And um.Save_ = 1
         If cu.Any Then
-            'SaveDATA_New()
-            'ClearDATA()
+            SaveDATA_New()
             InsertData()
+            ReadDATA()
+            'ClearDATA()
             itemdetail_fieldset.Disabled = False
 
         Else
@@ -833,8 +1230,9 @@ Public Class InvoicePackingListRec
         Dim cu = From um In db.tblUserMenus Where um.UserName = user And um.Form = form And um.Save_ = 1
         If cu.Any Then
             SaveDATA_Modify()
-            'ClearDATA()
             InsertData()
+            ReadDATA()
+            'ClearDATA()
             itemdetail_fieldset.Disabled = False
         Else
             ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ์เมนูนี้ !!!')", True)
@@ -2066,9 +2464,7 @@ Public Class InvoicePackingListRec
         rdbInch.Checked = False
         chkCopyToDetail.Checked = False
     End Sub
-    Protected Sub Unnamed_ServerClick5(sender As Object, e As EventArgs)
 
-    End Sub
 
     Protected Sub Unnamed_ServerClick6(sender As Object, e As EventArgs)
 

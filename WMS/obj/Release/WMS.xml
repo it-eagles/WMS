@@ -1854,9 +1854,9 @@ TabName control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.CustomsInvoice.Search1">
+</member><member name="F:WMS.CustomsInvoice.plSearch1">
 	<summary>
-Search1 control.
+plSearch1 control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -1953,6 +1953,14 @@ To modify move field declaration from designer file to code-behind file.
 </member><member name="F:WMS.CustomsInvoice.CalendarExtender6">
 	<summary>
 CalendarExtender6 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.CustomsInvoice.btnadd_">
+	<summary>
+btnadd_ control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -2126,89 +2134,9 @@ dgvIEAT107 control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.CustomsInvoice.txtTotalAmonut">
+</member><member name="F:WMS.CustomsInvoice.txtTotalAmornut">
 	<summary>
-txtTotalAmonut control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.CustomsInvoice.txtTotalUseAmonut">
-	<summary>
-txtTotalUseAmonut control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.CustomsInvoice.txtAmonut">
-	<summary>
-txtAmonut control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.CustomsInvoice.txtUseAmonut">
-	<summary>
-txtUseAmonut control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.CustomsInvoice.dtpForm">
-	<summary>
-dtpForm control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.CustomsInvoice.CalendarExtender7">
-	<summary>
-CalendarExtender7 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.CustomsInvoice.dtpTo">
-	<summary>
-dtpTo control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.CustomsInvoice.CalendarExtender9">
-	<summary>
-CalendarExtender9 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.CustomsInvoice.Checkbox1">
-	<summary>
-Checkbox1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.CustomsInvoice.dtpEx">
-	<summary>
-dtpEx control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.CustomsInvoice.CalendarExtender8">
-	<summary>
-CalendarExtender8 control.
+txtTotalAmornut control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -4865,6 +4793,30 @@ To modify move field declaration from designer file to code-behind file.
 </member><member name="F:WMS.InvoicePackingListRec.Repeater4">
 	<summary>
 Repeater4 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.InvoicePackingListRec.ProductCode_ItemdetailPanel">
+	<summary>
+ProductCode_ItemdetailPanel control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.InvoicePackingListRec.ProductCode_ItemdetailUpdatePanel">
+	<summary>
+ProductCode_ItemdetailUpdatePanel control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.InvoicePackingListRec.Repeater5">
+	<summary>
+Repeater5 control.
 </summary>
 	<remarks>
 Auto-generated field.

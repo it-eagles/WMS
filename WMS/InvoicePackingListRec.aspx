@@ -850,6 +850,70 @@
 
                                                 <%------------------------------------------------------------------Start Head------------------------------------------------------------------------------%>
                                                 <div class="col-lg-12 col-md-12 col-lg-offset-1">
+                                                    <div class="form-horizontal">
+                                                <asp:Panel ID="Repea1Panel" runat="server" >
+                                                    <asp:UpdatePanel ID="Repea1UpdatePanel" runat="server" UpdateMode="Conditional">
+                                                    <ContentTemplate>
+                                                <asp:Repeater ID="Repea1_Itemdetail" runat="server" OnItemCommand="Repea1_Itemdetail_ItemCommand">
+                                                                    <HeaderTemplate>
+                                                                        <table class="table table-bordered">
+                                                                            <th>Select</th>
+                                                                            <th>InvoiceNo</th>
+                                                                            <th>ItemNo</th>
+                                                                            <th>Product</th>
+                                                                            <th>Productyear</th>
+                                                                            <th>Brand</th>
+                                                                            <th>NatureofTrn</th>
+                                                                            <th>PurchaseCountry</th>
+                                                                            <th>OriginCountry</th>
+                                                                    </HeaderTemplate>
+                                                                    <ItemTemplate>
+                                                                        <tr class="success">
+                                                                            <td class="text-center">
+                                                                            <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectProductCode_Repea1_Itemdetail" CommandArgument='<%# Eval("InvoiceNo")%>'><i class="fa fa-hand-o-up"></i></asp:LinkButton>
+                                                                            </td>
+                                                                            <td><asp:Label ID="Label8" runat="server" Text='<%# Bind("InvoiceNo")%>'></asp:Label></td>
+                                                                            <td><asp:Label ID="lblJobSite" runat="server" Text='<%# Bind("ItemNo")%>'></asp:Label></td>
+                                                                            <td><asp:Label ID="Label1" runat="server" Text='<%# Bind("Product")%>'></asp:Label></td>
+                                                                            <td><asp:Label ID="Label2" runat="server" Text='<%# Bind("Productyear")%>'></asp:Label></td>
+                                                                            <td><asp:Label ID="Label5" runat="server" Text='<%# Bind("Brand")%>'></asp:Label></td>
+                                                                            <td><asp:Label ID="Label4" runat="server" Text='<%# Bind("NatureofTrn")%>'></asp:Label></td>
+                                                                            <td><asp:Label ID="Label6" runat="server" Text='<%# Bind("PurchaseCountry")%>'></asp:Label></td>
+                                                                            <td><asp:Label ID="Label7" runat="server" Text='<%# Bind("OriginCountry")%>'></asp:Label></td>
+                                                                        </tr>
+                                                                    </ItemTemplate>
+                                                                    <AlternatingItemTemplate>
+                                                                        <tr class="info">
+                                                                            <td class="text-center">
+                                                                            <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectProductCode_Itemdetail" CommandArgument='<%# Eval("InvoiceNo")%>'><i class="fa fa-hand-o-up"></i></asp:LinkButton>
+                                                                            </td>
+                                                                            <td><asp:Label ID="Label8" runat="server" Text='<%# Bind("InvoiceNo")%>'></asp:Label></td>
+                                                                            <td><asp:Label ID="lblJobSite" runat="server" Text='<%# Bind("ItemNo")%>'></asp:Label></td>
+                                                                            <td><asp:Label ID="Label1" runat="server" Text='<%# Bind("Product")%>'></asp:Label></td>
+                                                                            <td><asp:Label ID="Label2" runat="server" Text='<%# Bind("Productyear")%>'></asp:Label></td>
+                                                                            <td><asp:Label ID="Label5" runat="server" Text='<%# Bind("Brand")%>'></asp:Label></td>
+                                                                            <td><asp:Label ID="Label4" runat="server" Text='<%# Bind("NatureofTrn")%>'></asp:Label></td>
+                                                                            <td><asp:Label ID="Label6" runat="server" Text='<%# Bind("PurchaseCountry")%>'></asp:Label></td>
+                                                                            <td><asp:Label ID="Label7" runat="server" Text='<%# Bind("OriginCountry")%>'></asp:Label></td>                                                                            
+                                                                        </tr>
+                                                                    </AlternatingItemTemplate>
+                                                                    <FooterTemplate>
+                                                                            <th>Select</th>
+                                                                            <th>InvoiceNo</th>
+                                                                            <th>ItemNo</th>
+                                                                            <th>Product</th>
+                                                                            <th>Productyear</th>
+                                                                            <th>Brand</th>
+                                                                            <th>NatureofTrn</th>
+                                                                            <th>PurchaseCountry</th>
+                                                                            <th>OriginCountry</th>                                                                            
+                                                                        </table>
+                                                                    </FooterTemplate>
+                                                                </asp:Repeater>
+                                                </ContentTemplate>
+                                                </asp:UpdatePanel>
+                                                </asp:Panel>
+                                            </div>
                                                     <div class="col-lg-4 col-md-4">
                                                         <div class="form-group">
                                                             <label for="txtBrand_ItemDetail" class="col-sm-6 control-label">Brand:</label>
@@ -967,37 +1031,37 @@
                                                                 <div class="form-group">
                                                                     <label for="txtTariffCode_ItemDetail" class="col-sm-4 control-label">Tariff Code:</label>
                                                                     <div class="col-sm-8">
-                                                                        <input class="form-control" id="txtTariffCode_ItemDetail" runat="server" autocomplete="off" disabled="disabled" />
+                                                                        <input class="form-control" id="txtTariffCode_ItemDetail" runat="server" autocomplete="off"  />
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label for="txtTariffSequence_ItemDetail" class="col-sm-4 control-label">Tariff Sequence:</label>
                                                                     <div class="col-sm-8">
-                                                                        <input class="form-control" id="txtTariffSequence_ItemDetail" runat="server" autocomplete="off" disabled="disabled" />
+                                                                        <input class="form-control" id="txtTariffSequence_ItemDetail" runat="server" autocomplete="off"  />
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label for="txtPONo_ItemDetail" class="col-sm-4 control-label">PO No:</label>
                                                                     <div class="col-sm-8">
-                                                                        <input class="form-control" id="txtPONo_ItemDetail" runat="server" autocomplete="off" disabled="disabled" />
+                                                                        <input class="form-control" id="txtPONo_ItemDetail" runat="server" autocomplete="off"  />
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label for="txtDeclaretionLine_ItemDetail" class="col-sm-4 control-label">Declaretion Line:</label>
                                                                     <div class="col-sm-8">
-                                                                        <input class="form-control" id="txtDeclaretionLine_ItemDetail" runat="server" autocomplete="off" disabled="disabled" />
+                                                                        <input class="form-control" id="txtDeclaretionLine_ItemDetail" runat="server" autocomplete="off"  />
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label for="txtFormulaNo_ItemDetail" class="col-sm-4 control-label">Formula No:</label>
                                                                     <div class="col-sm-8">
-                                                                        <input class="form-control" id="txtFormulaNo_ItemDetail" runat="server" autocomplete="off" disabled="disabled" />
+                                                                        <input class="form-control" id="txtFormulaNo_ItemDetail" runat="server" autocomplete="off"  />
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label for="txt19BisTransferNo_ItemDetail" class="col-sm-4 control-label">19 Bis Transfer No:</label>
                                                                     <div class="col-sm-8">
-                                                                        <input class="form-control" id="txt19BisTransferNo_ItemDetail" runat="server" autocomplete="off" disabled="disabled" />
+                                                                        <input class="form-control" id="txt19BisTransferNo_ItemDetail" runat="server" autocomplete="off"  />
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group">
@@ -1150,37 +1214,37 @@
                                                                 <div class="form-group">
                                                                     <label for="txtStatisticalCode_ItemDetail" class="col-sm-4 control-label">Statistical Code:</label>
                                                                     <div class="col-sm-8">
-                                                                        <input class="form-control" id="txtStatisticalCode_ItemDetail" runat="server" autocomplete="off" disabled="disabled" />
+                                                                        <input class="form-control" id="txtStatisticalCode_ItemDetail" runat="server" autocomplete="off"  />
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label for="txtProductAttribute1_ItemDetail" class="col-sm-4 control-label">Product Attribute1:</label>
                                                                     <div class="col-sm-8">
-                                                                        <input class="form-control" id="txtProductAttribute1_ItemDetail" runat="server" autocomplete="off" disabled="disabled" />
+                                                                        <input class="form-control" id="txtProductAttribute1_ItemDetail" runat="server" autocomplete="off"  />
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label for="txtPriceIncreaseForreign_ItemDetail" class="col-sm-4 control-label">Price Increase Forreign:</label>
                                                                     <div class="col-sm-8">
-                                                                        <input class="form-control" id="txtPriceIncreaseForreign_ItemDetail" runat="server" autocomplete="off" disabled="disabled" />
+                                                                        <input class="form-control" id="txtPriceIncreaseForreign_ItemDetail" runat="server" autocomplete="off" value="0.0" />
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label for="txtPriceIncreaseBath_ItemDetail" class="col-sm-4 control-label">Price Increase Bath:</label>
                                                                     <div class="col-sm-8">
-                                                                        <input class="form-control" id="txtPriceIncreaseBath_ItemDetail" runat="server" autocomplete="off" disabled="disabled" />
+                                                                        <input class="form-control" id="txtPriceIncreaseBath_ItemDetail" runat="server" autocomplete="off" value="0.0" />
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label for="txtBOILicenseNo_ItemDetail" class="col-sm-4 control-label">BOI License No:</label>
                                                                     <div class="col-sm-8">
-                                                                        <input class="form-control" id="txtBOILicenseNo_ItemDetail" runat="server" autocomplete="off" disabled="disabled" />
+                                                                        <input class="form-control" id="txtBOILicenseNo_ItemDetail" runat="server" autocomplete="off"  />
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label for="txtBondFormulaNo_ItemDetail" class="col-sm-4 control-label">Bond Formula No:</label>
                                                                     <div class="col-sm-8">
-                                                                        <input class="form-control" id="txtBondFormulaNo_ItemDetail" runat="server" autocomplete="off" disabled="disabled" />
+                                                                        <input class="form-control" id="txtBondFormulaNo_ItemDetail" runat="server" autocomplete="off"  />
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group" style="height: 34px;"></div>
@@ -1893,6 +1957,84 @@
                                                     <th>PartyFullName</th>
                                                     <th>Address1</th>
                                                     <th>Address2</th>
+                                            </tr>
+                                        </tfoot>
+                                        </table>
+                                    </FooterTemplate>
+                                </asp:Repeater>
+                        </div>
+                    </div>
+                </section>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+              </div>
+                         </ContentTemplate>
+                    </asp:UpdatePanel>
+            </div>
+            </div>
+            <%--</div>--%>
+            </asp:Panel>
+        <!-- End CustomerCode_BillTo_EASJOB Modal -->   
+
+        <!-- ProductCode_Itemdetail Modal -->
+        <!-- Modal -->
+        <asp:Panel ID="ProductCode_ItemdetailPanel" runat="server" CssClass="modal" TabIndex="-1" role="dialog" aria-labelledby="myLabe1">
+        <%--<div class="modal fade" id="CustomerCode_BillTo_EASJOB_Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">--%>
+            <div class="modal-dialog modal-lg" role="dialog">
+                <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Select Product Code</h4>
+              </div>
+                    <asp:UpdatePanel ID="ProductCode_ItemdetailUpdatePanel" runat="server" UpdateMode="Conditional">
+                     <ContentTemplate>
+              <div class="modal-body">
+                <section class="content">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 " style="overflow:auto;">
+                            <asp:Repeater ID="Repeater5" runat="server" OnItemCommand="Repeater5_ItemCommand">
+                                    <HeaderTemplate>
+                                        <table id="example5" class="table table-bordered table-striped table-responsive" style="overflow:auto;">
+                                            <thead>
+                                                <tr>
+                                                    <th>Select</th>
+                                                    <th>ProductCode</th>
+                                                    <th>ExpDesc1</th>
+                                                    <th>EndUserPart</th>
+                                                    <th>CustomerPart</th>
+                                                    <th>ExpProductAttribute1</th>
+                                                </tr>
+                                            </thead>
+                                    </HeaderTemplate>
+
+                                    <ItemTemplate>
+                                        <tr>
+                                            <td class="text-center">
+                                                 <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectProductCode_Itemdetail" CommandArgument='<%# Eval("ProductCode")%>'><i class="fa fa-hand-o-up"></i></asp:LinkButton>
+                                            </td>
+                                            <td>
+                                                <asp:Label ID="lblPartyCode" runat="server" Text='<%# Bind("ProductCode")%>'></asp:Label></td>
+                                            <td>
+                                                <asp:Label ID="lblAddress3" runat="server" Text='<%# Bind("ExpDesc1")%>'></asp:Label></td>
+                                            <td>
+                                                <asp:Label ID="lblPartyFullName" runat="server" Text='<%# Bind("EndUserPart")%>'></asp:Label></td>
+                                            <td>
+                                                <asp:Label ID="lblAddress1" runat="server" Text='<%# Bind("CustomerPart")%>'></asp:Label></td>
+                                            <td>
+                                                <asp:Label ID="lblAddress2" runat="server" Text='<%# Bind("ExpProductAttribute1")%>'></asp:Label></td>
+                                        </tr>
+                                    </ItemTemplate>
+                                    <FooterTemplate>
+                                        <tfoot>
+                                            <tr>
+                                                    <th>Select</th>
+                                                    <th>ProductCode</th>
+                                                    <th>ExpDesc1</th>
+                                                    <th>EndUserPart</th>
+                                                    <th>CustomerPart</th>
+                                                    <th>ExpProductAttribute1</th>
                                             </tr>
                                         </tfoot>
                                         </table>
