@@ -2,6 +2,7 @@
 Option Strict On
 
 Imports System.Transactions
+Imports System.Globalization
 
 Public Class InvoicePackingListRec
     Inherits System.Web.UI.Page
@@ -15,7 +16,7 @@ Public Class InvoicePackingListRec
         Dim usename As String = CStr(Session("UserName"))
         Dim form As String = "frmImpCustomsInvoice"
         If Not Me.IsPostBack Then
-            If ClassPermis.CheckRead(form, usename) = True Then
+            If classPermis.CheckRead(form, usename) = True Then
                 If Not IsPostBack Then
                     showCountry()
                     showpaymenterm()
@@ -34,7 +35,7 @@ Public Class InvoicePackingListRec
                     itemdetail_fieldset.Disabled = True
                     packinglist_fieldset.Disabled = True
 
-                   
+
                 End If
             Else
                 ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ เข้าโปรแกรมนี้' !!!');", True)
@@ -798,7 +799,7 @@ Public Class InvoicePackingListRec
     Protected Sub btnEditHead_ServerClick(sender As Object, e As EventArgs)
         btnSaveEditHead.Visible = True
         btnSaveAddHead.Visible = False
-         chkEnable.Checked = False
+        chkEnable.Checked = False
         Head_fieldset.Disabled = False
         invoiceheader_fieldset.Disabled = False
         easjob_fieldset.Disabled = False
@@ -816,7 +817,7 @@ Public Class InvoicePackingListRec
         Dim form As String = "frmImpCustomsInvoice"
         Dim cu = From um In db.tblUserMenus Where um.UserName = user And um.Form = form And um.Save_ = 1
         If cu.Any Then
-            SaveDATA_New()
+            'SaveDATA_New()
             'ClearDATA()
             InsertData()
             itemdetail_fieldset.Disabled = False
@@ -903,9 +904,9 @@ Public Class InvoicePackingListRec
                     .InvoiceNo = txtInvoiceNo_BeforeTab.Value.Trim, _
                     .ReferenceNo = txtDeclaretion_BeforeTab.Value.Trim, _
                     .PurchaseOrderNo = txtJobNo_BeforeTab.Value.Trim, _
-                    .InvoiceDate = CType(txtdatepickerInvoiceDate_beforeTab.Text.Trim, Date?), _
-                    .DeliveryDate = CType(txtdatepickerDeliveryDate_beforeTab.Text.Trim, Date?), _
-                    .ReferenceDate = CType(txtdatepickerCustomsRefDate_beforeTab.Text.Trim, Date?), _
+                    .InvoiceDate = DateTime.ParseExact(txtdatepickerInvoiceDate_beforeTab.Text.Trim, "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US")), _
+                    .DeliveryDate = DateTime.ParseExact(txtdatepickerDeliveryDate_beforeTab.Text.Trim, "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US")), _
+                    .ReferenceDate = DateTime.ParseExact(txtdatepickerCustomsRefDate_beforeTab.Text.Trim, "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US")), _
                     .ExporterCode = txtShippercode.Value.Trim, _
                     .ExporterENG = txtNameShipper_Invoice.Value.Trim, _
                     .Street_Number = txtAddress1Shipper.Value.Trim, _
@@ -1000,21 +1001,21 @@ Public Class InvoicePackingListRec
                     .UnitCTN = ddlCTNNetAmount_PACKINGLIST.Text.Trim, _
                     .UnitCTNName = txtCTNNetAmount2_PACKINGLIST.Value.Trim, _
                     .GrossWeightAmount = CType(CDbl(txtTotalGrossWeight_Invoice.Value).ToString("#,##0.000"), Double?), _
-                 .QountityAmount = CType(CDbl(txtTotalQuantityPack_Invoice.Value).ToString("#,##0.000"), Double?), _
-                 .VolumAmount = CType(CDbl(txtTotalVolume_Invoice.Value).ToString("#,##0.000"), Double?), _
-                 .TotalTextPack = txtTotal_PACKINGLIST.Value.Trim, _
-                 .CarLicense = ddlTruckLicense_Invoice.Text.Trim, _
-                 .DriverName = ddlDriverName_Invoice.Text.Trim, _
-                 .PrintCountInv = "0", _
-                 .PrintCountPack = "0", _
-                 .PrintCount107 = "0", _
-                 .PrintCount108 = "0", _
-                 .PrintCountDoc = "0", _
-                 .CustomsConfirmDate = CType(txtdatepickerNoDate_beforeTab.Text.Trim, Date?), _
-                 .App = "Wait", _
-                 .CreateBy = CStr(Session("UserName")), _
-                 .CreateDate = Now
-                  })
+                    .QountityAmount = CType(CDbl(txtTotalQuantityPack_Invoice.Value).ToString("#,##0.000"), Double?), _
+                    .VolumAmount = CType(CDbl(txtTotalVolume_Invoice.Value).ToString("#,##0.000"), Double?), _
+                    .TotalTextPack = txtTotal_PACKINGLIST.Value.Trim, _
+                    .CarLicense = ddlTruckLicense_Invoice.Text.Trim, _
+                    .DriverName = ddlDriverName_Invoice.Text.Trim, _
+                    .PrintCountInv = "0", _
+                    .PrintCountPack = "0", _
+                    .PrintCount107 = "0", _
+                    .PrintCount108 = "0", _
+                    .PrintCountDoc = "0", _
+                    .CustomsConfirmDate = CType(txtdatepickerNoDate_beforeTab.Text.Trim, Date?), _
+                    .App = "Wait", _
+                    .CreateBy = CStr(Session("UserName")), _
+                    .CreateDate = Now
+              })
 
                     db.SaveChanges()
                     tran.Complete()
@@ -1671,14 +1672,74 @@ Public Class InvoicePackingListRec
         End If
     End Sub 'แก้ไข
     Private Sub InsertData()
-        'sb.Append("INSERT INTO tblLogImpInvoice (InvoiceNo,InvoiceDate,ConsignneeCode,EASExporterCode,EASInvRefNo,EASLOTNo,EASShipMode,EASDeliveryTerm,ProductDesc1,ProductDesc2,ProductDesc3,OriginCountry,Quantity,PriceForeigh,PriceForeighAmount,PriceBathAmount,ExchangeRate,PLTNetAmount,CTNPLTName,CTNNetAmount,UnitCTNName,NetWeight,GrossWeight,UserBy,LastUpDate) ")
-        'sb.Append(" VALUES (@InvoiceNo,@InvoiceDate,@ConsignneeCode,@EASExporterCode,@EASInvRefNo,@EASLOTNo,@EASShipMode,@EASDeliveryTerm,@ProductDesc1,@ProductDesc2,@ProductDesc3,@OriginCountry,@Quantity,@PriceForeigh,@PriceForeighAmount,@PriceBathAmount,@ExchangeRate,@PLTNetAmount,@CTNPLTName,@CTNNetAmount,@UnitCTNName,@NetWeight,@GrossWeight,@UserBy,@LastUpDate)")
-        Using tran As New TransactionScope()
-            Try
-                db.Database.Connection.Open()
+        Dim Quantity As String = ""
+        Dim PriceForeign As String = ""
+        Dim AmountForeign As String = ""
+        Dim AmountBath As String = ""
+        Dim ExchangeRate As String = ""
+        Dim PLTNetAmount_ As String = ""
+        Dim PLTNetAmount As String = ""
+        Dim CTNNetAmount As String = ""
+        Dim NetWeight As String = ""
+        Dim GrossWeigh As String = ""
+                    _
+        If String.IsNullOrEmpty(txtQuantity_ItemDetail.Value.Trim) Then
+            Quantity = "0"
+        Else
+            Quantity = txtQuantity_ItemDetail.Value.Trim
+        End If
+        If String.IsNullOrEmpty(txtPriceForeign_ItemDetail.Value) Then
+            PriceForeign = "0"
+        Else
+            PriceForeign = txtPriceForeign_ItemDetail.Value
+        End If
+        If String.IsNullOrEmpty(txtAmountForeign_ItemDetail.Value) Then
+            AmountForeign = "0"
+        Else
+            AmountForeign = txtAmountForeign_ItemDetail.Value
+        End If
+        If String.IsNullOrEmpty(txtAmountBath_ItemDetail.Value.Trim) Then
+            AmountBath = "0"
+        Else
+            AmountBath = txtAmountBath_ItemDetail.Value.Trim
+        End If
+        If String.IsNullOrEmpty(txtExchangeRate_ItemDetail.Value) Then
+            ExchangeRate = "0"
+        Else
+            ExchangeRate = txtExchangeRate_ItemDetail.Value
+
+        End If
+        If String.IsNullOrEmpty(txtPLTNetAmount_PACKINGLIST.Value) Then
+            PLTNetAmount = "0"
+        Else
+            PLTNetAmount = txtPLTNetAmount_PACKINGLIST.Value
+
+        End If
+        If String.IsNullOrEmpty(txtCTNNetAmount_PACKINGLIST.Value) Then
+            CTNNetAmount = "0"
+        Else
+            CTNNetAmount = txtCTNNetAmount_PACKINGLIST.Value
+
+        End If
+        If String.IsNullOrEmpty(txtNetWeight_PACKINGLIST.Value) Then
+            NetWeight = "0"
+        Else
+            NetWeight = txtNetWeight_PACKINGLIST.Value
+
+        End If
+        If String.IsNullOrEmpty(txtGrossWeight_PACKINGLIST.Value) Then
+            GrossWeigh = "0"
+        Else
+            GrossWeigh = txtGrossWeight_PACKINGLIST.Value
+
+        End If
+      
+            Using tran As New TransactionScope()
+                Try
+                    db.Database.Connection.Open()
                 db.tblLogImpInvoices.Add(New tblLogImpInvoice With { _
                     .InvoiceNo = txtInvoiceNo_BeforeTab.Value.Trim, _
-                    .InvoiceDate = CType(txtdatepickerInvoiceDate_beforeTab.Text.Trim, Date?), _
+                    .InvoiceDate = DateTime.ParseExact(txtdatepickerInvoiceDate_beforeTab.Text.Trim, "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US")), _
                     .ConsignneeCode = txtConsigneeCode.Value.Trim, _
                     .EASExporterCode = txtOwnerCode_EASJOB.Value.Trim, _
                     .EASInvRefNo = txtEASINV_EASJOB.Value.Trim, _
@@ -1689,31 +1750,31 @@ Public Class InvoicePackingListRec
                     .ProductDesc2 = txtCustomerPN_ItemDetail.Value.Trim, _
                     .ProductDesc3 = txtOwnerPN_ItemDetail.Value.Trim, _
                     .OriginCountry = ddlOriginCtry_ItemDetail.Text.Trim, _
-                    .Quantity = CType(CDbl(txtQuantity_ItemDetail.Value).ToString("#,##0.00000"), Decimal?), _
-                    .PriceForeigh = CType(CDbl(txtPriceForeign_ItemDetail.Value).ToString("#,##0.000"), Decimal?), _
-                    .PriceForeighAmount = CType(CDbl(txtAmountForeign_ItemDetail.Value).ToString("#,##0.000"), Decimal?), _
-                    .PriceBathAmount = CType(txtAmountBath_ItemDetail.Value.Trim, Decimal?), _
-                    .ExchangeRate = CType(CDbl(txtExchangeRate_ItemDetail.Value).ToString("#,##0.0000"), Decimal?), _
-                    .PLTNetAmount = CType(CDbl(txtPLTNetAmount_PACKINGLIST.Value).ToString("#,##0.000"), Decimal?), _
+                    .Quantity = CType(CDbl(Quantity).ToString("#,##0.00000"), Decimal?), _
+                    .PriceForeigh = CType(CDbl(PriceForeign).ToString("#,##0.000"), Decimal?), _
+                    .PriceForeighAmount = CType(CDbl(AmountForeign).ToString("#,##0.000"), Decimal?), _
+                    .PriceBathAmount = CType(AmountBath, Decimal?), _
+                    .ExchangeRate = CType(CDbl(ExchangeRate).ToString("#,##0.0000"), Decimal?), _
+                    .PLTNetAmount = CType(CDbl(PLTNetAmount).ToString("#,##0.000"), Decimal?), _
                     .CTNPLTName = txtPLTNetAmount2_PACKINGLIST.Value.Trim, _
-                    .CTNNetAmount = CType(CDbl(txtCTNNetAmount_PACKINGLIST.Value).ToString("#,##0.000"), Decimal?), _
+                    .CTNNetAmount = CType(CDbl(CTNNetAmount).ToString("#,##0.000"), Decimal?), _
                     .UnitCTNName = txtCTNNetAmount2_PACKINGLIST.Value.Trim, _
-                    .NetWeight = CType(CDbl(txtNetWeight_PACKINGLIST.Value).ToString("#,##0.00"), Decimal?), _
-                    .GrossWeight = CType(CDbl(txtGrossWeight_PACKINGLIST.Value).ToString("#,##0.00"), Decimal?), _
+                    .NetWeight = CType(CDbl(NetWeight).ToString("#,##0.00"), Decimal?), _
+                    .GrossWeight = CType(CDbl(GrossWeigh).ToString("#,##0.00"), Decimal?), _
                     .UserBy = CStr(Session("UserId")), _
                     .LastUpDate = Now
                             })
 
-                db.SaveChanges()
-                tran.Complete()
-            Catch ex As Exception
-                'ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด กรุณาบันทึกข้อมูลใหม่อีกครั้ง');", True)
-                'Finally
-                '    db.Database.Connection.Close()
-                '    db.Dispose()
-                '    tran.Dispose()
-            End Try
-        End Using
+                    db.SaveChanges()
+                    tran.Complete()
+                Catch ex As Exception
+                    ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด กรุณาบันทึกข้อมูลใหม่อีกครั้ง');", True)
+                Finally
+                    db.Database.Connection.Close()
+                    db.Dispose()
+                    tran.Dispose()
+                End Try
+            End Using
     End Sub
 
     Private Sub InsertDataDetail()
@@ -2052,34 +2113,30 @@ Public Class InvoicePackingListRec
     End Sub
     '-----------------------------------------------------------------Gen Invoice No------------------------------------------------------
     Private Sub GenNum()
-        Dim tmpDate As Single
-        Dim tmpMount As Single
-        'Dim tmpYear As Single
+        Dim tmpDate As Single = CSng(Format(Now(), "dd"))
+        Dim Nmount As Single = CSng(Format(Now(), "MM"))
+        Dim Nyear As Single = CSng(Format(Now(), "yy")) + 43
         Dim Nemount As String
         Dim Neyear As String
         Dim DigitNo_ As String = "000"
         Dim LotNo As String
-        Dim Nmount As Single
         Dim Num As Single
         Dim Mount As Single
         Dim Year As Single
         Dim Digit As Single
-        Dim Type As String = "LKBRCB"
+        Dim Digit_ As Single
+        'Dim JobSite As String
         Dim num_ As String
         Dim dunNo As String
+        Dim Type As String = "LKBRCB"
+        Nemount = Nmount.ToString("0#")
+        Neyear = Nyear.ToString("0#")
 
-        Nemount = tmpMount.ToString("0#")
-        Neyear = Nmount.ToString("0#")
-
-        tmpDate = CSng(Format(Now(), "dd"))
-        tmpMount = CSng(Format(Now(), "MM"))
-        Nmount = CSng(Format(Now(), "yy")) + 43
-        'tmpYear = Format(CDate(Nmount), "yy")
         Mount = CSng(Nemount)
         Year = CSng(Neyear)
         Digit = CSng(DigitNo_)
 
-        LotNo = "LKB-" & "RCB-" & Nmount.ToString("0#") & tmpMount.ToString("0#") & Num.ToString("00#")
+        LotNo = "LKB-" & "RCB-" & Nyear.ToString("0#") & Nmount.ToString("0#")
 
         Dim sqlSearch = (From ep In db.tblGenAutoRunNoes Where ep.TypeCode = Type And ep.MountNo = Nemount And ep.YearNo = Neyear And ep.RunNo = LotNo
                Group By TypeCode = ep.TypeCode,
@@ -2088,56 +2145,55 @@ Public Class InvoicePackingListRec
                DigitNo = ep.DigitNo Into g = Group, Count()).SingleOrDefault
 
         If Not sqlSearch Is Nothing Then
-            Digit = CSng(sqlSearch.DigitNo)
+            Digit_ = CSng(sqlSearch.DigitNo)
 
-            If Nmount = Year Then
-                If tmpMount = Mount Then
-                    Digit = Digit + 1
-                    Num = Digit
+
+            If Nyear = Year Then
+                If Nmount = Mount Then
+                    Num = Digit_ + 1
+                ElseIf Nmount <> Mount Then
+                    Nmount = Mount
+                    Num = Digit_ + 1
                 End If
 
-                If tmpMount <> Mount Then
-                    Digit = 0
+            End If
+            If Nyear <> Year Then
+                Nmount = Year
+                If Nmount = Mount Then
+                    Num = Digit_ + 1
+                End If
+
+                If Nyear <> Mount Then
+                    Nmount = Mount
                     Num = Digit + 1
                 End If
-            End If
-            If Nmount <> Year Then
-                Digit = 0
-                If tmpMount = Mount Then
-                    Digit = Digit + 1
-                    Num = Digit
-                End If
 
-                If tmpMount <> Mount Then
-                    Digit = 0
-                    Num = Digit + 1
-                End If
             End If
-            num_ = Num.ToString("00#")
-            dunNo = LotNo & Num.ToString("00#")
-            upDateGenNum(Type, Nemount, Neyear, num_)
-            txtInvoiceNo_BeforeTab.Value = dunNo
+        num_ = Num.ToString("00#")
+        dunNo = LotNo & Num.ToString("00#")
+        upDateGenNum(Type, Nemount, Neyear, num_)
+        txtInvoiceNo_BeforeTab.Value = dunNo
         Else
 
-            If Nmount = Year Then
-                If tmpMount = Mount Then
+            If Nyear = Year Then
+                If Nmount = Mount Then
                     Digit = Digit + 1
                     Num = Digit
-                ElseIf tmpMount <> Mount Then
-                    tmpMount = Mount
+                ElseIf Nmount <> Mount Then
+                    Nmount = Mount
                     Num = Digit + 1
                 End If
 
             End If
-            If Nmount <> Year Then
-                tmpMount = Year
-                If tmpMount = Mount Then
+            If Nyear <> Year Then
+                Nmount = Year
+                If Nmount = Mount Then
                     Digit = Digit + 1
                     Num = Digit
                 End If
 
-                If Nmount <> Mount Then
-                    tmpMount = Mount
+                If Nyear <> Mount Then
+                    Nmount = Mount
                     Num = Digit + 1
                 End If
 
@@ -2155,7 +2211,7 @@ Public Class InvoicePackingListRec
             db.SaveChanges()
             txtInvoiceNo_BeforeTab.Value = dunNo
 
-        End If
+            End If
     End Sub
 
     Private Sub upDateGenNum(type As String, Nemount As String, Neyear As String, DigitNo As String)

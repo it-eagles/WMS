@@ -1584,7 +1584,7 @@
                                                     </FooterTemplate>
                                                 </asp:Repeater>
                                       
-                                                <fieldset>
+                                                <%--<fieldset>
                                                     <legend></legend>
                                                    <div class="col-md-12">
                                                        
@@ -1651,7 +1651,7 @@
                                                     </div>
                                                    </div>
                                                                                                   
-                                                </fieldset>                                       
+                                                </fieldset>         --%>                              
                                         </div>
                                     </form>
 
@@ -2195,68 +2195,12 @@
                                             <div class="col-lg-12 col-md-10">
                                                 <fieldset>
                                                     <legend></legend>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="txtTotalAmonut" class="col-sm-4 control-label">ยอดทั้งหมด</label>
-                                                            <div class="col-sm-8">
-                                                                <input runat="server" class="form-control" id="txtTotalAmonut" type="text" autocomplete="off"/>
-                                                               
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="txtTotalUseAmonut" class="col-sm-4 control-label">ยอดที่ใช้ไปทั้งหมด</label>
-                                                            <div class="col-sm-8">
-                                                                <input runat="server" class="form-control" id="txtTotalUseAmonut" type="text" autocomplete="off"/>
-                                                            
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="txtAmonut" class="col-sm-4 control-label">ยอดคงเหลือ</label>
-                                                            <div class="col-sm-8">
-                                                                <input runat="server" class="form-control" id="txtAmonut"  type="text" autocomplete="off"/>
-                                                               
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="txtUseAmonut" class="col-sm-4 control-label">ยอดที่ใช้ Inv นี้</label>
-                                                            <div class="col-sm-8">
-                                                                 <input  runat="server" id="txtUseAmonut"  class="form-control"  type="text" autocomplete="off"/>
-                                                              
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="dtpForm" class="col-sm-4 control-label">วันที่ของออก</label>
-                                                            <div class="col-sm-8">
-                                                                <asp:TextBox CssClass="form-control" ID="dtpForm" runat="server" placeholder="MM/DD/YYYY" autocomplete="off">
-                                                                </asp:TextBox>
-                                                                <asp:CalendarExtender ID="CalendarExtender7" runat="server" Enabled="True" TargetControlID="dtpForm" Format="dd/MM/yyyy"></asp:CalendarExtender>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="dtpTo" class="col-sm-4 control-label">วันที่ของกลับ</label>
-                                                            <div class="col-sm-8">
-                                                                <asp:TextBox CssClass="form-control" ID="dtpTo" runat="server" placeholder="MM/DD/YYYY" autocomplete="off">
-                                                                </asp:TextBox>
-                                                                <asp:CalendarExtender ID="CalendarExtender9" runat="server" Enabled="True" TargetControlID="dtpTo" Format="dd/MM/yyyy"></asp:CalendarExtender>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="form-group">
-                                                            <div class="checkbox col-sm-4">
-                                                                <label>
-                                                                    <input type="checkbox" runat="server" id="Checkbox1" onclick="chkExpEnable3();" />ต่ออายุ
-                                                                </label>
-                                                            </div>
-                                                            <div class="col-sm-8">
-                                                                <asp:TextBox CssClass="form-control" ID="dtpEx" runat="server" placeholder="MM/DD/YYYY" autocomplete="off" disabled="disabled">
-                                                                </asp:TextBox>                                                            
-                                                                <asp:CalendarExtender ID="CalendarExtender8" runat="server" Enabled="True" TargetControlID="dtpEx" Format="dd/MM/yyyy"></asp:CalendarExtender>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
+                                                   <div class="form-group">
+                                                       <label for="txtTotalAmornut" class="col-sm-4 contacts-list">ยอดทั้งหมด</label>
+                                                       <div class="col-md-6">
+                                                             <input runat="server" id="txtTotalAmornut" type="text" autocomplete="off"  class="form-control"/>
+                                                       </div>                                                  
+                                                   </div>
                                                 </fieldset>
 
                                             </div>
@@ -2304,7 +2248,7 @@
         }
         </script>
 
-        <script type="text/javascript">
+       <%-- <script type="text/javascript">
             function chkExpEnable3() {
                 var status = document.getElementById('<%=Checkbox1.ClientID%>').checked;
 
@@ -2316,7 +2260,7 @@
                       }
 
               }
-        </script>
+        </script>--%>
         <script type="text/javascript">
             $(function () {
                 var tabName = $("[id*=TabName]").val() != "" ? $("[id*=TabName]").val() : "header";

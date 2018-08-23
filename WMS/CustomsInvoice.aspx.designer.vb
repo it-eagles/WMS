@@ -2165,6 +2165,51 @@ Partial Public Class CustomsInvoice
     Protected WithEvents CalendarExtender5 As Global.AjaxControlToolkit.CalendarExtender
 
     '''<summary>
+    '''txtEndInvoiceNo control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtEndInvoiceNo As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''txtEndExporter control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtEndExporter As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''txtToConsignnee control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtToConsignnee As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''dtpEndInvoiceDate control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents dtpEndInvoiceDate As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''CalendarExtender6 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CalendarExtender6 As Global.AjaxControlToolkit.CalendarExtender
+
+    '''<summary>
     '''btnadd_ control.
     '''</summary>
     '''<remarks>
@@ -2363,103 +2408,13 @@ Partial Public Class CustomsInvoice
     Protected WithEvents dgvIEAT107 As Global.System.Web.UI.WebControls.Repeater
 
     '''<summary>
-    '''txtTotalAmonut control.
+    '''txtTotalAmornut control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtTotalAmonut As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''txtTotalUseAmonut control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtTotalUseAmonut As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''txtAmonut control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtAmonut As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''txtUseAmonut control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtUseAmonut As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''dtpForm control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents dtpForm As Global.System.Web.UI.WebControls.TextBox
-
-    '''<summary>
-    '''CalendarExtender7 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents CalendarExtender7 As Global.AjaxControlToolkit.CalendarExtender
-
-    '''<summary>
-    '''dtpTo control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents dtpTo As Global.System.Web.UI.WebControls.TextBox
-
-    '''<summary>
-    '''CalendarExtender9 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents CalendarExtender9 As Global.AjaxControlToolkit.CalendarExtender
-
-    '''<summary>
-    '''Checkbox1 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents Checkbox1 As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
-
-    '''<summary>
-    '''dtpEx control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents dtpEx As Global.System.Web.UI.WebControls.TextBox
-
-    '''<summary>
-    '''CalendarExtender8 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents CalendarExtender8 As Global.AjaxControlToolkit.CalendarExtender
+    Protected WithEvents txtTotalAmornut As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
     '''AddIEAT107_ control.
