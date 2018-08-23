@@ -44,6 +44,7 @@
                                             Edit
                                         </button>
                                     </div>
+
                                 </div>
 
                             </div>
@@ -579,7 +580,8 @@
                             </div>
                             <!-- /.post -->
                         </div>
-
+                      
+  
                         <div role="tabpanel" class="tab-pane" id="job">
                             <!-- Post -->
                             <div class="post">
@@ -591,7 +593,7 @@
                                                     <div class="form-group">
                                                         <div class="checkbox col-sm-6">
                                                             <label>
-                                                                <input type="checkbox" runat="server" id="chkEnablebehalf_EASJOB" onclick="chkExpEnable2();" />Enable On Behalf Of
+                                                                <input type="checkbox" runat="server" id="chkEnablebehalf_EASJOB" onclick="chkExpEnable1();" />Enable On Behalf Of
                                                             </label>
                                                         </div>
                                                     </div>
@@ -719,6 +721,7 @@
                                                                         </div>
                                                                         <div class="col-sm--">
                                                                             <button type="button" runat="server" class="btn btn-info" id="Use" onserverclick="Use_ServerClick">ใส่ยอดเงินที่ใช้</button>
+                                                                            <%--  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Open modal for @mdo</button>--%>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -1525,25 +1528,27 @@
             </div>
             <!--------- ./ panel --------->
         </section>
-
         <!-- Modal JoB No-->
         <asp:Panel ID="plSearch1" runat="server" CssClass="modal" TabIndex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title">Select Invoice No</h4>
+                            <span aria-hidden="true"></span>
+                        </button>
+                        <h4 class="modal-title"></h4>
                     </div>
                     <asp:UpdatePanel ID="upSearch1" runat="server" UpdateMode="Conditional">
                         <ContentTemplate>
                             <div class="modal-body">
-                                  <section class="content">
+                                <section class="content">
                                     <form class="form-horizontal">
                                         <div class="box-body">
-                                             <asp:Repeater ID="dgvSearch" runat="server" OnItemCommand="dgvSearch_ItemCommand">
+                                            <div class="col-lg-12 col-md-12 " style="overflow: auto;">
+                                                 
+                                                <asp:Repeater ID="dgvSearch" runat="server" OnItemCommand="dgvSearch_ItemCommand">
                                                     <HeaderTemplate>
-                                                        <table id="example1" class="table table-bordered table-striped table-responsive" style="overflow: auto;">
+                                                        <table id="example8" class="table table-bordered table-striped table-responsive" style="overflow: auto;">
                                                             <thead>
                                                                 <tr>
                                                                     <th>select</th>
@@ -1554,7 +1559,6 @@
                                                                 </tr>
                                                             </thead>
                                                     </HeaderTemplate>
-
                                                     <ItemTemplate>
                                                         <tr>
                                                             <td class="text-center">
@@ -1569,6 +1573,7 @@
                                                             <td>
                                                                 <asp:Label ID="lblExp" runat="server" Text='<%# Bind("ExporterCode")%>'></asp:Label></td>
                                                         </tr>
+
                                                     </ItemTemplate>
                                                     <FooterTemplate>
                                                         <tfoot>
@@ -1583,102 +1588,88 @@
                                                         </table>
                                                     </FooterTemplate>
                                                 </asp:Repeater>
-                                      
-                                                <%--<fieldset>
-                                                    <legend></legend>
-                                                   <div class="col-md-12">
-                                                       
-                                                       <div class="col-md-6">
-                                                           <div class="form-group">
-                                                               <label for="txtStartInvoiceNo" class="col-sm-4 control-label">Invoice No.</label>
-                                                            <div class="col-md-8">
-                                                                <input class="form-control" id="txtStartInvoiceNo" runat="server" autocomplete="off" />
-                                                            </div>
-                                                           </div>
-                                                            
-                                                        <div class="form-group">
-                                                             <label for="txtStartExporter" class="col-sm-4 control-label">Exporter</label>
-                                                            <div class="col-md-8">
-                                                                <input class="form-control" id="txtStartExporter" runat="server" autocomplete="off" />
-                                                            </div>
-                                                        </div>
-                                                           
-                                                        <div class="form-group">
-                                                             <label for="txtStartConsignnee" class="col-sm-4 control-label">Consignnees</label>
-                                                            <div class="col-md-8">
-                                                                <input class="form-control" id="txtStartConsignnee" runat="server" autocomplete="off" />
-                                                            </div>
-                                                        </div>
-                                                           
-                                                        <div class="form-group">
-                                                            <label for="txtStartInvoiceNo" class="col-sm-4 control-label">Invoice Date</label>
-                                                            <div class="col-md-8">
-                                                                <asp:TextBox CssClass="form-control" ID="dtpStartInvoiceDate" runat="server" placeholder="MM/DD/YYYY" autocomplete="off">
-                                                                </asp:TextBox>
-                                                                <asp:CalendarExtender ID="CalendarExtender5" runat="server" Enabled="True" TargetControlID="dtpStartInvoiceDate" Format="dd/MM/yyyy"></asp:CalendarExtender>
-                                                            </div>
-                                                        </div>
-                                                                                                        
-                                                    </div>
-                                                       <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="txtEndInvoiceNo" class="col-sm-4 control-label">To Invoice No.</label>
-                                                            <div class="col-sm-8">
-                                                                <input class="form-control" id="txtEndInvoiceNo" runat="server" autocomplete="off" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="txtEndExporter" class="col-sm-4 control-label">To Exporter</label>
-                                                            <div class="col-sm-8">
-                                                                <input class="form-control" id="txtEndExporter" runat="server" autocomplete="off" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="txtToConsignnee" class="col-sm-4 control-label">To Consignnee</label>
-                                                            <div class="col-sm-8">
-                                                                <input class="form-control" id="txtToConsignnee" runat="server" autocomplete="off" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="dtpEndInvoiceDate" class="col-sm-4 control-label">To Invoice Date</label>
-                                                            <div class="col-sm-8">
-                                                                <asp:TextBox CssClass="form-control" ID="dtpEndInvoiceDate" runat="server" placeholder="MM/DD/YYYY" autocomplete="off">
-                                                                </asp:TextBox>
-                                                                <asp:CalendarExtender ID="CalendarExtender6" runat="server" Enabled="True" TargetControlID="dtpEndInvoiceDate" Format="dd/MM/yyyy"></asp:CalendarExtender>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                   </div>
-                                                                                                  
-                                                </fieldset>         --%>                              
-                                        </div>
-                                    </form>
-
-                                </section>    
+                                            </div>
+                                            <div class="col-md-12">
+                                            <fieldset>
+                                                <legend></legend>
                                                
-                                         
-                            </div>
-                           <%-- <section class="content">
-                                    <form class="form-horizontal">
-                                       <div class="box-body">
-                                            
-                                             
-                                             </div>
-                                      
-                                    </form>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="txtStartInvoiceNo" class="col-sm-4 control-label">Invoice No.</label>
+                                                                <div class="col-md-8">
+                                                                    <input class="form-control" id="txtStartInvoiceNo" runat="server" autocomplete="off" />
+                                                                </div>
+                                                            </div>
 
-                                </section>--%>
+                                                            <div class="form-group">
+                                                                <label for="txtStartExporter" class="col-sm-4 control-label">Exporter</label>
+                                                                <div class="col-md-8">
+                                                                    <input class="form-control" id="txtStartExporter" runat="server" autocomplete="off" />
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label for="txtStartConsignnee" class="col-sm-4 control-label">Consignnees</label>
+                                                                <div class="col-md-8">
+                                                                    <input class="form-control" id="txtStartConsignnee" runat="server" autocomplete="off" />
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label for="txtStartInvoiceNo" class="col-sm-4 control-label">Invoice Date</label>
+                                                                <div class="col-md-8">
+                                                                    <asp:TextBox CssClass="form-control" ID="dtpStartInvoiceDate" runat="server" placeholder="MM/DD/YYYY" autocomplete="off">
+                                                                    </asp:TextBox>
+                                                                    <asp:CalendarExtender ID="CalendarExtender5" runat="server" Enabled="True" TargetControlID="dtpStartInvoiceDate" Format="dd/MM/yyyy"></asp:CalendarExtender>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="txtEndInvoiceNo" class="col-sm-4 control-label">To Invoice No.</label>
+                                                                <div class="col-sm-8">
+                                                                    <input class="form-control" id="txtEndInvoiceNo" runat="server" autocomplete="off" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="txtEndExporter" class="col-sm-4 control-label">To Exporter</label>
+                                                                <div class="col-sm-8">
+                                                                    <input class="form-control" id="txtEndExporter" runat="server" autocomplete="off" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="txtToConsignnee" class="col-sm-4 control-label">To Consignnee</label>
+                                                                <div class="col-sm-8">
+                                                                    <input class="form-control" id="txtToConsignnee" runat="server" autocomplete="off" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="dtpEndInvoiceDate" class="col-sm-4 control-label">To Invoice Date</label>
+                                                                <div class="col-sm-8">
+                                                                    <asp:TextBox CssClass="form-control" ID="dtpEndInvoiceDate" runat="server" placeholder="MM/DD/YYYY" autocomplete="off">
+                                                                    </asp:TextBox>
+                                                                    <asp:CalendarExtender ID="CalendarExtender6" runat="server" Enabled="True" TargetControlID="dtpEndInvoiceDate" Format="dd/MM/yyyy"></asp:CalendarExtender>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>                                                                                         
+                                            </fieldset>
+                                        </div>
+                                        </div>
+                            </form>
+                                </section>
+                            </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" id="btnadd_" runat="server" onserverclick="btnadd__ServerClick">Add</button>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-secondary" id="btnadd_" runat="server" onserverclick="btnadd__ServerClick">Add</button>
                             </div>
                         </ContentTemplate>
                     </asp:UpdatePanel>
                 </div>
             </div>
         </asp:Panel>
-        <!-- End Shipper Modal -->
         <!-- Modal ConsigneeCode-->
         <asp:Panel ID="plExporter" runat="server" CssClass="modal" TabIndex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="dialog">
@@ -1754,7 +1745,7 @@
             </div>
         </asp:Panel>
         <!-- End Shipper Modal -->
-
+        
         <!-- Modal ExporterCode-->
         <asp:Panel ID="plExporterCode" runat="server" CssClass="modal" TabIndex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="dialog">
@@ -1830,7 +1821,8 @@
             </div>
         </asp:Panel>
         <!-- End Shipper Modal -->
-
+       
+       
         <!-- Modal-->
         <asp:Panel ID="plConsignnee" runat="server" CssClass="modal" TabIndex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="dialog">
@@ -2056,8 +2048,7 @@
             </div>
         </asp:Panel>
         <!-- End Shipper Modal -->
-
-        <!-- Modal-->
+     
         <asp:Panel ID="plBillTo" runat="server" CssClass="modal" TabIndex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="dialog">
                 <div class="modal-content">
@@ -2130,98 +2121,11 @@
                 </div>
             </div>
         </asp:Panel>
+        
+         
         <!-- End Shipper Modal -->
-
-        <!-- Modal JoB No-->
-        <asp:Panel ID="plIEAT107" runat="server" CssClass="modal" TabIndex="-1" role="dialog">
-            <div class="modal-dialog modal-lg" role="dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true"></span></button>
-                        <h4 class="modal-title">Select Invoice No</h4>
-                    </div>
-                    <asp:UpdatePanel ID="upIEAT107" runat="server" UpdateMode="Conditional">
-                        <ContentTemplate>
-                            <div class="modal-body">
-                                <section class="content">
-                                    <form class="form-horizontal">
-                                        <div class="box-body">
-                                            <div class="col-lg-12 col-md-12 " style="overflow: auto;">
-
-                                                <asp:Repeater ID="dgvIEAT107" runat="server">
-                                                    <HeaderTemplate>
-                                                        <table id="example1" class="table table-bordered table-striped table-responsive" style="overflow: auto;">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th>select</th>
-                                                                    <th>PartyCode</th>
-                                                                    <th>InvoiceNo</th>
-                                                                    <th>JobNo</th>
-                                                                    <th>Status</th>
-                                                                </tr>
-                                                            </thead>
-                                                    </HeaderTemplate>
-
-                                                    <ItemTemplate>
-                                                        <tr>
-                                                            <td class="text-center">
-                                                                <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="selectInvoiceNo" CommandArgument='<%# Eval("InvoiceNo")%>'><i class="fa fa-hand-o-up"></i></asp:LinkButton>
-                                                            </td>
-                                                            <td>
-                                                                <asp:Label ID="lblInvoiceNo" runat="server" Text='<%# Bind("PartyCode")%>'></asp:Label></td>
-                                                            <td>
-                                                                <asp:Label ID="lblReferenceNo" runat="server" Text='<%# Bind("InvoiceNo")%>'></asp:Label></td>
-                                                            <td>
-                                                                <asp:Label ID="lblOrderNo" runat="server" Text='<%# Bind("JobNo")%>'></asp:Label></td>
-                                                            <td>
-                                                                <asp:Label ID="lblExp" runat="server" Text='<%# Bind("Status")%>'></asp:Label></td>
-                                                        </tr>
-                                                    </ItemTemplate>
-                                                    <FooterTemplate>
-                                                        <tfoot>
-                                                            <tr>
-                                                                <th>select</th>
-                                                                <th>PartyCode</th>
-                                                                <th>InvoiceNo</th>
-                                                                <th>JobNo</th>
-                                                                <th>Status</th>
-                                                            </tr>
-                                                        </tfoot>
-                                                        </table>
-                                                    </FooterTemplate>
-                                                </asp:Repeater>
-                                            </div>
-                                            <div class="col-lg-12 col-md-10">
-                                                <fieldset>
-                                                    <legend></legend>
-                                                   <div class="form-group">
-                                                       <label for="txtTotalAmornut" class="col-sm-4 contacts-list">ยอดทั้งหมด</label>
-                                                       <div class="col-md-6">
-                                                             <input runat="server" id="txtTotalAmornut" type="text" autocomplete="off"  class="form-control"/>
-                                                       </div>                                                  
-                                                   </div>
-                                                </fieldset>
-
-                                            </div>
-                                        </div>
-                                    </form>
-
-                                </section>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="submit" runat="server" class="btn btn-primary" id="AddIEAT107_" title="AddIEAT107_" onserverclick="AddIEAT107_Click">Add</button>
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            </div>
-                        </ContentTemplate>
-                    </asp:UpdatePanel>
-                </div>
-            </div>
-        </asp:Panel>
-        <!-- End Shipper Modal -->
-      
         <script type="text/javascript">
-            function chkExpEnable2() {
+            function chkExpEnable1() {
                 var status = document.getElementById('<%=chkEnablebehalf_EASJOB.ClientID%>').checked;
 
                 if (status == true) {
@@ -2241,26 +2145,13 @@
                 if (status == true) {
                     document.getElementById('<%=Use.ClientID%>').disabled = false;
 
-                      } else if (status == false) {
-                          document.getElementById('<%=Use.ClientID%>').disabled = true;
+                } else if (status == false) {
+                    document.getElementById('<%=Use.ClientID%>').disabled = true;
                 }
 
         }
         </script>
 
-       <%-- <script type="text/javascript">
-            function chkExpEnable3() {
-                var status = document.getElementById('<%=Checkbox1.ClientID%>').checked;
-
-                 if (status == true) {
-                     document.getElementById('<%=dtpEx.ClientID%>').disabled = false;
-
-                } else if (status == false) {
-                    document.getElementById('<%=dtpEx.ClientID%>').disabled = true;
-                      }
-
-              }
-        </script>--%>
         <script type="text/javascript">
             $(function () {
                 var tabName = $("[id*=TabName]").val() != "" ? $("[id*=TabName]").val() : "header";
@@ -2270,5 +2161,6 @@
                 });
             });
         </script>
+
     </form>
 </asp:Content>

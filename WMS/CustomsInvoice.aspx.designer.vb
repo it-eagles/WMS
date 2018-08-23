@@ -2379,49 +2379,4 @@ Partial Public Class CustomsInvoice
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents dgvBillTo As Global.System.Web.UI.WebControls.Repeater
-
-    '''<summary>
-    '''plIEAT107 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents plIEAT107 As Global.System.Web.UI.WebControls.Panel
-
-    '''<summary>
-    '''upIEAT107 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents upIEAT107 As Global.System.Web.UI.UpdatePanel
-
-    '''<summary>
-    '''dgvIEAT107 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents dgvIEAT107 As Global.System.Web.UI.WebControls.Repeater
-
-    '''<summary>
-    '''txtTotalAmornut control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtTotalAmornut As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''AddIEAT107_ control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents AddIEAT107_ As Global.System.Web.UI.HtmlControls.HtmlButton
 End Class

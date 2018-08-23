@@ -2607,33 +2607,33 @@ Public Class CreateRec
         Dim cu = From um In db.tblUserMenus Where um.UserName = user And um.Form = form And um.Save_ = 1
         If cu.Any Then
 
-            If ddlJobsite.Text = "LKB" Then
-                Gentbl("ExpLOTIN")
-            ElseIf ddlJobsite.Text = "SBIA" Then
-                Gentbl("SBIALOTIN")
-            ElseIf ddlJobsite.Text = "HCR" Then
-                Gentbl("HCRLOTIN")
-            ElseIf ddlJobsite.Text = "HTO" Then
-                Gentbl("HTOLOTIN")
-            ElseIf ddlJobsite.Text = "AEC" Then
-                Gentbl("AECLOTIN")
-            ElseIf ddlJobsite.Text = "MJB" Then
-                Gentbl("MJBLOTIN")
-            ElseIf ddlJobsite.Text = "LEA" Then
-                Gentbl("LEALOTIN")
-            ElseIf ddlJobsite.Text = "SPM" Then
-                Gentbl("SPMLOTIN")
-            ElseIf ddlJobsite.Text = "PTN" Then
-                Gentbl("PTNLOTIN")
-            ElseIf ddlJobsite.Text = "CKT" Then
-                Gentbl("CKTLOTIN")
-            ElseIf ddlJobsite.Text = "WIP" Then
-                Gentbl("WIPLOTIN")
-            End If
-            SaveDATA_New()
+            'If ddlJobsite.Text = "LKB" Then
+            '    Gentbl("ExpLOTIN")
+            'ElseIf ddlJobsite.Text = "SBIA" Then
+            '    Gentbl("SBIALOTIN")
+            'ElseIf ddlJobsite.Text = "HCR" Then
+            '    Gentbl("HCRLOTIN")
+            'ElseIf ddlJobsite.Text = "HTO" Then
+            '    Gentbl("HTOLOTIN")
+            'ElseIf ddlJobsite.Text = "AEC" Then
+            '    Gentbl("AECLOTIN")
+            'ElseIf ddlJobsite.Text = "MJB" Then
+            '    Gentbl("MJBLOTIN")
+            'ElseIf ddlJobsite.Text = "LEA" Then
+            '    Gentbl("LEALOTIN")
+            'ElseIf ddlJobsite.Text = "SPM" Then
+            '    Gentbl("SPMLOTIN")
+            'ElseIf ddlJobsite.Text = "PTN" Then
+            '    Gentbl("PTNLOTIN")
+            'ElseIf ddlJobsite.Text = "CKT" Then
+            '    Gentbl("CKTLOTIN")
+            'ElseIf ddlJobsite.Text = "WIP" Then
+            '    Gentbl("WIPLOTIN")
+            'End If
+            'SaveDATA_New()
             InsertData()
-            ClearDATA()
-            ReadDATA2()
+            'ClearDATA()
+            'ReadDATA2()
         Else
             ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ์เมนูนี้ !!!')", True)
         End If
@@ -3152,17 +3152,13 @@ Public Class CreateRec
         txtsalemandis.Value = mas.Description
     End Sub
     Private Sub InsertData()
-        Dim time As Date
-        Dim NameUser As String
-        time = CDate((Format(Now)))
-        NameUser = CStr(Session("UserName"))
         Try
             db.tblLogImpGenLOTs.Add(New tblLogImpGenLOT With { _
                                 .EASLOTNo = txtJobno.Value.Trim, _
                                 .ConsigneeCode = txtConsigneecode.Value.Trim, _
                                 .ShipperCode = txtShippercode.Value.Trim, _
-                                .UserBy = NameUser, _
-                                .LastUpDate = time
+                                .UserBy = CStr(Session("UserName")), _
+                                .LastUpDate = Now
                             })
             db.SaveChanges()
         Catch ex As Exception
@@ -3460,7 +3456,7 @@ Public Class CreateRec
             End If
         Catch ex As Exception
             MsgBox(ex.Message)
-            End Try
+        End Try
     End Sub
     Protected Sub Repea2_Invoice_ItemCommand(source As Object, e As RepeaterCommandEventArgs) Handles Repea2_Invoice.ItemCommand
         Dim InvoiceNo As String = CStr(e.CommandArgument)

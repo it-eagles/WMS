@@ -6,7 +6,135 @@ WMS
 </name>
 </assembly>
 <members>
-<member name="F:WMS.RptStatusPick.form1">
+<member name="F:WMS.addIEAT107.form1">
+	<summary>
+form1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.addIEAT107.plIeat107">
+	<summary>
+plIeat107 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.addIEAT107.upieat107">
+	<summary>
+upieat107 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.addIEAT107.dgvIeat107">
+	<summary>
+dgvIeat107 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.addIEAT107.txtTotalAmonut">
+	<summary>
+txtTotalAmonut control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.addIEAT107.txtTotalUseAmonut">
+	<summary>
+txtTotalUseAmonut control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.addIEAT107.txtAmonut">
+	<summary>
+txtAmonut control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.addIEAT107.txtUseAmonut">
+	<summary>
+txtUseAmonut control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.addIEAT107.dtpForm">
+	<summary>
+dtpForm control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.addIEAT107.CalendarExtender7">
+	<summary>
+CalendarExtender7 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.addIEAT107.dtpTo">
+	<summary>
+dtpTo control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.addIEAT107.CalendarExtender9">
+	<summary>
+CalendarExtender9 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.addIEAT107.Checkbox1">
+	<summary>
+Checkbox1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.addIEAT107.dtpEx">
+	<summary>
+dtpEx control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.addIEAT107.CalendarExtender8">
+	<summary>
+CalendarExtender8 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.addIEAT107.Button1">
+	<summary>
+Button1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptStatusPick.form1">
 	<summary>
 form1 control.
 </summary>
@@ -11882,46 +12010,6 @@ To modify move field declaration from designer file to code-behind file.
 </member><member name="F:WMS.CustomsInvoice.dgvBillTo">
 	<summary>
 dgvBillTo control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.CustomsInvoice.plIEAT107">
-	<summary>
-plIEAT107 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.CustomsInvoice.upIEAT107">
-	<summary>
-upIEAT107 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.CustomsInvoice.dgvIEAT107">
-	<summary>
-dgvIEAT107 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.CustomsInvoice.txtTotalAmornut">
-	<summary>
-txtTotalAmornut control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.CustomsInvoice.AddIEAT107_">
-	<summary>
-AddIEAT107_ control.
 </summary>
 	<remarks>
 Auto-generated field.

@@ -189,6 +189,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AddGroup.aspx" />
+    <Content Include="addIEAT107.aspx" />
     <Content Include="AddUser.aspx" />
     <Content Include="AdLocSCRAPWH.aspx" />
     <Content Include="AdLocWH.aspx" />
@@ -6773,6 +6774,13 @@
     </Compile>
     <Compile Include="AddGroup.aspx.vb">
       <DependentUpon>AddGroup.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="addIEAT107.aspx.designer.vb">
+      <DependentUpon>addIEAT107.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="addIEAT107.aspx.vb">
+      <DependentUpon>addIEAT107.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="AddUser.aspx.designer.vb">
