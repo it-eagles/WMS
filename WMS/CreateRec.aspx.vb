@@ -2607,29 +2607,29 @@ Public Class CreateRec
         Dim cu = From um In db.tblUserMenus Where um.UserName = user And um.Form = form And um.Save_ = 1
         If cu.Any Then
 
-            'If ddlJobsite.Text = "LKB" Then
-            '    Gentbl("ExpLOTIN")
-            'ElseIf ddlJobsite.Text = "SBIA" Then
-            '    Gentbl("SBIALOTIN")
-            'ElseIf ddlJobsite.Text = "HCR" Then
-            '    Gentbl("HCRLOTIN")
-            'ElseIf ddlJobsite.Text = "HTO" Then
-            '    Gentbl("HTOLOTIN")
-            'ElseIf ddlJobsite.Text = "AEC" Then
-            '    Gentbl("AECLOTIN")
-            'ElseIf ddlJobsite.Text = "MJB" Then
-            '    Gentbl("MJBLOTIN")
-            'ElseIf ddlJobsite.Text = "LEA" Then
-            '    Gentbl("LEALOTIN")
-            'ElseIf ddlJobsite.Text = "SPM" Then
-            '    Gentbl("SPMLOTIN")
-            'ElseIf ddlJobsite.Text = "PTN" Then
-            '    Gentbl("PTNLOTIN")
-            'ElseIf ddlJobsite.Text = "CKT" Then
-            '    Gentbl("CKTLOTIN")
-            'ElseIf ddlJobsite.Text = "WIP" Then
-            '    Gentbl("WIPLOTIN")
-            'End If
+            If ddlJobsite.Text = "LKB" Then
+                Gentbl("ExpLOTIN")
+            ElseIf ddlJobsite.Text = "SBIA" Then
+                Gentbl("SBIALOTIN")
+            ElseIf ddlJobsite.Text = "HCR" Then
+                Gentbl("HCRLOTIN")
+            ElseIf ddlJobsite.Text = "HTO" Then
+                Gentbl("HTOLOTIN")
+            ElseIf ddlJobsite.Text = "AEC" Then
+                Gentbl("AECLOTIN")
+            ElseIf ddlJobsite.Text = "MJB" Then
+                Gentbl("MJBLOTIN")
+            ElseIf ddlJobsite.Text = "LEA" Then
+                Gentbl("LEALOTIN")
+            ElseIf ddlJobsite.Text = "SPM" Then
+                Gentbl("SPMLOTIN")
+            ElseIf ddlJobsite.Text = "PTN" Then
+                Gentbl("PTNLOTIN")
+            ElseIf ddlJobsite.Text = "CKT" Then
+                Gentbl("CKTLOTIN")
+            ElseIf ddlJobsite.Text = "WIP" Then
+                Gentbl("WIPLOTIN")
+            End If
             'SaveDATA_New()
             InsertData()
             'ClearDATA()
