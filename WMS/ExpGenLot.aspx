@@ -396,7 +396,8 @@
                                                         <div class="form-group">
                                                             <label for="txtStatusFile" class="col-sm-2 control-label">Status File</label>
                                                             <div class="col-md-6">
-                                                                <input class="form-control pull-right" id="txtStatusFile" runat="server" type="text" autocomplete="off" />
+                                                               <%-- <input class="form-control pull-right" id="txtStatusFile" runat="server" type="text" autocomplete="off" />--%>
+                                                                <asp:FileUpload ID="FileUpload1" CssClass="form-control" runat="server" Visible="False" />
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <asp:Button runat="server" ID="cmdOpenFile" Text="Open File" />
@@ -1039,13 +1040,18 @@
                                                             </div>
 
                                                         </div>
+                                                        </fieldset>
                                                         <div class="form-group">
                                                             <div class="col-sm-11">
+                                                                <div class="form-group">
                                                                 <div class="col-md-offset-6">
                                                                     <button type="button" class="btn btn-primary" id="btnInvoice" runat="server" onserverclick="btnInvoice_ServerClick">Save Invoice No.</button>
                                                                     <button type="button" class="btn btn-default" id="btnInv" runat="server" onserverclick="btnInv_ServerClick">Delete Inv.</button>
                                                                 </div>
-                                                                <asp:Repeater ID="dgvEASInv" runat="server">
+                                                             </div>
+                                                                <fieldset>
+                                                                    <legend></legend>
+                                                               <asp:Repeater ID="dgvEASInv" runat="server">
                                                                     <HeaderTemplate>
                                                                         <table class="table table-bordered">
                                                                             <th style="width: 10px">InvoiceNo</th>
@@ -1092,12 +1098,10 @@
                                                                     </FooterTemplate>
 
                                                                 </asp:Repeater>
-
+                                                             </fieldset>                                                             
                                                             </div>
                                                         </div>
-
-                                                    </fieldset>
-                                                </div>
+                                                     </div>
                                                     <div class="col-lg-6">
                                                     <fieldset>
                                                         <legend></legend>
@@ -1219,8 +1223,8 @@
                                                                     <HeaderTemplate>
                                                                         <table class="table table-bordered">
                                                                             <th style="width: 10px">InvoiceNo</th>
-                                                                            <th style="width: 10px">ReferenceNo</th>
-                                                                            <th style="width: 10px">ReferenceDate</th>
+                                                                            <th style="width: 10px">LOTNo</th>
+                                                                            <th style="width: 10px">DateInv</th>
                                                                             <th style="width: 10px">Quantity</th>
                                                                     </HeaderTemplate>
                                                                     <ItemTemplate>
@@ -1249,8 +1253,8 @@
                                                                     </AlternatingItemTemplate>
                                                                     <FooterTemplate>
                                                                         <th>InvoiceNo</th>
-                                                                        <th>ReferenceNo</th>
-                                                                        <th>ReferenceDate</th>
+                                                                        <th>LOTNo</th>
+                                                                        <th>DateInv</th>
                                                                         <th>Quantity</th>
                                                                         </table>
                                                                     </FooterTemplate>

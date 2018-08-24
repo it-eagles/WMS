@@ -39,7 +39,7 @@
                                             <i class="fa fa-save"></i>
                                             Save
                                         </button>
-                                        <button type="button" class=" btn btn-app" runat="server" id="btnSaveEdit">
+                                        <button type="button" class=" btn btn-app" runat="server" id="btnSaveEdit" onserverclick="btnSaveEdit_ServerClick">
                                             <i class="fa fa-edit"></i>
                                             Edit
                                         </button>

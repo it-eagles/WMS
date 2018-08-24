@@ -26,8 +26,41 @@ Public Class CustomsInvoice
     'Public PV1 As New frmExpCustomsInvoiceRPT1
 
     Dim formName As String = "frmCustomsInvoice"
-    Dim ieat107 As New addIEAT107
+    Dim ieat107 As Ieat107
     Dim db As New LKBWarehouseEntities1
+    Dim TotalNetWeight As String
+    Dim SumItemWeight As String
+    Dim TotalInvoiceAmount As String
+    Dim TotalInvoiceAmount1 As String
+    Dim ForwardingAmount As String
+    Dim ForwardingAmount1 As String
+    Dim FreightAmount As String
+    Dim FreightAmount1 As String
+    Dim InsuranceAmount As String
+    Dim InsuranceAmount1 As String
+    Dim PackingChargeAmount As String
+    Dim PackingChargeAmount1 As String
+    Dim ForeignInlandAmount As String
+    Dim ForeignInlandAmount1 As String
+    Dim LandingChargeAmount As String
+    Dim LandingChargeAmount1 As String
+    Dim CustomerRefNo As String
+    Dim PLTNetAmount As String
+    Dim CTNNetAmount As String
+    Dim TotalGrossWeight As String
+    Dim TotalQuantity As String
+    Dim VolumAmount As String
+    Dim Quantity As String
+    Dim PriceForeigh As String
+    Dim PriceForeighAmount As String
+    Dim PriceBathAmount As String
+    Dim ExchangeRate As String
+    Dim PLTUnit As String
+    Dim CTNUnit As String
+    Dim PackWeight As String
+    Dim PackGross As String
+
+
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Dim usename As String = CStr(Session("UserName"))
         If Not Me.IsPostBack Then
@@ -85,7 +118,6 @@ Public Class CustomsInvoice
         End If
 
     End Sub
-
     Protected Sub btnAddNew_ServerClick(sender As Object, e As EventArgs)
         UnlockDATA()
         btnSaveNew.Visible = True
@@ -93,7 +125,6 @@ Public Class CustomsInvoice
         btnInvoice.Visible = False
         ClearDATA()
     End Sub
-
     Protected Sub btnEdit_ServerClick(sender As Object, e As EventArgs)
         btnSaveNew.Visible = False
         btnSaveEdit.Visible = True
@@ -107,7 +138,6 @@ Public Class CustomsInvoice
         deetail_.Disabled = True
         list_.Disabled = True
     End Sub
-
     Private Sub ClearDATA()
         'cdbFromprint. = ""
         'cbExchange.Checked = False
@@ -1443,10 +1473,11 @@ Public Class CustomsInvoice
         Dim NameUser As String
         time = CDate((Format(Now)))
         NameUser = Session("UserName").ToString
-
-        db.tblLogExpInvoices.Add(New tblLogExpInvoice With { _
+        investigateNull()
+        Try
+            db.tblLogExpInvoices.Add(New tblLogExpInvoice With { _
                                  .InvoiceNo = txtInvoiceNo.Value.Trim, _
-                                 .InvoiceDate = CType(dtpInvoiceDate.Text, Date?), _
+                                 .InvoiceDate = DateTime.ParseExact(dtpInvoiceDate.Text, "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US")), _
                                  .ConsignneeCode = txtConsigneeCode.Value.Trim, _
                                  .EASExporterCode = txtEASExporterCode.Value.Trim, _
                                  .EASInvRefNo = txtEASInvREFNo.Value.Trim, _
@@ -1457,21 +1488,26 @@ Public Class CustomsInvoice
                                  .ProductDesc2 = txtProductDesc2.Value.Trim, _
                                  .ProductDesc3 = txtProductDesc3.Value.Trim, _
                                  .OriginCountry = dcboOriginCtry.Text.Trim, _
-                                 .Quantity = CType(CDbl(txtQuantity.Value.Trim).ToString("#,##0.00000"), Decimal?), _
-                                 .PriceForeigh = CType(CDbl(txtPriceForeigh.Value.Trim).ToString("#,##0.000"), Decimal?), _
-                                 .PriceForeighAmount = CType(CDbl(txtPriceForeighAmount.Value).ToString("#,##0.000"), Decimal?), _
-                                 .PriceBathAmount = CType(txtPriceBathAmount.Value.Trim, Decimal?), _
-                                 .ExchangeRate = CType(CDbl(txtExchangeRate.Value.Trim).ToString("#,##0.0000"), Decimal?), _
-                                 .PLTNetAmount = CType(CDbl(txtPLTNetAmount.Value.Trim).ToString("#,##0.000"), Decimal?), _
+                                 .Quantity = CType(CDbl(Quantity).ToString("#,##0.00000"), Decimal?), _
+                                 .PriceForeigh = CType(CDbl(PriceForeigh).ToString("#,##0.000"), Decimal?), _
+                                 .PriceForeighAmount = CType(CDbl(PriceForeighAmount).ToString("#,##0.000"), Decimal?), _
+                                 .PriceBathAmount = CType(PriceBathAmount, Decimal?), _
+                                 .ExchangeRate = CType(CDbl(ExchangeRate).ToString("#,##0.0000"), Decimal?), _
+                                 .PLTNetAmount = CType(CDbl(PLTNetAmount).ToString("#,##0.000"), Decimal?), _
                                  .CTNPLTName = txtPLTUnit.Value.Trim, _
-                                 .CTNNetAmount = CType(CDbl(txtCTNNetAmount.Value.Trim).ToString("#,##0.000"), Decimal?), _
+                                 .CTNNetAmount = CType(CDbl(CTNNetAmount).ToString("#,##0.000"), Decimal?), _
                                  .UnitCTNName = txtCTNUnit.Value.Trim, _
-                                 .NetWeight = CType(CDbl(txtPackWeight.Text).ToString("#,##0.00"), Decimal?), _
-                                 .GrossWeight = CType(CDbl(txtPackGross.Value.Trim).ToString("#,##0.00"), Decimal?), _
+                                 .NetWeight = CType(CDbl(PackWeight).ToString("#,##0.00"), Decimal?), _
+                                 .GrossWeight = CType(CDbl(PackGross).ToString("#,##0.00"), Decimal?), _
                                  .UserBy = NameUser, _
                                  .LastUpDate = time
                                 })
-        db.SaveChanges()
+            db.SaveChanges()
+        Catch ex As Exception
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาดให้การบันทึก LogExpInvoices')", True)
+            Exit Sub
+        End Try
+        
 
     End Sub
 
@@ -1491,7 +1527,16 @@ Public Class CustomsInvoice
     End Sub
 
     Protected Sub Use_ServerClick(sender As Object, e As EventArgs)
-        ieat107.getieat107()
+
+        If String.IsNullOrEmpty(txtInvoiceNo.Value.Trim) Then
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('กรุณาป้อน Invoice ก่อน !!!')", True)
+            Exit Sub
+        Else
+            
+            Dim url As String = "addIEAT107.aspx?InvoiceNo=" + txtInvoiceNo.Value.Trim
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "onclick", "javascript:window.open( '" + url + "','_blank','height=600px,width=1000px,scrollbars=1');", True)
+        End If
+
     End Sub
 
     Protected Sub btnSCon_ServerClick(sender As Object, e As EventArgs)
@@ -2052,4 +2097,344 @@ Public Class CustomsInvoice
     End Sub
 
     
+    Protected Sub btnSaveEdit_ServerClick(sender As Object, e As EventArgs)
+        saveModify()
+        InsertData()
+        ClearDATA()
+    End Sub
+    Private Sub saveModify()
+        If String.IsNullOrEmpty(txtInvoiceNo.Value.Trim) Then
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('กรุณาป้อน รหัส Invoice No. ก่อน !!!')", True)
+            Exit Sub
+        End If
+        If String.IsNullOrEmpty(txtExporterCode.Value.Trim) Then
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('กรุณาป้อน Exporter Code ก่อน !!!')", True)
+            Exit Sub
+        End If
+        If String.IsNullOrEmpty(txtConsigneeCode.Value.Trim) Then
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('กรุณาป้อน Consignnee Code ก่อน !!!')", True)
+            Exit Sub
+        End If
+
+        If rdbDiffAmount.Checked = True Then
+
+            DiffBy = "Diff by items-amount"
+
+        ElseIf rdbDiffWeight.Checked = True Then
+            DiffBy = "Diff by items-Weight"
+        Else
+            DiffBy = ""
+        End If
+
+        If rdbNotifyParty.Checked = True Then
+            TermTransport = "Notfy Party"
+        ElseIf rdbOnBehalfOf.Checked = True Then
+            TermTransport = "On Behalf of"
+        Else
+            TermTransport = ""
+        End If
+        If rdbOnBehalfOf.Checked = True Then
+            OnbehalfStatus = "Enable On behalf of"
+        Else
+            OnbehalfStatus = "Disable On behalf of"
+        End If
+
+        Dim item As String
+        If CoutItem.Checked = False Then
+            item = "0"
+        Else
+            item = "1"
+        End If
+
+        Select Case MsgBox("คุณต้องการแก้ไขข้อมูล Product Item ใช่หรือไม่?", MsgBoxStyle.YesNo, "คำยืนยัน")
+            Case MsgBoxResult.Yes
+                Try
+                    investigateNull()
+
+                    Dim upExp As tblExpInvoice = (From up In db.tblExpInvoices Where up.InvoiceNo = txtInvoiceNo.Value.Trim Select up).First
+
+                    If upExp IsNot Nothing Then
+                        upExp.InvoiceNo = txtInvoiceNo.Value.Trim
+                        upExp.ReferenceNo = txtReferenceNo.Value.Trim
+                        upExp.PurchaseOrderNo = txtPurechaseOrderNo.Value.Trim
+                        upExp.InvoiceDate = DateTime.ParseExact(dtpInvoiceDate.Text, "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US"))
+                        upExp.DeliveryDate = DateTime.ParseExact(dtpDeliveryDate.Text, "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US"))
+                        upExp.ReferenceDate = DateTime.ParseExact(dtpReferenceDate.Text, "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US"))
+                        upExp.ExporterCode = txtExporterCode.Value.Trim
+                        upExp.ExporterENG = txtExportEng.Value.Trim
+                        upExp.Street_Number = txtStreet_Number.Value.Trim
+                        upExp.District = txtDistrict.Value.Trim
+                        upExp.Subprovince = txtSubProvince.Value.Trim
+                        upExp.Province = txtProvince.Value.Trim
+                        upExp.PostCode = txtPostCode.Value.Trim
+                        upExp.CompensateCode = txtCompensateCode.Value.Trim
+                        upExp.ConsignneeCode = txtConsigneeCode.Value.Trim
+                        upExp.ConsignneeENG = txtConsignneeEng.Value.Trim
+                        upExp.ConsignneeStreet_Number = txtConsignneeStreet_Number.Value.Trim
+                        upExp.ConsignneeDistrict = txtConsignneeDistrict.Value.Trim
+                        upExp.ConsignneeSubProvince = txtConsignneeSubProvince.Value.Trim
+                        upExp.ConsignneeProvince = txtConsignneeProvince.Value.Trim
+                        upExp.ConsignneePostCode = txtConsignneePostCode.Value.Trim
+                        upExp.ConsignneeEMail = txtConsignneeEMail.Value.Trim
+                        upExp.PurchaseCountryCode = dcboPurchaseCountry.Text.Trim
+                        upExp.PurchaseCountryName = txtPurchaseCountry.Value.Trim
+                        upExp.DestinationCountryCode = cboDestinationCountry.Text
+                        upExp.DestinationCountryName = txtDestinationCountry.Value.Trim
+                        upExp.CountryCode = dcboCountry.Text
+                        upExp.CountryName = txtCountry.Value.Trim
+                        upExp.TermOfPayment = dcboTermofPayment.Text.Trim
+                        upExp.Term = dcboTerm.Text
+                        upExp.TotalNetWeight = CType(CDbl(TotalNetWeight).ToString("#,##0.000"), Double?)
+                        upExp.SumItemWeight = CType(CDbl(SumItemWeight).ToString("#,##0.000"), Double?)
+                        upExp.TotalInvoiceCurrency = dcboTotalInvoice.Text.Trim
+                        upExp.TotalInvoiceAmount = CType(CDbl(TotalInvoiceAmount).ToString("#,##0.000"), Double?)
+                        upExp.TotalInvoiceAmount1 = CType(CDbl(TotalInvoiceAmount1).ToString("#,##0.000"), Double?)
+                        upExp.ForwardingCurrency = dcboForwarding.Text.Trim
+                        upExp.ForwardingAmount = CType(CDbl(ForwardingAmount).ToString("#,##0.000"), Double?)
+                        upExp.ForwardingAmount1 = CType(CDbl(ForwardingAmount1).ToString("#,##0.000"), Double?)
+                        upExp.FreightCurrency = dcboFreight.Text.Trim
+                        upExp.FreightAmount = CType(CDbl(FreightAmount).ToString("#,##0.000"), Double?)
+                        upExp.FreightAmount1 = CType(CDbl(FreightAmount1).ToString("#,##0.000"), Double?)
+                        upExp.InsuranceCurrency = dcboInsurance.Text.Trim
+                        upExp.InsuranceAmount = CType(CDbl(InsuranceAmount).ToString("#,##0.000"), Double?)
+                        upExp.InsuranceAmount1 = CType(CDbl(InsuranceAmount1).ToString("#,##0.000"), Double?)
+                        upExp.PackingChargeCurrency = dcboPackingCharge.Text.Trim
+                        upExp.PackingChargeAmount = CType(CDbl(PackingChargeAmount).ToString("#,##0.0000"), Double?)
+                        upExp.PackingChargeAmount1 = CType(CDbl(PackingChargeAmount1).ToString("#,##0.0000"), Double?)
+                        upExp.ForeignInlandCurrency = dcboForeignInland.Text.Trim
+                        upExp.ForeignInlandAmount = CType(CDbl(ForeignInlandAmount).ToString("#,##0.000"), Double?)
+                        upExp.ForeignInlandAmount1 = CType(CDbl(ForeignInlandAmount1).ToString("#,##0.000"), Double?)
+                        upExp.LandingChargeCurrency = dcboLandingCharge.Text.Trim
+                        upExp.LandingChargeAmount = CType(CDbl(LandingChargeAmount).ToString("#,##0.000"), Double?)
+                        upExp.LandingChargeAmount1 = CType(CDbl(LandingChargeAmount1).ToString("#,##0.000"), Double?)
+                        upExp.OtherChargeCurrency = dcboOtherCharge.Text.Trim
+                        upExp.DiffBy = DiffBy
+                        upExp.TermforShip = TermTransport
+                        upExp.OnbehalfStatus = OnbehalfStatus
+                        upExp.EASExporterCode = txtEASExporterCode.Value.Trim
+                        upExp.EASNameEng = txtEASNameEng.Value.Trim
+                        upExp.StreetAndNumber = txtEASStreet_Number.Value.Trim
+                        upExp.ESADistrict = txtEASDistrict.Value.Trim
+                        upExp.EASSubProvince = txtEASSubProvince.Value.Trim
+                        upExp.EASProvince = txtEASProvince.Value.Trim
+                        upExp.EASPostCode = txtEASPostCode.Value.Trim
+                        upExp.EASTCompensete = txtEASCompensateCode.Value.Trim
+                        upExp.EASCustomerCode = txtCustomerCode.Value.Trim
+                        upExp.EASCustomerENG = txtCustomerEng.Value.Trim
+                        upExp.EASCustomerAddress = txtCustomerAddress.Value.Trim
+                        upExp.EASCustomerEMail = txtCustomerEMail.Value.Trim
+                        upExp.EASCustomerTelNo = txtCustomerTelNo.Value.Trim
+                        upExp.EASCustomerFaxNo = txtCustomerFaxNo.Value.Trim
+                        upExp.EASCustomerContactPerson = txtCustomerContactPerson.Value.Trim
+                        upExp.EASInvRefNo = txtEASInvREFNo.Value.Trim
+                        upExp.EASLOTNo = txtEASLOTNo.Value.Trim
+                        upExp.EASCustomerRefNo = CInt(CustomerRefNo)
+                        upExp.EASSpecialInstruction = txtSpecialInstruction.Value.Trim
+                        upExp.EASShipMode = dcboShipMode.Text.Trim
+                        upExp.EASDeliveryTerm = dcboDeliveryTerm.Text.Trim
+                        upExp.EASShippingMark = dcboShippingMark.Text.Trim
+                        upExp.EASShippingMarkCompany = txtShippingCompany.Value.Trim
+                        upExp.EASShippingMarkAddress = txtShippingAddress.Value.Trim
+                        upExp.EASRemark = txtEASRemark.Value.Trim
+                        upExp.EASTotalCurrency = txtTotalCurrency.Value.Trim
+                        upExp.EASBilltoCustomerCode = txtEASCustomerCode.Value.Trim
+                        upExp.EASBilltoCustomerENG = txtEASCustomerEng1.Value.Trim
+                        upExp.EASBilltoCustomerAddress = txtEASCustomerAddress.Value.Trim
+                        upExp.EASBilltoCustomerEMail = txtEASEmail.Value.Trim
+                        upExp.EASBilltoCustomerTelNo = txtEASTelNo.Value.Trim
+                        upExp.EASBilltoCustomerFaxNo = txtEASFaxNo.Value.Trim
+                        upExp.EASBilltoCustomerContactPerson = txtEASContactPerson.Value.Trim
+                        upExp.PLTNetAmount = CType(CDbl(PLTNetAmount).ToString("#,##0.000"), Double?)
+                        upExp.UnitPLT = dcboUnitPLT.Text.Trim
+                        upExp.CTNPLTName = txtPLTUnit.Value.Trim
+                        upExp.CTNNetAmount = CType(CDbl(CTNNetAmount).ToString("#,##0.000"), Double?)
+                        upExp.UnitCTN = dcboCTN.Text.Trim
+                        upExp.UnitCTNName = txtCTNUnit.Value.Trim
+                        upExp.GrossWeightAmount = CType(CDbl(TotalGrossWeight).ToString("#,##0.000"), Double?)
+                        upExp.QountityAmount = CType(CDbl(TotalQuantity).ToString("#,##0.000"), Double?)
+                        upExp.VolumAmount = CType(CDbl(VolumAmount).ToString("#,##0.000"), Double?)
+                        upExp.TotalTextPack = txtTotalText.Value.Trim
+                        upExp.CarLicense = dcboCarLicense.Text.Trim
+                        upExp.DriverName = dcboDriverName.Text
+                        upExp.CustomsConfirmDate = DateTime.ParseExact(CustomsConfirmDate.Text.Trim, "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US"))
+                        upExp.UpdateBy = Session("UserName").ToString
+                        upExp.UpdateDate = Now
+                        upExp.OutItem = item
+
+                        db.SaveChanges()
+                        ScriptManager.RegisterStartupScript(Me, Me.GetType, "alertMessage", "alert('แก้ไข สำเสร็จ !');", True)
+                        Exit Sub
+                    End If
+                Catch ex As Exception
+                    ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('" & ex.Message & "')", True)
+                End Try
+            Case MsgBoxResult.No
+
+        End Select
+    End Sub
+
+    Private Sub investigateNull()
+        If String.IsNullOrEmpty(txtTotalNetWeight.Value.Trim) Then
+            TotalNetWeight = "0.0"
+        Else
+            TotalNetWeight = txtTotalNetWeight.Value.Trim
+        End If
+        If String.IsNullOrEmpty(txtSumItemWeight.Value.Trim) Then
+            SumItemWeight = "0.0"
+        Else
+            SumItemWeight = txtSumItemWeight.Value.Trim
+        End If
+        If String.IsNullOrEmpty(txtTotalInvoiceAmount.Value.Trim) Then
+            TotalInvoiceAmount = "0.0"
+        Else
+            TotalInvoiceAmount = txtTotalInvoiceAmount.Value.Trim
+        End If
+        If String.IsNullOrEmpty(txtTotalInvoiceAmount1.Value.Trim) Then
+            TotalInvoiceAmount1 = "0.0"
+        Else
+            TotalInvoiceAmount1 = txtTotalInvoiceAmount1.Value.Trim
+        End If
+        If String.IsNullOrEmpty(txtForwardingAmount.Value.Trim) Then
+            ForwardingAmount = "0.0"
+        Else
+            ForwardingAmount = txtForwardingAmount.Value.Trim
+        End If
+        If String.IsNullOrEmpty(txtForwardingAmount1.Value.Trim) Then
+            ForwardingAmount1 = "0.0"
+        Else
+            ForwardingAmount1 = txtForwardingAmount1.Value.Trim
+        End If
+        If String.IsNullOrEmpty(txtFreightAmount.Value.Trim) Then
+            FreightAmount = "0.0"
+        Else
+            FreightAmount = txtFreightAmount.Value.Trim
+        End If
+        If String.IsNullOrEmpty(txtFreightAmount1.Value.Trim) Then
+            FreightAmount1 = "0.0"
+        Else
+            FreightAmount1 = txtFreightAmount1.Value.Trim
+        End If
+        If String.IsNullOrEmpty(txtInsuranceAmount.Value.Trim) Then
+            InsuranceAmount = "0.0"
+        Else
+            InsuranceAmount = txtInsuranceAmount.Value.Trim
+        End If
+        If String.IsNullOrEmpty(txtInsuranceAmount1.Value.Trim) Then
+            InsuranceAmount1 = "0.0"
+        Else
+            InsuranceAmount1 = txtInsuranceAmount1.Value.Trim
+        End If
+        If String.IsNullOrEmpty(txtPackingChargeAmount.Value.Trim) Then
+            PackingChargeAmount = "0.0"
+        Else
+            PackingChargeAmount = txtPackingChargeAmount.Value.Trim
+        End If
+        If String.IsNullOrEmpty(txtPackingChargeAmount1.Value.Trim) Then
+            PackingChargeAmount1 = "0.0"
+        Else
+            PackingChargeAmount1 = txtPackingChargeAmount1.Value.Trim
+        End If
+        If String.IsNullOrEmpty(txtForeignInlandAmount.Value.Trim) Then
+            ForeignInlandAmount = "0.0"
+        Else
+            ForeignInlandAmount = txtForeignInlandAmount.Value.Trim
+        End If
+        If String.IsNullOrEmpty(txtForeignInlandAmount1.Value.Trim) Then
+            ForeignInlandAmount1 = "0.0"
+        Else
+            ForeignInlandAmount1 = txtForeignInlandAmount1.Value.Trim
+        End If
+        If String.IsNullOrEmpty(txtLandingChargeAmount.Value.Trim) Then
+            LandingChargeAmount = "0.0"
+        Else
+            LandingChargeAmount = txtLandingChargeAmount.Value.Trim
+        End If
+        If String.IsNullOrEmpty(txtLandingChargeAmount1.Value.Trim) Then
+            LandingChargeAmount1 = "0.0"
+        Else
+            LandingChargeAmount1 = txtLandingChargeAmount1.Value.Trim
+        End If
+        If String.IsNullOrEmpty(txtCustomerRefNo.Value.Trim) Then
+            CustomerRefNo = "0.0"
+        Else
+            CustomerRefNo = txtCustomerRefNo.Value.Trim
+        End If
+        If String.IsNullOrEmpty(txtPLTNetAmount.Value.Trim) Then
+            PLTNetAmount = "0.0"
+        Else
+            PLTNetAmount = txtPLTNetAmount.Value.Trim
+        End If
+        If String.IsNullOrEmpty(txtCTNNetAmount.Value.Trim) Then
+            CTNNetAmount = "0.0"
+        Else
+            CTNNetAmount = txtCTNNetAmount.Value.Trim
+        End If
+        If String.IsNullOrEmpty(txtTotalGrossWeight.Value.Trim) Then
+            TotalGrossWeight = "0.0"
+        Else
+            TotalGrossWeight = txtTotalGrossWeight.Value.Trim
+        End If
+        If String.IsNullOrEmpty(txtTotalQuantity.Value.Trim) Then
+            TotalQuantity = "0.0"
+        Else
+            TotalQuantity = txtTotalQuantity.Value.Trim()
+        End If
+        If String.IsNullOrEmpty(txtVolumAmount.Value.Trim) Then
+            VolumAmount = "0.0"
+        Else
+            VolumAmount = txtVolumAmount.Value.Trim
+        End If
+        If String.IsNullOrEmpty(txtQuantity.Value.Trim) Then
+            Quantity = "0.0"
+        Else
+            Quantity = txtQuantity.Value.Trim
+        End If
+
+        If String.IsNullOrEmpty(txtPriceForeigh.Value.Trim) Then
+            PriceForeigh = "0.0"
+        Else
+            PriceForeigh = txtPriceForeigh.Value.Trim
+        End If
+        If String.IsNullOrEmpty(txtPriceForeighAmount.Value.Trim) Then
+            PriceForeighAmount = "0.0"
+        Else
+            PriceForeighAmount = txtPriceForeighAmount.Value.Trim
+        End If
+        If String.IsNullOrEmpty(txtPriceBathAmount.Value.Trim) Then
+            PriceBathAmount = "0.0"
+        Else
+            PriceBathAmount = txtPriceBathAmount.Value.Trim
+        End If
+        If String.IsNullOrEmpty(txtExchangeRate.Value.Trim) Then
+            ExchangeRate = "0.0"
+        Else
+            ExchangeRate = txtExchangeRate.Value.Trim
+        End If
+        If String.IsNullOrEmpty(txtPLTNetAmount.Value.Trim) Then
+            PLTNetAmount = "0.0"
+        Else
+            PLTNetAmount = txtPLTNetAmount.Value.Trim
+        End If
+        If String.IsNullOrEmpty(txtPLTUnit.Value.Trim) Then
+            PLTUnit = "0.0"
+        Else
+            PLTUnit = txtPLTUnit.Value.Trim
+        End If
+       
+        If String.IsNullOrEmpty(txtCTNUnit.Value.Trim) Then
+            CTNUnit = "0.0"
+        Else
+            CTNUnit = txtCTNUnit.Value.Trim
+        End If
+        If String.IsNullOrEmpty(txtPackWeight.Text.Trim) Then
+            PackWeight = "0.0"
+        Else
+            PackWeight = txtPackWeight.Text.Trim
+        End If
+        If String.IsNullOrEmpty(txtPackGross.Value.Trim) Then
+            PackGross = "0.0"
+        Else
+            PackGross = txtPackGross.Value.Trim
+        End If
+    End Sub
 End Class

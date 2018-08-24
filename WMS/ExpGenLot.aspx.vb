@@ -759,11 +759,11 @@ Public Class ExpGenLot
                 txtFlight.Value = exp.Flight
             End If
 
-            If String.IsNullOrEmpty(exp.ScanPathFile) Then
-                txtStatusFile.Value = ""
-            Else
-                txtStatusFile.Value = exp.ScanPathFile
-            End If
+            'If String.IsNullOrEmpty(exp.ScanPathFile) Then
+            '    txtStatusFile.Value = ""
+            'Else
+            '    txtStatusFile.Value = exp.ScanPathFile
+            'End If
 
             If String.IsNullOrEmpty(exp.DOCode) Then
                 txtDOCode.Value = ""
@@ -1223,11 +1223,9 @@ Public Class ExpGenLot
             End If
             SaveDATA_New()
             InsertData()
-            ClearDATA()
             ReadDATA()
             ReadDATA2()
-            ReadDATAEAS()
-          
+            ReadDATAEAS()     
         Else
             ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ์เมนูนี้ !!!')", True)
         End If
@@ -2072,6 +2070,10 @@ Public Class ExpGenLot
                 txtBoxINV.Value = "0"
             ElseIf String.IsNullOrEmpty(txtWeightInv.Value.Trim) Then
                 txtWeightInv.Value = "0"
+            ElseIf String.IsNullOrEmpty(txtPriceBath.Value.Trim) Then
+                txtPriceBath.Value = "0"
+            ElseIf String.IsNullOrEmpty(txtPriceForeign.Value.Trim) Then
+                txtPriceForeign.Value = "0"
             Else
                 Select Case MsgBox("คุณต้องการเพิ่มรายการ LOT No ใหม่ ใช่หรือไม่ ?", MsgBoxStyle.YesNo, "คำยืนยัน")
                     Case MsgBoxResult.Yes
@@ -2133,15 +2135,10 @@ Public Class ExpGenLot
     End Sub
     Private Sub ClearDataInv()
         txtGenInvNo.Value = ""
-        dtpInvoice.Text = CStr(Now)
         txtQuantityDetail.Value = "0"
-        cdbUnitQuantityDetail.Text = ""
         txtPallet.Value = "0"
-        cdbUnitPallet.Text = ""
         txtBoxINV.Value = "0"
-        cdbBox.Text = ""
         txtWeightInv.Value = "0"
-        cdbUnitWeightInv.Text = ""
         txtPullS.Value = ""
         txtPriceBath.Value = ""
         txtPriceForeign.Value = ""

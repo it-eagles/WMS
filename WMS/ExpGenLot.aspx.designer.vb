@@ -491,6 +491,15 @@ Partial Public Class ExpGenLot
     Protected WithEvents txtStatusFile As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
+    '''FileUpload1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents FileUpload1 As Global.System.Web.UI.WebControls.FileUpload
+
+    '''<summary>
     '''cmdOpenFile control.
     '''</summary>
     '''<remarks>

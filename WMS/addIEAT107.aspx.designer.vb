@@ -23,22 +23,13 @@ Partial Public Class addIEAT107
     Protected WithEvents form1 As Global.System.Web.UI.HtmlControls.HtmlForm
 
     '''<summary>
-    '''plIeat107 control.
+    '''ScriptManager1 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents plIeat107 As Global.System.Web.UI.WebControls.Panel
-
-    '''<summary>
-    '''upieat107 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents upieat107 As Global.System.Web.UI.UpdatePanel
+    Protected WithEvents ScriptManager1 As Global.System.Web.UI.ScriptManager
 
     '''<summary>
     '''dgvIeat107 control.

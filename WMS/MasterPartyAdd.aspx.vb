@@ -27,8 +27,7 @@ Public Class MasterPartyAdd
                           u.PartyFullName,
                           u.PartyLocalCode,
                           u.PartyLocalName,
-                          u.PartyLocation,
-                          u.PartyCountry}).ToList()
+                          u.PartyLocation}).Take(500)
         If user.Count > 0 Then
             Repeater1.DataSource = user.ToList
             Repeater1.DataBind()

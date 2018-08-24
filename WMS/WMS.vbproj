@@ -42,8 +42,8 @@
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ADONetHelper, Version=3.0.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ADONETHelper.3.0.4\lib\net45\ADONetHelper.dll</HintPath>
+    <Reference Include="ADONetHelper, Version=3.0.7.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ADONETHelper.3.0.7\lib\net45\ADONetHelper.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="AjaxControlToolkit, Version=18.1.0.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
@@ -83,11 +83,11 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.2\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.2\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
@@ -6819,6 +6819,7 @@
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Class\ClassPermis.vb" />
+    <Compile Include="Class\Ieat107.vb" />
     <Compile Include="Class\LoginCls.vb" />
     <Compile Include="Class\MoneyExt.vb" />
     <Compile Include="CustomsInvoice.aspx.designer.vb">
@@ -6826,7 +6827,7 @@
     </Compile>
     <Compile Include="CustomsInvoice.aspx.vb">
       <DependentUpon>CustomsInvoice.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Data\Branch.vb">
       <DependentUpon>LKBWarehouseEntities1_Test.tt</DependentUpon>
@@ -8249,6 +8250,9 @@
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\fullcalendar\dist\fullcalendar.d.ts" />
     <TypeScriptCompile Include="Scripts\moment\moment.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="MyFiie\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

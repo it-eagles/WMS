@@ -36,11 +36,10 @@
                                             <thead>
                                                 <tr>
                                                     <th>PartyCode</th>
-                                                    <th>PartyFullName</th>
-                                                    <th>PartyLocalCode</th>
-                                                    <th>PartyLocalName</th>
-                                                    <th>PartyLocation</th>
-                                                    <th>PartyCountry</th>
+                                                    <th>FullName</th>
+                                                    <th>LocalCode</th>
+                                                    <th>LocalName</th>
+                                                    <th style="width: 10px">Location</th>                                           
                                                     <th>Edit/Delete</th>
                                                     <th>view</th>
                                                 </tr>
@@ -59,10 +58,8 @@
                                                 <asp:Label ID="lblPartyLocalCode" runat="server" Text='<%# Bind("PartyLocalCode")%>'></asp:Label></td>
                                             <td>
                                                 <asp:Label ID="lblPartyLocalName" runat="server" Text='<%# Bind("PartyLocalName")%>'></asp:Label></td>
-                                            <td>
-                                                <asp:Label ID="lblPartyLocation" runat="server" Text='<%# Bind("PartyLocation")%>'></asp:Label></td>
-                                             <td>
-                                                <asp:Label ID="lblPartyCountry" runat="server" Text='<%# Bind("PartyCountry")%>'></asp:Label></td>                                            
+                                            <td class="text-center">
+                                                <asp:Label ID="lblPartyLocation" runat="server" Text='<%# Bind("PartyLocation")%>'></asp:Label></td>                                                                                    
                                             <td class="text-center" >
                                                   <asp:LinkButton ID="LinkButton1" CssClass="btn btn-default" runat="server" CausesValidation="False" CommandName="editCode" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-pencil"></i></asp:LinkButton>
                                                 <a class="btn btn-danger"><i class="fa fa-trash"></i></a>
@@ -79,11 +76,10 @@
                                         <tfoot>
                                             <tr>
                                                     <th>PartyCode</th>
-                                                    <th>PartyFullName</th>
-                                                    <th>PartyLocalCode</th>
-                                                    <th>PartyLocalName</th>
-                                                    <th>PartyLocation</th>
-                                                    <th>PartyCountry</th>
+                                                    <th>FullName</th>
+                                                    <th>LocalCode</th>
+                                                    <th>LocalName</th>
+                                                    <th>Location</th>                                                  
                                                     <th>Edit/Delete</th>
                                                     <th>view</th>
                                             </tr>
