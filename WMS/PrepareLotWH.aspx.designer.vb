@@ -68,6 +68,15 @@ Partial Public Class PrepareLotWH
     Protected WithEvents btnSaveEditHead As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
+    '''preparegoodsreceive_fieldset control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents preparegoodsreceive_fieldset As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
     '''txtJobNo_PreGoodRec control.
     '''</summary>
     '''<remarks>
@@ -84,6 +93,15 @@ Partial Public Class PrepareLotWH
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents btnJobNoSearch As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''btnJobNoSearch_Edit control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnJobNoSearch_Edit As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
     '''txtdatepickerJobdate_PreGoodRec control.
@@ -500,6 +518,42 @@ Partial Public Class PrepareLotWH
     Protected WithEvents ddlVolume_PreGoodRec As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
+    '''goodreceivedetail_fieldset control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents goodreceivedetail_fieldset As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
+    '''JobDetailPanel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents JobDetailPanel As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''JobDetailUpdatePanel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents JobDetailUpdatePanel As Global.System.Web.UI.UpdatePanel
+
+    '''<summary>
+    '''Repeater9 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Repeater9 As Global.System.Web.UI.WebControls.Repeater
+
+    '''<summary>
     '''ddlWHSite_GoodRecDetail control.
     '''</summary>
     '''<remarks>
@@ -896,6 +950,15 @@ Partial Public Class PrepareLotWH
     Protected WithEvents txtDestination_GoodRecDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
+    '''txtEntryNo_GoodRecDetail control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtEntryNo_GoodRecDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
     '''txtBuyer_GoodRecDetail control.
     '''</summary>
     '''<remarks>
@@ -914,6 +977,15 @@ Partial Public Class PrepareLotWH
     Protected WithEvents txtConsignee_GoodRecDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
+    '''txtEntryItemNo_GoodRecDetail control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtEntryItemNo_GoodRecDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
     '''txtExporter_GoodRecDetail control.
     '''</summary>
     '''<remarks>
@@ -930,6 +1002,15 @@ Partial Public Class PrepareLotWH
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents txtShippingMark_GoodRecDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''txtInvoice_GoodRecDetail control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtInvoice_GoodRecDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
     '''btnAddNew_GoodRecDetail control.
@@ -1200,4 +1281,31 @@ Partial Public Class PrepareLotWH
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents Repeater7 As Global.System.Web.UI.WebControls.Repeater
+
+    '''<summary>
+    '''JobNoEditPanel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents JobNoEditPanel As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''JobNoEditUpdatePanel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents JobNoEditUpdatePanel As Global.System.Web.UI.UpdatePanel
+
+    '''<summary>
+    '''Repeater8 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Repeater8 As Global.System.Web.UI.WebControls.Repeater
 End Class
