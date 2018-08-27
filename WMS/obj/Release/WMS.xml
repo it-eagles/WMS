@@ -5903,6 +5903,14 @@ txtStatusFile control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
+</member><member name="F:WMS.ExpGenLot.FileUpload1">
+	<summary>
+FileUpload1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
 </member><member name="F:WMS.ExpGenLot.cmdOpenFile">
 	<summary>
 cmdOpenFile control.
@@ -10679,17 +10687,9 @@ form1 control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.addIEAT107.plIeat107">
+</member><member name="F:WMS.addIEAT107.ScriptManager1">
 	<summary>
-plIeat107 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.addIEAT107.upieat107">
-	<summary>
-upieat107 control.
+ScriptManager1 control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -10879,6 +10879,14 @@ btnSaveEditHead control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
+</member><member name="F:WMS.PrepareLotWH.preparegoodsreceive_fieldset">
+	<summary>
+preparegoodsreceive_fieldset control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
 </member><member name="F:WMS.PrepareLotWH.txtJobNo_PreGoodRec">
 	<summary>
 txtJobNo_PreGoodRec control.
@@ -10890,6 +10898,14 @@ To modify move field declaration from designer file to code-behind file.
 </member><member name="F:WMS.PrepareLotWH.btnJobNoSearch">
 	<summary>
 btnJobNoSearch control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.PrepareLotWH.btnJobNoSearch_Edit">
+	<summary>
+btnJobNoSearch_Edit control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -11263,6 +11279,38 @@ ddlVolume_PreGoodRec control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
+</member><member name="F:WMS.PrepareLotWH.goodreceivedetail_fieldset">
+	<summary>
+goodreceivedetail_fieldset control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.PrepareLotWH.JobDetailPanel">
+	<summary>
+JobDetailPanel control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.PrepareLotWH.JobDetailUpdatePanel">
+	<summary>
+JobDetailUpdatePanel control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.PrepareLotWH.Repeater9">
+	<summary>
+Repeater9 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
 </member><member name="F:WMS.PrepareLotWH.ddlWHSite_GoodRecDetail">
 	<summary>
 ddlWHSite_GoodRecDetail control.
@@ -11615,6 +11663,14 @@ txtDestination_GoodRecDetail control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
+</member><member name="F:WMS.PrepareLotWH.txtEntryNo_GoodRecDetail">
+	<summary>
+txtEntryNo_GoodRecDetail control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
 </member><member name="F:WMS.PrepareLotWH.txtBuyer_GoodRecDetail">
 	<summary>
 txtBuyer_GoodRecDetail control.
@@ -11631,6 +11687,14 @@ txtConsignee_GoodRecDetail control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
+</member><member name="F:WMS.PrepareLotWH.txtEntryItemNo_GoodRecDetail">
+	<summary>
+txtEntryItemNo_GoodRecDetail control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
 </member><member name="F:WMS.PrepareLotWH.txtExporter_GoodRecDetail">
 	<summary>
 txtExporter_GoodRecDetail control.
@@ -11642,6 +11706,14 @@ To modify move field declaration from designer file to code-behind file.
 </member><member name="F:WMS.PrepareLotWH.txtShippingMark_GoodRecDetail">
 	<summary>
 txtShippingMark_GoodRecDetail control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.PrepareLotWH.txtInvoice_GoodRecDetail">
+	<summary>
+txtInvoice_GoodRecDetail control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -11882,6 +11954,30 @@ To modify move field declaration from designer file to code-behind file.
 </member><member name="F:WMS.PrepareLotWH.Repeater7">
 	<summary>
 Repeater7 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.PrepareLotWH.JobNoEditPanel">
+	<summary>
+JobNoEditPanel control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.PrepareLotWH.JobNoEditUpdatePanel">
+	<summary>
+JobNoEditUpdatePanel control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.PrepareLotWH.Repeater8">
+	<summary>
+Repeater8 control.
 </summary>
 	<remarks>
 Auto-generated field.
