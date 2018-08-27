@@ -1,5 +1,6 @@
 ﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="LogIN.aspx.vb" Inherits="WMS.LogIN" %>
 
+<%--<%@ OutputCache Duration="300" VaryByParam="none" %>--%>
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">

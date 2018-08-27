@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="CustomsInvoice.aspx.vb" Inherits="WMS.CustomsInvoice" EnableEventValidation="false" EnableViewState="true" MasterPageFile="~/Home.Master" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
-
+<%@ OutputCache Duration="60" VaryByParam="none" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <form id="form1" runat="server">
         <asp:ScriptManager ID="ScriptManager1" runat="server" AsyncPostBackTimeout="360000"></asp:ScriptManager>

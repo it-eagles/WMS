@@ -48,6 +48,9 @@ Public Class ExpGenLot
                     btnSeletJob.Visible = False
                     showVisible()
                     TabName.Value = Request.Form(TabName.UniqueID)
+                    'Response.Cache.SetExpires(DateTime.Now.AddSeconds(60))
+                    'Response.Cache.SetCacheability(HttpCacheability.Public)
+                    'Response.Cache.SetValidUntilExpires(True)
                 End If
             Else
                 ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ เข้าโปรแกรมนี้' !!!');", True)
