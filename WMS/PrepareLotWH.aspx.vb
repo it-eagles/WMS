@@ -55,10 +55,13 @@ Public Class PrepareLotWH
     '-----------------------------------------------------------Click btn Add New Head PREPAREGOODREC TAB--------------------------------------
     Protected Sub btnAddHead_ServerClick(sender As Object, e As EventArgs)
         UnlockAddData()
+        ClearDATA()
+        ClearDATA1()
     End Sub
     '-----------------------------------------------------------Click btn Edit Head PREPAREGOODREC TAB--------------------------------------
     Protected Sub btnEditHead_ServerClick(sender As Object, e As EventArgs)
         UnlockEditData()
+        ClearDATA1()
     End Sub
     '-----------------------------------------------------------Click btn Save New Head PREPAREGOODREC TAB--------------------------------------
     Protected Sub btnSaveAddHead_ServerClick(sender As Object, e As EventArgs)
@@ -67,6 +70,8 @@ Public Class PrepareLotWH
         Dim cu = From um In db.tblUserMenus Where um.UserName = user And um.Form = form And um.Save_ = 1
         If cu.Any Then
             Save_New()
+            UpdateStatus()
+            ClearDATA1()
         Else
             ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ์เมนูนี้ !!!')", True)
         End If
@@ -723,8 +728,8 @@ Public Class PrepareLotWH
         Select p.PartyCode, p.PartyFullName, pa.PartyAddressCode, pa.Address1, pa.Address2
 
         If cons.Count > 0 Then
-            Repeater5.DataSource = cons.ToList
-            Repeater5.DataBind()
+            Repeater6.DataSource = cons.ToList
+            Repeater6.DataBind()
             ScriptManager.RegisterStartupScript(EndCustomerUpdatePanel, EndCustomerUpdatePanel.GetType(), "show", "$(function () { $('#" + EndCustomerPanel.ClientID + "').modal('show'); });", True)
             EndCustomerUpdatePanel.Update()
         Else
@@ -1026,7 +1031,7 @@ Public Class PrepareLotWH
         Dim print As String = "0"
 
         If txtJobNo_PreGoodRec.Value.Trim = "" Then
-            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert(กรุณาใส่ PrepairLOT ก่อน !!!);", True)
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ PrepairLOT ก่อน !!!');", True)
             txtJobNo_PreGoodRec.Focus()
             Exit Sub
         End If
@@ -1101,7 +1106,7 @@ Public Class PrepareLotWH
     End Sub
     Private Sub Save_Modify()
         If txtJobNo_PreGoodRec.Value.Trim = "" Then
-            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert(กรุณาใส่ PrepairLOT ก่อน !!!);", True)
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ PrepairLOT ก่อน !!!');", True)
             txtJobNo_PreGoodRec.Focus()
             Exit Sub
         End If
@@ -1349,5 +1354,124 @@ Public Class PrepareLotWH
             End Using
         End If
         txtItemNo_GoodRecDetail.Focus()
+    End Sub
+    '------------------------------------------------------------Update Status JobNo in tblImpGenLOT---------------------------------------
+    Private Sub UpdateStatus()
+        If txtJobNo_PreGoodRec.Value.Trim = "" Then
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert(กรุณาป้อน Job No ก่อน !!!);", True)
+            txtJobNo_PreGoodRec.Focus()
+            Exit Sub
+        End If
+
+        'sb.Append("UPDATE tblImpGenLOT")
+        'sb.Append(" SET Status=@Status")
+        'sb.Append(" WHERE (EASLOTNo=@EASLOTNo)")
+        If MsgBox("คุณต้องการแก้ไขรายการ WHGoodsReceiveDetail ใช่หรือไม่ ?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+            Using tran As New TransactionScope()
+                Try
+                    db.Database.Connection.Open()
+                    Dim edit As tblImpGenLOT = (From c In db.tblImpGenLOTs Where c.EASLOTNo = txtJobNo_PreGoodRec.Value.Trim
+                      Select c).First()
+                    If edit IsNot Nothing Then
+                        'edit.EASLOTNo = txtJobNo_PreGoodRec.Value.Trim
+                        edit.Status = 1
+                        db.SaveChanges()
+                        tran.Complete()
+                        ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('แก้ไขข้อมูล สำเร็จ !');", True)
+                    End If
+                Catch ex As Exception
+                    ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด กรุณาบันทึกข้อมูลใหม่อีกครั้ง');", True)
+                End Try
+            End Using
+        End If
+        txtJobNo_PreGoodRec.Focus()
+    End Sub
+    Private Sub ClearDATA()
+        txtJobNo_PreGoodRec.Value = ""
+        txtOwnerCode_PreGoodRec.Value = ""
+        txtNameOwner_PreGoodRec.Value = ""
+        txtAddress1Owner_PreGoodRec.Value = ""
+        txtAddress2Owner_PreGoodRec.Value = ""
+        txtAddress3Owner_PreGoodRec.Value = ""
+        txtAddress4Owner_PreGoodRec.Value = ""
+        txtCustomerCode0_PreGoodRec.Value = ""
+        txtNameCustomer_PreGoodRec.Value = ""
+        txtAddress1Customer_PreGoodRec.Value = ""
+        txtAddress2Customer_PreGoodRec.Value = ""
+        txtAddress3Customer_PreGoodRec.Value = ""
+        txtAddress4Customer_PreGoodRec.Value = ""
+        txtRemark_PreGoodRec.Value = ""
+        txtWHManagement_PreGoodRec.Value = ""
+        txtNameWHManage_PreGoodRec.Value = ""
+        txtAddress1WHManage_PreGoodRec.Value = ""
+        txtAddress2WHManage_PreGoodRec.Value = ""
+        txtAddress3WHManage_PreGoodRec.Value = ""
+        txtAddress4WHManage_PreGoodRec.Value = ""
+        txtEndUserCode_PreGoodRec.Value = ""
+        txtNameEndUser_PreGoodRec.Value = ""
+        txtAddress1EndUser_PreGoodRec.Value = ""
+        txtAddress2EndUser_PreGoodRec.Value = ""
+        txtAddress3EndUser_PreGoodRec.Value = ""
+        txtAddress4EndUser_PreGoodRec.Value = ""
+        'ddlCommodity_PreGoodRec.Text = ""
+        txtQuantityOfGood_PreGoodRec.Value = "0.0"
+        'dcbQuantity1.Text = ""
+        txtQuantityPackage_PreGoodRec.Value = "0.0"
+        'dcbQuantity2.Text = ""
+        txtQuantityPLTSkid_PreGoodRec.Value = "0.0"
+        txtWeight_PreGoodRec.Value = "0.0"
+        'ddlWeight_PreGoodRec.Text = ""
+        txtVolume_PreGoodRec.Value = "0.0"
+        'ddlVolume_PreGoodRec.Value = ""
+        'ddlQuantityPLTSkid_PreGoodRec.Text = ""
+        txtHandlePreson_PreGoodRec.Value = "0"
+        'txtDirectory.Value = ""
+        'ProgressBar.Value = 0
+        'chbCustomer.Checked = False
+        'dgvItemDetail.DataSource = Nothing
+        'dgvImported.DataSource = Nothing
+
+    End Sub
+    Private Sub ClearDATA1()
+        'ddlWHSite_GoodRecDetail.Text = ""
+        'ddlWHLocation_GoodRecDetail.Text = ""
+        txtENDCustomer_GoodRecDetail.Value = ""
+        txtCusLOTNo_GoodRecDetail.Value = ""
+        txtItemNo_GoodRecDetail.Value = ""
+        txtEASPN_GoodRecDetail.Value = ""
+        txtCustomerPN_GoodRecDetail.Value = ""
+        txtOwnerPN_GoodRecDetail.Value = ""
+        txtProductDesc_GoodRecDetail.Value = ""
+        'ddlMeasurement_GoodRecDetail.Text = ""
+        txtWidth_GoodRecDetail.Value = "0"
+        txtHight_GoodRecDetail.Value = "0"
+        txtLength_GoodRecDetail.Value = "0"
+        txtProductVolume_GoodRecDetail.Value = "0"
+        txtOrderNo_GoodRecDetail.Value = ""
+        txtReceiveNo_GoodRecDetail.Value = ""
+        'ddlStatus_GoodRecDetail.Text = ""
+        txtdatepickerManufacturing_GoodRecDetail.Text = ""
+        txtdatepickerExpiredDate_GoodRecDetail.Text = ""
+        txtdatepickerReceiveDate_GoodRecDetail.Text = ""
+        txtQuantity_GoodRecDetail.Value = "0"
+        'ddlQuantity_GoodRecDetail.Text = ""
+        txtWeight_GoodRecDetail.Value = "0"
+        'ddlWeight_GoodRecDetail.Text = ""
+        'ddlCurrency_GoodRecDetail.Text = ""
+        txtExchangeRate_GoodRecDetail.Value = "0"
+        txtPriceForeign_GoodRecDetail.Value = "0"
+        txtPriceBath_GoodRecDetail.Value = "0"
+        txtAmount_GoodRecDetail.Value = "0"
+        txtBathAmount_GoodRecDetail.Value = "0"
+        txtPalletNo_GoodRecDetail.Value = "0"
+        txtSupplier_GoodRecDetail.Value = ""
+        txtBuyer_GoodRecDetail.Value = ""
+        txtExporter_GoodRecDetail.Value = ""
+        txtDestination_GoodRecDetail.Value = ""
+        txtConsignee_GoodRecDetail.Value = ""
+        txtShippingMark_GoodRecDetail.Value = ""
+        txtEntryNo_GoodRecDetail.Value = ""
+        txtEntryItemNo_GoodRecDetail.Value = ""
+        txtInvoice_GoodRecDetail.Value = ""
     End Sub
 End Class

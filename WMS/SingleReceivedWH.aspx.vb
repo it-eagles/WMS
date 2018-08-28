@@ -984,19 +984,19 @@ Public Class SingleReceivedWH
 
     Private Sub selectPrepairGoodsReceive()
         Dim lot As String
-        Dim lotDate As Integer
+        Dim lotDate_ As Integer
         Dim consignee As String = ""
         Dim endCustomer As String = ""
         Dim shipper As String = ""
         If String.IsNullOrEmpty(txtLotNo_.Value.Trim) Then
             lot = ""
-            lotDate = CInt(Convert.ToDateTime(Date.Now).ToString("yyyy"))
+            lotDate_ = CInt(Convert.ToDateTime(Date.Now).ToString("yyyy"))
         Else
             lot = txtConsigneeCode_.Value.Trim
         End If
         Dim go = (From wh In db.tblWHPrepairGoodsReceives
                   Where (wh.LOTNo.Contains(lot) And wh.UsedStatus = 0 And Not wh.LOTNo.Contains("WIP")) _
-                  Or wh.LOTDate.Year = lotDate And wh.UsedStatus = 0
+                  Or wh.LOTDate.Year = lotDate_ And wh.UsedStatus = 0
                   Select wh.LOTNo, LOTDate = wh.LOTDate.Year, wh.CustREFNo, wh.OwnerCode).Take(100)
         If go.Count > 0 Then
             dgvPrepire.DataSource = go.ToList
