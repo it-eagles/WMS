@@ -1,7 +1,7 @@
 ﻿Option Strict On
 Option Explicit On
 
-
+Imports System.Globalization
 Public Class SingleReceivedWH
     Inherits System.Web.UI.Page
 
@@ -31,7 +31,6 @@ Public Class SingleReceivedWH
                     showVolume()
                     showWeight()
                     showWeightINV()
-                    'invoice_.Disabled = True
                     btnSaveNew.Visible = False
                     btnSaveEdit.Visible = False
                     TabName.Value = Request.Form(TabName.UniqueID)
@@ -39,6 +38,8 @@ Public Class SingleReceivedWH
                     goodreceivedetail_.Disabled = True
                     btnSeletJobNew.Visible = False
                     btnSelectJobEdit.Visible = False
+                    ClearDATA()
+                    ClearDATA1()
                     'Response.Cache.SetExpires(DateTime.Now.AddSeconds(60))
                     'Response.Cache.SetCacheability(HttpCacheability.Public)
                     'Response.Cache.SetValidUntilExpires(True)
@@ -192,14 +193,14 @@ Public Class SingleReceivedWH
 
         Try
 
-            txtUnit4.DataSource = qt.ToList
-            txtUnit4.DataTextField = "Code"
-            txtUnit4.DataValueField = "Code"
-            txtUnit4.DataBind()
-            If txtUnit4.Items.Count > 1 Then
-                txtUnit4.Enabled = True
+            ddlUnit4.DataSource = qt.ToList
+            ddlUnit4.DataTextField = "Code"
+            ddlUnit4.DataValueField = "Code"
+            ddlUnit4.DataBind()
+            If ddlUnit4.Items.Count > 1 Then
+                ddlUnit4.Enabled = True
             Else
-                txtUnit4.Enabled = False
+                ddlUnit4.Enabled = False
 
             End If
         Catch ex As Exception
@@ -482,6 +483,8 @@ Public Class SingleReceivedWH
         btnSelectJobEdit.Visible = False
         btnSaveNew.Visible = True
         btnSaveEdit.Visible = False
+        ClearDATA()
+        ClearDATA1()
     End Sub
 
     Protected Sub btnEdit_ServerClick(sender As Object, e As EventArgs)
@@ -491,10 +494,25 @@ Public Class SingleReceivedWH
         btnSelectJobEdit.Visible = True
         btnSaveNew.Visible = False
         btnSaveEdit.Visible = True
+        ClearDATA()
+        ClearDATA1()
     End Sub
 
     Protected Sub btnSaveNew_ServerClick(sender As Object, e As EventArgs)
-
+        Dim user As String = CStr(Session("UserName"))
+        Dim form As String = "frmConfirmGoodsReceive"
+        Dim cu = From um In db.tblUserMenus Where um.UserName = user And um.Form = form And um.Save_ = 1
+        If cu.Any Then
+            Save_New()
+            UpdateRead1()
+            confirmgoodreceive_.Disabled = True
+            goodreceivedetail_.Disabled = False
+            btnSaveEdit.Visible = True
+            btnSaveNew.Visible = False
+        Else
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ์เมนูนี้ !!!')", True)
+        End If
+       
     End Sub
 
     Protected Sub btnSaveEdit_ServerClick(sender As Object, e As EventArgs)
@@ -983,20 +1001,19 @@ Public Class SingleReceivedWH
     End Sub
 
     Private Sub selectPrepairGoodsReceive()
-        Dim lot As String
-        Dim lotDate As Integer
-        Dim consignee As String = ""
-        Dim endCustomer As String = ""
-        Dim shipper As String = ""
-        If String.IsNullOrEmpty(txtLotNo_.Value.Trim) Then
-            lot = ""
-            lotDate = CInt(Convert.ToDateTime(Date.Now).ToString("yyyy"))
-        Else
-            lot = txtConsigneeCode_.Value.Trim
-        End If
+        'Dim lot As String = ""
+        'Dim lotDate_ As Integer
+        'Dim consignee As String = ""
+        'Dim endCustomer As String = ""
+        'Dim shipper As String = ""
+        ''Or (wh.LOTDate.Year = lotDate_ And wh.UsedStatus = 0)
+        'If String.IsNullOrEmpty(txtLotNo_.Value.Trim) Then
+        '    lotDate_ = CInt(Convert.ToDateTime(Date.Now).ToString("yyyy"))
+        'Else
+        '    lot = txtLotNo_.Value.Trim
+        'End If
         Dim go = (From wh In db.tblWHPrepairGoodsReceives
-                  Where (wh.LOTNo.Contains(lot) And wh.UsedStatus = 0 And Not wh.LOTNo.Contains("WIP")) _
-                  Or wh.LOTDate.Year = lotDate And wh.UsedStatus = 0
+                  Where wh.LOTNo.Contains(txtLotNo_.Value.Trim) And wh.UsedStatus = 0 And Not wh.LOTNo.Contains("WIP")
                   Select wh.LOTNo, LOTDate = wh.LOTDate.Year, wh.CustREFNo, wh.OwnerCode).Take(100)
         If go.Count > 0 Then
             dgvPrepire.DataSource = go.ToList
@@ -1037,6 +1054,62 @@ Public Class SingleReceivedWH
     End Sub
 
     Protected Sub lnkPartyCode_LOTNo_Click(sender As Object, e As EventArgs)
+        Dim item As RepeaterItem = TryCast(TryCast(sender, LinkButton).Parent, RepeaterItem)
+        Dim lblLOTNo As String = TryCast(item.FindControl("lblLOTNo"), Label).Text.Trim
+        'Dim PartyAdd As Double = CDbl(TryCast(item.FindControl("lblPartyAdd"), Label).Text.Trim)
+        Try
+            Dim wh = (From pg In db.tblWHPrepairGoodsReceives Where pg.LOTNo = lblLOTNo
+              Select pg).FirstOrDefault
+
+            If String.IsNullOrEmpty(txtLotNo_.Value.Trim) Then
+                txtLotNo_.Value = ""
+            Else
+                txtLotNo_.Value = wh.LOTNo
+            End If
+            dtpInvoiceDate.Text = Convert.ToDateTime(wh.LOTDate).ToString("dd/MM/yyyy")
+            txtCustomerLot.Value = wh.CustREFNo
+            txtOwnerCode.Value = wh.OwnerCode
+            txtOwnerEng.Value = wh.OwnerNameENG
+            txtOwnerStreet_Number.Value = wh.OwnerStreet_Number
+            txtOwnerDistrict.Value = wh.OwnerDistrict
+            txtOwnerSubProvince.Value = wh.OwnerSubProvince
+            txtOwnerProvince.Value = wh.OwnerProvince
+            txtConsigneeCode_.Value = wh.CustomerCode
+            txtConsignneeEng.Value = wh.CustomerNameENG
+            txtConsignneeStreet_Number.Value = wh.CustomerStreet_Number
+            txtConsignneeDistrict.Value = wh.CustomerDistrict
+            txtConsignneeSubProvince.Value = wh.CustomerSubProvince
+            txtConsignneeProvince.Value = wh.CustomerProvince
+            txtBrokerCode.Value = wh.BrokerCode
+            txtBrokerNameEng.Value = wh.BrokerNameENG
+            txtBrokerStreet.Value = wh.BrokerStreet_Number
+            txtBrokerDistrict.Value = wh.BrokerDistrict
+            txtBrokerSubProvince.Value = wh.BrokerSubprovince
+            txtBrokerProvince.Value = wh.BrokerProvince
+            txtExporterCode.Value = wh.ENDUserCode
+            txtExportEng.Value = wh.ENDNameENG
+            txtStreet_Number.Value = wh.ENDStreet_Number
+            txtDistrict.Value = wh.ENDDistrict
+            txtSubProvince.Value = wh.ENDSubprovince
+            txtProvince.Value = wh.ENDProvince
+            dolCommodity.Text = wh.Commodity
+            txtQuantityofPart.Value = String.Format("{0:0.00}", wh.QuantityOfPart)
+            dcbQuantity1.Text = wh.QuantityUnit
+            txtQuantityPackage.Value = String.Format("{0:0.00}", wh.QuantityPackage)
+            dcbQuantity2.Text = wh.PackageUNIT
+            txtPLT.Value = String.Format("{0:0.00}", wh.QuantityPLT)
+            dcbPLT.Text = wh.QuantityPLTUnit
+            txtWeight.Value = String.Format("{0:0.00}", wh.Weigth)
+            dcbWeight.Text = wh.WeigthUnit
+            txtVolume.Value = String.Format("{0:0.00}", wh.Volume)
+            dcbVolume.Text = wh.VolumeUnit
+            txtRamark.Value = wh.Remark
+        Catch ex As Exception
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('" & ex.Message & "')", True)
+            Exit Sub
+        End Try
+      
+
 
     End Sub
 
@@ -1045,13 +1118,282 @@ Public Class SingleReceivedWH
                   Where wh.LOTNo.Contains(txtLotNo_.Value.Trim)
                   Select wh.LOTNo, wh.LOTDate, wh.CustREFNo, wh.OwnerCode).Take(100)
         If go.Count > 0 Then
-            dgvPrepire.DataSource = go.ToList
-            dgvPrepire.DataBind()
-            ScriptManager.RegisterStartupScript(upPrepire, upPrepire.GetType(), "show", "$(function () { $('#" + plPrepire.ClientID + "').modal('show'); });", True)
-            upPrepire.Update()
+            dgvConfirmGood.DataSource = go.ToList
+            dgvConfirmGood.DataBind()
+            ScriptManager.RegisterStartupScript(upConfirmGood, upConfirmGood.GetType(), "show", "$(function () { $('#" + plConfirmGood.ClientID + "').modal('show'); });", True)
+            upConfirmGood.Update()
         Else
             ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('ไม่พบข้อมูล LOTNo นี้')", True)
         End If
 
+    End Sub
+
+    Private Sub ClearDATA()
+        txtLotNo_.Value = ""
+        txtOwnerCode.Value = ""
+        txtOwnerEng.Value = ""
+        txtOwnerStreet_Number.Value = ""
+        txtOwnerDistrict.Value = ""
+        txtOwnerSubProvince.Value = ""
+        txtOwnerProvince.Value = ""
+        txtConsigneeCode_.Value = ""
+        txtConsignneeEng.Value = ""
+        txtConsignneeStreet_Number.Value = ""
+        txtConsignneeDistrict.Value = ""
+        txtConsignneeSubProvince.Value = ""
+        txtConsignneeProvince.Value = ""     
+        txtRamark.Value = ""
+        txtBrokerCode.Value = ""
+        txtBrokerNameEng.Value = ""
+        txtBrokerStreet.Value = ""
+        txtBrokerDistrict.Value = ""
+        txtBrokerSubProvince.Value = ""
+        txtBrokerProvince.Value = ""
+        txtExporterCode.Value = ""
+        txtExportEng.Value = ""
+        txtStreet_Number.Value = ""
+        txtDistrict.Value = ""
+        txtSubProvince.Value = ""
+        txtProvince.Value = ""
+        txtQuantityofPart.Value = "0.0"
+        txtQuantityPackage.Value = "0.0"
+        txtWeight.Value = "0.0"
+        txtVolume.Value = "0.0"
+        txtPLT.Value = "0.0"
+        txtQtyReceived.Value = "0.0"
+        txtQtyWaitReceive.Value = "0.0"
+        txtQtyDamage.Value = "0.0"
+        txtQtyDiscrepancy.Value = "0.0"
+    End Sub
+
+    Private Sub ClearDATA1()
+       
+        txtWeightDetail.Value = ""
+        txtCustomer.Value = ""
+        txtItemNo.Value = ""
+        txtProductCode.Value = ""
+        txtProductDesc1.Value = ""
+        txtProductDesc2.Value = ""
+        txtProductDesc3.Value = ""
+        txtOrder.Value = ""
+        txtReceive.Value = txtLotNo_.Value
+        txtQuantity.Value = "0"
+        txtCusLOTNo.Value = ""
+        txtExchangeRate.Value = "0"
+        txtPriceForeigh.Value = "0"
+        txtPriceForeighAmount.Value = "0"
+        txtPriceBath.Value = "0"
+        txtPriceBathAmount.Value = "0"
+        'txtProductUni = ""
+        txtProductWidth.Value = "0"
+        txtProductHeight.Value = "0"
+        txtProductLeng.Value = "0"
+        txtProductVolume.Value = "0"
+        txtWeightDetail.Value = "0"
+        txtSupplier.Value = ""
+        txtBuyer.Value = ""
+        txtExporter.Value = ""
+        txtDestination.Value = ""
+        txtConsignee.Value = ""
+        txtShippingMark.Value = ""
+        Txtpallet.Value = "0"
+        LblInValume.Value = "0"
+        LblInpallet.Value = "0"
+        LblUseValume.Value = "0"
+        LblUsePallet.Value = "0"
+    End Sub
+
+    Protected Sub lnk_Confirm_Click(sender As Object, e As EventArgs)
+        Dim item As RepeaterItem = TryCast(TryCast(sender, LinkButton).Parent, RepeaterItem)
+        Dim lblLOTNo As String = TryCast(item.FindControl("lblLOTNo"), Label).Text.Trim
+        Try
+            Dim comfirm = (From con In db.tblWHConfirmGoodsReceives
+                       Where con.LOTNo = lblLOTNo
+                       Select con).FirstOrDefault
+
+            txtLotNo_.Value = comfirm.LOTNo
+            dtpInvoiceDate.Text = Convert.ToDateTime(comfirm.LOTDate).ToString("dd/MM/yyyy")
+            txtCustomerLot.Value = comfirm.CustREFNo
+            txtOwnerCode.Value = comfirm.OwnerCode
+            txtOwnerEng.Value = comfirm.OwnerNameENG
+            txtOwnerStreet_Number.Value = comfirm.OwnerStreet_Number
+            txtOwnerDistrict.Value = comfirm.OwnerDistrict
+            txtOwnerSubProvince.Value = comfirm.OwnerSubProvince
+            txtOwnerProvince.Value = comfirm.OwnerProvince
+            txtConsigneeCode_.Value = comfirm.CustomerCode
+            txtConsignneeEng.Value = comfirm.CustomerNameENG
+            txtConsignneeStreet_Number.Value = comfirm.CustomerStreet_Number
+            txtConsignneeDistrict.Value = comfirm.CustomerDistrict
+            txtConsignneeSubProvince.Value = comfirm.CustomerSubProvince
+            txtConsignneeProvince.Value = comfirm.CustomerProvince
+            txtBrokerCode.Value = comfirm.BrokerCode
+            txtBrokerNameEng.Value = comfirm.BrokerNameENG
+            txtBrokerStreet.Value = comfirm.BrokerStreet_Number
+            txtBrokerDistrict.Value = comfirm.BrokerDistrict
+            txtBrokerSubProvince.Value = comfirm.BrokerSubprovince
+            txtBrokerProvince.Value = comfirm.BrokerProvince
+            txtExporterCode.Value = comfirm.ENDUserCode
+            txtExportEng.Value = comfirm.ENDNameENG
+            txtStreet_Number.Value = comfirm.ENDStreet_Number
+            txtDistrict.Value = comfirm.ENDDistrict
+            txtSubProvince.Value = comfirm.ENDSubprovince
+            txtProvince.Value = comfirm.ENDProvince
+            dolCommodity.Text = comfirm.Commodity
+            txtQuantityofPart.Value = String.Format("{0:0.00}", comfirm.QuantityOfPart)
+            dcbQuantity1.Text = comfirm.QuantityUnit
+            txtQuantityPackage.Value = String.Format("{0:0.00}", comfirm.QuantityPackage)
+            dcbQuantity2.Text = comfirm.PackageUNIT
+            txtPLT.Value = String.Format("{0:0.00}", comfirm.QuantityPLT)
+            dcbPLT.Text = comfirm.QuantityPLTUnit
+            txtWeight.Value = String.Format("{0:0.00}", comfirm.Weigth)
+            dcbWeight.Text = comfirm.WeigthUnit
+            txtVolume.Value = String.Format("{0:0.00}", comfirm.Volume)
+            dcbVolume.Text = comfirm.VolumeUnit
+            txtRamark.Value = comfirm.Remark
+            txtQtyReceived.Value = String.Format("{0:0.00}", comfirm.QuantityReceived)
+            cboReceivedUNIT.Text = comfirm.ReceivedUNIT
+            txtQtyWaitReceive.Value = String.Format("{0:0.00}", comfirm.QuantityWaitReceive)
+            cboWaitReceiveUNIT.Text = comfirm.WaitUNIT
+            txtQtyDamage.Value = String.Format("{0:0.00}", comfirm.QuantityDamage)
+            cboDamageUNIT.Text = comfirm.DamageUNIT
+            txtQtyDiscrepancy.Value = String.Format("{0:0.00}", comfirm.QuantityDiscrepancy)
+            cboDiscrepencyUNIT.Text = comfirm.DiscrepancyUNIT
+        Catch ex As Exception
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('" & ex.Message & "')", True)
+            Exit Sub
+        End Try
+        
+
+
+    End Sub
+
+    Protected Sub dgvConfirmGood_ItemDataBound(sender As Object, e As RepeaterItemEventArgs)
+        If e.Item.ItemType = ListItemType.Item OrElse e.Item.ItemType = ListItemType.AlternatingItem Then
+            Dim lblLOTNo As Label = CType(e.Item.FindControl("lblLOTNo"), Label)
+            Dim lblLOTDate As Label = CType(e.Item.FindControl("lblLOTDate"), Label)
+            Dim lblCustREFNoe As Label = CType(e.Item.FindControl("lblCustREFNo"), Label)
+            Dim lblOwnerCode As Label = CType(e.Item.FindControl("lblOwnerCode"), Label)
+
+            If Not IsNothing(lblLOTNo) Then
+                lblLOTNo.Text = DataBinder.Eval(e.Item.DataItem, "LOTNo").ToString
+            End If
+            If Not IsNothing(lblLOTDate) Then
+                lblLOTDate.Text = DataBinder.Eval(e.Item.DataItem, "LOTDate").ToString
+            End If
+            If Not IsNothing(lblCustREFNoe) Then
+                lblCustREFNoe.Text = DataBinder.Eval(e.Item.DataItem, "CustREFNo").ToString
+            End If
+            If Not IsNothing(lblOwnerCode) Then
+                lblOwnerCode.Text = DataBinder.Eval(e.Item.DataItem, "OwnerCode").ToString
+            End If
+
+        End If
+    End Sub
+
+    Private Sub Save_New()
+        Dim print As String = "0"
+        If String.IsNullOrEmpty(txtLotNo_.Value.Trim) Then
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ PrepairLOT ก่อน !!!')", True)
+            txtLotNo_.Focus()
+            Exit Sub
+
+        Else
+            Select Case MsgBox("คุณต้องการเพิ่มรายการ PrepairLOT ใหม่ ใช่หรือไม่ ?", MsgBoxStyle.YesNo, "คำยืนยัน")
+                Case MsgBoxResult.Yes
+                    Try
+                        db.Database.Connection.Open()
+
+                        db.tblWHConfirmGoodsReceives.Add(New tblWHConfirmGoodsReceive With { _
+                          .LOTNo = txtLotNo_.Value.Trim, _
+                          .LOTDate = DateTime.ParseExact(dtpInvoiceDate.Text, "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US")), _
+                          .CustREFNo = txtCustomerLot.Value.Trim, _
+                          .OwnerCode = txtOwnerCode.Value.Trim, _
+                          .OwnerNameENG = txtOwnerEng.Value.Trim, _
+                          .OwnerStreet_Number = txtOwnerStreet_Number.Value.Trim, _
+                          .OwnerDistrict = txtOwnerDistrict.Value.Trim, _
+                          .OwnerSubProvince = txtOwnerSubProvince.Value.Trim, _
+                          .OwnerProvince = txtOwnerProvince.Value.Trim, _
+                          .CustomerCode = txtConsigneeCode_.Value.Trim, _
+                          .CustomerNameENG = txtConsignneeEng.Value.Trim, _
+                          .CustomerStreet_Number = txtConsignneeStreet_Number.Value.Trim, _
+                          .CustomerDistrict = txtConsignneeDistrict.Value.Trim, _
+                          .CustomerSubProvince = txtConsignneeSubProvince.Value.Trim, _
+                          .CustomerProvince = txtConsignneeProvince.Value.Trim, _
+                          .BrokerCode = txtBrokerCode.Value.Trim, _
+                          .BrokerNameENG = txtBrokerNameEng.Value.Trim, _
+                          .BrokerStreet_Number = txtBrokerStreet.Value.Trim, _
+                          .BrokerDistrict = txtBrokerDistrict.Value.Trim, _
+                          .BrokerSubprovince = txtBrokerSubProvince.Value.Trim, _
+                          .BrokerProvince = txtBrokerProvince.Value.Trim, _
+                          .ENDUserCode = txtExporterCode.Value.Trim, _
+                          .ENDNameENG = txtExportEng.Value.Trim, _
+                          .ENDStreet_Number = txtStreet_Number.Value.Trim, _
+                          .ENDDistrict = txtDistrict.Value.Trim, _
+                          .ENDSubprovince = txtSubProvince.Value.Trim, _
+                          .ENDProvince = txtProvince.Value.Trim, _
+                          .Commodity = dolCommodity.Text.Trim, _
+                          .QuantityOfPart = CType(CDbl(txtQuantityofPart.Value).ToString("#,##0.000"), Double?), _
+                          .QuantityUnit = dcbQuantity1.Text.Trim, _
+                          .QuantityPackage = CType(CDbl(txtQuantityPackage.Value).ToString("#,##0.000"), Double?), _
+                          .PackageUNIT = dcbQuantity2.Text.Trim, _
+                          .QuantityPLT = CType(CDbl(txtPLT.Value).ToString("#,##0.000"), Double?), _
+                          .QuantityPLTUnit = dcbPLT.Text.Trim, _
+                          .Weigth = CType(CDbl(txtWeight.Value).ToString("#,##0.000"), Double?), _
+                          .WeigthUnit = dcbWeight.Text.Trim, _
+                          .Volume = CType(CDbl(txtVolume.Value).ToString("#,##0.000"), Double?), _
+                          .VolumeUnit = dcbVolume.Text.Trim, _
+                          .UserBy = CStr(Session("UserName")), _
+                          .LastUpdate = Now, _
+                          .PrintCount = print, _
+                          .Remark = txtRamark.Value, _
+                          .QuantityReceived = CType(CDbl(txtQtyReceived.Value).ToString("#,##0.000"), Double?), _
+                          .ReceivedUNIT = cboReceivedUNIT.Text.Trim, _
+                          .QuantityWaitReceive = CType(CDbl(txtQtyWaitReceive.Value).ToString("#,##0.000"), Double?), _
+                          .WaitUNIT = cboWaitReceiveUNIT.Text.Trim, _
+                          .QuantityDamage = CType(CDbl(txtQtyDamage.Value).ToString("#,##0.000"), Double?), _
+                          .DamageUNIT = cboDamageUNIT.Text.Trim, _
+                          .QuantityDiscrepancy = CType(CDbl(txtQtyDiscrepancy.Value).ToString("#,##0.000"), Double?), _
+                          .DiscrepancyUNIT = cboDiscrepencyUNIT.Text
+                     })
+                        db.SaveChanges()
+                    Catch ex As Exception
+                        ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด !!!')", True)
+                    End Try
+            End Select
+        End If
+
+
+    End Sub
+
+    Private Sub UpdateRead1()
+        If txtLotNo_.Value.Trim() = "" Then
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ PrepairLOT ก่อน !!!')", True)
+            txtLotNo_.Focus()
+            Exit Sub
+
+        Else
+            Dim wh As tblWHPrepairGoodsReceive = (From w In db.tblWHPrepairGoodsReceives Where w.LOTNo = txtLotNo_.Value.Trim).FirstOrDefault
+
+            If wh IsNot Nothing Then
+                Try
+                    wh.LOTNo = txtLotNo_.Value.Trim
+                    wh.UsedStatus = 1
+
+                    db.SaveChanges()
+                Catch ex As Exception
+                    ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('" & ex.Message & "')", True)
+                End Try
+            End If
+        End If
+      
+    End Sub
+
+    Private Sub ReadDATA()
+        Dim wh = (From h In db.tblWHPrepairGoodsReceiveDetails Where h.LOTNo = "" And h.Status <> 1
+            Order By h.ItemNo Ascending).ToList
+
+        If wh.Count > 0 Then
+
+        End If
     End Sub
 End Class

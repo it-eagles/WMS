@@ -95,8 +95,7 @@
                                                                 <label for="dtpInvoiceDate" class="col-sm-4 control-label">Job Date:</label>
                                                                 <div class="col-sm-8">
                                                                     <%--<input type="text" class="form-control pull-right" id="datepickerJobdate"/>--%>
-                                                                    <asp:TextBox CssClass="form-control" ID="dtpInvoiceDate" runat="server" placeholder="DD/MM/YYYY">
-                                                                    </asp:TextBox>
+                                                                    <asp:TextBox CssClass="form-control" ID="dtpInvoiceDate" runat="server" placeholder="DD/MM/YYYY"> </asp:TextBox>
                                                                     <asp:CalendarExtender ID="CalendarExtenderJobdate_ConGoodRec" runat="server" Enabled="True" TargetControlID="dtpInvoiceDate" Format="dd/MM/yyyy"></asp:CalendarExtender>
                                                                 </div>
                                                             </div>
@@ -268,7 +267,7 @@
                                                                     <div class="form-group">
                                                                         <label for="txtRemark_ConGoodRec" class="col-sm-4 control-label">Remark:</label>
                                                                         <div class="col-sm-8">
-                                                                            <textarea class="form-control" rows="3" id="txtRamark_ConGoodRec" placeholder="Remark" style="height: 71px; width: 872px;"></textarea>
+                                                                            <textarea class="form-control" runat="server" rows="3" id="txtRamark" placeholder="Remark" style="height: 71px; width: 872px;"></textarea>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group">
@@ -479,19 +478,20 @@
                                                         <div class="form-group">
                                                             <label for="txtCusLOTNo_GoodRecDetail" class="col-sm-4 control-label">Cus LOT No:</label>
                                                             <div class="col-sm-8">
-                                                                <input class="form-control" id="txtCusLOTNo_GoodRecDetail" runat="server" />
+                                                                <input class="form-control" id="txtCusLOTNo" runat="server"  autocomplete="off"/>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="txtEASPN_GoodRecDetail" class="col-sm-4 control-label">EAS P/N:</label>
                                                             <div class="col-sm-8">
-                                                                <asp:DropDownList ID="ddlEASPN_GoodRecDetail" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                            <%--    <asp:DropDownList ID="ddlEASPN_GoodRecDetail" CssClass="form-control" runat="server"></asp:DropDownList>--%>
+                                                                <input runat="server" id="txtProductCode" autocomplete="off" type="text" class="form-control"/>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="txtProductDesc_GoodRecDetail" class="col-sm-4 control-label">Product Desc:</label>
                                                             <div class="col-sm-8">
-                                                                <textarea class="form-control" rows="3" id="txtRamark_ConGoodRec55554" placeholder="Desc .." style="height: 34px; width: 552px;"></textarea>
+                                                                <textarea class="form-control" runat="server" rows="3" id="txtProductDesc1" placeholder="Desc .." style="height: 34px; width: 552px;"></textarea>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -512,7 +512,7 @@
                                                         <div class="form-group">
                                                             <label for="txtCustomerPN_GoodRecDetail" class="col-sm-4 control-label">CustomerP/N:</label>
                                                             <div class="col-sm-8">
-                                                                <input class="form-control" id="txtCustomerPN_GoodRecDetail" runat="server" />
+                                                                <input class="form-control" id="txtProductDesc2" runat="server" autocomplete="off" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -521,25 +521,26 @@
                                                         <div class="form-group">
                                                             <label for="txtENDCustomer_GoodRecDetail" class="col-sm-4 control-label">ENDCustomer:</label>
                                                             <div class="col-sm-8">
-                                                                <asp:DropDownList ID="ddlENDCustomer_GoodRecDetail" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                               <%-- <asp:DropDownList ID="ddlENDCustomer_GoodRecDetail" CssClass="form-control" runat="server"></asp:DropDownList>--%>
+                                                                <input runat="server" id="txtCustomer" class="form-control" autocomplete="off" />
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="txtItemNo_GoodRecDetail" class="col-sm-4 control-label">Item No:</label>
                                                             <div class="col-sm-8">
-                                                                <input class="form-control" id="txtItemNo_GoodRecDetail" runat="server" />
+                                                                <input class="form-control" id="txtItemNo" runat="server" autocomplete="off"/>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="txtOwnerPN_GoodRecDetail" class="col-sm-4 control-label">Owner P/N:</label>
                                                             <div class="col-sm-8">
-                                                                <input class="form-control" id="txtOwnerPN_GoodRecDetail" runat="server" />
+                                                                <input class="form-control" id="txtProductDesc3" runat="server" autocomplete="off"/>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="txtMeasurement_GoodRecDetail" class="col-sm-4 control-label">Measurement:</label>
                                                             <div class="col-sm-8">
-                                                                <asp:DropDownList ID="txtProductUnit" CssClass="form-control" runat="server">
+                                                                <asp:DropDownList ID="ddlProductUnit" CssClass="form-control" runat="server">
                                                                     <asp:ListItem></asp:ListItem>
                                                                     <asp:ListItem>CM</asp:ListItem>
                                                                     <asp:ListItem>INC</asp:ListItem>
@@ -561,93 +562,93 @@
                                                             <%--<fieldset><legend>Owner</legend>--%>
                                                             <div class="box-body">
                                                                 <div class="form-group">
-                                                                    <label for="txtSpace_GoodRecDetail" class="col-sm-4 control-label"></label>
-                                                                    <label for="txtWidth_GoodRecDetail" class="col-sm-4 control-label">Width:</label>
-                                                                    <label for="txtHight_GoodRecDetail" class="col-sm-4 control-label">Hight:</label>
+                                                                    <label for="txtSpace_GoodRecDetail" class="col-sm-4"></label>
+                                                                    <label for="txtWidth_GoodRecDetail" class="col-sm-4">Width:</label>
+                                                                    <label for="txtHight_GoodRecDetail" class="col-sm-4">Hight:</label>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label for="txtDimension_GoodRecDetail" class="col-sm-4 control-label">Dimension:</label>
                                                                     <div class="col-sm-4">
-                                                                        <input class="form-control" id="txtWidth_GoodRecDetail" runat="server" value="0" />
+                                                                        <input class="form-control" id="txtProductWidth" runat="server" autocomplete="off"/>
                                                                     </div>
                                                                     <div class="col-sm-4">
-                                                                        <input class="form-control" id="txtHight_GoodRecDetail" runat="server" value="0" />
+                                                                        <input class="form-control" id="txtProductHeight" runat="server" autocomplete="off" />
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label for="txtOrderNo_GoodRecDetail" class="col-sm-4 control-label">Order No:</label>
                                                                     <div class="col-sm-8">
-                                                                        <input class="form-control" id="txtOrderNo_GoodRecDetail" runat="server" />
+                                                                        <input class="form-control" id="txtOrder" runat="server" autocomplete="off" />
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label for="txtReceiveNo_GoodRecDetail" class="col-sm-4 control-label">Receive No:</label>
                                                                     <div class="col-sm-8">
-                                                                        <input class="form-control" id="txtReceiveNo_GoodRecDetail" runat="server" />
+                                                                        <input class="form-control" id="txtReceive" runat="server" autocomplete="off" />
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <div class="col-sm-4">
                                                                         <label>
-                                                                            <input type="checkbox" runat="server" id="chkNotUseDate_GoodRecDetail" />Not Use Date
+                                                                            <input type="checkbox" runat="server" id="CbNotDate" />Not Use Date
                                                                         </label>
                                                                     </div>
                                                                     <label for="txtManufacturing_GoodRecDetail" class="col-sm-4 control-label">Manufacturing:</label>
                                                                     <div class="col-sm-4">
-                                                                        <asp:TextBox CssClass="form-control" ID="txtdatepickerManufacturing_GoodRecDetail" runat="server" placeholder="DD/MM/YYYY">
-                                                                        </asp:TextBox>
-                                                                        <asp:CalendarExtender ID="CalendarExtenderManufacturing_GoodRecDetail" runat="server" Enabled="True" TargetControlID="txtdatepickerManufacturing_GoodRecDetail" Format="dd/MM/yyyy"></asp:CalendarExtender>
+                                                                        <asp:TextBox CssClass="form-control" ID="txtManufacturingDate" runat="server" placeholder="DD/MM/YYYY"> </asp:TextBox>
+                                                                        <asp:CalendarExtender ID="CalendarExtenderManufacturing_GoodRecDetail" runat="server" Enabled="True" TargetControlID="txtManufacturingDate" Format="dd/MM/yyyy"></asp:CalendarExtender>
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label for="txtReceiveDate_GoodRecDetail" class="col-sm-4 control-label">Receive Date:</label>
                                                                     <div class="col-sm-3">
-                                                                        <asp:TextBox CssClass="form-control" ID="txtdatepickerReceiveDate_GoodRecDetail" runat="server" placeholder="DD/MM/YYYY">
-                                                                        </asp:TextBox>
-                                                                        <asp:CalendarExtender ID="CalendarExtenderReceiveDate_GoodRecDetail" runat="server" Enabled="True" TargetControlID="txtdatepickerReceiveDate_GoodRecDetail" Format="dd/MM/yyyy"></asp:CalendarExtender>
+                                                                        <asp:TextBox CssClass="form-control" ID="txtReceiveDate" runat="server" placeholder="DD/MM/YYYY"> </asp:TextBox>
+                                                                        <asp:CalendarExtender ID="CalendarExtenderReceiveDate_GoodRecDetail" runat="server" Enabled="True" TargetControlID="txtReceiveDate" Format="dd/MM/yyyy"></asp:CalendarExtender>
                                                                     </div>
-                                                                    <label for="txtActualQTY_GoodRecDetail" class="col-sm-2 control-label">ActualQTY:</label>
+                                                                    <label for="txtActualQTY_GoodRecDetail" class="col-sm-2 control-label">ETA/ARR Date</label>
                                                                     <div class="col-sm-3">
-                                                                        <input class="form-control" id="txtActualQTY" runat="server" value="0" />
+                                                                       <%-- <input class="form-control" id="txtActualQTY" runat="server" value="0" />--%>
+                                                                        <asp:TextBox CssClass="form-control" ID="txtExpectedDate" runat="server" placeholder="DD/MM/YYYY"> </asp:TextBox>
+                                                                        <asp:CalendarExtender ID="CalendarExtender1" runat="server" Enabled="True" TargetControlID="txtExpectedDate" Format="dd/MM/yyyy"></asp:CalendarExtender>
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label for="txtQuantity1QTY_GoodRecDetail" class="col-sm-4 control-label">Quantity1 QTY:</label>
                                                                     <div class="col-sm-4">
-                                                                        <input class="form-control" id="txtQuantity1QTY_GoodRecDetail" runat="server" value="0" />
+                                                                        <input class="form-control" id="txtQuantity" runat="server" autocomplete="off" />
                                                                     </div>
                                                                     <div class="col-sm-4">
-                                                                        <asp:DropDownList ID="txtUnit4" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                                        <asp:DropDownList ID="ddlUnit4" CssClass="form-control" runat="server"></asp:DropDownList>
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <label for="txtCurrency_GoodRecDetail" class="col-sm-4 control-label">Currency:</label>
-                                                                    <label for="txtPriceForeign_GoodRecDetail" class="col-sm-4 control-label">Price Foreign:</label>
-                                                                    <label for="txtPriceBath_GoodRecDetail" class="col-sm-4 control-label">Price Bath:</label>
+                                                                    <label for="txtCurrency_GoodRecDetail" class="col-sm-4">Currency:</label>
+                                                                    <label for="txtPriceForeign_GoodRecDetail" class="col-sm-4">Price Foreign:</label>
+                                                                    <label for="txtPriceBath_GoodRecDetail" class="col-sm-4">Price Bath:</label>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <div class="col-sm-4">
                                                                         <asp:DropDownList ID="dcboCurrency" CssClass="form-control" runat="server"></asp:DropDownList>
                                                                     </div>
                                                                     <div class="col-sm-4">
-                                                                        <input class="form-control" id="txtPriceForeign_GoodRecDetail" runat="server" value="0" />
+                                                                        <input class="form-control" id="txtPriceForeigh" runat="server" autocomplete="off" />
                                                                     </div>
                                                                     <div class="col-sm-4">
-                                                                        <input class="form-control" id="txtPriceBath_GoodRecDetail" runat="server" value="0" />
+                                                                        <input class="form-control" id="txtPriceBath" runat="server" autocomplete="off" />
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <div class="col-sm-4">
                                                                         <div class="radio">
                                                                             <label>
-                                                                                <asp:RadioButton runat="server" ID="rdbShortShip" Text="Short Ship" onclick="EnableDisableTextBox();" GroupName="option2" />
+                                                                                <asp:RadioButton runat="server" ID="rbShort" Text="Short Ship" onclick="EnableDisableTextBox();" GroupName="option2" />
                                                                             </label>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-sm-4">
                                                                         <div class="radio">
                                                                             <label>
-                                                                                <asp:RadioButton runat="server" ID="rdbOverShip" Text="Over Ship" onclick="EnableDisableTextBox();" GroupName="option2" />
+                                                                                <asp:RadioButton runat="server" ID="rbOver" Text="Over Ship" onclick="EnableDisableTextBox();" GroupName="option2" />
                                                                             </label>
                                                                         </div>
                                                                     </div>
@@ -671,19 +672,19 @@
                                                             <%--<fieldset><legend>Customer</legend>--%>
                                                             <div class="box-body">
                                                                 <div class="form-group">
-                                                                    <label for="txtLength_GoodRecDetail" class="col-sm-4 control-label">Length:</label>
-                                                                    <label for="txtProductVolume_GoodRecDetail" class="col-sm-4 control-label">Product Volume:</label>
-                                                                    <label for="txtPalletNo_GoodRecDetail" class="col-sm-4 control-label">Pallet No:</label>
+                                                                    <label for="txtLength_GoodRecDetail" class="col-sm-4">Length:</label>
+                                                                    <label for="txtProductVolume_GoodRecDetail" class="col-sm-4">Product Volume:</label>
+                                                                    <label for="txtPalletNo_GoodRecDetail" class="col-sm-4">Pallet No:</label>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <div class="col-sm-4">
-                                                                        <input class="form-control" id="txtLength_GoodRecDetail" runat="server" value="0" />
+                                                                        <input class="form-control" id="txtProductLeng" runat="server" autocomplete="off"/>
                                                                     </div>
                                                                     <div class="col-sm-4">
-                                                                        <input class="form-control" id="txtProductVolume_GoodRecDetail" runat="server" value="0" />
+                                                                        <input class="form-control" id="txtProductVolume" runat="server" autocomplete="off" />
                                                                     </div>
                                                                     <div class="col-sm-4">
-                                                                        <input class="form-control" id="txtPalletNo_GoodRecDetail" runat="server" value="0" />
+                                                                        <input class="form-control" id="txtPalletNo" runat="server" autocomplete="off" />
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group">
@@ -719,56 +720,54 @@
                                                                 <div class="form-group">
                                                                     <label for="txtExpiredDate_GoodRecDetail" class="col-sm-3 control-label">Expired Date:</label>
                                                                     <div class="col-sm-3">
-                                                                        <asp:TextBox CssClass="form-control" ID="txtdatepickerExpiredDate_GoodRecDetail" runat="server" placeholder="DD/MM/YYYY">
-                                                                        </asp:TextBox>
-                                                                        <asp:CalendarExtender ID="CalendarExtenderExpiredDate_GoodRecDetail" runat="server" Enabled="True" TargetControlID="txtdatepickerExpiredDate_GoodRecDetail" Format="dd/MM/yyyy"></asp:CalendarExtender>
+                                                                        <asp:TextBox CssClass="form-control" ID="txtExpiredDate" runat="server" placeholder="DD/MM/YYYY"> </asp:TextBox>
+                                                                        <asp:CalendarExtender ID="CalendarExtenderExpiredDate_GoodRecDetail" runat="server" Enabled="True" TargetControlID="txtExpiredDate" Format="dd/MM/yyyy"></asp:CalendarExtender>
                                                                     </div>
                                                                     <label for="txtEntryNo_GoodRecDetail" class="col-sm-3 control-label">EntryNo:</label>
                                                                     <div class="col-sm-3">
-                                                                        <input class="form-control" id="txtEntryNo_GoodRecDetail" runat="server" />
+                                                                        <input class="form-control" id="txtEntryNo" runat="server" autocomplete="off" />
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label for="txtETAARRDate_GoodRecDetail" class="col-sm-3 control-label">ETA/ARR Date:</label>
                                                                     <div class="col-sm-3">
-                                                                        <asp:TextBox CssClass="form-control" ID="txtdatepickerETAARRDate_GoodRecDetail" runat="server" placeholder="DD/MM/YYYY">
-                                                                        </asp:TextBox>
+                                                                        <asp:TextBox CssClass="form-control" ID="txtdatepickerETAARRDate_GoodRecDetail" runat="server" placeholder="DD/MM/YYYY"> </asp:TextBox>
                                                                         <asp:CalendarExtender ID="CalendarExtenderETAARRDate_GoodRecDetail" runat="server" Enabled="True" TargetControlID="txtdatepickerETAARRDate_GoodRecDetail" Format="dd/MM/yyyy"></asp:CalendarExtender>
                                                                     </div>
                                                                     <label for="txtEntryItemNo_GoodRecDetail" class="col-sm-3 control-label">EntryItemNo:</label>
                                                                     <div class="col-sm-3">
-                                                                        <input class="form-control" id="txtEntryItemNo_GoodRecDetail" runat="server" />
+                                                                        <input class="form-control" id="txtEntryItemNo" runat="server" autocomplete="off"/>
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label for="txtQuantity2_GoodRecDetail" class="col-sm-4 control-label">Quantity2:</label>
                                                                     <div class="col-sm-4">
-                                                                        <input class="form-control" id="txtQuantity2_GoodRecDetail" runat="server" value="0" />
+                                                                        <input class="form-control" id="txtWeightDetail" runat="server" autocomplete="off" />
                                                                     </div>
                                                                     <div class="col-sm-4">
                                                                         <asp:DropDownList ID="dcboUnitWeightDetail" CssClass="form-control" runat="server"></asp:DropDownList>
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <label for="txtExchangeRate_GoodRecDetail" class="col-sm-4 control-label">ExchangeRate:</label>
-                                                                    <label for="txtAmount_GoodRecDetail" class="col-sm-4 control-label">Amount:</label>
-                                                                    <label for="txtBathAmount_GoodRecDetail" class="col-sm-4 control-label">Bath Amount:</label>
+                                                                    <label for="txtExchangeRate_GoodRecDetail" class="col-sm-4">ExchangeRate:</label>
+                                                                    <label for="txtAmount_GoodRecDetail" class="col-sm-4">Amount:</label>
+                                                                    <label for="txtBathAmount_GoodRecDetail" class="col-sm-4">Bath Amount:</label>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <div class="col-sm-4">
-                                                                        <input class="form-control" id="txtExchangeRate_GoodRecDetail" runat="server" value="0" />
+                                                                        <input class="form-control" id="txtExchangeRate" runat="server" autocomplete="off" />
                                                                     </div>
                                                                     <div class="col-sm-4">
-                                                                        <input class="form-control" id="txtAmount_GoodRecDetail" runat="server" value="0" />
+                                                                        <input class="form-control" id="txtPriceForeighAmount" runat="server" autocomplete="off" />
                                                                     </div>
                                                                     <div class="col-sm-4">
-                                                                        <input class="form-control" id="txtBathAmount_GoodRecDetail" runat="server" value="0" />
+                                                                        <input class="form-control" id="txtPriceBathAmount" runat="server" autocomplete="off" />
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label for="txtInvoice_GoodRecDetail" class="col-sm-4 control-label">Invoice:</label>
                                                                     <div class="col-sm-4">
-                                                                        <input class="form-control" id="txtInvoice_GoodRecDetail" runat="server" />
+                                                                        <input class="form-control" id="txtInvoice" runat="server" autocomplete="off" />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -788,13 +787,13 @@
                                                                     <div class="form-group">
                                                                         <label for="txtSupplier_GoodRecDetail" class="col-sm-4 control-label">Supplier:</label>
                                                                         <div class="col-sm-8">
-                                                                            <input class="form-control" id="txtSupplier_GoodRecDetail" runat="server" />
+                                                                            <input class="form-control" id="txtSupplier" runat="server" autocomplete="off"/>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label for="txtDestination_GoodRecDetail" class="col-sm-4 control-label">Destination:</label>
                                                                         <div class="col-sm-8">
-                                                                            <input class="form-control" id="txtDestination_GoodRecDetail" runat="server" />
+                                                                            <input class="form-control" id="txtDestination" runat="server" autocomplete="off" />
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -803,13 +802,13 @@
                                                                     <div class="form-group">
                                                                         <label for="txtBuyer_GoodRecDetail" class="col-sm-4 control-label">Buyer:</label>
                                                                         <div class="col-sm-8">
-                                                                            <input class="form-control" id="txtBuyer_GoodRecDetail" runat="server" />
+                                                                            <input class="form-control" id="txtBuyer" runat="server" autocomplete="off" />
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label for="txtConsignee_GoodRecDetail" class="col-sm-4 control-label">Consignee:</label>
                                                                         <div class="col-sm-8">
-                                                                            <input class="form-control" id="txtConsignee_GoodRecDetail" runat="server" />
+                                                                            <input class="form-control" id="txtConsignee" runat="server" autocomplete="off"/>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -818,13 +817,13 @@
                                                                     <div class="form-group">
                                                                         <label for="txtExporter_GoodRecDetail" class="col-sm-4 control-label">Exporter:</label>
                                                                         <div class="col-sm-8">
-                                                                            <input class="form-control" id="txtExporter_GoodRecDetail" runat="server" />
+                                                                            <input class="form-control" id="txtExporter" runat="server" autocomplete="off" />
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label for="txtShippingMark_GoodRecDetail" class="col-sm-4 control-label">ShippingMark:</label>
                                                                         <div class="col-sm-8">
-                                                                            <input class="form-control" id="txtShippingMark_GoodRecDetail" runat="server" />
+                                                                            <input class="form-control" id="txtShippingMark" runat="server"  autocomplete="off"/>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -839,7 +838,68 @@
 
                                                     </div>
                                                     <%-------------------------------------------------------End AFTER RIGHT FORM----------------------------------------------------------------%>
-
+                                                   <div class="col-md-12 col-lg-12">
+                                                        <fieldset>
+                                                        <legend></legend>
+                                                        <asp:Repeater ID="dgvItemDetail" runat="server">
+                                                            <HeaderTemplate>
+                                                                <table class="table table-bordered">
+                                                                    <th>select</th>
+                                                                    <th style="width: 10px">InvoiceNo</th>
+                                                                    <th style="width: 10px">ReferenceNo</th>
+                                                                    <th style="width: 10px">ReferenceDate</th>
+                                                                    <th style="width: 10px">PurchaseOrderNo</th>
+                                                                    <th style="width: 10px">InvoiceDate</th>
+                                                                    <th style="width: 10px">EASLOTNo</th>
+                                                            </HeaderTemplate>
+                                                            <ItemTemplate>
+                                                                <tr class="success">
+                                                                    <td><asp:CheckBox id="chkCustomerID" runat="server"></asp:CheckBox></td>
+                                                                    <td>
+                                                                        <asp:Label ID="lblJobSite" runat="server" Text='<%# Bind("InvoiceNo")%>'></asp:Label></td>
+                                                                    <td>
+                                                                        <asp:Label ID="Label1" runat="server" Text='<%# Bind("ReferenceNo")%>'></asp:Label></td>
+                                                                    <td>
+                                                                        <asp:Label ID="Label2" runat="server" Text='<%# Bind("ReferenceDate", "{0:dd/MM/yyyy}")%>'></asp:Label></td>
+                                                                    <td>
+                                                                        <asp:Label ID="Label3" runat="server" Text='<%# Bind("PurchaseOrderNo")%>'></asp:Label></td>
+                                                                    <td>
+                                                                        <asp:Label ID="Label4" runat="server" Text='<%# Bind("InvoiceDate", "{0:dd/MM/yyyy}")%>'></asp:Label></td>
+                                                                    <td>
+                                                                        <asp:Label ID="lalEASLOTNo" runat="server" Text='<%# Bind("EASLOTNo")%>'></asp:Label></td>
+                                                                </tr>
+                                                            </ItemTemplate>
+                                                            <AlternatingItemTemplate>
+                                                                <tr class="info">
+                                                                    <td><asp:CheckBox id="chkCustomerID" runat="server"></asp:CheckBox></td>
+                                                                    <td>
+                                                                        <asp:Label ID="lblJobSite" runat="server" Text='<%# Bind("InvoiceNo")%>'></asp:Label></td>
+                                                                    <td>
+                                                                        <asp:Label ID="Label1" runat="server" Text='<%# Bind("ReferenceNo", "{0:dd/MM/yyyy}")%>'></asp:Label></td>
+                                                                    <td>
+                                                                        <asp:Label ID="Label2" runat="server" Text='<%# Bind("ReferenceDate")%>'></asp:Label></td>
+                                                                    <td>
+                                                                        <asp:Label ID="Label3" runat="server" Text='<%# Bind("PurchaseOrderNo")%>'></asp:Label></td>
+                                                                    <td>
+                                                                        <asp:Label ID="Label4" runat="server" Text='<%# Bind("InvoiceDate", "{0:dd/MM/yyyy}")%>'></asp:Label></td>
+                                                                    <td>
+                                                                        <asp:Label ID="lblEASLOTNo1" runat="server" Text='<%# Bind("EASLOTNo")%>'></asp:Label></td>
+                                                                </tr>
+                                                            </AlternatingItemTemplate>
+                                                            <FooterTemplate>
+                                                                <th>select</th>
+                                                                <th>InvoiceNo</th>
+                                                                <th>ReferenceNo</th>
+                                                                <th>ReferenceDate</th>
+                                                                <th>PurchaseOrderNo</th>
+                                                                <th>InvoiceDate</th>
+                                                                <th>EASLOTNo</th>
+                                                                </table>
+                                                            </FooterTemplate>
+                                                        </asp:Repeater>
+                                                    </fieldset>
+                                                </div>
+                                   
                                                     <%-----------------------------------------------------Start BUTTON FORM------------------------------------------------------------%>
                                                     <div class="col-lg-12 col-md-12 ">
                                                         <!-- form start -->
@@ -873,6 +933,67 @@
                                                         </div>
                                                         <!--/.col-lg-6 col-md-6 stockqty--->
                                                     </div>
+                                                    <div class="col-md-12 col-lg-12">
+                                                        <fieldset>
+                                                        <legend></legend>
+                                                        <asp:Repeater ID="dgvConfirmDetail" runat="server">
+                                                            <HeaderTemplate>
+                                                                <table class="table table-bordered">
+                                                                    <th> select</th>
+                                                                    <th style="width: 10px">InvoiceNo</th>
+                                                                    <th style="width: 10px">ReferenceNo</th>
+                                                                    <th style="width: 10px">ReferenceDate</th>
+                                                                    <th style="width: 10px">PurchaseOrderNo</th>
+                                                                    <th style="width: 10px">InvoiceDate</th>
+                                                                    <th style="width: 10px">EASLOTNo</th>
+                                                            </HeaderTemplate>
+                                                            <ItemTemplate>
+                                                                <tr class="success">
+                                                                    <td><asp:CheckBox id="chkCustomerID" runat="server"></asp:CheckBox></td>
+                                                                    <td>
+                                                                        <asp:Label ID="lblJobSite" runat="server" Text='<%# Bind("InvoiceNo")%>'></asp:Label></td>
+                                                                    <td>
+                                                                        <asp:Label ID="Label1" runat="server" Text='<%# Bind("ReferenceNo")%>'></asp:Label></td>
+                                                                    <td>
+                                                                        <asp:Label ID="Label2" runat="server" Text='<%# Bind("ReferenceDate", "{0:dd/MM/yyyy}")%>'></asp:Label></td>
+                                                                    <td>
+                                                                        <asp:Label ID="Label3" runat="server" Text='<%# Bind("PurchaseOrderNo")%>'></asp:Label></td>
+                                                                    <td>
+                                                                        <asp:Label ID="Label4" runat="server" Text='<%# Bind("InvoiceDate", "{0:dd/MM/yyyy}")%>'></asp:Label></td>
+                                                                    <td>
+                                                                        <asp:Label ID="lalEASLOTNo" runat="server" Text='<%# Bind("EASLOTNo")%>'></asp:Label></td>
+                                                                </tr>
+                                                            </ItemTemplate>
+                                                            <AlternatingItemTemplate>
+                                                                <tr class="info">
+                                                                    <td><asp:CheckBox id="chkCustomerID" runat="server"></asp:CheckBox></td>
+                                                                    <td>
+                                                                        <asp:Label ID="lblJobSite" runat="server" Text='<%# Bind("InvoiceNo")%>'></asp:Label></td>
+                                                                    <td>
+                                                                        <asp:Label ID="Label1" runat="server" Text='<%# Bind("ReferenceNo", "{0:dd/MM/yyyy}")%>'></asp:Label></td>
+                                                                    <td>
+                                                                        <asp:Label ID="Label2" runat="server" Text='<%# Bind("ReferenceDate")%>'></asp:Label></td>
+                                                                    <td>
+                                                                        <asp:Label ID="Label3" runat="server" Text='<%# Bind("PurchaseOrderNo")%>'></asp:Label></td>
+                                                                    <td>
+                                                                        <asp:Label ID="Label4" runat="server" Text='<%# Bind("InvoiceDate", "{0:dd/MM/yyyy}")%>'></asp:Label></td>
+                                                                    <td>
+                                                                        <asp:Label ID="lblEASLOTNo1" runat="server" Text='<%# Bind("EASLOTNo")%>'></asp:Label></td>
+                                                                </tr>
+                                                            </AlternatingItemTemplate>
+                                                            <FooterTemplate>
+                                                                <th>select</th>
+                                                                <th>InvoiceNo</th>
+                                                                <th>ReferenceNo</th>
+                                                                <th>ReferenceDate</th>
+                                                                <th>PurchaseOrderNo</th>
+                                                                <th>InvoiceDate</th>
+                                                                <th>EASLOTNo</th>
+                                                                </table>
+                                                            </FooterTemplate>
+                                                        </asp:Repeater>
+                                                    </fieldset>
+                                                </div>
                                                 </fieldset>
                                             </div>
 
@@ -923,13 +1044,13 @@
                                                         <div class="form-group">
                                                             <label for="txtmessages1_PutAway" class="col-sm-8 control-label">พื้นที่จัดเก็บ(ปริมาตร):</label>
                                                             <div class="col-sm-4">
-                                                                <input class="form-control" id="txtmessages1_PutAway" runat="server" value="0" />
+                                                                <input class="form-control" id="LblInValume" runat="server" autocomplete="off"/>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="txtmessages2_PutAway" class="col-sm-8 control-label">Jobอื่นใช้พื้นที่จัดเก็บ(ปริมาตร):</label>
                                                             <div class="col-sm-4">
-                                                                <input class="form-control" id="txtmessages2_PutAway" runat="server" value="0" />
+                                                                <input class="form-control" id="LblUseValume" runat="server" autocomplete="off" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -944,19 +1065,19 @@
                                                         <div class="form-group">
                                                             <label for="txtRemark_PutAway" class="col-sm-4 control-label">Remark:</label>
                                                             <div class="col-sm-8">
-                                                                <textarea class="form-control" rows="1" id="txtRamark_PutAway" placeholder="Remark" style="width: 563px;"></textarea>
+                                                                <textarea class="form-control" rows="1" id="txtRemarkP" placeholder="Remark" style="width: 563px;"></textarea>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="txtmessages3_PutAway" class="col-sm-8 control-label">พื้นที่จัดเก็บ(Pallet):</label>
                                                             <div class="col-sm-4">
-                                                                <input class="form-control" id="txtmessages3_PutAway" runat="server" value="0" />
+                                                                <input class="form-control" id="LblInpallet" runat="server" autocomplete="off" />
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="txtmessages4_PutAway" class="col-sm-8 control-label">Jobอื่นใช้พื้นที่จัดเก็บ(Pallet):</label>
                                                             <div class="col-sm-4">
-                                                                <input class="form-control" id="txtmessages4_PutAway" runat="server" value="0" />
+                                                                <input class="form-control" id="LblUsePallet" runat="server" autocomplete="off" />
                                                             </div>
                                                         </div>
 
@@ -966,7 +1087,7 @@
                                                         <div class="form-group">
                                                             <label for="txtPalletNo_PutAway" class="col-sm-4 control-label">Pallet No:</label>
                                                             <div class="col-sm-8">
-                                                                <input class="form-control" id="txtPalletNo_PutAway" runat="server" value="0" />
+                                                                <input class="form-control" id="Txtpallet" runat="server" value="0" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1383,6 +1504,79 @@
             </div>
         </asp:Panel>
         <!-- End Shipper Modal -->
+
+         <!-- Modal-->
+        <asp:Panel ID="plConfirmGood" runat="server" CssClass="modal" TabIndex="-1" role="dialog" aria-labelledby="myLabe1">
+            <div class="modal-dialog modal-lg" role="dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Select Code</h4>
+                    </div>
+                    <asp:UpdatePanel ID="upConfirmGood" runat="server" UpdateMode="Conditional">
+                        <ContentTemplate>
+                            <div class="modal-body">
+                                <section class="content">
+                                    <form class="form-horizontal">
+                                        <div class="col-lg-12 col-md-12 " style="overflow: auto;">
+
+                                            <asp:Repeater ID="dgvConfirmGood" runat="server" OnItemDataBound="dgvConfirmGood_ItemDataBound">
+                                                <HeaderTemplate>
+                                                    <table id="example5" class="table table-bordered table-striped table-responsive" style="overflow: auto;">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>select</th>
+                                                                <th>LOTNo</th>
+                                                                <th>LOTDate</th>
+                                                                <th>CustREFNo</th>
+                                                                <th>OwnerCode</th>
+                                                            </tr>
+                                                        </thead>
+                                                </HeaderTemplate>
+
+                                                <ItemTemplate>
+                                                    <td class="text-center">
+                                                        <asp:LinkButton ID="lnk_Confirm" CssClass="btn bg-navy" runat="server" OnClick="lnk_Confirm_Click"><i class="fa fa-hand-o-up"></i></asp:LinkButton>
+                                                    </td>
+                                                    <td>
+                                                        <asp:Label ID="lblLOTNo" runat="server" Text="Label"></asp:Label></td>
+                                                    <td>
+                                                        <asp:Label ID="lblLOTDate" runat="server" Text="Label"></asp:Label></td>
+                                                    <td>
+                                                        <asp:Label ID="lblCustREFNo" runat="server" Text="Label"></asp:Label></td>
+                                                    <td>
+                                                        <asp:Label ID="lblOwnerCode" runat="server" Text="Label"></asp:Label></td>
+                                           
+                                                    </tr>
+                                                </ItemTemplate>
+                                                <FooterTemplate>
+                                                    <tfoot>
+                                                        <tr>
+                                                            <th>select</th>
+                                                            <th>LOTNo</th>
+                                                            <th>LOTDate</th>
+                                                            <th>CustREFNo</th>
+                                                            <th>OwnerCode</th>
+                                                        </tr>
+                                                    </tfoot>
+                                                    </table>
+                                                </FooterTemplate>
+                                            </asp:Repeater>
+                                        </div>
+                                    </form>
+                                </section>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                </div>
+            </div>
+        </asp:Panel>
+        <!-- End Shipper Modal -->
+
         <!-- Modal-->
         <asp:Panel ID="plPickUpCode" runat="server" CssClass="modal" TabIndex="-1" role="dialog" aria-labelledby="myLabe1">
             <div class="modal-dialog modal-lg" role="dialog">

@@ -579,509 +579,515 @@ Public Class ExpGenLot
     Protected Sub dgvLot_ItemCommand(source As Object, e As RepeaterCommandEventArgs)
         Dim EASLOTNo As String = CStr(e.CommandArgument)
         If e.CommandName.Equals("selectLotNO") Then
-            Dim exp = (From ex In db.tblExpGenLOTs Where ex.EASLOTNo = EASLOTNo).SingleOrDefault
-
-            If String.IsNullOrEmpty(exp.EASLOTNo) Then
-                txtLotNo.Value = ""
-            Else
-                txtLotNo.Value = exp.EASLOTNo
-            End If
-
-            dtpInvoiceDate.Text = Convert.ToDateTime(exp.LOTDate).ToString("dd/MM/yyyy")
-            ComboBox2.Text = exp.LOTBy
-            If String.IsNullOrEmpty(exp.SalesCode) Then
-                dcbSales.Text = ""
-            Else
-                dcbSales.Text = exp.SalesCode
-            End If
-            If String.IsNullOrEmpty(exp.SalesName) Then
-                txtSalesName.Value = ""
-            Else
-                txtSalesName.Value = exp.SalesName
-            End If
-            If String.IsNullOrEmpty(exp.ConsigneeCode) Then
-                txtConsigneeCode.Value = ""
-            Else
-                txtConsigneeCode.Value = exp.ConsigneeCode
-            End If
-            If String.IsNullOrEmpty(exp.ConsignNameEng) Then
-                txtConsignneeEng.Value = ""
-            Else
-                txtConsignneeEng.Value = exp.ConsignNameEng
-            End If
-
-            If String.IsNullOrEmpty(exp.ConsignAddress) Then
-                txtConsignneeStreet_Number.Value = ""
-            Else
-                txtConsignneeStreet_Number.Value = exp.ConsignAddress
-            End If
-
-            If String.IsNullOrEmpty(exp.ConsignDistrict) Then
-                txtConsignneeDistrict.Value = ""
-            Else
-                txtConsignneeDistrict.Value = exp.ConsignDistrict
-            End If
-
-            If String.IsNullOrEmpty(exp.ConsignSubProvince) Then
-                txtConsignneeSubProvince.Value = ""
-            Else
-                txtConsignneeSubProvince.Value = exp.ConsignSubProvince
-            End If
-            If String.IsNullOrEmpty(exp.ConsignProvince) Then
-                txtConsignneeProvince.Value = ""
-            Else
-                txtConsignneeProvince.Value = exp.ConsignProvince
-            End If
-
-            If String.IsNullOrEmpty(exp.ConsignPostCode) Then
-                txtConsignneePostCode.Value = ""
-            Else
-                txtConsignneePostCode.Value = exp.ConsignPostCode
-            End If
-
-            If String.IsNullOrEmpty(exp.ConsignEmail) Then
-                txtConsignneeEMail.Value = ""
-            Else
-                txtConsignneeEMail.Value = exp.ConsignEmail
-            End If
-
-            If String.IsNullOrEmpty(exp.ShipperCode) Then
-                txtExporterCode.Value = ""
-            Else
-                txtExporterCode.Value = exp.ShipperCode
-            End If
-
-            If String.IsNullOrEmpty(exp.ShipperNameEng) Then
-                txtExportEng.Value = ""
-            Else
-                txtExportEng.Value = exp.ShipperNameEng
-            End If
-
-            If String.IsNullOrEmpty(exp.ShipperAddress) Then
-                txtStreet_Number.Value = ""
-            Else
-                txtStreet_Number.Value = exp.ShipperAddress
-            End If
-            If String.IsNullOrEmpty(exp.ShipperDistrict) Then
-                txtDistrict.Value = ""
-            Else
-                txtDistrict.Value = exp.ShipperDistrict
-            End If
-            If String.IsNullOrEmpty(exp.ShipperSubprovince) Then
-                txtSubProvince.Value = ""
-            Else
-                txtSubProvince.Value = exp.ShipperSubprovince
-            End If
-            If String.IsNullOrEmpty(exp.ShipperProvince) Then
-                txtProvince.Value = ""
-            Else
-                txtProvince.Value = exp.ShipperProvince
-            End If
-            If String.IsNullOrEmpty(exp.ShipperPostCode) Then
-                txtPostCode.Value = ""
-            Else
-                txtPostCode.Value = exp.ShipperPostCode
-            End If
-
-            If String.IsNullOrEmpty(exp.ShipperReturnCode) Then
-                txtCompensateCode.Value = ""
-            Else
-                txtCompensateCode.Value = exp.ShipperReturnCode
-            End If
-            If String.IsNullOrEmpty(exp.Commodity) Then
-                txtCommodity.Text = ""
-            Else
-                txtCommodity.Text = exp.Commodity
-            End If
-
-            If String.IsNullOrEmpty(CStr(exp.QuantityofPart)) Then
-                txtQuantityofPart.Value = ""
-            Else
-                txtQuantityofPart.Value = CStr(exp.QuantityofPart)
-            End If
-
-            If String.IsNullOrEmpty(exp.QuantityUnit) Then
-                dcbQuantity1.Text = ""
-            Else
-                dcbQuantity1.Text = exp.QuantityUnit
-            End If
-
-            If String.IsNullOrEmpty(CStr(exp.QuantityPack)) Then
-                txtQuantityPLT.Value = ""
-            Else
-                txtQuantityPLT.Value = CStr(exp.QuantityPack)
-            End If
-
-            If String.IsNullOrEmpty(exp.QuantityUnitPack) Then
-                dcbQuantity2.Text = ""
-            Else
-                dcbQuantity2.Text = exp.QuantityUnitPack
-            End If
-
-            If String.IsNullOrEmpty(CStr(exp.Weight)) Then
-                txtWeight.Value = ""
-            Else
-                txtWeight.Value = String.Format("{0:0.00}", exp.Weight)
-            End If
-
-            If String.IsNullOrEmpty(exp.WeightUnit) Then
-                dcbWeight.Text = ""
-            Else
-                dcbWeight.Text = exp.WeightUnit
-            End If
-
-            If String.IsNullOrEmpty(CStr(exp.Volume)) Then
-                txtVolume.Value = ""
-            Else
-                txtVolume.Value = CStr(exp.Volume)
-            End If
-
-            If String.IsNullOrEmpty(exp.VolumeUnit) Then
-                'dcbVolume.Text = ""
-            Else
-                dcbVolume.Text = exp.VolumeUnit
-            End If
-
-            If String.IsNullOrEmpty(exp.MAWB) Then
-                txtMAWB.Value = ""
-            Else
-                txtMAWB.Value = exp.MAWB
-            End If
-
-            ComboBox7.Text = exp.DocType
-
-            If String.IsNullOrEmpty(exp.DocCode) Then
-                txtDocumentCode.Value = ""
-            Else
-                txtDocumentCode.Value = exp.DocCode
-            End If
-
-            If String.IsNullOrEmpty(exp.Flight) Then
-                txtFlight.Value = ""
-            Else
-                txtFlight.Value = exp.Flight
-            End If
-
-            'If String.IsNullOrEmpty(exp.ScanPathFile) Then
-            '    txtStatusFile.Value = ""
-            'Else
-            '    txtStatusFile.Value = exp.ScanPathFile
-            'End If
-
-            If String.IsNullOrEmpty(exp.DOCode) Then
-                txtDOCode.Value = ""
-            Else
-                txtDOCode.Value = exp.DOCode
-            End If
-
-            If String.IsNullOrEmpty(exp.DONameENG) Then
-                txtDONameENG.Value = ""
-            Else
-                txtDONameENG.Value = exp.DONameENG
-            End If
-
-            If String.IsNullOrEmpty(exp.DOStreet_Number) Then
-                txtDOStreet.Value = ""
-            Else
-                txtDOStreet.Value = exp.DOStreet_Number
-            End If
-
-            If String.IsNullOrEmpty(exp.DODistrict) Then
-                txtDODistrict.Value = ""
-            Else
-                txtDODistrict.Value = exp.DODistrict
-            End If
-
-            If String.IsNullOrEmpty(exp.DOSubProvince) Then
-                txtDOSubProvince.Value = ""
-            Else
-                txtDOSubProvince.Value = exp.DOSubProvince
-            End If
-
-            If String.IsNullOrEmpty(exp.DOProvince) Then
-                txtDOProvince.Value = ""
-            Else
-                txtDOProvince.Value = exp.DOProvince
-            End If
-
-            If String.IsNullOrEmpty(exp.DOPostCode) Then
-                txtDOPostCode.Value = ""
-            Else
-                txtDOPostCode.Value = exp.DOPostCode
-            End If
-
-            If String.IsNullOrEmpty(exp.DOEmail) Then
-                txtDOEmail.Value = ""
-            Else
-                txtDOEmail.Value = exp.DOEmail
-            End If
-
-            If String.IsNullOrEmpty(exp.DOContactPerson) Then
-                txtDOContactPerson.Value = ""
-            Else
-                txtDOContactPerson.Value = exp.DOContactPerson
-            End If
-
-            If String.IsNullOrEmpty(exp.IEATNo) Then
-                txtIEATNo.Value = ""
-            Else
-                txtIEATNo.Value = exp.IEATNo
-            End If
-
-            If String.IsNullOrEmpty(exp.EntryNo) Then
-                txtEntryNo.Value = ""
-            Else
-                txtEntryNo.Value = exp.EntryNo
-            End If
-
-            dtpDeliveryDate.Text = Convert.ToDateTime(exp.DeliveryDate).ToString("dd/MM/yyyy")
-
-            If String.IsNullOrEmpty(exp.CustomerCode) Then
-                txtCustomerCode.Value = ""
-            Else
-                txtCustomerCode.Value = exp.CustomerCode
-            End If
-
-            If String.IsNullOrEmpty(exp.CustomerENG) Then
-                txtCustomerENG.Value = ""
-            Else
-                txtCustomerENG.Value = exp.CustomerENG
-            End If
-
-            If String.IsNullOrEmpty(exp.CustomerStreet) Then
-                txtCustomerStreet.Value = ""
-            Else
-                txtCustomerStreet.Value = exp.CustomerStreet
-            End If
-
-            If String.IsNullOrEmpty(exp.CustomerDistrict) Then
-                txtCustomerDistrict.Value = ""
-            Else
-                txtCustomerDistrict.Value = exp.CustomerDistrict
-            End If
-
-            If String.IsNullOrEmpty(exp.CustomerSub) Then
-                txtCustomerSub.Value = ""
-            Else
-                txtCustomerSub.Value = exp.CustomerSub
-            End If
-
-            If String.IsNullOrEmpty(exp.CustomerProvince) Then
-                txtCustomerProvince.Value = ""
-            Else
-                txtCustomerProvince.Value = exp.CustomerProvince
-            End If
-
-            If String.IsNullOrEmpty(exp.CustomerPostCode) Then
-                txtCustomerPostCode.Value = ""
-            Else
-                txtCustomerPostCode.Value = exp.CustomerPostCode
-            End If
-
-            If String.IsNullOrEmpty(exp.CustomerEmail) Then
-                txtCustomerEmail.Value = ""
-            Else
-                txtCustomerEmail.Value = exp.CustomerEmail
-            End If
-
-            If String.IsNullOrEmpty(exp.CustomerContact) Then
-                txtCustomerContact.Value = ""
-            Else
-                txtCustomerContact.Value = exp.CustomerContact
-            End If
-
-            If String.IsNullOrEmpty(exp.PickUpCode) Then
-                txtPickUpCode.Value = ""
-            Else
-                txtPickUpCode.Value = exp.PickUpCode
-            End If
-
-            If String.IsNullOrEmpty(exp.PickUpENG) Then
-                txtPickUpNameEng.Value = ""
-            Else
-                txtPickUpNameEng.Value = exp.PickUpENG
-            End If
-
-            If String.IsNullOrEmpty(exp.PickUpAddress1) Then
-                txtPickUpAddress1.Value = ""
-            Else
-                txtPickUpAddress1.Value = exp.PickUpAddress1
-            End If
-
-            If String.IsNullOrEmpty(exp.PickUpAddress2) Then
-                txtPickUpAddress2.Value = ""
-            Else
-                txtPickUpAddress2.Value = exp.PickUpAddress2
-            End If
-            If String.IsNullOrEmpty(exp.PickUpAddress2) Then
-                txtPickUpAddress2.Value = ""
-            Else
-                txtPickUpAddress2.Value = exp.PickUpAddress3
-            End If
-
-            If String.IsNullOrEmpty(exp.PickUpAddress3) Then
-                txtPickUpAddress3.Value = ""
-            Else
-                txtPickUpAddress3.Value = exp.PickUpAddress3
-            End If
-
-            If String.IsNullOrEmpty(exp.PickUpAddress4) Then
-                txtPickUpAddress4.Value = ""
-            Else
-                txtPickUpAddress4.Value = exp.PickUpAddress4
-            End If
-
-            If String.IsNullOrEmpty(exp.PickUpAddress5) Then
-                txtPickUpAddress5.Value = ""
-            Else
-                txtPickUpAddress5.Value = exp.PickUpAddress5
-            End If
-
-            If String.IsNullOrEmpty(exp.PickUpEmail) Then
-                txtPickUpEmail.Value = ""
-            Else
-                txtPickUpEmail.Value = exp.PickUpEmail
-            End If
-
-            If String.IsNullOrEmpty(exp.PickUpContact) Then
-                txtPickUpContact.Value = ""
-            Else
-                txtPickUpContact.Value = exp.PickUpContact
-            End If
-
-            If String.IsNullOrEmpty(exp.EndCusCode) Then
-                txtEndCusCode.Value = ""
-            Else
-                txtEndCusCode.Value = exp.EndCusCode
-            End If
-
-            If String.IsNullOrEmpty(exp.EndCusENG) Then
-                txtEndCusNameEng.Value = ""
-            Else
-                txtEndCusNameEng.Value = exp.EndCusENG
-            End If
-
-            If String.IsNullOrEmpty(exp.EndCusAddress1) Then
-                txtEndCusAddress1.Value = ""
-            Else
-                txtEndCusAddress1.Value = exp.EndCusAddress1
-            End If
-
-            If String.IsNullOrEmpty(exp.EndCusAddress2) Then
-                txtEndCusAddress2.Value = ""
-            Else
-                txtEndCusAddress2.Value = exp.EndCusAddress2
-            End If
-            If String.IsNullOrEmpty(exp.EndCusAddress3) Then
-                txtEndCusAddress3.Value = ""
-            Else
-                txtEndCusAddress3.Value = exp.EndCusAddress3
-            End If
-            If String.IsNullOrEmpty(exp.EndCusAddress4) Then
-                txtEndCusAddress4.Value = ""
-            Else
-                txtEndCusAddress4.Value = exp.EndCusAddress4
-            End If
-
-            If String.IsNullOrEmpty(exp.EndCusAddress5) Then
-                txtEndCusAddress5.Value = ""
-            Else
-                txtEndCusAddress5.Value = exp.EndCusAddress5
-            End If
-
-            If String.IsNullOrEmpty(exp.EndCusEmail) Then
-                txtEndCusEmail.Value = ""
-            Else
-                txtEndCusEmail.Value = exp.EndCusEmail
-            End If
-
-            If String.IsNullOrEmpty(exp.EndCusContact) Then
-                txtEndCusContact.Value = ""
-            Else
-                txtEndCusContact.Value = exp.EndCusContact
-            End If
-
-            If String.IsNullOrEmpty(exp.FreighForwarder) Then
-                txtFreigh.Value = ""
-            Else
-                txtFreigh.Value = exp.FreighForwarder
-            End If
-
-            If String.IsNullOrEmpty(exp.IEATPermit) Then
-                txtIEATPermit.Value = ""
-            Else
-                txtIEATPermit.Value = exp.IEATPermit
-            End If
-
-            If String.IsNullOrEmpty(exp.ShipTo) Then
-                txtShipTo.Value = ""
-            Else
-                txtShipTo.Value = exp.ShipTo
-            End If
-
-            If String.IsNullOrEmpty(CStr(exp.Box)) Then
-                txtBox.Value = ""
-            Else
-                txtBox.Value = CStr(exp.Box)
-            End If
-
-            If String.IsNullOrEmpty(CStr(exp.Box)) Then
-                txtBox.Value = ""
-            Else
-                txtBox.Value = CStr(exp.Box)
-            End If
-
-            cdbBox1.Text = exp.UnitBox
-            txtIEATDate.Text = Convert.ToDateTime(exp.IEATDate).ToString("dd/MM/yyyy")
-            If String.IsNullOrEmpty(exp.Status1) Then
-                dcbStatus1.Text = ""
-            Else
-                dcbStatus1.Text = exp.Status1
-            End If
-            If String.IsNullOrEmpty(exp.Status2) Then
-                dcbStatus2.Text = ""
-            Else
-                dcbStatus2.Text = exp.Status2
-            End If
-
-            If String.IsNullOrEmpty(exp.Status2) Then
-                dcbStatus2.Text = ""
-            Else
-                dcbStatus2.Text = exp.Status2
-            End If
-            If String.IsNullOrEmpty(exp.Remark) Then
-                txtJobRemark.Value = ""
-            Else
-                txtJobRemark.Value = exp.Remark
-            End If
-            If String.IsNullOrEmpty(exp.JobSite) Then
-                cboJobSite.Text = ""
-            Else
-                cboJobSite.Text = exp.JobSite
-            End If
-            If String.IsNullOrEmpty(exp.BillingNo) Then
-                txtBillingNo.Value = ""
-            Else
-                txtBillingNo.Value = exp.BillingNo
-            End If
-            If String.IsNullOrEmpty(exp.CustomerCodeGroup) Then
-                txtCustomerCodeGroup.Value = ""
-            Else
-                txtCustomerCodeGroup.Value = exp.CustomerCodeGroup
-            End If
-            If String.IsNullOrEmpty(exp.CustomerENGGroup) Then
-                txtCustomerENGGroup.Value = ""
-            Else
-                txtCustomerENGGroup.Value = exp.CustomerENGGroup
-            End If
-            If String.IsNullOrEmpty(exp.DeliveryTime) Then
-                txtDeliveryTime.Value = ""
-            Else
-                txtDeliveryTime.Value = exp.DeliveryTime
-            End If
-            ReadDATA()
-            ReadDATA2()
-            ReadDATAEAS()
+            Try
+                Dim exp = (From ex In db.tblExpGenLOTs Where ex.EASLOTNo = EASLOTNo).SingleOrDefault
+
+                If String.IsNullOrEmpty(exp.EASLOTNo) Then
+                    txtLotNo.Value = ""
+                Else
+                    txtLotNo.Value = exp.EASLOTNo
+                End If
+
+                dtpInvoiceDate.Text = Convert.ToDateTime(exp.LOTDate).ToString("dd/MM/yyyy")
+                ComboBox2.Text = exp.LOTBy
+                If String.IsNullOrEmpty(exp.SalesCode) Then
+                    dcbSales.Text = ""
+                Else
+                    dcbSales.Text = exp.SalesCode
+                End If
+                If String.IsNullOrEmpty(exp.SalesName) Then
+                    txtSalesName.Value = ""
+                Else
+                    txtSalesName.Value = exp.SalesName
+                End If
+                If String.IsNullOrEmpty(exp.ConsigneeCode) Then
+                    txtConsigneeCode.Value = ""
+                Else
+                    txtConsigneeCode.Value = exp.ConsigneeCode
+                End If
+                If String.IsNullOrEmpty(exp.ConsignNameEng) Then
+                    txtConsignneeEng.Value = ""
+                Else
+                    txtConsignneeEng.Value = exp.ConsignNameEng
+                End If
+
+                If String.IsNullOrEmpty(exp.ConsignAddress) Then
+                    txtConsignneeStreet_Number.Value = ""
+                Else
+                    txtConsignneeStreet_Number.Value = exp.ConsignAddress
+                End If
+
+                If String.IsNullOrEmpty(exp.ConsignDistrict) Then
+                    txtConsignneeDistrict.Value = ""
+                Else
+                    txtConsignneeDistrict.Value = exp.ConsignDistrict
+                End If
+
+                If String.IsNullOrEmpty(exp.ConsignSubProvince) Then
+                    txtConsignneeSubProvince.Value = ""
+                Else
+                    txtConsignneeSubProvince.Value = exp.ConsignSubProvince
+                End If
+                If String.IsNullOrEmpty(exp.ConsignProvince) Then
+                    txtConsignneeProvince.Value = ""
+                Else
+                    txtConsignneeProvince.Value = exp.ConsignProvince
+                End If
+
+                If String.IsNullOrEmpty(exp.ConsignPostCode) Then
+                    txtConsignneePostCode.Value = ""
+                Else
+                    txtConsignneePostCode.Value = exp.ConsignPostCode
+                End If
+
+                If String.IsNullOrEmpty(exp.ConsignEmail) Then
+                    txtConsignneeEMail.Value = ""
+                Else
+                    txtConsignneeEMail.Value = exp.ConsignEmail
+                End If
+
+                If String.IsNullOrEmpty(exp.ShipperCode) Then
+                    txtExporterCode.Value = ""
+                Else
+                    txtExporterCode.Value = exp.ShipperCode
+                End If
+
+                If String.IsNullOrEmpty(exp.ShipperNameEng) Then
+                    txtExportEng.Value = ""
+                Else
+                    txtExportEng.Value = exp.ShipperNameEng
+                End If
+
+                If String.IsNullOrEmpty(exp.ShipperAddress) Then
+                    txtStreet_Number.Value = ""
+                Else
+                    txtStreet_Number.Value = exp.ShipperAddress
+                End If
+                If String.IsNullOrEmpty(exp.ShipperDistrict) Then
+                    txtDistrict.Value = ""
+                Else
+                    txtDistrict.Value = exp.ShipperDistrict
+                End If
+                If String.IsNullOrEmpty(exp.ShipperSubprovince) Then
+                    txtSubProvince.Value = ""
+                Else
+                    txtSubProvince.Value = exp.ShipperSubprovince
+                End If
+                If String.IsNullOrEmpty(exp.ShipperProvince) Then
+                    txtProvince.Value = ""
+                Else
+                    txtProvince.Value = exp.ShipperProvince
+                End If
+                If String.IsNullOrEmpty(exp.ShipperPostCode) Then
+                    txtPostCode.Value = ""
+                Else
+                    txtPostCode.Value = exp.ShipperPostCode
+                End If
+
+                If String.IsNullOrEmpty(exp.ShipperReturnCode) Then
+                    txtCompensateCode.Value = ""
+                Else
+                    txtCompensateCode.Value = exp.ShipperReturnCode
+                End If
+                If String.IsNullOrEmpty(exp.Commodity) Then
+                    txtCommodity.Text = ""
+                Else
+                    txtCommodity.Text = exp.Commodity
+                End If
+
+                If String.IsNullOrEmpty(CStr(exp.QuantityofPart)) Then
+                    txtQuantityofPart.Value = ""
+                Else
+                    txtQuantityofPart.Value = CStr(exp.QuantityofPart)
+                End If
+
+                If String.IsNullOrEmpty(exp.QuantityUnit) Then
+                    dcbQuantity1.Text = ""
+                Else
+                    dcbQuantity1.Text = exp.QuantityUnit
+                End If
+
+                If String.IsNullOrEmpty(CStr(exp.QuantityPack)) Then
+                    txtQuantityPLT.Value = ""
+                Else
+                    txtQuantityPLT.Value = CStr(exp.QuantityPack)
+                End If
+
+                If String.IsNullOrEmpty(exp.QuantityUnitPack) Then
+                    dcbQuantity2.Text = ""
+                Else
+                    dcbQuantity2.Text = exp.QuantityUnitPack
+                End If
+
+                If String.IsNullOrEmpty(CStr(exp.Weight)) Then
+                    txtWeight.Value = ""
+                Else
+                    txtWeight.Value = String.Format("{0:0.00}", exp.Weight)
+                End If
+
+                If String.IsNullOrEmpty(exp.WeightUnit) Then
+                    dcbWeight.Text = ""
+                Else
+                    dcbWeight.Text = exp.WeightUnit
+                End If
+
+                If String.IsNullOrEmpty(CStr(exp.Volume)) Then
+                    txtVolume.Value = ""
+                Else
+                    txtVolume.Value = CStr(exp.Volume)
+                End If
+
+                If String.IsNullOrEmpty(exp.VolumeUnit) Then
+                    'dcbVolume.Text = ""
+                Else
+                    dcbVolume.Text = exp.VolumeUnit
+                End If
+
+                If String.IsNullOrEmpty(exp.MAWB) Then
+                    txtMAWB.Value = ""
+                Else
+                    txtMAWB.Value = exp.MAWB
+                End If
+
+                ComboBox7.Text = exp.DocType
+
+                If String.IsNullOrEmpty(exp.DocCode) Then
+                    txtDocumentCode.Value = ""
+                Else
+                    txtDocumentCode.Value = exp.DocCode
+                End If
+
+                If String.IsNullOrEmpty(exp.Flight) Then
+                    txtFlight.Value = ""
+                Else
+                    txtFlight.Value = exp.Flight
+                End If
+
+                'If String.IsNullOrEmpty(exp.ScanPathFile) Then
+                '    txtStatusFile.Value = ""
+                'Else
+                '    txtStatusFile.Value = exp.ScanPathFile
+                'End If
+
+                If String.IsNullOrEmpty(exp.DOCode) Then
+                    txtDOCode.Value = ""
+                Else
+                    txtDOCode.Value = exp.DOCode
+                End If
+
+                If String.IsNullOrEmpty(exp.DONameENG) Then
+                    txtDONameENG.Value = ""
+                Else
+                    txtDONameENG.Value = exp.DONameENG
+                End If
+
+                If String.IsNullOrEmpty(exp.DOStreet_Number) Then
+                    txtDOStreet.Value = ""
+                Else
+                    txtDOStreet.Value = exp.DOStreet_Number
+                End If
+
+                If String.IsNullOrEmpty(exp.DODistrict) Then
+                    txtDODistrict.Value = ""
+                Else
+                    txtDODistrict.Value = exp.DODistrict
+                End If
+
+                If String.IsNullOrEmpty(exp.DOSubProvince) Then
+                    txtDOSubProvince.Value = ""
+                Else
+                    txtDOSubProvince.Value = exp.DOSubProvince
+                End If
+
+                If String.IsNullOrEmpty(exp.DOProvince) Then
+                    txtDOProvince.Value = ""
+                Else
+                    txtDOProvince.Value = exp.DOProvince
+                End If
+
+                If String.IsNullOrEmpty(exp.DOPostCode) Then
+                    txtDOPostCode.Value = ""
+                Else
+                    txtDOPostCode.Value = exp.DOPostCode
+                End If
+
+                If String.IsNullOrEmpty(exp.DOEmail) Then
+                    txtDOEmail.Value = ""
+                Else
+                    txtDOEmail.Value = exp.DOEmail
+                End If
+
+                If String.IsNullOrEmpty(exp.DOContactPerson) Then
+                    txtDOContactPerson.Value = ""
+                Else
+                    txtDOContactPerson.Value = exp.DOContactPerson
+                End If
+
+                If String.IsNullOrEmpty(exp.IEATNo) Then
+                    txtIEATNo.Value = ""
+                Else
+                    txtIEATNo.Value = exp.IEATNo
+                End If
+
+                If String.IsNullOrEmpty(exp.EntryNo) Then
+                    txtEntryNo.Value = ""
+                Else
+                    txtEntryNo.Value = exp.EntryNo
+                End If
+
+                dtpDeliveryDate.Text = Convert.ToDateTime(exp.DeliveryDate).ToString("dd/MM/yyyy")
+
+                If String.IsNullOrEmpty(exp.CustomerCode) Then
+                    txtCustomerCode.Value = ""
+                Else
+                    txtCustomerCode.Value = exp.CustomerCode
+                End If
+
+                If String.IsNullOrEmpty(exp.CustomerENG) Then
+                    txtCustomerENG.Value = ""
+                Else
+                    txtCustomerENG.Value = exp.CustomerENG
+                End If
+
+                If String.IsNullOrEmpty(exp.CustomerStreet) Then
+                    txtCustomerStreet.Value = ""
+                Else
+                    txtCustomerStreet.Value = exp.CustomerStreet
+                End If
+
+                If String.IsNullOrEmpty(exp.CustomerDistrict) Then
+                    txtCustomerDistrict.Value = ""
+                Else
+                    txtCustomerDistrict.Value = exp.CustomerDistrict
+                End If
+
+                If String.IsNullOrEmpty(exp.CustomerSub) Then
+                    txtCustomerSub.Value = ""
+                Else
+                    txtCustomerSub.Value = exp.CustomerSub
+                End If
+
+                If String.IsNullOrEmpty(exp.CustomerProvince) Then
+                    txtCustomerProvince.Value = ""
+                Else
+                    txtCustomerProvince.Value = exp.CustomerProvince
+                End If
+
+                If String.IsNullOrEmpty(exp.CustomerPostCode) Then
+                    txtCustomerPostCode.Value = ""
+                Else
+                    txtCustomerPostCode.Value = exp.CustomerPostCode
+                End If
+
+                If String.IsNullOrEmpty(exp.CustomerEmail) Then
+                    txtCustomerEmail.Value = ""
+                Else
+                    txtCustomerEmail.Value = exp.CustomerEmail
+                End If
+
+                If String.IsNullOrEmpty(exp.CustomerContact) Then
+                    txtCustomerContact.Value = ""
+                Else
+                    txtCustomerContact.Value = exp.CustomerContact
+                End If
+
+                If String.IsNullOrEmpty(exp.PickUpCode) Then
+                    txtPickUpCode.Value = ""
+                Else
+                    txtPickUpCode.Value = exp.PickUpCode
+                End If
+
+                If String.IsNullOrEmpty(exp.PickUpENG) Then
+                    txtPickUpNameEng.Value = ""
+                Else
+                    txtPickUpNameEng.Value = exp.PickUpENG
+                End If
+
+                If String.IsNullOrEmpty(exp.PickUpAddress1) Then
+                    txtPickUpAddress1.Value = ""
+                Else
+                    txtPickUpAddress1.Value = exp.PickUpAddress1
+                End If
+
+                If String.IsNullOrEmpty(exp.PickUpAddress2) Then
+                    txtPickUpAddress2.Value = ""
+                Else
+                    txtPickUpAddress2.Value = exp.PickUpAddress2
+                End If
+                If String.IsNullOrEmpty(exp.PickUpAddress2) Then
+                    txtPickUpAddress2.Value = ""
+                Else
+                    txtPickUpAddress2.Value = exp.PickUpAddress3
+                End If
+
+                If String.IsNullOrEmpty(exp.PickUpAddress3) Then
+                    txtPickUpAddress3.Value = ""
+                Else
+                    txtPickUpAddress3.Value = exp.PickUpAddress3
+                End If
+
+                If String.IsNullOrEmpty(exp.PickUpAddress4) Then
+                    txtPickUpAddress4.Value = ""
+                Else
+                    txtPickUpAddress4.Value = exp.PickUpAddress4
+                End If
+
+                If String.IsNullOrEmpty(exp.PickUpAddress5) Then
+                    txtPickUpAddress5.Value = ""
+                Else
+                    txtPickUpAddress5.Value = exp.PickUpAddress5
+                End If
+
+                If String.IsNullOrEmpty(exp.PickUpEmail) Then
+                    txtPickUpEmail.Value = ""
+                Else
+                    txtPickUpEmail.Value = exp.PickUpEmail
+                End If
+
+                If String.IsNullOrEmpty(exp.PickUpContact) Then
+                    txtPickUpContact.Value = ""
+                Else
+                    txtPickUpContact.Value = exp.PickUpContact
+                End If
+
+                If String.IsNullOrEmpty(exp.EndCusCode) Then
+                    txtEndCusCode.Value = ""
+                Else
+                    txtEndCusCode.Value = exp.EndCusCode
+                End If
+
+                If String.IsNullOrEmpty(exp.EndCusENG) Then
+                    txtEndCusNameEng.Value = ""
+                Else
+                    txtEndCusNameEng.Value = exp.EndCusENG
+                End If
+
+                If String.IsNullOrEmpty(exp.EndCusAddress1) Then
+                    txtEndCusAddress1.Value = ""
+                Else
+                    txtEndCusAddress1.Value = exp.EndCusAddress1
+                End If
+
+                If String.IsNullOrEmpty(exp.EndCusAddress2) Then
+                    txtEndCusAddress2.Value = ""
+                Else
+                    txtEndCusAddress2.Value = exp.EndCusAddress2
+                End If
+                If String.IsNullOrEmpty(exp.EndCusAddress3) Then
+                    txtEndCusAddress3.Value = ""
+                Else
+                    txtEndCusAddress3.Value = exp.EndCusAddress3
+                End If
+                If String.IsNullOrEmpty(exp.EndCusAddress4) Then
+                    txtEndCusAddress4.Value = ""
+                Else
+                    txtEndCusAddress4.Value = exp.EndCusAddress4
+                End If
+
+                If String.IsNullOrEmpty(exp.EndCusAddress5) Then
+                    txtEndCusAddress5.Value = ""
+                Else
+                    txtEndCusAddress5.Value = exp.EndCusAddress5
+                End If
+
+                If String.IsNullOrEmpty(exp.EndCusEmail) Then
+                    txtEndCusEmail.Value = ""
+                Else
+                    txtEndCusEmail.Value = exp.EndCusEmail
+                End If
+
+                If String.IsNullOrEmpty(exp.EndCusContact) Then
+                    txtEndCusContact.Value = ""
+                Else
+                    txtEndCusContact.Value = exp.EndCusContact
+                End If
+
+                If String.IsNullOrEmpty(exp.FreighForwarder) Then
+                    txtFreigh.Value = ""
+                Else
+                    txtFreigh.Value = exp.FreighForwarder
+                End If
+
+                If String.IsNullOrEmpty(exp.IEATPermit) Then
+                    txtIEATPermit.Value = ""
+                Else
+                    txtIEATPermit.Value = exp.IEATPermit
+                End If
+
+                If String.IsNullOrEmpty(exp.ShipTo) Then
+                    txtShipTo.Value = ""
+                Else
+                    txtShipTo.Value = exp.ShipTo
+                End If
+
+                If String.IsNullOrEmpty(CStr(exp.Box)) Then
+                    txtBox.Value = ""
+                Else
+                    txtBox.Value = CStr(exp.Box)
+                End If
+
+                If String.IsNullOrEmpty(CStr(exp.Box)) Then
+                    txtBox.Value = ""
+                Else
+                    txtBox.Value = CStr(exp.Box)
+                End If
+
+                cdbBox1.Text = exp.UnitBox
+                txtIEATDate.Text = Convert.ToDateTime(exp.IEATDate).ToString("dd/MM/yyyy")
+                If String.IsNullOrEmpty(exp.Status1) Then
+                    dcbStatus1.Text = ""
+                Else
+                    dcbStatus1.Text = exp.Status1
+                End If
+                If String.IsNullOrEmpty(exp.Status2) Then
+                    dcbStatus2.Text = ""
+                Else
+                    dcbStatus2.Text = exp.Status2
+                End If
+
+                If String.IsNullOrEmpty(exp.Status2) Then
+                    dcbStatus2.Text = ""
+                Else
+                    dcbStatus2.Text = exp.Status2
+                End If
+                If String.IsNullOrEmpty(exp.Remark) Then
+                    txtJobRemark.Value = ""
+                Else
+                    txtJobRemark.Value = exp.Remark
+                End If
+                If String.IsNullOrEmpty(exp.JobSite) Then
+                    cboJobSite.Text = ""
+                Else
+                    cboJobSite.Text = exp.JobSite
+                End If
+                If String.IsNullOrEmpty(exp.BillingNo) Then
+                    txtBillingNo.Value = ""
+                Else
+                    txtBillingNo.Value = exp.BillingNo
+                End If
+                If String.IsNullOrEmpty(exp.CustomerCodeGroup) Then
+                    txtCustomerCodeGroup.Value = ""
+                Else
+                    txtCustomerCodeGroup.Value = exp.CustomerCodeGroup
+                End If
+                If String.IsNullOrEmpty(exp.CustomerENGGroup) Then
+                    txtCustomerENGGroup.Value = ""
+                Else
+                    txtCustomerENGGroup.Value = exp.CustomerENGGroup
+                End If
+                If String.IsNullOrEmpty(exp.DeliveryTime) Then
+                    txtDeliveryTime.Value = ""
+                Else
+                    txtDeliveryTime.Value = exp.DeliveryTime
+                End If
+                ReadDATA()
+                ReadDATA2()
+                ReadDATAEAS()
+            Catch ex As Exception
+                ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('" & ex.Message & "')", True)
+                Exit Sub
+            End Try
+           
         End If
     End Sub
 
