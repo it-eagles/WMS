@@ -32,6 +32,51 @@ Partial Public Class SingleIssuedWH
     Protected WithEvents ScriptManager1 As Global.System.Web.UI.ScriptManager
 
     '''<summary>
+    '''btnAddHead control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnAddHead As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''btnEditHead control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnEditHead As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''btnSaveAddHead control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnSaveAddHead As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''btnSaveEditHead control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnSaveEditHead As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''beforecustomtab_fieldset control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents beforecustomtab_fieldset As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
     '''txtPullSignal_BeforeTab control.
     '''</summary>
     '''<remarks>
@@ -39,24 +84,6 @@ Partial Public Class SingleIssuedWH
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents txtPullSignal_BeforeTab As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''txtJobNo_BeforeTab control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtJobNo_BeforeTab As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''chkScrap control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents chkScrap As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
 
     '''<summary>
     '''txtdatepickertxtPullDateTime_beforeTab control.
@@ -77,6 +104,51 @@ Partial Public Class SingleIssuedWH
     Protected WithEvents CalendarExtenderPullDateTime_beforeTab As Global.AjaxControlToolkit.CalendarExtender
 
     '''<summary>
+    '''txtJobNo_BeforeTab control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtJobNo_BeforeTab As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''btnJobNoHead control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnJobNoHead As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''btnJobNoHead_Edit control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnJobNoHead_Edit As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''chkScrap control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents chkScrap As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
+
+    '''<summary>
+    '''txtTimePickUpPullDateTime control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtTimePickUpPullDateTime As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
     '''txtdatepickerDeliveryDateTime_beforeTab control.
     '''</summary>
     '''<remarks>
@@ -93,6 +165,15 @@ Partial Public Class SingleIssuedWH
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents CalendarExtenderDeliveryDateTime_beforeTab As Global.AjaxControlToolkit.CalendarExtender
+
+    '''<summary>
+    '''txtTimePickUpDeliveryDateTime control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtTimePickUpDeliveryDateTime As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
     '''txtdatepickerComfirmDateTime_beforeTab control.
@@ -113,13 +194,31 @@ Partial Public Class SingleIssuedWH
     Protected WithEvents CalendarExtenderComfirmDateTime_beforeTab As Global.AjaxControlToolkit.CalendarExtender
 
     '''<summary>
-    '''ddlJobNo_IssueCon control.
+    '''txtTimePickUpConfirmDateTime control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlJobNo_IssueCon As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtTimePickUpConfirmDateTime As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''issuecondition_fieldset control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents issuecondition_fieldset As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
+    '''txtJobNo_IssueCon control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtJobNo_IssueCon As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
     '''chkMoveTo control.
@@ -158,13 +257,22 @@ Partial Public Class SingleIssuedWH
     Protected WithEvents ddlWHSite_IssueCon As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''ddlExporterCode_IssueCon control.
+    '''txtExporterCode_IssueCon control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlExporterCode_IssueCon As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtExporterCode_IssueCon As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''btnExporterCode_IssueCon control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnExporterCode_IssueCon As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
     '''txtNameExporter_IssueCon control.
@@ -212,13 +320,22 @@ Partial Public Class SingleIssuedWH
     Protected WithEvents txtAddress4Exporter_IssueCon As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''ddlOwnerCode_IssueCon control.
+    '''txtOwnerCode_IssueCon control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlOwnerCode_IssueCon As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtOwnerCode_IssueCon As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''btnOwnerCode_IssueCon control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnOwnerCode_IssueCon As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
     '''txtNameOwner_IssueCon control.
@@ -311,13 +428,13 @@ Partial Public Class SingleIssuedWH
     Protected WithEvents ddlQuantityPLTSkid_IssueCon As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''txttxtQuantityPicked_IssueCon control.
+    '''txtQuantityPicked_IssueCon control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txttxtQuantityPicked_IssueCon As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtQuantityPicked_IssueCon As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
     '''ddlQuantityPicked_IssueCon control.
@@ -329,6 +446,15 @@ Partial Public Class SingleIssuedWH
     Protected WithEvents ddlQuantityPicked_IssueCon As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
+    '''txtRemark_IssueCon control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtRemark_IssueCon As Global.System.Web.UI.HtmlControls.HtmlTextArea
+
+    '''<summary>
     '''btnSumQTY_IssueCon control.
     '''</summary>
     '''<remarks>
@@ -338,13 +464,22 @@ Partial Public Class SingleIssuedWH
     Protected WithEvents btnSumQTY_IssueCon As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
-    '''txtConsigneeCode_IssueCon control.
+    '''txtConsigneeCode01_IssueCon control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtConsigneeCode_IssueCon As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtConsigneeCode01_IssueCon As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''btnConsigneeCode_IssueCon control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnConsigneeCode_IssueCon As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
     '''txtNameConsignee_IssueCon control.
@@ -392,13 +527,22 @@ Partial Public Class SingleIssuedWH
     Protected WithEvents txtAddress4Consignee_IssueCon As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''ddlShipToCode_IssueCon control.
+    '''txtShipToCode_IssueCon control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlShipToCode_IssueCon As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtShipToCode_IssueCon As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''btnShipToCode_IssueCon control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnShipToCode_IssueCon As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
     '''txtNameShipTo_IssueCon control.
@@ -491,13 +635,13 @@ Partial Public Class SingleIssuedWH
     Protected WithEvents txtVolume_IssueCon As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''DropDownList1 control.
+    '''ddlVolume_IssueCon control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents DropDownList1 As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents ddlVolume_IssueCon As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''txtQTYDiscrepancy_IssueCon control.
@@ -536,6 +680,15 @@ Partial Public Class SingleIssuedWH
     Protected WithEvents btnRejectConfirm_IssueCon As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
+    '''confirmissue_fieldset control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents confirmissue_fieldset As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
     '''ddlWHSite_ConfirmIssue control.
     '''</summary>
     '''<remarks>
@@ -554,13 +707,31 @@ Partial Public Class SingleIssuedWH
     Protected WithEvents txtCusLOTNo_ConfirmIssue As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''ddlEASPN_ConfirmIssue control.
+    '''txtEASPN_ConfirmIssue control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlEASPN_ConfirmIssue As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtEASPN_ConfirmIssue As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''btnEASPN_ConfirmIssue control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnEASPN_ConfirmIssue As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''txtProductDesc_ConfirmIssue control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtProductDesc_ConfirmIssue As Global.System.Web.UI.HtmlControls.HtmlTextArea
 
     '''<summary>
     '''ddlWHLocation_ConfirmIssue control.
@@ -590,13 +761,13 @@ Partial Public Class SingleIssuedWH
     Protected WithEvents txtCustomerPN_ConfirmIssue As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''ddlENDCustomer_ConfirmIssue control.
+    '''txtENDCustomer_ConfirmIssue control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlENDCustomer_ConfirmIssue As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtENDCustomer_ConfirmIssue As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
     '''txtItemNo_ConfirmIssue control.
@@ -788,13 +959,13 @@ Partial Public Class SingleIssuedWH
     Protected WithEvents ddlStatus_ConfirmIssue As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''ddlType_ConfirmIssue control.
+    '''DropDownList1 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlType_ConfirmIssue As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents DropDownList1 As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''txtdatepickerExpiredDate_ConfirmIssue control.
@@ -921,4 +1092,166 @@ Partial Public Class SingleIssuedWH
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents btnIssue_ConfirmIssue As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''ExporterPanel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ExporterPanel As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''ExporterUpdatePanel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ExporterUpdatePanel As Global.System.Web.UI.UpdatePanel
+
+    '''<summary>
+    '''Repeater1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Repeater1 As Global.System.Web.UI.WebControls.Repeater
+
+    '''<summary>
+    '''OwnerPanel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents OwnerPanel As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''OwnerUpdatePanel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents OwnerUpdatePanel As Global.System.Web.UI.UpdatePanel
+
+    '''<summary>
+    '''Repeater2 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Repeater2 As Global.System.Web.UI.WebControls.Repeater
+
+    '''<summary>
+    '''ConsigneePanel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ConsigneePanel As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''ConsigneeUpdatePanel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ConsigneeUpdatePanel As Global.System.Web.UI.UpdatePanel
+
+    '''<summary>
+    '''Repeater3 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Repeater3 As Global.System.Web.UI.WebControls.Repeater
+
+    '''<summary>
+    '''ShipToPanel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ShipToPanel As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''ShipToUpdatePanel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ShipToUpdatePanel As Global.System.Web.UI.UpdatePanel
+
+    '''<summary>
+    '''Repeater4 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Repeater4 As Global.System.Web.UI.WebControls.Repeater
+
+    '''<summary>
+    '''ProductCodePanel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ProductCodePanel As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''ProductCodeUpdatePanel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ProductCodeUpdatePanel As Global.System.Web.UI.UpdatePanel
+
+    '''<summary>
+    '''Repeater5 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Repeater5 As Global.System.Web.UI.WebControls.Repeater
+
+    '''<summary>
+    '''JobNoAddPanel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents JobNoAddPanel As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''JobNoAddUpdatePanel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents JobNoAddUpdatePanel As Global.System.Web.UI.UpdatePanel
+
+    '''<summary>
+    '''Repeater6 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Repeater6 As Global.System.Web.UI.WebControls.Repeater
 End Class

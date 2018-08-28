@@ -1111,6 +1111,7 @@
         </asp:Panel>
         <!-- End JobNo Add Modal -->
 
+        <!--Start Customer Add Modal -->
         <asp:Panel ID="CustomerPanel" runat="server" CssClass="modal" TabIndex="-1" role="dialog" aria-labelledby="myLabe1">
             <%--<div class="modal fade" id="ShipperModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">--%>
             <div class="modal-dialog modal-lg" role="dialog">
@@ -1196,7 +1197,7 @@
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title">Select Delivery Code</h4>
+                        <h4 class="modal-title">Select Owner Code</h4>
                     </div>
                     <asp:UpdatePanel ID="OwnerUpdatePanel" runat="server" UpdateMode="Conditional">
                         <ContentTemplate>

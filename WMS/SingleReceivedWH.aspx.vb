@@ -1001,6 +1001,7 @@ Public Class SingleReceivedWH
     End Sub
 
     Private Sub selectPrepairGoodsReceive()
+<<<<<<< HEAD
         'Dim lot As String = ""
         'Dim lotDate_ As Integer
         'Dim consignee As String = ""
@@ -1014,6 +1015,22 @@ Public Class SingleReceivedWH
         'End If
         Dim go = (From wh In db.tblWHPrepairGoodsReceives
                   Where wh.LOTNo.Contains(txtLotNo_.Value.Trim) And wh.UsedStatus = 0 And Not wh.LOTNo.Contains("WIP")
+=======
+        Dim lot As String
+        Dim lotDate_ As Integer
+        Dim consignee As String = ""
+        Dim endCustomer As String = ""
+        Dim shipper As String = ""
+        If String.IsNullOrEmpty(txtLotNo_.Value.Trim) Then
+            lot = ""
+            lotDate_ = CInt(Convert.ToDateTime(Date.Now).ToString("yyyy"))
+        Else
+            lot = txtConsigneeCode_.Value.Trim
+        End If
+        Dim go = (From wh In db.tblWHPrepairGoodsReceives
+                  Where (wh.LOTNo.Contains(lot) And wh.UsedStatus = 0 And Not wh.LOTNo.Contains("WIP")) _
+                  Or wh.LOTDate.Year = lotDate_ And wh.UsedStatus = 0
+>>>>>>> 6fe2a945acb0c78c980efeac474bd060c3611bb5
                   Select wh.LOTNo, LOTDate = wh.LOTDate.Year, wh.CustREFNo, wh.OwnerCode).Take(100)
         If go.Count > 0 Then
             dgvPrepire.DataSource = go.ToList

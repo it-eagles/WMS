@@ -6874,6 +6874,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>LKBWarehouseEntities1_Test.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\sysdiagram.vb">
+      <DependentUpon>LKBWarehouseEntities1_Test.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\tblBookingMessenger.vb">
       <DependentUpon>LKBWarehouseEntities1_Test.tt</DependentUpon>
     </Compile>
@@ -7148,34 +7151,34 @@
       <DependentUpon>LKBWarehouseEntities1_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblWHEquipment.vb">
-      <DependentUpon>Connectserver.tt</DependentUpon>
+      <DependentUpon>LKBWarehouseEntities1_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblWHHandlePreson.vb">
-      <DependentUpon>Connectserver.tt</DependentUpon>
+      <DependentUpon>LKBWarehouseEntities1_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblWHISSUED.vb">
-      <DependentUpon>Connectserver.tt</DependentUpon>
+      <DependentUpon>LKBWarehouseEntities1_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblWHISSUEDDetail.vb">
-      <DependentUpon>Connectserver.tt</DependentUpon>
+      <DependentUpon>LKBWarehouseEntities1_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblWHIssueScantoTemp.vb">
-      <DependentUpon>Connectserver.tt</DependentUpon>
+      <DependentUpon>LKBWarehouseEntities1_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblWHLocation.vb">
       <DependentUpon>LKBWarehouseEntities1_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblWHPartNew.vb">
-      <DependentUpon>Connectserver.tt</DependentUpon>
+      <DependentUpon>LKBWarehouseEntities1_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblWHPicking.vb">
-      <DependentUpon>Connectserver.tt</DependentUpon>
+      <DependentUpon>LKBWarehouseEntities1_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblWHPickingDetail.vb">
-      <DependentUpon>Connectserver.tt</DependentUpon>
+      <DependentUpon>LKBWarehouseEntities1_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblWHPickPackChecking.vb">
-      <DependentUpon>Connectserver.tt</DependentUpon>
+      <DependentUpon>LKBWarehouseEntities1_Test.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tblWHPickPackMaster.vb">
       <DependentUpon>LKBWarehouseEntities1_Test.tt</DependentUpon>
