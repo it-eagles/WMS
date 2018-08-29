@@ -11,7 +11,7 @@ Public Class SingleReceivedWH
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Dim usename As String = CStr(Session("UserName"))
-        Dim form As String = "frmExpGenLot"
+        Dim form As String = "frmConfirmGoodsReceive"
         If Not Me.IsPostBack Then
             If ClassPermis.CheckRead(form, usename) = True Then
                 If Not IsPostBack Then
@@ -442,60 +442,40 @@ Public Class SingleReceivedWH
         End Try
     End Sub
 
-
-
-    Private Sub selectExpGenLOT()
-        'Dim testdate As Integer
-        'Dim lot As String
-        'If String.IsNullOrEmpty(txtLotNo.Value.Trim) Then
-        '    testdate = CInt(Convert.ToDateTime(Date.Now).ToString("yyyy"))
-        'Else
-        '    lot = txtLotNo.Value.Trim
-        'End If
-
-        ''Where e.LOTDate.Year = testdate
-        'Dim exl = (From e In db.tblExpGenLOTs Where e.EASLOTNo = txtLotNo.Value.Trim Or e.LOTDate.Year = testdate Order By e.EASLOTNo Descending
-        '         Select New With {
-        '         e.EASLOTNo,
-        '         e.CustomerCode,
-        '         e.JobSite,
-        '         e.EndCusCode}).ToList
-        'Try
-        '    If exl.Count > 0 Then
-        '        Me.dgvLot.DataSource = exl
-        '        Me.dgvLot.DataBind()
-        '        ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "show", "$(function () { $('#" + Panel1.ClientID + "').modal('show'); });", True)
-        '        UpdatePanel1.Update()
-        '    Else
-        '        ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('ไม่พบข้อมูล LOTNo นี้')", True)
-        '        Exit Sub
-        '    End If
-
-        'Catch ex As Exception
-        '    ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", ex.Message, True)
-        'End Try
-    End Sub
-
     Protected Sub btnAddNew_ServerClick(sender As Object, e As EventArgs)
-        confirmgoodreceive_.Disabled = False
-        goodreceivedetail_.Disabled = True
-        btnSeletJobNew.Visible = True
-        btnSelectJobEdit.Visible = False
-        btnSaveNew.Visible = True
-        btnSaveEdit.Visible = False
-        ClearDATA()
-        ClearDATA1()
+        Dim usename As String = CStr(Session("UserName"))
+        Dim form As String = "frmConfirmGoodsReceive"
+        If classPermis.CheckSave(form, usename) = True Then
+            confirmgoodreceive_.Disabled = False
+            goodreceivedetail_.Disabled = True
+            btnSeletJobNew.Visible = True
+            btnSelectJobEdit.Visible = False
+            btnSaveNew.Visible = True
+            btnSaveEdit.Visible = False
+            ClearDATA()
+            ClearDATA1()
+        Else
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ บันทึกในเมนูนี้' !!!');", True)
+        End If
+   
     End Sub
 
     Protected Sub btnEdit_ServerClick(sender As Object, e As EventArgs)
-        confirmgoodreceive_.Disabled = False
-        goodreceivedetail_.Disabled = False
-        btnSeletJobNew.Visible = False
-        btnSelectJobEdit.Visible = True
-        btnSaveNew.Visible = False
-        btnSaveEdit.Visible = True
-        ClearDATA()
-        ClearDATA1()
+        Dim usename As String = CStr(Session("UserName"))
+        Dim form As String = "frmConfirmGoodsReceive"
+        If classPermis.CheckEdit(form, usename) = True Then
+            confirmgoodreceive_.Disabled = False
+            goodreceivedetail_.Disabled = False
+            btnSeletJobNew.Visible = False
+            btnSelectJobEdit.Visible = True
+            btnSaveNew.Visible = False
+            btnSaveEdit.Visible = True
+            ClearDATA()
+            ClearDATA1()
+        Else
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ แก้ไขในเมนูนี้' !!!');", True)
+        End If
+       
     End Sub
 
     Protected Sub btnSaveNew_ServerClick(sender As Object, e As EventArgs)
@@ -516,7 +496,13 @@ Public Class SingleReceivedWH
     End Sub
 
     Protected Sub btnSaveEdit_ServerClick(sender As Object, e As EventArgs)
-
+        Save_Modify()
+        ReadDATA()
+        ReadDATA1()
+        confirmgoodreceive_.Disabled = True
+        goodreceivedetail_.Disabled = True
+        btnSaveEdit.Visible = False
+        btnSaveNew.Visible = False
     End Sub
 
     Protected Sub btnSeletJobNew_ServerClick(sender As Object, e As EventArgs)
@@ -1003,11 +989,12 @@ Public Class SingleReceivedWH
     Private Sub selectPrepairGoodsReceive()
 
         'Dim lot As String = ""
-        'Dim lotDate_ As Integer
+        Dim lotDate_ As Integer
         'Dim consignee As String = ""
         'Dim endCustomer As String = ""
         'Dim shipper As String = ""
         ''Or (wh.LOTDate.Year = lotDate_ And wh.UsedStatus = 0)
+<<<<<<< HEAD
         'If String.IsNullOrEmpty(txtLotNo_.Value.Trim) Then
         '    lotDate_ = CInt(Convert.ToDateTime(Date.Now).ToString("yyyy"))
         'Else
@@ -1022,16 +1009,21 @@ Public Class SingleReceivedWH
         Dim consignee As String = ""
         Dim endCustomer As String = ""
         Dim shipper As String = ""
+=======
+>>>>>>> fe0903fa78f6292c811aa148e3b04c61a5cc06d5
         If String.IsNullOrEmpty(txtLotNo_.Value.Trim) Then
-            lot = ""
             lotDate_ = CInt(Convert.ToDateTime(Date.Now).ToString("yyyy"))
-        Else
-            lot = txtConsigneeCode_.Value.Trim
         End If
         Dim go = (From wh In db.tblWHPrepairGoodsReceives
+<<<<<<< HEAD
                   Where (wh.LOTNo.Contains(lot) And wh.UsedStatus = 0 And Not wh.LOTNo.Contains("WIP")) _
                   Or wh.LOTDate.Year = lotDate_ And wh.UsedStatus = 0
                   Select wh.LOTNo, LOTDate = wh.LOTDate.Year, wh.CustREFNo, wh.OwnerCode).Take(100)
+=======
+                  Where wh.LOTNo.Contains(txtLotNo_.Value.Trim) And wh.UsedStatus = 0 And Not wh.LOTNo.Contains("WIP") _
+                  Or wh.LOTDate.Year = lotDate_ And wh.UsedStatus = 0).Take(100)
+
+>>>>>>> fe0903fa78f6292c811aa148e3b04c61a5cc06d5
         If go.Count > 0 Then
             dgvPrepire.DataSource = go.ToList
             dgvPrepire.DataBind()
@@ -1045,6 +1037,8 @@ Public Class SingleReceivedWH
 
     Protected Sub btnSelectJobEdit_ServerClick(sender As Object, e As EventArgs)
         selectPrepairGoodsReceiveEdit()
+        ReadDATA()
+        ReadDATA1()
     End Sub
 
     Protected Sub dgvPrepire_ItemDataBound(sender As Object, e As RepeaterItemEventArgs)
@@ -1255,33 +1249,78 @@ Public Class SingleReceivedWH
             txtDistrict.Value = comfirm.ENDDistrict
             txtSubProvince.Value = comfirm.ENDSubprovince
             txtProvince.Value = comfirm.ENDProvince
-            dolCommodity.Text = comfirm.Commodity
+            If String.IsNullOrEmpty(comfirm.Commodity) Then
+
+            Else
+                dolCommodity.Text = comfirm.Commodity
+            End If
+
             txtQuantityofPart.Value = String.Format("{0:0.00}", comfirm.QuantityOfPart)
-            dcbQuantity1.Text = comfirm.QuantityUnit
+
+            If String.IsNullOrEmpty(comfirm.QuantityUnit) Then
+
+            Else
+                dcbQuantity1.Text = comfirm.QuantityUnit
+            End If
             txtQuantityPackage.Value = String.Format("{0:0.00}", comfirm.QuantityPackage)
-            dcbQuantity2.Text = comfirm.PackageUNIT
+
+            If String.IsNullOrEmpty(comfirm.PackageUNIT) Then
+
+            Else
+                dcbQuantity2.Text = comfirm.PackageUNIT
+            End If
             txtPLT.Value = String.Format("{0:0.00}", comfirm.QuantityPLT)
-            dcbPLT.Text = comfirm.QuantityPLTUnit
+
+            If String.IsNullOrEmpty(comfirm.QuantityPLTUnit) Then
+
+            Else
+                dcbPLT.Text = comfirm.QuantityPLTUnit
+            End If
             txtWeight.Value = String.Format("{0:0.00}", comfirm.Weigth)
-            dcbWeight.Text = comfirm.WeigthUnit
+
+            If String.IsNullOrEmpty(comfirm.WeigthUnit) Then
+
+            Else
+                dcbWeight.Text = comfirm.WeigthUnit
+            End If
             txtVolume.Value = String.Format("{0:0.00}", comfirm.Volume)
-            dcbVolume.Text = comfirm.VolumeUnit
+            If String.IsNullOrEmpty(comfirm.VolumeUnit) Then
+
+            Else
+                dcbVolume.Text = comfirm.VolumeUnit
+            End If
             txtRamark.Value = comfirm.Remark
             txtQtyReceived.Value = String.Format("{0:0.00}", comfirm.QuantityReceived)
-            cboReceivedUNIT.Text = comfirm.ReceivedUNIT
+            If String.IsNullOrEmpty(comfirm.ReceivedUNIT) Then
+
+            Else
+                cboReceivedUNIT.Text = comfirm.ReceivedUNIT
+            End If
             txtQtyWaitReceive.Value = String.Format("{0:0.00}", comfirm.QuantityWaitReceive)
-            cboWaitReceiveUNIT.Text = comfirm.WaitUNIT
+
+            If String.IsNullOrEmpty(comfirm.WaitUNIT) Then
+
+            Else
+                cboWaitReceiveUNIT.Text = comfirm.WaitUNIT
+            End If
             txtQtyDamage.Value = String.Format("{0:0.00}", comfirm.QuantityDamage)
-            cboDamageUNIT.Text = comfirm.DamageUNIT
+
+            If String.IsNullOrEmpty(comfirm.DamageUNIT) Then
+
+            Else
+                cboDamageUNIT.Text = comfirm.DamageUNIT
+            End If
             txtQtyDiscrepancy.Value = String.Format("{0:0.00}", comfirm.QuantityDiscrepancy)
-            cboDiscrepencyUNIT.Text = comfirm.DiscrepancyUNIT
+
+            If String.IsNullOrEmpty(comfirm.DiscrepancyUNIT) Then
+            Else
+                cboDiscrepencyUNIT.Text = comfirm.DiscrepancyUNIT
+            End If
         Catch ex As Exception
             ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('" & ex.Message & "')", True)
             Exit Sub
         End Try
         
-
-
     End Sub
 
     Protected Sub dgvConfirmGood_ItemDataBound(sender As Object, e As RepeaterItemEventArgs)
@@ -1406,11 +1445,172 @@ Public Class SingleReceivedWH
     End Sub
 
     Private Sub ReadDATA()
-        Dim wh = (From h In db.tblWHPrepairGoodsReceiveDetails Where h.LOTNo = "" And h.Status <> 1
-            Order By h.ItemNo Ascending).ToList
+        Dim wh = (From h In db.tblWHPrepairGoodsReceiveDetails Where h.LOTNo = txtLotNo_.Value.Trim And h.Status <> 1
+            Order By h.ItemNo Ascending
+            Select h.LOTNo, h.WHSite, h.ENDCustomer, h.CustomerLOTNo, h.ItemNo, h.ProductCode, h.CustomerPN).ToList
 
         If wh.Count > 0 Then
+            dgvItemDetail.DataSource = wh
+            dgvItemDetail.DataBind()
+        End If
+    End Sub
 
+    Protected Sub dgvItemDetail_ItemDataBound(sender As Object, e As RepeaterItemEventArgs)
+        If e.Item.ItemType = ListItemType.Item OrElse e.Item.ItemType = ListItemType.AlternatingItem Then
+            Dim lblLOTNo As Label = CType(e.Item.FindControl("lblLOTNo"), Label)
+            Dim lblSite As Label = CType(e.Item.FindControl("lblSite"), Label)
+            Dim lblEND As Label = CType(e.Item.FindControl("lblEND"), Label)
+            Dim lblCus As Label = CType(e.Item.FindControl("lblCus"), Label)
+            Dim lblItem As Label = CType(e.Item.FindControl("lblItem"), Label)
+            Dim lblPc As Label = CType(e.Item.FindControl("lblPc"), Label)
+            Dim lblPn As Label = CType(e.Item.FindControl("lblPn"), Label)
+               
+            If Not IsNothing(lblLOTNo) Then
+                lblLOTNo.Text = DataBinder.Eval(e.Item.DataItem, "LOTNo").ToString
+            End If
+            If Not IsNothing(lblSite) Then
+                lblSite.Text = DataBinder.Eval(e.Item.DataItem, "WHSite").ToString
+            End If
+            If Not IsNothing(lblEND) Then
+                lblEND.Text = DataBinder.Eval(e.Item.DataItem, "ENDCustomer").ToString
+            End If
+            If Not IsNothing(lblCus) Then
+                lblCus.Text = DataBinder.Eval(e.Item.DataItem, "CustomerLOTNo").ToString
+            End If
+            If Not IsNothing(lblItem) Then
+                lblItem.Text = DataBinder.Eval(e.Item.DataItem, "ItemNo").ToString
+            End If
+
+            If Not IsNothing(lblPc) Then
+                lblPc.Text = DataBinder.Eval(e.Item.DataItem, "ProductCode").ToString
+            End If
+
+            If Not IsNothing(lblPn) Then
+                lblPn.Text = DataBinder.Eval(e.Item.DataItem, "CustomerPN").ToString
+            End If
+
+        End If
+    End Sub
+    Private Sub ReadDATA1()
+        Dim wh = (From h In db.tblWHConfirmGoodsReceiveDetails Where h.LOTNo = txtLotNo_.Value.Trim
+            Order By h.ItemNo Ascending
+            Select h.LOTNo, h.WHSite, h.ENDCustomer, h.CustomerLOTNo, h.ItemNo, h.ProductCode, h.CustomerPN).ToList
+
+        If wh.Count > 0 Then
+            dgvConfirmDetail.DataSource = wh
+            dgvConfirmDetail.DataBind()
+        End If
+    End Sub
+
+    Protected Sub dgvConfirmDetail_ItemDataBound(sender As Object, e As RepeaterItemEventArgs)
+        If e.Item.ItemType = ListItemType.Item OrElse e.Item.ItemType = ListItemType.AlternatingItem Then
+            Dim lblLOTNo As Label = CType(e.Item.FindControl("lblLOTNo"), Label)
+            Dim lblSite As Label = CType(e.Item.FindControl("lblSite"), Label)
+            Dim lblEND As Label = CType(e.Item.FindControl("lblEND"), Label)
+            Dim lblCus As Label = CType(e.Item.FindControl("lblCus"), Label)
+            Dim lblItem As Label = CType(e.Item.FindControl("lblItem"), Label)
+            Dim lblPc As Label = CType(e.Item.FindControl("lblPc"), Label)
+            Dim lblPn As Label = CType(e.Item.FindControl("lblPn"), Label)
+
+            If Not IsNothing(lblLOTNo) Then
+                lblLOTNo.Text = DataBinder.Eval(e.Item.DataItem, "LOTNo").ToString
+            End If
+            If Not IsNothing(lblSite) Then
+                lblSite.Text = DataBinder.Eval(e.Item.DataItem, "WHSite").ToString
+            End If
+            If Not IsNothing(lblEND) Then
+                lblEND.Text = DataBinder.Eval(e.Item.DataItem, "ENDCustomer").ToString
+            End If
+            If Not IsNothing(lblCus) Then
+                lblCus.Text = DataBinder.Eval(e.Item.DataItem, "CustomerLOTNo").ToString
+            End If
+            If Not IsNothing(lblItem) Then
+                lblItem.Text = DataBinder.Eval(e.Item.DataItem, "ItemNo").ToString
+            End If
+
+            If Not IsNothing(lblPc) Then
+                lblPc.Text = DataBinder.Eval(e.Item.DataItem, "ProductCode").ToString
+            End If
+
+            If Not IsNothing(lblPn) Then
+                lblPn.Text = DataBinder.Eval(e.Item.DataItem, "CustomerPN").ToString
+            End If
+
+        End If
+    End Sub
+
+    Private Sub Save_Modify()
+        Dim print As String = "0"
+        If String.IsNullOrEmpty(txtLotNo_.Value.Trim) Then
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ PrepairLOT ก่อน !!!')", True)
+            txtLotNo_.Focus()
+            Exit Sub
+
+        Else
+            Select Case MsgBox("คุณต้องการแก้ไขข้อมูล PrepairLOT ใช่หรือไม่?", MsgBoxStyle.YesNo, "คำยืนยัน")
+                Case MsgBoxResult.Yes
+                    Try
+                        db.Database.Connection.Open()
+                        Dim wh As tblWHConfirmGoodsReceive = (From w In db.tblWHConfirmGoodsReceives Where w.LOTNo = txtLotNo_.Value.Trim).First
+
+                        If wh IsNot Nothing Then
+                            wh.LOTNo = txtLotNo_.Value.Trim
+                            wh.LOTDate = DateTime.ParseExact(dtpInvoiceDate.Text, "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US"))
+                            wh.CustREFNo = txtCustomerLot.Value.Trim
+                            wh.OwnerCode = txtOwnerCode.Value.Trim
+                            wh.OwnerNameENG = txtOwnerEng.Value.Trim
+                            wh.OwnerStreet_Number = txtOwnerStreet_Number.Value.Trim
+                            wh.OwnerDistrict = txtOwnerDistrict.Value.Trim
+                            wh.OwnerSubProvince = txtOwnerSubProvince.Value.Trim
+                            wh.OwnerProvince = txtOwnerProvince.Value.Trim
+                            wh.CustomerCode = txtConsigneeCode_.Value.Trim
+                            wh.CustomerNameENG = txtConsignneeEng.Value.Trim
+                            wh.CustomerStreet_Number = txtConsignneeStreet_Number.Value.Trim
+                            wh.CustomerDistrict = txtConsignneeDistrict.Value.Trim
+                            wh.CustomerSubProvince = txtConsignneeSubProvince.Value.Trim
+                            wh.CustomerProvince = txtConsignneeProvince.Value.Trim
+                            wh.BrokerCode = txtBrokerCode.Value.Trim
+                            wh.BrokerNameENG = txtBrokerNameEng.Value.Trim
+                            wh.BrokerStreet_Number = txtBrokerStreet.Value.Trim
+                            wh.BrokerDistrict = txtBrokerDistrict.Value.Trim
+                            wh.BrokerSubprovince = txtBrokerSubProvince.Value.Trim
+                            wh.BrokerProvince = txtBrokerProvince.Value.Trim
+                            wh.ENDUserCode = txtExporterCode.Value.Trim
+                            wh.ENDNameENG = txtExportEng.Value.Trim
+                            wh.ENDStreet_Number = txtStreet_Number.Value.Trim
+                            wh.ENDDistrict = txtDistrict.Value.Trim
+                            wh.ENDSubprovince = txtSubProvince.Value.Trim
+                            wh.ENDProvince = txtProvince.Value.Trim
+                            wh.Commodity = dolCommodity.Text.Trim
+                            wh.QuantityOfPart = CType(CDbl(txtQuantityofPart.Value).ToString("#,##0.000"), Double?)
+                            wh.QuantityUnit = dcbQuantity1.Text.Trim
+                            wh.QuantityPackage = CType(CDbl(txtQuantityPackage.Value).ToString("#,##0.000"), Double?)
+                            wh.PackageUNIT = dcbQuantity2.Text.Trim
+                            wh.QuantityPLT = CType(CDbl(txtPLT.Value).ToString("#,##0.000"), Double?)
+                            wh.QuantityPLTUnit = dcbPLT.Text.Trim
+                            wh.Weigth = CType(CDbl(txtWeight.Value).ToString("#,##0.000"), Double?)
+                            wh.WeigthUnit = dcbWeight.Text.Trim
+                            wh.Volume = CType(CDbl(txtVolume.Value).ToString("#,##0.000"), Double?)
+                            wh.VolumeUnit = dcbVolume.Text.Trim
+                            wh.UserBy = CStr(Session("UserName"))
+                            wh.LastUpdate = Now
+                            wh.Remark = txtRamark.Value
+                            wh.QuantityReceived = CType(CDbl(txtQtyReceived.Value).ToString("#,##0.000"), Double?)
+                            wh.ReceivedUNIT = cboReceivedUNIT.Text.Trim
+                            wh.QuantityWaitReceive = CType(CDbl(txtQtyWaitReceive.Value).ToString("#,##0.000"), Double?)
+                            wh.WaitUNIT = cboWaitReceiveUNIT.Text.Trim
+                            wh.QuantityDamage = CType(CDbl(txtQtyDamage.Value).ToString("#,##0.000"), Double?)
+                            wh.DamageUNIT = cboDamageUNIT.Text.Trim
+                            wh.QuantityDiscrepancy = CType(CDbl(txtQtyDiscrepancy.Value).ToString("#,##0.000"), Double?)
+                            wh.DiscrepancyUNIT = cboDiscrepencyUNIT.Text
+                            db.SaveChanges()
+                            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('แก้ไข สำเสร็จ !');", True)
+                            Exit Sub
+                        End If
+                    Catch ex As Exception
+                        ScriptManager.RegisterStartupScript(Me, Me.GetType(), "redirect", ex.Message, True)
+                    End Try
+            End Select
         End If
     End Sub
 End Class
