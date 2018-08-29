@@ -1013,22 +1013,13 @@ Partial Public Class SingleReceivedWH
     Protected WithEvents txtShippingMark As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''btnSelectAll_GoodRecDetail control.
+    '''dgvItemDetail control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents btnSelectAll_GoodRecDetail As Global.System.Web.UI.HtmlControls.HtmlButton
-
-    '''<summary>
-    '''btnCencelSelectAll_GoodRecDetail control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents btnCencelSelectAll_GoodRecDetail As Global.System.Web.UI.HtmlControls.HtmlButton
+    Protected WithEvents dgvItemDetail As Global.System.Web.UI.WebControls.Repeater
 
     '''<summary>
     '''btnReceive_GoodRecDetail control.
@@ -1038,6 +1029,15 @@ Partial Public Class SingleReceivedWH
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents btnReceive_GoodRecDetail As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''dgvConfirmDetail control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents dgvConfirmDetail As Global.System.Web.UI.WebControls.Repeater
 
     '''<summary>
     '''putaway_ control.

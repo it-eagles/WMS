@@ -2864,5 +2864,333 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="LKBWarehouseModel1.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblWHEquipments">
+      <EntityTypeMapping TypeName="LKBWarehouseModel1.tblWHEquipment">
+        <MappingFragment StoreEntitySet="tblWHEquipment">
+          <ScalarProperty Name="rowguid" ColumnName="rowguid" />
+          <ScalarProperty Name="NameEng" ColumnName="NameEng" />
+          <ScalarProperty Name="NameTH" ColumnName="NameTH" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblWHHandlePresons">
+      <EntityTypeMapping TypeName="LKBWarehouseModel1.tblWHHandlePreson">
+        <MappingFragment StoreEntitySet="tblWHHandlePreson">
+          <ScalarProperty Name="rowguid" ColumnName="rowguid" />
+          <ScalarProperty Name="EquipmentA" ColumnName="EquipmentA" />
+          <ScalarProperty Name="NamePreson" ColumnName="NamePreson" />
+          <ScalarProperty Name="DatePreson" ColumnName="DatePreson" />
+          <ScalarProperty Name="HandlePreson" ColumnName="HandlePreson" />
+          <ScalarProperty Name="CodePreson" ColumnName="CodePreson" />
+          <ScalarProperty Name="LOTNO" ColumnName="LOTNO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblWHISSUEDs">
+      <EntityTypeMapping TypeName="LKBWarehouseModel1.tblWHISSUED">
+        <MappingFragment StoreEntitySet="tblWHISSUED">
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="UserBy" ColumnName="UserBy" />
+          <ScalarProperty Name="PrintCount" ColumnName="PrintCount" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="DiscrepancyUNIT" ColumnName="DiscrepancyUNIT" />
+          <ScalarProperty Name="QuantityDiscrepancy" ColumnName="QuantityDiscrepancy" />
+          <ScalarProperty Name="PickedUNIT" ColumnName="PickedUNIT" />
+          <ScalarProperty Name="QuantityPicked" ColumnName="QuantityPicked" />
+          <ScalarProperty Name="VolumeUnit" ColumnName="VolumeUnit" />
+          <ScalarProperty Name="Volume" ColumnName="Volume" />
+          <ScalarProperty Name="WeightUnit" ColumnName="WeightUnit" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="QuantityPLTUnit" ColumnName="QuantityPLTUnit" />
+          <ScalarProperty Name="QuantityPLT" ColumnName="QuantityPLT" />
+          <ScalarProperty Name="PackageUNIT" ColumnName="PackageUNIT" />
+          <ScalarProperty Name="QuantityPackage" ColumnName="QuantityPackage" />
+          <ScalarProperty Name="QuantityUnit" ColumnName="QuantityUnit" />
+          <ScalarProperty Name="QuantityOfPart" ColumnName="QuantityOfPart" />
+          <ScalarProperty Name="Commodity" ColumnName="Commodity" />
+          <ScalarProperty Name="ShipToAddress4" ColumnName="ShipToAddress4" />
+          <ScalarProperty Name="ShipToAddress3" ColumnName="ShipToAddress3" />
+          <ScalarProperty Name="ShipToAddress2" ColumnName="ShipToAddress2" />
+          <ScalarProperty Name="ShipToAddress1" ColumnName="ShipToAddress1" />
+          <ScalarProperty Name="ShipToName" ColumnName="ShipToName" />
+          <ScalarProperty Name="ShipToCode" ColumnName="ShipToCode" />
+          <ScalarProperty Name="OwnerAddress4" ColumnName="OwnerAddress4" />
+          <ScalarProperty Name="OwnerAddress3" ColumnName="OwnerAddress3" />
+          <ScalarProperty Name="OwnerAddress2" ColumnName="OwnerAddress2" />
+          <ScalarProperty Name="OwnerAddress1" ColumnName="OwnerAddress1" />
+          <ScalarProperty Name="OwnerName" ColumnName="OwnerName" />
+          <ScalarProperty Name="OwnerCode" ColumnName="OwnerCode" />
+          <ScalarProperty Name="ConsigneeAddress4" ColumnName="ConsigneeAddress4" />
+          <ScalarProperty Name="ConsigneeAddress3" ColumnName="ConsigneeAddress3" />
+          <ScalarProperty Name="ConsigneeAddress2" ColumnName="ConsigneeAddress2" />
+          <ScalarProperty Name="ConsigneeAddress1" ColumnName="ConsigneeAddress1" />
+          <ScalarProperty Name="ConsigneeName" ColumnName="ConsigneeName" />
+          <ScalarProperty Name="ConsigneeCode" ColumnName="ConsigneeCode" />
+          <ScalarProperty Name="ExporterAddress4" ColumnName="ExporterAddress4" />
+          <ScalarProperty Name="ExporterAddress3" ColumnName="ExporterAddress3" />
+          <ScalarProperty Name="ExporterAddress2" ColumnName="ExporterAddress2" />
+          <ScalarProperty Name="ExporterAddress1" ColumnName="ExporterAddress1" />
+          <ScalarProperty Name="ExporterName" ColumnName="ExporterName" />
+          <ScalarProperty Name="ExporterCode" ColumnName="ExporterCode" />
+          <ScalarProperty Name="ConfirmTime" ColumnName="ConfirmTime" />
+          <ScalarProperty Name="ConfirmDate" ColumnName="ConfirmDate" />
+          <ScalarProperty Name="DeliveryTime" ColumnName="DeliveryTime" />
+          <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
+          <ScalarProperty Name="PullTime" ColumnName="PullTime" />
+          <ScalarProperty Name="PullDate" ColumnName="PullDate" />
+          <ScalarProperty Name="LOTNo" ColumnName="LOTNo" />
+          <ScalarProperty Name="PullSignal" ColumnName="PullSignal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblWHISSUEDDetails">
+      <EntityTypeMapping TypeName="LKBWarehouseModel1.tblWHISSUEDDetail">
+        <MappingFragment StoreEntitySet="tblWHISSUEDDetail">
+          <ScalarProperty Name="EntryItemNo" ColumnName="EntryItemNo" />
+          <ScalarProperty Name="EntryNo" ColumnName="EntryNo" />
+          <ScalarProperty Name="PONo" ColumnName="PONo" />
+          <ScalarProperty Name="WipNo" ColumnName="WipNo" />
+          <ScalarProperty Name="ExpInvNo" ColumnName="ExpInvNo" />
+          <ScalarProperty Name="ShippingMark" ColumnName="ShippingMark" />
+          <ScalarProperty Name="Consignee" ColumnName="Consignee" />
+          <ScalarProperty Name="Destination" ColumnName="Destination" />
+          <ScalarProperty Name="Exporter" ColumnName="Exporter" />
+          <ScalarProperty Name="Buyer" ColumnName="Buyer" />
+          <ScalarProperty Name="Supplier" ColumnName="Supplier" />
+          <ScalarProperty Name="Item" ColumnName="Item" />
+          <ScalarProperty Name="TypeDamage" ColumnName="TypeDamage" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="UserBy" ColumnName="UserBy" />
+          <ScalarProperty Name="PalletNo" ColumnName="PalletNo" />
+          <ScalarProperty Name="StatusISSUED" ColumnName="StatusISSUED" />
+          <ScalarProperty Name="PriceBathAmount" ColumnName="PriceBathAmount" />
+          <ScalarProperty Name="PriceBath" ColumnName="PriceBath" />
+          <ScalarProperty Name="PriceForeighAmount" ColumnName="PriceForeighAmount" />
+          <ScalarProperty Name="PriceForeigh" ColumnName="PriceForeigh" />
+          <ScalarProperty Name="ExchangeRate" ColumnName="ExchangeRate" />
+          <ScalarProperty Name="Currency" ColumnName="Currency" />
+          <ScalarProperty Name="WeigthUnit" ColumnName="WeigthUnit" />
+          <ScalarProperty Name="Weigth" ColumnName="Weigth" />
+          <ScalarProperty Name="STKLastISSUED" ColumnName="STKLastISSUED" />
+          <ScalarProperty Name="STKBeforISSUED" ColumnName="STKBeforISSUED" />
+          <ScalarProperty Name="ISSUEDUnit" ColumnName="ISSUEDUnit" />
+          <ScalarProperty Name="ISSUEDQuantity" ColumnName="ISSUEDQuantity" />
+          <ScalarProperty Name="ISSUEDDate" ColumnName="ISSUEDDate" />
+          <ScalarProperty Name="ReceiveDate" ColumnName="ReceiveDate" />
+          <ScalarProperty Name="ExpiredDate" ColumnName="ExpiredDate" />
+          <ScalarProperty Name="ManufacturingDate" ColumnName="ManufacturingDate" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="ReceiveNo" ColumnName="ReceiveNo" />
+          <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+          <ScalarProperty Name="ProductVolume" ColumnName="ProductVolume" />
+          <ScalarProperty Name="ProductHeight" ColumnName="ProductHeight" />
+          <ScalarProperty Name="ProductLength" ColumnName="ProductLength" />
+          <ScalarProperty Name="ProductWidth" ColumnName="ProductWidth" />
+          <ScalarProperty Name="Measurement" ColumnName="Measurement" />
+          <ScalarProperty Name="ProductDesc" ColumnName="ProductDesc" />
+          <ScalarProperty Name="OwnerPN" ColumnName="OwnerPN" />
+          <ScalarProperty Name="CustomerPN" ColumnName="CustomerPN" />
+          <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+          <ScalarProperty Name="ItemNo" ColumnName="ItemNo" />
+          <ScalarProperty Name="WHSource" ColumnName="WHSource" />
+          <ScalarProperty Name="CustomerLOTNo" ColumnName="CustomerLOTNo" />
+          <ScalarProperty Name="ENDCustomer" ColumnName="ENDCustomer" />
+          <ScalarProperty Name="WHLocation" ColumnName="WHLocation" />
+          <ScalarProperty Name="WHSite" ColumnName="WHSite" />
+          <ScalarProperty Name="LOTNo" ColumnName="LOTNo" />
+          <ScalarProperty Name="PullSignal" ColumnName="PullSignal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblWHIssueScantoTemps">
+      <EntityTypeMapping TypeName="LKBWarehouseModel1.tblWHIssueScantoTemp">
+        <MappingFragment StoreEntitySet="tblWHIssueScantoTemp">
+          <ScalarProperty Name="UserBy" ColumnName="UserBy" />
+          <ScalarProperty Name="TransectionDate" ColumnName="TransectionDate" />
+          <ScalarProperty Name="PalletNo" ColumnName="PalletNo" />
+          <ScalarProperty Name="BoxNo" ColumnName="BoxNo" />
+          <ScalarProperty Name="QuantityUnit" ColumnName="QuantityUnit" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="IssueDate" ColumnName="IssueDate" />
+          <ScalarProperty Name="CustomerLOTNo" ColumnName="CustomerLOTNo" />
+          <ScalarProperty Name="ProductDesc" ColumnName="ProductDesc" />
+          <ScalarProperty Name="OwnerPN" ColumnName="OwnerPN" />
+          <ScalarProperty Name="CustomerPN" ColumnName="CustomerPN" />
+          <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+          <ScalarProperty Name="JobNo" ColumnName="JobNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblWHPartNews">
+      <EntityTypeMapping TypeName="LKBWarehouseModel1.tblWHPartNew">
+        <MappingFragment StoreEntitySet="tblWHPartNew">
+          <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+          <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+          <ScalarProperty Name="QuantityProduct" ColumnName="QuantityProduct" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="Customer" ColumnName="Customer" />
+          <ScalarProperty Name="SubProductCode" ColumnName="SubProductCode" />
+          <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblWHPickings">
+      <EntityTypeMapping TypeName="LKBWarehouseModel1.tblWHPicking">
+        <MappingFragment StoreEntitySet="tblWHPicking">
+          <ScalarProperty Name="UsedStatus" ColumnName="UsedStatus" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="UserBy" ColumnName="UserBy" />
+          <ScalarProperty Name="PrintCount" ColumnName="PrintCount" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="DiscrepancyUNIT" ColumnName="DiscrepancyUNIT" />
+          <ScalarProperty Name="QuantityDiscrepancy" ColumnName="QuantityDiscrepancy" />
+          <ScalarProperty Name="PickedUNIT" ColumnName="PickedUNIT" />
+          <ScalarProperty Name="QuantityPicked" ColumnName="QuantityPicked" />
+          <ScalarProperty Name="VolumeUnit" ColumnName="VolumeUnit" />
+          <ScalarProperty Name="Volume" ColumnName="Volume" />
+          <ScalarProperty Name="WeightUnit" ColumnName="WeightUnit" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="QuantityPLTUnit" ColumnName="QuantityPLTUnit" />
+          <ScalarProperty Name="QuantityPLT" ColumnName="QuantityPLT" />
+          <ScalarProperty Name="PackageUNIT" ColumnName="PackageUNIT" />
+          <ScalarProperty Name="QuantityPackage" ColumnName="QuantityPackage" />
+          <ScalarProperty Name="QuantityUnit" ColumnName="QuantityUnit" />
+          <ScalarProperty Name="QuantityOfPart" ColumnName="QuantityOfPart" />
+          <ScalarProperty Name="Commodity" ColumnName="Commodity" />
+          <ScalarProperty Name="ShipToAddress4" ColumnName="ShipToAddress4" />
+          <ScalarProperty Name="ShipToAddress3" ColumnName="ShipToAddress3" />
+          <ScalarProperty Name="ShipToAddress2" ColumnName="ShipToAddress2" />
+          <ScalarProperty Name="ShipToAddress1" ColumnName="ShipToAddress1" />
+          <ScalarProperty Name="ShipToName" ColumnName="ShipToName" />
+          <ScalarProperty Name="ShipToCode" ColumnName="ShipToCode" />
+          <ScalarProperty Name="OwnerAddress4" ColumnName="OwnerAddress4" />
+          <ScalarProperty Name="OwnerAddress3" ColumnName="OwnerAddress3" />
+          <ScalarProperty Name="OwnerAddress2" ColumnName="OwnerAddress2" />
+          <ScalarProperty Name="OwnerAddress1" ColumnName="OwnerAddress1" />
+          <ScalarProperty Name="OwnerName" ColumnName="OwnerName" />
+          <ScalarProperty Name="OwnerCode" ColumnName="OwnerCode" />
+          <ScalarProperty Name="ConsigneeAddress4" ColumnName="ConsigneeAddress4" />
+          <ScalarProperty Name="ConsigneeAddress3" ColumnName="ConsigneeAddress3" />
+          <ScalarProperty Name="ConsigneeAddress2" ColumnName="ConsigneeAddress2" />
+          <ScalarProperty Name="ConsigneeAddress1" ColumnName="ConsigneeAddress1" />
+          <ScalarProperty Name="ConsigneeName" ColumnName="ConsigneeName" />
+          <ScalarProperty Name="ConsigneeCode" ColumnName="ConsigneeCode" />
+          <ScalarProperty Name="ExporterAddress4" ColumnName="ExporterAddress4" />
+          <ScalarProperty Name="ExporterAddress3" ColumnName="ExporterAddress3" />
+          <ScalarProperty Name="ExporterAddress2" ColumnName="ExporterAddress2" />
+          <ScalarProperty Name="ExporterAddress1" ColumnName="ExporterAddress1" />
+          <ScalarProperty Name="ExporterName" ColumnName="ExporterName" />
+          <ScalarProperty Name="ExporterCode" ColumnName="ExporterCode" />
+          <ScalarProperty Name="ConfirmTime" ColumnName="ConfirmTime" />
+          <ScalarProperty Name="ConfirmDate" ColumnName="ConfirmDate" />
+          <ScalarProperty Name="DeliveryTime" ColumnName="DeliveryTime" />
+          <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
+          <ScalarProperty Name="PullTime" ColumnName="PullTime" />
+          <ScalarProperty Name="PullDate" ColumnName="PullDate" />
+          <ScalarProperty Name="LOTNo" ColumnName="LOTNo" />
+          <ScalarProperty Name="PullSignal" ColumnName="PullSignal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblWHPickingDetails">
+      <EntityTypeMapping TypeName="LKBWarehouseModel1.tblWHPickingDetail">
+        <MappingFragment StoreEntitySet="tblWHPickingDetail">
+          <ScalarProperty Name="CustFrmOnline" ColumnName="CustFrmOnline" />
+          <ScalarProperty Name="OrderFrmOnline" ColumnName="OrderFrmOnline" />
+          <ScalarProperty Name="ItemInvoice" ColumnName="ItemInvoice" />
+          <ScalarProperty Name="EntryItemNo" ColumnName="EntryItemNo" />
+          <ScalarProperty Name="EntryNo" ColumnName="EntryNo" />
+          <ScalarProperty Name="WHSourceIN" ColumnName="WHSourceIN" />
+          <ScalarProperty Name="PONo" ColumnName="PONo" />
+          <ScalarProperty Name="Reqno" ColumnName="Reqno" />
+          <ScalarProperty Name="ExpInvNo" ColumnName="ExpInvNo" />
+          <ScalarProperty Name="ShippingMark" ColumnName="ShippingMark" />
+          <ScalarProperty Name="Consignee" ColumnName="Consignee" />
+          <ScalarProperty Name="Destination" ColumnName="Destination" />
+          <ScalarProperty Name="Exporter" ColumnName="Exporter" />
+          <ScalarProperty Name="Buyer" ColumnName="Buyer" />
+          <ScalarProperty Name="Supplier" ColumnName="Supplier" />
+          <ScalarProperty Name="Item" ColumnName="Item" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="UserBy" ColumnName="UserBy" />
+          <ScalarProperty Name="PalletNo" ColumnName="PalletNo" />
+          <ScalarProperty Name="StatusISSUED" ColumnName="StatusISSUED" />
+          <ScalarProperty Name="PriceBathAmount" ColumnName="PriceBathAmount" />
+          <ScalarProperty Name="PriceBath" ColumnName="PriceBath" />
+          <ScalarProperty Name="PriceForeighAmount" ColumnName="PriceForeighAmount" />
+          <ScalarProperty Name="PriceForeigh" ColumnName="PriceForeigh" />
+          <ScalarProperty Name="ExchangeRate" ColumnName="ExchangeRate" />
+          <ScalarProperty Name="Currency" ColumnName="Currency" />
+          <ScalarProperty Name="WeigthUnit" ColumnName="WeigthUnit" />
+          <ScalarProperty Name="Weigth" ColumnName="Weigth" />
+          <ScalarProperty Name="PickUnit" ColumnName="PickUnit" />
+          <ScalarProperty Name="PickQuantity" ColumnName="PickQuantity" />
+          <ScalarProperty Name="ReceiveDate" ColumnName="ReceiveDate" />
+          <ScalarProperty Name="ExpiredDate" ColumnName="ExpiredDate" />
+          <ScalarProperty Name="ManufacturingDate" ColumnName="ManufacturingDate" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="ReceiveNo" ColumnName="ReceiveNo" />
+          <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+          <ScalarProperty Name="ProductVolume" ColumnName="ProductVolume" />
+          <ScalarProperty Name="ProductHeight" ColumnName="ProductHeight" />
+          <ScalarProperty Name="ProductLength" ColumnName="ProductLength" />
+          <ScalarProperty Name="ProductWidth" ColumnName="ProductWidth" />
+          <ScalarProperty Name="Measurement" ColumnName="Measurement" />
+          <ScalarProperty Name="ProductDesc" ColumnName="ProductDesc" />
+          <ScalarProperty Name="OwnerPN" ColumnName="OwnerPN" />
+          <ScalarProperty Name="CustomerPN" ColumnName="CustomerPN" />
+          <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+          <ScalarProperty Name="ItemNo" ColumnName="ItemNo" />
+          <ScalarProperty Name="WHSource" ColumnName="WHSource" />
+          <ScalarProperty Name="CustomerLOTNo" ColumnName="CustomerLOTNo" />
+          <ScalarProperty Name="ENDCustomer" ColumnName="ENDCustomer" />
+          <ScalarProperty Name="WHLocation" ColumnName="WHLocation" />
+          <ScalarProperty Name="WHSite" ColumnName="WHSite" />
+          <ScalarProperty Name="LOTNo" ColumnName="LOTNo" />
+          <ScalarProperty Name="PullSignal" ColumnName="PullSignal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblWHPickPackCheckings">
+      <EntityTypeMapping TypeName="LKBWarehouseModel1.tblWHPickPackChecking">
+        <MappingFragment StoreEntitySet="tblWHPickPackChecking">
+          <ScalarProperty Name="rowguid" ColumnName="rowguid" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="Userby" ColumnName="Userby" />
+          <ScalarProperty Name="UnitQuantityPrequire" ColumnName="UnitQuantityPrequire" />
+          <ScalarProperty Name="QuantityPrequire" ColumnName="QuantityPrequire" />
+          <ScalarProperty Name="UnitCurrentQuantity" ColumnName="UnitCurrentQuantity" />
+          <ScalarProperty Name="CurrentQuantity" ColumnName="CurrentQuantity" />
+          <ScalarProperty Name="InvOty" ColumnName="InvOty" />
+          <ScalarProperty Name="OwnerPN" ColumnName="OwnerPN" />
+          <ScalarProperty Name="CustomerPN" ColumnName="CustomerPN" />
+          <ScalarProperty Name="ProductDese" ColumnName="ProductDese" />
+          <ScalarProperty Name="ItemNo" ColumnName="ItemNo" />
+          <ScalarProperty Name="CustomerLOTNo" ColumnName="CustomerLOTNo" />
+          <ScalarProperty Name="EASPN" ColumnName="EASPN" />
+          <ScalarProperty Name="EndCustomer" ColumnName="EndCustomer" />
+          <ScalarProperty Name="WHSource" ColumnName="WHSource" />
+          <ScalarProperty Name="WHLocation" ColumnName="WHLocation" />
+          <ScalarProperty Name="WHSite" ColumnName="WHSite" />
+          <ScalarProperty Name="LOTNo" ColumnName="LOTNo" />
+          <ScalarProperty Name="Row" ColumnName="Row" />
+          <ScalarProperty Name="NewProductCode" ColumnName="NewProductCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

@@ -1,18 +1,17 @@
 ﻿Option Strict On
 Option Explicit On
 
+Imports System.Data
 Public Class Test
     Inherits System.Web.UI.Page
     Dim db As New LKBWarehouseEntities1
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         'lblDisplayDate.Text = System.DateTime.Now.ToString("T")
-        If Me.IsPostBack Then
-            TabName.Value = Request.Form(TabName.UniqueID)
+        If Not Me.IsPostBack Then
+            'TabName.Value = Request.Form(TabName.UniqueID)
+            showUserList()
         End If
     End Sub
-
-   
-
     Protected Sub btnTest_ServerClick(sender As Object, e As EventArgs)
         Dim script As String = "<script type='text/javascript'> " & _
              " function CallConfirmBox() {" & _
@@ -62,21 +61,21 @@ Public Class Test
         'Dim formlist = (From u In db.tblMenus
         '                Group By Form = u.Form
         '                Into f = Group, Count())
-        'Dim formlist = (From u In db.tblUsers
-        '         Select New With {
-        '             u.UserName,
-        '             u.Name,
-        '             u.Branch,
-        '             u.Dept
-        '            }).ToList
+        Dim formlist = (From u In db.tblUsers
+                 Select New With {
+                     u.UserName,
+                     u.Name,
+                     u.Branch,
+                     u.Dept
+                    }).Take(10)
 
-        'If formlist.Count > 0 Then
-        '    Me.productListTable.DataSource = formlist.ToList
-        '    Me.productListTable.DataBind()
-        'Else
-        '    Me.productListTable.DataSource = Nothing
-        '    Me.productListTable.DataBind()
-        'End If
+        If formlist.Count > 0 Then
+            Me.rptCustomers.DataSource = formlist.ToList
+            Me.rptCustomers.DataBind()
+        Else
+            Me.rptCustomers.DataSource = Nothing
+            Me.rptCustomers.DataBind()
+            End If
     End Sub
 
     Protected Sub LinkButton1_Click(sender As Object, e As EventArgs)
@@ -108,20 +107,20 @@ Public Class Test
 
     'Protected Sub cpRepeater_ItemCommand(source As Object, e As RepeaterCommandEventArgs) Handles cpRepeater.ItemCommand
 
-    '    'Dim lblRead As Label = CType(e.Item.FindControl("lblRead"), Label)
-    '    'Dim lblUpdate As LinkButton = CType(e.Item.FindControl("lnkUpdate"), LinkButton)
-    '    'Dim lnkCancel As LinkButton = CType(e.Item.FindControl("lnkCancel"), LinkButton)
-    '    'Dim lnkEdit As LinkButton = CType(e.Item.FindControl("lnkEdit"), LinkButton)
-    '    'Dim lnkDelete As LinkButton = CType(e.Item.FindControl("lnkDelete"), LinkButton)
-    '    'If e.CommandName.Equals("editMenu") Then
-    '    '    'MsgBox("อะไรว่ะ")
-    '    '    'Response.Write("<script>window.open('ViewUserProfile.aspx?UserName,target='_self');</script>")
-    '    '    lblUpdate.Visible = True
-    '    '    lnkCancel.Visible = True
-    '    '    lnkEdit.Visible = False
-    '    '    lnkDelete.Visible = False
-    '    '    'showUserList()
-    '    'End If
+    '    Dim lblRead As Label = CType(e.Item.FindControl("lblRead"), Label)
+    '    Dim lblUpdate As LinkButton = CType(e.Item.FindControl("lnkUpdate"), LinkButton)
+    '    Dim lnkCancel As LinkButton = CType(e.Item.FindControl("lnkCancel"), LinkButton)
+    '    Dim lnkEdit As LinkButton = CType(e.Item.FindControl("lnkEdit"), LinkButton)
+    '    Dim lnkDelete As LinkButton = CType(e.Item.FindControl("lnkDelete"), LinkButton)
+    '    If e.CommandName.Equals("editMenu") Then
+    '        'MsgBox("อะไรว่ะ")
+    '        'Response.Write("<script>window.open('ViewUserProfile.aspx?UserName,target='_self');</script>")
+    '        lblUpdate.Visible = True
+    '        lnkCancel.Visible = True
+    '        lnkEdit.Visible = False
+    '        lnkDelete.Visible = False
+    '        'showUserList()
+    '    End If
     'End Sub
 
     Protected Sub btnOpenModal_Click(sender As Object, e As EventArgs)
@@ -136,13 +135,68 @@ Public Class Test
 
     End Sub
 
-    Protected Sub DropDownList1_SelectedIndexChanged(sender As Object, e As EventArgs)
-        mp1.Show()
-    End Sub
+    'Protected Sub DropDownList1_SelectedIndexChanged(sender As Object, e As EventArgs)
+    '    mp1.Show()
+    'End Sub
 
     'Protected Sub GridView1_PageIndexChanging(sender As Object, e As GridViewPageEventArgs)
     '    GridView1.PageIndex = e.NewPageIndex
     '    showUserList()
 
     'End Sub
+
+    Protected Sub rptCustomers_ItemDataBound(sender As Object, e As RepeaterItemEventArgs)
+       
+        If e.Item.ItemType = ListItemType.Item OrElse e.Item.ItemType = ListItemType.AlternatingItem Then
+            Dim lblUserName As Label = CType(e.Item.FindControl("lblUserName"), Label)
+            Dim lblName As Label = CType(e.Item.FindControl("lblName"), Label)
+            Dim lblBranch As Label = CType(e.Item.FindControl("lblBrnch"), Label)
+            Dim lblDept As Label = CType(e.Item.FindControl("lblDept"), Label)
+            'Dim lnkDelete As LinkButton = CType(e.Item.FindControl("lnkDelete"), LinkButton)
+
+            If Not IsNothing(lblUserName) Then
+                lblUserName.Text = DataBinder.Eval(e.Item.DataItem, "UserName").ToString
+            End If
+            If Not IsNothing(lblName) Then
+                lblName.Text = DataBinder.Eval(e.Item.DataItem, "Name").ToString
+            End If
+            If Not IsNothing(lblBranch) Then
+                lblBranch.Text = DataBinder.Eval(e.Item.DataItem, "Branch").ToString
+            End If
+            If Not IsNothing(lblDept) Then
+                lblDept.Text = DataBinder.Eval(e.Item.DataItem, "Dept").ToString
+            End If
+        End If
+      
+    End Sub
+
+    Protected Sub btntest_ServerClick1(sender As Object, e As EventArgs)
+        'Dim item As RepeaterItem = TryCast(TryCast(sender, CheckBox).Parent, RepeaterItem)
+        Dim chkName As CheckBox
+        Dim lblUserName As String
+        'Dim lblName As String
+        'Dim lblBranch As String
+        Dim i As Integer
+        Dim j As Integer
+        Dim name As ArrayList
+        name = New ArrayList
+        For i = 0 To rptCustomers.Items.Count - 1
+            chkName = CType(rptCustomers.Items(i).FindControl("chkRowData"), CheckBox)
+            lblUserName = CType(rptCustomers.Items(i).FindControl("lblUserName"), Label).Text.Trim
+            'lblName = CType(rptCustomers.Items(i).FindControl("lblName"), Label).Text.Trim
+            'lblBranch = CType(rptCustomers.Items(i).FindControl("lblBrnch"), Label).Text.Trim
+            If chkName.Checked = True Then
+                'MsgBox(lblUserName)
+                name.Add(lblUserName)
+                'name.Add(lblName)
+                'name.Add(lblBranch)
+                'For j = 0 To name.Count - 1
+
+                'Next
+            End If
+        Next
+
+        GridView1.DataSource = name
+        GridView1.DataBind()
+    End Sub
 End Class

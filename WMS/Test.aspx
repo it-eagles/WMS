@@ -23,8 +23,43 @@
 
                         <!-- /.box-header -->
                         <div class="box-body">
+                            <asp:Repeater ID="rptCustomers" runat="server" OnItemDataBound="rptCustomers_ItemDataBound">
+                                <HeaderTemplate>
+                                    <table id="tblCustomers" class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th style="width: 5px">
+                                                <asp:CheckBox ID="chkAll" runat="server" Checked="false"/></th>
+                                                <th>UserName</th>
+                                                <th>Name</th>
+                                                <th>Branch</th>
+                                                <th>Dept</th>
 
-                            <div class="panel panel-default" style="width: 500px; padding: 10px; margin: 10px">
+                                            </tr>
+                                        </thead>
+                                </HeaderTemplate>
+                                <ItemTemplate>                
+                                        <tr>
+                                            <td>
+                                                <asp:CheckBox ID="chkRowData" runat="server" /></td>
+                                            <td><asp:Label ID="lblUserName" runat="server"></asp:Label></td>
+                                            <td><asp:Label ID="lblName" runat="server"></asp:Label></td>
+                                            <td><asp:Label ID="lblBrnch" runat="server"></asp:Label> </td>
+                                            <td><asp:Label ID="lblDept" runat="server"></asp:Label></td>
+                                        </tr>
+                                    
+                                </ItemTemplate>
+                           
+                                <FooterTemplate>
+                                
+                                    </table>
+                                </FooterTemplate>
+                            </asp:Repeater>
+                            <button runat="server" id="btntest" class="btn btn-pinterest" onserverclick="btntest_ServerClick1"></button>
+
+                           
+                            <asp:GridView ID="GridView1" runat="server"></asp:GridView>
+                            <%-- <div class="panel panel-default" style="width: 500px; padding: 10px; margin: 10px">
                                 <div id="Tabs" role="tabpanel">
                                     <!-- Nav tabs -->
                                     <ul class="nav nav-tabs" role="tablist">
@@ -44,7 +79,7 @@
                                 </div>
                                 <asp:Button ID="Button1" Text="Submit" runat="server" CssClass="btn btn-primary" />
                                 <asp:HiddenField ID="TabName" runat="server" />
-                            </div>
+                            </div>--%>
 
                             <%-- <div id="div1">
                                 <h2>ผลลัพธ์ JSON จะแสดงไว้ตรงนี้</h2>
@@ -57,7 +92,7 @@
                             <%--  <a class="btn" data-toggle="modal" href="#myModal" >Launch Modal</a>--%>
                             <!--ASP.NET Button -->
 
-                  <%--          <asp:Button ID="btnOpenModal" runat="server" CssClass="btn btn-info btn-lg" Text="Open with ASP Button" OnClick="btnOpenModal_Click" />
+                            <%--          <asp:Button ID="btnOpenModal" runat="server" CssClass="btn btn-info btn-lg" Text="Open with ASP Button" OnClick="btnOpenModal_Click" />
                             <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
                                 <ContentTemplate>
                                     <ul>
@@ -207,12 +242,12 @@
                                         </table>
                                     </FooterTemplate>
                                 </asp:Repeater>--%>
-                            <asp:Button ID="btnShow" runat="server" Text="Show Modal Popup" />
+                            <%--                            <asp:Button ID="btnShow" runat="server" Text="Show Modal Popup" />--%>
                             <!-- ModalPopupExtender -->
-                            <asp:ModalPopupExtender ID="mp1" runat="server" PopupControlID="Panel1" TargetControlID="btnShow"
+                        <%--    <asp:ModalPopupExtender ID="mp1" runat="server" PopupControlID="Panel1" TargetControlID="btnShow"
                                 CancelControlID="btnClose" BackgroundCssClass="modalBackground">
-                            </asp:ModalPopupExtender>
-                            <asp:Panel ID="Panel1" runat="server" CssClass="modalPopup" align="center" Style="display: none">
+                            </asp:ModalPopupExtender>--%>
+                            <%--<asp:Panel ID="Panel1" runat="server" CssClass="modalPopup" align="center" Style="display: none">
                                 <div style="height: 100px">
                                     Do you like this product?&nbsp;
                                         <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
@@ -222,7 +257,7 @@
                                         </asp:DropDownList>
                                 </div>
                                 <asp:Button ID="btnClose" runat="server" Text="Close" />
-                            </asp:Panel>
+                            </asp:Panel>--%>
                             <!-- ModalPopupExtender -->
                         </div>
                         <!-- /.box-body -->
@@ -256,7 +291,7 @@
 
             </div>
         </div>
-        <script type="text/javascript">
+  <%--      <script type="text/javascript">
             $(function () {
                 var tabName = $("[id*=TabName]").val() != "" ? $("[id*=TabName]").val() : "personal";
                 $('#Tabs a[href="#' + tabName + '"]').tab('show');
@@ -265,6 +300,52 @@
                 });
             });
         </script>
-    </form>
+    </form>--%>
+  <%--      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    
+        <script type="text/javascript">
+        $(function () {
+            $("#tblCustomers [id*=chkHeader]").click(function () {
+                if ($(this).is(":checked")) {
+                    $("#tblCustomers [id*=chkRow]").attr("checked", "checked");
+                } else {
+                    $("#tblCustomers [id*=chkRow]").removeAttr("checked");
+                }
+            });
+            $("#tblCustomers [id*=chkRow]").click(function () {
+                if ($("#tblCustomers [id*=chkRow]").length == $("#tblCustomers [id*=chkRow]:checked").length) {
+                    $("#tblCustomers [id*=chkHeader]").attr("checked", "checked");
+                } else {
+                    $("#tblCustomers [id*=chkHeader]").removeAttr("checked");
+                }
+            });
+        });
+       
 
+</script>--%>
+        <script>
+            $(document).ready(function () {
+                // CHECK-UNCHECK ALL CHECKBOXES IN THE REPEATER 
+                // WHEN USER CLICKS THE HEADER CHECKBOX.
+                $('table [id*=chkAll]').click(function () {
+                    if ($(this).is(':checked'))
+                        $('table [id*=chkRowData]').prop('checked', true)
+                    else
+                        $('table [id*=chkRowData]').prop('checked', false)
+                });
+
+                // NOW CHECK THE HEADER CHECKBOX, IF ALL THE ROW CHECKBOXES ARE CHECKED.
+                $('table [id*=chkRowData]').click(function () {
+
+                    var total_rows = $('table [id*=chkRowData]').length;
+                    var checked_Rows = $('table [id*=chkRowData]:checked').length;
+
+                    if (checked_Rows == total_rows)
+                        $('table [id*=chkAll]').prop('checked', true);
+                    else
+                        $('table [id*=chkAll]').prop('checked', false);
+                });
+            });
+</script>
+        </form>
 </asp:Content>

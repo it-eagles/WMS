@@ -22,6 +22,16 @@
     <Property Name="Status" Type="varchar" MaxLength="50" />
     <Property Name="SideID" Type="varchar" MaxLength="50" />
   </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
   <EntityType Name="tblBookingMessenger">
     <Key>
       <PropertyRef Name="RecNo" />
@@ -47,6 +57,13 @@
     <Property Name="CreateDate" Type="datetime" />
     <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'LKBWarehouse.dbo.tblCompanyGuarantee' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="tblCompanyGuarantee">
+          <Property Name="AmountGuarantee" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="AmountUsed" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Balance" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>-->
   <EntityType Name="tblCompanyGuarantee1">
     <Key>
       <PropertyRef Name="AmountGuaranteeID" />
@@ -2204,6 +2221,12 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblTempItemNo' does not have a pr
     <Property Name="PullSignal" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="ItemNo" Type="float" Nullable="false" />
   </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'LKBWarehouse.dbo.tblTempMJSummaryStock-11122013' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="tblTempMJSummaryStock-11122013">
+          <Property Name="PART NUMBER" Type="nvarchar" MaxLength="255" />
+          <Property Name="On Hand" Type="float" />
+        </EntityType>-->
   <EntityType Name="tblTruckManifest">
     <Key>
       <PropertyRef Name="TruckManifestCode" />
@@ -2543,6 +2566,168 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblTempItemNo' does not have a pr
     <Property Name="OrderFrmOnline" Type="varchar" MaxLength="50" />
     <Property Name="CustFrmOnline" Type="varchar" MaxLength="50" />
   </EntityType>
+  <EntityType Name="tblWHEquipment">
+    <Key>
+      <PropertyRef Name="Code" />
+    </Key>
+    <Property Name="Code" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="NameTH" Type="varchar" MaxLength="150" />
+    <Property Name="NameEng" Type="varchar" MaxLength="150" />
+    <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblWHHandlePreson">
+    <Key>
+      <PropertyRef Name="LOTNO" />
+      <PropertyRef Name="CodePreson" />
+    </Key>
+    <Property Name="LOTNO" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="CodePreson" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HandlePreson" Type="varchar" MaxLength="50" />
+    <Property Name="DatePreson" Type="datetime" />
+    <Property Name="NamePreson" Type="varchar" MaxLength="150" />
+    <Property Name="EquipmentA" Type="varchar" MaxLength="150" />
+    <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblWHISSUED">
+    <Key>
+      <PropertyRef Name="PullSignal" />
+      <PropertyRef Name="LOTNo" />
+    </Key>
+    <Property Name="PullSignal" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="LOTNo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PullDate" Type="datetime" />
+    <Property Name="PullTime" Type="varchar" MaxLength="50" />
+    <Property Name="DeliveryDate" Type="datetime" />
+    <Property Name="DeliveryTime" Type="varchar" MaxLength="50" />
+    <Property Name="ConfirmDate" Type="datetime" />
+    <Property Name="ConfirmTime" Type="varchar" MaxLength="50" />
+    <Property Name="ExporterCode" Type="varchar" MaxLength="100" />
+    <Property Name="ExporterName" Type="varchar" MaxLength="200" />
+    <Property Name="ExporterAddress1" Type="varchar" MaxLength="200" />
+    <Property Name="ExporterAddress2" Type="varchar" MaxLength="200" />
+    <Property Name="ExporterAddress3" Type="varchar" MaxLength="200" />
+    <Property Name="ExporterAddress4" Type="varchar" MaxLength="200" />
+    <Property Name="ConsigneeCode" Type="varchar" MaxLength="100" />
+    <Property Name="ConsigneeName" Type="varchar" MaxLength="200" />
+    <Property Name="ConsigneeAddress1" Type="varchar" MaxLength="200" />
+    <Property Name="ConsigneeAddress2" Type="varchar" MaxLength="200" />
+    <Property Name="ConsigneeAddress3" Type="varchar" MaxLength="200" />
+    <Property Name="ConsigneeAddress4" Type="varchar" MaxLength="200" />
+    <Property Name="OwnerCode" Type="varchar" MaxLength="100" />
+    <Property Name="OwnerName" Type="varchar" MaxLength="200" />
+    <Property Name="OwnerAddress1" Type="varchar" MaxLength="200" />
+    <Property Name="OwnerAddress2" Type="varchar" MaxLength="200" />
+    <Property Name="OwnerAddress3" Type="varchar" MaxLength="200" />
+    <Property Name="OwnerAddress4" Type="varchar" MaxLength="200" />
+    <Property Name="ShipToCode" Type="varchar" MaxLength="100" />
+    <Property Name="ShipToName" Type="varchar" MaxLength="200" />
+    <Property Name="ShipToAddress1" Type="varchar" MaxLength="200" />
+    <Property Name="ShipToAddress2" Type="varchar" MaxLength="200" />
+    <Property Name="ShipToAddress3" Type="varchar" MaxLength="200" />
+    <Property Name="ShipToAddress4" Type="varchar" MaxLength="200" />
+    <Property Name="Commodity" Type="varchar" MaxLength="200" />
+    <Property Name="QuantityOfPart" Type="float" />
+    <Property Name="QuantityUnit" Type="varchar" MaxLength="100" />
+    <Property Name="QuantityPackage" Type="float" />
+    <Property Name="PackageUNIT" Type="varchar" MaxLength="50" />
+    <Property Name="QuantityPLT" Type="float" />
+    <Property Name="QuantityPLTUnit" Type="varchar" MaxLength="100" />
+    <Property Name="Weight" Type="float" />
+    <Property Name="WeightUnit" Type="varchar" MaxLength="100" />
+    <Property Name="Volume" Type="float" />
+    <Property Name="VolumeUnit" Type="varchar" MaxLength="100" />
+    <Property Name="QuantityPicked" Type="float" />
+    <Property Name="PickedUNIT" Type="varchar" MaxLength="50" />
+    <Property Name="QuantityDiscrepancy" Type="float" />
+    <Property Name="DiscrepancyUNIT" Type="varchar" MaxLength="50" />
+    <Property Name="Remark" Type="varchar" MaxLength="250" />
+    <Property Name="PrintCount" Type="varchar" MaxLength="50" />
+    <Property Name="UserBy" Type="varchar" MaxLength="100" />
+    <Property Name="LastUpdate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tblWHISSUEDDetail">
+    <Key>
+      <PropertyRef Name="PullSignal" />
+      <PropertyRef Name="LOTNo" />
+      <PropertyRef Name="ItemNo" />
+      <PropertyRef Name="ReceiveNo" />
+      <PropertyRef Name="Item" />
+    </Key>
+    <Property Name="PullSignal" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="LOTNo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="WHSite" Type="varchar" MaxLength="100" />
+    <Property Name="WHLocation" Type="varchar" MaxLength="100" />
+    <Property Name="ENDCustomer" Type="varchar" MaxLength="200" />
+    <Property Name="CustomerLOTNo" Type="varchar" MaxLength="50" />
+    <Property Name="WHSource" Type="varchar" MaxLength="200" />
+    <Property Name="ItemNo" Type="float" Nullable="false" />
+    <Property Name="ProductCode" Type="varchar" MaxLength="100" />
+    <Property Name="CustomerPN" Type="varchar" MaxLength="100" />
+    <Property Name="OwnerPN" Type="varchar" MaxLength="100" />
+    <Property Name="ProductDesc" Type="varchar" MaxLength="200" />
+    <Property Name="Measurement" Type="varchar" MaxLength="50" />
+    <Property Name="ProductWidth" Type="float" />
+    <Property Name="ProductLength" Type="float" />
+    <Property Name="ProductHeight" Type="float" />
+    <Property Name="ProductVolume" Type="float" />
+    <Property Name="OrderNo" Type="varchar" MaxLength="100" />
+    <Property Name="ReceiveNo" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Type" Type="varchar" MaxLength="100" />
+    <Property Name="ManufacturingDate" Type="datetime" />
+    <Property Name="ExpiredDate" Type="datetime" />
+    <Property Name="ReceiveDate" Type="datetime" />
+    <Property Name="ISSUEDDate" Type="datetime" />
+    <Property Name="ISSUEDQuantity" Type="float" />
+    <Property Name="ISSUEDUnit" Type="varchar" MaxLength="100" />
+    <Property Name="STKBeforISSUED" Type="float" />
+    <Property Name="STKLastISSUED" Type="float" />
+    <Property Name="Weigth" Type="float" />
+    <Property Name="WeigthUnit" Type="varchar" MaxLength="50" />
+    <Property Name="Currency" Type="varchar" MaxLength="50" />
+    <Property Name="ExchangeRate" Type="float" />
+    <Property Name="PriceForeigh" Type="float" />
+    <Property Name="PriceForeighAmount" Type="float" />
+    <Property Name="PriceBath" Type="float" />
+    <Property Name="PriceBathAmount" Type="float" />
+    <Property Name="StatusISSUED" Type="varchar" MaxLength="50" />
+    <Property Name="PalletNo" Type="varchar" MaxLength="50" />
+    <Property Name="UserBy" Type="varchar" MaxLength="100" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="TypeDamage" Type="varchar" MaxLength="50" />
+    <Property Name="Item" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Supplier" Type="varchar" MaxLength="100" />
+    <Property Name="Buyer" Type="varchar" MaxLength="100" />
+    <Property Name="Exporter" Type="varchar" MaxLength="100" />
+    <Property Name="Destination" Type="varchar" MaxLength="100" />
+    <Property Name="Consignee" Type="varchar" MaxLength="100" />
+    <Property Name="ShippingMark" Type="varchar" MaxLength="100" />
+    <Property Name="ExpInvNo" Type="varchar" MaxLength="50" />
+    <Property Name="WipNo" Type="varchar" MaxLength="50" />
+    <Property Name="PONo" Type="varchar" MaxLength="50" />
+    <Property Name="EntryNo" Type="varchar" MaxLength="50" />
+    <Property Name="EntryItemNo" Type="int" />
+  </EntityType>
+  <EntityType Name="tblWHIssueScantoTemp">
+    <Key>
+      <PropertyRef Name="JobNo" />
+      <PropertyRef Name="OwnerPN" />
+      <PropertyRef Name="CustomerLOTNo" />
+      <PropertyRef Name="BoxNo" />
+    </Key>
+    <Property Name="JobNo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ProductCode" Type="varchar" MaxLength="100" />
+    <Property Name="CustomerPN" Type="char" MaxLength="100" />
+    <Property Name="OwnerPN" Type="char" MaxLength="100" Nullable="false" />
+    <Property Name="ProductDesc" Type="char" MaxLength="200" />
+    <Property Name="CustomerLOTNo" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="IssueDate" Type="datetime" />
+    <Property Name="Quantity" Type="float" />
+    <Property Name="QuantityUnit" Type="varchar" MaxLength="50" />
+    <Property Name="BoxNo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PalletNo" Type="varchar" MaxLength="50" />
+    <Property Name="TransectionDate" Type="datetime" />
+    <Property Name="UserBy" Type="varchar" MaxLength="50" />
+  </EntityType>
   <EntityType Name="tblWHLocation">
     <Key>
       <PropertyRef Name="LocationNo" />
@@ -2561,6 +2746,169 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblTempItemNo' does not have a pr
     <Property Name="CreateDate" Type="datetime" />
     <Property Name="UpdateBy" Type="varchar" MaxLength="50" />
     <Property Name="UpdateDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tblWHPartNew">
+    <Key>
+      <PropertyRef Name="ProductCode" />
+      <PropertyRef Name="SubProductCode" />
+    </Key>
+    <Property Name="ProductCode" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="SubProductCode" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Customer" Type="varchar" MaxLength="100" />
+    <Property Name="Owner" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="QuantityProduct" Type="int" Nullable="false" />
+    <Property Name="CreateUser" Type="varchar" MaxLength="50" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="UpdateUser" Type="varchar" MaxLength="50" />
+    <Property Name="UpdateDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tblWHPicking">
+    <Key>
+      <PropertyRef Name="PullSignal" />
+      <PropertyRef Name="LOTNo" />
+    </Key>
+    <Property Name="PullSignal" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="LOTNo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PullDate" Type="datetime" />
+    <Property Name="PullTime" Type="varchar" MaxLength="50" />
+    <Property Name="DeliveryDate" Type="datetime" />
+    <Property Name="DeliveryTime" Type="varchar" MaxLength="50" />
+    <Property Name="ConfirmDate" Type="datetime" />
+    <Property Name="ConfirmTime" Type="varchar" MaxLength="50" />
+    <Property Name="ExporterCode" Type="varchar" MaxLength="100" />
+    <Property Name="ExporterName" Type="varchar" MaxLength="200" />
+    <Property Name="ExporterAddress1" Type="varchar" MaxLength="200" />
+    <Property Name="ExporterAddress2" Type="varchar" MaxLength="200" />
+    <Property Name="ExporterAddress3" Type="varchar" MaxLength="200" />
+    <Property Name="ExporterAddress4" Type="varchar" MaxLength="200" />
+    <Property Name="ConsigneeCode" Type="varchar" MaxLength="100" />
+    <Property Name="ConsigneeName" Type="varchar" MaxLength="200" />
+    <Property Name="ConsigneeAddress1" Type="varchar" MaxLength="200" />
+    <Property Name="ConsigneeAddress2" Type="varchar" MaxLength="200" />
+    <Property Name="ConsigneeAddress3" Type="varchar" MaxLength="200" />
+    <Property Name="ConsigneeAddress4" Type="varchar" MaxLength="200" />
+    <Property Name="OwnerCode" Type="varchar" MaxLength="100" />
+    <Property Name="OwnerName" Type="varchar" MaxLength="200" />
+    <Property Name="OwnerAddress1" Type="varchar" MaxLength="200" />
+    <Property Name="OwnerAddress2" Type="varchar" MaxLength="200" />
+    <Property Name="OwnerAddress3" Type="varchar" MaxLength="200" />
+    <Property Name="OwnerAddress4" Type="varchar" MaxLength="200" />
+    <Property Name="ShipToCode" Type="varchar" MaxLength="100" />
+    <Property Name="ShipToName" Type="varchar" MaxLength="200" />
+    <Property Name="ShipToAddress1" Type="varchar" MaxLength="200" />
+    <Property Name="ShipToAddress2" Type="varchar" MaxLength="200" />
+    <Property Name="ShipToAddress3" Type="varchar" MaxLength="200" />
+    <Property Name="ShipToAddress4" Type="varchar" MaxLength="200" />
+    <Property Name="Commodity" Type="varchar" MaxLength="200" />
+    <Property Name="QuantityOfPart" Type="float" />
+    <Property Name="QuantityUnit" Type="varchar" MaxLength="100" />
+    <Property Name="QuantityPackage" Type="float" />
+    <Property Name="PackageUNIT" Type="varchar" MaxLength="50" />
+    <Property Name="QuantityPLT" Type="float" />
+    <Property Name="QuantityPLTUnit" Type="varchar" MaxLength="100" />
+    <Property Name="Weight" Type="float" />
+    <Property Name="WeightUnit" Type="varchar" MaxLength="100" />
+    <Property Name="Volume" Type="float" />
+    <Property Name="VolumeUnit" Type="varchar" MaxLength="100" />
+    <Property Name="QuantityPicked" Type="float" />
+    <Property Name="PickedUNIT" Type="varchar" MaxLength="50" />
+    <Property Name="QuantityDiscrepancy" Type="float" />
+    <Property Name="DiscrepancyUNIT" Type="varchar" MaxLength="50" />
+    <Property Name="Remark" Type="varchar" MaxLength="250" />
+    <Property Name="PrintCount" Type="varchar" MaxLength="50" />
+    <Property Name="UserBy" Type="varchar" MaxLength="100" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="UsedStatus" Type="int" />
+  </EntityType>
+  <EntityType Name="tblWHPickingDetail">
+    <Key>
+      <PropertyRef Name="PullSignal" />
+      <PropertyRef Name="LOTNo" />
+      <PropertyRef Name="ItemNo" />
+      <PropertyRef Name="ReceiveNo" />
+      <PropertyRef Name="Item" />
+    </Key>
+    <Property Name="PullSignal" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="LOTNo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="WHSite" Type="varchar" MaxLength="100" />
+    <Property Name="WHLocation" Type="varchar" MaxLength="100" />
+    <Property Name="ENDCustomer" Type="varchar" MaxLength="200" />
+    <Property Name="CustomerLOTNo" Type="varchar" MaxLength="50" />
+    <Property Name="WHSource" Type="varchar" MaxLength="200" />
+    <Property Name="ItemNo" Type="float" Nullable="false" />
+    <Property Name="ProductCode" Type="varchar" MaxLength="100" />
+    <Property Name="CustomerPN" Type="varchar" MaxLength="100" />
+    <Property Name="OwnerPN" Type="varchar" MaxLength="100" />
+    <Property Name="ProductDesc" Type="varchar" MaxLength="200" />
+    <Property Name="Measurement" Type="varchar" MaxLength="50" />
+    <Property Name="ProductWidth" Type="float" />
+    <Property Name="ProductLength" Type="float" />
+    <Property Name="ProductHeight" Type="float" />
+    <Property Name="ProductVolume" Type="float" />
+    <Property Name="OrderNo" Type="varchar" MaxLength="100" />
+    <Property Name="ReceiveNo" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Type" Type="varchar" MaxLength="100" />
+    <Property Name="ManufacturingDate" Type="datetime" />
+    <Property Name="ExpiredDate" Type="datetime" />
+    <Property Name="ReceiveDate" Type="datetime" />
+    <Property Name="PickQuantity" Type="float" />
+    <Property Name="PickUnit" Type="varchar" MaxLength="100" />
+    <Property Name="Weigth" Type="float" />
+    <Property Name="WeigthUnit" Type="varchar" MaxLength="50" />
+    <Property Name="Currency" Type="varchar" MaxLength="50" />
+    <Property Name="ExchangeRate" Type="float" />
+    <Property Name="PriceForeigh" Type="float" />
+    <Property Name="PriceForeighAmount" Type="float" />
+    <Property Name="PriceBath" Type="float" />
+    <Property Name="PriceBathAmount" Type="float" />
+    <Property Name="StatusISSUED" Type="varchar" MaxLength="50" />
+    <Property Name="PalletNo" Type="varchar" MaxLength="50" />
+    <Property Name="UserBy" Type="varchar" MaxLength="100" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="Item" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Supplier" Type="varchar" MaxLength="100" />
+    <Property Name="Buyer" Type="varchar" MaxLength="100" />
+    <Property Name="Exporter" Type="varchar" MaxLength="100" />
+    <Property Name="Destination" Type="varchar" MaxLength="100" />
+    <Property Name="Consignee" Type="varchar" MaxLength="100" />
+    <Property Name="ShippingMark" Type="varchar" MaxLength="100" />
+    <Property Name="ExpInvNo" Type="varchar" MaxLength="50" />
+    <Property Name="Reqno" Type="int" />
+    <Property Name="PONo" Type="varchar" MaxLength="50" />
+    <Property Name="WHSourceIN" Type="varchar" MaxLength="50" />
+    <Property Name="EntryNo" Type="varchar" MaxLength="50" />
+    <Property Name="EntryItemNo" Type="int" />
+    <Property Name="ItemInvoice" Type="int" />
+    <Property Name="OrderFrmOnline" Type="varchar" MaxLength="50" />
+    <Property Name="CustFrmOnline" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tblWHPickPackChecking">
+    <Key>
+      <PropertyRef Name="NewProductCode" />
+      <PropertyRef Name="Row" />
+      <PropertyRef Name="LOTNo" />
+    </Key>
+    <Property Name="NewProductCode" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Row" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LOTNo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="WHSite" Type="varchar" MaxLength="50" />
+    <Property Name="WHLocation" Type="varchar" MaxLength="50" />
+    <Property Name="WHSource" Type="varchar" MaxLength="50" />
+    <Property Name="EndCustomer" Type="varchar" MaxLength="100" />
+    <Property Name="EASPN" Type="varchar" MaxLength="50" />
+    <Property Name="CustomerLOTNo" Type="varchar" MaxLength="100" />
+    <Property Name="ItemNo" Type="float" />
+    <Property Name="ProductDese" Type="varchar" MaxLength="200" />
+    <Property Name="CustomerPN" Type="varchar" MaxLength="50" />
+    <Property Name="OwnerPN" Type="varchar" MaxLength="50" />
+    <Property Name="InvOty" Type="float" />
+    <Property Name="CurrentQuantity" Type="float" />
+    <Property Name="UnitCurrentQuantity" Type="varchar" MaxLength="50" />
+    <Property Name="QuantityPrequire" Type="float" />
+    <Property Name="UnitQuantityPrequire" Type="varchar" MaxLength="50" />
+    <Property Name="Userby" Type="varchar" MaxLength="100" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
   <EntityType Name="tblWHPickPackMaster">
     <Key>
@@ -2883,6 +3231,7 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
   <EntityContainer Name="LKBWarehouseModel1StoreContainer">
     <EntitySet Name="Branch" EntityType="Self.Branch" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblBookingMessenger" EntityType="Self.tblBookingMessenger" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblCompanyGuarantee1" EntityType="Self.tblCompanyGuarantee1" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblCurrency" EntityType="Self.tblCurrency" Schema="dbo" store:Type="Tables" />
@@ -2970,7 +3319,16 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
     <EntitySet Name="tblWarehouseType" EntityType="Self.tblWarehouseType" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblWHConfirmGoodsReceive" EntityType="Self.tblWHConfirmGoodsReceive" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblWHConfirmGoodsReceiveDetail" EntityType="Self.tblWHConfirmGoodsReceiveDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblWHEquipment" EntityType="Self.tblWHEquipment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblWHHandlePreson" EntityType="Self.tblWHHandlePreson" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblWHISSUED" EntityType="Self.tblWHISSUED" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblWHISSUEDDetail" EntityType="Self.tblWHISSUEDDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblWHIssueScantoTemp" EntityType="Self.tblWHIssueScantoTemp" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblWHLocation" EntityType="Self.tblWHLocation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblWHPartNew" EntityType="Self.tblWHPartNew" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblWHPicking" EntityType="Self.tblWHPicking" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblWHPickingDetail" EntityType="Self.tblWHPickingDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblWHPickPackChecking" EntityType="Self.tblWHPickPackChecking" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblWHPickPackMaster" EntityType="Self.tblWHPickPackMaster" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblWHPickPackNewProduct" EntityType="Self.tblWHPickPackNewProduct" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblWHPrepairGoodsReceive" EntityType="Self.tblWHPrepairGoodsReceive" Schema="dbo" store:Type="Tables" />

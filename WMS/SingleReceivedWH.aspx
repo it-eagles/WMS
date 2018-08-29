@@ -478,14 +478,14 @@
                                                         <div class="form-group">
                                                             <label for="txtCusLOTNo_GoodRecDetail" class="col-sm-4 control-label">Cus LOT No:</label>
                                                             <div class="col-sm-8">
-                                                                <input class="form-control" id="txtCusLOTNo" runat="server"  autocomplete="off"/>
+                                                                <input class="form-control" id="txtCusLOTNo" runat="server" autocomplete="off" />
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="txtEASPN_GoodRecDetail" class="col-sm-4 control-label">EAS P/N:</label>
                                                             <div class="col-sm-8">
-                                                            <%--    <asp:DropDownList ID="ddlEASPN_GoodRecDetail" CssClass="form-control" runat="server"></asp:DropDownList>--%>
-                                                                <input runat="server" id="txtProductCode" autocomplete="off" type="text" class="form-control"/>
+                                                                <%--    <asp:DropDownList ID="ddlEASPN_GoodRecDetail" CssClass="form-control" runat="server"></asp:DropDownList>--%>
+                                                                <input runat="server" id="txtProductCode" autocomplete="off" type="text" class="form-control" />
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
@@ -521,20 +521,20 @@
                                                         <div class="form-group">
                                                             <label for="txtENDCustomer_GoodRecDetail" class="col-sm-4 control-label">ENDCustomer:</label>
                                                             <div class="col-sm-8">
-                                                               <%-- <asp:DropDownList ID="ddlENDCustomer_GoodRecDetail" CssClass="form-control" runat="server"></asp:DropDownList>--%>
+                                                                <%-- <asp:DropDownList ID="ddlENDCustomer_GoodRecDetail" CssClass="form-control" runat="server"></asp:DropDownList>--%>
                                                                 <input runat="server" id="txtCustomer" class="form-control" autocomplete="off" />
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="txtItemNo_GoodRecDetail" class="col-sm-4 control-label">Item No:</label>
                                                             <div class="col-sm-8">
-                                                                <input class="form-control" id="txtItemNo" runat="server" autocomplete="off"/>
+                                                                <input class="form-control" id="txtItemNo" runat="server" autocomplete="off" />
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="txtOwnerPN_GoodRecDetail" class="col-sm-4 control-label">Owner P/N:</label>
                                                             <div class="col-sm-8">
-                                                                <input class="form-control" id="txtProductDesc3" runat="server" autocomplete="off"/>
+                                                                <input class="form-control" id="txtProductDesc3" runat="server" autocomplete="off" />
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
@@ -569,7 +569,7 @@
                                                                 <div class="form-group">
                                                                     <label for="txtDimension_GoodRecDetail" class="col-sm-4 control-label">Dimension:</label>
                                                                     <div class="col-sm-4">
-                                                                        <input class="form-control" id="txtProductWidth" runat="server" autocomplete="off"/>
+                                                                        <input class="form-control" id="txtProductWidth" runat="server" autocomplete="off" />
                                                                     </div>
                                                                     <div class="col-sm-4">
                                                                         <input class="form-control" id="txtProductHeight" runat="server" autocomplete="off" />
@@ -607,7 +607,7 @@
                                                                     </div>
                                                                     <label for="txtActualQTY_GoodRecDetail" class="col-sm-2 control-label">ETA/ARR Date</label>
                                                                     <div class="col-sm-3">
-                                                                       <%-- <input class="form-control" id="txtActualQTY" runat="server" value="0" />--%>
+                                                                        <%-- <input class="form-control" id="txtActualQTY" runat="server" value="0" />--%>
                                                                         <asp:TextBox CssClass="form-control" ID="txtExpectedDate" runat="server" placeholder="DD/MM/YYYY"> </asp:TextBox>
                                                                         <asp:CalendarExtender ID="CalendarExtender1" runat="server" Enabled="True" TargetControlID="txtExpectedDate" Format="dd/MM/yyyy"></asp:CalendarExtender>
                                                                     </div>
@@ -678,7 +678,7 @@
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <div class="col-sm-4">
-                                                                        <input class="form-control" id="txtProductLeng" runat="server" autocomplete="off"/>
+                                                                        <input class="form-control" id="txtProductLeng" runat="server" autocomplete="off" />
                                                                     </div>
                                                                     <div class="col-sm-4">
                                                                         <input class="form-control" id="txtProductVolume" runat="server" autocomplete="off" />
@@ -736,7 +736,7 @@
                                                                     </div>
                                                                     <label for="txtEntryItemNo_GoodRecDetail" class="col-sm-3 control-label">EntryItemNo:</label>
                                                                     <div class="col-sm-3">
-                                                                        <input class="form-control" id="txtEntryItemNo" runat="server" autocomplete="off"/>
+                                                                        <input class="form-control" id="txtEntryItemNo" runat="server" autocomplete="off" />
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group">
@@ -787,7 +787,7 @@
                                                                     <div class="form-group">
                                                                         <label for="txtSupplier_GoodRecDetail" class="col-sm-4 control-label">Supplier:</label>
                                                                         <div class="col-sm-8">
-                                                                            <input class="form-control" id="txtSupplier" runat="server" autocomplete="off"/>
+                                                                            <input class="form-control" id="txtSupplier" runat="server" autocomplete="off" />
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group">
@@ -808,7 +808,7 @@
                                                                     <div class="form-group">
                                                                         <label for="txtConsignee_GoodRecDetail" class="col-sm-4 control-label">Consignee:</label>
                                                                         <div class="col-sm-8">
-                                                                            <input class="form-control" id="txtConsignee" runat="server" autocomplete="off"/>
+                                                                            <input class="form-control" id="txtConsignee" runat="server" autocomplete="off" />
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -823,7 +823,7 @@
                                                                     <div class="form-group">
                                                                         <label for="txtShippingMark_GoodRecDetail" class="col-sm-4 control-label">ShippingMark:</label>
                                                                         <div class="col-sm-8">
-                                                                            <input class="form-control" id="txtShippingMark" runat="server"  autocomplete="off"/>
+                                                                            <input class="form-control" id="txtShippingMark" runat="server" autocomplete="off" />
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -838,88 +838,97 @@
 
                                                     </div>
                                                     <%-------------------------------------------------------End AFTER RIGHT FORM----------------------------------------------------------------%>
-                                                   <div class="col-md-12 col-lg-12">
+                                                    <div class="col-md-12 col-lg-12">
                                                         <fieldset>
-                                                        <legend></legend>
-                                                        <asp:Repeater ID="dgvItemDetail" runat="server">
-                                                            <HeaderTemplate>
-                                                                <table class="table table-bordered">
+                                                            <legend></legend>
+                                                            <asp:Repeater runat="server" ID="dgvItemDetail" OnItemDataBound="dgvItemDetail_ItemDataBound">
+                                                                <HeaderTemplate>
+                                                                    <table class="table table-bordered">
+                                                                        <th style="width: 5px"><asp:CheckBox runat="server" ID="chkAll_Item" Checked="false"></asp:CheckBox>
+                                                                            select</th>
+                                                                        <th style="width: 10px">LOTNo</th>
+                                                                        <th style="width: 10px">WHSite</th>
+                                                                        <th style="width: 10px">ENDCustomer</th>
+                                                                        <th style="width: 10px">CustomerLOTNo</th>
+                                                                        <th style="width: 5px">ItemNo</th>
+                                                                        <th style="width: 10px">ProductCode</th>
+                                                                        <th style="width: 10px">CustomerPN</th>
+                                                                </HeaderTemplate>
+                                                                <ItemTemplate>
+                                                                    <tr class="success">
+                                                                        <td class="text-center">
+                                                                            <asp:CheckBox ID="chkLotNo" runat="server"></asp:CheckBox></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblLOTNo" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblSite" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblEND" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblCus" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblItem" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblPc" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblPn" runat="server"></asp:Label></td>
+                                                                    </tr>
+                                                                </ItemTemplate>
+                                                                <AlternatingItemTemplate>
+                                                                    <tr class="info">
+                                                                        <td class="text-center">
+                                                                            <asp:CheckBox ID="chkLotNo" runat="server"></asp:CheckBox></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblLOTNo" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblSite" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblEND" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblCus" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblItem" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblPc" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblPn" runat="server"></asp:Label></td>
+                                                                    </tr>
+                                                                </AlternatingItemTemplate>
+                                                                <FooterTemplate>
                                                                     <th>select</th>
-                                                                    <th style="width: 10px">InvoiceNo</th>
-                                                                    <th style="width: 10px">ReferenceNo</th>
-                                                                    <th style="width: 10px">ReferenceDate</th>
-                                                                    <th style="width: 10px">PurchaseOrderNo</th>
-                                                                    <th style="width: 10px">InvoiceDate</th>
-                                                                    <th style="width: 10px">EASLOTNo</th>
-                                                            </HeaderTemplate>
-                                                            <ItemTemplate>
-                                                                <tr class="success">
-                                                                    <td><asp:CheckBox id="chkCustomerID" runat="server"></asp:CheckBox></td>
-                                                                    <td>
-                                                                        <asp:Label ID="lblJobSite" runat="server" Text='<%# Bind("InvoiceNo")%>'></asp:Label></td>
-                                                                    <td>
-                                                                        <asp:Label ID="Label1" runat="server" Text='<%# Bind("ReferenceNo")%>'></asp:Label></td>
-                                                                    <td>
-                                                                        <asp:Label ID="Label2" runat="server" Text='<%# Bind("ReferenceDate", "{0:dd/MM/yyyy}")%>'></asp:Label></td>
-                                                                    <td>
-                                                                        <asp:Label ID="Label3" runat="server" Text='<%# Bind("PurchaseOrderNo")%>'></asp:Label></td>
-                                                                    <td>
-                                                                        <asp:Label ID="Label4" runat="server" Text='<%# Bind("InvoiceDate", "{0:dd/MM/yyyy}")%>'></asp:Label></td>
-                                                                    <td>
-                                                                        <asp:Label ID="lalEASLOTNo" runat="server" Text='<%# Bind("EASLOTNo")%>'></asp:Label></td>
-                                                                </tr>
-                                                            </ItemTemplate>
-                                                            <AlternatingItemTemplate>
-                                                                <tr class="info">
-                                                                    <td><asp:CheckBox id="chkCustomerID" runat="server"></asp:CheckBox></td>
-                                                                    <td>
-                                                                        <asp:Label ID="lblJobSite" runat="server" Text='<%# Bind("InvoiceNo")%>'></asp:Label></td>
-                                                                    <td>
-                                                                        <asp:Label ID="Label1" runat="server" Text='<%# Bind("ReferenceNo", "{0:dd/MM/yyyy}")%>'></asp:Label></td>
-                                                                    <td>
-                                                                        <asp:Label ID="Label2" runat="server" Text='<%# Bind("ReferenceDate")%>'></asp:Label></td>
-                                                                    <td>
-                                                                        <asp:Label ID="Label3" runat="server" Text='<%# Bind("PurchaseOrderNo")%>'></asp:Label></td>
-                                                                    <td>
-                                                                        <asp:Label ID="Label4" runat="server" Text='<%# Bind("InvoiceDate", "{0:dd/MM/yyyy}")%>'></asp:Label></td>
-                                                                    <td>
-                                                                        <asp:Label ID="lblEASLOTNo1" runat="server" Text='<%# Bind("EASLOTNo")%>'></asp:Label></td>
-                                                                </tr>
-                                                            </AlternatingItemTemplate>
-                                                            <FooterTemplate>
-                                                                <th>select</th>
-                                                                <th>InvoiceNo</th>
-                                                                <th>ReferenceNo</th>
-                                                                <th>ReferenceDate</th>
-                                                                <th>PurchaseOrderNo</th>
-                                                                <th>InvoiceDate</th>
-                                                                <th>EASLOTNo</th>
-                                                                </table>
-                                                            </FooterTemplate>
-                                                        </asp:Repeater>
-                                                    </fieldset>
-                                                </div>
-                                   
+                                                                    <th>LOTNo</th>
+                                                                    <th>WHSite</th>
+                                                                    <th>ENDCustomer</th>
+                                                                    <th>CustomerLOTNo</th>
+                                                                    <th>ItemNo</th>
+                                                                    <th>ProductCode</th>
+                                                                    <th>CustomerPN</th>
+                                                                    </table>
+                                                                </FooterTemplate>
+                                                            </asp:Repeater>
+                                                        </fieldset>
+                                                    </div>
+
                                                     <%-----------------------------------------------------Start BUTTON FORM------------------------------------------------------------%>
                                                     <div class="col-lg-12 col-md-12 ">
                                                         <!-- form start -->
                                                         <div class="form-horizontal">
                                                             <%--<fieldset>  <legend>Job</legend>--%>
                                                             <div class="box-body">
-                                                                <div class="col-sm-6">
+                                                              <%--  <div class="col-md-7">
                                                                     <div class="form-group">
-                                                                        <div class="col-sm-4">
+                                                                        <div class="col-sm-2">
                                                                             <button type="submit" runat="server" class="btn btn-primary" id="btnSelectAll_GoodRecDetail" title="btnSelectAll_GoodRecDetail" onserverclick="btnSelectAll_GoodRecDetail_ServerClick">Select All</button>
                                                                         </div>
-                                                                        <div class="col-sm-4">
+                                                                        <div class="col-sm-3">
                                                                             <button type="submit" runat="server" class="btn btn-primary" id="btnCencelSelectAll_GoodRecDetail" title="btnCencelSelectAll_GoodRecDetail" onserverclick="btnCencelSelectAll_GoodRecDetail_ServerClick">Cencel Select All</button>
                                                                         </div>
                                                                     </div>
-                                                                </div>
+                                                                </div>--%>
 
-                                                                <div class="col-sm-6">
+                                                                <div class="col-md-12 col-md-offset-11">
                                                                     <div class="form-group">
-                                                                        <div class="col-sm-4">
+                                                                        <div class="col-sm-2">
                                                                             <button type="submit" runat="server" class="btn btn-primary" id="btnReceive_GoodRecDetail" title="btnReceive_GoodRecDetail" onserverclick="btnReceive_GoodRecDetail_ServerClick">Receive</button>
                                                                         </div>
                                                                     </div>
@@ -935,65 +944,73 @@
                                                     </div>
                                                     <div class="col-md-12 col-lg-12">
                                                         <fieldset>
-                                                        <legend></legend>
-                                                        <asp:Repeater ID="dgvConfirmDetail" runat="server">
-                                                            <HeaderTemplate>
-                                                                <table class="table table-bordered">
-                                                                    <th> select</th>
-                                                                    <th style="width: 10px">InvoiceNo</th>
-                                                                    <th style="width: 10px">ReferenceNo</th>
-                                                                    <th style="width: 10px">ReferenceDate</th>
-                                                                    <th style="width: 10px">PurchaseOrderNo</th>
-                                                                    <th style="width: 10px">InvoiceDate</th>
-                                                                    <th style="width: 10px">EASLOTNo</th>
-                                                            </HeaderTemplate>
-                                                            <ItemTemplate>
-                                                                <tr class="success">
-                                                                    <td><asp:CheckBox id="chkCustomerID" runat="server"></asp:CheckBox></td>
-                                                                    <td>
-                                                                        <asp:Label ID="lblJobSite" runat="server" Text='<%# Bind("InvoiceNo")%>'></asp:Label></td>
-                                                                    <td>
-                                                                        <asp:Label ID="Label1" runat="server" Text='<%# Bind("ReferenceNo")%>'></asp:Label></td>
-                                                                    <td>
-                                                                        <asp:Label ID="Label2" runat="server" Text='<%# Bind("ReferenceDate", "{0:dd/MM/yyyy}")%>'></asp:Label></td>
-                                                                    <td>
-                                                                        <asp:Label ID="Label3" runat="server" Text='<%# Bind("PurchaseOrderNo")%>'></asp:Label></td>
-                                                                    <td>
-                                                                        <asp:Label ID="Label4" runat="server" Text='<%# Bind("InvoiceDate", "{0:dd/MM/yyyy}")%>'></asp:Label></td>
-                                                                    <td>
-                                                                        <asp:Label ID="lalEASLOTNo" runat="server" Text='<%# Bind("EASLOTNo")%>'></asp:Label></td>
-                                                                </tr>
-                                                            </ItemTemplate>
-                                                            <AlternatingItemTemplate>
-                                                                <tr class="info">
-                                                                    <td><asp:CheckBox id="chkCustomerID" runat="server"></asp:CheckBox></td>
-                                                                    <td>
-                                                                        <asp:Label ID="lblJobSite" runat="server" Text='<%# Bind("InvoiceNo")%>'></asp:Label></td>
-                                                                    <td>
-                                                                        <asp:Label ID="Label1" runat="server" Text='<%# Bind("ReferenceNo", "{0:dd/MM/yyyy}")%>'></asp:Label></td>
-                                                                    <td>
-                                                                        <asp:Label ID="Label2" runat="server" Text='<%# Bind("ReferenceDate")%>'></asp:Label></td>
-                                                                    <td>
-                                                                        <asp:Label ID="Label3" runat="server" Text='<%# Bind("PurchaseOrderNo")%>'></asp:Label></td>
-                                                                    <td>
-                                                                        <asp:Label ID="Label4" runat="server" Text='<%# Bind("InvoiceDate", "{0:dd/MM/yyyy}")%>'></asp:Label></td>
-                                                                    <td>
-                                                                        <asp:Label ID="lblEASLOTNo1" runat="server" Text='<%# Bind("EASLOTNo")%>'></asp:Label></td>
-                                                                </tr>
-                                                            </AlternatingItemTemplate>
-                                                            <FooterTemplate>
-                                                                <th>select</th>
-                                                                <th>InvoiceNo</th>
-                                                                <th>ReferenceNo</th>
-                                                                <th>ReferenceDate</th>
-                                                                <th>PurchaseOrderNo</th>
-                                                                <th>InvoiceDate</th>
-                                                                <th>EASLOTNo</th>
-                                                                </table>
-                                                            </FooterTemplate>
-                                                        </asp:Repeater>
-                                                    </fieldset>
-                                                </div>
+                                                            <legend></legend>
+                                                            <asp:Repeater runat="server" ID="dgvConfirmDetail" OnItemDataBound="dgvConfirmDetail_ItemDataBound">
+                                                                <HeaderTemplate>
+                                                                    <table class="table table-bordered">
+                                                                        <th style="width: 5px">select</th>
+                                                                        <th style="width: 10px">LOTNo</th>
+                                                                        <th style="width: 10px">WHSite</th>
+                                                                        <th style="width: 10px">ENDCustomer</th>
+                                                                        <th style="width: 10px">CustomerLOTNo</th>
+                                                                        <th style="width: 5px">ItemNo</th>
+                                                                        <th style="width: 10px">ProductCode</th>
+                                                                        <th style="width: 10px">CustomerPN</th>
+                                                                </HeaderTemplate>
+                                                                <ItemTemplate>
+                                                                    <tr class="success">
+                                                                        <td class="text-center">
+                                                                            <asp:CheckBox ID="chkCustomerID" runat="server"></asp:CheckBox></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblLOTNo" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblSite" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblEND" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblCus" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblItem" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblPc" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblPn" runat="server"></asp:Label></td>
+                                                                    </tr>
+                                                                </ItemTemplate>
+                                                                <AlternatingItemTemplate>
+                                                                    <tr class="info">
+                                                                        <td class="text-center">
+                                                                            <asp:CheckBox ID="chkCustomerID" runat="server"></asp:CheckBox></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblLOTNo" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblSite" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblEND" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblCus" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblItem" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblPc" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblPn" runat="server"></asp:Label></td>
+                                                                    </tr>
+                                                                </AlternatingItemTemplate>
+                                                                <FooterTemplate>
+                                                                    <th>select</th>
+                                                                    <th>LOTNo</th>
+                                                                    <th>WHSite</th>
+                                                                    <th>ENDCustomer</th>
+                                                                    <th>CustomerLOTNo</th>
+                                                                    <th>ItemNo</th>
+                                                                    <th>ProductCode</th>
+                                                                    <th>CustomerPN</th>
+                                                                    </table>
+                                                                </FooterTemplate>
+                                                            </asp:Repeater>
+                                                        </fieldset>
+                                                    </div>
                                                 </fieldset>
                                             </div>
 
@@ -1044,7 +1061,7 @@
                                                         <div class="form-group">
                                                             <label for="txtmessages1_PutAway" class="col-sm-8 control-label">พื้นที่จัดเก็บ(ปริมาตร):</label>
                                                             <div class="col-sm-4">
-                                                                <input class="form-control" id="LblInValume" runat="server" autocomplete="off"/>
+                                                                <input class="form-control" id="LblInValume" runat="server" autocomplete="off" />
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
@@ -1161,7 +1178,7 @@
                                                 </HeaderTemplate>
 
                                                 <ItemTemplate>
-                                                       <tr>
+                                                    <tr>
                                                         <td class="text-center">
                                                             <asp:LinkButton ID="lnkPartyCode_Owner" CssClass="btn bg-navy" runat="server" OnClick="lnkPartyCode_Owner_Click"><i class="fa fa-hand-o-up"></i></asp:LinkButton>
                                                         </td>
@@ -1172,7 +1189,7 @@
                                                         <td>
                                                             <asp:Label ID="lblPartyFullName" runat="server" Text="Label"></asp:Label></td>
                                                         <td>
-                                                        <asp:Label ID="lblAddress1" runat="server" Text="Label"></asp:Label></td>
+                                                            <asp:Label ID="lblAddress1" runat="server" Text="Label"></asp:Label></td>
                                                         <td>
                                                             <asp:Label ID="lblAddress2" runat="server" Text="Label"></asp:Label></td>
                                                     </tr>
@@ -1475,7 +1492,7 @@
                                                         <asp:Label ID="lblCustREFNo" runat="server" Text="Label"></asp:Label></td>
                                                     <td>
                                                         <asp:Label ID="lblOwnerCode" runat="server" Text="Label"></asp:Label></td>
-                                           
+
                                                     </tr>
                                                 </ItemTemplate>
                                                 <FooterTemplate>
@@ -1505,7 +1522,7 @@
         </asp:Panel>
         <!-- End Shipper Modal -->
 
-         <!-- Modal-->
+        <!-- Modal-->
         <asp:Panel ID="plConfirmGood" runat="server" CssClass="modal" TabIndex="-1" role="dialog" aria-labelledby="myLabe1">
             <div class="modal-dialog modal-lg" role="dialog">
                 <div class="modal-content">
@@ -1547,7 +1564,7 @@
                                                         <asp:Label ID="lblCustREFNo" runat="server" Text="Label"></asp:Label></td>
                                                     <td>
                                                         <asp:Label ID="lblOwnerCode" runat="server" Text="Label"></asp:Label></td>
-                                           
+
                                                     </tr>
                                                 </ItemTemplate>
                                                 <FooterTemplate>
@@ -1807,5 +1824,29 @@
             });
         </script>
 
+        <script>
+            $(document).ready(function () {
+                // CHECK-UNCHECK ALL CHECKBOXES IN THE REPEATER 
+                // WHEN USER CLICKS THE HEADER CHECKBOX.
+                $('table [id*=chkAll_Item]').click(function () {
+                    if ($(this).is(':checked'))
+                        $('table [id*=chkLotNo]').prop('checked', true)
+                    else
+                        $('table [id*=chkLotNo]').prop('checked', false)
+                });
+
+                // NOW CHECK THE HEADER CHECKBOX, IF ALL THE ROW CHECKBOXES ARE CHECKED.
+                $('table [id*=chkLotNo]').click(function () {
+
+                    var total_rows = $('table [id*=chkLotNo]').length;
+                    var checked_Rows = $('table [id*=chkLotNo]:checked').length;
+
+                    if (checked_Rows == total_rows)
+                        $('table [id*=chkAll_Item]').prop('checked', true);
+                    else
+                        $('table [id*=chkAll_Item]').prop('checked', false);
+                });
+            });
+        </script>
     </form>
 </asp:Content>
