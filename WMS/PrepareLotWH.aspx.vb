@@ -351,7 +351,7 @@ Public Class PrepareLotWH
         '                           p.Commodity}).ToList()
 
         Dim cons = (From p In db.tblImpGenLOTs
-                    Where (p.EASLOTNo.Contains(jobno_code) And p.Status = 0) Or (p.Status = status_ And p.LOTDate.Year = testdate)
+                    Where (p.EASLOTNo.Contains(txtJobNo_PreGoodRec.Value.Trim) And p.Status = 0) Or (p.Status = status_ And p.LOTDate.Year = testdate)
                    Select New With {p.EASLOTNo,
                                     p.CustomerCode,
                                     p.EndCusCode,

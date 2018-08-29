@@ -904,6 +904,88 @@
 
                                         </div>
                                         <%-------------------------------------------------------End BUTTON FORM----------------------------------------------------------------%>
+
+                                        <%-----------------------------------------------------Start Tabel2 FORM------------------------------------------------------------%>
+                                        <div class="col-lg-12 col-md-12 ">
+                                            <!-- form start -->
+                                            <div class="form-horizontal">
+                                                <%--<fieldset>  <legend>Job</legend>--%>
+                                                <div class="box-body">
+                                                    <div class="col-sm-12">
+                                                        <%--------------------------------------Data Issued Detail Repeater---------------------------------%>
+                                                        <asp:Panel ID="DataIssuedDetailPanel" runat="server" >
+                                                    <asp:UpdatePanel ID="DataIssuedDetailUpdatePanel" runat="server" UpdateMode="Conditional">
+                                                    <ContentTemplate>
+                                                        <asp:Repeater ID="Repeater9" runat="server" OnItemCommand="Repeater9_ItemCommand">
+                                                            <HeaderTemplate>
+                                                                <table id="example9" class="table table-bordered table-striped">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>Select</th>
+                                                                            <th>PullSignal</th>
+                                                                            <th>LOTNo</th>
+                                                                            <th>ItemNo</th>
+                                                                            <th>WHSite</th>
+                                                                            <th>WHLocation</th>
+                                                                            <th>ENDCustomer</th>
+                                                                            <th>CustomerLOTNo</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                            </HeaderTemplate>
+                                                            <ItemTemplate>
+                                                                <tr>
+                                                                    <td class="text-center">
+                                                                        <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="Selectdataissueddetail" CommandArgument='<%# Eval("ItemNo")%>'><i class="fa fa-hand-o-up"></i></asp:LinkButton>
+                                                                    </td>
+                                                                    <td>
+                                                                        <asp:Label ID="lblPartyCode" runat="server" Text='<%# Bind("PullSignal")%>'></asp:Label></td>
+                                                                    <td>
+                                                                        <asp:Label ID="lblPartyFullName" runat="server" Text='<%# Bind("LOTNo")%>'></asp:Label></td>
+                                                                    <td>
+                                                                        <asp:Label ID="Label5" runat="server" Text='<%# Bind("ItemNo")%>'></asp:Label></td>
+                                                                    <td>
+                                                                        <asp:Label ID="Label1" runat="server" Text='<%# Bind("WHSite")%>'></asp:Label></td>
+                                                                    <td>
+                                                                        <asp:Label ID="Label2" runat="server" Text='<%# Bind("WHLocation")%>'></asp:Label></td>
+                                                                    <td>
+                                                                        <asp:Label ID="Label3" runat="server" Text='<%# Bind("ENDCustomer")%>'></asp:Label></td>
+                                                                    <td>
+                                                                        <asp:Label ID="Label4" runat="server" Text='<%# Bind("CustomerLOTNo")%>'></asp:Label></td>
+                                                                </tr>
+
+                                                            </ItemTemplate>
+                                                            <FooterTemplate>
+                                                                <tfoot>
+                                                                    <tr>
+                                                                        <th>Select</th>
+                                                                        <th>PullSignal</th>
+                                                                        <th>LOTNo</th>
+                                                                        <th>ItemNo</th>
+                                                                        <th>WHSite</th>
+                                                                        <th>WHLocation</th>
+                                                                        <th>ENDCustomer</th>
+                                                                        <th>CustomerLOTNo</th>
+                                                                    </tr>
+                                                                </tfoot>
+                                                                </table>
+                                                            </FooterTemplate>
+                                                        </asp:Repeater>
+                                                        </ContentTemplate>
+                                                </asp:UpdatePanel>
+                                                </asp:Panel>
+                                                        <%--------------------------------------Data Issued Detail Repeater---------------------------------%>
+                                                    </div>
+
+                                                    <!-- /.box-body -->
+                                                </div>
+                                                <!-- /.box-header -->
+                                                <%--</fieldset>--%>
+                                            </div>
+                                            <!--/.col-lg-6 col-md-6 stockqty--->
+
+                                        </div>
+                                        <%-------------------------------------------------------End Tabel2 FORM----------------------------------------------------------------%>
+
                                     </div>
                                     <!-- right column -->
                                     <!-- /.post -->
@@ -1376,6 +1458,82 @@
             </div>
         </asp:Panel>
         <!-- End JobNoAdd Modal -->
+
+        <!--Start JobNoEdit Modal -->
+        <!-- Modal -->
+        <asp:Panel ID="JobNoEditPanel" runat="server" CssClass="modal" TabIndex="-1" role="dialog" aria-labelledby="myLabe1">
+            <div class="modal-dialog modal-lg" role="dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Select Job No</h4>
+                    </div>
+                    <asp:UpdatePanel ID="JobNoEditUpdatePanel" runat="server" UpdateMode="Conditional">
+                        <ContentTemplate>
+                            <div class="modal-body">
+                                <section class="content">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 " style="overflow: auto;">
+                                            <asp:Repeater ID="Repeater7" runat="server" OnItemCommand="Repeater7_ItemCommand">
+                                                <HeaderTemplate>
+                                                    <table id="example7" class="table table-bordered table-striped table-responsive" style="overflow: auto;">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Select</th>
+                                                                <th>LOTNo</th>
+                                                                <th>PullSignal</th>
+                                                                <th>PullDate</th>
+                                                                <th>PullTime</th>
+                                                                <th>DeliveryDate</th>                                                                
+                                                            </tr>
+                                                        </thead>
+                                                </HeaderTemplate>
+
+                                                <ItemTemplate>
+                                                    <tr>
+                                                        <td class="text-center">
+                                                            <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="Selectjobnoedit" CommandArgument='<%# Eval("LOTNo")%>'><i class="fa fa-hand-o-up"></i></asp:LinkButton>
+                                                        </td>
+                                                        <td>
+                                                            <asp:Label ID="lblPartyCode" runat="server" Text='<%# Bind("LOTNo")%>'></asp:Label></td>
+                                                        <td>
+                                                            <asp:Label ID="lblPartyFullName" runat="server" Text='<%# Bind("PullSignal")%>'></asp:Label></td>
+                                                        <td>
+                                                            <asp:Label ID="Label1" runat="server" Text='<%# Bind("PullDate")%>'></asp:Label></td>
+                                                        <td>
+                                                            <asp:Label ID="Label2" runat="server" Text='<%# Bind("PullTime")%>'></asp:Label></td>
+                                                        <td>
+                                                            <asp:Label ID="Label3" runat="server" Text='<%# Bind("DeliveryDate")%>'></asp:Label></td>
+                                                    </tr>
+                                                </ItemTemplate>
+                                                <FooterTemplate>
+                                                    <tfoot>
+                                                        <tr>
+                                                            <th>Select</th>
+                                                            <th>LOTNo</th>
+                                                            <th>PullSignal</th>
+                                                            <th>PullDate</th>
+                                                            <th>PullTime</th>
+                                                            <th>DeliveryDate</th>
+                                                        </tr>
+                                                    </tfoot>
+                                                    </table>
+                                                </FooterTemplate>
+                                            </asp:Repeater>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                            </div>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                </div>
+            </div>
+        </asp:Panel>
+        <!-- End JobNoEdit Modal -->
 
     </form>
 </asp:Content>

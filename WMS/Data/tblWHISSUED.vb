@@ -13,7 +13,7 @@ Imports System.Collections.Generic
 Partial Public Class tblWHISSUED
     Public Property PullSignal As String
     Public Property LOTNo As String
-    Public Property PullDate As Nullable(Of Date)
+    Public Property PullDate As Date
     Public Property PullTime As String
     Public Property DeliveryDate As Nullable(Of Date)
     Public Property DeliveryTime As String

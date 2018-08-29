@@ -7,6 +7,8 @@ Public Class SingleIssuedWH
     Inherits System.Web.UI.Page
     Dim db As New LKBWarehouseEntities1
     Dim classPermis As New ClassPermis
+    Dim strIssuedJobNo As String
+    Dim strReceivedJobNo As String
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Dim usename As String = CStr(Session("UserName"))
@@ -45,10 +47,86 @@ Public Class SingleIssuedWH
     End Sub
     '-----------------------------------------------------------Click btn Save New Head--------------------------------------
     Protected Sub btnSaveAddHead_ServerClick(sender As Object, e As EventArgs)
+        Dim user As String = CStr(Session("UserName"))
+        Dim form As String = "frmIssued"
+        Dim cu = From um In db.tblUserMenus Where um.UserName = user And um.Form = form And um.Save_ = 1
+        If cu.Any Then
 
+            strIssuedJobNo = Mid(txtJobNo_BeforeTab.Value.Trim, 1, 7) 'เลข Job out 
+            strReceivedJobNo = Mid(txtJobNo_IssueCon.Value.Trim, 1, 6) 'เลข Job ที่ย้ายเข้าไปใหม่
+
+            If txtJobNo_BeforeTab.Value.Trim = "" Then
+                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ Job No ก่อน !!!');", True)
+                txtJobNo_BeforeTab.Focus()
+                Exit Sub
+            End If
+
+            If txtPullSignal_BeforeTab.Value.Trim = "" Then
+                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ Pull Signal ก่อน !!!');", True)
+                txtPullSignal_BeforeTab.Focus()
+                Exit Sub
+            End If
+
+            If MsgBox("คุณต้องการเพิ่มรายการ Job No ใหม่ ใช่หรือไม่ ?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+
+                'tr = Conn.BeginTransaction()
+
+                If SaveIssued_New() = False Then
+                    ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด เนื่องจาก SaveIssued_New');", True)
+                    Exit Sub
+                End If
+
+                If SaveNew_RemarkMoveJob() = False Then
+                    ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด เนื่องจาก SaveNew_RemarkMoveJob');", True)
+                    Exit Sub
+                End If
+
+                If chkMoveTo.Checked = True Then
+                    If txtJobNo_IssueCon.Value.Trim = "" Then
+                        ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ Job No ก่อน !!!');", True)
+                        Exit Sub
+                    End If
+
+                    CheckMoveTo()
+
+                End If
+
+                If UpdateRead1() = False Then
+                    ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด เนื่องจาก UpdateRead1');", True)
+                    Exit Sub
+                End If
+
+                'tr.Commit()
+                'LockMain()
+                'NNew.Enabled = False
+                'Modify.Enabled = False
+                'Save.Enabled = True
+                'GroupBox6.Enabled = True
+                issuecondition_fieldset.Disabled = True
+                confirmissue_fieldset.Disabled = False
+                'ClearDATADetail()
+
+            End If
+
+
+
+
+        Else
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ์เมนูนี้ !!!')", True)
+        End If
     End Sub
     '-----------------------------------------------------------Click btn Save Edit Head--------------------------------------
     Protected Sub btnSaveEditHead_ServerClick(sender As Object, e As EventArgs)
+        Dim user As String = CStr(Session("UserName"))
+        Dim form As String = "frmIssued"
+        Dim cu = From um In db.tblUserMenus Where um.UserName = user And um.Form = form And um.Save_ = 1
+        If cu.Any Then
+
+            SaveIssued_Modify()
+
+        Else
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ์เมนูนี้ !!!')", True)
+        End If
 
     End Sub
     '-------------------------------------------------------------Unlock Add Data When Click btn Add---------------------------------------
@@ -75,33 +153,45 @@ Public Class SingleIssuedWH
     End Sub
 
     Protected Sub btnSumQTY_IssueCon_ServerClick(sender As Object, e As EventArgs)
-
+        CountWHIssued()
+        ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('Sum QTY. เรียบร้อยแล้ว' !!!');", True)
     End Sub
 
     Protected Sub btnRejectMoveTo_IssueCon_ServerClick(sender As Object, e As EventArgs)
-
+        Dim user As String = CStr(Session("UserName"))
+        Dim form As String = "frmIssued"
+        Dim cu = From um In db.tblUserMenus Where um.UserName = user And um.Form = form And um.Save_ = 1
+        If cu.Any Then
+            'ReadDataMove()
+            'LockMain()
+            'NNew.Enabled = False
+            'Modify.Enabled = False
+            'Save.Enabled = True
+            'GroupBox6.Enabled = True
+            'tmpButtonStatus = "Modify"
+            'ClearDATADetail()
+        Else
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ์เมนูนี้ !!!')", True)
+        End If
     End Sub
 
     Protected Sub btnConfirmIssued_IssueCon_ServerClick(sender As Object, e As EventArgs)
+        Dim user As String = CStr(Session("UserName"))
+        Dim form As String = "frmIssued"
+        Dim cu = From um In db.tblUserMenus Where um.UserName = user And um.Form = form And um.Save_ = 1
+        If cu.Any Then
+            'ConfirmDelivery()
+            'ReadDataIsseudDetail()
+            'CheckLocation()
 
+        Else
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ์เมนูนี้ !!!')", True)
+        End If
     End Sub
 
     Protected Sub btnRejectConfirm_IssueCon_ServerClick(sender As Object, e As EventArgs)
 
     End Sub
-
-
-
-    Protected Sub btnJobNoHead_Edit_ServerClick(sender As Object, e As EventArgs)
-
-    End Sub
-
-
-
-
-
-
-
     '--------------------------------------------------------------------Show ddl Site----------------------------------------------------
     Private Sub showSite_IssueCondition()
         Dim gg = From g In db.tblMasterCode2 Where g.Type = "SITE"
@@ -713,17 +803,20 @@ Public Class SingleIssuedWH
     End Sub
     '--------------------------------------------------------Show Data JobNoAdd In Modal-----------------------------------------
     Private Sub selectJobNoAdd()
-        'Dim testdate As Integer
-        'Dim ProCode As String = ""
-        'If String.IsNullOrEmpty(txtJobNo_BeforeTab.Value.Trim) Then
-        '    testdate = CInt(Convert.ToDateTime(Date.Now).ToString("yyyy"))
-        'Else
-        '    ProCode = txtJobNo_BeforeTab.Value.Trim
-        'End If
+        Dim testdate As Integer
+        Dim jobno_code As String = ""
+        Dim status_ As Double
+        If String.IsNullOrEmpty(txtJobNo_BeforeTab.Value.Trim) Then
+            testdate = CInt(Convert.ToDateTime(Date.Now).ToString("yyyy"))
+            status_ = 0
+        Else
+            jobno_code = txtJobNo_BeforeTab.Value.Trim
+
+        End If
 
         ' Where (u.ProductCode = ProCode) Or u.CreateDate.Year = testdate And u.ImpProductCode <> ""
         Dim cons = (From u In db.tblWHPickings
-                    Where u.LOTNo = txtJobNo_BeforeTab.Value.Trim And u.UsedStatus = 0
+                    Where (u.LOTNo.Contains(txtJobNo_BeforeTab.Value.Trim) And u.UsedStatus = 0) Or (u.UsedStatus = status_ And u.PullDate.Year = testdate)
                    Select New With {u.LOTNo,
                                     u.PullSignal,
                                     u.PullDate,
@@ -759,11 +852,11 @@ Public Class SingleIssuedWH
 
                     txtPullSignal_BeforeTab.Value = user.PullSignal
                     txtJobNo_BeforeTab.Value = user.LOTNo
-                    txtdatepickertxtPullDateTime_beforeTab.Text = CStr(user.PullDate)
+                    txtdatepickertxtPullDateTime_beforeTab.Text = Convert.ToDateTime(user.PullDate).ToString("dd/MM/yyyy")
                     txtTimePickUpPullDateTime.Value = user.PullTime
-                    txtdatepickerDeliveryDateTime_beforeTab.Text = CStr(user.DeliveryDate)
+                    txtdatepickerDeliveryDateTime_beforeTab.Text = Convert.ToDateTime(user.DeliveryDate).ToString("dd/MM/yyyy")
                     txtTimePickUpDeliveryDateTime.Value = user.DeliveryTime
-                    txtdatepickerComfirmDateTime_beforeTab.Text = CStr(user.ConfirmDate)
+                    txtdatepickerComfirmDateTime_beforeTab.Text = Convert.ToDateTime(user.ConfirmDate).ToString("dd/MM/yyyy")
                     txtTimePickUpConfirmDateTime.Value = user.ConfirmTime
                     txtExporterCode_IssueCon.Value = user.ExporterCode
                     txtNameExporter_IssueCon.Value = user.ExporterName
@@ -811,6 +904,645 @@ Public Class SingleIssuedWH
             End If
         Catch ex As Exception
         End Try
+    End Sub
+    '--------------------------------------------------------Show Data JobNoEdit In Modal-----------------------------------------
+    Private Sub selectJobNoEdit()
+        Dim testdate As Integer
+        Dim jobno_code As String = ""
+        Dim status_ As Double
+        If String.IsNullOrEmpty(txtJobNo_BeforeTab.Value.Trim) Then
+            testdate = CInt(Convert.ToDateTime(Date.Now).ToString("yyyy"))
+            status_ = 0
+        Else
+            jobno_code = txtJobNo_BeforeTab.Value.Trim
+
+        End If
+
+        ' Where (u.ProductCode = ProCode) Or u.CreateDate.Year = testdate And u.ImpProductCode <> ""
+        Dim cons = (From u In db.tblWHISSUEDs
+                    Where (u.LOTNo.Contains(txtJobNo_BeforeTab.Value.Trim)) Or (u.PullDate.Year = testdate)
+                   Select New With {u.LOTNo,
+                                    u.PullSignal,
+                                    u.PullDate,
+                                    u.PullTime,
+                                    u.DeliveryDate}).ToList()
+
+        If cons.Count > 0 Then
+            Repeater7.DataSource = cons.ToList
+            Repeater7.DataBind()
+            ScriptManager.RegisterStartupScript(JobNoEditUpdatePanel, JobNoEditUpdatePanel.GetType(), "show", "$(function () { $('#" + JobNoEditPanel.ClientID + "').modal('show'); });", True)
+            JobNoEditUpdatePanel.Update()
+        Else
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('ไม่พบข้อมูล Job No นี้')", True)
+            Exit Sub
+
+        End If
+    End Sub
+    '--------------------------------------------------------------Click Search JobNoEdit-----------------------------------------------
+    Protected Sub btnJobNoHead_Edit_ServerClick(sender As Object, e As EventArgs)
+        selectJobNoEdit()
+    End Sub
+    '--------------------------------------------------------Click Data JobNoEdit In Modal-----------------------------------------
+    Protected Sub Repeater7_ItemCommand(source As Object, e As RepeaterCommandEventArgs) Handles Repeater7.ItemCommand
+        Dim LOTNo As String = CStr(e.CommandArgument)
+        Try
+            If e.CommandName.Equals("Selectjobnoedit") Then
+
+                If String.IsNullOrEmpty(LOTNo) Then
+
+                    MsgBox("เป็นค่าว่าง")
+                Else
+                    Dim user = (From u In db.tblWHISSUEDs Where u.LOTNo = LOTNo).SingleOrDefault
+
+                    txtPullSignal_BeforeTab.Value = user.PullSignal
+                    txtJobNo_BeforeTab.Value = user.LOTNo
+                    txtdatepickertxtPullDateTime_beforeTab.Text = Convert.ToDateTime(user.PullDate).ToString("dd/MM/yyyy")
+                    txtTimePickUpPullDateTime.Value = user.PullTime
+                    txtdatepickerDeliveryDateTime_beforeTab.Text = Convert.ToDateTime(user.DeliveryDate).ToString("dd/MM/yyyy")
+                    txtTimePickUpDeliveryDateTime.Value = user.DeliveryTime
+                    txtdatepickerComfirmDateTime_beforeTab.Text = Convert.ToDateTime(user.ConfirmDate).ToString("dd/MM/yyyy")
+                    txtTimePickUpConfirmDateTime.Value = user.ConfirmTime
+                    txtExporterCode_IssueCon.Value = user.ExporterCode
+                    txtNameExporter_IssueCon.Value = user.ExporterName
+                    txtAddress1Exporter_IssueCon.Value = user.ExporterAddress1
+                    txtAddress2Exporter_IssueCon.Value = user.ExporterAddress2
+                    txtAddress3Exporter_IssueCon.Value = user.ExporterAddress3
+                    txtAddress4Exporter_IssueCon.Value = user.ExporterAddress4
+                    txtConsigneeCode01_IssueCon.Value = user.ConsigneeCode
+                    txtNameConsignee_IssueCon.Value = user.ConsigneeName
+                    txtAddress1Consignee_IssueCon.Value = user.ConsigneeAddress1
+                    txtAddress2Consignee_IssueCon.Value = user.ConsigneeAddress2
+                    txtAddress3Consignee_IssueCon.Value = user.ConsigneeAddress3
+                    txtAddress4Consignee_IssueCon.Value = user.ConsigneeAddress4
+                    txtOwnerCode_IssueCon.Value = user.OwnerCode
+                    txtNameOwner_IssueCon.Value = user.OwnerName
+                    txtAddress1Owner_IssueCon.Value = user.OwnerAddress1
+                    txtAddress2Owner_IssueCon.Value = user.OwnerAddress2
+                    txtAddress3Owner_IssueCon.Value = user.OwnerAddress3
+                    txtAddress4Owner_IssueCon.Value = user.OwnerAddress4
+                    txtShipToCode_IssueCon.Value = user.ShipToCode
+                    txtNameShipTo_IssueCon.Value = user.ShipToName
+                    txtAddress1ShipTo_IssueCon.Value = user.ShipToAddress1
+                    txtAddress2ShipTo_IssueCon.Value = user.ShipToAddress2
+                    txtAddress3ShipTo_IssueCon.Value = user.ShipToAddress3
+                    txtAddress4ShipTo_IssueCon.Value = user.ShipToAddress4
+                    ddlCommodity_IssueCon.Text = user.Commodity
+                    txtQuantityOfGood_IssueCon.Value = CStr(user.QuantityOfPart)
+                    ddlQuantityOfGood_IssueCon.Text = user.QuantityUnit
+                    txtQuantityPackage_IssueCon.Value = CStr(user.QuantityPackage)
+                    ddlQuantityPackage_IssueCon.Text = user.PackageUNIT
+                    txtQuantityPLTSkid_IssueCon.Value = CStr(user.QuantityPLT)
+                    ddlQuantityPLTSkid_IssueCon.Text = user.QuantityPLTUnit
+                    txtWeight_IssueCon.Value = CStr(user.Weight)
+                    ddlWeight_IssueCon.Text = user.WeightUnit
+                    txtVolume_IssueCon.Value = CStr(user.Volume)
+                    ddlVolume_IssueCon.Text = user.VolumeUnit
+                    txtQuantityPicked_IssueCon.Value = CStr(user.QuantityPicked)
+                    ddlQuantityPicked_IssueCon.Text = user.PickedUNIT
+                    txtQTYDiscrepancy_IssueCon.Value = CStr(user.QuantityDiscrepancy)
+                    ddlQTYDiscrepancy_IssueCon.Text = user.DiscrepancyUNIT
+                    txtRemark_IssueCon.Value = user.Remark
+
+                    DataIssuedDetail()
+                End If
+            End If
+        Catch ex As Exception
+        End Try
+    End Sub
+    '--------------------------------------------------------Show Data Job Detail In Modal-----------------------------------------
+    Private Sub DataIssuedDetail()
+        Dim testdate As Integer
+        Dim jobno_code As String = ""
+        Dim pullsignal_code As String = ""
+        Dim status_ As Double
+        If String.IsNullOrEmpty(txtJobNo_BeforeTab.Value.Trim) Then
+            testdate = CInt(Convert.ToDateTime(Date.Now).ToString("yyyy"))
+            status_ = 0
+        Else
+            jobno_code = txtJobNo_BeforeTab.Value.Trim
+            pullsignal_code = txtPullSignal_BeforeTab.Value.Trim
+        End If
+
+        Dim cons = (From p In db.tblWHISSUEDDetails
+                    Where p.LOTNo = jobno_code And p.PullSignal = pullsignal_code
+                   Select New With {p.PullSignal,
+                                    p.LOTNo,
+                                    p.ItemNo,
+                                    p.WHSite,
+                                    p.WHLocation,
+                                    p.ENDCustomer,
+                                    p.CustomerLOTNo}).ToList()
+
+        If cons.Count > 0 Then
+            Repeater9.DataSource = cons.ToList
+            Repeater9.DataBind()
+            DataIssuedDetailUpdatePanel.Update()
+        Else
+            Repeater9.DataSource = Nothing
+            Repeater9.DataBind()
+            Exit Sub
+
+        End If
+    End Sub
+    '--------------------------------------------------------Click Data Data Job Detail In Modal Edit In Modal-----------------------------------------
+    Protected Sub Repeater9_ItemCommand(source As Object, e As RepeaterCommandEventArgs) Handles Repeater9.ItemCommand
+        Dim ItemNooo As Double = CDbl(e.CommandArgument)
+        Try
+            If e.CommandName.Equals("Selectdataissueddetail") Then
+
+                If String.IsNullOrEmpty(CStr(ItemNooo)) Then
+
+                    MsgBox("เป็นค่าว่าง")
+                Else
+                    Dim user = (From u In db.tblWHISSUEDDetails Where u.LOTNo = txtJobNo_BeforeTab.Value.Trim And u.PullSignal = txtPullSignal_BeforeTab.Value.Trim And u.ItemNo = ItemNooo).SingleOrDefault
+
+                    ddlWHSite_ConfirmIssue.Text = user.WHSite
+
+                    If String.IsNullOrEmpty(user.WHLocation) Then
+                        'ddlWHLocation_ConfirmIssue.Text = ""
+                    Else
+                        ddlWHLocation_ConfirmIssue.Text = user.WHLocation
+                    End If
+
+                    txtENDCustomer_ConfirmIssue.Value = user.ENDCustomer
+                    txtCusLOTNo_ConfirmIssue.Value = user.CustomerLOTNo
+                    txtItemNo_ConfirmIssue.Value = CStr(user.ItemNo)
+                    txtEASPN_ConfirmIssue.Value = user.ProductCode
+                    txtCustomerPN_ConfirmIssue.Value = user.CustomerPN
+                    txtOwnerPN_ConfirmIssue.Value = user.OwnerPN
+                    txtProductDesc_ConfirmIssue.Value = user.ProductDesc
+
+                    If String.IsNullOrEmpty(user.WHLocation) Then
+                        'ddlMeasurement_ConfirmIssue.Text = ""
+                    Else
+                        ddlMeasurement_ConfirmIssue.Text = user.Measurement
+                    End If
+
+                    txtWidth_ConfirmIssue.Value = CStr(user.ProductWidth)
+                    txtHight_ConfirmIssue.Value = CStr(user.ProductHeight)
+                    txtLength_ConfirmIssue.Value = CStr(user.ProductLength)
+                    txtProductVolume_ConfirmIssue.Value = CStr(user.ProductVolume)
+                    txtOrderNo_ConfirmIssue.Value = user.OrderNo
+                    txtReceiveNo_ConfirmIssue.Value = user.ReceiveNo
+
+                    If String.IsNullOrEmpty(user.WHLocation) Then
+                        'ddlStatus_ConfirmIssue.Text = ""
+                    Else
+                        ddlStatus_ConfirmIssue.Text = user.Type
+                    End If
+
+
+                    txtdatepickerManufacturing_ConfirmIssue.Text = Convert.ToDateTime(user.ManufacturingDate).ToString("dd/MM/yyyy")
+                    txtdatepickerExpiredDate_ConfirmIssue.Text = Convert.ToDateTime(user.ExpiredDate).ToString("dd/MM/yyyy")
+                    txtdatepickerReceiveDate_ConfirmIssue.Text = Convert.ToDateTime(user.ReceiveDate).ToString("dd/MM/yyyy")
+                    txtQuantity_ConfirmIssue.Value = CStr(user.ISSUEDQuantity)
+                    ddlQuantity_ConfirmIssue.Text = user.ISSUEDUnit
+                    txtWeight_ConfirmIssue.Value = CStr(user.Weigth)
+                    ddlWeight_ConfirmIssue.Text = user.WeigthUnit
+                    ddlCurrency_ConfirmIssue.Text = user.Currency
+                    txtPriceForeign_ConfirmIssue.Value = CStr(user.PriceForeigh)
+                    txtPriceBath_ConfirmIssue.Value = CStr(user.PriceBath)
+                    txtExchangeRate_ConfirmIssue.Value = CStr(user.ExchangeRate)
+                    txtAmount_ConfirmIssue.Value = CStr(user.PriceForeighAmount)
+                    txtBathAmount_ConfirmIssue.Value = CStr(user.PriceBathAmount)
+                    txtPalletNo_ConfirmIssue.Value = user.PalletNo
+
+                End If
+            End If
+        Catch ex As Exception
+        End Try
+    End Sub
+
+    Private Function SaveIssued_New() As Boolean
+
+        Using tran As New TransactionScope()
+            Try
+                db.Database.Connection.Open()
+                db.tblWHISSUEDs.Add(New tblWHISSUED With { _
+            .PullSignal = txtPullSignal_BeforeTab.Value.Trim, _
+            .LOTNo = txtJobNo_BeforeTab.Value.Trim, _
+            .PullDate = CDate(txtdatepickertxtPullDateTime_beforeTab.Text.Trim), _
+            .PullTime = txtTimePickUpPullDateTime.Value.Trim, _
+            .DeliveryDate = CType(txtdatepickerDeliveryDateTime_beforeTab.Text.Trim, Date?), _
+            .DeliveryTime = txtTimePickUpDeliveryDateTime.Value.Trim, _
+            .ConfirmDate = CType(txtdatepickerComfirmDateTime_beforeTab.Text.Trim, Date?), _
+            .ConfirmTime = txtTimePickUpConfirmDateTime.Value.Trim, _
+            .ExporterCode = txtExporterCode_IssueCon.Value.Trim, _
+            .ExporterName = txtNameExporter_IssueCon.Value.Trim, _
+            .ExporterAddress1 = txtAddress1Exporter_IssueCon.Value.Trim, _
+            .ExporterAddress2 = txtAddress2Exporter_IssueCon.Value.Trim, _
+            .ExporterAddress3 = txtAddress3Exporter_IssueCon.Value.Trim, _
+            .ExporterAddress4 = txtAddress4Exporter_IssueCon.Value.Trim, _
+            .ConsigneeCode = txtConsigneeCode01_IssueCon.Value.Trim, _
+            .ConsigneeName = txtNameConsignee_IssueCon.Value.Trim, _
+            .ConsigneeAddress1 = txtAddress1Consignee_IssueCon.Value.Trim, _
+            .ConsigneeAddress2 = txtAddress2Consignee_IssueCon.Value.Trim, _
+            .ConsigneeAddress3 = txtAddress3Consignee_IssueCon.Value.Trim, _
+            .ConsigneeAddress4 = txtAddress4Consignee_IssueCon.Value.Trim, _
+            .OwnerCode = txtOwnerCode_IssueCon.Value.Trim, _
+            .OwnerName = txtNameOwner_IssueCon.Value.Trim, _
+            .OwnerAddress1 = txtAddress1Owner_IssueCon.Value.Trim, _
+            .OwnerAddress2 = txtAddress2Owner_IssueCon.Value.Trim, _
+            .OwnerAddress3 = txtAddress3Owner_IssueCon.Value.Trim, _
+            .OwnerAddress4 = txtAddress4Owner_IssueCon.Value.Trim, _
+            .ShipToCode = txtShipToCode_IssueCon.Value.Trim, _
+            .ShipToName = txtNameShipTo_IssueCon.Value.Trim, _
+            .ShipToAddress1 = txtAddress1ShipTo_IssueCon.Value.Trim, _
+            .ShipToAddress2 = txtAddress2ShipTo_IssueCon.Value.Trim, _
+            .ShipToAddress3 = txtAddress3ShipTo_IssueCon.Value.Trim, _
+            .ShipToAddress4 = txtAddress4ShipTo_IssueCon.Value.Trim, _
+            .Commodity = ddlCommodity_IssueCon.Text.Trim, _
+            .QuantityOfPart = CType(txtQuantityOfGood_IssueCon.Value.Trim, Double?), _
+            .QuantityUnit = ddlQuantityOfGood_IssueCon.Text.Trim, _
+            .QuantityPackage = CType(txtQuantityPackage_IssueCon.Value.Trim, Double?), _
+            .PackageUNIT = ddlQuantityPackage_IssueCon.Text.Trim, _
+            .QuantityPLT = CType(txtQuantityPLTSkid_IssueCon.Value.Trim, Double?), _
+            .QuantityPLTUnit = ddlQuantityPLTSkid_IssueCon.Text.Trim, _
+            .Weight = CType(txtWeight_IssueCon.Value.Trim, Double?), _
+            .WeightUnit = ddlWeight_IssueCon.Text.Trim, _
+            .Volume = CType(txtVolume_IssueCon.Value.Trim, Double?), _
+            .VolumeUnit = ddlVolume_IssueCon.Text.Trim, _
+            .QuantityPicked = CType(txtQuantityPicked_IssueCon.Value.Trim, Double?), _
+            .PickedUNIT = ddlQuantityPicked_IssueCon.Text.Trim, _
+            .QuantityDiscrepancy = CType(txtQTYDiscrepancy_IssueCon.Value.Trim, Double?), _
+            .DiscrepancyUNIT = ddlQTYDiscrepancy_IssueCon.Text.Trim, _
+            .Remark = txtRemark_IssueCon.Value.Trim, _
+            .PrintCount = "0", _
+            .UserBy = CStr(Session("UserName")), _
+            .LastUpdate = Now
+                })
+                db.SaveChanges()
+                tran.Complete()
+                Return True
+                'ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('Add สำเร็จ !');", True)
+            Catch ex As Exception
+                Return False
+                'ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด กรุณาบันทึกข้อมูลใหม่อีกครั้ง');", True)
+            Finally
+                db.Database.Connection.Close()
+                db.Dispose()
+                tran.Dispose()
+            End Try
+        End Using
+    End Function
+    Private Function SaveNew_RemarkMoveJob() As Boolean
+        Dim S As String = "0"
+        If chkMoveTo.Checked = False Then
+            S = "NO"
+        ElseIf chkMoveTo.Checked = True Then
+            S = "YES"
+        End If
+
+        'sb.Append("INSERT INTO tblWHRemarkMoveJob (PullSignal,LOTNo,MovetoLot,CustREFNo,WHSite,Status1,UserBy,LastUpdate)")
+        'sb.Append(" VALUES (@PullSignal,@LOTNo,@MovetoLot,@CustREFNo,@WHSite,@Status1,@UserBy,@LastUpdate)")
+
+        Using tran As New TransactionScope()
+            Try
+                db.Database.Connection.Open()
+                db.tblWHRemarkMoveJobs.Add(New tblWHRemarkMoveJob With { _
+            .PullSignal = txtPullSignal_BeforeTab.Value.Trim, _
+                .LOTNo = txtJobNo_BeforeTab.Value.Trim, _
+                .MovetoLot = txtJobNo_IssueCon.Value.Trim, _
+                .CustREFNo = txtCustRefNo_IssueCon.Value.Trim, _
+                .WHSite = ddlWHSite_IssueCon.Text.Trim, _
+                .Status1 = S, _
+                .UserBy = CStr(Session("UserName")), _
+                .LastUpdate = Now
+                })
+                db.SaveChanges()
+                tran.Complete()
+                Return True
+            Catch ex As Exception
+                Return False
+            Finally
+                db.Database.Connection.Close()
+                db.Dispose()
+                tran.Dispose()
+            End Try
+        End Using
+
+    End Function
+    Private Function SaveNew_Confirm() As Boolean
+
+        'sb.Append("INSERT INTO tblWHConfirmGoodsReceive (LOTNo,LOTDate,CustREFNo,OwnerCode,OwnerNameENG,OwnerStreet_Number,OwnerDistrict,OwnerSubProvince,OwnerProvince,Commodity,QuantityOfPart,QuantityUnit,QuantityPackage,PackageUNIT,QuantityPLT,QuantityPLTUnit,Weigth,WeigthUnit,Volume,VolumeUnit,Remark,PrintCount,UserBy,LastUpdate)")
+        'sb.Append(" VALUES (@LOTNo,@LOTDate,@CustREFNo,@OwnerCode,@OwnerNameENG,@OwnerStreet_Number,@OwnerDistrict,@OwnerSubProvince,@OwnerProvince,@Commodity,@QuantityOfPart,@QuantityUnit,@QuantityPackage,@PackageUNIT,@QuantityPLT,@QuantityPLTUnit,@Weigth,@WeigthUnit,@Volume,@VolumeUnit,@Remark,@PrintCount,@UserBy,@LastUpdate)")
+
+        Using tran As New TransactionScope()
+            Try
+                db.Database.Connection.Open()
+                db.tblWHConfirmGoodsReceives.Add(New tblWHConfirmGoodsReceive With { _
+                .LOTNo = txtJobNo_IssueCon.Value.Trim, _
+                .LOTDate = Now, _
+                .CustREFNo = txtCustRefNo_IssueCon.Value.Trim, _
+                .OwnerCode = txtOwnerCode_IssueCon.Value.Trim, _
+                .OwnerNameENG = txtNameOwner_IssueCon.Value.Trim, _
+                .OwnerStreet_Number = txtAddress1Owner_IssueCon.Value.Trim, _
+                .OwnerDistrict = txtAddress2Owner_IssueCon.Value.Trim, _
+                .OwnerSubProvince = txtAddress3Owner_IssueCon.Value.Trim, _
+                .OwnerProvince = txtAddress4Owner_IssueCon.Value.Trim, _
+                .Commodity = ddlCommodity_IssueCon.Text.Trim, _
+                .QuantityOfPart = CType(txtQuantityOfGood_IssueCon.Value.Trim, Double?), _
+                .QuantityUnit = ddlQuantityOfGood_IssueCon.Text.Trim, _
+                .QuantityPackage = CType(txtQuantityPackage_IssueCon.Value.Trim, Double?), _
+                .PackageUNIT = ddlQuantityPackage_IssueCon.Text.Trim, _
+                .QuantityPLT = CType(txtQuantityPLTSkid_IssueCon.Value.Trim, Double?), _
+                .QuantityPLTUnit = ddlQuantityPLTSkid_IssueCon.Text.Trim, _
+                .Weigth = CType(txtWeight_IssueCon.Value.Trim, Double?), _
+                .WeigthUnit = ddlWeight_IssueCon.Text.Trim, _
+                .Volume = CType(txtVolume_IssueCon.Value.Trim, Double?), _
+                .VolumeUnit = ddlVolume_IssueCon.Text.Trim, _
+                .Remark = txtRemark_IssueCon.Value.Trim, _
+                .PrintCount = "0", _
+                .UserBy = CStr(Session("UserName")), _
+                .LastUpdate = Now
+                })
+
+                db.SaveChanges()
+                tran.Complete()
+                Return True
+            Catch ex As Exception
+                Return False
+            Finally
+                db.Database.Connection.Close()
+                db.Dispose()
+                tran.Dispose()
+            End Try
+        End Using
+
+    End Function
+    Private Function SaveNew_ConfirmNJR() As Boolean
+
+        'sb.Append("INSERT INTO tblWHConfirmGoodsReceive (LOTNo,LOTDate,CustREFNo,OwnerCode,OwnerNameENG,OwnerStreet_Number,OwnerDistrict,OwnerSubProvince,OwnerProvince,Commodity,QuantityOfPart,QuantityUnit,QuantityPackage,PackageUNIT,QuantityPLT,QuantityPLTUnit,Weigth,WeigthUnit,Volume,VolumeUnit,Remark,PrintCount,UserBy,LastUpdate)")
+        'sb.Append(" VALUES (@LOTNo,@LOTDate,@CustREFNo,@OwnerCode,@OwnerNameENG,@OwnerStreet_Number,@OwnerDistrict,@OwnerSubProvince,@OwnerProvince,@Commodity,@QuantityOfPart,@QuantityUnit,@QuantityPackage,@PackageUNIT,@QuantityPLT,@QuantityPLTUnit,@Weigth,@WeigthUnit,@Volume,@VolumeUnit,@Remark,@PrintCount,@UserBy,@LastUpdate)")
+
+        Using tran As New TransactionScope()
+            Try
+                db.Database.Connection.Open()
+                db.tblWHConfirmGoodsReceives.Add(New tblWHConfirmGoodsReceive With { _
+                .LOTNo = txtJobNo_IssueCon.Value.Trim, _
+                .LOTDate = Now, _
+                .CustREFNo = txtCustRefNo_IssueCon.Value.Trim, _
+                .OwnerCode = txtOwnerCode_IssueCon.Value.Trim, _
+                .OwnerNameENG = txtNameOwner_IssueCon.Value.Trim, _
+                .OwnerStreet_Number = txtAddress1Owner_IssueCon.Value.Trim, _
+                .OwnerDistrict = txtAddress2Owner_IssueCon.Value.Trim, _
+                .OwnerSubProvince = txtAddress3Owner_IssueCon.Value.Trim, _
+                .OwnerProvince = txtAddress4Owner_IssueCon.Value.Trim, _
+                .Commodity = ddlCommodity_IssueCon.Text.Trim, _
+                .QuantityOfPart = CType(txtQuantityOfGood_IssueCon.Value.Trim, Double?), _
+                .QuantityUnit = ddlQuantityOfGood_IssueCon.Text.Trim, _
+                .QuantityPackage = CType(txtQuantityPackage_IssueCon.Value.Trim, Double?), _
+                .PackageUNIT = ddlQuantityPackage_IssueCon.Text.Trim, _
+                .QuantityPLT = CType(txtQuantityPLTSkid_IssueCon.Value.Trim, Double?), _
+                .QuantityPLTUnit = ddlQuantityPLTSkid_IssueCon.Text.Trim, _
+                .Weigth = CType(txtWeight_IssueCon.Value.Trim, Double?), _
+                .WeigthUnit = ddlWeight_IssueCon.Text.Trim, _
+                .Volume = CType(txtVolume_IssueCon.Value.Trim, Double?), _
+                .VolumeUnit = ddlVolume_IssueCon.Text.Trim, _
+                .Remark = txtRemark_IssueCon.Value.Trim, _
+                .PrintCount = "0", _
+                .UserBy = CStr(Session("UserName")), _
+                .LastUpdate = Now
+                })
+
+                db.SaveChanges()
+                tran.Complete()
+                Return True
+            Catch ex As Exception
+                Return False
+            Finally
+                db.Database.Connection.Close()
+                db.Dispose()
+                tran.Dispose()
+            End Try
+        End Using
+
+    End Function
+
+    Private Sub CheckMoveTo()
+
+        If strIssuedJobNo = "LKB-OUT" And strReceivedJobNo = "HCR-IN" Then
+            If SaveNew_Confirm() = False Then
+                ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด เนื่องจาก SaveNew_Confirm');", True)
+                Exit Sub
+            End If
+
+        ElseIf strIssuedJobNo = "HCR-OUT" And strReceivedJobNo = "LKB-IN" Then
+            If SaveNew_Confirm() = False Then
+                ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด เนื่องจาก SaveNew_Confirm');", True)
+                Exit Sub
+            End If
+
+        ElseIf strIssuedJobNo = "AEC-OUT" And strReceivedJobNo = "LKB-IN" Then
+            If SaveNew_Confirm() = False Then
+                ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด เนื่องจาก SaveNew_Confirm');", True)
+                Exit Sub
+            End If
+
+        ElseIf strIssuedJobNo = "LKB-OUT" And strReceivedJobNo = "AEC-IN" Then
+            If SaveNew_Confirm() = False Then
+                ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด เนื่องจาก SaveNew_Confirm');", True)
+                Exit Sub
+            End If
+
+        ElseIf strIssuedJobNo = "HTO-OUT" And strReceivedJobNo = "LKB-IN" Then
+            If SaveNew_Confirm() = False Then
+                ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด เนื่องจาก SaveNew_Confirm');", True)
+                Exit Sub
+            End If
+
+        ElseIf strIssuedJobNo = "LKB-OUT" And strReceivedJobNo = "HTO-IN" Then
+            If SaveNew_Confirm() = False Then
+                ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด เนื่องจาก SaveNew_Confirm');", True)
+                Exit Sub
+            End If
+
+        ElseIf strIssuedJobNo = "MJB-OUT" And strReceivedJobNo = "LKB-IN" Then
+            If SaveNew_Confirm() = False Then
+                ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด เนื่องจาก SaveNew_Confirm');", True)
+                Exit Sub
+            End If
+
+        ElseIf strIssuedJobNo = "LKB-OUT" And strReceivedJobNo = "MJB-IN" Then
+            If SaveNew_Confirm() = False Then
+                ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด เนื่องจาก SaveNew_Confirm');", True)
+                Exit Sub
+            End If
+
+        ElseIf strIssuedJobNo = "LEA-OUT" And strReceivedJobNo = "LKB-IN" Then
+            If SaveNew_Confirm() = False Then
+                ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด เนื่องจาก SaveNew_Confirm');", True)
+                Exit Sub
+            End If
+
+        ElseIf strIssuedJobNo = "LKB-OUT" And strReceivedJobNo = "LEA-IN" Then
+            If SaveNew_Confirm() = False Then
+                ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด เนื่องจาก SaveNew_Confirm');", True)
+                Exit Sub
+            End If
+
+        ElseIf strIssuedJobNo = "LKB-OUT" And strReceivedJobNo = "LKB-IN" Then
+            If Not (ddlWHSite_IssueCon.Text.Trim = "NJR-US" Or ddlWHSite_IssueCon.Text.Trim = "NJR-CN" Or ddlWHSite_IssueCon.Text.Trim = "NJR-SG") Then
+                ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('JOB LKB ย้ายไป LKB ได้เฉพาะงาน NJR !!!');", True)
+                Exit Sub
+            End If
+
+            SaveNew_ConfirmNJR()
+
+        ElseIf strIssuedJobNo = "CKT-OUT" And strReceivedJobNo = "CKT-IN" Then
+            If Not (ddlWHSite_IssueCon.Text.Trim = "EPN-EVENT" Or ddlWHSite_IssueCon.Text.Trim = "EPN-ONLINE") Then
+                ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('JOB CKT ย้ายไป CKT ได้เฉพาะงาน EPN !!!');", True)
+                Exit Sub
+            End If
+
+            If SaveNew_Confirm() = False Then
+                ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด เนื่องจาก SaveNew_Confirm');", True)
+                Exit Sub
+            End If
+
+        ElseIf strIssuedJobNo = "CKT-OUT" And strReceivedJobNo = "CKT-IN" Then
+            If Not (ddlWHSite_IssueCon.Text.Trim = "EPN-EVENT" Or ddlWHSite_IssueCon.Text.Trim = "EPN-ONLINE") Then
+                ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('JOB CKT ย้ายไป CKT ได้เฉพาะงาน EPN !!!');", True)
+                Exit Sub
+            End If
+
+            If SaveNew_Confirm() = False Then
+                ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด เนื่องจาก SaveNew_Confirm');", True)
+                Exit Sub
+            End If
+
+        Else
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('รายการ Move To Clean Room JOB ที่คุณใส่ไม่ถูกต้อง , ระบบจะไม่บันทึกข้อมูลให้คุณ , กรุณาแก้ไขข้อมูลอีกครั้งก่อนบันทึก !!!');", True)
+            Exit Sub
+        End If
+    End Sub
+
+    Private Function UpdateRead1() As Boolean
+
+        'sb.Append("UPDATE tblWHPicking")
+        'sb.Append(" SET UsedStatus=@UsedStatus")
+        'sb.Append(" WHERE (PullSignal=@PullSignal AND LOTNo=@LOTNo)")
+
+        Using tran As New TransactionScope()
+            Try
+                db.Database.Connection.Open()
+                Dim edit As tblWHPicking = (From c In db.tblWHPickings Where c.LOTNo = txtJobNo_BeforeTab.Value.Trim And c.PullSignal = txtPullSignal_BeforeTab.Value.Trim
+                  Select c).First()
+                If edit IsNot Nothing Then
+                    edit.PullSignal = txtPullSignal_BeforeTab.Value.Trim
+                    edit.LOTNo = txtJobNo_BeforeTab.Value.Trim
+                    edit.UsedStatus = 1
+
+                    db.SaveChanges()
+                    tran.Complete()
+                    Return True
+                End If
+            Catch ex As Exception
+                Return False
+            End Try
+        End Using
+
+    End Function
+
+    Private Sub SaveIssued_Modify()
+        If txtJobNo_BeforeTab.Value.Trim = "" Then
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert(กรุณาป้อน Job No ก่อน !!!);", True)
+            txtJobNo_BeforeTab.Focus()
+            Exit Sub
+        End If
+
+        If txtPullSignal_BeforeTab.Value.Trim = "" Then
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert(กรุณาป้อน Pull Signal ก่อน !!!);", True)
+            txtPullSignal_BeforeTab.Focus()
+            Exit Sub
+        End If
+
+            'sb.Append("UPDATE tblWHISSUED")
+            'sb.Append(" SET PullDate=@PullDate,PullTime=@PullTime,DeliveryDate=@DeliveryDate,DeliveryTime=@DeliveryTime,ConfirmDate=@ConfirmDate,ConfirmTime=@ConfirmTime,ExporterCode=@ExporterCode,ExporterName=@ExporterName,ExporterAddress1=@ExporterAddress1,ExporterAddress2=@ExporterAddress2,ExporterAddress3=@ExporterAddress3,ExporterAddress4=@ExporterAddress4,ConsigneeCode=@ConsigneeCode,ConsigneeName=@ConsigneeName,ConsigneeAddress1=@ConsigneeAddress1,ConsigneeAddress2=@ConsigneeAddress2,ConsigneeAddress3=@ConsigneeAddress3,ConsigneeAddress4=@ConsigneeAddress4,OwnerCode=@OwnerCode,OwnerName=@OwnerName,OwnerAddress1=@OwnerAddress1,OwnerAddress2=@OwnerAddress2,OwnerAddress3=@OwnerAddress3,OwnerAddress4=@OwnerAddress4,ShipToCode=@ShipToCode,ShipToName=@ShipToName,ShipToAddress1=@ShipToAddress1,ShipToAddress2=@ShipToAddress2,ShipToAddress3=@ShipToAddress3,ShipToAddress4=@ShipToAddress4,Commodity=@Commodity,QuantityOfPart=@QuantityOfPart,QuantityUnit=@QuantityUnit,QuantityPackage=@QuantityPackage,PackageUNIT=@PackageUNIT,QuantityPLT=@QuantityPLT,QuantityPLTUnit=@QuantityPLTUnit,Weight=@Weight,WeightUnit=@WeightUnit,Volume=@Volume,VolumeUnit=@VolumeUnit,QuantityPicked=@QuantityPicked,PickedUNIT=@PickedUNIT,QuantityDiscrepancy=@QuantityDiscrepancy,DiscrepancyUNIT=@DiscrepancyUNIT,Remark=@Remark,UserBy=@UserBy,LastUpdate=@LastUpdate")
+            'sb.Append(" WHERE (PullSignal=@PullSignal AND LOTNo=@LOTNo)")
+            If MsgBox("คุณต้องการแก้ไขรายการ Issued ใช่หรือไม่ ?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+                Using tran As New TransactionScope()
+                    Try
+                        db.Database.Connection.Open()
+                    Dim edit As tblWHISSUED = (From c In db.tblWHISSUEDs Where c.LOTNo = txtJobNo_BeforeTab.Value.Trim And c.PullSignal = txtPullSignal_BeforeTab.Value.Trim
+                          Select c).First()
+                        If edit IsNot Nothing Then
+                        edit.PullSignal = txtPullSignal_BeforeTab.Value.Trim
+                        edit.LOTNo = txtJobNo_BeforeTab.Value.Trim
+                        edit.PullDate = CDate(txtdatepickertxtPullDateTime_beforeTab.Text.Trim)
+                        edit.PullTime = txtTimePickUpPullDateTime.Value.Trim
+                        edit.DeliveryDate = CType(txtdatepickerDeliveryDateTime_beforeTab.Text.Trim, Date?)
+                        edit.DeliveryTime = txtTimePickUpDeliveryDateTime.Value.Trim
+                        edit.ConfirmDate = CType(txtdatepickerComfirmDateTime_beforeTab.Text.Trim, Date?)
+                        edit.ConfirmTime = txtTimePickUpConfirmDateTime.Value.Trim
+                        edit.ExporterCode = txtExporterCode_IssueCon.Value.Trim
+                        edit.ExporterName = txtNameExporter_IssueCon.Value.Trim
+                        edit.ExporterAddress1 = txtAddress1Exporter_IssueCon.Value.Trim
+                        edit.ExporterAddress2 = txtAddress2Exporter_IssueCon.Value.Trim
+                        edit.ExporterAddress3 = txtAddress3Exporter_IssueCon.Value.Trim
+                        edit.ExporterAddress4 = txtAddress4Exporter_IssueCon.Value.Trim
+                        edit.ConsigneeCode = txtConsigneeCode01_IssueCon.Value.Trim
+                        edit.ConsigneeName = txtNameConsignee_IssueCon.Value.Trim
+                        edit.ConsigneeAddress1 = txtAddress1Consignee_IssueCon.Value.Trim
+                        edit.ConsigneeAddress2 = txtAddress2Consignee_IssueCon.Value.Trim
+                        edit.ConsigneeAddress3 = txtAddress3Consignee_IssueCon.Value.Trim
+                        edit.ConsigneeAddress4 = txtAddress4Consignee_IssueCon.Value.Trim
+                        edit.OwnerCode = txtOwnerCode_IssueCon.Value.Trim
+                        edit.OwnerName = txtNameOwner_IssueCon.Value.Trim
+                        edit.OwnerAddress1 = txtAddress1Owner_IssueCon.Value.Trim
+                        edit.OwnerAddress2 = txtAddress2Owner_IssueCon.Value.Trim
+                        edit.OwnerAddress3 = txtAddress3Owner_IssueCon.Value.Trim
+                        edit.OwnerAddress4 = txtAddress4Owner_IssueCon.Value.Trim
+                        edit.ShipToCode = txtShipToCode_IssueCon.Value.Trim
+                        edit.ShipToName = txtNameShipTo_IssueCon.Value.Trim
+                        edit.ShipToAddress1 = txtAddress1ShipTo_IssueCon.Value.Trim
+                        edit.ShipToAddress2 = txtAddress2ShipTo_IssueCon.Value.Trim
+                        edit.ShipToAddress3 = txtAddress3ShipTo_IssueCon.Value.Trim
+                        edit.ShipToAddress4 = txtAddress4ShipTo_IssueCon.Value.Trim
+                        edit.Commodity = ddlCommodity_IssueCon.Text.Trim
+                        edit.QuantityOfPart = CType(txtQuantityOfGood_IssueCon.Value.Trim, Double?)
+                        edit.QuantityUnit = ddlQuantityOfGood_IssueCon.Text.Trim
+                        edit.QuantityPackage = CType(txtQuantityPackage_IssueCon.Value.Trim, Double?)
+                        edit.PackageUNIT = ddlQuantityPackage_IssueCon.Text.Trim
+                        edit.QuantityPLT = CType(txtQuantityPLTSkid_IssueCon.Value.Trim, Double?)
+                        edit.QuantityPLTUnit = ddlQuantityPLTSkid_IssueCon.Text.Trim
+                        edit.Weight = CType(txtWeight_IssueCon.Value.Trim, Double?)
+                        edit.WeightUnit = ddlWeight_IssueCon.Text.Trim
+                        edit.Volume = CType(txtVolume_IssueCon.Value.Trim, Double?)
+                        edit.VolumeUnit = ddlVolume_IssueCon.Text.Trim
+                        edit.QuantityPicked = CType(txtQuantityPicked_IssueCon.Value.Trim, Double?)
+                        edit.PickedUNIT = ddlQuantityPicked_IssueCon.Text.Trim
+                        edit.QuantityDiscrepancy = CType(txtQTYDiscrepancy_IssueCon.Value.Trim, Double?)
+                        edit.DiscrepancyUNIT = ddlQTYDiscrepancy_IssueCon.Text.Trim
+                        edit.Remark = txtRemark_IssueCon.Value.Trim
+                        edit.UserBy = CStr(Session("UserName"))
+                        edit.LastUpdate = Now
+
+                            db.SaveChanges()
+                            tran.Complete()
+                            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('แก้ไขข้อมูล สำเร็จ !');", True)
+                        End If
+                    Catch ex As Exception
+                        ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด กรุณาบันทึกข้อมูลใหม่อีกครั้ง');", True)
+                    End Try
+                End Using
+            End If
+            txtJobNo_BeforeTab.Focus()
+    End Sub
+    Private Sub CountWHIssued()
+
+        'Dim i As Integer
+        'Dim Goods As Double
+        'With dgvIssued
+        '    For i = 0 To .Rows.Count - 1
+
+        '        Goods = Goods + CDbl(.Rows(i).Cells(24).Value)
+
+        '    Next
+        'End With
+        'txtQtyReceived.Text = CStr(Goods)
+        'txtQtyDiscrepancy.Text = CStr(CDbl(txtQuantityofPart.Text) - Goods)
+
     End Sub
 
 

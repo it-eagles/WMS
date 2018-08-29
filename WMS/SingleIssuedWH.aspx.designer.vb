@@ -1094,6 +1094,33 @@ Partial Public Class SingleIssuedWH
     Protected WithEvents btnIssue_ConfirmIssue As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
+    '''DataIssuedDetailPanel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents DataIssuedDetailPanel As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''DataIssuedDetailUpdatePanel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents DataIssuedDetailUpdatePanel As Global.System.Web.UI.UpdatePanel
+
+    '''<summary>
+    '''Repeater9 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Repeater9 As Global.System.Web.UI.WebControls.Repeater
+
+    '''<summary>
     '''ExporterPanel control.
     '''</summary>
     '''<remarks>
@@ -1254,4 +1281,31 @@ Partial Public Class SingleIssuedWH
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents Repeater6 As Global.System.Web.UI.WebControls.Repeater
+
+    '''<summary>
+    '''JobNoEditPanel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents JobNoEditPanel As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''JobNoEditUpdatePanel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents JobNoEditUpdatePanel As Global.System.Web.UI.UpdatePanel
+
+    '''<summary>
+    '''Repeater7 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Repeater7 As Global.System.Web.UI.WebControls.Repeater
 End Class
