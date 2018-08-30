@@ -988,42 +988,19 @@ Public Class SingleReceivedWH
 
     Private Sub selectPrepairGoodsReceive()
 
-        'Dim lot As String = ""
-        Dim lotDate_ As Integer
-        'Dim consignee As String = ""
-        'Dim endCustomer As String = ""
-        'Dim shipper As String = ""
-        ''Or (wh.LOTDate.Year = lotDate_ And wh.UsedStatus = 0)
-<<<<<<< HEAD
-        'If String.IsNullOrEmpty(txtLotNo_.Value.Trim) Then
-        '    lotDate_ = CInt(Convert.ToDateTime(Date.Now).ToString("yyyy"))
-        'Else
-        '    lot = txtLotNo_.Value.Trim
-        'End If
-
-        'Dim go = (From wh In db.tblWHPrepairGoodsReceives
-        '          Where wh.LOTNo.Contains(txtLotNo_.Value.Trim) And wh.UsedStatus = 0 And Not wh.LOTNo.Contains("WIP"))
-
         Dim lot As String
         Dim lotDate_ As Integer
         Dim consignee As String = ""
         Dim endCustomer As String = ""
         Dim shipper As String = ""
-=======
->>>>>>> fe0903fa78f6292c811aa148e3b04c61a5cc06d5
         If String.IsNullOrEmpty(txtLotNo_.Value.Trim) Then
             lotDate_ = CInt(Convert.ToDateTime(Date.Now).ToString("yyyy"))
         End If
         Dim go = (From wh In db.tblWHPrepairGoodsReceives
-<<<<<<< HEAD
-                  Where (wh.LOTNo.Contains(lot) And wh.UsedStatus = 0 And Not wh.LOTNo.Contains("WIP")) _
+                  Where (wh.LOTNo.Contains(txtLotNo_.Value.Trim) And wh.UsedStatus = 0 And Not wh.LOTNo.Contains("WIP")) _
                   Or wh.LOTDate.Year = lotDate_ And wh.UsedStatus = 0
                   Select wh.LOTNo, LOTDate = wh.LOTDate.Year, wh.CustREFNo, wh.OwnerCode).Take(100)
-=======
-                  Where wh.LOTNo.Contains(txtLotNo_.Value.Trim) And wh.UsedStatus = 0 And Not wh.LOTNo.Contains("WIP") _
-                  Or wh.LOTDate.Year = lotDate_ And wh.UsedStatus = 0).Take(100)
 
->>>>>>> fe0903fa78f6292c811aa148e3b04c61a5cc06d5
         If go.Count > 0 Then
             dgvPrepire.DataSource = go.ToList
             dgvPrepire.DataBind()
