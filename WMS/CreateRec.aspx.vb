@@ -2423,9 +2423,10 @@ Public Class CreateRec
                                          .IEATPermit = ddlIEATPermit.Text.Trim, _
                                          .EntryNo = txtImportEntryNo.Value.Trim, _
                                          .DeliveryDate = ImportEntryDate, _
+                                         .Status = 0, _
                                          .Status1 = ddlStatusIEAT1.Text.Trim, _
                                          .Status2 = ddlStatusIEAT2.Text.Trim, _
-                                         .Useby = CStr(Session("UserId")), _
+                                         .Useby = CStr(Session("UserName")), _
                                          .JOBBranch = ddlJobsite.Text.Trim, _
                                          .fwdstatus = fwdstatus
                                      })
@@ -2436,10 +2437,10 @@ Public Class CreateRec
 
                 Catch ex As Exception
                     ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด กรุณาบันทึกข้อมูลใหม่อีกครั้ง');", True)
-                Finally
-                    db.Database.Connection.Close()
-                    db.Dispose()
-                    tran.Dispose()
+                    'Finally
+                    '    db.Database.Connection.Close()
+                    '    db.Dispose()
+                    '    tran.Dispose()
                 End Try
             End Using
         End If
@@ -2626,10 +2627,10 @@ Public Class CreateRec
             ElseIf ddlJobsite.Text = "WIP" Then
                 Gentbl("WIPLOTIN")
             End If
-            'SaveDATA_New()
+            SaveDATA_New()
             InsertData()
-            'ClearDATA()
-            'ReadDATA2()
+            ClearDATA()
+            ReadDATA2()
         Else
             ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ์เมนูนี้ !!!')", True)
         End If

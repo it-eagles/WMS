@@ -4591,6 +4591,30 @@ btnIssue_ConfirmIssue control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
+</member><member name="F:WMS.SingleIssuedWH.DataIssuedDetailPanel">
+	<summary>
+DataIssuedDetailPanel control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.SingleIssuedWH.DataIssuedDetailUpdatePanel">
+	<summary>
+DataIssuedDetailUpdatePanel control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.SingleIssuedWH.Repeater9">
+	<summary>
+Repeater9 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
 </member><member name="F:WMS.SingleIssuedWH.ExporterPanel">
 	<summary>
 ExporterPanel control.
@@ -4730,6 +4754,30 @@ To modify move field declaration from designer file to code-behind file.
 </member><member name="F:WMS.SingleIssuedWH.Repeater6">
 	<summary>
 Repeater6 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.SingleIssuedWH.JobNoEditPanel">
+	<summary>
+JobNoEditPanel control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.SingleIssuedWH.JobNoEditUpdatePanel">
+	<summary>
+JobNoEditUpdatePanel control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.SingleIssuedWH.Repeater7">
+	<summary>
+Repeater7 control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -9746,6 +9794,14 @@ To modify move field declaration from designer file to code-behind file.
 </member><member name="F:WMS.PrepareLotWH.btnCheckPart">
 	<summary>
 btnCheckPart control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.PrepareLotWH.TabName">
+	<summary>
+TabName control.
 </summary>
 	<remarks>
 Auto-generated field.

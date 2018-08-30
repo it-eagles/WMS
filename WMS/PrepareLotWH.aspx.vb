@@ -2,6 +2,7 @@
 Option Strict On
 
 Imports System.Transactions
+Imports System.Globalization
 
 
 Public Class PrepareLotWH
@@ -28,7 +29,7 @@ Public Class PrepareLotWH
 
                     preparegoodsreceive_fieldset.Disabled = True
                     goodreceivedetail_fieldset.Disabled = True
-
+                    TabName.Value = Request.Form(TabName.UniqueID)
                 End If
             Else
                 ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ เข้าโปรแกรมนี้' !!!');", True)
@@ -38,6 +39,8 @@ Public Class PrepareLotWH
     End Sub
     '-----------------------------------------------------------Click btn Add New GOODRECDETAIL TAB--------------------------------------
     Protected Sub btnAddNew_GoodRecDetail_ServerClick(sender As Object, e As EventArgs)
+        SaveDetail_New()
+        ClearDATA1()
 
     End Sub
     '-----------------------------------------------------------Click btn Save Modify GOODRECDETAIL TAB--------------------------------------
@@ -71,7 +74,7 @@ Public Class PrepareLotWH
         If cu.Any Then
             Save_New()
             UpdateStatus()
-            ClearDATA1()
+            'ClearDATA1()
         Else
             ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ์เมนูนี้ !!!')", True)
         End If
@@ -335,10 +338,10 @@ Public Class PrepareLotWH
             status_ = 0
         Else
             jobno_code = txtJobNo_PreGoodRec.Value.Trim
-           
+
         End If
 
-        
+
 
         'Dim cons = (From p In db.tblImpGenLOTs (If (String.IsNullOrEmpty(txtJobNo_PreGoodRec.Value.Trim)) Then)
         '                                        Where p.Status = status_ And p.LOTDate.Year = testdate
@@ -849,12 +852,10 @@ Public Class PrepareLotWH
         If String.IsNullOrEmpty(txtJobNo_PreGoodRec.Value.Trim) Then
             testdate = CInt(Convert.ToDateTime(Date.Now).ToString("yyyy"))
             status_ = 0
-        Else
-            jobno_code = txtJobNo_PreGoodRec.Value.Trim
         End If
 
         Dim cons = (From p In db.tblWHPrepairGoodsReceives
-                    Where (p.LOTNo = jobno_code) Or p.LOTDate.Year = testdate
+                    Where p.LOTNo.Contains(txtJobNo_PreGoodRec.Value.Trim) Or p.LOTDate.Year = testdate
                    Select New With {p.LOTNo,
                                     p.CustREFNo,
                                     p.OwnerNameENG,
@@ -875,6 +876,7 @@ Public Class PrepareLotWH
     '--------------------------------------------------------------Click Search Job No Edit-----------------------------------------------
     Protected Sub btnJobNoSearch_Edit_ServerClick(sender As Object, e As EventArgs)
         SelectJobnoEdit()
+        SelectJobDetail()
     End Sub
     '--------------------------------------------------------Click Data JobNo Edit In Modal-----------------------------------------
     Protected Sub Repeater8_ItemCommand(source As Object, e As RepeaterCommandEventArgs) Handles Repeater8.ItemCommand
@@ -886,10 +888,14 @@ Public Class PrepareLotWH
 
                     MsgBox("เป็นค่าว่าง")
                 Else
-                    Dim user = (From u In db.tblWHConfirmGoodsReceives Where u.LOTNo = JobnoCode).SingleOrDefault
+                    Dim user = (From u In db.tblWHPrepairGoodsReceives Where u.LOTNo = JobnoCode).SingleOrDefault
 
-                    txtJobNo_PreGoodRec.Value = user.LOTNo
-                    txtdatepickerJobdate_PreGoodRec.Text = CStr(user.LOTDate)
+                    If String.IsNullOrEmpty(user.LOTNo) Then
+                        txtJobNo_PreGoodRec.Value = ""
+                    Else
+                        txtJobNo_PreGoodRec.Value = user.LOTNo
+                    End If
+                    txtdatepickerJobdate_PreGoodRec.Text = Convert.ToDateTime(user.LOTDate).ToString("dd/MM/yyyy")
                     txtCustRefNo_PreGoodRec.Value = user.CustREFNo
 
                     txtOwnerCode_PreGoodRec.Value = user.OwnerCode
@@ -920,21 +926,24 @@ Public Class PrepareLotWH
                     txtAddress3EndUser_PreGoodRec.Value = user.ENDSubprovince
                     txtAddress4Customer_PreGoodRec.Value = user.ENDProvince
                     ddlCommodity_PreGoodRec.Text = user.Commodity
-                    txtQuantityOfGood_PreGoodRec.Value = CStr(user.QuantityOfPart)
+                    txtQuantityOfGood_PreGoodRec.Value = String.Format("{0:0.00}", user.QuantityOfPart)
                     ddlQuantityOfGood_PreGoodRec.Text = user.QuantityUnit
-                    txtQuantityPackage_PreGoodRec.Value = CStr(user.QuantityPackage)
+                    txtQuantityPackage_PreGoodRec.Value = String.Format("{0:0.00}", user.QuantityPackage)
                     ddlQuantityPackage_PreGoodRec.Text = user.PackageUNIT
-                    txtWeight_PreGoodRec.Value = CStr(user.Weigth)
-                    ddlWeight_PreGoodRec.Text = user.WeigthUnit
-                    txtQuantityPLTSkid_PreGoodRec.Value = CStr(user.QuantityPLT)
+                    txtWeight_PreGoodRec.Value = String.Format("{0:0.00}", user.Weigth)
+
+                    If Not IsNothing(user.WeigthUnit) Then
+                        ddlWeight_PreGoodRec.Text = user.WeigthUnit
+                    End If
+                    txtQuantityPLTSkid_PreGoodRec.Value = String.Format("{0:0.00}", user.QuantityPLT)
                     ddlQuantityPLTSkid_PreGoodRec.Text = user.QuantityPLTUnit
-                    txtVolume_PreGoodRec.Value = CStr(user.Volume)
+                    txtVolume_PreGoodRec.Value = String.Format("{0:0.00}", user.Volume)
                     ddlVolume_PreGoodRec.Text = user.VolumeUnit
                     txtRemark_PreGoodRec.Value = user.Remark
-                    SelectJobDetail()
                 End If
             End If
         Catch ex As Exception
+            Throw ex
         End Try
     End Sub
     '--------------------------------------------------------Show Data Job Detail In Modal-----------------------------------------
@@ -1091,14 +1100,14 @@ Public Class PrepareLotWH
 
                     db.SaveChanges()
                     tran.Complete()
-                    ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('Add สำเร็จ !');", True)
+                    ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('บันทึกข้อมูล สำเร็จเรียบร้อย !');", True)
 
                 Catch ex As Exception
                     ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด กรุณาบันทึกข้อมูลใหม่อีกครั้ง');", True)
-                Finally
-                    db.Database.Connection.Close()
-                    db.Dispose()
-                    tran.Dispose()
+                    'Finally
+                    '    db.Database.Connection.Close()
+                    '    db.Dispose()
+                    '    tran.Dispose()
                 End Try
             End Using
         End If
@@ -1178,7 +1187,7 @@ Public Class PrepareLotWH
     Private Sub SaveDetail_New()
         Dim ManuDate As Date
         Dim ExpDate As Date
-
+        Dim receiveDate_ As Date
         If txtJobNo_PreGoodRec.Value.Trim = "" Then
             ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert(กรุณาป้อน Job No ก่อน !!!);", True)
             txtJobNo_PreGoodRec.Focus()
@@ -1191,68 +1200,72 @@ Public Class PrepareLotWH
             Exit Sub
         End If
 
-        If chkNotUseDate_GoodRecDetail.Checked = True Then
-            ManuDate = CDate(DBNull.Value.ToString)
-            ExpDate = CDate(DBNull.Value.ToString)
-        ElseIf chkNotUseDate_GoodRecDetail.Checked = False Then
-            ManuDate = CDate(txtdatepickerManufacturing_GoodRecDetail.Text.Trim)
-            ExpDate = CDate(txtdatepickerExpiredDate_GoodRecDetail.Text.Trim)
+        If chkNotUseDate_GoodRecDetail.Checked = False Then
+            ManuDate = Now
+            ExpDate = Now
+        ElseIf chkNotUseDate_GoodRecDetail.Checked = True Then
+            ManuDate = DateTime.ParseExact(txtdatepickerManufacturing_GoodRecDetail.Text.Trim, "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US"))
+            ExpDate = DateTime.ParseExact(txtdatepickerExpiredDate_GoodRecDetail.Text.Trim, "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US"))
+        End If
+        If String.IsNullOrEmpty(txtdatepickerReceiveDate_GoodRecDetail.Text.Trim) Then
+            receiveDate_ = CDate(Convert.ToDateTime(Date.Now).ToString("dd/MM/yyyy"))
+        Else
+            receiveDate_ = DateTime.ParseExact(txtdatepickerReceiveDate_GoodRecDetail.Text.Trim, "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US"))
         End If
 
-        'sb.Append("INSERT INTO tblWHPrepairGoodsReceiveDetail (LOTNo,WHSite,WHLocation,ENDCustomer,WHSource,CustomerLOTNo,ItemNo,ProductCode,CustomerPN,OwnerPN,ProductDesc,Measurement,ProductWidth,ProductLength,ProductHeight,ProductVolume,OrderNo,ReceiveNo,Type,ManufacturingDate,ExpiredDate,ReceiveDate,Quantity,QuantityUnit,Weigth,WeigthUnit,Currency,ExchangeRate,PriceForeigh,PriceForeighAmount,PriceBath,PriceBathAmount,PalletNo,UserBy,LastUpdate,Status,Supplier,Buyer,Exporter,Destination,Consignee,ShippingMark,EntryNo,EntryItemNo,Invoice) ")
-        'sb.Append(" VALUES (@LOTNo,@WHSite,@WHLocation,@ENDCustomer,@WHSource,@CustomerLOTNo,@ItemNo,@ProductCode,@CustomerPN,@OwnerPN,@ProductDesc,@Measurement,@ProductWidth,@ProductLength,@ProductHeight,@ProductVolume,@OrderNo,@ReceiveNo,@Type,@ManufacturingDate,@ExpiredDate,@ReceiveDate,@Quantity,@QuantityUnit,@Weigth,@WeigthUnit,@Currency,@ExchangeRate,@PriceForeigh,@PriceForeighAmount,@PriceBath,@PriceBathAmount,@PalletNo,@UserBy,@LastUpdate,@Status,@Supplier,@Buyer,@Exporter,@Destination,@Consignee,@ShippingMark,@EntryNo,@EntryItemNo,@Invoice) ")
+        checkNull()
 
         If MsgBox("คุณต้องการเพิ่มรายการ WHGoodsReceiveDetail ใหม่ ใช่หรือไม่ ?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
             Using tran As New TransactionScope()
                 Try
                     db.Database.Connection.Open()
-                    db.tblWHPrepairGoodsReceiveDetails.Add(New tblWHPrepairGoodsReceiveDetail With { _
-                        .LOTNo = txtJobNo_PreGoodRec.Value.Trim, _
-                    .WHSite = ddlWHSite_GoodRecDetail.Text.Trim, _
-                    .WHLocation = ddlWHLocation_GoodRecDetail.Text.Trim, _
-                    .ENDCustomer = txtENDCustomer_GoodRecDetail.Value.Trim, _
-                    .CustomerLOTNo = txtCusLOTNo_GoodRecDetail.Value.Trim, _
-                    .ItemNo = CDbl(txtItemNo_GoodRecDetail.Value.Trim), _
-                    .ProductCode = txtEASPN_GoodRecDetail.Value.Trim, _
-                    .CustomerPN = txtCustomerPN_GoodRecDetail.Value.Trim, _
-                    .OwnerPN = txtOwnerPN_GoodRecDetail.Value.Trim, _
-                    .ProductDesc = txtProductDesc_GoodRecDetail.Value.Trim, _
-                    .Measurement = ddlMeasurement_GoodRecDetail.Text.Trim, _
-                    .ProductWidth = CType(txtWidth_GoodRecDetail.Value.Trim, Double?), _
-                    .ProductHeight = CType(txtHight_GoodRecDetail.Value.Trim, Double?), _
-                    .ProductLength = CType(txtLength_GoodRecDetail.Value.Trim, Double?), _
-                    .ProductVolume = CType(txtProductVolume_GoodRecDetail.Value.Trim, Double?), _
-                    .OrderNo = txtOrderNo_GoodRecDetail.Value.Trim, _
-                    .ReceiveNo = txtReceiveNo_GoodRecDetail.Value.Trim, _
-                    .Type = ddlStatus_GoodRecDetail.Text.Trim, _
-                    .ManufacturingDate = ManuDate, _
-                    .ExpiredDate = ExpDate, _
-                    .ReceiveDate = CType(txtdatepickerReceiveDate_GoodRecDetail.Text.Trim, Date?), _
-                    .Quantity = CType(txtQuantity_GoodRecDetail.Value.Trim, Double?), _
-                    .QuantityUnit = ddlQuantity_GoodRecDetail.Text.Trim, _
-                    .Weigth = CType(txtWeight_GoodRecDetail.Value.Trim, Double?), _
-                    .WeigthUnit = ddlWeight_GoodRecDetail.Text.Trim, _
-                    .Currency = ddlCurrency_GoodRecDetail.Text.Trim, _
-                    .ExchangeRate = CType(txtExchangeRate_GoodRecDetail.Value.Trim, Double?), _
-                    .PriceForeigh = CType(txtPriceForeign_GoodRecDetail.Value.Trim, Double?), _
-                    .PriceBath = CType(txtPriceBath_GoodRecDetail.Value.Trim, Double?), _
-                    .PriceForeighAmount = CType(txtAmount_GoodRecDetail.Value.Trim, Double?), _
-                    .PriceBathAmount = CType(txtBathAmount_GoodRecDetail.Value.Trim, Double?), _
-                    .PalletNo = txtPalletNo_GoodRecDetail.Value.Trim, _
-                    .Supplier = txtSupplier_GoodRecDetail.Value.Trim, _
-                    .Buyer = txtBuyer_GoodRecDetail.Value.Trim, _
-                    .Exporter = txtExporter_GoodRecDetail.Value.Trim, _
-                    .Destination = txtDestination_GoodRecDetail.Value.Trim, _
-                    .Consignee = txtConsignee_GoodRecDetail.Value.Trim, _
-                    .ShippingMark = txtShippingMark_GoodRecDetail.Value.Trim, _
-                    .EntryNo = txtEntryNo_GoodRecDetail.Value.Trim, _
-                    .EntryItemNo = CType(txtEntryItemNo_GoodRecDetail.Value.Trim, Integer?), _
-                    .Invoice = txtInvoice_GoodRecDetail.Value.Trim, _
-                    .UserBy = CStr(Session("UserName")), _
-                    .LastUpdate = Now, _
-                    .Status = 0
-                        })
 
+                    db.tblWHPrepairGoodsReceiveDetails.Add(New tblWHPrepairGoodsReceiveDetail With { _
+                            .LOTNo = txtJobNo_PreGoodRec.Value.Trim, _
+                            .WHSite = ddlWHSite_GoodRecDetail.Text.Trim, _
+                            .WHLocation = ddlWHLocation_GoodRecDetail.Text.Trim, _
+                            .ENDCustomer = txtENDCustomer_GoodRecDetail.Value.Trim, _
+                            .CustomerLOTNo = txtCusLOTNo_GoodRecDetail.Value.Trim, _
+                            .ItemNo = CDbl(txtItemNo_GoodRecDetail.Value.Trim), _
+                            .ProductCode = txtEASPN_GoodRecDetail.Value.Trim, _
+                            .CustomerPN = txtCustomerPN_GoodRecDetail.Value.Trim, _
+                            .OwnerPN = txtOwnerPN_GoodRecDetail.Value.Trim, _
+                            .ProductDesc = txtProductDesc_GoodRecDetail.Value.Trim, _
+                            .Measurement = ddlMeasurement_GoodRecDetail.Text.Trim, _
+                            .ProductWidth = CType(txtWidth_GoodRecDetail.Value.Trim, Double?), _
+                            .ProductHeight = CType(txtHight_GoodRecDetail.Value.Trim, Double?), _
+                            .ProductLength = CType(txtLength_GoodRecDetail.Value.Trim, Double?), _
+                            .ProductVolume = CType(txtProductVolume_GoodRecDetail.Value.Trim, Double?), _
+                            .OrderNo = txtOrderNo_GoodRecDetail.Value.Trim, _
+                            .ReceiveNo = txtReceiveNo_GoodRecDetail.Value.Trim, _
+                            .Type = ddlStatus_GoodRecDetail.Text.Trim, _
+                            .ManufacturingDate = ManuDate, _
+                            .ExpiredDate = ExpDate, _
+                            .ReceiveDate = receiveDate_, _
+                            .Quantity = CType(txtQuantity_GoodRecDetail.Value.Trim, Double?), _
+                            .QuantityUnit = ddlQuantity_GoodRecDetail.Text.Trim, _
+                            .Weigth = CType(txtWeight_GoodRecDetail.Value.Trim, Double?), _
+                            .WeigthUnit = ddlWeight_GoodRecDetail.Text.Trim, _
+                            .Currency = ddlCurrency_GoodRecDetail.Text.Trim, _
+                            .ExchangeRate = CType(txtExchangeRate_GoodRecDetail.Value.Trim, Double?), _
+                            .PriceForeigh = CType(txtPriceForeign_GoodRecDetail.Value.Trim, Double?), _
+                            .PriceBath = CType(txtPriceBath_GoodRecDetail.Value.Trim, Double?), _
+                            .PriceForeighAmount = CType(txtAmount_GoodRecDetail.Value.Trim, Double?), _
+                            .PriceBathAmount = CType(txtBathAmount_GoodRecDetail.Value.Trim, Double?), _
+                            .PalletNo = txtPalletNo_GoodRecDetail.Value.Trim, _
+                            .Supplier = txtSupplier_GoodRecDetail.Value.Trim, _
+                            .Buyer = txtBuyer_GoodRecDetail.Value.Trim, _
+                            .Exporter = txtExporter_GoodRecDetail.Value.Trim, _
+                            .Destination = txtDestination_GoodRecDetail.Value.Trim, _
+                            .Consignee = txtConsignee_GoodRecDetail.Value.Trim, _
+                            .ShippingMark = txtShippingMark_GoodRecDetail.Value.Trim, _
+                            .EntryNo = txtEntryNo_GoodRecDetail.Value.Trim, _
+                            .EntryItemNo = CType(txtEntryItemNo_GoodRecDetail.Value.Trim, Integer?), _
+                            .Invoice = txtInvoice_GoodRecDetail.Value.Trim, _
+                            .UserBy = CStr(Session("UserName")), _
+                            .LastUpdate = Now, _
+                            .Status = 0
+                        })
                     db.SaveChanges()
                     tran.Complete()
                     ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('Add สำเร็จ !');", True)
@@ -1362,28 +1375,19 @@ Public Class PrepareLotWH
             txtJobNo_PreGoodRec.Focus()
             Exit Sub
         End If
+        Try
 
-        'sb.Append("UPDATE tblImpGenLOT")
-        'sb.Append(" SET Status=@Status")
-        'sb.Append(" WHERE (EASLOTNo=@EASLOTNo)")
-        If MsgBox("คุณต้องการแก้ไขรายการ WHGoodsReceiveDetail ใช่หรือไม่ ?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
-            Using tran As New TransactionScope()
-                Try
-                    db.Database.Connection.Open()
-                    Dim edit As tblImpGenLOT = (From c In db.tblImpGenLOTs Where c.EASLOTNo = txtJobNo_PreGoodRec.Value.Trim
-                      Select c).First()
-                    If edit IsNot Nothing Then
-                        'edit.EASLOTNo = txtJobNo_PreGoodRec.Value.Trim
-                        edit.Status = 1
-                        db.SaveChanges()
-                        tran.Complete()
-                        ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('แก้ไขข้อมูล สำเร็จ !');", True)
-                    End If
-                Catch ex As Exception
-                    ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด กรุณาบันทึกข้อมูลใหม่อีกครั้ง');", True)
-                End Try
-            End Using
-        End If
+            Dim edit As tblImpGenLOT = (From c In db.tblImpGenLOTs Where c.EASLOTNo = txtJobNo_PreGoodRec.Value.Trim
+              Select c).First()
+            If edit IsNot Nothing Then
+                'edit.EASLOTNo = txtJobNo_PreGoodRec.Value.Trim
+                edit.Status = 1
+                db.SaveChanges()
+
+            End If
+        Catch ex As Exception
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด กรุณาบันทึกข้อมูลใหม่อีกครั้ง');", True)
+        End Try
         txtJobNo_PreGoodRec.Focus()
     End Sub
     Private Sub ClearDATA()
@@ -1474,4 +1478,27 @@ Public Class PrepareLotWH
         txtEntryItemNo_GoodRecDetail.Value = ""
         txtInvoice_GoodRecDetail.Value = ""
     End Sub
+    Private Sub checkNull()
+
+        If String.IsNullOrEmpty(txtItemNo_GoodRecDetail.Value.Trim) Then
+            txtItemNo_GoodRecDetail.Value = "0.0"
+        ElseIf String.IsNullOrEmpty(txtQuantity_GoodRecDetail.Value.Trim) Then
+            txtQuantity_GoodRecDetail.Value = "0.0"
+        ElseIf String.IsNullOrEmpty(txtWeight_GoodRecDetail.Value.Trim) Then
+            txtWeight_GoodRecDetail.Value = "0.0"
+        ElseIf String.IsNullOrEmpty(txtExchangeRate_GoodRecDetail.Value.Trim) Then
+            txtExchangeRate_GoodRecDetail.Value = "0.0"
+        ElseIf String.IsNullOrEmpty(txtPriceForeign_GoodRecDetail.Value.Trim) Then
+            txtPriceForeign_GoodRecDetail.Value = "0.0"
+        ElseIf String.IsNullOrEmpty(txtPriceBath_GoodRecDetail.Value.Trim) Then
+            txtPriceBath_GoodRecDetail.Value = "0.0"
+        ElseIf String.IsNullOrEmpty(txtAmount_GoodRecDetail.Value.Trim) Then
+            txtAmount_GoodRecDetail.Value = "0.0"
+        ElseIf String.IsNullOrEmpty(txtBathAmount_GoodRecDetail.Value.Trim) Then
+            txtBathAmount_GoodRecDetail.Value = "0.0"
+        ElseIf String.IsNullOrEmpty(txtEntryItemNo_GoodRecDetail.Value.Trim) Then
+            txtEntryItemNo_GoodRecDetail.Value = "0"
+        End If
+    End Sub
+
 End Class
