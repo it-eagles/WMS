@@ -2,7 +2,7 @@
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
-<%@ OutputCache Duration="60" VaryByParam="none" %>
+<%--<%@ OutputCache Duration="60" VaryByParam="none" %>--%>
 
 <asp:Content ContentPlaceHolderID="ContentPlaceHolder1" runat="server" ID="Content1">
     <form runat="server" id="form1">

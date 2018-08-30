@@ -57,13 +57,6 @@
     <Property Name="CreateDate" Type="datetime" />
     <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6013: The table/view 'LKBWarehouse.dbo.tblCompanyGuarantee' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tblCompanyGuarantee">
-          <Property Name="AmountGuarantee" Type="decimal" Precision="18" Scale="0" />
-          <Property Name="AmountUsed" Type="decimal" Precision="18" Scale="0" />
-          <Property Name="Balance" Type="decimal" Precision="18" Scale="0" />
-        </EntityType>-->
   <EntityType Name="tblCompanyGuarantee1">
     <Key>
       <PropertyRef Name="AmountGuaranteeID" />
@@ -2221,12 +2214,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblTempItemNo' does not have a pr
     <Property Name="PullSignal" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="ItemNo" Type="float" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6013: The table/view 'LKBWarehouse.dbo.tblTempMJSummaryStock-11122013' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tblTempMJSummaryStock-11122013">
-          <Property Name="PART NUMBER" Type="nvarchar" MaxLength="255" />
-          <Property Name="On Hand" Type="float" />
-        </EntityType>-->
   <EntityType Name="tblTruckManifest">
     <Key>
       <PropertyRef Name="TruckManifestCode" />
@@ -2991,8 +2978,6 @@ warning 6013: The table/view 'LKBWarehouse.dbo.tblTempMJSummaryStock-11122013' d
     <Property Name="PrintCount" Type="varchar" MaxLength="50" />
     <Property Name="UsedStatus" Type="int" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblWHPrepairGoodsReceiveDetail' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblWHPrepairGoodsReceiveDetail">
     <Key>
       <PropertyRef Name="LOTNo" />
@@ -3332,6 +3317,7 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
     <EntitySet Name="tblWHPickPackMaster" EntityType="Self.tblWHPickPackMaster" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblWHPickPackNewProduct" EntityType="Self.tblWHPickPackNewProduct" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblWHPrepairGoodsReceive" EntityType="Self.tblWHPrepairGoodsReceive" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblWHPrepairGoodsReceiveDetail" EntityType="Self.tblWHPrepairGoodsReceiveDetail" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblWHStockCtrl" EntityType="Self.tblWHStockCtrl" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblGenAutoNo" EntityType="Self.tblGenAutoNo" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
@@ -3386,55 +3372,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
     [tblTempItemNo].[PullSignal] AS [PullSignal], 
     [tblTempItemNo].[ItemNo] AS [ItemNo]
     FROM [dbo].[tblTempItemNo] AS [tblTempItemNo]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblWHPrepairGoodsReceiveDetail" EntityType="Self.tblWHPrepairGoodsReceiveDetail" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblWHPrepairGoodsReceiveDetail].[LOTNo] AS [LOTNo], 
-    [tblWHPrepairGoodsReceiveDetail].[WHSite] AS [WHSite], 
-    [tblWHPrepairGoodsReceiveDetail].[WHLocation] AS [WHLocation], 
-    [tblWHPrepairGoodsReceiveDetail].[ENDCustomer] AS [ENDCustomer], 
-    [tblWHPrepairGoodsReceiveDetail].[WHSource] AS [WHSource], 
-    [tblWHPrepairGoodsReceiveDetail].[CustomerLOTNo] AS [CustomerLOTNo], 
-    [tblWHPrepairGoodsReceiveDetail].[ItemNo] AS [ItemNo], 
-    [tblWHPrepairGoodsReceiveDetail].[ProductCode] AS [ProductCode], 
-    [tblWHPrepairGoodsReceiveDetail].[CustomerPN] AS [CustomerPN], 
-    [tblWHPrepairGoodsReceiveDetail].[OwnerPN] AS [OwnerPN], 
-    [tblWHPrepairGoodsReceiveDetail].[ProductDesc] AS [ProductDesc], 
-    [tblWHPrepairGoodsReceiveDetail].[Measurement] AS [Measurement], 
-    [tblWHPrepairGoodsReceiveDetail].[ProductWidth] AS [ProductWidth], 
-    [tblWHPrepairGoodsReceiveDetail].[ProductLength] AS [ProductLength], 
-    [tblWHPrepairGoodsReceiveDetail].[ProductHeight] AS [ProductHeight], 
-    [tblWHPrepairGoodsReceiveDetail].[ProductVolume] AS [ProductVolume], 
-    [tblWHPrepairGoodsReceiveDetail].[OrderNo] AS [OrderNo], 
-    [tblWHPrepairGoodsReceiveDetail].[ReceiveNo] AS [ReceiveNo], 
-    [tblWHPrepairGoodsReceiveDetail].[Type] AS [Type], 
-    [tblWHPrepairGoodsReceiveDetail].[ManufacturingDate] AS [ManufacturingDate], 
-    [tblWHPrepairGoodsReceiveDetail].[ExpiredDate] AS [ExpiredDate], 
-    [tblWHPrepairGoodsReceiveDetail].[ReceiveDate] AS [ReceiveDate], 
-    [tblWHPrepairGoodsReceiveDetail].[Quantity] AS [Quantity], 
-    [tblWHPrepairGoodsReceiveDetail].[QuantityUnit] AS [QuantityUnit], 
-    [tblWHPrepairGoodsReceiveDetail].[Weigth] AS [Weigth], 
-    [tblWHPrepairGoodsReceiveDetail].[WeigthUnit] AS [WeigthUnit], 
-    [tblWHPrepairGoodsReceiveDetail].[Currency] AS [Currency], 
-    [tblWHPrepairGoodsReceiveDetail].[ExchangeRate] AS [ExchangeRate], 
-    [tblWHPrepairGoodsReceiveDetail].[PriceForeigh] AS [PriceForeigh], 
-    [tblWHPrepairGoodsReceiveDetail].[PriceForeighAmount] AS [PriceForeighAmount], 
-    [tblWHPrepairGoodsReceiveDetail].[PriceBath] AS [PriceBath], 
-    [tblWHPrepairGoodsReceiveDetail].[PriceBathAmount] AS [PriceBathAmount], 
-    [tblWHPrepairGoodsReceiveDetail].[PalletNo] AS [PalletNo], 
-    [tblWHPrepairGoodsReceiveDetail].[UserBy] AS [UserBy], 
-    [tblWHPrepairGoodsReceiveDetail].[LastUpdate] AS [LastUpdate], 
-    [tblWHPrepairGoodsReceiveDetail].[Status] AS [Status], 
-    [tblWHPrepairGoodsReceiveDetail].[Supplier] AS [Supplier], 
-    [tblWHPrepairGoodsReceiveDetail].[Buyer] AS [Buyer], 
-    [tblWHPrepairGoodsReceiveDetail].[Exporter] AS [Exporter], 
-    [tblWHPrepairGoodsReceiveDetail].[Destination] AS [Destination], 
-    [tblWHPrepairGoodsReceiveDetail].[Consignee] AS [Consignee], 
-    [tblWHPrepairGoodsReceiveDetail].[ShippingMark] AS [ShippingMark], 
-    [tblWHPrepairGoodsReceiveDetail].[EntryNo] AS [EntryNo], 
-    [tblWHPrepairGoodsReceiveDetail].[EntryItemNo] AS [EntryItemNo], 
-    [tblWHPrepairGoodsReceiveDetail].[Invoice] AS [Invoice]
-    FROM [dbo].[tblWHPrepairGoodsReceiveDetail] AS [tblWHPrepairGoodsReceiveDetail]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="tblWHReceiveScantoTemp" EntityType="Self.tblWHReceiveScantoTemp" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 

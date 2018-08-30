@@ -987,8 +987,6 @@ Public Class SingleReceivedWH
     End Sub
 
     Private Sub selectPrepairGoodsReceive()
-
-        Dim lot As String
         Dim lotDate_ As Integer
         Dim consignee As String = ""
         Dim endCustomer As String = ""

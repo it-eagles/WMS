@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="PrepareLotWH.aspx.vb" Inherits="WMS.PrepareLotWH" MasterPageFile="~/Home.Master" EnableEventValidation="false" EnableViewState="true" %>
+
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
 
@@ -14,7 +15,7 @@
             <ol class="breadcrumb">
                 <li><a href="HomeMain.aspx"><i class="fa fa-home"></i>Home</a></li>
                 <li><a class="active"><i class="fa fa-file"></i>WareHouse</a></li>
-                <li><a href="PrepareLotWH.aspx"class="active">Prepare LOT</a></li>
+                <li><a href="PrepareLotWH.aspx" class="active">Prepare LOT</a></li>
 
             </ol>
         </section>
@@ -23,6 +24,9 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="box box-default">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Modal Examples</h3>
+                        </div>
                         <div class="box-body">
                             <div class="col-xs-6">
                                 <button class="btn btn-app" id="btnAddHead" runat="server" onserverclick="btnAddHead_ServerClick"><i class="fa fa-inbox"></i>Add</button>
@@ -36,429 +40,439 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <!-- left column -->
 
-                <div class="col-md-12">
-                    <div class="nav-tabs-custom">
-                        <ul class="nav nav-tabs">                            
-                            <li class="active"><a href="#preparegoodsreceive" data-toggle="tab">Prepare Goods Receive</a></li>
-                            <li><a href="#goodreceivedetail" data-toggle="tab">Good Receive Detail</a></li>
-                            <li><a href="#importdata" data-toggle="tab">Import Data</a></li>
-                        </ul>
+            <div class="panel panel-default">
+                <div id="Tabs" role="tabpanel" class="nav-tabs-custom">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li><a href="#preparegoodsreceive" aria-controls="preparegoodsreceive" role="tab" data-toggle="tab" class="active">Master JOB</a></li>
+                        <li><a href="#goodreceivedetail" aria-controls="goodreceivedetail" role="tab" data-toggle="tab">JOB Detail</a></li>
+                        <li><a href="#importdata" aria-controls="importdata" role="tab" data-toggle="tab">Invoice</a></li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content" style="padding-top: 10px">
+                        <div role="tabpanel" class="tab-pane active" id="preparegoodsreceive">
+                            <div class="post">
+                                <div class="row margin-bottom">
 
-                        <div class="tab-content">
-                            <style>
-                             h5{height:39px;}                                                                    
-                            </style>
+                                    <div class="col-lg-12 col-md-8 ">
+                                        <!-- form start -->
+                                        <div class="form-horizontal">
+                                            <div class="box-body">
+                                                <fieldset runat="server" id="preparegoodsreceive_fieldset">
+                                                    <!-- Post -->
+                                                    <div class="row">
+                                                        <%-----------------------------------------------------Start JOB Form-----------------------------------------------------------%>
+                                                        <div class="col-lg-12 col-md-12 ">
+                                                            <!-- form start -->
+                                                            <div class="form-horizontal">
+                                                                <fieldset>
+                                                                    <legend>Job</legend>
+                                                                    <div class="box-body">
+                                                                        <div class="col-md-4 col-sm-4">
+                                                                            <div class="form-group">
+                                                                                <label for="txtJobNo_PreGoodRec" class="col-sm-3 control-label">Job No:</label>
+                                                                                <div class="col-sm-6">
+                                                                                    <input class="form-control" id="txtJobNo_PreGoodRec" runat="server" placeholder="Job No" autocomplete="off" />
+                                                                                </div>
+                                                                                <div class="col-sm-2">
+                                                                                    <button type="button" class="btn btn-primary" runat="server" id="btnJobNoSearch" onserverclick="btnJobNoSearch_ServerClick"><i class="glyphicon glyphicon-search"></i></button>
+                                                                                </div>
+                                                                                <div class="col-sm-2">
+                                                                                    <button type="button" class="btn btn-dange" runat="server" id="btnJobNoSearch_Edit" onserverclick="btnJobNoSearch_Edit_ServerClick" visible="false"><i class="glyphicon glyphicon-search"></i></button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
 
-                            <%-----------------------------------------------------Start Confirm Good Receive-----------------------------------------------------------%>
-             <!------- Import Goods ------->
-                            <div class="active tab-pane" id="preparegoodsreceive">
-                                <fieldset runat="server" id="preparegoodsreceive_fieldset">
-                                    <!-- Post -->
-                                    <div class="row">
-                                        <%-----------------------------------------------------Start JOB Form-----------------------------------------------------------%>
-                                        <div class="col-lg-12 col-md-12 ">
-                                            <!-- form start -->
-                                            <div class="form-horizontal">
-                                                <fieldset>
-                                                    <legend>Job</legend>
-                                                    <div class="box-body">
-                                                        <div class="col-md-4 col-sm-4">
-                                                            <div class="form-group">
-                                                                <label for="txtJobNo_PreGoodRec" class="col-sm-3 control-label">Job No:</label>
-                                                                <div class="col-sm-6">
-                                                                    <input class="form-control" id="txtJobNo_PreGoodRec" runat="server" placeholder="Job No" autocomplete="off" />
-                                                                </div>
-                                                                <div class="col-sm-3">
-                                                                    <button type="button" class="btn btn-block btn-primary" runat="server" id="btnJobNoSearch" onserverclick="btnJobNoSearch_ServerClick"><i class="glyphicon glyphicon-search"></i></button>
-                                                                </div>
-                                                                <div class="col-sm-3">
-                                                                    <button type="button" class="btn btn-block btn-primary" runat="server" id="btnJobNoSearch_Edit" onserverclick="btnJobNoSearch_Edit_ServerClick" visible="false"><i class="glyphicon glyphicon-search"></i></button>
+                                                                        <div class="col-md-4">
+                                                                            <div class="form-group">
+                                                                                <label for="txtJobdate_PreGoodRec" class="col-sm-4 control-label">Job Date:</label>
+                                                                                <div class="col-sm-8">
+                                                                                    <%--<input type="text" class="form-control pull-right" id="datepickerJobdate"/>--%>
+                                                                                    <asp:TextBox CssClass="form-control" ID="txtdatepickerJobdate_PreGoodRec" runat="server" placeholder="DD/MM/YYYY">
+                                                                                    </asp:TextBox>
+                                                                                    <asp:CalendarExtender ID="CalendarExtenderJobdate_PreGoodRec" runat="server" Enabled="True" TargetControlID="txtdatepickerJobdate_PreGoodRec" Format="dd/MM/yyyy"></asp:CalendarExtender>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="col-md-4">
+                                                                            <div class="form-group">
+                                                                                <label for="txtCustRefNo_PreGoodRec" class="col-sm-4 control-label">Cust REF No:</label>
+                                                                                <div class="col-sm-8">
+                                                                                    <input class="form-control" id="txtCustRefNo_PreGoodRec" runat="server" />
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+
+                                                                        <!-- /.box-body -->
+                                                                    </div>
+                                                                    <!-- /.box-header -->
+                                                                </fieldset>
+                                                            </div>
+                                                            <!--/.col-lg-6 col-md-6 stockqty--->
+
+                                                        </div>
+                                                        <%-------------------------------------------------------End JOB Form----------------------------------------------------------------%>
+
+                                                        <%-----------------------------------------------------Start Left Form--------------------------------------------------%>
+                                                        <div class="col-md-6">
+                                                            <!-- Horizontal Form -->
+
+                                                            <!-- form start -->
+                                                            <!-- general form Commodity -->
+                                                            <div class="form-horizontal">
+                                                                <fieldset>
+                                                                    <legend>Owner</legend>
+                                                                    <div class="box-body">
+                                                                        <div class="form-group">
+                                                                            <label for="txtOwnerCode_PreGoodRec" class="col-sm-4 control-label">Owner Code:</label>
+                                                                            <div class="col-sm-6">
+                                                                                <input class="form-control" id="txtOwnerCode_PreGoodRec" runat="server" autocomplete="off" />
+                                                                            </div>
+                                                                            <div class="col-sm-2">
+                                                                                <button type="button" class="btn btn-block btn-primary" runat="server" id="btnOwnerCode_PreGoodRec" onserverclick="btnOwnerCode_PreGoodRec_ServerClick"><i class="glyphicon glyphicon-search"></i></button>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="txtNameOwner_PreGoodRec" class="col-sm-4 control-label">Name:</label>
+                                                                            <div class="col-sm-8">
+                                                                                <input class="form-control" id="txtNameOwner_PreGoodRec" runat="server" />
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="txtAddress1Owner_PreGoodRec" class="col-sm-4 control-label">Address1:</label>
+                                                                            <div class="col-sm-8">
+                                                                                <input class="form-control" id="txtAddress1Owner_PreGoodRec" runat="server" />
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="txtAddress2Owner_PreGoodRec" class="col-sm-4 control-label">Address2:</label>
+                                                                            <div class="col-sm-8">
+                                                                                <input class="form-control" id="txtAddress2Owner_PreGoodRec" runat="server" />
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="txtAddress3Owner_PreGoodRec" class="col-sm-4 control-label">Address3:</label>
+                                                                            <div class="col-sm-8">
+                                                                                <input class="form-control" id="txtAddress3Owner_PreGoodRec" runat="server" />
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="txtAddress4Owner_PreGoodRec" class="col-sm-4 control-label">Address4:</label>
+                                                                            <div class="col-sm-8">
+                                                                                <input class="form-control" id="txtAddress4Owner_PreGoodRec" runat="server" />
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- /.box-body -->
+                                                                </fieldset>
+                                                            </div>
+
+                                                            <div class="form-horizontal">
+                                                                <fieldset>
+                                                                    <legend>WH Management</legend>
+                                                                    <div class="box-body">
+                                                                        <div class="form-group">
+                                                                            <label for="txtWHManagement_PreGoodRec" class="col-sm-4 control-label">WH Management:</label>
+                                                                            <div class="col-sm-6">
+                                                                                <input class="form-control" id="txtWHManagement_PreGoodRec" runat="server" autocomplete="off" />
+                                                                            </div>
+                                                                            <div class="col-sm-2">
+                                                                                <button type="button" class="btn btn-block btn-primary" runat="server" id="btnWHManagement_PreGoodRec" onserverclick="btnWHManagement_PreGoodRec_ServerClick"><i class="glyphicon glyphicon-search"></i></button>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="txtNameWHManage_PreGoodRec" class="col-sm-4 control-label">Name:</label>
+                                                                            <div class="col-sm-8">
+                                                                                <input class="form-control" id="txtNameWHManage_PreGoodRec" runat="server" />
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="txtAddress1WHManage_PreGoodRec" class="col-sm-4 control-label">Address1:</label>
+                                                                            <div class="col-sm-8">
+                                                                                <input class="form-control" id="txtAddress1WHManage_PreGoodRec" runat="server" />
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="txtAddress2WHManage_PreGoodRec" class="col-sm-4 control-label">Address2:</label>
+                                                                            <div class="col-sm-8">
+                                                                                <input class="form-control" id="txtAddress2WHManage_PreGoodRec" runat="server" />
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="txtAddress3WHManage_PreGoodRec" class="col-sm-4 control-label">Address3:</label>
+                                                                            <div class="col-sm-8">
+                                                                                <input class="form-control" id="txtAddress3WHManage_PreGoodRec" runat="server" />
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="txtAddress4WHManage_PreGoodRec" class="col-sm-4 control-label">Address4:</label>
+                                                                            <div class="col-sm-8">
+                                                                                <input class="form-control" id="txtAddress4WHManage_PreGoodRec" runat="server" />
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- /.box-body -->
+                                                                </fieldset>
+                                                            </div>
+
+
+
+                                                        </div>
+                                                        <!--/.col (left) -->
+                                                        <%---------------------------------------------------------------End Left Form------------------------------------------------%>
+
+
+
+                                                        <%------------------------------------------------------------Start Right Form------------------------------------------------%>
+                                                        <div class="col-md-6">
+                                                            <!-- Horizontal Form -->
+                                                            <!-- form start -->
+                                                            <!-- general form Commodity -->
+                                                            <div class="form-horizontal">
+                                                                <fieldset>
+                                                                    <legend>Customer</legend>
+                                                                    <div class="box-body">
+                                                                        <div class="form-group">
+                                                                            <label for="txtCustomerCode_PreGoodRec" class="col-sm-4 control-label">Customer Code:</label>
+                                                                            <div class="col-sm-6">
+                                                                                <input class="form-control" id="txtCustomerCode0_PreGoodRec" runat="server" autocomplete="off" />
+                                                                            </div>
+                                                                            <div class="col-sm-2">
+                                                                                <button type="button" class="btn btn-block btn-primary" runat="server" id="btnCustomerCode_PreGoodRec" onserverclick="btnCustomerCode_PreGoodRec_ServerClick"><i class="glyphicon glyphicon-search"></i></button>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="txtNameCustomer_PreGoodRec" class="col-sm-4 control-label">Name:</label>
+                                                                            <div class="col-sm-8">
+                                                                                <input class="form-control" id="txtNameCustomer_PreGoodRec" runat="server" />
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="txtAddress1Customer_PreGoodRec" class="col-sm-4 control-label">Address1:</label>
+                                                                            <div class="col-sm-8">
+                                                                                <input class="form-control" id="txtAddress1Customer_PreGoodRec" runat="server" />
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="txtAddress2Customer_PreGoodRec" class="col-sm-4 control-label">Address2:</label>
+                                                                            <div class="col-sm-8">
+                                                                                <input class="form-control" id="txtAddress2Customer_PreGoodRec" runat="server" />
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="txtAddress3Customer_PreGoodRec" class="col-sm-4 control-label">Address3:</label>
+                                                                            <div class="col-sm-8">
+                                                                                <input class="form-control" id="txtAddress3Customer_PreGoodRec" runat="server" />
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="txtAddress4Customer_PreGoodRec" class="col-sm-4 control-label">Address4:</label>
+                                                                            <div class="col-sm-8">
+                                                                                <input class="form-control" id="txtAddress4Customer_PreGoodRec" runat="server" />
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- /.box-body -->
+                                                                </fieldset>
+                                                            </div>
+
+                                                            <div class="form-horizontal">
+                                                                <fieldset>
+                                                                    <legend>End User</legend>
+                                                                    <div class="box-body">
+                                                                        <div class="form-group">
+                                                                            <label for="txtEndUserCode_PreGoodRec" class="col-sm-4 control-label">End User Code:</label>
+                                                                            <div class="col-sm-6">
+                                                                                <input class="form-control" id="txtEndUserCode_PreGoodRec" runat="server" autocomplete="off" />
+                                                                            </div>
+                                                                            <div class="col-sm-2">
+                                                                                <button type="button" class="btn btn-block btn-primary" runat="server" id="btnEndUserCode_PreGoodRec" onserverclick="btnEndUserCode_PreGoodRec_ServerClick"><i class="glyphicon glyphicon-search"></i></button>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="txtNameEndUser_PreGoodRec" class="col-sm-4 control-label">Name:</label>
+                                                                            <div class="col-sm-8">
+                                                                                <input class="form-control" id="txtNameEndUser_PreGoodRec" runat="server" />
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="txtAddress1EndUser_PreGoodRec" class="col-sm-4 control-label">Address1:</label>
+                                                                            <div class="col-sm-8">
+                                                                                <input class="form-control" id="txtAddress1EndUser_PreGoodRec" runat="server" />
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="txtAddress2EndUser_PreGoodRec" class="col-sm-4 control-label">Address2:</label>
+                                                                            <div class="col-sm-8">
+                                                                                <input class="form-control" id="txtAddress2EndUser_PreGoodRec" runat="server" />
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="txtAddress3EndUser_PreGoodRec" class="col-sm-4 control-label">Address3:</label>
+                                                                            <div class="col-sm-8">
+                                                                                <input class="form-control" id="txtAddress3EndUser_PreGoodRec" runat="server" />
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="txtAddress4EndUser_PreGoodRec" class="col-sm-4 control-label">Address4:</label>
+                                                                            <div class="col-sm-8">
+                                                                                <input class="form-control" id="txtAddress4EndUser_PreGoodRec" runat="server" />
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- /.box-body -->
+                                                                </fieldset>
+                                                            </div>
+
+
+
+                                                        </div>
+                                                        <!-- right column -->
+
+                                                        <%--------------------------------------------------------------------End Right Form------------------------------------------------------%>
+
+                                                        <%--------------------------------------------------------Start Mid Form----------------------------------------------------%>
+                                                        <div class="col-md-12">
+                                                            <div class="form-horizontal">
+                                                                <fieldset>
+                                                                    <legend>Assign Resource</legend>
+                                                                    <div class="box-body">
+                                                                        <div class="form-group">
+                                                                            <label for="txtHandlePreson_PreGoodRec" class="col-sm-3 control-label">Handle Person:</label>
+                                                                            <div class="col-sm-3">
+                                                                                <input class="form-control" id="txtHandlePreson_PreGoodRec" runat="server" value="0" />
+                                                                            </div>
+                                                                            <label for="txtDate_PreGoodRec" class="col-sm-2 control-label">Date:</label>
+                                                                            <div class="col-sm-3">
+                                                                                <asp:TextBox CssClass="form-control" ID="txtdatepickerDateAssign_PreGoodRec" runat="server" placeholder="DD/MM/YYYY">
+                                                                                </asp:TextBox>
+                                                                                <asp:CalendarExtender ID="CalendarExtenderDateAssign_PreGoodRec" runat="server" Enabled="True" TargetControlID="txtdatepickerDateAssign_PreGoodRec" Format="dd/MM/yyyy"></asp:CalendarExtender>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <%-------------------------------Repeater Assign Resource--------------------%>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- /.box-body -->
+                                                                </fieldset>
+                                                            </div>
+
+                                                            <%-----------------------------------------------------Start Left Form--------------------------------------------------%>
+                                                            <div class="col-md-6">
+                                                                <div class="form-horizontal">
+                                                                    <fieldset>
+                                                                        <legend>Commodity</legend>
+                                                                        <div class="box-body">
+                                                                            <div class="form-group">
+                                                                                <label for="txtCommodity_PreGoodRec" class="col-sm-4 control-label">Commodity:</label>
+                                                                                <div class="col-sm-8">
+                                                                                    <asp:DropDownList ID="ddlCommodity_PreGoodRec" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <label for="txtQuantityPackage_PreGoodRec" class="col-sm-5 control-label">Quantity Package:</label>
+                                                                                <div class="col-sm-3">
+                                                                                    <input class="form-control" id="txtQuantityPackage_PreGoodRec" runat="server" value="0.0" />
+                                                                                </div>
+                                                                                <div class="col-sm-4">
+                                                                                    <asp:DropDownList ID="ddlQuantityPackage_PreGoodRec" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <label for="txtQuantityPLTSkid_PreGoodRec" class="col-sm-5 control-label">Quantity PLT/Skid:</label>
+                                                                                <div class="col-sm-3">
+                                                                                    <input class="form-control" id="txtQuantityPLTSkid_PreGoodRec" runat="server" value="0.0" />
+                                                                                </div>
+                                                                                <div class="col-sm-4">
+                                                                                    <asp:DropDownList ID="ddlQuantityPLTSkid_PreGoodRec" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <label for="txtRemark_PreGoodRec" class="col-sm-4 control-label">Remark:</label>
+                                                                                <div class="col-sm-8">
+                                                                                    <textarea class="form-control" rows="3" runat="server" id="txtRemark_PreGoodRec" placeholder="Remark" style="height: 71px; width: 872px;"></textarea>
+                                                                                </div>
+                                                                            </div>
+
+                                                                        </div>
+                                                                        <!-- /.box-body -->
+                                                                    </fieldset>
                                                                 </div>
                                                             </div>
-                                                        </div>
+                                                            <%---------------------------------------------------------------End Left Form------------------------------------------------%>
 
-                                                        <div class="col-md-4">
-                                                            <div class="form-group">
-                                                                <label for="txtJobdate_PreGoodRec" class="col-sm-4 control-label">Job Date:</label>
-                                                                <div class="col-sm-8">
-                                                                    <%--<input type="text" class="form-control pull-right" id="datepickerJobdate"/>--%>
-                                                                    <asp:TextBox CssClass="form-control" ID="txtdatepickerJobdate_PreGoodRec" runat="server" placeholder="DD/MM/YYYY">
-                                                                    </asp:TextBox>
-                                                                    <asp:CalendarExtender ID="CalendarExtenderJobdate_PreGoodRec" runat="server" Enabled="True" TargetControlID="txtdatepickerJobdate_PreGoodRec" Format="dd/MM/yyyy"></asp:CalendarExtender>
+
+
+
+
+                                                            <%------------------------------------------------------------Start Right Form------------------------------------------------%>
+
+                                                            <div class="col-md-6">
+                                                                <div class="form-horizontal">
+                                                                    <fieldset>
+                                                                        <legend>Commodity</legend>
+                                                                        <div class="box-body">
+                                                                            <div class="form-group">
+                                                                                <label for="txtQuantityOfGood_PreGoodRec" class="col-sm-5 control-label">Quantity Of Goods:</label>
+                                                                                <div class="col-sm-3">
+                                                                                    <input class="form-control" id="txtQuantityOfGood_PreGoodRec" runat="server" value="0.0" />
+                                                                                </div>
+                                                                                <div class="col-sm-4">
+                                                                                    <asp:DropDownList ID="ddlQuantityOfGood_PreGoodRec" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <label for="txtWeight_PreGoodRec" class="col-sm-5 control-label">Weight:</label>
+                                                                                <div class="col-sm-3">
+                                                                                    <input class="form-control" id="txtWeight_PreGoodRec" runat="server" value="0.0" />
+                                                                                </div>
+                                                                                <div class="col-sm-4">
+                                                                                    <asp:DropDownList ID="ddlWeight_PreGoodRec" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <label for="txtVolume_PreGoodRec" class="col-sm-5 control-label">Volume:</label>
+                                                                                <div class="col-sm-3">
+                                                                                    <input class="form-control" id="txtVolume_PreGoodRec" runat="server" value="0.0" />
+                                                                                </div>
+                                                                                <div class="col-sm-4">
+                                                                                    <asp:DropDownList ID="ddlVolume_PreGoodRec" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <!-- /.box-body -->
+                                                                    </fieldset>
                                                                 </div>
                                                             </div>
+                                                            <%--------------------------------------------------------------------End Right Form------------------------------------------------------%>
                                                         </div>
-
-                                                        <div class="col-md-4">
-                                                            <div class="form-group">
-                                                                <label for="txtCustRefNo_PreGoodRec" class="col-sm-4 control-label">Cust REF No:</label>
-                                                                <div class="col-sm-8">
-                                                                    <input class="form-control" id="txtCustRefNo_PreGoodRec" runat="server" />
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-
-                                                        <!-- /.box-body -->
+                                                        <%-------------------------------------------------------------End Mid Form----------------------------------------------------%>
                                                     </div>
-                                                    <!-- /.box-header -->
+                                                    <!-- /.post -->
                                                 </fieldset>
                                             </div>
-                                            <!--/.col-lg-6 col-md-6 stockqty--->
 
                                         </div>
-                                        <%-------------------------------------------------------End JOB Form----------------------------------------------------------------%>
-
-                                        <%-----------------------------------------------------Start Left Form--------------------------------------------------%>
-                                        <div class="col-md-6">
-                                            <!-- Horizontal Form -->
-
-                                            <!-- form start -->
-                                            <!-- general form Commodity -->
-                                            <div class="form-horizontal">
-                                                <fieldset>
-                                                    <legend>Owner</legend>
-                                                    <div class="box-body">
-                                                        <div class="form-group">
-                                                            <label for="txtOwnerCode_PreGoodRec" class="col-sm-4 control-label">Owner Code:</label>
-                                                            <div class="col-sm-6">
-                                                                <input class="form-control" id="txtOwnerCode_PreGoodRec" runat="server" autocomplete="off" />
-                                                            </div>
-                                                            <div class="col-sm-2">
-                                                                <button type="button" class="btn btn-block btn-primary" runat="server" id="btnOwnerCode_PreGoodRec" onserverclick="btnOwnerCode_PreGoodRec_ServerClick"><i class="glyphicon glyphicon-search"></i></button>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="txtNameOwner_PreGoodRec" class="col-sm-4 control-label">Name:</label>
-                                                            <div class="col-sm-8">
-                                                                <input class="form-control" id="txtNameOwner_PreGoodRec" runat="server" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="txtAddress1Owner_PreGoodRec" class="col-sm-4 control-label">Address1:</label>
-                                                            <div class="col-sm-8">
-                                                                <input class="form-control" id="txtAddress1Owner_PreGoodRec" runat="server" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="txtAddress2Owner_PreGoodRec" class="col-sm-4 control-label">Address2:</label>
-                                                            <div class="col-sm-8">
-                                                                <input class="form-control" id="txtAddress2Owner_PreGoodRec" runat="server" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="txtAddress3Owner_PreGoodRec" class="col-sm-4 control-label">Address3:</label>
-                                                            <div class="col-sm-8">
-                                                                <input class="form-control" id="txtAddress3Owner_PreGoodRec" runat="server" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="txtAddress4Owner_PreGoodRec" class="col-sm-4 control-label">Address4:</label>
-                                                            <div class="col-sm-8">
-                                                                <input class="form-control" id="txtAddress4Owner_PreGoodRec" runat="server" />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- /.box-body -->
-                                                </fieldset>
-                                            </div>
-
-                                            <div class="form-horizontal">
-                                                <fieldset>
-                                                    <legend>WH Management</legend>
-                                                    <div class="box-body">
-                                                        <div class="form-group">
-                                                            <label for="txtWHManagement_PreGoodRec" class="col-sm-4 control-label">WH Management:</label>
-                                                            <div class="col-sm-6">
-                                                                <input class="form-control" id="txtWHManagement_PreGoodRec" runat="server" autocomplete="off" />
-                                                            </div>
-                                                            <div class="col-sm-2">
-                                                                <button type="button" class="btn btn-block btn-primary" runat="server" id="btnWHManagement_PreGoodRec" onserverclick="btnWHManagement_PreGoodRec_ServerClick"><i class="glyphicon glyphicon-search"></i></button>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="txtNameWHManage_PreGoodRec" class="col-sm-4 control-label">Name:</label>
-                                                            <div class="col-sm-8">
-                                                                <input class="form-control" id="txtNameWHManage_PreGoodRec" runat="server" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="txtAddress1WHManage_PreGoodRec" class="col-sm-4 control-label">Address1:</label>
-                                                            <div class="col-sm-8">
-                                                                <input class="form-control" id="txtAddress1WHManage_PreGoodRec" runat="server" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="txtAddress2WHManage_PreGoodRec" class="col-sm-4 control-label">Address2:</label>
-                                                            <div class="col-sm-8">
-                                                                <input class="form-control" id="txtAddress2WHManage_PreGoodRec" runat="server" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="txtAddress3WHManage_PreGoodRec" class="col-sm-4 control-label">Address3:</label>
-                                                            <div class="col-sm-8">
-                                                                <input class="form-control" id="txtAddress3WHManage_PreGoodRec" runat="server" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="txtAddress4WHManage_PreGoodRec" class="col-sm-4 control-label">Address4:</label>
-                                                            <div class="col-sm-8">
-                                                                <input class="form-control" id="txtAddress4WHManage_PreGoodRec" runat="server" />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- /.box-body -->
-                                                </fieldset>
-                                            </div>
-
-
-
-                                        </div>
-                                        <!--/.col (left) -->
-                                        <%---------------------------------------------------------------End Left Form------------------------------------------------%>
-
-
-
-                                        <%------------------------------------------------------------Start Right Form------------------------------------------------%>
-                                        <div class="col-md-6">
-                                            <!-- Horizontal Form -->
-                                            <!-- form start -->
-                                            <!-- general form Commodity -->
-                                            <div class="form-horizontal">
-                                                <fieldset>
-                                                    <legend>Customer</legend>
-                                                    <div class="box-body">
-                                                        <div class="form-group">
-                                                            <label for="txtCustomerCode_PreGoodRec" class="col-sm-4 control-label">Customer Code:</label>
-                                                            <div class="col-sm-6">
-                                                                <input class="form-control" id="txtCustomerCode0_PreGoodRec" runat="server" autocomplete="off" />
-                                                            </div>
-                                                            <div class="col-sm-2">
-                                                                <button type="button" class="btn btn-block btn-primary" runat="server" id="btnCustomerCode_PreGoodRec" onserverclick="btnCustomerCode_PreGoodRec_ServerClick"><i class="glyphicon glyphicon-search"></i></button>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="txtNameCustomer_PreGoodRec" class="col-sm-4 control-label">Name:</label>
-                                                            <div class="col-sm-8">
-                                                                <input class="form-control" id="txtNameCustomer_PreGoodRec" runat="server" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="txtAddress1Customer_PreGoodRec" class="col-sm-4 control-label">Address1:</label>
-                                                            <div class="col-sm-8">
-                                                                <input class="form-control" id="txtAddress1Customer_PreGoodRec" runat="server" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="txtAddress2Customer_PreGoodRec" class="col-sm-4 control-label">Address2:</label>
-                                                            <div class="col-sm-8">
-                                                                <input class="form-control" id="txtAddress2Customer_PreGoodRec" runat="server" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="txtAddress3Customer_PreGoodRec" class="col-sm-4 control-label">Address3:</label>
-                                                            <div class="col-sm-8">
-                                                                <input class="form-control" id="txtAddress3Customer_PreGoodRec" runat="server" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="txtAddress4Customer_PreGoodRec" class="col-sm-4 control-label">Address4:</label>
-                                                            <div class="col-sm-8">
-                                                                <input class="form-control" id="txtAddress4Customer_PreGoodRec" runat="server" />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- /.box-body -->
-                                                </fieldset>
-                                            </div>
-
-                                            <div class="form-horizontal">
-                                                <fieldset>
-                                                    <legend>End User</legend>
-                                                    <div class="box-body">
-                                                        <div class="form-group">
-                                                            <label for="txtEndUserCode_PreGoodRec" class="col-sm-4 control-label">End User Code:</label>
-                                                            <div class="col-sm-6">
-                                                                <input class="form-control" id="txtEndUserCode_PreGoodRec" runat="server" autocomplete="off" />
-                                                            </div>
-                                                            <div class="col-sm-2">
-                                                                <button type="button" class="btn btn-block btn-primary" runat="server" id="btnEndUserCode_PreGoodRec" onserverclick="btnEndUserCode_PreGoodRec_ServerClick"><i class="glyphicon glyphicon-search"></i></button>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="txtNameEndUser_PreGoodRec" class="col-sm-4 control-label">Name:</label>
-                                                            <div class="col-sm-8">
-                                                                <input class="form-control" id="txtNameEndUser_PreGoodRec" runat="server" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="txtAddress1EndUser_PreGoodRec" class="col-sm-4 control-label">Address1:</label>
-                                                            <div class="col-sm-8">
-                                                                <input class="form-control" id="txtAddress1EndUser_PreGoodRec" runat="server" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="txtAddress2EndUser_PreGoodRec" class="col-sm-4 control-label">Address2:</label>
-                                                            <div class="col-sm-8">
-                                                                <input class="form-control" id="txtAddress2EndUser_PreGoodRec" runat="server" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="txtAddress3EndUser_PreGoodRec" class="col-sm-4 control-label">Address3:</label>
-                                                            <div class="col-sm-8">
-                                                                <input class="form-control" id="txtAddress3EndUser_PreGoodRec" runat="server" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="txtAddress4EndUser_PreGoodRec" class="col-sm-4 control-label">Address4:</label>
-                                                            <div class="col-sm-8">
-                                                                <input class="form-control" id="txtAddress4EndUser_PreGoodRec" runat="server" />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- /.box-body -->
-                                                </fieldset>
-                                            </div>
-
-
-
-                                        </div>
-                                        <!-- right column -->
-
-                                        <%--------------------------------------------------------------------End Right Form------------------------------------------------------%>
-
-                                        <%--------------------------------------------------------Start Mid Form----------------------------------------------------%>
-                                        <div class="col-md-12">
-                                            <div class="form-horizontal">
-                                                <fieldset>
-                                                    <legend>Assign Resource</legend>
-                                                    <div class="box-body">
-                                                        <div class="form-group">
-                                                            <label for="txtHandlePreson_PreGoodRec" class="col-sm-3 control-label">Handle Person:</label>
-                                                            <div class="col-sm-3">
-                                                                <input class="form-control" id="txtHandlePreson_PreGoodRec" runat="server" value="0" />
-                                                            </div>
-                                                            <label for="txtDate_PreGoodRec" class="col-sm-2 control-label">Date:</label>
-                                                            <div class="col-sm-3">
-                                                                <asp:TextBox CssClass="form-control" ID="txtdatepickerDateAssign_PreGoodRec" runat="server" placeholder="DD/MM/YYYY">
-                                                                </asp:TextBox>
-                                                                <asp:CalendarExtender ID="CalendarExtenderDateAssign_PreGoodRec" runat="server" Enabled="True" TargetControlID="txtdatepickerDateAssign_PreGoodRec" Format="dd/MM/yyyy"></asp:CalendarExtender>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <%-------------------------------Repeater Assign Resource--------------------%>
-                                                        </div>
-                                                    </div>
-                                                    <!-- /.box-body -->
-                                                </fieldset>
-                                            </div>
-
-                                            <%-----------------------------------------------------Start Left Form--------------------------------------------------%>
-                                            <div class="col-md-6">
-                                                <div class="form-horizontal">
-                                                    <fieldset>
-                                                        <legend>Commodity</legend>
-                                                        <div class="box-body">
-                                                            <div class="form-group">
-                                                                <label for="txtCommodity_PreGoodRec" class="col-sm-4 control-label">Commodity:</label>
-                                                                <div class="col-sm-8">
-                                                                    <asp:DropDownList ID="ddlCommodity_PreGoodRec" CssClass="form-control" runat="server"></asp:DropDownList>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="txtQuantityPackage_PreGoodRec" class="col-sm-5 control-label">Quantity Package:</label>
-                                                                <div class="col-sm-3">
-                                                                    <input class="form-control" id="txtQuantityPackage_PreGoodRec" runat="server" value="0.0" />
-                                                                </div>
-                                                                <div class="col-sm-4">
-                                                                    <asp:DropDownList ID="ddlQuantityPackage_PreGoodRec" CssClass="form-control" runat="server"></asp:DropDownList>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="txtQuantityPLTSkid_PreGoodRec" class="col-sm-5 control-label">Quantity PLT/Skid:</label>
-                                                                <div class="col-sm-3">
-                                                                    <input class="form-control" id="txtQuantityPLTSkid_PreGoodRec" runat="server" value="0.0" />
-                                                                </div>
-                                                                <div class="col-sm-4">
-                                                                    <asp:DropDownList ID="ddlQuantityPLTSkid_PreGoodRec" CssClass="form-control" runat="server"></asp:DropDownList>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="txtRemark_PreGoodRec" class="col-sm-4 control-label">Remark:</label>
-                                                                <div class="col-sm-8">
-                                                                    <textarea class="form-control" rows="3" runat="server" id="txtRemark_PreGoodRec" placeholder="Remark" style="height: 71px; width: 872px;"></textarea>
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-                                                        <!-- /.box-body -->
-                                                    </fieldset>
-                                                </div>
-                                            </div>
-                                            <%---------------------------------------------------------------End Left Form------------------------------------------------%>
-
-
-
-
-
-                                            <%------------------------------------------------------------Start Right Form------------------------------------------------%>
-
-                                            <div class="col-md-6">
-                                                <div class="form-horizontal">
-                                                    <fieldset>
-                                                        <legend>Commodity</legend>
-                                                        <div class="box-body">
-                                                            <div class="form-group">
-                                                                <label for="txtQuantityOfGood_PreGoodRec" class="col-sm-5 control-label">Quantity Of Goods:</label>
-                                                                <div class="col-sm-3">
-                                                                    <input class="form-control" id="txtQuantityOfGood_PreGoodRec" runat="server" value="0.0" />
-                                                                </div>
-                                                                <div class="col-sm-4">
-                                                                    <asp:DropDownList ID="ddlQuantityOfGood_PreGoodRec" CssClass="form-control" runat="server"></asp:DropDownList>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="txtWeight_PreGoodRec" class="col-sm-5 control-label">Weight:</label>
-                                                                <div class="col-sm-3">
-                                                                    <input class="form-control" id="txtWeight_PreGoodRec" runat="server" value="0.0" />
-                                                                </div>
-                                                                <div class="col-sm-4">
-                                                                    <asp:DropDownList ID="ddlWeight_PreGoodRec" CssClass="form-control" runat="server"></asp:DropDownList>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="txtVolume_PreGoodRec" class="col-sm-5 control-label">Volume:</label>
-                                                                <div class="col-sm-3">
-                                                                    <input class="form-control" id="txtVolume_PreGoodRec" runat="server" value="0.0" />
-                                                                </div>
-                                                                <div class="col-sm-4">
-                                                                    <asp:DropDownList ID="ddlVolume_PreGoodRec" CssClass="form-control" runat="server"></asp:DropDownList>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <!-- /.box-body -->
-                                                    </fieldset>
-                                                </div>
-                                            </div>
-                                            <%--------------------------------------------------------------------End Right Form------------------------------------------------------%>
-                                        </div>
-                                        <%-------------------------------------------------------------End Mid Form----------------------------------------------------%>
                                     </div>
-                                    <!-- /.post -->
-                                </fieldset>
+                                    <!-- /.col-->
+                                </div>
+                                <!-- /.rom -->
                             </div>
- <!------- /. Import Goods ------->
-                            <%-------------------------------------------------------------End Confirm Good Receive-------------------------------------------------------%>
+                            <!-- /.post -->
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="goodreceivedetail">
+                            <!-- Post -->
+                            <div class="post">
+                                <div class="row margin-bottom">
 
+                                    <div class="col-lg-12 col-md-12">
 
-
-                            <%--------------------------------------------------------------Start Good Receive Detail----------------------------------------------------------%>
-       <!-------- Export Goods --------->
-                            <div class="tab-pane" id="goodreceivedetail">
-                                <fieldset runat="server" id="goodreceivedetail_fieldset">
+                                        <div class="form-horizontal">
+                                            <div class="box-body">
+                                                <fieldset runat="server" id="goodreceivedetail_fieldset">
                                     <!-- Post -->
                                     <div class="row">
 
@@ -470,58 +484,58 @@
                                                 <div class="box-body">
                                                     <div class="col-md-12 col-lg-12">
                                                         <%--------------------------------------Job Detail Repeater---------------------------------%>
-                                                        <asp:Panel ID="JobDetailPanel" runat="server" >
-                                                    <asp:UpdatePanel ID="JobDetailUpdatePanel" runat="server" UpdateMode="Conditional">
-                                                    <ContentTemplate>
-                                                        <asp:Repeater ID="Repeater9" runat="server" OnItemCommand="Repeater9_ItemCommand">
-                                                            <HeaderTemplate>
-                                                                <table id="example9" class="table table-bordered table-striped">
-                                                                    <thead>
-                                                                        <tr>
-                                                                            <th>Select</th>
-                                                                            <th>LotNo</th>
-                                                                            <th>WHSite</th>
-                                                                            <th>WHLocation</th>
-                                                                            <th>ENDCustomer</th>
-                                                                            <th>CustomerLOTNo</th>
-                                                                        </tr>
-                                                                    </thead>
-                                                            </HeaderTemplate>
-                                                            <ItemTemplate>
-                                                                <tr>
-                                                                    <td class="text-center">
-                                                                        <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectJobNoDetail" CommandArgument='<%# Eval("LotNo")%>'><i class="fa fa-hand-o-up"></i></asp:LinkButton>
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:Label ID="lblPartyCode" runat="server" Text='<%# Bind("LotNo")%>'></asp:Label></td>
-                                                                    <td>
-                                                                        <asp:Label ID="lblPartyFullName" runat="server" Text='<%# Bind("WHSite")%>'></asp:Label></td>
-                                                                    <td>
-                                                                        <asp:Label ID="Label1" runat="server" Text='<%# Bind("WHLocation")%>'></asp:Label></td>
-                                                                    <td>
-                                                                        <asp:Label ID="Label2" runat="server" Text='<%# Bind("ENDCustomer")%>'></asp:Label></td>
-                                                                    <td>
-                                                                        <asp:Label ID="Label3" runat="server" Text='<%# Bind("CustomerLOTNo")%>'></asp:Label></td>
-                                                                </tr>
+                                                        <asp:Panel ID="JobDetailPanel" runat="server">
+                                                            <asp:UpdatePanel ID="JobDetailUpdatePanel" runat="server" UpdateMode="Conditional">
+                                                                <ContentTemplate>
+                                                                    <asp:Repeater ID="Repeater9" runat="server" OnItemCommand="Repeater9_ItemCommand">
+                                                                        <HeaderTemplate>
+                                                                            <table id="example9" class="table table-bordered table-striped">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>Select</th>
+                                                                                        <th>LotNo</th>
+                                                                                        <th>WHSite</th>
+                                                                                        <th>WHLocation</th>
+                                                                                        <th>ENDCustomer</th>
+                                                                                        <th>CustomerLOTNo</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                        </HeaderTemplate>
+                                                                        <ItemTemplate>
+                                                                            <tr>
+                                                                                <td class="text-center">
+                                                                                    <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectJobNoDetail" CommandArgument='<%# Eval("LotNo")%>'><i class="fa fa-hand-o-up"></i></asp:LinkButton>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <asp:Label ID="lblPartyCode" runat="server" Text='<%# Bind("LotNo")%>'></asp:Label></td>
+                                                                                <td>
+                                                                                    <asp:Label ID="lblPartyFullName" runat="server" Text='<%# Bind("WHSite")%>'></asp:Label></td>
+                                                                                <td>
+                                                                                    <asp:Label ID="Label1" runat="server" Text='<%# Bind("WHLocation")%>'></asp:Label></td>
+                                                                                <td>
+                                                                                    <asp:Label ID="Label2" runat="server" Text='<%# Bind("ENDCustomer")%>'></asp:Label></td>
+                                                                                <td>
+                                                                                    <asp:Label ID="Label3" runat="server" Text='<%# Bind("CustomerLOTNo")%>'></asp:Label></td>
+                                                                            </tr>
 
-                                                            </ItemTemplate>
-                                                            <FooterTemplate>
-                                                                <tfoot>
-                                                                    <tr>
-                                                                        <th>Select</th>
-                                                                        <th>LotNo</th>
-                                                                        <th>WHSite</th>
-                                                                        <th>WHLocation</th>
-                                                                        <th>ENDCustomer</th>
-                                                                        <th>CustomerLOTNo</th>
-                                                                    </tr>
-                                                                </tfoot>
-                                                                </table>
-                                                            </FooterTemplate>
-                                                        </asp:Repeater>
-                                                        </ContentTemplate>
-                                                </asp:UpdatePanel>
-                                                </asp:Panel>
+                                                                        </ItemTemplate>
+                                                                        <FooterTemplate>
+                                                                            <tfoot>
+                                                                                <tr>
+                                                                                    <th>Select</th>
+                                                                                    <th>LotNo</th>
+                                                                                    <th>WHSite</th>
+                                                                                    <th>WHLocation</th>
+                                                                                    <th>ENDCustomer</th>
+                                                                                    <th>CustomerLOTNo</th>
+                                                                                </tr>
+                                                                            </tfoot>
+                                                                            </table>
+                                                                        </FooterTemplate>
+                                                                    </asp:Repeater>
+                                                                </ContentTemplate>
+                                                            </asp:UpdatePanel>
+                                                        </asp:Panel>
                                                         <%--------------------------------------End Job Detail Repeater---------------------------------%>
                                                     </div>
                                                     <div class="col-md-4 col-sm-4">
@@ -539,11 +553,11 @@
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="txtEASPN_GoodRecDetail" class="col-sm-4 control-label">EAS P/N:</label>
-                                                            <div class="col-sm-5">
+                                                            <div class="col-sm-6">
                                                                 <input class="form-control" id="txtEASPN_GoodRecDetail" runat="server" autocomplete="off" />
                                                             </div>
-                                                            <div class="col-sm-3">
-                                                                <button type="button" class="btn btn-block btn-primary" runat="server" id="btnEASPN_GoodRecDetail" onserverclick="btnEASPN_GoodRecDetail_ServerClick"><i class="glyphicon glyphicon-search"></i></button>
+                                                            <div class="col-sm-2">
+                                                                <button type="button" class="btn btn-primary" runat="server" id="btnEASPN_GoodRecDetail" onserverclick="btnEASPN_GoodRecDetail_ServerClick"><i class="glyphicon glyphicon-search"></i></button>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
@@ -578,11 +592,11 @@
                                                     <div class="col-md-4">
                                                         <div class="form-group">
                                                             <label for="txtENDCustomer_GoodRecDetail" class="col-sm-4 control-label">ENDCustomer:</label>
-                                                            <div class="col-sm-5">
+                                                            <div class="col-sm-6">
                                                                 <input class="form-control" id="txtENDCustomer_GoodRecDetail" runat="server" autocomplete="off" />
                                                             </div>
-                                                            <div class="col-sm-3">
-                                                                <button type="button" class="btn btn-block btn-primary" runat="server" id="btnENDCustomer_GoodRecDetail" onserverclick="btnENDCustomer_GoodRecDetail_ServerClick"><i class="glyphicon glyphicon-search"></i></button>
+                                                            <div class="col-sm-2">
+                                                                <button type="button" class="btn btn-primary" runat="server" id="btnENDCustomer_GoodRecDetail" onserverclick="btnENDCustomer_GoodRecDetail_ServerClick"><i class="glyphicon glyphicon-search"></i></button>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
@@ -758,10 +772,6 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-group" style="height: 34px;">
-                                                        <%--<label for="txtType_GoodRecDetail" class="col-sm-4 control-label">Type:</label>
-                  <div class="col-sm-8">                    
-                    <asp:DropDownList ID="ddlType_GoodRecDetail" CssClass="form-control" runat="server"></asp:DropDownList> 
-                  </div>--%>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="txtExpiredDate_GoodRecDetail" class="col-sm-4 control-label">Expired Date:</label>
@@ -930,110 +940,104 @@
                                     <!-- right column -->
                                     <!-- /.post -->
                                 </fieldset>
-                            </div>
-             <!-----/ Export Goods----->
 
-              <%--------------------------------------------------------------END Good Receive Detail----------------------------------------------------------%>
-
-
-             <%----------------------------------------------------------------------Start Import Data Tab--------------------------------------------------------%>
-             <!--- Detailof Goods --->
-         <div class="tab-pane" id="importdata">
-            <!-- Post -->
-            <div class="post">
-             <div class="row margin-bottom">
-                <div class="col-lg-12 col-md-12">
-
-                     <div class="form-horizontal">
-                           <div class="box-body">
-
-                            <fieldset class="col-md-12">
-                                <legend>Import File</legend>
-                               <div class="col-lg-12 col-md-12">
-                                 <div class="form-group">
-                                  <label for="txtSelectFileForImport_ImportData" class="col-sm-4 control-label">Select File For Import:</label>
-                                  <div class="col-sm-4">
-                                    <input type="file" class ="form-control" id="txtSelectFileForImport_ImportData" runat="server"/>     
-                                  </div>                                  
-                                  <div class="col-sm-4">
-                                    <button type="submit" runat="server" class="btn btn-success" id="btnImport_ImportData" title="btnImport_ImportData" >Import</button> 
-                                  </div>
-                                </div>  
-                                 <div class="form-group">
-                                   <div class="col-sm-12">
-                                   <div class="progress active">
-                                    <div class="progress-bar progress-bar-primary progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-                                      <span class="sr-only">40% Complete (success)</span>
+                                                <!-- /.box-body -->
+                                            </div>
+                                        </div>
+                                        <!--/.col-lg-6 col-md-6--->
                                     </div>
-                                   </div>
-                                   </div>
-                                 </div> 
-                                   <div class="form-group">
-                                       <div class="col-sm-3"></div>
-                                       <div class="col-sm-2">
-                                           <label>
-                                               <input type="checkbox" runat="server" id="chkfollowcustomer" onclick="EnableDisablefollow()" checked="checked" />ตาม Customer
-                                           </label>
-                                       </div>
-                                       <div class="col-sm-2">
-                                           <label>
-                                               <input type="checkbox" runat="server" id="chkOnlyWorkANS" onclick="EnableDisableANS()" checked="checked" />เฉพาะงาน ANS
-                                           </label>
-                                       </div>
-                                       <div class="col-sm-2">
-                                           <button type="submit" runat="server" class="btn btn-success" id="btnCheckPart" title="btnCheckPart">Check Part</button>
-                                       </div>
-                                   </div>
-                                   
-                               </div>                             
-                         </fieldset>
-                    
-                          </div>
-                      
-                     </div>
-                     
-                    <div class="form-horizontal">
-                           <div class="box-body">
-
-                            <fieldset class="col-md-12">
-                                <legend>Data Imported List</legend>
-                               <div class="col-lg-12 col-md-12">
-                                   <%------------------Repeater DataImport--------------------%>
-                               </div>                             
-                         </fieldset>
-                    
-                          </div>
-                      
-                     </div>
-
-                     </div>
-                <!--/.col-lg-6 col-md-6--->
-                  </div>
-                </div>
-              </div>
-          <!----/Detailof Goods----->
-                            <%---------------------------------------------------------------End Import Data Tab----------------------------------------------%>
-           </div>
-            
-
-
-               
-
-
-
-
+                                    <!--/.row-->
+                                </div>
+                            </div>
+                            <!-- /.post -->
                         </div>
-                        <!-- /.tab-pane -->
+                        <div role="tabpanel" class="tab-pane" id="importdata">
+                            <!-- Post -->
+                            <div class="post">
+                                <div class="row margin-bottom">
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="form-horizontal">
+                                            <div class="box-body">
+                                                
+                                                    <fieldset class="col-md-12">
+                                                        <legend>Import File</legend>
+                                                        <div class="col-lg-12 col-md-12">
+                                                            <div class="form-group">
+                                                                <label for="txtSelectFileForImport_ImportData" class="col-sm-4 control-label">Select File For Import:</label>
+                                                                <div class="col-sm-4">
+                                                                    <input type="file" class="form-control" id="txtSelectFileForImport_ImportData" runat="server" />
+                                                                </div>
+                                                                <div class="col-sm-4">
+                                                                    <button type="submit" runat="server" class="btn btn-success" id="btnImport_ImportData" title="btnImport_ImportData">Import</button>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <div class="col-sm-12">
+                                                                    <div class="progress active">
+                                                                        <div class="progress-bar progress-bar-primary progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                                                                            <span class="sr-only">40% Complete (success)</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <div class="col-sm-3"></div>
+                                                                <div class="col-sm-2">
+                                                                    <label>
+                                                                        <input type="checkbox" runat="server" id="chkfollowcustomer" onclick="EnableDisablefollow()" checked="checked" />ตาม Customer
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-sm-2">
+                                                                    <label>
+                                                                        <input type="checkbox" runat="server" id="chkOnlyWorkANS" onclick="EnableDisableANS()" checked="checked" />เฉพาะงาน ANS
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-sm-2">
+                                                                    <button type="submit" runat="server" class="btn btn-success" id="btnCheckPart" title="btnCheckPart">Check Part</button>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </fieldset>
+
+                                                </div>
+
+                                            </div>
+
+                                            <div class="form-horizontal">
+                                                <div class="box-body">
+
+                                                    <fieldset class="col-md-12">
+                                                        <legend>Data Imported List</legend>
+                                                        <div class="col-lg-12 col-md-12">
+                                                            <%------------------Repeater DataImport--------------------%>
+                                                        </div>
+                                                    </fieldset>
+
+                                                </div>
+
+                                            </div>
+                                            </div>
+                                        </div>
+                                        <!-- /.box-body -->
+
+                                    </div>
+                                    <!--/.col-lg-6 col-md-6--->
+                                </div>
+                                <!--/.row-->
+                            </div>
+                            <!-- /.post -->
+                        </div>
                     </div>
-                    <!-- /.tab-pane -->
                 </div>
-                <!-- /.col -->
-           
+                <%--<asp:Button ID="Button1" Text="Submit" runat="server" CssClass="btn btn-primary" />--%>
+                <asp:HiddenField ID="TabName" runat="server" />
+            </div>
             <!-- /.row -->
         </section>
         <!-- /.content -->
 
-                <!--Start JobNo Add Modal -->
+        <!--Start JobNo Add Modal -->
         <!-- Modal -->
         <asp:Panel ID="JobNoAddPanel" runat="server" CssClass="modal" TabIndex="-1" role="dialog" aria-labelledby="myLabe1">
             <%--<div class="modal fade" id="ProductCodeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">--%>
@@ -1079,7 +1083,7 @@
                                                         <td>
                                                             <asp:Label ID="Label2" runat="server" Text='<%# Bind("EndCusCode")%>'></asp:Label></td>
                                                         <td>
-                                                            <asp:Label ID="Label3" runat="server" Text='<%# Bind("Commodity")%>'></asp:Label></td>                                                        
+                                                            <asp:Label ID="Label3" runat="server" Text='<%# Bind("Commodity")%>'></asp:Label></td>
                                                     </tr>
                                                 </ItemTemplate>
                                                 <FooterTemplate>
@@ -1132,19 +1136,19 @@
                                                     <table id="example2" class="table table-bordered table-striped table-responsive" style="overflow: auto;">
                                                         <thead>
                                                             <tr>
-                                                            <th>Select</th>
-                                                            <th>PartyCode</th>
-                                                            <th>PartyAddress</th>
-                                                            <th>PartyFullName</th>
-                                                            <th>Address1</th>
-                                                            <th>Address2</th>
+                                                                <th>Select</th>
+                                                                <th>PartyCode</th>
+                                                                <th>PartyAddress</th>
+                                                                <th>PartyFullName</th>
+                                                                <th>Address1</th>
+                                                                <th>Address2</th>
                                                             </tr>
                                                         </thead>
                                                 </HeaderTemplate>
 
                                                 <ItemTemplate>
                                                     <tr>
-                                                       
+
                                                         <td class="text-center">
                                                             <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" OnClick="clickcustomer_Click"><i class="fa fa-hand-o-up"></i></asp:LinkButton>
                                                         </td>
@@ -1210,18 +1214,18 @@
                                                     <table id="example3" class="table table-bordered table-striped table-responsive" style="overflow: auto;">
                                                         <thead>
                                                             <tr>
-                                                            <th>Select</th>
-                                                            <th>PartyCode</th>
-                                                            <th>PartyAddress</th>
-                                                            <th>PartyFullName</th>
-                                                            <th>Address1</th>
-                                                            <th>Address2</th>
+                                                                <th>Select</th>
+                                                                <th>PartyCode</th>
+                                                                <th>PartyAddress</th>
+                                                                <th>PartyFullName</th>
+                                                                <th>Address1</th>
+                                                                <th>Address2</th>
                                                             </tr>
                                                         </thead>
                                                 </HeaderTemplate>
 
                                                 <ItemTemplate>
-                                                    <tr>                                                   
+                                                    <tr>
                                                         <td class="text-center">
                                                             <asp:LinkButton ID="LinkButton3" CssClass="btn bg-navy" runat="server" OnClick="clickowner_Click"><i class="fa fa-hand-o-up"></i></asp:LinkButton>
                                                         </td>
@@ -1235,7 +1239,7 @@
                                                             <asp:Label ID="lblAddress1" runat="server" Text="Label"></asp:Label></td>
                                                         <td>
                                                             <asp:Label ID="lblAddress2" runat="server" Text="Label"></asp:Label></td>
-                                                        
+
                                                     </tr>
                                                 </ItemTemplate>
                                                 <FooterTemplate>
@@ -1266,7 +1270,7 @@
         </asp:Panel>
         <!-- End Owner Modal -->
 
-                <!-- WH Manage Modal -->
+        <!-- WH Manage Modal -->
         <!-- Modal -->
         <asp:Panel ID="WHManagePanel" runat="server" CssClass="modal" TabIndex="-1" role="dialog" aria-labelledby="myLabe1">
             <div class="modal-dialog modal-lg" role="dialog">
@@ -1287,18 +1291,18 @@
                                                     <table id="example4" class="table table-bordered table-striped table-responsive" style="overflow: auto;">
                                                         <thead>
                                                             <tr>
-                                                            <th>Select</th>
-                                                            <th>PartyCode</th>
-                                                            <th>PartyAddress</th>
-                                                            <th>PartyFullName</th>
-                                                            <th>Address1</th>
-                                                            <th>Address2</th>
+                                                                <th>Select</th>
+                                                                <th>PartyCode</th>
+                                                                <th>PartyAddress</th>
+                                                                <th>PartyFullName</th>
+                                                                <th>Address1</th>
+                                                                <th>Address2</th>
                                                             </tr>
                                                         </thead>
                                                 </HeaderTemplate>
 
                                                 <ItemTemplate>
-                                                    <tr>                                                   
+                                                    <tr>
                                                         <td class="text-center">
                                                             <asp:LinkButton ID="LinkButton3" CssClass="btn bg-navy" runat="server" OnClick="clickwhmanage_Click"><i class="fa fa-hand-o-up"></i></asp:LinkButton>
                                                         </td>
@@ -1312,7 +1316,7 @@
                                                             <asp:Label ID="lblAddress1" runat="server" Text="Label"></asp:Label></td>
                                                         <td>
                                                             <asp:Label ID="lblAddress2" runat="server" Text="Label"></asp:Label></td>
-                                                        
+
                                                     </tr>
                                                 </ItemTemplate>
                                                 <FooterTemplate>
@@ -1364,18 +1368,18 @@
                                                     <table id="example5" class="table table-bordered table-striped table-responsive" style="overflow: auto;">
                                                         <thead>
                                                             <tr>
-                                                            <th>Select</th>
-                                                            <th>PartyCode</th>
-                                                            <th>PartyAddress</th>
-                                                            <th>PartyFullName</th>
-                                                            <th>Address1</th>
-                                                            <th>Address2</th>
+                                                                <th>Select</th>
+                                                                <th>PartyCode</th>
+                                                                <th>PartyAddress</th>
+                                                                <th>PartyFullName</th>
+                                                                <th>Address1</th>
+                                                                <th>Address2</th>
                                                             </tr>
                                                         </thead>
                                                 </HeaderTemplate>
 
                                                 <ItemTemplate>
-                                                    <tr>                                                   
+                                                    <tr>
                                                         <td class="text-center">
                                                             <asp:LinkButton ID="LinkButton3" CssClass="btn bg-navy" runat="server" OnClick="clickenduser_Click"><i class="fa fa-hand-o-up"></i></asp:LinkButton>
                                                         </td>
@@ -1389,7 +1393,7 @@
                                                             <asp:Label ID="lblAddress1" runat="server" Text="Label"></asp:Label></td>
                                                         <td>
                                                             <asp:Label ID="lblAddress2" runat="server" Text="Label"></asp:Label></td>
-                                                        
+
                                                     </tr>
                                                 </ItemTemplate>
                                                 <FooterTemplate>
@@ -1441,18 +1445,18 @@
                                                     <table id="example6" class="table table-bordered table-striped table-responsive" style="overflow: auto;">
                                                         <thead>
                                                             <tr>
-                                                            <th>Select</th>
-                                                            <th>PartyCode</th>
-                                                            <th>PartyAddress</th>
-                                                            <th>PartyFullName</th>
-                                                            <th>Address1</th>
-                                                            <th>Address2</th>
+                                                                <th>Select</th>
+                                                                <th>PartyCode</th>
+                                                                <th>PartyAddress</th>
+                                                                <th>PartyFullName</th>
+                                                                <th>Address1</th>
+                                                                <th>Address2</th>
                                                             </tr>
                                                         </thead>
                                                 </HeaderTemplate>
 
                                                 <ItemTemplate>
-                                                    <tr>                                                   
+                                                    <tr>
                                                         <td class="text-center">
                                                             <asp:LinkButton ID="LinkButton3" CssClass="btn bg-navy" runat="server" OnClick="clickendcus_Click"><i class="fa fa-hand-o-up"></i></asp:LinkButton>
                                                         </td>
@@ -1466,7 +1470,7 @@
                                                             <asp:Label ID="lblAddress1" runat="server" Text="Label"></asp:Label></td>
                                                         <td>
                                                             <asp:Label ID="lblAddress2" runat="server" Text="Label"></asp:Label></td>
-                                                        
+
                                                     </tr>
                                                 </ItemTemplate>
                                                 <FooterTemplate>
@@ -1543,7 +1547,7 @@
                                                         <td>
                                                             <asp:Label ID="Label2" runat="server" Text='<%# Bind("CustomerPart")%>'></asp:Label></td>
                                                         <td>
-                                                            <asp:Label ID="Label3" runat="server" Text='<%# Bind("EndUserPart")%>'></asp:Label></td>                                                        
+                                                            <asp:Label ID="Label3" runat="server" Text='<%# Bind("EndUserPart")%>'></asp:Label></td>
                                                     </tr>
                                                 </ItemTemplate>
                                                 <FooterTemplate>
@@ -1575,7 +1579,7 @@
         </asp:Panel>
         <!-- End ProductCode Modal -->
 
-                <!--Start JobNoEdit Modal -->
+        <!--Start JobNoEdit Modal -->
         <!-- Modal -->
         <asp:Panel ID="JobNoEditPanel" runat="server" CssClass="modal" TabIndex="-1" role="dialog" aria-labelledby="myLabe1">
             <div class="modal-dialog modal-lg" role="dialog">
@@ -1620,7 +1624,7 @@
                                                         <td>
                                                             <asp:Label ID="Label2" runat="server" Text='<%# Bind("CustomerNameENG")%>'></asp:Label></td>
                                                         <td>
-                                                            <asp:Label ID="Label3" runat="server" Text='<%# Bind("BrokerNameENG")%>'></asp:Label></td>                                                        
+                                                            <asp:Label ID="Label3" runat="server" Text='<%# Bind("BrokerNameENG")%>'></asp:Label></td>
                                                     </tr>
                                                 </ItemTemplate>
                                                 <FooterTemplate>
@@ -1656,12 +1660,22 @@
                 var status = document.getElementById('<%=chkNotUseDate_GoodRecDetail.ClientID%>').checked;
                 if (status == true) {
                     document.getElementById('<%=txtdatepickerManufacturing_GoodRecDetail.ClientID%>').disabled = true;
-                            document.getElementById('<%=txtdatepickerExpiredDate_GoodRecDetail.ClientID%>').disabled = true;
-                        } else if (status == false) {
-                            document.getElementById('<%=txtdatepickerManufacturing_GoodRecDetail.ClientID%>').disabled = false;
+                    document.getElementById('<%=txtdatepickerExpiredDate_GoodRecDetail.ClientID%>').disabled = true;
+                } else if (status == false) {
+                    document.getElementById('<%=txtdatepickerManufacturing_GoodRecDetail.ClientID%>').disabled = false;
                     document.getElementById('<%=txtdatepickerExpiredDate_GoodRecDetail.ClientID%>').disabled = false;
                 }
         }
         </script>
+
+        <script type="text/javascript">
+            $(function () {
+                var tabName = $("[id*=TabName]").val() != "" ? $("[id*=TabName]").val() : "preparegoodsreceive";
+                $('#Tabs a[href="#' + tabName + '"]').tab('show');
+                $("#Tabs a").click(function () {
+                    $("[id*=TabName]").val($(this).attr("href").replace("#", ""));
+                });
+            });
+</script>
     </form>
 </asp:Content>

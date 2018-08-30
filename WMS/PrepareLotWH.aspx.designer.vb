@@ -1094,6 +1094,15 @@ Partial Public Class PrepareLotWH
     Protected WithEvents btnCheckPart As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
+    '''TabName control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents TabName As Global.System.Web.UI.WebControls.HiddenField
+
+    '''<summary>
     '''JobNoAddPanel control.
     '''</summary>
     '''<remarks>
