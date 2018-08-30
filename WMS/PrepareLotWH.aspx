@@ -494,6 +494,7 @@
                                                                                     <tr>
                                                                                         <th>Select</th>
                                                                                         <th>LotNo</th>
+                                                                                        <th>ItemNo</th>
                                                                                         <th>WHSite</th>
                                                                                         <th>WHLocation</th>
                                                                                         <th>ENDCustomer</th>
@@ -504,10 +505,12 @@
                                                                         <ItemTemplate>
                                                                             <tr>
                                                                                 <td class="text-center">
-                                                                                    <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectJobNoDetail" CommandArgument='<%# Eval("LotNo")%>'><i class="fa fa-hand-o-up"></i></asp:LinkButton>
+                                                                                    <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectJobNoDetail" CommandArgument='<%# Eval("ItemNo")%>'><i class="fa fa-hand-o-up"></i></asp:LinkButton>
                                                                                 </td>
                                                                                 <td>
                                                                                     <asp:Label ID="lblPartyCode" runat="server" Text='<%# Bind("LotNo")%>'></asp:Label></td>
+                                                                                <td>
+                                                                                    <asp:Label ID="Label4" runat="server" Text='<%# Bind("ItemNo")%>'></asp:Label></td>
                                                                                 <td>
                                                                                     <asp:Label ID="lblPartyFullName" runat="server" Text='<%# Bind("WHSite")%>'></asp:Label></td>
                                                                                 <td>
@@ -524,6 +527,7 @@
                                                                                 <tr>
                                                                                     <th>Select</th>
                                                                                     <th>LotNo</th>
+                                                                                    <th>ItemNo</th>
                                                                                     <th>WHSite</th>
                                                                                     <th>WHLocation</th>
                                                                                     <th>ENDCustomer</th>
