@@ -45,7 +45,7 @@ Public Class PrepareLotWH
     End Sub
     '-----------------------------------------------------------Click btn Save Modify GOODRECDETAIL TAB--------------------------------------
     Protected Sub btnSaveModify_GoodRecDetail_ServerClick(sender As Object, e As EventArgs)
-
+        SaveDetail_Modify()
     End Sub
     '-----------------------------------------------------------Click btn Delete GOODRECDETAIL TAB--------------------------------------
     Protected Sub btnDelete_GoodRecDetail_ServerClick(sender As Object, e As EventArgs)
@@ -65,6 +65,7 @@ Public Class PrepareLotWH
     Protected Sub btnEditHead_ServerClick(sender As Object, e As EventArgs)
         UnlockEditData()
         ClearDATA1()
+        chkNotUseDate_GoodRecDetail.Checked = True
     End Sub
     '-----------------------------------------------------------Click btn Save New Head PREPAREGOODREC TAB--------------------------------------
     Protected Sub btnSaveAddHead_ServerClick(sender As Object, e As EventArgs)
@@ -719,11 +720,11 @@ Public Class PrepareLotWH
     Private Sub selectEndCusCode()
         Dim tEndUser As String
         Dim customer_ As String = ""
-        If String.IsNullOrEmpty(txtEndUserCode_PreGoodRec.Value.Trim) Then
+        If String.IsNullOrEmpty(txtENDCustomer_GoodRecDetail.Value.Trim) Then
             tEndUser = ""
             customer_ = "0"
         Else
-            tEndUser = txtEndUserCode_PreGoodRec.Value.Trim
+            tEndUser = txtENDCustomer_GoodRecDetail.Value.Trim
         End If
 
         Dim cons = From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
@@ -876,7 +877,6 @@ Public Class PrepareLotWH
     '--------------------------------------------------------------Click Search Job No Edit-----------------------------------------------
     Protected Sub btnJobNoSearch_Edit_ServerClick(sender As Object, e As EventArgs)
         SelectJobnoEdit()
-        SelectJobDetail()
     End Sub
     '--------------------------------------------------------Click Data JobNo Edit In Modal-----------------------------------------
     Protected Sub Repeater8_ItemCommand(source As Object, e As RepeaterCommandEventArgs) Handles Repeater8.ItemCommand
@@ -940,6 +940,8 @@ Public Class PrepareLotWH
                     txtVolume_PreGoodRec.Value = String.Format("{0:0.00}", user.Volume)
                     ddlVolume_PreGoodRec.Text = user.VolumeUnit
                     txtRemark_PreGoodRec.Value = user.Remark
+
+                    SelectJobDetail()
                 End If
             End If
         Catch ex As Exception
@@ -961,6 +963,7 @@ Public Class PrepareLotWH
         Dim cons = (From p In db.tblWHPrepairGoodsReceiveDetails
                     Where p.LOTNo = jobno_code Order By p.ItemNo Ascending
                    Select New With {p.LOTNo,
+                                    p.ItemNo,
                                     p.WHSite,
                                     p.WHLocation,
                                     p.ENDCustomer,
@@ -979,15 +982,15 @@ Public Class PrepareLotWH
     End Sub
     '--------------------------------------------------------Click Data JobNo Edit In Modal-----------------------------------------
     Protected Sub Repeater9_ItemCommand(source As Object, e As RepeaterCommandEventArgs) Handles Repeater9.ItemCommand
-        Dim JobnoCode As String = CStr(e.CommandArgument)
+        Dim ItemNoo As Double = CDbl(e.CommandArgument)
         Try
             If e.CommandName.Equals("SelectJobNoDetail") Then
 
-                If String.IsNullOrEmpty(JobnoCode) Then
+                If String.IsNullOrEmpty(CStr(ItemNoo)) Then
 
                     MsgBox("เป็นค่าว่าง")
                 Else
-                    Dim user = (From u In db.tblWHPrepairGoodsReceiveDetails Where u.LOTNo = JobnoCode).SingleOrDefault
+                    Dim user = (From u In db.tblWHPrepairGoodsReceiveDetails Where u.LOTNo = txtJobNo_PreGoodRec.Value.Trim And u.ItemNo = ItemNoo).SingleOrDefault
 
                     'txtJobNo_PreGoodRec.Value = user.LOTNo
                     ddlWHSite_GoodRecDetail.Text = user.WHSite
@@ -1007,8 +1010,18 @@ Public Class PrepareLotWH
                     txtOrderNo_GoodRecDetail.Value = user.OrderNo
                     txtReceiveNo_GoodRecDetail.Value = user.ReceiveNo
                     ddlStatus_GoodRecDetail.Text = user.Type
-                    txtdatepickerManufacturing_GoodRecDetail.Text = CStr(user.ManufacturingDate)
-                    txtdatepickerExpiredDate_GoodRecDetail.Text = CStr(user.ExpiredDate)
+                    If user.ManufacturingDate Is Nothing Then
+                        txtdatepickerManufacturing_GoodRecDetail.Text = Nothing
+                    Else
+                        txtdatepickerManufacturing_GoodRecDetail.Text = CStr(user.ManufacturingDate)
+                    End If
+                    'txtdatepickerManufacturing_GoodRecDetail.Text = CStr(user.ManufacturingDate)
+                    If user.ManufacturingDate Is Nothing Then
+                        txtdatepickerExpiredDate_GoodRecDetail.Text = Nothing
+                    Else
+                        txtdatepickerExpiredDate_GoodRecDetail.Text = CStr(user.ExpiredDate)
+                    End If
+                    'txtdatepickerExpiredDate_GoodRecDetail.Text = CStr(user.ExpiredDate)
                     txtdatepickerReceiveDate_GoodRecDetail.Text = CStr(user.ReceiveDate)
                     txtQuantity_GoodRecDetail.Value = CStr(user.Quantity)
                     ddlQuantity_GoodRecDetail.Text = user.QuantityUnit
@@ -1185,8 +1198,8 @@ Public Class PrepareLotWH
         txtJobNo_PreGoodRec.Focus()
     End Sub
     Private Sub SaveDetail_New()
-        Dim ManuDate As Date
-        Dim ExpDate As Date
+        Dim ManuDate As Nullable(Of Date)
+        Dim ExpDate As Nullable(Of Date)
         Dim receiveDate_ As Date
         If txtJobNo_PreGoodRec.Value.Trim = "" Then
             ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert(กรุณาป้อน Job No ก่อน !!!);", True)
@@ -1200,10 +1213,10 @@ Public Class PrepareLotWH
             Exit Sub
         End If
 
-        If chkNotUseDate_GoodRecDetail.Checked = False Then
-            ManuDate = Now
-            ExpDate = Now
-        ElseIf chkNotUseDate_GoodRecDetail.Checked = True Then
+        If chkNotUseDate_GoodRecDetail.Checked = True Then
+            ManuDate = Nothing
+            ExpDate = Nothing
+        ElseIf chkNotUseDate_GoodRecDetail.Checked = False Then
             ManuDate = DateTime.ParseExact(txtdatepickerManufacturing_GoodRecDetail.Text.Trim, "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US"))
             ExpDate = DateTime.ParseExact(txtdatepickerExpiredDate_GoodRecDetail.Text.Trim, "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US"))
         End If
@@ -1282,8 +1295,8 @@ Public Class PrepareLotWH
         txtItemNo_GoodRecDetail.Focus()
     End Sub
     Private Sub SaveDetail_Modify()
-        Dim ManuDate As Date
-        Dim ExpDate As Date
+        Dim ManuDate As Nullable(Of Date)
+        Dim ExpDate As Nullable(Of Date)
 
         If txtJobNo_PreGoodRec.Value.Trim = "" Then
             ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert(กรุณาป้อน Job No ก่อน !!!);", True)
@@ -1298,11 +1311,11 @@ Public Class PrepareLotWH
         End If
 
         If chkNotUseDate_GoodRecDetail.Checked = True Then
-            ManuDate = CDate(DBNull.Value.ToString)
-            ExpDate = CDate(DBNull.Value.ToString)
+            ManuDate = Nothing
+            ExpDate = Nothing
         ElseIf chkNotUseDate_GoodRecDetail.Checked = False Then
-            ManuDate = CDate(txtdatepickerManufacturing_GoodRecDetail.Text.Trim)
-            ExpDate = CDate(txtdatepickerExpiredDate_GoodRecDetail.Text.Trim)
+            ManuDate = DateTime.ParseExact(txtdatepickerManufacturing_GoodRecDetail.Text.Trim, "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US"))
+            ExpDate = DateTime.ParseExact(txtdatepickerExpiredDate_GoodRecDetail.Text.Trim, "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US"))
         End If
 
         If MsgBox("คุณต้องการแก้ไขรายการ WHGoodsReceiveDetail ใช่หรือไม่ ?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then

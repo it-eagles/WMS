@@ -1545,6 +1545,167 @@ Public Class SingleIssuedWH
 
     End Sub
 
+    Private Sub ReadDataMove()
+        'Dim LotIn As String
+        'Dim sql As String
+        'sql = "SELECT * FROM tblWHRemarkMoveJob(nolock) WHERE LOTNo = '" & txtLOTNo.Text & "' and PullSignal = '" & txtPullSignal.Text & "'"
 
+        'Dim dr As SqlDataReader
+        'com = New SqlCommand()
+        'With com
+        '    .CommandType = CommandType.Text
+        '    .CommandText = sql
+        '    .Connection = Conn
+        '    dr = .ExecuteReader()
+        '    If dr.HasRows Then
+        '        dr.Read()
+        '        LotIn = dr.Item("MovetoLot").ToString
+        '        dr.Close()
+        '        Dim sqlRead As String
+        '        sqlRead = "SELECT * FROM tblWHISSUEDDetail (nolock) WHERE LOTNo = '" & txtLOTNo.Text & "' and PullSignal = '" & txtPullSignal.Text & "'  "
+
+        '        Dim dr1 As SqlDataReader
+        '        Dim dt As DataTable
+        '        com = New SqlCommand()
+        '        With com
+        '            .CommandType = CommandType.Text
+        '            .CommandText = sqlRead
+        '            .Connection = Conn
+        '            dr1 = .ExecuteReader()
+        '            If dr1.HasRows Then
+        '                dr1.Close()
+        '                MessageBox.Show("กรุณา Reject Confirm หรือ Reject Issue ก่อนครับ", "ผลการตรวจสอบ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+        '            Else
+        '                dr1.Close()
+        '                If MessageBox.Show("คุณต้องการ Reject Moveto ใช่หรือไม่?", "คำยืนยัน", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
+
+        '                    tr = Conn.BeginTransaction()
+        '                    Try
+        '                        sb = New StringBuilder()
+        '                        sb.Append("Delete tblWHConfirmGoodsReceive")
+        '                        sb.Append(" WHERE (LOTNo=@LOTNo  )")
+        '                        Dim sqlDelete As String
+        '                        sqlDelete = sb.ToString()
+
+        '                        With com
+        '                            .CommandText = sqlDelete
+        '                            .CommandType = CommandType.Text
+        '                            .Connection = Conn
+        '                            .Transaction = tr
+        '                            .Parameters.Clear()
+        '                            .Parameters.Add("@LOTNo", SqlDbType.NVarChar).Value = LotIn
+        '                            .ExecuteNonQuery()
+        '                        End With
+
+        '                        sb = New StringBuilder()
+        '                        sb.Append("Delete tblWHConfirmGoodsReceiveDetail")
+        '                        sb.Append(" WHERE (LOTNo=@LOTNo and StatusAvailable = 0 )")
+        '                        Dim sqlDelete1 As String
+        '                        sqlDelete1 = sb.ToString()
+
+        '                        With com
+        '                            .CommandText = sqlDelete1
+        '                            .CommandType = CommandType.Text
+        '                            .Connection = Conn
+        '                            .Transaction = tr
+        '                            .Parameters.Clear()
+        '                            .Parameters.Add("@LOTNo", SqlDbType.NVarChar).Value = LotIn
+        '                            .ExecuteNonQuery()
+        '                        End With
+
+        '                        sb = New StringBuilder()
+        '                        sb.Append("Delete tblWHStockMovement")
+        '                        sb.Append(" WHERE (LOTNo=@LOTNo and Status = 0 )")
+        '                        Dim sqlDelete2 As String
+        '                        sqlDelete2 = sb.ToString()
+
+        '                        With com
+        '                            .CommandText = sqlDelete2
+        '                            .CommandType = CommandType.Text
+        '                            .Connection = Conn
+        '                            .Transaction = tr
+        '                            .Parameters.Clear()
+        '                            .Parameters.Add("@LOTNo", SqlDbType.NVarChar).Value = LotIn
+        '                            .ExecuteNonQuery()
+        '                        End With
+
+        '                        sb = New StringBuilder()
+        '                        sb.Append("Delete tblWHRemarkMoveJob")
+        '                        sb.Append(" WHERE (LOTNo=@LOTNo and PullSignal = @PullSignal )")
+        '                        Dim sqlDelete3 As String
+        '                        sqlDelete3 = sb.ToString()
+
+        '                        With com
+        '                            .CommandText = sqlDelete3
+        '                            .CommandType = CommandType.Text
+        '                            .Connection = Conn
+        '                            .Transaction = tr
+        '                            .Parameters.Clear()
+        '                            .Parameters.Add("@LOTNo", SqlDbType.NVarChar).Value = txtLOTNo.Text.Trim
+        '                            .Parameters.Add("@PullSignal", SqlDbType.NVarChar).Value = txtPullSignal.Text.Trim
+        '                            .ExecuteNonQuery()
+        '                        End With
+
+        '                        sb = New StringBuilder()
+        '                        sb.Append("Delete tblWHISSUED")
+        '                        sb.Append(" WHERE (LOTNo=@LOTNo and PullSignal = @PullSignal )")
+        '                        Dim sqlDelete4 As String
+        '                        sqlDelete4 = sb.ToString()
+
+        '                        With com
+        '                            .CommandText = sqlDelete4
+        '                            .CommandType = CommandType.Text
+        '                            .Connection = Conn
+        '                            .Transaction = tr
+        '                            .Parameters.Clear()
+        '                            .Parameters.Add("@LOTNo", SqlDbType.NVarChar).Value = txtLOTNo.Text.Trim
+        '                            .Parameters.Add("@PullSignal", SqlDbType.NVarChar).Value = txtPullSignal.Text.Trim
+        '                            .ExecuteNonQuery()
+        '                        End With
+
+        '                        sb = New StringBuilder()
+        '                        sb.Append("UPDATE tblWHPicking")
+        '                        sb.Append(" SET UsedStatus=0 ")
+        '                        sb.Append(" WHERE (LOTNo=@LOTNo and PullSignal = @PullSignal)")
+        '                        Dim sqlEdit As String
+        '                        sqlEdit = sb.ToString()
+
+        '                        With com
+        '                            .CommandText = sqlEdit
+        '                            .CommandType = CommandType.Text
+        '                            .Connection = Conn
+        '                            .Transaction = tr
+        '                            .Parameters.Clear()
+        '                            .Parameters.Add("@LOTNo", SqlDbType.NVarChar).Value = txtLOTNo.Text.Trim
+        '                            .Parameters.Add("@PullSignal", SqlDbType.NVarChar).Value = txtPullSignal.Text.Trim
+
+        '                            Dim result As Integer
+        '                            result = .ExecuteNonQuery()
+        '                            If result = 0 Then
+        '                                tr.Rollback()
+        '                                MessageBox.Show("tblWHPicking  ไม่ถูกต้อง !!!", "ผลการทำงาน", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+        '                            Else
+        '                                tr.Commit()
+        '                                MessageBox.Show("Reject Moveto เรียบร้อยแล้วครับ", "ผลการทำงาน", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+        '                            End If
+        '                        End With
+
+        '                    Catch ex As Exception
+        '                        tr.Rollback()
+        '                        MessageBox.Show("เกิดข้อผิดพลาด เนื่องจาก " & ex.Message, "ผลการทำงาน", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        '                    End Try
+        '                End If
+        '            End If
+        '        End With
+        '    Else
+        '        dr.Close()
+        '        MessageBox.Show("คุณยังไม่ได้บันทึกข้อมูล", "ผลการตรวจสอบ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+
+        '    End If
+        'End With
+
+    End Sub
 
 End Class

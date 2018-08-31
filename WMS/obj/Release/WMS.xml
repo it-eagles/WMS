@@ -2214,65 +2214,25 @@ ScriptManager1 control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.Test.Button2">
+</member><member name="F:WMS.Test.rptCustomers">
 	<summary>
-Button2 control.
+rptCustomers control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.Test.Button1">
+</member><member name="F:WMS.Test.btntest">
 	<summary>
-Button1 control.
+btntest control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.Test.TabName">
+</member><member name="F:WMS.Test.GridView1">
 	<summary>
-TabName control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.Test.btnShow">
-	<summary>
-btnShow control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.Test.mp1">
-	<summary>
-mp1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.Test.Panel1">
-	<summary>
-Panel1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.Test.DropDownList1">
-	<summary>
-DropDownList1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.Test.btnClose">
-	<summary>
-btnClose control.
+GridView1 control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -11783,6 +11743,14 @@ btnCheckPart control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
+</member><member name="F:WMS.PrepareLotWH.TabName">
+	<summary>
+TabName control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
 </member><member name="F:WMS.PrepareLotWH.JobNoAddPanel">
 	<summary>
 JobNoAddPanel control.
@@ -14703,17 +14671,9 @@ txtShippingMark control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.SingleReceivedWH.btnSelectAll_GoodRecDetail">
+</member><member name="F:WMS.SingleReceivedWH.dgvItemDetail">
 	<summary>
-btnSelectAll_GoodRecDetail control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.SingleReceivedWH.btnCencelSelectAll_GoodRecDetail">
-	<summary>
-btnCencelSelectAll_GoodRecDetail control.
+dgvItemDetail control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -14722,6 +14682,14 @@ To modify move field declaration from designer file to code-behind file.
 </member><member name="F:WMS.SingleReceivedWH.btnReceive_GoodRecDetail">
 	<summary>
 btnReceive_GoodRecDetail control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.SingleReceivedWH.dgvConfirmDetail">
+	<summary>
+dgvConfirmDetail control.
 </summary>
 	<remarks>
 Auto-generated field.
