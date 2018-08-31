@@ -7141,6 +7141,9 @@
     <Compile Include="Data\tblUserWebClient.vb">
       <DependentUpon>LKBWarehouseEntities1_Test.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\tblUser_test.vb">
+      <DependentUpon>LKBWarehouseEntities1_Test.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\tblWarehouseType.vb">
       <DependentUpon>LKBWarehouseEntities1_Test.tt</DependentUpon>
     </Compile>

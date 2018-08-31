@@ -135,5 +135,6 @@ Partial Public Class LKBWarehouseEntities1
     Public Overridable Property tblWHPickings() As DbSet(Of tblWHPicking)
     Public Overridable Property tblWHPickingDetails() As DbSet(Of tblWHPickingDetail)
     Public Overridable Property tblWHPickPackCheckings() As DbSet(Of tblWHPickPackChecking)
+    Public Overridable Property tblUser_test() As DbSet(Of tblUser_test)
 
 End Class

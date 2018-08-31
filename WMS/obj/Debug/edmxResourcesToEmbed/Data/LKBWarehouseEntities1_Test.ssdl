@@ -2394,6 +2394,27 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblTempItemNo' does not have a pr
     <Property Name="UserStatus" Type="varchar" MaxLength="50" />
     <Property Name="RejectStatus" Type="varchar" MaxLength="50" />
   </EntityType>
+  <EntityType Name="tblUser_test">
+    <Key>
+      <PropertyRef Name="UserName" />
+    </Key>
+    <Property Name="UserName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="100" />
+    <Property Name="UserGroup" Type="varchar" MaxLength="100" />
+    <Property Name="GroupName" Type="varchar" MaxLength="100" />
+    <Property Name="Dept" Type="varchar" MaxLength="100" />
+    <Property Name="Branch" Type="varchar" MaxLength="100" />
+    <Property Name="Password" Type="varchar" MaxLength="100" />
+    <Property Name="StatusAdd" Type="varchar" MaxLength="50" />
+    <Property Name="StatusModify" Type="varchar" MaxLength="50" />
+    <Property Name="StatusDelete" Type="varchar" MaxLength="50" />
+    <Property Name="StatusPrint" Type="varchar" MaxLength="50" />
+    <Property Name="StatusImport" Type="varchar" MaxLength="50" />
+    <Property Name="StatusExport" Type="varchar" MaxLength="50" />
+    <Property Name="StatusWarehouse" Type="varchar" MaxLength="50" />
+    <Property Name="UserStatus" Type="varchar" MaxLength="50" />
+    <Property Name="RejectStatus" Type="varchar" MaxLength="50" />
+  </EntityType>
   <EntityType Name="tblUserGroup">
     <Key>
       <PropertyRef Name="UserGroupCode" />
@@ -3298,6 +3319,7 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
     <EntitySet Name="tblTruckWayBillDetailImp" EntityType="Self.tblTruckWayBillDetailImp" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblTruckWayBillImp" EntityType="Self.tblTruckWayBillImp" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblUser_test" EntityType="Self.tblUser_test" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblUserGroup" EntityType="Self.tblUserGroup" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblUserMenu" EntityType="Self.tblUserMenu" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblUserWebClient" EntityType="Self.tblUserWebClient" Schema="dbo" store:Type="Tables" />

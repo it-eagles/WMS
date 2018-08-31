@@ -186,16 +186,36 @@ Public Class Test
             'lblName = CType(rptCustomers.Items(i).FindControl("lblName"), Label).Text.Trim
             'lblBranch = CType(rptCustomers.Items(i).FindControl("lblBrnch"), Label).Text.Trim
             If chkName.Checked = True Then
-                'MsgBox(lblUserName)
-                name.Add(lblUserName)
-                'name.Add(lblName)
-                'name.Add(lblBranch)
-                'For j = 0 To name.Count - 1
-
-                'Next
+                Dim u = (From us In db.tblUsers Where us.UserName = lblUserName).FirstOrDefault
+                If Not IsNothing(u) Then
+                    db.tblUser_test.Add(New tblUser_test With { _
+                                   .UserName = u.UserName, _
+                                   .Name = u.Name, _
+                                   .UserGroup = u.UserGroup, _
+                                   .GroupName = u.UserGroup, _
+                                   .Dept = u.Dept, _
+                                   .Branch = u.Branch, _
+                                   .StatusAdd = u.StatusAdd, _
+                                   .StatusModify = u.StatusAdd, _
+                                   .StatusDelete = u.StatusAdd, _
+                                   .StatusPrint = u.StatusAdd, _
+                                   .StatusImport = u.StatusAdd, _
+                                   .StatusExport = u.StatusAdd, _
+                                   .StatusWarehouse = u.StatusAdd, _
+                                   .UserStatus = u.StatusAdd, _
+                                   .RejectStatus = u.StatusAdd
+                                   })
+                    db.SaveChanges()
+                End If
             End If
         Next
+        ''MsgBox(lblUserName)
+        'name.Add(lblUserName)
+        ''name.Add(lblName)
+        ''name.Add(lblBranch)
+        ''For j = 0 To name.Count - 1
 
+        ''Next
         GridView1.DataSource = name
         GridView1.DataBind()
     End Sub

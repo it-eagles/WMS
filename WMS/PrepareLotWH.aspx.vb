@@ -1095,7 +1095,7 @@ Public Class PrepareLotWH
                     .UserBy = CStr(Session("UserName")), _
                     .LastUpdate = Now, _
                     .PrintCount = print, _
-                    .UsedStatus = 1
+                    .UsedStatus = 0
             })
 
                     db.SaveChanges()

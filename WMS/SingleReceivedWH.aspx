@@ -853,6 +853,7 @@
                                                                         <th style="width: 5px">ItemNo</th>
                                                                         <th style="width: 10px">ProductCode</th>
                                                                         <th style="width: 10px">CustomerPN</th>
+                                                                        <th style="width: 2px">Status</th>
                                                                 </HeaderTemplate>
                                                                 <ItemTemplate>
                                                                     <tr class="success">
@@ -872,6 +873,9 @@
                                                                             <asp:Label ID="lblPc" runat="server"></asp:Label></td>
                                                                         <td>
                                                                             <asp:Label ID="lblPn" runat="server"></asp:Label></td>
+                                                                         
+                                                                       <td>
+                                                                            <asp:Label ID="lblStatus" runat="server"></asp:Label></td>
                                                                     </tr>
                                                                 </ItemTemplate>
                                                                 <AlternatingItemTemplate>
@@ -892,6 +896,8 @@
                                                                             <asp:Label ID="lblPc" runat="server"></asp:Label></td>
                                                                         <td>
                                                                             <asp:Label ID="lblPn" runat="server"></asp:Label></td>
+                                                                         <td>
+                                                                            <asp:Label ID="lblStatus" runat="server"></asp:Label></td>
                                                                     </tr>
                                                                 </AlternatingItemTemplate>
                                                                 <FooterTemplate>
@@ -903,6 +909,7 @@
                                                                     <th>ItemNo</th>
                                                                     <th>ProductCode</th>
                                                                     <th>CustomerPN</th>
+                                                                    <th>Status</th>
                                                                     </table>
                                                                 </FooterTemplate>
                                                             </asp:Repeater>

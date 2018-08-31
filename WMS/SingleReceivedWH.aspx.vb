@@ -1291,6 +1291,8 @@ Public Class SingleReceivedWH
             Else
                 cboDiscrepencyUNIT.Text = comfirm.DiscrepancyUNIT
             End If
+
+
         Catch ex As Exception
             ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('" & ex.Message & "')", True)
             Exit Sub
@@ -1422,7 +1424,7 @@ Public Class SingleReceivedWH
     Private Sub ReadDATA()
         Dim wh = (From h In db.tblWHPrepairGoodsReceiveDetails Where h.LOTNo = txtLotNo_.Value.Trim And h.Status <> 1
             Order By h.ItemNo Ascending
-            Select h.LOTNo, h.WHSite, h.ENDCustomer, h.CustomerLOTNo, h.ItemNo, h.ProductCode, h.CustomerPN).ToList
+            Select h.LOTNo, h.WHSite, h.ENDCustomer, h.CustomerLOTNo, h.ItemNo, h.ProductCode, h.CustomerPN, h.Status).ToList
 
         If wh.Count > 0 Then
             dgvItemDetail.DataSource = wh
@@ -1439,7 +1441,7 @@ Public Class SingleReceivedWH
             Dim lblItem As Label = CType(e.Item.FindControl("lblItem"), Label)
             Dim lblPc As Label = CType(e.Item.FindControl("lblPc"), Label)
             Dim lblPn As Label = CType(e.Item.FindControl("lblPn"), Label)
-               
+            Dim lblStatus As Label = CType(e.Item.FindControl("lblStatus"), Label)
             If Not IsNothing(lblLOTNo) Then
                 lblLOTNo.Text = DataBinder.Eval(e.Item.DataItem, "LOTNo").ToString
             End If
@@ -1463,7 +1465,13 @@ Public Class SingleReceivedWH
             If Not IsNothing(lblPn) Then
                 lblPn.Text = DataBinder.Eval(e.Item.DataItem, "CustomerPN").ToString
             End If
+            If Not IsNothing(lblStatus) Then
+                lblStatus.Text = DataBinder.Eval(e.Item.DataItem, "Status").ToString
 
+                If lblStatus.Text = "2" Then
+
+                End If
+            End If
         End If
     End Sub
     Private Sub ReadDATA1()

@@ -12,7 +12,7 @@ Imports System.Collections.Generic
 
 Partial Public Class tblWHConfirmGoodsReceive
     Public Property LOTNo As String
-    Public Property LOTDate As Nullable(Of Date)
+    Public Property LOTDate As Date
     Public Property CustREFNo As String
     Public Property OwnerCode As String
     Public Property OwnerNameENG As String

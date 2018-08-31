@@ -124,7 +124,7 @@ Partial Public Class tblImpInvoice
     Public Property CustomsConfirmDate As Nullable(Of Date)
     Public Property App As String
     Public Property CreateBy As String
-    Public Property CreateDate As Nullable(Of Date)
+    Public Property CreateDate As Date
     Public Property UpdateBy As String
     Public Property UpdateDate As Nullable(Of Date)
     Public Property rowguid As System.Guid
