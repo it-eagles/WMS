@@ -36,8 +36,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-
+            
                 <div class="panel panel-default">
                     <div id="Tabs" role="tabpanel" class="nav-tabs-custom">
                         <!-- Nav tabs -->
@@ -1690,7 +1689,6 @@
                                                     </fieldset>
 
                                                 </div>
-
                                             </div>
                                         </div>
                                         <!--/.row-->
@@ -1709,8 +1707,7 @@
 
                  <asp:HiddenField ID="TabName" runat="server" />
                 <!-- /.col -->
-            </div>
-            <!-- /.row -->
+          
         </section>
         <!-- /.content -->
 

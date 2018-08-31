@@ -18791,9 +18791,25 @@ Txtpallet control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
+</member><member name="F:WMS.SingleReceivedWH.dgvConfirmDetailbefor">
+	<summary>
+dgvConfirmDetailbefor control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
 </member><member name="F:WMS.SingleReceivedWH.btnPutAway">
 	<summary>
 btnPutAway control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.SingleReceivedWH.dgvConfirmDetailafter">
+	<summary>
+dgvConfirmDetailafter control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -21106,22 +21122,6 @@ To modify move field declaration from designer file to code-behind file.
 </member><member name="F:WMS.Test.rptCustomers">
 	<summary>
 rptCustomers control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.Test.btntest">
-	<summary>
-btntest control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.Test.GridView1">
-	<summary>
-GridView1 control.
 </summary>
 	<remarks>
 Auto-generated field.

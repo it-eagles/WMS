@@ -17,256 +17,63 @@
         <!-- Main content -->
         <section class="content">
             <div class="row">
-                <div class="col-lg-12 col-xs-12">
-
-                    <div class="box">
-
+                <div class="col-md-12">
+                    <div class="box box-info">
+                        <div class="box-header">
+                            <h3 class="box-title">CK Editor
+                           <small>Advanced and full of features</small>
+                            </h3>
+            
+                            <!-- /. tools -->
+                        </div>
                         <!-- /.box-header -->
-                        <div class="box-body">
-                            <asp:Repeater ID="rptCustomers" runat="server" OnItemDataBound="rptCustomers_ItemDataBound">
-                                <HeaderTemplate>
-                                    <table id="tblCustomers" class="table table-bordered">
-                                        <thead>
-                                            <tr>
-                                                <th style="width: 5px">
-                                                <asp:CheckBox ID="chkAll" runat="server" Checked="false"/></th>
-                                                <th>UserName</th>
-                                                <th>Name</th>
-                                                <th>Branch</th>
-                                                <th>Dept</th>
-
-                                            </tr>
-                                        </thead>
-                                </HeaderTemplate>
-                                <ItemTemplate>                
-                                        <tr>
-                                            <td>
-                                                <asp:CheckBox ID="chkRowData" runat="server" /></td>
-                                            <td><asp:Label ID="lblUserName" runat="server"></asp:Label></td>
-                                            <td><asp:Label ID="lblName" runat="server"></asp:Label></td>
-                                            <td><asp:Label ID="lblBrnch" runat="server"></asp:Label> </td>
-                                            <td><asp:Label ID="lblDept" runat="server"></asp:Label></td>
-                                        </tr>
-                                    
-                                </ItemTemplate>
-                           
-                                <FooterTemplate>
-                                
-                                    </table>
-                                </FooterTemplate>
-                            </asp:Repeater>
-                            <button runat="server" id="btntest" class="btn btn-pinterest" onserverclick="btntest_ServerClick1"></button>
-
-                           
-                            <asp:GridView ID="GridView1" runat="server"></asp:GridView>
-                            <%-- <div class="panel panel-default" style="width: 500px; padding: 10px; margin: 10px">
-                                <div id="Tabs" role="tabpanel">
-                                    <!-- Nav tabs -->
-                                    <ul class="nav nav-tabs" role="tablist">
-                                        <li><a href="#personal" aria-controls="personal" role="tab" data-toggle="tab">Personal</a></li>
-                                        <li><a href="#employment" aria-controls="employment" role="tab" data-toggle="tab">Employment</a></li>
-                                    </ul>
-                                    <!-- Tab panes -->
-                                    <div class="tab-content" style="padding-top: 20px">
-                                        <div role="tabpanel" class="tab-pane active" id="personal">
-                                            This is Personal Information Tab
-                                        </div>
-                                        <div role="tabpanel" class="tab-pane" id="employment">
-                                            This is Employment Information Tab
-                                             <asp:Button ID="Button2" Text="Submit" runat="server" CssClass="btn btn-primary" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <asp:Button ID="Button1" Text="Submit" runat="server" CssClass="btn btn-primary" />
-                                <asp:HiddenField ID="TabName" runat="server" />
-                            </div>--%>
-
-                            <%-- <div id="div1">
-                                <h2>ผลลัพธ์ JSON จะแสดงไว้ตรงนี้</h2>
-                            </div>
-                            <br />
-                            <button runat="server" id="button">ทดสอบ API แบงค์ชาติ</button>
-                            <h2>Modal Example</h2>
-                            <!-- Trigger the modal with a button -->
-                            <button type="button" class="btn btn-info btn-lg" id="myBtn" data-toggle="modal">Open Modal</button>--%>
-                            <%--  <a class="btn" data-toggle="modal" href="#myModal" >Launch Modal</a>--%>
-                            <!--ASP.NET Button -->
-
-                            <%--          <asp:Button ID="btnOpenModal" runat="server" CssClass="btn btn-info btn-lg" Text="Open with ASP Button" OnClick="btnOpenModal_Click" />
-                            <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
-                                <ContentTemplate>
-                                    <ul>
-                                       
-                                        <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="Repeater1_ItemCommand">
-                                                <ItemTemplate>
-                                                    <li>
-                                                        <asp:LinkButton ID="Button1" runat="server" CommandArgument='<%# Eval("ID") %>' Text='<%# Eval("Title") %>'></asp:LinkButton></li>
-                                                </ItemTemplate>
-                                            </asp:Repeater>
-                                    </ul>
-                                </ContentTemplate>
-                            </asp:UpdatePanel>--%>
-
-                            <%--<asp:Panel ID="Panel2" runat="server" CssClass="modal" TabIndex="-1" role="dialog" aria-labelledby="myLabel">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional">
-                                            <ContentTemplate>
-                                                <div class="modal-header">
-                                                    <h4 class="modal-title" id=" myLabel ">Edit</h4>
-                                                </div>
-                                                <div class="modal-body">
-                                                <asp:Repeater ID="Repeater1" runat="server">
-                                                <HeaderTemplate>
-                                                    <table id="example1" class="table table-bordered table-striped">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>Form</th>
-                                                                <th>Read</th>
-                                                                <th>Save</th>
-                                                                <th>Edit</th>
-                                                                <th>Delete</th>
-                                                                <th>Permissions</th>
-                                                                <th>Edit</th>
-                                                            </tr>
-                                                        </thead>
-                                                </HeaderTemplate>
-                                                <ItemTemplate>
-                                                    <tr>
-                                                        <td>
-                                                            <asp:Label ID="lblForm" runat="server"></asp:Label></td>
-                                                        <td class="text-center">
-                                                            <asp:Label ID="lblRead" runat="server">
-                                                     <i class="fa  fa-check-square-o fa-2x" aria-hidden="true"></i></asp:Label>
-                                                            <asp:Label ID="lblRead2" runat="server">
-                                                     <i class="fa  fa-close fa-2x" aria-hidden="true"></i></asp:Label>
-                                                        </td>
-                                                        <td class="text-center">
-                                                            <asp:Label ID="lblSave" runat="server">
-                                                     <i class="fa  fa-check-square-o fa-2x" aria-hidden="true"></i></asp:Label>
-                                                            <asp:Label ID="lblSave2" runat="server">
-                                                     <i class="fa  fa-close fa-2x" aria-hidden="true"></i></asp:Label>
-                                                        </td>
-                                                        <td class="text-center">
-                                                            <asp:Label ID="lblEdit" runat="server">
-                                                      <i class="fa  fa-check-square-o fa-2x" aria-hidden="true"></i> </asp:Label>
-                                                            <asp:Label ID="lblEdit2" runat="server">
-                                                      <i class="fa  fa-close fa-2x" aria-hidden="true"></i></asp:Label>
-                                                        </td>
-                                                        <td class="text-center">
-                                                            <asp:Label ID="lblDelete" runat="server"><i class="fa  fa-check-square-o fa-2x" aria-hidden="true"></i></asp:Label>
-                                                            <asp:Label ID="lblDelete2" runat="server"><i class="fa fa-close fa-2x" aria-hidden="true"></i></asp:Label>
-                                                        </td>
-
-                                                        <td class="text-center">
-                                                            <asp:DropDownList ID="lblStatus" CssClass="form-control" runat="server"></asp:DropDownList>
-                                                        </td>
-                                                        <td class="text-center">
-                                                            <asp:LinkButton ID="lnkEdit" CssClass="btn btn-default" runat="server"><i class="fa fa-pencil"></i></asp:LinkButton>
-                                                            <asp:LinkButton ID="lnkUpdate" Text="Update" runat="server" Visible="false"></asp:LinkButton>
-                                                            <asp:LinkButton ID="lnkCancel" Text="Cancel" runat="server" Visible="false"></asp:LinkButton>
-                                                        </td>
-
-
-                                                    </tr>
-                                                </ItemTemplate>
-                                                <FooterTemplate>
-                                                    <tfoot>
-                                                        <tr>
-                                                            <th>Form</th>
-                                                            <th>Read</th>
-                                                            <th>Save</th>
-                                                            <th>Edit</th>
-                                                            <th>Delete</th>
-                                                            <th>Permissions</th>
-                                                            <th>Edit</th>
-                                                        </tr>
-                                                    </tfoot>
-                                                    </table>
-                                                </FooterTemplate>
-                                            </asp:Repeater>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <asp:Button ID="Button2" runat="server" CssClass="btn btn-primary" Text="Submit" />
-                                                    <asp:LinkButton ID="Button3" runat="server" CssClass="btn btn-link" Text="Cancel"></asp:LinkButton>
-                                                </div>
-                                            </ContentTemplate>
-                                        </asp:UpdatePanel>
-                                    </div>
-                                </div>
-                            </asp:Panel>--%>
-                            <%--<asp:Repeater ID="cpRepeater" runat="server">
+                        <div class="box-body pad">
+                            <form>
+                          <asp:Repeater ID="rptCustomers" runat="server" OnItemDataBound="rptCustomers_ItemDataBound">
                                     <HeaderTemplate>
-                                        <table id="example1" class="table table-bordered table-striped">
+                                        <table id="tblCustomers" class="table table-bordered">
                                             <thead>
-                                            <tr>
-                                                <td>Check</td>
-                                                <td>Form</td>
-                                                <td>Type</td>
-                                                <td>Edit</td>
-                                            </tr>
-                                          </thead>
+                                                <tr>
+                                                    <th style="width: 5px">
+                                                        <asp:CheckBox ID="chkAll" runat="server" Checked="false" /></th>
+                                                    <th>UserName</th>
+                                                    <th>Name</th>
+                                                    <th>Branch</th>
+                                                    <th>Dept</th>
+
+                                                </tr>
+                                            </thead>
                                     </HeaderTemplate>
                                     <ItemTemplate>
                                         <tr>
-                                            <td class="text-center">
-                                                <asp:CheckBox ID="chkDelete" runat="server" />
+                                            <td>
+                                                <asp:CheckBox ID="chkRowData" runat="server" AutoPostBack="true" OnCheckedChanged="chkAll_CheckedChanged" /></td>
+                                            <td>
+                                                <asp:Label ID="lblUserName" runat="server"></asp:Label></td>
+                                            <td>
+                                                <asp:Label ID="lblName" runat="server"></asp:Label></td>
+                                            <td>
+                                                <asp:Label ID="lblBrnch" runat="server"></asp:Label>
                                             </td>
                                             <td>
-                                                <asp:Label ID="lblID" Visible="false" runat="server" Text='<%# Bind("Form")%>'></asp:Label>
-                                                <asp:Label ID="lblName" runat="server" Text='<%# Bind("Form")%>'></asp:Label>
-                                                <asp:TextBox ID="txtName" BackColor="#d4d0c8" runat="server" Text='<%# Bind("Form")%>' Visible="false"></asp:TextBox>
-                                            </td>
-                                            <td>
-                                                <asp:DropDownList ID="ddlType" runat="server"></asp:DropDownList>
-                                            </td>
-                                            <td>
-                                            
-                                                <asp:LinkButton ID="lnkEdit" CssClass="btn btn-default" runat="server" OnClick="LinkButton1_Click"></asp:LinkButton>
-                                                <asp:LinkButton ID="lnkUpdate" Text="Update" runat="server" Visible="false" OnClick="LinkButton2_Click"></asp:LinkButton>
-                                                <asp:LinkButton ID="lnkCancel" Text="Cancel" runat="server" Visible="false" OnClick="LinkButton3_Click"></asp:LinkButton>
-                                                <asp:LinkButton ID="lnkDelete" Text="Delete" runat="server" OnClick="lnkDelete_Click" OnClientClick="return confirm('Do you want to delete this row?');" />
-                                              
-                                            </td>
+                                                <asp:Label ID="lblDept" runat="server"></asp:Label></td>
                                         </tr>
+
                                     </ItemTemplate>
+
                                     <FooterTemplate>
-                                        <tfoot>
-                                            <tr>
-                                                <td>Check</td>
-                                                <td>Form</td>
-                                                <td>Type</td>
-                                                <td>Edit</td>
-                                            </tr>
-                                        </tfoot>
                                         </table>
                                     </FooterTemplate>
-                                </asp:Repeater>--%>
-                            <%--                            <asp:Button ID="btnShow" runat="server" Text="Show Modal Popup" />--%>
-                            <!-- ModalPopupExtender -->
-                        <%--    <asp:ModalPopupExtender ID="mp1" runat="server" PopupControlID="Panel1" TargetControlID="btnShow"
-                                CancelControlID="btnClose" BackgroundCssClass="modalBackground">
-                            </asp:ModalPopupExtender>--%>
-                            <%--<asp:Panel ID="Panel1" runat="server" CssClass="modalPopup" align="center" Style="display: none">
-                                <div style="height: 100px">
-                                    Do you like this product?&nbsp;
-                                        <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
-                                            <asp:ListItem Text="Please Select" Value="0"></asp:ListItem>
-                                            <asp:ListItem Text="Yes" Value="1"></asp:ListItem>
-                                            <asp:ListItem Text="No" Value="2"></asp:ListItem>
-                                        </asp:DropDownList>
-                                </div>
-                                <asp:Button ID="btnClose" runat="server" Text="Close" />
-                            </asp:Panel>--%>
-                            <!-- ModalPopupExtender -->
+                                </asp:Repeater>
+                            </form>
                         </div>
-                        <!-- /.box-body -->
                     </div>
                     <!-- /.box -->
+
                 </div>
-                <!-- /.col -->
+                <!-- /.col-->
             </div>
-            <!-- /.row -->
+            <!-- ./row -->
         </section>
         <!-- /.content -->
 
@@ -291,7 +98,7 @@
 
             </div>
         </div>
-  <%--      <script type="text/javascript">
+        <%--      <script type="text/javascript">
             $(function () {
                 var tabName = $("[id*=TabName]").val() != "" ? $("[id*=TabName]").val() : "personal";
                 $('#Tabs a[href="#' + tabName + '"]').tab('show');
@@ -301,7 +108,7 @@
             });
         </script>
     </form>--%>
-  <%--      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <%--      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     
         <script type="text/javascript">
         $(function () {
@@ -346,6 +153,9 @@
                         $('table [id*=chkAll]').prop('checked', false);
                 });
             });
+        </script>
+
+       
 </script>
-        </form>
+    </form>
 </asp:Content>

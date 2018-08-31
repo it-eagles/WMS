@@ -1130,6 +1130,15 @@ Partial Public Class SingleReceivedWH
     Protected WithEvents Txtpallet As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
+    '''dgvConfirmDetailbefor control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents dgvConfirmDetailbefor As Global.System.Web.UI.WebControls.Repeater
+
+    '''<summary>
     '''btnPutAway control.
     '''</summary>
     '''<remarks>
@@ -1137,6 +1146,15 @@ Partial Public Class SingleReceivedWH
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents btnPutAway As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''dgvConfirmDetailafter control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents dgvConfirmDetailafter As Global.System.Web.UI.WebControls.Repeater
 
     '''<summary>
     '''TabName control.

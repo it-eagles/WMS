@@ -78,32 +78,32 @@ Public Class Test
             End If
     End Sub
 
-    Protected Sub LinkButton1_Click(sender As Object, e As EventArgs)
-        Dim item As RepeaterItem = TryCast(TryCast(sender, LinkButton).Parent, RepeaterItem)
-        Me.ToggleElemnts(item, True)
+    'Protected Sub LinkButton1_Click(sender As Object, e As EventArgs)
+    '    Dim item As RepeaterItem = TryCast(TryCast(sender, LinkButton).Parent, RepeaterItem)
+    '    Me.ToggleElemnts(item, True)
 
-    End Sub
-    Private Sub ToggleElemnts(item As RepeaterItem, isEdit As Boolean)
-        item.FindControl("lnkEdit").Visible = Not isEdit
-        item.FindControl("lnkUpdate").Visible = isEdit
-        item.FindControl("lnkCancel").Visible = isEdit
-        item.FindControl("lnkDelete").Visible = Not isEdit
+    'End Sub
+    'Private Sub ToggleElemnts(item As RepeaterItem, isEdit As Boolean)
+    '    item.FindControl("lnkEdit").Visible = Not isEdit
+    '    item.FindControl("lnkUpdate").Visible = isEdit
+    '    item.FindControl("lnkCancel").Visible = isEdit
+    '    item.FindControl("lnkDelete").Visible = Not isEdit
 
-        item.FindControl("lblID").Visible = Not isEdit
-        item.FindControl("lblName").Visible = Not isEdit
-    End Sub
-    Protected Sub LinkButton2_Click(sender As Object, e As EventArgs)
+    '    item.FindControl("lblID").Visible = Not isEdit
+    '    item.FindControl("lblName").Visible = Not isEdit
+    'End Sub
+    'Protected Sub LinkButton2_Click(sender As Object, e As EventArgs)
 
-    End Sub
+    'End Sub
 
-    Protected Sub LinkButton3_Click(sender As Object, e As EventArgs)
-        Dim item As RepeaterItem = TryCast(TryCast(sender, LinkButton).Parent, RepeaterItem)
-        Me.ToggleElemnts(item, False)
-    End Sub
+    'Protected Sub LinkButton3_Click(sender As Object, e As EventArgs)
+    '    Dim item As RepeaterItem = TryCast(TryCast(sender, LinkButton).Parent, RepeaterItem)
+    '    Me.ToggleElemnts(item, False)
+    'End Sub
 
-    Protected Sub lnkDelete_Click(sender As Object, e As EventArgs)
+    'Protected Sub lnkDelete_Click(sender As Object, e As EventArgs)
 
-    End Sub
+    'End Sub
 
     'Protected Sub cpRepeater_ItemCommand(source As Object, e As RepeaterCommandEventArgs) Handles cpRepeater.ItemCommand
 
@@ -216,7 +216,29 @@ Public Class Test
         ''For j = 0 To name.Count - 1
 
         ''Next
-        GridView1.DataSource = name
-        GridView1.DataBind()
+        'GridView1.DataSource = name
+        'GridView1.DataBind()
+    End Sub
+
+    Protected Sub chkAll_CheckedChanged(sender As Object, e As EventArgs)
+        'Dim chkName As CheckBox
+        'Dim lblUserName As String
+        'Dim i As Integer
+        'Dim j As Integer
+        'Dim name As ArrayList
+        'name = New ArrayList
+        'For i = 0 To rptCustomers.Items.Count - 1
+        '    chkName = CType(rptCustomers.Items(i).FindControl("chkRowData"), CheckBox)
+        '    lblUserName = CType(rptCustomers.Items(i).FindControl("lblUserName"), Label).Text.Trim
+        '    'lblName = CType(rptCustomers.Items(i).FindControl("lblName"), Label).Text.Trim
+        '    'lblBranch = CType(rptCustomers.Items(i).FindControl("lblBrnch"), Label).Text.Trim
+        '    If chkName.Checked = True Then
+        '        Dim us = (From u In db.tblUsers Where u.UserName = lblUserName).FirstOrDefault
+        '        txtUserName.Value = us.UserName
+        '        txtName.Value = us.Name
+        '        txtDept.Value = us.Dept
+        '        txtBranch.Value = us.Branch
+        '    End If
+        'Next     
     End Sub
 End Class

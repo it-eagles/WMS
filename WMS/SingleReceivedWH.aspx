@@ -844,8 +844,7 @@
                                                             <asp:Repeater runat="server" ID="dgvItemDetail" OnItemDataBound="dgvItemDetail_ItemDataBound">
                                                                 <HeaderTemplate>
                                                                     <table class="table table-bordered">
-                                                                        <th style="width: 5px"><asp:CheckBox runat="server" ID="chkAll_Item" Checked="false"></asp:CheckBox>
-                                                                            select</th>
+                                                                        <th style="width: 2px"><asp:CheckBox runat="server" ID="chkAll_Item" Checked="false"></asp:CheckBox></th>
                                                                         <th style="width: 10px">LOTNo</th>
                                                                         <th style="width: 10px">WHSite</th>
                                                                         <th style="width: 10px">ENDCustomer</th>
@@ -857,8 +856,8 @@
                                                                 </HeaderTemplate>
                                                                 <ItemTemplate>
                                                                     <tr class="success">
-                                                                        <td class="text-center">
-                                                                            <asp:CheckBox ID="chkLotNo" runat="server"></asp:CheckBox></td>
+                                                                        <td>
+                                                                            <asp:CheckBox ID="chkLotNo" runat="server" OnCheckedChanged="chkLotNo_CheckedChanged" AutoPostBack="true"></asp:CheckBox></td>
                                                                         <td>
                                                                             <asp:Label ID="lblLOTNo" runat="server"></asp:Label></td>
                                                                         <td>
@@ -880,7 +879,7 @@
                                                                 </ItemTemplate>
                                                                 <AlternatingItemTemplate>
                                                                     <tr class="info">
-                                                                        <td class="text-center">
+                                                                        <td>
                                                                             <asp:CheckBox ID="chkLotNo" runat="server"></asp:CheckBox></td>
                                                                         <td>
                                                                             <asp:Label ID="lblLOTNo" runat="server"></asp:Label></td>
@@ -1115,7 +1114,82 @@
                                                             </div>
                                                         </div>
                                                     </div>
-
+                                                    <div class="col-md-12 col-lg-12">
+                                                        <fieldset>
+                                                            <legend></legend>
+                                                            <asp:Repeater runat="server" ID="dgvConfirmDetailbefor" OnItemDataBound="dgvConfirmDetailbefor_ItemDataBound">
+                                                                <HeaderTemplate>
+                                                                    <table class="table table-bordered">
+                                                                        <th style="width: 2px"><asp:CheckBox runat="server" ID="chkAll_Item" Checked="false"></asp:CheckBox></th>
+                                                                        <th style="width: 10px">LOTNo</th>
+                                                                        <th style="width: 10px">WHSite</th>
+                                                                        <th style="width: 10px">ENDCustomer</th>
+                                                                        <th style="width: 10px">CustomerLOTNo</th>
+                                                                        <th style="width: 5px">ItemNo</th>
+                                                                        <th style="width: 10px">ProductCode</th>
+                                                                        <th style="width: 10px">CustomerPN</th>
+                                                                        <th style="width: 2px">Status</th>
+                                                                </HeaderTemplate>
+                                                                <ItemTemplate>
+                                                                    <tr class="success">
+                                                                        <td>
+                                                                            <asp:CheckBox ID="chkLotNo" runat="server" OnCheckedChanged="chkLotNo_CheckedChanged" AutoPostBack="true"></asp:CheckBox></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblLOTNo" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblSite" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblEND" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblCus" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblItem" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblPc" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblPn" runat="server"></asp:Label></td>
+                                                                         
+                                                                       <td>
+                                                                            <asp:Label ID="lblStatus" runat="server"></asp:Label></td>
+                                                                    </tr>
+                                                                </ItemTemplate>
+                                                                <AlternatingItemTemplate>
+                                                                    <tr class="info">
+                                                                        <td>
+                                                                            <asp:CheckBox ID="chkLotNo" runat="server"></asp:CheckBox></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblLOTNo" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblSite" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblEND" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblCus" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblItem" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblPc" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblPn" runat="server"></asp:Label></td>
+                                                                         <td>
+                                                                            <asp:Label ID="lblStatus" runat="server"></asp:Label></td>
+                                                                    </tr>
+                                                                </AlternatingItemTemplate>
+                                                                <FooterTemplate>
+                                                                    <th>select</th>
+                                                                    <th>LOTNo</th>
+                                                                    <th>WHSite</th>
+                                                                    <th>ENDCustomer</th>
+                                                                    <th>CustomerLOTNo</th>
+                                                                    <th>ItemNo</th>
+                                                                    <th>ProductCode</th>
+                                                                    <th>CustomerPN</th>
+                                                                    <th>Status</th>
+                                                                    </table>
+                                                                </FooterTemplate>
+                                                            </asp:Repeater>
+                                                        </fieldset>
+                                                    </div>
                                                     <%-------------------------------------------------------End JOB Form----------------------------------------------------------------%>
                                                     <div class="col-lg-12 col-md-12 ">
                                                         <!-- form start -->
@@ -1132,6 +1206,83 @@
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                    </div>
+
+                                                    <div class="col-md-12 col-lg-12">
+                                                        <fieldset>
+                                                            <legend></legend>
+                                                            <asp:Repeater runat="server" ID="dgvConfirmDetailafter" OnItemDataBound="dgvConfirmDetailafter_ItemDataBound">
+                                                                <HeaderTemplate>
+                                                                    <table class="table table-bordered">
+                                                                        <th style="width: 2px"><asp:CheckBox runat="server" ID="chkAll_Item" Checked="false"></asp:CheckBox></th>
+                                                                        <th style="width: 10px">LOTNo</th>
+                                                                        <th style="width: 10px">WHSite</th>
+                                                                        <th style="width: 10px">ENDCustomer</th>
+                                                                        <th style="width: 10px">CustomerLOTNo</th>
+                                                                        <th style="width: 5px">ItemNo</th>
+                                                                        <th style="width: 10px">ProductCode</th>
+                                                                        <th style="width: 10px">CustomerPN</th>
+                                                                        <th style="width: 2px">Status</th>
+                                                                </HeaderTemplate>
+                                                                <ItemTemplate>
+                                                                    <tr class="success">
+                                                                        <td>
+                                                                            <asp:CheckBox ID="chkLotNo" runat="server" OnCheckedChanged="chkLotNo_CheckedChanged" AutoPostBack="true"></asp:CheckBox></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblLOTNo" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblSite" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblEND" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblCus" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblItem" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblPc" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblPn" runat="server"></asp:Label></td>
+                                                                         
+                                                                       <td>
+                                                                            <asp:Label ID="lblStatus" runat="server"></asp:Label></td>
+                                                                    </tr>
+                                                                </ItemTemplate>
+                                                                <AlternatingItemTemplate>
+                                                                    <tr class="info">
+                                                                        <td>
+                                                                            <asp:CheckBox ID="chkLotNo" runat="server"></asp:CheckBox></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblLOTNo" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblSite" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblEND" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblCus" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblItem" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblPc" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblPn" runat="server"></asp:Label></td>
+                                                                         <td>
+                                                                            <asp:Label ID="lblStatus" runat="server"></asp:Label></td>
+                                                                    </tr>
+                                                                </AlternatingItemTemplate>
+                                                                <FooterTemplate>
+                                                                    <th>select</th>
+                                                                    <th>LOTNo</th>
+                                                                    <th>WHSite</th>
+                                                                    <th>ENDCustomer</th>
+                                                                    <th>CustomerLOTNo</th>
+                                                                    <th>ItemNo</th>
+                                                                    <th>ProductCode</th>
+                                                                    <th>CustomerPN</th>
+                                                                    <th>Status</th>
+                                                                    </table>
+                                                                </FooterTemplate>
+                                                            </asp:Repeater>
+                                                        </fieldset>
                                                     </div>
                                                 </fieldset>
 

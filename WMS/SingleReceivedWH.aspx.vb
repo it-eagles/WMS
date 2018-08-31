@@ -8,6 +8,8 @@ Public Class SingleReceivedWH
     'Dim db As New LKBWarehouseEntities
     Dim db As New LKBWarehouseEntities1
     Dim classPermis As New ClassPermis
+    Dim QTY(1) As Double
+    Dim Status As String
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Dim usename As String = CStr(Session("UserName"))
@@ -67,7 +69,17 @@ Public Class SingleReceivedWH
     End Sub
 
     Protected Sub btnReceive_GoodRecDetail_ServerClick(sender As Object, e As EventArgs)
-
+        Dim usename As String = CStr(Session("UserName"))
+        Dim form As String = "frmConfirmGoodsReceive"
+        If classPermis.CheckSave(form, usename) = True Then
+            If Status <> "2" And Status <> "3" Then
+                'CallculateGoods()
+                'SaveDetail_New()
+                SaveStockMovement_New("SPM-IN-6108011", 1)
+            End If
+        Else
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ เข้าโปรแกรมนี้' !!!');", True)
+        End If
     End Sub
 
     Protected Sub btnPutAway_ServerClick(sender As Object, e As EventArgs)
@@ -499,6 +511,10 @@ Public Class SingleReceivedWH
         Save_Modify()
         ReadDATA()
         ReadDATA1()
+        ReadDATA()
+        ReadDATA1()
+        ReadDATAbefor()
+        ReadDATAafter()
         confirmgoodreceive_.Disabled = True
         goodreceivedetail_.Disabled = True
         btnSaveEdit.Visible = False
@@ -1014,6 +1030,8 @@ Public Class SingleReceivedWH
         selectPrepairGoodsReceiveEdit()
         ReadDATA()
         ReadDATA1()
+        ReadDATAbefor()
+        ReadDATAafter()
     End Sub
 
     Protected Sub dgvPrepire_ItemDataBound(sender As Object, e As RepeaterItemEventArgs)
@@ -1469,6 +1487,14 @@ Public Class SingleReceivedWH
                 lblStatus.Text = DataBinder.Eval(e.Item.DataItem, "Status").ToString
 
                 If lblStatus.Text = "2" Then
+                    rbShort.Checked = True
+                    rbOver.Checked = False
+                ElseIf lblStatus.Text = "3" Then
+                    rbShort.Checked = False
+                    rbOver.Checked = True
+                Else
+                    rbOver.Checked = False
+                    rbShort.Checked = False
 
                 End If
             End If
@@ -1595,5 +1621,442 @@ Public Class SingleReceivedWH
                     End Try
             End Select
         End If
+    End Sub
+
+    Protected Sub chkLotNo_CheckedChanged(sender As Object, e As EventArgs)
+        Dim chkName As CheckBox
+        Dim lblLOTNo As String
+        Dim lblItem As Integer
+        Dim i As Integer
+        Dim j As Integer
+        Dim name As ArrayList
+        name = New ArrayList
+        For i = 0 To dgvItemDetail.Items.Count - 1
+            chkName = CType(dgvItemDetail.Items(i).FindControl("chkLotNo"), CheckBox)
+            lblLOTNo = CType(dgvItemDetail.Items(i).FindControl("lblLOTNo"), Label).Text.Trim
+            lblItem = CInt(CType(dgvItemDetail.Items(i).FindControl("lblItem"), Label).Text.Trim)
+            'lblName = CType(rptCustomers.Items(i).FindControl("lblName"), Label).Text.Trim
+            'lblBranch = CType(rptCustomers.Items(i).FindControl("lblBrnch"), Label).Text.Trim
+            If chkName.Checked = True Then
+                Dim wh = (From h In db.tblWHPrepairGoodsReceiveDetails Where h.LOTNo = lblLOTNo And h.ItemNo = lblItem
+                Select h).FirstOrDefault
+                dcbSite.Text = wh.WHSite
+                txtCustomer.Value = wh.ENDCustomer
+                dcbSource.Text = wh.WHSource
+                txtCusLOTNo.Value = wh.CustomerLOTNo
+                txtItemNo.Value = String.Format("{0:0.00}", wh.ItemNo)
+                txtProductCode.Value = wh.ProductCode
+                txtProductDesc2.Value = wh.CustomerPN
+                txtProductDesc3.Value = wh.OwnerPN
+                txtProductDesc1.Value = wh.ProductDesc
+                ddlProductUnit.Text = wh.Measurement
+                txtProductWidth.Value = String.Format("{0:0.00}", wh.ProductWidth)
+                txtProductHeight.Value = String.Format("{0:0.00}", wh.ProductLength)
+                txtProductLeng.Value = String.Format("{0:0.00}", wh.ProductHeight)
+                txtProductVolume.Value = String.Format("{0:0.00}", wh.ProductVolume)
+                txtOrder.Value = wh.OrderNo
+                txtReceive.Value = wh.ReceiveNo
+                dcbType.Text = wh.Type
+                txtManufacturingDate.Text = Convert.ToDateTime(wh.ManufacturingDate).ToString("dd/MM/yyyy")
+                If String.IsNullOrEmpty(txtManufacturingDate.Text) Then
+                    CbNotDate.Checked = True
+                Else
+                    CbNotDate.Checked = False
+                End If
+                txtExpiredDate.Text = Convert.ToDateTime(wh.ExpiredDate).ToString("dd/MM/yyyy")
+                txtExpectedDate.Text = Convert.ToDateTime(wh.ReceiveDate).ToString("dd/MM/yyyy")
+                txtQuantity.Value = String.Format("{0:0.00}", wh.Quantity)
+                ddlUnit4.Text = wh.QuantityUnit
+                txtWeightDetail.Value = String.Format("{0:0.00}", wh.Weigth)
+                dcboUnitWeightDetail.Text = wh.WeigthUnit
+                dcboCurrency.Text = wh.Currency
+                txtExchangeRate.Value = String.Format("{0:0.00}", wh.ExchangeRate)
+                txtPriceForeigh.Value = String.Format("{0:0.00}", wh.PriceForeigh)
+                txtPriceBath.Value = String.Format("{0:0.00}", wh.PriceBath)
+                txtPriceForeighAmount.Value = String.Format("{0:0.00}", wh.PriceForeighAmount)
+                txtPriceBathAmount.Value = String.Format("{0:0.00}", wh.PriceBathAmount)
+                txtPalletNo.Value = wh.PalletNo
+                Status = CStr(wh.Status)
+                txtSupplier.Value = wh.Supplier
+                txtBuyer.Value = wh.Buyer
+                txtExporter.Value = wh.Exporter
+                txtDestination.Value = wh.Destination
+                txtConsignee.Value = wh.Consignee
+                txtShippingMark.Value = wh.ShippingMark
+                txtEntryNo.Value = wh.EntryNo
+                txtEntryItemNo.Value = CStr(wh.EntryItemNo)
+                txtInvoice.Value = wh.Invoice
+                If Status = "2" Then
+                    rbShort.Checked = True
+                    rbOver.Checked = False
+                ElseIf Status = "3" Then
+                    rbOver.Checked = True
+                    rbShort.Checked = False
+                Else
+                    rbOver.Checked = False
+                    rbShort.Checked = False
+                End If
+            End If
+        Next
+
+    End Sub
+
+    Protected Sub dgvConfirmDetailbefor_ItemDataBound(sender As Object, e As RepeaterItemEventArgs)
+        If e.Item.ItemType = ListItemType.Item OrElse e.Item.ItemType = ListItemType.AlternatingItem Then
+            Dim lblLOTNo As Label = CType(e.Item.FindControl("lblLOTNo"), Label)
+            Dim lblSite As Label = CType(e.Item.FindControl("lblSite"), Label)
+            Dim lblEND As Label = CType(e.Item.FindControl("lblEND"), Label)
+            Dim lblCus As Label = CType(e.Item.FindControl("lblCus"), Label)
+            Dim lblItem As Label = CType(e.Item.FindControl("lblItem"), Label)
+            Dim lblPc As Label = CType(e.Item.FindControl("lblPc"), Label)
+            Dim lblPn As Label = CType(e.Item.FindControl("lblPn"), Label)
+
+            If Not IsNothing(lblLOTNo) Then
+                lblLOTNo.Text = DataBinder.Eval(e.Item.DataItem, "LOTNo").ToString
+            End If
+            If Not IsNothing(lblSite) Then
+                lblSite.Text = DataBinder.Eval(e.Item.DataItem, "WHSite").ToString
+            End If
+            If Not IsNothing(lblEND) Then
+                lblEND.Text = DataBinder.Eval(e.Item.DataItem, "ENDCustomer").ToString
+            End If
+            If Not IsNothing(lblCus) Then
+                lblCus.Text = DataBinder.Eval(e.Item.DataItem, "CustomerLOTNo").ToString
+            End If
+            If Not IsNothing(lblItem) Then
+                lblItem.Text = DataBinder.Eval(e.Item.DataItem, "ItemNo").ToString
+            End If
+
+            If Not IsNothing(lblPc) Then
+                lblPc.Text = DataBinder.Eval(e.Item.DataItem, "ProductCode").ToString
+            End If
+
+            If Not IsNothing(lblPn) Then
+                lblPn.Text = DataBinder.Eval(e.Item.DataItem, "CustomerPN").ToString
+            End If
+        End If
+
+    End Sub
+
+    Protected Sub dgvConfirmDetailafter_ItemDataBound(sender As Object, e As RepeaterItemEventArgs)
+        If e.Item.ItemType = ListItemType.Item OrElse e.Item.ItemType = ListItemType.AlternatingItem Then
+            Dim lblLOTNo As Label = CType(e.Item.FindControl("lblLOTNo"), Label)
+            Dim lblSite As Label = CType(e.Item.FindControl("lblSite"), Label)
+            Dim lblEND As Label = CType(e.Item.FindControl("lblEND"), Label)
+            Dim lblCus As Label = CType(e.Item.FindControl("lblCus"), Label)
+            Dim lblItem As Label = CType(e.Item.FindControl("lblItem"), Label)
+            Dim lblPc As Label = CType(e.Item.FindControl("lblPc"), Label)
+            Dim lblPn As Label = CType(e.Item.FindControl("lblPn"), Label)
+
+            If Not IsNothing(lblLOTNo) Then
+                lblLOTNo.Text = DataBinder.Eval(e.Item.DataItem, "LOTNo").ToString
+            End If
+            If Not IsNothing(lblSite) Then
+                lblSite.Text = DataBinder.Eval(e.Item.DataItem, "WHSite").ToString
+            End If
+            If Not IsNothing(lblEND) Then
+                lblEND.Text = DataBinder.Eval(e.Item.DataItem, "ENDCustomer").ToString
+            End If
+            If Not IsNothing(lblCus) Then
+                lblCus.Text = DataBinder.Eval(e.Item.DataItem, "CustomerLOTNo").ToString
+            End If
+            If Not IsNothing(lblItem) Then
+                lblItem.Text = DataBinder.Eval(e.Item.DataItem, "ItemNo").ToString
+            End If
+
+            If Not IsNothing(lblPc) Then
+                lblPc.Text = DataBinder.Eval(e.Item.DataItem, "ProductCode").ToString
+            End If
+
+            If Not IsNothing(lblPn) Then
+                lblPn.Text = DataBinder.Eval(e.Item.DataItem, "CustomerPN").ToString
+            End If
+        End If
+
+    End Sub
+
+    Private Sub ReadDATAbefor()
+
+        Dim wh = (From h In db.tblWHConfirmGoodsReceiveDetails Where h.LOTNo = txtLotNo_.Value.Trim And
+                h.StatusPutAlway = 0
+                Order By h.ItemNo Ascending
+                Select h.LOTNo, h.WHSite, h.ENDCustomer, h.CustomerLOTNo, h.ItemNo, h.ProductCode,
+                h.CustomerPN).ToList
+
+        If wh.Count > 0 Then
+            dgvConfirmDetailbefor.DataSource = wh
+            dgvConfirmDetailbefor.DataBind()
+        End If
+
+    End Sub
+
+    Private Sub ReadDATAafter()
+
+        Dim wh = (From h In db.tblWHConfirmGoodsReceiveDetails Where h.LOTNo = txtLotNo_.Value.Trim And
+                h.StatusPutAlway = 1
+                Order By h.ItemNo Ascending
+                Select h.LOTNo, h.WHSite, h.ENDCustomer, h.CustomerLOTNo, h.ItemNo, h.ProductCode,
+                h.CustomerPN).ToList
+
+        If wh.Count > 0 Then
+            dgvConfirmDetailafter.DataSource = wh
+            dgvConfirmDetailafter.DataBind()
+        End If
+    End Sub
+    Private Sub CallculateGoods()
+        If dcbType.Text = "Goods Complete" Then
+            txtQtyReceived.Value = CStr(CDbl(IIf(txtQtyReceived.Value = "", "0", txtQtyReceived.Value)) + CDbl(txtQuantity.Value))
+            txtQtyDiscrepancy.Value = CStr(CDbl(IIf(txtQtyDiscrepancy.Value = "", "0", txtQtyDiscrepancy.Value)) + CDbl(txtQuantity.Value))
+            cboReceivedUNIT.Text = ddlUnit4.Text
+            cboDiscrepencyUNIT.Text = ddlUnit4.Text
+        ElseIf dcbType.Text = "Wait Goods Received" Then
+            txtQtyWaitReceive.Value = CStr(CDbl(txtQtyWaitReceive.Value) + CDbl(txtQuantity.Value))
+            cboWaitReceiveUNIT.Text = ddlUnit4.Text
+        ElseIf dcbType.Text = "Goods Damage" Then
+            txtQtyDamage.Value = CStr(CDbl(txtQtyDamage.Value) + CDbl(txtQuantity.Value))
+            cboDamageUNIT.Text = ddlUnit4.Text
+            cboDiscrepencyUNIT.Text = ddlUnit4.Text
+        End If
+    End Sub
+
+    Private Sub SaveDetail_New()
+        Dim chkName As CheckBox
+        Dim lblLOTNo As String
+        Dim lblItem As Integer
+        Dim availableQuantity As Integer
+        Dim Quantity As Integer
+        Dim ItemNo As Integer
+        Dim i As Integer
+        Dim j As Integer
+        Dim ExpectedDate As Nullable(Of Date)
+        Dim LOTNo As String
+        Dim name As ArrayList
+        name = New ArrayList
+        If String.IsNullOrEmpty(txtLotNo_.Value.Trim) Then
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ PrepairLOT ก่อน !!!')", True)
+            txtLotNo_.Focus()
+            Exit Sub
+
+        Else
+            For i = 0 To dgvItemDetail.Items.Count - 1
+                chkName = CType(dgvItemDetail.Items(i).FindControl("chkLotNo"), CheckBox)
+                lblLOTNo = CType(dgvItemDetail.Items(i).FindControl("lblLOTNo"), Label).Text.Trim
+                lblItem = CInt(CType(dgvItemDetail.Items(i).FindControl("lblItem"), Label).Text.Trim)
+
+                Try
+                    If String.IsNullOrEmpty(txtExpectedDate.Text) Then
+                        ExpectedDate = Nothing
+                    Else
+                        ExpectedDate = DateTime.ParseExact(txtExpectedDate.Text, "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US"))
+                    End If
+                    If chkName.Checked = True Then
+                        Dim wh = (From h In db.tblWHPrepairGoodsReceiveDetails Where h.LOTNo = lblLOTNo And h.ItemNo = lblItem
+                        Select h).FirstOrDefault
+                        If Not IsNothing(wh) Then
+                            ItemNo = CInt(wh.ItemNo)
+                            Quantity = CInt(wh.Quantity)
+                            LOTNo = wh.LOTNo
+                            If dcbType.Text = "Goods Complete" Then
+                                availableQuantity = CInt(CDbl(Quantity).ToString("#,##0.000"))
+                            ElseIf dcbType.Text = "Goods Damage" Then
+                                availableQuantity = 0
+                            ElseIf dcbType.Text = "Wait Goods Receive" Then
+                                availableQuantity = 0
+                            End If
+
+                            db.tblWHConfirmGoodsReceiveDetails.Add(New tblWHConfirmGoodsReceiveDetail With { _
+                                    .LOTNo = LOTNo, _
+                                    .WHSite = wh.WHSite, _
+                                    .WHLocation = dcbLocation.Text, _
+                                    .ENDCustomer = wh.ENDCustomer, _
+                                    .WHSource = wh.WHSource, _
+                                    .CustomerLOTNo = wh.CustomerLOTNo, _
+                                    .ItemNo = ItemNo, _
+                                    .ProductCode = wh.ProductCode, _
+                                    .CustomerPN = wh.CustomerPN, _
+                                    .OwnerPN = wh.OwnerPN, _
+                                    .ProductDesc = wh.ProductDesc, _
+                                    .Measurement = wh.Measurement, _
+                                    .ProductWidth = wh.ProductWidth, _
+                                    .ProductLength = wh.ProductLength, _
+                                    .ProductHeight = wh.ProductHeight, _
+                                    .ProductVolume = wh.ProductVolume, _
+                                    .OrderNo = wh.OrderNo, _
+                                    .ReceiveNo = wh.ReceiveNo, _
+                                    .Type = wh.Type, _
+                                    .ManufacturingDate = wh.ManufacturingDate, _
+                                    .ExpiredDate = wh.ExpiredDate, _
+                                    .ReceiveDate = Now, _
+                                    .Quantity = Quantity, _
+                                    .QuantityUnit = wh.QuantityUnit, _
+                                    .AvailableQuantity = availableQuantity, _
+                                    .Weigth = wh.Weigth, _
+                                    .WeigthUnit = wh.WeigthUnit, _
+                                    .Currency = wh.Currency, _
+                                    .ExchangeRate = wh.ExchangeRate, _
+                                    .PriceForeigh = wh.PriceForeigh, _
+                                    .PriceForeighAmount = wh.PriceForeighAmount, _
+                                    .PriceBath = wh.PriceBath, _
+                                    .PriceBathAmount = wh.PriceBathAmount, _
+                                    .PalletNo = wh.PalletNo, _
+                                    .UserBy = CStr(Session("UserName")), _
+                                    .LastUpdate = Now, _
+                                    .ExpectedDate = ExpectedDate, _
+                                    .TypeDamage = dcbTypeDamage.Text.Trim, _
+                                    .Supplier = wh.Supplier, _
+                                    .Buyer = wh.Buyer, _
+                                    .Exporter = wh.Exporter, _
+                                    .Destination = wh.Destination, _
+                                    .Consignee = wh.Consignee, _
+                                    .ShippingMark = wh.ShippingMark, _
+                                    .EntryNo = wh.EntryNo, _
+                                    .EntryItemNo = CType(IIf(wh.EntryItemNo.ToString = "", 0, CInt(wh.EntryItemNo)), Integer?), _
+                                    .Invoice = wh.Invoice
+                                })
+
+                            db.SaveChanges()
+
+                            If SaveDetail_Modify1(ItemNo, Quantity) = False Then
+                                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert(' ItemNo  ที่คุณใส่ ไม่ถูกต้อง !!!')", True)
+                            End If
+                            SaveStockMovement_New(LOTNo, ItemNo)
+                            'CountculateSubStockCtrl()
+                            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('Receive ข้อมูลเรียบร้อย !!')", True)
+
+                        End If
+                       
+                    End If
+                Catch ex As Exception
+
+                    ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('" & ex.Message & "')", True)
+
+                End Try
+
+            Next            
+        End If
+        ReadDATA()
+        ReadDATA1()
+        
+    End Sub
+    Private Function SaveDetail_Modify1(ByVal i As Integer, qty As Integer) As Boolean
+
+        Dim wh As tblWHPrepairGoodsReceiveDetail = (From p In db.tblWHPrepairGoodsReceiveDetails
+                                                    Where p.LOTNo = txtLotNo_.Value.Trim And p.ItemNo = i).First
+        If Not IsNothing(wh) Then
+            wh.LOTNo = txtLotNo_.Value.Trim
+            wh.ItemNo = i
+            wh.UserBy = CStr(Session("UserName"))
+            wh.LastUpdate = Now
+            If rbShort.Checked = True Then
+                wh.Status = 2
+            ElseIf rbOver.Checked = True Then
+                wh.Status = 3
+            Else
+                wh.Status = 1
+            End If
+            wh.Quantity = CType((CDbl(qty) - CDbl(txtQuantity.Value)).ToString("#,##0.000"), Double?)
+            db.SaveChanges()
+            Return True
+
+        End If
+
+        Return False
+
+    End Function
+
+    Private Sub SaveStockMovement_New(LOTNo As String, Item As Integer)
+        Dim ManufacturingDate As Nullable(Of Date)
+        Dim ExpiredDate As Nullable(Of Date)
+        Dim QuantityUnit As String
+        Dim ReceivedQuantity As Integer
+        Dim DamageQuantity As Integer
+        Dim DamageUnit As String = ""
+        Dim AvalableQuantity As Integer
+        Dim wh = (From h In db.tblWHPrepairGoodsReceiveDetails Where h.LOTNo = LOTNo And h.ItemNo = Item
+                       Select h).FirstOrDefault
+
+        If Not IsNothing(wh) Then
+
+            If CbNotDate.Checked = False Then
+                ManufacturingDate = Convert.ToDateTime(wh.ManufacturingDate)
+                ExpiredDate = Convert.ToDateTime(wh.ExpiredDate)
+            ElseIf CbNotDate.Checked = True Then
+                ManufacturingDate = Nothing
+                ExpiredDate = Nothing
+            End If
+
+            If wh.Type = "Goods Complete" Then
+                QuantityUnit = wh.QuantityUnit
+                ReceivedQuantity = CInt(wh.Quantity)
+                DamageQuantity = 0
+                DamageUnit = wh.QuantityUnit
+                AvalableQuantity = CInt(wh.Quantity)
+            ElseIf wh.Type = "Goods Damage" Then
+                QuantityUnit = wh.QuantityUnit
+                ReceivedQuantity = CInt(wh.Quantity)
+                DamageQuantity = CInt(wh.Quantity)
+                DamageUnit = wh.QuantityUnit
+                AvalableQuantity = 0
+            End If
+
+            db.tblWHStockMovements.Add(New tblWHStockMovement With { _
+                    .LOTNo = wh.LOTNo, _
+                    .WHSite = wh.WHSite, _
+                    .OwnerCode = txtOwnerCode.Value.Trim, _
+                    .WHLocation = wh.WHLocation, _
+                    .ENDCustomer = wh.ENDCustomer, _
+                    .WHSource = wh.WHSource, _
+                    .CustomerLOTNo = wh.CustomerLOTNo, _
+                    .ItemNo = wh.ItemNo, _
+                    .ProductCode = wh.ProductCode, _
+                    .CustomerPN = wh.CustomerPN, _
+                    .OwnerPN = wh.OwnerPN, _
+                    .ProductDesc = wh.ProductDesc, _
+                    .Measurement = wh.Measurement, _
+                    .ProductWidth = wh.ProductWidth, _
+                    .ProductLength = wh.ProductLength, _
+                    .ProductHeight = wh.ProductHeight, _
+                    .ProductVolume = wh.ProductVolume, _
+                    .OrderNo = wh.OrderNo, _
+                    .ReceiveNo = wh.ReceiveNo, _
+                    .Type = wh.Type, _
+                    .ReceiveDate = wh.ReceiveDate, _
+                    .StockType = "Received", _
+                    .QuantityUnit = wh.QuantityUnit, _
+                    .ReceivedQuantity = ReceivedQuantity, _
+                    .DamageQuantity = DamageQuantity, _
+                    .DamageUnit = DamageUnit, _
+                    .AvalableQuantity = AvalableQuantity, _
+                    .ManufacturingDate = wh.ManufacturingDate, _
+                    .ExpiredDate = ExpiredDate, _
+                    .Weigth = wh.Weigth, _
+                    .WeigthUnit = wh.WeigthUnit, _
+                    .Currency = wh.Currency, _
+                    .ExchangeRate = wh.ExchangeRate, _
+                    .PriceForeigh = wh.PriceForeigh, _
+                    .PriceForeighAmount = wh.PriceForeighAmount, _
+                    .PriceBath = wh.PriceBath, _
+                    .PriceBathAmount = wh.PriceBathAmount, _
+                    .PalletNo = wh.PalletNo, _
+                    .UserBy = CStr(Session("UserName")), _
+                    .LastUpdate = Now, _
+                    .Status = 0, _
+                    .TransactionDate = wh.ReceiveDate, _
+                    .TypeDamage = dcbTypeDamage.Text.Trim, _
+                    .item = 0,
+                    .Supplier = wh.Supplier, _
+                    .Buyer = wh.Buyer, _
+                    .Exporter = wh.Exporter, _
+                    .Destination = wh.Destination, _
+                    .Consignee = wh.Consignee, _
+                    .ShippingMark = wh.ShippingMark, _
+                    .EntryNo = wh.EntryNo, _
+                    .EntryItemNo = wh.EntryItemNo, _
+                    .Invoice = wh.Invoice
+               })
+            db.SaveChanges()
+        End If
+
+        
     End Sub
 End Class

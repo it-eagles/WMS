@@ -41,24 +41,6 @@ Partial Public Class Test
     Protected WithEvents rptCustomers As Global.System.Web.UI.WebControls.Repeater
 
     '''<summary>
-    '''btntest control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents btntest As Global.System.Web.UI.HtmlControls.HtmlButton
-
-    '''<summary>
-    '''GridView1 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents GridView1 As Global.System.Web.UI.WebControls.GridView
-
-    '''<summary>
     '''btnCloseModal control.
     '''</summary>
     '''<remarks>
