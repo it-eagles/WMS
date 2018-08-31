@@ -842,7 +842,7 @@
     <Property Name="CustomsConfirmDate" Type="DateTime" Precision="3" />
     <Property Name="App" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="CreateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" Nullable="false" />
     <Property Name="UpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="UpdateDate" Type="DateTime" Precision="3" />
     <Property Name="rowguid" Type="Guid" Nullable="false" />
@@ -2357,7 +2357,7 @@
       <PropertyRef Name="LOTNo" />
     </Key>
     <Property Name="LOTNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="LOTDate" Type="DateTime" Precision="3" />
+    <Property Name="LOTDate" Type="DateTime" Precision="3" Nullable="false" />
     <Property Name="CustREFNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="OwnerCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="OwnerNameENG" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
@@ -2970,6 +2970,7 @@
     <EntitySet Name="tblWHPickings" EntityType="LKBWarehouseModel1.tblWHPicking" />
     <EntitySet Name="tblWHPickingDetails" EntityType="LKBWarehouseModel1.tblWHPickingDetail" />
     <EntitySet Name="tblWHPickPackCheckings" EntityType="LKBWarehouseModel1.tblWHPickPackChecking" />
+    <EntitySet Name="tblUser_test" EntityType="LKBWarehouseModel1.tblUser_test" />
   </EntityContainer>
   <Association Name="FK_tblCompanyGuarantee1_tblStatusBalance">
     <End Type="LKBWarehouseModel1.tblStatusBalance" Role="tblStatusBalance" Multiplicity="0..1" />
@@ -3317,5 +3318,26 @@
     <Property Name="Userby" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="LastUpdate" Type="DateTime" Precision="3" />
     <Property Name="rowguid" Type="Guid" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblUser_test">
+    <Key>
+      <PropertyRef Name="UserName" />
+    </Key>
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="UserGroup" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="GroupName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Dept" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Branch" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="StatusAdd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="StatusModify" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="StatusDelete" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="StatusPrint" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="StatusImport" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="StatusExport" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="StatusWarehouse" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="RejectStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
 </Schema>

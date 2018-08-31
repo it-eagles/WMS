@@ -19311,6 +19311,30 @@ txtBathAmount_ConfirmIssue control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
+</member><member name="F:WMS.SingleIssuedWH.DataPickingDetailPanel">
+	<summary>
+DataPickingDetailPanel control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.SingleIssuedWH.DataPickingDetailUpdatePanel">
+	<summary>
+DataPickingDetailUpdatePanel control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.SingleIssuedWH.Repeater8">
+	<summary>
+Repeater8 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
 </member><member name="F:WMS.SingleIssuedWH.btnSelectAll_ConfirmIssue">
 	<summary>
 btnSelectAll_ConfirmIssue control.

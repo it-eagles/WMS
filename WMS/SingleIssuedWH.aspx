@@ -795,7 +795,7 @@
                                                     <div class="form-group">
                                                         <label for="txtType_ConfirmIssue" class="col-sm-4 control-label">Type:</label>
                                                         <div class="col-sm-8">
-                                                            <asp:DropDownList ID="DropDownList1" CssClass="form-control" runat="server">
+                                                            <asp:DropDownList ID="ddlType_ConfirmIssue" CssClass="form-control" runat="server">
                                                                 <asp:ListItem>Q-FFL</asp:ListItem>
                                                                 <asp:ListItem>Q-CON</asp:ListItem>
                                                                 <asp:ListItem>Q-SC</asp:ListItem>
@@ -852,7 +852,87 @@
 
                                         <%-----------------------------------------------------Start AFTER RIGHT FORM------------------------------------------------------------%>
 
+                                        <%-----------------------------------------------------Start Tabel1 FORM------------------------------------------------------------%>
+                                        <div class="col-lg-12 col-md-12 ">
+                                            <!-- form start -->
+                                            <div class="form-horizontal">
+                                                <%--<fieldset>  <legend>Job</legend>--%>
+                                                <div class="box-body">
+                                                    <div class="col-sm-12">
+                                                        <%--------------------------------------Data Picking Detail Repeater---------------------------------%>
+                                                        <asp:Panel ID="DataPickingDetailPanel" runat="server" >
+                                                    <asp:UpdatePanel ID="DataPickingDetailUpdatePanel" runat="server" UpdateMode="Conditional">
+                                                    <ContentTemplate>
+                                                        <asp:Repeater ID="Repeater8" runat="server" OnItemCommand="Repeater8_ItemCommand">
+                                                            <HeaderTemplate>
+                                                                <table id="example8" class="table table-bordered table-striped">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th style="width: 8px"><asp:CheckBox ID="chkAll" runat="server" Checked="false"/></th>
+                                                                            <th>PullSignal</th>
+                                                                            <th>LOTNo</th>
+                                                                            <th>ItemNo</th>
+                                                                            <th>WHSite</th>
+                                                                            <th>ENDCustomer</th>
+                                                                            <th>CustomerLOTNo</th>
+                                                                            <th>ProductCode</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                            </HeaderTemplate>
+                                                            <ItemTemplate>
+                                                                <tr>
+                                                                    <%--<td class="text-center">
+                                                                        <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="Selectdatapickigdetail" CommandArgument='<%# Eval("ItemNo")%>'><i class="fa fa-hand-o-up"></i></asp:LinkButton>
+                                                                    </td>--%>
+                                                                    <td><asp:CheckBox ID="chkRowData" runat="server" /></td>
+                                                                    <td>
+                                                                        <asp:Label ID="lblPullSignal" runat="server" Text='<%# Bind("PullSignal")%>'></asp:Label></td>
+                                                                    <td>
+                                                                        <asp:Label ID="lblLOTNo" runat="server" Text='<%# Bind("LOTNo")%>'></asp:Label></td>
+                                                                    <td>
+                                                                        <asp:Label ID="lblItemNo" runat="server" Text='<%# Bind("ItemNo")%>'></asp:Label></td>
+                                                                    <td>
+                                                                        <asp:Label ID="lblWHSite" runat="server" Text='<%# Bind("WHSite")%>'></asp:Label></td>
+                                                                    <td>
+                                                                        <asp:Label ID="lblENDCustomer" runat="server" Text='<%# Bind("ENDCustomer")%>'></asp:Label></td>
+                                                                    <td>
+                                                                        <asp:Label ID="lblCustomerLOTNo" runat="server" Text='<%# Bind("CustomerLOTNo")%>'></asp:Label></td>
+                                                                    <td>
+                                                                        <asp:Label ID="lblProductCode" runat="server" Text='<%# Bind("ProductCode")%>'></asp:Label></td>
+                                                                </tr>
 
+                                                            </ItemTemplate>
+                                                            <FooterTemplate>
+                                                                <tfoot>
+                                                                    <tr>
+                                                                        <th style="width: 8px"><asp:CheckBox ID="chkAll" runat="server" Checked="false"/></th>
+                                                                        <th>PullSignal</th>
+                                                                        <th>LOTNo</th>
+                                                                        <th>ItemNo</th>
+                                                                        <th>WHSite</th>
+                                                                        <th>ENDCustomer</th>
+                                                                        <th>CustomerLOTNo</th>
+                                                                        <th>ProductCode</th>
+                                                                    </tr>
+                                                                </tfoot>
+                                                                </table>
+                                                            </FooterTemplate>
+                                                        </asp:Repeater>
+                                                        </ContentTemplate>
+                                                </asp:UpdatePanel>
+                                                </asp:Panel>
+                                                        <%--------------------------------------Data Picking Detail Repeater---------------------------------%>
+                                                    </div>
+
+                                                    <!-- /.box-body -->
+                                                </div>
+                                                <!-- /.box-header -->
+                                                <%--</fieldset>--%>
+                                            </div>
+                                            <!--/.col-lg-6 col-md-6 stockqty--->
+
+                                        </div>
+                                        <%-------------------------------------------------------End Tabel1 FORM----------------------------------------------------------------%>
 
 
 
@@ -889,7 +969,7 @@
                                                                 <input class="form-control" id="txtWHLocation_ConfirmIssue" runat="server" />
                                                             </div>
                                                             <div class="col-sm-4">
-                                                                <button type="submit" runat="server" class="btn btn-primary" id="btnIssue_ConfirmIssue" title="btnIssue_ConfirmIssue">Issue</button>
+                                                                <button type="submit" runat="server" class="btn btn-primary" id="btnIssue_ConfirmIssue" onserverclick="btnIssue_ConfirmIssue_ServerClick" title="btnIssue_ConfirmIssue">Issue</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1534,6 +1614,33 @@
             </div>
         </asp:Panel>
         <!-- End JobNoEdit Modal -->
+
+
+
+        <script>
+            $(document).ready(function () {
+                // CHECK-UNCHECK ALL CHECKBOXES IN THE REPEATER 
+                // WHEN USER CLICKS THE HEADER CHECKBOX.
+                $('table [id*=chkAll]').click(function () {
+                    if ($(this).is(':checked'))
+                        $('table [id*=chkRowData]').prop('checked', true)
+                    else
+                        $('table [id*=chkRowData]').prop('checked', false)
+                });
+
+                // NOW CHECK THE HEADER CHECKBOX, IF ALL THE ROW CHECKBOXES ARE CHECKED.
+                $('table [id*=chkRowData]').click(function () {
+
+                    var total_rows = $('table [id*=chkRowData]').length;
+                    var checked_Rows = $('table [id*=chkRowData]:checked').length;
+
+                    if (checked_Rows == total_rows)
+                        $('table [id*=chkAll]').prop('checked', true);
+                    else
+                        $('table [id*=chkAll]').prop('checked', false);
+                });
+            });
+</script>
 
     </form>
 </asp:Content>

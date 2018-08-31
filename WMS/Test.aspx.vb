@@ -183,6 +183,7 @@ Public Class Test
         For i = 0 To rptCustomers.Items.Count - 1
             chkName = CType(rptCustomers.Items(i).FindControl("chkRowData"), CheckBox)
             lblUserName = CType(rptCustomers.Items(i).FindControl("lblUserName"), Label).Text.Trim
+
             'lblName = CType(rptCustomers.Items(i).FindControl("lblName"), Label).Text.Trim
             'lblBranch = CType(rptCustomers.Items(i).FindControl("lblBrnch"), Label).Text.Trim
             If chkName.Checked = True Then
