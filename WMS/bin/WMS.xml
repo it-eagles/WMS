@@ -19311,7 +19311,35 @@ txtAddress3Consignee control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
+<<<<<<< HEAD
 </member><member name="F:WMS.InvoicePackingListRec.txtAddress4Consignee">
+=======
+</member><member name="F:WMS.SingleIssuedWH.DataPickingDetailPanel">
+	<summary>
+DataPickingDetailPanel control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.SingleIssuedWH.DataPickingDetailUpdatePanel">
+	<summary>
+DataPickingDetailUpdatePanel control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.SingleIssuedWH.Repeater8">
+	<summary>
+Repeater8 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.SingleIssuedWH.btnSelectAll_ConfirmIssue">
+>>>>>>> 12a850d0ab50eee333a7e2957a5864efddc07861
 	<summary>
 txtAddress4Consignee control.
 </summary>

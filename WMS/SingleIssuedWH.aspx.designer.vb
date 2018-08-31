@@ -959,13 +959,13 @@ Partial Public Class SingleIssuedWH
     Protected WithEvents ddlStatus_ConfirmIssue As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''DropDownList1 control.
+    '''ddlType_ConfirmIssue control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents DropDownList1 As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents ddlType_ConfirmIssue As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''txtdatepickerExpiredDate_ConfirmIssue control.
@@ -1038,6 +1038,33 @@ Partial Public Class SingleIssuedWH
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents txtBathAmount_ConfirmIssue As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''DataPickingDetailPanel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents DataPickingDetailPanel As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''DataPickingDetailUpdatePanel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents DataPickingDetailUpdatePanel As Global.System.Web.UI.UpdatePanel
+
+    '''<summary>
+    '''Repeater8 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Repeater8 As Global.System.Web.UI.WebControls.Repeater
 
     '''<summary>
     '''btnSelectAll_ConfirmIssue control.

@@ -3192,5 +3192,27 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="tblUser_test">
+      <EntityTypeMapping TypeName="LKBWarehouseModel1.tblUser_test">
+        <MappingFragment StoreEntitySet="tblUser_test">
+          <ScalarProperty Name="RejectStatus" ColumnName="RejectStatus" />
+          <ScalarProperty Name="UserStatus" ColumnName="UserStatus" />
+          <ScalarProperty Name="StatusWarehouse" ColumnName="StatusWarehouse" />
+          <ScalarProperty Name="StatusExport" ColumnName="StatusExport" />
+          <ScalarProperty Name="StatusImport" ColumnName="StatusImport" />
+          <ScalarProperty Name="StatusPrint" ColumnName="StatusPrint" />
+          <ScalarProperty Name="StatusDelete" ColumnName="StatusDelete" />
+          <ScalarProperty Name="StatusModify" ColumnName="StatusModify" />
+          <ScalarProperty Name="StatusAdd" ColumnName="StatusAdd" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Branch" ColumnName="Branch" />
+          <ScalarProperty Name="Dept" ColumnName="Dept" />
+          <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+          <ScalarProperty Name="UserGroup" ColumnName="UserGroup" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>
