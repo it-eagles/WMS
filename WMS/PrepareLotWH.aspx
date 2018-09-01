@@ -1033,10 +1033,8 @@
                             <!-- /.post -->
                         </div>
                     </div>
-                </div>
                 <%--<asp:Button ID="Button1" Text="Submit" runat="server" CssClass="btn btn-primary" />--%>
                 <asp:HiddenField ID="TabName" runat="server" />
-            </div>
             <!-- /.row -->
         </section>
         <!-- /.content -->

@@ -2222,22 +2222,6 @@ rptCustomers control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.Test.btntest">
-	<summary>
-btntest control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.Test.GridView1">
-	<summary>
-GridView1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
 </member><member name="F:WMS.Test.btnCloseModal">
 	<summary>
 btnCloseModal control.
@@ -8439,17 +8423,41 @@ ScriptManager1 control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtPullSignal_BeforeTab">
+</member><member name="F:WMS.MultiIssuedWH.btnAddHead">
 	<summary>
-txtPullSignal_BeforeTab control.
+btnAddHead control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtJobNo_BeforeTab">
+</member><member name="F:WMS.MultiIssuedWH.btnEditHead">
 	<summary>
-txtJobNo_BeforeTab control.
+btnEditHead control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.MultiIssuedWH.btnSaveAddHead">
+	<summary>
+btnSaveAddHead control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.MultiIssuedWH.btnSaveEditHead">
+	<summary>
+btnSaveEditHead control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.MultiIssuedWH.txtPullSignal_BeforeTab">
+	<summary>
+txtPullSignal_BeforeTab control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -8471,6 +8479,38 @@ CalendarExtenderPullDateTime_beforeTab control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
+</member><member name="F:WMS.MultiIssuedWH.txtJobNo_BeforeTab">
+	<summary>
+txtJobNo_BeforeTab control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.MultiIssuedWH.btnJobNo_Head">
+	<summary>
+btnJobNo_Head control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.MultiIssuedWH.btnJobNo_Head_Edit">
+	<summary>
+btnJobNo_Head_Edit control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.MultiIssuedWH.txtTimePickUpPullDateTime">
+	<summary>
+txtTimePickUpPullDateTime control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
 </member><member name="F:WMS.MultiIssuedWH.txtdatepickerDeliveryDateTime_beforeTab">
 	<summary>
 txtdatepickerDeliveryDateTime_beforeTab control.
@@ -8487,6 +8527,14 @@ CalendarExtenderDeliveryDateTime_beforeTab control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
+</member><member name="F:WMS.MultiIssuedWH.txtTimePickUpDeliveryDateTime">
+	<summary>
+txtTimePickUpDeliveryDateTime control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
 </member><member name="F:WMS.MultiIssuedWH.txtdatepickerComfirmDateTime_beforeTab">
 	<summary>
 txtdatepickerComfirmDateTime_beforeTab control.
@@ -8498,6 +8546,14 @@ To modify move field declaration from designer file to code-behind file.
 </member><member name="F:WMS.MultiIssuedWH.CalendarExtenderComfirmDateTime_beforeTab">
 	<summary>
 CalendarExtenderComfirmDateTime_beforeTab control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.MultiIssuedWH.txtTimePickUpConfirmDateTime">
+	<summary>
+txtTimePickUpConfirmDateTime control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -8535,9 +8591,17 @@ ddlWHSite_IssueCon control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.ddlExporterCode_IssueCon">
+</member><member name="F:WMS.MultiIssuedWH.txtExporterCode_IssueCon">
 	<summary>
-ddlExporterCode_IssueCon control.
+txtExporterCode_IssueCon control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.MultiIssuedWH.btnExporterCode_IssueCon">
+	<summary>
+btnExporterCode_IssueCon control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -8583,9 +8647,17 @@ txtAddress4Exporter_IssueCon control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.ddlOwnerCode_IssueCon">
+</member><member name="F:WMS.MultiIssuedWH.txtOwnerCode_IssueCon">
 	<summary>
-ddlOwnerCode_IssueCon control.
+txtOwnerCode_IssueCon control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.MultiIssuedWH.btnOwnerCode_IssueCon">
+	<summary>
+btnOwnerCode_IssueCon control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -8671,9 +8743,9 @@ ddlQuantityPLTSkid_IssueCon control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.txttxtQuantityPicked_IssueCon">
+</member><member name="F:WMS.MultiIssuedWH.txtQuantityPicked_IssueCon">
 	<summary>
-txttxtQuantityPicked_IssueCon control.
+txtQuantityPicked_IssueCon control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -8687,6 +8759,14 @@ ddlQuantityPicked_IssueCon control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
+</member><member name="F:WMS.MultiIssuedWH.txtRemark_IssueCon">
+	<summary>
+txtRemark_IssueCon control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
 </member><member name="F:WMS.MultiIssuedWH.btnSumQTY_IssueCon">
 	<summary>
 btnSumQTY_IssueCon control.
@@ -8695,9 +8775,17 @@ btnSumQTY_IssueCon control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtConsigneeCode_IssueCon">
+</member><member name="F:WMS.MultiIssuedWH.txtConsigneeCode0_IssueCon">
 	<summary>
-txtConsigneeCode_IssueCon control.
+txtConsigneeCode0_IssueCon control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.MultiIssuedWH.btnConsigneeCode_IssueCon">
+	<summary>
+btnConsigneeCode_IssueCon control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -8743,9 +8831,17 @@ txtAddress4Consignee_IssueCon control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.ddlShipToCode_IssueCon">
+</member><member name="F:WMS.MultiIssuedWH.txtShipToCode_IssueCon">
 	<summary>
-ddlShipToCode_IssueCon control.
+txtShipToCode_IssueCon control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.MultiIssuedWH.btnShipToCode_IssueCon">
+	<summary>
+btnShipToCode_IssueCon control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -8831,9 +8927,9 @@ txtVolume_IssueCon control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.DropDownList1">
+</member><member name="F:WMS.MultiIssuedWH.ddlVolume_IssueCon">
 	<summary>
-DropDownList1 control.
+ddlVolume_IssueCon control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -8855,1033 +8951,521 @@ ddlQTYDiscrepancy_IssueCon control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.chkEnablebehalf_EASJOB">
+</member><member name="F:WMS.MultiIssuedWH.ddlWHSite_ConfirmIssue">
 	<summary>
-chkEnablebehalf_EASJOB control.
+ddlWHSite_ConfirmIssue control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.ddlExporterCode_EASJOB">
+</member><member name="F:WMS.MultiIssuedWH.txtCusLOTNo_ConfirmIssue">
 	<summary>
-ddlExporterCode_EASJOB control.
+txtCusLOTNo_ConfirmIssue control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtNameExporter_EASJOB">
+</member><member name="F:WMS.MultiIssuedWH.txtEASPN_ConfirmIssue">
 	<summary>
-txtNameExporter_EASJOB control.
+txtEASPN_ConfirmIssue control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtAddress1Exporter_EASJOB">
+</member><member name="F:WMS.MultiIssuedWH.btnEASPN_ConfirmIssue">
 	<summary>
-txtAddress1Exporter_EASJOB control.
+btnEASPN_ConfirmIssue control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtAddress2Exporter_EASJOB">
+</member><member name="F:WMS.MultiIssuedWH.txtProductDesc_ConfirmIssue">
 	<summary>
-txtAddress2Exporter_EASJOB control.
+txtProductDesc_ConfirmIssue control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtAddress3Exporter_EASJOB">
+</member><member name="F:WMS.MultiIssuedWH.ddlWHLocation_ConfirmIssue">
 	<summary>
-txtAddress3Exporter_EASJOB control.
+ddlWHLocation_ConfirmIssue control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtAddress4Exporter_EASJOB">
+</member><member name="F:WMS.MultiIssuedWH.ddlCustWHFac_ConfirmIssue">
 	<summary>
-txtAddress4Exporter_EASJOB control.
+ddlCustWHFac_ConfirmIssue control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtAddress5Exporter_EASJOB">
+</member><member name="F:WMS.MultiIssuedWH.txtCustomerPN_ConfirmIssue">
 	<summary>
-txtAddress5Exporter_EASJOB control.
+txtCustomerPN_ConfirmIssue control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtEmailExporter_EASJOB">
+</member><member name="F:WMS.MultiIssuedWH.ddlENDCustomer_ConfirmIssue">
 	<summary>
-txtEmailExporter_EASJOB control.
+ddlENDCustomer_ConfirmIssue control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.ddlCustomerCode_EASJOB">
+</member><member name="F:WMS.MultiIssuedWH.txtItemNo_ConfirmIssue">
 	<summary>
-ddlCustomerCode_EASJOB control.
+txtItemNo_ConfirmIssue control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtNameCustomer_EASJOB">
+</member><member name="F:WMS.MultiIssuedWH.txtOwnerPN_ConfirmIssue">
 	<summary>
-txtNameCustomer_EASJOB control.
+txtOwnerPN_ConfirmIssue control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtRemarks">
+</member><member name="F:WMS.MultiIssuedWH.ddlMeasurement_ConfirmIssue">
 	<summary>
-txtRemarks control.
+ddlMeasurement_ConfirmIssue control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtEmailCustomer_EASJOB">
+</member><member name="F:WMS.MultiIssuedWH.txtWidth_ConfirmIssue">
 	<summary>
-txtEmailCustomer_EASJOB control.
+txtWidth_ConfirmIssue control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtTelNoCustomer_EASJOB">
+</member><member name="F:WMS.MultiIssuedWH.txtHight_ConfirmIssue">
 	<summary>
-txtTelNoCustomer_EASJOB control.
+txtHight_ConfirmIssue control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtFaxNoCustomer_EASJOB">
+</member><member name="F:WMS.MultiIssuedWH.txtOrderNo_ConfirmIssue">
 	<summary>
-txtFaxNoCustomer_EASJOB control.
+txtOrderNo_ConfirmIssue control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtContractPersonCustomer_EASJOB">
+</member><member name="F:WMS.MultiIssuedWH.txtReceiveNo_ConfirmIssue">
 	<summary>
-txtContractPersonCustomer_EASJOB control.
+txtReceiveNo_ConfirmIssue control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtEASINV_EASJOB">
+</member><member name="F:WMS.MultiIssuedWH.chkNotUseDate_ConfirmIssue">
 	<summary>
-txtEASINV_EASJOB control.
+chkNotUseDate_ConfirmIssue control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtEASLOT_EASJOB">
+</member><member name="F:WMS.MultiIssuedWH.txtdatepickerManufacturing_ConfirmIssue">
 	<summary>
-txtEASLOT_EASJOB control.
+txtdatepickerManufacturing_ConfirmIssue control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtReferenceLine_EASJOB">
+</member><member name="F:WMS.MultiIssuedWH.CalendarExtenderManufacturing_ConfirmIssue">
 	<summary>
-txtReferenceLine_EASJOB control.
+CalendarExtenderManufacturing_ConfirmIssue control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtTruckWaybill_EASJOB">
+</member><member name="F:WMS.MultiIssuedWH.txtdatepickerReceiveDate_ConfirmIssue">
 	<summary>
-txtTruckWaybill_EASJOB control.
+txtdatepickerReceiveDate_ConfirmIssue control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.ddlShipMode_EASJOB">
+</member><member name="F:WMS.MultiIssuedWH.CalendarExtenderReceiveDate_ConfirmIssue">
 	<summary>
-ddlShipMode_EASJOB control.
+CalendarExtenderReceiveDate_ConfirmIssue control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.ddlDeliveryTerm_EASJOB">
+</member><member name="F:WMS.MultiIssuedWH.txtPickQTY_ConfirmIssue">
 	<summary>
-ddlDeliveryTerm_EASJOB control.
+txtPickQTY_ConfirmIssue control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.ddlShippingMark_EASJOB">
+</member><member name="F:WMS.MultiIssuedWH.ddlPickQTY_ConfirmIssue">
 	<summary>
-ddlShippingMark_EASJOB control.
+ddlPickQTY_ConfirmIssue control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtCompany_EASJOB">
+</member><member name="F:WMS.MultiIssuedWH.ddlCurrency_ConfirmIssue">
 	<summary>
-txtCompany_EASJOB control.
+ddlCurrency_ConfirmIssue control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtAddressEAS_EASJOB">
+</member><member name="F:WMS.MultiIssuedWH.txtPriceForeign_ConfirmIssue">
 	<summary>
-txtAddressEAS_EASJOB control.
+txtPriceForeign_ConfirmIssue control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtRemarkEAS_EASJOB">
+</member><member name="F:WMS.MultiIssuedWH.txtPriceBath_ConfirmIssue">
 	<summary>
-txtRemarkEAS_EASJOB control.
+txtPriceBath_ConfirmIssue control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtTotal_EASJOB">
+</member><member name="F:WMS.MultiIssuedWH.txtLength_ConfirmIssue">
 	<summary>
-txtTotal_EASJOB control.
+txtLength_ConfirmIssue control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.ddlCustomerCode_BillTo_EASJOB">
+</member><member name="F:WMS.MultiIssuedWH.txtProductVolume_ConfirmIssue">
 	<summary>
-ddlCustomerCode_BillTo_EASJOB control.
+txtProductVolume_ConfirmIssue control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtNameCustomer_BillTo_EASJOB">
+</member><member name="F:WMS.MultiIssuedWH.txtPalletNo_ConfirmIssue">
 	<summary>
-txtNameCustomer_BillTo_EASJOB control.
+txtPalletNo_ConfirmIssue control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtAddressCustomer_BillTo_EASJOB">
+</member><member name="F:WMS.MultiIssuedWH.ddlStatus_ConfirmIssue">
 	<summary>
-txtAddressCustomer_BillTo_EASJOB control.
+ddlStatus_ConfirmIssue control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtEmailCustomer_BillTo_EASJOB">
+</member><member name="F:WMS.MultiIssuedWH.ddlType_ConfirmIssue">
 	<summary>
-txtEmailCustomer_BillTo_EASJOB control.
+ddlType_ConfirmIssue control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtTelNoCustomer_BillTo_EASJOB">
+</member><member name="F:WMS.MultiIssuedWH.txtdatepickerExpiredDate_ConfirmIssue">
 	<summary>
-txtTelNoCustomer_BillTo_EASJOB control.
+txtdatepickerExpiredDate_ConfirmIssue control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtFaxNoCustomer_BillTo_EASJOB">
+</member><member name="F:WMS.MultiIssuedWH.CalendarExtenderExpiredDate_ConfirmIssue">
 	<summary>
-txtFaxNoCustomer_BillTo_EASJOB control.
+CalendarExtenderExpiredDate_ConfirmIssue control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtContractPersonCustomer_BillTo_EASJOB">
+</member><member name="F:WMS.MultiIssuedWH.txtIssueQTY_ConfirmIssue">
 	<summary>
-txtContractPersonCustomer_BillTo_EASJOB control.
+txtIssueQTY_ConfirmIssue control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.ddlBrand_ItemDetail">
+</member><member name="F:WMS.MultiIssuedWH.txtWeight_ConfirmIssue">
 	<summary>
-ddlBrand_ItemDetail control.
+txtWeight_ConfirmIssue control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtProductYear_ItemDetail">
+</member><member name="F:WMS.MultiIssuedWH.ddlWeight_ConfirmIssue">
 	<summary>
-txtProductYear_ItemDetail control.
+ddlWeight_ConfirmIssue control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.ddlNatureOfTM_ItemDetail">
+</member><member name="F:WMS.MultiIssuedWH.txtExchangeRate_ConfirmIssue">
 	<summary>
-ddlNatureOfTM_ItemDetail control.
+txtExchangeRate_ConfirmIssue control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.ddlPurchaseCtry_ItemDetail">
+</member><member name="F:WMS.MultiIssuedWH.txtAmount_ConfirmIssue">
 	<summary>
-ddlPurchaseCtry_ItemDetail control.
+txtAmount_ConfirmIssue control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.ddlOriginCtry_ItemDetail">
+</member><member name="F:WMS.MultiIssuedWH.txtBathAmount_ConfirmIssue">
 	<summary>
-ddlOriginCtry_ItemDetail control.
+txtBathAmount_ConfirmIssue control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtItemNo_ItemDetail">
+</member><member name="F:WMS.MultiIssuedWH.txtdatepickerReceiveDate_Button_ConfirmIssue">
 	<summary>
-txtItemNo_ItemDetail control.
+txtdatepickerReceiveDate_Button_ConfirmIssue control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.ddlProductCode_ItemDetail">
+</member><member name="F:WMS.MultiIssuedWH.CalendarExtenderReceiveDate_Button_ConfirmIssue">
 	<summary>
-ddlProductCode_ItemDetail control.
+CalendarExtenderReceiveDate_Button_ConfirmIssue control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtCustomerPN_ItemDetail">
+</member><member name="F:WMS.MultiIssuedWH.txtWHLocation_ConfirmIssue">
 	<summary>
-txtCustomerPN_ItemDetail control.
+txtWHLocation_ConfirmIssue control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtInvQty_ItemDetail">
+</member><member name="F:WMS.MultiIssuedWH.btnIssue_ConfirmIssue">
 	<summary>
-txtInvQty_ItemDetail control.
+btnIssue_ConfirmIssue control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.ddlUnit1_ItemDetail">
+</member><member name="F:WMS.MultiIssuedWH.TabName">
 	<summary>
-ddlUnit1_ItemDetail control.
+TabName control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtUnit1_ItemDetail">
+</member><member name="F:WMS.MultiIssuedWH.ExporterPanel">
 	<summary>
-txtUnit1_ItemDetail control.
+ExporterPanel control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtWeight_ItemDetail">
+</member><member name="F:WMS.MultiIssuedWH.ExporterUpdatePanel">
 	<summary>
-txtWeight_ItemDetail control.
+ExporterUpdatePanel control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.ddlUnit2_ItemDetail">
+</member><member name="F:WMS.MultiIssuedWH.Repeater1">
 	<summary>
-ddlUnit2_ItemDetail control.
+Repeater1 control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtUnit2_ItemDetail">
+</member><member name="F:WMS.MultiIssuedWH.OwnerPanel">
 	<summary>
-txtUnit2_ItemDetail control.
+OwnerPanel control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtQuantity_ItemDetail">
+</member><member name="F:WMS.MultiIssuedWH.OwnerUpdatePanel">
 	<summary>
-txtQuantity_ItemDetail control.
+OwnerUpdatePanel control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.ddlUnit3_ItemDetail">
+</member><member name="F:WMS.MultiIssuedWH.Repeater2">
 	<summary>
-ddlUnit3_ItemDetail control.
+Repeater2 control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtUnit3_ItemDetail">
+</member><member name="F:WMS.MultiIssuedWH.ConsigneePanel">
 	<summary>
-txtUnit3_ItemDetail control.
+ConsigneePanel control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtTariffCode_ItemDetail">
+</member><member name="F:WMS.MultiIssuedWH.ConsigneeUpdatePanel">
 	<summary>
-txtTariffCode_ItemDetail control.
+ConsigneeUpdatePanel control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtTariffSequence_ItemDetail">
+</member><member name="F:WMS.MultiIssuedWH.Repeater3">
 	<summary>
-txtTariffSequence_ItemDetail control.
+Repeater3 control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtPONo_ItemDetail">
+</member><member name="F:WMS.MultiIssuedWH.ShipToPanel">
 	<summary>
-txtPONo_ItemDetail control.
+ShipToPanel control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtDeclaretionLine_ItemDetail">
+</member><member name="F:WMS.MultiIssuedWH.ShipToUpdatePanel">
 	<summary>
-txtDeclaretionLine_ItemDetail control.
+ShipToUpdatePanel control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtFormulaNo_ItemDetail">
+</member><member name="F:WMS.MultiIssuedWH.Repeater4">
 	<summary>
-txtFormulaNo_ItemDetail control.
+Repeater4 control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.txt19BisTransferNo_ItemDetail">
+</member><member name="F:WMS.MultiIssuedWH.ProductCodePanel">
 	<summary>
-txt19BisTransferNo_ItemDetail control.
+ProductCodePanel control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtRemark_ItemDetail">
+</member><member name="F:WMS.MultiIssuedWH.ProductCodeUpdatePanel">
 	<summary>
-txtRemark_ItemDetail control.
+ProductCodeUpdatePanel control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.ddlForwarding_Currency_ItemDetail">
+</member><member name="F:WMS.MultiIssuedWH.Repeater5">
 	<summary>
-ddlForwarding_Currency_ItemDetail control.
+Repeater5 control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtForwarding_ForeignAmount_ItemDetail">
+</member><member name="F:WMS.MultiIssuedWH.JobNoAddPanel">
 	<summary>
-txtForwarding_ForeignAmount_ItemDetail control.
+JobNoAddPanel control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.ddlFreight_Currency_ItemDetail">
+</member><member name="F:WMS.MultiIssuedWH.JobNoAddUpdatePanel">
 	<summary>
-ddlFreight_Currency_ItemDetail control.
+JobNoAddUpdatePanel control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtFreight_ForeignAmount_ItemDetail">
+</member><member name="F:WMS.MultiIssuedWH.Repeater6">
 	<summary>
-txtFreight_ForeignAmount_ItemDetail control.
+Repeater6 control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.ddlInsurance_Currency_ItemDetail">
+</member><member name="F:WMS.MultiIssuedWH.JobNoEditPanel">
 	<summary>
-ddlInsurance_Currency_ItemDetail control.
+JobNoEditPanel control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtInsurance_ForeignAmount_ItemDetail">
+</member><member name="F:WMS.MultiIssuedWH.JobNoEditUpdatePanel">
 	<summary>
-txtInsurance_ForeignAmount_ItemDetail control.
+JobNoEditUpdatePanel control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.MultiIssuedWH.ddlPackageCharge_Currency_ItemDetail1">
+</member><member name="F:WMS.MultiIssuedWH.Repeater7">
 	<summary>
-ddlPackageCharge_Currency_ItemDetail1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtPackageCharge_ForeignAmount_ItemDetail">
-	<summary>
-txtPackageCharge_ForeignAmount_ItemDetail control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MultiIssuedWH.ddlForeignInlandFreidge_Currency_ItemDetail1">
-	<summary>
-ddlForeignInlandFreidge_Currency_ItemDetail1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtForeignInlandFreidge_ForeignAmount_ItemDetail">
-	<summary>
-txtForeignInlandFreidge_ForeignAmount_ItemDetail control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MultiIssuedWH.ddlLandingCharge_Currency_ItemDetail1">
-	<summary>
-ddlLandingCharge_Currency_ItemDetail1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtLandingCharge_ForeignAmount_ItemDetail">
-	<summary>
-txtLandingCharge_ForeignAmount_ItemDetail control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MultiIssuedWH.ddlOtherCharge_Currency_ItemDetail1">
-	<summary>
-ddlOtherCharge_Currency_ItemDetail1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtOtherCharge_ForeignAmount_ItemDetail">
-	<summary>
-txtOtherCharge_ForeignAmount_ItemDetail control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtProductDesc_ItemDetail">
-	<summary>
-txtProductDesc_ItemDetail control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtOwnerPN_ItemDetail">
-	<summary>
-txtOwnerPN_ItemDetail control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MultiIssuedWH.ddlCurrency_ItemDetail">
-	<summary>
-ddlCurrency_ItemDetail control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtExchangeRate_ItemDetail">
-	<summary>
-txtExchangeRate_ItemDetail control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtPriceForeign_ItemDetail">
-	<summary>
-txtPriceForeign_ItemDetail control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtAmountForeign_ItemDetail">
-	<summary>
-txtAmountForeign_ItemDetail control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtPriceBath_ItemDetail">
-	<summary>
-txtPriceBath_ItemDetail control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtAmountBath_ItemDetail">
-	<summary>
-txtAmountBath_ItemDetail control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtStatisticalCode_ItemDetail">
-	<summary>
-txtStatisticalCode_ItemDetail control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtProductAttribute1_ItemDetail">
-	<summary>
-txtProductAttribute1_ItemDetail control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtPriceIncreaseForreign_ItemDetail">
-	<summary>
-txtPriceIncreaseForreign_ItemDetail control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtPriceIncreaseBath_ItemDetail">
-	<summary>
-txtPriceIncreaseBath_ItemDetail control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtBOILicenseNo_ItemDetail">
-	<summary>
-txtBOILicenseNo_ItemDetail control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtBondFormulaNo_ItemDetail">
-	<summary>
-txtBondFormulaNo_ItemDetail control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtForwarding_Exchange_ItemDetail">
-	<summary>
-txtForwarding_Exchange_ItemDetail control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtForwarding_BathAmount_ItemDetail">
-	<summary>
-txtForwarding_BathAmount_ItemDetail control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtFreight_Exchange_ItemDetail">
-	<summary>
-txtFreight_Exchange_ItemDetail control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtFreight_BathAmount_ItemDetail">
-	<summary>
-txtFreight_BathAmount_ItemDetail control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtInsurance_Exchange_ItemDetail">
-	<summary>
-txtInsurance_Exchange_ItemDetail control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtInsurance_BathAmount_ItemDetail">
-	<summary>
-txtInsurance_BathAmount_ItemDetail control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtPackageCharge_Exchange_ItemDetail">
-	<summary>
-txtPackageCharge_Exchange_ItemDetail control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtPackageCharge_BathAmount_ItemDetail">
-	<summary>
-txtPackageCharge_BathAmount_ItemDetail control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtForeignInlandFreidge_Exchange_ItemDetail">
-	<summary>
-txtForeignInlandFreidge_Exchange_ItemDetail control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtForeignInlandFreidge_BathAmount_ItemDetail">
-	<summary>
-txtForeignInlandFreidge_BathAmount_ItemDetail control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtLandingCharge_Exchange_ItemDetail">
-	<summary>
-txtLandingCharge_Exchange_ItemDetail control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtLandingCharge_BathAmount_ItemDetail">
-	<summary>
-txtLandingCharge_BathAmount_ItemDetail control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtOtherCharge_Exchange_ItemDetail">
-	<summary>
-txtOtherCharge_Exchange_ItemDetail control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtOtherCharge_BathAmount_ItemDetail">
-	<summary>
-txtOtherCharge_BathAmount_ItemDetail control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MultiIssuedWH.ddlProductCode_PACKINGLIST">
-	<summary>
-ddlProductCode_PACKINGLIST control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtProductDesc_PACKINGLIST">
-	<summary>
-txtProductDesc_PACKINGLIST control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtCustomerPN_PACKINGLIST">
-	<summary>
-txtCustomerPN_PACKINGLIST control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MultiIssuedWH.ddlOriginCtry_PACKINGLIST">
-	<summary>
-ddlOriginCtry_PACKINGLIST control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtOriginCtry_PACKINGLIST">
-	<summary>
-txtOriginCtry_PACKINGLIST control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MultiIssuedWH.ddlNumberOfPLT_PACKINGLIST">
-	<summary>
-ddlNumberOfPLT_PACKINGLIST control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtPLTQuantity_PACKINGLIST">
-	<summary>
-txtPLTQuantity_PACKINGLIST control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MultiIssuedWH.ddlNetWeight_PACKINGLIST">
-	<summary>
-ddlNetWeight_PACKINGLIST control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtVolumeCBM_PACKINGLIST">
-	<summary>
-txtVolumeCBM_PACKINGLIST control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtMeasurement_Width_PACKINGLIST">
-	<summary>
-txtMeasurement_Width_PACKINGLIST control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtMeasurement_Height_PACKINGLIST">
-	<summary>
-txtMeasurement_Height_PACKINGLIST control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MultiIssuedWH.rdbCM">
-	<summary>
-rdbCM control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MultiIssuedWH.rdbInch">
-	<summary>
-rdbInch control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtPLTNetAmount_PACKINGLIST">
-	<summary>
-txtPLTNetAmount_PACKINGLIST control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtCTNNetAmount_PACKINGLIST">
-	<summary>
-txtCTNNetAmount_PACKINGLIST control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtTotal_PACKINGLIST">
-	<summary>
-txtTotal_PACKINGLIST control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtOwnerPN_PACKINGLIST">
-	<summary>
-txtOwnerPN_PACKINGLIST control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MultiIssuedWH.ddlUnit_PACKINGLIST">
-	<summary>
-ddlUnit_PACKINGLIST control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtUnit_PACKINGLIST">
-	<summary>
-txtUnit_PACKINGLIST control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtTotalCTN_PACKINGLIST">
-	<summary>
-txtTotalCTN_PACKINGLIST control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MultiIssuedWH.ddlProductQuantity_PACKINGLIST">
-	<summary>
-ddlProductQuantity_PACKINGLIST control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MultiIssuedWH.ddlGrossWeight_PACKINGLIST">
-	<summary>
-ddlGrossWeight_PACKINGLIST control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtPONo_PACKINGLIST">
-	<summary>
-txtPONo_PACKINGLIST control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtLenght_PACKINGLIST">
-	<summary>
-txtLenght_PACKINGLIST control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MultiIssuedWH.ddlPLTNetAmount_PACKINGLIST">
-	<summary>
-ddlPLTNetAmount_PACKINGLIST control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtPLTNetAmount2_PACKINGLIST">
-	<summary>
-txtPLTNetAmount2_PACKINGLIST control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MultiIssuedWH.ddlCTNNetAmount_PACKINGLIST">
-	<summary>
-ddlCTNNetAmount_PACKINGLIST control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MultiIssuedWH.txtCTNNetAmount2_PACKINGLIST">
-	<summary>
-txtCTNNetAmount2_PACKINGLIST control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MultiIssuedWH.chkCopyToDetail">
-	<summary>
-chkCopyToDetail control.
+Repeater7 control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -14775,9 +14359,25 @@ Txtpallet control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
+</member><member name="F:WMS.SingleReceivedWH.dgvConfirmDetailbefor">
+	<summary>
+dgvConfirmDetailbefor control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
 </member><member name="F:WMS.SingleReceivedWH.btnPutAway">
 	<summary>
 btnPutAway control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.SingleReceivedWH.dgvConfirmDetailafter">
+	<summary>
+dgvConfirmDetailafter control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -19239,9 +18839,9 @@ ddlStatus_ConfirmIssue control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.SingleIssuedWH.DropDownList1">
+</member><member name="F:WMS.SingleIssuedWH.ddlType_ConfirmIssue">
 	<summary>
-DropDownList1 control.
+ddlType_ConfirmIssue control.
 </summary>
 	<remarks>
 Auto-generated field.

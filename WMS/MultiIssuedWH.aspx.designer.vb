@@ -32,6 +32,42 @@ Partial Public Class MultiIssuedWH
     Protected WithEvents ScriptManager1 As Global.System.Web.UI.ScriptManager
 
     '''<summary>
+    '''btnAddHead control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnAddHead As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''btnEditHead control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnEditHead As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''btnSaveAddHead control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnSaveAddHead As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''btnSaveEditHead control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnSaveEditHead As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
     '''txtPullSignal_BeforeTab control.
     '''</summary>
     '''<remarks>
@@ -39,15 +75,6 @@ Partial Public Class MultiIssuedWH
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents txtPullSignal_BeforeTab As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''txtJobNo_BeforeTab control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtJobNo_BeforeTab As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
     '''txtdatepickertxtPullDateTime_beforeTab control.
@@ -68,6 +95,42 @@ Partial Public Class MultiIssuedWH
     Protected WithEvents CalendarExtenderPullDateTime_beforeTab As Global.AjaxControlToolkit.CalendarExtender
 
     '''<summary>
+    '''txtJobNo_BeforeTab control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtJobNo_BeforeTab As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''btnJobNo_Head control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnJobNo_Head As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''btnJobNo_Head_Edit control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnJobNo_Head_Edit As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''txtTimePickUpPullDateTime control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtTimePickUpPullDateTime As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
     '''txtdatepickerDeliveryDateTime_beforeTab control.
     '''</summary>
     '''<remarks>
@@ -86,6 +149,15 @@ Partial Public Class MultiIssuedWH
     Protected WithEvents CalendarExtenderDeliveryDateTime_beforeTab As Global.AjaxControlToolkit.CalendarExtender
 
     '''<summary>
+    '''txtTimePickUpDeliveryDateTime control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtTimePickUpDeliveryDateTime As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
     '''txtdatepickerComfirmDateTime_beforeTab control.
     '''</summary>
     '''<remarks>
@@ -102,6 +174,15 @@ Partial Public Class MultiIssuedWH
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents CalendarExtenderComfirmDateTime_beforeTab As Global.AjaxControlToolkit.CalendarExtender
+
+    '''<summary>
+    '''txtTimePickUpConfirmDateTime control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtTimePickUpConfirmDateTime As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
     '''chkStatus control.
@@ -140,13 +221,22 @@ Partial Public Class MultiIssuedWH
     Protected WithEvents ddlWHSite_IssueCon As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''ddlExporterCode_IssueCon control.
+    '''txtExporterCode_IssueCon control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlExporterCode_IssueCon As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtExporterCode_IssueCon As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''btnExporterCode_IssueCon control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnExporterCode_IssueCon As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
     '''txtNameExporter_IssueCon control.
@@ -194,13 +284,22 @@ Partial Public Class MultiIssuedWH
     Protected WithEvents txtAddress4Exporter_IssueCon As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''ddlOwnerCode_IssueCon control.
+    '''txtOwnerCode_IssueCon control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlOwnerCode_IssueCon As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtOwnerCode_IssueCon As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''btnOwnerCode_IssueCon control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnOwnerCode_IssueCon As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
     '''txtNameOwner_IssueCon control.
@@ -293,13 +392,13 @@ Partial Public Class MultiIssuedWH
     Protected WithEvents ddlQuantityPLTSkid_IssueCon As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''txttxtQuantityPicked_IssueCon control.
+    '''txtQuantityPicked_IssueCon control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txttxtQuantityPicked_IssueCon As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtQuantityPicked_IssueCon As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
     '''ddlQuantityPicked_IssueCon control.
@@ -311,6 +410,15 @@ Partial Public Class MultiIssuedWH
     Protected WithEvents ddlQuantityPicked_IssueCon As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
+    '''txtRemark_IssueCon control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtRemark_IssueCon As Global.System.Web.UI.HtmlControls.HtmlTextArea
+
+    '''<summary>
     '''btnSumQTY_IssueCon control.
     '''</summary>
     '''<remarks>
@@ -320,13 +428,22 @@ Partial Public Class MultiIssuedWH
     Protected WithEvents btnSumQTY_IssueCon As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
-    '''txtConsigneeCode_IssueCon control.
+    '''txtConsigneeCode0_IssueCon control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtConsigneeCode_IssueCon As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtConsigneeCode0_IssueCon As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''btnConsigneeCode_IssueCon control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnConsigneeCode_IssueCon As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
     '''txtNameConsignee_IssueCon control.
@@ -374,13 +491,22 @@ Partial Public Class MultiIssuedWH
     Protected WithEvents txtAddress4Consignee_IssueCon As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''ddlShipToCode_IssueCon control.
+    '''txtShipToCode_IssueCon control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlShipToCode_IssueCon As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtShipToCode_IssueCon As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''btnShipToCode_IssueCon control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnShipToCode_IssueCon As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
     '''txtNameShipTo_IssueCon control.
@@ -473,13 +599,13 @@ Partial Public Class MultiIssuedWH
     Protected WithEvents txtVolume_IssueCon As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''DropDownList1 control.
+    '''ddlVolume_IssueCon control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents DropDownList1 As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents ddlVolume_IssueCon As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''txtQTYDiscrepancy_IssueCon control.
@@ -500,1163 +626,587 @@ Partial Public Class MultiIssuedWH
     Protected WithEvents ddlQTYDiscrepancy_IssueCon As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''chkEnablebehalf_EASJOB control.
+    '''ddlWHSite_ConfirmIssue control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents chkEnablebehalf_EASJOB As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
+    Protected WithEvents ddlWHSite_ConfirmIssue As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''ddlExporterCode_EASJOB control.
+    '''txtCusLOTNo_ConfirmIssue control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlExporterCode_EASJOB As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtCusLOTNo_ConfirmIssue As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtNameExporter_EASJOB control.
+    '''txtEASPN_ConfirmIssue control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtNameExporter_EASJOB As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtEASPN_ConfirmIssue As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtAddress1Exporter_EASJOB control.
+    '''btnEASPN_ConfirmIssue control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtAddress1Exporter_EASJOB As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents btnEASPN_ConfirmIssue As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
-    '''txtAddress2Exporter_EASJOB control.
+    '''txtProductDesc_ConfirmIssue control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtAddress2Exporter_EASJOB As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtProductDesc_ConfirmIssue As Global.System.Web.UI.HtmlControls.HtmlTextArea
 
     '''<summary>
-    '''txtAddress3Exporter_EASJOB control.
+    '''ddlWHLocation_ConfirmIssue control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtAddress3Exporter_EASJOB As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents ddlWHLocation_ConfirmIssue As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''txtAddress4Exporter_EASJOB control.
+    '''ddlCustWHFac_ConfirmIssue control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtAddress4Exporter_EASJOB As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents ddlCustWHFac_ConfirmIssue As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''txtAddress5Exporter_EASJOB control.
+    '''txtCustomerPN_ConfirmIssue control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtAddress5Exporter_EASJOB As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtCustomerPN_ConfirmIssue As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtEmailExporter_EASJOB control.
+    '''ddlENDCustomer_ConfirmIssue control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtEmailExporter_EASJOB As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents ddlENDCustomer_ConfirmIssue As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''ddlCustomerCode_EASJOB control.
+    '''txtItemNo_ConfirmIssue control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlCustomerCode_EASJOB As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtItemNo_ConfirmIssue As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtNameCustomer_EASJOB control.
+    '''txtOwnerPN_ConfirmIssue control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtNameCustomer_EASJOB As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtOwnerPN_ConfirmIssue As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtRemarks control.
+    '''ddlMeasurement_ConfirmIssue control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtRemarks As Global.System.Web.UI.HtmlControls.HtmlTextArea
+    Protected WithEvents ddlMeasurement_ConfirmIssue As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''txtEmailCustomer_EASJOB control.
+    '''txtWidth_ConfirmIssue control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtEmailCustomer_EASJOB As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtWidth_ConfirmIssue As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtTelNoCustomer_EASJOB control.
+    '''txtHight_ConfirmIssue control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtTelNoCustomer_EASJOB As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtHight_ConfirmIssue As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtFaxNoCustomer_EASJOB control.
+    '''txtOrderNo_ConfirmIssue control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtFaxNoCustomer_EASJOB As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtOrderNo_ConfirmIssue As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtContractPersonCustomer_EASJOB control.
+    '''txtReceiveNo_ConfirmIssue control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtContractPersonCustomer_EASJOB As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtReceiveNo_ConfirmIssue As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtEASINV_EASJOB control.
+    '''chkNotUseDate_ConfirmIssue control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtEASINV_EASJOB As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents chkNotUseDate_ConfirmIssue As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
 
     '''<summary>
-    '''txtEASLOT_EASJOB control.
+    '''txtdatepickerManufacturing_ConfirmIssue control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtEASLOT_EASJOB As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtdatepickerManufacturing_ConfirmIssue As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''txtReferenceLine_EASJOB control.
+    '''CalendarExtenderManufacturing_ConfirmIssue control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtReferenceLine_EASJOB As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents CalendarExtenderManufacturing_ConfirmIssue As Global.AjaxControlToolkit.CalendarExtender
 
     '''<summary>
-    '''txtTruckWaybill_EASJOB control.
+    '''txtdatepickerReceiveDate_ConfirmIssue control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtTruckWaybill_EASJOB As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtdatepickerReceiveDate_ConfirmIssue As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''ddlShipMode_EASJOB control.
+    '''CalendarExtenderReceiveDate_ConfirmIssue control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlShipMode_EASJOB As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents CalendarExtenderReceiveDate_ConfirmIssue As Global.AjaxControlToolkit.CalendarExtender
 
     '''<summary>
-    '''ddlDeliveryTerm_EASJOB control.
+    '''txtPickQTY_ConfirmIssue control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlDeliveryTerm_EASJOB As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtPickQTY_ConfirmIssue As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''ddlShippingMark_EASJOB control.
+    '''ddlPickQTY_ConfirmIssue control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlShippingMark_EASJOB As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents ddlPickQTY_ConfirmIssue As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''txtCompany_EASJOB control.
+    '''ddlCurrency_ConfirmIssue control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtCompany_EASJOB As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents ddlCurrency_ConfirmIssue As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''txtAddressEAS_EASJOB control.
+    '''txtPriceForeign_ConfirmIssue control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtAddressEAS_EASJOB As Global.System.Web.UI.HtmlControls.HtmlTextArea
+    Protected WithEvents txtPriceForeign_ConfirmIssue As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtRemarkEAS_EASJOB control.
+    '''txtPriceBath_ConfirmIssue control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtRemarkEAS_EASJOB As Global.System.Web.UI.HtmlControls.HtmlTextArea
+    Protected WithEvents txtPriceBath_ConfirmIssue As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtTotal_EASJOB control.
+    '''txtLength_ConfirmIssue control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtTotal_EASJOB As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtLength_ConfirmIssue As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''ddlCustomerCode_BillTo_EASJOB control.
+    '''txtProductVolume_ConfirmIssue control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlCustomerCode_BillTo_EASJOB As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtProductVolume_ConfirmIssue As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtNameCustomer_BillTo_EASJOB control.
+    '''txtPalletNo_ConfirmIssue control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtNameCustomer_BillTo_EASJOB As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtPalletNo_ConfirmIssue As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtAddressCustomer_BillTo_EASJOB control.
+    '''ddlStatus_ConfirmIssue control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtAddressCustomer_BillTo_EASJOB As Global.System.Web.UI.HtmlControls.HtmlTextArea
+    Protected WithEvents ddlStatus_ConfirmIssue As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''txtEmailCustomer_BillTo_EASJOB control.
+    '''ddlType_ConfirmIssue control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtEmailCustomer_BillTo_EASJOB As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents ddlType_ConfirmIssue As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''txtTelNoCustomer_BillTo_EASJOB control.
+    '''txtdatepickerExpiredDate_ConfirmIssue control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtTelNoCustomer_BillTo_EASJOB As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtdatepickerExpiredDate_ConfirmIssue As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''txtFaxNoCustomer_BillTo_EASJOB control.
+    '''CalendarExtenderExpiredDate_ConfirmIssue control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtFaxNoCustomer_BillTo_EASJOB As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents CalendarExtenderExpiredDate_ConfirmIssue As Global.AjaxControlToolkit.CalendarExtender
 
     '''<summary>
-    '''txtContractPersonCustomer_BillTo_EASJOB control.
+    '''txtIssueQTY_ConfirmIssue control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtContractPersonCustomer_BillTo_EASJOB As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtIssueQTY_ConfirmIssue As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''ddlBrand_ItemDetail control.
+    '''txtWeight_ConfirmIssue control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlBrand_ItemDetail As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtWeight_ConfirmIssue As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtProductYear_ItemDetail control.
+    '''ddlWeight_ConfirmIssue control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtProductYear_ItemDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents ddlWeight_ConfirmIssue As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''ddlNatureOfTM_ItemDetail control.
+    '''txtExchangeRate_ConfirmIssue control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlNatureOfTM_ItemDetail As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtExchangeRate_ConfirmIssue As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''ddlPurchaseCtry_ItemDetail control.
+    '''txtAmount_ConfirmIssue control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlPurchaseCtry_ItemDetail As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtAmount_ConfirmIssue As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''ddlOriginCtry_ItemDetail control.
+    '''txtBathAmount_ConfirmIssue control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlOriginCtry_ItemDetail As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtBathAmount_ConfirmIssue As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtItemNo_ItemDetail control.
+    '''txtdatepickerReceiveDate_Button_ConfirmIssue control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtItemNo_ItemDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtdatepickerReceiveDate_Button_ConfirmIssue As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''ddlProductCode_ItemDetail control.
+    '''CalendarExtenderReceiveDate_Button_ConfirmIssue control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlProductCode_ItemDetail As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents CalendarExtenderReceiveDate_Button_ConfirmIssue As Global.AjaxControlToolkit.CalendarExtender
 
     '''<summary>
-    '''txtCustomerPN_ItemDetail control.
+    '''txtWHLocation_ConfirmIssue control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtCustomerPN_ItemDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtWHLocation_ConfirmIssue As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtInvQty_ItemDetail control.
+    '''btnIssue_ConfirmIssue control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtInvQty_ItemDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents btnIssue_ConfirmIssue As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
-    '''ddlUnit1_ItemDetail control.
+    '''TabName control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlUnit1_ItemDetail As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents TabName As Global.System.Web.UI.WebControls.HiddenField
 
     '''<summary>
-    '''txtUnit1_ItemDetail control.
+    '''ExporterPanel control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtUnit1_ItemDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents ExporterPanel As Global.System.Web.UI.WebControls.Panel
 
     '''<summary>
-    '''txtWeight_ItemDetail control.
+    '''ExporterUpdatePanel control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtWeight_ItemDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents ExporterUpdatePanel As Global.System.Web.UI.UpdatePanel
 
     '''<summary>
-    '''ddlUnit2_ItemDetail control.
+    '''Repeater1 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlUnit2_ItemDetail As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents Repeater1 As Global.System.Web.UI.WebControls.Repeater
 
     '''<summary>
-    '''txtUnit2_ItemDetail control.
+    '''OwnerPanel control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtUnit2_ItemDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents OwnerPanel As Global.System.Web.UI.WebControls.Panel
 
     '''<summary>
-    '''txtQuantity_ItemDetail control.
+    '''OwnerUpdatePanel control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtQuantity_ItemDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents OwnerUpdatePanel As Global.System.Web.UI.UpdatePanel
 
     '''<summary>
-    '''ddlUnit3_ItemDetail control.
+    '''Repeater2 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlUnit3_ItemDetail As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents Repeater2 As Global.System.Web.UI.WebControls.Repeater
 
     '''<summary>
-    '''txtUnit3_ItemDetail control.
+    '''ConsigneePanel control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtUnit3_ItemDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents ConsigneePanel As Global.System.Web.UI.WebControls.Panel
 
     '''<summary>
-    '''txtTariffCode_ItemDetail control.
+    '''ConsigneeUpdatePanel control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtTariffCode_ItemDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents ConsigneeUpdatePanel As Global.System.Web.UI.UpdatePanel
 
     '''<summary>
-    '''txtTariffSequence_ItemDetail control.
+    '''Repeater3 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtTariffSequence_ItemDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents Repeater3 As Global.System.Web.UI.WebControls.Repeater
 
     '''<summary>
-    '''txtPONo_ItemDetail control.
+    '''ShipToPanel control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtPONo_ItemDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents ShipToPanel As Global.System.Web.UI.WebControls.Panel
 
     '''<summary>
-    '''txtDeclaretionLine_ItemDetail control.
+    '''ShipToUpdatePanel control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtDeclaretionLine_ItemDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents ShipToUpdatePanel As Global.System.Web.UI.UpdatePanel
 
     '''<summary>
-    '''txtFormulaNo_ItemDetail control.
+    '''Repeater4 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtFormulaNo_ItemDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents Repeater4 As Global.System.Web.UI.WebControls.Repeater
 
     '''<summary>
-    '''txt19BisTransferNo_ItemDetail control.
+    '''ProductCodePanel control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txt19BisTransferNo_ItemDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents ProductCodePanel As Global.System.Web.UI.WebControls.Panel
 
     '''<summary>
-    '''txtRemark_ItemDetail control.
+    '''ProductCodeUpdatePanel control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtRemark_ItemDetail As Global.System.Web.UI.HtmlControls.HtmlTextArea
+    Protected WithEvents ProductCodeUpdatePanel As Global.System.Web.UI.UpdatePanel
 
     '''<summary>
-    '''ddlForwarding_Currency_ItemDetail control.
+    '''Repeater5 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlForwarding_Currency_ItemDetail As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents Repeater5 As Global.System.Web.UI.WebControls.Repeater
 
     '''<summary>
-    '''txtForwarding_ForeignAmount_ItemDetail control.
+    '''JobNoAddPanel control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtForwarding_ForeignAmount_ItemDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents JobNoAddPanel As Global.System.Web.UI.WebControls.Panel
 
     '''<summary>
-    '''ddlFreight_Currency_ItemDetail control.
+    '''JobNoAddUpdatePanel control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlFreight_Currency_ItemDetail As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents JobNoAddUpdatePanel As Global.System.Web.UI.UpdatePanel
 
     '''<summary>
-    '''txtFreight_ForeignAmount_ItemDetail control.
+    '''Repeater6 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtFreight_ForeignAmount_ItemDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents Repeater6 As Global.System.Web.UI.WebControls.Repeater
 
     '''<summary>
-    '''ddlInsurance_Currency_ItemDetail control.
+    '''JobNoEditPanel control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlInsurance_Currency_ItemDetail As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents JobNoEditPanel As Global.System.Web.UI.WebControls.Panel
 
     '''<summary>
-    '''txtInsurance_ForeignAmount_ItemDetail control.
+    '''JobNoEditUpdatePanel control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtInsurance_ForeignAmount_ItemDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents JobNoEditUpdatePanel As Global.System.Web.UI.UpdatePanel
 
     '''<summary>
-    '''ddlPackageCharge_Currency_ItemDetail1 control.
+    '''Repeater7 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlPackageCharge_Currency_ItemDetail1 As Global.System.Web.UI.WebControls.DropDownList
-
-    '''<summary>
-    '''txtPackageCharge_ForeignAmount_ItemDetail control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtPackageCharge_ForeignAmount_ItemDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''ddlForeignInlandFreidge_Currency_ItemDetail1 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents ddlForeignInlandFreidge_Currency_ItemDetail1 As Global.System.Web.UI.WebControls.DropDownList
-
-    '''<summary>
-    '''txtForeignInlandFreidge_ForeignAmount_ItemDetail control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtForeignInlandFreidge_ForeignAmount_ItemDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''ddlLandingCharge_Currency_ItemDetail1 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents ddlLandingCharge_Currency_ItemDetail1 As Global.System.Web.UI.WebControls.DropDownList
-
-    '''<summary>
-    '''txtLandingCharge_ForeignAmount_ItemDetail control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtLandingCharge_ForeignAmount_ItemDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''ddlOtherCharge_Currency_ItemDetail1 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents ddlOtherCharge_Currency_ItemDetail1 As Global.System.Web.UI.WebControls.DropDownList
-
-    '''<summary>
-    '''txtOtherCharge_ForeignAmount_ItemDetail control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtOtherCharge_ForeignAmount_ItemDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''txtProductDesc_ItemDetail control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtProductDesc_ItemDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''txtOwnerPN_ItemDetail control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtOwnerPN_ItemDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''ddlCurrency_ItemDetail control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents ddlCurrency_ItemDetail As Global.System.Web.UI.WebControls.DropDownList
-
-    '''<summary>
-    '''txtExchangeRate_ItemDetail control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtExchangeRate_ItemDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''txtPriceForeign_ItemDetail control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtPriceForeign_ItemDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''txtAmountForeign_ItemDetail control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtAmountForeign_ItemDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''txtPriceBath_ItemDetail control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtPriceBath_ItemDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''txtAmountBath_ItemDetail control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtAmountBath_ItemDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''txtStatisticalCode_ItemDetail control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtStatisticalCode_ItemDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''txtProductAttribute1_ItemDetail control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtProductAttribute1_ItemDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''txtPriceIncreaseForreign_ItemDetail control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtPriceIncreaseForreign_ItemDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''txtPriceIncreaseBath_ItemDetail control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtPriceIncreaseBath_ItemDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''txtBOILicenseNo_ItemDetail control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtBOILicenseNo_ItemDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''txtBondFormulaNo_ItemDetail control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtBondFormulaNo_ItemDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''txtForwarding_Exchange_ItemDetail control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtForwarding_Exchange_ItemDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''txtForwarding_BathAmount_ItemDetail control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtForwarding_BathAmount_ItemDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''txtFreight_Exchange_ItemDetail control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtFreight_Exchange_ItemDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''txtFreight_BathAmount_ItemDetail control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtFreight_BathAmount_ItemDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''txtInsurance_Exchange_ItemDetail control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtInsurance_Exchange_ItemDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''txtInsurance_BathAmount_ItemDetail control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtInsurance_BathAmount_ItemDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''txtPackageCharge_Exchange_ItemDetail control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtPackageCharge_Exchange_ItemDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''txtPackageCharge_BathAmount_ItemDetail control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtPackageCharge_BathAmount_ItemDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''txtForeignInlandFreidge_Exchange_ItemDetail control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtForeignInlandFreidge_Exchange_ItemDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''txtForeignInlandFreidge_BathAmount_ItemDetail control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtForeignInlandFreidge_BathAmount_ItemDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''txtLandingCharge_Exchange_ItemDetail control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtLandingCharge_Exchange_ItemDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''txtLandingCharge_BathAmount_ItemDetail control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtLandingCharge_BathAmount_ItemDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''txtOtherCharge_Exchange_ItemDetail control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtOtherCharge_Exchange_ItemDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''txtOtherCharge_BathAmount_ItemDetail control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtOtherCharge_BathAmount_ItemDetail As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''ddlProductCode_PACKINGLIST control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents ddlProductCode_PACKINGLIST As Global.System.Web.UI.WebControls.DropDownList
-
-    '''<summary>
-    '''txtProductDesc_PACKINGLIST control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtProductDesc_PACKINGLIST As Global.System.Web.UI.HtmlControls.HtmlTextArea
-
-    '''<summary>
-    '''txtCustomerPN_PACKINGLIST control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtCustomerPN_PACKINGLIST As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''ddlOriginCtry_PACKINGLIST control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents ddlOriginCtry_PACKINGLIST As Global.System.Web.UI.WebControls.DropDownList
-
-    '''<summary>
-    '''txtOriginCtry_PACKINGLIST control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtOriginCtry_PACKINGLIST As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''ddlNumberOfPLT_PACKINGLIST control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents ddlNumberOfPLT_PACKINGLIST As Global.System.Web.UI.WebControls.DropDownList
-
-    '''<summary>
-    '''txtPLTQuantity_PACKINGLIST control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtPLTQuantity_PACKINGLIST As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''ddlNetWeight_PACKINGLIST control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents ddlNetWeight_PACKINGLIST As Global.System.Web.UI.WebControls.DropDownList
-
-    '''<summary>
-    '''txtVolumeCBM_PACKINGLIST control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtVolumeCBM_PACKINGLIST As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''txtMeasurement_Width_PACKINGLIST control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtMeasurement_Width_PACKINGLIST As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''txtMeasurement_Height_PACKINGLIST control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtMeasurement_Height_PACKINGLIST As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''rdbCM control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents rdbCM As Global.System.Web.UI.WebControls.RadioButton
-
-    '''<summary>
-    '''rdbInch control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents rdbInch As Global.System.Web.UI.WebControls.RadioButton
-
-    '''<summary>
-    '''txtPLTNetAmount_PACKINGLIST control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtPLTNetAmount_PACKINGLIST As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''txtCTNNetAmount_PACKINGLIST control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtCTNNetAmount_PACKINGLIST As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''txtTotal_PACKINGLIST control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtTotal_PACKINGLIST As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''txtOwnerPN_PACKINGLIST control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtOwnerPN_PACKINGLIST As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''ddlUnit_PACKINGLIST control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents ddlUnit_PACKINGLIST As Global.System.Web.UI.WebControls.DropDownList
-
-    '''<summary>
-    '''txtUnit_PACKINGLIST control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtUnit_PACKINGLIST As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''txtTotalCTN_PACKINGLIST control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtTotalCTN_PACKINGLIST As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''ddlProductQuantity_PACKINGLIST control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents ddlProductQuantity_PACKINGLIST As Global.System.Web.UI.WebControls.DropDownList
-
-    '''<summary>
-    '''ddlGrossWeight_PACKINGLIST control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents ddlGrossWeight_PACKINGLIST As Global.System.Web.UI.WebControls.DropDownList
-
-    '''<summary>
-    '''txtPONo_PACKINGLIST control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtPONo_PACKINGLIST As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''txtLenght_PACKINGLIST control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtLenght_PACKINGLIST As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''ddlPLTNetAmount_PACKINGLIST control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents ddlPLTNetAmount_PACKINGLIST As Global.System.Web.UI.WebControls.DropDownList
-
-    '''<summary>
-    '''txtPLTNetAmount2_PACKINGLIST control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtPLTNetAmount2_PACKINGLIST As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''ddlCTNNetAmount_PACKINGLIST control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents ddlCTNNetAmount_PACKINGLIST As Global.System.Web.UI.WebControls.DropDownList
-
-    '''<summary>
-    '''txtCTNNetAmount2_PACKINGLIST control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtCTNNetAmount2_PACKINGLIST As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''chkCopyToDetail control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents chkCopyToDetail As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
+    Protected WithEvents Repeater7 As Global.System.Web.UI.WebControls.Repeater
 End Class
