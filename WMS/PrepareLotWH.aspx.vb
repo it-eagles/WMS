@@ -41,7 +41,7 @@ Public Class PrepareLotWH
     Protected Sub btnAddNew_GoodRecDetail_ServerClick(sender As Object, e As EventArgs)
         SaveDetail_New()
         ClearDATA1()
-
+        SelectJobDetail()
     End Sub
     '-----------------------------------------------------------Click btn Save Modify GOODRECDETAIL TAB--------------------------------------
     Protected Sub btnSaveModify_GoodRecDetail_ServerClick(sender As Object, e As EventArgs)
@@ -75,6 +75,10 @@ Public Class PrepareLotWH
         If cu.Any Then
             Save_New()
             UpdateStatus()
+            SelectJobDetail()
+            UnlockEditData()
+            ClearDATA1()
+            chkNotUseDate_GoodRecDetail.Checked = True
             'ClearDATA1()
         Else
             ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ์เมนูนี้ !!!')", True)
@@ -1221,7 +1225,7 @@ Public Class PrepareLotWH
     Private Sub SaveDetail_New()
         Dim ManuDate As Nullable(Of Date)
         Dim ExpDate As Nullable(Of Date)
-        Dim receiveDate_ As Date
+        Dim receiveDate_ As Nullable(Of Date)
         If txtJobNo_PreGoodRec.Value.Trim = "" Then
             ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert(กรุณาป้อน Job No ก่อน !!!);", True)
             txtJobNo_PreGoodRec.Focus()
@@ -1242,7 +1246,7 @@ Public Class PrepareLotWH
             ExpDate = DateTime.ParseExact(txtdatepickerExpiredDate_GoodRecDetail.Text.Trim, "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US"))
         End If
         If String.IsNullOrEmpty(txtdatepickerReceiveDate_GoodRecDetail.Text.Trim) Then
-            receiveDate_ = CDate(Convert.ToDateTime(Date.Now).ToString("dd/MM/yyyy"))
+            receiveDate_ = Nothing
         Else
             receiveDate_ = DateTime.ParseExact(txtdatepickerReceiveDate_GoodRecDetail.Text.Trim, "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US"))
         End If
@@ -1306,10 +1310,10 @@ Public Class PrepareLotWH
 
                 Catch ex As Exception
                     ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด กรุณาบันทึกข้อมูลใหม่อีกครั้ง');", True)
-                Finally
-                    db.Database.Connection.Close()
-                    db.Dispose()
-                    tran.Dispose()
+                    'Finally
+                    '    db.Database.Connection.Close()
+                    '    db.Dispose()
+                    '    tran.Dispose()
                 End Try
             End Using
         End If

@@ -127,7 +127,6 @@ Partial Public Class LKBWarehouseEntities
     Public Overridable Property tblWHRemarkMoveJobs() As DbSet(Of tblWHRemarkMoveJob)
     Public Overridable Property tblWHRequestedISSUEs() As DbSet(Of tblWHRequestedISSUE)
     Public Overridable Property tblWHStockCtrls() As DbSet(Of tblWHStockCtrl)
-    Public Overridable Property tblWHStockMovements() As DbSet(Of tblWHStockMovement)
     Public Overridable Property tblMenus() As DbSet(Of tblMenu)
     Public Overridable Property tblUserMenus() As DbSet(Of tblUserMenu)
     Public Overridable Property VInventoryDetailbyOrders() As DbSet(Of VInventoryDetailbyOrder)

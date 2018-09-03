@@ -2786,72 +2786,6 @@
     <Property Name="OrderFrmOnline" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="CustFrmOnline" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
-  <EntityType Name="tblWHStockMovement">
-    <Key>
-      <PropertyRef Name="LOTNo" />
-      <PropertyRef Name="ItemNo" />
-      <PropertyRef Name="ReceiveNo" />
-      <PropertyRef Name="item" />
-    </Key>
-    <Property Name="LOTNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="WHSite" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="WHLocation" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="OwnerCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="ENDCustomer" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="WHSource" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="CustomerLOTNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="ItemNo" Type="Double" Nullable="false" />
-    <Property Name="ProductCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="ProductDesc" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="CustomerPN" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="OwnerPN" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="Measurement" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="ProductWidth" Type="Double" />
-    <Property Name="ProductLength" Type="Double" />
-    <Property Name="ProductHeight" Type="Double" />
-    <Property Name="ProductVolume" Type="Double" />
-    <Property Name="OrderNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="ReceiveNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Type" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="ManufacturingDate" Type="DateTime" Precision="3" />
-    <Property Name="ExpiredDate" Type="DateTime" Precision="3" />
-    <Property Name="ReceiveDate" Type="DateTime" Precision="3" />
-    <Property Name="ISSUEDate" Type="DateTime" Precision="3" />
-    <Property Name="StockType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="ReceivedQuantity" Type="Double" />
-    <Property Name="QuantityUnit" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="DamageQuantity" Type="Double" />
-    <Property Name="DamageUnit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="ISSUEQuantity" Type="Double" />
-    <Property Name="ISSUEUnit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="AvalableQuantity" Type="Double" />
-    <Property Name="Weigth" Type="Double" />
-    <Property Name="WeigthUnit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Currency" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="ExchangeRate" Type="Double" />
-    <Property Name="PriceForeigh" Type="Double" />
-    <Property Name="PriceForeighAmount" Type="Double" />
-    <Property Name="PriceBath" Type="Double" />
-    <Property Name="PriceBathAmount" Type="Double" />
-    <Property Name="PalletNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="UserBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
-    <Property Name="Status" Type="Double" />
-    <Property Name="TransactionDate" Type="DateTime" Precision="3" />
-    <Property Name="TypeDamage" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="item" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-    <Property Name="Supplier" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="Buyer" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="Exporter" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="Destination" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="Consignee" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="ShippingMark" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="EntryNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="EntryItemNo" Type="Int32" />
-    <Property Name="Invoice" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="OrderFrmOnline" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="CustFrmOnline" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-  </EntityType>
   <EntityContainer Name="LKBWarehouseEntities1" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Branches" EntityType="Self.Branch" />
     <EntitySet Name="Departments" EntityType="Self.Department" />
@@ -2955,7 +2889,6 @@
     <EntitySet Name="tblWHReceiveScantoTemps" EntityType="Self.tblWHReceiveScantoTemp" />
     <EntitySet Name="tblWHRemarkMoveJobs" EntityType="Self.tblWHRemarkMoveJob" />
     <EntitySet Name="tblWHRequestedISSUEs" EntityType="Self.tblWHRequestedISSUE" />
-    <EntitySet Name="tblWHStockMovements" EntityType="Self.tblWHStockMovement" />
     <AssociationSet Name="FK_tblCompanyGuarantee1_tblStatusBalance" Association="LKBWarehouseModel1.FK_tblCompanyGuarantee1_tblStatusBalance">
       <End Role="tblStatusBalance" EntitySet="tblStatusBalances" />
       <End Role="tblCompanyGuarantee1" EntitySet="tblCompanyGuarantee1" />
@@ -2971,6 +2904,7 @@
     <EntitySet Name="tblWHPickingDetails" EntityType="LKBWarehouseModel1.tblWHPickingDetail" />
     <EntitySet Name="tblWHPickPackCheckings" EntityType="LKBWarehouseModel1.tblWHPickPackChecking" />
     <EntitySet Name="tblUser_test" EntityType="LKBWarehouseModel1.tblUser_test" />
+    <EntitySet Name="tblWHStockMovements" EntityType="LKBWarehouseModel1.tblWHStockMovement" />
   </EntityContainer>
   <Association Name="FK_tblCompanyGuarantee1_tblStatusBalance">
     <End Type="LKBWarehouseModel1.tblStatusBalance" Role="tblStatusBalance" Multiplicity="0..1" />
@@ -3339,5 +3273,69 @@
     <Property Name="StatusWarehouse" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="UserStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="RejectStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblWHStockMovement">
+    <Key>
+      <PropertyRef Name="LOTNo" />
+      <PropertyRef Name="ItemNo" />
+    </Key>
+    <Property Name="LOTNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="WHSite" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="WHLocation" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="OwnerCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ENDCustomer" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="WHSource" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerLOTNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ItemNo" Type="Double" Nullable="false" />
+    <Property Name="ProductCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ProductDesc" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerPN" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="OwnerPN" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Measurement" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ProductWidth" Type="Double" />
+    <Property Name="ProductLength" Type="Double" />
+    <Property Name="ProductHeight" Type="Double" />
+    <Property Name="ProductVolume" Type="Double" />
+    <Property Name="OrderNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ReceiveNo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Type" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ManufacturingDate" Type="DateTime" Precision="3" />
+    <Property Name="ExpiredDate" Type="DateTime" Precision="3" />
+    <Property Name="ReceiveDate" Type="DateTime" Precision="3" />
+    <Property Name="ISSUEDate" Type="DateTime" Precision="3" />
+    <Property Name="StockType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ReceivedQuantity" Type="Double" />
+    <Property Name="QuantityUnit" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DamageQuantity" Type="Double" />
+    <Property Name="DamageUnit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ISSUEQuantity" Type="Double" />
+    <Property Name="ISSUEUnit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AvalableQuantity" Type="Double" />
+    <Property Name="Weigth" Type="Double" />
+    <Property Name="WeigthUnit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Currency" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ExchangeRate" Type="Double" />
+    <Property Name="PriceForeigh" Type="Double" />
+    <Property Name="PriceForeighAmount" Type="Double" />
+    <Property Name="PriceBath" Type="Double" />
+    <Property Name="PriceBathAmount" Type="Double" />
+    <Property Name="PalletNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="Double" />
+    <Property Name="TransactionDate" Type="DateTime" Precision="3" />
+    <Property Name="TypeDamage" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="item" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="Supplier" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Buyer" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Exporter" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Destination" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Consignee" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ShippingMark" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="EntryNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EntryItemNo" Type="Int32" />
+    <Property Name="Invoice" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="OrderFrmOnline" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CustFrmOnline" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
 </Schema>

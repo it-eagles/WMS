@@ -572,15 +572,6 @@ Partial Public Class SingleReceivedWH
     Protected WithEvents txtProductCode As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtProductDesc1 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtProductDesc1 As Global.System.Web.UI.HtmlControls.HtmlTextArea
-
-    '''<summary>
     '''dcbLocation control.
     '''</summary>
     '''<remarks>
@@ -635,6 +626,15 @@ Partial Public Class SingleReceivedWH
     Protected WithEvents txtProductDesc3 As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
+    '''txtProductDesc1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtProductDesc1 As Global.System.Web.UI.HtmlControls.HtmlTextArea
+
+    '''<summary>
     '''ddlProductUnit control.
     '''</summary>
     '''<remarks>
@@ -660,6 +660,33 @@ Partial Public Class SingleReceivedWH
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents txtProductHeight As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''txtProductLeng control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtProductLeng As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''txtProductVolume control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtProductVolume As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''txtPalletNo control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtPalletNo As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
     '''txtOrder control.
@@ -761,78 +788,6 @@ Partial Public Class SingleReceivedWH
     Protected WithEvents ddlUnit4 As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''dcboCurrency control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents dcboCurrency As Global.System.Web.UI.WebControls.DropDownList
-
-    '''<summary>
-    '''txtPriceForeigh control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtPriceForeigh As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''txtPriceBath control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtPriceBath As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''rbShort control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents rbShort As Global.System.Web.UI.WebControls.RadioButton
-
-    '''<summary>
-    '''rbOver control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents rbOver As Global.System.Web.UI.WebControls.RadioButton
-
-    '''<summary>
-    '''txtProductLeng control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtProductLeng As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''txtProductVolume control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtProductVolume As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''txtPalletNo control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtPalletNo As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
     '''dcbType control.
     '''</summary>
     '''<remarks>
@@ -878,24 +833,6 @@ Partial Public Class SingleReceivedWH
     Protected WithEvents txtEntryNo As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtdatepickerETAARRDate_GoodRecDetail control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtdatepickerETAARRDate_GoodRecDetail As Global.System.Web.UI.WebControls.TextBox
-
-    '''<summary>
-    '''CalendarExtenderETAARRDate_GoodRecDetail control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents CalendarExtenderETAARRDate_GoodRecDetail As Global.AjaxControlToolkit.CalendarExtender
-
-    '''<summary>
     '''txtEntryItemNo control.
     '''</summary>
     '''<remarks>
@@ -923,6 +860,33 @@ Partial Public Class SingleReceivedWH
     Protected WithEvents dcboUnitWeightDetail As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
+    '''dcboCurrency control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents dcboCurrency As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''txtPriceForeigh control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtPriceForeigh As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''txtPriceBath control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtPriceBath As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
     '''txtExchangeRate control.
     '''</summary>
     '''<remarks>
@@ -948,6 +912,24 @@ Partial Public Class SingleReceivedWH
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents txtPriceBathAmount As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''rbShort control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents rbShort As Global.System.Web.UI.WebControls.RadioButton
+
+    '''<summary>
+    '''rbOver control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents rbOver As Global.System.Web.UI.WebControls.RadioButton
 
     '''<summary>
     '''txtInvoice control.
@@ -1328,83 +1310,56 @@ Partial Public Class SingleReceivedWH
     Protected WithEvents dgvConfirmGood As Global.System.Web.UI.WebControls.Repeater
 
     '''<summary>
-    '''plPickUpCode control.
+    '''ProductCodePanel control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents plPickUpCode As Global.System.Web.UI.WebControls.Panel
+    Protected WithEvents ProductCodePanel As Global.System.Web.UI.WebControls.Panel
 
     '''<summary>
-    '''upPickUpCode control.
+    '''ProductCodeUpdatePanel control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents upPickUpCode As Global.System.Web.UI.UpdatePanel
+    Protected WithEvents ProductCodeUpdatePanel As Global.System.Web.UI.UpdatePanel
 
     '''<summary>
-    '''dgvPickUp control.
+    '''dgvProduct control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents dgvPickUp As Global.System.Web.UI.WebControls.Repeater
+    Protected WithEvents dgvProduct As Global.System.Web.UI.WebControls.Repeater
 
     '''<summary>
-    '''plEndCusCode control.
+    '''EndCustomerPanel control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents plEndCusCode As Global.System.Web.UI.WebControls.Panel
+    Protected WithEvents EndCustomerPanel As Global.System.Web.UI.WebControls.Panel
 
     '''<summary>
-    '''upEndCusCode control.
+    '''EndCustomerUpdatePanel control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents upEndCusCode As Global.System.Web.UI.UpdatePanel
+    Protected WithEvents EndCustomerUpdatePanel As Global.System.Web.UI.UpdatePanel
 
     '''<summary>
-    '''dgvEndCus control.
+    '''dgvCustomer control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents dgvEndCus As Global.System.Web.UI.WebControls.Repeater
-
-    '''<summary>
-    '''plCustomerGroup control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents plCustomerGroup As Global.System.Web.UI.WebControls.Panel
-
-    '''<summary>
-    '''upCustomerGroup control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents upCustomerGroup As Global.System.Web.UI.UpdatePanel
-
-    '''<summary>
-    '''dgvCustomerGroup control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents dgvCustomerGroup As Global.System.Web.UI.WebControls.Repeater
+    Protected WithEvents dgvCustomer As Global.System.Web.UI.WebControls.Repeater
 End Class

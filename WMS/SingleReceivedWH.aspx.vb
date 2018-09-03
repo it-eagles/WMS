@@ -42,6 +42,7 @@ Public Class SingleReceivedWH
                     btnSelectJobEdit.Visible = False
                     ClearDATA()
                     ClearDATA1()
+                    rdbManual.Checked = True
                     'Response.Cache.SetExpires(DateTime.Now.AddSeconds(60))
                     'Response.Cache.SetCacheability(HttpCacheability.Public)
                     'Response.Cache.SetValidUntilExpires(True)
@@ -73,9 +74,8 @@ Public Class SingleReceivedWH
         Dim form As String = "frmConfirmGoodsReceive"
         If classPermis.CheckSave(form, usename) = True Then
             If Status <> "2" And Status <> "3" Then
-                'CallculateGoods()
-                'SaveDetail_New()
-                SaveStockMovement_New("SPM-IN-6108011", 1)
+                CallculateGoods()
+                SaveDetail_New()
             End If
         Else
             ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ เข้าโปรแกรมนี้' !!!');", True)
@@ -83,7 +83,15 @@ Public Class SingleReceivedWH
     End Sub
 
     Protected Sub btnPutAway_ServerClick(sender As Object, e As EventArgs)
-
+        If String.IsNullOrEmpty(dcbSite1.Text) Then
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ Site  ก่อน !!!');", True)
+        Else
+            If rdbManual.Checked = True Then
+                PutAlway()
+            Else
+                PutAlwayAuto()
+            End If
+        End If
     End Sub
     Private Sub showUnitWeightDetail()
         'dcbQuantity1.Items.Clear()
@@ -657,30 +665,6 @@ Public Class SingleReceivedWH
         'End If
     End Sub
 
-    Private Sub selectEndCusCode()
-        Dim cus_code As String
-
-        'If String.IsNullOrEmpty(txtPickUpCode.Value.Trim) Then
-        '    cus_code = ""
-
-        'Else
-        '    cus_code = txtPickUpCode.Value.Trim
-        'End If
-
-        'Dim cons = From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
-        'Where p.PartyCode = cus_code Or p.EndCustomer = "0"
-        'Select p.PartyCode, pa.PartyAddressCode, p.PartyFullName, pa.Address1, pa.Address2
-
-        'If cons.Count > 0 Then
-        '    dgvEndCus.DataSource = cons.ToList
-        '    dgvEndCus.DataBind()
-        '    ScriptManager.RegisterStartupScript(upEndCusCode, upEndCusCode.GetType(), "show", "$(function () { $('#" + plEndCusCode.ClientID + "').modal('show'); });", True)
-        '    upEndCusCode.Update()
-        'Else
-        '    ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('ไม่พบข้อมูล Customer Code นี้')", True)
-        '    Exit Sub
-        'End If
-    End Sub
 
     Private Sub selectCustomerGroup()
         '    Dim gro_code As String
@@ -1118,8 +1102,17 @@ Public Class SingleReceivedWH
     End Sub
 
     Private Sub selectPrepairGoodsReceiveEdit()
+
+        Dim lotDate_ As Integer
+        Dim consignee As String = ""
+        Dim endCustomer As String = ""
+        Dim shipper As String = ""
+        If String.IsNullOrEmpty(txtLotNo_.Value.Trim) Then
+            lotDate_ = CInt(Convert.ToDateTime(Date.Now).ToString("yyyy"))
+        End If
         Dim go = (From wh In db.tblWHConfirmGoodsReceives
-                  Where wh.LOTNo.Contains(txtLotNo_.Value.Trim)
+                  Where wh.LOTNo.Contains(txtLotNo_.Value.Trim) Or wh.LOTDate.Year = lotDate_
+                  Order By wh.LOTNo Ascending
                   Select wh.LOTNo, wh.LOTDate, wh.CustREFNo, wh.OwnerCode).Take(100)
         If go.Count > 0 Then
             dgvConfirmGood.DataSource = go.ToList
@@ -1978,11 +1971,11 @@ Public Class SingleReceivedWH
         If Not IsNothing(wh) Then
 
             If CbNotDate.Checked = False Then
-                ManufacturingDate = Convert.ToDateTime(wh.ManufacturingDate)
-                ExpiredDate = Convert.ToDateTime(wh.ExpiredDate)
-            ElseIf CbNotDate.Checked = True Then
                 ManufacturingDate = Nothing
                 ExpiredDate = Nothing
+            ElseIf CbNotDate.Checked = True Then
+                ManufacturingDate = Convert.ToDateTime(wh.ManufacturingDate)
+                ExpiredDate = Convert.ToDateTime(wh.ExpiredDate)
             End If
 
             If wh.Type = "Goods Complete" Then
@@ -2058,5 +2051,187 @@ Public Class SingleReceivedWH
         End If
 
         
+    End Sub
+
+    Protected Sub Unnamed_ServerClick4(sender As Object, e As EventArgs)
+        selectProductCode()
+    End Sub
+
+    Protected Sub Unnamed_ServerClick5(sender As Object, e As EventArgs)
+        selectEndCusCode()
+    End Sub
+
+    Private Sub selectProductCode()
+        Dim testdate As Integer
+        Dim ProCode As String = ""
+        If String.IsNullOrEmpty(txtProductCode.Value.Trim) Then
+            testdate = CInt(Convert.ToDateTime(Date.Now).ToString("yyyy"))
+        End If
+
+        Dim cons = (From u In db.tblProductDetails
+                    Where (u.ProductCode.Contains(txtProductCode.Value.Trim)) Or u.CreateDate.Year = testdate And u.ImpProductCode <> ""
+                   Select New With {u.ProductCode,
+                                    u.ImpDesc1,
+                                    u.PONo,
+                                    u.CustomerPart,
+                                    u.EndUserPart}).ToList()
+
+        If cons.Count > 0 Then
+            dgvProduct.DataSource = cons.ToList
+            dgvProduct.DataBind()
+            ScriptManager.RegisterStartupScript(ProductCodeUpdatePanel, ProductCodeUpdatePanel.GetType(), "show", "$(function () { $('#" + ProductCodePanel.ClientID + "').modal('show'); });", True)
+            ProductCodeUpdatePanel.Update()
+        Else
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('ไม่พบข้อมูล ProductCode Code นี้')", True)
+            Exit Sub
+
+        End If
+    End Sub
+
+    Private Sub selectEndCusCode()
+        Dim customer_ As String = ""
+        If String.IsNullOrEmpty(txtCustomer.Value.Trim) Then
+            customer_ = "0"
+        End If
+
+        Dim cons = From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
+        Where (p.PartyCode.Contains(txtCustomer.Value.Trim) And p.Customer = "0") Or p.Customer = customer_
+        Select p.PartyCode, p.PartyFullName, pa.PartyAddressCode, pa.Address1, pa.Address2
+
+        If cons.Count > 0 Then
+            dgvCustomer.DataSource = cons.ToList
+            dgvCustomer.DataBind()
+            ScriptManager.RegisterStartupScript(EndCustomerUpdatePanel, EndCustomerUpdatePanel.GetType(), "show", "$(function () { $('#" + EndCustomerPanel.ClientID + "').modal('show'); });", True)
+            EndCustomerUpdatePanel.Update()
+        Else
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('ไม่พบข้อมูล End User Code นี้')", True)
+            Exit Sub
+
+        End If
+    End Sub
+    Protected Sub dgvCustomer_ItemDataBound(sender As Object, e As RepeaterItemEventArgs)
+        If e.Item.ItemType = ListItemType.Item OrElse e.Item.ItemType = ListItemType.AlternatingItem Then
+            Dim lblPartyCode As Label = CType(e.Item.FindControl("lblPartyCode"), Label)
+            Dim lblPartyFullName As Label = CType(e.Item.FindControl("lblPartyFullName"), Label)
+            Dim lblAddress1 As Label = CType(e.Item.FindControl("lblAddress1"), Label)
+            Dim lblAddress2 As Label = CType(e.Item.FindControl("lblAddress2"), Label)
+            Dim lblPartyAddressCode As Label = CType(e.Item.FindControl("lblPartyAddressCode"), Label)
+
+            If Not IsNothing(lblPartyCode) Then
+                lblPartyCode.Text = DataBinder.Eval(e.Item.DataItem, "PartyCode").ToString()
+            End If
+            If Not IsNothing(lblPartyCode) Then
+                lblPartyFullName.Text = DataBinder.Eval(e.Item.DataItem, "PartyFullName").ToString()
+            End If
+            If Not IsNothing(lblPartyCode) Then
+                lblAddress1.Text = DataBinder.Eval(e.Item.DataItem, "Address1").ToString()
+            End If
+            If Not IsNothing(lblPartyCode) Then
+                lblAddress2.Text = DataBinder.Eval(e.Item.DataItem, "Address2").ToString()
+            End If
+            If Not IsNothing(lblPartyCode) Then
+                lblPartyAddressCode.Text = DataBinder.Eval(e.Item.DataItem, "PartyAddressCode").ToString()
+            End If
+        End If
+    End Sub
+    Protected Sub dgvProduct_ItemCommand(source As Object, e As RepeaterCommandEventArgs)
+        Dim ProductCode As String = CStr(e.CommandArgument)
+        Try
+            If e.CommandName.Equals("SelectProductCode") Then
+
+                If String.IsNullOrEmpty(ProductCode) Then
+
+                    MsgBox("เป็นค่าว่าง")
+                Else
+                    Dim user = (From u In db.tblProductDetails Where u.ProductCode = ProductCode).SingleOrDefault
+
+                    txtProductCode.Value = user.ProductCode
+                    txtProductDesc1.Value = user.ImpDesc1
+                    txtProductDesc2.Value = user.EndUserPart
+                    txtProductDesc3.Value = user.CustomerPart
+                    If String.IsNullOrEmpty(user.CartonSetUnit) Then
+                    Else
+                        ddlProductUnit.Text = user.CartonSetUnit
+                    End If
+                    txtProductWidth.Value = String.Format("{0:0.00}", user.CartonWidth)
+                    txtProductHeight.Value = String.Format("{0:0.00}", user.CartonLenght)
+                    txtProductLeng.Value = String.Format("{0:0.00}", user.CartonHeight)
+                    txtProductVolume.Value = String.Format("{0:0.00}", user.CartonVolume)
+                    txtPriceForeigh.Value = String.Format("{0:0.00}", user.ImpValueRate)
+
+                End If
+            End If
+        Catch ex As Exception
+        End Try
+    End Sub
+
+    Protected Sub clickendcus_Click(sender As Object, e As EventArgs)
+        Dim Item As RepeaterItem = TryCast(TryCast(sender, LinkButton).Parent, RepeaterItem)
+        Dim lblPartyCode As String = TryCast(Item.FindControl("lblPartyCode"), Label).Text.Trim
+        Dim lblPartyAddressCode As Double = CDbl(TryCast(Item.FindControl("lblPartyAddressCode"), Label).Text.Trim)
+
+        Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode
+                    Where u.PartyCode = lblPartyCode And br.PartyAddressCode = lblPartyAddressCode).SingleOrDefault
+
+        txtCustomer.Value = user.u.PartyCode
+        'txtNameEndUser_PreGoodRec.Value = user.u.PartyFullName
+        'txtAddress1EndUser_PreGoodRec.Value = user.br.Address1
+        'txtAddress2EndUser_PreGoodRec.Value = user.br.Address2
+        'txtAddress3EndUser_PreGoodRec.Value = user.br.Address3
+        'txtAddress4EndUser_PreGoodRec.Value = user.br.Address4
+
+    End Sub
+    Private Sub PutAlway()
+
+        If String.IsNullOrEmpty(dcbLocation.Text) Then
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ Location ก่อน !!!')", True)
+            Exit Sub
+        ElseIf String.IsNullOrEmpty(Txtpallet.Value.Trim) Or Txtpallet.Value.Trim = "0" Then
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ Location ก่อน !!!')", True)
+            Exit Sub
+        End If
+
+    End Sub
+
+    Private Sub PutAlwayAuto()
+
+    End Sub
+
+    Protected Sub dcbSite1_SelectedIndexChanged(sender As Object, e As EventArgs)
+        checkLocation()
+
+    End Sub
+    Private Sub checkLocation()
+        If String.IsNullOrEmpty(dcbSite1.Text) Then
+            Exit Sub
+        Else
+            Select Case MsgBox("คุณต้องการ Update Location ใช่หรือไม่ ?", MsgBoxStyle.YesNo, "คำยืนยัน")
+
+                Case MsgBoxResult.Yes
+                    Dim Lo As String
+                    Dim sql As String
+                    Dim l = (From lon In db.tblWHLocations Where lon.LocationNo = dcbSite1.Text)
+
+            End Select
+        End If
+
+    End Sub
+
+    Protected Sub rdbManual_CheckedChanged(sender As Object, e As EventArgs)
+        dcbLocation1.Enabled = True
+        Txtpallet.Disabled = False
+    End Sub
+
+    Protected Sub rdbAutoPallet_CheckedChanged(sender As Object, e As EventArgs)
+        dcbLocation1.Enabled = False
+        Txtpallet.Disabled = True
+    End Sub
+    Private Sub StatusChk()
+
+        If rdbAutoPallet.Checked = True Then
+           
+        Else
+           
+        End If
     End Sub
 End Class

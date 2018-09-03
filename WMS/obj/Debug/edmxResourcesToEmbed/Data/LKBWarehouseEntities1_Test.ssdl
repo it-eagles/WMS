@@ -3154,14 +3154,10 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHRequestedISSUE' does not hav
     <Property Name="UpdateBy" Type="varchar" MaxLength="50" />
     <Property Name="UpdateDate" Type="datetime" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblWHStockMovement">
     <Key>
       <PropertyRef Name="LOTNo" />
       <PropertyRef Name="ItemNo" />
-      <PropertyRef Name="ReceiveNo" />
-      <PropertyRef Name="item" />
     </Key>
     <Property Name="LOTNo" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="WHSite" Type="varchar" MaxLength="100" />
@@ -3341,6 +3337,7 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
     <EntitySet Name="tblWHPrepairGoodsReceive" EntityType="Self.tblWHPrepairGoodsReceive" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblWHPrepairGoodsReceiveDetail" EntityType="Self.tblWHPrepairGoodsReceiveDetail" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblWHStockCtrl" EntityType="Self.tblWHStockCtrl" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblWHStockMovement" EntityType="Self.tblWHStockMovement" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblGenAutoNo" EntityType="Self.tblGenAutoNo" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [tblGenAutoNo].[TypeCode] AS [TypeCode], 
@@ -3461,68 +3458,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
     [tblWHRequestedISSUE].[OrderFrmOnline] AS [OrderFrmOnline], 
     [tblWHRequestedISSUE].[CustFrmOnline] AS [CustFrmOnline]
     FROM [dbo].[tblWHRequestedISSUE] AS [tblWHRequestedISSUE]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tblWHStockMovement" EntityType="Self.tblWHStockMovement" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tblWHStockMovement].[LOTNo] AS [LOTNo], 
-    [tblWHStockMovement].[WHSite] AS [WHSite], 
-    [tblWHStockMovement].[WHLocation] AS [WHLocation], 
-    [tblWHStockMovement].[OwnerCode] AS [OwnerCode], 
-    [tblWHStockMovement].[ENDCustomer] AS [ENDCustomer], 
-    [tblWHStockMovement].[WHSource] AS [WHSource], 
-    [tblWHStockMovement].[CustomerLOTNo] AS [CustomerLOTNo], 
-    [tblWHStockMovement].[ItemNo] AS [ItemNo], 
-    [tblWHStockMovement].[ProductCode] AS [ProductCode], 
-    [tblWHStockMovement].[ProductDesc] AS [ProductDesc], 
-    [tblWHStockMovement].[CustomerPN] AS [CustomerPN], 
-    [tblWHStockMovement].[OwnerPN] AS [OwnerPN], 
-    [tblWHStockMovement].[Measurement] AS [Measurement], 
-    [tblWHStockMovement].[ProductWidth] AS [ProductWidth], 
-    [tblWHStockMovement].[ProductLength] AS [ProductLength], 
-    [tblWHStockMovement].[ProductHeight] AS [ProductHeight], 
-    [tblWHStockMovement].[ProductVolume] AS [ProductVolume], 
-    [tblWHStockMovement].[OrderNo] AS [OrderNo], 
-    [tblWHStockMovement].[ReceiveNo] AS [ReceiveNo], 
-    [tblWHStockMovement].[Type] AS [Type], 
-    [tblWHStockMovement].[ManufacturingDate] AS [ManufacturingDate], 
-    [tblWHStockMovement].[ExpiredDate] AS [ExpiredDate], 
-    [tblWHStockMovement].[ReceiveDate] AS [ReceiveDate], 
-    [tblWHStockMovement].[ISSUEDate] AS [ISSUEDate], 
-    [tblWHStockMovement].[StockType] AS [StockType], 
-    [tblWHStockMovement].[ReceivedQuantity] AS [ReceivedQuantity], 
-    [tblWHStockMovement].[QuantityUnit] AS [QuantityUnit], 
-    [tblWHStockMovement].[DamageQuantity] AS [DamageQuantity], 
-    [tblWHStockMovement].[DamageUnit] AS [DamageUnit], 
-    [tblWHStockMovement].[ISSUEQuantity] AS [ISSUEQuantity], 
-    [tblWHStockMovement].[ISSUEUnit] AS [ISSUEUnit], 
-    [tblWHStockMovement].[AvalableQuantity] AS [AvalableQuantity], 
-    [tblWHStockMovement].[Weigth] AS [Weigth], 
-    [tblWHStockMovement].[WeigthUnit] AS [WeigthUnit], 
-    [tblWHStockMovement].[Currency] AS [Currency], 
-    [tblWHStockMovement].[ExchangeRate] AS [ExchangeRate], 
-    [tblWHStockMovement].[PriceForeigh] AS [PriceForeigh], 
-    [tblWHStockMovement].[PriceForeighAmount] AS [PriceForeighAmount], 
-    [tblWHStockMovement].[PriceBath] AS [PriceBath], 
-    [tblWHStockMovement].[PriceBathAmount] AS [PriceBathAmount], 
-    [tblWHStockMovement].[PalletNo] AS [PalletNo], 
-    [tblWHStockMovement].[UserBy] AS [UserBy], 
-    [tblWHStockMovement].[LastUpdate] AS [LastUpdate], 
-    [tblWHStockMovement].[Status] AS [Status], 
-    [tblWHStockMovement].[TransactionDate] AS [TransactionDate], 
-    [tblWHStockMovement].[TypeDamage] AS [TypeDamage], 
-    [tblWHStockMovement].[item] AS [item], 
-    [tblWHStockMovement].[Supplier] AS [Supplier], 
-    [tblWHStockMovement].[Buyer] AS [Buyer], 
-    [tblWHStockMovement].[Exporter] AS [Exporter], 
-    [tblWHStockMovement].[Destination] AS [Destination], 
-    [tblWHStockMovement].[Consignee] AS [Consignee], 
-    [tblWHStockMovement].[ShippingMark] AS [ShippingMark], 
-    [tblWHStockMovement].[EntryNo] AS [EntryNo], 
-    [tblWHStockMovement].[EntryItemNo] AS [EntryItemNo], 
-    [tblWHStockMovement].[Invoice] AS [Invoice], 
-    [tblWHStockMovement].[OrderFrmOnline] AS [OrderFrmOnline], 
-    [tblWHStockMovement].[CustFrmOnline] AS [CustFrmOnline]
-    FROM [dbo].[tblWHStockMovement] AS [tblWHStockMovement]</DefiningQuery>
     </EntitySet>
     <AssociationSet Name="FK_tblCompanyGuarantee1_tblStatusBalance" Association="Self.FK_tblCompanyGuarantee1_tblStatusBalance">
       <End Role="tblStatusBalance" EntitySet="tblStatusBalance" />

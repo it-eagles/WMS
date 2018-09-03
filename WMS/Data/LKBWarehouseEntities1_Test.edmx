@@ -3159,14 +3159,10 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHRequestedISSUE' does not hav
           <Property Name="UpdateBy" Type="varchar" MaxLength="50" />
           <Property Name="UpdateDate" Type="datetime" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tblWHStockMovement">
           <Key>
             <PropertyRef Name="LOTNo" />
             <PropertyRef Name="ItemNo" />
-            <PropertyRef Name="ReceiveNo" />
-            <PropertyRef Name="item" />
           </Key>
           <Property Name="LOTNo" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="WHSite" Type="varchar" MaxLength="100" />
@@ -3346,6 +3342,7 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
           <EntitySet Name="tblWHPrepairGoodsReceive" EntityType="Self.tblWHPrepairGoodsReceive" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblWHPrepairGoodsReceiveDetail" EntityType="Self.tblWHPrepairGoodsReceiveDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblWHStockCtrl" EntityType="Self.tblWHStockCtrl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblWHStockMovement" EntityType="Self.tblWHStockMovement" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblGenAutoNo" EntityType="Self.tblGenAutoNo" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [tblGenAutoNo].[TypeCode] AS [TypeCode], 
@@ -3466,68 +3463,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
     [tblWHRequestedISSUE].[OrderFrmOnline] AS [OrderFrmOnline], 
     [tblWHRequestedISSUE].[CustFrmOnline] AS [CustFrmOnline]
     FROM [dbo].[tblWHRequestedISSUE] AS [tblWHRequestedISSUE]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="tblWHStockMovement" EntityType="Self.tblWHStockMovement" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [tblWHStockMovement].[LOTNo] AS [LOTNo], 
-    [tblWHStockMovement].[WHSite] AS [WHSite], 
-    [tblWHStockMovement].[WHLocation] AS [WHLocation], 
-    [tblWHStockMovement].[OwnerCode] AS [OwnerCode], 
-    [tblWHStockMovement].[ENDCustomer] AS [ENDCustomer], 
-    [tblWHStockMovement].[WHSource] AS [WHSource], 
-    [tblWHStockMovement].[CustomerLOTNo] AS [CustomerLOTNo], 
-    [tblWHStockMovement].[ItemNo] AS [ItemNo], 
-    [tblWHStockMovement].[ProductCode] AS [ProductCode], 
-    [tblWHStockMovement].[ProductDesc] AS [ProductDesc], 
-    [tblWHStockMovement].[CustomerPN] AS [CustomerPN], 
-    [tblWHStockMovement].[OwnerPN] AS [OwnerPN], 
-    [tblWHStockMovement].[Measurement] AS [Measurement], 
-    [tblWHStockMovement].[ProductWidth] AS [ProductWidth], 
-    [tblWHStockMovement].[ProductLength] AS [ProductLength], 
-    [tblWHStockMovement].[ProductHeight] AS [ProductHeight], 
-    [tblWHStockMovement].[ProductVolume] AS [ProductVolume], 
-    [tblWHStockMovement].[OrderNo] AS [OrderNo], 
-    [tblWHStockMovement].[ReceiveNo] AS [ReceiveNo], 
-    [tblWHStockMovement].[Type] AS [Type], 
-    [tblWHStockMovement].[ManufacturingDate] AS [ManufacturingDate], 
-    [tblWHStockMovement].[ExpiredDate] AS [ExpiredDate], 
-    [tblWHStockMovement].[ReceiveDate] AS [ReceiveDate], 
-    [tblWHStockMovement].[ISSUEDate] AS [ISSUEDate], 
-    [tblWHStockMovement].[StockType] AS [StockType], 
-    [tblWHStockMovement].[ReceivedQuantity] AS [ReceivedQuantity], 
-    [tblWHStockMovement].[QuantityUnit] AS [QuantityUnit], 
-    [tblWHStockMovement].[DamageQuantity] AS [DamageQuantity], 
-    [tblWHStockMovement].[DamageUnit] AS [DamageUnit], 
-    [tblWHStockMovement].[ISSUEQuantity] AS [ISSUEQuantity], 
-    [tblWHStockMovement].[ISSUEUnit] AS [ISSUEUnit], 
-    [tblWHStockMovement].[AvalableQuantity] AS [AvalableQuantity], 
-    [tblWHStockMovement].[Weigth] AS [Weigth], 
-    [tblWHStockMovement].[WeigthUnit] AS [WeigthUnit], 
-    [tblWHStockMovement].[Currency] AS [Currency], 
-    [tblWHStockMovement].[ExchangeRate] AS [ExchangeRate], 
-    [tblWHStockMovement].[PriceForeigh] AS [PriceForeigh], 
-    [tblWHStockMovement].[PriceForeighAmount] AS [PriceForeighAmount], 
-    [tblWHStockMovement].[PriceBath] AS [PriceBath], 
-    [tblWHStockMovement].[PriceBathAmount] AS [PriceBathAmount], 
-    [tblWHStockMovement].[PalletNo] AS [PalletNo], 
-    [tblWHStockMovement].[UserBy] AS [UserBy], 
-    [tblWHStockMovement].[LastUpdate] AS [LastUpdate], 
-    [tblWHStockMovement].[Status] AS [Status], 
-    [tblWHStockMovement].[TransactionDate] AS [TransactionDate], 
-    [tblWHStockMovement].[TypeDamage] AS [TypeDamage], 
-    [tblWHStockMovement].[item] AS [item], 
-    [tblWHStockMovement].[Supplier] AS [Supplier], 
-    [tblWHStockMovement].[Buyer] AS [Buyer], 
-    [tblWHStockMovement].[Exporter] AS [Exporter], 
-    [tblWHStockMovement].[Destination] AS [Destination], 
-    [tblWHStockMovement].[Consignee] AS [Consignee], 
-    [tblWHStockMovement].[ShippingMark] AS [ShippingMark], 
-    [tblWHStockMovement].[EntryNo] AS [EntryNo], 
-    [tblWHStockMovement].[EntryItemNo] AS [EntryItemNo], 
-    [tblWHStockMovement].[Invoice] AS [Invoice], 
-    [tblWHStockMovement].[OrderFrmOnline] AS [OrderFrmOnline], 
-    [tblWHStockMovement].[CustFrmOnline] AS [CustFrmOnline]
-    FROM [dbo].[tblWHStockMovement] AS [tblWHStockMovement]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_tblCompanyGuarantee1_tblStatusBalance" Association="Self.FK_tblCompanyGuarantee1_tblStatusBalance">
             <End Role="tblStatusBalance" EntitySet="tblStatusBalance" />
@@ -6324,72 +6259,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
           <Property Name="OrderFrmOnline" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="CustFrmOnline" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="tblWHStockMovement">
-          <Key>
-            <PropertyRef Name="LOTNo" />
-            <PropertyRef Name="ItemNo" />
-            <PropertyRef Name="ReceiveNo" />
-            <PropertyRef Name="item" />
-          </Key>
-          <Property Name="LOTNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="WHSite" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="WHLocation" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="OwnerCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ENDCustomer" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="WHSource" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="CustomerLOTNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="ItemNo" Type="Double" Nullable="false" />
-          <Property Name="ProductCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="ProductDesc" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="CustomerPN" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="OwnerPN" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Measurement" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ProductWidth" Type="Double" />
-          <Property Name="ProductLength" Type="Double" />
-          <Property Name="ProductHeight" Type="Double" />
-          <Property Name="ProductVolume" Type="Double" />
-          <Property Name="OrderNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="ReceiveNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Type" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="ManufacturingDate" Type="DateTime" Precision="3" />
-          <Property Name="ExpiredDate" Type="DateTime" Precision="3" />
-          <Property Name="ReceiveDate" Type="DateTime" Precision="3" />
-          <Property Name="ISSUEDate" Type="DateTime" Precision="3" />
-          <Property Name="StockType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ReceivedQuantity" Type="Double" />
-          <Property Name="QuantityUnit" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="DamageQuantity" Type="Double" />
-          <Property Name="DamageUnit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ISSUEQuantity" Type="Double" />
-          <Property Name="ISSUEUnit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="AvalableQuantity" Type="Double" />
-          <Property Name="Weigth" Type="Double" />
-          <Property Name="WeigthUnit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Currency" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ExchangeRate" Type="Double" />
-          <Property Name="PriceForeigh" Type="Double" />
-          <Property Name="PriceForeighAmount" Type="Double" />
-          <Property Name="PriceBath" Type="Double" />
-          <Property Name="PriceBathAmount" Type="Double" />
-          <Property Name="PalletNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="UserBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="LastUpdate" Type="DateTime" Precision="3" />
-          <Property Name="Status" Type="Double" />
-          <Property Name="TransactionDate" Type="DateTime" Precision="3" />
-          <Property Name="TypeDamage" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="item" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="Supplier" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Buyer" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Exporter" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Destination" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Consignee" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="ShippingMark" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="EntryNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="EntryItemNo" Type="Int32" />
-          <Property Name="Invoice" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="OrderFrmOnline" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CustFrmOnline" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityContainer Name="LKBWarehouseEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Branches" EntityType="Self.Branch" />
           <EntitySet Name="Departments" EntityType="Self.Department" />
@@ -6493,7 +6362,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
           <EntitySet Name="tblWHReceiveScantoTemps" EntityType="Self.tblWHReceiveScantoTemp" />
           <EntitySet Name="tblWHRemarkMoveJobs" EntityType="Self.tblWHRemarkMoveJob" />
           <EntitySet Name="tblWHRequestedISSUEs" EntityType="Self.tblWHRequestedISSUE" />
-          <EntitySet Name="tblWHStockMovements" EntityType="Self.tblWHStockMovement" />
           <AssociationSet Name="FK_tblCompanyGuarantee1_tblStatusBalance" Association="LKBWarehouseModel1.FK_tblCompanyGuarantee1_tblStatusBalance">
             <End Role="tblStatusBalance" EntitySet="tblStatusBalances" />
             <End Role="tblCompanyGuarantee1" EntitySet="tblCompanyGuarantee1" />
@@ -6509,6 +6377,7 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
           <EntitySet Name="tblWHPickingDetails" EntityType="LKBWarehouseModel1.tblWHPickingDetail" />
           <EntitySet Name="tblWHPickPackCheckings" EntityType="LKBWarehouseModel1.tblWHPickPackChecking" />
           <EntitySet Name="tblUser_test" EntityType="LKBWarehouseModel1.tblUser_test" />
+          <EntitySet Name="tblWHStockMovements" EntityType="LKBWarehouseModel1.tblWHStockMovement" />
         </EntityContainer>
         <Association Name="FK_tblCompanyGuarantee1_tblStatusBalance">
           <End Type="LKBWarehouseModel1.tblStatusBalance" Role="tblStatusBalance" Multiplicity="0..1" />
@@ -6877,6 +6746,70 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
           <Property Name="StatusWarehouse" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="UserStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="RejectStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblWHStockMovement">
+          <Key>
+            <PropertyRef Name="LOTNo" />
+            <PropertyRef Name="ItemNo" />
+          </Key>
+          <Property Name="LOTNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="WHSite" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="WHLocation" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="OwnerCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ENDCustomer" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="WHSource" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerLOTNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ItemNo" Type="Double" Nullable="false" />
+          <Property Name="ProductCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ProductDesc" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerPN" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="OwnerPN" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Measurement" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ProductWidth" Type="Double" />
+          <Property Name="ProductLength" Type="Double" />
+          <Property Name="ProductHeight" Type="Double" />
+          <Property Name="ProductVolume" Type="Double" />
+          <Property Name="OrderNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ReceiveNo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ManufacturingDate" Type="DateTime" Precision="3" />
+          <Property Name="ExpiredDate" Type="DateTime" Precision="3" />
+          <Property Name="ReceiveDate" Type="DateTime" Precision="3" />
+          <Property Name="ISSUEDate" Type="DateTime" Precision="3" />
+          <Property Name="StockType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ReceivedQuantity" Type="Double" />
+          <Property Name="QuantityUnit" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DamageQuantity" Type="Double" />
+          <Property Name="DamageUnit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ISSUEQuantity" Type="Double" />
+          <Property Name="ISSUEUnit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AvalableQuantity" Type="Double" />
+          <Property Name="Weigth" Type="Double" />
+          <Property Name="WeigthUnit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Currency" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ExchangeRate" Type="Double" />
+          <Property Name="PriceForeigh" Type="Double" />
+          <Property Name="PriceForeighAmount" Type="Double" />
+          <Property Name="PriceBath" Type="Double" />
+          <Property Name="PriceBathAmount" Type="Double" />
+          <Property Name="PalletNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="Double" />
+          <Property Name="TransactionDate" Type="DateTime" Precision="3" />
+          <Property Name="TypeDamage" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="item" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Supplier" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Buyer" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Exporter" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Destination" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Consignee" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ShippingMark" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EntryNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EntryItemNo" Type="Int32" />
+          <Property Name="Invoice" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OrderFrmOnline" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CustFrmOnline" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -9683,70 +9616,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tblWHStockMovements">
-            <EntityTypeMapping TypeName="LKBWarehouseModel1.tblWHStockMovement">
-              <MappingFragment StoreEntitySet="tblWHStockMovement">
-                <ScalarProperty Name="LOTNo" ColumnName="LOTNo" />
-                <ScalarProperty Name="WHSite" ColumnName="WHSite" />
-                <ScalarProperty Name="WHLocation" ColumnName="WHLocation" />
-                <ScalarProperty Name="OwnerCode" ColumnName="OwnerCode" />
-                <ScalarProperty Name="ENDCustomer" ColumnName="ENDCustomer" />
-                <ScalarProperty Name="WHSource" ColumnName="WHSource" />
-                <ScalarProperty Name="CustomerLOTNo" ColumnName="CustomerLOTNo" />
-                <ScalarProperty Name="ItemNo" ColumnName="ItemNo" />
-                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
-                <ScalarProperty Name="ProductDesc" ColumnName="ProductDesc" />
-                <ScalarProperty Name="CustomerPN" ColumnName="CustomerPN" />
-                <ScalarProperty Name="OwnerPN" ColumnName="OwnerPN" />
-                <ScalarProperty Name="Measurement" ColumnName="Measurement" />
-                <ScalarProperty Name="ProductWidth" ColumnName="ProductWidth" />
-                <ScalarProperty Name="ProductLength" ColumnName="ProductLength" />
-                <ScalarProperty Name="ProductHeight" ColumnName="ProductHeight" />
-                <ScalarProperty Name="ProductVolume" ColumnName="ProductVolume" />
-                <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
-                <ScalarProperty Name="ReceiveNo" ColumnName="ReceiveNo" />
-                <ScalarProperty Name="Type" ColumnName="Type" />
-                <ScalarProperty Name="ManufacturingDate" ColumnName="ManufacturingDate" />
-                <ScalarProperty Name="ExpiredDate" ColumnName="ExpiredDate" />
-                <ScalarProperty Name="ReceiveDate" ColumnName="ReceiveDate" />
-                <ScalarProperty Name="ISSUEDate" ColumnName="ISSUEDate" />
-                <ScalarProperty Name="StockType" ColumnName="StockType" />
-                <ScalarProperty Name="ReceivedQuantity" ColumnName="ReceivedQuantity" />
-                <ScalarProperty Name="QuantityUnit" ColumnName="QuantityUnit" />
-                <ScalarProperty Name="DamageQuantity" ColumnName="DamageQuantity" />
-                <ScalarProperty Name="DamageUnit" ColumnName="DamageUnit" />
-                <ScalarProperty Name="ISSUEQuantity" ColumnName="ISSUEQuantity" />
-                <ScalarProperty Name="ISSUEUnit" ColumnName="ISSUEUnit" />
-                <ScalarProperty Name="AvalableQuantity" ColumnName="AvalableQuantity" />
-                <ScalarProperty Name="Weigth" ColumnName="Weigth" />
-                <ScalarProperty Name="WeigthUnit" ColumnName="WeigthUnit" />
-                <ScalarProperty Name="Currency" ColumnName="Currency" />
-                <ScalarProperty Name="ExchangeRate" ColumnName="ExchangeRate" />
-                <ScalarProperty Name="PriceForeigh" ColumnName="PriceForeigh" />
-                <ScalarProperty Name="PriceForeighAmount" ColumnName="PriceForeighAmount" />
-                <ScalarProperty Name="PriceBath" ColumnName="PriceBath" />
-                <ScalarProperty Name="PriceBathAmount" ColumnName="PriceBathAmount" />
-                <ScalarProperty Name="PalletNo" ColumnName="PalletNo" />
-                <ScalarProperty Name="UserBy" ColumnName="UserBy" />
-                <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
-                <ScalarProperty Name="TypeDamage" ColumnName="TypeDamage" />
-                <ScalarProperty Name="item" ColumnName="item" />
-                <ScalarProperty Name="Supplier" ColumnName="Supplier" />
-                <ScalarProperty Name="Buyer" ColumnName="Buyer" />
-                <ScalarProperty Name="Exporter" ColumnName="Exporter" />
-                <ScalarProperty Name="Destination" ColumnName="Destination" />
-                <ScalarProperty Name="Consignee" ColumnName="Consignee" />
-                <ScalarProperty Name="ShippingMark" ColumnName="ShippingMark" />
-                <ScalarProperty Name="EntryNo" ColumnName="EntryNo" />
-                <ScalarProperty Name="EntryItemNo" ColumnName="EntryItemNo" />
-                <ScalarProperty Name="Invoice" ColumnName="Invoice" />
-                <ScalarProperty Name="OrderFrmOnline" ColumnName="OrderFrmOnline" />
-                <ScalarProperty Name="CustFrmOnline" ColumnName="CustFrmOnline" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="LKBWarehouseModel1.sysdiagram">
               <MappingFragment StoreEntitySet="sysdiagrams">
@@ -10094,6 +9963,70 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHStockMovement' does not have
                 <ScalarProperty Name="UserGroup" ColumnName="UserGroup" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblWHStockMovements">
+            <EntityTypeMapping TypeName="LKBWarehouseModel1.tblWHStockMovement">
+              <MappingFragment StoreEntitySet="tblWHStockMovement">
+                <ScalarProperty Name="CustFrmOnline" ColumnName="CustFrmOnline" />
+                <ScalarProperty Name="OrderFrmOnline" ColumnName="OrderFrmOnline" />
+                <ScalarProperty Name="Invoice" ColumnName="Invoice" />
+                <ScalarProperty Name="EntryItemNo" ColumnName="EntryItemNo" />
+                <ScalarProperty Name="EntryNo" ColumnName="EntryNo" />
+                <ScalarProperty Name="ShippingMark" ColumnName="ShippingMark" />
+                <ScalarProperty Name="Consignee" ColumnName="Consignee" />
+                <ScalarProperty Name="Destination" ColumnName="Destination" />
+                <ScalarProperty Name="Exporter" ColumnName="Exporter" />
+                <ScalarProperty Name="Buyer" ColumnName="Buyer" />
+                <ScalarProperty Name="Supplier" ColumnName="Supplier" />
+                <ScalarProperty Name="item" ColumnName="item" />
+                <ScalarProperty Name="TypeDamage" ColumnName="TypeDamage" />
+                <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+                <ScalarProperty Name="UserBy" ColumnName="UserBy" />
+                <ScalarProperty Name="PalletNo" ColumnName="PalletNo" />
+                <ScalarProperty Name="PriceBathAmount" ColumnName="PriceBathAmount" />
+                <ScalarProperty Name="PriceBath" ColumnName="PriceBath" />
+                <ScalarProperty Name="PriceForeighAmount" ColumnName="PriceForeighAmount" />
+                <ScalarProperty Name="PriceForeigh" ColumnName="PriceForeigh" />
+                <ScalarProperty Name="ExchangeRate" ColumnName="ExchangeRate" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="WeigthUnit" ColumnName="WeigthUnit" />
+                <ScalarProperty Name="Weigth" ColumnName="Weigth" />
+                <ScalarProperty Name="AvalableQuantity" ColumnName="AvalableQuantity" />
+                <ScalarProperty Name="ISSUEUnit" ColumnName="ISSUEUnit" />
+                <ScalarProperty Name="ISSUEQuantity" ColumnName="ISSUEQuantity" />
+                <ScalarProperty Name="DamageUnit" ColumnName="DamageUnit" />
+                <ScalarProperty Name="DamageQuantity" ColumnName="DamageQuantity" />
+                <ScalarProperty Name="QuantityUnit" ColumnName="QuantityUnit" />
+                <ScalarProperty Name="ReceivedQuantity" ColumnName="ReceivedQuantity" />
+                <ScalarProperty Name="StockType" ColumnName="StockType" />
+                <ScalarProperty Name="ISSUEDate" ColumnName="ISSUEDate" />
+                <ScalarProperty Name="ReceiveDate" ColumnName="ReceiveDate" />
+                <ScalarProperty Name="ExpiredDate" ColumnName="ExpiredDate" />
+                <ScalarProperty Name="ManufacturingDate" ColumnName="ManufacturingDate" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="ReceiveNo" ColumnName="ReceiveNo" />
+                <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+                <ScalarProperty Name="ProductVolume" ColumnName="ProductVolume" />
+                <ScalarProperty Name="ProductHeight" ColumnName="ProductHeight" />
+                <ScalarProperty Name="ProductLength" ColumnName="ProductLength" />
+                <ScalarProperty Name="ProductWidth" ColumnName="ProductWidth" />
+                <ScalarProperty Name="Measurement" ColumnName="Measurement" />
+                <ScalarProperty Name="OwnerPN" ColumnName="OwnerPN" />
+                <ScalarProperty Name="CustomerPN" ColumnName="CustomerPN" />
+                <ScalarProperty Name="ProductDesc" ColumnName="ProductDesc" />
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="ItemNo" ColumnName="ItemNo" />
+                <ScalarProperty Name="CustomerLOTNo" ColumnName="CustomerLOTNo" />
+                <ScalarProperty Name="WHSource" ColumnName="WHSource" />
+                <ScalarProperty Name="ENDCustomer" ColumnName="ENDCustomer" />
+                <ScalarProperty Name="OwnerCode" ColumnName="OwnerCode" />
+                <ScalarProperty Name="WHLocation" ColumnName="WHLocation" />
+                <ScalarProperty Name="WHSite" ColumnName="WHSite" />
+                <ScalarProperty Name="LOTNo" ColumnName="LOTNo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
