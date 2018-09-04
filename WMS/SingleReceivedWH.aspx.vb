@@ -1689,9 +1689,12 @@ Public Class SingleReceivedWH
                     rbOver.Checked = False
                     rbShort.Checked = False
                 End If
+                'If lblLOTNo = wh.LOTNo Then
+                '    chkName.Checked = False
+                'End If
+
             End If
         Next
-
     End Sub
 
     Protected Sub dgvConfirmDetailbefor_ItemDataBound(sender As Object, e As RepeaterItemEventArgs)
@@ -2233,5 +2236,86 @@ Public Class SingleReceivedWH
         Else
            
         End If
+    End Sub
+
+    Protected Sub chkLotNo1_CheckedChanged(sender As Object, e As EventArgs)
+        Dim chkName As CheckBox
+        Dim lblLOTNo As String
+        Dim lblItem As Integer
+        Dim i As Integer
+        Dim j As Integer
+        Dim name As ArrayList
+        name = New ArrayList
+        For i = 0 To dgvItemDetail.Items.Count - 1
+            chkName = CType(dgvItemDetail.Items(i).FindControl("chkLotNo1"), CheckBox)
+            lblLOTNo = CType(dgvItemDetail.Items(i).FindControl("lblLOTNo"), Label).Text.Trim
+            lblItem = CInt(CType(dgvItemDetail.Items(i).FindControl("lblItem"), Label).Text.Trim)
+            'lblName = CType(rptCustomers.Items(i).FindControl("lblName"), Label).Text.Trim
+            'lblBranch = CType(rptCustomers.Items(i).FindControl("lblBrnch"), Label).Text.Trim
+            If chkName.Checked = True Then
+                Dim wh = (From h In db.tblWHPrepairGoodsReceiveDetails Where h.LOTNo = lblLOTNo And h.ItemNo = lblItem
+                Select h).FirstOrDefault
+                dcbSite.Text = wh.WHSite
+                txtCustomer.Value = wh.ENDCustomer
+                dcbSource.Text = wh.WHSource
+                txtCusLOTNo.Value = wh.CustomerLOTNo
+                txtItemNo.Value = String.Format("{0:0.00}", wh.ItemNo)
+                txtProductCode.Value = wh.ProductCode
+                txtProductDesc2.Value = wh.CustomerPN
+                txtProductDesc3.Value = wh.OwnerPN
+                txtProductDesc1.Value = wh.ProductDesc
+                ddlProductUnit.Text = wh.Measurement
+                txtProductWidth.Value = String.Format("{0:0.00}", wh.ProductWidth)
+                txtProductHeight.Value = String.Format("{0:0.00}", wh.ProductLength)
+                txtProductLeng.Value = String.Format("{0:0.00}", wh.ProductHeight)
+                txtProductVolume.Value = String.Format("{0:0.00}", wh.ProductVolume)
+                txtOrder.Value = wh.OrderNo
+                txtReceive.Value = wh.ReceiveNo
+                dcbType.Text = wh.Type
+                txtManufacturingDate.Text = Convert.ToDateTime(wh.ManufacturingDate).ToString("dd/MM/yyyy")
+                If String.IsNullOrEmpty(txtManufacturingDate.Text) Then
+                    CbNotDate.Checked = True
+                Else
+                    CbNotDate.Checked = False
+                End If
+                txtExpiredDate.Text = Convert.ToDateTime(wh.ExpiredDate).ToString("dd/MM/yyyy")
+                txtExpectedDate.Text = Convert.ToDateTime(wh.ReceiveDate).ToString("dd/MM/yyyy")
+                txtQuantity.Value = String.Format("{0:0.00}", wh.Quantity)
+                ddlUnit4.Text = wh.QuantityUnit
+                txtWeightDetail.Value = String.Format("{0:0.00}", wh.Weigth)
+                dcboUnitWeightDetail.Text = wh.WeigthUnit
+                dcboCurrency.Text = wh.Currency
+                txtExchangeRate.Value = String.Format("{0:0.00}", wh.ExchangeRate)
+                txtPriceForeigh.Value = String.Format("{0:0.00}", wh.PriceForeigh)
+                txtPriceBath.Value = String.Format("{0:0.00}", wh.PriceBath)
+                txtPriceForeighAmount.Value = String.Format("{0:0.00}", wh.PriceForeighAmount)
+                txtPriceBathAmount.Value = String.Format("{0:0.00}", wh.PriceBathAmount)
+                txtPalletNo.Value = wh.PalletNo
+                Status = CStr(wh.Status)
+                txtSupplier.Value = wh.Supplier
+                txtBuyer.Value = wh.Buyer
+                txtExporter.Value = wh.Exporter
+                txtDestination.Value = wh.Destination
+                txtConsignee.Value = wh.Consignee
+                txtShippingMark.Value = wh.ShippingMark
+                txtEntryNo.Value = wh.EntryNo
+                txtEntryItemNo.Value = CStr(wh.EntryItemNo)
+                txtInvoice.Value = wh.Invoice
+                If Status = "2" Then
+                    rbShort.Checked = True
+                    rbOver.Checked = False
+                ElseIf Status = "3" Then
+                    rbOver.Checked = True
+                    rbShort.Checked = False
+                Else
+                    rbOver.Checked = False
+                    rbShort.Checked = False
+                End If
+                'If lblLOTNo = wh.LOTNo Then
+                '    chkName.Checked = False
+                'End If
+
+            End If
+        Next
     End Sub
 End Class

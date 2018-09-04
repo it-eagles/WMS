@@ -13863,14 +13863,6 @@ txtProductCode control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.SingleReceivedWH.txtProductDesc1">
-	<summary>
-txtProductDesc1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
 </member><member name="F:WMS.SingleReceivedWH.dcbLocation">
 	<summary>
 dcbLocation control.
@@ -13919,6 +13911,14 @@ txtProductDesc3 control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
+</member><member name="F:WMS.SingleReceivedWH.txtProductDesc1">
+	<summary>
+txtProductDesc1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
 </member><member name="F:WMS.SingleReceivedWH.ddlProductUnit">
 	<summary>
 ddlProductUnit control.
@@ -13938,6 +13938,30 @@ To modify move field declaration from designer file to code-behind file.
 </member><member name="F:WMS.SingleReceivedWH.txtProductHeight">
 	<summary>
 txtProductHeight control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.SingleReceivedWH.txtProductLeng">
+	<summary>
+txtProductLeng control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.SingleReceivedWH.txtProductVolume">
+	<summary>
+txtProductVolume control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.SingleReceivedWH.txtPalletNo">
+	<summary>
+txtPalletNo control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -14031,70 +14055,6 @@ ddlUnit4 control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.SingleReceivedWH.dcboCurrency">
-	<summary>
-dcboCurrency control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.SingleReceivedWH.txtPriceForeigh">
-	<summary>
-txtPriceForeigh control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.SingleReceivedWH.txtPriceBath">
-	<summary>
-txtPriceBath control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.SingleReceivedWH.rbShort">
-	<summary>
-rbShort control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.SingleReceivedWH.rbOver">
-	<summary>
-rbOver control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.SingleReceivedWH.txtProductLeng">
-	<summary>
-txtProductLeng control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.SingleReceivedWH.txtProductVolume">
-	<summary>
-txtProductVolume control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.SingleReceivedWH.txtPalletNo">
-	<summary>
-txtPalletNo control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
 </member><member name="F:WMS.SingleReceivedWH.dcbType">
 	<summary>
 dcbType control.
@@ -14135,22 +14095,6 @@ txtEntryNo control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.SingleReceivedWH.txtdatepickerETAARRDate_GoodRecDetail">
-	<summary>
-txtdatepickerETAARRDate_GoodRecDetail control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.SingleReceivedWH.CalendarExtenderETAARRDate_GoodRecDetail">
-	<summary>
-CalendarExtenderETAARRDate_GoodRecDetail control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
 </member><member name="F:WMS.SingleReceivedWH.txtEntryItemNo">
 	<summary>
 txtEntryItemNo control.
@@ -14175,6 +14119,30 @@ dcboUnitWeightDetail control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
+</member><member name="F:WMS.SingleReceivedWH.dcboCurrency">
+	<summary>
+dcboCurrency control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.SingleReceivedWH.txtPriceForeigh">
+	<summary>
+txtPriceForeigh control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.SingleReceivedWH.txtPriceBath">
+	<summary>
+txtPriceBath control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
 </member><member name="F:WMS.SingleReceivedWH.txtExchangeRate">
 	<summary>
 txtExchangeRate control.
@@ -14194,6 +14162,22 @@ To modify move field declaration from designer file to code-behind file.
 </member><member name="F:WMS.SingleReceivedWH.txtPriceBathAmount">
 	<summary>
 txtPriceBathAmount control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.SingleReceivedWH.rbShort">
+	<summary>
+rbShort control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.SingleReceivedWH.rbOver">
+	<summary>
+rbOver control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -14535,73 +14519,49 @@ dgvConfirmGood control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.SingleReceivedWH.plPickUpCode">
+</member><member name="F:WMS.SingleReceivedWH.ProductCodePanel">
 	<summary>
-plPickUpCode control.
+ProductCodePanel control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.SingleReceivedWH.upPickUpCode">
+</member><member name="F:WMS.SingleReceivedWH.ProductCodeUpdatePanel">
 	<summary>
-upPickUpCode control.
+ProductCodeUpdatePanel control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.SingleReceivedWH.dgvPickUp">
+</member><member name="F:WMS.SingleReceivedWH.dgvProduct">
 	<summary>
-dgvPickUp control.
+dgvProduct control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.SingleReceivedWH.plEndCusCode">
+</member><member name="F:WMS.SingleReceivedWH.EndCustomerPanel">
 	<summary>
-plEndCusCode control.
+EndCustomerPanel control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.SingleReceivedWH.upEndCusCode">
+</member><member name="F:WMS.SingleReceivedWH.EndCustomerUpdatePanel">
 	<summary>
-upEndCusCode control.
+EndCustomerUpdatePanel control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.SingleReceivedWH.dgvEndCus">
+</member><member name="F:WMS.SingleReceivedWH.dgvCustomer">
 	<summary>
-dgvEndCus control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.SingleReceivedWH.plCustomerGroup">
-	<summary>
-plCustomerGroup control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.SingleReceivedWH.upCustomerGroup">
-	<summary>
-upCustomerGroup control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.SingleReceivedWH.dgvCustomerGroup">
-	<summary>
-dgvCustomerGroup control.
+dgvCustomer control.
 </summary>
 	<remarks>
 Auto-generated field.

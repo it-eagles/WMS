@@ -160,15 +160,10 @@ D:\WMS\WMS\obj\Debug\WMS.dll
 D:\WMS\WMS\obj\Debug\WMS.xml
 D:\WMS\WMS\obj\Debug\WMS.pdb
 D:\ProjectDevelop\Project\WMS\bin\AjaxControlToolkit.dll
-D:\WMS\WMS\bin\ADO.NET.Helper.dll
-D:\WMS\WMS\bin\ADONetHelper.dll
 D:\WMS\WMS\bin\AjaxControlToolkit.dll
 D:\WMS\WMS\bin\Antlr3.Runtime.dll
-D:\WMS\WMS\bin\CrystalDecisions.ReportAppServer.DataSetConversion.dll
 D:\WMS\WMS\bin\EntityFramework.dll
 D:\WMS\WMS\bin\EntityFramework.SqlServer.dll
-D:\WMS\WMS\bin\Microsoft.AspNet.Identity.Core.dll
-D:\WMS\WMS\bin\Microsoft.AspNet.Identity.EntityFramework.dll
 D:\WMS\WMS\bin\Microsoft.Web.XmlTransform.dll
 D:\WMS\WMS\bin\Newtonsoft.Json.dll
 D:\WMS\WMS\bin\NuGet.Core.dll

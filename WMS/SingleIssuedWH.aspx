@@ -148,7 +148,7 @@
                     </div>
                     <%------------------------------------------------End Before Custom Tab---------------------------------------------------%>
 
-                    <div class="nav-tabs-custom">
+                    <div id="Tabs" role="tabpanel" class="nav-tabs-custom">
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="#issuecondition" data-toggle="tab">Issue Condition</a></li>
                             <li><a href="#confirmissue" data-toggle="tab">Confirm Issue</a></li>
@@ -868,7 +868,7 @@
                                                                 <table id="example8" class="table table-bordered table-striped">
                                                                     <thead>
                                                                         <tr>
-                                                                            <th style="width: 8px"><asp:CheckBox ID="chkAll" runat="server" Checked="false"/></th>
+                                                                            <th style="width: 8px"><asp:CheckBox ID="chkAll" runat="server" Checked="false" OnCheckedChanged="chkAll_CheckedChanged" AutoPostBack="true"/></th>
                                                                             <th>PullSignal</th>
                                                                             <th>LOTNo</th>
                                                                             <th>ItemNo</th>
@@ -880,11 +880,11 @@
                                                                     </thead>
                                                             </HeaderTemplate>
                                                             <ItemTemplate>
-                                                                <tr>
+                                                                <tr class="dark">
                                                                     <%--<td class="text-center">
                                                                         <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="Selectdatapickigdetail" CommandArgument='<%# Eval("ItemNo")%>'><i class="fa fa-hand-o-up"></i></asp:LinkButton>
                                                                     </td>--%>
-                                                                    <td><asp:CheckBox ID="chkRowData" runat="server" /></td>
+                                                                    <td><asp:CheckBox ID="chkRowData" runat="server" OnCheckedChanged="chkRowData_CheckedChanged" AutoPostBack="true"/></td>
                                                                     <td>
                                                                         <asp:Label ID="lblPullSignal" runat="server" Text='<%# Bind("PullSignal")%>'></asp:Label></td>
                                                                     <td>
@@ -902,6 +902,7 @@
                                                                 </tr>
 
                                                             </ItemTemplate>
+                                                           
                                                             <FooterTemplate>
                                                                 <tfoot>
                                                                     <tr>
@@ -1616,7 +1617,15 @@
         </asp:Panel>
         <!-- End JobNoEdit Modal -->
 
-
+        <script type="text/javascript">
+            $(function () {
+                var tabName = $("[id*=TabName]").val() != "" ? $("[id*=TabName]").val() : "issuecondition";
+                $('#Tabs a[href="#' + tabName + '"]').tab('show');
+                $("#Tabs a").click(function () {
+                    $("[id*=TabName]").val($(this).attr("href").replace("#", ""));
+                });
+            });
+        </script>
 
         <script>
             $(document).ready(function () {
