@@ -28,7 +28,7 @@
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body pad">
-                            <form>
+                          <asp:TextBox runat="server" ID="txttest" CssClass="form-control input-sm" AutoPostBack="true" OnTextChanged="txttest_TextChanged"></asp:TextBox>
                           <asp:Repeater ID="rptCustomers" runat="server" OnItemDataBound="rptCustomers_ItemDataBound">
                                     <HeaderTemplate>
                                         <table id="tblCustomers" class="table table-bordered">
@@ -47,7 +47,7 @@
                                     <ItemTemplate>
                                         <tr>
                                             <td>
-                                                <asp:CheckBox ID="chkRowData" runat="server" AutoPostBack="true" OnCheckedChanged="chkAll_CheckedChanged" /></td>
+                                                <asp:CheckBox ID="chkRowData" runat="server" AutoPostBack="true" OnCheckedChanged="chkAll_CheckedChanged"  /></td>
                                             <td>
                                                 <asp:Label ID="lblUserName" runat="server"></asp:Label></td>
                                             <td>
@@ -65,7 +65,7 @@
                                         </table>
                                     </FooterTemplate>
                                 </asp:Repeater>
-                            </form>
+                           
                         </div>
                     </div>
                     <!-- /.box -->

@@ -242,4 +242,8 @@ Public Class Test
         '    End If
         'Next     
     End Sub
+
+    Protected Sub txttest_TextChanged(sender As Object, e As EventArgs) Handles txttest.TextChanged
+        MsgBox(txttest.Text)
+    End Sub
 End Class

@@ -42,7 +42,7 @@
 
    
       <div class="form-group has-feedback">
-        <input type="text" autocapitalize="off" class="form-control" placeholder="User Name" runat="server" id="txtusername" required="required" autofocus="autofocus" autocomplete="off"/>
+        <input type="text" autocapitalize="off" class="form-control" placeholder="User Name" runat="server" id="txtusername" required="required" autofocus="autofocus" autocomplete="off" onkeyup="myFunction()"/>
         <span class="form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
@@ -82,6 +82,13 @@
       increaseArea: '20%' /* optional */
     });
   });
+</script>
+ 
+ <script>
+    function myFunction() {
+    var x = document.getElementById("txtusername");
+        x.value = x.value.toUpperCase();
+      }
 </script>
     </form>
 </body>

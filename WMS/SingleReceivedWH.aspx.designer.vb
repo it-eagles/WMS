@@ -644,31 +644,31 @@ Partial Public Class SingleReceivedWH
     Protected WithEvents ddlProductUnit As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''txtProductWidth control.
+    '''txtProductWidth_ control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtProductWidth As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtProductWidth_ As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''txtProductHeight control.
+    '''txtProductHeight_ control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtProductHeight As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtProductHeight_ As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''txtProductLeng control.
+    '''txtProductLeng_ control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtProductLeng As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtProductLeng_ As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''txtProductVolume control.
@@ -869,13 +869,13 @@ Partial Public Class SingleReceivedWH
     Protected WithEvents dcboCurrency As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''txtPriceForeigh control.
+    '''txtPriceForeigh_ control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtPriceForeigh As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtPriceForeigh_ As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''txtPriceBath control.

@@ -83,6 +83,7 @@
                                                                 <div class="col-sm-7">
                                                                     <%--  <asp:DropDownList ID="ddlJobNo_ConGoodRec" CssClass="form-control" runat="server"></asp:DropDownList>--%>
                                                                     <input runat="server" id="txtLotNo_" class="form-control input-sm" autocomplete="off" type="text" />
+                                                                    
                                                                 </div>
                                                                 <div class="col-md-2">
                                                                     <button runat="server" class="btn btn-primary btn-sm" type="button" onserverclick="btnSeletJobNew_ServerClick" id="btnSeletJobNew"><i class="fa fa-search"></i></button>
@@ -578,13 +579,16 @@
                                                         <div class="form-group">
                                                             <label for="txtDimension_GoodRecDetail" class="col-sm-1 control-label">Dimension:</label>
                                                             <div class="col-sm-2">
-                                                                <input class="form-control input-sm" id="txtProductWidth" runat="server" autocomplete="off" />
+                                                                <%--<input class="form-control input-sm" id="txtProductWidth" runat="server" autocomplete="off" />--%>
+                                                                <asp:TextBox runat="server" ID="txtProductWidth_" AutoPostBack="true" CssClass="form-control input-sm" OnTextChanged="txtProductWidth_TextChanged"></asp:TextBox>
                                                             </div>
                                                             <div class="col-sm-2">
-                                                                <input class="form-control input-sm" id="txtProductHeight" runat="server" autocomplete="off" />
+                                                                <%--<input class="form-control input-sm" id="txtProductHeight" runat="server" autocomplete="off" />--%>
+                                                                 <asp:TextBox runat="server" ID="txtProductHeight_" AutoPostBack="true" CssClass="form-control input-sm" OnTextChanged="txtProductHeight_TextChanged"></asp:TextBox>
                                                             </div>
                                                             <div class="col-sm-2">
-                                                                <input class="form-control input-sm" id="txtProductLeng" runat="server" autocomplete="off" />
+                                                               <%-- <input class="form-control input-sm" id="txtProductLeng" runat="server" autocomplete="off" />--%>
+                                                                <asp:TextBox runat="server" ID="txtProductLeng_" AutoPostBack="true" CssClass="form-control input-sm" OnTextChanged="txtProductLeng_TextChanged"></asp:TextBox>
                                                             </div>
                                                             <div class="col-sm-2">
                                                                 <input class="form-control input-sm" id="txtProductVolume" runat="server" autocomplete="off" />
@@ -718,10 +722,12 @@
                                                         </div>
                                                         <div class="form-group">
                                                             <div class="col-sm-2">
-                                                                <asp:DropDownList ID="dcboCurrency" CssClass="form-control input-sm" runat="server"></asp:DropDownList>
+                                                                <asp:DropDownList ID="dcboCurrency" CssClass="form-control input-sm" runat="server" OnSelectedIndexChanged="dcboCurrency_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
                                                             </div>
                                                             <div class="col-sm-2">
-                                                                <input class="form-control input-sm" id="txtPriceForeigh" runat="server" autocomplete="off" />
+                                                                <%--<input class="form-control input-sm" id="txtPriceForeigh" runat="server" autocomplete="off"  autofocus="autofocus"/>--%>
+                                                                <asp:TextBox runat="server" CssClass="form-control input-sm" id="txtPriceForeigh_" AutoPostBack="true" OnTextChanged="txtPriceForeigh_TextChanged" AutoComplete="off"></asp:TextBox>
+                                                           
                                                             </div>
                                                             <div class="col-sm-2">
                                                                 <input class="form-control input-sm" id="txtPriceBath" runat="server" autocomplete="off" />
@@ -775,7 +781,7 @@
                                                     <div class="form-group">
                                                         <label for="txtBuyer_GoodRecDetail" class="col-sm-4 control-label">Buyer:</label>
                                                         <div class="col-sm-8">
-                                                            <input class="form-control input-sm" id="txtBuyer" runat="server" autocomplete="off" />
+                                                            <input class="form-control input-sm" id="txtBuyer" runat="server" autocomplete="off"/>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
@@ -1000,7 +1006,7 @@
                                             <div class="form-group">
                                                 <label for="dcbSite1" class="col-sm-4 control-label">WH/Site:</label>
                                                 <div class="col-sm-8">
-                                                    <asp:DropDownList ID="dcbSite1" CssClass="form-control input-sm" runat="server" OnSelectedIndexChanged="dcbSite1_SelectedIndexChanged"></asp:DropDownList>
+                                                    <asp:DropDownList ID="dcbSite1" CssClass="form-control input-sm" runat="server" OnSelectedIndexChanged="dcbSite1_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
                                                 </div>
                                             </div>
                                             <div class="form-group " style="height: 34px;">
@@ -1038,7 +1044,7 @@
                                             <div class="form-group">
                                                 <label for="dcbLocation1" class="col-sm-4 control-label">WH/Location:</label>
                                                 <div class="col-sm-8">
-                                                    <asp:DropDownList ID="dcbLocation1" CssClass="form-control input-sm" runat="server"></asp:DropDownList>
+                                                    <asp:DropDownList ID="dcbLocation1" CssClass="form-control input-sm" runat="server" DataTextField="LocationNo" DataValueField="LocationNo" OnSelectedIndexChanged="dcbLocation1_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -1902,5 +1908,11 @@
                 }
         }
         </script>
+
+        <script type="text/javascript">
+            function keyUP(txt) {
+                alert(txt.value);
+            }
+    </script>
     </form>
 </asp:Content>

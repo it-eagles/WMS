@@ -18383,25 +18383,25 @@ ddlProductUnit control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.SingleReceivedWH.txtProductWidth">
+</member><member name="F:WMS.SingleReceivedWH.txtProductWidth_">
 	<summary>
-txtProductWidth control.
+txtProductWidth_ control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.SingleReceivedWH.txtProductHeight">
+</member><member name="F:WMS.SingleReceivedWH.txtProductHeight_">
 	<summary>
-txtProductHeight control.
+txtProductHeight_ control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.SingleReceivedWH.txtProductLeng">
+</member><member name="F:WMS.SingleReceivedWH.txtProductLeng_">
 	<summary>
-txtProductLeng control.
+txtProductLeng_ control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -18583,9 +18583,9 @@ dcboCurrency control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.SingleReceivedWH.txtPriceForeigh">
+</member><member name="F:WMS.SingleReceivedWH.txtPriceForeigh_">
 	<summary>
-txtPriceForeigh control.
+txtPriceForeigh_ control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -21098,6 +21098,14 @@ To modify move field declaration from designer file to code-behind file.
 </member><member name="F:WMS.Test.ScriptManager1">
 	<summary>
 ScriptManager1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.Test.txttest">
+	<summary>
+txttest control.
 </summary>
 	<remarks>
 Auto-generated field.

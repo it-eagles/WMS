@@ -1177,14 +1177,14 @@ Public Class SingleReceivedWH
         txtQuantity.Value = "0"
         txtCusLOTNo.Value = ""
         txtExchangeRate.Value = "0"
-        txtPriceForeigh.Value = "0"
+        txtPriceForeigh_.Text = "0"
         txtPriceForeighAmount.Value = "0"
         txtPriceBath.Value = "0"
         txtPriceBathAmount.Value = "0"
         'txtProductUni = ""
-        txtProductWidth.Value = "0"
-        txtProductHeight.Value = "0"
-        txtProductLeng.Value = "0"
+        txtProductWidth_.Text = "0"
+        txtProductHeight_.Text = "0"
+        txtProductLeng_.Text = "0"
         txtProductVolume.Value = "0"
         txtWeightDetail.Value = "0"
         txtSupplier.Value = ""
@@ -1308,7 +1308,7 @@ Public Class SingleReceivedWH
             ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('" & ex.Message & "')", True)
             Exit Sub
         End Try
-        
+
     End Sub
 
     Protected Sub dgvConfirmGood_ItemDataBound(sender As Object, e As RepeaterItemEventArgs)
@@ -1429,7 +1429,7 @@ Public Class SingleReceivedWH
                 End Try
             End If
         End If
-      
+
     End Sub
 
     Private Sub ReadDATA()
@@ -1643,9 +1643,9 @@ Public Class SingleReceivedWH
                 txtProductDesc3.Value = wh.OwnerPN
                 txtProductDesc1.Value = wh.ProductDesc
                 ddlProductUnit.Text = wh.Measurement
-                txtProductWidth.Value = String.Format("{0:0.00}", wh.ProductWidth)
-                txtProductHeight.Value = String.Format("{0:0.00}", wh.ProductLength)
-                txtProductLeng.Value = String.Format("{0:0.00}", wh.ProductHeight)
+                txtProductWidth_.Text = String.Format("{0:0.00}", wh.ProductWidth)
+                txtProductHeight_.Text = String.Format("{0:0.00}", wh.ProductLength)
+                txtProductLeng_.Text = String.Format("{0:0.00}", wh.ProductHeight)
                 txtProductVolume.Value = String.Format("{0:0.00}", wh.ProductVolume)
                 txtOrder.Value = wh.OrderNo
                 txtReceive.Value = wh.ReceiveNo
@@ -1664,7 +1664,7 @@ Public Class SingleReceivedWH
                 dcboUnitWeightDetail.Text = wh.WeigthUnit
                 dcboCurrency.Text = wh.Currency
                 txtExchangeRate.Value = String.Format("{0:0.00}", wh.ExchangeRate)
-                txtPriceForeigh.Value = String.Format("{0:0.00}", wh.PriceForeigh)
+                txtPriceForeigh_.Text = String.Format("{0:0.00}", wh.PriceForeigh)
                 txtPriceBath.Value = String.Format("{0:0.00}", wh.PriceBath)
                 txtPriceForeighAmount.Value = String.Format("{0:0.00}", wh.PriceForeighAmount)
                 txtPriceBathAmount.Value = String.Format("{0:0.00}", wh.PriceBathAmount)
@@ -1917,7 +1917,7 @@ Public Class SingleReceivedWH
                             ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('Receive ข้อมูลเรียบร้อย !!')", True)
 
                         End If
-                       
+
                     End If
                 Catch ex As Exception
 
@@ -1925,11 +1925,11 @@ Public Class SingleReceivedWH
 
                 End Try
 
-            Next            
+            Next
         End If
         ReadDATA()
         ReadDATA1()
-        
+
     End Sub
     Private Function SaveDetail_Modify1(ByVal i As Integer, qty As Integer) As Boolean
 
@@ -2050,7 +2050,7 @@ Public Class SingleReceivedWH
             db.SaveChanges()
         End If
 
-        
+
     End Sub
 
     Protected Sub Unnamed_ServerClick4(sender As Object, e As EventArgs)
@@ -2153,11 +2153,11 @@ Public Class SingleReceivedWH
                     Else
                         ddlProductUnit.Text = user.CartonSetUnit
                     End If
-                    txtProductWidth.Value = String.Format("{0:0.00}", user.CartonWidth)
-                    txtProductHeight.Value = String.Format("{0:0.00}", user.CartonLenght)
-                    txtProductLeng.Value = String.Format("{0:0.00}", user.CartonHeight)
+                    txtProductWidth_.Text = String.Format("{0:0.00}", user.CartonWidth)
+                    txtProductHeight_.Text = String.Format("{0:0.00}", user.CartonLenght)
+                    txtProductLeng_.Text = String.Format("{0:0.00}", user.CartonHeight)
                     txtProductVolume.Value = String.Format("{0:0.00}", user.CartonVolume)
-                    txtPriceForeigh.Value = String.Format("{0:0.00}", user.ImpValueRate)
+                    txtPriceForeigh_.Text = String.Format("{0:0.00}", user.ImpValueRate)
 
                 End If
             End If
@@ -2199,18 +2199,46 @@ Public Class SingleReceivedWH
 
     Protected Sub dcbSite1_SelectedIndexChanged(sender As Object, e As EventArgs)
         checkLocation()
-
+        Updatechange()
     End Sub
     Private Sub checkLocation()
+        'Dim i As Integer
+
         If String.IsNullOrEmpty(dcbSite1.Text) Then
             Exit Sub
         Else
             Select Case MsgBox("คุณต้องการ Update Location ใช่หรือไม่ ?", MsgBoxStyle.YesNo, "คำยืนยัน")
 
                 Case MsgBoxResult.Yes
-                    Dim Lo As String
-                    Dim sql As String
-                    Dim l = (From lon In db.tblWHLocations Where lon.LocationNo = dcbSite1.Text)
+                    Try
+                        Dim l = (From lon In db.tblWHLocations Where lon.WHsite = dcbSite1.Text).ToList
+                        If l.Count > 0 Then
+                            For Each i In l
+                                Dim co = (From c In db.tblWHConfirmGoodsReceiveDetails
+                                     Where c.WHLocation = i.LocationNo And c.StatusPutAlway = 0 And c.WHSite = dcbSite1.Text
+                                     Select c.WHLocation).ToList
+                                If Not IsNothing(co) Then
+                                    Dim upL As tblWHLocation = (From ln In db.tblWHLocations Where ln.LocationNo = i.LocationNo And ln.WHsite = dcbSite1.Text.Trim).FirstOrDefault
+                                    If Not IsNothing(upL) Then
+                                        upL.Usedstatus = 1
+                                        db.SaveChanges()
+                                    End If
+
+                                Else
+                                    Dim upL As tblWHLocation = (From ln In db.tblWHLocations Where ln.LocationNo = i.LocationNo And ln.WHsite = dcbSite1.Text.Trim).FirstOrDefault
+                                    If Not IsNothing(upL) Then
+                                        upL.Usedstatus = 0
+                                        db.SaveChanges()
+                                    End If
+                                End If
+                            Next
+
+                            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('อัพเดท Location Complete')", True)
+                        End If
+                    Catch ex As Exception
+                        ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('อัพเดท Location Error')", True)
+                    End Try
+
 
             End Select
         End If
@@ -2226,12 +2254,155 @@ Public Class SingleReceivedWH
         dcbLocation1.Enabled = False
         Txtpallet.Disabled = True
     End Sub
-    Private Sub StatusChk()
+    Private Sub Updatechange()
 
-        If rdbAutoPallet.Checked = True Then
-           
+        Dim l = From lo In db.tblWHLocations Where lo.LocationNo = dcbSite1.Text And lo.Usedstatus = 0
+                Select lo.LocationNo
+
+        Try
+            dcbLocation1.DataSource = l.ToList
+            dcbLocation1.DataTextField = "LocationNo"
+            dcbLocation1.DataValueField = "LocationNo"
+            dcbLocation1.DataBind()
+            If dcbLocation1.Items.Count > 1 Then
+                dcbLocation1.Enabled = True
+            Else
+                dcbLocation1.Enabled = False
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
+
+    End Sub
+
+    Protected Sub dcbLocation1_SelectedIndexChanged(sender As Object, e As EventArgs)
+        If String.IsNullOrWhiteSpace(dcbLocation1.Text.Trim) Then
+            CheckStockIN()
+            CheckStockUSE()
         Else
-           
+            LblInValume.Value = "0"
+            LblInpallet.Value = "0"
+            LblUseValume.Value = "0"
+            LblUsePallet.Value = "0"
         End If
+    End Sub
+    Private Sub CheckStockIN()
+        Dim l = (From lo In db.tblWHLocations Where lo.WHsite = dcbSite1.Text And lo.LocationNo = dcbLocation1.Text.Trim).FirstOrDefault
+        If Not IsNothing(l) Then
+            LblInValume.Value = String.Format("{0:0.00}", l.Valume)
+            LblInpallet.Value = String.Format("{0:0.00}", l.Qtypallet)
+        Else
+            LblInValume.Value = "0"
+            LblInpallet.Value = "0"
+        End If
+
+    End Sub
+
+    Private Sub CheckStockUSE()
+
+
+        'sb.Append("select sum(ProductVolume) as sumValume, 
+        'count(DISTINCT  SUBSTRING(PalletNo,CHARINDEX('/',PalletNo)+1,len(PalletNo)-CHARINDEX('/',PalletNo))) as Countpallet   
+
+        ' from tblWHConfirmGoodsReceiveDetail (NOLOCK)
+        'WHERE WHsite  = @WHsite and  WHlocation = @location  and Lotno  <>  @Lotno and StatusAvailable = 0   ;")
+        'Dim sb = (From wc In db.tblWHConfirmGoodsReceiveDetails Where wc.WHSite = dcbSite1.Text.Trim And wc.WHLocation = dcbLocation1.Text.Trim _
+        '        And wc.LOTNo <> txtLotNo_.Value.Trim And wc.StatusAvailable = 0
+        '        Group By wc.ProductVolume
+        '        Into p = Sum(wc.ProductVolume)
+        '        Select ProductVolume).ToList
+
+
+        'If txtBrokerCode.Value = "" Then
+        '    LblUseValume.Value = ""
+        '    LblUsePallet.Value = ""
+        'Else
+        '    LblUseValume.Value = "0"
+        '    LblUsePallet.Value = "0"
+        'End If
+
+    End Sub
+
+    Protected Sub dcboCurrency_SelectedIndexChanged(sender As Object, e As EventArgs)
+        Dim tmpMount As Single
+        Dim Nmount As String
+        tmpMount = CSng(Format(Now(), "MM"))
+        Nmount = tmpMount.ToString("0#")
+
+        Dim er = (From ex In db.tblExchangeRates Where ex.Currency = dcboCurrency.Text.Trim And ex.Status = "IMPORT" And ex.Mount = Nmount).FirstOrDefault
+        If Not IsNothing(er) Then
+            dcboCurrency.Text = er.Currency
+            txtExchangeRate.Value = String.Format("{0:0.00}", er.BathAmount)
+        End If
+    End Sub
+
+    Private Sub CallculateProductVolume()
+
+        If (txtProductWidth_.Text.Trim() = "0") Then txtProductWidth_.Text = "0.0"
+        If (txtProductHeight_.Text.Trim() = "0") Then txtProductHeight_.Text = "0.0"
+        If (txtProductLeng_.Text.Trim() = "0") Then txtProductLeng_.Text = "0.0"
+        If (txtProductVolume.Value.Trim() = "0") Then txtProductVolume.Value = "0.0"
+
+        Dim VolumeAmount As Double
+        If ddlProductUnit.Text = "CM" Then
+            VolumeAmount = ((CDbl(txtProductWidth_.Text) * CDbl(txtProductHeight_.Text) * CDbl(txtProductLeng_.Text)) / 1000000)
+            txtProductVolume.Value = VolumeAmount.ToString("#,##0.000")
+        End If
+
+        If ddlProductUnit.Text = "INC" Then
+            VolumeAmount = (((CDbl(txtProductWidth_.Text) * CDbl(2.5)) * (CDbl(txtProductHeight_.Text) * CDbl(2.5)) * (CDbl(txtProductLeng_.Text) * CDbl(2.5))) / 1000000)
+            txtProductVolume.Value = VolumeAmount.ToString("#,##0.000")
+        End If
+
+    End Sub
+
+    Protected Sub txtPriceForeigh_TextChanged(sender As Object, e As EventArgs)
+        CallculateValue()
+        CallculateValueThai()
+        CallculateValueThaiAmount()
+    End Sub
+    Private Sub CallculateValue()
+
+        If (txtQuantity.Value.Trim() = "") Then txtQuantity.Value = "0.0"
+        If (txtPriceForeigh_.Text.Trim() = "") Then txtPriceForeigh_.Text = "0.0"
+        If (txtPriceForeighAmount.Value.Trim() = "") Then txtPriceForeighAmount.Value = "0.0"
+
+        Dim ValueAmount As Double = 0.0
+        ValueAmount = CSng(txtQuantity.Value) * CSng(txtPriceForeigh_.Text)
+        txtPriceForeighAmount.Value = ValueAmount.ToString("#,##0.000")
+    End Sub
+
+    Private Sub CallculateValueThai()
+
+        If (txtExchangeRate.Value.Trim() = "") Then txtExchangeRate.Value = "0.0"
+        If (txtPriceForeigh_.Text.Trim() = "") Then txtPriceForeigh_.Text = "0.0"
+        If (txtPriceBath.Value.Trim() = "") Then txtPriceBath.Value = "0.0"
+
+        Dim ValueThaiAmount As Double = 0.0
+        ValueThaiAmount = CSng(txtExchangeRate.Value) * CSng(txtPriceForeigh_.Text)
+        txtPriceBath.Value = ValueThaiAmount.ToString("#,##0.000")
+    End Sub
+
+    Private Sub CallculateValueThaiAmount()
+        If (txtQuantity.Value.Trim() = "") Then txtQuantity.Value = "0.0"
+        If (txtPriceBath.Value.Trim() = "") Then txtPriceBath.Value = "0.0"
+        If (txtPriceBathAmount.Value.Trim() = "") Then txtPriceBathAmount.Value = "0.0"
+
+        Dim ValueThaiValueAmount As Double = 0.0
+
+        ValueThaiValueAmount = CSng(txtQuantity.Value) * CSng(txtPriceBath.Value)
+        txtPriceBathAmount.Value = ValueThaiValueAmount.ToString("#,##0.000")
+    End Sub
+
+    Protected Sub txtProductHeight_TextChanged(sender As Object, e As EventArgs)
+        CallculateProductVolume()
+    End Sub
+
+    Protected Sub txtProductLeng_TextChanged(sender As Object, e As EventArgs)
+        CallculateProductVolume()
+    End Sub
+
+    Protected Sub txtProductWidth_TextChanged(sender As Object, e As EventArgs)
+        CallculateProductVolume()
     End Sub
 End Class
