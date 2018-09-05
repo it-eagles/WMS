@@ -1118,8 +1118,9 @@
                                                     </ItemTemplate>
                                                     <AlternatingItemTemplate>
                                                         <tr class="info">
+
                                                             <td>
-                                                                <asp:CheckBox ID="chkLotNo" runat="server"></asp:CheckBox></td>
+                                                                <asp:CheckBox ID="chkLotNo1" runat="server" OnCheckedChanged="chkLotNo1_CheckedChanged" AutoPostBack="true"></asp:CheckBox></td>
                                                             <td>
                                                                 <asp:Label ID="lblLOTNo" runat="server"></asp:Label></td>
                                                             <td>

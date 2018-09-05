@@ -1148,6 +1148,15 @@ Partial Public Class SingleIssuedWH
     Protected WithEvents Repeater9 As Global.System.Web.UI.WebControls.Repeater
 
     '''<summary>
+    '''TabName control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents TabName As Global.System.Web.UI.WebControls.HiddenField
+
+    '''<summary>
     '''ExporterPanel control.
     '''</summary>
     '''<remarks>
