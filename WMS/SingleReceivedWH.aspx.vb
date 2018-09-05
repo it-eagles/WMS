@@ -2338,8 +2338,6 @@ Public Class SingleReceivedWH
             txtExchangeRate.Value = String.Format("{0:0.00}", er.BathAmount)
         End If
     End Sub
-
-<<<<<<< HEAD
     Private Sub CallculateProductVolume()
 
         If (txtProductWidth_.Text.Trim() = "0") Then txtProductWidth_.Text = "0.0"
@@ -2408,7 +2406,8 @@ Public Class SingleReceivedWH
 
     Protected Sub txtProductWidth_TextChanged(sender As Object, e As EventArgs)
         CallculateProductVolume()
-=======
+    End Sub
+
     Protected Sub chkLotNo1_CheckedChanged(sender As Object, e As EventArgs)
         Dim chkName As CheckBox
         Dim lblLOTNo As String
@@ -2436,9 +2435,9 @@ Public Class SingleReceivedWH
                 txtProductDesc3.Value = wh.OwnerPN
                 txtProductDesc1.Value = wh.ProductDesc
                 ddlProductUnit.Text = wh.Measurement
-                txtProductWidth.Value = String.Format("{0:0.00}", wh.ProductWidth)
-                txtProductHeight.Value = String.Format("{0:0.00}", wh.ProductLength)
-                txtProductLeng.Value = String.Format("{0:0.00}", wh.ProductHeight)
+                txtProductWidth_.Text = String.Format("{0:0.00}", wh.ProductWidth)
+                txtProductHeight_.Text = String.Format("{0:0.00}", wh.ProductLength)
+                txtProductLeng_.Text = String.Format("{0:0.00}", wh.ProductHeight)
                 txtProductVolume.Value = String.Format("{0:0.00}", wh.ProductVolume)
                 txtOrder.Value = wh.OrderNo
                 txtReceive.Value = wh.ReceiveNo
@@ -2457,7 +2456,7 @@ Public Class SingleReceivedWH
                 dcboUnitWeightDetail.Text = wh.WeigthUnit
                 dcboCurrency.Text = wh.Currency
                 txtExchangeRate.Value = String.Format("{0:0.00}", wh.ExchangeRate)
-                txtPriceForeigh.Value = String.Format("{0:0.00}", wh.PriceForeigh)
+                txtPriceForeigh_.Text = String.Format("{0:0.00}", wh.PriceForeigh)
                 txtPriceBath.Value = String.Format("{0:0.00}", wh.PriceBath)
                 txtPriceForeighAmount.Value = String.Format("{0:0.00}", wh.PriceForeighAmount)
                 txtPriceBathAmount.Value = String.Format("{0:0.00}", wh.PriceBathAmount)
@@ -2488,6 +2487,5 @@ Public Class SingleReceivedWH
 
             End If
         Next
->>>>>>> 4c97da26cdb59ac74fb8dfa5a2a426dc0d2519d6
     End Sub
 End Class
