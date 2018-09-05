@@ -1,4 +1,4 @@
-﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="SingleReceivedWH.aspx.vb" Inherits="WMS.SingleReceivedWH" MasterPageFile="~/Home.Master" EnableEventValidation="false" %>
+﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="SingleReceivedWH.aspx.vb" Inherits="WMS.SingleReceivedWH" MasterPageFile="~/Home.Master" EnableEventValidation="false" EnableViewState="true" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
@@ -52,6 +52,7 @@
                                     </button>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -83,7 +84,7 @@
                                                                 <div class="col-sm-7">
                                                                     <%--  <asp:DropDownList ID="ddlJobNo_ConGoodRec" CssClass="form-control" runat="server"></asp:DropDownList>--%>
                                                                     <input runat="server" id="txtLotNo_" class="form-control input-sm" autocomplete="off" type="text" />
-                                                                    
+
                                                                 </div>
                                                                 <div class="col-md-2">
                                                                     <button runat="server" class="btn btn-primary btn-sm" type="button" onserverclick="btnSeletJobNew_ServerClick" id="btnSeletJobNew"><i class="fa fa-search"></i></button>
@@ -538,21 +539,21 @@
                                                                     <input class="form-control input-sm" id="txtProductDesc3" runat="server" autocomplete="off" />
                                                                 </div>
                                                             </div>
-                                                        
+
                                                         </div>
-                                                        </div>
-                                                        <div class="col-md-12">
-                                                           <div class="col-md-6">
-                                                               <div class="form-group">
-                                                                   <label for="txtProductDesc_GoodRecDetail" class="col-sm-3 control-label">Product Desc:</label>
-                                                                   <div class="col-sm-6">
-                                                                       <textarea class="form-control input-sm" runat="server" rows="3" id="txtProductDesc1" placeholder="Desc .." style="height: 34px; width: 410px;"></textarea>
-                                                                   </div>
-                                                               </div>
-                                                           </div>
+                                                    </div>
+                                                    <div class="col-md-12">
                                                         <div class="col-md-6">
-                                                                    <div class="form-group">                                                  
-                                                                 <label for="txtMeasurement_GoodRecDetail" class="col-sm-4 control-label">Measurement</label>
+                                                            <div class="form-group">
+                                                                <label for="txtProductDesc_GoodRecDetail" class="col-sm-3 control-label">Product Desc:</label>
+                                                                <div class="col-sm-6">
+                                                                    <textarea class="form-control input-sm" runat="server" rows="3" id="txtProductDesc1" placeholder="Desc .." style="height: 34px; width: 410px;"></textarea>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="txtMeasurement_GoodRecDetail" class="col-sm-4 control-label">Measurement</label>
                                                                 <div class="col-sm-8">
                                                                     <asp:DropDownList ID="ddlProductUnit" CssClass="form-control input-sm" runat="server">
                                                                         <asp:ListItem></asp:ListItem>
@@ -562,7 +563,7 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        </div>
+                                                    </div>
                                                     <%-------------------------------------------------------End HEAD BEFORE LEFT FORM----------------------------------------------------------------%>
 
                                                     <%-----------------------------------------------------Start Left Form--------------------------------------------------%>
@@ -584,10 +585,10 @@
                                                             </div>
                                                             <div class="col-sm-2">
                                                                 <%--<input class="form-control input-sm" id="txtProductHeight" runat="server" autocomplete="off" />--%>
-                                                                 <asp:TextBox runat="server" ID="txtProductHeight_" AutoPostBack="true" CssClass="form-control input-sm" OnTextChanged="txtProductHeight_TextChanged"></asp:TextBox>
+                                                                <asp:TextBox runat="server" ID="txtProductHeight_" AutoPostBack="true" CssClass="form-control input-sm" OnTextChanged="txtProductHeight_TextChanged"></asp:TextBox>
                                                             </div>
                                                             <div class="col-sm-2">
-                                                               <%-- <input class="form-control input-sm" id="txtProductLeng" runat="server" autocomplete="off" />--%>
+                                                                <%-- <input class="form-control input-sm" id="txtProductLeng" runat="server" autocomplete="off" />--%>
                                                                 <asp:TextBox runat="server" ID="txtProductLeng_" AutoPostBack="true" CssClass="form-control input-sm" OnTextChanged="txtProductLeng_TextChanged"></asp:TextBox>
                                                             </div>
                                                             <div class="col-sm-2">
@@ -626,19 +627,19 @@
                                                                 </div>
 
                                                             </div>
-                                                                <div class="form-group">
-                                                            <label for="txtReceiveDate_GoodRecDetail" class="col-sm-3 control-label">Receive Date:</label>
-                                                            <div class="col-sm-3">
-                                                                <asp:TextBox CssClass="form-control input-sm" ID="txtReceiveDate" runat="server" placeholder="DD/MM/YYYY"> </asp:TextBox>
-                                                                <asp:CalendarExtender ID="CalendarExtenderReceiveDate_GoodRecDetail" runat="server" Enabled="True" TargetControlID="txtReceiveDate" Format="dd/MM/yyyy"></asp:CalendarExtender>
+                                                            <div class="form-group">
+                                                                <label for="txtReceiveDate_GoodRecDetail" class="col-sm-3 control-label">Receive Date:</label>
+                                                                <div class="col-sm-3">
+                                                                    <asp:TextBox CssClass="form-control input-sm" ID="txtReceiveDate" runat="server" placeholder="DD/MM/YYYY"> </asp:TextBox>
+                                                                    <asp:CalendarExtender ID="CalendarExtenderReceiveDate_GoodRecDetail" runat="server" Enabled="True" TargetControlID="txtReceiveDate" Format="dd/MM/yyyy"></asp:CalendarExtender>
+                                                                </div>
+                                                                <label for="txtActualQTY_GoodRecDetail" class="col-sm-3 control-label">ETA/ARR Date</label>
+                                                                <div class="col-sm-3">
+                                                                    <%-- <input class="form-control" id="txtActualQTY" runat="server" value="0" />--%>
+                                                                    <asp:TextBox CssClass="form-control input-sm" ID="txtExpectedDate" runat="server" placeholder="DD/MM/YYYY"> </asp:TextBox>
+                                                                    <asp:CalendarExtender ID="CalendarExtender1" runat="server" Enabled="True" TargetControlID="txtExpectedDate" Format="dd/MM/yyyy"></asp:CalendarExtender>
+                                                                </div>
                                                             </div>
-                                                            <label for="txtActualQTY_GoodRecDetail" class="col-sm-3 control-label">ETA/ARR Date</label>
-                                                            <div class="col-sm-3">
-                                                                <%-- <input class="form-control" id="txtActualQTY" runat="server" value="0" />--%>
-                                                                <asp:TextBox CssClass="form-control input-sm" ID="txtExpectedDate" runat="server" placeholder="DD/MM/YYYY"> </asp:TextBox>
-                                                                <asp:CalendarExtender ID="CalendarExtender1" runat="server" Enabled="True" TargetControlID="txtExpectedDate" Format="dd/MM/yyyy"></asp:CalendarExtender>
-                                                            </div>
-                                                        </div>
                                                             <div class="form-group">
                                                                 <label for="txtQuantity1QTY_GoodRecDetail" class="col-sm-3 control-label">Quantity1 QTY:</label>
                                                                 <div class="col-sm-4">
@@ -707,11 +708,11 @@
                                                                     <asp:DropDownList ID="dcboUnitWeightDetail" CssClass="form-control input-sm" runat="server"></asp:DropDownList>
                                                                 </div>
                                                             </div>
+                                                        </div>
                                                     </div>
-                                                       </div>
 
-                                            
-                                                    <div class="col-md-12 col-lg-12">                                           
+
+                                                    <div class="col-md-12 col-lg-12">
                                                         <div class="form-group">
                                                             <label for="txtCurrency_GoodRecDetail" class="col-sm-2">Currency:</label>
                                                             <label for="txtPriceForeign_GoodRecDetail" class="col-sm-2">Price Foreign:</label>
@@ -726,8 +727,8 @@
                                                             </div>
                                                             <div class="col-sm-2">
                                                                 <%--<input class="form-control input-sm" id="txtPriceForeigh" runat="server" autocomplete="off"  autofocus="autofocus"/>--%>
-                                                                <asp:TextBox runat="server" CssClass="form-control input-sm" id="txtPriceForeigh_" AutoPostBack="true" OnTextChanged="txtPriceForeigh_TextChanged" AutoComplete="off"></asp:TextBox>
-                                                           
+                                                                <asp:TextBox runat="server" CssClass="form-control input-sm" ID="txtPriceForeigh_" AutoPostBack="true" OnTextChanged="txtPriceForeigh_TextChanged" AutoComplete="off"></asp:TextBox>
+
                                                             </div>
                                                             <div class="col-sm-2">
                                                                 <input class="form-control input-sm" id="txtPriceBath" runat="server" autocomplete="off" />
@@ -742,8 +743,8 @@
                                                                 <input class="form-control input-sm" id="txtPriceBathAmount" runat="server" autocomplete="off" />
                                                             </div>
                                                         </div>
-                                              
-                                                          <div class="form-group">
+
+                                                        <div class="form-group">
                                                             <div class="col-sm-2">
                                                                 <div class="radio">
                                                                     <label>
@@ -758,7 +759,7 @@
                                                                     </label>
                                                                 </div>
                                                             </div>
-                                                                <label for="txtInvoice_GoodRecDetail" class="col-sm-2 control-label">Invoice:</label>
+                                                            <label for="txtInvoice_GoodRecDetail" class="col-sm-2 control-label">Invoice:</label>
                                                             <div class="col-sm-4">
                                                                 <input class="form-control input-sm" id="txtInvoice" runat="server" autocomplete="off" />
                                                             </div>
@@ -777,488 +778,455 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                            <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <label for="txtBuyer_GoodRecDetail" class="col-sm-4 control-label">Buyer:</label>
-                                                        <div class="col-sm-8">
-                                                            <input class="form-control input-sm" id="txtBuyer" runat="server" autocomplete="off"/>
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <label for="txtBuyer_GoodRecDetail" class="col-sm-4 control-label">Buyer:</label>
+                                                                <div class="col-sm-8">
+                                                                    <input class="form-control input-sm" id="txtBuyer" runat="server" autocomplete="off" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="txtConsignee_GoodRecDetail" class="col-sm-4 control-label">Consignee:</label>
+                                                                <div class="col-sm-8">
+                                                                    <input class="form-control input-sm" id="txtConsignee" runat="server" autocomplete="off" />
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="txtConsignee_GoodRecDetail" class="col-sm-4 control-label">Consignee:</label>
-                                                        <div class="col-sm-8">
-                                                            <input class="form-control input-sm" id="txtConsignee" runat="server" autocomplete="off" />
-                                                        </div>
-                                                    </div>
-                                                </div>
 
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <label for="txtExporter_GoodRecDetail" class="col-sm-4 control-label">Exporter:</label>
-                                                        <div class="col-sm-8">
-                                                            <input class="form-control input-sm" id="txtExporter" runat="server" autocomplete="off" />
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <label for="txtExporter_GoodRecDetail" class="col-sm-4 control-label">Exporter:</label>
+                                                                <div class="col-sm-8">
+                                                                    <input class="form-control input-sm" id="txtExporter" runat="server" autocomplete="off" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="txtShippingMark_GoodRecDetail" class="col-sm-4 control-label">ShippingMark:</label>
+                                                                <div class="col-sm-8">
+                                                                    <input class="form-control input-sm" id="txtShippingMark" runat="server" autocomplete="off" />
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group">
-                                                        <label for="txtShippingMark_GoodRecDetail" class="col-sm-4 control-label">ShippingMark:</label>
-                                                        <div class="col-sm-8">
-                                                            <input class="form-control input-sm" id="txtShippingMark" runat="server" autocomplete="off" />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                    </div>
-                                    
-                                    <%-------------------------------------------------------End AFTER RIGHT FORM----------------------------------------------------------------%>
-                                    <div class="col-md-12 col-lg-12">
-                                        <fieldset>
-                                            <legend></legend>
-                                            <asp:Repeater runat="server" ID="dgvItemDetail" OnItemDataBound="dgvItemDetail_ItemDataBound">
-                                                <HeaderTemplate>
-                                                    <table class="table table-bordered">
-                                                        <th style="width: 2px">
-                                                            <asp:CheckBox runat="server" ID="chkAll_Item" Checked="false"></asp:CheckBox></th>
-                                                        <th style="width: 10px">LOTNo</th>
-                                                        <th style="width: 10px">WHSite</th>
-                                                        <th style="width: 10px">ENDCustomer</th>
-                                                        <th style="width: 10px">CustomerLOTNo</th>
-                                                        <th style="width: 5px">ItemNo</th>
-                                                        <th style="width: 10px">ProductCode</th>
-                                                        <th style="width: 10px">CustomerPN</th>
-                                                        <th style="width: 2px">Status</th>
-                                                </HeaderTemplate>
-                                                <ItemTemplate>
-                                                    <tr class="success">
-                                                        <td>
-                                                            <asp:CheckBox ID="chkLotNo" runat="server" OnCheckedChanged="chkLotNo_CheckedChanged" AutoPostBack="true"></asp:CheckBox></td>
-                                                        <td>
-                                                            <asp:Label ID="lblLOTNo" runat="server"></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblSite" runat="server"></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblEND" runat="server"></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblCus" runat="server"></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblItem" runat="server"></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblPc" runat="server"></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblPn" runat="server"></asp:Label></td>
 
-                                                        <td>
-                                                            <asp:Label ID="lblStatus" runat="server"></asp:Label></td>
-                                                    </tr>
-                                                </ItemTemplate>
-                                                <AlternatingItemTemplate>
-                                                    <tr class="info">
-                                                        <td>
-                                                            <asp:CheckBox ID="chkLotNo" runat="server"></asp:CheckBox></td>
-                                                        <td>
-                                                            <asp:Label ID="lblLOTNo" runat="server"></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblSite" runat="server"></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblEND" runat="server"></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblCus" runat="server"></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblItem" runat="server"></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblPc" runat="server"></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblPn" runat="server"></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblStatus" runat="server"></asp:Label></td>
-                                                    </tr>
-                                                </AlternatingItemTemplate>
-                                                <FooterTemplate>
-                                                    <th>select</th>
-                                                    <th>LOTNo</th>
-                                                    <th>WHSite</th>
-                                                    <th>ENDCustomer</th>
-                                                    <th>CustomerLOTNo</th>
-                                                    <th>ItemNo</th>
-                                                    <th>ProductCode</th>
-                                                    <th>CustomerPN</th>
-                                                    <th>Status</th>
-                                                    </table>
-                                                </FooterTemplate>
-                                            </asp:Repeater>
-                                        </fieldset>
+                                                    <%-------------------------------------------------------End AFTER RIGHT FORM----------------------------------------------------------------%>
+                                                    <div class="col-md-12 col-lg-12">
+                                                        <fieldset>
+                                                            <legend></legend>
+                                                            <asp:Repeater runat="server" ID="dgvItemDetail" OnItemDataBound="dgvItemDetail_ItemDataBound">
+                                                                <HeaderTemplate>
+                                                                    <table id="taConfirm" class="table table-condensed">
+                                                                        <th style="width: 2px">
+                                                                            <asp:CheckBox runat="server" ID="chkAll_Item" Checked="false"></asp:CheckBox></th>
+                                                                        <th style="width: 10px">LOTNo</th>
+                                                                        <th style="width: 10px">WHSite</th>
+                                                                        <th style="width: 10px">ENDCustomer</th>
+                                                                        <th style="width: 10px">CustomerLOTNo</th>
+                                                                        <th style="width: 5px">ItemNo</th>
+                                                                        <th style="width: 10px">ProductCode</th>
+                                                                        <th style="width: 10px">CustomerPN</th>
+                                                                        <th style="width: 2px">Status</th>
+                                                                </HeaderTemplate>
+                                                                <ItemTemplate>
+                                                                    <tr class="success">
+                                                                        <td>
+                                                                            <asp:CheckBox ID="chkLotNo" runat="server" AutoPostBack="true" OnCheckedChanged="chkLotNo_CheckedChanged"></asp:CheckBox></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblLOTNo" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblSite" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblEND" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblCus" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblItem" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblPc" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblPn" runat="server"></asp:Label></td>
+
+                                                                        <td>
+                                                                            <asp:Label ID="lblStatus" runat="server"></asp:Label></td>
+                                                                    </tr>
+                                                                </ItemTemplate>
+                                                        <%--        <AlternatingItemTemplate>
+                                                                    <tr class="info">
+                                                                        <td>
+                                                                            <asp:CheckBox ID="chkLotNo" runat="server"></asp:CheckBox></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblLOTNo" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblSite" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblEND" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblCus" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblItem" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblPc" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblPn" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblStatus" runat="server"></asp:Label></td>
+                                                                    </tr>
+                                                                </AlternatingItemTemplate>--%>
+                                                                <FooterTemplate>
+                                                                    <th>select</th>
+                                                                    <th>LOTNo</th>
+                                                                    <th>WHSite</th>
+                                                                    <th>ENDCustomer</th>
+                                                                    <th>CustomerLOTNo</th>
+                                                                    <th>ItemNo</th>
+                                                                    <th>ProductCode</th>
+                                                                    <th>CustomerPN</th>
+                                                                    <th>Status</th>
+                                                                    </table>
+                                                                </FooterTemplate>
+                                                            </asp:Repeater>
+                                                        </fieldset>
+                                                    </div>
+                                                    <%-----------------------------------------------------Start BUTTON FORM------------------------------------------------------------%>
+                                                    <div class="col-lg-12 col-md-12 ">
+                                                        <!-- form start -->
+                                                        <div class="form-horizontal">
+                                                            <%--<fieldset>  <legend>Job</legend>--%>
+                                                            <div class="box-body">
+                                                                <div class="col-md-12 col-md-offset-11">
+                                                                    <div class="form-group">
+                                                                        <div class="col-sm-2">
+                                                                            <button type="submit" runat="server" class="btn btn-primary" id="btnReceive_GoodRecDetail" title="btnReceive_GoodRecDetail" onserverclick="btnReceive_GoodRecDetail_ServerClick">Receive</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- /.box-body -->
+                                                            </div>
+                                                            <!-- /.box-header -->
+                                                            <%--</fieldset>--%>
+                                                        </div>
+                                                        <!--/.col-lg-6 col-md-6 stockqty--->
+                                                    </div>
+                                                    <div class="col-md-12 col-lg-12">
+                                                        <fieldset>
+                                                            <legend></legend>
+                                                            <asp:Repeater runat="server" ID="dgvConfirmDetail" OnItemDataBound="dgvConfirmDetail_ItemDataBound">
+                                                                <HeaderTemplate>
+                                                                    <table id="example20" class="table table-condensed">
+                                                                        <th>LOTNo</th>
+                                                                        <th>WHSite</th>
+                                                                        <th>ENDCustomer</th>
+                                                                        <th>CustomerLOTNo</th>
+                                                                        <th>ItemNo</th>
+                                                                        <th>ProductCode</th>
+                                                                        <th>CustomerPN</th>
+                                                                </HeaderTemplate>
+                                                                <ItemTemplate>
+                                                                    <tr class="success">
+                                                                        <td>
+                                                                            <asp:Label ID="lblLOTNo" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblSite" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblEND" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblCus" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblItem" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblPc" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblPn" runat="server"></asp:Label></td>
+                                                                    </tr>
+                                                                </ItemTemplate>                                                       
+                                                                <FooterTemplate>
+                                                                    <th>LOTNo</th>
+                                                                    <th>WHSite</th>
+                                                                    <th>ENDCustomer</th>
+                                                                    <th>CustomerLOTNo</th>
+                                                                    <th>ItemNo</th>
+                                                                    <th>ProductCode</th>
+                                                                    <th>CustomerPN</th>
+                                                                    </table>
+                                                                </FooterTemplate>
+                                                            </asp:Repeater>
+                                                        </fieldset>
+                                                    </div>
+                                                </fieldset>
+                                            </div>
+
+                                            <!-- /.box-body -->
+                                        </div>
+                                        <!--/.col-lg-6 col-md-6--->
                                     </div>
+                                    <!--/.row-->
+                                </div>
+                            </div>
+                            <!-- /.post -->
+                        </div>
 
-                                    <%-----------------------------------------------------Start BUTTON FORM------------------------------------------------------------%>
-                                    <div class="col-lg-12 col-md-12 ">
-                                        <!-- form start -->
+
+                        <div role="tabpanel" class="tab-pane" id="putaway">
+                            <!-- Post -->
+                            <div class="post">
+                                <div class="row margin-bottom">
+                                    <div class="col-lg-12 col-md-12">
                                         <div class="form-horizontal">
-                                            <%--<fieldset>  <legend>Job</legend>--%>
                                             <div class="box-body">
-                                                
-                                                <div class="col-md-12 col-md-offset-11">
-                                                    <div class="form-group">
-                                                        <div class="col-sm-2">
-                                                            <button type="submit" runat="server" class="btn btn-primary" id="btnReceive_GoodRecDetail" title="btnReceive_GoodRecDetail" onserverclick="btnReceive_GoodRecDetail_ServerClick">Receive</button>
+                                                <fieldset runat="server" id="putaway_">
+                                                    <legend></legend>
+                                                    <div class="col-md-4 col-sm-4">
+                                                        <div class="form-group">
+                                                            <label for="dcbSite1" class="col-sm-4 control-label">WH/Site:</label>
+                                                            <div class="col-sm-8">
+                                                                <asp:DropDownList ID="dcbSite1" CssClass="form-control input-sm" runat="server" OnSelectedIndexChanged="dcbSite1_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group " style="height: 34px;">
+                                                            <div class="col-lg5 col-md-5 col-sm-5">
+                                                                <div class="radio">
+                                                                    <label>
+                                                                        <asp:RadioButton runat="server" ID="rdbManual" Text="Manual" OnCheckedChanged="rdbManual_CheckedChanged" GroupName="option1" AutoPostBack="true" />
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-lg5 col-md-5 col-sm-5">
+                                                                <div class="radio">
+                                                                    <label>
+                                                                        <asp:RadioButton runat="server" ID="rdbAutoPallet" Text="Auto Pallet" OnCheckedChanged="rdbAutoPallet_CheckedChanged" GroupName="option1" AutoPostBack="true" />
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="txtmessages1_PutAway" class="col-sm-8 control-label">พื้นที่จัดเก็บ(ปริมาตร):</label>
+                                                            <div class="col-sm-4">
+                                                                <input class="form-control input-sm" id="LblInValume" runat="server" autocomplete="off" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="txtmessages2_PutAway" class="col-sm-8 control-label">Jobอื่นใช้พื้นที่จัดเก็บ(ปริมาตร):</label>
+                                                            <div class="col-sm-4">
+                                                                <input class="form-control input-sm" id="LblUseValume" runat="server" autocomplete="off" />
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
 
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="dcbLocation1" class="col-sm-4 control-label">WH/Location:</label>
+                                                            <div class="col-sm-8">
+                                                                <asp:DropDownList ID="dcbLocation1" CssClass="form-control input-sm" runat="server" DataTextField="LocationNo" DataValueField="LocationNo" OnSelectedIndexChanged="dcbLocation1_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="txtRemark_PutAway" class="col-sm-4 control-label">Remark:</label>
+                                                            <div class="col-sm-8">
+                                                                <textarea class="form-control input-sm" rows="1" id="txtRemarkP" placeholder="Remark" style="width: 563px;"></textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="txtmessages3_PutAway" class="col-sm-8 control-label">พื้นที่จัดเก็บ(Pallet):</label>
+                                                            <div class="col-sm-4">
+                                                                <input class="form-control input-sm" id="LblInpallet" runat="server" autocomplete="off" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="txtmessages4_PutAway" class="col-sm-8 control-label">Jobอื่นใช้พื้นที่จัดเก็บ(Pallet):</label>
+                                                            <div class="col-sm-4">
+                                                                <input class="form-control input-sm" id="LblUsePallet" runat="server" autocomplete="off" />
+                                                            </div>
+                                                        </div>
 
-                                                <!-- /.box-body -->
+                                                    </div>
+
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="txtPalletNo_PutAway" class="col-sm-4 control-label">Pallet No:</label>
+                                                            <div class="col-sm-8">
+                                                                <input class="form-control input-sm" id="Txtpallet" runat="server" value="0" autocomplete="off" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12 col-lg-12">
+                                                        <fieldset>
+                                                            <legend></legend>
+                                                            <asp:Repeater runat="server" ID="dgvConfirmDetailbefor" OnItemDataBound="dgvConfirmDetailbefor_ItemDataBound">
+                                                                <HeaderTemplate>
+                                                                    <table class="table table-condensed">
+                                                                        <th style="width: 30px">LOTNo</th>
+                                                                        <th style="width: 10px">WHSite</th>
+                                                                        <th style="width: 30px">PalletNo</th>
+                                                                        <th style="width: 10px">ENDCustomer</th>
+                                                                        <th style="width: 10px">CustomerLOTNo</th>
+                                                                        <th style="width: 5px">ItemNo</th>
+                                                                        <th style="width: 20px">ProductCode</th>
+                                                                        <th style="width: 10px">CustomerPN</th>
+                                                                        <th style="width: 2px">ProductVolume</th>
+                                                                </HeaderTemplate>
+                                                                <ItemTemplate>
+                                                                    <tr class="success">
+                                                                        <td>
+                                                                            <asp:Label ID="lblLOTNo" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblSite" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblPallet" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblEND" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblCus" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblItem" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblPc" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblPn" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblProductVolume" runat="server"></asp:Label></td>
+                                                                    </tr>
+                                                                </ItemTemplate>
+                                                                <AlternatingItemTemplate>
+                                                                    <tr class="info">
+                                                                        <td>
+                                                                            <asp:Label ID="lblLOTNo" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblSite" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblPallet" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblEND" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblCus" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblItem" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblPc" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblPn" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblProductVolume" runat="server"></asp:Label></td>
+                                                                    </tr>
+                                                                </AlternatingItemTemplate>
+                                                                <FooterTemplate>
+                                                                    <th style="width: 30px">LOTNo</th>
+                                                                    <th>WHSite</th>
+                                                                    <th style="width: 30px">PalletNo</th>
+                                                                    <th>ENDCustomer</th>
+                                                                    <th>CustomerLOTNo</th>
+                                                                    <th>ItemNo</th>
+                                                                    <th>ProductCode</th>
+                                                                    <th>CustomerPN</th>
+                                                                    <th>ProductVolume</th>
+                                                                    </table>
+                                                                </FooterTemplate>
+                                                            </asp:Repeater>
+                                                        </fieldset>
+                                                    </div>
+                                                    <%-------------------------------------------------------End JOB Form----------------------------------------------------------------%>
+                                                    <div class="col-lg-12 col-md-12 ">
+                                                        <!-- form start -->
+                                                        <div class="form-horizontal">
+                                                            <%--<fieldset>  <legend>Job</legend>--%>
+                                                            <div class="box-body">
+                                                                <div class="col-md-12">
+                                                                    <button type="submit" runat="server" class="btn btn-primary" id="btnPutAway" title="btnPutAway" onserverclick="btnPutAway_ServerClick">PutAway</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-12 col-lg-12">
+                                                        <fieldset>
+                                                            <legend></legend>
+                                                            <asp:Repeater runat="server" ID="dgvConfirmDetailafter" OnItemDataBound="dgvConfirmDetailafter_ItemDataBound">
+                                                                <HeaderTemplate>
+                                                                    <table class="table table-condensed">
+                                                                       <th style="width: 30px">LOTNo</th>
+                                                                        <th style="width: 10px">WHSite</th>
+                                                                        <th style="width: 30px">PalletNo</th>
+                                                                        <th style="width: 10px">WHLocation</th>
+                                                                        <th style="width: 10px">CustomerLOTNo</th>
+                                                                        <th style="width: 5px">ItemNo</th>
+                                                                        <th style="width: 20px">ProductCode</th>
+                                                                        <th style="width: 10px">CustomerPN</th>
+                                                                        <th style="width: 2px">ProductVolume</th>
+                                                                </HeaderTemplate>
+                                                                <ItemTemplate>
+                                                                    <tr class="success">
+                                                                        <td>
+                                                                            <asp:Label ID="lblLOTNo" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblSite" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblPallet" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblLocation" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblCus" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblItem" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblPc" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblPn" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblProductVolume" runat="server"></asp:Label></td>
+                                                                    </tr>
+                                                                </ItemTemplate>
+                                                                <AlternatingItemTemplate>
+                                                                    <tr class="info">
+                                                                         <td>
+                                                                            <asp:Label ID="lblLOTNo" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblSite" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblPallet" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblLocation" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblCus" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblItem" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblPc" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblPn" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblProductVolume" runat="server"></asp:Label></td>
+                                                                    </tr>
+                                                                </AlternatingItemTemplate>
+                                                                <FooterTemplate>
+                                                                     <th style="width: 30px">LOTNo</th>
+                                                                        <th style="width: 10px">WHSite</th>
+                                                                        <th style="width: 30px">PalletNo</th>
+                                                                        <th style="width: 10px">WHLocation</th>
+                                                                        <th style="width: 10px">CustomerLOTNo</th>
+                                                                        <th style="width: 5px">ItemNo</th>
+                                                                        <th style="width: 20px">ProductCode</th>
+                                                                        <th style="width: 10px">CustomerPN</th>
+                                                                        <th style="width: 2px">ProductVolume</th>
+                                                                    </table>
+                                                                </FooterTemplate>
+                                                            </asp:Repeater>
+                                                        </fieldset>
+                                                    </div>
+                                                </fieldset>
+
                                             </div>
-                                            <!-- /.box-header -->
-                                            <%--</fieldset>--%>
+                                            <!--/.col-lg-6 col-md-6--->
                                         </div>
-                                        <!--/.col-lg-6 col-md-6 stockqty--->
+                                        <!--/.row-->
                                     </div>
-                                    <div class="col-md-12 col-lg-12">
-                                        <fieldset>
-                                            <legend></legend>
-                                            <asp:Repeater runat="server" ID="dgvConfirmDetail" OnItemDataBound="dgvConfirmDetail_ItemDataBound">
-                                                <HeaderTemplate>
-                                                    <table class="table table-bordered">
-                                                        <th style="width: 5px">select</th>
-                                                        <th style="width: 10px">LOTNo</th>
-                                                        <th style="width: 10px">WHSite</th>
-                                                        <th style="width: 10px">ENDCustomer</th>
-                                                        <th style="width: 10px">CustomerLOTNo</th>
-                                                        <th style="width: 5px">ItemNo</th>
-                                                        <th style="width: 10px">ProductCode</th>
-                                                        <th style="width: 10px">CustomerPN</th>
-                                                </HeaderTemplate>
-                                                <ItemTemplate>
-                                                    <tr class="success">
-                                                        <td class="text-center">
-                                                            <asp:CheckBox ID="chkCustomerID" runat="server"></asp:CheckBox></td>
-                                                        <td>
-                                                            <asp:Label ID="lblLOTNo" runat="server"></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblSite" runat="server"></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblEND" runat="server"></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblCus" runat="server"></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblItem" runat="server"></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblPc" runat="server"></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblPn" runat="server"></asp:Label></td>
-                                                    </tr>
-                                                </ItemTemplate>
-                                                <AlternatingItemTemplate>
-                                                    <tr class="info">
-                                                        <td class="text-center">
-                                                            <asp:CheckBox ID="chkCustomerID" runat="server"></asp:CheckBox></td>
-                                                        <td>
-                                                            <asp:Label ID="lblLOTNo" runat="server"></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblSite" runat="server"></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblEND" runat="server"></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblCus" runat="server"></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblItem" runat="server"></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblPc" runat="server"></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblPn" runat="server"></asp:Label></td>
-                                                    </tr>
-                                                </AlternatingItemTemplate>
-                                                <FooterTemplate>
-                                                    <th>select</th>
-                                                    <th>LOTNo</th>
-                                                    <th>WHSite</th>
-                                                    <th>ENDCustomer</th>
-                                                    <th>CustomerLOTNo</th>
-                                                    <th>ItemNo</th>
-                                                    <th>ProductCode</th>
-                                                    <th>CustomerPN</th>
-                                                    </table>
-                                                </FooterTemplate>
-                                            </asp:Repeater>
-                                        </fieldset>
-                                    </div>
-                                    </fieldset>
+                                    <!-- /.post -->
                                 </div>
-
-                                <!-- /.box-body -->
                             </div>
-                            <!--/.col-lg-6 col-md-6--->
                         </div>
-                        <!--/.row-->
-                    </div>
-                </div>
-                <!-- /.post -->
-            </div>
-       
-
-            <div role="tabpanel" class="tab-pane" id="putaway">
-                <!-- Post -->
-                <div class="post">
-                    <div class="row margin-bottom">
-                        <div class="col-lg-12 col-md-12">
-                            <div class="form-horizontal">
-                                <div class="box-body">
-                                    <fieldset runat="server" id="putaway_">
-                                        <legend></legend>
-                                        <div class="col-md-4 col-sm-4">
-                                            <div class="form-group">
-                                                <label for="dcbSite1" class="col-sm-4 control-label">WH/Site:</label>
-                                                <div class="col-sm-8">
-                                                    <asp:DropDownList ID="dcbSite1" CssClass="form-control input-sm" runat="server" OnSelectedIndexChanged="dcbSite1_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
-                                                </div>
-                                            </div>
-                                            <div class="form-group " style="height: 34px;">
-                                                <div class="col-lg5 col-md-5 col-sm-5">
-                                                    <div class="radio">
-                                                        <label>
-                                                            <asp:RadioButton runat="server" ID="rdbManual" Text="Manual" OnCheckedChanged="rdbManual_CheckedChanged" GroupName="option1" AutoPostBack="true" />
-                                                        </label>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-lg5 col-md-5 col-sm-5">
-                                                    <div class="radio">
-                                                        <label>
-                                                            <asp:RadioButton runat="server" ID="rdbAutoPallet" Text="Auto Pallet" OnCheckedChanged="rdbAutoPallet_CheckedChanged" GroupName="option1" AutoPostBack="true" />
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="txtmessages1_PutAway" class="col-sm-8 control-label">พื้นที่จัดเก็บ(ปริมาตร):</label>
-                                                <div class="col-sm-4">
-                                                    <input class="form-control input-sm" id="LblInValume" runat="server" autocomplete="off"/>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="txtmessages2_PutAway" class="col-sm-8 control-label">Jobอื่นใช้พื้นที่จัดเก็บ(ปริมาตร):</label>
-                                                <div class="col-sm-4">
-                                                    <input class="form-control input-sm" id="LblUseValume" runat="server" autocomplete="off" />
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label for="dcbLocation1" class="col-sm-4 control-label">WH/Location:</label>
-                                                <div class="col-sm-8">
-                                                    <asp:DropDownList ID="dcbLocation1" CssClass="form-control input-sm" runat="server" DataTextField="LocationNo" DataValueField="LocationNo" OnSelectedIndexChanged="dcbLocation1_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="txtRemark_PutAway" class="col-sm-4 control-label">Remark:</label>
-                                                <div class="col-sm-8">
-                                                    <textarea class="form-control input-sm" rows="1" id="txtRemarkP" placeholder="Remark" style="width: 563px;"></textarea>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="txtmessages3_PutAway" class="col-sm-8 control-label">พื้นที่จัดเก็บ(Pallet):</label>
-                                                <div class="col-sm-4">
-                                                    <input class="form-control input-sm" id="LblInpallet" runat="server" autocomplete="off" />
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="txtmessages4_PutAway" class="col-sm-8 control-label">Jobอื่นใช้พื้นที่จัดเก็บ(Pallet):</label>
-                                                <div class="col-sm-4">
-                                                    <input class="form-control input-sm" id="LblUsePallet" runat="server" autocomplete="off" />
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label for="txtPalletNo_PutAway" class="col-sm-4 control-label">Pallet No:</label>
-                                                <div class="col-sm-8">
-                                                    <input class="form-control input-sm" id="Txtpallet" runat="server" value="0" autocomplete="off" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12 col-lg-12">
-                                            <fieldset>
-                                                <legend></legend>
-                                                <asp:Repeater runat="server" ID="dgvConfirmDetailbefor" OnItemDataBound="dgvConfirmDetailbefor_ItemDataBound">
-                                                    <HeaderTemplate>
-                                                        <table class="table table-bordered">
-                                                            <th style="width: 2px">
-                                                                <asp:CheckBox runat="server" ID="chkAll_Item" Checked="false"></asp:CheckBox></th>
-                                                            <th style="width: 10px">LOTNo</th>
-                                                            <th style="width: 10px">WHSite</th>
-                                                            <th style="width: 10px">ENDCustomer</th>
-                                                            <th style="width: 10px">CustomerLOTNo</th>
-                                                            <th style="width: 5px">ItemNo</th>
-                                                            <th style="width: 10px">ProductCode</th>
-                                                            <th style="width: 10px">CustomerPN</th>
-                                                            <th style="width: 2px">Status</th>
-                                                    </HeaderTemplate>
-                                                    <ItemTemplate>
-                                                        <tr class="success">
-                                                            <td>
-                                                                <asp:CheckBox ID="chkLotNo" runat="server" OnCheckedChanged="chkLotNo_CheckedChanged" AutoPostBack="true"></asp:CheckBox></td>
-                                                            <td>
-                                                                <asp:Label ID="lblLOTNo" runat="server"></asp:Label></td>
-                                                            <td>
-                                                                <asp:Label ID="lblSite" runat="server"></asp:Label></td>
-                                                            <td>
-                                                                <asp:Label ID="lblEND" runat="server"></asp:Label></td>
-                                                            <td>
-                                                                <asp:Label ID="lblCus" runat="server"></asp:Label></td>
-                                                            <td>
-                                                                <asp:Label ID="lblItem" runat="server"></asp:Label></td>
-                                                            <td>
-                                                                <asp:Label ID="lblPc" runat="server"></asp:Label></td>
-                                                            <td>
-                                                                <asp:Label ID="lblPn" runat="server"></asp:Label></td>
-
-                                                            <td>
-                                                                <asp:Label ID="lblStatus" runat="server"></asp:Label></td>
-                                                        </tr>
-                                                    </ItemTemplate>
-                                                    <AlternatingItemTemplate>
-                                                        <tr class="info">
-
-                                                            <td>
-                                                                <asp:CheckBox ID="chkLotNo1" runat="server" OnCheckedChanged="chkLotNo1_CheckedChanged" AutoPostBack="true"></asp:CheckBox></td>
-                                                            <td>
-                                                                <asp:Label ID="lblLOTNo" runat="server"></asp:Label></td>
-                                                            <td>
-                                                                <asp:Label ID="lblSite" runat="server"></asp:Label></td>
-                                                            <td>
-                                                                <asp:Label ID="lblEND" runat="server"></asp:Label></td>
-                                                            <td>
-                                                                <asp:Label ID="lblCus" runat="server"></asp:Label></td>
-                                                            <td>
-                                                                <asp:Label ID="lblItem" runat="server"></asp:Label></td>
-                                                            <td>
-                                                                <asp:Label ID="lblPc" runat="server"></asp:Label></td>
-                                                            <td>
-                                                                <asp:Label ID="lblPn" runat="server"></asp:Label></td>
-                                                            <td>
-                                                                <asp:Label ID="lblStatus" runat="server"></asp:Label></td>
-                                                        </tr>
-                                                    </AlternatingItemTemplate>
-                                                    <FooterTemplate>
-                                                        <th>select</th>
-                                                        <th>LOTNo</th>
-                                                        <th>WHSite</th>
-                                                        <th>ENDCustomer</th>
-                                                        <th>CustomerLOTNo</th>
-                                                        <th>ItemNo</th>
-                                                        <th>ProductCode</th>
-                                                        <th>CustomerPN</th>
-                                                        <th>Status</th>
-                                                        </table>
-                                                    </FooterTemplate>
-                                                </asp:Repeater>
-                                            </fieldset>
-                                        </div>
-                                        <%-------------------------------------------------------End JOB Form----------------------------------------------------------------%>
-                                        <div class="col-lg-12 col-md-12 ">
-                                            <!-- form start -->
-                                            <div class="form-horizontal">
-                                                <%--<fieldset>  <legend>Job</legend>--%>
-                                                <div class="box-body">
-                                                    <div class="col-md-12">
-                                                        <button type="submit" runat="server" class="btn btn-primary" id="btnPutAway" title="btnPutAway" onserverclick="btnPutAway_ServerClick">PutAway</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-12 col-lg-12">
-                                            <fieldset>
-                                                <legend></legend>
-                                                <asp:Repeater runat="server" ID="dgvConfirmDetailafter" OnItemDataBound="dgvConfirmDetailafter_ItemDataBound">
-                                                    <HeaderTemplate>
-                                                        <table class="table table-bordered">
-                                                            <th style="width: 2px">
-                                                                <asp:CheckBox runat="server" ID="chkAll_Item" Checked="false"></asp:CheckBox></th>
-                                                            <th style="width: 10px">LOTNo</th>
-                                                            <th style="width: 10px">WHSite</th>
-                                                            <th style="width: 10px">ENDCustomer</th>
-                                                            <th style="width: 10px">CustomerLOTNo</th>
-                                                            <th style="width: 5px">ItemNo</th>
-                                                            <th style="width: 10px">ProductCode</th>
-                                                            <th style="width: 10px">CustomerPN</th>
-                                                            <th style="width: 2px">Status</th>
-                                                    </HeaderTemplate>
-                                                    <ItemTemplate>
-                                                        <tr class="success">
-                                                            <td>
-                                                                <asp:CheckBox ID="chkLotNo" runat="server" OnCheckedChanged="chkLotNo_CheckedChanged" AutoPostBack="true"></asp:CheckBox></td>
-                                                            <td>
-                                                                <asp:Label ID="lblLOTNo" runat="server"></asp:Label></td>
-                                                            <td>
-                                                                <asp:Label ID="lblSite" runat="server"></asp:Label></td>
-                                                            <td>
-                                                                <asp:Label ID="lblEND" runat="server"></asp:Label></td>
-                                                            <td>
-                                                                <asp:Label ID="lblCus" runat="server"></asp:Label></td>
-                                                            <td>
-                                                                <asp:Label ID="lblItem" runat="server"></asp:Label></td>
-                                                            <td>
-                                                                <asp:Label ID="lblPc" runat="server"></asp:Label></td>
-                                                            <td>
-                                                                <asp:Label ID="lblPn" runat="server"></asp:Label></td>
-
-                                                            <td>
-                                                                <asp:Label ID="lblStatus" runat="server"></asp:Label></td>
-                                                        </tr>
-                                                    </ItemTemplate>
-                                                    <AlternatingItemTemplate>
-                                                        <tr class="info">
-                                                            <td>
-                                                                <asp:CheckBox ID="chkLotNo" runat="server"></asp:CheckBox></td>
-                                                            <td>
-                                                                <asp:Label ID="lblLOTNo" runat="server"></asp:Label></td>
-                                                            <td>
-                                                                <asp:Label ID="lblSite" runat="server"></asp:Label></td>
-                                                            <td>
-                                                                <asp:Label ID="lblEND" runat="server"></asp:Label></td>
-                                                            <td>
-                                                                <asp:Label ID="lblCus" runat="server"></asp:Label></td>
-                                                            <td>
-                                                                <asp:Label ID="lblItem" runat="server"></asp:Label></td>
-                                                            <td>
-                                                                <asp:Label ID="lblPc" runat="server"></asp:Label></td>
-                                                            <td>
-                                                                <asp:Label ID="lblPn" runat="server"></asp:Label></td>
-                                                            <td>
-                                                                <asp:Label ID="lblStatus" runat="server"></asp:Label></td>
-                                                        </tr>
-                                                    </AlternatingItemTemplate>
-                                                    <FooterTemplate>
-                                                        <th>select</th>
-                                                        <th>LOTNo</th>
-                                                        <th>WHSite</th>
-                                                        <th>ENDCustomer</th>
-                                                        <th>CustomerLOTNo</th>
-                                                        <th>ItemNo</th>
-                                                        <th>ProductCode</th>
-                                                        <th>CustomerPN</th>
-                                                        <th>Status</th>
-                                                        </table>
-                                                    </FooterTemplate>
-                                                </asp:Repeater>
-                                            </fieldset>
-                                        </div>
-                                    </fieldset>
-
-                                </div>
-                                <!--/.col-lg-6 col-md-6--->
-                            </div>
-                            <!--/.row-->
-                        </div>
-                        <!-- /.post -->
+                        <asp:HiddenField ID="TabName" runat="server" />
                     </div>
                 </div>
             </div>
-                    <asp:HiddenField ID="TabName" runat="server" />
-            </div>
-</div>
-          
             <!-- /.row -->
         </section>
         <!-- /.content -->
@@ -1280,7 +1248,7 @@
 
                                             <asp:Repeater ID="dgvOwner" runat="server" OnItemDataBound="dgvOwner_ItemDataBound">
                                                 <HeaderTemplate>
-                                                    <table id="example1" class="table table-bordered table-striped table-responsive" style="overflow: auto;">
+                                                    <table id="example1" class="table table-condensed table-striped table-responsive" style="overflow: auto;">
                                                         <thead>
                                                             <tr>
                                                                 <th>select</th>
@@ -1296,7 +1264,7 @@
                                                 <ItemTemplate>
                                                     <tr>
                                                         <td class="text-center">
-                                                            <asp:LinkButton ID="lnkPartyCode_Owner" CssClass="btn bg-navy" runat="server" OnClick="lnkPartyCode_Owner_Click"><i class="fa fa-hand-o-up"></i></asp:LinkButton>
+                                                            <asp:LinkButton ID="lnkPartyCode_Owner" CssClass="btn bg-navy btn-sm" runat="server" OnClick="lnkPartyCode_Owner_Click"><i class="fa fa-hand-o-up"></i></asp:LinkButton>
                                                         </td>
                                                         <td>
                                                             <asp:Label ID="lblPartyCode" runat="server" Text="Label"></asp:Label></td>
@@ -1356,7 +1324,7 @@
 
                                             <asp:Repeater ID="dgvBroker" runat="server" OnItemDataBound="dgvBroker_ItemDataBound">
                                                 <HeaderTemplate>
-                                                    <table id="example2" class="table table-bordered table-striped table-responsive" style="overflow: auto;">
+                                                    <table id="example2" class="table table-condensed table-striped table-responsive" style="overflow: auto;">
                                                         <thead>
                                                             <tr>
                                                                 <th>select</th>
@@ -1372,7 +1340,7 @@
                                                 <ItemTemplate>
                                                     <tr>
                                                         <td class="text-center">
-                                                            <asp:LinkButton ID="lnkPartyCode_Broker" CssClass="btn bg-navy" runat="server" OnClick="lnkPartyCode_Broker_Click"><i class="fa fa-hand-o-up"></i></asp:LinkButton>
+                                                            <asp:LinkButton ID="lnkPartyCode_Broker" CssClass="btn bg-navy btn-sm" runat="server" OnClick="lnkPartyCode_Broker_Click"><i class="fa fa-hand-o-up"></i></asp:LinkButton>
                                                         </td>
                                                         <td>
                                                             <asp:Label ID="lblPartyCode" runat="server" Text="Label"></asp:Label></td>
@@ -1432,7 +1400,7 @@
 
                                             <asp:Repeater ID="dgvConsigneeCode" runat="server" OnItemDataBound="dgvConsigneeCode_ItemDataBound">
                                                 <HeaderTemplate>
-                                                    <table id="example3" class="table table-bordered table-striped table-responsive" style="overflow: auto;">
+                                                    <table id="example3" class="table table-condensed table-striped table-responsive" style="overflow: auto;">
                                                         <thead>
                                                             <tr>
                                                                 <th>select</th>
@@ -1448,7 +1416,7 @@
                                                 <ItemTemplate>
                                                     <tr>
                                                         <td class="text-center">
-                                                            <asp:LinkButton ID="lnkPartyCode_Con" CssClass="btn bg-navy" runat="server" OnClick="lnkPartyCode_Con_Click"><i class="fa fa-hand-o-up"></i></asp:LinkButton>
+                                                            <asp:LinkButton ID="lnkPartyCode_Con" CssClass="btn bg-navy btn-sm" runat="server" OnClick="lnkPartyCode_Con_Click"><i class="fa fa-hand-o-up"></i></asp:LinkButton>
                                                         </td>
                                                         <td>
                                                             <asp:Label ID="lblPartyCode" runat="server" Text="Label"></asp:Label></td>
@@ -1508,7 +1476,7 @@
 
                                             <asp:Repeater ID="dgvExporterCode" runat="server" OnItemDataBound="dgvExporterCode_ItemDataBound">
                                                 <HeaderTemplate>
-                                                    <table id="example4" class="table table-bordered table-striped table-responsive" style="overflow: auto;">
+                                                    <table id="example4" class="table table-condensed table-striped table-responsive" style="overflow: auto;">
                                                         <thead>
                                                             <tr>
                                                                 <th>select</th>
@@ -1523,7 +1491,7 @@
 
                                                 <ItemTemplate>
                                                     <td class="text-center">
-                                                        <asp:LinkButton ID="lnkPartyCode_Ex" CssClass="btn bg-navy" runat="server" OnClick="lnkPartyCode_Ex_Click"><i class="fa fa-hand-o-up"></i></asp:LinkButton>
+                                                        <asp:LinkButton ID="lnkPartyCode_Ex" CssClass="btn bg-navy btn-sm" runat="server" OnClick="lnkPartyCode_Ex_Click"><i class="fa fa-hand-o-up"></i></asp:LinkButton>
                                                     </td>
                                                     <td>
                                                         <asp:Label ID="lblPartyCode" runat="server" Text="Label"></asp:Label></td>
@@ -1584,7 +1552,7 @@
 
                                             <asp:Repeater ID="dgvPrepire" runat="server" OnItemDataBound="dgvPrepire_ItemDataBound">
                                                 <HeaderTemplate>
-                                                    <table id="example5" class="table table-bordered table-striped table-responsive" style="overflow: auto;">
+                                                    <table id="example5" class="table table-condensed table-striped table-responsive" style="overflow: auto;">
                                                         <thead>
                                                             <tr>
                                                                 <th>select</th>
@@ -1598,7 +1566,7 @@
 
                                                 <ItemTemplate>
                                                     <td class="text-center">
-                                                        <asp:LinkButton ID="lnkPartyCode_LOTNo" CssClass="btn bg-navy" runat="server" OnClick="lnkPartyCode_LOTNo_Click"><i class="fa fa-hand-o-up"></i></asp:LinkButton>
+                                                        <asp:LinkButton ID="lnkPartyCode_LOTNo" CssClass="btn bg-navy btn-sm" runat="server" OnClick="lnkPartyCode_LOTNo_Click"><i class="fa fa-hand-o-up"></i></asp:LinkButton>
                                                     </td>
                                                     <td>
                                                         <asp:Label ID="lblLOTNo" runat="server" Text="Label"></asp:Label></td>
@@ -1656,7 +1624,7 @@
 
                                             <asp:Repeater ID="dgvConfirmGood" runat="server" OnItemDataBound="dgvConfirmGood_ItemDataBound">
                                                 <HeaderTemplate>
-                                                    <table id="example5" class="table table-bordered table-striped table-responsive" style="overflow: auto;">
+                                                    <table id="example5" class="table table-condensed table-striped table-responsive" style="overflow: auto;">
                                                         <thead>
                                                             <tr>
                                                                 <th>select</th>
@@ -1670,7 +1638,7 @@
 
                                                 <ItemTemplate>
                                                     <td class="text-center">
-                                                        <asp:LinkButton ID="lnk_Confirm" CssClass="btn bg-navy" runat="server" OnClick="lnk_Confirm_Click"><i class="fa fa-hand-o-up"></i></asp:LinkButton>
+                                                        <asp:LinkButton ID="lnk_Confirm" CssClass="btn bg-navy btn-sm" runat="server" OnClick="lnk_Confirm_Click"><i class="fa fa-hand-o-up"></i></asp:LinkButton>
                                                     </td>
                                                     <td>
                                                         <asp:Label ID="lblLOTNo" runat="server" Text="Label"></asp:Label></td>
@@ -1711,9 +1679,9 @@
         <!-- End Shipper Modal -->
 
         <!-- Modal-->
-        
-  
-        
+
+
+
         <!-- End Shipper Modal -->
         <asp:Panel ID="ProductCodePanel" runat="server" CssClass="modal" TabIndex="-1" role="dialog" aria-labelledby="myLabe1">
             <%--<div class="modal fade" id="ProductCodeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">--%>
@@ -1732,7 +1700,7 @@
                                         <div class="col-lg-12 col-md-12 " style="overflow: auto;">
                                             <asp:Repeater ID="dgvProduct" runat="server" OnItemCommand="dgvProduct_ItemCommand">
                                                 <HeaderTemplate>
-                                                    <table id="example7" class="table table-bordered table-striped table-responsive" style="overflow: auto;">
+                                                    <table id="example7" class="table table-condensed table-striped table-responsive" style="overflow: auto;">
                                                         <thead>
                                                             <tr>
                                                                 <th>Select</th>
@@ -1748,7 +1716,7 @@
                                                 <ItemTemplate>
                                                     <tr>
                                                         <td class="text-center">
-                                                            <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectProductCode" CommandArgument='<%# Eval("ProductCode")%>'><i class="fa fa-hand-o-up"></i></asp:LinkButton>
+                                                            <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy btn-sm" runat="server" CausesValidation="False" CommandName="SelectProductCode" CommandArgument='<%# Eval("ProductCode")%>'><i class="fa fa-hand-o-up"></i></asp:LinkButton>
                                                         </td>
                                                         <td>
                                                             <asp:Label ID="lblPartyCode" runat="server" Text='<%# Bind("ProductCode")%>'></asp:Label></td>
@@ -1806,7 +1774,7 @@
                                         <div class="col-lg-12 col-md-12 " style="overflow: auto;">
                                             <asp:Repeater ID="dgvCustomer" runat="server" OnItemDataBound="dgvCustomer_ItemDataBound">
                                                 <HeaderTemplate>
-                                                    <table id="example6" class="table table-bordered table-striped table-responsive" style="overflow: auto;">
+                                                    <table id="example6" class="table table-condensed table-striped table-responsive" style="overflow: auto;">
                                                         <thead>
                                                             <tr>
                                                                 <th>Select</th>
@@ -1822,7 +1790,7 @@
                                                 <ItemTemplate>
                                                     <tr>
                                                         <td class="text-center">
-                                                            <asp:LinkButton ID="LinkButton3" CssClass="btn bg-navy" runat="server" OnClick="clickendcus_Click"><i class="fa fa-hand-o-up"></i></asp:LinkButton>
+                                                            <asp:LinkButton ID="LinkButton3" CssClass="btn bg-navy btn-sm" runat="server" OnClick="clickendcus_Click"><i class="fa fa-hand-o-up"></i></asp:LinkButton>
                                                         </td>
                                                         <td>
                                                             <asp:Label ID="lblPartyCode" runat="server" Text="Label"></asp:Label></td>
@@ -1897,14 +1865,14 @@
                 });
             });
         </script>
-               <script type="text/javascript">
-                   function EnableDisableChkUseDate() {
-                       var status = document.getElementById('<%=rdbManual.ClientID%>').checked;
+        <script type="text/javascript">
+            function EnableDisableChkUseDate() {
+                var status = document.getElementById('<%=rdbManual.ClientID%>').checked;
                 if (status == true) {
                     document.getElementById('<%=dcbLocation.ClientID%>').disabled = true;
-                    document.getElementById('<%=Txtpallet.ClientID%>').disabled = true;
-                } else if (status == false) {
-                    document.getElementById('<%=dcbLocation.ClientID%>').disabled = false;
+                           document.getElementById('<%=Txtpallet.ClientID%>').disabled = true;
+                       } else if (status == false) {
+                           document.getElementById('<%=dcbLocation.ClientID%>').disabled = false;
                     document.getElementById('<%=dcbLocation.ClientID%>').disabled = false;
                 }
         }
@@ -1914,6 +1882,8 @@
             function keyUP(txt) {
                 alert(txt.value);
             }
-    </script>
+        </script>
+
+
     </form>
 </asp:Content>

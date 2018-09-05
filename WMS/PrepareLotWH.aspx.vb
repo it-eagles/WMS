@@ -1157,11 +1157,6 @@ Public Class PrepareLotWH
             txtJobNo_PreGoodRec.Focus()
             Exit Sub
         End If
-
-
-        'sb.Append("UPDATE tblWHPrepairGoodsReceive")
-        'sb.Append(" SET LOTDate=@LOTDate,CustREFNo=@CustREFNo,OwnerCode=@OwnerCode,OwnerNameENG=@OwnerNameENG,OwnerStreet_Number=@OwnerStreet_Number,OwnerDistrict=@OwnerDistrict,OwnerSubProvince=@OwnerSubProvince,OwnerProvince=@OwnerProvince,CustomerCode=@CustomerCode,CustomerNameENG=@CustomerNameENG,CustomerStreet_Number=@CustomerStreet_Number,CustomerDistrict=@CustomerDistrict,CustomerSubProvince=@CustomerSubProvince,CustomerProvince=@CustomerProvince,BrokerCode=@BrokerCode,BrokerNameENG=@BrokerNameENG,BrokerStreet_Number=@BrokerStreet_Number,BrokerDistrict=@BrokerDistrict,BrokerSubprovince=@BrokerSubprovince,BrokerProvince=@BrokerProvince,ENDUserCode=@ENDUserCode,ENDNameENG=@ENDNameENG,ENDStreet_Number=@ENDStreet_Number,ENDDistrict=@ENDDistrict,ENDSubprovince=@ENDSubprovince,ENDProvince=@ENDProvince,Commodity=@Commodity,QuantityOfPart=@QuantityOfPart,QuantityUnit=@QuantityUnit,QuantityPackage=@QuantityPackage,PackageUNIT=@PackageUNIT,QuantityPLT=@QuantityPLT,QuantityPLTUnit=@QuantityPLTUnit,Weigth=@Weigth,WeigthUnit=@WeigthUnit,Volume=@Volume,VolumeUnit=@VolumeUnit,UserBy=@UserBy,LastUpdate=@LastUpdate,Remark=@Remark")
-        'sb.Append(" WHERE (LOTNo=@LOTNo)")
         If MsgBox("คุณต้องการแก้ไขรายการ PrepairLOT ใช่หรือไม่ ?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
             Using tran As New TransactionScope()
                 Try

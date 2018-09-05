@@ -639,58 +639,6 @@ Public Class SingleReceivedWH
 
         End If
     End Sub
-    Private Sub selectPickUpCode()
-        Dim pick_code As String
-
-        'If String.IsNullOrEmpty(txtPickUpCode.Value.Trim) Then
-        '    pick_code = ""
-
-        'Else
-        '    pick_code = txtPickUpCode.Value.Trim
-        'End If
-
-        'Dim cons = From p In db.tblParties Join pa In db.tblPartyAddresses On p.PartyCode Equals pa.PartyCode
-        'Where p.PartyCode = pick_code Or p.Consignee = "0"
-        'Select p.PartyCode, pa.PartyAddressCode, p.PartyFullName, pa.Address1, pa.Address2
-
-        'If cons.Count > 0 Then
-        '    dgvPickUp.DataSource = cons.ToList
-        '    dgvPickUp.DataBind()
-        '    ScriptManager.RegisterStartupScript(upPickUpCode, upPickUpCode.GetType(), "show", "$(function () { $('#" + plPickUpCode.ClientID + "').modal('show'); });", True)
-        '    upPickUpCode.Update()
-        'Else
-        '    ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('ไม่พบข้อมูล Customer Code นี้')", True)
-        '    Exit Sub
-
-        'End If
-    End Sub
-
-
-    Private Sub selectCustomerGroup()
-        '    Dim gro_code As String
-
-        '    If String.IsNullOrEmpty(txtCustomerCodeGroup.Value.Trim) Then
-        '        gro_code = ""
-
-        '    Else
-        '        gro_code = txtCustomerCodeGroup.Value.Trim
-        '    End If
-
-        '    Dim cons = From p In db.tblParties
-        '    Where p.PartyCode = gro_code Or p.Customer = "0"
-        '    Select p.PartyCode, p.PartyFullName
-
-        '    If cons.Count > 0 Then
-        '        dgvCustomerGroup.DataSource = cons.ToList
-        '        dgvCustomerGroup.DataBind()
-        '        ScriptManager.RegisterStartupScript(upCustomerGroup, upCustomerGroup.GetType(), "show", "$(function () { $('#" + plCustomerGroup.ClientID + "').modal('show'); });", True)
-        '        upCustomerGroup.Update()
-        '    Else
-        '        ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('ไม่พบข้อมูล Customer Code นี้')", True)
-        '        Exit Sub
-        '    End If
-    End Sub
-
     Protected Sub Unnamed_ServerClick1(sender As Object, e As EventArgs)
         selectBroker()
     End Sub
@@ -1706,6 +1654,8 @@ Public Class SingleReceivedWH
             Dim lblItem As Label = CType(e.Item.FindControl("lblItem"), Label)
             Dim lblPc As Label = CType(e.Item.FindControl("lblPc"), Label)
             Dim lblPn As Label = CType(e.Item.FindControl("lblPn"), Label)
+            Dim lblPv As Label = CType(e.Item.FindControl("lblProductVolume"), Label)
+            Dim lblPallet As Label = CType(e.Item.FindControl("lblPallet"), Label)
 
             If Not IsNothing(lblLOTNo) Then
                 lblLOTNo.Text = DataBinder.Eval(e.Item.DataItem, "LOTNo").ToString
@@ -1729,6 +1679,12 @@ Public Class SingleReceivedWH
 
             If Not IsNothing(lblPn) Then
                 lblPn.Text = DataBinder.Eval(e.Item.DataItem, "CustomerPN").ToString
+            End If
+            If Not IsNothing(lblPv) Then
+                lblPv.Text = DataBinder.Eval(e.Item.DataItem, "ProductVolume").ToString
+            End If
+            If Not IsNothing(lblPallet) Then
+
             End If
         End If
 
@@ -1738,11 +1694,13 @@ Public Class SingleReceivedWH
         If e.Item.ItemType = ListItemType.Item OrElse e.Item.ItemType = ListItemType.AlternatingItem Then
             Dim lblLOTNo As Label = CType(e.Item.FindControl("lblLOTNo"), Label)
             Dim lblSite As Label = CType(e.Item.FindControl("lblSite"), Label)
-            Dim lblEND As Label = CType(e.Item.FindControl("lblEND"), Label)
+            Dim lblEND As Label = CType(e.Item.FindControl("lblLocation"), Label)
             Dim lblCus As Label = CType(e.Item.FindControl("lblCus"), Label)
             Dim lblItem As Label = CType(e.Item.FindControl("lblItem"), Label)
             Dim lblPc As Label = CType(e.Item.FindControl("lblPc"), Label)
             Dim lblPn As Label = CType(e.Item.FindControl("lblPn"), Label)
+            Dim lblPv As Label = CType(e.Item.FindControl("lblProductVolume"), Label)
+            Dim lblPallet As Label = CType(e.Item.FindControl("lblPallet"), Label)
 
             If Not IsNothing(lblLOTNo) Then
                 lblLOTNo.Text = DataBinder.Eval(e.Item.DataItem, "LOTNo").ToString
@@ -1751,7 +1709,7 @@ Public Class SingleReceivedWH
                 lblSite.Text = DataBinder.Eval(e.Item.DataItem, "WHSite").ToString
             End If
             If Not IsNothing(lblEND) Then
-                lblEND.Text = DataBinder.Eval(e.Item.DataItem, "ENDCustomer").ToString
+                lblEND.Text = DataBinder.Eval(e.Item.DataItem, "WHLocation").ToString
             End If
             If Not IsNothing(lblCus) Then
                 lblCus.Text = DataBinder.Eval(e.Item.DataItem, "CustomerLOTNo").ToString
@@ -1766,6 +1724,12 @@ Public Class SingleReceivedWH
 
             If Not IsNothing(lblPn) Then
                 lblPn.Text = DataBinder.Eval(e.Item.DataItem, "CustomerPN").ToString
+            End If
+            If Not IsNothing(lblPv) Then
+                lblPv.Text = DataBinder.Eval(e.Item.DataItem, "ProductVolume").ToString
+            End If
+            If Not IsNothing(lblPallet) Then
+
             End If
         End If
 
@@ -1776,8 +1740,8 @@ Public Class SingleReceivedWH
         Dim wh = (From h In db.tblWHConfirmGoodsReceiveDetails Where h.LOTNo = txtLotNo_.Value.Trim And
                 h.StatusPutAlway = 0
                 Order By h.ItemNo Ascending
-                Select h.LOTNo, h.WHSite, h.ENDCustomer, h.CustomerLOTNo, h.ItemNo, h.ProductCode,
-                h.CustomerPN).ToList
+                Select h.LOTNo, h.WHSite, h.PalletNo, h.ENDCustomer, h.CustomerLOTNo, h.ItemNo, h.ProductCode,
+                h.CustomerPN, h.ProductVolume).ToList
 
         If wh.Count > 0 Then
             dgvConfirmDetailbefor.DataSource = wh
@@ -2185,19 +2149,169 @@ Public Class SingleReceivedWH
 
     End Sub
     Private Sub PutAlway()
-
+        Dim i As Integer = 0
+        Dim Vsum As Integer = 0
+        Dim Vsum1 As Integer = 0
+        Dim Vin As Integer = 0
+        Dim Vuse As Integer = 0
+        Dim Vinpallet As Integer = 0
+        Dim Vusepallet As Integer = 0
+        Dim Vpallet As String = ""
+        Dim Vpalletname As String = ""
+        Dim LocationName As String = ""
+        Dim Vmess As String = ""
+       
         If String.IsNullOrEmpty(dcbLocation.Text) Then
             ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ Location ก่อน !!!')", True)
             Exit Sub
         ElseIf String.IsNullOrEmpty(Txtpallet.Value.Trim) Or Txtpallet.Value.Trim = "0" Then
             ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ Location ก่อน !!!')", True)
             Exit Sub
-        End If
+        Else
+            For i = 0 To dgvConfirmDetailbefor.Items.Count - 1
+                Vpallet = CType(dgvConfirmDetailbefor.Items(i).FindControl("lblPallet"), Label).Text.Trim
+                If Vpallet <> "" And Mid(Vpallet, InStr(1, Vpallet, "/") + 1) = Txtpallet.Value.Trim Then
 
+                    Vsum = CInt(CType(dgvConfirmDetailbefor.Items(i).FindControl("lblProductVolume"), Label).Text) + Vsum
+
+                End If
+            Next
+            Vsum = 1
+
+            For j = 0 To dgvConfirmDetailafter.Items.Count - 1
+                If dcbLocation1.Text = CType(dgvConfirmDetailafter.Items(j).FindControl("lblLocation"), Label).Text.Trim Then
+                    Vsum = Vsum + CInt(CType(dgvConfirmDetailafter.Items(i).FindControl("lblProductVolume"), Label).Text)
+                    If Vpalletname <> CType(dgvConfirmDetailafter.Items(j).FindControl("lblPallet"), Label).Text.Trim Then
+                        Vpalletname = CType(dgvConfirmDetailafter.Items(j).FindControl("lblPallet"), Label).Text.Trim
+
+                    End If
+                End If
+            Next
+            Vin = CInt(LblInValume.Value.Trim)
+            Vuse = CInt(LblUseValume.Value.Trim)
+            Vinpallet = CInt(LblInpallet.Value.Trim)
+            Vusepallet = CInt(LblUsePallet.Value.Trim)
+            If LblInpallet.Value = "0" Then
+                If Vin <= (Vuse + Vsum) Then
+                    ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('Location นี้ มีพื้นที่น้อยกว่าที่คุณจะใช้  !!!')", True)
+                    Exit Sub
+
+                End If
+                Vmess = "Location  " & dcbLocation1.Text.Trim & "    Job Use " & Str(Vsum) & "  เหลือพื้นที่ที่ใช้ได้อีก  " & Str(Vin - (Vuse + Vsum + Vsum1)) & ""
+                Select Case MsgBox("" & Vmess & Chr(13) & Chr(13) & "คุณต้องการ Put Alway ใช่หรือไม่?", MsgBoxStyle.YesNo, "คำยืนยัน")
+                    Case MsgBoxResult.Yes
+                        Dim LotP As String = txtLotNo_.Value.Trim & "/" & Txtpallet.Value.Trim
+                        Try
+                            Dim com As tblWHConfirmGoodsReceiveDetail = (From c In db.tblWHConfirmGoodsReceiveDetails
+                                                                              Where c.LOTNo = txtLotNo_.Value.Trim _
+                                                                              And c.WHSite = dcbSite1.Text.Trim And c.PalletNo = LotP _
+                                                                              And c.StatusPutAlway = 0).First
+                            If com IsNot Nothing Then
+                                com.StatusPutAlway = 1
+                                com.WHLocation = dcbLocation1.Text.Trim
+                                com.Remark = txtRamark.Value.Trim
+                                db.SaveChanges()
+                            Else
+                                ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('ไม่พบข้อมูลที่จะทำการ Put Alway  !!!')", True)
+                            End If
+
+                            Dim sm As tblWHStockMovement = (From s In db.tblWHStockMovements Where _
+                             s.LOTNo = txtLotNo_.Value.Trim And s.WHSite = dcbSite1.Text.Trim _
+                            And s.PalletNo = LotP).First
+                            If sm IsNot Nothing Then
+                                sm.WHLocation = dcbLocation1.Text.Trim
+                                db.SaveChanges()
+                            End If
+
+                            If Vin = (Vuse + Vsum) Then
+                                Dim ln As tblWHLocation = (From l In db.tblWHLocations Where _
+                                      l.WHsite = dcbSite1.Text.Trim And l.LocationNo = dcbLocation1.Text.Trim).First
+                                If ln IsNot Nothing Then
+                                    ln.Usedstatus = 1
+                                    db.SaveChanges()
+                                End If
+
+                            End If
+                            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ Location ก่อน !!!')", True)
+                        Catch ex As Exception
+                            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด เนื่องจาก')", True)
+                        End Try
+                End Select
+
+            Else
+
+                If Vinpallet < (Vusepallet + Vsum1) Then
+                    ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('Location นี้ มีพื้นที่น้อยกว่าที่คุณจะใช้  !!!')", True)
+                    Exit Sub
+                Else
+                    Vmess = "Location  " & dcbLocation1.Text.Trim & "    Job Use " & Str(Vsum) & "  เหลือพื้นที่ที่ใช้ได้อีก  " & Str(Vin - (Vuse + Vsum + Vsum1)) & ""
+                    Select Case MsgBox("" & Vmess & Chr(13) & Chr(13) & "คุณต้องการ Put Alway ใช่หรือไม่?", MsgBoxStyle.YesNo, "คำยืนยัน")
+                        Case MsgBoxResult.Yes
+                            Dim LotP As String = txtLotNo_.Value.Trim & "/" & Txtpallet.Value.Trim
+                            Try
+                                Dim com As tblWHConfirmGoodsReceiveDetail = (From c In db.tblWHConfirmGoodsReceiveDetails
+                                                                                  Where c.LOTNo = txtLotNo_.Value.Trim _
+                                                                                  And c.WHSite = dcbSite1.Text.Trim And c.PalletNo = LotP _
+                                                                                  And c.StatusPutAlway = 0).First
+                                If com IsNot Nothing Then
+                                    com.StatusPutAlway = 1
+                                    com.WHLocation = dcbLocation1.Text.Trim
+                                    com.Remark = txtRamark.Value.Trim
+                                    db.SaveChanges()
+                                Else
+                                    ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('ไม่พบข้อมูลที่จะทำการ Put Alway  !!!')", True)
+                                End If
+
+                                Dim sm As tblWHStockMovement = (From s In db.tblWHStockMovements Where _
+                                 s.LOTNo = txtLotNo_.Value.Trim And s.WHSite = dcbSite1.Text.Trim _
+                                And s.PalletNo = LotP).First
+                                If sm IsNot Nothing Then
+                                    sm.WHLocation = dcbLocation1.Text.Trim
+                                    db.SaveChanges()
+                                End If
+
+                                If Vin = (Vuse + Vsum) Then
+                                    Dim ln As tblWHLocation = (From l In db.tblWHLocations Where _
+                                          l.WHsite = dcbSite1.Text.Trim And l.LocationNo = dcbLocation1.Text.Trim).First
+                                    If ln IsNot Nothing Then
+                                        ln.Usedstatus = 1
+                                        db.SaveChanges()
+                                    End If
+
+                                End If
+                                ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ Location ก่อน !!!')", True)
+                            Catch ex As Exception
+                                ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด เนื่องจาก')", True)
+                            End Try
+                    End Select
+                End If
+            End If
+
+        End If
+        
     End Sub
 
     Private Sub PutAlwayAuto()
+        Dim VsumPallet As Integer = 0
+        Dim otheruse As Integer
+        Dim Vpalletname As String = ""
+        Dim LocationName As String = ""
 
+        For i = 0 To dgvConfirmDetailbefor.Items.Count - 1
+            If Vpalletname <> CType(dgvConfirmDetailbefor.Items(i).FindControl("lblPallet"), Label).Text.Trim Then
+                Try
+                    Vpalletname = CType(dgvConfirmDetailbefor.Items(i).FindControl("lblPallet"), Label).Text.Trim
+                    VsumPallet = VsumPallet + 1
+
+                    Dim ln = (From l In db.tblWHLocations Where l.WHsite = dcbSite1.Text.Trim _
+                And l.Qtypallet <> 0 And l.Usedstatus = 0 Order By l.LocationNo Ascending
+                Select l.LocationNo, l.Qtypallet).Take(1)
+
+                Catch ex As Exception
+
+                End Try
+            End If
+        Next
     End Sub
 
     Protected Sub dcbSite1_SelectedIndexChanged(sender As Object, e As EventArgs)
@@ -2326,6 +2440,30 @@ Public Class SingleReceivedWH
 
     End Sub
 
+    Private Sub CheckStockUSEAuto()
+
+
+        'sb.Append("select sum(ProductVolume) as sumValume, 
+        'count(DISTINCT  SUBSTRING(PalletNo,CHARINDEX('/',PalletNo)+1,len(PalletNo)-CHARINDEX('/',PalletNo))) as Countpallet   
+
+
+        'Dim sb = From wc In db.tblWHConfirmGoodsReceiveDetails Where wc.WHSite = dcbSite1.Text.Trim And wc.WHLocation = dcbLocation1.Text.Trim _
+        '        And wc.LOTNo <> txtLotNo_.Value.Trim And wc.StatusAvailable = "0"
+        '        Group wc By wc.ProductVolume
+        '        Into p = Count(wc.P)
+        '        Select p
+
+
+        'If txtBrokerCode.Value = "" Then
+        '    LblUseValume.Value = ""
+        '    LblUsePallet.Value = ""
+        'Else
+        '    LblUseValume.Value = "0"
+        '    LblUsePallet.Value = "0"
+        'End If
+
+    End Sub
+
     Protected Sub dcboCurrency_SelectedIndexChanged(sender As Object, e As EventArgs)
         Dim tmpMount As Single
         Dim Nmount As String
@@ -2408,84 +2546,84 @@ Public Class SingleReceivedWH
         CallculateProductVolume()
     End Sub
 
-    Protected Sub chkLotNo1_CheckedChanged(sender As Object, e As EventArgs)
-        Dim chkName As CheckBox
-        Dim lblLOTNo As String
-        Dim lblItem As Integer
-        Dim i As Integer
-        Dim j As Integer
-        Dim name As ArrayList
-        name = New ArrayList
-        For i = 0 To dgvItemDetail.Items.Count - 1
-            chkName = CType(dgvItemDetail.Items(i).FindControl("chkLotNo1"), CheckBox)
-            lblLOTNo = CType(dgvItemDetail.Items(i).FindControl("lblLOTNo"), Label).Text.Trim
-            lblItem = CInt(CType(dgvItemDetail.Items(i).FindControl("lblItem"), Label).Text.Trim)
-            'lblName = CType(rptCustomers.Items(i).FindControl("lblName"), Label).Text.Trim
-            'lblBranch = CType(rptCustomers.Items(i).FindControl("lblBrnch"), Label).Text.Trim
-            If chkName.Checked = True Then
-                Dim wh = (From h In db.tblWHPrepairGoodsReceiveDetails Where h.LOTNo = lblLOTNo And h.ItemNo = lblItem
-                Select h).FirstOrDefault
-                dcbSite.Text = wh.WHSite
-                txtCustomer.Value = wh.ENDCustomer
-                dcbSource.Text = wh.WHSource
-                txtCusLOTNo.Value = wh.CustomerLOTNo
-                txtItemNo.Value = String.Format("{0:0.00}", wh.ItemNo)
-                txtProductCode.Value = wh.ProductCode
-                txtProductDesc2.Value = wh.CustomerPN
-                txtProductDesc3.Value = wh.OwnerPN
-                txtProductDesc1.Value = wh.ProductDesc
-                ddlProductUnit.Text = wh.Measurement
-                txtProductWidth_.Text = String.Format("{0:0.00}", wh.ProductWidth)
-                txtProductHeight_.Text = String.Format("{0:0.00}", wh.ProductLength)
-                txtProductLeng_.Text = String.Format("{0:0.00}", wh.ProductHeight)
-                txtProductVolume.Value = String.Format("{0:0.00}", wh.ProductVolume)
-                txtOrder.Value = wh.OrderNo
-                txtReceive.Value = wh.ReceiveNo
-                dcbType.Text = wh.Type
-                txtManufacturingDate.Text = Convert.ToDateTime(wh.ManufacturingDate).ToString("dd/MM/yyyy")
-                If String.IsNullOrEmpty(txtManufacturingDate.Text) Then
-                    CbNotDate.Checked = True
-                Else
-                    CbNotDate.Checked = False
-                End If
-                txtExpiredDate.Text = Convert.ToDateTime(wh.ExpiredDate).ToString("dd/MM/yyyy")
-                txtExpectedDate.Text = Convert.ToDateTime(wh.ReceiveDate).ToString("dd/MM/yyyy")
-                txtQuantity.Value = String.Format("{0:0.00}", wh.Quantity)
-                ddlUnit4.Text = wh.QuantityUnit
-                txtWeightDetail.Value = String.Format("{0:0.00}", wh.Weigth)
-                dcboUnitWeightDetail.Text = wh.WeigthUnit
-                dcboCurrency.Text = wh.Currency
-                txtExchangeRate.Value = String.Format("{0:0.00}", wh.ExchangeRate)
-                txtPriceForeigh_.Text = String.Format("{0:0.00}", wh.PriceForeigh)
-                txtPriceBath.Value = String.Format("{0:0.00}", wh.PriceBath)
-                txtPriceForeighAmount.Value = String.Format("{0:0.00}", wh.PriceForeighAmount)
-                txtPriceBathAmount.Value = String.Format("{0:0.00}", wh.PriceBathAmount)
-                txtPalletNo.Value = wh.PalletNo
-                Status = CStr(wh.Status)
-                txtSupplier.Value = wh.Supplier
-                txtBuyer.Value = wh.Buyer
-                txtExporter.Value = wh.Exporter
-                txtDestination.Value = wh.Destination
-                txtConsignee.Value = wh.Consignee
-                txtShippingMark.Value = wh.ShippingMark
-                txtEntryNo.Value = wh.EntryNo
-                txtEntryItemNo.Value = CStr(wh.EntryItemNo)
-                txtInvoice.Value = wh.Invoice
-                If Status = "2" Then
-                    rbShort.Checked = True
-                    rbOver.Checked = False
-                ElseIf Status = "3" Then
-                    rbOver.Checked = True
-                    rbShort.Checked = False
-                Else
-                    rbOver.Checked = False
-                    rbShort.Checked = False
-                End If
-                'If lblLOTNo = wh.LOTNo Then
-                '    chkName.Checked = False
-                'End If
+    'Protected Sub chkLotNo1_CheckedChanged(sender As Object, e As EventArgs)
+    '    Dim chkName As CheckBox
+    '    Dim lblLOTNo As String
+    '    Dim lblItem As Integer
+    '    Dim i As Integer
+    '    Dim j As Integer
+    '    Dim name As ArrayList
+    '    name = New ArrayList
+    '    For i = 0 To dgvItemDetail.Items.Count - 1
+    '        chkName = CType(dgvItemDetail.Items(i).FindControl("chkLotNo1"), CheckBox)
+    '        lblLOTNo = CType(dgvItemDetail.Items(i).FindControl("lblLOTNo"), Label).Text.Trim
+    '        lblItem = CInt(CType(dgvItemDetail.Items(i).FindControl("lblItem"), Label).Text.Trim)
+    '        'lblName = CType(rptCustomers.Items(i).FindControl("lblName"), Label).Text.Trim
+    '        'lblBranch = CType(rptCustomers.Items(i).FindControl("lblBrnch"), Label).Text.Trim
+    '        If chkName.Checked = True Then
+    '            Dim wh = (From h In db.tblWHPrepairGoodsReceiveDetails Where h.LOTNo = lblLOTNo And h.ItemNo = lblItem
+    '            Select h).FirstOrDefault
+    '            dcbSite.Text = wh.WHSite
+    '            txtCustomer.Value = wh.ENDCustomer
+    '            dcbSource.Text = wh.WHSource
+    '            txtCusLOTNo.Value = wh.CustomerLOTNo
+    '            txtItemNo.Value = String.Format("{0:0.00}", wh.ItemNo)
+    '            txtProductCode.Value = wh.ProductCode
+    '            txtProductDesc2.Value = wh.CustomerPN
+    '            txtProductDesc3.Value = wh.OwnerPN
+    '            txtProductDesc1.Value = wh.ProductDesc
+    '            ddlProductUnit.Text = wh.Measurement
+    '            txtProductWidth_.Text = String.Format("{0:0.00}", wh.ProductWidth)
+    '            txtProductHeight_.Text = String.Format("{0:0.00}", wh.ProductLength)
+    '            txtProductLeng_.Text = String.Format("{0:0.00}", wh.ProductHeight)
+    '            txtProductVolume.Value = String.Format("{0:0.00}", wh.ProductVolume)
+    '            txtOrder.Value = wh.OrderNo
+    '            txtReceive.Value = wh.ReceiveNo
+    '            dcbType.Text = wh.Type
+    '            txtManufacturingDate.Text = Convert.ToDateTime(wh.ManufacturingDate).ToString("dd/MM/yyyy")
+    '            If String.IsNullOrEmpty(txtManufacturingDate.Text) Then
+    '                CbNotDate.Checked = True
+    '            Else
+    '                CbNotDate.Checked = False
+    '            End If
+    '            txtExpiredDate.Text = Convert.ToDateTime(wh.ExpiredDate).ToString("dd/MM/yyyy")
+    '            txtExpectedDate.Text = Convert.ToDateTime(wh.ReceiveDate).ToString("dd/MM/yyyy")
+    '            txtQuantity.Value = String.Format("{0:0.00}", wh.Quantity)
+    '            ddlUnit4.Text = wh.QuantityUnit
+    '            txtWeightDetail.Value = String.Format("{0:0.00}", wh.Weigth)
+    '            dcboUnitWeightDetail.Text = wh.WeigthUnit
+    '            dcboCurrency.Text = wh.Currency
+    '            txtExchangeRate.Value = String.Format("{0:0.00}", wh.ExchangeRate)
+    '            txtPriceForeigh_.Text = String.Format("{0:0.00}", wh.PriceForeigh)
+    '            txtPriceBath.Value = String.Format("{0:0.00}", wh.PriceBath)
+    '            txtPriceForeighAmount.Value = String.Format("{0:0.00}", wh.PriceForeighAmount)
+    '            txtPriceBathAmount.Value = String.Format("{0:0.00}", wh.PriceBathAmount)
+    '            txtPalletNo.Value = wh.PalletNo
+    '            Status = CStr(wh.Status)
+    '            txtSupplier.Value = wh.Supplier
+    '            txtBuyer.Value = wh.Buyer
+    '            txtExporter.Value = wh.Exporter
+    '            txtDestination.Value = wh.Destination
+    '            txtConsignee.Value = wh.Consignee
+    '            txtShippingMark.Value = wh.ShippingMark
+    '            txtEntryNo.Value = wh.EntryNo
+    '            txtEntryItemNo.Value = CStr(wh.EntryItemNo)
+    '            txtInvoice.Value = wh.Invoice
+    '            If Status = "2" Then
+    '                rbShort.Checked = True
+    '                rbOver.Checked = False
+    '            ElseIf Status = "3" Then
+    '                rbOver.Checked = True
+    '                rbShort.Checked = False
+    '            Else
+    '                rbOver.Checked = False
+    '                rbShort.Checked = False
+    '            End If
+    '            'If lblLOTNo = wh.LOTNo Then
+    '            '    chkName.Checked = False
+    '            'End If
 
-            End If
-        Next
-    End Sub
+    '        End If
+    '    Next
+    'End Sub
 End Class

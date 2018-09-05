@@ -23,49 +23,59 @@
                             <h3 class="box-title">CK Editor
                            <small>Advanced and full of features</small>
                             </h3>
-            
+
                             <!-- /. tools -->
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body pad">
-                          <asp:TextBox runat="server" ID="txttest" CssClass="form-control input-sm" AutoPostBack="true" OnTextChanged="txttest_TextChanged"></asp:TextBox>
-                          <asp:Repeater ID="rptCustomers" runat="server" OnItemDataBound="rptCustomers_ItemDataBound">
-                                    <HeaderTemplate>
-                                        <table id="tblCustomers" class="table table-bordered">
-                                            <thead>
-                                                <tr>
-                                                    <th style="width: 5px">
-                                                        <asp:CheckBox ID="chkAll" runat="server" Checked="false" /></th>
-                                                    <th>UserName</th>
-                                                    <th>Name</th>
-                                                    <th>Branch</th>
-                                                    <th>Dept</th>
+                            <div class="form-group">
+                                <label class="col-sm-2">Test</label>  
+                                <div class="col-md-4">
+                                        <input class="form-control input-sm" runat="server" id="txtFile" type="file" />
+                                </div>   
+                               <div class="colmd-4">
+                                   <button runat="server" id="btnAdd" class="btn btn-pinterest" onserverclick="btnAdd_ServerClick"></button>
+                               </div>
+                                <%--<asp:TextBox runat="server" ID="txttest" CssClass="form-control input-sm" AutoPostBack="true" OnTextChanged="txttest_TextChanged"></asp:TextBox>--%>
+                            </div>
 
-                                                </tr>
-                                            </thead>
-                                    </HeaderTemplate>
-                                    <ItemTemplate>
-                                        <tr>
-                                            <td>
-                                                <asp:CheckBox ID="chkRowData" runat="server" AutoPostBack="true" OnCheckedChanged="chkAll_CheckedChanged"  /></td>
-                                            <td>
-                                                <asp:Label ID="lblUserName" runat="server"></asp:Label></td>
-                                            <td>
-                                                <asp:Label ID="lblName" runat="server"></asp:Label></td>
-                                            <td>
-                                                <asp:Label ID="lblBrnch" runat="server"></asp:Label>
-                                            </td>
-                                            <td>
-                                                <asp:Label ID="lblDept" runat="server"></asp:Label></td>
-                                        </tr>
+                            <asp:Repeater ID="rptCustomers" runat="server" OnItemDataBound="rptCustomers_ItemDataBound">
+                                <HeaderTemplate>
+                                    <table id="tblCustomers" class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th style="width: 5px">
+                                                    <asp:CheckBox ID="chkAll" runat="server" Checked="false" /></th>
+                                                <th>UserName</th>
+                                                <th>Name</th>
+                                                <th>Branch</th>
+                                                <th>Dept</th>
 
-                                    </ItemTemplate>
+                                            </tr>
+                                        </thead>
+                                </HeaderTemplate>
+                                <ItemTemplate>
+                                    <tr>
+                                        <td>
+                                            <asp:CheckBox ID="chkRowData" runat="server" AutoPostBack="true" OnCheckedChanged="chkAll_CheckedChanged" /></td>
+                                        <td>
+                                            <asp:Label ID="lblUserName" runat="server"></asp:Label></td>
+                                        <td>
+                                            <asp:Label ID="lblName" runat="server"></asp:Label></td>
+                                        <td>
+                                            <asp:Label ID="lblBrnch" runat="server"></asp:Label>
+                                        </td>
+                                        <td>
+                                            <asp:Label ID="lblDept" runat="server"></asp:Label></td>
+                                    </tr>
 
-                                    <FooterTemplate>
-                                        </table>
-                                    </FooterTemplate>
-                                </asp:Repeater>
-                           
+                                </ItemTemplate>
+
+                                <FooterTemplate>
+                                    </table>
+                                </FooterTemplate>
+                            </asp:Repeater>
+
                         </div>
                     </div>
                     <!-- /.box -->
@@ -155,7 +165,18 @@
             });
         </script>
 
-       
-</script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#tblCustomers').dataTable({
+                    'paging': true,
+                    'lengthChange': false,
+                    'searching': false,
+                    'ordering': true,
+                    'info': true,
+                    'autoWidth': false
+                })
+            });
+        </script>
+
     </form>
 </asp:Content>

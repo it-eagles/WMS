@@ -32,13 +32,22 @@ Partial Public Class Test
     Protected WithEvents ScriptManager1 As Global.System.Web.UI.ScriptManager
 
     '''<summary>
-    '''txttest control.
+    '''txtFile control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txttest As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents txtFile As Global.System.Web.UI.HtmlControls.HtmlInputFile
+
+    '''<summary>
+    '''btnAdd control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnAdd As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
     '''rptCustomers control.

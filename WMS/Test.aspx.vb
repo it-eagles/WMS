@@ -2,6 +2,9 @@
 Option Explicit On
 
 Imports System.Data
+Imports LinqToExcel
+Imports ExcelDataReader
+
 Public Class Test
     Inherits System.Web.UI.Page
     Dim db As New LKBWarehouseEntities1
@@ -222,28 +225,28 @@ Public Class Test
     End Sub
 
     Protected Sub chkAll_CheckedChanged(sender As Object, e As EventArgs)
-        'Dim chkName As CheckBox
-        'Dim lblUserName As String
-        'Dim i As Integer
-        'Dim j As Integer
-        'Dim name As ArrayList
-        'name = New ArrayList
-        'For i = 0 To rptCustomers.Items.Count - 1
-        '    chkName = CType(rptCustomers.Items(i).FindControl("chkRowData"), CheckBox)
-        '    lblUserName = CType(rptCustomers.Items(i).FindControl("lblUserName"), Label).Text.Trim
-        '    'lblName = CType(rptCustomers.Items(i).FindControl("lblName"), Label).Text.Trim
-        '    'lblBranch = CType(rptCustomers.Items(i).FindControl("lblBrnch"), Label).Text.Trim
-        '    If chkName.Checked = True Then
-        '        Dim us = (From u In db.tblUsers Where u.UserName = lblUserName).FirstOrDefault
-        '        txtUserName.Value = us.UserName
-        '        txtName.Value = us.Name
-        '        txtDept.Value = us.Dept
-        '        txtBranch.Value = us.Branch
-        '    End If
-        'Next     
+        Dim chkName As CheckBox
+        Dim lblUserName As String
+        Dim i As Integer
+        Dim j As Integer
+        Dim name As ArrayList
+        name = New ArrayList
+        For i = 0 To rptCustomers.Items.Count - 1
+            chkName = CType(rptCustomers.Items(i).FindControl("chkRowData"), CheckBox)
+            lblUserName = CType(rptCustomers.Items(i).FindControl("lblUserName"), Label).Text.Trim
+            'lblName = CType(rptCustomers.Items(i).FindControl("lblName"), Label).Text.Trim
+            'lblBranch = CType(rptCustomers.Items(i).FindControl("lblBrnch"), Label).Text.Trim
+            If chkName.Checked = True Then
+                Dim us = (From u In db.tblUsers Where u.UserName = lblUserName).FirstOrDefault
+                'txttest.Text = us.UserName
+                'txtName.Value = us.Name
+                'txtDept.Value = us.Dept
+                'txtBranch.Value = us.Branch
+            End If
+        Next
     End Sub
 
-    Protected Sub txttest_TextChanged(sender As Object, e As EventArgs) Handles txttest.TextChanged
-        MsgBox(txttest.Text)
-    End Sub
+    'Protected Sub txttest_TextChanged(sender As Object, e As EventArgs) Handles txttest.TextChanged
+    '    MsgBox(txttest.Text)
+    '
 End Class
