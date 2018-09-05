@@ -2214,6 +2214,14 @@ ScriptManager1 control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
+</member><member name="F:WMS.Test.txttest">
+	<summary>
+txttest control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
 </member><member name="F:WMS.Test.rptCustomers">
 	<summary>
 rptCustomers control.
@@ -13927,25 +13935,25 @@ ddlProductUnit control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.SingleReceivedWH.txtProductWidth">
+</member><member name="F:WMS.SingleReceivedWH.txtProductWidth_">
 	<summary>
-txtProductWidth control.
+txtProductWidth_ control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.SingleReceivedWH.txtProductHeight">
+</member><member name="F:WMS.SingleReceivedWH.txtProductHeight_">
 	<summary>
-txtProductHeight control.
+txtProductHeight_ control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.SingleReceivedWH.txtProductLeng">
+</member><member name="F:WMS.SingleReceivedWH.txtProductLeng_">
 	<summary>
-txtProductLeng control.
+txtProductLeng_ control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -14127,9 +14135,9 @@ dcboCurrency control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.SingleReceivedWH.txtPriceForeigh">
+</member><member name="F:WMS.SingleReceivedWH.txtPriceForeigh_">
 	<summary>
-txtPriceForeigh control.
+txtPriceForeigh_ control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -18391,43 +18399,25 @@ txtAddress1Consignee_IssueCon control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-<<<<<<< HEAD
-</member><member name="F:WMS.SingleReceivedWH.txtProductWidth_">
-	<summary>
-txtProductWidth_ control.
-=======
 </member><member name="F:WMS.SingleIssuedWH.txtAddress2Consignee_IssueCon">
 	<summary>
 txtAddress2Consignee_IssueCon control.
->>>>>>> 4c97da26cdb59ac74fb8dfa5a2a426dc0d2519d6
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-<<<<<<< HEAD
-</member><member name="F:WMS.SingleReceivedWH.txtProductHeight_">
-	<summary>
-txtProductHeight_ control.
-=======
 </member><member name="F:WMS.SingleIssuedWH.txtAddress3Consignee_IssueCon">
 	<summary>
 txtAddress3Consignee_IssueCon control.
->>>>>>> 4c97da26cdb59ac74fb8dfa5a2a426dc0d2519d6
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-<<<<<<< HEAD
-</member><member name="F:WMS.SingleReceivedWH.txtProductLeng_">
-	<summary>
-txtProductLeng_ control.
-=======
 </member><member name="F:WMS.SingleIssuedWH.txtAddress4Consignee_IssueCon">
 	<summary>
 txtAddress4Consignee_IssueCon control.
->>>>>>> 4c97da26cdb59ac74fb8dfa5a2a426dc0d2519d6
 </summary>
 	<remarks>
 Auto-generated field.
@@ -18609,15 +18599,9 @@ btnEASPN_ConfirmIssue control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-<<<<<<< HEAD
-</member><member name="F:WMS.SingleReceivedWH.txtPriceForeigh_">
-	<summary>
-txtPriceForeigh_ control.
-=======
 </member><member name="F:WMS.SingleIssuedWH.txtProductDesc_ConfirmIssue">
 	<summary>
 txtProductDesc_ConfirmIssue control.
->>>>>>> 4c97da26cdb59ac74fb8dfa5a2a426dc0d2519d6
 </summary>
 	<remarks>
 Auto-generated field.
@@ -21135,19 +21119,7 @@ rdbConfirm_ control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-<<<<<<< HEAD
-</member><member name="F:WMS.Test.txttest">
-	<summary>
-txttest control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.Test.rptCustomers">
-=======
 </member><member name="F:WMS.MasterPartyEdit.rdbPending_">
->>>>>>> 4c97da26cdb59ac74fb8dfa5a2a426dc0d2519d6
 	<summary>
 rdbPending_ control.
 </summary>

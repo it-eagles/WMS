@@ -1019,19 +1019,19 @@
                                                                         <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="Selectdataissueddetail" CommandArgument='<%# Eval("ItemNo")%>'><i class="fa fa-hand-o-up"></i></asp:LinkButton>
                                                                     </td>
                                                                     <td>
-                                                                        <asp:Label ID="lblPartyCode" runat="server" Text='<%# Bind("PullSignal")%>'></asp:Label></td>
+                                                                        <asp:Label ID="lblPullSignal" runat="server" Text='<%# Bind("PullSignal")%>'></asp:Label></td>
                                                                     <td>
-                                                                        <asp:Label ID="lblPartyFullName" runat="server" Text='<%# Bind("LOTNo")%>'></asp:Label></td>
+                                                                        <asp:Label ID="lblLOTNo" runat="server" Text='<%# Bind("LOTNo")%>'></asp:Label></td>
                                                                     <td>
-                                                                        <asp:Label ID="Label5" runat="server" Text='<%# Bind("ItemNo")%>'></asp:Label></td>
+                                                                        <asp:Label ID="lblItemNo" runat="server" Text='<%# Bind("ItemNo")%>'></asp:Label></td>
                                                                     <td>
-                                                                        <asp:Label ID="Label1" runat="server" Text='<%# Bind("WHSite")%>'></asp:Label></td>
+                                                                        <asp:Label ID="lblWHSite" runat="server" Text='<%# Bind("WHSite")%>'></asp:Label></td>
                                                                     <td>
-                                                                        <asp:Label ID="Label2" runat="server" Text='<%# Bind("WHLocation")%>'></asp:Label></td>
+                                                                        <asp:Label ID="lblWHLocation" runat="server" Text='<%# Bind("WHLocation")%>'></asp:Label></td>
                                                                     <td>
-                                                                        <asp:Label ID="Label3" runat="server" Text='<%# Bind("ENDCustomer")%>'></asp:Label></td>
+                                                                        <asp:Label ID="lblENDCustomer" runat="server" Text='<%# Bind("ENDCustomer")%>'></asp:Label></td>
                                                                     <td>
-                                                                        <asp:Label ID="Label4" runat="server" Text='<%# Bind("CustomerLOTNo")%>'></asp:Label></td>
+                                                                        <asp:Label ID="lblCustomerLOTNo" runat="server" Text='<%# Bind("CustomerLOTNo")%>'></asp:Label></td>
                                                                 </tr>
 
                                                             </ItemTemplate>
