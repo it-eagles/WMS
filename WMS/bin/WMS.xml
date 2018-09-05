@@ -2094,7 +2094,59 @@ CalendarExtenderToDate control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
+<<<<<<< HEAD
 </member><member name="F:WMS.RptCarton.rdbStock">
+=======
+</member><member name="F:WMS.RptJobSheet.ddlJobSite">
+	<summary>
+ddlJobSite control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptJobSheet.btnPrint">
+	<summary>
+btnPrint control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptJobSheet.btnClose">
+	<summary>
+btnClose control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.Test.form1">
+	<summary>
+form1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.Test.ScriptManager1">
+	<summary>
+ScriptManager1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.Test.txttest">
+	<summary>
+txttest control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.Test.rptCustomers">
+>>>>>>> 280f482bfa787c9bd443a45bbffcaa28c5fa11a6
 	<summary>
 rdbStock control.
 </summary>
@@ -13927,25 +13979,43 @@ txtAddress2 control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
+<<<<<<< HEAD
 </member><member name="F:WMS.CreateRec.txtAddress3">
 	<summary>
 txtAddress3 control.
+=======
+</member><member name="F:WMS.SingleReceivedWH.txtProductWidth_">
+	<summary>
+txtProductWidth_ control.
+>>>>>>> 280f482bfa787c9bd443a45bbffcaa28c5fa11a6
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
+<<<<<<< HEAD
 </member><member name="F:WMS.CreateRec.txtAddress4">
 	<summary>
 txtAddress4 control.
+=======
+</member><member name="F:WMS.SingleReceivedWH.txtProductHeight_">
+	<summary>
+txtProductHeight_ control.
+>>>>>>> 280f482bfa787c9bd443a45bbffcaa28c5fa11a6
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
+<<<<<<< HEAD
 </member><member name="F:WMS.CreateRec.txtAddress5">
 	<summary>
 txtAddress5 control.
+=======
+</member><member name="F:WMS.SingleReceivedWH.txtProductLeng_">
+	<summary>
+txtProductLeng_ control.
+>>>>>>> 280f482bfa787c9bd443a45bbffcaa28c5fa11a6
 </summary>
 	<remarks>
 Auto-generated field.
@@ -14127,9 +14197,15 @@ txtActual3 control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
+<<<<<<< HEAD
 </member><member name="F:WMS.CreateRec.txtdatepickerActualDate3">
 	<summary>
 txtdatepickerActualDate3 control.
+=======
+</member><member name="F:WMS.SingleReceivedWH.txtPriceForeigh_">
+	<summary>
+txtPriceForeigh_ control.
+>>>>>>> 280f482bfa787c9bd443a45bbffcaa28c5fa11a6
 </summary>
 	<remarks>
 Auto-generated field.
@@ -18391,25 +18467,43 @@ ddlProductUnit control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
+<<<<<<< HEAD
 </member><member name="F:WMS.SingleReceivedWH.txtProductWidth_">
 	<summary>
 txtProductWidth_ control.
+=======
+</member><member name="F:WMS.SingleIssuedWH.txtAddress2Consignee_IssueCon">
+	<summary>
+txtAddress2Consignee_IssueCon control.
+>>>>>>> 280f482bfa787c9bd443a45bbffcaa28c5fa11a6
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
+<<<<<<< HEAD
 </member><member name="F:WMS.SingleReceivedWH.txtProductHeight_">
 	<summary>
 txtProductHeight_ control.
+=======
+</member><member name="F:WMS.SingleIssuedWH.txtAddress3Consignee_IssueCon">
+	<summary>
+txtAddress3Consignee_IssueCon control.
+>>>>>>> 280f482bfa787c9bd443a45bbffcaa28c5fa11a6
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
+<<<<<<< HEAD
 </member><member name="F:WMS.SingleReceivedWH.txtProductLeng_">
 	<summary>
 txtProductLeng_ control.
+=======
+</member><member name="F:WMS.SingleIssuedWH.txtAddress4Consignee_IssueCon">
+	<summary>
+txtAddress4Consignee_IssueCon control.
+>>>>>>> 280f482bfa787c9bd443a45bbffcaa28c5fa11a6
 </summary>
 	<remarks>
 Auto-generated field.
@@ -18591,9 +18685,15 @@ dcboCurrency control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
+<<<<<<< HEAD
 </member><member name="F:WMS.SingleReceivedWH.txtPriceForeigh_">
 	<summary>
 txtPriceForeigh_ control.
+=======
+</member><member name="F:WMS.SingleIssuedWH.txtProductDesc_ConfirmIssue">
+	<summary>
+txtProductDesc_ConfirmIssue control.
+>>>>>>> 280f482bfa787c9bd443a45bbffcaa28c5fa11a6
 </summary>
 	<remarks>
 Auto-generated field.
@@ -21111,6 +21211,7 @@ ScriptManager1 control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
+<<<<<<< HEAD
 </member><member name="F:WMS.Test.txttest">
 	<summary>
 txttest control.
@@ -21120,6 +21221,9 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member><member name="F:WMS.Test.rptCustomers">
+=======
+</member><member name="F:WMS.MasterPartyEdit.rdbPending_">
+>>>>>>> 280f482bfa787c9bd443a45bbffcaa28c5fa11a6
 	<summary>
 rptCustomers control.
 </summary>

@@ -10,6 +10,12 @@ Public Class SingleIssuedWH
     Dim classPermis As New ClassPermis
     Dim strIssuedJobNo As String
     Dim strReceivedJobNo As String
+    Dim DamageMovement As Double
+    Dim AvailableMovement As Double
+    Dim IssuedMovement As Double
+    Dim txtReadQuantityStk As String
+    Dim txtPickQty As String
+    Dim txtTotalQuantity As String
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Dim usename As String = CStr(Session("UserName"))
@@ -182,8 +188,8 @@ Public Class SingleIssuedWH
         Dim cu = From um In db.tblUserMenus Where um.UserName = user And um.Form = form And um.Save_ = 1
         If cu.Any Then
             ConfirmDelivery()
-            'ReadDataIsseudDetail()
-            'CheckLocation()
+            DataIssuedDetail()
+            CheckLocation()
 
         Else
             ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ์เมนูนี้ !!!')", True)
@@ -1641,27 +1647,30 @@ Public Class SingleIssuedWH
         'With Repeater9
         '    For i = 0 To Repeater9.Items.Count - 1
 
-        '        Goods = Goods + Repeater9.Items(i).
+        '        Dim user = (From u In db.tblWHISSUEDDetails Where u.LOTNo = txtJobNo_BeforeTab.Value.Trim And u.PullSignal = txtPullSignal_BeforeTab.Value.Trim).SingleOrDefault
+
+        '        'Goods = Goods + Repeater9.Items(i).
+        '        Goods = Goods + user.ISSUEDQuantity.Value
 
         '    Next
         'End With
-        'txtQtyReceived.Text = CStr(Goods)
-        'txtQtyDiscrepancy.Text = CStr(CDbl(txtQuantityofPart.Text) - Goods)
+        'txtQuantityPicked_IssueCon.Value = CStr(Goods)
+        'txtQTYDiscrepancy_IssueCon.Value = CStr(CDbl(txtQuantityOfGood_IssueCon.Value) - Goods)
 
 
 
 
-        'Dim i As Integer
-        'Dim Goods As Double
-        'With dgvIssued
-        '    For i = 0 To .Rows.Count - 1
+        ''Dim i As Integer
+        ''Dim Goods As Double
+        ''With dgvIssued
+        ''    For i = 0 To .Rows.Count - 1
 
-        '        Goods = Goods + CDbl(.Rows(i).Cells(24).Value)
+        ''        Goods = Goods + CDbl(.Rows(i).Cells(24).Value)
 
-        '    Next
-        'End With
-        'txtQtyReceived.Text = CStr(Goods)
-        'txtQtyDiscrepancy.Text = CStr(CDbl(txtQuantityofPart.Text) - Goods)
+        ''    Next
+        ''End With
+        ''txtQtyReceived.Text = CStr(Goods)
+        ''txtQtyDiscrepancy.Text = CStr(CDbl(txtQuantityofPart.Text) - Goods)
 
     End Sub
 
@@ -1833,7 +1842,7 @@ Public Class SingleIssuedWH
         Dim form As String = "frmIssued"
         Dim cu = From um In db.tblUserMenus Where um.UserName = user And um.Form = form And um.Save_ = 1
         If cu.Any Then
-            'CallculateProductQuantiy()
+            CallculateProductQuantiy()
             SaveIsseudDetail_New()
             'ClearDATADetail()
             DataPickingDetail()
@@ -1843,7 +1852,21 @@ Public Class SingleIssuedWH
             ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ์เมนูนี้ !!!')", True)
         End If
     End Sub
+    Private Sub CallculateProductQuantiy()
+        If txtReadQuantityStk = "" Then
+            txtReadQuantityStk = "0.00"
+        End If
+        If txtPickQty = "" Then
+            txtPickQty = "0.00"
+        End If
+        If txtQuantity_ConfirmIssue.Value = "" Then
+            txtQuantity_ConfirmIssue.Value = "0.00"
+        End If
 
+        txtTotalQuantity = CStr(CDbl(txtReadQuantityStk) - CDbl(txtQuantity_ConfirmIssue.Value.Trim))
+        txtPickQty = CStr(CDbl(txtPickQty) + CDbl(txtQuantity_ConfirmIssue.Value.Trim))
+
+    End Sub
     Private Sub SaveIsseudDetail_New()
         Dim chkName As CheckBox
         Dim lblItemNo As Double
@@ -2182,12 +2205,16 @@ Public Class SingleIssuedWH
         End Try
     End Function
     Private Function ConfirmMove(ByVal i As Integer) As Boolean
-            If SaveDetail_ConfirmNew(i) = False Then
-                Return False
-            End If
-            If SaveStockMovement_ConfirmNew(i) = False Then
-                Return False
-            End If
+        If SaveDetail_ConfirmNew(i) = False Then
+            Return False
+        Else
+            Return True
+        End If
+        If SaveStockMovement_ConfirmNew(i) = False Then
+            Return False
+        Else
+            Return True
+        End If
     End Function
     Private Function SaveDetail_ConfirmNew(ByVal i As Integer) As Boolean
         Dim lblItemNo As Double
@@ -2561,54 +2588,238 @@ Public Class SingleIssuedWH
     Private Sub ConfirmDelivery()
 
         'Dim chkName As CheckBox
-        'Dim lblItemNo As Double
-
-
-
-        'Dim u = (From us In db.tblWHPickingDetails Where us.ItemNo = lblItemNo And us.LOTNo = txtJobNo_BeforeTab.Value.Trim And us.PullSignal = txtPullSignal_BeforeTab.Value.Trim).FirstOrDefault
-        'Dim i As Integer
+        Dim lblPullSignal As String
+        Dim lblLOTNo As String
+        Dim lblItemNo As Double
+        Dim i As Integer
         'Dim strWHSite As String
-        'tr = Conn.BeginTransaction()
+        Dim RLotNo As String = ""
+        Dim RPullSignal As String = ""
 
-        'With dgvIssued
-        '    For i = 0 To .Rows.Count - 1
+        With Repeater9
+            For i = 0 To Repeater9.Items.Count - 1
 
-        '        chkName = CType(Repeater8.Items(i).FindControl("chkRowData"), CheckBox)
-        '        lblItemNo = CDbl(CType(Repeater8.Items(i).FindControl("lblItemNo"), Label).Text.Trim)
+                lblPullSignal = CType(Repeater9.Items(i).FindControl("lblPullSignal"), Label).Text.Trim
+                lblLOTNo = CType(Repeater9.Items(i).FindControl("lblLOTNo"), Label).Text.Trim
+                lblItemNo = CDbl(CType(Repeater9.Items(i).FindControl("lblItemNo"), Label).Text.Trim)
 
-        '        txtRPullSignal.Text = CStr(.Rows(i).Cells(0).Value)
-        '        txtRLotNo.Text = CStr(.Rows(i).Cells(1).Value)
-        '        strWHSite = CStr(.Rows(i).Cells(2).Value)
-        '        txtRItemIssued.Text = CStr(.Rows(i).Cells(7).Value)
-        '        txtRReceiveNO.Text = CStr(.Rows(i).Cells(18).Value)
-        '        txtRItemNo.Text = CStr(.Rows(i).Cells(41).Value)
-        '        txtROwnerPN.Text = CStr(.Rows(i).Cells(10).Value)
-        '        txtRCustomerLotNo.Text = CStr(.Rows(i).Cells(5).Value)
-        '        txtRIssuedQTY.Text = CStr(.Rows(i).Cells(24).Value)
-        '        txtRStatusIssued.Text = CStr(.Rows(i).Cells(36).Value)
+                Dim u = (From us In db.tblWHISSUEDDetails Where us.LOTNo = lblLOTNo And us.PullSignal = lblPullSignal).FirstOrDefault
 
-        '        If txtRStatusIssued.Text = "1" Then
+                RPullSignal = u.PullSignal
+                RLotNo = u.LOTNo
+                'strWHSite = CStr(.Rows(i).Cells(2).Value)
+                'txtRItemIssued.Text = CStr(.Rows(i).Cells(7).Value)
+                'txtRReceiveNO.Text = CStr(.Rows(i).Cells(18).Value)
+                'txtRItemNo.Text = CStr(.Rows(i).Cells(41).Value)
+                'txtROwnerPN.Text = CStr(.Rows(i).Cells(10).Value)
+                'txtRCustomerLotNo.Text = CStr(.Rows(i).Cells(5).Value)
+                'txtRIssuedQTY.Text = CStr(.Rows(i).Cells(24).Value)
+                'txtRStatusIssued.Text = CStr(.Rows(i).Cells(36).Value)
 
-        '            ReadStockMovement()
+                If u.StatusISSUED.Trim = "1" Then
+                    ReadStockMovement(i)
 
-        '            If txtRReceiveNO.Text.Trim() = "" Then
-        '                MessageBox.Show("กรุณาเลือก Item ก่อน !!!", "ผลการตรวจสอบ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-        '                txtRReceiveNO.Focus()
-        '                Exit Sub
-        '            End If
+                    If u.ReceiveNo.Trim = "" Then
+                        ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert(กรุณาเลือก Item ก่อน !!!);", True)
+                        Exit Sub
+                    End If
 
-        '            If txtRItemNo.Text.Trim() = "" Then
-        '                MessageBox.Show("กรุณาเลือก Item ก่อน !!!", "ผลการตรวจสอบ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-        '                txtRItemNo.Focus()
-        '                Exit Sub
-        '            End If
+                    If u.Item = Nothing Then
+                        ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert(กรุณาเลือก Item ก่อน !!!);", True)
+                        Exit Sub
+                    End If
 
-        '            Try
+                    Try
+                        'sb.Append("UPDATE tblWHStockMovement")
+                        'sb.Append(" SET ISSUEQuantity=@ISSUEQuantity,Status=@Status ")
+                        'sb.Append(" WHERE (LOTNo=@LOTNo AND ItemNo=@ItemNo AND OwnerPN=@OwnerPN AND CustomerLotNo=@CustomerLotNo AND WHSite=@WHSite)")
+                         db.Database.Connection.Open()
+                        Dim edit As tblWHStockMovement = (From c In db.tblWHStockMovements Where c.LOTNo = u.ReceiveNo And c.ItemNo = u.Item And c.OwnerPN = u.OwnerPN And c.CustomerLOTNo = u.CustomerLOTNo And c.WHSite = u.WHSite
+                          Select c).First()
+                        If edit IsNot Nothing Then
+                            edit.LOTNo = u.ReceiveNo.Trim
+                            edit.WHSite = u.WHSite.Trim
+                            edit.OwnerPN = u.OwnerPN.Trim
+                            edit.CustomerLOTNo = u.CustomerLOTNo.Trim
+                            edit.ItemNo = u.Item
+                            If IssuedMovement = 0 Then
+                                edit.ISSUEQuantity = 0
+                                IssuedMovement = 0
+                            Else
+                                edit.ISSUEQuantity = IssuedMovement - u.ISSUEDQuantity
+                                IssuedMovement = CDbl(IssuedMovement - u.ISSUEDQuantity)
+                                
+                            End If
+
+                            If IssuedMovement <= 0 And DamageMovement <= 0 And AvailableMovement <= 0 Then
+                                edit.Status = 1
+                            Else
+                                edit.Status = 0
+                            End If
+
+                            db.SaveChanges()
+                        End If
+
+                        If UpdateStatusIssuedConfirmDelivery(i) = False Then
+                            Exit Sub
+                        End If
+
+                    Catch ex As Exception
+                        ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert(เกิดข้อผิดพลาด เนื่องจาก ผลการทำงาน );", True)
+                        'MessageBox.Show("เกิดข้อผิดพลาด เนื่องจาก " & ex.Message, "ผลการทำงาน", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        Exit Sub
+                    End Try
+                End If
+
+            Next
+
+        End With
+        ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert( JOB งาน เบอร์ " & RLotNo & " ออกโดย  Pull Signal No. " & RPullSignal & " งานนี้ถูก Confirm เรียบร้อยแล้ว );", True)
+        ' MessageBox.Show(" JOB งาน เบอร์ " & txtRLotNo.Text & " ออกโดย  Pull Signal No. " & txtRPullSignal.Text & " งานนี้ถูก Confirm เรียบร้อยแล้ว", "ผลการตรวจสอบ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+    End Sub
+    Private Sub ReadStockMovement(type As Integer)
+        Dim lblPullSignal As String
+        Dim lblLOTNo As String
+        'sb.Remove(0, sb.Length)
+        'sb.Append("SELECT ISSUEQuantity,DamageQuantity,AvalableQuantity FROM tblWHStockMovement (NOLOCK) 
+        'WHERE LOTNo=@LOTNo and ItemNo=@ItemNo AND OwnerPN=@OwnerPN AND CustomerLOTNo=@CustomerLOTNo")
+
+        'Dim sqlSearch As String
+        'sqlSearch = sb.ToString()
+
+        'com = New SqlCommand()
+        'dtItem = New DataTable
+        'With com
+        '    .Parameters.Clear()
+
+        lblPullSignal = CType(Repeater9.Items(type).FindControl("lblPullSignal"), Label).Text.Trim
+        lblLOTNo = CType(Repeater9.Items(type).FindControl("lblLOTNo"), Label).Text.Trim
+
+        Dim u = (From us In db.tblWHISSUEDDetails Where us.LOTNo = lblLOTNo And us.PullSignal = lblPullSignal).FirstOrDefault
+
+        Dim v = (From uv In db.tblWHStockMovements Where uv.LOTNo = u.ReceiveNo And uv.ItemNo = u.ItemNo
+                  Select uv).FirstOrDefault
+        
+        If Not IsNothing(v) Then
+
+            DamageMovement = 0
+            AvailableMovement = 0
+            IssuedMovement = 0
+
+            IssuedMovement = CDbl(v.ISSUEQuantity)
+            DamageMovement = CDbl(v.DamageQuantity)
+            AvailableMovement = CDbl(v.AvalableQuantity)
+
+        End If
+
+        If IssuedMovement = Nothing Then
+            IssuedMovement = 0
+        End If
+        If DamageMovement = Nothing Then
+            DamageMovement = 0
+        End If
+
+        If AvailableMovement = Nothing Then
+            AvailableMovement = 0
+        End If
+
+    End Sub
+    Private Function UpdateStatusIssuedConfirmDelivery(type As Integer) As Boolean
+        Dim lblPullSignal As String
+        Dim lblLOTNo As String
+        'sb.Append("UPDATE tblWHISSUEDDetail")
+        'sb.Append(" SET StatusISSUED=@StatusISSUED,UserBy=@UserBy,LastUpdate=@LastUpdate")
+        'sb.Append(" WHERE (PullSignal=@PullSignal AND LOTNo=@LOTNo AND ItemNo=@ItemNo)")
+
+        lblPullSignal = CType(Repeater9.Items(type).FindControl("lblPullSignal"), Label).Text.Trim
+        lblLOTNo = CType(Repeater9.Items(type).FindControl("lblLOTNo"), Label).Text.Trim
+
+        Dim u = (From us In db.tblWHISSUEDDetails Where us.LOTNo = lblLOTNo And us.PullSignal = lblPullSignal).FirstOrDefault
+
+        Try
+
+            db.Database.Connection.Open()
+            Dim edit As tblWHISSUEDDetail = (From c In db.tblWHISSUEDDetails Where c.LOTNo = u.LOTNo And c.ItemNo = u.ItemNo And c.PullSignal = u.PullSignal
+              Select c).First()
+            If edit IsNot Nothing Then
+                'edit.PullSignal = u.PullSignal
+                'edit.LOTNo = u.LOTNo
+                'edit.ItemNo = u.ItemNo
+                edit.StatusISSUED = "2"
+                edit.UserBy = CStr(Session("UserName"))
+                edit.LastUpdate = Now
+                db.SaveChanges()
+            End If
+
+            Return True
+        Catch ex As Exception
+            Return False
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert(Error tblWHISSUEDDetail !!! );", True)
+            'MessageBox.Show("เกิดข้อผิดพลาด เนื่องจาก " & ex.Message, "ผลการทำงาน", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End Try
+
+    End Function
+    Private Sub CheckLocation()
+        'If ddlWHSite_IssueCon.Text = "" Then
+        '    Exit Sub
+        'End If
+
+
+        'Cursor.Current = Cursors.WaitCursor
+
+        'Dim dt As DataTable
+        'Dim Lo As String
+        'Dim sql As String
+
+        ''sb = New StringBuilder()
+        ''sb.Append("select LocationNo from tblWHLocation (NOLOCK) where WHsite=@WHsite  ")
+
+        'Dim v = (From uv In db.tblWHLocations Where uv.WHsite = ddlWHSite_IssueCon.Text.Trim
+        '          Select uv).FirstOrDefault
+
+        ''sql = sb.ToString()
+        ''com = New SqlCommand
+        ''With com
+        ''    .CommandText = sql
+        ''    .CommandType = CommandType.Text
+        ''    .Connection = Conn
+        ''    .Parameters.Clear()
+        ''    .Parameters.Add("@WHsite", SqlDbType.VarChar).Value = cdbWHS.Text
+        ''    dr = .ExecuteReader
+
+        ''If dr.HasRows Then
+        'If Not IsNothing(v) Then
+
+        '    dt = New DataTable()
+        '    dt.Load(dr)
+        '    dr.Close()
+
+        '    Dim i As Integer
+        '    For i = 0 To dt.Rows.Count - 1
+        '        Lo = dt.Rows(i).Item("LocationNo").ToString
+
+        '        sb = New StringBuilder()
+        '        sb.Append("select WHLocation from tblWHConfirmGoodsReceiveDetail (NOLOCK) Where WHLocation=@WHLocation and Statusavailable = 0 and  WHsite=@WHsite  ")
+
+        '        sql = sb.ToString()
+        '        com = New SqlCommand
+        '        With com
+        '            .CommandText = sql
+        '            .CommandType = CommandType.Text
+        '            .Connection = Conn
+        '            .Parameters.Clear()
+        '            .Parameters.Add("@WHLocation", SqlDbType.VarChar).Value = Lo
+        '            .Parameters.Add("@WHsite", SqlDbType.VarChar).Value = cdbWHS.Text
+        '            dr = .ExecuteReader
+
+        '            If dr.HasRows Then
+        '                dr.Close()
         '                sb = New StringBuilder()
-        '                sb.Append("UPDATE tblWHStockMovement")
-        '                sb.Append(" SET ISSUEQuantity=@ISSUEQuantity,Status=@Status ")
-        '                sb.Append(" WHERE (LOTNo=@LOTNo AND ItemNo=@ItemNo AND OwnerPN=@OwnerPN AND CustomerLotNo=@CustomerLotNo AND WHSite=@WHSite)")
-        '                Dim sqlEdit As String
+        '                sb.Append("UPDATE tblWHLocation ")
+        '                sb.Append(" SET  usedstatus =1 ")
+        '                sb.Append(" WHERE WHsite=@WHsite and LocationNo=@WHLocation  ")
+
+        '                Dim sqlEdit As String = ""
         '                sqlEdit = sb.ToString()
 
         '                With com
@@ -2617,64 +2828,49 @@ Public Class SingleIssuedWH
         '                    .Connection = Conn
         '                    .Transaction = tr
         '                    .Parameters.Clear()
-        '                    .Parameters.Add("@LOTNo", SqlDbType.NVarChar).Value = txtRReceiveNO.Text.Trim()
-        '                    .Parameters.Add("@WHSite", SqlDbType.NVarChar).Value = strWHSite
-        '                    .Parameters.Add("@OwnerPN", SqlDbType.NVarChar).Value = txtROwnerPN.Text.Trim()
-        '                    .Parameters.Add("@CustomerLotNo", SqlDbType.NVarChar).Value = txtRCustomerLotNo.Text.Trim()
-        '                    .Parameters.Add("@ItemNo", SqlDbType.Decimal).Value = CDbl(txtRItemNo.Text).ToString("#,##0")
-        '                    If CDbl(txtIssuedMovement.Text) = 0 Then
-        '                        .Parameters.Add("@ISSUEQuantity", SqlDbType.Float).Value = 0
-        '                        txtIssuedMovement.Text = "0"
-        '                    Else
-        '                        'If CDbl(txtIssuedMovement.Text) > CDbl(txtRIssuedQTY.Text) Then
-        '                        .Parameters.Add("@ISSUEQuantity", SqlDbType.Float).Value = (CDbl(txtIssuedMovement.Text) - CDbl(txtRIssuedQTY.Text)).ToString("#,##0.00")
-        '                        txtIssuedMovement.Text = CStr((CDbl(txtIssuedMovement.Text) - CDbl(txtRIssuedQTY.Text)).ToString("#,##0.00"))
-        '                        'Else
-        '                        '.Parameters.Add("@ISSUEQuantity", SqlDbType.Float).Value = (CDbl(txtRIssuedQTY.Text) - CDbl(txtIssuedMovement.Text)).ToString("#,##0.00")
-        '                        'txtIssuedMovement.Text = CStr((CDbl(txtRIssuedQTY.Text) - CDbl(txtIssuedMovement.Text)).ToString("#,##0.00"))
-        '                        'End If
-        '                    End If
-
-        '                    If CDbl(txtIssuedMovement.Text) <= 0 And CDbl(txtDamageMovement.Text) <= 0 And CDbl(txtAvailableMovement.Text) <= 0 Then
-        '                        .Parameters.Add("@Status", SqlDbType.Decimal).Value = 1
-        '                    Else
-        '                        .Parameters.Add("@Status", SqlDbType.Decimal).Value = 0
-        '                    End If
-
+        '                    .Parameters.Add("@WHSite", SqlDbType.VarChar).Value = cdbWHS.Text.Trim()
+        '                    .Parameters.Add("@WHLocation", SqlDbType.VarChar).Value = Lo
         '                    Dim result As Integer
         '                    result = .ExecuteNonQuery()
         '                    If result = 0 Then
-        '                        tr.Rollback()
-        '                        MessageBox.Show("ไม่พบ StockMovement ", "ผลการทำงาน", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        '                        Exit Sub
-        '                    Else
-
-        '                        'ReadStockMovementforUpdateStatus()
-
-        '                        'If UpdateStatusMovement() = False Then
-        '                        '    tr.Rollback()
-        '                        '    MessageBox.Show("เกิดข้อผิดพลาด SaveIssued ", "ผลการทำงาน", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        '                        '    Exit Sub
-        '                        'End If
+        '                        MessageBox.Show("อัพเดท Location Error")
         '                    End If
         '                End With
+        '            Else
+        '                dr.Close()
+        '                sb = New StringBuilder()
+        '                sb.Append("UPDATE tblWHLocation ")
+        '                sb.Append(" SET  usedstatus =0 ")
+        '                sb.Append(" WHERE WHsite=@WHsite and LocationNo=@WHLocation  ")
 
-        '                If UpdateStatusIssuedConfirmDelivery() = False Then
-        '                    Exit Sub
-        '                End If
+        '                Dim sqlEdit As String = ""
+        '                sqlEdit = sb.ToString()
 
-        '            Catch ex As Exception
-        '                tr.Rollback()
-        '                MessageBox.Show("เกิดข้อผิดพลาด เนื่องจาก " & ex.Message, "ผลการทำงาน", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        '                Exit Sub
-        '            End Try
-        '        End If
+        '                With com
+        '                    .CommandText = sqlEdit
+        '                    .CommandType = CommandType.Text
+        '                    .Connection = Conn
+        '                    .Transaction = tr
+        '                    .Parameters.Clear()
+        '                    .Parameters.Add("@WHSite", SqlDbType.VarChar).Value = cdbWHS.Text.Trim()
+        '                    .Parameters.Add("@WHLocation", SqlDbType.VarChar).Value = Lo
+        '                    Dim result As Integer
+        '                    result = .ExecuteNonQuery()
+        '                    If result = 0 Then
+        '                        MessageBox.Show("อัพเดท Location Error")
+        '                    End If
+        '                End With
+        '            End If
+        '        End With
 
         '    Next
+        'End If
+        ''End If
+        'dr.Close()
         'End With
-        'tr.Commit()
 
-        'MessageBox.Show(" JOB งาน เบอร์ " & txtRLotNo.Text & " ออกโดย  Pull Signal No. " & txtRPullSignal.Text & " งานนี้ถูก Confirm เรียบร้อยแล้ว", "ผลการตรวจสอบ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+        'Cursor.Current = Cursors.Default
+
     End Sub
 
     Protected Sub chkRowData_CheckedChanged(sender As Object, e As EventArgs)
