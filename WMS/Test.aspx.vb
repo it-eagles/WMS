@@ -4,6 +4,12 @@ Option Explicit On
 Imports System.Data
 Imports LinqToExcel
 Imports ExcelDataReader
+Imports System.Data.OleDb
+Imports System.IO
+Imports System.Configuration
+
+
+
 
 Public Class Test
     Inherits System.Web.UI.Page
@@ -12,6 +18,7 @@ Public Class Test
         'lblDisplayDate.Text = System.DateTime.Now.ToString("T")
         If Not Me.IsPostBack Then
             'TabName.Value = Request.Form(TabName.UniqueID)
+
             showUserList()
         End If
     End Sub
@@ -249,4 +256,82 @@ Public Class Test
     'Protected Sub txttest_TextChanged(sender As Object, e As EventArgs) Handles txttest.TextChanged
     '    MsgBox(txttest.Text)
     '
+
+    Protected Sub btnAdd_ServerClick(sender As Object, e As EventArgs)
+        'Dim StrWer As StreamReader
+        'Dim readLine As String
+        'Dim fileE As Boolean
+        'fileE = My.Computer.FileSystem.FileExists(txtFile.Value.Trim)
+
+        'StrWer = file.OpenText(txtFile.Value.Trim)
+
+        'Do Until StrWer.EndOfStream
+        '    readLine = StrWer.ReadLine
+
+        '    Dim S As String = Split(readLine, ",")(0)
+        'Loop
+
+        If FileUpload1.HasFile Then
+            ' Path ที่ฮยู่ไฟล์
+            Dim FileName As String = Path.GetFileName(FileUpload1.PostedFile.FileName)
+            ' นามสกุล
+            Dim Extension As String = Path.GetExtension(FileUpload1.PostedFile.FileName)
+            ' Path ที่เก็บไฟล์ 
+            Dim FolderPath As String = ConfigurationManager.AppSettings("FolderPath")
+            ' save ไฟล์ลง path
+            Dim FilePath As String = Server.MapPath(FolderPath + FileName)
+            FileUpload1.SaveAs(FilePath)
+            Import_To_Grid(FilePath, Extension, rbHDR.SelectedItem.Text)
+
+        End If
+    End Sub
+    Private Sub Import_To_Grid(ByVal FilePath As String, ByVal Extension As String, ByVal isHDR As String)
+        Dim conStr As String = ""
+        Select Case Extension
+            Case ".xls"
+                conStr = ConfigurationManager.ConnectionStrings("Excel03ConString").ConnectionString
+                Exit Select
+            Case ".xlsx"
+                conStr = ConfigurationManager.ConnectionStrings("Excel07ConString").ConnectionString
+                Exit Select
+        End Select
+
+        conStr = String.Format(conStr, FilePath, isHDR)
+
+        Dim connExcel As New OleDbConnection(conStr)
+        Dim cmdExcel As New OleDbCommand
+        Dim oda As New OleDbDataAdapter
+        Dim dt As New DataTable
+
+        cmdExcel.Connection = connExcel
+        connExcel.Open()
+        Dim dtExeelSchema As DataTable
+        dtExeelSchema = connExcel.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, Nothing)
+        Dim SheetName As String = dtExeelSchema.Rows(0)("TABLE_NAME").ToString
+        connExcel.Close()
+
+        connExcel.Open()
+        cmdExcel.CommandText = "SELECT * From [" & SheetName & "]"
+        oda.SelectCommand = cmdExcel
+        oda.Fill(dt)
+        connExcel.Close()
+
+        GridView1.Caption = Path.GetFileName(FilePath)
+        GridView1.DataSource = dt
+        GridView1.DataBind()
+        dt.Columns.Add()
+
+    End Sub
+
+    Protected Sub PageIndexChanging(ByVal sender As Object, ByVal e As GridViewPageEventArgs)
+        Dim FolderPath As String = ConfigurationManager.AppSettings("FolderPath")
+        Dim FileName As String = GridView1.Caption
+        Dim Extension As String = Path.GetExtension(FileName)
+        Dim FilePath As String = Server.MapPath(FolderPath + FileName)
+
+        Import_To_Grid(FilePath, Extension, rbHDR.SelectedItem.Text)
+        GridView1.PageIndex = e.NewPageIndex
+        GridView1.DataBind()
+    End Sub
+
 End Class

@@ -176,3 +176,10 @@ D:\WMS\WMS\bin\System.Web.WebPages.Deployment.dll
 D:\WMS\WMS\bin\System.Web.WebPages.dll
 D:\WMS\WMS\bin\System.Web.WebPages.Razor.dll
 D:\WMS\WMS\bin\WebGrease.dll
+D:\ProjectDevelop\Project\WMS\bin\ExcelDataReader.dll
+D:\ProjectDevelop\Project\WMS\bin\LinqToExcel.dll
+D:\ProjectDevelop\Project\WMS\bin\Remotion.Data.Linq.dll
+D:\ProjectDevelop\Project\WMS\bin\Remotion.dll
+D:\ProjectDevelop\Project\WMS\bin\Remotion.Interfaces.dll
+D:\ProjectDevelop\Project\WMS\bin\ExcelDataReader.xml
+D:\ProjectDevelop\Project\WMS\bin\LinqToExcel.xml

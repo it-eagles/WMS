@@ -1080,6 +1080,8 @@ Public Class ExpGenLot
                 Else
                     txtDeliveryTime.Value = exp.DeliveryTime
                 End If
+                txtStatusFile.Value = exp.ScanPathFile
+
                 ReadDATA()
                 ReadDATA2()
                 ReadDATAEAS()
@@ -1734,7 +1736,7 @@ Public Class ExpGenLot
                                     .DocType = ComboBox7.Text.Trim, _
                                     .DocCode = txtDocumentCode.Value.Trim, _
                                     .Flight = txtFlight.Value.Trim, _
-                                    .ScanPathFile = txtPathFile.Value.Trim, _
+                                    .ScanPathFile = PathFile.FileName, _
                                     .DOCode = txtDOCode.Value.Trim, _
                                     .DONameENG = txtDONameENG.Value.Trim, _
                                     .DOStreet_Number = txtDOStreet.Value.Trim, _
@@ -1831,7 +1833,7 @@ Public Class ExpGenLot
         txtMAWB.Value = ""
         txtDocumentCode.Value = ""
         txtFlight.Value = ""
-        txtPathFile.Value = ""
+        'txtPathFile.Value = ""
         txtDOCode.Value = ""
         txtDONameENG.Value = ""
         txtDOStreet.Value = ""
@@ -1879,6 +1881,7 @@ Public Class ExpGenLot
         txtBillingNo.Value = ""
         txtCustomerCodeGroup.Value = ""
         txtCustomerENGGroup.Value = ""
+        txtStatusFile.Value = ""
 
     End Sub
 
@@ -1954,7 +1957,7 @@ Public Class ExpGenLot
                         upExp.DocType = ComboBox7.Text.Trim
                         upExp.DocCode = txtDocumentCode.Value.Trim
                         upExp.Flight = txtFlight.Value.Trim
-                        upExp.ScanPathFile = txtPathFile.Value
+                        upExp.ScanPathFile = PathFile.FileName
                         upExp.DOCode = txtDOCode.Value.Trim
                         upExp.DONameENG = txtDONameENG.Value.Trim
                         upExp.DOStreet_Number = txtDOStreet.Value.Trim
@@ -2250,7 +2253,7 @@ Public Class ExpGenLot
         Dim usename As String = CStr(Session("UserName"))
         Dim form As String = "frmExpGenLot"
         If classPermis.CheckSave(form, usename) = True Then
-            SavaDATA_Modify()
+            svaeFeil()
             ReadDATA()
             ReadDATA2()
         End If
@@ -2852,5 +2855,60 @@ Public Class ExpGenLot
 
         Dim mas = (From m In db.tblMasterCode2 Where m.Code = dcbSales.Text.Trim Select m.Code, m.Description).SingleOrDefault
         txtSalesName.Value = mas.Description
+    End Sub
+    Private Sub svaeFeil()
+
+        Dim FileName As String = Path.GetFileName(PathFile.PostedFile.FileName)
+        Dim FolderPath As String = ConfigurationManager.AppSettings("FolderPath")
+
+        If String.IsNullOrEmpty(txtLotNo.Value.Trim) Then
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาป้อน LOT No ก่อน !!!');", True)
+            Exit Sub
+        End If
+        Select Case MsgBox("คุณต้องการบันทึกไฟล์ หรือ ไม่ ?", MsgBoxStyle.YesNo, "คำยืนยัน")
+            Case MsgBoxResult.Yes
+                Try
+                    If Me.PathFile.HasFile Then
+                        Dim upExp As tblExpGenLOT = (From up In db.tblExpGenLOTs Where up.EASLOTNo = txtLotNo.Value.Trim Select up).First
+
+                        If upExp IsNot Nothing Then
+                            upExp.ScanPathFile = PathFile.FileName
+                            upExp.Useby = CStr(Session("UserName"))
+                            db.SaveChanges()
+                            Dim FilePath As String = Server.MapPath(FolderPath + FileName)
+                            PathFile.SaveAs(FilePath)
+                            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('บันทึกไฟล์ เสร็จเรียบร้อย!');", True)
+                            Exit Sub
+                        Else
+                            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('ไม่มีเลข Lot นี้');", True)
+                        End If
+
+                    End If
+
+                Catch ex As Exception
+                    ScriptManager.RegisterStartupScript(Me, Me.GetType(), "redirect", ex.Message, True)
+                End Try
+            Case MsgBoxResult.No
+
+        End Select
+    End Sub
+
+    Protected Sub cmdOpenFile_Click(sender As Object, e As EventArgs)
+        Try
+            If String.IsNullOrEmpty(txtLotNo.Value.Trim) Then
+                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาป้อน LOT No ก่อน !!!');", True)
+                Exit Sub
+            Else
+
+                Dim FolderPath As String = ConfigurationManager.AppSettings("FolderPath")
+                Dim fileName As String = txtStatusFile.Value.Trim
+                Dim filePath As String = Server.MapPath(FolderPath + fileName)
+                Process.Start(filePath)
+            End If
+            ' Path ที่เก็บไฟล์ 
+           
+        Catch ex As Exception
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('ไม่พบไฟล์นี้ !!!');", True)
+        End Try
     End Sub
 End Class

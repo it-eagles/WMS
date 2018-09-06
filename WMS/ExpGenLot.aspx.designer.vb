@@ -473,13 +473,13 @@ Partial Public Class ExpGenLot
     Protected WithEvents txtJobRemark As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtPathFile control.
+    '''PathFile control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtPathFile As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents PathFile As Global.System.Web.UI.WebControls.FileUpload
 
     '''<summary>
     '''FileUpload1 control.
@@ -489,6 +489,15 @@ Partial Public Class ExpGenLot
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents FileUpload1 As Global.System.Web.UI.WebControls.FileUpload
+
+    '''<summary>
+    '''txtStatusFile control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtStatusFile As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
     '''cmdOpenFile control.

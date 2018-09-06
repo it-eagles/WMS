@@ -32,7 +32,7 @@
 
                                 <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="Repeater1_ItemCommand">
                                     <HeaderTemplate>
-                                        <table id="example1" class="table table-bordered table-striped">
+                                        <table id="example1" class="table table-striped table-condensed">
                                             <thead>
                                                 <tr>
                                                     <th>PartyCode</th>
@@ -61,11 +61,11 @@
                                             <td class="text-center">
                                                 <asp:Label ID="lblPartyLocation" runat="server" Text='<%# Bind("PartyLocation")%>'></asp:Label></td>                                                                                    
                                             <td class="text-center" >
-                                                  <asp:LinkButton ID="LinkButton1" CssClass="btn btn-default" runat="server" CausesValidation="False" CommandName="editCode" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-pencil"></i></asp:LinkButton>
-                                                <a class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                                  <asp:LinkButton ID="LinkButton1" CssClass="btn btn-default btn-sm" runat="server" CausesValidation="False" CommandName="editCode" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-pencil"></i></asp:LinkButton>
+                                                <a class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
                                             </td>
                                             <td class="text-center">
-                                                 <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="viewprofile" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-search-plus"></i></asp:LinkButton>
+                                                 <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy btn-sm" runat="server" CausesValidation="False" CommandName="viewprofile" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-search-plus"></i></asp:LinkButton>
                                                 
                                             </td>
                                         </tr>

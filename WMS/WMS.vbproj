@@ -8281,7 +8281,7 @@
     <TypeScriptCompile Include="Scripts\moment\moment.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="MyFiie\" />
+    <Folder Include="Files\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -31,11 +31,31 @@
                             <div class="form-group">
                                 <label class="col-sm-2">Test</label>  
                                 <div class="col-md-4">
-                                        <input class="form-control input-sm" runat="server" id="txtFile" type="file" />
+                                    <asp:FileUpload ID="FileUpload1" runat="server" />
+                                       <%-- <input class="form-control input-sm" runat="server" id="txtFile" type="file" />--%>
                                 </div>   
                                <div class="colmd-4">
-                                   <button runat="server" id="btnAdd" class="btn btn-pinterest" onserverclick="btnAdd_ServerClick"></button>
+                                   <button runat="server" id="btnAdd" class="btn btn-pinterest btn-block" onserverclick="btnAdd_ServerClick"></button>
                                </div>
+                                <div>
+                                    <label>Has Header ?</label>
+                                    <asp:RadioButtonList ID="rbHDR" runat="server">
+                                        <asp:ListItem Text = "Yes" Value = "Yes" Selected = "True" ></asp:ListItem>
+                                        <asp:ListItem Text = "No" Value = "No"></asp:ListItem>
+                                    </asp:RadioButtonList>
+                                </div>
+                                <fieldset>
+                                      <asp:GridView ID="GridView1" runat="server" OnPageIndexChanging="PageIndexChanging" AllowPaging = "true"  >
+                                  </asp:GridView>
+
+                                    <div >
+                                        <label id="lblText" ></label>
+                                       
+                                    </div>
+                                    <br />
+                                    <button id="button">ทดสอบ API แบงค์ชาติ</button>
+                                </fieldset>
+                               
                                 <%--<asp:TextBox runat="server" ID="txttest" CssClass="form-control input-sm" AutoPostBack="true" OnTextChanged="txttest_TextChanged"></asp:TextBox>--%>
                             </div>
 
@@ -177,6 +197,25 @@
                 })
             });
         </script>
-
+        <script>
+            $(document).ready(function () {
+                //อ้างอิงคู่มือ ตามลิงค์นี้ https://iapi.bot.or.th/Developer?lang=th 
+                // ตัวอย่างดู อัตราแลกเปลี่ยนถัวเฉลี่ยถ่วงน้ำหนักระหว่างธนาคาร (รายวัน)
+                $("button").click(function () {
+                    $.ajax({
+                        type: "GET",
+                        url: "https://iapi.bot.or.th/Stat/Stat-ReferenceRate/DAILY_REF_RATE_V1/?start_period=2002-01-12&end_period=2002-01-15",
+                        beforeSend: function (xhr) { xhr.setRequestHeader('api-key', 'U9G1L457H6DCugT7VmBaEacbHV9RX0PySO05cYaGsm'); },
+                        success: function (result) {
+                            $("#lblText").html(JSON.stringify(result));
+                            console.log(JSON.stringify(result));
+                        },
+                        error: function (result) {
+                            //handle the error 
+                        }
+                    });
+                });
+            });
+</script>
     </form>
 </asp:Content>

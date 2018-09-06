@@ -37,7 +37,7 @@
                         </div>
                        
                         <!-- /.box-header -->
-               <form class="form-horizontal">
+               <div class="form-horizontal">
                      <div class="box-body">   
                          <div class ="col-lg-6 col-md-6">
                                <div class="form-group" >
@@ -74,7 +74,7 @@
                             <div class="box-footer text-right">
                                 <button runat="server" class="btn btn-app" id="btnAddGoods" title="btnAddGoods" onserverclick="saveGoods_click"><i class="fa fa-save"></i> Save</button>
                            </div>
-                         </form>
+                         </div>
                     </div>
                      <!---------- /.box box-primary  --------->
                 </div>
@@ -1008,7 +1008,7 @@
                                     <div class="form-group" >
                                         <label for="txtQty" class="col-sm-3">Quality :</label>
                                        <div class="col-md-8">
-                                           <input class="form-control" id="txtQty" runat="server" placeholder="Quality" disabled="disabled"/>
+                                           <input class="form-control input-sm" id="txtQty" runat="server" placeholder="Quality" disabled="disabled"/>
                                       </div>
                                    </div> 
                                  
@@ -1017,9 +1017,9 @@
                                 <div class="form-group" >
 
                                 <div class="col-md-offset-9">
-                                        <button type="submit" runat="server" class="btn btn-primary" id="btAdd" title="btnAddUser" disabled="disabled"/>Add</>
-                                        <button type="submit" runat="server" class="btn bg-olive" id="btModify" title="btnAddUser" disabled="disabled"/>Modify</>
-                                        <button type="submit" runat="server" class="btn btn-danger" id="btDel" title="btnAddUser" disabled="disabled"/>Delete</>
+                                        <button type="button" runat="server" class="btn btn-primary" id="btAdd"  disabled="disabled"/>Add</>
+                                        <button type="button" runat="server" class="btn bg-olive  btn-block" id="btModify"  disabled="disabled"/>Modify</>
+                                        <button type="button" runat="server" class="btn btn-danger  btn-block" id="btDel"  disabled="disabled"/>Delete</>
                                 </div>
                                 </div>
                         
