@@ -249,4 +249,8 @@ Public Class Test
     'Protected Sub txttest_TextChanged(sender As Object, e As EventArgs) Handles txttest.TextChanged
     '    MsgBox(txttest.Text)
     '
+
+    Protected Sub btnAdd_ServerClick(sender As Object, e As EventArgs)
+
+    End Sub
 End Class

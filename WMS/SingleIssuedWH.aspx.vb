@@ -19,7 +19,7 @@ Public Class SingleIssuedWH
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Dim usename As String = CStr(Session("UserName"))
-        Dim form As String = "frmIssuedWithBarcode"
+        Dim form As String = "frmIssued"
         If Not Me.IsPostBack Then
             If classPermis.CheckRead(form, usename) = True Then
                 If Not IsPostBack Then
@@ -33,7 +33,7 @@ Public Class SingleIssuedWH
                     showunitdimension()
                     showunit2()
                     showcurrency()
-
+                    TabName.Value = Request.Form(TabName.UniqueID)
                     beforecustomtab_fieldset.Disabled = True
                     issuecondition_fieldset.Disabled = True
                     confirmissue_fieldset.Disabled = True
@@ -130,6 +130,8 @@ Public Class SingleIssuedWH
         If cu.Any Then
 
             SaveIssued_Modify()
+            DataPickingDetail()
+            DataIssuedDetail()
 
         Else
             ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ์เมนูนี้ !!!')", True)
@@ -161,7 +163,7 @@ Public Class SingleIssuedWH
 
     Protected Sub btnSumQTY_IssueCon_ServerClick(sender As Object, e As EventArgs)
         CountWHIssued()
-        ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('Sum QTY. เรียบร้อยแล้ว' !!!');", True)
+        ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('Sum QTY. เรียบร้อยแล้ว !!!');", True)
     End Sub
 
     Protected Sub btnRejectMoveTo_IssueCon_ServerClick(sender As Object, e As EventArgs)
@@ -190,14 +192,21 @@ Public Class SingleIssuedWH
             ConfirmDelivery()
             DataIssuedDetail()
             CheckLocation()
-
         Else
             ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ์เมนูนี้ !!!')", True)
         End If
     End Sub
 
     Protected Sub btnRejectConfirm_IssueCon_ServerClick(sender As Object, e As EventArgs)
-
+        Dim user As String = CStr(Session("UserName"))
+        Dim form As String = "frmIssued"
+        Dim cu = From um In db.tblUserMenus Where um.UserName = user And um.Form = form And um.Save_ = 1
+        If cu.Any Then
+            RejectConfirmDelivery()
+            DataIssuedDetail()
+        Else
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ์เมนูนี้ !!!')", True)
+        End If
     End Sub
     '--------------------------------------------------------------------Show ddl Site----------------------------------------------------
     Private Sub showSite_IssueCondition()
@@ -1044,7 +1053,7 @@ Public Class SingleIssuedWH
         If cons.Count > 0 Then
             Repeater8.DataSource = cons.ToList
             Repeater8.DataBind()
-            DataIssuedDetailUpdatePanel.Update()
+            'DataIssuedDetailUpdatePanel.Update()
         Else
             Repeater8.DataSource = Nothing
             Repeater8.DataBind()
@@ -1053,72 +1062,42 @@ Public Class SingleIssuedWH
         End If
     End Sub
     '--------------------------------------------------------Click Data Data Job Detail In Modal Edit In Modal-----------------------------------------
-    Protected Sub Repeater8_ItemCommand(source As Object, e As RepeaterCommandEventArgs) Handles Repeater8.ItemCommand
-        Dim ItemNooo As Double = CDbl(e.CommandArgument)
-        Try
-            If e.CommandName.Equals("Selectdatapickigdetail") Then
+    Protected Sub Repeater8_ItemDataBound(sender As Object, e As RepeaterItemEventArgs)
+        If e.Item.ItemType = ListItemType.Item OrElse e.Item.ItemType = ListItemType.AlternatingItem Then
 
-                If String.IsNullOrEmpty(CStr(ItemNooo)) Then
-
-                    MsgBox("เป็นค่าว่าง")
-                Else
-                    Dim user = (From u In db.tblWHPickingDetails Where u.LOTNo = txtJobNo_BeforeTab.Value.Trim And u.PullSignal = txtPullSignal_BeforeTab.Value.Trim And u.ItemNo = ItemNooo).SingleOrDefault
-
-                    ddlWHSite_ConfirmIssue.Text = user.WHSite
-
-                    If String.IsNullOrEmpty(user.WHLocation) Then
-                        'ddlWHLocation_ConfirmIssue.Text = ""
-                    Else
-                        ddlWHLocation_ConfirmIssue.Text = user.WHLocation
-                    End If
-
-                    txtENDCustomer_ConfirmIssue.Value = user.ENDCustomer
-                    txtCusLOTNo_ConfirmIssue.Value = user.CustomerLOTNo
-                    txtItemNo_ConfirmIssue.Value = CStr(user.ItemNo)
-                    txtEASPN_ConfirmIssue.Value = user.ProductCode
-                    txtCustomerPN_ConfirmIssue.Value = user.CustomerPN
-                    txtOwnerPN_ConfirmIssue.Value = user.OwnerPN
-                    txtProductDesc_ConfirmIssue.Value = user.ProductDesc
-
-                    If String.IsNullOrEmpty(user.WHLocation) Then
-                        'ddlMeasurement_ConfirmIssue.Text = ""
-                    Else
-                        ddlMeasurement_ConfirmIssue.Text = user.Measurement
-                    End If
-
-                    txtWidth_ConfirmIssue.Value = CStr(user.ProductWidth)
-                    txtHight_ConfirmIssue.Value = CStr(user.ProductHeight)
-                    txtLength_ConfirmIssue.Value = CStr(user.ProductLength)
-                    txtProductVolume_ConfirmIssue.Value = CStr(user.ProductVolume)
-                    txtOrderNo_ConfirmIssue.Value = user.OrderNo
-                    txtReceiveNo_ConfirmIssue.Value = user.ReceiveNo
-
-                    If String.IsNullOrEmpty(user.WHLocation) Then
-                        'ddlStatus_ConfirmIssue.Text = ""
-                    Else
-                        ddlStatus_ConfirmIssue.Text = user.Type
-                    End If
+            Dim lblPullSignal As Label = CType(e.Item.FindControl("lblPullSignal"), Label)
+            Dim lblLOTNo As Label = CType(e.Item.FindControl("lblLOTNo"), Label)
+            Dim lblItemNo As Label = CType(e.Item.FindControl("lblItemNo"), Label)
+            Dim lblWHSite As Label = CType(e.Item.FindControl("lblWHSite"), Label)
+            Dim lblENDCustomer As Label = CType(e.Item.FindControl("lblENDCustomer"), Label)
+            Dim lblCustomerLOTNo As Label = CType(e.Item.FindControl("lblCustomerLOTNo"), Label)
+            Dim lblProductCode As Label = CType(e.Item.FindControl("lblProductCode"), Label)
 
 
-                    txtdatepickerManufacturing_ConfirmIssue.Text = Convert.ToDateTime(user.ManufacturingDate).ToString("dd/MM/yyyy")
-                    txtdatepickerExpiredDate_ConfirmIssue.Text = Convert.ToDateTime(user.ExpiredDate).ToString("dd/MM/yyyy")
-                    txtdatepickerReceiveDate_ConfirmIssue.Text = Convert.ToDateTime(user.ReceiveDate).ToString("dd/MM/yyyy")
-                    'txtQuantity_ConfirmIssue.Value = CStr(user.ISSUEDQuantity)
-                    'ddlQuantity_ConfirmIssue.Text = user.ISSUEDUnit
-                    txtWeight_ConfirmIssue.Value = CStr(user.Weigth)
-                    ddlWeight_ConfirmIssue.Text = user.WeigthUnit
-                    ddlCurrency_ConfirmIssue.Text = user.Currency
-                    txtPriceForeign_ConfirmIssue.Value = CStr(user.PriceForeigh)
-                    txtPriceBath_ConfirmIssue.Value = CStr(user.PriceBath)
-                    txtExchangeRate_ConfirmIssue.Value = CStr(user.ExchangeRate)
-                    txtAmount_ConfirmIssue.Value = CStr(user.PriceForeighAmount)
-                    txtBathAmount_ConfirmIssue.Value = CStr(user.PriceBathAmount)
-                    txtPalletNo_ConfirmIssue.Value = user.PalletNo
-
-                End If
+            If Not IsNothing(lblPullSignal) Then
+                lblPullSignal.Text = DataBinder.Eval(e.Item.DataItem, "PullSignal").ToString
             End If
-        Catch ex As Exception
-        End Try
+            If Not IsNothing(lblLOTNo) Then
+                lblLOTNo.Text = DataBinder.Eval(e.Item.DataItem, "LOTNo").ToString
+            End If
+            If Not IsNothing(lblItemNo) Then
+                lblItemNo.Text = DataBinder.Eval(e.Item.DataItem, "ItemNo").ToString
+            End If
+            If Not IsNothing(lblWHSite) Then
+                lblWHSite.Text = DataBinder.Eval(e.Item.DataItem, "WHSite").ToString
+            End If
+            If Not IsNothing(lblENDCustomer) Then
+                lblENDCustomer.Text = DataBinder.Eval(e.Item.DataItem, "ENDCustomer").ToString
+            End If
+            If Not IsNothing(lblCustomerLOTNo) Then
+                lblCustomerLOTNo.Text = DataBinder.Eval(e.Item.DataItem, "CustomerLOTNo").ToString
+            End If
+
+            If Not IsNothing(lblProductCode) Then
+                lblProductCode.Text = DataBinder.Eval(e.Item.DataItem, "ProductCode").ToString
+            End If
+
+        End If
     End Sub
     '--------------------------------------------------------Show Data Job Detail In Modal-----------------------------------------
     Private Sub DataIssuedDetail()
@@ -1147,7 +1126,7 @@ Public Class SingleIssuedWH
         If cons.Count > 0 Then
             Repeater9.DataSource = cons.ToList
             Repeater9.DataBind()
-            DataIssuedDetailUpdatePanel.Update()
+            'DataIssuedDetailUpdatePanel.Update()
         Else
             Repeater9.DataSource = Nothing
             Repeater9.DataBind()
@@ -1226,75 +1205,75 @@ Public Class SingleIssuedWH
 
     Private Function SaveIssued_New() As Boolean
 
-        Using tran As New TransactionScope()
-            Try
-                db.Database.Connection.Open()
-                db.tblWHISSUEDs.Add(New tblWHISSUED With { _
-            .PullSignal = txtPullSignal_BeforeTab.Value.Trim, _
-            .LOTNo = txtJobNo_BeforeTab.Value.Trim, _
-            .PullDate = CDate(txtdatepickertxtPullDateTime_beforeTab.Text.Trim), _
-            .PullTime = txtTimePickUpPullDateTime.Value.Trim, _
-            .DeliveryDate = CType(txtdatepickerDeliveryDateTime_beforeTab.Text.Trim, Date?), _
-            .DeliveryTime = txtTimePickUpDeliveryDateTime.Value.Trim, _
-            .ConfirmDate = CType(txtdatepickerComfirmDateTime_beforeTab.Text.Trim, Date?), _
-            .ConfirmTime = txtTimePickUpConfirmDateTime.Value.Trim, _
-            .ExporterCode = txtExporterCode_IssueCon.Value.Trim, _
-            .ExporterName = txtNameExporter_IssueCon.Value.Trim, _
-            .ExporterAddress1 = txtAddress1Exporter_IssueCon.Value.Trim, _
-            .ExporterAddress2 = txtAddress2Exporter_IssueCon.Value.Trim, _
-            .ExporterAddress3 = txtAddress3Exporter_IssueCon.Value.Trim, _
-            .ExporterAddress4 = txtAddress4Exporter_IssueCon.Value.Trim, _
-            .ConsigneeCode = txtConsigneeCode01_IssueCon.Value.Trim, _
-            .ConsigneeName = txtNameConsignee_IssueCon.Value.Trim, _
-            .ConsigneeAddress1 = txtAddress1Consignee_IssueCon.Value.Trim, _
-            .ConsigneeAddress2 = txtAddress2Consignee_IssueCon.Value.Trim, _
-            .ConsigneeAddress3 = txtAddress3Consignee_IssueCon.Value.Trim, _
-            .ConsigneeAddress4 = txtAddress4Consignee_IssueCon.Value.Trim, _
-            .OwnerCode = txtOwnerCode_IssueCon.Value.Trim, _
-            .OwnerName = txtNameOwner_IssueCon.Value.Trim, _
-            .OwnerAddress1 = txtAddress1Owner_IssueCon.Value.Trim, _
-            .OwnerAddress2 = txtAddress2Owner_IssueCon.Value.Trim, _
-            .OwnerAddress3 = txtAddress3Owner_IssueCon.Value.Trim, _
-            .OwnerAddress4 = txtAddress4Owner_IssueCon.Value.Trim, _
-            .ShipToCode = txtShipToCode_IssueCon.Value.Trim, _
-            .ShipToName = txtNameShipTo_IssueCon.Value.Trim, _
-            .ShipToAddress1 = txtAddress1ShipTo_IssueCon.Value.Trim, _
-            .ShipToAddress2 = txtAddress2ShipTo_IssueCon.Value.Trim, _
-            .ShipToAddress3 = txtAddress3ShipTo_IssueCon.Value.Trim, _
-            .ShipToAddress4 = txtAddress4ShipTo_IssueCon.Value.Trim, _
-            .Commodity = ddlCommodity_IssueCon.Text.Trim, _
-            .QuantityOfPart = CType(txtQuantityOfGood_IssueCon.Value.Trim, Double?), _
-            .QuantityUnit = ddlQuantityOfGood_IssueCon.Text.Trim, _
-            .QuantityPackage = CType(txtQuantityPackage_IssueCon.Value.Trim, Double?), _
-            .PackageUNIT = ddlQuantityPackage_IssueCon.Text.Trim, _
-            .QuantityPLT = CType(txtQuantityPLTSkid_IssueCon.Value.Trim, Double?), _
-            .QuantityPLTUnit = ddlQuantityPLTSkid_IssueCon.Text.Trim, _
-            .Weight = CType(txtWeight_IssueCon.Value.Trim, Double?), _
-            .WeightUnit = ddlWeight_IssueCon.Text.Trim, _
-            .Volume = CType(txtVolume_IssueCon.Value.Trim, Double?), _
-            .VolumeUnit = ddlVolume_IssueCon.Text.Trim, _
-            .QuantityPicked = CType(txtQuantityPicked_IssueCon.Value.Trim, Double?), _
-            .PickedUNIT = ddlQuantityPicked_IssueCon.Text.Trim, _
-            .QuantityDiscrepancy = CType(txtQTYDiscrepancy_IssueCon.Value.Trim, Double?), _
-            .DiscrepancyUNIT = ddlQTYDiscrepancy_IssueCon.Text.Trim, _
-            .Remark = txtRemark_IssueCon.Value.Trim, _
-            .PrintCount = "0", _
-            .UserBy = CStr(Session("UserName")), _
-            .LastUpdate = Now
-                })
-                db.SaveChanges()
-                tran.Complete()
-                Return True
-                'ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('Add สำเร็จ !');", True)
-            Catch ex As Exception
-                Return False
-                'ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด กรุณาบันทึกข้อมูลใหม่อีกครั้ง');", True)
-            Finally
-                db.Database.Connection.Close()
-                db.Dispose()
-                tran.Dispose()
-            End Try
-        End Using
+        'Using tran As New TransactionScope()
+        Try
+            db.Database.Connection.Open()
+            db.tblWHISSUEDs.Add(New tblWHISSUED With { _
+        .PullSignal = txtPullSignal_BeforeTab.Value.Trim, _
+        .LOTNo = txtJobNo_BeforeTab.Value.Trim, _
+        .PullDate = CDate(txtdatepickertxtPullDateTime_beforeTab.Text.Trim), _
+        .PullTime = txtTimePickUpPullDateTime.Value.Trim, _
+        .DeliveryDate = CType(txtdatepickerDeliveryDateTime_beforeTab.Text.Trim, Date?), _
+        .DeliveryTime = txtTimePickUpDeliveryDateTime.Value.Trim, _
+        .ConfirmDate = CType(txtdatepickerComfirmDateTime_beforeTab.Text.Trim, Date?), _
+        .ConfirmTime = txtTimePickUpConfirmDateTime.Value.Trim, _
+        .ExporterCode = txtExporterCode_IssueCon.Value.Trim, _
+        .ExporterName = txtNameExporter_IssueCon.Value.Trim, _
+        .ExporterAddress1 = txtAddress1Exporter_IssueCon.Value.Trim, _
+        .ExporterAddress2 = txtAddress2Exporter_IssueCon.Value.Trim, _
+        .ExporterAddress3 = txtAddress3Exporter_IssueCon.Value.Trim, _
+        .ExporterAddress4 = txtAddress4Exporter_IssueCon.Value.Trim, _
+        .ConsigneeCode = txtConsigneeCode01_IssueCon.Value.Trim, _
+        .ConsigneeName = txtNameConsignee_IssueCon.Value.Trim, _
+        .ConsigneeAddress1 = txtAddress1Consignee_IssueCon.Value.Trim, _
+        .ConsigneeAddress2 = txtAddress2Consignee_IssueCon.Value.Trim, _
+        .ConsigneeAddress3 = txtAddress3Consignee_IssueCon.Value.Trim, _
+        .ConsigneeAddress4 = txtAddress4Consignee_IssueCon.Value.Trim, _
+        .OwnerCode = txtOwnerCode_IssueCon.Value.Trim, _
+        .OwnerName = txtNameOwner_IssueCon.Value.Trim, _
+        .OwnerAddress1 = txtAddress1Owner_IssueCon.Value.Trim, _
+        .OwnerAddress2 = txtAddress2Owner_IssueCon.Value.Trim, _
+        .OwnerAddress3 = txtAddress3Owner_IssueCon.Value.Trim, _
+        .OwnerAddress4 = txtAddress4Owner_IssueCon.Value.Trim, _
+        .ShipToCode = txtShipToCode_IssueCon.Value.Trim, _
+        .ShipToName = txtNameShipTo_IssueCon.Value.Trim, _
+        .ShipToAddress1 = txtAddress1ShipTo_IssueCon.Value.Trim, _
+        .ShipToAddress2 = txtAddress2ShipTo_IssueCon.Value.Trim, _
+        .ShipToAddress3 = txtAddress3ShipTo_IssueCon.Value.Trim, _
+        .ShipToAddress4 = txtAddress4ShipTo_IssueCon.Value.Trim, _
+        .Commodity = ddlCommodity_IssueCon.Text.Trim, _
+        .QuantityOfPart = CType(txtQuantityOfGood_IssueCon.Value.Trim, Double?), _
+        .QuantityUnit = ddlQuantityOfGood_IssueCon.Text.Trim, _
+        .QuantityPackage = CType(txtQuantityPackage_IssueCon.Value.Trim, Double?), _
+        .PackageUNIT = ddlQuantityPackage_IssueCon.Text.Trim, _
+        .QuantityPLT = CType(txtQuantityPLTSkid_IssueCon.Value.Trim, Double?), _
+        .QuantityPLTUnit = ddlQuantityPLTSkid_IssueCon.Text.Trim, _
+        .Weight = CType(txtWeight_IssueCon.Value.Trim, Double?), _
+        .WeightUnit = ddlWeight_IssueCon.Text.Trim, _
+        .Volume = CType(txtVolume_IssueCon.Value.Trim, Double?), _
+        .VolumeUnit = ddlVolume_IssueCon.Text.Trim, _
+        .QuantityPicked = CType(txtQuantityPicked_IssueCon.Value.Trim, Double?), _
+        .PickedUNIT = ddlQuantityPicked_IssueCon.Text.Trim, _
+        .QuantityDiscrepancy = CType(txtQTYDiscrepancy_IssueCon.Value.Trim, Double?), _
+        .DiscrepancyUNIT = ddlQTYDiscrepancy_IssueCon.Text.Trim, _
+        .Remark = txtRemark_IssueCon.Value.Trim, _
+        .PrintCount = "0", _
+        .UserBy = CStr(Session("UserName")), _
+        .LastUpdate = Now
+            })
+            db.SaveChanges()
+            'tran.Complete()
+            Return True
+            'ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('Add สำเร็จ !');", True)
+        Catch ex As Exception
+            Return False
+            'ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด กรุณาบันทึกข้อมูลใหม่อีกครั้ง');", True)
+            'Finally
+            'db.Database.Connection.Close()
+            'db.Dispose()
+            'tran.Dispose()
+        End Try
+        'End Using
     End Function
     Private Function SaveNew_RemarkMoveJob() As Boolean
         Dim S As String = "0"
@@ -1307,30 +1286,30 @@ Public Class SingleIssuedWH
         'sb.Append("INSERT INTO tblWHRemarkMoveJob (PullSignal,LOTNo,MovetoLot,CustREFNo,WHSite,Status1,UserBy,LastUpdate)")
         'sb.Append(" VALUES (@PullSignal,@LOTNo,@MovetoLot,@CustREFNo,@WHSite,@Status1,@UserBy,@LastUpdate)")
 
-        Using tran As New TransactionScope()
-            Try
-                db.Database.Connection.Open()
-                db.tblWHRemarkMoveJobs.Add(New tblWHRemarkMoveJob With { _
+        'Using tran As New TransactionScope()
+        Try
+            db.Database.Connection.Open()
+            db.tblWHRemarkMoveJobs.Add(New tblWHRemarkMoveJob With { _
             .PullSignal = txtPullSignal_BeforeTab.Value.Trim, _
-                .LOTNo = txtJobNo_BeforeTab.Value.Trim, _
-                .MovetoLot = txtJobNo_IssueCon.Value.Trim, _
-                .CustREFNo = txtCustRefNo_IssueCon.Value.Trim, _
-                .WHSite = ddlWHSite_IssueCon.Text.Trim, _
-                .Status1 = S, _
-                .UserBy = CStr(Session("UserName")), _
-                .LastUpdate = Now
-                })
-                db.SaveChanges()
-                tran.Complete()
-                Return True
-            Catch ex As Exception
-                Return False
-            Finally
-                db.Database.Connection.Close()
-                db.Dispose()
-                tran.Dispose()
-            End Try
-        End Using
+            .LOTNo = txtJobNo_BeforeTab.Value.Trim, _
+            .MovetoLot = txtJobNo_IssueCon.Value.Trim, _
+            .CustREFNo = txtCustRefNo_IssueCon.Value.Trim, _
+            .WHSite = ddlWHSite_IssueCon.Text.Trim, _
+            .Status1 = S, _
+            .UserBy = CStr(Session("UserName")), _
+            .LastUpdate = Now
+            })
+            db.SaveChanges()
+            'tran.Complete()
+            Return True
+        Catch ex As Exception
+            Return False
+            'Finally
+            '    db.Database.Connection.Close()
+            '    db.Dispose()
+            '    tran.Dispose()
+        End Try
+        'End Using
 
     End Function
     Private Function SaveNew_Confirm() As Boolean
@@ -1338,47 +1317,47 @@ Public Class SingleIssuedWH
         'sb.Append("INSERT INTO tblWHConfirmGoodsReceive (LOTNo,LOTDate,CustREFNo,OwnerCode,OwnerNameENG,OwnerStreet_Number,OwnerDistrict,OwnerSubProvince,OwnerProvince,Commodity,QuantityOfPart,QuantityUnit,QuantityPackage,PackageUNIT,QuantityPLT,QuantityPLTUnit,Weigth,WeigthUnit,Volume,VolumeUnit,Remark,PrintCount,UserBy,LastUpdate)")
         'sb.Append(" VALUES (@LOTNo,@LOTDate,@CustREFNo,@OwnerCode,@OwnerNameENG,@OwnerStreet_Number,@OwnerDistrict,@OwnerSubProvince,@OwnerProvince,@Commodity,@QuantityOfPart,@QuantityUnit,@QuantityPackage,@PackageUNIT,@QuantityPLT,@QuantityPLTUnit,@Weigth,@WeigthUnit,@Volume,@VolumeUnit,@Remark,@PrintCount,@UserBy,@LastUpdate)")
 
-        Using tran As New TransactionScope()
-            Try
-                db.Database.Connection.Open()
-                db.tblWHConfirmGoodsReceives.Add(New tblWHConfirmGoodsReceive With { _
-                .LOTNo = txtJobNo_IssueCon.Value.Trim, _
-                .LOTDate = Now, _
-                .CustREFNo = txtCustRefNo_IssueCon.Value.Trim, _
-                .OwnerCode = txtOwnerCode_IssueCon.Value.Trim, _
-                .OwnerNameENG = txtNameOwner_IssueCon.Value.Trim, _
-                .OwnerStreet_Number = txtAddress1Owner_IssueCon.Value.Trim, _
-                .OwnerDistrict = txtAddress2Owner_IssueCon.Value.Trim, _
-                .OwnerSubProvince = txtAddress3Owner_IssueCon.Value.Trim, _
-                .OwnerProvince = txtAddress4Owner_IssueCon.Value.Trim, _
-                .Commodity = ddlCommodity_IssueCon.Text.Trim, _
-                .QuantityOfPart = CType(txtQuantityOfGood_IssueCon.Value.Trim, Double?), _
-                .QuantityUnit = ddlQuantityOfGood_IssueCon.Text.Trim, _
-                .QuantityPackage = CType(txtQuantityPackage_IssueCon.Value.Trim, Double?), _
-                .PackageUNIT = ddlQuantityPackage_IssueCon.Text.Trim, _
-                .QuantityPLT = CType(txtQuantityPLTSkid_IssueCon.Value.Trim, Double?), _
-                .QuantityPLTUnit = ddlQuantityPLTSkid_IssueCon.Text.Trim, _
-                .Weigth = CType(txtWeight_IssueCon.Value.Trim, Double?), _
-                .WeigthUnit = ddlWeight_IssueCon.Text.Trim, _
-                .Volume = CType(txtVolume_IssueCon.Value.Trim, Double?), _
-                .VolumeUnit = ddlVolume_IssueCon.Text.Trim, _
-                .Remark = txtRemark_IssueCon.Value.Trim, _
-                .PrintCount = "0", _
-                .UserBy = CStr(Session("UserName")), _
-                .LastUpdate = Now
-                })
+        'Using tran As New TransactionScope()
+        Try
+            db.Database.Connection.Open()
+            db.tblWHConfirmGoodsReceives.Add(New tblWHConfirmGoodsReceive With { _
+            .LOTNo = txtJobNo_IssueCon.Value.Trim, _
+            .LOTDate = Now, _
+            .CustREFNo = txtCustRefNo_IssueCon.Value.Trim, _
+            .OwnerCode = txtOwnerCode_IssueCon.Value.Trim, _
+            .OwnerNameENG = txtNameOwner_IssueCon.Value.Trim, _
+            .OwnerStreet_Number = txtAddress1Owner_IssueCon.Value.Trim, _
+            .OwnerDistrict = txtAddress2Owner_IssueCon.Value.Trim, _
+            .OwnerSubProvince = txtAddress3Owner_IssueCon.Value.Trim, _
+            .OwnerProvince = txtAddress4Owner_IssueCon.Value.Trim, _
+            .Commodity = ddlCommodity_IssueCon.Text.Trim, _
+            .QuantityOfPart = CType(txtQuantityOfGood_IssueCon.Value.Trim, Double?), _
+            .QuantityUnit = ddlQuantityOfGood_IssueCon.Text.Trim, _
+            .QuantityPackage = CType(txtQuantityPackage_IssueCon.Value.Trim, Double?), _
+            .PackageUNIT = ddlQuantityPackage_IssueCon.Text.Trim, _
+            .QuantityPLT = CType(txtQuantityPLTSkid_IssueCon.Value.Trim, Double?), _
+            .QuantityPLTUnit = ddlQuantityPLTSkid_IssueCon.Text.Trim, _
+            .Weigth = CType(txtWeight_IssueCon.Value.Trim, Double?), _
+            .WeigthUnit = ddlWeight_IssueCon.Text.Trim, _
+            .Volume = CType(txtVolume_IssueCon.Value.Trim, Double?), _
+            .VolumeUnit = ddlVolume_IssueCon.Text.Trim, _
+            .Remark = txtRemark_IssueCon.Value.Trim, _
+            .PrintCount = "0", _
+            .UserBy = CStr(Session("UserName")), _
+            .LastUpdate = Now
+            })
 
-                db.SaveChanges()
-                tran.Complete()
-                Return True
-            Catch ex As Exception
-                Return False
-            Finally
-                db.Database.Connection.Close()
-                db.Dispose()
-                tran.Dispose()
-            End Try
-        End Using
+            db.SaveChanges()
+            'tran.Complete()
+            Return True
+        Catch ex As Exception
+            Return False
+            'Finally
+            'db.Database.Connection.Close()
+            'db.Dispose()
+            'tran.Dispose()
+        End Try
+        'End Using
 
     End Function
     Private Function SaveNew_ConfirmNJR() As Boolean
@@ -1386,47 +1365,47 @@ Public Class SingleIssuedWH
         'sb.Append("INSERT INTO tblWHConfirmGoodsReceive (LOTNo,LOTDate,CustREFNo,OwnerCode,OwnerNameENG,OwnerStreet_Number,OwnerDistrict,OwnerSubProvince,OwnerProvince,Commodity,QuantityOfPart,QuantityUnit,QuantityPackage,PackageUNIT,QuantityPLT,QuantityPLTUnit,Weigth,WeigthUnit,Volume,VolumeUnit,Remark,PrintCount,UserBy,LastUpdate)")
         'sb.Append(" VALUES (@LOTNo,@LOTDate,@CustREFNo,@OwnerCode,@OwnerNameENG,@OwnerStreet_Number,@OwnerDistrict,@OwnerSubProvince,@OwnerProvince,@Commodity,@QuantityOfPart,@QuantityUnit,@QuantityPackage,@PackageUNIT,@QuantityPLT,@QuantityPLTUnit,@Weigth,@WeigthUnit,@Volume,@VolumeUnit,@Remark,@PrintCount,@UserBy,@LastUpdate)")
 
-        Using tran As New TransactionScope()
-            Try
-                db.Database.Connection.Open()
-                db.tblWHConfirmGoodsReceives.Add(New tblWHConfirmGoodsReceive With { _
-                .LOTNo = txtJobNo_IssueCon.Value.Trim, _
-                .LOTDate = Now, _
-                .CustREFNo = txtCustRefNo_IssueCon.Value.Trim, _
-                .OwnerCode = txtOwnerCode_IssueCon.Value.Trim, _
-                .OwnerNameENG = txtNameOwner_IssueCon.Value.Trim, _
-                .OwnerStreet_Number = txtAddress1Owner_IssueCon.Value.Trim, _
-                .OwnerDistrict = txtAddress2Owner_IssueCon.Value.Trim, _
-                .OwnerSubProvince = txtAddress3Owner_IssueCon.Value.Trim, _
-                .OwnerProvince = txtAddress4Owner_IssueCon.Value.Trim, _
-                .Commodity = ddlCommodity_IssueCon.Text.Trim, _
-                .QuantityOfPart = CType(txtQuantityOfGood_IssueCon.Value.Trim, Double?), _
-                .QuantityUnit = ddlQuantityOfGood_IssueCon.Text.Trim, _
-                .QuantityPackage = CType(txtQuantityPackage_IssueCon.Value.Trim, Double?), _
-                .PackageUNIT = ddlQuantityPackage_IssueCon.Text.Trim, _
-                .QuantityPLT = CType(txtQuantityPLTSkid_IssueCon.Value.Trim, Double?), _
-                .QuantityPLTUnit = ddlQuantityPLTSkid_IssueCon.Text.Trim, _
-                .Weigth = CType(txtWeight_IssueCon.Value.Trim, Double?), _
-                .WeigthUnit = ddlWeight_IssueCon.Text.Trim, _
-                .Volume = CType(txtVolume_IssueCon.Value.Trim, Double?), _
-                .VolumeUnit = ddlVolume_IssueCon.Text.Trim, _
-                .Remark = txtRemark_IssueCon.Value.Trim, _
-                .PrintCount = "0", _
-                .UserBy = CStr(Session("UserName")), _
-                .LastUpdate = Now
-                })
+        'Using tran As New TransactionScope()
+        Try
+            db.Database.Connection.Open()
+            db.tblWHConfirmGoodsReceives.Add(New tblWHConfirmGoodsReceive With { _
+            .LOTNo = txtJobNo_IssueCon.Value.Trim, _
+            .LOTDate = Now, _
+            .CustREFNo = txtCustRefNo_IssueCon.Value.Trim, _
+            .OwnerCode = txtOwnerCode_IssueCon.Value.Trim, _
+            .OwnerNameENG = txtNameOwner_IssueCon.Value.Trim, _
+            .OwnerStreet_Number = txtAddress1Owner_IssueCon.Value.Trim, _
+            .OwnerDistrict = txtAddress2Owner_IssueCon.Value.Trim, _
+            .OwnerSubProvince = txtAddress3Owner_IssueCon.Value.Trim, _
+            .OwnerProvince = txtAddress4Owner_IssueCon.Value.Trim, _
+            .Commodity = ddlCommodity_IssueCon.Text.Trim, _
+            .QuantityOfPart = CType(txtQuantityOfGood_IssueCon.Value.Trim, Double?), _
+            .QuantityUnit = ddlQuantityOfGood_IssueCon.Text.Trim, _
+            .QuantityPackage = CType(txtQuantityPackage_IssueCon.Value.Trim, Double?), _
+            .PackageUNIT = ddlQuantityPackage_IssueCon.Text.Trim, _
+            .QuantityPLT = CType(txtQuantityPLTSkid_IssueCon.Value.Trim, Double?), _
+            .QuantityPLTUnit = ddlQuantityPLTSkid_IssueCon.Text.Trim, _
+            .Weigth = CType(txtWeight_IssueCon.Value.Trim, Double?), _
+            .WeigthUnit = ddlWeight_IssueCon.Text.Trim, _
+            .Volume = CType(txtVolume_IssueCon.Value.Trim, Double?), _
+            .VolumeUnit = ddlVolume_IssueCon.Text.Trim, _
+            .Remark = txtRemark_IssueCon.Value.Trim, _
+            .PrintCount = "0", _
+            .UserBy = CStr(Session("UserName")), _
+            .LastUpdate = Now
+            })
 
-                db.SaveChanges()
-                tran.Complete()
-                Return True
-            Catch ex As Exception
-                Return False
-            Finally
-                db.Database.Connection.Close()
-                db.Dispose()
-                tran.Dispose()
-            End Try
-        End Using
+            db.SaveChanges()
+            'tran.Complete()
+            Return True
+        Catch ex As Exception
+            Return False
+            'Finally
+            'db.Database.Connection.Close()
+            'db.Dispose()
+            'tran.Dispose()
+        End Try
+        'End Using
 
     End Function
 
@@ -1534,25 +1513,25 @@ Public Class SingleIssuedWH
         'sb.Append(" SET UsedStatus=@UsedStatus")
         'sb.Append(" WHERE (PullSignal=@PullSignal AND LOTNo=@LOTNo)")
 
-        Using tran As New TransactionScope()
-            Try
-                db.Database.Connection.Open()
-                Dim edit As tblWHPicking = (From c In db.tblWHPickings Where c.LOTNo = txtJobNo_BeforeTab.Value.Trim And c.PullSignal = txtPullSignal_BeforeTab.Value.Trim
-                  Select c).First()
-                If edit IsNot Nothing Then
-                    edit.PullSignal = txtPullSignal_BeforeTab.Value.Trim
-                    edit.LOTNo = txtJobNo_BeforeTab.Value.Trim
-                    edit.UsedStatus = 1
+        'Using tran As New TransactionScope()
+        Try
+            db.Database.Connection.Open()
+            Dim edit As tblWHPicking = (From c In db.tblWHPickings Where c.LOTNo = txtJobNo_BeforeTab.Value.Trim And c.PullSignal = txtPullSignal_BeforeTab.Value.Trim
+              Select c).First()
+            If edit IsNot Nothing Then
+                edit.PullSignal = txtPullSignal_BeforeTab.Value.Trim
+                edit.LOTNo = txtJobNo_BeforeTab.Value.Trim
+                edit.UsedStatus = 1
 
-                    db.SaveChanges()
-                    tran.Complete()
-                End If
-                Return True
+                db.SaveChanges()
+                'tran.Complete()
+            End If
+            Return True
 
-            Catch ex As Exception
-                Return False
-            End Try
-        End Using
+        Catch ex As Exception
+            Return False
+        End Try
+        'End Using
     End Function
 
     Private Sub SaveIssued_Modify()
@@ -1641,37 +1620,26 @@ Public Class SingleIssuedWH
         txtJobNo_BeforeTab.Focus()
     End Sub
     Private Sub CountWHIssued()
+        Dim lblPullSignal As String
+        Dim lblLOTNo As String
+        Dim lblItemNo As Integer
+        Dim i As Integer
+        Dim Goods As Double
+        With Repeater9
+            For i = 0 To Repeater9.Items.Count - 1
 
-        'Dim i As Integer
-        'Dim Goods As Double
-        'With Repeater9
-        '    For i = 0 To Repeater9.Items.Count - 1
+                lblPullSignal = CType(Repeater9.Items(i).FindControl("lblPullSignal"), Label).Text.Trim
+                lblLOTNo = CType(Repeater9.Items(i).FindControl("lblLOTNo"), Label).Text.Trim
+                lblItemNo = CInt(CType(Repeater9.Items(i).FindControl("lblItemNo"), Label).Text.Trim)
 
-        '        Dim user = (From u In db.tblWHISSUEDDetails Where u.LOTNo = txtJobNo_BeforeTab.Value.Trim And u.PullSignal = txtPullSignal_BeforeTab.Value.Trim).SingleOrDefault
+                Dim user = (From u In db.tblWHISSUEDDetails Where u.LOTNo = lblLOTNo And u.PullSignal = lblPullSignal And u.ItemNo = lblItemNo).SingleOrDefault
 
-        '        'Goods = Goods + Repeater9.Items(i).
-        '        Goods = Goods + user.ISSUEDQuantity.Value
+                Goods = Goods + user.ISSUEDQuantity.Value
 
-        '    Next
-        'End With
-        'txtQuantityPicked_IssueCon.Value = CStr(Goods)
-        'txtQTYDiscrepancy_IssueCon.Value = CStr(CDbl(txtQuantityOfGood_IssueCon.Value) - Goods)
-
-
-
-
-        ''Dim i As Integer
-        ''Dim Goods As Double
-        ''With dgvIssued
-        ''    For i = 0 To .Rows.Count - 1
-
-        ''        Goods = Goods + CDbl(.Rows(i).Cells(24).Value)
-
-        ''    Next
-        ''End With
-        ''txtQtyReceived.Text = CStr(Goods)
-        ''txtQtyDiscrepancy.Text = CStr(CDbl(txtQuantityofPart.Text) - Goods)
-
+            Next
+        End With
+        txtQuantityPicked_IssueCon.Value = CStr(Goods)
+        txtQTYDiscrepancy_IssueCon.Value = CStr(CDbl(txtQuantityOfGood_IssueCon.Value) - Goods)
     End Sub
 
     Private Sub ReadDataMove()
@@ -2587,7 +2555,7 @@ Public Class SingleIssuedWH
     End Function
     Private Sub ConfirmDelivery()
 
-        'Dim chkName As CheckBox
+        'Dim chkName As CheckBox 
         Dim lblPullSignal As String
         Dim lblLOTNo As String
         Dim lblItemNo As Double
@@ -2872,91 +2840,6 @@ Public Class SingleIssuedWH
         'Cursor.Current = Cursors.Default
 
     End Sub
-
-    Protected Sub chkRowData_CheckedChanged(sender As Object, e As EventArgs)
-        Dim chkName As CheckBox
-        Dim lblPullSignal As String
-        Dim lblLOTNo As String
-        Dim lblItemNo As Integer
-        Dim i As Integer
-
-        For i = 0 To Repeater8.Items.Count - 1
-
-            chkName = CType(Repeater8.Items(i).FindControl("chkRowData"), CheckBox)
-            lblItemNo = CInt(CType(Repeater8.Items(i).FindControl("lblItemNo"), Label).Text.Trim)
-            lblPullSignal = CType(Repeater8.Items(i).FindControl("lblPullSignal"), Label).Text.Trim
-            lblLOTNo = CType(Repeater8.Items(i).FindControl("lblLOTNo"), Label).Text.Trim
-
-            If chkName.Checked = True Then
-                Dim u = (From us In db.tblWHPickingDetails Where us.PullSignal = lblPullSignal And us.LOTNo = lblLOTNo And us.ItemNo = lblItemNo
-                  Select us).FirstOrDefault
-
-                If Not IsNothing(u) Then
-                    If String.IsNullOrEmpty(u.WHSite) Then
-                        'ddlWHSite_ConfirmIssue.Text = ""
-                    Else
-                        ddlWHSite_ConfirmIssue.Text = u.WHSite
-                    End If
-
-                    If String.IsNullOrEmpty(u.WHLocation) Then
-                        'ddlWHLocation_ConfirmIssue.Text = ""
-                    Else
-                        ddlWHLocation_ConfirmIssue.Text = u.WHLocation
-                    End If
-
-                    txtENDCustomer_ConfirmIssue.Value = u.ENDCustomer
-                    txtCusLOTNo_ConfirmIssue.Value = u.CustomerLOTNo
-                    'ddlCustWHFac_ConfirmIssue.Text 
-                    txtItemNo_ConfirmIssue.Value = CStr(u.ItemNo)
-                    txtEASPN_ConfirmIssue.Value = u.ProductCode
-                    txtCustomerPN_ConfirmIssue.Value = u.CustomerPN
-                    txtOwnerPN_ConfirmIssue.Value = u.OwnerPN
-                    txtProductDesc_ConfirmIssue.Value = u.ProductDesc
-                    If u.Measurement Is Nothing Then
-                        ddlMeasurement_ConfirmIssue.Text = u.Measurement
-                    End If
-                    txtWidth_ConfirmIssue.Value = CStr(u.ProductWidth)
-                    txtHight_ConfirmIssue.Value = CStr(u.ProductHeight)
-                    txtLength_ConfirmIssue.Value = CStr(u.ProductLength)
-                    txtProductVolume_ConfirmIssue.Value = CStr(u.ProductVolume)
-                    txtPalletNo_ConfirmIssue.Value = u.PalletNo
-                    txtOrderNo_ConfirmIssue.Value = u.OrderNo
-                    txtReceiveNo_ConfirmIssue.Value = u.ReceiveNo
-                    ddlStatus_ConfirmIssue.Text = u.Type
-                    'ddlType_ConfirmIssue.Text
-                    txtdatepickerManufacturing_ConfirmIssue.Text = Convert.ToDateTime(u.ManufacturingDate).ToString("dd/MM/yyyy")
-                    txtdatepickerExpiredDate_ConfirmIssue.Text = Convert.ToDateTime(u.ExpiredDate).ToString("dd/MM/yyyy")
-                    txtdatepickerReceiveDate_ConfirmIssue.Text = CStr(u.ReceiveDate)
-                    If String.IsNullOrEmpty(txtdatepickerManufacturing_ConfirmIssue.Text) Then
-                        chkNotUseDate_ConfirmIssue.Checked = True
-                    Else
-                        chkNotUseDate_ConfirmIssue.Checked = False
-                    End If
-                    txtQuantity_ConfirmIssue.Value = CStr(u.PickQuantity)
-                    If u.PickUnit Is Nothing Then
-                        ddlQuantity_ConfirmIssue.Text = u.PickUnit
-                    End If
-                    txtWeight_ConfirmIssue.Value = CStr(u.Weigth)
-                    If u.WeigthUnit Is Nothing Then
-                        ddlWeight_ConfirmIssue.Text = u.WeigthUnit
-                    End If
-
-                    If u.Currency Is Nothing Then
-                        ddlCurrency_ConfirmIssue.Text = u.Currency
-                    End If
-
-                    txtPriceForeign_ConfirmIssue.Value = CStr(u.PriceForeigh)
-                    txtPriceBath_ConfirmIssue.Value = CStr(u.PriceBath)
-                    txtExchangeRate_ConfirmIssue.Value = CStr(u.ExchangeRate)
-                    txtAmount_ConfirmIssue.Value = CStr(u.PriceForeighAmount)
-                    txtBathAmount_ConfirmIssue.Value = CStr(u.PriceBath)
-                End If
-
-
-            End If
-        Next
-    End Sub
-
     Protected Sub chkAll_CheckedChanged(sender As Object, e As EventArgs)
         selectEdit()
     End Sub
@@ -2969,7 +2852,7 @@ Public Class SingleIssuedWH
 
         For i = 0 To Repeater8.Items.Count - 1
 
-            chkName = CType(Repeater8.Items(i).FindControl("chkRowData"), CheckBox)
+            chkName = CType(Repeater8.Items(i).FindControl("chk_Pull"), CheckBox)
             lblItemNo = CInt(CType(Repeater8.Items(i).FindControl("lblItemNo"), Label).Text.Trim)
             lblPullSignal = CType(Repeater8.Items(i).FindControl("lblPullSignal"), Label).Text.Trim
             lblLOTNo = CType(Repeater8.Items(i).FindControl("lblLOTNo"), Label).Text.Trim
@@ -3043,4 +2926,200 @@ Public Class SingleIssuedWH
             End If
         Next
     End Sub
+
+    Protected Sub chk_Pull_CheckedChanged(sender As Object, e As EventArgs)
+
+        Dim chkName As CheckBox
+        Dim lblPullSignal As String
+        Dim lblLOTNo As String
+        Dim lblItemNo As Integer
+        Dim i As Integer
+
+        For i = 0 To Repeater8.Items.Count - 1
+
+            chkName = CType(Repeater8.Items(i).FindControl("chk_Pull"), CheckBox)
+            lblItemNo = CInt(CType(Repeater8.Items(i).FindControl("lblItemNo"), Label).Text.Trim)
+            lblPullSignal = CType(Repeater8.Items(i).FindControl("lblPullSignal"), Label).Text.Trim
+            lblLOTNo = CType(Repeater8.Items(i).FindControl("lblLOTNo"), Label).Text.Trim
+
+            If chkName.Checked = True Then
+                Dim u = (From us In db.tblWHPickingDetails Where us.PullSignal = lblPullSignal And us.LOTNo = lblLOTNo And us.ItemNo = lblItemNo
+                  Select us).FirstOrDefault
+
+                'If Not IsNothing(u) Then
+                If String.IsNullOrEmpty(u.WHSite) Then
+                    'ddlWHSite_ConfirmIssue.Text = ""
+                Else
+                    ddlWHSite_ConfirmIssue.Text = u.WHSite
+                End If
+
+                If String.IsNullOrEmpty(u.WHLocation) Then
+                    'ddlWHLocation_ConfirmIssue.Text = ""
+                Else
+                    ddlWHLocation_ConfirmIssue.Text = u.WHLocation
+                End If
+
+                txtENDCustomer_ConfirmIssue.Value = u.ENDCustomer
+                txtCusLOTNo_ConfirmIssue.Value = u.CustomerLOTNo
+                'ddlCustWHFac_ConfirmIssue.Text 
+                txtItemNo_ConfirmIssue.Value = CStr(u.ItemNo)
+                txtEASPN_ConfirmIssue.Value = u.ProductCode
+                txtCustomerPN_ConfirmIssue.Value = u.CustomerPN
+                txtOwnerPN_ConfirmIssue.Value = u.OwnerPN
+                txtProductDesc_ConfirmIssue.Value = u.ProductDesc
+                If u.Measurement Is Nothing Then
+                    ddlMeasurement_ConfirmIssue.Text = u.Measurement
+                End If
+                txtWidth_ConfirmIssue.Value = CStr(u.ProductWidth)
+                txtHight_ConfirmIssue.Value = CStr(u.ProductHeight)
+                txtLength_ConfirmIssue.Value = CStr(u.ProductLength)
+                txtProductVolume_ConfirmIssue.Value = CStr(u.ProductVolume)
+                txtPalletNo_ConfirmIssue.Value = u.PalletNo
+                txtOrderNo_ConfirmIssue.Value = u.OrderNo
+                txtReceiveNo_ConfirmIssue.Value = u.ReceiveNo
+                ddlStatus_ConfirmIssue.Text = u.Type
+                'ddlType_ConfirmIssue.Text
+                txtdatepickerManufacturing_ConfirmIssue.Text = Convert.ToDateTime(u.ManufacturingDate).ToString("dd/MM/yyyy")
+                txtdatepickerExpiredDate_ConfirmIssue.Text = Convert.ToDateTime(u.ExpiredDate).ToString("dd/MM/yyyy")
+                txtdatepickerReceiveDate_ConfirmIssue.Text = CStr(u.ReceiveDate)
+                If String.IsNullOrEmpty(txtdatepickerManufacturing_ConfirmIssue.Text) Then
+                    chkNotUseDate_ConfirmIssue.Checked = True
+                Else
+                    chkNotUseDate_ConfirmIssue.Checked = False
+                End If
+                txtQuantity_ConfirmIssue.Value = CStr(u.PickQuantity)
+                If u.PickUnit Is Nothing Then
+                    ddlQuantity_ConfirmIssue.Text = u.PickUnit
+                End If
+                txtWeight_ConfirmIssue.Value = CStr(u.Weigth)
+                If u.WeigthUnit Is Nothing Then
+                    ddlWeight_ConfirmIssue.Text = u.WeigthUnit
+                End If
+
+                If u.Currency Is Nothing Then
+                    ddlCurrency_ConfirmIssue.Text = u.Currency
+                End If
+
+                txtPriceForeign_ConfirmIssue.Value = String.Format("{0:0.00}", u.PriceForeigh)
+                txtPriceBath_ConfirmIssue.Value = String.Format("{0:0.00}", u.PriceBath)
+                txtExchangeRate_ConfirmIssue.Value = String.Format("{0:0.00}", u.ExchangeRate)
+                txtAmount_ConfirmIssue.Value = String.Format("{0:0.00}", u.PriceForeighAmount)
+                txtBathAmount_ConfirmIssue.Value = String.Format("{0:0.00}", u.PriceBath)
+                'End If
+
+
+            End If
+        Next
+    End Sub
+    Private Sub RejectConfirmDelivery()
+        Dim lblPullSignal As String
+        Dim lblLOTNo As String
+        Dim lblItemNo As Double
+        Dim i As Integer
+        'Dim strWHSite As String
+        Dim RLotNo As String = ""
+        Dim RPullSignal As String = ""
+
+        With Repeater9
+            For i = 0 To Repeater9.Items.Count - 1
+
+                lblPullSignal = CType(Repeater9.Items(i).FindControl("lblPullSignal"), Label).Text.Trim
+                lblLOTNo = CType(Repeater9.Items(i).FindControl("lblLOTNo"), Label).Text.Trim
+                lblItemNo = CDbl(CType(Repeater9.Items(i).FindControl("lblItemNo"), Label).Text.Trim)
+
+                Dim u = (From us In db.tblWHISSUEDDetails Where us.LOTNo = lblLOTNo And us.PullSignal = lblPullSignal).FirstOrDefault
+
+                RPullSignal = u.PullSignal
+                RLotNo = u.LOTNo
+                'strWHSite = CStr(.Rows(i).Cells(2).Value)
+                'txtRItemIssued.Text = CStr(.Rows(i).Cells(7).Value)
+                'txtRReceiveNO.Text = CStr(.Rows(i).Cells(18).Value)
+                'txtRItemNo.Text = CStr(.Rows(i).Cells(41).Value)
+                'txtROwnerPN.Text = CStr(.Rows(i).Cells(10).Value)
+                'txtRCustomerLotNo.Text = CStr(.Rows(i).Cells(5).Value)
+                'txtRIssuedQTY.Text = CStr(.Rows(i).Cells(24).Value)
+                'txtRStatusIssued.Text = CStr(.Rows(i).Cells(36).Value)
+
+                If u.StatusISSUED = "2" Then
+
+                    ReadStockMovement(i)
+
+                    If u.ReceiveNo.Trim = "" Then
+                        ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert(กรุณาเลือก Item ก่อน !!!);", True)
+                        Exit Sub
+                    End If
+
+                    If u.Item = Nothing Then
+                        ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert(กรุณาเลือก Item ก่อน !!!);", True)
+                        Exit Sub
+                    End If
+
+                    Try
+                        'sb.Append("UPDATE tblWHStockMovement")
+                        'sb.Append(" SET ISSUEQuantity=@ISSUEQuantity,Status=@Status ")
+                        'sb.Append(" WHERE (LOTNo=@LOTNo AND ItemNo=@ItemNo AND OwnerPN=@OwnerPN AND CustomerLotNo=@CustomerLotNo AND WHSite=@WHSite)")
+
+                        db.Database.Connection.Open()
+                        Dim edit As tblWHStockMovement = (From c In db.tblWHStockMovements Where c.LOTNo = u.ReceiveNo And c.ItemNo = u.Item And c.OwnerPN = u.OwnerPN And c.CustomerLOTNo = u.CustomerLOTNo And c.WHSite = u.WHSite
+                          Select c).First()
+                        If edit IsNot Nothing Then
+                            edit.LOTNo = u.ReceiveNo
+                            edit.WHSite = u.WHSite
+                            edit.OwnerPN = u.OwnerPN
+                            edit.CustomerLOTNo = u.CustomerLOTNo
+                            edit.ItemNo = u.Item
+                            edit.ISSUEQuantity = IssuedMovement + u.ISSUEDQuantity
+                            edit.Status = 0
+                            db.SaveChanges()
+                        End If
+
+                        If UpdateDeleteConfirmDelivery(i) = False Then
+                            Exit Sub
+                        End If
+
+                    Catch ex As Exception
+                        ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert(เกิดข้อผิดพลาด เนื่องจาก ผลการทำงาน );", True)
+                        'MessageBox.Show("เกิดข้อผิดพลาด เนื่องจาก " & ex.Message, "ผลการทำงาน", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        Exit Sub
+                    End Try
+                End If
+            Next
+        End With
+        ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert( JOB งาน เบอร์ " & RLotNo & " ออกโดย  Pull Signal No. " & RPullSignal & " งานนี้ถูกถอย Confirm เรียบร้อยแล้ว );", True)
+    End Sub
+    Private Function UpdateDeleteConfirmDelivery(type As Integer) As Boolean
+        Dim lblPullSignal As String
+        Dim lblLOTNo As String
+        'sb.Append("UPDATE tblWHISSUEDDetail")
+        'sb.Append(" SET StatusISSUED=@StatusISSUED,UserBy=@UserBy,LastUpdate=@LastUpdate")
+        'sb.Append(" WHERE (PullSignal=@PullSignal AND LOTNo=@LOTNo AND ItemNo=@ItemNo)")
+
+        lblPullSignal = CType(Repeater9.Items(type).FindControl("lblPullSignal"), Label).Text.Trim
+        lblLOTNo = CType(Repeater9.Items(type).FindControl("lblLOTNo"), Label).Text.Trim
+
+        Dim u = (From us In db.tblWHISSUEDDetails Where us.LOTNo = lblLOTNo And us.PullSignal = lblPullSignal).FirstOrDefault
+
+        Try
+
+            db.Database.Connection.Open()
+            Dim edit As tblWHISSUEDDetail = (From c In db.tblWHISSUEDDetails Where c.LOTNo = u.LOTNo And c.ItemNo = u.ItemNo And c.PullSignal = u.PullSignal
+              Select c).First()
+            If edit IsNot Nothing Then
+                'edit.PullSignal = u.PullSignal
+                'edit.LOTNo = u.LOTNo
+                'edit.ItemNo = u.ItemNo
+                edit.StatusISSUED = "1"
+                edit.UserBy = CStr(Session("UserName"))
+                edit.LastUpdate = Now
+                db.SaveChanges()
+            End If
+
+            Return True
+        Catch ex As Exception
+            Return False
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert(Error tblWHISSUEDDetail !!! );", True)
+            'MessageBox.Show("เกิดข้อผิดพลาด เนื่องจาก " & ex.Message, "ผลการทำงาน", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End Try
+
+    End Function
 End Class
