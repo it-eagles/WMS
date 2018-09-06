@@ -1040,24 +1040,6 @@ Partial Public Class SingleIssuedWH
     Protected WithEvents txtBathAmount_ConfirmIssue As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''DataPickingDetailPanel control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents DataPickingDetailPanel As Global.System.Web.UI.WebControls.Panel
-
-    '''<summary>
-    '''DataPickingDetailUpdatePanel control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents DataPickingDetailUpdatePanel As Global.System.Web.UI.UpdatePanel
-
-    '''<summary>
     '''Repeater8 control.
     '''</summary>
     '''<remarks>
@@ -1065,24 +1047,6 @@ Partial Public Class SingleIssuedWH
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents Repeater8 As Global.System.Web.UI.WebControls.Repeater
-
-    '''<summary>
-    '''btnSelectAll_ConfirmIssue control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents btnSelectAll_ConfirmIssue As Global.System.Web.UI.HtmlControls.HtmlButton
-
-    '''<summary>
-    '''btnCencelSelectAll_ConfirmIssue control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents btnCencelSelectAll_ConfirmIssue As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
     '''txtdatepickerReceiveDate_Button_ConfirmIssue control.
@@ -1119,24 +1083,6 @@ Partial Public Class SingleIssuedWH
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents btnIssue_ConfirmIssue As Global.System.Web.UI.HtmlControls.HtmlButton
-
-    '''<summary>
-    '''DataIssuedDetailPanel control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents DataIssuedDetailPanel As Global.System.Web.UI.WebControls.Panel
-
-    '''<summary>
-    '''DataIssuedDetailUpdatePanel control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents DataIssuedDetailUpdatePanel As Global.System.Web.UI.UpdatePanel
 
     '''<summary>
     '''Repeater9 control.
