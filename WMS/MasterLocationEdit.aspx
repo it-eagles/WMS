@@ -32,7 +32,7 @@
                     <!-- /.box-header -->
                     <div class="row">
 
-                        <from class="form-horizontal">
+                        <div class="form-horizontal">
                             <div class="col-lg-8 col-md-8 col-md-offset-2">
                                  <div class="box-body">   
                                             
@@ -41,13 +41,13 @@
                                         <label for="txtWHsite" class="col-sm-2 control-label">WHsite</label>
                                           
                                          <div class="col-sm-10">
-                                           <input class="form-control" id="txtWHsite" runat="server" placeholder="WHsite" />
+                                           <input class="form-control input-sm" id="txtWHsite" runat="server" placeholder="WHsite" />
                                         </div>
                                     </div>
                                   <div class="form-group">
                                         <label for="txtLocationNo" class="col-sm-2 control-label">LocationNo</label>
                                            <div class="col-sm-10">
-                                           <input class="form-control" id="txtLocationNo" runat="server"  placeholder="LocationNo" disabled="disabled" />
+                                           <input class="form-control input-sm" id="txtLocationNo" runat="server"  placeholder="LocationNo" disabled="disabled" />
                                        </div>
                                       
                                     </div>
@@ -75,15 +75,15 @@
                                     <div class="form-group">
                                         <label for="Width" class="col-sm-2 control-label">Width</label>                                                                  
                                         <div class="col-sm-2">
-                                           <input class="form-control" id="txtWidth" runat="server"  placeholder="Width" value="0" />
+                                           <input class="form-control input-sm" id="txtWidth" runat="server"  placeholder="Width" value="0" />
                                         </div>
                                         <label for="Long" class="col-sm-2 control-label">Long</label>
                                         <div class="col-sm-2">
-                                           <input class="form-control" id="txtLong" runat="server"  placeholder="Long" value="0"/>
+                                           <input class="form-control input-sm" id="txtLong" runat="server"  placeholder="Long" value="0"/>
                                         </div>
                                          <label for="Heigth" class="col-sm-2 control-label">Heigth</label>
                                         <div class="col-sm-2">
-                                           <input class="form-control" id="txtHeigth" runat="server"  placeholder="Heigth" value="0"/>
+                                           <input class="form-control input-sm" id="txtHeigth" runat="server"  placeholder="Heigth" value="0"/>
                                         </div>                      
                                     </div>
                                     
@@ -91,34 +91,34 @@
                                   <div class="form-group">
                                         <label for="Valume" class="col-sm-2 control-label">Valume</label>                                                       
                                       <div class="col-sm-10">
-                                           <input class="form-control" id="txtValume" runat="server"  placeholder="Valume" value="0"/>
+                                           <input class="form-control input-sm" id="txtValume" runat="server"  placeholder="Valume" value="0"/>
                                         </div>                      
                                   </div>
 
                                 <div class="form-group">
                                         <label for="txtUsedStatus" class="col-sm-2 control-label">UsedStatus</label>                                                      
                                          <div class="col-sm-10">
-                                         <input class="form-control" id="txtUsedStatus" runat="server" placeholder="UsedStatus" value="0"/>
+                                         <input class="form-control input-sm" id="txtUsedStatus" runat="server" placeholder="UsedStatus" value="0"/>
                                          </div>                      
                                  </div>
 
                                <div class="form-group">
                                         <label for="txtQTYPallet" class="col-sm-2 control-label">QTYPallet</label>                                                             
                                         <div class="col-sm-10">
-                                        <input  class="form-control" id="txtQTYPallet" runat="server"  placeholder="QTYPallet" value="0"/>
+                                        <input  class="form-control input-sm" id="txtQTYPallet" runat="server"  placeholder="QTYPallet" value="0"/>
                                         </div>                      
                                </div>
 
                                <div class="form-group">
                                         <label for="txtRemark" class="col-sm-2 control-label">Remark</label>                                                             
                                         <div class="col-sm-10">
-                                        <asp:TextBox runat="server" Cssclass="form-control" TextMode="MultiLine"  ID="txtRemark" ></asp:TextBox>
+                                        <asp:TextBox runat="server" Cssclass="form-control input-sm" TextMode="MultiLine"  ID="txtRemark" ></asp:TextBox>
                                         </div>                      
                                </div> 
 
                                      <div class="box-footer text-right">
                                         <div class="text-center">
-                                         <button type="submit" runat="server" class="btn btn-primary" id="btnAdd" title="btnAdd" onserverclick="Button1_ServerClick">Add</button>
+                                         <button type="submit" runat="server" class="btn btn-primary btn-sm" id="btnAdd" title="btnAdd" onserverclick="Button1_ServerClick">Add</button>
                                         
                                         </div>
                                      </div>
@@ -127,7 +127,7 @@
                              </div>
                            </div>
                              
-                       </from>
+                       </div>
                           
                         <!--/.row-->
                     </div>

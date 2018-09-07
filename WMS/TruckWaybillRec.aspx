@@ -495,7 +495,7 @@
                         <div class="col-lg-12 col-md-12 " style="overflow:auto;">
                             <asp:Repeater ID="Repeater1" runat="server">
                                     <HeaderTemplate>
-                                        <table id="example1" class="table table-bordered table-striped table-responsive" style="overflow:auto;">
+                                        <table id="example1" class="table table-striped table-condensed table-responsive" style="overflow:auto;">
                                             <thead>
                                                 <tr>
                                                             <th>Select</th>
@@ -584,7 +584,7 @@
                         <div class="col-lg-12 col-md-12 " style="overflow:auto;">
                             <asp:Repeater ID="Repeater2" runat="server">
                                     <HeaderTemplate>
-                                        <table id="example2" class="table table-bordered table-striped table-responsive" style="overflow:auto;">
+                                        <table id="example2" class="table table-striped table-condensed table-responsive" style="overflow:auto;">
                                             <thead>
                                                 <tr>
                                                             <th>Select</th>
@@ -673,7 +673,7 @@
                         <div class="col-lg-12 col-md-12 " style="overflow:auto;">
                             <asp:Repeater ID="Repeater3" runat="server">
                                     <HeaderTemplate>
-                                        <table id="example3" class="table table-bordered table-striped table-responsive" style="overflow:auto;">
+                                        <table id="example3" class="table table-striped table-condensed table-responsive" style="overflow:auto;">
                                             <thead>
                                                 <tr>
                                                             <th>Select</th>
@@ -762,7 +762,7 @@
                         <div class="col-lg-12 col-md-12 " style="overflow:auto;">
                             <asp:Repeater ID="Repeater4" runat="server" OnItemCommand="Repeater4_ItemCommand">
                                     <HeaderTemplate>
-                                        <table id="example4" class="table table-bordered table-striped table-responsive" style="overflow:auto;">
+                                        <table id="example4" class="table table-striped table-condensed table-responsive" style="overflow:auto;">
                                             <thead>
                                                 <tr>
                                                     <th>InvoiceNo</th>
@@ -839,7 +839,7 @@
                         <div class="col-lg-12 col-md-12 " style="overflow:auto;">
                             <asp:Repeater ID="Repeater5" runat="server" OnItemCommand="Repeater5_ItemCommand">
                                     <HeaderTemplate>
-                                        <table id="example5" class="table table-bordered table-striped table-responsive" style="overflow:auto;">
+                                        <table id="example5" class="table table-striped table-condensed table-responsive" style="overflow:auto;">
                                             <thead>
                                                 <tr>
                                                     <th>Select</th>
@@ -912,7 +912,7 @@
 
                                             <asp:Repeater ID="Repeater6" runat="server" OnItemCommand="Repeater6_ItemCommand">
                                                 <HeaderTemplate>
-                                                    <table id="example6" class="table table-bordered table-striped table-responsive" style="overflow: auto;">
+                                                    <table id="example6" class="table table-striped table-condensed table-responsive" style="overflow: auto;">
                                                         <thead>
                                                             <tr>
                                                                 <th>select</th>

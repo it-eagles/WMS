@@ -930,33 +930,51 @@ Public Class PrepareLotWH
                     txtAddress3EndUser_PreGoodRec.Value = user.ENDSubprovince
                     txtAddress4Customer_PreGoodRec.Value = user.ENDProvince
 
-                    If Not IsNothing(user.Commodity) Then
+                    If String.IsNullOrEmpty(user.Commodity) Then
+                        'ddlCommodity_PreGoodRec.Text = ""
+                    Else
                         ddlCommodity_PreGoodRec.Text = user.Commodity
                     End If
+
                     txtQuantityOfGood_PreGoodRec.Value = String.Format("{0:0.00}", user.QuantityOfPart)
 
-                    If Not IsNothing(user.QuantityUnit) Then
+                    If String.IsNullOrEmpty(user.QuantityUnit) Then
+                        'ddlQuantityOfGood_PreGoodRec.Text = ""
+                    Else
                         ddlQuantityOfGood_PreGoodRec.Text = user.QuantityUnit
                     End If
+
                     txtQuantityPackage_PreGoodRec.Value = String.Format("{0:0.00}", user.QuantityPackage)
-                    If Not IsNothing(user.PackageUNIT) Then
+
+                    If String.IsNullOrEmpty(user.PackageUNIT) Then
+                        'ddlQuantityPackage_PreGoodRec.Text = ""
+                    Else
                         ddlQuantityPackage_PreGoodRec.Text = user.PackageUNIT
                     End If
+
                     txtWeight_PreGoodRec.Value = String.Format("{0:0.00}", user.Weigth)
-                    If Not IsNothing(user.WeigthUnit) Then
+
+                    If String.IsNullOrEmpty(user.WeigthUnit) Then
+                        'ddlWeight_PreGoodRec.Text = ""
+                    Else
                         ddlWeight_PreGoodRec.Text = user.WeigthUnit
                     End If
+
                     txtQuantityPLTSkid_PreGoodRec.Value = String.Format("{0:0.00}", user.QuantityPLT)
-                    If Not IsNothing(user.QuantityPLTUnit) Then
+
+                    If String.IsNullOrEmpty(user.QuantityPLTUnit) Then
+                        'ddlQuantityPLTSkid_PreGoodRec.Text = ""
+                    Else
                         ddlQuantityPLTSkid_PreGoodRec.Text = user.QuantityPLTUnit
                     End If
+
                     txtVolume_PreGoodRec.Value = String.Format("{0:0.00}", user.Volume)
+
                     If String.IsNullOrEmpty(user.VolumeUnit) Then
-
                     Else
-
                         ddlVolume_PreGoodRec.Text = user.VolumeUnit
                     End If
+
                     txtRemark_PreGoodRec.Value = user.Remark
 
                     SelectJobDetail()

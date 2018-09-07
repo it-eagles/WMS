@@ -462,4 +462,15 @@ Public Class MasterGoods
         'End If
     End Sub
 
+    Protected Sub btnAddHead_ServerClick(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Protected Sub btnEditHead_ServerClick(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Protected Sub btnSaveEditHead_ServerClick(sender As Object, e As EventArgs)
+
+    End Sub
 End Class

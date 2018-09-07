@@ -32,6 +32,42 @@ Partial Public Class MasterGoods
     Protected WithEvents ScriptManager1 As Global.System.Web.UI.ScriptManager
 
     '''<summary>
+    '''btnAddHead control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnAddHead As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''btnEditHead control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnEditHead As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''btnAddGoods control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnAddGoods As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''btnSaveEditHead control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnSaveEditHead As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
     '''txtProductCode control.
     '''</summary>
     '''<remarks>
@@ -66,15 +102,6 @@ Partial Public Class MasterGoods
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents txtEndUserPart As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''btnAddGoods control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents btnAddGoods As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
     '''txtMinimunStock control.

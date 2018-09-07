@@ -38,7 +38,7 @@
                <div class="form-horizontal">
                    
                             <div class="box-footer text-right">
-                                <button runat="server" class="btn btn-app" id="btnAddParty" title="btnAddParty" onserverclick="btnAddParty_click"><i class="fa fa-save"></i> Save</button>
+                                <button runat="server" class="btn btn-app btn-sm" id="btnAddParty" title="btnAddParty" onserverclick="btnAddParty_click"><i class="fa fa-save"></i> Save</button>
                            </div>
                          </div>
                     </div>
@@ -74,7 +74,7 @@
                                                         <label for="txtImpProductCode" class="col-sm-2 control-label">Party Code :</label>
                                                     <div class="col-md-6">
          
-                                                         <input class="form-control" id="txtPartyCode" runat="server" placeholder="Party Code"/>
+                                                         <input class="form-control input-sm" id="txtPartyCode" runat="server" placeholder="Party Code" autocomplete="off"/>
                                                     </div>
                                       
                                                 </div>
@@ -84,7 +84,7 @@
                                                 
                                                     <div class="col-md-9" id="ImpDesc1">
          
-                                                        <input class="form-control" id="txtFullName" runat="server" placeholder="FullName"/>
+                                                        <input class="form-control input-sm" id="txtFullName" runat="server" placeholder="FullName" autocomplete="off"/>
                                                     </div>
                                                 </div> 
                                                 <div class="form-group" >
@@ -92,11 +92,11 @@
                                                                         
                                                 <div class="col-md-4">
          
-                                                <input class="form-control" id="txtLocalCode" runat="server" placeholder="Local" />
+                                                <input class="form-control input-sm" id="txtLocalCode" runat="server" placeholder="Local"  autocomplete="off"/>
                                               </div>
                                 
                                               <div class="col-md-5">   
-                                                    <input class="form-control" id="txtLocalName" runat="server" placeholder="Local" />
+                                                    <input class="form-control input-sm" id="txtLocalName" runat="server" placeholder="Local" autocomplete="off" />
                                              </div>
                                             </div>
                                               
@@ -105,14 +105,14 @@
                                                                         
                                             <div class="col-md-2">
                                                     
-                                                    <asp:DropDownList ID="cboLocationID" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code" >
+                                                    <asp:DropDownList ID="cboLocationID" CssClass="form-control input-sm" runat="server" DataTextField="Code" DataValueField="Code" >
                                                          <%--<asp:ListItem Text = "--Select Country--" Value = ""></asp:ListItem>--%>
                                                     </asp:DropDownList>
                                                 
                                             </div>
                                 
                                             <div class="col-md-2">   
-                                                     <asp:DropDownList ID="cboCity" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code">
+                                                     <asp:DropDownList ID="cboCity" CssClass="form-control input-sm" runat="server" DataTextField="Code" DataValueField="Code">
                                                          <%--<asp:ListItem Text = "--Select City--" Value = ""></asp:ListItem>--%>
                                                      </asp:DropDownList>
                                                         
@@ -122,7 +122,7 @@
                                              <div class="form-group">
                                                     <label for="txtImpCustomsProductCode" class="col-sm-3 control-label">Registration No :</label>
                                              <div class="col-sm-7">
-                                                    <input class="form-control" id="txtRegistrationNo" runat="server"  placeholder="Registration No"/>
+                                                    <input class="form-control input-sm" id="txtRegistrationNo" runat="server"  placeholder="Registration No" autocomplete="off"/>
                                              </div>
                                             </div>
                                           </div>
@@ -133,11 +133,11 @@
                                                                         
                                        <div class="col-md-2">
          
-                                           <asp:DropDownList ID="cboPartyType" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code"></asp:DropDownList>
+                                           <asp:DropDownList ID="cboPartyType" CssClass="form-control input-sm" runat="server" DataTextField="Code" DataValueField="Code"></asp:DropDownList>
                                       </div>
                                 
                                        <div class="col-md-2">   
-                                             <input class="form-control" id="txtTypeName" runat="server"  placeholder="H.S."/>
+                                             <input class="form-control input-sm" id="txtTypeName" runat="server"  placeholder="H.S." autocomplete="off"/>
                                         </div>
                                     <div class="col-md-6">   
                                              <div class="form-group">
@@ -155,14 +155,14 @@
                                 <div class="form-group">
                                         <label for="txtImpCustomsProductCode" class="col-sm-2 control-label">IATA Code :</label>
                                        <div class="col-sm-6">
-                                          <input class="form-control" id="txtIATACode" runat="server"  placeholder="IATA Code"/>
+                                          <input class="form-control input-sm" id="txtIATACode" runat="server"  placeholder="IATA Code" autocomplete="off"/>
                                        </div>
                                     </div>
 
                                  <div class="form-group">
                                      <label for="txtImpCustomsProductCode" class="col-sm-2 control-label">Remarks :</label>
                                      <div class="col-md-9">
-                                          <textarea class="form-control" id="txtRemarks" rows="6" runat="server" name="txtRemarks" placeholder="Remarks ..."></textarea>
+                                          <textarea class="form-control input-sm" id="txtRemarks" rows="6" runat="server" name="txtRemarks" placeholder="Remarks ..." autocomplete="off"></textarea>
                                      </div>
                                  </div>
                                 <div class="form-group">
@@ -239,19 +239,19 @@
                                       <div class="form-group">
                                                     <label for="txtImpCustomsProductCode" class="col-sm-2 control-label">Brance ID :</label>
                                           <div class="col-sm-6">
-                                                <input class="form-control" id="txtMessageHubID" runat="server"  placeholder="Brance ID"/>
+                                                <input class="form-control input-sm" id="txtMessageHubID" runat="server"  placeholder="Brance ID" autocomplete="off"/>
                                          </div>
                                      </div>
                                     <div class="form-group">
                                                     <label for="txtImpCustomsProductCode" class="col-sm-2 control-label">Full Thai Name :</label>
                                           <div class="col-sm-9">
-                                                <input class="form-control" id="txtOtherSystemPartyID" runat="server"  placeholder="Full Thai Name"/>
+                                                <input class="form-control input-sm" id="txtOtherSystemPartyID" runat="server"  placeholder="Full Thai Name" autocomplete="off"/>
                                          </div>
                                      </div>
                                       <div class="form-group">
                                                     <label for="txtImpCustomsProductCode" class="col-sm-2 control-label">TAX ID :</label>
                                           <div class="col-sm-6">
-                                                <input class="form-control" id="txtFormID" runat="server"  placeholder="TAX ID"/>
+                                                <input class="form-control input-sm" id="txtFormID" runat="server"  placeholder="TAX ID" autocomplete="off"/>
                                          </div>
                                      </div>
                                           <div class="form-group">
@@ -374,40 +374,40 @@
                                <div class="form-group">
                                         <label for="dcboImpTariffSequence" class="col-sm-2 control-label">Party Type :</label>
                                            <div class="col-sm-6">
-                                             <asp:DropDownList ID="cboAddressType" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code"></asp:DropDownList>
+                                             <asp:DropDownList ID="cboAddressType" CssClass="form-control input-sm" runat="server" DataTextField="Code" DataValueField="Code"></asp:DropDownList>
                                            </div>
                                     </div>
                                 <div class="form-group">
                                         <label for="txtImpCustomsProductCode" class="col-sm-2 control-label">Address :</label>
                                        <div class="col-sm-4">
-                                          <input class="form-control" id="txtAddress1" runat="server"  placeholder="Address"/>
+                                          <input class="form-control input-sm" id="txtAddress1" runat="server"  placeholder="Address" autocomplete="off"/>
                                        </div>
                                       <label for="txtImpDutyType" class="col-sm-1 control-label">Attn :</label>
                                          <div class="col-sm-4">
-                                             <input class="form-control" id="txtAttn" runat="server" placeholder="Attn"/>
+                                             <input class="form-control input-sm" id="txtAttn" runat="server" placeholder="Attn" autocomplete="off"/>
                                         </div>
                                 </div>
                                  <div class="form-group" >
                                       <label for="txtImpExemptDuty" class="col-sm-2 control-label"></label>
                                          <div class="col-sm-4">
-                                             <input class="form-control" id="txtAddress2" runat="server"/>
+                                             <input class="form-control input-sm" id="txtAddress2" runat="server" autocomplete="off"/>
                                         </div>
                                       <label for="txtImpExemptDuty" class="col-sm-1 control-label">Tel :</label>
                                        
                                          <div class="col-sm-4">
-                                             <input class="form-control" id="txtTel" runat="server" placeholder="Tel"/>
+                                             <input class="form-control input-sm" id="txtTel" runat="server" placeholder="Tel" autocomplete="off"/>
                                         </div>
                       
                                </div>
                                       <div class="form-group">
                                         <label for="txtImpValueRateP" class="col-sm-2 control-label"></label>
                                            <div class="col-sm-4">
-                                              <input class="form-control" id="txtAddress3" runat="server" />
+                                              <input class="form-control input-sm" id="txtAddress3" runat="server"  autocomplete="off"/>
                                            </div>
                                        <label for="txtImpExemptDuty" class="col-sm-1 control-label">Fax :</label>
                                        
                                          <div class="col-sm-4">
-                                             <input class="form-control" id="txtFax" runat="server" placeholder="Fax"/>
+                                             <input class="form-control input-sm" id="txtFax" runat="server" placeholder="Fax" autocomplete="off"/>
                                         </div>
                       
                                     </div>
@@ -415,12 +415,12 @@
                                     <div class="form-group">
                                         <label for="txtImpSpecificRateP" class="col-sm-2 control-label"></label>
                                          <div class="col-sm-4">
-                                          <input class="form-control" id="txtAddress4" runat="server" />
+                                          <input class="form-control input-sm" id="txtAddress4" runat="server" autocomplete="off" />
                                         </div>
                                     <label for="txtImpExemptDuty" class="col-sm-1 control-label">Web :</label>
                                        
                                          <div class="col-sm-4">
-                                             <input class="form-control" id="txtWebsite" runat="server" placeholder="Web"/>
+                                             <input class="form-control input-sm" id="txtWebsite" runat="server" placeholder="Web" autocomplete="off"/>
                                         </div>
                       
                                     </div>
@@ -428,7 +428,7 @@
                                 <div class="form-group">
                                         <label for="txtImpSpecificRateP" class="col-sm-2 control-label">Zip Code :</label>
                                          <div class="col-md-4">
-                                          <input class="form-control" id="txtZipCode" runat="server"  placeholder="Zip Code"/>
+                                          <input class="form-control input-sm" id="txtZipCode" runat="server"  placeholder="Zip Code" autocomplete="off"/>
                                         
                                     
                                          </div>
@@ -436,14 +436,14 @@
                                     <label for="txtImpExemptDuty" class="col-sm-1 control-label">E-Mail :</label>
                                        
                                          <div class="col-sm-4">
-                                             <input class="form-control" id="txtEmail" runat="server" placeholder="E-Mail"/>
+                                             <input class="form-control input-sm" id="txtEmail" runat="server" placeholder="E-Mail" autocomplete="off"/>
                                         </div>
                       
                                     </div>
                                <div class="form-group">
                                      <label for="txtImpSpecificRateP" class="col-sm-2 control-label">Area Code :</label>
                                <div class="col-md-4">
-                                           <asp:DropDownList ID="cboAreaCode" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code"></asp:DropDownList>
+                                           <asp:DropDownList ID="cboAreaCode" CssClass="form-control input-sm" runat="server" DataTextField="Code" DataValueField="Code"></asp:DropDownList>
                                      </div>
                                
                                </div>
@@ -476,7 +476,7 @@
                               <div class="form-group" >
                                      <label for="txtExpProductCode" class="col-sm-3 control-label">ยอดเงินค้ำประกันทั้งหมด :</label>
                                  <div class="col-md-6">
-                                     <input class="form-control" id="txtAmountGuarantee" runat="server" placeholder="Product Code" value="0"/>
+                                     <input class="form-control input-sm" id="txtAmountGuarantee" runat="server" placeholder="Product Code" value="0" autocomplete="off"/>
                                  </div>
                                    <label for="txtExpProductCode" class="col-sm-1 control-label">บาท</label>
                                 
@@ -485,7 +485,7 @@
                              <div class="form-group" >
                                   <label for="txtImpDesc1" class="col-sm-3 control-label">ยอดเงินที่ใช้ไป :</label>
                                <div class="col-md-6" id="ExpDesc1">
-                                  <input class="form-control" id="txtAmountUsed" runat="server" disabled="disabled" value="0"/>
+                                  <input class="form-control input-sm" id="txtAmountUsed" runat="server" disabled="disabled" value="0" autocomplete="off"/>
                                </div>
                              <label for="txtExpProductCode" class="col-sm-1 control-label">บาท</label>
                                 
@@ -494,7 +494,7 @@
                            <div class="form-group" >
                                <label for="txtExpDesc2" class="col-sm-3 control-label">ยอดเงินคงเหลือ :</label>
                                 <div class="col-md-6" id="ExpDesc2">
-                                    <input class="form-control" id="txtBalance" runat="server" value="0"/>
+                                    <input class="form-control input-sm" id="txtBalance" runat="server" value="0" autocomplete="off"/>
                                 </div>
                              <label for="txtExpProductCode" class="col-sm-1 control-label">บาท</label>
                                 

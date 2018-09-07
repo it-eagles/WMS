@@ -901,7 +901,8 @@
                                                             <FooterTemplate>
                                                                 <tfoot>
                                                                     <tr>
-                                                                       
+                                                                        <th style="width: 8px">
+                                                                                <asp:CheckBox runat="server" ID="chkAll_Pull" Checked="false" OnCheckedChanged="chkAll_CheckedChanged" AutoPostBack="true"></asp:CheckBox></th>
                                                                         <th>PullSignal</th>
                                                                         <th>LOTNo</th>
                                                                         <th>ItemNo</th>
@@ -939,6 +940,7 @@
                                                 <%--<fieldset>  <legend>Job</legend>--%>
                                                 <div class="box-body">
                                                     <div class="col-sm-6">
+                                                        <div class="form-group col-sm-6"></div>
                                                         <div class="form-group">
                                                             <%--<div class="col-sm-3">
                                                                 <button type="submit" runat="server" class="btn btn-primary btn-sm" id="btnSelectAll_ConfirmIssue" title="btnSelectAll_ConfirmIssue">Select All</button>
@@ -948,7 +950,7 @@
                                                             </div>--%>
                                                             <label for="txtReceiveDate_Button_ConfirmIssue" class="col-sm-3 control-label">Receive Date:</label>
                                                             <div class="col-sm-3">
-                                                                <asp:TextBox CssClass="form-control input-sm" ID="txtdatepickerReceiveDate_Button_ConfirmIssue" runat="server" placeholder="DD/MM/YYYY">
+                                                                <asp:TextBox CssClass="form-control input-sm" ID="txtdatepickerReceiveDate_Button_ConfirmIssue" runat="server" placeholder="DD/MM/YYYY" AutoComplete="off">
                                                                 </asp:TextBox>
                                                                 <asp:CalendarExtender ID="CalendarExtenderReceiveDate_Button_ConfirmIssue" runat="server" Enabled="True" TargetControlID="txtdatepickerReceiveDate_Button_ConfirmIssue" Format="dd/MM/yyyy"></asp:CalendarExtender>
                                                             </div>
@@ -1626,7 +1628,7 @@
                 });
 
                 // NOW CHECK THE HEADER CHECKBOX, IF ALL THE ROW CHECKBOXES ARE CHECKED.
-                $('table [id*=chkRowData]').click(function () {
+                $('table [id*=chk_Pull]').click(function () {
 
                     var total_rows = $('table [id*=chk_Pull]').length;
                     var checked_Rows = $('table [id*=chk_Pull]:checked').length;

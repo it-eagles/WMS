@@ -32,7 +32,7 @@
                     <!-- /.box-header -->
                     <div class="row">
 
-                        <from class="form-horizontal">
+                        <div class="form-horizontal">
                             <div class="col-lg-8 col-md-8 col-md-offset-2">
                                  <div class="box-body">   
                                             
@@ -41,34 +41,34 @@
                                         <label for="txtCode" class="col-sm-2 control-label">Code</label>
                                           
                                          <div class="col-sm-10">
-                                           <input class="form-control" id="txtCode" runat="server" placeholder="Code" />
+                                           <input class="form-control input-sm" id="txtCode" runat="server" placeholder="Code" />
                                         </div>
                                     </div>
                                   <div class="form-group">
                                         <label for="txtAmount" class="col-sm-2 control-label">Amount</label>
                                            <div class="col-sm-10">
-                                           <input class="form-control" id="txtAmount" runat="server"  placeholder="Amount" />
+                                           <input class="form-control input-sm" id="txtAmount" runat="server"  placeholder="Amount" />
                                        </div>                                      
                                     </div>                                         
 
                                   <div class="form-group">
                                         <label for="txtTotalAmount" class="col-sm-2 control-label">TotalAmount</label>                                                       
                                       <div class="col-sm-10">
-                                           <input class="form-control" id="txtTotalAmount" runat="server"  placeholder="TotalAmount"  disabled="disabled"/>
+                                           <input class="form-control input-sm" id="txtTotalAmount" runat="server"  placeholder="TotalAmount"  disabled="disabled"/>
                                         </div>                      
                                   </div>
 
                                   <div class="form-group">
                                         <label for="txtRemark" class="col-sm-2 control-label">Remark</label>                                                             
                                         <div class="col-sm-10">
-                                        <asp:TextBox runat="server" Cssclass="form-control" TextMode="MultiLine"  ID="txtRemark" ></asp:TextBox>
+                                        <asp:TextBox runat="server" Cssclass="form-control input-sm" TextMode="MultiLine"  ID="txtRemark" ></asp:TextBox>
                                   </div>                      
                                </div> 
 
                                 <div class="form-group">
                                         <label for="dcbStatus" class="col-sm-2 control-label">Status</label>                                                      
                                          <div class="col-sm-10">
-                                         <asp:DropDownList ID="dcbStatus" CssClass="form-control" runat="server"  AutoPostBack="true">
+                                         <asp:DropDownList ID="dcbStatus" CssClass="form-control input-sm" runat="server"  AutoPostBack="true">
                                               <asp:ListItem> </asp:ListItem>
                                               <asp:ListItem>USE</asp:ListItem>  
                                               <asp:ListItem>NOT USE</asp:ListItem>
@@ -78,8 +78,8 @@
 
                                          <div class="box-footer text-right">
                                         <div class="text-center">
-                                         <button type="submit" runat="server" class="btn btn-primary" id="btnAdd" title="btnAdd" onserverclick="btnAdd_ServerClick">Add</button>
-                                         <button type="reset"  runat="server" class="btn btn-danger" id="btnClear" title="btnClear" onserverclick="btnClear_ServerClick">Clear</button>
+                                         <button type="submit" runat="server" class="btn btn-primary btn-sm" id="btnAdd" title="btnAdd" onserverclick="btnAdd_ServerClick">Add</button>
+                                         <button type="reset"  runat="server" class="btn btn-danger btn-sm" id="btnClear" title="btnClear" onserverclick="btnClear_ServerClick">Clear</button>
                                         </div>
                                      </div>
 
@@ -87,7 +87,7 @@
                              </div>
                            </div>
                              
-                       </from>
+                       </div>
                           
                         <!--/.row-->
                     </div>
@@ -101,7 +101,7 @@
                                     <div class="box-body">
                                <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="Repeater1_ItemCommand">
                                     <HeaderTemplate>
-                                        <table id="example1" class="table table-bordered table-striped">
+                                        <table id="example1" class="table table-condensed table-striped">
                                             <thead>
                                                 <tr>
                                                     <th>Code</th>
