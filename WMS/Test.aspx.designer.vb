@@ -68,6 +68,15 @@ Partial Public Class Test
     Protected WithEvents GridView1 As Global.System.Web.UI.WebControls.GridView
 
     '''<summary>
+    '''txtCompanyName control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtCompanyName As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
     '''rptCustomers control.
     '''</summary>
     '''<remarks>

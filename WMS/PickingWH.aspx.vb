@@ -28,4 +28,20 @@
     Protected Sub btnAutoPickPallet_ServerClick(sender As Object, e As EventArgs)
 
     End Sub
+
+    Protected Sub btnAddNew_ServerClick(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Protected Sub btnEdit_ServerClick(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Protected Sub btnSaveNew_ServerClick(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Protected Sub btnSaveEdit_ServerClick(sender As Object, e As EventArgs)
+
+    End Sub
 End Class

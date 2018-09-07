@@ -94,5 +94,23 @@
                    
                     </div>    
                    </div>    --%>   
+
+     <script>
+        $(function () {
+
+            // อัตราแลกเปลี่ยนเฉลี่ย (รายวัน)
+            var daily_avg_exg_rate_chart = BotChartPlayer({
+                elementID: 'chart_daily_avg_exg_rate',
+                x_column: 'period',
+                y_column: 'mid_rate',
+               uri: 'https://iapi.bot.or.th/Stat/Stat-ExchangeRate/DAILY_AVG_EXG_RATE_V1'
+           });
+
+            $('#do-play').on('click', function () {
+                daily_avg_exg_rate_chart.play($('#input-year').val(), $('#input-month').val());
+            });
+        })
+    </script>
+
     </form>
 </asp:Content>

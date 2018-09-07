@@ -34,7 +34,7 @@
                                     <asp:FileUpload ID="FileUpload1" runat="server" />
                                        <%-- <input class="form-control input-sm" runat="server" id="txtFile" type="file" />--%>
                                 </div>   
-                               <div class="colmd-4">
+                               <div class="colmd-2">
                                    <button runat="server" id="btnAdd" class="btn btn-pinterest btn-block" onserverclick="btnAdd_ServerClick"></button>
                                </div>
                                 <div>
@@ -49,7 +49,7 @@
                                   </asp:GridView>
 
                                     <div >
-                                        <label id="lblText" ></label>
+                                          <asp:TextBox runat="server" ID="txtCompanyName" CssClass="form-control input-sm"></asp:TextBox>
                                        
                                     </div>
                                     <br />

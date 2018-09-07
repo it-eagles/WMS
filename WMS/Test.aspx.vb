@@ -258,19 +258,7 @@ Public Class Test
     '
 
     Protected Sub btnAdd_ServerClick(sender As Object, e As EventArgs)
-<<<<<<< HEAD
-        'Dim StrWer As StreamReader
-        'Dim readLine As String
-        'Dim fileE As Boolean
-        'fileE = My.Computer.FileSystem.FileExists(txtFile.Value.Trim)
-
-        'StrWer = file.OpenText(txtFile.Value.Trim)
-
-        'Do Until StrWer.EndOfStream
-        '    readLine = StrWer.ReadLine
-
-        '    Dim S As String = Split(readLine, ",")(0)
-        'Loop
+        
 
         If FileUpload1.HasFile Then
             ' Path ที่ฮยู่ไฟล์
@@ -283,7 +271,6 @@ Public Class Test
             Dim FilePath As String = Server.MapPath(FolderPath + FileName)
             FileUpload1.SaveAs(FilePath)
             Import_To_Grid(FilePath, Extension, rbHDR.SelectedItem.Text)
-
         End If
     End Sub
     Private Sub Import_To_Grid(ByVal FilePath As String, ByVal Extension As String, ByVal isHDR As String)
@@ -317,10 +304,14 @@ Public Class Test
         oda.Fill(dt)
         connExcel.Close()
 
-        GridView1.Caption = Path.GetFileName(FilePath)
-        GridView1.DataSource = dt
-        GridView1.DataBind()
-        dt.Columns.Add()
+        For i = 0 To dt.Rows.Count - 1
+            txtCompanyName.Text = dt.Rows(i)("CompanyName").ToString
+
+        Next
+        'GridView1.Caption = Path.GetFileName(FilePath)
+        'GridView1.DataSource = dt
+        'GridView1.DataBind()
+        'dt.Columns.Add()
 
     End Sub
 
@@ -335,8 +326,4 @@ Public Class Test
         GridView1.DataBind()
     End Sub
 
-=======
-
-    End Sub
->>>>>>> 04991f6c6bb1bb1662f2d30d7e895eedd693aba2
 End Class

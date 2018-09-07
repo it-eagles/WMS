@@ -576,6 +576,8 @@
     <!-- DataTables -->
     <script src="Scripts/datatables.net/js/jquery.dataTables.min.js"></script>
     <script src="Scripts/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="Scripts/js/FormatExtension.js"></script>
+    <script src="Scripts/js/BotChartPlayer.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {
