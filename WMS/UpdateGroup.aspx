@@ -44,7 +44,7 @@
                                         <label for="txtType" class="col-sm-2 control-label">Type</label>
                                         
                                          <div class="col-sm-10">
-                                           <input class="form-control" id="txtType" runat="server" placeholder="TypeName" disabled="disabled"/>
+                                           <input class="form-control input-sm" id="txtType" runat="server" placeholder="TypeName" disabled="disabled"/>
                                         </div>
                       
                                     </div>               
@@ -53,7 +53,7 @@
                                         <label for="txtCode" class="col-sm-2 control-label">Code</label>
                                        
                                          <div class="col-sm-10">
-                                            <input class="form-control" id="txtCode" runat="server" placeholder="Code"/>
+                                            <input class="form-control input-sm" id="txtCode" runat="server" placeholder="Code"/>
                                         </div>
                       
                                     </div>
@@ -62,18 +62,18 @@
                                         <label for="txtDescription" class="col-sm-2 control-label">Description</label>
                                       
                                       <div class="col-sm-10">
-                                           <%--<input class="form-control" id="txtDescription" runat="server" placeholder="Description"/>--%>
-                                           <%--<textarea class="form-control" rows="3" placeholder="Enter ..." style="margin: 0px 8.5px 0px 0px; width: 575px; height: 86px;"></textarea>--%>
-                                           <asp:TextBox Cssclass="form-control" TextMode="MultiLine" runat="server" Height="135px" Width="575px" ID="txtDescription"></asp:TextBox>
+                                           <%--<input class="form-control input-sm" id="txtDescription" runat="server" placeholder="Description"/>--%>
+                                           <%--<textarea class="form-control input-sm" rows="3" placeholder="Enter ..." style="margin: 0px 8.5px 0px 0px; width: 575px; height: 86px;"></textarea>--%>
+                                           <asp:TextBox Cssclass="form-control input-sm" TextMode="MultiLine" runat="server" Height="135px" Width="575px" ID="txtDescription"></asp:TextBox>
                                         </div>
                       
                                     </div>
                                       <div class="form-group">
                                         <label for="txtNotes" class="col-sm-2 control-label">Notes</label>
                                            <div class="col-sm-10">
-                                            <%--<input class="form-control" id="txtNotes" runat="server"  placeholder="Notes"/>--%>
-                                            <%--<textarea class="form-control" rows="3" placeholder="Enter ..." style="margin: 0px 8.5px 0px 0px; width: 575px; height: 86px;"></textarea>--%>
-                                               <asp:TextBox runat="server" Cssclass="form-control" TextMode="MultiLine" Height="135px" Width="575px" ID="txtNotes"></asp:TextBox>
+                                            <%--<input class="form-control input-sm" id="txtNotes" runat="server"  placeholder="Notes"/>--%>
+                                            <%--<textarea class="form-control input-sm" rows="3" placeholder="Enter ..." style="margin: 0px 8.5px 0px 0px; width: 575px; height: 86px;"></textarea>--%>
+                                               <asp:TextBox runat="server" Cssclass="form-control input-sm" TextMode="MultiLine" Height="135px" Width="575px" ID="txtNotes"></asp:TextBox>
                                            </div>
                                       
                                     </div>
@@ -81,12 +81,12 @@
                                     <div class="form-group">
                                         <label for="txtFilteringIndicator" class="col-sm-2 control-label">Indicator</label>
                                          <div class="col-sm-10">
-                                        <input class="form-control" id="txtFilteringIndicator" runat="server"  placeholder="FilteringIndicator"/>
+                                        <input class="form-control input-sm" id="txtFilteringIndicator" runat="server"  placeholder="FilteringIndicator"/>
                                        </div>
                                    
                                     </div>
                                 <div class="text-right">
-                        <button type="submit" runat="server" class="btn btn-primary" id="btnAddGroup" title="btnAddUser" onserverclick="btnUpdatGroup_Click">UpDate</button>
+                        <button type="submit" runat="server" class="btn btn-primary btn-sm" id="btnAddGroup" title="btnAddUser" onserverclick="btnUpdatGroup_Click">Update</button>
                              </div>
                                     <!-- /.box-body -->
                              </div>

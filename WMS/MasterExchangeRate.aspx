@@ -31,7 +31,7 @@
                     <!-- /.box-header -->
                     <div class="row">
 
-                        <from class="form-horizontal">
+                        <div class="form-horizontal">
                             <div class="col-lg-8 col-md-8 col-md-offset-2">
                                  <div class="box-body">   
                                             
@@ -39,7 +39,7 @@
                                     
                                         <label for="txtSelect" class="col-sm-3 control-label">Select File For Import</label>                                          
                                          <div class="col-sm-5">
-                                           <input type="file" class ="form-control" id="txtDirectory" runat="server"/>
+                                           <input type="file" class ="form-control input-sm" id="txtDirectory" runat="server"/>
                                         </div>
                                        
                                     </div>
@@ -47,7 +47,7 @@
                                 <div class="form-group">
                                         <label for="dcbStatus" class="col-sm-3 control-label">Status</label>                                                      
                                          <div class="col-sm-5">
-                                         <asp:DropDownList ID="dcbStatus" CssClass="form-control" runat="server" AutoPostBack="true" >
+                                         <asp:DropDownList ID="dcbStatus" CssClass="form-control input-sm" runat="server" AutoPostBack="true" >
                                               <asp:ListItem Text="--Select--"></asp:ListItem>
                                               <asp:ListItem>Import</asp:ListItem>  
                                               <asp:ListItem>Export</asp:ListItem>
@@ -67,7 +67,7 @@
                              </div>
                            </div>
                              
-                       </from>
+                       </div>
                           
                         <!--/.row-->
                     </div>
@@ -81,7 +81,7 @@
                                     <div class="box-body">
                                <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="Repeater1_ItemCommand">
                                     <HeaderTemplate>
-                                        <table id="example1" class="table table-bordered table-striped">
+                                        <table id="example1" class="table table-condensed table-striped">
                                             <thead>
                                                 <tr>
                                                     <th>Currency</th>

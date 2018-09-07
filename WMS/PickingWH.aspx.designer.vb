@@ -32,85 +32,49 @@ Partial Public Class PickingWH
     Protected WithEvents ScriptManager1 As Global.System.Web.UI.ScriptManager
 
     '''<summary>
-    '''txtPullSignal_BeforeTab control.
+    '''btnAddHead control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtPullSignal_BeforeTab As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents btnAddHead As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
-    '''txtJobNo_BeforeTab control.
+    '''btnEditHead control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtJobNo_BeforeTab As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents btnEditHead As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
-    '''chkScrap control.
+    '''btnSaveAddHead control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents chkScrap As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
+    Protected WithEvents btnSaveAddHead As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
-    '''txtdatepickertxtPullDateTime_beforeTab control.
+    '''btnSaveEditHead control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtdatepickertxtPullDateTime_beforeTab As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents btnSaveEditHead As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
-    '''CalendarExtenderPullDateTime_beforeTab control.
+    '''pickinghead_fieldset control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents CalendarExtenderPullDateTime_beforeTab As Global.AjaxControlToolkit.CalendarExtender
-
-    '''<summary>
-    '''txtdatepickerDeliveryDateTime_beforeTab control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtdatepickerDeliveryDateTime_beforeTab As Global.System.Web.UI.WebControls.TextBox
-
-    '''<summary>
-    '''CalendarExtenderDeliveryDateTime_beforeTab control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents CalendarExtenderDeliveryDateTime_beforeTab As Global.AjaxControlToolkit.CalendarExtender
-
-    '''<summary>
-    '''txtdatepickerComfirmDateTime_beforeTab control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtdatepickerComfirmDateTime_beforeTab As Global.System.Web.UI.WebControls.TextBox
-
-    '''<summary>
-    '''CalendarExtenderComfirmDateTime_beforeTab control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents CalendarExtenderComfirmDateTime_beforeTab As Global.AjaxControlToolkit.CalendarExtender
+    Protected WithEvents pickinghead_fieldset As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
     '''ddlExporterCode_PickingHead control.
@@ -282,6 +246,15 @@ Partial Public Class PickingWH
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents ddlQuantityPicked_PickingHead As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''txtRemark_PickingHead control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtRemark_PickingHead As Global.System.Web.UI.HtmlControls.HtmlTextArea
 
     '''<summary>
     '''txtConsigneeCode_PickingHead control.
@@ -464,6 +437,15 @@ Partial Public Class PickingWH
     Protected WithEvents ddlQTYDiscrepancy_PickingHead As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
+    '''importfiles_fieldset control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents importfiles_fieldset As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
     '''txtSelectFileForImport_SEQ_ImportFiles control.
     '''</summary>
     '''<remarks>
@@ -536,6 +518,15 @@ Partial Public Class PickingWH
     Protected WithEvents btnImportPallet_ImportFiles As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
+    '''assigndetailofpullsignal_fieldset control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents assigndetailofpullsignal_fieldset As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
     '''txtItemNo_AssignDetail control.
     '''</summary>
     '''<remarks>
@@ -579,6 +570,15 @@ Partial Public Class PickingWH
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents ddlEASPN_AssignDetail As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''txtRemark_ConGoodRec55554 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtRemark_ConGoodRec55554 As Global.System.Web.UI.HtmlControls.HtmlTextArea
 
     '''<summary>
     '''ddlRequestedQuantity_AssignDetail control.
@@ -779,6 +779,15 @@ Partial Public Class PickingWH
     Protected WithEvents btnImport_AssignDetail As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
+    '''pickpack_fieldset control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents pickpack_fieldset As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
     '''rdbOwner control.
     '''</summary>
     '''<remarks>
@@ -959,6 +968,15 @@ Partial Public Class PickingWH
     Protected WithEvents btnCancel As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
+    '''picknjr_fieldset control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents picknjr_fieldset As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
     '''ddlWHSite_PickNJR control.
     '''</summary>
     '''<remarks>
@@ -984,6 +1002,15 @@ Partial Public Class PickingWH
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents btnAutoPickNJR As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''pickautopallet_fieldset control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents pickautopallet_fieldset As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
     '''ddlWHSite_PickAutoPallet control.

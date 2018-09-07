@@ -33,7 +33,7 @@
 
                                 <asp:Repeater ID="Repeater1" runat="server">
                                     <HeaderTemplate>
-                                        <table id="example1" class="table table-bordered table-striped">
+                                        <table id="example1" class="table table-condensed table-striped">
                                             <thead>
                                                 <tr>    
                                                     <th>ID</th>                                                

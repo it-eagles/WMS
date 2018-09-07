@@ -22,34 +22,44 @@
             <div class="row">
                 <!-- left column -->
                 <div class="col-lg-12 col-md-12">
-
+                    
                     <!-- general form elements -->
                     <div class="box box-primary">
                         <div class="box-header with-border">
                             <div class="form-group">
                                 <div class="col-sm-2">
                                   <h3 class="box-title p-t-8">Product Deatil</h3>
-                            </div>             
-                            <div class="col-sm-2">
-                                 <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal"><i class="glyphicon glyphicon-search"></i></button>
-                            </div>
+                            </div>                            
                           </div>         
                         </div>
-                       
+                       <div class="box-body">
+                           <div class="col-xs-6">
+                                <button class="btn btn-app btn-sm" id="btnAddHead" runat="server" onserverclick="btnAddHead_ServerClick"><i class="fa fa-inbox"></i>Add</button>
+                                <button class="btn btn-app btn-sm" id="btnEditHead" runat="server" onserverclick="btnEditHead_ServerClick"><i class="fa fa-edit"></i>Edit</button>
+                            </div>
+                            <div class="col-xs-6 text-right">
+                                <button runat="server" class="btn btn-app btn-sm" id="btnAddGoods" title="btnAddGoods" onserverclick="saveGoods_click" visible="false"><i class="fa fa-save"></i> Save</button>
+                                <button class="btn btn-app btn-sm" id="btnSaveEditHead" runat="server" onserverclick="btnSaveEditHead_ServerClick" visible="false"><i class="fa fa-save"></i>Save Edit</button>
+                            </div>
+                                
+                           </div>
                         <!-- /.box-header -->
                <div class="form-horizontal">
                      <div class="box-body">   
                          <div class ="col-lg-6 col-md-6">
-                               <div class="form-group" >
-                                    <label for="txtProductCode" class="col-sm-4 control-label">Product Code :</label>
-                                         <div class="col-sm-8">
-                                           <input class="form-control" id="txtProductCode" runat="server" placeholder="Product Code" disabled="disabled"/>
-                                        </div>
-                                    </div>
+                             <div class="form-group">
+                                 <label for="txtProductCode" class="col-sm-4 control-label">Product Code :</label>
+                                 <div class="col-sm-6">
+                                     <input class="form-control input-sm" id="txtProductCode" runat="server" placeholder="Product Code" disabled="disabled" autocomplete="off"/>
+                                 </div>
+                                 <div class="col-sm-2">
+                                     <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal"><i class="glyphicon glyphicon-search"></i></button>
+                                 </div>
+                             </div>
                                   <div class="form-group">
                                         <label for="txtCustomerPart" class="col-sm-4 control-label">Owner Part :</label>
                                            <div class="col-sm-8">
-                                           <input class="form-control" id="txtCustomerPart" runat="server"  placeholder="Owner Part "/>
+                                           <input class="form-control input-sm" id="txtCustomerPart" runat="server"  placeholder="Owner Part " autocomplete="off"/>
                                        </div>
                                     </div>
                                   </div>      
@@ -58,22 +68,20 @@
                                     <div class="form-group">
                                         <label for="txtProductPO" class="col-sm-3 control-label">PO :</label>          
                                       <div class="col-sm-8">
-                                         <input  class="form-control" id="txtProductPO" runat="server" placeholder="Product PO"/>
+                                         <input  class="form-control input-sm" id="txtProductPO" runat="server" placeholder="Product PO" autocomplete="off"/>
                                       </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="txtEndUserPart" class="col-sm-3 control-label">End User Part :</label>
                                     <div class="col-sm-8">
-                                        <input class="form-control" id="txtEndUserPart" runat="server"  placeholder="End User Part" />
+                                        <input class="form-control input-sm" id="txtEndUserPart" runat="server"  placeholder="End User Part" autocomplete="off" />
                                     </div>
                                     </div>
                                 </div> 
                          <!--------- /.col-lg-6 col-md-6 ------------->           
                             </div>
                             <!-- /.box-body -->
-                            <div class="box-footer text-right">
-                                <button runat="server" class="btn btn-app" id="btnAddGoods" title="btnAddGoods" onserverclick="saveGoods_click"><i class="fa fa-save"></i> Save</button>
-                           </div>
+                            
                          </div>
                     </div>
                      <!---------- /.box box-primary  --------->
@@ -106,7 +114,7 @@
                                         <div class="col-lg-8 col-md-8 col-md-offset-1">
                                             <!-- form start -->
                         
-                                               <from class="form-horizontal">
+                                               <div class="form-horizontal">
 
                                                       <div class="box-body">   
                                                            <div class="form-group" >
@@ -114,7 +122,7 @@
                                                                <label for="txtMinimunStock" class="col-sm-4 control-label">Minimun Stock</label>
                                        
                                                              <div class="col-sm-8">
-                                                               <input class="form-control" id="txtMinimunStock" runat="server" placeholder="Minimun Stock"/>
+                                                               <input class="form-control input-sm" id="txtMinimunStock" runat="server" placeholder="Minimun Stock" autocomplete="off"/>
                                                              </div>
 
                                                            </div>
@@ -123,21 +131,21 @@
                                                                   <label for="txtAdjustment" class="col-sm-4 control-label">Adjustment</label>
                                       
                                                      <div class="col-sm-8">
-                                                                  <input class="form-control" id="txtAdjustment" runat="server" placeholder="Adjustment"/>
+                                                                  <input class="form-control input-sm" id="txtAdjustment" runat="server" placeholder="Adjustment" autocomplete="off"/>
                                                      </div>
                       
                                                     </div>
                                                        <div class="form-group">
                                                       <label for="txtDamageQty" class="col-sm-4 control-label">Damage Qty</label>
                                                      <div class="col-sm-8">
-                                                          <input class="form-control" id="txtDamageQty" runat="server"  placeholder="Damage Qty"/>
+                                                          <input class="form-control input-sm" id="txtDamageQty" runat="server"  placeholder="Damage Qty" autocomplete="off"/>
                                                      </div>
                                                 </div>
 
                                     <div class="form-group">
                                              <label for="txtAvailableQTY" class="col-sm-4 control-label">Available QTY</label>
                                        <div class="col-sm-8">
-                                            <input class="form-control" id="txtAvailableQTY" runat="server"  placeholder="Available QTY"/>
+                                            <input class="form-control input-sm" id="txtAvailableQTY" runat="server"  placeholder="Available QTY" autocomplete="off"/>
                                        </div>
                                    
                                     </div>
@@ -147,7 +155,7 @@
                              </div>
                             <!-- /.box-header -->
                            
-                       </from>
+                       </div>
           <!--/.col-lg-6 col-md-6 stockqty--->
                
                     </div>
@@ -240,7 +248,7 @@
                   <div class="row margin-bottom">
                     <div class="col-lg-12 col-md-12">
 
-                        <from class="form-horizontal">
+                        <div class="form-horizontal">
                            <div class="box-body">   
                                               
                                <div class="form-group" >
@@ -248,12 +256,12 @@
                                      <label for="txtImpProductCode" class="col-sm-2 control-label">Imp. Product Code :</label>
                                        <div class="col-md-3">
          
-                                             <input class="form-control" id="txtImpProductCode" runat="server" placeholder="Product Code"/>
+                                             <input class="form-control input-sm" id="txtImpProductCode" runat="server" placeholder="Product Code" autocomplete="off"/>
                                       </div>
                                            <label for="dcboImpTariffCode" class="col-sm-2 control-label">Tariff Code :</label>
                                        <div class="col-md-5">   
 
-                                           <asp:DropDownList ID="dcboImpTariffCode" CssClass="form-control" runat="server" DataTextField="TypeName" DataValueField="TypeID"></asp:DropDownList>
+                                           <asp:DropDownList ID="dcboImpTariffCode" CssClass="form-control input-sm" runat="server" DataTextField="TypeName" DataValueField="TypeID"></asp:DropDownList>
                                         </div>
                                        </div>                
                                  
@@ -262,7 +270,7 @@
                                          <label for="txtImpDesc1" class="col-sm-2 control-label">Desc. (ENG) 1 :</label>
                                        <div class="col-md-9" id="ImpDesc1">
          
-                                             <input class="form-control" id="txtImpDesc1" runat="server" placeholder="Desc" disabled="disabled"/>
+                                             <input class="form-control input-sm" id="txtImpDesc1" runat="server" placeholder="Desc" disabled="disabled" autocomplete="off"/>
                                       </div>
                                           
                                        <div class="col-md-1">   
@@ -280,7 +288,7 @@
                                      
                                          <label for="txtImpDesc2" class="col-sm-2 control-label">Desc. (ENG) 2 :</label>
                                        <div class="col-md-9" id="ImpDesc2">
-                                             <input class="form-control" id="txtImpDesc2" runat="server" placeholder="Desc" disabled="disabled"/>
+                                             <input class="form-control input-sm" id="txtImpDesc2" runat="server" placeholder="Desc" disabled="disabled" autocomplete="off"/>
                                       </div>
                                           
                                        <div class="col-md-1">   
@@ -295,7 +303,7 @@
                                   <div class="form-group">
                                          <label for="txtImpDesc3" class="col-sm-2 control-label">Desc. (ENG) 3 :</label>
                                    <div class="col-md-9" id="ImpDesc3">
-                                       <input class="form-control" id="txtImpDesc3" runat="server" placeholder="Desc" disabled="disabled"/>
+                                       <input class="form-control input-sm" id="txtImpDesc3" runat="server" placeholder="Desc" disabled="disabled" autocomplete="off"/>
                                    </div>
                                     <div class="col-md-1">   
                                         <div class="checkbox">
@@ -308,14 +316,14 @@
                                    <div class="form-group" >
                                        <label for="txtImpProductAttribute1" class="col-sm-2 control-label">Product Desc. (TH) :</label>
                                     <div class="col-sm-10">
-                                       <input class="form-control" id="txtImpProductAttribute1" runat="server" placeholder="Desc. (TH)"/>
+                                       <input class="form-control input-sm" id="txtImpProductAttribute1" runat="server" placeholder="Desc. (TH)" autocomplete="off"/>
                                     </div>
                                    </div>
                                     
                                     <div class="form-group">
                                         <label for="txtImpProductAttribute2" class="col-sm-2 control-label">Product Attribute:</label>  
                                       <div class="col-sm-10">
-                                             <input class="form-control" id="txtImpProductAttribute2" runat="server" placeholder=" Attribute"/>
+                                             <input class="form-control input-sm" id="txtImpProductAttribute2" runat="server" placeholder=" Attribute" autocomplete="off"/>
                                         </div>
                                     </div>
 
@@ -323,27 +331,27 @@
                                    <div class="form-group">
                                         <label for="dcboImpTariffSequence" class="col-sm-4 control-label">Tariff Sequence</label>
                                            <div class="col-sm-8">
-                                             <asp:DropDownList ID="dcboImpTariffSequence" CssClass="form-control" runat="server" DataTextField="TypeName" DataValueField="TypeID"></asp:DropDownList>
+                                             <asp:DropDownList ID="dcboImpTariffSequence" CssClass="form-control input-sm" runat="server" DataTextField="TypeName" DataValueField="TypeID"></asp:DropDownList>
                                            </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="txtImpCustomsProductCode" class="col-sm-4 control-label">H.S. Code</label>
                                        <div class="col-sm-8">
-                                          <input class="form-control" id="txtImpCustomsProductCode" runat="server"  placeholder="H.S."/>
+                                          <input class="form-control input-sm" id="txtImpCustomsProductCode" runat="server"  placeholder="H.S." autocomplete="off"/>
                                        </div>
                                     </div>
 
                                <div class="form-group" >
                                         <label for="txtImpDutyType" class="col-sm-4 control-label">Duty Type</label>
                                          <div class="col-sm-8">
-                                             <input class="form-control" id="txtImpDutyType" runat="server" placeholder="Duty Type"/>
+                                             <input class="form-control input-sm" id="txtImpDutyType" runat="server" placeholder="Duty Type" autocomplete="off"/>
                                         </div>
                                </div>
                                       <div class="form-group">
                                         <label for="txtImpValueRateP" class="col-sm-4 control-label">Value Rate(P) :</label>
                                            <div class="col-sm-8">
-                                              <input class="form-control" id="txtImpValueRateP" runat="server"  placeholder="Value Rate"/>
+                                              <input class="form-control input-sm" id="txtImpValueRateP" runat="server"  placeholder="Value Rate" autocomplete="off"/>
                                            </div>
                                       
                                     </div>
@@ -351,7 +359,7 @@
                                     <div class="form-group">
                                         <label for="txtImpSpecificRateP" class="col-sm-4 control-label">Specific Rate(P) :</label>
                                          <div class="col-sm-8">
-                                          <input class="form-control" id="txtImpSpecificRateP" runat="server"  placeholder="Specific Rate"/>
+                                          <input class="form-control input-sm" id="txtImpSpecificRateP" runat="server"  placeholder="Specific Rate" autocomplete="off"/>
                                         </div>
                                    
                                     </div>
@@ -361,7 +369,7 @@
                                         <label for="txtImpExemptDuty" class="col-sm-4 control-label">Exempt Duty :</label>
                                        
                                          <div class="col-sm-8">
-                                             <input class="form-control" id="txtImpExemptDuty" runat="server" placeholder="Exempt Duty"/>
+                                             <input class="form-control input-sm" id="txtImpExemptDuty" runat="server" placeholder="Exempt Duty" autocomplete="off"/>
                                         </div>
                       
                                     </div>
@@ -370,14 +378,14 @@
                                         <label for="txtImpSurchargeRate" class="col-sm-4 control-label">Surcharge Rate :</label>
                                        
                                       <div class="col-sm-8">
-                                             <input class="form-control" id="txtImpSurchargeRate" runat="server" placeholder="Surcharge Rate"/>
+                                             <input class="form-control input-sm" id="txtImpSurchargeRate" runat="server" placeholder="Surcharge Rate" autocomplete="off"/>
                                         </div>
                       
                                     </div>
                                       <div class="form-group">
                                         <label for="txtImpExciseRate" class="col-sm-4 control-label">Excise Rate :</label>
                                            <div class="col-sm-8">
-                                            <input class="form-control" id="txtImpExciseRate" runat="server" placeholder="Excise Rate"/>
+                                            <input class="form-control input-sm" id="txtImpExciseRate" runat="server" placeholder="Excise Rate" autocomplete="off"/>
                                            </div>
                                       
                                     </div>
@@ -385,7 +393,7 @@
                                     <div class="form-group">
                                         <label for="txtImpExciseSpcRate" class="col-sm-4 control-label">Excise Spc Rate :</label>
                                          <div class="col-sm-8">
-                                          <input class="form-control" id="txtImpExciseSpcRate" runat="server"  placeholder="Excise Spc Rate"/>
+                                          <input class="form-control input-sm" id="txtImpExciseSpcRate" runat="server"  placeholder="Excise Spc Rate" autocomplete="off"/>
                                            </div>
                                    
                                     </div>
@@ -395,7 +403,7 @@
                                         <label for="txtImpExemptExcise" class="col-sm-4 control-label">Exempt(Excise) :</label>
                                        
                                          <div class="col-sm-8">
-                                             <input class="form-control" id="txtImpExemptExcise" runat="server" placeholder="Excise"/>
+                                             <input class="form-control input-sm" id="txtImpExemptExcise" runat="server" placeholder="Excise" autocomplete="off"/>
                                         </div>
                       
                                     </div>
@@ -404,14 +412,14 @@
                                         <label for="txtImpValueRate" class="col-sm-4 control-label">Value Rate :</label>
                                        
                                       <div class="col-sm-8">
-                                             <input class="form-control" id="txtImpValueRate" runat="server" placeholder="Value Rate"/>
+                                             <input class="form-control input-sm" id="txtImpValueRate" runat="server" placeholder="Value Rate" autocomplete="off"/>
                                         </div>
                       
                                     </div>
                                       <div class="form-group">
                                         <label for="txtImpValueRateAmount" class="col-sm-4 control-label">Value Rate Amount :</label>
                                            <div class="col-sm-8">
-                                            <input class="form-control" id="txtImpValueRateAmount" runat="server" placeholder="Value Rate Amount"/>
+                                            <input class="form-control input-sm" id="txtImpValueRateAmount" runat="server" placeholder="Value Rate Amount" autocomplete="off"/>
                                            </div>
                                       
                                     </div>
@@ -419,7 +427,7 @@
                                     <div class="form-group">
                                         <label for="txtImpFactoryNo" class="col-sm-4 control-label">Factory No :</label>
                                          <div class="col-sm-8">
-                                          <input class="form-control" id="txtImpFactoryNo" runat="server"  placeholder="Factory No"/>
+                                          <input class="form-control input-sm" id="txtImpFactoryNo" runat="server"  placeholder="Factory No" autocomplete="off"/>
                                       </div>
                                    
                                     </div>
@@ -429,7 +437,7 @@
                                    <div class="form-group">
                                         <label for="dcboImpStatisticalCode" class="col-sm-4 control-label">Statistical Code</label>
                                            <div class="col-sm-8">
-                                             <asp:DropDownList ID="dcboImpStatisticalCode" CssClass="form-control" runat="server" DataTextField="TypeName" DataValueField="TypeID"></asp:DropDownList>
+                                             <asp:DropDownList ID="dcboImpStatisticalCode" CssClass="form-control input-sm" runat="server" DataTextField="TypeName" DataValueField="TypeID"></asp:DropDownList>
                                            </div>
                                       
                                     </div>
@@ -437,7 +445,7 @@
                                     <div class="form-group">
                                         <label for="txtImpProductYear" class="col-sm-4 control-label">Product Year :</label>
                                          <div class="col-sm-8">
-                                          <input class="form-control" id="txtImpProductYear" runat="server"  placeholder="Product Year"/>
+                                          <input class="form-control input-sm" id="txtImpProductYear" runat="server"  placeholder="Product Year" autocomplete="off"/>
                                            </div>
                                    
                                     </div>
@@ -447,7 +455,7 @@
                                         <label for="txtImpSpeciticRate" class="col-sm-4 control-label">Specitic Rate :</label>
                                        
                                          <div class="col-sm-8">
-                                             <input class="form-control" id="txtImpSpeciticRate" runat="server" placeholder="Specitic Rate"/>
+                                             <input class="form-control input-sm" id="txtImpSpeciticRate" runat="server" placeholder="Specitic Rate" autocomplete="off"/>
                                         </div>
                       
                                     </div>
@@ -456,14 +464,14 @@
                                         <label for="txtImpSpecificCal" class="col-sm-4 control-label">Specific Cal :</label>
                                        
                                       <div class="col-sm-8">
-                                             <input class="form-control" id="txtImpSpecificCal" runat="server" placeholder="Specific Cal"/>
+                                             <input class="form-control input-sm" id="txtImpSpecificCal" runat="server" placeholder="Specific Cal" autocomplete="off"/>
                                         </div>
                       
                                     </div>
                                       <div class="form-group">
                                         <label for="txtImpExemptVat" class="col-sm-4 control-label">Exempt Vat :</label>
                                            <div class="col-sm-8">
-                                              <input class="form-control" id="txtImpExemptVat" runat="server"  placeholder="Exempt Vat"/>
+                                              <input class="form-control input-sm" id="txtImpExemptVat" runat="server"  placeholder="Exempt Vat" autocomplete="off"/>
                                            </div>
                                       
                                     </div>
@@ -471,7 +479,7 @@
                                     <div class="form-group">
                                         <label for="txtImpExciseNo" class="col-sm-4 control-label">Excise No :</label>
                                          <div class="col-sm-8">
-                                          <input class="form-control" id="txtImpExciseNo" runat="server"  placeholder="Excise No"/>
+                                          <input class="form-control input-sm" id="txtImpExciseNo" runat="server"  placeholder="Excise No" autocomplete="off"/>
                                            </div>
                                    
                                     </div>
@@ -481,7 +489,7 @@
                                         <label for="txtImpExciseRatePay" class="col-sm-4 control-label">Excise Rate Pay :</label>
                                        
                                          <div class="col-sm-8">
-                                             <input class="form-control" id="txtImpExciseRatePay" runat="server" placeholder="Excise Rate Pay "/>
+                                             <input class="form-control input-sm" id="txtImpExciseRatePay" runat="server" placeholder="Excise Rate Pay " autocomplete="off"/>
                                         </div>
                       
                                     </div>
@@ -490,14 +498,14 @@
                                         <label for="txtImpExciseSpcRatePay" class="col-sm-4 control-label">Excise Spc Rate Pay :</label>
                                        
                                       <div class="col-sm-8">
-                                             <input class="form-control" id="txtImpExciseSpcRatePay" runat="server" placeholder="Excise Spc Rate Pay"/>
+                                             <input class="form-control input-sm" id="txtImpExciseSpcRatePay" runat="server" placeholder="Excise Spc Rate Pay" autocomplete="off"/>
                                         </div>
                       
                                     </div>
                                       <div class="form-group">
                                         <label for="txtImpPriviege" class="col-sm-4 control-label">Priviege :</label>
                                            <div class="col-sm-8">
-                                            <input class="form-control" id="txtImpPriviege" runat="server" placeholder="Priviege"/>
+                                            <input class="form-control input-sm" id="txtImpPriviege" runat="server" placeholder="Priviege"/>
                                            </div>
                                       
                                     </div>
@@ -505,7 +513,7 @@
                                     <div class="form-group">
                                         <label for="dcboImpBrand" class="col-sm-4 control-label">Brand :</label>
                                          <div class="col-sm-8">
-                                             <asp:DropDownList ID="dcboImpBrand" CssClass="form-control" runat="server" DataTextField="Description" DataValueField="Description"></asp:DropDownList>
+                                             <asp:DropDownList ID="dcboImpBrand" CssClass="form-control input-sm" runat="server" DataTextField="Description" DataValueField="Description"></asp:DropDownList>
                                            </div>
                                    
                                     </div>
@@ -514,18 +522,18 @@
                                                                         
                                        <div class="col-md-4">
          
-                                          <asp:DropDownList ID="cboImpCurrency" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code"></asp:DropDownList>            
+                                          <asp:DropDownList ID="cboImpCurrency" CssClass="form-control input-sm" runat="server" DataTextField="Code" DataValueField="Code"></asp:DropDownList>            
                                       </div>
                                 
                                        <div class="col-md-4">   
-                                            <input class="form-control" id="txtImpExchangeRate" runat="server" placeholder="Currency" />
+                                            <input class="form-control input-sm" id="txtImpExchangeRate" runat="server" placeholder="Currency"  autocomplete="off"/>
                                         </div>
                                        </div>
                                 
                                       <div class="form-group">
                                         <label for="txtImpEstablishNo" class="col-sm-4 control-label">Establish No :</label>
                                            <div class="col-sm-8">
-                                            <input class="form-control" id="txtImpEstablishNo" runat="server" placeholder="Establish No"/>
+                                            <input class="form-control input-sm" id="txtImpEstablishNo" runat="server" placeholder="Establish No" autocomplete="off"/>
                                            </div>
                                       
                                     </div>
@@ -534,7 +542,7 @@
                                     <!-- /.box-body -->
                           </div>
                           
-                       </from>
+                       </div>
 
                 <!--/.col-lg-6 col-md-6--->
                  </div>
@@ -553,12 +561,12 @@
 
                 <div class="col-lg-12 col-md-12">
 
-                       <from class="form-horizontal">
+                       <div class="form-horizontal">
                            <div class="box-body">   
                               <div class="form-group" >
                                      <label for="txtExpProductCode" class="col-sm-2 control-label">Exp. Product Code :</label>
                                  <div class="col-md-6">
-                                     <input class="form-control" id="txtExpProductCode" runat="server" placeholder="Product Code"/>
+                                     <input class="form-control input-sm" id="txtExpProductCode" runat="server" placeholder="Product Code" autocomplete="off"/>
                                  </div>
                                  <div class="col-md-2"></div>
                              </div> 
@@ -566,7 +574,7 @@
                              <div class="form-group" >
                                   <label for="txtImpDesc1" class="col-sm-2 control-label">Desc. (ENG) 1 :</label>
                                <div class="col-md-9" id="ExpDesc1">
-                                  <input class="form-control" id="txtExpDesc1" runat="server" placeholder="Desc" disabled="disabled"/>
+                                  <input class="form-control input-sm" id="txtExpDesc1" runat="server" placeholder="Desc" disabled="disabled" autocomplete="off"/>
                                </div>
                                 <div class="col-md-1">   
                                    <div class="checkbox">
@@ -580,7 +588,7 @@
                            <div class="form-group" >
                                <label for="txtExpDesc2" class="col-sm-2 control-label">Desc. (ENG) 2 :</label>
                                 <div class="col-md-9" id="ExpDesc2">
-                                    <input class="form-control" id="txtExpDesc2" runat="server" placeholder="Desc" disabled="disabled"/>
+                                    <input class="form-control input-sm" id="txtExpDesc2" runat="server" placeholder="Desc" disabled="disabled" autocomplete="off"/>
                                 </div>
                                <div class="col-md-1">
                                    <div class="checkbox">
@@ -594,7 +602,7 @@
                           <div class="form-group" >
                               <label for="txtExpDesc3" class="col-sm-2 control-label">Desc. (ENG) 3 :</label>
                               <div class="col-md-9" id="ExpDesc3">
-                                  <input class="form-control" id="txtExpDesc3" runat="server" placeholder="Desc" disabled="disabled"/>
+                                  <input class="form-control input-sm" id="txtExpDesc3" runat="server" placeholder="Desc" disabled="disabled" autocomplete="off"/>
                               </div>
                               <div class="col-md-1">
                                   <div class="checkbox">
@@ -607,14 +615,14 @@
                          <div class="form-group" >
                              <label for="txtExpProductAttribute1" class="col-sm-2 control-label">Attribute 1 :</label>
                                    <div class="col-sm-10">
-                                        <input class="form-control" id="txtExpProductAttribute1" runat="server" placeholder="Desc. (TH)"/>
+                                        <input class="form-control input-sm" id="txtExpProductAttribute1" runat="server" placeholder="Desc. (TH)" autocomplete="off"/>
                                    </div>
                          </div>
                          
                          <div class="form-group">
                              <label for="txtExpProductAttribute2" class="col-sm-2 control-label">Attribute 2 :</label>
                                    <div class="col-sm-10">
-                                             <input class="form-control" id="txtExpProductAttribute2" runat="server" placeholder=" Attribute"/>
+                                             <input class="form-control input-sm" id="txtExpProductAttribute2" runat="server" placeholder=" Attribute" autocomplete="off"/>
                                         </div>
                       
                                     </div>
@@ -623,7 +631,7 @@
                                    <div class="form-group">
                                         <label for="dcboExpTariffSequence" class="col-sm-4 control-label">Tariff Sequence</label>
                                            <div class="col-sm-8">
-                                             <asp:DropDownList ID="dcboExpTariffSequence" CssClass="form-control" runat="server" DataTextField="TypeName" DataValueField="TypeID"></asp:DropDownList>
+                                             <asp:DropDownList ID="dcboExpTariffSequence" CssClass="form-control input-sm" runat="server" DataTextField="TypeName" DataValueField="TypeID"></asp:DropDownList>
                                            </div>
                                       
                                     </div>
@@ -631,7 +639,7 @@
                                     <div class="form-group">
                                         <label for="txtExpCustomsProductCode" class="col-sm-4 control-label">H.S. Code</label>
                                          <div class="col-sm-8">
-                                          <input class="form-control" id="txtExpCustomsProductCode" runat="server"  placeholder="H.S."/>
+                                          <input class="form-control input-sm" id="txtExpCustomsProductCode" runat="server"  placeholder="H.S." autocomplete="off"/>
                                         </div>
                                    
                                     </div>
@@ -641,7 +649,7 @@
                                         <label for="txtExpFomulaNo" class="col-sm-4 control-label">Fomula No :</label>
                                        
                                          <div class="col-sm-8">
-                                             <input class="form-control" id="txtExpFomulaNo" runat="server" placeholder="Fomula No"/>
+                                             <input class="form-control input-sm" id="txtExpFomulaNo" runat="server" placeholder="Fomula No" autocomplete="off"/>
                                         </div>
                       
                                     </div>
@@ -650,7 +658,7 @@
                                       <div class="form-group">
                                         <label for="txtExpBOINo" class="col-sm-4 control-label">BOI No :</label>
                                            <div class="col-sm-8">
-                                              <input class="form-control" id="txtExpBOINo" runat="server"  placeholder="BOI No"/>
+                                              <input class="form-control input-sm" id="txtExpBOINo" runat="server"  placeholder="BOI No" autocomplete="off"/>
                                            </div>
                                       
                                     </div>
@@ -660,7 +668,7 @@
                                         <label for="txtExpDutyType" class="col-sm-4 control-label">Duty Type :</label>
                                        
                                          <div class="col-sm-8">
-                                             <input class="form-control" id="txtExpDutyType" runat="server" placeholder="Duty Type"/>
+                                             <input class="form-control input-sm" id="txtExpDutyType" runat="server" placeholder="Duty Type" autocomplete="off"/>
                                         </div>
                       
                                     </div>
@@ -669,14 +677,14 @@
                                         <label for="txtExpQtyCarton" class="col-sm-4 control-label">Qty./Carton :</label>
                                        
                                       <div class="col-sm-8">
-                                             <input class="form-control" id="txtExpQtyCarton" runat="server" placeholder="Qty Carton"/>
+                                             <input class="form-control input-sm" id="txtExpQtyCarton" runat="server" placeholder="Qty Carton" autocomplete="off"/>
                                         </div>
                       
                                     </div>
                                       <div class="form-group">
                                         <label for="txtExpWeightCarton" class="col-sm-4 control-label">Weight/Carton :</label>
                                            <div class="col-sm-8">
-                                            <input class="form-control" id="txtExpWeightCarton" runat="server" placeholder="Weight/Carton"/>
+                                            <input class="form-control input-sm" id="txtExpWeightCarton" runat="server" placeholder="Weight/Carton" autocomplete="off"/>
                                            </div>
                                       
                                     </div>
@@ -684,7 +692,7 @@
                                     <div class="form-group">
                                         <label for="txtExpValueRate" class="col-sm-4 control-label">Value Rate :</label>
                                          <div class="col-sm-8">
-                                          <input class="form-control" id="txtExpValueRate" runat="server"  placeholder="Value Rate"/>
+                                          <input class="form-control input-sm" id="txtExpValueRate" runat="server"  placeholder="Value Rate" autocomplete="off"/>
                                            </div>
                                    
                                     </div>
@@ -694,7 +702,7 @@
                                         <label for="txtExpValueRateAmount" class="col-sm-4 control-label">Value Rate Amount :</label>
                                        
                                          <div class="col-sm-8">
-                                             <input class="form-control" id="txtExpValueRateAmount" runat="server" placeholder="Value Rate Amount"/>
+                                             <input class="form-control input-sm" id="txtExpValueRateAmount" runat="server" placeholder="Value Rate Amount" autocomplete="off"/>
                                         </div>
                       
                                     </div>
@@ -703,7 +711,7 @@
                                         <label for="txtExpFactoryNo" class="col-sm-4 control-label">Factory No :</label>
                                        
                                       <div class="col-sm-8">
-                                             <input class="form-control" id="txtExpFactoryNo" runat="server" placeholder="Factory No"/>
+                                             <input class="form-control input-sm" id="txtExpFactoryNo" runat="server" placeholder="Factory No" autocomplete="off"/>
                                         </div>
                       
                                     </div>
@@ -714,14 +722,14 @@
                                       <div class="form-group">
                                         <label for="dcboExpTariffCode" class="col-sm-4 control-label">Tariff Code :</label>
                                            <div class="col-sm-8">
-                                             <asp:DropDownList ID="dcboExpTariffCode" CssClass="form-control" runat="server" DataTextField="TypeName" DataValueField="TypeID"></asp:DropDownList>
+                                             <asp:DropDownList ID="dcboExpTariffCode" CssClass="form-control input-sm" runat="server" DataTextField="TypeName" DataValueField="TypeID"></asp:DropDownList>
                                            </div>
                                       
                                     </div>
                                      <div class="form-group">
                                         <label for="dcboExpStatisticalCode" class="col-sm-4 control-label">Statistical Code</label>
                                            <div class="col-sm-8">
-                                             <asp:DropDownList ID="dcboExpStatisticalCode" CssClass="form-control" runat="server" DataTextField="TypeName" DataValueField="TypeID"></asp:DropDownList>
+                                             <asp:DropDownList ID="dcboExpStatisticalCode" CssClass="form-control input-sm" runat="server" DataTextField="TypeName" DataValueField="TypeID"></asp:DropDownList>
                                            </div>
                                       
                                     </div>
@@ -731,7 +739,7 @@
                                         <label for="txtImpSpeciticRate" class="col-sm-4 control-label">Specitic Rate :</label>
                                        
                                          <div class="col-sm-8">
-                                             <input class="form-control" id="Text20" runat="server" placeholder="Specitic Rate"/>
+                                             <input class="form-control input-sm" id="Text20" runat="server" placeholder="Specitic Rate" autocomplete="off"/>
                                         </div>
                       
                                     </div>
@@ -740,14 +748,14 @@
                                         <label for="txtExpProductYear" class="col-sm-4 control-label">Product Year :</label>
                                        
                                       <div class="col-sm-8">
-                                             <input class="form-control" id="txtExpProductYear" runat="server" placeholder="Product Year"/>
+                                             <input class="form-control input-sm" id="txtExpProductYear" runat="server" placeholder="Product Year" autocomplete="off"/>
                                         </div>
                       
                                     </div>
                                       <div class="form-group">
                                         <label for="txtExp19BisTranNo" class="col-sm-4 control-label">19 Bis TranNo :</label>
                                            <div class="col-sm-8">
-                                              <input class="form-control" id="txtExp19BisTranNo" runat="server"  placeholder="19 Bis TranNo"/>
+                                              <input class="form-control input-sm" id="txtExp19BisTranNo" runat="server"  placeholder="19 Bis TranNo" autocomplete="off"/>
                                            </div>
                                       
                                     </div>
@@ -755,7 +763,7 @@
                                     <div class="form-group">
                                         <label for="txtExpBondFormulaNo" class="col-sm-4 control-label">Bond Formula No :</label>
                                          <div class="col-sm-8">
-                                          <input class="form-control" id="txtExpBondFormulaNo" runat="server"  placeholder="Bond Formula No"/>
+                                          <input class="form-control input-sm" id="txtExpBondFormulaNo" runat="server"  placeholder="Bond Formula No" autocomplete="off"/>
                                            </div>
                                    
                                     </div>
@@ -765,7 +773,7 @@
                                         <label for="txtExpPriceForeight" class="col-sm-4 control-label">Price(Foreight) :</label>
                                        
                                          <div class="col-sm-8">
-                                             <input class="form-control" id="txtExpPriceForeight" runat="server" placeholder="Foreight"/>
+                                             <input class="form-control input-sm" id="txtExpPriceForeight" runat="server" placeholder="Foreight" autocomplete="off"/>
                                         </div>
                       
                                     </div>
@@ -774,14 +782,14 @@
                                         <label for="txtExpQtyPallet" class="col-sm-4 control-label">QTY/PALLET :</label>
                                        
                                       <div class="col-sm-8">
-                                             <input class="form-control" id="txtExpQtyPallet" runat="server" placeholder="QTY/PALLET "/>
+                                             <input class="form-control input-sm" id="txtExpQtyPallet" runat="server" placeholder="QTY/PALLET " autocomplete="off"/>
                                         </div>
                       
                                     </div>
                                       <div class="form-group">
                                         <label for="txtImpPriviege" class="col-sm-4 control-label">Priviege :</label>
                                            <div class="col-sm-8">
-                                            <input class="form-control" id="Text26" runat="server" placeholder="Priviege"/>
+                                            <input class="form-control input-sm" id="Text26" runat="server" placeholder="Priviege" autocomplete="off"/>
                                         </div>
                                       
                                     </div>
@@ -792,25 +800,25 @@
                                                                         
                                        <div class="col-md-4">
          
-                                          <asp:DropDownList ID="cboExpCurrency" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code"></asp:DropDownList>            
+                                          <asp:DropDownList ID="cboExpCurrency" CssClass="form-control input-sm" runat="server" DataTextField="Code" DataValueField="Code"></asp:DropDownList>            
                                       </div>
                                 
                                        <div class="col-md-4">   
-                                            <input class="form-control" id="txtExpExchangeRate" runat="server" placeholder="Currency" />
+                                            <input class="form-control input-sm" id="txtExpExchangeRate" runat="server" placeholder="Currency"  autocomplete="off"/>
                                         </div>
                                        </div>
                                 
                                       <div class="form-group">
                                         <label for="txtExpEstablishNo" class="col-sm-4 control-label">Establish No :</label>
                                            <div class="col-sm-8">
-                                            <input class="form-control" id="txtExpEstablishNo" runat="server" placeholder="Establish No"/>
+                                            <input class="form-control input-sm" id="txtExpEstablishNo" runat="server" placeholder="Establish No" autocomplete="off"/>
                                       </div>
                                       
                                     </div>
                                </div>
                                <!-- /.box-body -->
                              </div>
-                        </from>
+                        </div>
                   <!--/.col-lg-6 col-md-6--->
                      </div>
                 <!--/.row-->
@@ -827,7 +835,7 @@
              <div class="row margin-bottom">
                 <div class="col-lg-12 col-md-12">
 
-                     <form class="form-horizontal">
+                     <div class="form-horizontal">
                            <div class="box-body">
 
                             <fieldset class="col-md-12">
@@ -841,7 +849,7 @@
                                    </div>
                                    <div class="col-md-8">
                                        
-                                         <asp:DropDownList ID="cboProductUnit" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code"></asp:DropDownList>
+                                         <asp:DropDownList ID="cboProductUnit" CssClass="form-control input-sm" runat="server" DataTextField="Code" DataValueField="Code"></asp:DropDownList>
                                    </div>
                             
                                  </div>
@@ -856,21 +864,21 @@
                               
                                    <div class="col-md-2">
                                        <label for="txtProductWidth">Width</label>
-                                       <input class="form-control" id="txtProductWidth" runat="server" placeholder="Width"/>
+                                       <input class="form-control input-sm" id="txtProductWidth" runat="server" placeholder="Width" autocomplete="off"/>
                                   </div>
                                   
                                    <div class="col-md-2">
                                        <label for="txtProductHeight">Heigh</label>
-                                       <input class="form-control" id="txtProductHeight" runat="server" placeholder="Height"/>
+                                       <input class="form-control input-sm" id="txtProductHeight" runat="server" placeholder="Height" autocomplete="off"/>
                                   </div>
                                      
                                    <div class="col-md-2">
                                        <label for="txtProductLeng">length</label>
-                                       <input class="form-control" id="txtProductLeng" runat="server" placeholder="length"/>
+                                       <input class="form-control input-sm" id="txtProductLeng" runat="server" placeholder="length" autocomplete="off"/>
                                   </div>
                                    <div class="col-md-2">
                                        <label for="txtProductVolume">Volume</label>
-                                       <input class="form-control" id="txtProductVolume" runat="server" placeholder="Volume"/>
+                                       <input class="form-control input-sm" id="txtProductVolume" runat="server" placeholder="Volume" autocomplete="off"/>
                                   </div>
                                     <div class="col-md-2 p-t-24">   
                                        <asp:DropDownList ID="cboUnitofVolume" CssClass="form-control " runat="server" DataTextField="Code" DataValueField="Code"></asp:DropDownList>
@@ -892,7 +900,7 @@
                                    </div>
                                    <div class="col-md-8">
                                        
-                                         <asp:DropDownList ID="cboPackageUnit" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code"></asp:DropDownList>
+                                         <asp:DropDownList ID="cboPackageUnit" CssClass="form-control input-sm" runat="server" DataTextField="Code" DataValueField="Code"></asp:DropDownList>
                                    </div>
                             
                                  </div>
@@ -907,21 +915,21 @@
                               
                                    <div class="col-md-2">
                                        <label for="txtPackageWidth">Width</label>
-                                       <input class="form-control" id="txtPackageWidth" runat="server" placeholder="Width"/>
+                                       <input class="form-control input-sm" id="txtPackageWidth" runat="server" placeholder="Width" autocomplete="off"/>
                                   </div>
                                   
                                    <div class="col-md-2">
                                        <label for="txtPackageHeigh">Heigh</label>
-                                       <input class="form-control" id="txtPackageHeigh" runat="server" placeholder="Height"/>
+                                       <input class="form-control input-sm" id="txtPackageHeigh" runat="server" placeholder="Height" autocomplete="off"/>
                                   </div>
                                      
                                    <div class="col-md-2">
                                        <label for="txtPackageLenght">length</label>
-                                       <input class="form-control" id="txtPackageLenght" runat="server" placeholder="length"/>
+                                       <input class="form-control input-sm" id="txtPackageLenght" runat="server" placeholder="length" autocomplete="off"/>
                                   </div>
                                    <div class="col-md-2">
                                        <label for="txtPackageCarton">No of Carton</label>
-                                       <input class="form-control" id="txtPackageCarton" runat="server" placeholder="Volume"/>
+                                       <input class="form-control input-sm" id="txtPackageCarton" runat="server" placeholder="Volume" autocomplete="off"/>
                                   </div>
                                     
                                  </div>
@@ -934,11 +942,11 @@
                                    </div>
                                    <div class="col-md-4">
                                       
-                                       <input class="form-control" id="txtPackageVolume" runat="server" placeholder="Volume"/>
+                                       <input class="form-control input-sm" id="txtPackageVolume" runat="server" placeholder="Volume" autocomplete="off"/>
                                   
                                   </div>
                                    <div class="col-md-4">
-                                        <asp:DropDownList ID="cboPackageofUnit" CssClass="form-control" runat="server" DataTextField="Code" DataValueField="Code"></asp:DropDownList>
+                                        <asp:DropDownList ID="cboPackageofUnit" CssClass="form-control input-sm" runat="server" DataTextField="Code" DataValueField="Code"></asp:DropDownList>
                                          
                                    </div>            
                                  </div>   
@@ -951,7 +959,7 @@
                                    <div class="col-md-12 col-md-offset-2">
                                        <div class="form-group">
                                      <div class="col-md-8">
-                                          <textarea class="form-control" id="txtRemarks" rows="6" runat="server" name="txtRemarks" placeholder="Remarks ..."></textarea>
+                                          <textarea class="form-control input-sm" id="txtRemarks" rows="6" runat="server" name="txtRemarks" placeholder="Remarks ..." autocomplete="off"></textarea>
                                      </div>
                                      
                                     </div>  
@@ -961,7 +969,7 @@
                                               
                           </div>
                       
-                     </form>
+                     </div>
                      </div>
                 <!--/.col-lg-6 col-md-6--->
                   </div>
@@ -977,14 +985,14 @@
                                 <div class="post">
                                     <div class="row margin-bottom">
                                         <div class="col-lg-12 col-md-12">
-                                            <form class="form-horizontal">
+                                            <div class="form-horizontal">
                            <div class="box-body">
                             
                                <div class="col-lg-6">
                                  <div class="form-group" >
                                    <label for="txtEAS" class="col-sm-3 control-label">EAS P/N :</label>
                                    <div class="col-md-8">
-                                       <input class="form-control" id="txtEAS" runat="server" placeholder="EAS P/N" disabled="disabled"/>
+                                       <input class="form-control input-sm" id="txtEAS" runat="server" placeholder="EAS P/N" disabled="disabled" autocomplete="off"/>
                                    </div>
                            
                                </div>                
@@ -992,7 +1000,7 @@
                                <div class="form-group">
                                    <label for="txtCustomer" class="col-sm-3 control-label">Customer P/N :</label>
                                        <div class="col-md-8">
-                                           <input class="form-control" id="txtCustomer" runat="server" placeholder="Customer" disabled="disabled"/>
+                                           <input class="form-control input-sm" id="txtCustomer" runat="server" placeholder="Customer" disabled="disabled" autocomplete="off"/>
                                       </div>
                               </div> 
                              </div>
@@ -1000,7 +1008,7 @@
                                    <div class="form-group" >
                                   <label for="txtOwner" class="col-sm-3">Owner P/N :</label>
                                        <div class="col-md-8">
-                                           <input class="form-control" id="txtOwner" runat="server" placeholder="Owner" disabled="disabled"/>
+                                           <input class="form-control input-sm" id="txtOwner" runat="server" placeholder="Owner" disabled="disabled" autocomplete="off"/>
                                       </div>
                      
                                   </div> 
@@ -1008,7 +1016,7 @@
                                     <div class="form-group" >
                                         <label for="txtQty" class="col-sm-3">Quality :</label>
                                        <div class="col-md-8">
-                                           <input class="form-control input-sm" id="txtQty" runat="server" placeholder="Quality" disabled="disabled"/>
+                                           <input class="form-control input-sm" id="txtQty" runat="server" placeholder="Quality" disabled="disabled" autocomplete="off"/>
                                       </div>
                                    </div> 
                                  
@@ -1017,9 +1025,9 @@
                                 <div class="form-group" >
 
                                 <div class="col-md-offset-9">
-                                        <button type="button" runat="server" class="btn btn-primary" id="btAdd"  disabled="disabled"/>Add</>
-                                        <button type="button" runat="server" class="btn bg-olive  btn-block" id="btModify"  disabled="disabled"/>Modify</>
-                                        <button type="button" runat="server" class="btn btn-danger  btn-block" id="btDel"  disabled="disabled"/>Delete</>
+                                        <button type="button" runat="server" class="btn btn-primary btn-sm" id="btAdd"  disabled="disabled"/>Add</>
+                                        <button type="button" runat="server" class="btn bg-olive  btn-block btn-sm" id="btModify"  disabled="disabled"/>Modify</>
+                                        <button type="button" runat="server" class="btn btn-danger  btn-block btn-sm" id="btDel"  disabled="disabled"/>Delete</>
                                 </div>
                                 </div>
                         
@@ -1027,7 +1035,7 @@
                           
                                     <!-- /.box-body -->
                           
-                       </form>
+                       </div>
                                             <!--/.col-lg-6 col-md-6--->
                                         </div>
                                         <!--/.row-->
@@ -1076,7 +1084,7 @@
                     <!-- /.box-header -->
                     <div class="row">
 
-                        <form class="form-horizontal">
+                        <div class="form-horizontal">
                             <div class="col-lg-12 col-md-12">
                                  <div class="box-body">   
                                             
@@ -1085,7 +1093,7 @@
                                         <label for="txtGenCode" class="col-sm-3 control-label">รหัสชื่อลูกค้า :</label>
                                        
                                       <div class="col-sm-6">
-                                           <input class="form-control" id="txtGenCode" runat="server"  placeholder="Name"/>
+                                           <input class="form-control input-sm" id="txtGenCode" runat="server"  placeholder="Name" autocomplete="off"/>
                                        </div>
                                        <div class="col-md-3">
                                             <label for="txtGenCode">ใช้3ตัวอักษร</label>
@@ -1097,11 +1105,11 @@
                                                                         
                                        <div class="col-md-6">
                                  
-                                            <asp:DropDownList ID="cdbGroupGoods" CssClass="form-control" runat="server"  DataTextField="Description" DataValueField="Description"></asp:DropDownList>
+                                            <asp:DropDownList ID="cdbGroupGoods" CssClass="form-control input-sm" runat="server"  DataTextField="Description" DataValueField="Description"></asp:DropDownList>
                                       </div>
                                 
                                        <div class="col-md-3">
-                                             <input class="form-control" id="txtCodeGoods" runat="server" placeholder="Group"/>
+                                             <input class="form-control input-sm" id="txtCodeGoods" runat="server" placeholder="Group" autocomplete="off"/>
                                         </div>
                                        </div>
                                      <div class="col-lg-4 col-md-4 col-md-offset-2">
@@ -1123,7 +1131,7 @@
                              </div>
                            </div>
                              
-                       </form>
+                       </div>
                           
                         <!--/.row-->
                     </div>
@@ -1136,7 +1144,7 @@
 
                              
                                      <!-- form start -->
-                         <from class="form-horizontal">
+                         <div class="form-horizontal">
                             <div class="col-lg-12 col-md-12">
                                  <div class="box-body">   
                                             
@@ -1144,7 +1152,7 @@
                                         <label for="txtGenCode" class="col-sm-3 control-label p-t-10">รหัสลูกค้า :</label>
                                       
                                       <div class="col-sm-6">
-                                           <input class="form-control" id="txtCodeCustomers" runat="server" name="txtCodeCustomers" placeholder="Name" />
+                                           <input class="form-control input-sm" id="txtCodeCustomers" runat="server" name="txtCodeCustomers" placeholder="Name"  autocomplete="off"/>
                                        </div>
                                      
                                     </div>
@@ -1156,7 +1164,7 @@
                              </div>
                            </div>
                              
-                       </from>
+                       </div>
                                 
                   </div> 
                      
@@ -1170,7 +1178,7 @@
                     </div>
                 <div id="radio2">
                     <div class="row" >
-                          <from class="form-horizontal">
+                          <div class="form-horizontal">
                             <div class="col-lg-12 col-md-12">
                                  <div class="box-body">   
                                             
@@ -1178,7 +1186,7 @@
                                         <label for="txtGenCode" class="col-sm-3 control-label p-t-8">รหัสชื่อลูกค้า :</label>
                                        
                                       <div class="col-sm-6">
-                                           <input class="form-control" id="txtNoCodeGoods" name="txtNoCodeGoods" runat="server"  placeholder="Name" disabled="disabled"/>
+                                           <input class="form-control input-sm" id="txtNoCodeGoods" name="txtNoCodeGoods" runat="server"  placeholder="Name" disabled="disabled" autocomplete="off"/>
                                        </div>
                                          <div class="col-md-3">
                                             <label for="txtGenCode">ใส่ตัวเลข 4 ตัว</label>
@@ -1190,7 +1198,7 @@
                                         <label for="txtGenCode" class="col-sm-3 control-label p-t-10">รหัสขนาด :</label>
                                        
                                       <div class="col-sm-6">
-                                           <input class="form-control" id="txtCodeSize" runat="server"  placeholder="Name" disabled="disabled"/>
+                                           <input class="form-control input-sm" id="txtCodeSize" runat="server"  placeholder="Name" disabled="disabled" autocomplete="off"/>
                                       </div>
                                     
                                 </div>      
@@ -1204,18 +1212,18 @@
                                                                         
                                        <div class="col-md-6">
                                  
-                                            <asp:DropDownList ID="cdbGroupColor" CssClass="form-control" runat="server"  DataTextField="Description" DataValueField="TypeID" disabled="disabled"></asp:DropDownList>
+                                            <asp:DropDownList ID="cdbGroupColor" CssClass="form-control input-sm" runat="server"  DataTextField="Description" DataValueField="TypeID" disabled="disabled"></asp:DropDownList>
                                       </div>
                                 
                                        <div class="col-md-3">
-                                             <input class="form-control" id="txtCodeColor" runat="server" placeholder="Group" disabled="disabled"/>
+                                             <input class="form-control input-sm" id="txtCodeColor" runat="server" placeholder="Group" disabled="disabled" autocomplete="off"/>
                                         </div>
                                     </div>
                                     <!-- /.box-body -->
                              </div>
                            </div>
                              
-                       </from>
+                       </div>
                       </div>   
                 </div>
              </div> 
@@ -1234,8 +1242,8 @@
   
                   
         <div class="modal-footer">
-         <button type="submit" runat="server" class="btn btn-primary" id="btnAddUser" title="btnAddUser" onserverclick="genCode_click">Submit</button>
-         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+         <button type="submit" runat="server" class="btn btn-primary btn-sm" id="btnAddUser" title="btnAddUser" onserverclick="genCode_click">Submit</button>
+         <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
         </div>
       </div>
       </div>

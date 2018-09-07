@@ -33,7 +33,7 @@
                                 <div class="form-group" >
                                         <label for="txtType" class="col-sm-3 control-label">Type</label>
                                          <div class="col-sm-6">
-                                            <input class="form-control" id="txtType" runat="server" placeholder="Type" />
+                                            <input class="form-control input-sm" id="txtType" runat="server" placeholder="Type" />
                                         </div>
                                     </div>               
                                     <div class="form-group" >
@@ -41,7 +41,7 @@
                                         <label for="txtCode" class="col-sm-3 control-label">Code</label>
                                        
                                          <div class="col-sm-6">
-                                            <input class="form-control" id="txtCode" runat="server" placeholder="Code"/>
+                                            <input class="form-control input-sm" id="txtCode" runat="server" placeholder="Code"/>
                                         </div>
                       
                                     </div>
@@ -50,15 +50,15 @@
                                         <label for="txtDescription" class="col-sm-3 control-label">Description</label>
                                       
                                       <div class="col-sm-6">
-                                           <%--<input class="form-control" id="txtDescription" runat="server" placeholder="Description"/>--%>
-                                          <asp:TextBox runat="server" Cssclass="form-control" TextMode="MultiLine" Height="135px"  ID="txtDescription2" ></asp:TextBox>
+                                           <%--<input class="form-control input-sm" id="txtDescription" runat="server" placeholder="Description"/>--%>
+                                          <asp:TextBox runat="server" Cssclass="form-control input-sm" TextMode="MultiLine" Height="135px"  ID="txtDescription2" ></asp:TextBox>
                                         </div>
                       
                                     </div>
                                       <div class="form-group">
                                         <label for="txtNotes" class="col-sm-3 control-label">Notes</label>
                                            <div class="col-sm-6">
-                                                <asp:TextBox runat="server" Cssclass="form-control" TextMode="MultiLine" Height="135px"  ID="txtNotes2" ></asp:TextBox>
+                                                <asp:TextBox runat="server" Cssclass="form-control input-sm" TextMode="MultiLine" Height="135px"  ID="txtNotes2" ></asp:TextBox>
                                            </div>
                                       
                                     </div>
@@ -66,15 +66,15 @@
                                     <div class="form-group">
                                         <label for="txtFilteringIndicator" class="col-sm-3 control-label">FilteringIndicator</label>
                                          <div class="col-sm-6">
-                                        <input class="form-control" id="txtFilteringIndicator" runat="server"  placeholder="FilteringIndicator"/>
+                                        <input class="form-control input-sm" id="txtFilteringIndicator" runat="server"  placeholder="FilteringIndicator"/>
                                        </div>
                                    
                                     </div>
 
                                  <div class="text-right">
                                    <div class="text-center">
-                                    <button type="submit" runat="server" class="btn btn-primary" id="btnAddGroup" title="btnAddUser" onserverclick="btnAddGroup_click">Add</button>
-                                    <button type="submit" runat="server" class="btn btn-primary" id="btnClear" title="btnClear" onserverclick="btnClear_click">Clear</button>
+                                    <button type="submit" runat="server" class="btn btn-primary btn-sm" id="btnAddGroup" title="btnAddUser" onserverclick="btnAddGroup_click">Add</button>
+                                    <button type="submit" runat="server" class="btn btn-primary btn-sm" id="btnClear" title="btnClear" onserverclick="btnClear_click">Clear</button>
                                    </div>
                                  </div>
                                     <!-- /.box-body -->
@@ -99,7 +99,7 @@
                                     <div class="form-group" >                                    
                                         <label for="txtUserName" class="col-sm-2 control-label">TypeName</label>                                       
                                          <div class="col-sm-10">
-                                             <input class="form-control" id="txtTypeName" runat="server" placeholder="Type Name"/>
+                                             <input class="form-control input-sm" id="txtTypeName" runat="server" placeholder="Type Name"/>
                                         </div>                      
                                     </div>
                                     
@@ -107,20 +107,20 @@
                                         <label for="txtBranch" class="col-sm-2 control-label">Description</label>
                                        
                                       <div class="col-sm-10">
-                                             <input class="form-control" id="txtTypeDes" runat="server" placeholder="Description"/>
+                                             <input class="form-control input-sm" id="txtTypeDes" runat="server" placeholder="Description"/>
                                         </div>                      
                                     </div>
                                       <div class="form-group">
                                         <label for="txtFullName" class="col-sm-2 control-label">Notes</label>
                                            <div class="col-sm-10">
-                                              <input class="form-control" id="txtTypeNotes" runat="server"  placeholder="Notes"/>
+                                              <input class="form-control input-sm" id="txtTypeNotes" runat="server"  placeholder="Notes"/>
                                            </div>                                      
                                     </div>
 
                                     <div class="form-group">
                                         <label for="txtDept" class="col-sm-2 control-label">Indicator</label>
                                          <div class="col-sm-10">
-                                          <input class="form-control" id="txtIndicator" runat="server"  placeholder="indicator"/>
+                                          <input class="form-control input-sm" id="txtIndicator" runat="server"  placeholder="indicator"/>
                                            </div>                                   
                                     </div>
                                  <div class="text-right">

@@ -258,7 +258,6 @@ Public Class Test
     '
 
     Protected Sub btnAdd_ServerClick(sender As Object, e As EventArgs)
-<<<<<<< HEAD
         'Dim StrWer As StreamReader
         'Dim readLine As String
         'Dim fileE As Boolean
@@ -334,9 +333,4 @@ Public Class Test
         GridView1.PageIndex = e.NewPageIndex
         GridView1.DataBind()
     End Sub
-
-=======
-
-    End Sub
->>>>>>> 04991f6c6bb1bb1662f2d30d7e895eedd693aba2
 End Class

@@ -1861,7 +1861,7 @@ Public Class SingleIssuedWH
 
         For i = 0 To Repeater8.Items.Count - 1
 
-            chkName = CType(Repeater8.Items(i).FindControl("chkRowData"), CheckBox)
+            chkName = CType(Repeater8.Items(i).FindControl("chk_Pull"), CheckBox)
             lblItemNo = CDbl(CType(Repeater8.Items(i).FindControl("lblItemNo"), Label).Text.Trim)
 
             Dim u = (From us In db.tblWHPickingDetails Where us.ItemNo = lblItemNo And us.LOTNo = txtJobNo_BeforeTab.Value.Trim And us.PalletNo = txtPullSignal_BeforeTab.Value.Trim).FirstOrDefault
@@ -1870,7 +1870,7 @@ Public Class SingleIssuedWH
                 'If CBool(Repeater8.Items(i).Cells(0).FormattedValue) = True Then
 
                 Try
-                    If SaveIssued(CStr(lblItemNo)) = False Then
+                    If SaveIssued(i) = False Then
                         ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด เนื่องจาก SaveIssued');", True)
                         Exit Sub
                     End If
@@ -1969,7 +1969,7 @@ Public Class SingleIssuedWH
         Next
 
     End Sub
-    Private Function SaveIssued(ByVal i As String) As Boolean
+    Private Function SaveIssued(ByVal i As Double) As Boolean
         'Dim chkName As CheckBox
         Dim lblItemNo As Double = CDbl(i)
         Dim ManuDate As Nullable(Of Date)
