@@ -3160,7 +3160,7 @@
     <Property Name="Remark" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
     <Property Name="PrintCount" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="UserBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" Nullable="false" />
     <Property Name="UsedStatus" Type="Int32" />
   </EntityType>
   <EntityType Name="tblWHPickingDetail">

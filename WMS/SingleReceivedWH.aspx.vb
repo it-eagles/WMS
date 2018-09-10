@@ -56,19 +56,6 @@ Public Class SingleReceivedWH
             'cdbUnitPallet
         End If
     End Sub
-
-    Protected Sub btnSumQTY_ConGoodRec_ServerClick(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Protected Sub btnSelectAll_GoodRecDetail_ServerClick(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Protected Sub btnCencelSelectAll_GoodRecDetail_ServerClick(sender As Object, e As EventArgs)
-
-    End Sub
-
     Protected Sub btnReceive_GoodRecDetail_ServerClick(sender As Object, e As EventArgs)
         Dim usename As String = CStr(Session("UserName"))
         Dim form As String = "frmConfirmGoodsReceive"

@@ -61,7 +61,7 @@ Partial Public Class tblWHPicking
     Public Property Remark As String
     Public Property PrintCount As String
     Public Property UserBy As String
-    Public Property LastUpdate As Nullable(Of Date)
+    Public Property LastUpdate As Date
     Public Property UsedStatus As Nullable(Of Integer)
 
 End Class

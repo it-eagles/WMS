@@ -1784,6 +1784,7 @@ Public Class ExpGenLot
                                     .UnitBox = cdbBox1.Text.Trim, _
                                     .JOBBranch = "JOB", _
                                     .IEATDate = IEATDate, _
+                                    .Status = 0, _
                                     .Status1 = dcbStatus1.Text.Trim, _
                                     .Status2 = dcbStatus2.Text.Trim, _
                                     .Status3 = dcbStatus3.Text.Trim, _
