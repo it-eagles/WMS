@@ -183,3 +183,4 @@ D:\ProjectDevelop\Project\WMS\bin\Remotion.dll
 D:\ProjectDevelop\Project\WMS\bin\Remotion.Interfaces.dll
 D:\ProjectDevelop\Project\WMS\bin\ExcelDataReader.xml
 D:\ProjectDevelop\Project\WMS\bin\LinqToExcel.xml
+D:\ProjectDevelop\Project\WMS\bin\ExchangeRatesAPI.dll

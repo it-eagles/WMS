@@ -26,7 +26,7 @@ Public Class PickingWH
                     'showunit2()
                     'showcurrency()
                     'TabName.Value = Request.Form(TabName.UniqueID)
-                    beforecustomtab_fieldset.Disabled = True
+                    'beforecustomtab_fieldset.Disabled = True
                     
                 End If
             Else
@@ -60,7 +60,7 @@ Public Class PickingWH
 
     End Sub
 
-<<<<<<< HEAD
+
     Protected Sub btnAddNew_ServerClick(sender As Object, e As EventArgs)
 
     End Sub
@@ -72,9 +72,6 @@ Public Class PickingWH
     Protected Sub btnSaveNew_ServerClick(sender As Object, e As EventArgs)
 
     End Sub
-
-    Protected Sub btnSaveEdit_ServerClick(sender As Object, e As EventArgs)
-=======
     Protected Sub btnAddHead_ServerClick(sender As Object, e As EventArgs)
 
     End Sub
@@ -88,7 +85,7 @@ Public Class PickingWH
     End Sub
 
     Protected Sub btnSaveEditHead_ServerClick(sender As Object, e As EventArgs)
->>>>>>> 46a066c0c7ae1c74ecaeb38ec709ea88273eb732
+
 
     End Sub
 End Class

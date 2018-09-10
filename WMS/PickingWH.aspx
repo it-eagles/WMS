@@ -20,7 +20,7 @@
         </section>
         <!-- Main content -->
         <section class="content">
-<<<<<<< HEAD
+
             <div class="row">
                 <!-- left column -->
                 <div class="col-xs-12">
@@ -46,7 +46,7 @@
                                         <i class="fa fa-save"></i>
                                         Save
                                     </button>
-                                    <button type="button" class=" btn btn-app" runat="server" id="btnSaveEdit" onserverclick="btnSaveEdit_ServerClick">
+                                    <button type="button" class=" btn btn-app" runat="server" id="btnSaveEdit">
                                         <i class="fa fa-edit"></i>
                                         Edit
                                     </button>
@@ -170,122 +170,7 @@
                     </div>
                 </div>
             </div>
-
-
-=======
-
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="box box-default">
-                        <div class="box-body">
-                            <div class="col-xs-6">
-                                <button class="btn btn-app btn-sm" id="btnAddHead" runat="server" onserverclick="btnAddHead_ServerClick"><i class="fa fa-inbox"></i>Add</button>
-                                <button class="btn btn-app btn-sm" id="btnEditHead" runat="server" onserverclick="btnEditHead_ServerClick"><i class="fa fa-edit"></i>Edit</button>
-                            </div>
-                            <div class="col-xs-6 text-right">
-                                <button class="btn btn-app btn-sm" id="btnSaveAddHead" runat="server" onserverclick="btnSaveAddHead_ServerClick" visible="false"><i class="fa fa-save"></i>Save Add</button>
-                                <button class="btn btn-app btn-sm" id="btnSaveEditHead" runat="server" onserverclick="btnSaveEditHead_ServerClick" visible="false"><i class="fa fa-save"></i>Save Edit</button>
-                            </div>
-
-                            <%-------------------------------------------------Start Before Custom Tab---------------------------------------------------%>
-                            <%--<div class="col-md-12">
-                                <fieldset runat="server" id="beforecustomtab_fieldset">
-                                    <h2></h2>
-                                    <div class="col-sm-6">
-                                        <div class="form-horizontal">
-                                            <div class="form-group">
-                                                <label for="txtPullSignal" class="col-sm-3 control-label">Pull Signal:</label>
-                                                <div class="col-sm-3">
-                                                    <input class="form-control input-sm" id="txtPullSignal_BeforeTab" runat="server" autocomplete="off" />
-                                                </div>
-                                                <label for="txtJobNo" class="col-sm-3 control-label">Job No:</label>
-                                                <div class="col-sm-3">
-                                                    <input class="form-control input-sm" id="txtJobNo_BeforeTab" runat="server" autocomplete="off" />
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="col-sm-2">
-                                                    <div class="checkbox">
-                                                        <label>
-                                                            <input type="checkbox" runat="server" id="chkScrap" />SCRAP
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                                <label for="txtPullDateTime" class="col-sm-3 control-label">Pull Date/Time:</label>
-                                                <div class="col-sm-4">
-                                                    <asp:TextBox CssClass="form-control input-sm" ID="txtdatepickertxtPullDateTime_beforeTab" runat="server" placeholder="DD/MM/YYYY" autocomplete="off">
-                                                    </asp:TextBox>
-                                                    <asp:CalendarExtender ID="CalendarExtenderPullDateTime_beforeTab" runat="server" Enabled="True" TargetControlID="txtdatepickertxtPullDateTime_beforeTab" Format="dd/MM/yyyy"></asp:CalendarExtender>
-                                                </div>
-
-                                                <div class="col-sm-3">
-                                                    <div class="bootstrap-timepicker">
-                                                        <div class="input-group">
-                                                            <input type="text" class="form-control timepicker" id="txtTimePickUpPullDateTime" />
-                                                            <div class="input-group-addon">
-                                                                <i class="fa fa-clock-o"></i>
-                                                            </div>
-                                                        </div>
-                                                        <!-- /.input group -->
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-sm-6">
-                                        <div class="form-horizontal">
-                                            <div class="form-group">
-                                                <label for="txtDeliveryDateTime" class="col-sm-4 control-label">Delivery Date/Time:</label>
-                                                <div class="col-sm-4">
-                                                    <asp:TextBox CssClass="form-control input-sm" ID="txtdatepickerDeliveryDateTime_beforeTab" runat="server" placeholder="DD/MM/YYYY" autocomplete="off">
-                                                    </asp:TextBox>
-                                                    <asp:CalendarExtender ID="CalendarExtenderDeliveryDateTime_beforeTab" runat="server" Enabled="True" TargetControlID="txtdatepickerDeliveryDateTime_beforeTab" Format="dd/MM/yyyy"></asp:CalendarExtender>
-                                                </div>
-
-                                                <div class="col-sm-4">
-                                                    <div class="bootstrap-timepicker">
-                                                        <div class="input-group">
-                                                            <input type="text" class="form-control timepicker" id="txtTimePickUpDeliveryDateTime" />
-                                                            <div class="input-group-addon">
-                                                                <i class="fa fa-clock-o"></i>
-                                                            </div>
-                                                        </div>
-                                                        <!-- /.input group -->
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="txtConfirmDateTime" class="col-sm-4 control-label">Confirm Date/Time:</label>
-                                                <div class="col-sm-4">
-                                                    <asp:TextBox CssClass="form-control input-sm" ID="txtdatepickerComfirmDateTime_beforeTab" runat="server" placeholder="DD/MM/YYYY" autocomplete="off">
-                                                    </asp:TextBox>
-                                                    <asp:CalendarExtender ID="CalendarExtenderComfirmDateTime_beforeTab" runat="server" Enabled="True" TargetControlID="txtdatepickerComfirmDateTime_beforeTab" Format="dd/MM/yyyy"></asp:CalendarExtender>
-                                                </div>
-
-                                                <div class="col-sm-4">
-                                                    <div class="bootstrap-timepicker">
-                                                        <div class="input-group">
-                                                            <input type="text" class="form-control timepicker" id="txtTimePickUpConfirmDateTime" />
-                                                            <div class="input-group-addon">
-                                                                <i class="fa fa-clock-o"></i>
-                                                            </div>
-                                                        </div>
-                                                        <!-- /.input group -->
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </fieldset>
-                            </div>--%>
-                            <%------------------------------------------------End Before Custom Tab---------------------------------------------------%>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
+            
             <div class="row">
 
 
@@ -1440,7 +1325,6 @@
                 </div>
                 <!-- /.col -->
             </div>
->>>>>>> 46a066c0c7ae1c74ecaeb38ec709ea88273eb732
             <!-- /.row -->
         </section>
         <!-- /.content -->

@@ -258,9 +258,6 @@ Public Class Test
     '
 
     Protected Sub btnAdd_ServerClick(sender As Object, e As EventArgs)
-<<<<<<< HEAD
-        
-=======
         'Dim StrWer As StreamReader
         'Dim readLine As String
         'Dim fileE As Boolean
@@ -273,7 +270,6 @@ Public Class Test
 
         '    Dim S As String = Split(readLine, ",")(0)
         'Loop
->>>>>>> 46a066c0c7ae1c74ecaeb38ec709ea88273eb732
 
         If FileUpload1.HasFile Then
             ' Path ที่ฮยู่ไฟล์
@@ -340,8 +336,4 @@ Public Class Test
         GridView1.PageIndex = e.NewPageIndex
         GridView1.DataBind()
     End Sub
-<<<<<<< HEAD
-
-=======
->>>>>>> 46a066c0c7ae1c74ecaeb38ec709ea88273eb732
 End Class
