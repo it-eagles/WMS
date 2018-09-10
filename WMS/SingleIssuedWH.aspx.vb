@@ -924,10 +924,13 @@ Public Class SingleIssuedWH
     '--------------------------------------------------------Show Data JobNoEdit In Modal-----------------------------------------
     Private Sub selectJobNoEdit()
         Dim testdate As Integer
+        Dim testDateMonths As Integer
         Dim jobno_code As String = ""
         Dim status_ As Double
         If String.IsNullOrEmpty(txtJobNo_BeforeTab.Value.Trim) Then
             testdate = CInt(Convert.ToDateTime(Date.Now).ToString("yyyy"))
+            testDateMonths = CInt(Convert.ToDateTime(Date.Now).ToString("MM"))
+            'testdate = CInt(Convert.ToDateTime(Date.Now).ToString("yyyy"))
             status_ = 0
         Else
             jobno_code = txtJobNo_BeforeTab.Value.Trim
@@ -936,7 +939,7 @@ Public Class SingleIssuedWH
 
         ' Where (u.ProductCode = ProCode) Or u.CreateDate.Year = testdate And u.ImpProductCode <> ""
         Dim cons = (From u In db.tblWHISSUEDs
-                    Where (u.LOTNo.Contains(txtJobNo_BeforeTab.Value.Trim)) Or (u.PullDate.Year = testdate)
+                    Where (u.LOTNo.Contains(txtJobNo_BeforeTab.Value.Trim)) Or (u.PullDate.Year = testdate And u.PullDate.Month = testDateMonths)
                    Select New With {u.LOTNo,
                                     u.PullSignal,
                                     u.PullDate,

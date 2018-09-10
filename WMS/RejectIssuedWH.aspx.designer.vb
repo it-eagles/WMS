@@ -59,6 +59,15 @@ Partial Public Class RejectIssuedWH
     Protected WithEvents btnFind As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
+    '''btnClear control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnClear As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
     '''ddlWHSite control.
     '''</summary>
     '''<remarks>

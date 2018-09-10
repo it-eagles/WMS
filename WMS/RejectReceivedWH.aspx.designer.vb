@@ -59,6 +59,15 @@ Partial Public Class RejectReceivedWH
     Protected WithEvents btnFind As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
+    '''btnClear control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnClear As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
     '''ddlWHSite control.
     '''</summary>
     '''<remarks>
@@ -77,13 +86,22 @@ Partial Public Class RejectReceivedWH
     Protected WithEvents txtCusLOTNo As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''ddlEASPN control.
+    '''txtEASPN control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlEASPN As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtEASPN As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''txtRemark control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtRemark As Global.System.Web.UI.HtmlControls.HtmlTextArea
 
     '''<summary>
     '''ddlWHLocation control.
@@ -113,13 +131,13 @@ Partial Public Class RejectReceivedWH
     Protected WithEvents txtCustomerPN As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''ddlENDCustomer control.
+    '''txtENDCustomer control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlENDCustomer As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtENDCustomer As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
     '''txtItemNo control.
@@ -149,13 +167,13 @@ Partial Public Class RejectReceivedWH
     Protected WithEvents ddlMeasurement As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''txtWeight control.
+    '''txtWidth control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtWeight As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtWidth As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
     '''txtHight control.
@@ -311,6 +329,24 @@ Partial Public Class RejectReceivedWH
     Protected WithEvents CalendarExtenderExpiredDate As Global.AjaxControlToolkit.CalendarExtender
 
     '''<summary>
+    '''txtdatepickerETAARRDate control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtdatepickerETAARRDate As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''CalendarExtenderETAARRDate control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CalendarExtenderETAARRDate As Global.AjaxControlToolkit.CalendarExtender
+
+    '''<summary>
     '''txtWeight2 control.
     '''</summary>
     '''<remarks>
@@ -329,22 +365,13 @@ Partial Public Class RejectReceivedWH
     Protected WithEvents ddlWeight2 As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''btnSelectAll control.
+    '''Repeater8 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents btnSelectAll As Global.System.Web.UI.HtmlControls.HtmlButton
-
-    '''<summary>
-    '''btnCencelSelectAll control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents btnCencelSelectAll As Global.System.Web.UI.HtmlControls.HtmlButton
+    Protected WithEvents Repeater8 As Global.System.Web.UI.WebControls.Repeater
 
     '''<summary>
     '''btnDelete control.
@@ -354,4 +381,13 @@ Partial Public Class RejectReceivedWH
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents btnDelete As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''Repeater9 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Repeater9 As Global.System.Web.UI.WebControls.Repeater
 End Class
