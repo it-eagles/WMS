@@ -342,9 +342,10 @@ Public Class RejectIssuedWH
     End Sub
 
     Protected Sub btnDelete_ServerClick(sender As Object, e As EventArgs)
+
         Dim user As String = CStr(Session("UserName"))
         Dim form As String = "frmDeleteIssued"
-        Dim cu = From um In db.tblUserMenus Where um.UserName = user And um.Form = form And um.Save_ = 1
+        Dim cu = From um In db.tblUserMenus Where um.UserName = user And um.Form = form And um.Delete_ = 1
         If cu.Any Then
 
             SaveIssuedDetail_Delete()
@@ -358,7 +359,8 @@ Public Class RejectIssuedWH
     Private Sub SaveIssuedDetail_Delete()
         Dim chkName As CheckBox
         Dim lblItemNo As Double
-
+        Dim lblLOTNo As String
+        Dim lblPullSignal As String
 
         If txtPullSignal.Value.Trim = "" Then
             ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert(กรุณาป้อน Pull Signal ก่อน !!!);", True)
@@ -375,61 +377,73 @@ Public Class RejectIssuedWH
             Exit Sub
         End If
 
-
-        Dim i As Integer
-
-        For i = 0 To Repeater9.Items.Count - 1
+        Using tran As New TransactionScope()
 
 
-            chkName = CType(Repeater9.Items(i).FindControl("chk_Pull"), CheckBox)
-            lblItemNo = CDbl(CType(Repeater9.Items(i).FindControl("lblItemNo"), Label).Text.Trim)
+            Dim i As Integer
 
-            Dim u = (From us In db.tblWHISSUEDDetails Where us.ItemNo = lblItemNo And us.LOTNo = txtJobNo.Value.Trim And us.PalletNo = txtPullSignal.Value.Trim).FirstOrDefault
-            'sb.Append("Delete tblWHISSUEDDetail")
-            'sb.Append(" WHERE (PullSignal=@PullSignal AND LOTNo=@LOTNo AND ItemNo=@ItemNo AND ReceiveNo=@ReceiveNo AND Item=@Item AND Type=@Type AND ISSUEDQuantity=@ISSUEDQuantity)")
-            If chkName.Checked = True Then
-
-                Try
-
-                    'db.tblWHISSUEDDetails.Remove()
-                    '.Parameters.Add("@PullSignal", SqlDbType.NVarChar).Value = txtPullSignal.Text.Trim()
-                    '.Parameters.Add("@LOTNo", SqlDbType.NVarChar).Value = txtLOTNo.Text.Trim()
-                    '.Parameters.Add("@ItemNo", SqlDbType.NVarChar).Value = dgvIssued.Rows(i).Cells(8).Value
-                    '.Parameters.Add("@ReceiveNo", SqlDbType.NVarChar).Value = dgvIssued.Rows(i).Cells(19).Value
-                    '.Parameters.Add("@Item", SqlDbType.NVarChar).Value = dgvIssued.Rows(i).Cells(42).Value
-                    '.Parameters.Add("@Type", SqlDbType.NVarChar).Value = dgvIssued.Rows(i).Cells(20).Value
-                    '.Parameters.Add("@ISSUEDQuantity", SqlDbType.NVarChar).Value = dgvIssued.Rows(i).Cells(25).Value
+            For i = 0 To Repeater9.Items.Count - 1
 
 
-                    If SaveModifyPick(i) = False Then
-                        ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert(เกิดข้อผิดพลาด เนื่องจาก SaveModifyPick);", True)
+                chkName = CType(Repeater9.Items(i).FindControl("chk_Pull"), CheckBox)
+                lblItemNo = CDbl(CType(Repeater9.Items(i).FindControl("lblItemNo"), Label).Text.Trim)
+                lblPullSignal = CType(Repeater9.Items(i).FindControl("lblPullSignal"), Label).Text.Trim
+                lblLOTNo = CType(Repeater9.Items(i).FindControl("lblLOTNo"), Label).Text.Trim
+
+                Dim u = (From us In db.tblWHISSUEDDetails Where us.ItemNo = lblItemNo And us.LOTNo = lblLOTNo And us.PullSignal = lblPullSignal).FirstOrDefault
+
+                If chkName.Checked = True Then
+
+                    Try
+                        If u.StatusISSUED = "2" Then
+                            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('รายการที่คุณเลือก" & u.LOTNo & " ItemNo: " & u.ItemNo & "ได้ถูกส่งออกไปจากคลังสินค้าแล้วคุณไม่สามารถยกเลิกรายการนี้ได้ !!!');", True)
+                            Exit Try
+                        Else
+                            Dim Delete As tblWHISSUEDDetail = (From de In db.tblWHISSUEDDetails Where de.PullSignal = u.PullSignal And de.LOTNo = u.LOTNo And de.ItemNo = u.ItemNo _
+                                                                And de.ReceiveNo = u.ReceiveNo And de.Item = u.Item And de.Type = u.Type And de.ISSUEDQuantity = u.ISSUEDQuantity Select de).First()
+
+                            'db.tblWHISSUEDDetails.Remove(Delete)
+
+                            'If SaveModifyPick(i) = False Then
+                            '    tran.Dispose()
+                            '    ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert(เกิดข้อผิดพลาด เนื่องจาก SaveModifyPick);", True)
+                            '    Exit Sub
+                            'End If
+
+                            'If SaveDeleteStockMovement_Confirm(i) = False Then
+                            '    tran.Dispose()
+                            '    ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert(เกิดข้อผิดพลาด เนื่องจาก Delete tblWHStockMovement);", True)
+                            '    Exit Sub
+                            'End If
+
+                            'db.SaveChanges()
+                        End If
+                    Catch ex As Exception
+                        tran.Dispose()
+                        ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด เนื่องจาก ผลการทำงาน');", True)
                         Exit Sub
-                    End If
-
-                    If SaveDeleteStockMovement_Confirm(i) = False Then
-                        ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert(เกิดข้อผิดพลาด เนื่องจาก Delete tblWHStockMovement);", True)
-                        Exit Sub
-                    End If
-
-                Catch ex As Exception
-                    ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด เนื่องจาก ผลการทำงาน');", True)
-                    Exit Sub
-                End Try
-            End If
-        Next
+                    End Try
+                End If
+            Next
+            tran.Complete()
+        End Using
     End Sub
     Private Function SaveModifyPick(ByVal i As Integer) As Boolean
         Dim lblItemNo As Double
+        Dim lblLOTNo As String
+        Dim lblPullSignal As String
 
         lblItemNo = CDbl(CType(Repeater9.Items(i).FindControl("lblItemNo"), Label).Text.Trim)
+        lblPullSignal = CType(Repeater9.Items(i).FindControl("lblPullSignal"), Label).Text.Trim
+        lblLOTNo = CType(Repeater9.Items(i).FindControl("lblLOTNo"), Label).Text.Trim
         'sb.Append("UPDATE tblWHPickingDetail")
         'sb.Append(" SET StatusISSUED=@StatusISSUED")
         'sb.Append(" WHERE (PullSignal=@PullSignal AND LOTNo=@LOTNo AND ItemNo=@ItemNo AND ReceiveNo=@ReceiveNo AND Item=@Item)")
         Try
-            Dim u = (From us In db.tblWHISSUEDDetails Where us.ItemNo = lblItemNo And us.LOTNo = txtJobNo.Value.Trim And us.PullSignal = txtPullSignal.Value.Trim).FirstOrDefault
+            Dim u = (From us In db.tblWHISSUEDDetails Where us.ItemNo = lblItemNo And us.LOTNo = lblLOTNo And us.PullSignal = lblPullSignal).FirstOrDefault
 
             db.Database.Connection.Open()
-            Dim edit As tblWHPickingDetail = (From c In db.tblWHPickingDetails Where c.ItemNo = lblItemNo And c.LOTNo = txtJobNo.Value.Trim And c.PullSignal = txtPullSignal.Value.Trim
+            Dim edit As tblWHPickingDetail = (From c In db.tblWHPickingDetails Where c.ItemNo = lblItemNo And c.LOTNo = lblLOTNo And c.PullSignal = lblPullSignal
               Select c).First()
             If edit IsNot Nothing Then
                 'edit.PullSignal = txtPullSignal.Value.Trim
@@ -446,30 +460,67 @@ Public Class RejectIssuedWH
         End Try
     End Function
     Private Function SaveDeleteStockMovement_Confirm(ByVal i As Integer) As Boolean
+        Dim lblItemNo As Double
+        Dim lblLOTNo As String
+        Dim lblPullSignal As String
 
-        'sb = New StringBuilder()
+        lblItemNo = CDbl(CType(Repeater9.Items(i).FindControl("lblItemNo"), Label).Text.Trim)
+        lblPullSignal = CType(Repeater9.Items(i).FindControl("lblPullSignal"), Label).Text.Trim
+        lblLOTNo = CType(Repeater9.Items(i).FindControl("lblLOTNo"), Label).Text.Trim
+
+
         'sb.Append("Delete tblWHStockMovement")
         'sb.Append(" WHERE (LOTNo=@LOTNo and ItemNo=@ItemNo and Item=@Item and ISSUEQuantity=@ISSUEQuantity and Type=@Type)")
-        'Dim sqlDelete As String
-        'sqlDelete = sb.ToString()
+        Try
+            Dim u = (From us In db.tblWHISSUEDDetails Where us.ItemNo = lblItemNo And us.LOTNo = lblLOTNo And us.PullSignal = lblPullSignal).FirstOrDefault
 
-        'With com
-        '    .CommandText = sqlDelete
-        '    .CommandType = CommandType.Text
-        '    .Connection = Conn
-        '    .Transaction = tr
-        '    .Parameters.Clear()
-        '    .Parameters.Add("@LOTNo", SqlDbType.NVarChar).Value = txtLOTNo.Text.Trim()
-        '    .Parameters.Add("@ItemNo", SqlDbType.NVarChar).Value = dgvIssued.Rows(i).Cells(8).Value
-        '    .Parameters.Add("@Item", SqlDbType.NVarChar).Value = dgvIssued.Rows(i).Cells(42).Value
-        '    .Parameters.Add("@Type", SqlDbType.NVarChar).Value = dgvIssued.Rows(i).Cells(20).Value
-        '    .Parameters.Add("@ISSUEQuantity", SqlDbType.NVarChar).Value = dgvIssued.Rows(i).Cells(25).Value
-        '    Dim result As Integer
-        '    result = .ExecuteNonQuery()
-        '    If result = 0 Then
-        '        Return False
-        '    End If
-        'End With
+            Dim DeleteStockMovement As tblWHStockMovement = (From c In db.tblWHStockMovements Where c.LOTNo = u.LOTNo And c.ItemNo = u.ItemNo And c.item = u.Item _
+                                                             And c.ISSUEQuantity = u.ISSUEDQuantity And c.Type = u.Type Select c).First()
 
+            db.tblWHStockMovements.Remove(DeleteStockMovement)
+            db.SaveChanges()
+            Return True
+        Catch ex As Exception
+            Return False
+        End Try
     End Function
+    'Private Sub CheckStatus()
+    '    Dim chkName As CheckBox
+    '    Dim i As Integer
+    '    Dim lblItemNo As Double
+    '    Dim lblLOTNo As String
+    '    Dim lblPullSignal As String
+    '    Dim n(10) As Integer
+    '    Dim n2(10) As String
+
+    '    For i = 0 To Repeater9.Items.Count - 1
+
+    '        chkName = CType(Repeater9.Items(i).FindControl("chk_Pull"), CheckBox)
+    '        lblItemNo = CDbl(CType(Repeater9.Items(i).FindControl("lblItemNo"), Label).Text.Trim)
+    '        lblPullSignal = CType(Repeater9.Items(i).FindControl("lblPullSignal"), Label).Text.Trim
+    '        lblLOTNo = CType(Repeater9.Items(i).FindControl("lblLOTNo"), Label).Text.Trim
+    '        Dim u = (From us In db.tblWHISSUEDDetails Where us.ItemNo = lblItemNo And us.LOTNo = lblLOTNo And us.PullSignal = lblPullSignal).FirstOrDefault
+
+    '        If chkName.Checked = True Then
+    '            Try
+    '                If u.StatusISSUED = "2" Then
+    '                    n(i) = CInt(u.ItemNo)
+    '                    n2(i) = u.LOTNo
+    '                    Console.WriteLine("รายการที่คุณเลือก {0} และ ItemNo: {1} ได้ถูกส่งออกไปจากคลังสินค้าแล้วคุณไม่สามารถยกเลิกรายการนี้ได้", n2, n)
+    '                    ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('รายการที่คุณเลือก  {0}   ItemNo:  {1}  ได้ถูกส่งออกไปจากคลังสินค้าแล้วคุณไม่สามารถยกเลิกรายการนี้ได้ !!!', n2, n);", True)
+    '                    ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('รายการที่คุณเลือก" & u.LOTNo & " ItemNo: " & u.ItemNo & "ได้ถูกส่งออกไปจากคลังสินค้าแล้วคุณไม่สามารถยกเลิกรายการนี้ได้ !!!');", True)
+    '                    Exit Try
+    '                Else
+    '                    SaveIssuedDetail_Delete()
+    '                End If
+    '            Catch ex As Exception
+
+    '            End Try
+    '        End If
+    '    Next
+    'End Sub
+
+    Protected Sub btnClear_ServerClick(sender As Object, e As EventArgs)
+        Response.Redirect("RejectIssuedWH.aspx")
+    End Sub
 End Class

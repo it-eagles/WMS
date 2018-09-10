@@ -57,8 +57,11 @@
 
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <div class="col-sm-8">
+                                                <div class="col-sm-2">
                                                     <button type="submit" runat="server" class="btn btn-primary btn-sm" id="btnFind" title="btnFind" onserverclick="btnFind_ServerClick">Find</button>
+                                                </div>
+                                                <div class="col-sm-2">
+                                                    <button type="submit" runat="server" class="btn btn-primary btn-sm" id="btnClear" title="btnClear" onserverclick="btnClear_ServerClick">Clear</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -171,7 +174,7 @@
                                 <div class="box-body">
                                     <div class="form-group">
                                         <label for="txtSpace" class="col-sm-4 control-label"></label>
-                                        <label for="txtWidth" class="col-sm-4 control-label">txtWidth:</label>
+                                        <label for="txtWidth" class="col-sm-4 control-label">Width:</label>
                                         <label for="txtHight" class="col-sm-4 control-label">Hight:</label>
                                     </div>
                                     <div class="form-group">
