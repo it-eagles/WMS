@@ -363,17 +363,17 @@ Public Class RejectIssuedWH
         Dim lblPullSignal As String
 
         If txtPullSignal.Value.Trim = "" Then
-            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert(กรุณาป้อน Pull Signal ก่อน !!!);", True)
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาป้อน Pull Signal ก่อน !!!');", True)
             Exit Sub
         End If
 
         If txtJobNo.Value.Trim = "" Then
-            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert(กรุณาป้อน Job No ก่อน !!!);", True)
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาป้อน Job No ก่อน !!!');", True)
             Exit Sub
         End If
 
         If txtItemNo.Value.Trim = "" Then
-            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert(กรุณาป้อน ItemNo ก่อน !!!);", True)
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาป้อน ItemNo ก่อน !!!');", True)
             Exit Sub
         End If
 
@@ -402,21 +402,21 @@ Public Class RejectIssuedWH
                             Dim Delete As tblWHISSUEDDetail = (From de In db.tblWHISSUEDDetails Where de.PullSignal = u.PullSignal And de.LOTNo = u.LOTNo And de.ItemNo = u.ItemNo _
                                                                 And de.ReceiveNo = u.ReceiveNo And de.Item = u.Item And de.Type = u.Type And de.ISSUEDQuantity = u.ISSUEDQuantity Select de).First()
 
-                            'db.tblWHISSUEDDetails.Remove(Delete)
+                            db.tblWHISSUEDDetails.Remove(Delete)
 
-                            'If SaveModifyPick(i) = False Then
-                            '    tran.Dispose()
-                            '    ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert(เกิดข้อผิดพลาด เนื่องจาก SaveModifyPick);", True)
-                            '    Exit Sub
-                            'End If
+                            If SaveModifyPick(i) = False Then
+                                tran.Dispose()
+                                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด เนื่องจาก SaveModifyPick');", True)
+                                Exit Sub
+                            End If
 
-                            'If SaveDeleteStockMovement_Confirm(i) = False Then
-                            '    tran.Dispose()
-                            '    ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert(เกิดข้อผิดพลาด เนื่องจาก Delete tblWHStockMovement);", True)
-                            '    Exit Sub
-                            'End If
+                            If SaveDeleteStockMovement_Confirm(i) = False Then
+                                tran.Dispose()
+                                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด เนื่องจาก Delete tblWHStockMovement');", True)
+                                Exit Sub
+                            End If
 
-                            'db.SaveChanges()
+                            db.SaveChanges()
                         End If
                     Catch ex As Exception
                         tran.Dispose()
@@ -472,10 +472,11 @@ Public Class RejectIssuedWH
         'sb.Append("Delete tblWHStockMovement")
         'sb.Append(" WHERE (LOTNo=@LOTNo and ItemNo=@ItemNo and Item=@Item and ISSUEQuantity=@ISSUEQuantity and Type=@Type)")
         Try
-            Dim u = (From us In db.tblWHISSUEDDetails Where us.ItemNo = lblItemNo And us.LOTNo = lblLOTNo And us.PullSignal = lblPullSignal).FirstOrDefault
+            'Dim u = (From us In db.tblWHISSUEDDetails Where us.ItemNo = lblItemNo And us.LOTNo = lblLOTNo And us.PullSignal = lblPullSignal).FirstOrDefault
 
-            Dim DeleteStockMovement As tblWHStockMovement = (From c In db.tblWHStockMovements Where c.LOTNo = u.LOTNo And c.ItemNo = u.ItemNo And c.item = u.Item _
-                                                             And c.ISSUEQuantity = u.ISSUEDQuantity And c.Type = u.Type Select c).First()
+            'Dim DeleteStockMovement As tblWHStockMovement = (From c In db.tblWHStockMovements Where c.LOTNo = u.LOTNo And c.ItemNo = u.ItemNo And c.item = u.Item _
+            '                                                 And c.ISSUEQuantity = u.ISSUEDQuantity And c.Type = u.Type Select c).First()
+            Dim DeleteStockMovement As tblWHStockMovement = (From c In db.tblWHStockMovements Where c.LOTNo = lblLOTNo And c.ItemNo = lblItemNo Select c).First()
 
             db.tblWHStockMovements.Remove(DeleteStockMovement)
             db.SaveChanges()

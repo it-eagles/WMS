@@ -32,15 +32,6 @@ Partial Public Class RejectReceivedWH
     Protected WithEvents ScriptManager1 As Global.System.Web.UI.ScriptManager
 
     '''<summary>
-    '''txtPullSignal control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtPullSignal As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
     '''txtJobNo control.
     '''</summary>
     '''<remarks>

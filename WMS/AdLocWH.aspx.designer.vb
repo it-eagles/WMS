@@ -50,6 +50,15 @@ Partial Public Class AdLocWH
     Protected WithEvents txtJobNo As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
+    '''txtInvoice control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtInvoice As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
     '''txtCustomerLotNo control.
     '''</summary>
     '''<remarks>
@@ -68,15 +77,6 @@ Partial Public Class AdLocWH
     Protected WithEvents rdbAdLoc As Global.System.Web.UI.WebControls.RadioButton
 
     '''<summary>
-    '''rdbAdQTY control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents rdbAdQTY As Global.System.Web.UI.WebControls.RadioButton
-
-    '''<summary>
     '''btnFind control.
     '''</summary>
     '''<remarks>
@@ -86,13 +86,67 @@ Partial Public Class AdLocWH
     Protected WithEvents btnFind As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
-    '''txtRecordQTY control.
+    '''btnClear control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtRecordQTY As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents btnClear As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''txtCusRefNo control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtCusRefNo As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''rdbAdQTY control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents rdbAdQTY As Global.System.Web.UI.WebControls.RadioButton
+
+    '''<summary>
+    '''txtOwnerPN2 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtOwnerPN2 As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''chkLocation control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents chkLocation As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
+
+    '''<summary>
+    '''txtLocation control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtLocation As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''chkAvalibleQTY control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents chkAvalibleQTY As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
 
     '''<summary>
     '''txtAvalibleQTY control.
@@ -111,6 +165,24 @@ Partial Public Class AdLocWH
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents ddlType As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''txtWeight control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtWeight As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''txtCustomerLotNo2 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtCustomerLotNo2 As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
     '''txtRCVQuantity control.
@@ -149,6 +221,15 @@ Partial Public Class AdLocWH
     Protected WithEvents rdbGoodDamage As Global.System.Web.UI.WebControls.RadioButton
 
     '''<summary>
+    '''chkDamageQTY control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents chkDamageQTY As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
+
+    '''<summary>
     '''txtDamageQTY control.
     '''</summary>
     '''<remarks>
@@ -156,6 +237,15 @@ Partial Public Class AdLocWH
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents txtDamageQTY As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''txtUnit control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtUnit As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
     '''btnSave control.

@@ -1860,117 +1860,138 @@ Public Class SingleIssuedWH
         '    Exit Sub
         'End If
 
-        Dim i As Integer = 0
+        Using tran As New TransactionScope()
 
-        For i = 0 To Repeater8.Items.Count - 1
+            Dim i As Integer = 0
 
-            chkName = CType(Repeater8.Items(i).FindControl("chk_Pull"), CheckBox)
-            lblItemNo = CDbl(CType(Repeater8.Items(i).FindControl("lblItemNo"), Label).Text.Trim)
+            For i = 0 To Repeater8.Items.Count - 1
 
-            Dim u = (From us In db.tblWHPickingDetails Where us.ItemNo = lblItemNo And us.LOTNo = txtJobNo_BeforeTab.Value.Trim And us.PalletNo = txtPullSignal_BeforeTab.Value.Trim).FirstOrDefault
+                chkName = CType(Repeater8.Items(i).FindControl("chk_Pull"), CheckBox)
+                lblItemNo = CDbl(CType(Repeater8.Items(i).FindControl("lblItemNo"), Label).Text.Trim)
 
-            If chkName.Checked = True Then
-                'If CBool(Repeater8.Items(i).Cells(0).FormattedValue) = True Then
+                Dim u = (From us In db.tblWHPickingDetails Where us.ItemNo = lblItemNo And us.LOTNo = txtJobNo_BeforeTab.Value.Trim And us.PalletNo = txtPullSignal_BeforeTab.Value.Trim).FirstOrDefault
 
-                Try
-                    If SaveIssued(i) = False Then
-                        ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด เนื่องจาก SaveIssued');", True)
-                        Exit Sub
-                    End If
+                If chkName.Checked = True Then
+                    'If CBool(Repeater8.Items(i).Cells(0).FormattedValue) = True Then
 
-                    If SavePickDetail1_Modify(i) = False Then
-                        ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด เนื่องจาก SavePickDetail1');", True)
-                        Exit Sub
-                    End If
-
-                    If SaveStockMovement_New(i) = False Then
-                        ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด เนื่องจาก SaveStockMovement');", True)
-                        Exit Sub
-                    End If
-
-                    If chkMoveTo.Checked = True Then
-                        If strIssuedJobNo = "LKB-OUT" And strReceivedJobNo = "HCR-IN" Then
-                            If ConfirmMove(i) = False Then
-                                ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด ConfirmMove');", True)
-                                Exit Sub
-                            End If
-
-                        ElseIf strIssuedJobNo = "HCR-OUT" And strReceivedJobNo = "LKB-IN" Then
-                            If ConfirmMove(i) = False Then
-                                ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด ConfirmMove');", True)
-                                Exit Sub
-                            End If
-                        ElseIf strIssuedJobNo = "LKB-OUT" And strReceivedJobNo = "AEC-IN" Then
-                            If ConfirmMove(i) = False Then
-                                ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด ConfirmMove');", True)
-                                Exit Sub
-                            End If
-                        ElseIf strIssuedJobNo = "AEC-OUT" And strReceivedJobNo = "LKB-IN" Then
-                            If ConfirmMove(i) = False Then
-                                ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด ConfirmMove');", True)
-                                Exit Sub
-                            End If
-                        ElseIf strIssuedJobNo = "HTO-OUT" And strReceivedJobNo = "LKB-IN" Then
-                            If ConfirmMove(i) = False Then
-                                ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด ConfirmMove');", True)
-                                Exit Sub
-                            End If
-                        ElseIf strIssuedJobNo = "LKB-OUT" And strReceivedJobNo = "HTO-IN" Then
-                            If ConfirmMove(i) = False Then
-                                ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด ConfirmMove');", True)
-                                Exit Sub
-                            End If
-                        ElseIf strIssuedJobNo = "MJB-OUT" And strReceivedJobNo = "LKB-IN" Then
-                            If ConfirmMove(i) = False Then
-                                ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด ConfirmMove');", True)
-                                Exit Sub
-                            End If
-                        ElseIf strIssuedJobNo = "LKB-OUT" And strReceivedJobNo = "MJB-IN" Then
-                            If ConfirmMove(i) = False Then
-                                ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด ConfirmMove');", True)
-                                Exit Sub
-                            End If
-                        ElseIf strIssuedJobNo = "LEA-OUT" And strReceivedJobNo = "LKB-IN" Then
-                            If ConfirmMove(i) = False Then
-                                ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด ConfirmMove');", True)
-                                Exit Sub
-                            End If
-                        ElseIf strIssuedJobNo = "LKB-OUT" And strReceivedJobNo = "LEA-IN" Then
-                            If ConfirmMove(i) = False Then
-                                ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด ConfirmMove');", True)
-                                Exit Sub
-                            End If
-                        ElseIf strIssuedJobNo = "LKB-OUT" And strReceivedJobNo = "LKB-IN" Then
-                            If SaveDetail_ConfirmNewNJR(i) = False Then
-                                ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด SaveDetail_ConfirmNewNJR');", True)
-                                Exit Sub
-                            End If
-                            If SaveStockMovement_ConfirmNewNJR(i) = False Then
-                                ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด SaveStockMovement_ConfirmNewNJR');", True)
-                                Exit Sub
-                            End If
-                        ElseIf strIssuedJobNo = "CKT-OUT" And strReceivedJobNo = "CKT-IN" Then
-                            If SaveDetail_ConfirmNewNJR(i) = False Then
-                                ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด SaveDetail_ConfirmNewEPN');", True)
-                                Exit Sub
-                            End If
-                            If SaveStockMovement_ConfirmNewNJR(i) = False Then
-                                ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด SaveStockMovement_ConfirmNewEPN');", True)
-                                Exit Sub
-                            End If
-                        Else
-                            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('รายการ Move To Clean Room JOB ที่คุณใส่ไม่ถูกต้อง , ระบบจะไม่บันทึกข้อมูลให้คุณ , กรุณาแก้ไขข้อมูลอีกครั้งก่อนบันทึก !!!');", True)
+                    Try
+                        If SaveIssued(i) = False Then
+                            tran.Dispose()
+                            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด เนื่องจาก SaveIssued');", True)
                             Exit Sub
                         End If
-                    End If
 
-                Catch ex As Exception
-                    ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด เนื่องจาก ผลการทำงาน');", True)
-                    Exit Sub
-                End Try
-            End If
-        Next
+                        If SavePickDetail1_Modify(i) = False Then
+                            tran.Dispose()
+                            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด เนื่องจาก SavePickDetail1');", True)
+                            Exit Sub
+                        End If
 
+                        If SaveStockMovement_New(i) = False Then
+                            tran.Dispose()
+                            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด เนื่องจาก SaveStockMovement');", True)
+                            Exit Sub
+                        End If
+
+                        If chkMoveTo.Checked = True Then
+                            If strIssuedJobNo = "LKB-OUT" And strReceivedJobNo = "HCR-IN" Then
+                                If ConfirmMove(i) = False Then
+                                    tran.Dispose()
+                                    ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด ConfirmMove');", True)
+                                    Exit Sub
+                                End If
+
+                            ElseIf strIssuedJobNo = "HCR-OUT" And strReceivedJobNo = "LKB-IN" Then
+                                If ConfirmMove(i) = False Then
+                                    tran.Dispose()
+                                    ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด ConfirmMove');", True)
+                                    Exit Sub
+                                End If
+                            ElseIf strIssuedJobNo = "LKB-OUT" And strReceivedJobNo = "AEC-IN" Then
+                                If ConfirmMove(i) = False Then
+                                    tran.Dispose()
+                                    ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด ConfirmMove');", True)
+                                    Exit Sub
+                                End If
+                            ElseIf strIssuedJobNo = "AEC-OUT" And strReceivedJobNo = "LKB-IN" Then
+                                If ConfirmMove(i) = False Then
+                                    tran.Dispose()
+                                    ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด ConfirmMove');", True)
+                                    Exit Sub
+                                End If
+                            ElseIf strIssuedJobNo = "HTO-OUT" And strReceivedJobNo = "LKB-IN" Then
+                                If ConfirmMove(i) = False Then
+                                    tran.Dispose()
+                                    ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด ConfirmMove');", True)
+                                    Exit Sub
+                                End If
+                            ElseIf strIssuedJobNo = "LKB-OUT" And strReceivedJobNo = "HTO-IN" Then
+                                If ConfirmMove(i) = False Then
+                                    tran.Dispose()
+                                    ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด ConfirmMove');", True)
+                                    Exit Sub
+                                End If
+                            ElseIf strIssuedJobNo = "MJB-OUT" And strReceivedJobNo = "LKB-IN" Then
+                                If ConfirmMove(i) = False Then
+                                    tran.Dispose()
+                                    ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด ConfirmMove');", True)
+                                    Exit Sub
+                                End If
+                            ElseIf strIssuedJobNo = "LKB-OUT" And strReceivedJobNo = "MJB-IN" Then
+                                If ConfirmMove(i) = False Then
+                                    tran.Dispose()
+                                    ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด ConfirmMove');", True)
+                                    Exit Sub
+                                End If
+                            ElseIf strIssuedJobNo = "LEA-OUT" And strReceivedJobNo = "LKB-IN" Then
+                                If ConfirmMove(i) = False Then
+                                    tran.Dispose()
+                                    ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด ConfirmMove');", True)
+                                    Exit Sub
+                                End If
+                            ElseIf strIssuedJobNo = "LKB-OUT" And strReceivedJobNo = "LEA-IN" Then
+                                If ConfirmMove(i) = False Then
+                                    tran.Dispose()
+                                    ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด ConfirmMove');", True)
+                                    Exit Sub
+                                End If
+                            ElseIf strIssuedJobNo = "LKB-OUT" And strReceivedJobNo = "LKB-IN" Then
+                                If SaveDetail_ConfirmNewNJR(i) = False Then
+                                    tran.Dispose()
+                                    ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด SaveDetail_ConfirmNewNJR');", True)
+                                    Exit Sub
+                                End If
+                                If SaveStockMovement_ConfirmNewNJR(i) = False Then
+                                    tran.Dispose()
+                                    ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด SaveStockMovement_ConfirmNewNJR');", True)
+                                    Exit Sub
+                                End If
+                            ElseIf strIssuedJobNo = "CKT-OUT" And strReceivedJobNo = "CKT-IN" Then
+                                If SaveDetail_ConfirmNewNJR(i) = False Then
+                                    tran.Dispose()
+                                    ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด SaveDetail_ConfirmNewEPN');", True)
+                                    Exit Sub
+                                End If
+                                If SaveStockMovement_ConfirmNewNJR(i) = False Then
+                                    tran.Dispose()
+                                    ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด SaveStockMovement_ConfirmNewEPN');", True)
+                                    Exit Sub
+                                End If
+                            Else
+                                ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('รายการ Move To Clean Room JOB ที่คุณใส่ไม่ถูกต้อง , ระบบจะไม่บันทึกข้อมูลให้คุณ , กรุณาแก้ไขข้อมูลอีกครั้งก่อนบันทึก !!!');", True)
+                                Exit Sub
+                            End If
+                        End If
+
+                    Catch ex As Exception
+                        tran.Dispose()
+                        ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด เนื่องจาก ผลการทำงาน');", True)
+                        Exit Sub
+                    End Try
+                End If
+            Next
+            tran.Complete()
+        End Using
     End Sub
     Private Function SaveIssued(ByVal i As Double) As Boolean
         'Dim chkName As CheckBox

@@ -39,21 +39,55 @@ Public Class PrepareLotWH
     End Sub
     '-----------------------------------------------------------Click btn Add New GOODRECDETAIL TAB--------------------------------------
     Protected Sub btnAddNew_GoodRecDetail_ServerClick(sender As Object, e As EventArgs)
-        SaveDetail_New()
-        ClearDATA1()
-        SelectJobDetail()
+        Dim user As String = CStr(Session("UserName"))
+        Dim form As String = "frmPrepairLOT"
+        Dim cu = From um In db.tblUserMenus Where um.UserName = user And um.Form = form And um.Save_ = 1
+        If cu.Any Then
+            SaveDetail_New()
+            ClearDATA1()
+            SelectJobDetail()
+        Else
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ์เมนูนี้ !!!')", True)
+        End If
+        
     End Sub
     '-----------------------------------------------------------Click btn Save Modify GOODRECDETAIL TAB--------------------------------------
     Protected Sub btnSaveModify_GoodRecDetail_ServerClick(sender As Object, e As EventArgs)
-        SaveDetail_Modify()
+        Dim user As String = CStr(Session("UserName"))
+        Dim form As String = "frmPrepairLOT"
+        Dim cu = From um In db.tblUserMenus Where um.UserName = user And um.Form = form And um.Save_ = 1
+        If cu.Any Then
+            SaveDetail_Modify()
+        Else
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ์เมนูนี้ !!!')", True)
+        End If
     End Sub
     '-----------------------------------------------------------Click btn Delete GOODRECDETAIL TAB--------------------------------------
     Protected Sub btnDelete_GoodRecDetail_ServerClick(sender As Object, e As EventArgs)
-
+        Dim user As String = CStr(Session("UserName"))
+        Dim form As String = "frmPrepairLOT"
+        Dim cu = From um In db.tblUserMenus Where um.UserName = user And um.Form = form And um.Delete_ = 1
+        If cu.Any Then
+            SaveDeleteDetail()
+            ClearDATA1()
+            SelectJobDetail()
+        Else
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ์เมนูนี้ !!!')", True)
+        End If
     End Sub
     '-----------------------------------------------------------Click btn Delecte All GOODRECDETAIL TAB--------------------------------------
     Protected Sub btnDeleteAll_GoodRecDetail_ServerClick(sender As Object, e As EventArgs)
-
+        Dim user As String = CStr(Session("UserName"))
+        Dim form As String = "frmPrepairLOT"
+        Dim cu = From um In db.tblUserMenus Where um.UserName = user And um.Form = form And um.Delete_ = 1
+        If cu.Any Then
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('ไม่สามารถใช้งาน Function นี้ได้');", True)
+            'SaveDeleteDetailALL()
+            'ClearDATA1()
+            'SelectJobDetail()
+        Else
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ์เมนูนี้ !!!')", True)
+        End If
     End Sub
     '-----------------------------------------------------------Click btn Add New Head PREPAREGOODREC TAB--------------------------------------
     Protected Sub btnAddHead_ServerClick(sender As Object, e As EventArgs)
@@ -1161,7 +1195,7 @@ Public Class PrepareLotWH
                         'Finally
                         '    db.Database.Connection.Close()
                         '    db.Dispose()
-                        '    tran.Dispose()
+                        tran.Dispose()
                     End Try
                 End If
                
@@ -1559,4 +1593,61 @@ Public Class PrepareLotWH
             Return ""
         End If
     End Function
+    Private Sub SaveDeleteDetail()
+        If txtJobNo_PreGoodRec.Value.Trim = "" Then
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('เลือกข้อมูลที่ต้องการ Delete ก่อน !!!');", True)
+            Exit Sub
+        End If
+
+        If txtItemNo_GoodRecDetail.Value.Trim = "" Then
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ ItemNo ก่อน !!!');", True)
+            Exit Sub
+        End If
+
+        If MsgBox("คุณต้องการลบข้อมูล PrepairLOT ใช่หรือไม่?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+            Using tran As New TransactionScope()
+                Try
+                    'sb.Append("Delete tblWHPrepairGoodsReceiveDetail")
+                    'sb.Append(" WHERE (LOTNo=@LOTNo and ItemNo=@ItemNo)")
+                    Dim Delete As tblWHPrepairGoodsReceiveDetail = (From de In db.tblWHPrepairGoodsReceiveDetails Where de.LOTNo = txtJobNo_PreGoodRec.Value.Trim And
+                                                                    de.ItemNo = CDbl(txtItemNo_GoodRecDetail.Value.Trim) Select de).First()
+
+                    db.tblWHPrepairGoodsReceiveDetails.Remove(Delete)
+
+                    db.SaveChanges()
+                    tran.Complete()
+                Catch ex As Exception
+                    tran.Dispose()
+                    ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาดในการ Delete');", True)
+                End Try
+            End Using
+        End If
+    End Sub
+    '--------------------------------------------------------------DeleteAll Method ยังใช้ไม่ได้และไม่ให้ใช้ป้องกันUserDeleteผิดทั้งหมด-----------------------------
+    Private Sub SaveDeleteDetailALL()
+        '    If txtJobNo_PreGoodRec.Value.Trim = "" Then
+        '        ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('เลือกข้อมูลที่ต้องการ Delete ก่อน !!!');", True)
+        '        Exit Sub
+        '    End If
+
+        '    If MsgBox("คุณต้องการลบข้อมูล PrepairLOT All ใช่หรือไม่?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+        '        Using tran As New TransactionScope()
+        '            Try
+        '                'sb.Append("Delete tblWHPrepairGoodsReceiveDetail")
+        '                'sb.Append(" WHERE (LOTNo=@LOTNo and Status = 0)")
+        '                Dim DeleteAll As tblWHPrepairGoodsReceiveDetail = (From de In db.tblWHPrepairGoodsReceiveDetails Where de.LOTNo = txtJobNo_PreGoodRec.Value.Trim And
+        '                                                                de.Status = 0 Select de).SingleOrDefault()
+
+        '                db.tblWHPrepairGoodsReceiveDetails.Remove(DeleteAll)
+
+        '                db.SaveChanges()
+        '                tran.Complete()
+
+        '            Catch ex As Exception
+        '                tran.Dispose()
+        '                ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาดในการ Delete All');", True)
+        '            End Try
+        '        End Using
+        '    End If
+    End Sub
 End Class

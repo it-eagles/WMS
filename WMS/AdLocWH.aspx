@@ -69,8 +69,8 @@
                                                                 </div>
                                                                   </div>
                                                               <div class="form-group"> 
-                                                                   <label for="txtFind" class="col-sm-4 control-label">Find:</label>                                                                  
-                                                                   <div class="col-sm-8">
+                                                                   <label for="txtFind" class="col-sm-5 control-label"style="height: 34px;">Find:</label>                                                                  
+                                                                   <div class="col-sm-7">
                                                                        <div class="radio">
                                                                        <label>                                            
                                                                           <asp:RadioButton runat="server" ID ="rdbAdLoc" Text="Adjust Location"  onclick="EnableDisableTextBox();"  GroupName="option4"  />
@@ -79,8 +79,13 @@
                                                                   </div>                                                                                  
                                                               </div>
                                                               <div class="form-group">
-																<div class="col-sm-6">                                                                    
+                                                                  <div class="col-sm-3"></div>
+																<div class="col-sm-2">                                                                    
                                                                   <button type="submit" runat="server" class="btn btn-primary" id="btnFind" title="btnFind" onserverclick="btnFind_ServerClick">Find</button>
+                                                                </div>
+                                                                  <div class="col-sm-2"></div>
+                                                                  <div class="col-sm-2">                                                                    
+                                                                  <button type="submit" runat="server" class="btn btn-success" id="btnClear" title="btnClear" onserverclick="btnClear_ServerClick">Clear</button>
                                                                 </div>
 																</div>
                                                               </div>
@@ -127,18 +132,22 @@
                     <input class="form-control" id="txtOwnerPN2" runat="server" value="0"/>
                   </div>
                 </div>
-                <div class="form-group">
-                  <label for="txtLocation" class="col-sm-4 control-label">Location:  <input type="checkbox" runat="server" id="chkLocation" /></label>
-                  <div class="col-sm-8">                    
-                      <input class="form-control" id="txtLocation" runat="server" value="0"/>  
+                  <div class="form-group">
+                      <label for="txtLocation" class="col-sm-3 control-label">Location:</label>
+                      <div class="checkbox col-sm-1">
+                          <input type="checkbox" runat="server" id="chkLocation" /></div>
+                      <div class="col-sm-8">
+                          <input class="form-control" id="txtLocation" runat="server" value="0" />
+                      </div>
                   </div>
-                </div>
-                <div class="form-group">                  
-                  <label for="txtAvalibleQTY" class="col-sm-4 control-label">Avalible QTY: <input type="checkbox" runat="server" id="chkAvalibleQTY" /></label>
-                  <div class="col-sm-8">
-                    <input class="form-control" id="txtAvalibleQTY" runat="server" value="0"/>
+                  <div class="form-group">
+                      <label for="txtAvalibleQTY" class="col-sm-3 control-label">Avalible QTY:</label>
+                      <div class="checkbox col-sm-1">
+                          <input type="checkbox" runat="server" id="chkAvalibleQTY" /></div>
+                      <div class="col-sm-8">
+                          <input class="form-control" id="txtAvalibleQTY" runat="server" value="0" />
+                      </div>
                   </div>
-                </div>
                 <div class="form-group">
                   <label for="txtType" class="col-sm-4 control-label">Type:</label>
                   <div class="col-sm-8">                    
@@ -185,12 +194,9 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="txtStatus" class="col-sm-4 control-label">Status:  <input type="checkbox" runat="server" id="chkStatus" /></label>
-                  <%--<div class="col-sm-3">
-                     <label>
-                         <input type="checkbox" runat="server" id="chkStatus" />Status
-                     </label>
-                  </div>--%>
+                  <label for="txtStatus" class="col-sm-3 control-label">Status:</label>
+                      <div class="checkbox col-sm-1">
+                          <input type="checkbox" runat="server" id="chkStatus" /></div>
                    <div class="col-sm-4">
                        <div class="radio">
                        <label>                                            
@@ -207,12 +213,9 @@
                   </div>                  
                 </div>
                 <div class="form-group">
-                   <label for="txtDamageQTY" class="col-sm-4 control-label">Damage QTY:  <input type="checkbox" runat="server" id="chkDamageQTY" /></label>
-                   <%-- <div class="col-sm-4">
-                     <label>
-                         <input type="checkbox" runat="server" id="chkDamageQTY" />Damage QTY:
-                     </label>
-                  </div>--%>
+                    <label for="txtDamageQTY" class="col-sm-3 control-label">Damage QTY:</label>
+                      <div class="checkbox col-sm-1">
+                          <input type="checkbox" runat="server" id="chkDamageQTY" /></div>
                   <div class="col-sm-8">
                     <input class="form-control" id="txtDamageQTY" runat="server" value="0"/>
                   </div>

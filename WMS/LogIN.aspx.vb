@@ -21,7 +21,7 @@ Public Class LogIN
 
         'txtusername.Value = txtusername.Value.ToUpper
 
-        If LoginCls.chkUser(txtusername.Value.ToUpper, txtpassword.Value) Then
+        If LoginCls.chkUser(txtusername.Value.ToUpper, txtpassword.Value) = True Then
             Dim ds = (From c In db.tblUsers
                           Where c.UserName = txtusername.Value).FirstOrDefault()
 

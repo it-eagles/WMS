@@ -1146,27 +1146,25 @@
                                                                         <table class="table table-bordered">
                                                                             <th>Select</th>
                                                                             <th>InvoiceNo</th>
-                                                                            <th>LotNo</th>
+                                                                            <th>LOTNo</th>
                                                                             <th>DateInv</th>
                                                                             <th>ProduceCode</th>
                                                                             <th>ProduceName</th>
-                                                                            <th>OwnerPN</th>
-                                                                            <th>CustomerPN</th>
-                                                                            <th>Prodes</th>
+                                                                            <th>Quantity</th>
+                                                                            <th>QuantityUnit</th>
                                                                     </HeaderTemplate>
                                                                     <ItemTemplate>
                                                                         <tr class="success">
                                                                             <td class="text-center">
                                                                             <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectInvoiceNo" CommandArgument='<%# Eval("InvoiceNo")%>'><i class="fa fa-hand-o-up"></i></asp:LinkButton>
                                                                             </td>
-                                                                            <td><asp:Label ID="lblJobSite" runat="server" Text='<%# Bind("InvoiceNo")%>'></asp:Label></td>
-                                                                            <td><asp:Label ID="Label1" runat="server" Text='<%# Bind("LOTNo")%>'></asp:Label></td>
+                                                                            <td><asp:Label ID="lblInvoiceNo" runat="server" Text='<%# Bind("InvoiceNo")%>'></asp:Label></td>
+                                                                            <td><asp:Label ID="lblLOTNo" runat="server" Text='<%# Bind("LOTNo")%>'></asp:Label></td>
                                                                             <td><asp:Label ID="Label2" runat="server" Text='<%# Bind("DateInv", "{0:dd/MM/yyyy}")%>'></asp:Label></td>
                                                                             <td><asp:Label ID="Label5" runat="server" Text='<%# Bind("ProductCode")%>'></asp:Label></td>
                                                                             <td><asp:Label ID="Label4" runat="server" Text='<%# Bind("ProductName")%>'></asp:Label></td>
-                                                                            <td><asp:Label ID="Label6" runat="server" Text='<%# Bind("OwnerPN")%>'></asp:Label></td>
-                                                                            <td><asp:Label ID="Label7" runat="server" Text='<%# Bind("CustomerPN")%>'></asp:Label></td>
-                                                                            <td><asp:Label ID="Label8" runat="server" Text='<%# Bind("Prodes")%>'></asp:Label></td>
+                                                                            <td><asp:Label ID="Label6" runat="server" Text='<%# Bind("Quantity")%>'></asp:Label></td>
+                                                                            <td><asp:Label ID="Label7" runat="server" Text='<%# Bind("QuantityUnit")%>'></asp:Label></td>
                                                                         </tr>
                                                                     </ItemTemplate>
                                                                     <AlternatingItemTemplate>
@@ -1174,26 +1172,24 @@
                                                                             <td class="text-center">
                                                                             <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectInvoiceNo" CommandArgument='<%# Eval("InvoiceNo")%>'><i class="fa fa-hand-o-up"></i></asp:LinkButton>
                                                                             </td>
-                                                                            <td><asp:Label ID="lblJobSite" runat="server" Text='<%# Bind("InvoiceNo")%>'></asp:Label></td>
-                                                                            <td><asp:Label ID="Label1" runat="server" Text='<%# Bind("LOTNo")%>'></asp:Label></td>
+                                                                            <td><asp:Label ID="lblInvoiceNo" runat="server" Text='<%# Bind("InvoiceNo")%>'></asp:Label></td>
+                                                                            <td><asp:Label ID="lblLOTNo" runat="server" Text='<%# Bind("LOTNo")%>'></asp:Label></td>
                                                                             <td><asp:Label ID="Label2" runat="server" Text='<%# Bind("DateInv", "{0:dd/MM/yyyy}")%>'></asp:Label></td>
                                                                             <td><asp:Label ID="Label5" runat="server" Text='<%# Bind("ProductCode")%>'></asp:Label></td>
                                                                             <td><asp:Label ID="Label4" runat="server" Text='<%# Bind("ProductName")%>'></asp:Label></td>
-                                                                            <td><asp:Label ID="Label6" runat="server" Text='<%# Bind("OwnerPN")%>'></asp:Label></td>
-                                                                            <td><asp:Label ID="Label7" runat="server" Text='<%# Bind("CustomerPN")%>'></asp:Label></td>
-                                                                            <td><asp:Label ID="Label8" runat="server" Text='<%# Bind("Prodes")%>'></asp:Label></td>
+                                                                            <td><asp:Label ID="Label6" runat="server" Text='<%# Bind("Quantity")%>'></asp:Label></td>
+                                                                            <td><asp:Label ID="Label7" runat="server" Text='<%# Bind("QuantityUnit")%>'></asp:Label></td>
                                                                         </tr>
                                                                     </AlternatingItemTemplate>
                                                                     <FooterTemplate>
                                                                             <th>Select</th>
                                                                             <th>InvoiceNo</th>
-                                                                            <th>LotNo</th>
+                                                                            <th>LOTNo</th>
                                                                             <th>DateInv</th>
                                                                             <th>ProduceCode</th>
                                                                             <th>ProduceName</th>
-                                                                            <th>OwnerPN</th>
-                                                                            <th>CustomerPN</th>
-                                                                            <th>Prodes</th>
+                                                                            <th>Quantity</th>
+                                                                            <th>QuantityUnit</th>
                                                                         </table>
                                                                     </FooterTemplate>
                                                                 </asp:Repeater>
@@ -1368,6 +1364,52 @@
                                                             <button type="submit" runat="server" class="btn btn-warning" id="btnDeleteFlightNoInvoice" title="btnDeleteFlightNoInvoice" onserverclick="btnDeleteFlightNoInvoice_ServerClick">Delete Flight No</button>
                                                         </div>
                                                     </div>
+                                                    <div class="form-group">
+                                                        <%--------------------------------------Data Issued Detail Repeater---------------------------------%>
+                                                      <asp:Repeater ID="Repeater10" runat="server" OnItemCommand="Repeater10_ItemCommand">
+                                                            <HeaderTemplate>
+                                                                <table id="example10" class="table table-striped table-condensed">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>Select</th>
+                                                                            <th>LotNo</th>
+                                                                            <th>Number</th>
+                                                                            <th>FlightNo</th>
+                                                                            <th>DateFlight</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                            </HeaderTemplate>
+                                                            <ItemTemplate>
+                                                                <tr>
+                                                                    <td class="text-center">
+                                                                        <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy  btn-sm" runat="server" CausesValidation="False" CommandName="Selectdataflight" CommandArgument='<%# Eval("Number")%>'><i class="fa fa-hand-o-up"></i></asp:LinkButton>
+                                                                    </td>
+                                                                    <td>
+                                                                        <asp:Label ID="lblLotNo" runat="server" Text='<%# Bind("LotNo")%>'></asp:Label></td>
+                                                                    <td>
+                                                                        <asp:Label ID="lblNumber" runat="server" Text='<%# Bind("Number")%>'></asp:Label></td>
+                                                                    <td>
+                                                                        <asp:Label ID="lblFlightNo" runat="server" Text='<%# Bind("FlightNo")%>'></asp:Label></td>
+                                                                    <td>
+                                                                        <asp:Label ID="lblDateFlight" runat="server" Text='<%# Bind("DateFlight")%>'></asp:Label></td>
+                                                                </tr>
+
+                                                            </ItemTemplate>
+                                                            <FooterTemplate>
+                                                                <tfoot>
+                                                                    <tr>
+                                                                        <th>Select</th>
+                                                                        <th>LotNo</th>
+                                                                        <th>Number</th>
+                                                                        <th>FlightNo</th>
+                                                                        <th>DateFlight</th>
+                                                                    </tr>
+                                                                </tfoot>
+                                                                </table>
+                                                            </FooterTemplate>
+                                                        </asp:Repeater>
+                                                        <%--------------------------------------Data Issued Detail Repeater---------------------------------%>
+                                                    </div>
                                                 </div>
                                                 <!-- /.box-body -->
                                             </fieldset>
@@ -1493,14 +1535,14 @@
                                                         </div>
                                                         <div class="col-sm-4">
                                                             <%--<button runat="server" class="btn-primary" id="btnGenIEATNo" title="btnGenIEATNo">Generate </button>--%>
-                                                            <button type="submit" runat="server" class="btn btn-primary" id="btnSumQTYInvoice" title="btnSumQTYInvoice">Sum QTY</button>
+                                                            <button type="submit" runat="server" class="btn btn-primary" id="btnSumQTYInvoice" onserverclick="btnSumQTYInvoice_ServerClick" title="btnSumQTYInvoice">Sum QTY</button>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <div class="col-sm-8">
                                                         </div>
                                                         <div class="col-sm-4">
-                                                            <button type="submit" runat="server" class="btn btn-primary" id="btnSaveToPrepairInvoice" title="btnSaveToPrepairInvoice">Save To Prepair</button>
+                                                            <button type="submit" runat="server" class="btn btn-primary" id="btnSaveToPrepairInvoice" onserverclick="btnSaveToPrepairInvoice_ServerClick" title="btnSaveToPrepairInvoice">Save To Prepair</button>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">

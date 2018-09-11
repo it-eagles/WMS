@@ -452,8 +452,8 @@
                                                             <th>ItemNo</th>
                                                             <th>WHSite</th>
                                                             <th>WHLocation</th>
-                                                            <th>ENDCustomer</th>
-                                                            <th>CustomerLOTNo</th>
+                                                            <th>ReceiveNo</th>
+                                                            <th>Quantity</th>
                                                         </tr>
                                                     </thead>
                                             </HeaderTemplate>
@@ -470,9 +470,9 @@
                                                     <td>
                                                         <asp:Label ID="lblWHLocation" runat="server" Text='<%# Bind("WHLocation")%>'></asp:Label></td>
                                                     <td>
-                                                        <asp:Label ID="lblENDCustomer" runat="server" Text='<%# Bind("ENDCustomer")%>'></asp:Label></td>
+                                                        <asp:Label ID="lblReceiveNo" runat="server" Text='<%# Bind("ReceiveNo")%>'></asp:Label></td>
                                                     <td>
-                                                        <asp:Label ID="lblCustomerLOTNo" runat="server" Text='<%# Bind("CustomerLOTNo")%>'></asp:Label></td>
+                                                        <asp:Label ID="lblQuantity" runat="server" Text='<%# Bind("Quantity")%>'></asp:Label></td>
                                                 </tr>
 
                                             </ItemTemplate>
@@ -485,8 +485,8 @@
                                                         <th>ItemNo</th>
                                                         <th>WHSite</th>
                                                         <th>WHLocation</th>
-                                                        <th>ENDCustomer</th>
-                                                        <th>CustomerLOTNo</th>
+                                                        <th>ReceiveNo</th>
+                                                        <th>Quantity</th>
                                                     </tr>
                                                 </tfoot>
                                                 </table>
