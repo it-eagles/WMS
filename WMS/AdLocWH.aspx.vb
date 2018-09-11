@@ -12,4 +12,8 @@
     Protected Sub btnSave_ServerClick(sender As Object, e As EventArgs)
 
     End Sub
+
+    Protected Sub btnClear_ServerClick(sender As Object, e As EventArgs)
+
+    End Sub
 End Class

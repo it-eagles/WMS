@@ -75,11 +75,9 @@ Public Class LoginCls
                     Return True
                 Else
                     Return False
-
                 End If
             Catch ex As Exception
-
-                MsgBox("เกิกข้อผิดพลาดในการเข้าสู่ระบบ", MsgBoxStyle.Critical)
+                Return False
             End Try
 
         End Using

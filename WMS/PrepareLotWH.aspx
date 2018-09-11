@@ -79,7 +79,7 @@
                                                                                     <button type="button" class="btn btn-primary btn-sm" runat="server" id="btnJobNoSearch" onserverclick="btnJobNoSearch_ServerClick"><i class="glyphicon glyphicon-search"></i></button>
                                                                                 </div>
                                                                                 <div class="col-sm-2">
-                                                                                    <button type="button" class="btn btn-danger btn-sm" runat="server" id="btnJobNoSearch_Edit" onserverclick="btnJobNoSearch_Edit_ServerClick" visible="false"><i class="glyphicon glyphicon-search"></i></button>
+                                                                                    <button type="button" class="btn btn-dropbox btn-sm" runat="server" id="btnJobNoSearch_Edit" onserverclick="btnJobNoSearch_Edit_ServerClick" visible="false"><i class="glyphicon glyphicon-search"></i></button>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -856,13 +856,13 @@
                                                 <div class="box-body">
                                                     <div class="col-sm-5 col-sm-offset-8">
                                                         <div class="form-group">
-                                                            <button type="submit" runat="server" class="btn btn-primary btn-sm" id="btnAddNew_GoodRecDetail" title="btnAddNew_GoodRecDetail" onserverclick="btnAddNew_GoodRecDetail_ServerClick">Add New</button>
+                                                            <button type="submit" runat="server" class="btn btn-success btn-sm" id="btnAddNew_GoodRecDetail" title="btnAddNew_GoodRecDetail" onserverclick="btnAddNew_GoodRecDetail_ServerClick">Add New</button>
 
                                                             <button type="submit" runat="server" class="btn btn-primary btn-sm" id="btnSaveModify_GoodRecDetail" title="btnSaveModify_GoodRecDetail" onserverclick="btnSaveModify_GoodRecDetail_ServerClick">Save Modify</button>
 
-                                                            <button type="submit" runat="server" class="btn btn-primary btn-sm" id="btnDelete_GoodRecDetail" title="btnDelete_GoodRecDetail" onserverclick="btnDelete_GoodRecDetail_ServerClick">Delete</button>
+                                                            <button type="submit" runat="server" class="btn btn-danger btn-sm" id="btnDelete_GoodRecDetail" title="btnDelete_GoodRecDetail" onserverclick="btnDelete_GoodRecDetail_ServerClick">Delete</button>
 
-                                                            <button type="submit" runat="server" class="btn btn-primary btn-sm" id="btnDeleteAll_GoodRecDetail" title="btnDeleteAll_GoodRecDetail" onserverclick="btnDeleteAll_GoodRecDetail_ServerClick">Delete All</button>
+                                                            <button type="submit" runat="server" class="btn btn-danger btn-sm" id="btnDeleteAll_GoodRecDetail" title="btnDeleteAll_GoodRecDetail" onserverclick="btnDeleteAll_GoodRecDetail_ServerClick">Delete All</button>
                                                         </div>
                                                     </div>
 

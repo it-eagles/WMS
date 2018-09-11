@@ -225,8 +225,8 @@ Public Class RejectReceivedWH
                                     p.ItemNo,
                                     p.WHSite,
                                     p.WHLocation,
-                                    p.ENDCustomer,
-                                    p.CustomerLOTNo}).ToList()
+                                    p.ReceiveNo,
+                                    p.Quantity}).ToList()
 
         If cons.Count > 0 Then
             Repeater9.DataSource = cons.ToList
@@ -407,6 +407,7 @@ Public Class RejectReceivedWH
         End Using
     End Sub
     Private Function SaveModifyPrepair(ByVal i As Integer) As Boolean
+
         Dim lblItemNo As Double
         Dim lblLOTNo As String
 
@@ -432,22 +433,31 @@ Public Class RejectReceivedWH
         End Try
     End Function
     Private Function SaveDeleteStockMovement_Confirm(ByVal i As Integer) As Boolean
+        Dim chkName As CheckBox
         Dim lblItemNo As Double
         Dim lblLOTNo As String
+        Dim lblReceiveNo As String
+        Dim lblQuantity As Double
 
+        chkName = CType(Repeater9.Items(i).FindControl("chk_Pull"), CheckBox)
         lblItemNo = CDbl(CType(Repeater9.Items(i).FindControl("lblItemNo"), Label).Text.Trim)
         lblLOTNo = CType(Repeater9.Items(i).FindControl("lblLOTNo"), Label).Text.Trim
+        lblReceiveNo = CType(Repeater9.Items(i).FindControl("lblReceiveNo"), Label).Text.Trim
+        lblQuantity = CDbl(CType(Repeater9.Items(i).FindControl("lblQuantity"), Label).Text.Trim)
 
         Try
-            Dim u = (From us In db.tblWHConfirmGoodsReceiveDetails Where us.LOTNo = lblLOTNo And us.ItemNo = lblItemNo
-                 Select us).FirstOrDefault
+            'Dim u = (From us In db.tblWHConfirmGoodsReceiveDetails Where us.LOTNo = lblLOTNo And us.ItemNo = lblItemNo
+            '     Select us).FirstOrDefault
 
-            Dim DeleteStockMovement As tblWHStockMovement = (From c In db.tblWHStockMovements Where c.LOTNo = u.LOTNo And c.ItemNo = u.ItemNo And c.item = u.Item _
-                                                             And c.ReceiveNo = u.ReceiveNo And c.Type = u.Type And c.ReceivedQuantity = u.Quantity Select c).First()
+            'Dim DeleteStockMovement As tblWHStockMovement = (From c In db.tblWHStockMovements Where c.LOTNo = u.LOTNo And c.ItemNo = u.ItemNo And c.item = u.Item And c.ReceiveNo = u.ReceiveNo And c.Type = u.Type And c.ReceivedQuantity = u.Quantity Select c).First()          
+
+            Dim DeleteStockMovement As tblWHStockMovement = (From delsm In db.tblWHStockMovements Where delsm.LOTNo = lblLOTNo And delsm.ItemNo = lblItemNo _
+              And delsm.ReceiveNo = lblReceiveNo Select delsm).SingleOrDefault
 
             db.tblWHStockMovements.Remove(DeleteStockMovement)
             db.SaveChanges()
             Return True
+
         Catch ex As Exception
             Return False
         End Try

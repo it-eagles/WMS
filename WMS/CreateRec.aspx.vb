@@ -24,6 +24,7 @@ Public Class CreateRec
     Dim endpart As String
     Dim cuspart As String
     Dim Prodes As String
+    Dim NumberFlight As Double
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Dim usename As String = CStr(Session("UserName"))
@@ -2225,6 +2226,8 @@ Public Class CreateRec
             'ReadDATA()
             ReadDATA2()
             'ReadDATAEAS()
+            DataFlight()
+
         End If
     End Sub
     '--------------------------------------------------Save Data News-----------------------------------------------
@@ -3440,9 +3443,8 @@ Public Class CreateRec
                  ab.DateInv,
                  ab.ProductCode,
                  ab.ProductName,
-                 ab.OwnerPN,
-                 ab.CustomerPN,
-                 ab.Prodes
+                 ab.Quantity,
+                 ab.QuantityUnit
         Try
             If sqlConsignnee.Count > 0 Then
                 Repea2_Invoice.DataSource = sqlConsignnee.ToList
@@ -3501,30 +3503,14 @@ Public Class CreateRec
         Catch ex As Exception
         End Try
     End Sub
-
-    'Private Sub dgvProduct_CellMouseClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellMouseEventArgs) Handles dgvProduct.CellMouseClick
-    '    If e.RowIndex = -1 Then Exit Sub
-    '    With dgvProduct
-    '        txtProductCode.Text = .Rows.Item(e.RowIndex).Cells(0).Value.ToString()
-    '        txtProductName.Text = .Rows.Item(e.RowIndex).Cells(1).Value.ToString()
-    '        Prodes = .Rows.Item(e.RowIndex).Cells(2).Value.ToString()
-    '        cuspart = .Rows.Item(e.RowIndex).Cells(3).Value.ToString()
-    '        endpart = .Rows.Item(e.RowIndex).Cells(4).Value.ToString()
-    '    End With
-    '    txtProductCode.Focus()
-    '    txtProductCode.SelectAll()
-    '    pnlProduct.Visible = False
-    'End Sub
-
     '---------------------------------------------------------------------Click btn SaveFlight--------------------------------------------
     Protected Sub btnSaveFlightNoInvoice_ServerClick(sender As Object, e As EventArgs)
         Dim user As String = CStr(Session("UserName"))
         Dim form As String = "frmImpGenLot"
         Dim cu = From um In db.tblUserMenus Where um.UserName = user And um.Form = form And um.Save_ = 1
         If cu.Any Then
-
             SaveFlightInvDetail()
-
+            DataFlight()
         Else
             ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ์เมนูนี้ !!!')", True)
         End If
@@ -3533,12 +3519,10 @@ Public Class CreateRec
     Protected Sub btnDeleteFlightNoInvoice_ServerClick(sender As Object, e As EventArgs)
         Dim user As String = CStr(Session("UserName"))
         Dim form As String = "frmImpGenLot"
-        Dim cu = From um In db.tblUserMenus Where um.UserName = user And um.Form = form And um.Save_ = 1
+        Dim cu = From um In db.tblUserMenus Where um.UserName = user And um.Form = form And um.Delete_ = 1
         If cu.Any Then
-
-
-
-
+            DeleteFlightInvDetail()
+            DataFlight()
         Else
             ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ์เมนูนี้ !!!')", True)
         End If
@@ -3588,17 +3572,225 @@ Public Class CreateRec
                     ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('Add สำเร็จ !');", True)
 
                 Catch ex As Exception
-
-                    ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด กรุณาบันทึกข้อมูลใหม่อีกครั้ง');", True)
-
-                Finally
-                    db.Database.Connection.Close()
-                    db.Dispose()
                     tran.Dispose()
+                    ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด กรุณาบันทึกข้อมูลใหม่อีกครั้ง');", True)
                 End Try
             End Using
         End If
         txtJobno.Focus()
     End Sub
+    '----------------------------------------------------------------Delete Flight Data-----------------------------------------------
+    Private Sub DeleteFlightInvDetail()
+        If txtJobno.Value.Trim() = "" Then
+            MsgBox("เลือกข้อมูลที่ต้องการ Delete ก่อน !!!")
+            txtJobno.Focus()
+            Exit Sub
+        End If
 
+        If txtFlightNo.Value.Trim() = "" Then
+            MsgBox("เลือกข้อมูลที่ต้องการ Delete ก่อน !!!")
+            txtFlightNo.Focus()
+            Exit Sub
+        End If
+
+        If MsgBox("คุณต้องการลบรายการ Flight No Invoice นี้ใช่หรือไม่ ?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+
+            Using tran As New TransactionScope()
+                Try
+
+                    Dim DeleteFlight As tblImpLogFlight = (From c In db.tblImpLogFlights Where c.LotNo = txtJobno.Value.Trim And c.FlightNo = txtFlightNo.Value.Trim _
+                    And c.Number = NumberFlight Select c).First()
+
+                    db.tblImpLogFlights.Remove(DeleteFlight)
+
+                    db.SaveChanges()
+                    tran.Complete()
+                    ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('Delete Flight สำเร็จ !');", True)
+                Catch ex As Exception
+                    tran.Dispose()
+                    ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด กรุณาบันทึกข้อมูลใหม่อีกครั้ง');", True)
+                End Try
+            End Using
+        End If
+    End Sub
+    '--------------------------------------------------------Show Data Flight In Modal-----------------------------------------
+    Private Sub DataFlight()
+
+        Dim cons = (From p In db.tblImpLogFlights
+                    Where p.LotNo = txtJobno.Value.Trim Order By p.Number Ascending
+                   Select New With {p.LotNo,
+                                    p.Number,
+                                    p.FlightNo,
+                                    p.DateFlight}).ToList()
+
+        If cons.Count > 0 Then
+            Repeater10.DataSource = cons.ToList
+            Repeater10.DataBind()
+        Else
+            Repeater10.DataSource = Nothing
+            Repeater10.DataBind()
+            Exit Sub
+
+        End If
+    End Sub
+    '--------------------------------------------------------Click Data Data Flight -----------------------------------------
+    Protected Sub Repeater10_ItemCommand(source As Object, e As RepeaterCommandEventArgs) Handles Repeater10.ItemCommand
+        Dim Numberr As Double = CDbl(e.CommandArgument)
+        Try
+            If e.CommandName.Equals("Selectdataflight") Then
+
+                If String.IsNullOrEmpty(CStr(Numberr)) Then
+
+                    MsgBox("เป็นค่าว่าง")
+                Else
+                    Dim user = (From u In db.tblImpLogFlights Where u.LotNo = txtJobno.Value.Trim And u.Number = Numberr).SingleOrDefault
+
+                    txtFlightNo.Value = user.FlightNo
+                    NumberFlight = user.Number
+                    txtdatepickerFlightDateInvoice.Text = CStr(user.DateFlight)
+                    txtQuantity_PLT_Skid_Invoice.Value = CStr(user.Quantity)
+                    txtQuantity_PLT_Skid_Invoice2.Value = user.HouseNo
+                    If String.IsNullOrEmpty(user.UnitQuantity) Then
+                        'ddlQuantity_PLT_Skid_Invoice.Text = ""
+                    Else
+                        ddlQuantity_PLT_Skid_Invoice.Text = user.UnitQuantity
+                    End If
+                    If String.IsNullOrEmpty(user.House) Then
+                        'ddlQuantity_PLT_Skid_Invoice2.Text = ""
+                    Else
+                        ddlQuantity_PLT_Skid_Invoice2.Text = user.House
+                    End If
+
+                End If
+            End If
+        Catch ex As Exception
+        End Try
+    End Sub
+
+    Protected Sub btnSumQTYInvoice_ServerClick(sender As Object, e As EventArgs)
+        Dim lblInvoiceNo As String
+        Dim lblLotNo As String
+        Dim i As Integer = 0
+        Dim qty As Integer = 0
+
+        If Repea2_Invoice.Items.Count > 0 Then
+
+            For i = 0 To Repea2_Invoice.Items.Count - 1
+
+                lblInvoiceNo = CType(Repea2_Invoice.Items(i).FindControl("lblInvoiceNo"), Label).Text.Trim
+                lblLotNo = CType(Repea2_Invoice.Items(i).FindControl("lblLOTNo"), Label).Text.Trim
+
+                Dim u = (From us In db.tblImpBookingInvDetails Where us.LOTNo = lblLotNo And us.InvoiceNo = lblInvoiceNo).FirstOrDefault
+
+                qty = CInt(qty + u.Quantity.Value)
+
+            Next
+            txtQTYExportInvoice.Value = CStr(qty)
+        Else
+            txtQTYExportInvoice.Value = "0"
+        End If
+    End Sub
+
+    Protected Sub btnSaveToPrepairInvoice_ServerClick(sender As Object, e As EventArgs)
+        Dim user As String = CStr(Session("UserName"))
+        Dim form As String = "frmImpGenLot"
+        Dim cu = From um In db.tblUserMenus Where um.UserName = user And um.Form = form And um.Save_ = 1
+        If cu.Any Then
+            If txtImportEntryNo.Value.Trim = "" Then
+                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณากรอกใบขนในช่อง ImportEntryNo ใน Tab ก่อนหน้า');", True)
+                Exit Sub
+            End If
+
+            If txtImportEntryNo.Value.Length <> 14 Then
+                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณากรอกใบขนให้ครบ 14 หลัก');", True)
+                Exit Sub
+            End If
+
+            SaveToPrepair()
+
+        Else
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ์เมนูนี้ !!!')", True)
+        End If
+    End Sub
+    Private Sub SaveToPrepair()
+        Dim lblInvoiceNo As String
+        Dim lblLotNo As String
+        Dim i As Integer
+
+        If Repea2_Invoice.Items.Count > 0 Then
+
+            Using tran As New TransactionScope()
+
+
+                For i = 0 To Repea2_Invoice.Items.Count - 1
+
+                    lblInvoiceNo = CType(Repea2_Invoice.Items(i).FindControl("lblInvoiceNo"), Label).Text.Trim
+                    lblLotNo = CType(Repea2_Invoice.Items(i).FindControl("lblLOTNo"), Label).Text.Trim
+
+                    Dim u = (From us In db.tblImpBookingInvDetails Where us.LOTNo = lblLotNo And us.InvoiceNo = lblInvoiceNo).FirstOrDefault
+
+                    'sb.Append("INSERT INTO tblWHPrepairGoodsReceiveDetail (LOTNo,WHSite,WHLocation,ENDCustomer,WHSource,CustomerLOTNo,ItemNo,ProductCode,CustomerPN,OwnerPN,ProductDesc,Measurement,ProductWidth,ProductLength,ProductHeight,ProductVolume,OrderNo,ReceiveNo,Type,ManufacturingDate,ExpiredDate,ReceiveDate,Quantity,QuantityUnit,Weigth,WeigthUnit,Currency,ExchangeRate,PriceForeigh,PriceForeighAmount,PriceBath,PriceBathAmount,PalletNo,UserBy,LastUpdate,Status,Supplier,Buyer,Exporter,Destination,Consignee,ShippingMark,EntryNo,EntryItemNo)")
+                    'sb.Append(" VALUES (@LOTNo,@WHSite,@WHLocation,@ENDCustomer,@WHSource,@CustomerLOTNo,@ItemNo,@ProductCode,@CustomerPN,@OwnerPN,@ProductDesc,@Measurement,@ProductWidth,@ProductLength,@ProductHeight,@ProductVolume,@OrderNo,@ReceiveNo,@Type,@ManufacturingDate,@ExpiredDate,@ReceiveDate,@Quantity,@QuantityUnit,@Weigth,@WeigthUnit,@Currency,@ExchangeRate,@PriceForeigh,@PriceForeighAmount,@PriceBath,@PriceBathAmount,@PalletNo,@UserBy,@LastUpdate,@Status,@Supplier,@Buyer,@Exporter,@Destination,@Consignee,@ShippingMark,@EntryNo,@EntryItemNo)")
+                    Try
+                        db.Database.Connection.Open()
+                        db.tblWHPrepairGoodsReceiveDetails.Add(New tblWHPrepairGoodsReceiveDetail With { _
+                                .LOTNo = txtJobno.Value.Trim, _
+                                .WHSite = "LKB", _
+                                .WHLocation = "", _
+                                .ENDCustomer = "MJ001", _
+                                .WHSource = "", _
+                                .CustomerLOTNo = u.Shipment, _
+                                .ItemNo = i + 1, _
+                                .ProductCode = u.ProductCode, _
+                                .CustomerPN = u.CustomerPN, _
+                                .OwnerPN = u.OwnerPN, _
+                                .ProductDesc = u.ProductName, _
+                                .Measurement = "", _
+                                .ProductWidth = u.Width, _
+                                .ProductLength = u.Lenght, _
+                                .ProductHeight = u.Height, _
+                                .ProductVolume = 0, _
+                                .OrderNo = u.PO, _
+                                .ReceiveNo = txtJobno.Value.Trim, _
+                                .Type = "Goods Complete", _
+                                .ManufacturingDate = Nothing, _
+                                .ExpiredDate = Nothing, _
+                                .ReceiveDate = Now, _
+                                .Quantity = u.Quantity, _
+                                .QuantityUnit = u.QuantityUnit, _
+                                .Weigth = u.Weight, _
+                                .WeigthUnit = u.UnitWeight, _
+                                .Currency = u.Currency, _
+                                .ExchangeRate = u.ExchangeRate, _
+                                .PriceForeigh = u.PriceForeigh, _
+                                .PriceForeighAmount = u.PriceForeighAmount, _
+                                .PriceBath = u.PriceBath, _
+                                .PriceBathAmount = u.PriceBathAmount, _
+                                .PalletNo = "", _
+                                .UserBy = CStr(Session("UserName")), _
+                                .LastUpdate = Now, _
+                                .Status = 0, _
+                                .Supplier = "", _
+                                .Buyer = "", _
+                                .Exporter = "", _
+                                .Destination = "", _
+                                .Consignee = "", _
+                                .ShippingMark = "", _
+                                .EntryNo = txtImportEntryNo.Value.Trim, _
+                                .EntryItemNo = u.EntryItemNo
+                            })
+                        db.SaveChanges()
+                    Catch ex As Exception
+                        tran.Dispose()
+                        ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาดในการ Save To PrePair');", True)
+                    End Try
+
+                Next
+                tran.Complete()
+            End Using
+        Else
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('ไม่มีข้อมูล');", True)
+        End If
+        ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('Sent To Prepair เรียบร้อยแล้วครับ');", True)
+    End Sub
 End Class
