@@ -103,6 +103,6 @@ Partial Public Class tblProductDetail
     Public Property CreateBy As String
     Public Property CreateDate As Date
     Public Property UpdateBy As String
-    Public Property UpdateDate As Nullable(Of Date)
+    Public Property UpdateDate As Date
 
 End Class

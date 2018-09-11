@@ -27,6 +27,7 @@ Public Class PickingWH
                     showWeightINV()
                     TabName.Value = Request.Form(TabName.UniqueID)
                     LockMain()
+                    rdbIMP.Checked = True
                 End If
             Else
                 ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ เข้าโปรแกรมนี้' !!!');", True)
@@ -45,6 +46,7 @@ Public Class PickingWH
         btnSaveEdit.Visible = False
         btnSeletJobNew.Visible = False
         btnSelectJobEdit.Visible = False
+        picking_.Disabled = True
     End Sub
     Protected Sub btnAddNew_ServerClick(sender As Object, e As EventArgs)
         btnSaveNew.Visible = True
@@ -57,6 +59,8 @@ Public Class PickingWH
         pickpack_fieldset.Disabled = False
         picknjr_fieldset.Disabled = False
         pickautopallet_fieldset.Disabled = False
+        ClearDataHead()
+        picking_.Disabled = False
     End Sub
 
     Protected Sub btnEdit_ServerClick(sender As Object, e As EventArgs)
@@ -70,6 +74,11 @@ Public Class PickingWH
         pickpack_fieldset.Disabled = False
         picknjr_fieldset.Disabled = False
         pickautopallet_fieldset.Disabled = False
+        ClearDataHead()
+        picking_.Disabled = False
+        chkNotUseDate_AssignDetail.Checked = True
+        txtdatepickerExpiredDate_AssignDetail.Attributes.Add("disabled", "disabled")
+        txtdatepickerManufacturing_AssignDetail.Attributes.Add("disabled", "disabled")
     End Sub
 
     Protected Sub btnSeletJobNew_ServerClick(sender As Object, e As EventArgs)
@@ -78,6 +87,7 @@ Public Class PickingWH
 
     Protected Sub btnSelectJobEdit_ServerClick(sender As Object, e As EventArgs)
         ReadDataPicklist()
+      
     End Sub
 
     Protected Sub btnJobNoHead_ServerClick(sender As Object, e As EventArgs)
@@ -721,7 +731,16 @@ Public Class PickingWH
     End Sub
 
     Protected Sub btnSaveEdit_ServerClick(sender As Object, e As EventArgs)
-
+        Dim usename As String = CStr(Session("UserName"))
+        Dim form As String = "frmIssued"
+        If classPermis.CheckEdit(form, usename) Then
+            savePicking_Modify()
+            LockMain()
+            ReadDataRequestedISSUE()
+            ReadDataRequestedISSUE_PickPack()
+        Else
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ แก้ไขในเมนูนี้ ' !!!');", True)
+        End If
     End Sub
 
     Protected Sub lnk_EAS_Click(sender As Object, e As EventArgs)
@@ -789,6 +808,8 @@ Public Class PickingWH
                 If Not IsNothing(exp.VolumeUnit) Then
                     dcbVolume.Text = exp.VolumeUnit
                 End If
+                ReadDataRequestedISSUE()
+                ReadDataRequestedISSUE_PickPack()
             Catch ex As Exception
                 ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('" & ex.Message & "')", True)
                 Exit Try
@@ -1010,7 +1031,82 @@ Public Class PickingWH
     End Sub
 
     Protected Sub btnPullSignal_Click(sender As Object, e As EventArgs)
+        Dim item As RepeaterItem = TryCast(TryCast(sender, LinkButton).Parent, RepeaterItem)
+        Dim EASLOTNo As String = TryCast(item.FindControl("lblLOTNo"), Label).Text.Trim
+        Dim pull As String = TryCast(item.FindControl("lblPullSignal"), Label).Text.Trim
+        Dim exp = (From ex In db.tblWHPickings Where ex.LOTNo = EASLOTNo And ex.PullSignal = pull).SingleOrDefault
+        If Not IsNothing(exp) Then
+            Try
+                txtPullSignal.Value = exp.PullSignal
+                txtLOtNo.Value = exp.LOTNo
+                dtpPullDate.Text = Convert.ToDateTime(exp.PullDate).ToString("dd/MM/yyyy")
+                txtPullTime.Value = exp.PullTime
+                dtpDeliveryDate.Text = Convert.ToDateTime(exp.DeliveryDate).ToString("dd/MM/yyyy")
+                txtDeliveryTime.Value = exp.DeliveryTime
+                dtpConfirmDate.Text = Convert.ToDateTime(exp.ConfirmDate).ToString("dd/MM/yyyy")
+                txtComfirmTime.Value = exp.ConfirmTime
+                txtExporterCode.Value = exp.ExporterCode
+                txtExportEng.Value = exp.ExporterName
+                txtExporterAddress1.Value = exp.ExporterAddress1
+                txtExporterAddress2.Value = exp.ExporterAddress2
+                txtExporterAddress3.Value = exp.ExporterAddress3
+                txtExporterAddress4.Value = exp.ExporterAddress4
+                txtConsignneeCode.Value = exp.ConsigneeCode
+                txtConsignneeEng.Value = exp.ConsigneeName
+                txtConsignneeAddress1.Value = exp.ConsigneeAddress1
+                txtConsignneeAddress2.Value = exp.ConsigneeAddress2
+                txtConsignneeAddress3.Value = exp.ConsigneeAddress3
+                txtConsignneeAddress4.Value = exp.ConsigneeAddress4
+                txtOwnerCode.Value = exp.OwnerCode
+                txtOwnerName.Value = exp.OwnerName
+                txtOwnerAddress1.Value = exp.OwnerAddress1
+                txtOwnerAddress2.Value = exp.OwnerAddress2
+                txtOwnerAddress3.Value = exp.OwnerAddress3
+                txtOwnerAddress4.Value = exp.OwnerAddress4
+                txtShipToCode.Value = exp.ShipToCode
+                txtShiptoName.Value = exp.ShipToName
+                txtShiptoAddress1.Value = exp.ShipToAddress1
+                txtShiptoAddress2.Value = exp.ShipToAddress2
+                txtShiptoAddress3.Value = exp.ShipToAddress3
+                txtShiptoAddress4.Value = exp.ShipToAddress4
+                If Not IsNothing(exp.Commodity) Then
+                    cboCommodity.Text = exp.Commodity
+                End If
+                txtQuantityofPart.Value = String.Format("{0:0.00}", exp.QuantityOfPart)
+                If Not IsNothing(exp.QuantityUnit) Then
+                    dcbQuantityofPart.Text = exp.QuantityUnit
+                End If
 
+                txtQuantityPackage.Value = String.Format("{0:0.00}", exp.QuantityPackage)
+                txtQuantityPLT.Value = String.Format("{0:0.00}", exp.QuantityPLT)
+
+                If Not IsNothing(exp.QuantityPLTUnit) Then
+                    dcbQuantityPLT.Text = exp.QuantityPLTUnit
+                End If
+                txtWeight.Value = String.Format("{0:0.00}", exp.Weight)
+                dcbWeight.Text = exp.WeightUnit
+                txtVolume.Value = String.Format("{0:0.00}", exp.Volume)
+
+                If Not IsNothing(exp.VolumeUnit) Then
+                    dcbVolume.Text = exp.VolumeUnit
+                End If
+                txtQtyReceived.Value = String.Format("{0:0.00}", exp.QuantityPicked)
+                If Not IsNothing(exp.PickedUNIT) Then
+                    cboReceivedUNIT.Text = exp.PickedUNIT
+                End If
+                txtQTYDiscrepancy.Value = String.Format("{0:0.00}", exp.QuantityDiscrepancy)
+
+                If Not IsNothing(exp.DiscrepancyUNIT) Then
+                    cboDiscrepencyUNIT.Text = exp.DiscrepancyUNIT
+                End If
+                txtRemark_PickingHead.Value = exp.Remark
+
+            Catch ex As Exception
+                ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('" & ex.Message & "')", True)
+                Exit Try
+            End Try
+
+        End If
     End Sub
 
     Protected Sub dgvPicklist_ItemDataBound(sender As Object, e As RepeaterItemEventArgs)
@@ -1034,5 +1130,576 @@ Public Class PickingWH
             End If
            
         End If
+    End Sub
+    Private Sub savePicking_Modify()
+        Dim pull_d As Nullable(Of Date)
+        Dim DeliveryDate As Nullable(Of Date)
+        Dim ConfirmDate As Nullable(Of Date)
+        If txtLOtNo.Value.Trim() = "" Then
+            'MessageBox.Show("กรุณาใส่ LOT NO ก่อน !!!", "ผลการตรวจสอบ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ LOT NO ก่อน !!!')", True)
+            txtLOtNo.Focus()
+            Exit Sub
+        End If
+
+        If txtPullSignal.Value.Trim() = "" Then
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ Pull Signal ก่อน !!!')", True)
+            txtPullSignal.Focus()
+            Exit Sub
+        End If
+        If String.IsNullOrEmpty(dtpPullDate.Text) Then
+            pull_d = Nothing
+        Else
+            pull_d = DateTime.ParseExact(dtpPullDate.Text, "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US"))
+        End If
+
+        If String.IsNullOrEmpty(dtpDeliveryDate.Text) Then
+            DeliveryDate = Nothing
+        Else
+            DeliveryDate = DateTime.ParseExact(dtpPullDate.Text, "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US"))
+        End If
+
+        If String.IsNullOrEmpty(dtpConfirmDate.Text) Then
+            ConfirmDate = Nothing
+        Else
+            ConfirmDate = DateTime.ParseExact(dtpPullDate.Text, "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US"))
+        End If
+        Select Case MsgBox("คุณต้องการแก้ไขข้อมูล  Pick List ใช่หรือไม่?", MsgBoxStyle.YesNo, "คำยืนยัน")
+            Case MsgBoxResult.Yes
+                Try
+                    Dim exp As tblWHPicking = (From p In db.tblWHPickings Where p.LOTNo = txtLOtNo.Value.Trim And p.PullSignal = txtPullSignal.Value.Trim).FirstOrDefault
+                    If exp IsNot Nothing Then
+                        exp.PullSignal = txtPullSignal.Value.Trim
+                        exp.LOTNo = txtLOtNo.Value.Trim
+                        exp.PullDate = CDate(pull_d)
+                        exp.PullTime = txtPullTime.Value.Trim
+                        exp.DeliveryDate = DeliveryDate
+                        exp.DeliveryTime = txtDeliveryTime.Value.Trim
+                        exp.ConfirmDate = ConfirmDate
+                        exp.ConfirmTime = txtComfirmTime.Value.Trim
+                        exp.ExporterCode = txtExporterCode.Value.Trim
+                        exp.ExporterName = txtExportEng.Value.Trim
+                        exp.ExporterAddress1 = txtExporterAddress1.Value.Trim
+                        exp.ExporterAddress2 = txtExporterAddress2.Value.Trim
+                        exp.ExporterAddress3 = txtExporterAddress3.Value.Trim
+                        exp.ExporterAddress4 = txtExporterAddress4.Value.Trim
+                        exp.ConsigneeCode = txtConsignneeCode.Value.Trim
+                        exp.ConsigneeName = txtConsignneeEng.Value.Trim
+                        exp.ConsigneeAddress1 = txtConsignneeAddress1.Value.Trim
+                        exp.ConsigneeAddress2 = txtConsignneeAddress2.Value.Trim
+                        exp.ConsigneeAddress3 = txtConsignneeAddress3.Value.Trim
+                        exp.ConsigneeAddress4 = txtConsignneeAddress4.Value.Trim
+                        exp.OwnerCode = txtOwnerCode.Value.Trim
+                        exp.OwnerName = txtOwnerName.Value.Trim
+                        exp.OwnerAddress1 = txtOwnerAddress1.Value.Trim
+                        exp.OwnerAddress2 = txtOwnerAddress2.Value.Trim
+                        exp.OwnerAddress3 = txtOwnerAddress3.Value.Trim
+                        exp.OwnerAddress4 = txtOwnerAddress4.Value.Trim
+                        exp.ShipToCode = txtShipToCode.Value.Trim
+                        exp.ShipToName = txtShiptoName.Value.Trim
+                        exp.ShipToAddress1 = txtShiptoAddress1.Value.Trim
+                        exp.ShipToAddress2 = txtShiptoAddress2.Value.Trim
+                        exp.ShipToAddress3 = txtShiptoAddress3.Value.Trim
+                        exp.ShipToAddress4 = txtShiptoAddress4.Value.Trim
+                        exp.Commodity = cboCommodity.Text.Trim
+                        exp.QuantityOfPart = CType(CDbl(txtQuantityofPart.Value.Trim).ToString("#,##0.000"), Double?)
+                        exp.QuantityUnit = dcbQuantityofPart.Text.Trim
+                        exp.QuantityPackage = CType(CDbl(txtQuantityPackage.Value.Trim).ToString("#,##0.000"), Double?)
+                        exp.QuantityPLT = CType(CDbl(txtQuantityPLT.Value.Trim).ToString("#,##0.000"), Double?)
+                        exp.QuantityPLTUnit = dcbQuantityPLT.Text.Trim
+                        exp.Weight = CType(CDbl(txtWeight.Value.Trim).ToString("#,##0.000"), Double?)
+                        exp.WeightUnit = dcbWeight.Text.Trim
+                        exp.Volume = CType(CDbl(txtVolume.Value.Trim).ToString("#,##0.000"), Double?)
+                        exp.VolumeUnit = dcbVolume.Text.Trim
+                        exp.QuantityPicked = CType(CDbl(txtQtyReceived.Value.Trim).ToString("#,##0.000"), Double?)
+                        exp.PickedUNIT = cboReceivedUNIT.Text.Trim
+                        exp.QuantityDiscrepancy = CType(CDbl(txtQTYDiscrepancy.Value.Trim).ToString("#,##0.000"), Double?)
+                        exp.DiscrepancyUNIT = cboDiscrepencyUNIT.Text.Trim
+                        exp.Remark = txtRemark_PickingHead.Value.Trim
+                        exp.UserBy = CStr(Session("UserName"))
+                        exp.LastUpdate = Now
+                        db.SaveChanges()
+                        ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('แก้ไขข้อมูล Pick List เรียบร้อยแล้ว !!!')", True)
+                        Exit Sub
+                    Else
+                        ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('Pick List ที่คุณใส่ ไม่ถูกต้อง !!!')", True)
+                        Exit Sub
+                    End If
+
+                Catch ex As Exception
+                    ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด เนื่องจาก " & ex.Message & "')", True)
+                    Exit Select
+                End Try
+
+        End Select
+
+        txtLOtNo.Focus()
+    End Sub
+
+    Protected Sub lbCode_Click(sender As Object, e As EventArgs)
+        Dim item As RepeaterItem = TryCast(TryCast(sender, LinkButton).Parent, RepeaterItem)
+        Dim lblProductCode As String = CType(item.FindControl("lblProductCode"), Label).Text.Trim
+        Dim lblExpDesc As String = CType(item.FindControl("lblExpDesc"), Label).Text.Trim
+        Dim lblimpDesc As String = CType(item.FindControl("lblimpDesc"), Label).Text.Trim
+        Dim lblUserPart As String = CType(item.FindControl("lblUserPart"), Label).Text.Trim
+        Dim lblPart As String = CType(item.FindControl("lblPart"), Label).Text.Trim
+        txtProductCode.Value = lblProductCode
+        txtCustomerPart.Value = lblUserPart
+        txtOwnerPart.Value = lblPart
+        If rdbEXP.Checked = True Then
+            txtProductDesc.Value = lblExpDesc
+        Else
+            txtProductDesc.Value = lblimpDesc
+        End If
+    End Sub
+
+    Protected Sub dgvProduct_ItemDataBound(sender As Object, e As RepeaterItemEventArgs)
+        Dim expDesc As String = ""
+        Dim impDesc As String = ""
+        If e.Item.ItemType = ListItemType.Item OrElse e.Item.ItemType = ListItemType.AlternatingItem Then
+            Dim lblProductCode As Label = CType(e.Item.FindControl("lblProductCode"), Label)
+            Dim lblExpDesc As Label = CType(e.Item.FindControl("lblExpDesc"), Label)
+            Dim lblimpDesc As Label = CType(e.Item.FindControl("lblimpDesc"), Label)
+            Dim lblUserPart As Label = CType(e.Item.FindControl("lblUserPart"), Label)
+            Dim lblPart As Label = CType(e.Item.FindControl("lblPart"), Label)
+            expDesc = DataBinder.Eval(e.Item.DataItem, "ExpDesc1").ToString
+            impDesc = DataBinder.Eval(e.Item.DataItem, "impDesc1").ToString
+            If rdbEXP.Checked = True Then
+                lblExpDesc.Text = expDesc
+                lblimpDesc.Visible = True
+            Else
+                lblimpDesc.Text = impDesc
+                lblExpDesc.Visible = True
+            End If
+            If Not IsNothing(lblProductCode) Then
+                lblProductCode.Text = DataBinder.Eval(e.Item.DataItem, "ProductCode").ToString
+            End If
+            If Not IsNothing(lblUserPart) Then
+                lblUserPart.Text = DataBinder.Eval(e.Item.DataItem, "EndUserPart").ToString
+            End If
+            If Not IsNothing(lblPart) Then
+                lblPart.Text = DataBinder.Eval(e.Item.DataItem, "CustomerPart").ToString
+            End If
+        End If
+    End Sub
+
+    Protected Sub Unnamed_ServerClick4(sender As Object, e As EventArgs)
+        If rdbEXP.Checked = True Then
+            selectProuctCode_Exp()
+        ElseIf rdbIMP.Checked = True Then
+            selectProuctCode_Imp()
+        End If
+    End Sub
+
+    Private Sub selectProuctCode_Exp()
+
+        Dim exp = (From p In db.tblProductDetails Where p.ProductCode = txtProductCode.Value.Trim And p.ExpProductCode <> ""
+                  Select p.ProductCode, p.ExpDesc1, p.ImpDesc1, p.EndUserPart, p.CustomerPart).ToList
+        If exp.Count > 0 Then
+            Me.dgvProduct.DataSource = exp
+            Me.dgvProduct.DataBind()
+            ScriptManager.RegisterStartupScript(upProduct, upProduct.GetType(), "show", "$(function () { $('#" + plProduct.ClientID + "').modal('show'); });", True)
+            upProduct.Update()
+        Else
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('ไม่พบข้อมูล ProductCode นี้')", True)
+            Exit Sub
+        End If
+    End Sub
+    Private Sub selectProuctCode_Imp()
+
+        Dim exp = (From p In db.tblProductDetails Where p.ProductCode = txtProductCode.Value.Trim And p.ImpProductCode <> ""
+                  Select p.ProductCode, p.ExpDesc1, p.ImpDesc1, p.EndUserPart, p.CustomerPart).ToList
+        If exp.Count > 0 Then
+            Me.dgvProduct.DataSource = exp
+            Me.dgvProduct.DataBind()
+            ScriptManager.RegisterStartupScript(upProduct, upProduct.GetType(), "show", "$(function () { $('#" + plProduct.ClientID + "').modal('show'); });", True)
+            upProduct.Update()
+        Else
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('ไม่พบข้อมูล ProductCode นี้')", True)
+            Exit Sub
+        End If
+    End Sub
+
+    Protected Sub dgvItemDetail_ItemDataBound(sender As Object, e As RepeaterItemEventArgs)
+        If e.Item.ItemType = ListItemType.Item OrElse e.Item.ItemType = ListItemType.AlternatingItem Then
+            Dim lblPull As Label = CType(e.Item.FindControl("lblPull"), Label)
+            Dim lblLOTNo As Label = CType(e.Item.FindControl("lblLOTNo"), Label)
+            Dim lblItemNo As Label = CType(e.Item.FindControl("lblItemNo"), Label)
+            Dim lblProduct As Label = CType(e.Item.FindControl("lblProduct"), Label)
+            Dim lblPart As Label = CType(e.Item.FindControl("lblPart"), Label)
+            Dim lblDesc As Label = CType(e.Item.FindControl("lblDesc"), Label)
+            Dim lblNo As Label = CType(e.Item.FindControl("lblNo"), Label)
+            Dim lblPn As Label = CType(e.Item.FindControl("lblPn"), Label)
+            Dim lblLot As Label = CType(e.Item.FindControl("lblLot"), Label)
+                                                                       
+            If Not IsNothing(lblPull) Then
+                lblPull.Text = DataBinder.Eval(e.Item.DataItem, "PullSignal").ToString
+            End If
+            If Not IsNothing(lblLOTNo) Then
+                lblLOTNo.Text = DataBinder.Eval(e.Item.DataItem, "LOTNo").ToString
+            End If
+            If Not IsNothing(lblItemNo) Then
+                lblItemNo.Text = DataBinder.Eval(e.Item.DataItem, "ItemNo").ToString
+            End If
+            If Not IsNothing(lblProduct) Then
+                lblProduct.Text = DataBinder.Eval(e.Item.DataItem, "ProductNo").ToString
+            End If
+            If Not IsNothing(lblPart) Then
+                lblPart.Text = DataBinder.Eval(e.Item.DataItem, "CutomerPart").ToString
+            End If
+            If Not IsNothing(lblDesc) Then
+                lblDesc.Text = DataBinder.Eval(e.Item.DataItem, "OwnerPart").ToString
+            End If
+            If Not IsNothing(lblNo) Then
+                lblNo.Text = DataBinder.Eval(e.Item.DataItem, "ProductDesc").ToString
+            End If
+            If Not IsNothing(lblPn) Then
+                lblPn.Text = DataBinder.Eval(e.Item.DataItem, "OrderNo").ToString
+            End If
+            If Not IsNothing(lblLot) Then
+                lblLot.Text = DataBinder.Eval(e.Item.DataItem, "CustomerLot").ToString
+            End If
+        End If
+    End Sub
+    Private Sub ReadDataRequestedISSUE()
+
+        Dim imp = (From i In db.tblWHRequestedISSUEs Where i.LotNo = txtLOtNo.Value.Trim And i.PullSignal = txtPullSignal.Value.Trim Order By i.ItemNo1 Ascending
+                  Select i.PullSignal, i.LotNo, i.ItemNo, i.ProductNo, i.CutomerPart, i.OwnerPart, i.ProductDesc, i.OrderNo, i.CustomerLot).ToList
+        If imp.Count > 0 Then
+            Me.dgvImported.DataSource = imp
+            Me.dgvImported.DataBind()
+        Else
+            Me.dgvImported.DataSource = Nothing
+            Me.dgvImported.DataBind()
+        End If
+    End Sub
+    Private Sub ReadDataRequestedISSUE_PickPack()
+
+        Dim imp = (From i In db.tblWHRequestedISSUEs Where i.LotNo = txtLOtNo.Value.Trim And i.PullSignal = txtPullSignal.Value.Trim And i.AvailableRequestQTY <> 0 Order By i.ItemNo1 Ascending
+                 Select i.PullSignal, i.LotNo, i.ItemNo, i.ProductNo, i.CutomerPart, i.OwnerPart, i.ProductDesc, i.OrderNo, i.CustomerLot).ToList
+        If imp.Count > 0 Then
+            Me.dgvReadWHIssuedRequest.DataSource = imp
+            Me.dgvReadWHIssuedRequestNJR.DataSource = imp
+            Me.dgvReadAssign.DataSource = imp
+            Me.dgvReadAssign.DataBind()
+
+            FormatDgvReadWHIssuedRequest()
+            FormatDgvReadWHIssuedRequestNJR()
+            FormatDgvReadAssign()
+        Else
+            dgvReadWHIssuedRequest.DataSource = Nothing
+            dgvReadWHIssuedRequestNJR.DataSource = Nothing
+            dgvReadAssign.DataSource = Nothing
+        End If
+
+    End Sub
+    Private Sub ClearDataHead()
+        txtPullSignal.Value = ""
+        txtLOtNo.Value = ""
+        txtExporterCode.Value = ""
+        txtExportEng.Value = ""
+        txtExporterAddress1.Value = ""
+        txtExporterAddress2.Value = ""
+        txtExporterAddress3.Value = ""
+        txtExporterAddress4.Value = ""
+        txtConsignneeCode.Value = ""
+        txtConsignneeEng.Value = ""
+        txtConsignneeAddress1.Value = ""
+        txtConsignneeAddress2.Value = ""
+        txtConsignneeAddress3.Value = ""
+        txtConsignneeAddress4.Value = ""
+        txtOwnerCode.Value = ""
+        txtOwnerName.Value = ""
+        txtOwnerAddress1.Value = ""
+        txtOwnerAddress2.Value = ""
+        txtOwnerAddress3.Value = ""
+        txtOwnerAddress4.Value = ""
+        txtShipToCode.Value = ""
+        txtShiptoName.Value = ""
+        txtShiptoAddress1.Value = ""
+        txtShiptoAddress2.Value = ""
+        txtShiptoAddress3.Value = ""
+        txtShiptoAddress4.Value = ""
+        txtQuantityofPart.Value = "0.0"
+        txtQuantityPackage.Value = "0.0"
+        txtQuantityPLT.Value = "0.0"
+        txtWeight.Value = "0.0"
+        txtVolume.Value = "0.0"
+        txtQtyReceived.Value = "0.0"
+        txtQTYDiscrepancy.Value = "0.0"
+        txtRemark_PickingHead.Value = ""
+    End Sub
+
+    Private Sub ClearDataPull()
+        txtItemNo.Value = ""
+        txtProductCode.Value = ""
+        txtCustomerPart.Value = ""
+        txtOwnerPart.Value = ""
+        txtProductDesc.Value = ""
+        txtRequestedQuantity.Value = "0.0"
+        txtOrder.Value = ""
+        txtPriceForeigh.Value = "0.0"
+        txtPriceBath.Value = "0.0"
+        'txtDirectorySEQ = ""
+        'txtDirectoryDetail = ""
+        'txtImportPallet = ""
+        'txtImport = ""
+        'txtDirecShip = ""
+        txtCustomerLot.Value = ""
+        txtPalletNoAssign.Value = ""
+        txtOrderFrmOnline.Value = ""
+        txtCustFrmOnline.Value = ""
+    End Sub
+
+    Private Sub FormatDgvReadWHIssuedRequest()
+        'With dgvReadWHIssuedRequest
+        '    If .RowCount > 0 Then
+        '        .Columns(0).HeaderText = "PullSignal"
+        '        .Columns(1).HeaderText = "LotNo"
+        '        .Columns(2).HeaderText = "ItemNo"
+        '        .Columns(3).HeaderText = "ProductNo"
+        '        .Columns(4).HeaderText = "CutomerPart"
+        '        .Columns(5).HeaderText = "OwnerPart"
+        '        .Columns(6).HeaderText = "ProductDesc"
+        '        .Columns(7).HeaderText = "RequestQTY"
+        '        .Columns(8).HeaderText = "QTYUnit"
+        '        .Columns(9).HeaderText = "OrderNo"
+        '        .Columns(10).HeaderText = "CustomerLot"
+        '        .Columns(11).HeaderText = "ManuFacturingDate"
+        '        .Columns(12).HeaderText = "ExpireDate"
+
+        '        .Columns(0).Width = 100
+        '        .Columns(1).Width = 100
+        '        .Columns(2).Width = 100
+        '        .Columns(3).Width = 100
+        '        .Columns(4).Width = 100
+        '        .Columns(5).Width = 100
+        '        .Columns(6).Width = 200
+        '        .Columns(7).Width = 100
+        '        .Columns(8).Width = 100
+        '        .Columns(9).Width = 100
+        '        .Columns(10).Width = 100
+        '        .Columns(11).Width = 100
+        '        .Columns(12).Width = 100
+
+
+        '        .Columns(0).ReadOnly = True
+        '        .Columns(1).ReadOnly = True
+        '        .Columns(2).ReadOnly = True
+        '        .Columns(3).ReadOnly = True
+        '        .Columns(4).ReadOnly = True
+        '        .Columns(5).ReadOnly = True
+        '        .Columns(6).ReadOnly = True
+        '        .Columns(7).ReadOnly = True
+        '        .Columns(8).ReadOnly = True
+        '        .Columns(9).ReadOnly = True
+        '        .Columns(10).ReadOnly = True
+        '        .Columns(11).ReadOnly = True
+        '        .Columns(12).ReadOnly = True
+
+
+        '    End If
+        'End With
+    End Sub
+
+    Private Sub FormatDgvReadAssign()
+        'With dgvReadAssign
+        '    If .RowCount > 0 Then
+        '        .Columns(0).HeaderText = "PullSignal"
+        '        .Columns(1).HeaderText = "LotNo"
+        '        .Columns(2).HeaderText = "ItemNo"
+        '        .Columns(3).HeaderText = "ProductNo"
+        '        .Columns(4).HeaderText = "CutomerPart"
+        '        .Columns(5).HeaderText = "OwnerPart"
+        '        .Columns(6).HeaderText = "ProductDesc"
+        '        .Columns(7).HeaderText = "RequestQTY"
+        '        .Columns(8).HeaderText = "QTYUnit"
+        '        .Columns(9).HeaderText = "OrderNo"
+        '        .Columns(10).HeaderText = "CustomerLot"
+        '        .Columns(11).HeaderText = "ManuFacturingDate"
+        '        .Columns(12).HeaderText = "ExpireDate"
+        '        '.Columns(13).HeaderText = "OrderFrmOnline"
+        '        '.Columns(14).HeaderText = "CustFrmOnline"
+
+        '        .Columns(0).Width = 100
+        '        .Columns(1).Width = 100
+        '        .Columns(2).Width = 100
+        '        .Columns(3).Width = 100
+        '        .Columns(4).Width = 100
+        '        .Columns(5).Width = 100
+        '        .Columns(6).Width = 200
+        '        .Columns(7).Width = 100
+        '        .Columns(8).Width = 100
+        '        .Columns(9).Width = 100
+        '        .Columns(10).Width = 100
+        '        .Columns(11).Width = 100
+        '        .Columns(12).Width = 100
+        '        '.Columns(13).Width = 100
+        '        '.Columns(14).Width = 100
+
+        '        .Columns(0).ReadOnly = True
+        '        .Columns(1).ReadOnly = True
+        '        .Columns(2).ReadOnly = True
+        '        .Columns(3).ReadOnly = True
+        '        .Columns(4).ReadOnly = True
+        '        .Columns(5).ReadOnly = True
+        '        .Columns(6).ReadOnly = True
+        '        .Columns(7).ReadOnly = True
+        '        .Columns(8).ReadOnly = True
+        '        .Columns(9).ReadOnly = True
+        '        .Columns(10).ReadOnly = True
+        '        .Columns(11).ReadOnly = True
+        '        .Columns(12).ReadOnly = True
+        '        '.Columns(13).ReadOnly = True
+        '        '.Columns(14).ReadOnly = True
+
+        '    End If
+        'End With
+    End Sub
+
+    Private Sub FormatDgvReadWHIssuedRequestNJR()
+        'With dgvReadWHIssuedRequestNJR
+        '    If .RowCount > 0 Then
+        '        .Columns(0).HeaderText = "PullSignal"
+        '        .Columns(1).HeaderText = "LotNo"
+        '        .Columns(2).HeaderText = "ItemNo"
+        '        .Columns(3).HeaderText = "ProductNo"
+        '        .Columns(4).HeaderText = "CutomerPart"
+        '        .Columns(5).HeaderText = "OwnerPart"
+        '        .Columns(6).HeaderText = "ProductDesc"
+        '        .Columns(7).HeaderText = "RequestQTY"
+        '        .Columns(8).HeaderText = "QTYUnit"
+        '        .Columns(9).HeaderText = "OrderNo"
+        '        .Columns(10).HeaderText = "CustomerLot"
+        '        .Columns(11).HeaderText = "ManuFacturingDate"
+        '        .Columns(12).HeaderText = "ExpireDate"
+
+
+        '        .Columns(0).Width = 100
+        '        .Columns(1).Width = 100
+        '        .Columns(2).Width = 100
+        '        .Columns(3).Width = 100
+        '        .Columns(4).Width = 100
+        '        .Columns(5).Width = 100
+        '        .Columns(6).Width = 200
+        '        .Columns(7).Width = 100
+        '        .Columns(8).Width = 100
+        '        .Columns(9).Width = 100
+        '        .Columns(10).Width = 100
+        '        .Columns(11).Width = 100
+        '        .Columns(12).Width = 100
+
+
+
+        '        .Columns(0).ReadOnly = True
+        '        .Columns(1).ReadOnly = True
+        '        .Columns(2).ReadOnly = True
+        '        .Columns(3).ReadOnly = True
+        '        .Columns(4).ReadOnly = True
+        '        .Columns(5).ReadOnly = True
+        '        .Columns(6).ReadOnly = True
+        '        .Columns(7).ReadOnly = True
+        '        .Columns(8).ReadOnly = True
+        '        .Columns(9).ReadOnly = True
+        '        .Columns(10).ReadOnly = True
+        '        .Columns(11).ReadOnly = True
+        '        .Columns(12).ReadOnly = True
+
+
+        '    End If
+        'End With
+    End Sub
+
+    Protected Sub btnSaveNew_AssignDetail_ServerClick(sender As Object, e As EventArgs)
+        Dim usename As String = CStr(Session("UserName"))
+        Dim form As String = "frmIssued"
+        If classPermis.CheckSave(form, usename) = True Then
+            SaveRequestedISSUE_New()
+            ReadDataRequestedISSUE()
+            ReadDataRequestedISSUE_PickPack()
+        Else
+
+        End If
+    End Sub
+    Private Sub SaveRequestedISSUE_New()
+        Dim ManufacturingDate As Nullable(Of Date)
+        Dim ExpiredDate As Nullable(Of Date)
+        Dim RequestedQuantity As String
+        Dim PriceForeigh As String
+        Dim PriceBath As String
+        If txtLOtNo.Value.Trim() = "" Then
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ LOT NO ก่อน !!!')", True)
+            txtLOtNo.Focus()
+            Exit Sub
+        End If
+
+        If txtPullSignal.Value.Trim() = "" Then
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ Pull Signal ก่อน !!!')", True)
+            txtPullSignal.Focus()
+            Exit Sub
+        End If
+
+        If txtItemNo.Value.Trim() = "" Then
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ Item No ก่อน !!!')", True)
+            txtItemNo.Focus()
+            Exit Sub
+        End If
+        If chkNotUseDate_AssignDetail.Checked = False Then         
+            ManufacturingDate = DateTime.ParseExact(txtdatepickerManufacturing_AssignDetail.Text, "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US"))
+            ExpiredDate = DateTime.ParseExact(txtdatepickerExpiredDate_AssignDetail.Text, "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US"))
+        ElseIf chkNotUseDate_AssignDetail.Checked = True Then
+            ManufacturingDate = Nothing
+            ExpiredDate = Nothing
+        End If
+        If String.IsNullOrEmpty(txtRequestedQuantity.Value.Trim) Then
+            RequestedQuantity = "0.0"
+        Else
+            RequestedQuantity = txtRequestedQuantity.Value.Trim
+        End If
+        If String.IsNullOrEmpty(txtPriceForeigh.Value.Trim) Then
+            PriceForeigh = "0.0"
+        Else
+            PriceForeigh = txtPriceForeigh.Value.Trim
+        End If
+        If String.IsNullOrEmpty(txtPriceBath.Value.Trim) Then
+            PriceBath = "0.0"
+        Else
+            PriceBath = txtPriceBath.Value.Trim
+        End If
+       
+        If MsgBox("คุณต้องการเพิ่มรายการ RequestedISSUE ใหม่ ใช่หรือไม่ ?", MsgBoxStyle.YesNo, "คำยืนยัน") = MsgBoxResult.Yes Then
+
+            Try
+                db.tblWHRequestedISSUEs.Add(New tblWHRequestedISSUE With { _
+                                    .PullSignal = txtPullSignal.Value.Trim, _
+                                    .LotNo = txtLOtNo.Value.Trim, _
+                                    .ItemNo = CInt(txtItemNo.Value.Trim), _
+                                    .ProductNo = txtProductCode.Value.Trim, _
+                                    .CutomerPart = txtCustomerPart.Value.Trim, _
+                                    .OwnerPart = txtOwnerPart.Value.Trim, _
+                                    .ProductDesc = txtProductDesc.Value.Trim, _
+                                    .RequestQTY = CType(CDbl(RequestedQuantity).ToString("#,##0.000"), Double?), _
+                                    .QTYUnit = cboRequestUnit.Text.Trim, _
+                                    .OrderNo = txtOrder.Value.Trim, _
+                                    .ManufacturingDate = ManufacturingDate, _
+                                    .ExpiredDate = ExpiredDate, _
+                                    .PriceForeigh = CType(CDbl(PriceForeigh).ToString("#,##0.0000"), Double?), _
+                                    .PriceBath = CType(CDbl(PriceBath).ToString("#,##0.0000"), Double?), _
+                                    .CustomerLot = txtCustomerLot.Value.Trim, _
+                                    .CreateBy = CStr(Session("UserName")), _
+                                    .CreateDate = Now, _
+                                    .AvailableRequestQTY = CType(CDbl(RequestedQuantity).ToString("#,##0.000"), Double?), _
+                                    .ItemNo1 = CType(txtItemNo.Value.Trim, Double?), _
+                                    .PalletNo = txtPalletNoAssign.Value.Trim, _
+                                    .OrderFrmOnline = txtOrderFrmOnline.Value.Trim, _
+                                    .CustFrmOnline = txtCustFrmOnline.Value.Trim
+                                            })
+                db.SaveChanges()
+
+            Catch ex As Exception
+                ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('" & ex.Message & "')", True)
+            End Try
+        End If
+        txtItemNo.Focus()
     End Sub
 End Class

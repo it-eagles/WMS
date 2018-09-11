@@ -68,6 +68,15 @@ Partial Public Class PickingWH
     Protected WithEvents btnSaveEdit As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
+    '''picking_ control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents picking_ As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
     '''txtPullSignal control.
     '''</summary>
     '''<remarks>
@@ -878,15 +887,6 @@ Partial Public Class PickingWH
     Protected WithEvents btnDelete_AssignDetail As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
-    '''btnDeleteAll_AssignDetail control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents btnDeleteAll_AssignDetail As Global.System.Web.UI.HtmlControls.HtmlButton
-
-    '''<summary>
     '''txtSelectFileForImport_AssignDetail control.
     '''</summary>
     '''<remarks>
@@ -905,6 +905,15 @@ Partial Public Class PickingWH
     Protected WithEvents btnImport_AssignDetail As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
+    '''dgvImported control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents dgvImported As Global.System.Web.UI.WebControls.Repeater
+
+    '''<summary>
     '''pickpack_fieldset control.
     '''</summary>
     '''<remarks>
@@ -912,6 +921,15 @@ Partial Public Class PickingWH
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents pickpack_fieldset As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
+    '''dgvReadWHIssuedRequest control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents dgvReadWHIssuedRequest As Global.System.Web.UI.WebControls.Repeater
 
     '''<summary>
     '''rdbOwner control.
@@ -986,6 +1004,15 @@ Partial Public Class PickingWH
     Protected WithEvents chkCustomerLot_PickPack As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
 
     '''<summary>
+    '''dgvReadWHIssuedDetail control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents dgvReadWHIssuedDetail As Global.System.Web.UI.WebControls.Repeater
+
+    '''<summary>
     '''rcbFIFO control.
     '''</summary>
     '''<remarks>
@@ -1004,22 +1031,13 @@ Partial Public Class PickingWH
     Protected WithEvents rcbLIFO As Global.System.Web.UI.WebControls.RadioButton
 
     '''<summary>
-    '''btnSelectAll control.
+    '''txtPalletNo control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents btnSelectAll As Global.System.Web.UI.HtmlControls.HtmlButton
-
-    '''<summary>
-    '''btnCancelSelectAll control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents btnCancelSelectAll As Global.System.Web.UI.HtmlControls.HtmlButton
+    Protected WithEvents txtPalletNo As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
     '''txtFIFO_PickPack control.
@@ -1040,13 +1058,13 @@ Partial Public Class PickingWH
     Protected WithEvents txtLIFO_PickPack As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''ddlQuantityOfPick_PickPack control.
+    '''txtQTYOfPick control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlQuantityOfPick_PickPack As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtQTYOfPick As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
     '''txtSumQTYPick1 control.
@@ -1085,6 +1103,15 @@ Partial Public Class PickingWH
     Protected WithEvents btnCancel As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
+    '''dgvWHPickDetail control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents dgvWHPickDetail As Global.System.Web.UI.WebControls.Repeater
+
+    '''<summary>
     '''picknjr_fieldset control.
     '''</summary>
     '''<remarks>
@@ -1094,6 +1121,15 @@ Partial Public Class PickingWH
     Protected WithEvents picknjr_fieldset As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
+    '''dgvReadWHIssuedRequestNJR control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents dgvReadWHIssuedRequestNJR As Global.System.Web.UI.WebControls.Repeater
+
+    '''<summary>
     '''ddlWHSite_PickNJR control.
     '''</summary>
     '''<remarks>
@@ -1101,6 +1137,15 @@ Partial Public Class PickingWH
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents ddlWHSite_PickNJR As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''dgvItemAuto control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents dgvItemAuto As Global.System.Web.UI.WebControls.Repeater
 
     '''<summary>
     '''txtQuantityOfPick_PickNJR control.
@@ -1121,6 +1166,15 @@ Partial Public Class PickingWH
     Protected WithEvents btnAutoPickNJR As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
+    '''dgvNewPick control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents dgvNewPick As Global.System.Web.UI.WebControls.Repeater
+
+    '''<summary>
     '''pickautopallet_fieldset control.
     '''</summary>
     '''<remarks>
@@ -1130,13 +1184,31 @@ Partial Public Class PickingWH
     Protected WithEvents pickautopallet_fieldset As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
-    '''ddlWHSite_PickAutoPallet control.
+    '''dgvReadAssign control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlWHSite_PickAutoPallet As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents dgvReadAssign As Global.System.Web.UI.WebControls.Repeater
+
+    '''<summary>
+    '''dcbSite2 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents dcbSite2 As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''dgvPickPallet control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents dgvPickPallet As Global.System.Web.UI.WebControls.Repeater
 
     '''<summary>
     '''btnAutoPickPallet control.
@@ -1319,29 +1391,29 @@ Partial Public Class PickingWH
     Protected WithEvents dgvPicklist As Global.System.Web.UI.WebControls.Repeater
 
     '''<summary>
-    '''EndCustomerPanel control.
+    '''plProduct control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents EndCustomerPanel As Global.System.Web.UI.WebControls.Panel
+    Protected WithEvents plProduct As Global.System.Web.UI.WebControls.Panel
 
     '''<summary>
-    '''EndCustomerUpdatePanel control.
+    '''upProduct control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents EndCustomerUpdatePanel As Global.System.Web.UI.UpdatePanel
+    Protected WithEvents upProduct As Global.System.Web.UI.UpdatePanel
 
     '''<summary>
-    '''dgvCustomer control.
+    '''dgvProduct control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents dgvCustomer As Global.System.Web.UI.WebControls.Repeater
+    Protected WithEvents dgvProduct As Global.System.Web.UI.WebControls.Repeater
 End Class

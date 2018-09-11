@@ -276,7 +276,7 @@
                                                                         <div class="col-sm-4">
                                                                         </div>
                                                                         <div class="col-sm-8">
-                                                                            <button type="submit" runat="server" class="btn btn-primary " id="btnSumQTY_ConGoodRec" title="btnSumQTY_ConGoodRec" onserverclick="btnSumQTY_ConGoodRec_ServerClick">Sum QTY</button>
+                                                                            <button type="submit" runat="server" class="btn btn-primary " id="btnSumQTY_ConGoodRec" title="btnSumQTY_ConGoodRec">Sum QTY</button>
                                                                         </div>
                                                                     </div>
                                                                 </div>

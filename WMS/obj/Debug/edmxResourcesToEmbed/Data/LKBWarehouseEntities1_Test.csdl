@@ -842,7 +842,7 @@
     <Property Name="CustomsConfirmDate" Type="DateTime" Precision="3" />
     <Property Name="App" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="CreateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="CreateDate" Type="DateTime" Precision="3" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
     <Property Name="UpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="UpdateDate" Type="DateTime" Precision="3" />
     <Property Name="rowguid" Type="Guid" Nullable="false" />
@@ -1712,7 +1712,7 @@
     <Property Name="CreateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="CreateDate" Type="DateTime" Precision="3" Nullable="false" />
     <Property Name="UpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateDate" Type="DateTime" Precision="3" Nullable="false" />
   </EntityType>
   <EntityType Name="tblRecEASInvoice">
     <Key>
@@ -2685,7 +2685,7 @@
     <Property Name="Type" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="ManufacturingDate" Type="DateTime" Precision="3" />
     <Property Name="ExpiredDate" Type="DateTime" Precision="3" />
-    <Property Name="ReceiveDate" Type="DateTime" Precision="3" />
+    <Property Name="ReceiveDate" Type="DateTime" Precision="3" Nullable="true" />
     <Property Name="Quantity" Type="Double" />
     <Property Name="QuantityUnit" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="Weigth" Type="Double" />

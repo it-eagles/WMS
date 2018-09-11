@@ -3094,8 +3094,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHRemarkMoveJob' does not have
           <Property Name="UserBy" Type="varchar" MaxLength="50" />
           <Property Name="LastUpdate" Type="datetime" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'LKBWarehouse.dbo.tblWHRequestedISSUE' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tblWHRequestedISSUE">
           <Key>
             <PropertyRef Name="PullSignal" />
@@ -3341,6 +3339,7 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHRequestedISSUE' does not hav
           <EntitySet Name="tblWHPickPackNewProduct" EntityType="Self.tblWHPickPackNewProduct" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblWHPrepairGoodsReceive" EntityType="Self.tblWHPrepairGoodsReceive" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblWHPrepairGoodsReceiveDetail" EntityType="Self.tblWHPrepairGoodsReceiveDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblWHRequestedISSUE" EntityType="Self.tblWHRequestedISSUE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblWHStockCtrl" EntityType="Self.tblWHStockCtrl" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblWHStockMovement" EntityType="Self.tblWHStockMovement" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblGenAutoNo" EntityType="Self.tblGenAutoNo" store:Type="Tables" store:Schema="dbo">
@@ -3425,44 +3424,6 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHRequestedISSUE' does not hav
     [tblWHRemarkMoveJob].[UserBy] AS [UserBy], 
     [tblWHRemarkMoveJob].[LastUpdate] AS [LastUpdate]
     FROM [dbo].[tblWHRemarkMoveJob] AS [tblWHRemarkMoveJob]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="tblWHRequestedISSUE" EntityType="Self.tblWHRequestedISSUE" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [tblWHRequestedISSUE].[PullSignal] AS [PullSignal], 
-    [tblWHRequestedISSUE].[LotNo] AS [LotNo], 
-    [tblWHRequestedISSUE].[ItemNo] AS [ItemNo], 
-    [tblWHRequestedISSUE].[ProductNo] AS [ProductNo], 
-    [tblWHRequestedISSUE].[CutomerPart] AS [CutomerPart], 
-    [tblWHRequestedISSUE].[OwnerPart] AS [OwnerPart], 
-    [tblWHRequestedISSUE].[ProductDesc] AS [ProductDesc], 
-    [tblWHRequestedISSUE].[RequestQTY] AS [RequestQTY], 
-    [tblWHRequestedISSUE].[QTYUnit] AS [QTYUnit], 
-    [tblWHRequestedISSUE].[OrderNo] AS [OrderNo], 
-    [tblWHRequestedISSUE].[PriceForeigh] AS [PriceForeigh], 
-    [tblWHRequestedISSUE].[PriceBath] AS [PriceBath], 
-    [tblWHRequestedISSUE].[CustomerLot] AS [CustomerLot], 
-    [tblWHRequestedISSUE].[ManufacturingDate] AS [ManufacturingDate], 
-    [tblWHRequestedISSUE].[ExpiredDate] AS [ExpiredDate], 
-    [tblWHRequestedISSUE].[CreateBy] AS [CreateBy], 
-    [tblWHRequestedISSUE].[CreateDate] AS [CreateDate], 
-    [tblWHRequestedISSUE].[ModifyBy] AS [ModifyBy], 
-    [tblWHRequestedISSUE].[ModifyDate] AS [ModifyDate], 
-    [tblWHRequestedISSUE].[AvailableRequestQTY] AS [AvailableRequestQTY], 
-    [tblWHRequestedISSUE].[ItemNo1] AS [ItemNo1], 
-    [tblWHRequestedISSUE].[WHSource] AS [WHSource], 
-    [tblWHRequestedISSUE].[ItemInvoice] AS [ItemInvoice], 
-    [tblWHRequestedISSUE].[NetWeight] AS [NetWeight], 
-    [tblWHRequestedISSUE].[NetWeightUnit] AS [NetWeightUnit], 
-    [tblWHRequestedISSUE].[GrossWeight] AS [GrossWeight], 
-    [tblWHRequestedISSUE].[GrossWeightUnit] AS [GrossWeightUnit], 
-    [tblWHRequestedISSUE].[Currency] AS [Currency], 
-    [tblWHRequestedISSUE].[Amount] AS [Amount], 
-    [tblWHRequestedISSUE].[Package] AS [Package], 
-    [tblWHRequestedISSUE].[Origin] AS [Origin], 
-    [tblWHRequestedISSUE].[PalletNo] AS [PalletNo], 
-    [tblWHRequestedISSUE].[OrderFrmOnline] AS [OrderFrmOnline], 
-    [tblWHRequestedISSUE].[CustFrmOnline] AS [CustFrmOnline]
-    FROM [dbo].[tblWHRequestedISSUE] AS [tblWHRequestedISSUE]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_tblCompanyGuarantee1_tblStatusBalance" Association="Self.FK_tblCompanyGuarantee1_tblStatusBalance">
             <End Role="tblStatusBalance" EntitySet="tblStatusBalance" />
@@ -4315,7 +4276,7 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHRequestedISSUE' does not hav
           <Property Name="CustomsConfirmDate" Type="DateTime" Precision="3" />
           <Property Name="App" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="CreateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CreateDate" Type="DateTime" Precision="3" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
           <Property Name="UpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="UpdateDate" Type="DateTime" Precision="3" />
           <Property Name="rowguid" Type="Guid" Nullable="false" />
@@ -5185,7 +5146,7 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHRequestedISSUE' does not hav
           <Property Name="CreateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="CreateDate" Type="DateTime" Precision="3" Nullable="false" />
           <Property Name="UpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" Nullable="false" />
         </EntityType>
         <EntityType Name="tblRecEASInvoice">
           <Key>
@@ -6158,7 +6119,7 @@ warning 6002: The table/view 'LKBWarehouse.dbo.tblWHRequestedISSUE' does not hav
           <Property Name="Type" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="ManufacturingDate" Type="DateTime" Precision="3" />
           <Property Name="ExpiredDate" Type="DateTime" Precision="3" />
-          <Property Name="ReceiveDate" Type="DateTime" Precision="3" />
+          <Property Name="ReceiveDate" Type="DateTime" Precision="3" Nullable="true" />
           <Property Name="Quantity" Type="Double" />
           <Property Name="QuantityUnit" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Weigth" Type="Double" />
