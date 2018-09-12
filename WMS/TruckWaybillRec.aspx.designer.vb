@@ -554,6 +554,33 @@ Partial Public Class TruckWaybillRec
     Protected WithEvents btnCencel_Detail As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
+    '''Repea2Panel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Repea2Panel As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''Repea2UpdatePanel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Repea2UpdatePanel As Global.System.Web.UI.UpdatePanel
+
+    '''<summary>
+    '''Repea2_Invoice control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Repea2_Invoice As Global.System.Web.UI.WebControls.Repeater
+
+    '''<summary>
     '''TabName control.
     '''</summary>
     '''<remarks>

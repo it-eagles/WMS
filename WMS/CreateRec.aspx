@@ -1549,14 +1549,14 @@
                                                         <div class="col-sm-8">
                                                         </div>
                                                         <div class="col-sm-4">
-                                                            <button type="submit" runat="server" class="btn btn-soundcloud" id="btnExportCSVFileInvoice" title="btnExportCSVFileInvoice">Export csv File   </button>
+                                                            <button type="submit" runat="server" class="btn btn-soundcloud" id="btnExportCSVFileInvoice" onserverclick="btnExportCSVFileInvoice_ServerClick" title="btnExportCSVFileInvoice">Export csv File   </button>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <div class="col-sm-8">
                                                         </div>
                                                         <div class="col-sm-4">
-                                                            <button type="submit" runat="server" class="btn btn-success" id="btnSaveToConfirmNJRCInvoice" title="btnSaveToConfirmNJRCInvoice">Save To Confirm NJRC</button>
+                                                            <button type="submit" runat="server" class="btn btn-success" id="btnSaveToConfirmNJRCInvoice" onserverclick="btnSaveToConfirmNJRCInvoice_ServerClick" title="btnSaveToConfirmNJRCInvoice">Save To Confirm NJRC</button>
                                                         </div>
                                                     </div>
 

@@ -24,7 +24,7 @@ Public Class MasterGoods
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If Not Me.IsPostBack Then
-            showDATAStock()
+            ReadDATAStock()
             showExpCurrency()
             showGroupColor()
             showGroupGoods()
@@ -35,7 +35,7 @@ Public Class MasterGoods
             showProductUnit()
             showUnitofVolume()
             show()
-            showReapeaterStock()
+
         End If
     End Sub
     Private Sub showGroupGoods()
@@ -248,11 +248,7 @@ Public Class MasterGoods
             Throw ex
         End Try
     End Sub
-    Protected Sub saveGoods_click(sender As Object, e As EventArgs)
-        addGoods()
-        Dim st As String = CStr(Convert.ToDecimal(txtImpSpeciticRate.Value))
 
-    End Sub
 
     Protected Sub genCode_click(sender As Object, e As EventArgs)
         GenCode()
@@ -266,23 +262,6 @@ Public Class MasterGoods
             Code = CStr(txtGenCode.Value) & "-" & CStr(txtCodeGoods.Value) & "-" & CStr(txtNoCodeGoods.Value) & CStr(txtCodeSize.Value) & CStr(txtCodeColor.Value)
             txtProductCode.Value = Code
         End If
-    End Sub
-
-    Private Sub showDATAStock()
-
-        'Dim sc = From ct In db.tblProductDetails
-        '         Select ct.ProductCode,
-        '         ct.PONo,
-        '         ct.ImpProductCode,
-        '         ct.EndUserPart,
-        '         ct.ExpProductCode
-
-        'If sc.Count > 0 Then
-        '    Repeater1.DataSource = sc.ToList
-        '    Repeater1.DataBind()
-
-        'End If
-      
     End Sub
     Private Sub show()
         txtMinimunStock.Value = "0"
@@ -439,38 +418,401 @@ Public Class MasterGoods
         End If
 
     End Sub
-    Protected Sub Repeater1_ItemCommand(source As Object, e As RepeaterCommandEventArgs) Handles Repeater1.ItemCommand
-        Dim index As String = CStr(e.CommandArgument)
+    '--------------------------------------------------------Show Data Flight In Modal-----------------------------------------
+    Private Sub ReadDATAStock()
+        Dim testdate As Integer
+        Dim Pro As String
+        If String.IsNullOrEmpty(txtProductCode.Value.Trim) Then
+            testdate = CInt(Convert.ToDateTime(Date.Now).ToString("yyyy"))
+        Else
+            Pro = txtProductCode.Value.Trim
+        End If
 
-        If e.CommandName.Equals("editGoods") Then
-            Response.Write("<script>window.open('UpdateGoods.aspx?ProductCode=" & index & "',target='_self');</script>")
-        ElseIf e.CommandName.Equals("viewGoods") Then
+        Dim cons = (From p In db.tblWHStockCtrls
+                    Where p.ProductCode = txtProductCode.Value.Trim Order By p.CreateDate Descending
+                   Select New With {p.ProductCode,
+                                    p.OwnerPart,
+                                    p.ENDUserPart,
+                                    p.ProductDescription}).ToList()
 
-            Response.Write("<script>window.open('ViewGoods.aspx?ProductCode=" & index & "',target='_self');</script>")
+        If cons.Count > 0 Then
+            Repeater10.DataSource = cons.ToList
+            Repeater10.DataBind()
+        Else
+            Repeater10.DataSource = Nothing
+            Repeater10.DataBind()
+            Exit Sub
 
         End If
     End Sub
-    Public Sub showReapeaterStock()
-        'Dim formlist = (From u In db.tblWHStockCtrls)
+    '--------------------------------------------------------Click Data Data Flight -----------------------------------------
+    Protected Sub Repeater10_ItemCommand(source As Object, e As RepeaterCommandEventArgs) Handles Repeater10.ItemCommand
+        'Dim Numberr As Double = CDbl(e.CommandArgument)
+        'Try
+        '    If e.CommandName.Equals("Selectdataflight") Then
 
-        'If formlist.Count > 0 Then
-        '    Repeater1.DataSource = formlist.ToList
-        '    Repeater1.DataBind()
-        'Else
-        '    Me.Repeater1.DataSource = Nothing
-        '    Me.Repeater1.DataBind()
-        'End If
+        '        If String.IsNullOrEmpty(CStr(Numberr)) Then
+        '            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('เป็นค่าว่าง');", True)
+        '        Else
+        '            Dim user = (From u In db.tblImpLogFlights Where u.LotNo = txtJobno.Value.Trim And u.Number = Numberr).SingleOrDefault
+
+        '            txtFlightNo.Value = user.FlightNo
+        '            NumberFlight = user.Number
+        '            txtdatepickerFlightDateInvoice.Text = CStr(user.DateFlight)
+        '            txtQuantity_PLT_Skid_Invoice.Value = CStr(user.Quantity)
+        '            txtQuantity_PLT_Skid_Invoice2.Value = user.HouseNo
+        '            If String.IsNullOrEmpty(user.UnitQuantity) Then
+        '                'ddlQuantity_PLT_Skid_Invoice.Text = ""
+        '            Else
+        '                ddlQuantity_PLT_Skid_Invoice.Text = user.UnitQuantity
+        '            End If
+        '            If String.IsNullOrEmpty(user.House) Then
+        '                'ddlQuantity_PLT_Skid_Invoice2.Text = ""
+        '            Else
+        '                ddlQuantity_PLT_Skid_Invoice2.Text = user.House
+        '            End If
+
+        '        End If
+        '    End If
+        'Catch ex As Exception
+        'End Try
     End Sub
 
     Protected Sub btnAddHead_ServerClick(sender As Object, e As EventArgs)
-
+        btnAddGoods.Visible = True
+        btnSaveEditHead.Visible = False
+        btnmodal.Visible = True
+        btnSearchProduct.Visible = False
     End Sub
 
     Protected Sub btnEditHead_ServerClick(sender As Object, e As EventArgs)
+        btnAddGoods.Visible = False
+        btnSaveEditHead.Visible = True
+        btnmodal.Visible = False
+        btnSearchProduct.Visible = True
+    End Sub
+    Protected Sub saveGoods_click(sender As Object, e As EventArgs)
+        Dim user As String = CStr(Session("UserName"))
+        Dim form As String = "frmProductDetail"
+        Dim cu = From um In db.tblUserMenus Where um.UserName = user And um.Form = form And um.Save_ = 1
+        If cu.Any Then
+            addGoods()
+            SaveDATAStock_New()
+            InsertData()
+            Dim st As String = CStr(Convert.ToDecimal(txtImpSpeciticRate.Value))
+        Else
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ์เมนูนี้ !!!')", True)
+        End If
+
+
 
     End Sub
 
     Protected Sub btnSaveEditHead_ServerClick(sender As Object, e As EventArgs)
+        Dim user As String = CStr(Session("UserName"))
+        Dim form As String = "frmProductDetail"
+        Dim cu = From um In db.tblUserMenus Where um.UserName = user And um.Form = form And um.Save_ = 1
+        If cu.Any Then
+            SaveDATA_Modify()
+            SaveDATAStock_Modify()
+            InsertData()
+        Else
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ์เมนูนี้ !!!')", True)
+        End If
+    End Sub
+
+    Protected Sub cdbGroupGoods_SelectedIndexChanged(sender As Object, e As EventArgs)
+        Dim mas = (From m In db.tblMasterCode2 Where m.Description = cdbGroupGoods.Text.Trim Select m.Code, m.Description).SingleOrDefault
+        txtCodeGoods.Value = mas.Code
 
     End Sub
+
+    Protected Sub cdbGroupColor_SelectedIndexChanged(sender As Object, e As EventArgs)
+        Dim mas = (From m In db.tblMasterCode2 Where m.Description = cdbGroupColor.Text.Trim Select m.Code, m.Description).SingleOrDefault
+        txtCodeColor.Value = mas.Code
+    End Sub
+    Private Sub SaveDATAStock_New() 'Save Data New
+        Dim ChkDes1 As String = ""
+        If txtProductCode.Value.Trim = "" Then
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาป้อน รหัส Product Code ก่อน !!!');", True)
+            txtProductCode.Focus()
+            Exit Sub
+        End If
+        'sb.Append("INSERT INTO tblWHStockCtrl (ProductCode,OwnerPart,EndUserPart,ProductDescription,MinimumStock,Adjustment,DamageQTY,AvailableQTY,CreateBy,CreateDate)")
+        'sb.Append(" VALUES (@ProductCode,@OwnerPart,@EndUserPart,@ProductDescription,@MinimumStock,@Adjustment,@DamageQTY,@AvailableQTY,@CreateBy,@CreateDate)")
+
+        If String.IsNullOrEmpty(txtImpDesc1.Value.Trim) Then
+            ChkDes1 = txtExpDesc1.Value.Trim
+        Else
+            ChkDes1 = txtImpDesc1.Value.Trim
+        End If
+
+        Using tran As New TransactionScope()
+            Try
+                db.Database.Connection.Open()
+
+                db.tblWHStockCtrls.Add(New tblWHStockCtrl With { _
+                .ProductCode = txtProductCode.Value.Trim, _
+                .OwnerPart = txtCustomerPart.Value.Trim, _
+                .ENDUserPart = txtEndUserPart.Value.Trim, _
+                .ProductDescription = ChkDes1, _
+                .MinimumStock = CType(txtMinimunStock.Value.Trim, Double?), _
+                .Adjustment = CType(txtAdjustment.Value.Trim, Double?), _
+                .DamageQTY = CType(txtDamageQty.Value.Trim, Double?), _
+                .AvailableQTY = CType(txtAvailableQTY.Value.Trim, Double?), _
+                .CreateBy = CStr(Session("UserName")), _
+                .CreateDate = Now
+                })
+                db.SaveChanges()
+                tran.Complete()
+
+            Catch ex As Exception
+                tran.Dispose()
+                ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาดที่ SaveDATAStock_New กรุณาบันทึกข้อมูลใหม่อีกครั้ง');", True)
+            End Try
+        End Using
+
+        'MessageBox.Show("คุณป้อน Product Code ซ้ำ !!!", "ผลการทำงาน", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+        txtProductCode.Focus()
+    End Sub
+    Private Sub InsertData()
+        Using tran As New TransactionScope()
+            Try
+                db.tblLogProductDetails.Add(New tblLogProductDetail With { _
+                                    .ProductCode = txtProductCode.Value.Trim, _
+                                    .UserBy = CStr(Session("UserName")), _
+                                    .LastUpDate = Now
+                                })
+                db.SaveChanges()
+                tran.Complete()
+                db.Database.Connection.Close()
+            Catch ex As Exception
+                tran.Dispose()
+                db.Database.Connection.Close()
+                ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด Function: InsertData กรุณาบันทึกข้อมูลใหม่อีกครั้ง');", True)
+            End Try
+        End Using
+    End Sub
+    Private Sub SaveDATA_Modify()
+        If txtProductCode.Value.Trim = "" Then
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาป้อน รหัส Product Code ก่อน !!!');", True)
+            txtProductCode.Focus()
+            Exit Sub
+        End If
+
+        If MsgBox("คุณต้องการแก้ไขข้อมูล Product Item ใช่หรือไม่ ?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+            Using tran As New TransactionScope()
+                Try
+                    db.Database.Connection.Open()
+
+                    Dim edit As tblProductDetail = (From c In db.tblProductDetails Where c.ProductCode = txtProductCode.Value.Trim
+                      Select c).First()
+                    If edit IsNot Nothing Then
+                        edit.PONo = txtProductPO.Value
+                        edit.CustomerPart = txtCustomerPart.Value
+                        edit.EndUserPart = txtEndUserPart.Value
+                        edit.ImpProductCode = txtImpProductCode.Value
+                        edit.TariffCode = dcboImpTariffCode.Text
+                        edit.ImpDesc1 = txtImpDesc1.Value
+                        edit.ImpStatus1 = ImpStatus1
+                        edit.ImpDesc2 = txtImpDesc2.Value
+                        edit.ImpStatus2 = ImpStatus2
+                        edit.ImpDesc3 = txtImpDesc3.Value
+                        edit.ImpStatus3 = ImpStatus3
+                        edit.ImpProductAttribute1 = txtImpProductAttribute1.Value
+                        edit.ImpProductAttribute2 = txtImpProductAttribute2.Value
+                        edit.ImpTariffSequence = dcboImpTariffSequence.Text
+                        edit.ImpStatisticalCode = dcboImpStatisticalCode.Text
+                        edit.ImpCustomsProductCode = txtImpCustomsProductCode.Value
+                        edit.ImpProductYear = txtImpProductYear.Value
+                        edit.ImpDutytype = txtImpDutyType.Value
+                        edit.ImpSpeciticRate = CType(Convert.ToDouble(txtImpSpeciticRate.Value).ToString("#,##0.000"), Double?)
+                        edit.ImpValueRate_P = CType(Convert.ToDouble(txtImpValueRateP.Value).ToString("#,##0.000"), Double?)
+                        edit.ImpSpecificCal = txtImpSpecificCal.Value
+                        edit.ImpSpecificRate_P = CType(Convert.ToDouble(txtImpSpecificRateP.Value).ToString("#,##0.000"), Double?)
+                        edit.ImpExemptVAT = CType(Convert.ToDouble(txtImpExemptVat.Value).ToString("#,##0.000"), Double?)
+                        edit.ImpExemptDuty = CType(Convert.ToDouble(txtImpExemptDuty.Value).ToString("#,##0.000"), Double?)
+                        edit.ImpExciseNo = txtImpExciseNo.Value
+                        edit.ImpSurchargeRate = CType(CDbl(txtImpSurchargeRate.Value).ToString("#,##0.000"), Double?)
+                        edit.ImpExciseRatePay = CType(Convert.ToDouble(txtImpExciseRatePay.Value).ToString("#,##0.000"), Double?)
+                        edit.ImpExciseRate = CType(Convert.ToDouble(txtImpExciseRate.Value).ToString("#,##0.000"), Double?)
+                        edit.ImpExciseSpcRatePay = CType(Convert.ToDouble(txtImpExciseSpcRatePay.Value).ToString("#,##0.000"), Double?)
+                        edit.ImpExciseSpcRate = CType(Convert.ToDouble(txtImpExciseSpcRate.Value).ToString("#,##0.000"), Double?)
+                        edit.ImpPriviege = txtImpPriviege.Value
+                        edit.ImpExemptExcise = txtImpExemptExcise.Value
+                        edit.ImpBrand = dcboImpBrand.Text
+                        edit.ImpValueRate = CType(Convert.ToDouble(txtImpValueRate.Value).ToString("#,##0.000"), Double?)
+                        edit.ImpCurrency = cboImpCurrency.Text
+                        edit.ImpExchangeRate = CType(Convert.ToDouble(txtImpExchangeRate.Value).ToString("#,##0.000"), Double?)
+                        edit.ImpValueRateAmount = CType(Convert.ToDouble(txtImpValueRateAmount.Value).ToString("#,##0.000"), Double?)
+                        edit.ExpProductCode = txtExpProductCode.Value
+                        edit.ExpDesc1 = txtExpDesc1.Value
+                        edit.ExpStatus1 = ExpStatus1
+                        edit.ExpDesc2 = txtExpDesc2.Value
+                        edit.ExpStatus2 = ExpStatus2
+                        edit.ExpDesc3 = txtExpDesc3.Value
+                        edit.ExpStatus3 = ExpStatus3
+                        edit.ExpProductAttribute1 = txtExpProductAttribute1.Value
+                        edit.ExpProductAttribute2 = txtExpProductAttribute2.Value
+                        edit.ExpTariffSequence = dcboExpTariffSequence.Text
+                        edit.ExpTariffCode = dcboExpTariffCode.Text
+                        edit.ExpCustomsProductCode = txtExpCustomsProductCode.Value
+                        edit.ExpStatisticalCode = dcboExpStatisticalCode.Text
+                        edit.ExpFomulaNo = txtExpFomulaNo.Value
+                        edit.ExpProductYear = txtExpProductYear.Value
+                        edit.ExpBOINo = txtExpBOINo.Value
+                        edit.Exp19BisTranNo = txtExp19BisTranNo.Value
+                        edit.ExpDutyType = txtExpDutyType.Value
+                        edit.ExpBondFormulaNo = txtExpBondFormulaNo.Value
+                        edit.ExpQTYCarton = CType(Convert.ToDouble(txtExpQtyCarton.Value).ToString("#,##0.000"), Double?)
+                        edit.ExpPriceForeight = CType(Convert.ToDouble(txtExpPriceForeight.Value).ToString("#,##0.000"), Double?)
+                        edit.ExpWeightCarton = CType(Convert.ToDouble(txtExpWeightCarton.Value).ToString("#,##0.000"), Double?)
+                        edit.ExpQTYPallet = CType(Convert.ToDouble(txtExpQtyPallet.Value).ToString("#,##0.000"), Double?)
+                        edit.ExpValueRate = CType(Convert.ToDouble(txtExpValueRate.Value).ToString("#,##0.000"), Double?)
+                        edit.ExpCurrency = cboExpCurrency.Text
+                        edit.ExpExchangeRate = CType(Convert.ToDouble(txtExpExchangeRate.Value).ToString("#,##0.000"), Double?)
+                        edit.ExpValueRateAmount = CType(Convert.ToDouble(txtExpValueRateAmount.Value).ToString("#,##0.000"), Double?)
+                        edit.CartonSetUnit = cboPackageofUnit.Text
+                        edit.CartonWidth = CType(Convert.ToDouble(txtProductWidth.Value).ToString("#,##0.000"), Double?)
+                        edit.CartonHeight = CType(Convert.ToDouble(txtProductHeight.Value).ToString("#,##0.000"), Double?)
+                        edit.CartonLenght = CType(Convert.ToDouble(txtProductLeng.Value).ToString("#,##0.000"), Double?)
+                        edit.CartonVolume = CType(Convert.ToDouble(txtProductVolume.Value).ToString("#,##0.000"), Double?)
+                        edit.CartonVolUnit = cboUnitofVolume.Text
+                        edit.PalletSetUnit = cboPackageUnit.Text
+                        edit.SpecialHandling = txtRemarks.Value.Trim
+                        edit.PalletWidth = CType(Convert.ToDouble(txtPackageWidth.Value).ToString("#,##0.000"), Double?)
+                        edit.PalletHeight = CType(Convert.ToDouble(txtPackageHeigh.Value).ToString("#,##0.000"), Double?)
+                        edit.PalletLenght = CType(Convert.ToDouble(txtPackageLenght.Value).ToString("#,##0.000"), Double?)
+                        edit.PalletNoCarton = CType(Convert.ToDouble(txtPackageCarton.Value).ToString("#,##0.000"), Double?)
+                        edit.PalletVolume = CType(Convert.ToDouble(txtPackageVolume.Value).ToString("#,##0.000"), Double?)
+                        edit.PalletVolUnit = cboPackageUnit.Text
+                        edit.ImpEstablishNo = txtImpEstablishNo.Value
+                        edit.ImpFactoryNo = txtImpFactoryNo.Value
+                        edit.ExpEstablishNo = txtExpEstablishNo.Value
+                        edit.ExpFactoryNo = txtExpFactoryNo.Value
+                        edit.UpdateBy = CStr(Session("UserName"))
+                        edit.UpdateDate = Now
+
+                        db.SaveChanges()
+                        tran.Complete()
+                    End If
+                Catch ex As Exception
+                    tran.Dispose()
+                    ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาดจาก SaveDATA_Modify กรุณาบันทึกข้อมูลใหม่อีกครั้ง');", True)
+                End Try
+            End Using
+        End If
+    End Sub
+    Private Sub SaveDATAStock_Modify()
+        Dim chkDes1 As String = ""
+        If txtProductCode.Value.Trim = "" Then
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาป้อน รหัส Product Code ก่อน !!!');", True)
+            txtProductCode.Focus()
+            Exit Sub
+        End If
+
+        If String.IsNullOrEmpty(txtImpDesc1.Value.Trim) Then
+            ChkDes1 = txtExpDesc1.Value.Trim
+        Else
+            ChkDes1 = txtImpDesc1.Value.Trim
+        End If
+
+        Using tran As New TransactionScope()
+            Try
+                db.Database.Connection.Open()
+
+                Dim edit As tblWHStockCtrl = (From c In db.tblWHStockCtrls Where c.ProductCode = txtProductCode.Value.Trim
+                  Select c).First()
+                If edit IsNot Nothing Then
+                    edit.ProductCode = txtProductCode.Value.Trim
+                    edit.OwnerPart = txtCustomerPart.Value.Trim
+                    edit.ENDUserPart = txtEndUserPart.Value.Trim
+                    edit.ProductDescription = ChkDes1
+                    edit.MinimumStock = CType(txtMinimunStock.Value.Trim, Double?)
+                    edit.Adjustment = CType(txtAdjustment.Value.Trim, Double?)
+                    edit.DamageQTY = CType(txtDamageQty.Value.Trim, Double?)
+                    edit.AvailableQTY = CType(txtAvailableQTY.Value.Trim, Double?)
+                    edit.UpdateBy = CStr(Session("UserName"))
+                    edit.UpdateDate = Now
+
+                    db.SaveChanges()
+                    tran.Complete()
+                End If
+            Catch ex As Exception
+                tran.Dispose()
+                ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาดจาก SaveDATAStock_Modify กรุณาบันทึกข้อมูลใหม่อีกครั้ง');", True)
+            End Try
+        End Using
+
+    End Sub
+
+    Private Sub ReadDATA()
+        'Dim testdate As Integer
+        'Dim lot As String
+        'If String.IsNullOrEmpty(txtJobno.Value.Trim) Then
+        '    testdate = CInt(Convert.ToDateTime(Date.Now).ToString("yyyy"))
+        'Else
+        '    lot = txtJobno.Value.Trim
+        'End If
+
+        ''Where e.LOTDate.Year = testdate
+        'Dim exl = (From e In db.tblImpGenLOTs Where e.EASLOTNo = txtJobno.Value.Trim Or (e.LOTDate.Year = testdate) Order By e.EASLOTNo Descending
+        '         Select New With {
+        '         e.EASLOTNo,
+        '         e.CustomerCode,
+        '         e.JobSite,
+        '         e.EndCusCode}).ToList
+        'Try
+        '    If exl.Count > 0 Then
+        '        Me.Repeater9.DataSource = exl
+        '        Me.Repeater9.DataBind()
+        '        ScriptManager.RegisterStartupScript(JobnoUpdatePanel, JobnoUpdatePanel.GetType(), "show", "$(function () { $('#" + JobnoPanel.ClientID + "').modal('show'); });", True)
+        '        JobnoUpdatePanel.Update()
+        '    Else
+        '        ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('ไม่พบข้อมูล LOTNo นี้')", True)
+        '        Exit Sub
+        '    End If
+
+        'Catch ex As Exception
+        '    ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", ex.Message, True)
+        'End Try
+    End Sub
+    '--------------------------------------------------------------Click Search JobSite--------------------------------------------------
+    Protected Sub btnSearchProduct_ServerClick(sender As Object, e As EventArgs)
+        ReadDATA()
+    End Sub
+    Protected Sub Repeater9_ItemCommand(source As Object, e As RepeaterCommandEventArgs)
+        'Dim EASLOTNo As String = CStr(e.CommandArgument)
+        'If e.CommandName.Equals("selectLotNO") Then
+        '    Dim exp = (From ex In db.tblImpGenLOTs Where ex.EASLOTNo = EASLOTNo).SingleOrDefault
+
+        '    If String.IsNullOrEmpty(exp.EASLOTNo) Then
+        '        txtJobno.Value = ""
+        '    Else
+        '        txtJobno.Value = exp.EASLOTNo
+        '    End If
+
+        '    txtdatepickerJobdate.Text = Convert.ToDateTime(exp.LOTDate).ToString("dd/MM/yyyy")
+        '    ddlLotof.Text = exp.LOTBy
+        '    If String.IsNullOrEmpty(exp.SalesCode) Then
+        '        ddlSaleman.Text = ""
+        '    Else
+        '        ddlSaleman.Text = exp.SalesCode
+        '    End If
+        '    If String.IsNullOrEmpty(exp.SalesName) Then
+        '        txtsalemandis.Value = ""
+        '    Else
+        '        txtsalemandis.Value = exp.SalesName
+        '    End If
+        '    If String.IsNullOrEmpty(exp.ConsigneeCode) Then
+        '        txtConsigneecode.Value = ""
+        '    Else
+        '        txtConsigneecode.Value = exp.ConsigneeCode
+        '    End If
+
+
+        'End If
+    End Sub
+
+
 End Class

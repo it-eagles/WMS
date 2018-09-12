@@ -185,7 +185,7 @@ Public Class TruckWaybillRec
         Dim lblPartyCode As String = TryCast(Item.FindControl("lblPartyCode"), Label).Text.Trim
         Dim lblPartyAddressCode As String = TryCast(Item.FindControl("lblPartyAddressCode"), Label).Text.Trim
 
-        Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode Where u.PartyCode = lblPartyCode And u.Consignee = "0").SingleOrDefault
+        Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode Where u.PartyCode = lblPartyCode And u.Consignee = "0" And br.PartyAddressCode = lblPartyAddressCode).SingleOrDefault
         txtNotifyPartyCode.Value = user.u.PartyFullName
         txtNotifyPartyName.Value = user.br.Address1
     End Sub
@@ -413,7 +413,7 @@ Public Class TruckWaybillRec
         Dim lblPartyCode As String = TryCast(Item.FindControl("lblPartyCode"), Label).Text.Trim
         Dim lblPartyAddressCode As String = TryCast(Item.FindControl("lblPartyAddressCode"), Label).Text.Trim
 
-        Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode Where u.PartyCode = lblPartyCode And u.Consignee = "0").SingleOrDefault
+        Dim user = (From u In db.tblParties Join br In db.tblPartyAddresses On u.PartyCode Equals br.PartyCode Where u.PartyCode = lblPartyCode And u.Consignee = "0" And br.PartyAddressCode = lblPartyAddressCode).SingleOrDefault
         txtConsigneeCodee.Value = user.u.PartyCode
         txtNameConsignee.Value = user.u.PartyFullName
         txtAddress1Consignee.Value = user.br.Address1
@@ -484,8 +484,7 @@ Public Class TruckWaybillRec
             If e.CommandName.Equals("SelectInvoiceNo") Then
 
                 If String.IsNullOrEmpty(InvoiceNo) Then
-
-                    MsgBox("เป็นค่าว่าง")
+                    ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('เป็นค่าว่าง');", True)
                 Else
                     Dim user = (From u In db.tblExpInvoices Where u.InvoiceNo = InvoiceNo).SingleOrDefault
 
@@ -538,7 +537,7 @@ Public Class TruckWaybillRec
 
                 If String.IsNullOrEmpty(ProductCode) Then
 
-                    MsgBox("เป็นค่าว่าง")
+                    ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('เป็นค่าว่าง');", True)
                 Else
                     Dim user = (From u In db.tblProductDetails Where u.ProductCode = ProductCode).SingleOrDefault
 
@@ -624,9 +623,9 @@ Public Class TruckWaybillRec
             txtNotifyPartyAddress.Value = exp.PlaceAddress
             txtPlaceOfReceipt.Value = exp.PlaceofReceipt
 
-            'ReadDATA()
-            'ReadDATA2()
-            'ReadDATAEAS()
+            ReadDATA()
+            CalculateTotalTruckWaybill()
+            txtTruckW_B.Focus()
         End If
     End Sub
     '---------------------------------------------------------------Save Data New---------------------------------------------
@@ -643,14 +642,14 @@ Public Class TruckWaybillRec
         'End If
 
         If txtShippercode.Value.Trim() = "" Then
-            MsgBox("กรุณาป้อน Exporter No ก่อน !!!")
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาป้อน Exporter No ก่อน !!!');", True)
             'UnlockDATA()
             txtShippercode.Focus()
             Exit Sub
         End If
 
         If txtConsigneeCodee.Value.Trim() = "" Then
-            MsgBox("กรุณาป้อน Consignnee No ก่อน !!!")
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาป้อน Consignnee No ก่อน !!!');", True)
             'UnlockDATA()
             txtConsigneeCodee.Focus()
             Exit Sub
@@ -721,9 +720,9 @@ Public Class TruckWaybillRec
                     ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด กรุณาบันทึกข้อมูลใหม่อีกครั้ง');", True)
 
                 Finally
-                    db.Database.Connection.Close()
-                    db.Dispose()
-                    tran.Dispose()
+
+                    'db.Dispose()
+                    'tran.Dispose()
                 End Try
             End Using
         End If
@@ -735,7 +734,7 @@ Public Class TruckWaybillRec
         'Dim DateOfIssue As Date
         Dim TruckNooo As String = Request.QueryString("TruckWayBillNo")
         If txtTruckW_B.Value.Trim = "" Then
-            MsgBox("กรุณาเลือก Truck No ก่อน !!!")
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาเลือก Truck No ก่อน !!!');", True)
             'UnlockDATA()
             txtTruckW_B.Focus()
             Exit Sub
@@ -802,6 +801,7 @@ Public Class TruckWaybillRec
                         ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('แก้ไขข้อมูล สำเร็จ !');", True)
                     End If
                 Catch ex As Exception
+                    tran.Dispose()
                     ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด กรุณาบันทึกข้อมูลใหม่อีกครั้ง');", True)
                 End Try
             End Using
@@ -996,7 +996,9 @@ Public Class TruckWaybillRec
                 Gentbl("TWBLOTIN")
             End If
             SaveDATA_New()
-            ClearDATA()
+            InsertData()
+            ReadDATA()
+            'ClearDATA()
         Else
             ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ์เมนูนี้ !!!')", True)
         End If
@@ -1010,7 +1012,9 @@ Public Class TruckWaybillRec
         If cu.Any Then
 
             SaveDATA_Modify()
-            ClearDATA()
+            InsertData()
+            'ClearDATA()
+            ReadDATA()
         Else
             ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ์เมนูนี้ !!!')", True)
         End If
@@ -1023,7 +1027,11 @@ Public Class TruckWaybillRec
         Dim cu = From um In db.tblUserMenus Where um.UserName = user And um.Form = form And um.Save_ = 1
         If cu.Any Then
             SaveDATADetail_New()
-
+            InsertDataDetail()
+            ReadDATA()
+            CalculateTotalTruckWaybill()
+            ClearDATADetail()
+            txtInvoiceNoo.Focus()
         Else
             ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ์เมนูนี้ !!!')", True)
         End If
@@ -1036,13 +1044,30 @@ Public Class TruckWaybillRec
         Dim cu = From um In db.tblUserMenus Where um.UserName = user And um.Form = form And um.Save_ = 1
         If cu.Any Then
             SaveDATADetail_Modify()
-
+            InsertDataDetail()
+            ReadDATA()
+            CalculateTotalTruckWaybill()
+            ClearDATADetail()
+            txtInvoiceNoo.Focus()
         Else
             ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ์เมนูนี้ !!!')", True)
         End If
     End Sub
     '------------------------------------------------------------Click btn Delete Truck Way Bill Datail--------------------------------------
     Protected Sub btnDelete_Detail_ServerClick(sender As Object, e As EventArgs)
+        Dim user As String = CStr(Session("UserName"))
+        Dim form As String = "frmTruckWayBillImp"
+        Dim cu = From um In db.tblUserMenus Where um.UserName = user And um.Form = form And um.Delete_ = 1
+        If cu.Any Then
+            SaveDATADetail_Delete()
+            InsertDataDetail()
+            ReadDATA()
+            CalculateTotalTruckWaybill()
+            ClearDATADetail()
+            txtInvoiceNoo.Focus()
+        Else
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ์เมนูนี้ !!!')", True)
+        End If
 
     End Sub
     '------------------------------------------------------------Click btn Cencel Truck Way Bill Datail--------------------------------------
@@ -1052,13 +1077,13 @@ Public Class TruckWaybillRec
     '----------------------------------------------------------Save Data New Detail Method-------------------------------------------
     Private Sub SaveDATADetail_New()
         If txtTruckW_B.Value.Trim() = "" Then
-            MsgBox("กรุณาป้อน TruckWayBill No ก่อน !!!")
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาป้อน TruckWayBill No ก่อน !!!');", True)
             txtTruckW_B.Focus()
             Exit Sub
         End If
 
         If txtInvoiceNoo.Value.Trim() = "" Then
-            MsgBox("กรุณาป้อน Invoice No ก่อน !!!")
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาป้อน Invoice No ก่อน !!!');", True)
             txtInvoiceNoo.Focus()
             Exit Sub
         End If
@@ -1091,6 +1116,7 @@ Public Class TruckWaybillRec
                     ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('แก้ไขข้อมูล สำเร็จ !');", True)
 
                 Catch ex As Exception
+                    tran.Dispose()
                     ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด กรุณาบันทึกข้อมูลใหม่อีกครั้ง');", True)
                 End Try
             End Using
@@ -1101,13 +1127,13 @@ Public Class TruckWaybillRec
     Private Sub SaveDATADetail_Modify()
 
         If txtTruckW_B.Value.Trim() = "" Then
-            MsgBox("กรุณาป้อน TruckWayBill No ก่อน !!!")
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาป้อน TruckWayBill No ก่อน !!!');", True)
             txtTruckW_B.Focus()
             Exit Sub
         End If
 
         If txtInvoiceNoo.Value.Trim() = "" Then
-            MsgBox("กรุณาป้อน Invoice No ก่อน !!!")
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาป้อน Invoice No ก่อน !!!');", True)
             txtInvoiceNoo.Focus()
             Exit Sub
         End If
@@ -1159,5 +1185,145 @@ Public Class TruckWaybillRec
         txtQuantity_Detail.Value = ""
         txtGrossWeight_Detail.Value = ""
 
+    End Sub
+    Private Sub InsertDataDetail()
+        Using tran As New TransactionScope()
+            Try
+                db.tblLogTruckWayBillDetailImps.Add(New tblLogTruckWayBillDetailImp With { _
+                                    .TruckWayBillNo = txtTruckW_B.Value.Trim, _
+                                    .InvoiceNo = txtInvoiceNoo.Value.Trim, _
+                                    .UserBy = CStr(Session("UserName")), _
+                                    .LastUpDate = Now
+                                })
+                db.SaveChanges()
+                tran.Complete()
+            Catch ex As Exception
+                tran.Dispose()
+                ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด Function: InsertDataDetail กรุณาบันทึกข้อมูลใหม่อีกครั้ง');", True)
+            End Try
+        End Using
+    End Sub
+    '-----------------------------------------------------------------Show Repeater in Invoice TAB------------------------------------------
+    Private Sub ReadDATA()
+        Dim sqlConsignnee = From ab In db.tblTruckWayBillDetailImps Where ab.TruckWayBillNo = txtTruckW_B.Value.Trim Order By ab.TruckWayBillNo
+        Select ab.TruckWayBillNo,
+                 ab.InvoiceNo,
+                 ab.LOTNo,
+                 ab.PartDesc,
+                 ab.Quantity,
+                 ab.QuantityUnit
+        Try
+            If sqlConsignnee.Count > 0 Then
+                Repea2_Invoice.DataSource = sqlConsignnee.ToList
+                Repea2_Invoice.DataBind()
+                'ScriptManager.RegisterStartupScript(Repea2UpdatePanel.GetType(), Repea2Panel.ClientID, True)
+                Repea2UpdatePanel.Update()
+            Else
+                Repea2_Invoice.DataSource = Nothing
+                Repea2_Invoice.DataBind()
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+    Protected Sub Repea2_Invoice_ItemCommand(source As Object, e As RepeaterCommandEventArgs) Handles Repea2_Invoice.ItemCommand
+        Dim TruckWayBillNo As String = CStr(e.CommandArgument)
+        Try
+            If e.CommandName.Equals("SelectTruckWayBillNo") Then
+
+                If String.IsNullOrEmpty(TruckWayBillNo) Then
+                    ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('เป็นค่าว่าง');", True)
+                Else
+                    Dim user = (From u In db.tblTruckWayBillDetailImps Where u.TruckWayBillNo = TruckWayBillNo).SingleOrDefault
+
+                    txtInvoiceNoo.Value = user.InvoiceNo
+                    txtLOTNo.Value = user.LOTNo
+                    txtPartDesc.Value = user.PartDesc
+                    txtMeasurement_Detail.Value = user.Measurement
+                    txtOwnP_N.Value = user.OwnerPN
+                    txtCustomerP_N.Value = user.CustomerPN
+                    txtQuantity_Detail.Value = user.Quantity
+                    txtGrossWeight_Detail.Value = user.GrossWeight
+                    ddlUnitQuantity_Detail.Text = user.QuantityUnit
+                    ddlUnit_GrossWeight.Text = user.WeightUnit
+                    ddlCountryOfOrigin.Text = user.CountryofOrigin
+                End If
+            End If
+        Catch ex As Exception
+        End Try
+    End Sub
+    Private Sub CalculateTotalTruckWaybill()
+        Dim lblInvoiceNo As String
+        Dim lblTruckWayBillNo As String
+        Dim i As Integer
+
+        Dim AmountQuantity As Double = 0.0
+        Dim AmountNetWeight As Double = 0.0
+        Dim AmountMeasurement As Double = 0.0
+
+        With Repea2_Invoice
+            For i = 0 To Repea2_Invoice.Items.Count - 1
+
+                lblInvoiceNo = CType(Repea2_Invoice.Items(i).FindControl("lblInvoiceNo"), Label).Text.Trim
+                lblTruckWayBillNo = CType(Repea2_Invoice.Items(i).FindControl("lblTruckWayBillNo"), Label).Text.Trim
+
+                Dim u = (From us In db.tblTruckWayBillDetailImps Where us.TruckWayBillNo = lblTruckWayBillNo And us.InvoiceNo = lblInvoiceNo).FirstOrDefault
+
+                AmountQuantity = AmountQuantity + u.Quantity
+                AmountNetWeight = AmountNetWeight + u.GrossWeight
+                AmountMeasurement = AmountMeasurement + u.Measurement
+            Next
+        End With
+
+        txtQuantityAmount.Value = AmountQuantity.ToString("#,##0.000")
+        txtGrossWeight.Value = AmountNetWeight.ToString("#,##0.000")
+        txtMeasurement.Value = AmountMeasurement.ToString("#,##0.000")
+    End Sub
+    Private Sub InsertData()
+
+        Using tran As New TransactionScope()
+            Try
+                db.tblLogTruckWayBillImps.Add(New tblLogTruckWayBillImp With { _
+                                    .TruckWayBillNo = txtTruckW_B.Value.Trim, _
+                                    .UserBy = CStr(Session("UserName")), _
+                                    .LastUpDate = Now
+                                })
+                db.SaveChanges()
+                tran.Complete()
+                db.Database.Connection.Close()
+            Catch ex As Exception
+                tran.Dispose()
+                db.Database.Connection.Close()
+                ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด Function: InsertData กรุณาบันทึกข้อมูลใหม่อีกครั้ง');", True)
+            End Try
+        End Using
+    End Sub
+    Private Sub SaveDATADetail_Delete()
+
+        If txtInvoiceNoo.Value.Trim = "" Then
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('เลือกข้อมูลที่ต้องการ Delete ก่อน !!!');", True)
+            txtInvoiceNoo.Focus()
+            Exit Sub
+        End If
+
+        If MsgBox("คุณต้องการลบข้อมูล Invoice No. ใช่หรือไม่ ?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+
+            Using tran As New TransactionScope()
+                Try
+
+                    Dim DeleteTruckBillDetailImp As tblTruckWayBillDetailImp = (From c In db.tblTruckWayBillDetailImps Where c.InvoiceNo = txtInvoiceNoo.Value.Trim Select c).First()
+
+                    db.tblTruckWayBillDetailImps.Remove(DeleteTruckBillDetailImp)
+
+                    db.SaveChanges()
+                    tran.Complete()
+                    ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('Delete Delete Invoice No. นี้เรียบร้อยแล้ว !!');", True)
+                Catch ex As Exception
+                    tran.Dispose()
+                    ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด กรุณาบันทึกข้อมูลใหม่อีกครั้ง');", True)
+                End Try
+            End Using
+
+        End If
     End Sub
 End Class

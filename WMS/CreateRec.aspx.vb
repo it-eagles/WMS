@@ -9,6 +9,7 @@ Imports System.Diagnostics
 Imports CrystalDecisions.CrystalReports.Engine
 Imports System.Transactions
 Imports System.Globalization
+Imports System.Net.Mime.MediaTypeNames
 
 Public Class CreateRec
     Inherits System.Web.UI.Page
@@ -25,6 +26,7 @@ Public Class CreateRec
     Dim cuspart As String
     Dim Prodes As String
     Dim NumberFlight As Double
+    Dim txtNum As Double
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Dim usename As String = CStr(Session("UserName"))
@@ -1498,7 +1500,7 @@ Public Class CreateRec
         End If
 
         'Where e.LOTDate.Year = testdate
-        Dim exl = (From e In db.tblImpGenLOTs Where e.EASLOTNo = txtJobno.Value.Trim Or e.LOTDate.Year = testdate Order By e.EASLOTNo Descending
+        Dim exl = (From e In db.tblImpGenLOTs Where e.EASLOTNo = txtJobno.Value.Trim Or (e.LOTDate.Year = testdate) Order By e.EASLOTNo Descending
                  Select New With {
                  e.EASLOTNo,
                  e.CustomerCode,
@@ -3230,21 +3232,39 @@ Public Class CreateRec
         End If
 
         If txtJobno.Value.Trim() = "" Then
-            MsgBox("กรุณาป้อน LOT No ก่อน !!!")
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาป้อน LOT No ก่อน !!!');", True)
             txtJobno.Focus()
             Exit Sub
         End If
 
         If txtInvoiceNo.Value.Trim() = "" Then
-            MsgBox("กรุณาป้อน Invoice No ก่อน !!!")
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาป้อน Invoice No ก่อน !!!');", True)
             txtInvoiceNo.Focus()
             Exit Sub
         End If
 
         If txtProductCodeInvoice.Value.Trim() = "" Then
-            MsgBox("กรุณาป้อน Product No ก่อน !!!")
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาป้อน Product No ก่อน !!!');", True)
             txtProductCodeInvoice.Focus()
             Exit Sub
+        End If
+
+        If txtItemNoInvoice.Value.Trim() = "" Then
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาป้อน Item No ก่อน !!!');", True)
+            txtItemNoInvoice.Focus()
+            Exit Sub
+        End If
+
+        If String.IsNullOrEmpty(txtWidthInvoice.Value.Trim) Then
+            txtWidthInvoice.Value = "0"
+        End If
+
+        If String.IsNullOrEmpty(txtLenghtInvoice.Value.Trim) Then
+            txtLenghtInvoice.Value = "0"
+        End If
+
+        If String.IsNullOrEmpty(txtHeightInvoice.Value.Trim) Then
+            txtHeightInvoice.Value = "0"
         End If
 
         If MsgBox("คุณต้องการเพิ่มรายการ LOT No Invoice ใหม่ ใช่หรือไม่ ?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
@@ -3303,8 +3323,8 @@ Public Class CreateRec
 
                 Finally
                     db.Database.Connection.Close()
-                    db.Dispose()
-                    tran.Dispose()
+                    'db.Dispose()
+                    'tran.Dispose()
                 End Try
             End Using
         End If
@@ -3314,19 +3334,19 @@ Public Class CreateRec
     Private Sub SaveImpBookingInvDetail_Modify()
 
         If txtJobno.Value.Trim() = "" Then
-            MsgBox("กรุณาป้อน LOT No ก่อน !!!")
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาป้อน LOT No ก่อน !!!');", True)
             txtJobno.Focus()
             Exit Sub
         End If
 
         If txtInvoiceNo.Value.Trim() = "" Then
-            MsgBox("กรุณาป้อน Invoice No ก่อน !!!")
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาป้อน Invoice No ก่อน !!!');", True)
             txtInvoiceNo.Focus()
             Exit Sub
         End If
 
         If txtProductCodeInvoice.Value.Trim() = "" Then
-            MsgBox("กรุณาป้อน Product No ก่อน !!!")
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาป้อน Product No ก่อน !!!');", True)
             txtProductCodeInvoice.Focus()
             Exit Sub
         End If
@@ -3339,8 +3359,8 @@ Public Class CreateRec
                     'sb.Append("UPDATE tblImpGenLOT")
                     'sb.Append(" SET EASLOTNo=@EASLOTNo,LOTDate=@LOTDate,LOTBy=@LOTBy,SalesCode=@SalesCode,SalesName=@SalesName,ConsigneeCode=@ConsigneeCode,ConsignNameEng=@ConsignNameEng,ConsignAddress=@ConsignAddress,ConsignDistrict=@ConsignDistrict,ConsignSubProvince=@ConsignSubProvince,ConsignProvince=@ConsignProvince,ConsignPostCode=@ConsignPostCode,ConsignEmail=@ConsignEmail,ShipperCode=@ShipperCode,ShipperNameEng=@ShipperNameEng,ShipperAddress=@ShipperAddress,ShipperDistrict=@ShipperDistrict,ShipperSubprovince=@ShipperSubprovince,ShipperProvince=@ShipperProvince,ShipperPostCode=@ShipperPostCode,ShipperReturnCode=@ShipperReturnCode,Commodity=@Commodity,QuantityofPart=@QuantityofPart,QuantityUnit=@QuantityUnit,QuantityPack=@QuantityPack,QuantityUnitPack=@QuantityUnitPack,Weight=@Weight,WeightUnit=@WeightUnit,Volume=@Volume,VolumeUnit=@VolumeUnit,MAWB=@MAWB,DocType=@DocType,DocCode=@DocCode,Flight=@Flight,DOCode=@DOCode,DONameENG=@DONameENG,DOStreet_Number=@DOStreet_Number,DODistrict=@DODistrict,DOSubProvince=@DOSubProvince,DOProvince=@DOProvince,DOPostCode=@DOPostCode,DOEmail=@DOEmail,DOContactPerson=@DOContactPerson,IEATNo=@IEATNo,EntryNo=@EntryNo,DeliveryDate=@DeliveryDate,CustomerCode=@CustomerCode,CustomerENG=@CustomerENG,CustomerStreet=@CustomerStreet,CustomerDistrict=@CustomerDistrict,CustomerSub=@CustomerSub,CustomerProvince=@CustomerProvince,CustomerPostCode=@CustomerPostCode,CustomerEmail=@CustomerEmail,CustomerContact=@CustomerContact,PickUpCode=@PickUpCode,PickUpENG=@PickUpENG,PickUpAddress1=@PickUpAddress1,PickUpAddress2=@PickUpAddress2,PickUpAddress3=@PickUpAddress3,PickUpAddress4=@PickUpAddress4,PickUpAddress5=@PickUpAddress5,PickUpEmail=@PickUpEmail,PickUpContact=@PickUpContact,EndCusCode=@EndCusCode,EndCusENG=@EndCusENG,EndCusAddress1=@EndCusAddress1,EndCusAddress2=@EndCusAddress2,EndCusAddress3=@EndCusAddress3,EndCusAddress4=@EndCusAddress4,EndCusAddress5=@EndCusAddress5,EndCusEmail=@EndCusEmail,EndCusContact=@EndCusContact,FreighForwarder=@FreighForwarder,Useby=@Useby,IEATPermit=@IEATPermit,ShipTo=@ShipTo,Remark=@Remark,FLT1=@FLT1,FLT2=@FLT2,FLT3=@FLT3,FLT4=@FLT4,DateFLT1=@DateFLT1,DateFLT2=@DateFLT2,DateFLT3=@DateFLT3,DateFLT4=@DateFLT4,ORGN1=@ORGN1,ORGN2=@ORGN2,ORGN3=@ORGN3,ORGN4=@ORGN4,DSTN1=@DSTN1,DSTN2=@DSTN2,DSTN3=@DSTN3,DSTN4=@DSTN4,ETD1=@ETD1,ETD2=@ETD2,ETD3=@ETD3,ETD4=@ETD4,ETA1=@ETA1,ETA2=@ETA2,ETA3=@ETA3,ETA4=@ETA4,PCS1=@PCS1,PCS2=@PCS2,PCS3=@PCS3,PCS4=@PCS4,Weight1=@Weight1,Weight2=@Weight2,Weight3=@Weight3,Weight4=@Weight4,QuantityPack1=@QuantityPack1,QuantityUnitPack1=@QuantityUnitPack1,TimeDTE=@TimeDTE,DateDTE=@DateDTE,TimeATT=@TimeATT,DateATT=@DateATT,Status1=@Status1,Status2=@Status2,JobSite=@JobSite,BillingNo=@BillingNo,CustomerCodeGroup=@CustomerCodeGroup,CustomerENGGroup=@CustomerENGGroup")
                     'sb.Append(" WHERE (EASLOTNo=@EASLOTNo)")
-                    Dim edit As tblImpBookingInvDetail = (From c In db.tblImpBookingInvDetails Join z In db.tblImpGenLOTs On z.EASLOTNo Equals c.LOTNo
-                      Select c).First()
+                    Dim edit As tblImpBookingInvDetail = (From c In db.tblImpBookingInvDetails Where c.LOTNo = txtJobno.Value.Trim And c.InvoiceNo = txtInvoiceNo.Value.Trim _
+                                                            And c.ProductCode = txtProductCodeInvoice.Value.Trim And c.Num = txtNum Select c).First()
                     If edit IsNot Nothing Then
                         'edit.InvoiceNo = txtInvoiceNo.Value.Trim
                         'edit.LOTNo = txtJobno.Value.Trim
@@ -3419,6 +3439,7 @@ Public Class CreateRec
         Dim form As String = "frmImpGenLot"
         Dim cu = From um In db.tblUserMenus Where um.UserName = user And um.Form = form And um.Save_ = 1
         If cu.Any Then
+            DeleteImpBookingInvDetail()
             ReadDATA2()
         Else
             ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ์เมนูนี้ !!!')", True)
@@ -3430,7 +3451,7 @@ Public Class CreateRec
         Dim form As String = "frmImpGenLot"
         Dim cu = From um In db.tblUserMenus Where um.UserName = user And um.Form = form And um.Save_ = 1
         If cu.Any Then
-            ReadDATA2()
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('ไม่สามารถใช้งาน Function นี้ได้');", True)
         Else
             ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ์เมนูนี้ !!!')", True)
         End If
@@ -3465,8 +3486,7 @@ Public Class CreateRec
             If e.CommandName.Equals("SelectInvoiceNo") Then
 
                 If String.IsNullOrEmpty(InvoiceNo) Then
-
-                    MsgBox("เป็นค่าว่าง")
+                    ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('เป็นค่าว่าง');", True)
                 Else
                     Dim user = (From u In db.tblImpBookingInvDetails Where u.InvoiceNo = InvoiceNo).SingleOrDefault
 
@@ -3498,6 +3518,7 @@ Public Class CreateRec
                     txtAmountForeignInvoice.Value = CStr(user.PriceForeighAmount)
                     txtPriceBathInvoice.Value = CStr(user.PriceBath)
                     txtAmountBathInvoice.Value = CStr(user.PriceBathAmount)
+                    txtNum = user.Num
                 End If
             End If
         Catch ex As Exception
@@ -3539,13 +3560,13 @@ Public Class CreateRec
         End If
 
         If txtJobno.Value.Trim() = "" Then
-            MsgBox("กรุณาป้อน LOT No ก่อน !!!")
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาป้อน Job No ก่อน !!!');", True)
             txtJobno.Focus()
             Exit Sub
         End If
 
         If txtFlightNo.Value.Trim() = "" Then
-            MsgBox("กรุณาป้อน Flight No ก่อน !!!")
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาป้อน Flight No ก่อน !!!');", True)
             txtFlightNo.Focus()
             Exit Sub
         End If
@@ -3565,7 +3586,7 @@ Public Class CreateRec
                     .HouseNo = txtQuantity_PLT_Skid_Invoice2.Value.Trim, _
                     .Quantity = CType(txtQuantity_PLT_Skid_Invoice.Value.Trim, Double?), _
                     .UnitQuantity = ddlQuantity_PLT_Skid_Invoice.Text.Trim, _
-                    .Userby = CStr(Session("UserId"))
+                    .Userby = CStr(Session("UserName"))
                     })
                     db.SaveChanges()
                     tran.Complete()
@@ -3582,13 +3603,13 @@ Public Class CreateRec
     '----------------------------------------------------------------Delete Flight Data-----------------------------------------------
     Private Sub DeleteFlightInvDetail()
         If txtJobno.Value.Trim() = "" Then
-            MsgBox("เลือกข้อมูลที่ต้องการ Delete ก่อน !!!")
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('เลือกข้อมูลที่ต้องการ Delete ก่อน !!!');", True)
             txtJobno.Focus()
             Exit Sub
         End If
 
         If txtFlightNo.Value.Trim() = "" Then
-            MsgBox("เลือกข้อมูลที่ต้องการ Delete ก่อน !!!")
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('เลือกข้อมูลที่ต้องการ Delete ก่อน !!!');", True)
             txtFlightNo.Focus()
             Exit Sub
         End If
@@ -3640,8 +3661,7 @@ Public Class CreateRec
             If e.CommandName.Equals("Selectdataflight") Then
 
                 If String.IsNullOrEmpty(CStr(Numberr)) Then
-
-                    MsgBox("เป็นค่าว่าง")
+                    ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('เป็นค่าว่าง');", True)
                 Else
                     Dim user = (From u In db.tblImpLogFlights Where u.LotNo = txtJobno.Value.Trim And u.Number = Numberr).SingleOrDefault
 
@@ -3792,5 +3812,207 @@ Public Class CreateRec
             ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('ไม่มีข้อมูล');", True)
         End If
         ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('Sent To Prepair เรียบร้อยแล้วครับ');", True)
+    End Sub
+    Private Sub DeleteImpBookingInvDetail()
+        If txtJobno.Value.Trim = "" Then
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('เลือกข้อมูลที่ต้องการ Delete ก่อน !!!');", True)
+            Exit Sub
+        End If
+
+        If txtInvoiceNo.Value.Trim = "" Then
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('เลือกข้อมูลที่ต้องการ Delete ก่อน !!!');", True)
+            Exit Sub
+        End If
+
+        If txtProductCodeInvoice.Value.Trim = "" Then
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาป้อน Product Code ก่อน !!!');", True)
+            Exit Sub
+        End If
+        If MsgBox("คุณต้องการลบข้อมูล Job No. นี้ใช่หรือไม่?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+            Using tran As New TransactionScope()
+                Try
+                    Dim DeleteInv As tblImpBookingInvDetail = (From c In db.tblImpBookingInvDetails Where c.LOTNo = txtJobno.Value.Trim And c.InvoiceNo = txtInvoiceNo.Value.Trim _
+                    And c.Num = txtNum Select c).First()
+
+                    db.tblImpBookingInvDetails.Remove(DeleteInv)
+
+                    db.SaveChanges()
+                    tran.Complete()
+                    ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('ระบบได้ทำการ Delete InvoiceNo นี้เรียบร้อยแล้ว !!!');", True)
+                Catch ex As Exception
+                    tran.Dispose()
+                    ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด กรุณาบันทึกข้อมูลใหม่อีกครั้ง');", True)
+                End Try
+            End Using
+        End If
+    End Sub
+    Protected Sub btnExportCSVFileInvoice_ServerClick(sender As Object, e As EventArgs)
+
+    End Sub
+    Private Sub ExportCSV()
+        'Dim MyEx As New Application
+        'Dim MyBook As Excel.Workbook
+        'Dim MySheet As Excel.Worksheet
+        'MyEx.DisplayAlerts = False
+        'MyBook = MyEx.Workbooks.Add
+        'MySheet = CType(MyBook.Sheets.Add, Excel.Worksheet)
+        'MySheet.Name = "Worksheet Name"
+
+        ''2
+
+        'MySheet.Cells(1, 1) = "INVOICE NO"
+        'MySheet.Cells(1, 2) = "INVOICE DATE"
+        'MySheet.Cells(1, 3) = "CONSIGNEE"
+        'MySheet.Cells(1, 4) = "CTN NO."
+        'MySheet.Cells(1, 5) = "QUANTITY"
+        'MySheet.Cells(1, 6) = "UNIT QUANTITY"
+        'MySheet.Cells(1, 7) = "DESCRIPTION ENG1"
+        'MySheet.Cells(1, 8) = "UNIT PRICE"
+        'MySheet.Cells(1, 9) = "AMOUNT"
+        'MySheet.Cells(1, 10) = "NET WEIGHT"
+        'MySheet.Cells(1, 11) = "GROSS WEIGHT"
+        'MySheet.Cells(1, 12) = "PRODUCT CODE"
+
+
+        ''4
+        ''MySheet.Cells(4, 1) = dgvInv.Rows(1).Cells(0).Value
+        ''MySheet.Cells(4, 2) = Mid(CStr(dgvInv.Rows(1).Cells(1).Value), 7, 4) + Mid(CStr(dgvInv.Rows(1).Cells(1).Value), 4, 2) + Mid(CStr(dgvInv.Rows(1).Cells(1).Value), 1, 2)
+        ''MySheet.Cells(4, 3) = txtConsigneeCode.Text
+
+        'Dim i As Integer
+        'For i = 0 To dgvInvNo.RowCount - 1
+        '    MySheet.Cells(i + 2, 1) = dgvInvNo.Rows(i).Cells(0).Value
+        '    MySheet.Cells(i + 2, 2) = Mid(CStr(dgvInvNo.Rows(i).Cells(2).Value), 7, 4) + Mid(CStr(dgvInvNo.Rows(i).Cells(2).Value), 4, 2) + Mid(CStr(dgvInvNo.Rows(i).Cells(2).Value), 1, 2)
+        '    MySheet.Cells(i + 2, 3) = txtConsigneecode.Text
+        '    'MySheet.Cells(i + 2, 4) = dgvInvNo.Rows(i).Cells(3).Value
+        '    MySheet.Cells(i + 2, 5) = dgvInvNo.Rows(i).Cells(5).Value
+        '    MySheet.Cells(i + 2, 6) = dgvInvNo.Rows(i).Cells(6).Value
+        '    MySheet.Cells(i + 2, 7) = dgvInvNo.Rows(i).Cells(4).Value
+        '    MySheet.Cells(i + 2, 8) = dgvInvNo.Rows(i).Cells(23).Value
+        '    MySheet.Cells(i + 2, 9) = dgvInvNo.Rows(i).Cells(24).Value
+        '    ' MySheet.Cells(i + 2, 10) = dgvInvNo.Rows(i).Cells(19).Value
+        '    ' MySheet.Cells(i + 2, 11) = dgvInvNo.Rows(i).Cells(10).Value
+        '    MySheet.Cells(i + 2, 12) = CStr(dgvInvNo.Rows(i).Cells(35).Value.ToString)
+        '    'MessageBox.Show(CStr(dgvInvNo.Rows(i).Cells(35).Value.ToString))
+        'Next
+
+        ''Try
+        'MyBook.SaveAs("c:\" + CStr(dgvInvNo.Rows(1).Cells(0).Value) + ".csv", FileFormat:=Excel.XlFileFormat.xlCSV)
+        ''Catch ex As Exception
+        ''    MessageBox.Show("file " + CStr(dgvInvNo.Rows(1).Cells(0).Value) + " นี้มีอยู่แล้ว กรุณาลบไฟล์เดิมก่อนครับ")
+        ''End Try
+
+        'MyBook.Close()
+        'MyEx.Quit()
+        'MySheet = Nothing
+        'MyBook = Nothing
+        'MyEx = Nothing
+        'System.GC.Collect()
+
+        'MessageBox.Show("Export csv file  เรียบร้อยแล้วครับ")
+    End Sub
+
+
+    Protected Sub btnSaveToConfirmNJRCInvoice_ServerClick(sender As Object, e As EventArgs)
+        Dim user As String = CStr(Session("UserName"))
+        Dim form As String = "frmImpGenLot"
+        Dim cu = From um In db.tblUserMenus Where um.UserName = user And um.Form = form And um.Save_ = 1
+        If cu.Any Then
+            If txtImportEntryNo.Value.Trim = "" Then
+                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณากรอกใบขนในช่อง ImportEntryNo ใน Tab ก่อนหน้า');", True)
+                Exit Sub
+            End If
+
+            If txtImportEntryNo.Value.Length <> 14 Then
+                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณากรอกใบขนให้ครบ 14 หลัก');", True)
+                Exit Sub
+            End If
+
+            SaveToConNJRC()
+
+        Else
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ์เมนูนี้ !!!')", True)
+        End If
+    End Sub
+    Private Sub SaveToConNJRC()
+        Dim lblInvoiceNo As String
+        Dim lblLotNo As String
+        Dim i As Integer
+
+        If Repea2_Invoice.Items.Count > 0 Then
+
+            Using tran As New TransactionScope()
+
+
+                For i = 0 To Repea2_Invoice.Items.Count - 1
+
+                    lblInvoiceNo = CType(Repea2_Invoice.Items(i).FindControl("lblInvoiceNo"), Label).Text.Trim
+                    lblLotNo = CType(Repea2_Invoice.Items(i).FindControl("lblLOTNo"), Label).Text.Trim
+
+                    Dim u = (From us In db.tblImpBookingInvDetails Where us.LOTNo = lblLotNo And us.InvoiceNo = lblInvoiceNo).FirstOrDefault
+
+                    'sb.Append("INSERT INTO tblWHPrepairGoodsReceiveDetail (LOTNo,WHSite,WHLocation,ENDCustomer,WHSource,CustomerLOTNo,ItemNo,ProductCode,CustomerPN,OwnerPN,ProductDesc,Measurement,ProductWidth,ProductLength,ProductHeight,ProductVolume,OrderNo,ReceiveNo,Type,ManufacturingDate,ExpiredDate,ReceiveDate,Quantity,QuantityUnit,Weigth,WeigthUnit,Currency,ExchangeRate,PriceForeigh,PriceForeighAmount,PriceBath,PriceBathAmount,PalletNo,UserBy,LastUpdate,Status,Supplier,Buyer,Exporter,Destination,Consignee,ShippingMark,EntryNo,EntryItemNo)")
+                    'sb.Append(" VALUES (@LOTNo,@WHSite,@WHLocation,@ENDCustomer,@WHSource,@CustomerLOTNo,@ItemNo,@ProductCode,@CustomerPN,@OwnerPN,@ProductDesc,@Measurement,@ProductWidth,@ProductLength,@ProductHeight,@ProductVolume,@OrderNo,@ReceiveNo,@Type,@ManufacturingDate,@ExpiredDate,@ReceiveDate,@Quantity,@QuantityUnit,@Weigth,@WeigthUnit,@Currency,@ExchangeRate,@PriceForeigh,@PriceForeighAmount,@PriceBath,@PriceBathAmount,@PalletNo,@UserBy,@LastUpdate,@Status,@Supplier,@Buyer,@Exporter,@Destination,@Consignee,@ShippingMark,@EntryNo,@EntryItemNo)")
+                    Try
+                        db.Database.Connection.Open()
+                        db.tblWHPrepairGoodsReceiveDetails.Add(New tblWHPrepairGoodsReceiveDetail With { _
+                                .LOTNo = txtJobno.Value.Trim, _
+                                .WHSite = "NJR-JP", _
+                                .WHLocation = "", _
+                                .ENDCustomer = "NJRJP", _
+                                .WHSource = u.WHSource, _
+                                .CustomerLOTNo = u.Shipment, _
+                                .ItemNo = i + 1, _
+                                .ProductCode = u.ProductCode, _
+                                .CustomerPN = u.CustomerPN, _
+                                .OwnerPN = u.OwnerPN, _
+                                .ProductDesc = u.ProductName, _
+                                .Measurement = "", _
+                                .ProductWidth = u.Width, _
+                                .ProductLength = u.Lenght, _
+                                .ProductHeight = u.Height, _
+                                .ProductVolume = 0, _
+                                .OrderNo = u.InvoiceNo, _
+                                .ReceiveNo = txtJobno.Value.Trim, _
+                                .Type = "Goods Complete", _
+                                .ManufacturingDate = Nothing, _
+                                .ExpiredDate = Nothing, _
+                                .ReceiveDate = Now, _
+                                .Quantity = u.Quantity, _
+                                .QuantityUnit = u.QuantityUnit, _
+                                .Weigth = u.Weight, _
+                                .WeigthUnit = u.UnitWeight, _
+                                .Currency = u.Currency, _
+                                .ExchangeRate = u.ExchangeRate, _
+                                .PriceForeigh = u.PriceForeigh, _
+                                .PriceForeighAmount = u.PriceForeighAmount, _
+                                .PriceBath = u.PriceBath, _
+                                .PriceBathAmount = u.PriceBathAmount, _
+                                .PalletNo = "", _
+                                .UserBy = CStr(Session("UserName")), _
+                                .LastUpdate = Now, _
+                                .Status = 0, _
+                                .Supplier = "", _
+                                .Buyer = "", _
+                                .Exporter = "", _
+                                .Destination = "", _
+                                .Consignee = "", _
+                                .ShippingMark = "", _
+                                .EntryNo = txtImportEntryNo.Value.Trim, _
+                                .EntryItemNo = u.EntryItemNo
+                            })
+                        db.SaveChanges()
+                    Catch ex As Exception
+                        tran.Dispose()
+                        ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาดในการ Save To PrePair');", True)
+                    End Try
+
+                Next
+                tran.Complete()
+            End Using
+        Else
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('ไม่มีข้อมูล');", True)
+        End If
+        ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('Sent To Confirm เรียบร้อยแล้วครับ');", True)
     End Sub
 End Class

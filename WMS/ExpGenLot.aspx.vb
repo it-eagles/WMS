@@ -2295,7 +2295,14 @@ Public Class ExpGenLot
     End Sub
 
     Protected Sub cmdDeleteInv_ServerClick(sender As Object, e As EventArgs)
-
+        Dim user As String = CStr(Session("UserName"))
+        Dim form As String = "frmExpGenLot"
+        Dim cu = From um In db.tblUserMenus Where um.UserName = user And um.Form = form And um.Delete_ = 1
+        If cu.Any Then
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('ไม่สามารถใช้งาน Function นี้ได้');", True)
+        Else
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ์เมนูนี้ !!!')", True)
+        End If
     End Sub
 
     Protected Sub dgvConsigneeCode_ItemDataBound(sender As Object, e As RepeaterItemEventArgs)

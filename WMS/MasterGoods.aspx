@@ -53,7 +53,8 @@
                                      <input class="form-control input-sm" id="txtProductCode" runat="server" placeholder="Product Code" disabled="disabled" autocomplete="off"/>
                                  </div>
                                  <div class="col-sm-2">
-                                     <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal"><i class="glyphicon glyphicon-search"></i></button>
+                                     <button type="button" runat="server" id="btnmodal" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal" visible="false"><i class="glyphicon glyphicon-search"></i></button>
+                                      <button class="btn btn-app btn-sm" id="btnSearchProduct" runat="server" onserverclick="btnSearchProduct_ServerClick" visible="false"></button>
                                  </div>
                              </div>
                                   <div class="form-group">
@@ -169,74 +170,57 @@
 
             <!-- /.content -->
          <!-- /.box-header -->
+                                <%-------------------------------------------Show Repeater In Tab1----------------------------%>
                 <div class="row">
                     <div class="col-lg-12 col-xs-12">
 
-                                <asp:Repeater ID="Repeater1" runat="server">
-                                    <HeaderTemplate>
-                                        <table id="example1" class="table table-bordered table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th>ProductCode</th>
-                                                    <th>OwnerPart</th>
-                                                    <th>EndUserPart</th>
-                                                    <th>ProductDescription</th>
-                                                    <%--<th>OwnerCode</th>--%>
-                                                    <th>MinimumStock</th>
-                                                    <th>Adjustment</th>
-                                                    <th>DamageQTY</th>
-                                                    <th>AvailableQTY</th>                                                                                   
-                                                    <%--<th>Edit/Delete</th>
-                                                    <th>view</th>--%>
-                                                </tr>
-                                            </thead>
-                                    </HeaderTemplate>
+                                <asp:Repeater ID="Repeater10" runat="server" OnItemCommand="Repeater10_ItemCommand">
+                                                            <HeaderTemplate>
+                                                                <table id="example10" class="table table-striped table-condensed">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>ProductCode</th>
+                                                                            <th>OwnerPart</th>
+                                                                            <th>ENDUserPart</th>
+                                                                            <th>ProductDescription</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                            </HeaderTemplate>
+                                                            <ItemTemplate>
+                                                                <tr>
+                                                                    <%--<td class="text-center">
+                                                                        <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy  btn-sm" runat="server" CausesValidation="False" CommandName="Selectdataflight" CommandArgument='<%# Eval("Number")%>'><i class="fa fa-hand-o-up"></i></asp:LinkButton>
+                                                                    </td>--%>
+                                                                    <td>
+                                                                        <asp:Label ID="lblProductCode" runat="server" Text='<%# Bind("ProductCode")%>'></asp:Label></td>
+                                                                    <td>
+                                                                        <asp:Label ID="lblOwnerPart" runat="server" Text='<%# Bind("OwnerPart")%>'></asp:Label></td>
+                                                                    <td>
+                                                                        <asp:Label ID="lblENDUserPart" runat="server" Text='<%# Bind("ENDUserPart")%>'></asp:Label></td>
+                                                                    <td>
+                                                                        <asp:Label ID="lblProductDescription" runat="server" Text='<%# Bind("ProductDescription")%>'></asp:Label></td>
+                                                                </tr>
 
-                                    <ItemTemplate>
-                                        <tr>
-                                            <td><asp:Label ID="lblProductCode" runat="server" Text='<%# Bind("ProductCode")%>'></asp:Label></td>
-                                            <td><asp:Label ID="lblOwnerPart" runat="server" Text='<%# Bind("OwnerPart")%>'></asp:Label></td>
-                                            <td><asp:Label ID="lblEndUserPart" runat="server" Text='<%# Bind("EndUserPart")%>'></asp:Label></td>
-                                            <td><asp:Label ID="lblProductDescription" runat="server" Text='<%# Bind("ProductDescription")%>'></asp:Label></td>
-                                            <%--<td><asp:Label ID="lblOwnerCode" runat="server" Text='<%# Bind("OwnerCode")%>'></asp:Label></td>--%>
-                                            <td><asp:Label ID="lblMinimumStock" runat="server" Text='<%# Bind("MinimumStock")%>'></asp:Label></td>
-                                            <td><asp:Label ID="lblAdjustment" runat="server" Text='<%# Bind("Adjustment")%>'></asp:Label></td>
-                                            <td><asp:Label ID="lblDamageQTY" runat="server" Text='<%# Bind("DamageQTY")%>'></asp:Label></td>
-                                            <td><asp:Label ID="lblAvailableQTY" runat="server" Text='<%# Bind("AvailableQTY")%>'></asp:Label></td>                                                                                            
-                                        <%--    <td class="text-center" >
-                                                <asp:LinkButton ID="LinkButton1" CssClass="btn btn-default" runat="server" CausesValidation="False" CommandName="editGoods" CommandArgument='<%# Eval("ProductCode")%>'><i class="fa fa-pencil"></i></asp:LinkButton>
-                                                <a class="btn btn-danger"><i class="fa fa-trash"></i></a>
-                                            </td>
-                                            <td class="text-center">
-                                                <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="viewGoods" CommandArgument='<%# Eval("ProductCode")%>'><i class="fa fa-search-plus"></i></asp:LinkButton>
-                                            </td>--%>
-                                        </tr>
-                                    </ItemTemplate>
-                                    <FooterTemplate>
-                                        <tfoot>
-                                            <tr>                                               
-                                                    <th>ProductCode</th>
-                                                    <th>OwnerPart</th>
-                                                    <th>EndUserPart</th>
-                                                    <th>ProductDescription</th>
-                                                    <%--<th>OwnerCode</th>--%>
-                                                    <th>MinimumStock</th>
-                                                    <th>Adjustment</th>
-                                                    <th>DamageQTY</th>
-                                                    <th>AvailableQTY</th>                                                                                   
-                                                   <%-- <th>Edit/Delete</th>
-                                                    <th>view</th>--%>
-                                            </tr>
-                                        </tfoot>
-                                        </table>
-                                    </FooterTemplate>
-                                </asp:Repeater>
+                                                            </ItemTemplate>
+                                                            <FooterTemplate>
+                                                                <tfoot>
+                                                                    <tr>
+                                                                        <th>ProductCode</th>
+                                                                        <th>OwnerPart</th>
+                                                                        <th>ENDUserPart</th>
+                                                                        <th>ProductDescription</th>
+                                                                    </tr>
+                                                                </tfoot>
+                                                                </table>
+                                                            </FooterTemplate>
+                                                        </asp:Repeater>
                                  
                                  
                          
                     </div>
                     <!-- /.col -->
                 </div>
+                                <%-------------------------------------------End Show Repeater In Tab1----------------------------%>
                 <!-- /.row -->   
             </div>
           <!------- /.StockQTY ---------->
@@ -1105,7 +1089,7 @@
                                                                         
                                        <div class="col-md-6">
                                  
-                                            <asp:DropDownList ID="cdbGroupGoods" CssClass="form-control input-sm" runat="server"  DataTextField="Description" DataValueField="Description"></asp:DropDownList>
+                                            <asp:DropDownList ID="cdbGroupGoods" CssClass="form-control input-sm" runat="server"  DataTextField="Description" DataValueField="Description" AutoPostBack="true" OnSelectedIndexChanged="cdbGroupGoods_SelectedIndexChanged"></asp:DropDownList>
                                       </div>
                                 
                                        <div class="col-md-3">
@@ -1212,7 +1196,7 @@
                                                                         
                                        <div class="col-md-6">
                                  
-                                            <asp:DropDownList ID="cdbGroupColor" CssClass="form-control input-sm" runat="server"  DataTextField="Description" DataValueField="TypeID" disabled="disabled"></asp:DropDownList>
+                                            <asp:DropDownList ID="cdbGroupColor" CssClass="form-control input-sm" runat="server"  DataTextField="Description" DataValueField="TypeID" AutoPostBack="true" OnSelectedIndexChanged="cdbGroupColor_SelectedIndexChanged" disabled="disabled"></asp:DropDownList>
                                       </div>
                                 
                                        <div class="col-md-3">
@@ -1249,6 +1233,80 @@
       </div>
     </div>
   
+                <!-- Modal Product-->
+        <asp:Panel ID="ProductPanel" runat="server" CssClass="modal" TabIndex="-1" role="dialog" aria-labelledby="myLabe1">
+            <div class="modal-dialog modal-lg" role="dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel">Select JOB No</h4>
+                    </div>
+                    <asp:UpdatePanel ID="ProductUpdatePanel" runat="server" UpdateMode="Conditional">
+                        <ContentTemplate>
+                            <div class="modal-body">
+                                <section class="content">
+                                    <form class="form-horizontal">
+                                        <div class="col-lg-12 col-md-12 " style="overflow: auto;">
+
+                                            <asp:Repeater ID="Repeater9" runat="server" OnItemCommand="Repeater9_ItemCommand">
+                                                <HeaderTemplate>
+                                                    <table id="example9" class="table table-striped table-responsive table-condensed" style="overflow: auto;">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>select</th>
+                                                                <th>ProductCode</th>
+                                                                <th>CustomerCode</th>
+                                                                <th>EndCusCode</th>
+                                                                <th>JobSite</th>
+                                                            </tr>
+                                                        </thead>
+                                                </HeaderTemplate>
+
+                                                <ItemTemplate>
+                                                    <tr>
+                                                        <td class="text-center">
+                                                            <asp:LinkButton ID="LinkButton1" CssClass="btn bg-navy btn-sm" runat="server" CausesValidation="False" CommandName="selectProductCode" CommandArgument='<%# Eval("ProductCode")%>'><i class="fa fa-hand-o-up"></i></asp:LinkButton>
+                                                        </td>
+                                                        <td>
+                                                            <asp:Label ID="lblEASLOTNo" runat="server" Text='<%# Bind("ProductCode")%>'></asp:Label></td>
+                                                        <td>
+                                                            <asp:Label ID="lblCustomerCode" runat="server" Text='<%# Bind("CustomerCode")%>'></asp:Label></td>
+                                                        <td>
+                                                            <asp:Label ID="lblEndCusCode" runat="server" Text='<%# Bind("EndCusCode")%>'></asp:Label></td>
+                                                        <td>
+                                                            <asp:Label ID="lblJobSite" runat="server" Text='<%# Bind("JobSite")%>'></asp:Label></td>
+                                                    </tr>
+                                                </ItemTemplate>
+                                                <FooterTemplate>
+                                                    <tfoot>
+                                                        <tr>
+                                                            <th>select</th>
+                                                            <th>EASLOTNo</th>
+                                                            <th>CustomerCode</th>
+                                                            <th>EndCusCode</th>
+                                                            <th>JobSite</th>
+                                                        </tr>
+                                                    </tfoot>
+                                                    </table>
+                                                </FooterTemplate>
+                                            </asp:Repeater>
+                                        </div>
+                                    </form>
+                                </section>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                </div>
+            </div>
+        </asp:Panel>
+        <!-- End Produce Modal -->
+
+
+
 <script type="text/javascript">
             $(document).ready(function () {
                 EnableDisableControls();

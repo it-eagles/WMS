@@ -438,7 +438,7 @@
                                                                         <button type="submit" runat="server" class="btn btn-primary btn-sm" id="btnSaveNew_Detail" title="btnSaveNew_Detail" onserverclick="btnSaveNew_Detail_ServerClick">Save New</button>
                                                                         <button type="submit" runat="server" class="btn btn-primary btn-sm" id="btnSaveModify_Detail" title="btnSaveModify_Detail" onserverclick="btnSaveModify_Detail_ServerClick">Save Modify</button>
                                                                         <button type="submit" runat="server" class="btn btn-primary btn-sm" id="btnDelete_Detail" title="btnDelete_Detail" onserverclick="btnDelete_Detail_ServerClick">Delete</button>
-                                                                        <button type="submit" runat="server" class="btn btn-primary btn-sm" id="btnCencel_Detail" title="btnCencel_Detail" onserverclick="btnCencel_Detail_ServerClick">Cencel</button>
+                                                                        <button type="submit" runat="server" class="btn btn-primary btn-sm" id="btnCencel_Detail" title="btnCencel_Detail" onserverclick="btnCencel_Detail_ServerClick">Clear</button>
                                                                     </div>
                                                                 </div>
 
@@ -454,6 +454,68 @@
                                                 <!-- /.col -->
 
                                             </div>
+                                                <%-----------------------------Repea2 Start-----------------%>
+                                            <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="form-horizontal">
+                                                <asp:Panel ID="Repea2Panel" runat="server" >
+                                                    <asp:UpdatePanel ID="Repea2UpdatePanel" runat="server" UpdateMode="Conditional">
+                                                    <ContentTemplate>
+                                                <asp:Repeater ID="Repea2_Invoice" runat="server" OnItemCommand="Repea2_Invoice_ItemCommand">
+                                                                    <HeaderTemplate>
+                                                                        <table class="table table-bordered">
+                                                                            <th>Select</th>
+                                                                            <th>TruckWayBillNo</th>
+                                                                            <th>InvoiceNo</th>
+                                                                            <th>LOTNo</th>
+                                                                            <th>PartDesc</th>
+                                                                            <th>Quantity</th>
+                                                                            <th>QuantityUnit</th>
+                                                                    </HeaderTemplate>
+                                                                    <ItemTemplate>
+                                                                        <tr class="success">
+                                                                            <td class="text-center">
+                                                                            <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectTruckWayBillNo" CommandArgument='<%# Eval("TruckWayBillNo")%>'><i class="fa fa-hand-o-up"></i></asp:LinkButton>
+                                                                            </td>
+                                                                            <td><asp:Label ID="lblTruckWayBillNo" runat="server" Text='<%# Bind("TruckWayBillNo")%>'></asp:Label></td>
+                                                                            <td><asp:Label ID="lblInvoiceNo" runat="server" Text='<%# Bind("InvoiceNo")%>'></asp:Label></td>
+                                                                            <td><asp:Label ID="lblLOTNo" runat="server" Text='<%# Bind("LOTNo")%>'></asp:Label></td>
+                                                                            <td><asp:Label ID="lblPartDesc" runat="server" Text='<%# Bind("PartDesc")%>'></asp:Label></td>
+                                                                            <td><asp:Label ID="lblQuantity" runat="server" Text='<%# Bind("Quantity")%>'></asp:Label></td>
+                                                                            <td><asp:Label ID="lblQuantityUnit" runat="server" Text='<%# Bind("QuantityUnit")%>'></asp:Label></td>
+                                                                        </tr>
+                                                                    </ItemTemplate>
+                                                                    <AlternatingItemTemplate>
+                                                                        <tr class="info">
+                                                                            <td class="text-center">
+                                                                            <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectTruckWayBillNo" CommandArgument='<%# Eval("TruckWayBillNo")%>'><i class="fa fa-hand-o-up"></i></asp:LinkButton>
+                                                                            </td>
+                                                                            <td><asp:Label ID="lblTruckWayBillNo" runat="server" Text='<%# Bind("TruckWayBillNo")%>'></asp:Label></td>
+                                                                            <td><asp:Label ID="lblInvoiceNo" runat="server" Text='<%# Bind("InvoiceNo")%>'></asp:Label></td>
+                                                                            <td><asp:Label ID="lblLOTNo" runat="server" Text='<%# Bind("LOTNo")%>'></asp:Label></td>
+                                                                            <td><asp:Label ID="lblPartDesc" runat="server" Text='<%# Bind("PartDesc")%>'></asp:Label></td>
+                                                                            <td><asp:Label ID="lblQuantity" runat="server" Text='<%# Bind("Quantity")%>'></asp:Label></td>
+                                                                            <td><asp:Label ID="lblQuantityUnit" runat="server" Text='<%# Bind("QuantityUnit")%>'></asp:Label></td>
+                                                                        </tr>
+                                                                    </AlternatingItemTemplate>
+                                                                    <FooterTemplate>
+                                                                            <th>Select</th>
+                                                                            <th>TruckWayBillNo</th>
+                                                                            <th>InvoiceNo</th>
+                                                                            <th>LOTNo</th>
+                                                                            <th>PartDesc</th>
+                                                                            <th>Quantity</th>
+                                                                            <th>QuantityUnit</th>
+                                                                        </table>
+                                                                    </FooterTemplate>
+                                                                </asp:Repeater>
+                                                </ContentTemplate>
+                                                </asp:UpdatePanel>
+                                                </asp:Panel>
+                                            </div>
+                                        </div>
+                                    </div>
+                                                <%-----------------------------End Repea2--------------------------------------%>
                                             <!-- /.post -->
                                             </fieldset>
                                         </div>

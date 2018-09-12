@@ -77,6 +77,24 @@ Partial Public Class MasterGoods
     Protected WithEvents txtProductCode As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
+    '''btnmodal control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnmodal As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''btnSearchProduct control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnSearchProduct As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
     '''txtCustomerPart control.
     '''</summary>
     '''<remarks>
@@ -140,13 +158,13 @@ Partial Public Class MasterGoods
     Protected WithEvents txtAvailableQTY As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''Repeater1 control.
+    '''Repeater10 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Repeater1 As Global.System.Web.UI.WebControls.Repeater
+    Protected WithEvents Repeater10 As Global.System.Web.UI.WebControls.Repeater
 
     '''<summary>
     '''txtImpProductCode control.
@@ -1038,4 +1056,31 @@ Partial Public Class MasterGoods
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents btnAddUser As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''ProductPanel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ProductPanel As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''ProductUpdatePanel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ProductUpdatePanel As Global.System.Web.UI.UpdatePanel
+
+    '''<summary>
+    '''Repeater9 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Repeater9 As Global.System.Web.UI.WebControls.Repeater
 End Class
