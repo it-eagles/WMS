@@ -592,7 +592,7 @@
             $('#example9').DataTable()
             $('#example10').DataTable()
             $('#exa').DataTable()
-            $('#example20').DataTable({
+            $('#example11').DataTable({
                 'paging': true,
                 'lengthChange': false,
                 'searching': false,
@@ -600,7 +600,47 @@
                 'info': true,
                 'autoWidth': false
             })
-            $('#taConfirm').dataTable({
+            $('#example12').DataTable({
+                'paging': true,
+                'lengthChange': false,
+                'searching': false,
+                'ordering': true,
+                'info': true,
+                'autoWidth': false
+            })
+            $('#example13').DataTable({
+                'paging': true,
+                'lengthChange': false,
+                'searching': false,
+                'ordering': true,
+                'info': true,
+                'autoWidth': false
+            })
+            $('#example14').DataTable({
+                'paging': true,
+                'lengthChange': false,
+                'searching': false,
+                'ordering': true,
+                'info': true,
+                'autoWidth': false
+            })
+            $('#example15').DataTable({
+                'paging': true,
+                'lengthChange': false,
+                'searching': false,
+                'ordering': true,
+                'info': true,
+                'autoWidth': false
+            })
+            $('#example16').DataTable({
+                'paging': true,
+                'lengthChange': false,
+                'searching': false,
+                'ordering': true,
+                'info': true,
+                'autoWidth': false
+            })
+            $('#example17').DataTable({
                 'paging': true,
                 'lengthChange': false,
                 'searching': false,
