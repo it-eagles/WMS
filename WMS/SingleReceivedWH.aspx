@@ -113,9 +113,6 @@
                                                         </div>
                                                         <!-- /.box-header -->
                                                     </div>
-
-
-
                                                     <%-----------------------------------------------------Start Left Form--------------------------------------------------%>
                                                     <div class="col-md-6">
                                                         <!-- Horizontal Form -->
@@ -287,8 +284,6 @@
                                                     </div>
                                                     <!--/.col (left) -->
                                                     <%---------------------------------------------------------------End Left Form------------------------------------------------%>
-
-
 
                                                     <%------------------------------------------------------------Start Right Form------------------------------------------------%>
                                                     <div class="col-md-6">
@@ -677,7 +672,6 @@
                                                                         <asp:ListItem>QC FZ SEA</asp:ListItem>
                                                                         <asp:ListItem>RETURN FZ SEA</asp:ListItem>
                                                                         <asp:ListItem>NG PART FZ SEA</asp:ListItem>
-
                                                                     </asp:DropDownList>
                                                                 </div>
                                                             </div>
@@ -815,17 +809,17 @@
                                                             <legend></legend>
                                                             <asp:Repeater runat="server" ID="dgvItemDetail" OnItemDataBound="dgvItemDetail_ItemDataBound">
                                                                 <HeaderTemplate>
-                                                                    <table id="taConfirm" class="table table-condensed">
-                                                                        <th style="width: 2px">
+                                                                    <table id="example11" class="table table-condensed">
+                                                                        <th>
                                                                             <asp:CheckBox runat="server" ID="chkAll_Item" Checked="false"></asp:CheckBox></th>
-                                                                        <th style="width: 10px">LOTNo</th>
-                                                                        <th style="width: 10px">WHSite</th>
-                                                                        <th style="width: 10px">ENDCustomer</th>
-                                                                        <th style="width: 10px">CustomerLOTNo</th>
-                                                                        <th style="width: 5px">ItemNo</th>
-                                                                        <th style="width: 10px">ProductCode</th>
-                                                                        <th style="width: 10px">CustomerPN</th>
-                                                                        <th style="width: 2px">Status</th>
+                                                                        <th>LOTNo</th>
+                                                                        <th>WHSite</th>
+                                                                        <th>ENDCustomer</th>
+                                                                        <th>CustomerLOTNo</th>
+                                                                        <th>ItemNo</th>
+                                                                        <th>ProductCode</th>
+                                                                        <th>CustomerPN</th>
+                                                                        <th>Status</th>
                                                                 </HeaderTemplate>
                                                                 <ItemTemplate>
                                                                     <tr class="success">
@@ -850,7 +844,7 @@
                                                                             <asp:Label ID="lblStatus" runat="server"></asp:Label></td>
                                                                     </tr>
                                                                 </ItemTemplate>
-                                                        <%--        <AlternatingItemTemplate>
+                                                                <AlternatingItemTemplate>
                                                                     <tr class="info">
                                                                         <td>
                                                                             <asp:CheckBox ID="chkLotNo" runat="server"></asp:CheckBox></td>
@@ -871,7 +865,7 @@
                                                                         <td>
                                                                             <asp:Label ID="lblStatus" runat="server"></asp:Label></td>
                                                                     </tr>
-                                                                </AlternatingItemTemplate>--%>
+                                                                </AlternatingItemTemplate>
                                                                 <FooterTemplate>
                                                                     <th>select</th>
                                                                     <th>LOTNo</th>
@@ -1603,10 +1597,7 @@
                     </asp:UpdatePanel>
                 </div>
             </div>
-        </asp:Panel>
-        <!-- End Shipper Modal -->
-
-        <!-- Modal-->
+        </asp:Panel>     
         <asp:Panel ID="plConfirmGood" runat="server" CssClass="modal" TabIndex="-1" role="dialog" aria-labelledby="myLabe1">
             <div class="modal-dialog modal-lg" role="dialog">
                 <div class="modal-content">
@@ -1676,13 +1667,7 @@
                 </div>
             </div>
         </asp:Panel>
-        <!-- End Shipper Modal -->
-
-        <!-- Modal-->
-
-
-
-        <!-- End Shipper Modal -->
+        <!-- End Shipper Modal -->   
         <asp:Panel ID="ProductCodePanel" runat="server" CssClass="modal" TabIndex="-1" role="dialog" aria-labelledby="myLabe1">
             <%--<div class="modal fade" id="ProductCodeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">--%>
             <div class="modal-dialog modal-lg" role="dialog">

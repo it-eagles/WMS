@@ -808,8 +808,7 @@ Public Class PickingWH
                 If Not IsNothing(exp.VolumeUnit) Then
                     dcbVolume.Text = exp.VolumeUnit
                 End If
-                ReadDataRequestedISSUE()
-                ReadDataRequestedISSUE_PickPack()
+               
             Catch ex As Exception
                 ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('" & ex.Message & "')", True)
                 Exit Try
@@ -1100,7 +1099,8 @@ Public Class PickingWH
                     cboDiscrepencyUNIT.Text = exp.DiscrepancyUNIT
                 End If
                 txtRemark_PickingHead.Value = exp.Remark
-
+                ReadDataRequestedISSUE()
+                ReadDataRequestedISSUE_PickPack()
             Catch ex As Exception
                 ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('" & ex.Message & "')", True)
                 Exit Try
@@ -1328,10 +1328,9 @@ Public Class PickingWH
             Dim lblProduct As Label = CType(e.Item.FindControl("lblProduct"), Label)
             Dim lblPart As Label = CType(e.Item.FindControl("lblPart"), Label)
             Dim lblDesc As Label = CType(e.Item.FindControl("lblDesc"), Label)
-            Dim lblNo As Label = CType(e.Item.FindControl("lblNo"), Label)
             Dim lblPn As Label = CType(e.Item.FindControl("lblPn"), Label)
             Dim lblLot As Label = CType(e.Item.FindControl("lblLot"), Label)
-                                                                       
+                                                     
             If Not IsNothing(lblPull) Then
                 lblPull.Text = DataBinder.Eval(e.Item.DataItem, "PullSignal").ToString
             End If
@@ -1349,10 +1348,7 @@ Public Class PickingWH
             End If
             If Not IsNothing(lblDesc) Then
                 lblDesc.Text = DataBinder.Eval(e.Item.DataItem, "OwnerPart").ToString
-            End If
-            If Not IsNothing(lblNo) Then
-                lblNo.Text = DataBinder.Eval(e.Item.DataItem, "ProductDesc").ToString
-            End If
+            End If         
             If Not IsNothing(lblPn) Then
                 lblPn.Text = DataBinder.Eval(e.Item.DataItem, "OrderNo").ToString
             End If
@@ -1364,7 +1360,7 @@ Public Class PickingWH
     Private Sub ReadDataRequestedISSUE()
 
         Dim imp = (From i In db.tblWHRequestedISSUEs Where i.LotNo = txtLOtNo.Value.Trim And i.PullSignal = txtPullSignal.Value.Trim Order By i.ItemNo1 Ascending
-                  Select i.PullSignal, i.LotNo, i.ItemNo, i.ProductNo, i.CutomerPart, i.OwnerPart, i.ProductDesc, i.OrderNo, i.CustomerLot).ToList
+                  Select i.PullSignal, i.LotNo, i.ItemNo, i.ProductNo, i.CutomerPart, i.OwnerPart, i.OrderNo, i.CustomerLot).ToList
         If imp.Count > 0 Then
             Me.dgvImported.DataSource = imp
             Me.dgvImported.DataBind()
@@ -1376,10 +1372,12 @@ Public Class PickingWH
     Private Sub ReadDataRequestedISSUE_PickPack()
 
         Dim imp = (From i In db.tblWHRequestedISSUEs Where i.LotNo = txtLOtNo.Value.Trim And i.PullSignal = txtPullSignal.Value.Trim And i.AvailableRequestQTY <> 0 Order By i.ItemNo1 Ascending
-                 Select i.PullSignal, i.LotNo, i.ItemNo, i.ProductNo, i.CutomerPart, i.OwnerPart, i.ProductDesc, i.OrderNo, i.CustomerLot).ToList
+                 Select i.PullSignal, i.LotNo, i.ItemNo, i.ProductNo, i.CutomerPart, i.OwnerPart, i.OrderNo, i.CustomerLot).ToList
         If imp.Count > 0 Then
             Me.dgvReadWHIssuedRequest.DataSource = imp
+            Me.dgvReadWHIssuedRequest.DataBind()
             Me.dgvReadWHIssuedRequestNJR.DataSource = imp
+            Me.dgvReadWHIssuedRequestNJR.DataBind()
             Me.dgvReadAssign.DataSource = imp
             Me.dgvReadAssign.DataBind()
 
@@ -1618,7 +1616,7 @@ Public Class PickingWH
             ReadDataRequestedISSUE()
             ReadDataRequestedISSUE_PickPack()
         Else
-
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ์บันทึก ในเมนูนี้ !!!')", True)
         End If
     End Sub
     Private Sub SaveRequestedISSUE_New()
@@ -1695,11 +1693,316 @@ Public Class PickingWH
                                     .CustFrmOnline = txtCustFrmOnline.Value.Trim
                                             })
                 db.SaveChanges()
-
+                ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('บันทึก RequestedISSUE เรียบร้อยแล้ว !!!')", True)
             Catch ex As Exception
                 ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('" & ex.Message & "')", True)
             End Try
         End If
         txtItemNo.Focus()
+    End Sub
+
+    Protected Sub dgvReadAssign_ItemDataBound(sender As Object, e As RepeaterItemEventArgs)
+        If e.Item.ItemType = ListItemType.Item OrElse e.Item.ItemType = ListItemType.AlternatingItem Then
+            Dim lblPull As Label = CType(e.Item.FindControl("lblPull"), Label)
+            Dim lblLOTNo As Label = CType(e.Item.FindControl("lblLOTNo"), Label)
+            Dim lblItemNo As Label = CType(e.Item.FindControl("lblItemNo"), Label)
+            Dim lblProduct As Label = CType(e.Item.FindControl("lblProduct"), Label)
+            Dim lblPart As Label = CType(e.Item.FindControl("lblPart"), Label)
+            Dim lblDesc As Label = CType(e.Item.FindControl("lblDesc"), Label)
+            Dim lblPn As Label = CType(e.Item.FindControl("lblPn"), Label)
+            Dim lblLot As Label = CType(e.Item.FindControl("lblLot"), Label)
+
+            If Not IsNothing(lblPull) Then
+                lblPull.Text = DataBinder.Eval(e.Item.DataItem, "PullSignal").ToString
+            End If
+            If Not IsNothing(lblLOTNo) Then
+                lblLOTNo.Text = DataBinder.Eval(e.Item.DataItem, "LOTNo").ToString
+            End If
+            If Not IsNothing(lblItemNo) Then
+                lblItemNo.Text = DataBinder.Eval(e.Item.DataItem, "ItemNo").ToString
+            End If
+            If Not IsNothing(lblProduct) Then
+                lblProduct.Text = DataBinder.Eval(e.Item.DataItem, "ProductNo").ToString
+            End If
+            If Not IsNothing(lblPart) Then
+                lblPart.Text = DataBinder.Eval(e.Item.DataItem, "CutomerPart").ToString
+            End If
+            If Not IsNothing(lblDesc) Then
+                lblDesc.Text = DataBinder.Eval(e.Item.DataItem, "OwnerPart").ToString
+            End If
+            If Not IsNothing(lblPn) Then
+                lblPn.Text = DataBinder.Eval(e.Item.DataItem, "OrderNo").ToString
+            End If
+            If Not IsNothing(lblLot) Then
+                lblLot.Text = DataBinder.Eval(e.Item.DataItem, "CustomerLot").ToString
+            End If
+        End If
+    End Sub
+
+    Protected Sub dgvReadWHIssuedRequestNJR_ItemDataBound(sender As Object, e As RepeaterItemEventArgs)
+        If e.Item.ItemType = ListItemType.Item OrElse e.Item.ItemType = ListItemType.AlternatingItem Then
+            Dim lblPull As Label = CType(e.Item.FindControl("lblPull"), Label)
+            Dim lblLOTNo As Label = CType(e.Item.FindControl("lblLOTNo"), Label)
+            Dim lblItemNo As Label = CType(e.Item.FindControl("lblItemNo"), Label)
+            Dim lblProduct As Label = CType(e.Item.FindControl("lblProduct"), Label)
+            Dim lblPart As Label = CType(e.Item.FindControl("lblPart"), Label)
+            Dim lblDesc As Label = CType(e.Item.FindControl("lblDesc"), Label)
+            Dim lblPn As Label = CType(e.Item.FindControl("lblPn"), Label)
+            Dim lblLot As Label = CType(e.Item.FindControl("lblLot"), Label)
+
+            If Not IsNothing(lblPull) Then
+                lblPull.Text = DataBinder.Eval(e.Item.DataItem, "PullSignal").ToString
+            End If
+            If Not IsNothing(lblLOTNo) Then
+                lblLOTNo.Text = DataBinder.Eval(e.Item.DataItem, "LOTNo").ToString
+            End If
+            If Not IsNothing(lblItemNo) Then
+                lblItemNo.Text = DataBinder.Eval(e.Item.DataItem, "ItemNo").ToString
+            End If
+            If Not IsNothing(lblProduct) Then
+                lblProduct.Text = DataBinder.Eval(e.Item.DataItem, "ProductNo").ToString
+            End If
+            If Not IsNothing(lblPart) Then
+                lblPart.Text = DataBinder.Eval(e.Item.DataItem, "CutomerPart").ToString
+            End If
+            If Not IsNothing(lblDesc) Then
+                lblDesc.Text = DataBinder.Eval(e.Item.DataItem, "OwnerPart").ToString
+            End If
+            If Not IsNothing(lblPn) Then
+                lblPn.Text = DataBinder.Eval(e.Item.DataItem, "OrderNo").ToString
+            End If
+            If Not IsNothing(lblLot) Then
+                lblLot.Text = DataBinder.Eval(e.Item.DataItem, "CustomerLot").ToString
+            End If
+        End If
+    End Sub
+
+    Protected Sub dgvReadWHIssuedRequest_ItemDataBound(sender As Object, e As RepeaterItemEventArgs)
+        If e.Item.ItemType = ListItemType.Item OrElse e.Item.ItemType = ListItemType.AlternatingItem Then
+            Dim lblPull As Label = CType(e.Item.FindControl("lblPull"), Label)
+            Dim lblLOTNo As Label = CType(e.Item.FindControl("lblLOTNo"), Label)
+            Dim lblItemNo As Label = CType(e.Item.FindControl("lblItemNo"), Label)
+            Dim lblProduct As Label = CType(e.Item.FindControl("lblProduct"), Label)
+            Dim lblPart As Label = CType(e.Item.FindControl("lblPart"), Label)
+            Dim lblDesc As Label = CType(e.Item.FindControl("lblDesc"), Label)
+            Dim lblPn As Label = CType(e.Item.FindControl("lblPn"), Label)
+            Dim lblLot As Label = CType(e.Item.FindControl("lblLot"), Label)
+
+            If Not IsNothing(lblPull) Then
+                lblPull.Text = DataBinder.Eval(e.Item.DataItem, "PullSignal").ToString
+            End If
+            If Not IsNothing(lblLOTNo) Then
+                lblLOTNo.Text = DataBinder.Eval(e.Item.DataItem, "LOTNo").ToString
+            End If
+            If Not IsNothing(lblItemNo) Then
+                lblItemNo.Text = DataBinder.Eval(e.Item.DataItem, "ItemNo").ToString
+            End If
+            If Not IsNothing(lblProduct) Then
+                lblProduct.Text = DataBinder.Eval(e.Item.DataItem, "ProductNo").ToString
+            End If
+            If Not IsNothing(lblPart) Then
+                lblPart.Text = DataBinder.Eval(e.Item.DataItem, "CutomerPart").ToString
+            End If
+            If Not IsNothing(lblDesc) Then
+                lblDesc.Text = DataBinder.Eval(e.Item.DataItem, "OwnerPart").ToString
+            End If
+            If Not IsNothing(lblPn) Then
+                lblPn.Text = DataBinder.Eval(e.Item.DataItem, "OrderNo").ToString
+            End If
+            If Not IsNothing(lblLot) Then
+                lblLot.Text = DataBinder.Eval(e.Item.DataItem, "CustomerLot").ToString
+            End If
+        End If
+    End Sub
+
+    Protected Sub chkpull_CheckedChanged(sender As Object, e As EventArgs)
+        Dim chkName As CheckBox
+        Dim lblLOTNo As String
+        Dim lblPull As String
+        Dim i As Integer
+        Dim ManufacturingDate As Nullable(Of Date)
+        Dim ExpiredDate As Nullable(Of Date)
+        For i = 0 To dgvImported.Items.Count - 1
+            chkName = CType(dgvImported.Items(i).FindControl("chkpull"), CheckBox)
+            lblLOTNo = CType(dgvImported.Items(i).FindControl("lblLOTNo"), Label).Text.Trim
+            lblPull = CType(dgvImported.Items(i).FindControl("lblPull"), Label).Text.Trim
+            If chkName.Checked = True Then
+
+                Dim imp = (From im In db.tblWHRequestedISSUEs Where im.LotNo = lblLOTNo And im.PullSignal = lblPull
+                          Select im).FirstOrDefault
+                If imp IsNot Nothing Then
+                    If Not IsNothing(imp.ManufacturingDate) Then
+                        ManufacturingDate = imp.ManufacturingDate
+                    Else
+                        ManufacturingDate = Date.Now
+                    End If
+                    If Not IsNothing(imp.ExpiredDate) Then
+                        ExpiredDate = imp.ExpiredDate
+                    Else
+                        ExpiredDate = Date.Now
+                    End If
+                    txtItemNo.Value = CStr(imp.ItemNo)
+                    txtProductCode.Value = imp.ProductNo
+                    txtCustomerPart.Value = String.Format("{0:0.00}", imp.CutomerPart)
+                    txtOwnerPart.Value = imp.OwnerPart
+                    txtProductDesc.Value = imp.ProductDesc
+                    txtRequestedQuantity.Value = String.Format("{0:0.00}", imp.RequestQTY)
+                    If Not IsNothing(imp.QTYUnit) Then
+                        cboRequestUnit.Text = imp.QTYUnit
+                    End If
+                    txtOrder.Value = imp.OrderNo
+                    txtPriceForeigh.Value = String.Format("{0:0.00}", imp.PriceForeigh)
+                    txtPriceBath.Value = String.Format("{0:0.00}", imp.PriceBath)
+                    txtCustomerLot.Value = imp.CustomerLot
+                    txtdatepickerExpiredDate_AssignDetail.Text = Convert.ToDateTime(ManufacturingDate).ToString("dd/MM/yyyy")
+                    txtdatepickerManufacturing_AssignDetail.Text = Convert.ToDateTime(ExpiredDate).ToString("dd/MM/yyyy")
+                    txtAvailableQuantity.Value = String.Format("{0:0.00}", imp.AvailableRequestQTY)
+                    txtPalletNoAssign.Value = imp.PalletNo
+                    txtOrderFrmOnline.Value = imp.OrderFrmOnline
+                    txtCustFrmOnline.Value = imp.CustFrmOnline
+
+                End If
+            End If
+        Next
+    End Sub
+
+    Protected Sub btnSaveModify_AssignDetail_ServerClick(sender As Object, e As EventArgs)
+
+        Dim usename As String = CStr(Session("UserName"))
+        Dim form As String = "frmIssued"
+        If classPermis.CheckEdit(form, usename) = True Then
+            SaveRequestedISSUE_Edit()
+            ReadDataRequestedISSUE()
+            ReadDataRequestedISSUE_PickPack()
+        Else
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ์แก้ไข ในเมนูนี้ !!!')", True)
+        End If
+    End Sub
+    Private Sub SaveRequestedISSUE_Edit()
+        Dim ManufacturingDate As Nullable(Of Date)
+        Dim ExpiredDate As Nullable(Of Date)
+        Dim RequestedQuantity As String
+        Dim PriceForeigh As String
+        Dim PriceBath As String
+        Dim ItemNo As Integer
+        If txtLOtNo.Value.Trim() = "" Then
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ LOT NO ก่อน !!!')", True)
+            txtLOtNo.Focus()
+            Exit Sub
+        End If
+
+        If txtPullSignal.Value.Trim() = "" Then
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ Pull Signal ก่อน !!!')", True)
+            txtPullSignal.Focus()
+            Exit Sub
+        End If
+
+        If txtItemNo.Value.Trim() = "" Then
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ Item No ก่อน !!!')", True)
+            txtItemNo.Focus()
+            Exit Sub
+        End If
+        If chkNotUseDate_AssignDetail.Checked = False Then
+            ManufacturingDate = DateTime.ParseExact(txtdatepickerManufacturing_AssignDetail.Text, "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US"))
+            ExpiredDate = DateTime.ParseExact(txtdatepickerExpiredDate_AssignDetail.Text, "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US"))
+        ElseIf chkNotUseDate_AssignDetail.Checked = True Then
+            ManufacturingDate = Nothing
+            ExpiredDate = Nothing
+        End If
+        If String.IsNullOrEmpty(txtRequestedQuantity.Value.Trim) Then
+            RequestedQuantity = "0.0"
+        Else
+            RequestedQuantity = txtRequestedQuantity.Value.Trim
+        End If
+        If String.IsNullOrEmpty(txtPriceForeigh.Value.Trim) Then
+            PriceForeigh = "0.0"
+        Else
+            PriceForeigh = txtPriceForeigh.Value.Trim
+        End If
+        If String.IsNullOrEmpty(txtPriceBath.Value.Trim) Then
+            PriceBath = "0.0"
+        Else
+            PriceBath = txtPriceBath.Value.Trim
+        End If
+        ItemNo = CInt(txtItemNo.Value.Trim)
+        If MsgBox("คุณต้องการแก้ไขรายการ RequestedISSUE ใหม่ ใช่หรือไม่ ?", MsgBoxStyle.YesNo, "คำยืนยัน") = MsgBoxResult.Yes Then
+
+            Try
+                Dim ei As tblWHRequestedISSUE = (From r In db.tblWHRequestedISSUEs Where r.PullSignal = txtPullSignal.Value.Trim And r.LotNo = txtLOtNo.Value.Trim And r.ItemNo = ItemNo).SingleOrDefault
+                If ei IsNot Nothing Then
+                    ei.PullSignal = txtPullSignal.Value.Trim
+                    ei.LotNo = txtLOtNo.Value.Trim
+                    ei.ItemNo = CInt(txtItemNo.Value.Trim)
+                    ei.ProductNo = txtProductCode.Value.Trim
+                    ei.CutomerPart = txtCustomerPart.Value.Trim
+                    ei.OwnerPart = txtOwnerPart.Value.Trim
+                    ei.ProductDesc = txtProductDesc.Value.Trim
+                    ei.RequestQTY = CType(CDbl(RequestedQuantity).ToString("#,##0.000"), Double?)
+                    ei.QTYUnit = cboRequestUnit.Text.Trim
+                    ei.OrderNo = txtOrder.Value.Trim
+                    ei.ManufacturingDate = ManufacturingDate
+                    ei.ExpiredDate = ExpiredDate
+                    ei.PriceForeigh = CType(CDbl(PriceForeigh).ToString("#,##0.0000"), Double?)
+                    ei.PriceBath = CType(CDbl(PriceBath).ToString("#,##0.0000"), Double?)
+                    ei.CustomerLot = txtCustomerLot.Value.Trim
+                    ei.CreateBy = CStr(Session("UserName"))
+                    ei.CreateDate = Now
+                    ei.AvailableRequestQTY = CType(CDbl(RequestedQuantity).ToString("#,##0.000"), Double?)
+                    ei.ItemNo1 = CType(txtItemNo.Value.Trim, Double?)
+                    ei.PalletNo = txtPalletNoAssign.Value.Trim
+                    ei.OrderFrmOnline = txtOrderFrmOnline.Value.Trim
+                    ei.CustFrmOnline = txtCustFrmOnline.Value.Trim
+                    db.SaveChanges()
+                    ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('แก้ไขข้อมูล RequestedISSUE เรียบร้อยแล้ว !!!')", True)
+                Else
+                    ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('RequestedISSUE ที่คุณใส่ ไม่ถูกต้อง !!!')", True)
+                End If
+            Catch ex As Exception
+                ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('" & ex.Message & "')", True)
+            End Try
+        End If
+        txtItemNo.Focus()
+    End Sub
+    Private Sub ReadDataComfrimGoods()
+
+
+        If rdbSpecific.Checked = True And chkSCRAP.Checked = False Then
+            If rdbSpecific.Checked = True Then
+                Dim sqlSearchInvoice = (From c In db.tblWHConfirmGoodsReceiveDetails Join pd In db.tblProductDetails On c.ProductCode Equals pd.ProductCode And c.OwnerPN Equals pd.CustomerPart _
+                  Where c.WHSite = dcbSite.Text.Trim And c.OwnerPN = "txtOwner.Text" And c.ProductCode = txtProductCode.Value.Trim And c.StatusAvailable = "0" And c.Type = "Goods Complete" _
+                  And c.CustomerLOTNo = txtCUL.Value.Trim Order By c.ReceiveDate Ascending _
+                  Select c.LOTNo, c.WHSite, c.WHLocation, c.ENDCustomer, c.CustomerLOTNo, c.WHSource, c.ItemNo, c.ProductCode, c.CustomerPN, c.OwnerPN,
+                 EntryItemNo = Nothing IsNot c.EntryItemNo).ToList
+            Else
+                Dim sqlSearchInvoice = (From c In db.tblWHConfirmGoodsReceiveDetails Join pd In db.tblProductDetails On c.ProductCode Equals pd.ProductCode And c.OwnerPN Equals pd.CustomerPart _
+                Where c.WHSite = dcbSite.Text.Trim And c.OwnerPN = "txtOW.Text" And c.ProductCode = txtProductCode.Value.Trim And c.StatusAvailable = "0" And c.Type = "Goods Complete" _
+                And c.CustomerLOTNo = txtCUL.Value.Trim And c.ENDCustomer = txtENDCustomer.Value.Trim Order By c.ReceiveDate Ascending _
+                Select c.LOTNo, c.WHSite, c.WHLocation, c.ENDCustomer, c.CustomerLOTNo, c.WHSource, c.ItemNo, c.ProductCode, c.CustomerPN, c.OwnerPN,
+               EntryItemNo = Nothing IsNot c.EntryItemNo).ToList
+            End If
+        ElseIf rdbSpecific.Checked = True And chkSCRAP.Checked = True Then
+            Dim sqlSearchInvoice = (From c In db.tblWHConfirmGoodsReceiveDetails Join pd In db.tblProductDetails On c.ProductCode Equals pd.ProductCode And c.OwnerPN Equals pd.CustomerPart _
+            Where c.WHSite = dcbSite.Text.Trim And c.OwnerPN = "txtOW.Text" And c.ProductCode = txtProductCode.Value.Trim And c.StatusAvailable = "0" And c.Type = "Goods Complete" _
+            And c.WHLocation.Contains(txtCUL.Value.Trim) And c.TypeDamage = "Q-SCRAP" Order By c.ReceiveDate Ascending _
+            Select c.LOTNo, c.WHSite, c.WHLocation, c.ENDCustomer, c.CustomerLOTNo, c.WHSource, c.ItemNo, c.ProductCode, c.CustomerPN, c.OwnerPN,
+           EntryItemNo = Nothing IsNot c.EntryItemNo).ToList
+        ElseIf rdbOwner.Checked = True Then
+            If rcbFIFO.Checked = True Then
+                Dim sqlSearchInvoice = (From c In db.tblWHConfirmGoodsReceiveDetails Join pd In db.tblProductDetails On c.ProductCode Equals pd.ProductCode And c.OwnerPN Equals pd.CustomerPart _
+            Where c.WHSite = dcbSite.Text.Trim And c.OwnerPN = "txtOwner.Text" And c.ProductCode = txtProductCode.Value.Trim And c.StatusAvailable = "0" And c.Type = "Goods Complete" _
+            Order By c.ReceiveDate Ascending _
+            Select c.LOTNo, c.WHSite, c.WHLocation, c.ENDCustomer, c.CustomerLOTNo, c.WHSource, c.ItemNo, c.ProductCode, c.CustomerPN, c.OwnerPN,
+           EntryItemNo = Nothing IsNot c.EntryItemNo).ToList         
+            ElseIf rcbLIFO.Checked = True Then
+                Dim sqlSearchInvoice = (From c In db.tblWHConfirmGoodsReceiveDetails Join pd In db.tblProductDetails On c.ProductCode Equals pd.ProductCode And c.OwnerPN Equals pd.CustomerPart _
+            Where c.WHSite = dcbSite.Text.Trim And c.OwnerPN = "txtOwner.Text" And c.ProductCode = txtProductCode.Value.Trim And c.StatusAvailable = "0" And c.Type = "Goods Complete" _
+            And c.CustomerLOTNo = txtCUL.Value.Trim And c.ENDCustomer = txtENDCustomer.Value.Trim Order By c.ReceiveDate Descending _
+            Select c.LOTNo, c.WHSite, c.WHLocation, c.ENDCustomer, c.CustomerLOTNo, c.WHSource, c.ItemNo, c.ProductCode, c.CustomerPN, c.OwnerPN,
+           EntryItemNo = Nothing IsNot c.EntryItemNo).ToList            
+            End If
+        End If
+
+        
+        'SumQTYCanPick()
     End Sub
 End Class

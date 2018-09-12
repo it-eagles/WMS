@@ -1388,6 +1388,7 @@ Public Class SingleReceivedWH
             Dim lblPc As Label = CType(e.Item.FindControl("lblPc"), Label)
             Dim lblPn As Label = CType(e.Item.FindControl("lblPn"), Label)
             Dim lblStatus As Label = CType(e.Item.FindControl("lblStatus"), Label)
+
             If Not IsNothing(lblLOTNo) Then
                 lblLOTNo.Text = DataBinder.Eval(e.Item.DataItem, "LOTNo").ToString
             End If
