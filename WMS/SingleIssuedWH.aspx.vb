@@ -16,6 +16,7 @@ Public Class SingleIssuedWH
     Dim txtReadQuantityStk As String
     Dim txtPickQty As String
     Dim txtTotalQuantity As String
+    Dim CountdgvIssuedDetail As Integer
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Dim usename As String = CStr(Session("UserName"))
@@ -144,6 +145,7 @@ Public Class SingleIssuedWH
         btnSaveEditHead.Visible = False
         btnJobNoHead.Visible = True
         btnJobNoHead_Edit.Visible = False
+        btnDelete.Visible = False
 
         beforecustomtab_fieldset.Disabled = False
         issuecondition_fieldset.Disabled = False
@@ -155,6 +157,7 @@ Public Class SingleIssuedWH
         btnSaveEditHead.Visible = True
         btnJobNoHead.Visible = False
         btnJobNoHead_Edit.Visible = True
+        btnDelete.Visible = True
 
         beforecustomtab_fieldset.Disabled = False
         issuecondition_fieldset.Disabled = False
@@ -3146,4 +3149,119 @@ Public Class SingleIssuedWH
         End Try
 
     End Function
+
+    Protected Sub btnDelete_ServerClick(sender As Object, e As EventArgs)
+        Dim user As String = CStr(Session("UserName"))
+        Dim form As String = "frmIssued"
+        Dim cu = From um In db.tblUserMenus Where um.UserName = user And um.Form = form And um.Delete_ = 1
+        If cu.Any Then
+            CountWHIssuedDetail()
+            If CountdgvIssuedDetail = 0 Then
+                SaveIssued_Delete()
+                SaveDeleteWHRemark()
+                UpdateRead0()
+                'ClearDataHead()
+                'ClearDATADetail()
+                DataPickingDetail()
+                DataIssuedDetail()
+            Else
+                If MsgBox("คุณต้องลบรายการข้างในก่อน ใหม่ ใช่หรือไม่ ?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+                    CountdgvIssuedDetail = CountdgvIssuedDetail
+                End If
+            End If
+
+
+
+        Else
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ์เมนูนี้ !!!')", True)
+        End If
+    End Sub
+    Private Sub CountWHIssuedDetail()
+        Dim lblPullSignal As String
+        Dim lblLOTNo As String
+        Dim lblItemNo As Integer
+        Dim i As Integer
+        CountdgvIssuedDetail = 0
+        Dim Count As Double
+        With Repeater9
+            For i = 0 To Repeater9.Items.Count - 1
+
+                lblPullSignal = CType(Repeater9.Items(i).FindControl("lblPullSignal"), Label).Text.Trim
+                lblLOTNo = CType(Repeater9.Items(i).FindControl("lblLOTNo"), Label).Text.Trim
+                lblItemNo = CInt(CType(Repeater9.Items(i).FindControl("lblItemNo"), Label).Text.Trim)
+
+                Dim user = (From u In db.tblWHISSUEDDetails Where u.LOTNo = lblLOTNo And u.PullSignal = lblPullSignal And u.ItemNo = lblItemNo).SingleOrDefault
+
+                Count = Count + user.ItemNo
+                CountdgvIssuedDetail = CountdgvIssuedDetail + 1
+
+            Next
+        End With
+
+    End Sub
+    Private Sub SaveIssued_Delete()
+        If txtJobNo_BeforeTab.Value.Trim = "" Then
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ LOT NO ก่อน ก่อน !!!');", True)
+            Exit Sub
+        End If
+
+        If txtPullSignal_BeforeTab.Value.Trim = "" Then
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ Pull Signal ก่อน ก่อน !!!');", True)
+            Exit Sub
+        End If
+
+        If MsgBox("คุณต้องการลบข้อมูล Issued ใช่หรือไม่ ?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+
+            Using tran As New TransactionScope()
+                Try
+                    Dim DeleteIssue As tblWHISSUED = (From c In db.tblWHISSUEDs Where c.PullSignal = txtPullSignal_BeforeTab.Value.Trim _
+                  And c.LOTNo = txtJobNo_BeforeTab.Value.Trim Select c).First()
+
+                    db.tblWHISSUEDs.Remove(DeleteIssue)
+                    db.SaveChanges()
+                    tran.Complete()
+                    ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('ระบบได้ทำการ Delete Issued นี้เรียบร้อยแล้ว !!!');", True)
+                Catch ex As Exception
+                    tran.Dispose()
+                    ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาดจาก Delete กรุณาบันทึกข้อมูลใหม่อีกครั้ง');", True)
+                End Try
+            End Using
+        End If
+    End Sub
+    Private Sub SaveDeleteWHRemark()
+
+        Using tran As New TransactionScope()
+            Try
+                Dim DeleteWHRemark As tblWHRemarkMoveJob = (From c In db.tblWHRemarkMoveJobs Where c.PullSignal = txtPullSignal_BeforeTab.Value.Trim _
+              And c.LOTNo = txtJobNo_BeforeTab.Value.Trim Select c).First()
+
+                db.tblWHRemarkMoveJobs.Remove(DeleteWHRemark)
+                db.SaveChanges()
+                tran.Complete()
+            Catch ex As Exception
+                tran.Dispose()
+                ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาดจาก SaveDeleteWHRemark() กรุณาบันทึกข้อมูลใหม่อีกครั้ง');", True)
+            End Try
+        End Using
+    End Sub
+    Private Sub UpdateRead0()
+        Using tran As New TransactionScope()
+            Try
+                db.Database.Connection.Open()
+
+                Dim edit As tblWHPicking = (From c In db.tblWHPickings Where c.PullSignal = txtPullSignal_BeforeTab.Value.Trim _
+                  And c.LOTNo = txtJobNo_BeforeTab.Value.Trim Select c).First()
+                If edit IsNot Nothing Then
+
+                    edit.UsedStatus = 0
+
+                    db.SaveChanges()
+                    tran.Complete()
+                End If
+            Catch ex As Exception
+                tran.Dispose()
+                ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาดจาก UpdateRead0() กรุณาบันทึกข้อมูลใหม่อีกครั้ง');", True)
+            End Try
+        End Using
+    End Sub
 End Class

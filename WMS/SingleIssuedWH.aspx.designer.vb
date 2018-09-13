@@ -113,6 +113,15 @@ Partial Public Class SingleIssuedWH
     Protected WithEvents txtJobNo_BeforeTab As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
+    '''btnDelete control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnDelete As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
     '''btnJobNoHead control.
     '''</summary>
     '''<remarks>
