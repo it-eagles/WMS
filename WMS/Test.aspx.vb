@@ -79,6 +79,7 @@ Public Class Test
                      u.Dept
                     }).Take(10)
 
+
         If formlist.Count > 0 Then
             Me.rptCustomers.DataSource = formlist.ToList
             Me.rptCustomers.DataBind()
@@ -187,7 +188,6 @@ Public Class Test
         'Dim lblName As String
         'Dim lblBranch As String
         Dim i As Integer
-        Dim j As Integer
         Dim name As ArrayList
         name = New ArrayList
         For i = 0 To rptCustomers.Items.Count - 1
@@ -235,7 +235,6 @@ Public Class Test
         Dim chkName As CheckBox
         Dim lblUserName As String
         Dim i As Integer
-        Dim j As Integer
         Dim name As ArrayList
         name = New ArrayList
         For i = 0 To rptCustomers.Items.Count - 1

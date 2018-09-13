@@ -527,33 +527,6 @@ Partial Public Class PrepareLotWH
     Protected WithEvents goodreceivedetail_fieldset As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
-    '''JobDetailPanel control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents JobDetailPanel As Global.System.Web.UI.WebControls.Panel
-
-    '''<summary>
-    '''JobDetailUpdatePanel control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents JobDetailUpdatePanel As Global.System.Web.UI.UpdatePanel
-
-    '''<summary>
-    '''Repeater9 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents Repeater9 As Global.System.Web.UI.WebControls.Repeater
-
-    '''<summary>
     '''ddlWHSite_GoodRecDetail control.
     '''</summary>
     '''<remarks>
@@ -1047,6 +1020,33 @@ Partial Public Class PrepareLotWH
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents btnDeleteAll_GoodRecDetail As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''JobDetailPanel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents JobDetailPanel As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''JobDetailUpdatePanel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents JobDetailUpdatePanel As Global.System.Web.UI.UpdatePanel
+
+    '''<summary>
+    '''Repeater9 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Repeater9 As Global.System.Web.UI.WebControls.Repeater
 
     '''<summary>
     '''txtSelectFileForImport_ImportData control.

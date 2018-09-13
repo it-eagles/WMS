@@ -8,6 +8,16 @@ Public Class PickingWH
     Inherits System.Web.UI.Page
     Dim db As New LKBWarehouseEntities1
     Dim classPermis As New ClassPermis
+    Dim ProductNo As String
+    Dim Owner As String
+    Dim CustomerLots As String
+    'ManufacturingDates = .Rows.Item(e.RowIndex).Cells(11).Value.ToString()
+    'ExpiredDates = .Rows.Item(e.RowIndex).Cells(12).Value.ToString()
+    Dim RowRequest1 As Integer
+    Dim zInvoice As String
+    Dim QtyRequest As Double
+    'OrderFrmOnline.Text = .Rows.Item(e.RowIndex).Cells("OrderFrmOnline").Value.ToString()
+    'CustFrmOnline.Text = .Rows.Item(e.RowIndex).Cells("CustFrmOnline").Value.ToString()
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Dim usename As String = CStr(Session("UserName"))
@@ -27,7 +37,7 @@ Public Class PickingWH
                     showWeightINV()
                     TabName.Value = Request.Form(TabName.UniqueID)
                     LockMain()
-                    rdbIMP.Checked = True
+                    
                 End If
             Else
                 ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ เข้าโปรแกรมนี้' !!!');", True)
@@ -54,13 +64,16 @@ Public Class PickingWH
         btnSeletJobNew.Visible = True
         btnSelectJobEdit.Visible = False
         pickinghead_fieldset.Disabled = False
-        importfiles_fieldset.Disabled = True
-        assigndetailofpullsignal_fieldset.Disabled = False
+        importfiles_fieldset.Disabled = False
+        assigndetailofpullsignal_fieldset.Disabled = True
         pickpack_fieldset.Disabled = False
         picknjr_fieldset.Disabled = False
         pickautopallet_fieldset.Disabled = False
         ClearDataHead()
         picking_.Disabled = False
+        rdbOwner.Checked = True
+        rdbIMP.Checked = True
+        rcbFIFO.Checked = True
     End Sub
 
     Protected Sub btnEdit_ServerClick(sender As Object, e As EventArgs)
@@ -79,6 +92,9 @@ Public Class PickingWH
         chkNotUseDate_AssignDetail.Checked = True
         txtdatepickerExpiredDate_AssignDetail.Attributes.Add("disabled", "disabled")
         txtdatepickerManufacturing_AssignDetail.Attributes.Add("disabled", "disabled")
+        rdbOwner.Checked = True
+        rdbIMP.Checked = True
+        rcbFIFO.Checked = True
     End Sub
 
     Protected Sub btnSeletJobNew_ServerClick(sender As Object, e As EventArgs)
@@ -1965,44 +1981,445 @@ Public Class PickingWH
     End Sub
     Private Sub ReadDataComfrimGoods()
 
-
         If rdbSpecific.Checked = True And chkSCRAP.Checked = False Then
             If rdbSpecific.Checked = True Then
                 Dim sqlSearchInvoice = (From c In db.tblWHConfirmGoodsReceiveDetails Join pd In db.tblProductDetails On c.ProductCode Equals pd.ProductCode And c.OwnerPN Equals pd.CustomerPart _
-                  Where c.WHSite = dcbSite.Text.Trim And c.OwnerPN = "txtOwner.Text" And c.ProductCode = txtProductCode.Value.Trim And c.StatusAvailable = "0" And c.Type = "Goods Complete" _
+                  Where c.WHSite = dcbSite.Text.Trim And c.OwnerPN = Owner And c.ProductCode = ProductNo And c.StatusAvailable = "0" And c.Type = "Goods Complete" _
                   And c.CustomerLOTNo = txtCUL.Value.Trim Order By c.ReceiveDate Ascending _
-                  Select c.LOTNo, c.WHSite, c.WHLocation, c.ENDCustomer, c.CustomerLOTNo, c.WHSource, c.ItemNo, c.ProductCode, c.CustomerPN, c.OwnerPN,
+                  Select c.LOTNo, c.WHSite, c.CustomerLOTNo, c.ItemNo, c.ProductCode, c.CustomerPN, c.OwnerPN,
                  EntryItemNo = Nothing IsNot c.EntryItemNo).ToList
+                If sqlSearchInvoice.Count > 0 Then
+                    dgvReadWHIssuedDetail.DataSource = sqlSearchInvoice
+                    dgvReadWHIssuedDetail.DataBind()
+
+                Else
+                    dgvReadWHIssuedDetail.DataSource = Nothing
+                    dgvReadWHIssuedDetail.DataBind()
+                End If
             Else
                 Dim sqlSearchInvoice = (From c In db.tblWHConfirmGoodsReceiveDetails Join pd In db.tblProductDetails On c.ProductCode Equals pd.ProductCode And c.OwnerPN Equals pd.CustomerPart _
-                Where c.WHSite = dcbSite.Text.Trim And c.OwnerPN = "txtOW.Text" And c.ProductCode = txtProductCode.Value.Trim And c.StatusAvailable = "0" And c.Type = "Goods Complete" _
+                Where c.WHSite = dcbSite.Text.Trim And c.OwnerPN = txtOW.Value.Trim And c.ProductCode = ProductNo And c.StatusAvailable = "0" And c.Type = "Goods Complete" _
                 And c.CustomerLOTNo = txtCUL.Value.Trim And c.ENDCustomer = txtENDCustomer.Value.Trim Order By c.ReceiveDate Ascending _
-                Select c.LOTNo, c.WHSite, c.WHLocation, c.ENDCustomer, c.CustomerLOTNo, c.WHSource, c.ItemNo, c.ProductCode, c.CustomerPN, c.OwnerPN,
+                Select c.LOTNo, c.WHSite, c.CustomerLOTNo, c.ItemNo, c.ProductCode, c.CustomerPN, c.OwnerPN,
                EntryItemNo = Nothing IsNot c.EntryItemNo).ToList
+                If sqlSearchInvoice.Count > 0 Then
+                    dgvReadWHIssuedDetail.DataSource = sqlSearchInvoice
+                    dgvReadWHIssuedDetail.DataBind()
+
+                Else
+                    dgvReadWHIssuedDetail.DataSource = Nothing
+                    dgvReadWHIssuedDetail.DataBind()
+                End If
             End If
+
         ElseIf rdbSpecific.Checked = True And chkSCRAP.Checked = True Then
             Dim sqlSearchInvoice = (From c In db.tblWHConfirmGoodsReceiveDetails Join pd In db.tblProductDetails On c.ProductCode Equals pd.ProductCode And c.OwnerPN Equals pd.CustomerPart _
-            Where c.WHSite = dcbSite.Text.Trim And c.OwnerPN = "txtOW.Text" And c.ProductCode = txtProductCode.Value.Trim And c.StatusAvailable = "0" And c.Type = "Goods Complete" _
+            Where c.WHSite = dcbSite.Text.Trim And c.OwnerPN = txtOW.Value.Trim And c.ProductCode = ProductNo And c.StatusAvailable = "0" And c.Type = "Goods Complete" _
             And c.WHLocation.Contains(txtCUL.Value.Trim) And c.TypeDamage = "Q-SCRAP" Order By c.ReceiveDate Ascending _
-            Select c.LOTNo, c.WHSite, c.WHLocation, c.ENDCustomer, c.CustomerLOTNo, c.WHSource, c.ItemNo, c.ProductCode, c.CustomerPN, c.OwnerPN,
+            Select c.LOTNo, c.WHSite, c.CustomerLOTNo, c.ItemNo, c.ProductCode, c.CustomerPN, c.OwnerPN,
            EntryItemNo = Nothing IsNot c.EntryItemNo).ToList
+            If sqlSearchInvoice.Count > 0 Then
+                dgvReadWHIssuedDetail.DataSource = sqlSearchInvoice
+                dgvReadWHIssuedDetail.DataBind()
+
+            Else
+                dgvReadWHIssuedDetail.DataSource = Nothing
+                dgvReadWHIssuedDetail.DataBind()
+            End If
         ElseIf rdbOwner.Checked = True Then
             If rcbFIFO.Checked = True Then
                 Dim sqlSearchInvoice = (From c In db.tblWHConfirmGoodsReceiveDetails Join pd In db.tblProductDetails On c.ProductCode Equals pd.ProductCode And c.OwnerPN Equals pd.CustomerPart _
-            Where c.WHSite = dcbSite.Text.Trim And c.OwnerPN = "txtOwner.Text" And c.ProductCode = txtProductCode.Value.Trim And c.StatusAvailable = "0" And c.Type = "Goods Complete" _
+            Where c.WHSite = dcbSite.Text.Trim And c.OwnerPN = Owner And c.ProductCode = ProductNo And c.StatusAvailable = "0" And c.Type = "Goods Complete" _
             Order By c.ReceiveDate Ascending _
-            Select c.LOTNo, c.WHSite, c.WHLocation, c.ENDCustomer, c.CustomerLOTNo, c.WHSource, c.ItemNo, c.ProductCode, c.CustomerPN, c.OwnerPN,
-           EntryItemNo = Nothing IsNot c.EntryItemNo).ToList         
+            Select c.LOTNo, c.WHSite, c.CustomerLOTNo, c.ItemNo, c.ProductCode, c.CustomerPN, c.OwnerPN,
+           EntryItemNo = Nothing IsNot c.EntryItemNo).ToList
+                If sqlSearchInvoice.Count > 0 Then
+                    dgvReadWHIssuedDetail.DataSource = sqlSearchInvoice
+                    dgvReadWHIssuedDetail.DataBind()
+
+                Else
+                    dgvReadWHIssuedDetail.DataSource = Nothing
+                    dgvReadWHIssuedDetail.DataBind()
+                End If
             ElseIf rcbLIFO.Checked = True Then
                 Dim sqlSearchInvoice = (From c In db.tblWHConfirmGoodsReceiveDetails Join pd In db.tblProductDetails On c.ProductCode Equals pd.ProductCode And c.OwnerPN Equals pd.CustomerPart _
-            Where c.WHSite = dcbSite.Text.Trim And c.OwnerPN = "txtOwner.Text" And c.ProductCode = txtProductCode.Value.Trim And c.StatusAvailable = "0" And c.Type = "Goods Complete" _
+            Where c.WHSite = dcbSite.Text.Trim And c.OwnerPN = Owner And c.ProductCode = txtProductCode.Value.Trim And c.StatusAvailable = "0" And c.Type = "Goods Complete" _
             And c.CustomerLOTNo = txtCUL.Value.Trim And c.ENDCustomer = txtENDCustomer.Value.Trim Order By c.ReceiveDate Descending _
-            Select c.LOTNo, c.WHSite, c.WHLocation, c.ENDCustomer, c.CustomerLOTNo, c.WHSource, c.ItemNo, c.ProductCode, c.CustomerPN, c.OwnerPN,
-           EntryItemNo = Nothing IsNot c.EntryItemNo).ToList            
+            Select c.LOTNo, c.WHSite, c.CustomerLOTNo, c.ItemNo, c.ProductCode, c.CustomerPN, c.OwnerPN,
+           EntryItemNo = Nothing IsNot c.EntryItemNo).ToList
+                If sqlSearchInvoice.Count > 0 Then
+                    dgvReadWHIssuedDetail.DataSource = sqlSearchInvoice
+                    dgvReadWHIssuedDetail.DataBind()
+
+                Else
+                    dgvReadWHIssuedDetail.DataSource = Nothing
+                    dgvReadWHIssuedDetail.DataBind()
+                End If
             End If
         End If
+        SumQTYCanPick()
+    End Sub
 
-        
-        'SumQTYCanPick()
+    Protected Sub dgvReadWHIssuedDetail_ItemDataBound(sender As Object, e As RepeaterItemEventArgs)
+        If e.Item.ItemType = ListItemType.Item OrElse e.Item.ItemType = ListItemType.AlternatingItem Then
+
+            Dim lblLOTNo As Label = CType(e.Item.FindControl("lblLOTNo"), Label)
+            Dim lblSite As Label = CType(e.Item.FindControl("lblSite"), Label)
+            'Dim lblLocation As Label = CType(e.Item.FindControl("lblLocation"), Label)
+            Dim lblCustomer As Label = CType(e.Item.FindControl("lblCustomer"), Label)
+            'Dim lblSource As Label = CType(e.Item.FindControl("lblSource"), Label)
+            Dim lblItemNo As Label = CType(e.Item.FindControl("lblItemNo"), Label)
+            Dim lblPn As Label = CType(e.Item.FindControl("lblPn"), Label)
+            Dim lblProduct As Label = CType(e.Item.FindControl("lblProduct"), Label)
+            Dim lblOwner As Label = CType(e.Item.FindControl("lblOwner"), Label)
+            Dim lblEntry As Label = CType(e.Item.FindControl("lblEntry"), Label)
+       
+            If Not IsNothing(lblLOTNo) Then
+                lblLOTNo.Text = DataBinder.Eval(e.Item.DataItem, "LOTNo").ToString
+            End If
+            If Not IsNothing(lblSite) Then
+                lblSite.Text = DataBinder.Eval(e.Item.DataItem, "WHSite").ToString
+            End If
+            'If Not IsNothing(lblLocation) Then
+            '    lblLocation.Text = DataBinder.Eval(e.Item.DataItem, "WHLocation").ToString
+            'End If
+            If Not IsNothing(lblCustomer) Then
+                lblCustomer.Text = DataBinder.Eval(e.Item.DataItem, "CustomerLOTNo").ToString
+            End If
+            'If Not IsNothing(lblSource) Then
+            '    lblSource.Text = DataBinder.Eval(e.Item.DataItem, "WHSource").ToString
+            'End If
+            If Not IsNothing(lblItemNo) Then
+                lblItemNo.Text = DataBinder.Eval(e.Item.DataItem, "ItemNo").ToString
+            End If
+
+            If Not IsNothing(lblProduct) Then
+                lblProduct.Text = DataBinder.Eval(e.Item.DataItem, "ProductCode").ToString
+            End If
+            If Not IsNothing(lblPn) Then
+                lblPn.Text = DataBinder.Eval(e.Item.DataItem, "CustomerPN").ToString
+            End If
+            If Not IsNothing(lblOwner) Then
+                lblOwner.Text = DataBinder.Eval(e.Item.DataItem, "OwnerPN").ToString
+            End If
+
+            If Not IsNothing(lblEntry) Then
+                lblEntry.Text = DataBinder.Eval(e.Item.DataItem, "EntryItemNo").ToString
+            End If
+        End If
+    End Sub
+    Private Sub SumQTYCanPick()
+        Dim Available As Double
+        For i = 0 To dgvReadWHIssuedDetail.Items.Count - 1
+            Available = Available + 1
+        Next
+        txtSumQTYPick1.Value = CStr(Available)
+    End Sub
+
+    Protected Sub chkpull_Issud_CheckedChanged(sender As Object, e As EventArgs)
+        Dim chkName As CheckBox
+        Dim lblLOTNo As String
+        For i = 0 To dgvReadWHIssuedRequest.Items.Count - 1
+            chkName = CType(dgvReadWHIssuedRequest.Items(i).FindControl("chkpull_Issud"), CheckBox)
+            lblLOTNo = CType(dgvReadWHIssuedRequest.Items(i).FindControl("lblLOTNo"), Label).Text.Trim
+            Dim lblPull As String = CType(dgvReadWHIssuedRequest.Items(i).FindControl("lblPull"), Label).Text.Trim
+            If chkName.Checked = True Then
+                Dim imp = (From im In db.tblWHRequestedISSUEs Where im.LotNo = lblLOTNo And im.PullSignal = lblPull
+                          Select im).FirstOrDefault
+                ProductNo = imp.ProductNo
+                Owner = imp.OwnerPart
+                CustomerLots = imp.CustomerLot
+                'ManufacturingDates = .Rows.Item(e.RowIndex).Cells(11).Value.ToString()
+                'ExpiredDates = .Rows.Item(e.RowIndex).Cells(12).Value.ToString()
+                RowRequest1 = imp.ItemNo
+                zInvoice = imp.OrderNo
+                QtyRequest = CDbl(CDbl(imp.AvailableRequestQTY).ToString("#,##0.000"))
+                'OrderFrmOnline.Text = .Rows.Item(e.RowIndex).Cells("OrderFrmOnline").Value.ToString()
+                'CustFrmOnline.Text = .Rows.Item(e.RowIndex).Cells("CustFrmOnline").Value.ToString()
+
+            End If
+        Next
+        ReadDataComfrimGoods()
+    End Sub
+
+    Protected Sub btnPick_ServerClick(sender As Object, e As EventArgs)
+        Dim usename As String = CStr(Session("UserName"))
+        Dim form As String = "frmIssued"
+        If classPermis.CheckSave(form, usename) = True Then
+            If chkSCRAP.Checked = False Then
+                SavePickDetail_New()
+            Else
+
+            End If
+        End If
+    End Sub
+    Private Sub SavePickDetail_New()
+        Dim chkName As CheckBox
+        If txtLOtNo.Value.Trim = "" Then
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ LOT NO ก่อน !!!')", True)
+            txtLOtNo.Focus()
+            Exit Sub
+        ElseIf txtPullSignal.Value.Trim() = "" Then
+            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ Pull Signal ก่อน !!!')", True)
+            txtPullSignal.Focus()
+            Exit Sub
+
+        Else
+            For i = 0 To dgvReadWHIssuedDetail.Items.Count - 1
+                chkName = CType(dgvReadWHIssuedDetail.Items(i).FindControl("chkpull_Issud"), CheckBox)
+                Dim lblLOTNo As String = CType(dgvReadWHIssuedDetail.Items(i).FindControl("lblLOTNo"), Label).Text.Trim
+                Dim lblSite As String = CType(dgvReadWHIssuedDetail.Items(i).FindControl("lblSite"), Label).Text.Trim
+                Dim lblCustomer As String = CType(dgvReadWHIssuedDetail.Items(i).FindControl("lblCustomer"), Label).Text.Trim
+                Dim lblItemNo As String = CType(dgvReadWHIssuedDetail.Items(i).FindControl("lblItemNo"), Label).Text.Trim
+                Dim lblPn As String = CType(dgvReadWHIssuedDetail.Items(i).FindControl("lblPn"), Label).Text.Trim
+                Dim lblProduct As String = CType(dgvReadWHIssuedDetail.Items(i).FindControl("lblProduct"), Label).Text.Trim
+                Dim lblOwner As String = CType(dgvReadWHIssuedDetail.Items(i).FindControl("lblOwner"), Label).Text.Trim
+                Dim lblEntry As String = CType(dgvReadWHIssuedDetail.Items(i).FindControl("lblEntry"), Label).Text.Trim
+
+
+            Next
+
+          
+            'If txtItemNoPick.Trim() = "" Then
+            '    MessageBox.Show("กรุณาใส่ Item No ก่อน !!!", "ผลการตรวจสอบ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            '    txtItemNoPick.Focus()
+            '    Exit Sub
+            'End If
+
+            'If txtRReceiveNo.Text.Trim() = "" Then
+            '    MessageBox.Show("กรุณาใส่ Item No ก่อน !!!", "ผลการตรวจสอบ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            '    txtRReceiveNo.Focus()
+            '    Exit Sub
+            'End If
+
+            If QtyRequest = 0 Then
+                'MessageBox.Show("ยอดงาน ReQuest ที่ท่านเลือกได้ถูกทำการ Pick หมดแล้วครับ !!!", "ผลการตรวจสอบ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                'Exit Sub
+            End If
+
+            If QtyRequest < CInt(txtQTYOfPick.Value.Trim) Then
+                'MessageBox.Show("ยอดงานที่ท่านใส่มีจำนวนมากกว่าที่ Request ครับ !!!", "ผลการตรวจสอบ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                txtQTYOfPick.Focus()
+                Exit Sub
+            End If
+
+            'If CInt(txtQTYOfPick.Value.Trim) > CInt(txtRQTYOfPick..Trim) Then
+            '    'MessageBox.Show("ยอดงานเกิน Available ครับ !!!", "ผลการตรวจสอบ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            '    'txtQTYOfPick.Focus()
+            '    Exit Sub
+            'End If
+
+
+            '*** หาค่า Item No ****
+            'txtRecCount.Text = "0"
+            'txtCheckRec.Text = "0"
+            'txtRecCount.Text = CStr(dgvWHPickDetail.RowCount())
+            'txtItemCount.Text = CStr(CDbl(txtRecCount.Text) + 1)
+            ''****** END ****
+
+            'Sql = "SELECT max(itemno) as ItemMax  FROM tblWHPickingDetail WHERE PullSignal = '" & txtPullSignal.Value.Trim & "'   and LOTNo = '" & txtLOtNo.Value.Trim & "'  "
+
+
+            Try
+                Dim itemmax As Integer
+                Dim pd = (From p In db.tblWHPickingDetails Where p.PullSignal = txtPullSignal.Value.Trim And p.LOTNo = txtLOtNo.Value.Trim _
+                      Group By p.ItemNo
+                      Into Item = Max(p.ItemNo)
+                      Select Item).First
+                If pd.ToString IsNot Nothing Then
+                    itemmax = CInt(pd) + 1
+                Else
+                    itemmax = 1
+                End If
+                'If txtRManuFacturingDate.Text = "" Then
+                '    .Parameters.Add("@ManufacturingDate", SqlDbType.DateTime).Value = DBNull.Value
+                'Else
+                '    .Parameters.Add("@ManufacturingDate", SqlDbType.DateTime).Value = txtRManuFacturingDate.Text.Trim()
+                'End If
+
+                '.PullSignal = txtPullSignal.Value.Trim, _
+                '.LOTNo = txtLOtNo.Value.Trim, _
+                '.WHSite = txtRWHSite.Text.Trim, _
+                '.WHLocation = txtRWHLocation.Text.Trim, _
+                '.ENDCustomer = txtREndCustomer.Text.Trim, _
+                '.CustomerLOTNo = txtRCustomerLotNo.Text.Trim, _
+                '.WHSource = txtRWHSoure.Text.Trim, _
+                '.ItemNo = CDbl(itemmax).ToString("#,##0"), _
+                '.ProductCode = txtRProductCode.Text.Trim, _
+                '.CustomerPN = txtRCustomerPN.Text.Trim, _
+                '.OwnerPN = txtROwnerPN.Text.Trim, _
+                '.ProductDesc = txtRProductDesc.Text.Trim, _
+                '.Measurement = txtRMeasurement.Text.Trim, _
+                '.ProductWidth = CDbl(txtRProductWidth.Text).ToString("#,##0.000"), _
+                '.ProductLength = CDbl(txtRProductLength.Text).ToString("#,##0.000", _
+                '.ProductHeight = CDbl(txtRProductHeight.Text).ToString("#,##0.000"), _
+                '.ProductVolume = CDbl(txtRProductVolume.Text).ToString("#,##0.000"), _
+                '.OrderNo = txtROrderNo.Text.Trim, _
+                '.ReceiveNo = txtRReceiveNo.Text.Trim, _
+                '.Type = txtRType.Text.Trim, _
+                '.ManufacturingDate  = DBNull.Value, _              
+                '.ExpiredDate = DBNull.Value, _
+                '.ReceiveDate = txtRReceiveDate.Text.Trim, _
+                '.PickQuantity = CDbl(txtQTYOfPick.Text).ToString("#,##0.000"), _
+                '.PickUnit = txtRQuantityUnit.Text.Trim, _
+                '.Weigth = CDbl(txtRWeight.Text).ToString("#,##0.000"), _
+                '.WeigthUnit = txtRWeightUnit.Text.Trim, _
+                '.Currency = txtRCurrency.Text.Trim, _
+                '.ExchangeRate = CDbl(txtRExchangeRate.Text).ToString("#,##0.0000"), _
+                '.PriceForeigh = CDbl(txtRPriceForeight.Text).ToString("#,##0.0000"), _
+                '.PriceForeighAmount = CDbl(txtRPriceForeightAmount.Text).ToString("#,##0.0000"), _
+                '.PriceBath = CDbl(txtRBathForeight.Text).ToString("#,##0.0000"), _
+                '.PriceBathAmount = CDbl(txtRBathForeightAmount.Text).ToString("#,##0.0000"), _
+                '.PalletNo = txtPalletNo.Text.Trim, _
+                '.UserBy = DBConnString.UserName, _
+                '.LastUpdate = Now, _
+                '.Item = CDbl(txtItemNoPick.Text).ToString("#,##0"), _
+                '.ReqNo = RowRequest1, _
+                '.ExpInvNo = zInvoice, _
+                '.PONo = txtPONo.Text.Trim, _
+                '.EntryNo = REntryNo, _
+                '.EntryItemNo = REntryItemNo, _
+                '.OrderFrmOnline = txtOrderFrmOnline.Text, _
+                '.CustFrmOnline = txtCustFrmOnline.Text, _
+
+
+
+                '    sb = New StringBuilder()
+                '    sb.Append("UPDATE tblWHStockMovement")
+                '    sb.Append(" SET AvalableQuantity=@AvalableQuantity, ISSUEQuantity=@ISSUEQuantity,OrderFrmOnline=@OrderFrmOnline,CustFrmOnline=@CustFrmOnline")
+                '    sb.Append(" WHERE (LOTNo=@LOTNo AND ItemNo=@ItemNo AND OwnerPN=@OwnerPN AND CustomerLotNo=@CustomerLotNo)")
+                '    Dim sqlEdit As String
+                '    sqlEdit = sb.ToString()
+                '    If txtIssuedQTY.Text = "" Then
+                '        txtIssuedQTY.Text = "0"
+                '    End If
+                '    With com
+                '        .CommandText = sqlEdit
+                '        .CommandType = CommandType.Text
+                '        .Connection = Conn
+                '        .Transaction = tr
+                '        .Parameters.Clear()
+                '        .Parameters.Add("@LOTNo", SqlDbType.NVarChar).Value = txtRReceiveNo.Text.Trim()
+                '        .Parameters.Add("@OwnerPN", SqlDbType.NVarChar).Value = txtROwnerPN.Text.Trim()
+                '        .Parameters.Add("@CustomerLotNo", SqlDbType.NVarChar).Value = txtRCustomerLotNo.Text.Trim()
+                '        .Parameters.Add("@ItemNo", SqlDbType.Decimal).Value = CDbl(txtItemNoPick.Text).ToString("#,##0")
+                '        .Parameters.Add("@ReceiveNo", SqlDbType.NVarChar).Value = txtRReceiveNo.Text.Trim()
+                '        .Parameters.Add("@AvalableQuantity", SqlDbType.Float).Value = (ItemTotal - CDbl(txtQTYOfPick.Text)).ToString("#,##0.00")
+                '        .Parameters.Add("@ISSUEQuantity", SqlDbType.Float).Value = (CDbl(txtQTYOfPick.Text) + CDbl(txtIssuedQTY.Text)).ToString("#,##0.00")
+                '        .Parameters.Add("@OrderFrmOnline", SqlDbType.NVarChar).Value = txtOrderFrmOnline.Text.Trim()
+                '        .Parameters.Add("@CustFrmOnline", SqlDbType.NVarChar).Value = txtCustFrmOnline.Text.Trim()
+                '        Dim result As Integer
+                '        result = .ExecuteNonQuery()
+                '        If result = 0 Then
+                '            tr.Rollback()
+                '            MessageBox.Show("เกิดข้อผิดพลาด เนื่องจาก Update SaveMovement", "ผลการทำงาน", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                '            Exit Sub
+                '        End If
+                '    End With
+
+
+                '    sb = New StringBuilder()
+                '    sb.Append("UPDATE tblWHRequestedISSUE")
+                '    sb.Append(" SET AvailableRequestQTY=@AvailableRequestQTY,OrderFrmOnline=@OrderFrmOnline,CustFrmOnline=@CustFrmOnline")
+                '    sb.Append(" WHERE (PullSignal=@PullSignal AND LOTNo=@LOTNo AND ItemNo=@ItemNo)")
+                '    Dim sqlEdit1 As String
+                '    sqlEdit1 = sb.ToString()
+
+                '    With com
+                '        .CommandText = sqlEdit1
+                '        .CommandType = CommandType.Text
+                '        .Connection = Conn
+                '        .Transaction = tr
+                '        .Parameters.Clear()
+                '        .Parameters.Add("@PullSignal", SqlDbType.NVarChar).Value = txtPullSignal.Text.Trim()
+                '        .Parameters.Add("@LOTNo", SqlDbType.NVarChar).Value = txtLOtNo.Text.Trim()
+                '        .Parameters.Add("@ItemNo", SqlDbType.NVarChar).Value = RowRequest1
+                '        .Parameters.Add("@AvailableRequestQTY", SqlDbType.Float).Value = QtyRequest - CInt(txtQTYOfPick.Text)
+                '        .Parameters.Add("@OrderFrmOnline", SqlDbType.NVarChar).Value = txtOrderFrmOnline.Text.Trim()
+                '        .Parameters.Add("@CustFrmOnline", SqlDbType.NVarChar).Value = txtCustFrmOnline.Text.Trim()
+
+                '        Dim result As Integer
+                '        result = .ExecuteNonQuery()
+                '        If result = 0 Then
+                '            tr.Rollback()
+                '            MessageBox.Show("เกิดข้อผิดพลาด เนื่องจาก Update tblWHRequestedISSUE  ", "ผลการทำงาน", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                '            Exit Sub
+                '        End If
+                '    End With
+
+                '    sb = New StringBuilder()
+                '    sb.Append("UPDATE tblWHConfirmGoodsReceiveDetail")
+                '    sb.Append(" SET AvailableQuantity=@AvailableQuantity,StatusAvailable=@StatusAvailable,StatusPutAlway=@StatusPutAlway,OrderFrmOnline=@OrderFrmOnline,CustFrmOnline=@CustFrmOnline")
+                '    sb.Append(" WHERE (LOTNo=@LOTNo AND ItemNo=@ItemNo AND OwnerPN=@OwnerPN AND CustomerLotNo=@CustomerLotNo)")
+                '    Dim sqlEdit2 As String
+                '    sqlEdit2 = sb.ToString()
+
+                '    With com
+                '        .CommandText = sqlEdit2
+                '        .CommandType = CommandType.Text
+                '        .Connection = Conn
+                '        .Transaction = tr
+                '        .Parameters.Clear()
+                '        .Parameters.Add("@LOTNo", SqlDbType.NVarChar).Value = txtRReceiveNo.Text
+                '        .Parameters.Add("@OwnerPN", SqlDbType.NVarChar).Value = txtROwnerPN.Text
+                '        .Parameters.Add("@CustomerLotNo", SqlDbType.NVarChar).Value = txtRCustomerLotNo.Text
+                '        .Parameters.Add("@ItemNo", SqlDbType.Decimal).Value = CDbl(txtItemNoPick.Text).ToString("#,##0")
+                '        .Parameters.Add("@AvailableQuantity", SqlDbType.Float).Value = (ItemTotal - CDbl(txtQTYOfPick.Text)).ToString("#,##0.00")
+                '        .Parameters.Add("@OrderFrmOnline", SqlDbType.NVarChar).Value = txtOrderFrmOnline.Text.Trim()
+                '        .Parameters.Add("@CustFrmOnline", SqlDbType.NVarChar).Value = txtCustFrmOnline.Text.Trim()
+                '        If (ItemTotal - CDbl(txtQTYOfPick.Text)) = 0 Then
+                '            .Parameters.Add("@StatusAvailable", SqlDbType.Decimal).Value = 1
+                '        Else
+                '            .Parameters.Add("@StatusAvailable", SqlDbType.Decimal).Value = 0
+                '        End If
+                '        .Parameters.Add("@StatusPutAlway", SqlDbType.Int).Value = 0
+                '        Dim result As Integer
+                '        result = .ExecuteNonQuery()
+                '        If result = 0 Then
+                '            tr.Rollback()
+                '            MessageBox.Show("เกิดข้อผิดพลาด เนื่องจาก Update Confirm ", "ผลการทำงาน", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                '            Exit Sub
+                '        End If
+                '    End With
+
+                '    QtyRequest = QtyRequest - CInt(txtQTYOfPick.Text.Trim)
+
+            Catch ex As Exception
+                '    tr.Rollback()
+                '    MessageBox.Show("เกิดข้อผิดพลาด เนื่องจาก " & ex.Message, "ผลการทำงาน", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                '    Exit Sub
+            End Try
+
+            'tr.Commit()
+
+            'If chkSCRAP.Checked = False Then
+            '    ReadDataComfrimGoods()
+            '    ReadDataPickDetail()
+            'End If
+
+            'ReadDataRequestedISSUE()
+            'ReadDataRequestedISSUE_PickPack()
+            'ClareDataPickDetail()
+            'CountWHPickDetailTotal()
+
+            ''dgvItemAuto.DataSource = Nothing
+            ''dgvReadWHIssuedDetail.DataSource = Nothing
+            ''ReadDataRequestedISSUE_PickPack()
+            ''ReadDataPickDetail()
+            ''ClareDataPickDetail()
+            ''CountWHPickDetailTotal()
+            'If dgvReadWHIssuedRequest.RowCount = 0 Then
+            '    _LotnoPick = txtLOTNo.Text.Trim
+            '    _PullPick = txtPullSignal.Text.Trim
+            '    _DatePick = dtpPullDate.Text.Trim
+            '    _TimePick = txtPullTime.Text.Trim
+
+            '    'Dim f As New FrmRptMailPick()
+            '    'f.MdiParent = frmMain
+            '    'f.Show()
+
+            '  End If
+
+        End If
     End Sub
 End Class

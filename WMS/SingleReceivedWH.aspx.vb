@@ -496,6 +496,8 @@ Public Class SingleReceivedWH
             goodreceivedetail_.Disabled = False
             btnSaveEdit.Visible = True
             btnSaveNew.Visible = False
+            ReadDATA()
+            ReadDATA1()
         Else
             ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ์เมนูนี้ !!!')", True)
         End If
@@ -1557,7 +1559,6 @@ Public Class SingleReceivedWH
         Dim lblLOTNo As String
         Dim lblItem As Integer
         Dim i As Integer
-        Dim j As Integer
         Dim name As ArrayList
         name = New ArrayList
         For i = 0 To dgvItemDetail.Items.Count - 1
@@ -1775,7 +1776,6 @@ Public Class SingleReceivedWH
         Dim Quantity As Integer
         Dim ItemNo As Integer
         Dim i As Integer
-        Dim j As Integer
         Dim ExpectedDate As Nullable(Of Date)
         Dim LOTNo As String
         Dim name As ArrayList
@@ -1853,6 +1853,7 @@ Public Class SingleReceivedWH
                                     .TypeDamage = dcbTypeDamage.Text.Trim, _
                                     .Supplier = wh.Supplier, _
                                     .Buyer = wh.Buyer, _
+                                    .StatusAvailable = "0", _
                                     .Exporter = wh.Exporter, _
                                     .Destination = wh.Destination, _
                                     .Consignee = wh.Consignee, _

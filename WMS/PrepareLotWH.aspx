@@ -373,8 +373,8 @@
                                                                                 </div>
                                                                             </div>
                                                                             <div class="form-group">
-                                                                                <label for="txtQuantityPackage_PreGoodRec" class="col-sm-5 control-label">Quantity Package:</label>
-                                                                                <div class="col-sm-3">
+                                                                                <label for="txtQuantityPackage_PreGoodRec" class="col-sm-4 control-label">Quantity Package:</label>
+                                                                                <div class="col-sm-4">
                                                                                     <input class="form-control input-sm" id="txtQuantityPackage_PreGoodRec" runat="server" value="0.0" />
                                                                                 </div>
                                                                                 <div class="col-sm-4">
@@ -382,8 +382,8 @@
                                                                                 </div>
                                                                             </div>
                                                                             <div class="form-group">
-                                                                                <label for="txtQuantityPLTSkid_PreGoodRec" class="col-sm-5 control-label">Quantity PLT/Skid:</label>
-                                                                                <div class="col-sm-3">
+                                                                                <label for="txtQuantityPLTSkid_PreGoodRec" class="col-sm-4 control-label">Quantity PLT/Skid:</label>
+                                                                                <div class="col-sm-4">
                                                                                     <input class="form-control input-sm" id="txtQuantityPLTSkid_PreGoodRec" runat="server" value="0.0" />
                                                                                 </div>
                                                                                 <div class="col-sm-4">
