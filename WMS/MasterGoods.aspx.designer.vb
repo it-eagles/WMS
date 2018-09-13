@@ -50,6 +50,15 @@ Partial Public Class MasterGoods
     Protected WithEvents btnEditHead As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
+    '''btnDelete control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnDelete As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
     '''btnAddGoods control.
     '''</summary>
     '''<remarks>
@@ -66,6 +75,15 @@ Partial Public Class MasterGoods
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents btnSaveEditHead As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''beforecustomtab_fieldset control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents beforecustomtab_fieldset As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
     '''txtProductCode control.
@@ -122,6 +140,15 @@ Partial Public Class MasterGoods
     Protected WithEvents txtEndUserPart As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
+    '''stockqty_fieldset control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents stockqty_fieldset As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
     '''txtMinimunStock control.
     '''</summary>
     '''<remarks>
@@ -165,6 +192,15 @@ Partial Public Class MasterGoods
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents Repeater10 As Global.System.Web.UI.WebControls.Repeater
+
+    '''<summary>
+    '''importgoods_fieldset control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents importgoods_fieldset As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
     '''txtImpProductCode control.
@@ -491,6 +527,15 @@ Partial Public Class MasterGoods
     Protected WithEvents txtImpEstablishNo As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
+    '''exportgoods_fieldset control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents exportgoods_fieldset As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
     '''txtExpProductCode control.
     '''</summary>
     '''<remarks>
@@ -770,6 +815,15 @@ Partial Public Class MasterGoods
     Protected WithEvents txtExpEstablishNo As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
+    '''detailofgoods_fieldset control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents detailofgoods_fieldset As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
     '''cboProductUnit control.
     '''</summary>
     '''<remarks>
@@ -896,6 +950,15 @@ Partial Public Class MasterGoods
     Protected WithEvents txtRemarks As Global.System.Web.UI.HtmlControls.HtmlTextArea
 
     '''<summary>
+    '''assembly_fieldset control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents assembly_fieldset As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
     '''txtEAS control.
     '''</summary>
     '''<remarks>
@@ -903,6 +966,15 @@ Partial Public Class MasterGoods
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents txtEAS As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''btnEAS control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnEAS As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
     '''txtCustomer control.
@@ -932,31 +1004,40 @@ Partial Public Class MasterGoods
     Protected WithEvents txtQty As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''btAdd control.
+    '''btnAddAssembly control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents btAdd As Global.System.Web.UI.HtmlControls.HtmlButton
+    Protected WithEvents btnAddAssembly As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
-    '''btModify control.
+    '''btnModifyAssembly control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents btModify As Global.System.Web.UI.HtmlControls.HtmlButton
+    Protected WithEvents btnModifyAssembly As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
-    '''btDel control.
+    '''btnDeleteAssembly control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents btDel As Global.System.Web.UI.HtmlControls.HtmlButton
+    Protected WithEvents btnDeleteAssembly As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''Repeater1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Repeater1 As Global.System.Web.UI.WebControls.Repeater
 
     '''<summary>
     '''txtGenCode control.
@@ -1083,4 +1164,31 @@ Partial Public Class MasterGoods
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents Repeater9 As Global.System.Web.UI.WebControls.Repeater
+
+    '''<summary>
+    '''EASPanel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents EASPanel As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''EASUpdatePanel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents EASUpdatePanel As Global.System.Web.UI.UpdatePanel
+
+    '''<summary>
+    '''Repeater2 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Repeater2 As Global.System.Web.UI.WebControls.Repeater
 End Class

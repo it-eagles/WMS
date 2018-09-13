@@ -64,6 +64,7 @@
                                             <input class="form-control input-sm" id="txtJobNo_BeforeTab" runat="server" autocomplete="off"/>
                                         </div>
                                         <div class="col-sm-2">
+                                            <button class="btn btn-app btn-sm" id="btnDelete" runat="server" onserverclick="btnDelete_ServerClick" visible="false"><i class="fa fa-trash"></i>Delete</button>
                                             <button type="button" class="btn btn-block btn-primary btn-sm" runat="server" id="btnJobNoHead" onserverclick="btnJobNoHead_ServerClick"><i class="glyphicon glyphicon-search"></i></button>
                                             <button type="button" class="btn btn-block btn-primary btn-sm" runat="server" id="btnJobNoHead_Edit" onserverclick="btnJobNoHead_Edit_ServerClick" visible="false"><i class="glyphicon glyphicon-search"></i></button>
                                         </div>
