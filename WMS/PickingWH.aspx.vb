@@ -35,8 +35,7 @@ Public Class PickingWH
                     showWeight()
                     showWeightINV()
                     TabName.Value = Request.Form(TabName.UniqueID)
-                    LockMain()
-                    
+                    LockMain()             
                 End If
             Else
                 ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ เข้าโปรแกรมนี้' !!!');", True)
