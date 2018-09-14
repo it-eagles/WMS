@@ -14,6 +14,9 @@ Imports System.Configuration
 Public Class Test
     Inherits System.Web.UI.Page
     Dim db As New LKBWarehouseEntities1
+    'Dim formuser As IQueryable(Of LKBWarehouseEntities1)
+
+
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         'lblDisplayDate.Text = System.DateTime.Now.ToString("T")
         If Not Me.IsPostBack Then
@@ -68,10 +71,9 @@ Public Class Test
 
     Public Sub showUserList()
 
-        'Dim formlist = (From u In db.tblMenus
-        '                Group By Form = u.Form
-        '                Into f = Group, Count())
-        Dim formlist = (From u In db.tblUsers
+  
+
+        Dim formuser = (From u In db.tblUsers
                  Select New With {
                      u.UserName,
                      u.Name,
@@ -80,13 +82,13 @@ Public Class Test
                     }).Take(10)
 
 
-        If formlist.Count > 0 Then
-            Me.rptCustomers.DataSource = formlist.ToList
+        If formuser.Count > 0 Then
+            Me.rptCustomers.DataSource = formuser.ToList
             Me.rptCustomers.DataBind()
         Else
             Me.rptCustomers.DataSource = Nothing
             Me.rptCustomers.DataBind()
-            End If
+        End If
     End Sub
 
     'Protected Sub LinkButton1_Click(sender As Object, e As EventArgs)
