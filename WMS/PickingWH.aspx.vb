@@ -1,7 +1,6 @@
 ﻿Option Explicit On
 Option Strict On
 
-
 Imports System.Transactions
 Imports System.Globalization
 Public Class PickingWH
@@ -2154,6 +2153,7 @@ Public Class PickingWH
         End If
     End Sub
     Private Sub SavePickDetail_New()
+        Dim i As Integer
         Dim chkName As CheckBox
         If txtLOtNo.Value.Trim = "" Then
             ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ LOT NO ก่อน !!!')", True)
@@ -2179,7 +2179,7 @@ Public Class PickingWH
 
             Next
 
-          
+
             'If txtItemNoPick.Trim() = "" Then
             '    MessageBox.Show("กรุณาใส่ Item No ก่อน !!!", "ผลการตรวจสอบ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
             '    txtItemNoPick.Focus()

@@ -85,3 +85,7 @@ D:\WMS\WMS\bin\System.Web.WebPages.Deployment.dll
 D:\WMS\WMS\bin\System.Web.WebPages.dll
 D:\WMS\WMS\bin\System.Web.WebPages.Razor.dll
 D:\WMS\WMS\bin\WebGrease.dll
+C:\Users\bossp\OneDrive\Documents\WMS\WMS\obj\Release\WMS.vbprojAssemblyReference.cache
+C:\Users\bossp\OneDrive\Documents\WMS\WMS\obj\Release\WMS.Resources.resources
+C:\Users\bossp\OneDrive\Documents\WMS\WMS\obj\Release\WMS.vbproj.GenerateResource.cache
+C:\Users\bossp\OneDrive\Documents\WMS\WMS\obj\Release\WMS.xml

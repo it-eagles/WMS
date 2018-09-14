@@ -1,6 +1,4 @@
-﻿Option Explicit On
-Option Strict On
-
+﻿
 Imports System.Linq
 Imports System.Web
 Imports System.Web.Configuration
