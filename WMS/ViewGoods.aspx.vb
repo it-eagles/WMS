@@ -1,5 +1,6 @@
 ﻿Option Strict On
 Option Explicit On
+Option Infer On
 
 Public Class ViewGoods
     Inherits System.Web.UI.Page

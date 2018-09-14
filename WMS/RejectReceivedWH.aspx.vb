@@ -1,4 +1,5 @@
 ﻿Option Explicit On
+Option Infer On
 Option Strict On
 
 Imports System.Transactions
@@ -372,14 +373,14 @@ Public Class RejectReceivedWH
                 lblItemNo = CDbl(CType(Repeater9.Items(i).FindControl("lblItemNo"), Label).Text.Trim)
                 lblLOTNo = CType(Repeater9.Items(i).FindControl("lblLOTNo"), Label).Text.Trim
 
-                Dim u = (From us In db.tblWHConfirmGoodsReceiveDetails Where us.LOTNo = lblLOTNo And us.ItemNo = lblItemNo
+                Dim cur = (From us In db.tblWHConfirmGoodsReceiveDetails Where us.LOTNo = lblLOTNo And us.ItemNo = lblItemNo
                   Select us).FirstOrDefault
 
                 If chkName.Checked = True Then
 
                     Try
 
-                        Dim Delete As tblWHConfirmGoodsReceiveDetail = (From de In db.tblWHConfirmGoodsReceiveDetails Where de.LOTNo = u.LOTNo And de.ItemNo = u.ItemNo And de.Item = u.Item Select de).First()
+                        Dim Delete As tblWHConfirmGoodsReceiveDetail = (From de In db.tblWHConfirmGoodsReceiveDetails Where de.LOTNo = cur.LOTNo And de.ItemNo = cur.ItemNo And de.Item = cur.Item Select de).First()
 
                         db.tblWHConfirmGoodsReceiveDetails.Remove(Delete)
 

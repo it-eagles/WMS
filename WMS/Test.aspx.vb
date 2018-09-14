@@ -1,9 +1,10 @@
 ﻿Option Strict On
 Option Explicit On
+Option Infer On
 
 Imports System.Data
-Imports LinqToExcel
-Imports ExcelDataReader
+'Imports LinqToExcel
+'Imports ExcelDataReader
 Imports System.Data.OleDb
 Imports System.IO
 Imports System.Configuration
@@ -287,6 +288,7 @@ Public Class Test
     End Sub
     Private Sub Import_To_Grid(ByVal FilePath As String, ByVal Extension As String, ByVal isHDR As String)
         Dim conStr As String = ""
+        Dim i As Integer
         Select Case Extension
             Case ".xls"
                 conStr = ConfigurationManager.ConnectionStrings("Excel03ConString").ConnectionString

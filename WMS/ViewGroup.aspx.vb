@@ -1,5 +1,6 @@
 ﻿Option Strict On
 Option Explicit On
+Option Infer On
 
 Public Class ViewGroup
     Inherits System.Web.UI.Page

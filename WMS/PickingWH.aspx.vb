@@ -1,5 +1,6 @@
 ﻿Option Explicit On
 Option Strict On
+Option Infer On
 
 Imports System.Transactions
 Imports System.Globalization
@@ -2107,6 +2108,7 @@ Public Class PickingWH
         End If
     End Sub
     Private Sub SumQTYCanPick()
+        Dim i As Integer
         Dim Available As Double
         For i = 0 To dgvReadWHIssuedDetail.Items.Count - 1
             Available = Available + 1
@@ -2117,6 +2119,7 @@ Public Class PickingWH
     Protected Sub chkpull_Issud_CheckedChanged(sender As Object, e As EventArgs)
         Dim chkName As CheckBox
         Dim lblLOTNo As String
+        Dim i As Integer
         For i = 0 To dgvReadWHIssuedRequest.Items.Count - 1
             chkName = CType(dgvReadWHIssuedRequest.Items(i).FindControl("chkpull_Issud"), CheckBox)
             lblLOTNo = CType(dgvReadWHIssuedRequest.Items(i).FindControl("lblLOTNo"), Label).Text.Trim

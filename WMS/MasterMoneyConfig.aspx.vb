@@ -1,4 +1,8 @@
-﻿Imports System.Transactions
+﻿Option Explicit On
+Option Strict On
+Option Infer On
+
+Imports System.Transactions
 
 Public Class MasterMoneyConfig
     Inherits System.Web.UI.Page
@@ -73,8 +77,8 @@ Public Class MasterMoneyConfig
 
                 db.tblMoneyConfigs.Add(New tblMoneyConfig With { _
                              .Code = txtCode.Value.Trim, _
-                             .Amonut = txtAmount.Value.Trim, _
-                             .TotalAmonut = txtAmount.Value.Trim, _
+                             .Amonut = CType(txtAmount.Value.Trim, Double?), _
+                             .TotalAmonut = CType(txtAmount.Value.Trim, Double?), _
                              .Remark = txtRemark.Text.Trim, _
                              .Status = dcbStatus.Text.Trim, _
                              .CreateBy = CStr(Session("UserName")), _

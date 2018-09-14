@@ -217,7 +217,7 @@ Public Class MoneyExt
                 strResult = UCase$(Left$(strResult, 1)) & Mid$(strResult, 2)
             End If
             'Return result 
-            NumToEngCarton = strResult
+            Return strResult
         Catch ex As Exception
         End Try
     End Function

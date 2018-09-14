@@ -1,4 +1,8 @@
-﻿Imports System.Transactions
+﻿Option Explicit On
+Option Strict On
+Option Infer On
+
+Imports System.Transactions
 Imports System.IO
 
 Public Class MasterExchangeRate
@@ -141,91 +145,91 @@ Public Class MasterExchangeRate
     Private Sub btnGenScript_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         'If ClassPermis.CheckSave("frmExchangeRate") = False Then Exit Sub
 
-        Dim strFileNames() As String
-        Dim strFileName As String
-        Dim intCount As Integer
-        Dim objStreamReader As StreamReader
+        'Dim strFileNames() As String
+        'Dim strFileName As String
+        'Dim intCount As Integer
+        'Dim objStreamReader As StreamReader
 
-        Dim strScript As String
-        Dim objFileStream As FileStream
-        Dim objStreamWriter As StreamWriter
-        Try
-            If String.IsNullOrEmpty(Me.txtDirectory.Value) Then
+        'Dim strScript As String
+        'Dim objFileStream As FileStream
+        'Dim objStreamWriter As StreamWriter
+        'Try
+        '    If String.IsNullOrEmpty(Me.txtDirectory.Value) Then
 
-                Exit Sub
-            End If
+        '        Exit Sub
+        '    End If
 
-            strFileNames = Directory.GetFiles(Me.txtDirectory.Value)
+        '    strFileNames = Directory.GetFiles(Me.txtDirectory.Value)
 
-            For Each strFileName In strFileNames
+        '    For Each strFileName In strFileNames
 
-                objStreamReader = New StreamReader(strFileName)
-                strScript = String.Empty
-                intCount += 1
+        '        objStreamReader = New StreamReader(strFileName)
+        '        strScript = String.Empty
+        '        intCount += 1
 
-                While objStreamReader.Peek <> -1
-                    strScript &= GenScript(objStreamReader.ReadLine)
-                End While
-                objStreamReader.Close()
-                objStreamReader = Nothing
+        '        While objStreamReader.Peek <> -1
+        '            strScript &= GenScript(objStreamReader.ReadLine)
+        '        End While
+        '        objStreamReader.Close()
+        '        objStreamReader = Nothing
 
-                tmpSQLScript = strScript
+        '        tmpSQLScript = strScript
 
-                objStreamWriter = Nothing
-                objFileStream = Nothing
+        '        objStreamWriter = Nothing
+        '        objFileStream = Nothing
 
-                'Me.ProgressBar.Value = (intCount * 100) / strFileNames.Length
+        '        'Me.ProgressBar.Value = (intCount * 100) / strFileNames.Length
 
-            Next
-            'SaveDATA_New()
-            'ReadDATA()
-            'MessageBox.Show("Exchange rate import is successfully ", "Done.", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        '    Next
+        '    'SaveDATA_New()
+        '    'ReadDATA()
+        '    'MessageBox.Show("Exchange rate import is successfully ", "Done.", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
-        Catch ex As Exception
+        'Catch ex As Exception
 
-        End Try
+        'End Try
     End Sub
-    Private Function GenScript(ByVal pStrData As String)
-        Dim strCurrency As String
-        Dim strStartDate As String
-        Dim dateStart As Date
-        Dim strEndDate As String
-        Dim dateEnd As Date
-        Dim dblBathAmount As Double
-        Dim strTempText As String
-        Dim strMount As String
+    'Private Function GenScript(ByVal pStrData As String) As 
+    '    Dim strCurrency As String
+    '    Dim strStartDate As String
+    '    Dim dateStart As Date
+    '    Dim strEndDate As String
+    '    Dim dateEnd As Date
+    '    Dim dblBathAmount As Double
+    '    Dim strTempText As String
+    '    Dim strMount As String
 
-        'Dim strReturn As String
-        Try
+    '    'Dim strReturn As String
+    '    Try
 
-            strCurrency = pStrData.Substring(0, 3)
-            strStartDate = pStrData.Substring(3, 8)
-            strMount = pStrData.Substring(5, 2)
-            dateStart = New Date(strStartDate.Substring(4), strStartDate.Substring(2, 2), strStartDate.Substring(0, 2))
-            strEndDate = pStrData.Substring(11, 8)
-            dateEnd = New Date(strEndDate.Substring(4), strEndDate.Substring(2, 2), strEndDate.Substring(0, 2))
-            dblBathAmount = pStrData.Substring(19, 11)
-            strTempText = pStrData.Substring(30)
+    '        strCurrency = pStrData.Substring(0, 3)
+    '        strStartDate = pStrData.Substring(3, 8)
+    '        strMount = pStrData.Substring(5, 2)
+    '        dateStart = New Date(strStartDate.Substring(4), strStartDate.Substring(2, 2), strStartDate.Substring(0, 2))
+    '        strEndDate = pStrData.Substring(11, 8)
+    '        dateEnd = New Date(strEndDate.Substring(4), strEndDate.Substring(2, 2), strEndDate.Substring(0, 2))
+    '        dblBathAmount = pStrData.Substring(19, 11)
+    '        strTempText = pStrData.Substring(30)
 
-            'strReturn = "INSERT INTO tblExchangeRate (Currency, StartDate, EndDate, ExchangeRate, BathAmount, TempText, Status, Mount)" & vbCrLf
-            'strReturn &= "VALUES ('" & strCurrency & "', '" & dateStart.ToShortDateString & "', '" & dateEnd.ToShortDateString & "', 1," & dblBathAmount & ", '" & strTempText & "','" & tmpCheckInOrOut & "','" & strMount & "')" & vbCrLf
+    '        'strReturn = "INSERT INTO tblExchangeRate (Currency, StartDate, EndDate, ExchangeRate, BathAmount, TempText, Status, Mount)" & vbCrLf
+    '        'strReturn &= "VALUES ('" & strCurrency & "', '" & dateStart.ToShortDateString & "', '" & dateEnd.ToShortDateString & "', 1," & dblBathAmount & ", '" & strTempText & "','" & tmpCheckInOrOut & "','" & strMount & "')" & vbCrLf
 
-            db.tblExchangeRates.Add(New tblExchangeRate With {.Currency = strCurrency, _
-                                                              .StartDate = dateStart.ToShortDateString, _
-                                                              .EndDate = dateEnd.ToShortDateString, _
-                                                              .ExchangeRate = "1", _
-                                                              .BathAmount = dblBathAmount, _
-                                                              .TempText = strTempText, _
-                                                              .Status = dcbStatus.Text, _
-                                                              .Mount = strMount
-                                                             })
-            db.SaveChanges()
+    '        db.tblExchangeRates.Add(New tblExchangeRate With {.Currency = strCurrency, _
+    '                                                          .StartDate = dateStart.ToShortDateString, _
+    '                                                          .EndDate = dateEnd.ToShortDateString, _
+    '                                                          .ExchangeRate = "1", _
+    '                                                          .BathAmount = dblBathAmount, _
+    '                                                          .TempText = strTempText, _
+    '                                                          .Status = dcbStatus.Text, _
+    '                                                          .Mount = strMount
+    '                                                         })
+    '        db.SaveChanges()
 
-            'Return strReturn
-            Return True
-        Catch ex As Exception
-            'Return "/* """ & pStrData & """. It has something wrong. */" & vbCrLf
-            Return False
-        End Try
-    End Function
+    '        'Return strReturn
+    '        Return True
+    '    Catch ex As Exception
+    '        'Return "/* """ & pStrData & """. It has something wrong. */" & vbCrLf
+    '        Return False
+    '    End Try
+    'End Function
 End Class

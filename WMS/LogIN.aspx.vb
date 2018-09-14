@@ -1,4 +1,7 @@
-﻿
+﻿Option Explicit On
+Option Strict On
+Option Infer On
+
 Imports System.Linq
 Imports System.Web
 Imports System.Web.Configuration

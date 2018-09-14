@@ -1,4 +1,8 @@
-﻿Imports System.Transactions
+﻿Option Explicit On
+Option Strict On
+Option Infer On
+
+Imports System.Transactions
 Public Class MasterPartyView
     Inherits System.Web.UI.Page
     Dim tmpButtonStatus As String
@@ -203,7 +207,7 @@ Public Class MasterPartyView
 
         '.CreateBy = CStr(Session("UserName"))
         '.CreateDate = Now()
-        txtAmountGuarantee.Value = code.AmountGuarantee
+        txtAmountGuarantee.Value = CStr(code.AmountGuarantee)
 
     End Sub
 

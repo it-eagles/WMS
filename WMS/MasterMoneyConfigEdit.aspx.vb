@@ -1,4 +1,8 @@
-﻿Imports System.Transactions
+﻿Option Explicit On
+Option Strict On
+Option Infer On
+
+Imports System.Transactions
 Public Class MasterMoneyConfigEdit
     Inherits System.Web.UI.Page
 
@@ -33,8 +37,8 @@ Public Class MasterMoneyConfigEdit
 
         Dim user = (From u In db.tblMoneyConfigs Where u.Code = Code).SingleOrDefault
         txtCode.Value = user.Code
-        txtAmount.Value = user.Amonut
-        txtTotalAmount.Value = user.TotalAmonut
+        txtAmount.Value = CStr(user.Amonut)
+        txtTotalAmount.Value = CStr(user.TotalAmonut)
         txtRemark.Text = user.Remark
         dcbStatus.Text = user.Status
 
@@ -92,8 +96,8 @@ Public Class MasterMoneyConfigEdit
                     Dim edit As tblMoneyConfig = (From c In db.tblMoneyConfigs Where c.Code = Code Select c).First()
 
                     edit.Code = txtCode.Value.Trim
-                    edit.Amonut = txtAmount.Value.Trim
-                    edit.TotalAmonut = txtAmount.Value.Trim
+                    edit.Amonut = CType(txtAmount.Value.Trim, Double?)
+                    edit.TotalAmonut = CType(txtAmount.Value.Trim, Double?)
                     edit.Remark = txtRemark.Text.Trim
                     edit.Status = dcbStatus.Text.Trim
                     edit.UpdateBy = CStr(Session("UserName"))

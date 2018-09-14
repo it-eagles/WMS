@@ -1,6 +1,6 @@
 ﻿Option Explicit On
-Option Strict On
-
+Option Strict Off
+Option Infer On
 
 Public Class AdLocWH
     Inherits System.Web.UI.Page
@@ -31,7 +31,7 @@ Public Class AdLocWH
 
     End Sub
     Private Sub showTest()
-        Dim sy = (From s In db.tblWHStockMovements)
+        'Dim sy = (From s In db.tblWHStockMovements)
     End Sub
     Public Function shwo(i As Integer, j As Integer) As Integer
         Dim d As Integer

@@ -1,4 +1,4 @@
-﻿Option Strict On
+﻿Option Strict Off
 Option Explicit On
 
 Imports System.Linq

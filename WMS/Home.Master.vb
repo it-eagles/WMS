@@ -1,4 +1,8 @@
-﻿Public Class Home
+﻿Option Explicit On
+Option Strict Off
+Option Infer On
+
+Public Class Home
     Inherits System.Web.UI.MasterPage
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load

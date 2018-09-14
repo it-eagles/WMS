@@ -1,5 +1,7 @@
 ﻿Option Explicit On
 Option Strict On
+Option Infer On
+
 
 Public Class MultiIssuedWH
     Inherits System.Web.UI.Page

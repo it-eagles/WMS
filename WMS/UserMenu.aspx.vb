@@ -1,5 +1,6 @@
 ﻿Option Explicit On
 Option Strict On
+Option Infer On
 
 Imports System.Linq
 Imports System.Management
@@ -348,7 +349,7 @@ Public Class UserMenu
             Dim ds = (From u In db.tblUserMenus Where u.UserName = UserCopy).ToList
             If ds.Count > 0 Then
                 'ค้นหาชื่อ user ที่ต้องการ copy ว่ามีอยู่หรือไม่
-                Dim del = (From c In db.tblUserMenus Where c.UserName = ddlUser.SelectedValue).ToList
+                Dim del = (From cm In db.tblUserMenus Where cm.UserName = ddlUser.SelectedValue).ToList
                 For Each c In del
                     db.tblUserMenus.Remove(c)
                 Next

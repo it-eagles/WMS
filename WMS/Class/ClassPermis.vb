@@ -1,5 +1,4 @@
-﻿Option Explicit On
-Option Strict On
+﻿
 
 Public Class ClassPermis
     Dim db As New LKBWarehouseEntities1

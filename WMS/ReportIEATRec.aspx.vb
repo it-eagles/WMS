@@ -1,4 +1,8 @@
-﻿Public Class ReportIEATRec
+﻿Option Explicit On
+Option Infer On
+Option Strict On
+
+Public Class ReportIEATRec
     Inherits System.Web.UI.Page
     Dim db As New LKBWarehouseEntities1
 

@@ -1,4 +1,8 @@
-﻿Imports System.Transactions
+﻿Option Explicit On
+Option Strict On
+Option Infer On
+
+Imports System.Transactions
 Public Class MasterLocation
     Inherits System.Web.UI.Page
 
@@ -74,12 +78,12 @@ Public Class MasterLocation
                 db.tblWHLocations.Add(New tblWHLocation With { _
                              .WHsite = txtWHsite.Value.Trim, _
                              .LocationNo = txtLocationNo.Value.Trim, _
-                             .Width = txtWidth.Value.Trim, _
-                             .Long = txtLong.Value.Trim, _
-                             .Height = txtHeigth.Value.Trim, _
-                             .Valume = txtValume.Value.Trim, _
-                             .Usedstatus = txtUsedStatus.Value.Trim, _
-                             .Qtypallet = txtQTYPallet.Value.Trim, _
+                             .Width = CType(txtWidth.Value.Trim, Double?), _
+                             .Long = CType(txtLong.Value.Trim, Double?), _
+                             .Height = CType(txtHeigth.Value.Trim, Double?), _
+                             .Valume = CType(txtValume.Value.Trim, Double?), _
+                             .Usedstatus = CType(txtUsedStatus.Value.Trim, Integer?), _
+                             .Qtypallet = CType(txtQTYPallet.Value.Trim, Integer?), _
                              .Remark = txtRemark.Text.Trim, _
                              .CreateBy = CStr(Session("UserId")), _
                              .CreateDate = Now})

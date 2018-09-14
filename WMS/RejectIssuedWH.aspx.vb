@@ -1,5 +1,6 @@
 ﻿Option Explicit On
-Option Strict On
+Option Strict Off
+Option Infer On
 
 Imports System.Transactions
 Imports System.Globalization
@@ -390,17 +391,17 @@ Public Class RejectIssuedWH
                 lblPullSignal = CType(Repeater9.Items(i).FindControl("lblPullSignal"), Label).Text.Trim
                 lblLOTNo = CType(Repeater9.Items(i).FindControl("lblLOTNo"), Label).Text.Trim
 
-                Dim u = (From us In db.tblWHISSUEDDetails Where us.ItemNo = lblItemNo And us.LOTNo = lblLOTNo And us.PullSignal = lblPullSignal).FirstOrDefault
+                Dim iss = (From us In db.tblWHISSUEDDetails Where us.ItemNo = lblItemNo And us.LOTNo = lblLOTNo And us.PullSignal = lblPullSignal).FirstOrDefault
 
                 If chkName.Checked = True Then
 
                     Try
-                        If u.StatusISSUED = "2" Then
-                            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('รายการที่คุณเลือก" & u.LOTNo & " ItemNo: " & u.ItemNo & "ได้ถูกส่งออกไปจากคลังสินค้าแล้วคุณไม่สามารถยกเลิกรายการนี้ได้ !!!');", True)
+                        If iss.StatusISSUED = "2" Then
+                            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('รายการที่คุณเลือก" & iss.LOTNo & " ItemNo: " & iss.ItemNo & "ได้ถูกส่งออกไปจากคลังสินค้าแล้วคุณไม่สามารถยกเลิกรายการนี้ได้ !!!');", True)
                             Exit Try
                         Else
-                            Dim Delete As tblWHISSUEDDetail = (From de In db.tblWHISSUEDDetails Where de.PullSignal = u.PullSignal And de.LOTNo = u.LOTNo And de.ItemNo = u.ItemNo _
-                                                                And de.ReceiveNo = u.ReceiveNo And de.Item = u.Item And de.Type = u.Type And de.ISSUEDQuantity = u.ISSUEDQuantity Select de).First()
+                            Dim Delete As tblWHISSUEDDetail = (From de In db.tblWHISSUEDDetails Where de.PullSignal = iss.PullSignal And de.LOTNo = iss.LOTNo And de.ItemNo = iss.ItemNo _
+                                                                And de.ReceiveNo = iss.ReceiveNo And de.Item = iss.Item And de.Type = iss.Type And de.ISSUEDQuantity = iss.ISSUEDQuantity Select de).First()
 
                             db.tblWHISSUEDDetails.Remove(Delete)
 

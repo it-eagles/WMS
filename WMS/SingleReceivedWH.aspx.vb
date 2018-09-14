@@ -1,5 +1,6 @@
-﻿Option Strict On
-Option Explicit On
+﻿Option Explicit On
+Option Strict On
+Option Infer On
 
 Imports System.Globalization
 Public Class SingleReceivedWH
@@ -2139,6 +2140,7 @@ Public Class SingleReceivedWH
     End Sub
     Private Sub PutAlway()
         Dim i As Integer = 0
+        Dim j As Integer
         Dim Vsum As Integer = 0
         Dim Vsum1 As Integer = 0
         Dim Vin As Integer = 0
@@ -2282,10 +2284,10 @@ Public Class SingleReceivedWH
 
     Private Sub PutAlwayAuto()
         Dim VsumPallet As Integer = 0
-        Dim otheruse As Integer
+        'Dim otheruse As Integer
         Dim Vpalletname As String = ""
         Dim LocationName As String = ""
-
+        Dim i As Integer
         For i = 0 To dgvConfirmDetailbefor.Items.Count - 1
             If Vpalletname <> CType(dgvConfirmDetailbefor.Items(i).FindControl("lblPallet"), Label).Text.Trim Then
                 Try
@@ -2308,7 +2310,7 @@ Public Class SingleReceivedWH
         Updatechange()
     End Sub
     Private Sub checkLocation()
-        'Dim i As Integer
+
 
         If String.IsNullOrEmpty(dcbSite1.Text) Then
             Exit Sub

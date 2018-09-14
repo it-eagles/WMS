@@ -1,4 +1,7 @@
-﻿
+﻿Option Explicit On
+Option Strict On
+Option Infer On
+
 Imports System.Transactions
 Public Class MasterPartyEdit
     Inherits System.Web.UI.Page
@@ -205,7 +208,7 @@ Public Class MasterPartyEdit
    
         '.CreateBy = CStr(Session("UserName"))
         '.CreateDate = Now()
-        txtAmountGuarantee.Value = code.AmountGuarantee
+        txtAmountGuarantee.Value = CStr(code.AmountGuarantee)
 
     End Sub
 

@@ -1,5 +1,7 @@
-﻿Option Explicit On
-Option Strict On
+﻿Option Strict On
+Option Explicit On
+Option Infer On
+
 
 Imports System.Transactions
 Imports System.Globalization

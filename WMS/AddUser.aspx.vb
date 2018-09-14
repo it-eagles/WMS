@@ -1,5 +1,6 @@
 ﻿Option Explicit On
-Option Strict On
+Option Strict Off
+Option Infer On
 
 Imports System.Linq
 Imports System.Data.SqlClient
@@ -454,6 +455,7 @@ Public Class AddUser
         clear()
     End Sub
     Private Sub addMenu(user As String)
+
         Try
             Dim ds = (From u In db.tblUserMenus Where u.UserName = user).ToList
             If Not ds Is Nothing Then
