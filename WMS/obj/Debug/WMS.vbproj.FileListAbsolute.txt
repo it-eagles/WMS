@@ -227,9 +227,7 @@ D:\it-eaglesWMS\WMS\bin\System.Web.Razor.xml
 D:\it-eaglesWMS\WMS\bin\System.Web.WebPages.xml
 D:\it-eaglesWMS\WMS\bin\System.Web.WebPages.Deployment.xml
 D:\it-eaglesWMS\WMS\bin\System.Web.WebPages.Razor.xml
-D:\it-eaglesWMS\WMS\obj\Debug\WMS.vbprojResolveAssemblyReference.cache
-D:\it-eaglesWMS\WMS\obj\Debug\WMS.Resources.resources
-D:\it-eaglesWMS\WMS\obj\Debug\WMS.vbproj.GenerateResource.Cache
 D:\it-eaglesWMS\WMS\obj\Debug\WMS.dll
 D:\it-eaglesWMS\WMS\obj\Debug\WMS.xml
 D:\it-eaglesWMS\WMS\obj\Debug\WMS.pdb
+D:\it-eaglesWMS\WMS\bin\Newtonsoft.Json.xml

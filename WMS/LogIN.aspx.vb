@@ -1,5 +1,5 @@
 ﻿Option Explicit On
-Option Strict On
+Option Strict Off
 Option Infer On
 
 Imports System.Linq
