@@ -159,6 +159,7 @@
     <Content Include="MasterPartyAdd.aspx" />
     <Content Include="MasterPartyEdit.aspx" />
     <Content Include="MasterPartyView.aspx" />
+    <Content Include="MasterTariffCode.aspx" />
     <Content Include="MultiIssuedWH.aspx" />
     <Content Include="MultiReceivedWH.aspx" />
     <Content Include="PartyMaster.aspx" />
@@ -170,6 +171,7 @@
     <Content Include="RejectReceivedWH.aspx" />
     <Content Include="ReportIEAT-E-02.aspx" />
     <Content Include="ReportIEATRec.aspx" />
+    <Content Include="ReportLotTotal.aspx" />
     <Content Include="RptCarton.aspx" />
     <Content Include="RptCustoms.aspx" />
     <Content Include="RptCustomsDaily.aspx" />
@@ -6704,6 +6706,7 @@
     <Content Include="UpdateGoods.aspx" />
     <Content Include="UpdateGroup.aspx" />
     <Content Include="UpdateUserProfile.aspx" />
+    <Content Include="UploadDoc.aspx" />
     <Content Include="UserMenu.aspx" />
     <Content Include="UserProfile.aspx" />
     <Content Include="ViewGoods.aspx" />
@@ -7309,6 +7312,13 @@
       <DependentUpon>MasterPartyView.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
+    <Compile Include="MasterTariffCode.aspx.designer.vb">
+      <DependentUpon>MasterTariffCode.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterTariffCode.aspx.vb">
+      <DependentUpon>MasterTariffCode.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="MultiIssuedWH.aspx.designer.vb">
       <DependentUpon>MultiIssuedWH.aspx</DependentUpon>
     </Compile>
@@ -7403,6 +7413,13 @@
     </Compile>
     <Compile Include="ReportIEATRec.aspx.vb">
       <DependentUpon>ReportIEATRec.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="ReportLotTotal.aspx.designer.vb">
+      <DependentUpon>ReportLotTotal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportLotTotal.aspx.vb">
+      <DependentUpon>ReportLotTotal.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Report\rptSegateSummaryReport1.vb">
@@ -7612,6 +7629,13 @@
     </Compile>
     <Compile Include="UpdateUserProfile.aspx.vb">
       <DependentUpon>UpdateUserProfile.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="UploadDoc.aspx.designer.vb">
+      <DependentUpon>UploadDoc.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UploadDoc.aspx.vb">
+      <DependentUpon>UploadDoc.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="UserMenu.aspx.designer.vb">

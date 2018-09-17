@@ -314,6 +314,58 @@
                                     </div>
                                </div> 
                           </div>
+                        </div>
+
+
+                        <div class="row">
+                         <div class="col-lg-8 col-md-8 col-md-offset-2">
+                               <div class="form-group">
+                                 
+                                    <div class="box-body">
+                               <asp:Repeater ID="Repeater2" runat="server">
+                                    <HeaderTemplate>
+                                        <table id="example2" class="table table-bordered table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>LOTNo</th>
+                                                    <th>WHSite</th>
+                                                    <th>ENDCustomer</th>
+                                                    <th>CustomerLOTNo</th>
+                                                    <th>ItemNo</th>
+                                                </tr>
+                                            </thead>
+                                    </HeaderTemplate>
+                                    <ItemTemplate>
+                                        <tr>
+                                            <td>
+                                                <asp:Label ID="lblLOTNo" runat="server" Text='<%# Bind("LOTNo")%>'></asp:Label></td>
+                                            <td>
+                                                <asp:Label ID="lblWHSite" runat="server" Text='<%# Bind("WHSite")%>'></asp:Label></td>
+                                            <td>
+                                                <asp:Label ID="lblENDCustomer" runat="server" Text='<%# Bind("ENDCustomer")%>'></asp:Label></td>
+                                            <td>
+                                                <asp:Label ID="lblCustomerLOTNo" runat="server" Text='<%# Bind("CustomerLOTNo")%>'></asp:Label></td>
+                                            <td>
+                                                <asp:Label ID="lblItemNo" runat="server" Text='<%# Bind("ItemNo")%>'></asp:Label></td>
+                                            
+                                        </tr>
+                                    </ItemTemplate>
+                                    <FooterTemplate>
+                                        <tfoot>
+                                            <tr>
+                                                    <th>LOTNo</th>
+                                                    <th>WHSite</th>
+                                                    <th>ENDCustomer</th>
+                                                    <th>CustomerLOTNo</th>
+                                                    <th>ItemNo</th>
+                                            </tr>
+                                        </tfoot>
+                                        </table>
+                                    </FooterTemplate>
+                                </asp:Repeater>
+                                    </div>
+                               </div> 
+                          </div>
                            
                         
                         </div>
