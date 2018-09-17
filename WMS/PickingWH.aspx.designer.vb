@@ -1040,22 +1040,22 @@ Partial Public Class PickingWH
     Protected WithEvents txtPalletNo As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtFIFO_PickPack control.
+    '''txtIssuedQTY control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtFIFO_PickPack As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtIssuedQTY As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtLIFO_PickPack control.
+    '''CalcEdit2 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtLIFO_PickPack As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents CalcEdit2 As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
     '''txtQTYOfPick control.
