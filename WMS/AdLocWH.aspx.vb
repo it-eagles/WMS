@@ -1,5 +1,5 @@
 ﻿Option Explicit On
-Option Strict Off
+Option Strict On
 Option Infer On
 
 Public Class AdLocWH
