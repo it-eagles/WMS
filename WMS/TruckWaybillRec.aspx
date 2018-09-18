@@ -463,7 +463,7 @@
                                                     <ContentTemplate>
                                                 <asp:Repeater ID="Repea2_Invoice" runat="server" OnItemCommand="Repea2_Invoice_ItemCommand">
                                                                     <HeaderTemplate>
-                                                                        <table class="table table-bordered">
+                                                                        <table class="table table-bordered" id="example1">
                                                                             <th>Select</th>
                                                                             <th>TruckWayBillNo</th>
                                                                             <th>InvoiceNo</th>
