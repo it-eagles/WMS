@@ -32,13 +32,15 @@ Public Class AdLocWH
             ElseIf txtOwnerPN.Value <> "" And txtCusRefNo.Value <> "" Then
                 OwnerPN = txtOwnerPN.Value.Trim
                 OrderNo = txtCusRefNo.Value.Trim
+
             ElseIf txtCustomerLotNo.Value <> "" And txtCusRefNo.Value <> "" Then
                 CustomerLOTNo = txtCustomerLotNo.Value.Trim
                 OrderNo = txtCusRefNo.Value.Trim
-
+                ReadDATA()
             ElseIf txtOwnerPN.Value <> "" And txtInvoice.Value <> "" Then
                 OwnerPN = txtOwnerPN.Value.Trim
                 invoice = txtInvoice.Value.Trim
+                ReadDATA()
                 'Str = " tblWHStockMovement.OwnerPN = '" & txtFOwnerPN.Text & "' AND " & " tblWHStockMovement.invoice = '" & txtInvoice.Text.Trim & "'"
             ElseIf txtOwnerPN.Value <> "" Then
                 OwnerPN = txtOwnerPN.Value.Trim
@@ -52,6 +54,7 @@ Public Class AdLocWH
             ElseIf txtInvoice.Value <> "" Then
 
                 invoice = txtInvoice.Value.Trim
+                ReadDATA()
             End If
         End If
 

@@ -12454,35 +12454,22 @@ btnSaveEditHead control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-<<<<<<< HEAD
 </member><member name="F:WMS.ReportLotTotal.Master_fieldset">
 	<summary>
 Master_fieldset control.
-=======
-</member><member name="F:WMS.ReportLotTotal.truckwaybillhead_fieldset">
-	<summary>
-truckwaybillhead_fieldset control.
->>>>>>> d30aea03177009bef1ace26d48ee7fa0587f6a35
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-<<<<<<< HEAD
 </member><member name="F:WMS.ReportLotTotal.chkDate">
 	<summary>
 chkDate control.
-=======
-</member><member name="F:WMS.ReportLotTotal.txtdatepickerstartdate">
-	<summary>
-txtdatepickerstartdate control.
->>>>>>> d30aea03177009bef1ace26d48ee7fa0587f6a35
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-<<<<<<< HEAD
 </member><member name="F:WMS.ReportLotTotal.chkCustomer">
 	<summary>
 chkCustomer control.
@@ -12566,11 +12553,6 @@ To modify move field declaration from designer file to code-behind file.
 </member><member name="F:WMS.ReportLotTotal.btnFind">
 	<summary>
 btnFind control.
-=======
-</member><member name="F:WMS.ReportLotTotal.CalendarExtenderstartdate">
-	<summary>
-CalendarExtenderstartdate control.
->>>>>>> d30aea03177009bef1ace26d48ee7fa0587f6a35
 </summary>
 	<remarks>
 Auto-generated field.
