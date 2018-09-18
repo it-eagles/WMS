@@ -104,11 +104,11 @@ Partial Public Class RptJobSheet
     Protected WithEvents btnPrint As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
-    '''btnClose control.
+    '''btnClear control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents btnClose As Global.System.Web.UI.HtmlControls.HtmlButton
+    Protected WithEvents btnClear As Global.System.Web.UI.HtmlControls.HtmlButton
 End Class
