@@ -6,223 +6,7 @@ WMS
 </name>
 </assembly>
 <members>
-<member name="F:WMS.ReportLotTotal.form1">
-	<summary>
-form1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.ReportLotTotal.ScriptManager1">
-	<summary>
-ScriptManager1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.ReportLotTotal.btnAddHead">
-	<summary>
-btnAddHead control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.ReportLotTotal.btnEditHead">
-	<summary>
-btnEditHead control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.ReportLotTotal.btnSaveAddHead">
-	<summary>
-btnSaveAddHead control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.ReportLotTotal.btnSaveEditHead">
-	<summary>
-btnSaveEditHead control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.ReportLotTotal.truckwaybillhead_fieldset">
-	<summary>
-truckwaybillhead_fieldset control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.ReportLotTotal.txtdatepickerstartdate">
-	<summary>
-txtdatepickerstartdate control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.ReportLotTotal.CalendarExtenderstartdate">
-	<summary>
-CalendarExtenderstartdate control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.ReportLotTotal.TabName">
-	<summary>
-TabName control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MasterTariffCode.form1">
-	<summary>
-form1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MasterTariffCode.ScriptManager1">
-	<summary>
-ScriptManager1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MasterTariffCode.txtlocationtariff">
-	<summary>
-txtlocationtariff control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MasterTariffCode.ddllocationtariffrequite">
-	<summary>
-ddllocationtariffrequite control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MasterTariffCode.txtdatepickerstartdate">
-	<summary>
-txtdatepickerstartdate control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MasterTariffCode.CalendarExtenderstartdate">
-	<summary>
-CalendarExtenderstartdate control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MasterTariffCode.txtdatepickerdayenduse">
-	<summary>
-txtdatepickerdayenduse control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MasterTariffCode.CalendarExtenderdayenduse">
-	<summary>
-CalendarExtenderdayenduse control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.MasterTariffCode.Repeater2">
-	<summary>
-Repeater2 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.UploadDoc.form1">
-	<summary>
-form1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.UploadDoc.ScriptManager1">
-	<summary>
-ScriptManager1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.UploadDoc.txtDirectory">
-	<summary>
-txtDirectory control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.UploadDoc.btnUpload">
-	<summary>
-btnUpload control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.UploadDoc.txtDocName">
-	<summary>
-txtDocName control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.UploadDoc.txtCusCode">
-	<summary>
-txtCusCode control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.UploadDoc.txtdatepickerCusDate">
-	<summary>
-txtdatepickerCusDate control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.UploadDoc.CalendarExtenderCusDate">
-	<summary>
-CalendarExtenderCusDate control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.CustomsInvoice.form1">
+<member name="F:WMS.CustomsInvoice.form1">
 	<summary>
 form1 control.
 </summary>
@@ -6822,6 +6606,70 @@ btnUpdateUser control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
+</member><member name="F:WMS.UploadDoc.form1">
+	<summary>
+form1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.UploadDoc.ScriptManager1">
+	<summary>
+ScriptManager1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.UploadDoc.txtDirectory">
+	<summary>
+txtDirectory control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.UploadDoc.btnUpload">
+	<summary>
+btnUpload control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.UploadDoc.txtDocName">
+	<summary>
+txtDocName control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.UploadDoc.txtCusCode">
+	<summary>
+txtCusCode control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.UploadDoc.txtdatepickerCusDate">
+	<summary>
+txtdatepickerCusDate control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.UploadDoc.CalendarExtenderCusDate">
+	<summary>
+CalendarExtenderCusDate control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
 </member><member name="F:WMS.FinishGoodWH.form1">
 	<summary>
 form1 control.
@@ -7337,6 +7185,78 @@ To modify move field declaration from designer file to code-behind file.
 </member><member name="F:WMS.FinishGoodWH.btnCencel_Detail">
 	<summary>
 btnCencel_Detail control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.MasterTariffCode.form1">
+	<summary>
+form1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.MasterTariffCode.ScriptManager1">
+	<summary>
+ScriptManager1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.MasterTariffCode.txtlocationtariff">
+	<summary>
+txtlocationtariff control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.MasterTariffCode.ddllocationtariffrequite">
+	<summary>
+ddllocationtariffrequite control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.MasterTariffCode.txtdatepickerstartdate">
+	<summary>
+txtdatepickerstartdate control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.MasterTariffCode.CalendarExtenderstartdate">
+	<summary>
+CalendarExtenderstartdate control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.MasterTariffCode.txtdatepickerdayenduse">
+	<summary>
+txtdatepickerdayenduse control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.MasterTariffCode.CalendarExtenderdayenduse">
+	<summary>
+CalendarExtenderdayenduse control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.MasterTariffCode.Repeater2">
+	<summary>
+Repeater2 control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -12481,6 +12401,86 @@ To modify move field declaration from designer file to code-behind file.
 </member><member name="F:WMS.MultiReceivedWH.btnReceive_GoodRecDetail">
 	<summary>
 btnReceive_GoodRecDetail control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.ReportLotTotal.form1">
+	<summary>
+form1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.ReportLotTotal.ScriptManager1">
+	<summary>
+ScriptManager1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.ReportLotTotal.btnAddHead">
+	<summary>
+btnAddHead control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.ReportLotTotal.btnEditHead">
+	<summary>
+btnEditHead control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.ReportLotTotal.btnSaveAddHead">
+	<summary>
+btnSaveAddHead control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.ReportLotTotal.btnSaveEditHead">
+	<summary>
+btnSaveEditHead control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.ReportLotTotal.truckwaybillhead_fieldset">
+	<summary>
+truckwaybillhead_fieldset control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.ReportLotTotal.txtdatepickerstartdate">
+	<summary>
+txtdatepickerstartdate control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.ReportLotTotal.CalendarExtenderstartdate">
+	<summary>
+CalendarExtenderstartdate control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.ReportLotTotal.TabName">
+	<summary>
+TabName control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -23991,17 +23991,17 @@ txtPalletNo control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.PickingWH.txtFIFO_PickPack">
+</member><member name="F:WMS.PickingWH.txtIssuedQTY">
 	<summary>
-txtFIFO_PickPack control.
+txtIssuedQTY control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.PickingWH.txtLIFO_PickPack">
+</member><member name="F:WMS.PickingWH.CalcEdit2">
 	<summary>
-txtLIFO_PickPack control.
+CalcEdit2 control.
 </summary>
 	<remarks>
 Auto-generated field.
