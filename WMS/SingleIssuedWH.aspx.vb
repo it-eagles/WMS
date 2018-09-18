@@ -3159,6 +3159,15 @@ Public Class SingleIssuedWH
         If cu.Any Then
             CountWHIssuedDetail()
             If CountdgvIssuedDetail = 0 Then
+                If txtJobNo_BeforeTab.Value.Trim = "" Then
+                    ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ LOT NO ก่อน ก่อน !!!');", True)
+                    Exit Sub
+                End If
+
+                If txtPullSignal_BeforeTab.Value.Trim = "" Then
+                    ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ Pull Signal ก่อน ก่อน !!!');", True)
+                    Exit Sub
+                End If
                 SaveIssued_Delete()
                 SaveDeleteWHRemark()
                 UpdateRead0()
@@ -3202,16 +3211,6 @@ Public Class SingleIssuedWH
 
     End Sub
     Private Sub SaveIssued_Delete()
-        If txtJobNo_BeforeTab.Value.Trim = "" Then
-            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ LOT NO ก่อน ก่อน !!!');", True)
-            Exit Sub
-        End If
-
-        If txtPullSignal_BeforeTab.Value.Trim = "" Then
-            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ Pull Signal ก่อน ก่อน !!!');", True)
-            Exit Sub
-        End If
-
         If MsgBox("คุณต้องการลบข้อมูล Issued ใช่หรือไม่ ?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
 
             Using tran As New TransactionScope()
