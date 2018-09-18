@@ -262,50 +262,47 @@
                                     <div class="box-body">
                                <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="Repeater1_ItemCommand">
                                     <HeaderTemplate>
-                                        <table id="example1" class="table table-bordered table-striped">
+                                        <table id="example1" class="table table-condensed">
                                             <thead>
                                                 <tr>
-                                                    <th>Code</th>
-                                                    <th>Amount</th>
-                                                    <th>TotalAmount</th>
-                                                    <th>Remark</th>
-                                                    <th>Status</th>
-                                                    <th>Edit/Delete</th>
-                                                    <th>view</th>
+                                                    <th>OwnerPN</th>
+                                                    <th>CustomerLOTNo</th>
+                                                    <th>PalletNo</th>
+                                                    <th>ItemNo</th>
+                                                    <th>CustomerPN</th>
+                                                    <th>Edit</th>
+                                              
                                                 </tr>
                                             </thead>
                                     </HeaderTemplate>
                                     <ItemTemplate>
-                                        <tr>
+                                        <tr class="danger">
                                             <td>
-                                                <asp:Label ID="lblCode" runat="server" Text='<%# Bind("Code")%>'></asp:Label></td>
+                                                <asp:Label ID="lblCode" runat="server" Text='<%# Bind("OwnerPN")%>'></asp:Label></td>
                                             <td>
-                                                <asp:Label ID="lblAmount" runat="server" Text='<%# Bind("Amonut")%>'></asp:Label></td>
+                                                <asp:Label ID="lblAmount" runat="server" Text='<%# Bind("CustomerLOTNo")%>'></asp:Label></td>
                                             <td>
-                                                <asp:Label ID="lblTotalAmount" runat="server" Text='<%# Bind("TotalAmonut")%>'></asp:Label></td>
+                                                <asp:Label ID="lblTotalAmount" runat="server" Text='<%# Bind("PalletNo")%>'></asp:Label></td>
                                             <td>
-                                                <asp:Label ID="lblRemark" runat="server" Text='<%# Bind("Remark")%>'></asp:Label></td>
+                                                <asp:Label ID="lblRemark" runat="server" Text='<%# Bind("ItemNo")%>'></asp:Label></td>
                                             <td>
-                                                <asp:Label ID="lblStatus" runat="server" Text='<%# Bind("Status")%>'></asp:Label></td>
+                                                <asp:Label ID="lblStatus" runat="server" Text='<%# Bind("CustomerPN")%>'></asp:Label></td>
                                             <td class="text-center" >
-                                                  <asp:LinkButton ID="LinkButton1" CssClass="btn btn-default" runat="server" CausesValidation="False" CommandName="editcode" CommandArgument='<%# Eval("Code")%>'><i class="fa fa-pencil"></i></asp:LinkButton>
-                                                  <a class="btn btn-danger"><i class="fa fa-trash"></i></a>
-                                            </td>
-                                            <td class="text-center">
-                                                  <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="viewprofile" CommandArgument='<%# Eval("Code")%>'><i class="fa fa-search-plus"></i></asp:LinkButton>
-                                            </td>
+                                                  <asp:LinkButton ID="LinkButton1" CssClass="btn btn-default" runat="server" CausesValidation="False" CommandName="editcode" CommandArgument='<%# Eval("OwnerPN")%>'><i class="fa fa-pencil"></i></asp:LinkButton>
+              
+                                            </td>                             
                                         </tr>
                                     </ItemTemplate>
                                     <FooterTemplate>
                                         <tfoot>
                                             <tr>
-                                                    <th>Code</th>
-                                                    <th>Amount</th>
-                                                    <th>TotalAmount</th>
-                                                    <th>Remark</th>
-                                                    <th>Status</th>
-                                                    <th>Edit/Delete</th>
-                                                    <th>view</th>
+                                                    <th>OwnerPN</th>
+                                                    <th>CustomerLOTNo</th>
+                                                    <th>PalletNo</th>
+                                                    <th>ItemNo</th>
+                                                    <th>CustomerPN</th> 
+                                                    <th>Edit</th>
+                                                                                       
                                             </tr>
                                         </tfoot>
                                         </table>

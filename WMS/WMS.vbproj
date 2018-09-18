@@ -6767,6 +6767,7 @@
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Class\ClassPermis.vb" />
+    <Compile Include="Class\ConfirmGoodsReceiveDetail .vb" />
     <Compile Include="Class\Ieat107.vb" />
     <Compile Include="Class\LoginCls.vb" />
     <Compile Include="Class\MoneyExt.vb" />
@@ -7728,6 +7729,7 @@
     </None>
     <None Include="My Project\PublishProfiles\WMS Website.pubxml" />
     <None Include="My Project\PublishProfiles\WMS WebsiteTest.pubxml" />
+    <None Include="My Project\PublishProfiles\WMStest.com.pubxml" />
     <None Include="My Project\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <CustomToolNamespace>My</CustomToolNamespace>

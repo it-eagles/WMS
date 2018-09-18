@@ -18,6 +18,9 @@ Public Class PickingWH
     Dim QtyRequest As Double
     Dim OrderFrmOnline As String
     Dim CustFrmOnline As String
+    Dim listArray As New ArrayList
+    Dim ItemTotal As Double
+    Dim con As ConfirmGoodsReceiveDetail
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Dim usename As String = CStr(Session("UserName"))
@@ -2154,86 +2157,61 @@ Public Class PickingWH
                 Dim sI = (From c In db.tblWHConfirmGoodsReceiveDetails Join pds In db.tblProductDetails On c.ProductCode Equals pds.ProductCode And c.OwnerPN Equals pds.CustomerPart _
               Where c.LOTNo = lblLOTNo And c.OwnerPN = lblOwner And c.ProductCode = lblProduct And c.ItemNo = lblItemNo And c.StatusAvailable = "0" And c.Type = "Goods Complete").FirstOrDefault
                 If sI IsNot Nothing Then
+                    listArray.Add(New ConfirmGoodsReceiveDetail With {.setLOTNo = sI.c.LOTNo})
+                    listArray.Add(New ConfirmGoodsReceiveDetail With {.setWHSite = sI.c.WHSite})
+                    listArray.Add(New ConfirmGoodsReceiveDetail With {.setWHLocation = sI.c.WHLocation})
+                    listArray.Add(New ConfirmGoodsReceiveDetail With {.setENDCustomer = sI.c.ENDCustomer})
+                    listArray.Add(New ConfirmGoodsReceiveDetail With {.setCustomerLOTNo = sI.c.CustomerLOTNo})
+                    listArray.Add(New ConfirmGoodsReceiveDetail With {.setWHSource = sI.c.WHSource})
+                    listArray.Add(New ConfirmGoodsReceiveDetail With {.setItemNo = CStr(sI.c.ItemNo)})
+                    listArray.Add(New ConfirmGoodsReceiveDetail With {.setProductCode = sI.c.ProductCode})
+                    listArray.Add(New ConfirmGoodsReceiveDetail With {.setCustomerPN = sI.c.CustomerPN})
+                    listArray.Add(New ConfirmGoodsReceiveDetail With {.setOwnerPN = sI.c.OwnerPN})
+                    listArray.Add(New ConfirmGoodsReceiveDetail With {.setProductDesc = sI.c.ProductDesc})        
+                    listArray.Add(New ConfirmGoodsReceiveDetail With {.setMeasurement = sI.c.Measurement})
+                    listArray.Add(New ConfirmGoodsReceiveDetail With {.setProductWidth = CStr(sI.c.ProductWidth)})
+                    listArray.Add(New ConfirmGoodsReceiveDetail With {.setProductLength = CStr(sI.c.ProductLength)})
+                    listArray.Add(New ConfirmGoodsReceiveDetail With {.setProductHeight = CStr(sI.c.ProductHeight)})
+                    listArray.Add(New ConfirmGoodsReceiveDetail With {.setProductVolume = CStr(sI.c.ProductVolume)})
+                    listArray.Add(New ConfirmGoodsReceiveDetail With {.setOrderNo = sI.c.OrderNo})
+                    listArray.Add(New ConfirmGoodsReceiveDetail With {.setReceiveNo = sI.c.ReceiveNo})
+                    listArray.Add(New ConfirmGoodsReceiveDetail With {.setType = sI.c.Type})
+                    listArray.Add(New ConfirmGoodsReceiveDetail With {.setReceiveDate = CStr(sI.c.ReceiveDate)})
+                    listArray.Add(New ConfirmGoodsReceiveDetail With {.setQuantityUnit = sI.c.QuantityUnit})
+                    listArray.Add(New ConfirmGoodsReceiveDetail With {.setWeigth = CStr(sI.c.Weigth)})
+                    listArray.Add(New ConfirmGoodsReceiveDetail With {.setWeigthUnit = sI.c.WeigthUnit})
+                    listArray.Add(New ConfirmGoodsReceiveDetail With {.setCurrency = sI.c.Currency})
+                    listArray.Add(New ConfirmGoodsReceiveDetail With {.setExchangeRate = CStr(sI.c.ExchangeRate)})
+                    listArray.Add(New ConfirmGoodsReceiveDetail With {.setPriceForeigh = CStr(sI.c.PriceForeigh)})
+                    listArray.Add(New ConfirmGoodsReceiveDetail With {.setPriceForeighAmount = CStr(sI.c.PriceForeighAmount)})
+                    listArray.Add(New ConfirmGoodsReceiveDetail With {.setPriceBath = CStr(sI.c.PriceBath)})
 
-                    'db.tblWHPickingDetails.Add(New tblWHPickingDetail With { _
-                    '    .PullSignal = txtPullSignal.Value.Trim, _
-                    '    .LOTNo = txtLOtNo.Value.Trim, _
-                    '    .WHSite = sI.c.WHSite, _
-                    '    .WHLocation = sI.c.WHLocation, _
-                    '    .ENDCustomer = sI.c.ENDCustomer, _
-                    '    .CustomerLOTNo = sI.c.CustomerLOTNo, _
-                    '    .WHSource = sI.c.WHSource, _
-                    '    .ItemNo = CDbl(CDbl(itemmax).ToString("#,##0")), _
-                    '    .ProductCode = sI.c.ProductCode, _
-                    '    .CustomerPN = sI.c.CustomerPN, _
-                    '    .OwnerPN = sI.c.OwnerPN, _
-                    '    .ProductDesc = sI.c.ProductDesc, _
-                    '    .Measurement = sI.c.Measurement, _
-                    '    .ProductWidth = CType(CDbl(sI.c.ProductWidth).ToString("#,##0.000"), Double?), _
-                    '    .ProductLength = CType(CDbl(sI.c.ProductLength).ToString("#,##0.000"), Double?), _
-                    '    .ProductHeight = CType(CDbl(sI.c.ProductHeight).ToString("#,##0.000"), Double?), _
-                    '    .ProductVolume = CType(CDbl(sI.c.ProductVolume).ToString("#,##0.000"), Double?), _
-                    '    .OrderNo = sI.c.OrderNo, _
-                    '    .ReceiveNo = sI.c.ReceiveNo, _
-                    '    .Type = sI.c.Type, _
-                    '    .ReceiveDate = sI.c.ReceiveDate, _
-                    '    .PickQuantity = CType(CDbl(txtQTYOfPick.Value.Trim).ToString("#,##0.000"), Double?), _
-                    '    .PickUnit = sI.c.QuantityUnit, _
-                    '    .Weigth = CType(CDbl(sI.c.Weigth).ToString("#,##0.000"), Double?), _
-                    '    .WeigthUnit = sI.c.WeigthUnit, _
-                    '    .Currency = sI.c.Currency, _
-                    '    .ExchangeRate = CType(CDbl(sI.c.ExchangeRate).ToString("#,##0.0000"), Double?), _
-                    '    .PriceForeigh = CType(CDbl(sI.c.PriceForeigh).ToString("#,##0.0000"), Double?), _
-                    '    .PriceForeighAmount = CType(CDbl(sI.c.PriceForeighAmount).ToString("#,##0.0000"), Double?), _
-                    '    .PriceBath = CType(CDbl(sI.c.PriceBath).ToString("#,##0.0000"), Double?), _
-                    '    .PriceBathAmount = CType(CDbl(sI.c.PriceBathAmount).ToString("#,##0.0000"), Double?), _
-                    '    .PalletNo = txtPalletNo.Value.Trim, _
-                    '    .UserBy = CStr(Session("userName")), _
-                    '    .LastUpdate = Now, _
-                    '    .Item = CDec(sI.c.ItemNo), _
-                    '    .Reqno = RowRequest1, _
-                    '    .ExpInvNo = zInvoice, _
-                    '    .PONo = txtPONo_PickPack.Value.Trim, _
-                    '    .EntryNo = sI.c.EntryNo, _
-                    '    .EntryItemNo = sI.c.EntryItemNo, _
-                    '    .OrderFrmOnline = OrderFrmOnline, _
-                    '    .CustFrmOnline = CustFrmOnline
                 End If
-
             End If
         Next
+        con = New ConfirmGoodsReceiveDetail
+        ItemTotal = CDbl(con.setQuantity)
+        ReadStockMovement()
+
     End Sub
     Private Sub ReadStockMovement()
-        'sb.Remove(0, sb.Length)
-        'sb.Append("SELECT ISSUEQuantity FROM tblWHStockMovement (NOLOCK) WHERE LOTNo=@LOTNo and ItemNo=@ItemNo AND OwnerPN=@OwnerPN AND CustomerLOTNo=@CustomerLOTNo")
-
-        'Dim sqlSearch As String
-        'sqlSearch = sb.ToString()
-
-        'com = New SqlCommand()
-        'dtItem = New DataTable
-        'With com
-        '    .Parameters.Clear()
-        '    .Parameters.Add("@LOTNo", SqlDbType.NVarChar).Value = txtRReceiveNo.Text.Trim()
-        '    .Parameters.Add("@ItemNo", SqlDbType.NVarChar).Value = txtItemNoPick.Text.Trim()
-        '    .Parameters.Add("@OwnerPN", SqlDbType.NVarChar).Value = txtROwnerPN.Text.Trim()
-        '    .Parameters.Add("@CustomerLOTNo", SqlDbType.NVarChar).Value = txtRCustomerLotNo.Text.Trim()
-        '    .CommandText = sqlSearch
-        '    .CommandType = CommandType.Text
-        '    .Connection = Conn
-        '    dr = .ExecuteReader()
-        '    If dr.HasRows Then
-        '        dtItem.Load(dr)
-        '        txtIssuedQTY.DataBindings.Clear()
-        '        txtIssuedQTY.DataBindings.Add("Text", dtItem, "ISSUEQuantity")
-        '    End If
-        '    dr.Close()
-        'End With
-        'If txtIssuedQTY.Text = "" Then
-        '    txtIssuedQTY.Text = "0"
-        'End If
-        'Dim sb = (From s In db.tblWHStockMovements Where s.LOTNo = "" and s.ItemNo = "" and s.OwnerPN = "" and s.CustomerLOtNO = "" seelect ISSUEQuantity)
-        Dim dtIerm As New DataTable
+        con = New ConfirmGoodsReceiveDetail
+        Dim lotNo As String
+        Dim ItemNo As Integer
+        Dim clotNO As String
+        Dim owner As String
+       
+        lotNo = con.setLOTNo
+        ItemNo = CInt(con.setItemNo)
+        clotNO = con.setCustomerLOTNo
+        owner = con.setOwnerPN
+        Dim sb = (From s In db.tblWHStockMovements Where s.LOTNo = lotNo And s.ItemNo = ItemNo And s.OwnerPN = owner And s.CustomerLOTNo = clotNO Select s.ISSUEQuantity).FirstOrDefault
+        If sb IsNot Nothing Then
+            txtIssuedQTY.Value = String.Format("{0:0.00}", sb)
+        End If
+        If txtIssuedQTY.Value = "" Then
+            txtIssuedQTY.Value = "0"
+        End If
 
     End Sub
     Private Sub SavePickDetail_New()
