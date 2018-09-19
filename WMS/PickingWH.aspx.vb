@@ -2145,9 +2145,10 @@ Public Class PickingWH
         End If
     End Sub
     Protected Sub chkLotNo_CheckedChanged(sender As Object, e As EventArgs)
+        con = New ConfirmGoodsReceiveDetail
         Dim chkName As CheckBox
         For i = 0 To dgvReadWHIssuedDetail.Items.Count - 1
-            chkName = CType(dgvReadWHIssuedDetail.Items(i).FindControl("chkpull_Issud"), CheckBox)
+            chkName = CType(dgvReadWHIssuedDetail.Items(i).FindControl("chkLotNo"), CheckBox)
             Dim lblLOTNo As String = CType(dgvReadWHIssuedDetail.Items(i).FindControl("lblLOTNo"), Label).Text.Trim
             Dim lblItemNo As Integer = CInt(CType(dgvReadWHIssuedDetail.Items(i).FindControl("lblItemNo"), Label).Text.Trim)
             Dim lblProduct As String = CType(dgvReadWHIssuedDetail.Items(i).FindControl("lblProduct"), Label).Text.Trim
@@ -2157,39 +2158,71 @@ Public Class PickingWH
                 Dim sI = (From c In db.tblWHConfirmGoodsReceiveDetails Join pds In db.tblProductDetails On c.ProductCode Equals pds.ProductCode And c.OwnerPN Equals pds.CustomerPart _
               Where c.LOTNo = lblLOTNo And c.OwnerPN = lblOwner And c.ProductCode = lblProduct And c.ItemNo = lblItemNo And c.StatusAvailable = "0" And c.Type = "Goods Complete").FirstOrDefault
                 If sI IsNot Nothing Then
-                    listArray.Add(New ConfirmGoodsReceiveDetail With {.setLOTNo = sI.c.LOTNo})
-                    listArray.Add(New ConfirmGoodsReceiveDetail With {.setWHSite = sI.c.WHSite})
-                    listArray.Add(New ConfirmGoodsReceiveDetail With {.setWHLocation = sI.c.WHLocation})
-                    listArray.Add(New ConfirmGoodsReceiveDetail With {.setENDCustomer = sI.c.ENDCustomer})
-                    listArray.Add(New ConfirmGoodsReceiveDetail With {.setCustomerLOTNo = sI.c.CustomerLOTNo})
-                    listArray.Add(New ConfirmGoodsReceiveDetail With {.setWHSource = sI.c.WHSource})
-                    listArray.Add(New ConfirmGoodsReceiveDetail With {.setItemNo = CStr(sI.c.ItemNo)})
-                    listArray.Add(New ConfirmGoodsReceiveDetail With {.setProductCode = sI.c.ProductCode})
-                    listArray.Add(New ConfirmGoodsReceiveDetail With {.setCustomerPN = sI.c.CustomerPN})
-                    listArray.Add(New ConfirmGoodsReceiveDetail With {.setOwnerPN = sI.c.OwnerPN})
-                    listArray.Add(New ConfirmGoodsReceiveDetail With {.setProductDesc = sI.c.ProductDesc})        
-                    listArray.Add(New ConfirmGoodsReceiveDetail With {.setMeasurement = sI.c.Measurement})
-                    listArray.Add(New ConfirmGoodsReceiveDetail With {.setProductWidth = CStr(sI.c.ProductWidth)})
-                    listArray.Add(New ConfirmGoodsReceiveDetail With {.setProductLength = CStr(sI.c.ProductLength)})
-                    listArray.Add(New ConfirmGoodsReceiveDetail With {.setProductHeight = CStr(sI.c.ProductHeight)})
-                    listArray.Add(New ConfirmGoodsReceiveDetail With {.setProductVolume = CStr(sI.c.ProductVolume)})
-                    listArray.Add(New ConfirmGoodsReceiveDetail With {.setOrderNo = sI.c.OrderNo})
-                    listArray.Add(New ConfirmGoodsReceiveDetail With {.setReceiveNo = sI.c.ReceiveNo})
-                    listArray.Add(New ConfirmGoodsReceiveDetail With {.setType = sI.c.Type})
-                    listArray.Add(New ConfirmGoodsReceiveDetail With {.setReceiveDate = CStr(sI.c.ReceiveDate)})
-                    listArray.Add(New ConfirmGoodsReceiveDetail With {.setQuantityUnit = sI.c.QuantityUnit})
-                    listArray.Add(New ConfirmGoodsReceiveDetail With {.setWeigth = CStr(sI.c.Weigth)})
-                    listArray.Add(New ConfirmGoodsReceiveDetail With {.setWeigthUnit = sI.c.WeigthUnit})
-                    listArray.Add(New ConfirmGoodsReceiveDetail With {.setCurrency = sI.c.Currency})
-                    listArray.Add(New ConfirmGoodsReceiveDetail With {.setExchangeRate = CStr(sI.c.ExchangeRate)})
-                    listArray.Add(New ConfirmGoodsReceiveDetail With {.setPriceForeigh = CStr(sI.c.PriceForeigh)})
-                    listArray.Add(New ConfirmGoodsReceiveDetail With {.setPriceForeighAmount = CStr(sI.c.PriceForeighAmount)})
-                    listArray.Add(New ConfirmGoodsReceiveDetail With {.setPriceBath = CStr(sI.c.PriceBath)})
+
+                    con.setLOTNo = sI.c.LOTNo
+                    con.setWHSite = sI.c.WHSite
+                    con.setWHLocation = sI.c.WHLocation
+                    con.setENDCustomer = sI.c.ENDCustomer
+                    con.setCustomerLOTNo = sI.c.CustomerLOTNo
+                    con.setWHSource = sI.c.WHSource
+                    con.setItemNo = CStr(sI.c.ItemNo)
+                    con.setProductCode = sI.c.ProductCode
+                    con.setCustomerPN = sI.c.CustomerPN
+                    con.setOwnerPN = sI.c.OwnerPN
+                    con.setProductDesc = sI.c.ProductDesc
+                    con.setMeasurement = sI.c.Measurement
+                    con.setProductWidth = CStr(sI.c.ProductWidth)
+                    con.setProductLength = CStr(sI.c.ProductLength)
+                    con.setProductHeight = CStr(sI.c.ProductHeight)
+                    con.setProductVolume = CStr(sI.c.ProductVolume)
+                    con.setOrderNo = sI.c.OrderNo
+                    con.setReceiveNo = sI.c.ReceiveNo
+                    con.setType = sI.c.Type
+                    con.setQuantity = CStr(sI.c.Quantity)
+                    con.setReceiveDate = CStr(sI.c.ReceiveDate)
+                    con.setQuantityUnit = sI.c.QuantityUnit
+                    con.setWeigth = CStr(sI.c.Weigth)
+                    con.setWeigthUnit = sI.c.WeigthUnit
+                    con.setCurrency = sI.c.Currency
+                    con.setExchangeRate = CStr(sI.c.ExchangeRate)
+                    con.setPriceForeigh = CStr(sI.c.PriceForeigh)
+                    con.setPriceForeighAmount = CStr(sI.c.PriceForeighAmount)
+                    con.setPriceBath = CStr(sI.c.PriceBath)
+                    Session("LOTNo") = con.setLOTNo
+                    listArray.Add(con.setLOTNo)
+                    listArray.Add(con.setWHSite)
+                    listArray.Add(con.setWHLocation)
+                    listArray.Add(con.setENDCustomer)
+                    listArray.Add(con.setCustomerLOTNo)
+                    listArray.Add(con.setWHSource)
+                    listArray.Add(con.setItemNo)
+                    listArray.Add(con.setProductCode)
+                    listArray.Add(con.setCustomerPN)
+                    listArray.Add(con.setOwnerPN)
+                    listArray.Add(con.setProductDesc)
+                    listArray.Add(con.setMeasurement)
+                    listArray.Add(con.setProductWidth)
+                    listArray.Add(con.setProductLength)
+                    listArray.Add(con.setProductHeight)
+                    listArray.Add(con.setProductVolume)
+                    listArray.Add(con.setOrderNo)
+                    listArray.Add(con.setReceiveNo)
+                    listArray.Add(con.setType)
+                    listArray.Add(con.setQuantity)
+                    listArray.Add(con.setReceiveDate)
+                    listArray.Add(con.setQuantityUnit)
+                    listArray.Add(con.setWeigth)
+                    listArray.Add(con.setWeigthUnit)
+                    listArray.Add(con.setCurrency)
+                    listArray.Add(con.setExchangeRate)
+                    listArray.Add(con.setPriceForeigh)
+                    listArray.Add(con.setPriceForeighAmount)
+                    listArray.Add(con.setPriceBath)
 
                 End If
             End If
         Next
-        con = New ConfirmGoodsReceiveDetail
+
         ItemTotal = CDbl(con.setQuantity)
         ReadStockMovement()
 
@@ -2571,4 +2604,6 @@ Public Class PickingWH
 
         End If
     End Sub
+
+
 End Class
