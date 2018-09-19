@@ -66,7 +66,7 @@
                                 <div class="form-group" >                                    
                                         <label for="txtCode" class="col-sm-3 control-label">From Date:</label>
                                          <div class="col-sm-5">                                            
-                                             <asp:TextBox CssClass="form-control" ID="txtdatepickerFromDate" runat="server" placeholder="DD/MM/YYYY" AutoCompleteType="off">
+                                             <asp:TextBox CssClass="form-control" ID="txtdatepickerFromDate" runat="server" placeholder="DD/MM/YYYY" AutoComplete="off">
                                              </asp:TextBox>
                                              <asp:CalendarExtender ID="CalendarExtenderFromDate" runat="server" Enabled="True" TargetControlID="txtdatepickerFromDate" Format="dd/MM/yyyy"></asp:CalendarExtender>
                                          </div>
@@ -74,7 +74,7 @@
                                   <div class="form-group" >                                    
                                         <label for="txtCode" class="col-sm-3 control-label">To Date:</label>
                                          <div class="col-sm-5">                                            
-                                             <asp:TextBox CssClass="form-control" ID="txtdatepickerToDate" runat="server" placeholder="DD/MM/YYYY" autoCompleteType="off">
+                                             <asp:TextBox CssClass="form-control" ID="txtdatepickerToDate" runat="server" placeholder="DD/MM/YYYY" autoComplete="off">
                                              </asp:TextBox>
                                              <asp:CalendarExtender ID="CalendarExtenderToDate" runat="server" Enabled="True" TargetControlID="txtdatepickerToDate" Format="dd/MM/yyyy"></asp:CalendarExtender>
                                          </div>

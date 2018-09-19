@@ -1,5 +1,6 @@
-﻿'Option Explicit On
-'Option Strict On
+﻿Option Explicit On
+Option Strict On
+Option Infer On
 
 Imports System.IO
 Imports System.Text
@@ -21,18 +22,18 @@ Public Class RptJobSheet
     Dim dtshipper As DataTable
     Dim tmpButtonStatus As String
     Dim sqlDataComboList As String
-    'Public PV As New frmExpCustomsInvoiceRPT2
+    Public PV As New ShowRptJobSheet
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If Not IsPostBack Then
             showSite()
 
-            'Dim strConn As String
-            'strConn = DBConnString.strConn
+            Dim strConn As String
+            strConn = DBConnString.strConn
             Conn = New SqlConnection()
             With Conn
                 If .State = ConnectionState.Open Then .Close()
-                '.ConnectionString = strConn
+                .ConnectionString = strConn
                 .Open()
             End With
             ClearDATA()
@@ -73,17 +74,19 @@ Public Class RptJobSheet
             Try
                 'PV = New frmExpCustomsInvoiceRPT2
 
-                r.SetDatabaseLogon("LKBWarehouse", "7tFCca6pzt", "LKBWarehouse", "LKBWarehouse")
-                'r.SetDatabaseLogon("sa", "7tFCca6pzt", "testWMS", "LKBWarehouse")
+                'r.SetDatabaseLogon("LKBWarehouse", "7tFCca6pzt", "LKBWarehouse", "LKBWarehouse")
+                r.SetDatabaseLogon("sa", "36133HNVek", "LKBWarehouse", "LKBWarehouse")
                 r.SetParameterValue("FromDate", formdate.Trim)
                 r.SetParameterValue("ToDate", toDate.Trim)
                 r.SetParameterValue("JOBSite", ddlJobSite.SelectedValue)
-                'PV.ReportSorce = r
+                PV.ReportSorce = r
                 'Cursor = Cursors.Default
 
                 'PV.WindowState = FormWindowState.Maximized
-
                 'PV.ShowDialog(Me)
+                Dim url As String = "ShowReport/ShowRptJobSheet.aspx"
+                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "onclick", "javascript:window.open( '" + url + "','_blank','height=600px,width=1000px,scrollbars=1');", True)
+
             Catch ex As Exception
             End Try
         End If

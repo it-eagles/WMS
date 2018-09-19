@@ -6,7 +6,31 @@ WMS
 </name>
 </assembly>
 <members>
-<member name="F:WMS.HTITrackingRec.form1">
+<member name="F:WMS.ShowRptJobSheet.form1">
+	<summary>
+form1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.ShowRptJobSheet.CrystalReportViewer1">
+	<summary>
+CrystalReportViewer1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.ShowRptJobSheet.CrystalReportSource1">
+	<summary>
+CrystalReportSource1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.HTITrackingRec.form1">
 	<summary>
 form1 control.
 </summary>
@@ -2502,25 +2526,105 @@ btnSaveEditHead control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.ReportLotTotal.truckwaybillhead_fieldset">
+</member><member name="F:WMS.ReportLotTotal.Master_fieldset">
 	<summary>
-truckwaybillhead_fieldset control.
+Master_fieldset control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.ReportLotTotal.txtdatepickerstartdate">
+</member><member name="F:WMS.ReportLotTotal.chkDate">
 	<summary>
-txtdatepickerstartdate control.
+chkDate control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.ReportLotTotal.CalendarExtenderstartdate">
+</member><member name="F:WMS.ReportLotTotal.chkCustomer">
 	<summary>
-CalendarExtenderstartdate control.
+chkCustomer control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.ReportLotTotal.txtdatepickerFromDate">
+	<summary>
+txtdatepickerFromDate control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.ReportLotTotal.CalendarExtenderFromDate">
+	<summary>
+CalendarExtenderFromDate control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.ReportLotTotal.txtdatepickerToDate">
+	<summary>
+txtdatepickerToDate control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.ReportLotTotal.CalendarExtender1">
+	<summary>
+CalendarExtender1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.ReportLotTotal.ddllocationtariffrequite">
+	<summary>
+ddllocationtariffrequite control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.ReportLotTotal.RadioLBKIN">
+	<summary>
+RadioLBKIN control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.ReportLotTotal.RadioLBKOUT">
+	<summary>
+RadioLBKOUT control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.ReportLotTotal.RadioHCRIN">
+	<summary>
+RadioHCRIN control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.ReportLotTotal.RadioHCROUT">
+	<summary>
+RadioHCROUT control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.ReportLotTotal.btnFind">
+	<summary>
+btnFind control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -3438,9 +3542,9 @@ btnPrint control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.RptJobSheet.btnClose">
+</member><member name="F:WMS.RptJobSheet.btnClear">
 	<summary>
-btnClose control.
+btnClear control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -12462,123 +12566,25 @@ CalendarExtenderInvoiceDate_beforeTab control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-<<<<<<< HEAD
-</member><member name="F:WMS.ReportLotTotal.Master_fieldset">
-	<summary>
-Master_fieldset control.
-=======
 </member><member name="F:WMS.InvoicePackingListRec.txtdatepickerDeliveryDate_beforeTab">
 	<summary>
 txtdatepickerDeliveryDate_beforeTab control.
->>>>>>> ea61b64437feda304888309e6424465d8426f9a7
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-<<<<<<< HEAD
-</member><member name="F:WMS.ReportLotTotal.chkDate">
-	<summary>
-chkDate control.
-=======
 </member><member name="F:WMS.InvoicePackingListRec.CalendarExtenderDeliveryDate_beforeTab">
 	<summary>
 CalendarExtenderDeliveryDate_beforeTab control.
->>>>>>> ea61b64437feda304888309e6424465d8426f9a7
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-<<<<<<< HEAD
-</member><member name="F:WMS.ReportLotTotal.chkCustomer">
-	<summary>
-chkCustomer control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.ReportLotTotal.txtdatepickerFromDate">
-	<summary>
-txtdatepickerFromDate control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.ReportLotTotal.CalendarExtenderFromDate">
-	<summary>
-CalendarExtenderFromDate control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.ReportLotTotal.txtdatepickerToDate">
-	<summary>
-txtdatepickerToDate control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.ReportLotTotal.CalendarExtender1">
-	<summary>
-CalendarExtender1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.ReportLotTotal.ddllocationtariffrequite">
-	<summary>
-ddllocationtariffrequite control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.ReportLotTotal.RadioLBKIN">
-	<summary>
-RadioLBKIN control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.ReportLotTotal.RadioLBKOUT">
-	<summary>
-RadioLBKOUT control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.ReportLotTotal.RadioHCRIN">
-	<summary>
-RadioHCRIN control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.ReportLotTotal.RadioHCROUT">
-	<summary>
-RadioHCROUT control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.ReportLotTotal.btnFind">
-	<summary>
-btnFind control.
-=======
 </member><member name="F:WMS.InvoicePackingListRec.txtdatepickerCustomsRefDate_beforeTab">
 	<summary>
 txtdatepickerCustomsRefDate_beforeTab control.
->>>>>>> ea61b64437feda304888309e6424465d8426f9a7
 </summary>
 	<remarks>
 Auto-generated field.
