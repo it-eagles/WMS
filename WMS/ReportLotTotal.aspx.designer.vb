@@ -68,31 +68,121 @@ Partial Public Class ReportLotTotal
     Protected WithEvents btnSaveEditHead As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
-    '''truckwaybillhead_fieldset control.
+    '''Master_fieldset control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents truckwaybillhead_fieldset As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+    Protected WithEvents Master_fieldset As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
-    '''txtdatepickerstartdate control.
+    '''chkDate control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtdatepickerstartdate As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents chkDate As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
 
     '''<summary>
-    '''CalendarExtenderstartdate control.
+    '''chkCustomer control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents CalendarExtenderstartdate As Global.AjaxControlToolkit.CalendarExtender
+    Protected WithEvents chkCustomer As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
+
+    '''<summary>
+    '''txtdatepickerFromDate control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtdatepickerFromDate As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''CalendarExtenderFromDate control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CalendarExtenderFromDate As Global.AjaxControlToolkit.CalendarExtender
+
+    '''<summary>
+    '''txtdatepickerToDate control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtdatepickerToDate As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''CalendarExtender1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CalendarExtender1 As Global.AjaxControlToolkit.CalendarExtender
+
+    '''<summary>
+    '''ddllocationtariffrequite control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ddllocationtariffrequite As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''RadioLBKIN control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents RadioLBKIN As Global.System.Web.UI.WebControls.RadioButton
+
+    '''<summary>
+    '''RadioLBKOUT control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents RadioLBKOUT As Global.System.Web.UI.WebControls.RadioButton
+
+    '''<summary>
+    '''RadioHCRIN control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents RadioHCRIN As Global.System.Web.UI.WebControls.RadioButton
+
+    '''<summary>
+    '''RadioHCROUT control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents RadioHCROUT As Global.System.Web.UI.WebControls.RadioButton
+
+    '''<summary>
+    '''btnFind control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnFind As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
     '''TabName control.

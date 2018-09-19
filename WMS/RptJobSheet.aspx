@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="RptJobSheet.aspx.vb" Inherits="WMS.RptJobSheet" MasterPageFile="~/Home.Master" %>
-<%@ Register Assembly="CrystalDecisions.Web, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" Namespace="CrystalDecisions.Web" TagPrefix="CR" %>
-<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+<%@ Register Assembly="CrystalDecisions.Web, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" Namespace="CrystalDecisions.Web" TagPrefix="CR" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %> 
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -40,7 +40,7 @@
                                  <div class="box-body">   
 
                                 <div class="form-group" >                                    
-                                        <label for="txtCode" class="col-sm-6 col-md-offset-2 control-label">Plase Check For JOB Import or Export:</label>        
+                                        <label for="txtCode" class="col-sm-5 col-md-offset-2 control-label">Plase Check For JOB Import or Export:</label>        
                                  </div>
 
                                 <div class="form-group">
@@ -66,7 +66,7 @@
                                 <div class="form-group" >                                    
                                         <label for="txtCode" class="col-sm-3 control-label">From Date:</label>
                                          <div class="col-sm-5">                                            
-                                             <asp:TextBox CssClass="form-control" ID="txtdatepickerFromDate" runat="server" placeholder="DD/MM/YYYY">
+                                             <asp:TextBox CssClass="form-control" ID="txtdatepickerFromDate" runat="server" placeholder="DD/MM/YYYY" AutoCompleteType="off">
                                              </asp:TextBox>
                                              <asp:CalendarExtender ID="CalendarExtenderFromDate" runat="server" Enabled="True" TargetControlID="txtdatepickerFromDate" Format="dd/MM/yyyy"></asp:CalendarExtender>
                                          </div>
@@ -74,7 +74,7 @@
                                   <div class="form-group" >                                    
                                         <label for="txtCode" class="col-sm-3 control-label">To Date:</label>
                                          <div class="col-sm-5">                                            
-                                             <asp:TextBox CssClass="form-control" ID="txtdatepickerToDate" runat="server" placeholder="DD/MM/YYYY">
+                                             <asp:TextBox CssClass="form-control" ID="txtdatepickerToDate" runat="server" placeholder="DD/MM/YYYY" autoCompleteType="off">
                                              </asp:TextBox>
                                              <asp:CalendarExtender ID="CalendarExtenderToDate" runat="server" Enabled="True" TargetControlID="txtdatepickerToDate" Format="dd/MM/yyyy"></asp:CalendarExtender>
                                          </div>
@@ -93,7 +93,7 @@
                                  <div class="form-group" >   
                                         <div class="col-sm-5"></div>                                 
                                         <button type="submit" runat="server" class="btn btn-primary" id="btnPrint" title="btnPrint" onserverclick="btnPrint_ServerClick">Print</button>
-                                        <button type="submit" runat="server" class="btn btn-primary" id="btnClose" title="btnClose" onserverclick="btnClose_ServerClick">Close</button>
+                                        <button type="submit" runat="server" class="btn btn-primary" id="btnClear" title="btnClear" onserverclick="btnClear_ServerClick">Clear</button>
                                  </div>
 
 

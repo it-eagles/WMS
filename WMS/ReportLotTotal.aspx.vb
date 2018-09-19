@@ -36,4 +36,8 @@
     Protected Sub Unnamed_ServerClick3(sender As Object, e As EventArgs)
 
     End Sub
+
+    Protected Sub btnFind_ServerClick(sender As Object, e As EventArgs)
+
+    End Sub
 End Class

@@ -36,6 +36,7 @@
                                         <button class="btn btn-app btn-sm" id="btnEditHead" runat="server" onserverclick="btnEditHead_ServerClick"><i class="fa fa-edit"></i>Edit</button>
                                     </div>
                                     <div class="col-xs-6 text-right">
+                                        <button class="btn btn-app btn-sm" id="btnDelete" runat="server" onserverclick="btnDelete_ServerClick" visible="false"><i class="fa fa-trash"></i>Delete</button>
                                         <button class="btn btn-app btn-sm" id="btnSaveAddHead" runat="server" onserverclick="btnSaveAddHead_ServerClick" visible="false"><i class="fa fa-save"></i>Save Add</button>
                                         <button class="btn btn-app btn-sm" id="btnSaveEditHead" runat="server" onserverclick="btnSaveEditHead_ServerClick" visible="false"><i class="fa fa-save"></i>Save Edit</button>
                                     </div>
@@ -64,7 +65,6 @@
                                             <input class="form-control input-sm" id="txtJobNo_BeforeTab" runat="server" autocomplete="off"/>
                                         </div>
                                         <div class="col-sm-2">
-                                            <button class="btn btn-app btn-sm" id="btnDelete" runat="server" onserverclick="btnDelete_ServerClick" visible="false"><i class="fa fa-trash"></i>Delete</button>
                                             <button type="button" class="btn btn-block btn-primary btn-sm" runat="server" id="btnJobNoHead" onserverclick="btnJobNoHead_ServerClick"><i class="glyphicon glyphicon-search"></i></button>
                                             <button type="button" class="btn btn-block btn-primary btn-sm" runat="server" id="btnJobNoHead_Edit" onserverclick="btnJobNoHead_Edit_ServerClick" visible="false"><i class="glyphicon glyphicon-search"></i></button>
                                         </div>
