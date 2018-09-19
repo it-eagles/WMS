@@ -1878,16 +1878,6 @@
 
                                                 <ItemTemplate>
                                                     <tr>
-                                                        <%--<td>
-                                                            <asp:Label ID="lblPartyCode" runat="server" Text='<%# Bind("PartyCode")%>'></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblPartyFullName" runat="server" Text='<%# Bind("PartyFullName")%>'></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblAddress1" runat="server" Text='<%# Bind("Address1")%>'></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblAddress2" runat="server" Text='<%# Bind("Address2")%>'></asp:Label></td>
-                                                        <td>
-                                                            <asp:Label ID="lblAddress3" runat="server" Text='<%# Bind("Address3")%>'></asp:Label></td>--%>
                                                         <td class="text-center">
                                                             <%--<asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy" runat="server" CausesValidation="False" CommandName="SelectShipper" CommandArgument='<%# Eval("PartyCode")%>'><i class="fa fa-plus-square"></i></asp:LinkButton>--%>
                                                             <asp:LinkButton ID="LinkButton2" CssClass="btn bg-navy btn-sm" runat="server" OnClick="clickshipper_Click"><i class="fa fa-hand-o-up"></i></asp:LinkButton>

@@ -57,7 +57,7 @@
                                             <div class="form-group">
                                                 <label for="txtInvoice" class="col-sm-4 control-label">Inovice:</label>
                                                 <div class="col-sm-8">
-                                                    <input class="form-control" id="txtInvoice" runat="server" />
+                                                    <input class="form-control input-sm" id="txtInvoice" runat="server" autocomplete="off" />
                                                 </div>
                                             </div>
                                         </div>
@@ -66,7 +66,7 @@
                                             <div class="form-group">
                                                 <label for="txtCustomerLotNo" class="col-sm-5 control-label">Customer Lot No:</label>
                                                 <div class="col-sm-7">
-                                                    <input class="form-control" id="txtCustomerLotNo" runat="server" />
+                                                    <input class="form-control" id="txtCustomerLotNo" runat="server" autocomplete="off" />
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -155,7 +155,21 @@
                                             <div class="form-group">
                                                 <label for="txtType" class="col-sm-4 control-label">Type:</label>
                                                 <div class="col-sm-8">
-                                                    <asp:DropDownList ID="ddlType" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                    <asp:DropDownList ID="ddlType" CssClass="form-control" runat="server">
+                                                        <asp:ListItem> Q-FFL</asp:ListItem>
+                                                         <asp:ListItem> Q-CON</asp:ListItem>
+                                                        <asp:ListItem> Q-SC</asp:ListItem>
+                                                         <asp:ListItem> Q-SCRAP</asp:ListItem>
+                                                        <asp:ListItem> BackFill</asp:ListItem>
+                                                         <asp:ListItem> SAMPLE</asp:ListItem>
+                                                        <asp:ListItem> QC FZ AIR</asp:ListItem>
+                                                         <asp:ListItem> RETURN FZ AIR</asp:ListItem>
+                                                        <asp:ListItem> NG PART FZ AIR</asp:ListItem>
+                                                         <asp:ListItem> QC FZ SEA</asp:ListItem>
+                                                        <asp:ListItem> RETURN FZ SEA</asp:ListItem>
+                                                         <asp:ListItem> NG PART FZ SEA</asp:ListItem>
+                                                        <asp:ListItem> SCRAP AFTER CLAIM</asp:ListItem>
+                                                    </asp:DropDownList>
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -167,7 +181,7 @@
                                             <div class="form-group">
                                                 <label for="txtRemark" class="col-sm-4 control-label">Remark:</label>
                                                 <div class="col-sm-8">
-                                                    <textarea class="form-control" rows="3" id="txtRamark" placeholder="Remark" style="height: 71px;"></textarea>
+                                                    <textarea class="form-control" rows="3" id="txtRemark" placeholder="Remark" runat="server" style="height: 71px;"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -252,119 +266,119 @@
                             <%--------------------------------------------------------------------End Right Form------------------------------------------------------%>
                         </div>
                         <!--/.row-->
-                         <div class="box-header with-border">
-                        <h3 class="box-title">Code Money Config</h3>
-                    </div>
-                     <div class="row">
-                         <div class="col-lg-8 col-md-8 col-md-offset-2">
-                               <div class="form-group">
-                                 
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Code Money Config</h3>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-8 col-md-8 col-md-offset-2">
+                                <div class="form-group">
+
                                     <div class="box-body">
-                               <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="Repeater1_ItemCommand">
-                                    <HeaderTemplate>
-                                        <table id="example1" class="table table-condensed">
-                                            <thead>
-                                                <tr>
-                                                    <th>OwnerPN</th>
-                                                    <th>CustomerLOTNo</th>
-                                                    <th>PalletNo</th>
-                                                    <th>ItemNo</th>
-                                                    <th>CustomerPN</th>
-                                                    <th>Edit</th>
-                                              
+                                        <asp:Repeater ID="Repeater1" runat="server" OnItemDataBound="Repeater1_ItemDataBound">
+                                            <HeaderTemplate>
+                                                <table id="example1" class="table table-condensed">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Select</th>
+                                                            <th>OwnerPN</th>
+                                                            <th>CustomerLOTNo</th>
+                                                            <th>LOTNo</th>
+                                                            <th>ItemNo</th>
+                                                            <th>ReceiveNo</th>
+
+                                                        </tr>
+                                                    </thead>
+                                            </HeaderTemplate>
+                                            <ItemTemplate>
+                                                <tr class="danger">
+
+                                                    <td class="text-center">
+                                                        <asp:LinkButton ID="clickrpt" CssClass="btn btn-default" runat="server" OnClick="clickrpt_Click"><i class="fa fa-pencil"></i></asp:LinkButton></td>
+                                                    <td>
+                                                        <asp:Label ID="lblOwnerPN" runat="server" Text="Label"></asp:Label></td>
+                                                    <td>
+                                                        <asp:Label ID="lblCustomerLOTNo" runat="server" Text="Label"></asp:Label></td>
+                                                    <td>
+                                                        <asp:Label ID="lblLOTNo" runat="server" Text="Label"></asp:Label></td>
+                                                    <td>
+                                                        <asp:Label ID="lblItemNo" runat="server" Text="Label"></asp:Label></td>
+                                                    <td>
+                                                        <asp:Label ID="lblReceiveNo" runat="server" Text="Label"></asp:Label></td>
                                                 </tr>
-                                            </thead>
-                                    </HeaderTemplate>
-                                    <ItemTemplate>
-                                        <tr class="danger">
-                                            <td>
-                                                <asp:Label ID="lblCode" runat="server" Text='<%# Bind("OwnerPN")%>'></asp:Label></td>
-                                            <td>
-                                                <asp:Label ID="lblAmount" runat="server" Text='<%# Bind("CustomerLOTNo")%>'></asp:Label></td>
-                                            <td>
-                                                <asp:Label ID="lblTotalAmount" runat="server" Text='<%# Bind("PalletNo")%>'></asp:Label></td>
-                                            <td>
-                                                <asp:Label ID="lblRemark" runat="server" Text='<%# Bind("ItemNo")%>'></asp:Label></td>
-                                            <td>
-                                                <asp:Label ID="lblStatus" runat="server" Text='<%# Bind("CustomerPN")%>'></asp:Label></td>
-                                            <td class="text-center" >
-                                                  <asp:LinkButton ID="LinkButton1" CssClass="btn btn-default" runat="server" CausesValidation="False" CommandName="editcode" CommandArgument='<%# Eval("OwnerPN")%>'><i class="fa fa-pencil"></i></asp:LinkButton>
-              
-                                            </td>                             
-                                        </tr>
-                                    </ItemTemplate>
-                                    <FooterTemplate>
-                                        <tfoot>
-                                            <tr>
-                                                    <th>OwnerPN</th>
-                                                    <th>CustomerLOTNo</th>
-                                                    <th>PalletNo</th>
-                                                    <th>ItemNo</th>
-                                                    <th>CustomerPN</th> 
-                                                    <th>Edit</th>
-                                                                                       
-                                            </tr>
-                                        </tfoot>
-                                        </table>
-                                    </FooterTemplate>
-                                </asp:Repeater>
+                                            </ItemTemplate>
+                                            <FooterTemplate>
+                                                <tfoot>
+                                                    <tr>
+                                                        <th>Select</th>
+                                                        <th>OwnerPN</th>
+                                                        <th>CustomerLOTNo</th>
+                                                        <th>LOTNo</th>
+                                                        <th>ItemNo</th>
+                                                        <th>ReceiveNo</th>
+
+
+                                                    </tr>
+                                                </tfoot>
+                                                </table>
+                                            </FooterTemplate>
+                                        </asp:Repeater>
                                     </div>
-                               </div> 
-                          </div>
+                                </div>
+                            </div>
                         </div>
 
 
                         <div class="row">
-                         <div class="col-lg-8 col-md-8 col-md-offset-2">
-                               <div class="form-group">
-                                 
+                            <div class="col-lg-8 col-md-8 col-md-offset-2">
+                                <div class="form-group">
+
                                     <div class="box-body">
-                               <asp:Repeater ID="Repeater2" runat="server">
-                                    <HeaderTemplate>
-                                        <table id="example2" class="table table-bordered table-striped">
-                                            <thead>
+                                        <asp:Repeater ID="Repeater2" runat="server">
+                                            <HeaderTemplate>
+                                                <table id="example2" class="table table-bordered table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>LOTNo</th>
+                                                            <th>WHSite</th>
+                                                            <th>ENDCustomer</th>
+                                                            <th>CustomerLOTNo</th>
+                                                            <th>ItemNo</th>
+                                                        </tr>
+                                                    </thead>
+                                            </HeaderTemplate>
+                                            <ItemTemplate>
                                                 <tr>
-                                                    <th>LOTNo</th>
-                                                    <th>WHSite</th>
-                                                    <th>ENDCustomer</th>
-                                                    <th>CustomerLOTNo</th>
-                                                    <th>ItemNo</th>
+                                                    <td>
+                                                        <asp:Label ID="lblLOTNo" runat="server" Text='<%# Bind("LOTNo")%>'></asp:Label></td>
+                                                    <td>
+                                                        <asp:Label ID="lblWHSite" runat="server" Text='<%# Bind("WHSite")%>'></asp:Label></td>
+                                                    <td>
+                                                        <asp:Label ID="lblENDCustomer" runat="server" Text='<%# Bind("ENDCustomer")%>'></asp:Label></td>
+                                                    <td>
+                                                        <asp:Label ID="lblCustomerLOTNo" runat="server" Text='<%# Bind("CustomerLOTNo")%>'></asp:Label></td>
+                                                    <td>
+                                                        <asp:Label ID="lblItemNo" runat="server" Text='<%# Bind("ItemNo")%>'></asp:Label></td>
+
                                                 </tr>
-                                            </thead>
-                                    </HeaderTemplate>
-                                    <ItemTemplate>
-                                        <tr>
-                                            <td>
-                                                <asp:Label ID="lblLOTNo" runat="server" Text='<%# Bind("LOTNo")%>'></asp:Label></td>
-                                            <td>
-                                                <asp:Label ID="lblWHSite" runat="server" Text='<%# Bind("WHSite")%>'></asp:Label></td>
-                                            <td>
-                                                <asp:Label ID="lblENDCustomer" runat="server" Text='<%# Bind("ENDCustomer")%>'></asp:Label></td>
-                                            <td>
-                                                <asp:Label ID="lblCustomerLOTNo" runat="server" Text='<%# Bind("CustomerLOTNo")%>'></asp:Label></td>
-                                            <td>
-                                                <asp:Label ID="lblItemNo" runat="server" Text='<%# Bind("ItemNo")%>'></asp:Label></td>
-                                            
-                                        </tr>
-                                    </ItemTemplate>
-                                    <FooterTemplate>
-                                        <tfoot>
-                                            <tr>
-                                                    <th>LOTNo</th>
-                                                    <th>WHSite</th>
-                                                    <th>ENDCustomer</th>
-                                                    <th>CustomerLOTNo</th>
-                                                    <th>ItemNo</th>
-                                            </tr>
-                                        </tfoot>
-                                        </table>
-                                    </FooterTemplate>
-                                </asp:Repeater>
+                                            </ItemTemplate>
+                                            <FooterTemplate>
+                                                <tfoot>
+                                                    <tr>
+                                                        <th>LOTNo</th>
+                                                        <th>WHSite</th>
+                                                        <th>ENDCustomer</th>
+                                                        <th>CustomerLOTNo</th>
+                                                        <th>ItemNo</th>
+                                                    </tr>
+                                                </tfoot>
+                                                </table>
+                                            </FooterTemplate>
+                                        </asp:Repeater>
                                     </div>
-                               </div> 
-                          </div>
-                           
-                        
+                                </div>
+                            </div>
+
+
                         </div>
                         <!--/.row-->
                     </div>

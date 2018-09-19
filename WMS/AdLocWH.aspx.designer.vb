@@ -176,6 +176,15 @@ Partial Public Class AdLocWH
     Protected WithEvents txtWeight As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
+    '''txtRemark control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtRemark As Global.System.Web.UI.HtmlControls.HtmlTextArea
+
+    '''<summary>
     '''txtCustomerLotNo2 control.
     '''</summary>
     '''<remarks>
