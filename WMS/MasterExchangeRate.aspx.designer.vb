@@ -50,15 +50,6 @@ Partial Public Class MasterExchangeRate
     Protected WithEvents dcbStatus As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''btnImport control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents btnImport As Global.System.Web.UI.HtmlControls.HtmlButton
-
-    '''<summary>
     '''Repeater1 control.
     '''</summary>
     '''<remarks>
