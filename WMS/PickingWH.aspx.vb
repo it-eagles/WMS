@@ -20,6 +20,8 @@ Public Class PickingWH
     Dim CustFrmOnline As String
     Dim listArray As New ArrayList
     Dim ItemTotal As Double
+    Dim ManufacturingDate As String
+    Dim ExpiredDate As String
     Dim con As ConfirmGoodsReceiveDetail
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
@@ -2188,56 +2190,62 @@ Public Class PickingWH
                     con.setPriceForeigh = CStr(sI.c.PriceForeigh)
                     con.setPriceForeighAmount = CStr(sI.c.PriceForeighAmount)
                     con.setPriceBath = CStr(sI.c.PriceBath)
-                    Session("LOTNo") = con.setLOTNo
-                    listArray.Add(con.setLOTNo)
-                    listArray.Add(con.setWHSite)
-                    listArray.Add(con.setWHLocation)
-                    listArray.Add(con.setENDCustomer)
-                    listArray.Add(con.setCustomerLOTNo)
-                    listArray.Add(con.setWHSource)
-                    listArray.Add(con.setItemNo)
-                    listArray.Add(con.setProductCode)
-                    listArray.Add(con.setCustomerPN)
-                    listArray.Add(con.setOwnerPN)
-                    listArray.Add(con.setProductDesc)
-                    listArray.Add(con.setMeasurement)
-                    listArray.Add(con.setProductWidth)
-                    listArray.Add(con.setProductLength)
-                    listArray.Add(con.setProductHeight)
-                    listArray.Add(con.setProductVolume)
-                    listArray.Add(con.setOrderNo)
-                    listArray.Add(con.setReceiveNo)
-                    listArray.Add(con.setType)
-                    listArray.Add(con.setQuantity)
-                    listArray.Add(con.setReceiveDate)
-                    listArray.Add(con.setQuantityUnit)
-                    listArray.Add(con.setWeigth)
-                    listArray.Add(con.setWeigthUnit)
-                    listArray.Add(con.setCurrency)
-                    listArray.Add(con.setExchangeRate)
-                    listArray.Add(con.setPriceForeigh)
-                    listArray.Add(con.setPriceForeighAmount)
-                    listArray.Add(con.setPriceBath)
+                    con.setPriceBathAmount = CStr(sI.c.PriceBathAmount)
+                    con.setEntryNo = sI.c.EntryNo
+                    con.setEntryItemNo = CStr(sI.c.EntryItemNo)
+                    con.setManufacturingDate = CStr(sI.c.ManufacturingDate)
+                    con.setExpiredDate = CStr(sI.c.ExpectedDate)
 
+                    Session("LOTNo") = con.setLOTNo
+                    Session("WHSite") = con.setWHSite
+                    Session("WHLocation") = con.setWHLocation
+                    Session("ENDCustomer") = con.setENDCustomer
+                    Session("CustomerLOTNo") = con.setCustomerLOTNo
+                    Session("WHSource") = con.setWHSource
+                    Session("ItemNo") = con.setItemNo
+                    Session("ProductCode") = con.setProductCode
+                    Session("CustomerPN") = con.setCustomerPN
+                    Session("OwnerPN") = con.setOwnerPN
+                    Session("ProductDesc") = con.setProductDesc
+                    Session("Measurement") = con.setMeasurement
+                    Session("ProductWidth") = con.setProductWidth
+                    Session("ProductLength") = con.setProductLength
+                    Session("ProductHeight") = con.setProductHeight
+                    Session("ProductVolume") = con.setProductVolume
+                    Session("OrderNo") = con.setOrderNo
+                    Session("ReceiveNo") = con.setReceiveNo
+                    Session("Type") = con.setType
+                    Session("Quantity") = con.setQuantity
+                    Session("ReceiveDate") = con.setReceiveDate
+                    Session("QuantityUnit") = con.setQuantityUnit
+                    Session("Weigth") = con.setWeigth
+                    Session("WeigthUnit") = con.setWeigthUnit
+                    Session("Currency") = con.setCurrency
+                    Session("ExchangeRate") = con.setExchangeRate
+                    Session("PriceForeigh") = con.setPriceForeigh
+                    Session("PriceForeighAmount") = con.setPriceForeighAmount
+                    Session("PriceBath") = con.setPriceBath
+                    Session("PriceBathAmount") = con.setPriceBathAmount
+                    Session("EntryNo") = con.setEntryNo
+                    Session("EntryItemNo") = con.setEntryItemNo
+                    ManufacturingDate = con.setManufacturingDate
+                    ExpiredDate = con.setExpiredDate
                 End If
             End If
         Next
-
+        txtQTYOfPick.Value = CStr(Session("Quantity"))
         ItemTotal = CDbl(con.setQuantity)
         ReadStockMovement()
 
     End Sub
     Private Sub ReadStockMovement()
         con = New ConfirmGoodsReceiveDetail
-        Dim lotNo As String
-        Dim ItemNo As Integer
-        Dim clotNO As String
-        Dim owner As String
+        Dim lotNo As String = CStr(Session("LOTNo"))
+        Dim ItemNo As Integer = CInt(Session("ItemNo"))
+        Dim clotNO As String = CStr(Session("CustomerLOTNo"))
+        Dim owner As String = CStr(Session("OwnerPN"))
        
-        lotNo = con.setLOTNo
-        ItemNo = CInt(con.setItemNo)
-        clotNO = con.setCustomerLOTNo
-        owner = con.setOwnerPN
+  
         Dim sb = (From s In db.tblWHStockMovements Where s.LOTNo = lotNo And s.ItemNo = ItemNo And s.OwnerPN = owner And s.CustomerLOTNo = clotNO Select s.ISSUEQuantity).FirstOrDefault
         If sb IsNot Nothing Then
             txtIssuedQTY.Value = String.Format("{0:0.00}", sb)
@@ -2251,6 +2259,22 @@ Public Class PickingWH
         Dim i As Integer
         Dim chkName As CheckBox
         Dim itemmax As Integer
+        Dim ProductWidth As Double
+        Dim ProductLength As Double
+        Dim ProductHeight As Double
+        Dim ProductVolume As Double
+        Dim Weigth As Double
+        Dim ExchangeRate As Double
+        Dim PriceForeigh As Double
+        Dim PriceForeighAmount As Double
+        Dim PriceBath As Double
+        Dim PriceBathAmount As Double
+        Dim ItemNo_ As Integer
+        Dim md As Nullable(Of Date)
+        Dim exDate As Nullable(Of Date)
+        Dim EntryNo As String
+        Dim EntryItemNo As Integer
+
         If txtLOtNo.Value.Trim = "" Then
             ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ LOT NO ก่อน !!!')", True)
             txtLOtNo.Focus()
@@ -2261,6 +2285,22 @@ Public Class PickingWH
             Exit Sub
 
         Else
+            If QtyRequest = 0 Then
+                ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('ยอดงาน ReQuest ที่ท่านเลือกได้ถูกทำการ Pick หมดแล้วครับ !!!')", True)
+                txtQTYOfPick.Focus()
+            End If
+            If QtyRequest < CInt(txtQTYOfPick.Value) Then
+                ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('ยอดงานที่ท่านใส่มีจำนวนมากกว่าที่ Request ครับ !!!')", True)
+                txtQTYOfPick.Focus()
+            End If
+            If CInt(txtQTYOfPick.Value) > CInt(Session("Quantity")) Then
+                ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('ยอดงานเกิน Available ครับ !!!')", True)
+                txtQTYOfPick.Focus()
+            End If
+            Session("RecCount") = "0"
+            Session("CheckRec") = "0"
+            Session("RecCount") = dgvWHPickDetail.Items()
+            Session("ItemCount") = CStr(CDbl(Session("RecCount")) + 1)
 
             Dim pd = (From p In db.tblWHPickingDetails Where p.PullSignal = txtPullSignal.Value.Trim And p.LOTNo = txtLOtNo.Value.Trim _
                   Group By p.ItemNo
@@ -2290,48 +2330,75 @@ Public Class PickingWH
                 Dim sI = (From c In db.tblWHConfirmGoodsReceiveDetails Join pds In db.tblProductDetails On c.ProductCode Equals pds.ProductCode And c.OwnerPN Equals pds.CustomerPart _
                     Where c.LOTNo = lblLOTNo And c.OwnerPN = lblOwner And c.ProductCode = lblProduct And c.ItemNo = lblItemNo And c.StatusAvailable = "0" And c.Type = "Goods Complete").FirstOrDefault
                 If sI IsNot Nothing Then
+                         
+                    ProductWidth = CDbl(Session("ProductWidth"))
+                    ProductLength = CDbl(Session("ProductLength"))
+                    ProductHeight = CDbl(Session("ProductHeight"))
+                    ProductVolume = CDbl(Session("ProductVolume"))
+                    Weigth = CDbl(Session("Weigth"))
+                    ExchangeRate = CDbl(Session("ExchangeRate"))
+                    PriceForeigh = CDbl(Session("PriceForeigh"))
+                    PriceForeighAmount = CDbl(Session("PriceForeighAmount"))
+                    PriceBath = CDbl(Session("PriceBath"))
+                    PriceBathAmount = CDbl(Session("PriceBathAmount"))
+                    ItemNo_ = CInt(Session("ItemNO"))
+                    EntryNo = CStr(Session("EntryNo"))
+                    EntryItemNo = CInt(Session("EntryItemNo"))
 
+                    If ManufacturingDate IsNot Nothing Then
+                        md = DateTime.ParseExact(CStr(ManufacturingDate), "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US"))
+
+                    Else
+                        md = Nothing
+                    End If
+                    If ExpiredDate IsNot Nothing Then
+                        exDate = DateTime.ParseExact(CStr(ExpiredDate), "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US"))
+                    Else
+                        exDate = Nothing
+                    End If
                     db.tblWHPickingDetails.Add(New tblWHPickingDetail With { _
                         .PullSignal = txtPullSignal.Value.Trim, _
                         .LOTNo = txtLOtNo.Value.Trim, _
-                        .WHSite = sI.c.WHSite, _
-                        .WHLocation = sI.c.WHLocation, _
-                        .ENDCustomer = sI.c.ENDCustomer, _
-                        .CustomerLOTNo = sI.c.CustomerLOTNo, _
-                        .WHSource = sI.c.WHSource, _
+                        .WHSite = CStr(Session("WHSite")), _
+                        .WHLocation = CStr(Session("WHLocation")), _
+                        .ENDCustomer = CStr(Session("ENDCustomer")), _
+                        .CustomerLOTNo = CStr(Session("CustomerLOTNo")), _
+                        .WHSource = CStr(Session("WHSource")), _
                         .ItemNo = CDbl(CDbl(itemmax).ToString("#,##0")), _
-                        .ProductCode = sI.c.ProductCode, _
-                        .CustomerPN = sI.c.CustomerPN, _
-                        .OwnerPN = sI.c.OwnerPN, _
-                        .ProductDesc = sI.c.ProductDesc, _
-                        .Measurement = sI.c.Measurement, _
-                        .ProductWidth = CType(CDbl(sI.c.ProductWidth).ToString("#,##0.000"), Double?), _
-                        .ProductLength = CType(CDbl(sI.c.ProductLength).ToString("#,##0.000"), Double?), _
-                        .ProductHeight = CType(CDbl(sI.c.ProductHeight).ToString("#,##0.000"), Double?), _
-                        .ProductVolume = CType(CDbl(sI.c.ProductVolume).ToString("#,##0.000"), Double?), _
-                        .OrderNo = sI.c.OrderNo, _
-                        .ReceiveNo = sI.c.ReceiveNo, _
-                        .Type = sI.c.Type, _
-                        .ReceiveDate = sI.c.ReceiveDate, _
+                        .ProductCode = CStr(Session("ProductCode")), _
+                        .CustomerPN = CStr(Session("CustomerPN")), _
+                        .OwnerPN = CStr(Session("OwnerPN")), _
+                        .ProductDesc = CStr(Session("ProductDesc")), _
+                        .Measurement = CStr(Session("Measurement")), _
+                        .ProductWidth = CType(CDbl(ProductWidth).ToString("#,##0.000"), Double?), _
+                        .ProductLength = CType(CDbl(ProductLength).ToString("#,##0.000"), Double?), _
+                        .ProductHeight = CType(CDbl(ProductHeight).ToString("#,##0.000"), Double?), _
+                        .ProductVolume = CType(CDbl(ProductVolume).ToString("#,##0.000"), Double?), _
+                        .OrderNo = CStr(Session("OrderNo")), _
+                        .ReceiveNo = CStr(Session("ReceiveNo")), _
+                        .Type = CStr(Session("Type")), _
+                        .ReceiveDate = DateTime.ParseExact(CStr(Session("ReceiveDate")), "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US")), _
                         .PickQuantity = CType(CDbl(txtQTYOfPick.Value.Trim).ToString("#,##0.000"), Double?), _
-                        .PickUnit = sI.c.QuantityUnit, _
-                        .Weigth = CType(CDbl(sI.c.Weigth).ToString("#,##0.000"), Double?), _
-                        .WeigthUnit = sI.c.WeigthUnit, _
-                        .Currency = sI.c.Currency, _
-                        .ExchangeRate = CType(CDbl(sI.c.ExchangeRate).ToString("#,##0.0000"), Double?), _
-                        .PriceForeigh = CType(CDbl(sI.c.PriceForeigh).ToString("#,##0.0000"), Double?), _
-                        .PriceForeighAmount = CType(CDbl(sI.c.PriceForeighAmount).ToString("#,##0.0000"), Double?), _
-                        .PriceBath = CType(CDbl(sI.c.PriceBath).ToString("#,##0.0000"), Double?), _
-                        .PriceBathAmount = CType(CDbl(sI.c.PriceBathAmount).ToString("#,##0.0000"), Double?), _
+                        .PickUnit = CStr(Session("QuantityUnit")), _
+                        .Weigth = CType(CDbl(Weigth).ToString("#,##0.000"), Double?), _
+                        .WeigthUnit = CStr(Session("WeigthUnit")), _
+                        .Currency = CStr(Session("Currency")), _
+                        .ManufacturingDate = md, _
+                        .ExpiredDate = exDate, _
+                        .ExchangeRate = CType(CDbl(ExchangeRate).ToString("#,##0.0000"), Double?), _
+                        .PriceForeigh = CType(CDbl(PriceForeigh).ToString("#,##0.0000"), Double?), _
+                        .PriceForeighAmount = CType(CDbl(PriceForeighAmount).ToString("#,##0.0000"), Double?), _
+                        .PriceBath = CType(CDbl(PriceBath).ToString("#,##0.0000"), Double?), _
+                        .PriceBathAmount = CType(CDbl(PriceBathAmount).ToString("#,##0.0000"), Double?), _
                         .PalletNo = txtPalletNo.Value.Trim, _
                         .UserBy = CStr(Session("userName")), _
                         .LastUpdate = Now, _
-                        .Item = CDec(sI.c.ItemNo), _
+                        .Item = CDec(ItemNo_), _
                         .Reqno = RowRequest1, _
                         .ExpInvNo = zInvoice, _
                         .PONo = txtPONo_PickPack.Value.Trim, _
-                        .EntryNo = sI.c.EntryNo, _
-                        .EntryItemNo = sI.c.EntryItemNo, _
+                        .EntryNo = EntryNo, _
+                        .EntryItemNo = EntryItemNo, _
                         .OrderFrmOnline = OrderFrmOnline, _
                         .CustFrmOnline = CustFrmOnline
                      })
@@ -2340,7 +2407,7 @@ Public Class PickingWH
                     If txtIssuedQTY.Value = "" Then
                         txtIssuedQTY.Value = "0"
                     End If
-                    Dim up As tblWHStockMovement = (From sm In db.tblWHStockMovements Where sm.LOTNo = sI.c.ReceiveNo And sm.ItemNo = sI.c.ItemNo And sm.OwnerPN = sI.c.OwnerPN And sm.CustomerLOTNo = sI.c.CustomerLOTNo).FirstOrDefault
+                    Dim up As tblWHStockMovement = (From sm In db.tblWHStockMovements Where sm.LOTNo = sI.c.ReceiveNo And sm.ItemNo = ItemNo_ And sm.OwnerPN = sI.c.OwnerPN And sm.CustomerLOTNo = sI.c.CustomerLOTNo).FirstOrDefault
 
                     If up IsNot Nothing Then
                         up.AvalableQuantity = sI.c.Quantity - CType(CDbl(txtQTYOfPick.Value.Trim), Double?)
@@ -2371,42 +2438,7 @@ Public Class PickingWH
             Next
 
 
-            'If txtItemNoPick.Trim() = "" Then
-            '    MessageBox.Show("กรุณาใส่ Item No ก่อน !!!", "ผลการตรวจสอบ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-            '    txtItemNoPick.Focus()
-            '    Exit Sub
-            'End If
 
-            'If txtRReceiveNo.Text.Trim() = "" Then
-            '    MessageBox.Show("กรุณาใส่ Item No ก่อน !!!", "ผลการตรวจสอบ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-            '    txtRReceiveNo.Focus()
-            '    Exit Sub
-            'End If
-
-            If QtyRequest = 0 Then
-                'MessageBox.Show("ยอดงาน ReQuest ที่ท่านเลือกได้ถูกทำการ Pick หมดแล้วครับ !!!", "ผลการตรวจสอบ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-                'Exit Sub
-            End If
-
-            If QtyRequest < CInt(txtQTYOfPick.Value.Trim) Then
-                'MessageBox.Show("ยอดงานที่ท่านใส่มีจำนวนมากกว่าที่ Request ครับ !!!", "ผลการตรวจสอบ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-                txtQTYOfPick.Focus()
-                Exit Sub
-            End If
-
-            'If CInt(txtQTYOfPick.Value.Trim) > CInt(txtRQTYOfPick..Trim) Then
-            '    'MessageBox.Show("ยอดงานเกิน Available ครับ !!!", "ผลการตรวจสอบ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-            '    'txtQTYOfPick.Focus()
-            '    Exit Sub
-            'End If
-
-
-            '*** หาค่า Item No ****
-            'txtRecCount.Text = "0"
-            'txtCheckRec.Text = "0"
-            'txtRecCount.Text = CStr(dgvWHPickDetail.RowCount())
-            'txtItemCount.Text = CStr(CDbl(txtRecCount.Text) + 1)
-            ''****** END ****
 
             'Sql = "SELECT max(itemno) as ItemMax  FROM tblWHPickingDetail WHERE PullSignal = '" & txtPullSignal.Value.Trim & "'   and LOTNo = '" & txtLOtNo.Value.Trim & "'  "
 
