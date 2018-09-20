@@ -6772,6 +6772,7 @@
     <Compile Include="Class\DBConnString.vb" />
     <Compile Include="Class\Ieat107.vb" />
     <Compile Include="Class\LoginCls.vb" />
+    <Compile Include="Class\Module1.vb" />
     <Compile Include="Class\MoneyExt.vb" />
     <Compile Include="CustomsInvoice.aspx.designer.vb">
       <DependentUpon>CustomsInvoice.aspx</DependentUpon>
@@ -7437,6 +7438,12 @@
       <DependentUpon>rptSummaryJobIn.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Report\rptSummaryJobIn1.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptSummaryJobIn.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Report\rptSummaryJOBOut.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -7709,7 +7716,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Report\rptSummaryJobIn.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptSummaryJobIn.vb</LastGenOutput>
+      <LastGenOutput>rptSummaryJobIn1.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\rptSummaryJOBOut.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

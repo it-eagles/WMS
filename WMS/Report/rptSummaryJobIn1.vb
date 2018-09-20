@@ -18,98 +18,98 @@ Imports System
 Imports System.ComponentModel
 
 
-Public Class rptSummaryJobIn
+Public Class rptSummaryJobIn1
     Inherits ReportClass
-    
+
     Public Sub New()
-        MyBase.New
+        MyBase.New()
     End Sub
-    
+
     Public Overrides Property ResourceName() As String
         Get
             Return "rptSummaryJobIn.rpt"
         End Get
-        Set
+        Set(value As String)
             'Do nothing
         End Set
     End Property
-    
+
     Public Overrides Property NewGenerator() As Boolean
         Get
-            Return true
+            Return True
         End Get
-        Set
+        Set(value As Boolean)
             'Do nothing
         End Set
     End Property
-    
+
     Public Overrides Property FullResourceName() As String
         Get
             Return "WMS.rptSummaryJobIn.rpt"
         End Get
-        Set
+        Set(value As String)
             'Do nothing
         End Set
     End Property
-    
-    <Browsable(false),  _
-     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
+
+    <Browsable(False), _
+     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)> _
     Public ReadOnly Property Section1() As CrystalDecisions.CrystalReports.Engine.Section
         Get
             Return Me.ReportDefinition.Sections(0)
         End Get
     End Property
-    
-    <Browsable(false),  _
-     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
+
+    <Browsable(False), _
+     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)> _
     Public ReadOnly Property Section2() As CrystalDecisions.CrystalReports.Engine.Section
         Get
             Return Me.ReportDefinition.Sections(1)
         End Get
     End Property
-    
-    <Browsable(false),  _
-     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
+
+    <Browsable(False), _
+     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)> _
     Public ReadOnly Property Section3() As CrystalDecisions.CrystalReports.Engine.Section
         Get
             Return Me.ReportDefinition.Sections(2)
         End Get
     End Property
-    
-    <Browsable(false),  _
-     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
+
+    <Browsable(False), _
+     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)> _
     Public ReadOnly Property Section4() As CrystalDecisions.CrystalReports.Engine.Section
         Get
             Return Me.ReportDefinition.Sections(3)
         End Get
     End Property
-    
-    <Browsable(false),  _
-     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
+
+    <Browsable(False), _
+     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)> _
     Public ReadOnly Property Section5() As CrystalDecisions.CrystalReports.Engine.Section
         Get
             Return Me.ReportDefinition.Sections(4)
         End Get
     End Property
-    
-    <Browsable(false),  _
-     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
+
+    <Browsable(False), _
+     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)> _
     Public ReadOnly Property Parameter_FromDate() As CrystalDecisions.[Shared].IParameterField
         Get
             Return Me.DataDefinition.ParameterFields(0)
         End Get
     End Property
-    
-    <Browsable(false),  _
-     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
+
+    <Browsable(False), _
+     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)> _
     Public ReadOnly Property Parameter_ToDate() As CrystalDecisions.[Shared].IParameterField
         Get
             Return Me.DataDefinition.ParameterFields(1)
         End Get
     End Property
-    
-    <Browsable(false),  _
-     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
+
+    <Browsable(False), _
+     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)> _
     Public ReadOnly Property Parameter_JOBSite() As CrystalDecisions.[Shared].IParameterField
         Get
             Return Me.DataDefinition.ParameterFields(2)
@@ -117,54 +117,54 @@ Public Class rptSummaryJobIn
     End Property
 End Class
 
-<System.Drawing.ToolboxBitmapAttribute(GetType(CrystalDecisions.[Shared].ExportOptions), "report.bmp")>  _
-Public Class CachedrptSummaryJobIn
+<System.Drawing.ToolboxBitmapAttribute(GetType(CrystalDecisions.[Shared].ExportOptions), "report.bmp")> _
+Public Class CachedrptSummaryJobIn1
     Inherits Component
     Implements ICachedReport
-    
+
     Public Sub New()
-        MyBase.New
+        MyBase.New()
     End Sub
-    
-    <Browsable(false),  _
-     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
+
+    <Browsable(False), _
+     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)> _
     Public Overridable Property IsCacheable() As Boolean Implements CrystalDecisions.ReportSource.ICachedReport.IsCacheable
         Get
-            Return true
+            Return True
         End Get
-        Set
+        Set(value As Boolean)
             '
         End Set
     End Property
-    
-    <Browsable(false),  _
-     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
+
+    <Browsable(False), _
+     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)> _
     Public Overridable Property ShareDBLogonInfo() As Boolean Implements CrystalDecisions.ReportSource.ICachedReport.ShareDBLogonInfo
         Get
-            Return false
+            Return False
         End Get
-        Set
+        Set(value As Boolean)
             '
         End Set
     End Property
-    
-    <Browsable(false),  _
-     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
+
+    <Browsable(False), _
+     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)> _
     Public Overridable Property CacheTimeOut() As System.TimeSpan Implements CrystalDecisions.ReportSource.ICachedReport.CacheTimeOut
         Get
             Return CachedReportConstants.DEFAULT_TIMEOUT
         End Get
-        Set
+        Set(value As System.TimeSpan)
             '
         End Set
     End Property
-    
+
     Public Overridable Function CreateReport() As CrystalDecisions.CrystalReports.Engine.ReportDocument Implements CrystalDecisions.ReportSource.ICachedReport.CreateReport
         Dim rpt As rptSummaryJobIn = New rptSummaryJobIn()
         rpt.Site = Me.Site
         Return rpt
     End Function
-    
+
     Public Overridable Function GetCustomizedCacheKey(ByVal request As RequestContext) As String Implements CrystalDecisions.ReportSource.ICachedReport.GetCustomizedCacheKey
         Dim key As [String] = Nothing
         '// The following is the code used to generate the default

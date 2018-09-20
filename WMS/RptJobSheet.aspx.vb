@@ -23,6 +23,7 @@ Public Class RptJobSheet
     Dim tmpButtonStatus As String
     Dim sqlDataComboList As String
     Public PV As New ShowRptJobSheet
+    Private rpt As New ReportDocument
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If Not IsPostBack Then
@@ -75,7 +76,7 @@ Public Class RptJobSheet
                 'PV = New frmExpCustomsInvoiceRPT2
 
                 'r.SetDatabaseLogon("LKBWarehouse", "7tFCca6pzt", "LKBWarehouse", "LKBWarehouse")
-                r.SetDatabaseLogon("sa", "36133HNVek", "LKBWarehouse", "LKBWarehouse")
+                r.SetDatabaseLogon("sa", "36133HNVek", "LKBWarehouseTESTServer", "LKBWarehouse")
                 r.SetParameterValue("FromDate", formdate.Trim)
                 r.SetParameterValue("ToDate", toDate.Trim)
                 r.SetParameterValue("JOBSite", ddlJobSite.SelectedValue)
@@ -84,8 +85,8 @@ Public Class RptJobSheet
 
                 'PV.WindowState = FormWindowState.Maximized
                 'PV.ShowDialog(Me)
-                Dim url As String = "ShowReport/ShowRptJobSheet.aspx"
-                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "onclick", "javascript:window.open( '" + url + "','_blank','height=600px,width=1000px,scrollbars=1');", True)
+                'Dim url As String = "ShowReport/ShowRptJobSheet.aspx"
+                'ScriptManager.RegisterStartupScript(Me, Me.GetType(), "onclick", "javascript:window.open( '" + url + "','_blank','height=600px,width=1000px,scrollbars=1');", True)
 
             Catch ex As Exception
             End Try
@@ -96,15 +97,23 @@ Public Class RptJobSheet
             Dim r As New rptSummaryJobIn
             Try
                 'PV = New frmExpCustomsInvoiceRPT2
-                r.SetDatabaseLogon("LKBWarehouse", "7tFCca6pzt", "LKBWarehouse", "LKBWarehouse")
+                'r.SetDatabaseLogon("LKBWarehouse", "7tFCca6pzt", "LKBWarehouse", "LKBWarehouse")
+
+                r.SetDatabaseLogon("sa", "36133HNVek", "LKBWarehouseTESTServer", "LKBWarehouse")
                 r.SetParameterValue("FromDate", formdate.Trim)
                 r.SetParameterValue("ToDate", toDate.Trim)
                 r.SetParameterValue("JOBSite", ddlJobSite.Text)
-                'PV.ReportSorce = r
+                PV.ReportSorce = r
+
+                'rpt.Load(Server.MapPath("../Report/rptSummaryJobIn.rpt"))
+                'rpt.SetDataSource(r)
+
+                'Dim url As String = "ShowReport/ShowRptJobSheet.aspx"
+                Dim url As String = "ShowReport/ShowRptJobSheet.aspx?fordate=" + formdate.ToString & "?todate=" + toDate & "?jobsite=" + ddlJobSite.Text
+                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "onclick", "javascript:window.open( '" + url + "','_blank','height=600px,width=1000px,scrollbars=1');", True)
+
                 'Cursor = Cursors.Default
-
                 'PV.WindowState = FormWindowState.Maximized
-
                 'PV.ShowDialog(Me)
             Catch ex As Exception
             End Try
