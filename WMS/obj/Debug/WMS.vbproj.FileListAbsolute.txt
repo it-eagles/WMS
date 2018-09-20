@@ -227,7 +227,6 @@ C:\Users\bossp\Documents\WMS\WMS\bin\Newtonsoft.Json.dll
 C:\Users\bossp\Documents\WMS\WMS\bin\EntityFramework.xml
 C:\Users\bossp\Documents\WMS\WMS\bin\EntityFramework.SqlServer.xml
 C:\Users\bossp\Documents\WMS\WMS\bin\Newtonsoft.Json.xml
-C:\Users\bossp\Documents\WMS\WMS\obj\Debug\WMS.vbprojResolveAssemblyReference.cache
 C:\Users\bossp\Documents\WMS\WMS\obj\Debug\WMS.Resources.resources
 C:\Users\bossp\Documents\WMS\WMS\obj\Debug\WMS.vbproj.GenerateResource.Cache
 C:\Users\bossp\Documents\WMS\WMS\obj\Debug\WMS.dll
