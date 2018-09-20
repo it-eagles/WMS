@@ -48,4 +48,9 @@ Public Class ClassPermis
             Return False
         End If
     End Function
+
+    Function CheckSave(p1 As String) As Boolean
+        Throw New NotImplementedException
+    End Function
+
 End Class
