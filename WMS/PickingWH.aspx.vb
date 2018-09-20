@@ -2193,9 +2193,17 @@ Public Class PickingWH
                     con.setPriceBathAmount = CStr(sI.c.PriceBathAmount)
                     con.setEntryNo = sI.c.EntryNo
                     con.setEntryItemNo = CStr(sI.c.EntryItemNo)
-                    con.setManufacturingDate = CStr(sI.c.ManufacturingDate)
-                    con.setExpiredDate = CStr(sI.c.ExpectedDate)
-
+                    If String.IsNullOrEmpty(CStr(sI.c.ManufacturingDate)) Then
+                        con.setManufacturingDate = Nothing
+                    Else
+                        con.setManufacturingDate = CStr(sI.c.ManufacturingDate)
+                    End If
+                    If String.IsNullOrEmpty(CStr(sI.c.ExpectedDate)) Then
+                        con.setExpiredDate = Nothing
+                    Else
+                        con.setExpiredDate = CStr(sI.c.ExpectedDate)
+                    End If
+                   
                     Session("LOTNo") = con.setLOTNo
                     Session("WHSite") = con.setWHSite
                     Session("WHLocation") = con.setWHLocation
@@ -2274,7 +2282,7 @@ Public Class PickingWH
         Dim exDate As Nullable(Of Date)
         Dim EntryNo As String
         Dim EntryItemNo As Integer
-
+        Dim Quantity As Double = CDbl(Session("Quantity"))
         If txtLOtNo.Value.Trim = "" Then
             ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ LOT NO ก่อน !!!')", True)
             txtLOtNo.Focus()
@@ -2310,16 +2318,6 @@ Public Class PickingWH
             Else
                 itemmax = 1
             End If
-            'If txtRManuFacturingDate.Text = "" Then
-            '    .Parameters.Add("@ManufacturingDate", SqlDbType.DateTime).Value = DBNull.Value
-            'Else
-            '    .Parameters.Add("@ManufacturingDate", SqlDbType.DateTime).Value = txtRManuFacturingDate.Text.Trim()
-            'End If
-            'If txtRExpireDate.Text = "" Then
-            '    .Parameters.Add("@ExpiredDate", SqlDbType.DateTime).Value = DBNull.Value
-            'Else
-            '    .Parameters.Add("@ExpiredDate", SqlDbType.DateTime).Value = txtRExpireDate.Text.Trim()
-            'End If
             For i = 0 To dgvReadWHIssuedDetail.Items.Count - 1
                 chkName = CType(dgvReadWHIssuedDetail.Items(i).FindControl("chkpull_Issud"), CheckBox)
                 Dim lblLOTNo As String = CType(dgvReadWHIssuedDetail.Items(i).FindControl("lblLOTNo"), Label).Text.Trim
@@ -2356,286 +2354,239 @@ Public Class PickingWH
                     Else
                         exDate = Nothing
                     End If
-                    db.tblWHPickingDetails.Add(New tblWHPickingDetail With { _
-                        .PullSignal = txtPullSignal.Value.Trim, _
-                        .LOTNo = txtLOtNo.Value.Trim, _
-                        .WHSite = CStr(Session("WHSite")), _
-                        .WHLocation = CStr(Session("WHLocation")), _
-                        .ENDCustomer = CStr(Session("ENDCustomer")), _
-                        .CustomerLOTNo = CStr(Session("CustomerLOTNo")), _
-                        .WHSource = CStr(Session("WHSource")), _
-                        .ItemNo = CDbl(CDbl(itemmax).ToString("#,##0")), _
-                        .ProductCode = CStr(Session("ProductCode")), _
-                        .CustomerPN = CStr(Session("CustomerPN")), _
-                        .OwnerPN = CStr(Session("OwnerPN")), _
-                        .ProductDesc = CStr(Session("ProductDesc")), _
-                        .Measurement = CStr(Session("Measurement")), _
-                        .ProductWidth = CType(CDbl(ProductWidth).ToString("#,##0.000"), Double?), _
-                        .ProductLength = CType(CDbl(ProductLength).ToString("#,##0.000"), Double?), _
-                        .ProductHeight = CType(CDbl(ProductHeight).ToString("#,##0.000"), Double?), _
-                        .ProductVolume = CType(CDbl(ProductVolume).ToString("#,##0.000"), Double?), _
-                        .OrderNo = CStr(Session("OrderNo")), _
-                        .ReceiveNo = CStr(Session("ReceiveNo")), _
-                        .Type = CStr(Session("Type")), _
-                        .ReceiveDate = DateTime.ParseExact(CStr(Session("ReceiveDate")), "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US")), _
-                        .PickQuantity = CType(CDbl(txtQTYOfPick.Value.Trim).ToString("#,##0.000"), Double?), _
-                        .PickUnit = CStr(Session("QuantityUnit")), _
-                        .Weigth = CType(CDbl(Weigth).ToString("#,##0.000"), Double?), _
-                        .WeigthUnit = CStr(Session("WeigthUnit")), _
-                        .Currency = CStr(Session("Currency")), _
-                        .ManufacturingDate = md, _
-                        .ExpiredDate = exDate, _
-                        .ExchangeRate = CType(CDbl(ExchangeRate).ToString("#,##0.0000"), Double?), _
-                        .PriceForeigh = CType(CDbl(PriceForeigh).ToString("#,##0.0000"), Double?), _
-                        .PriceForeighAmount = CType(CDbl(PriceForeighAmount).ToString("#,##0.0000"), Double?), _
-                        .PriceBath = CType(CDbl(PriceBath).ToString("#,##0.0000"), Double?), _
-                        .PriceBathAmount = CType(CDbl(PriceBathAmount).ToString("#,##0.0000"), Double?), _
-                        .PalletNo = txtPalletNo.Value.Trim, _
-                        .UserBy = CStr(Session("userName")), _
-                        .LastUpdate = Now, _
-                        .Item = CDec(ItemNo_), _
-                        .Reqno = RowRequest1, _
-                        .ExpInvNo = zInvoice, _
-                        .PONo = txtPONo_PickPack.Value.Trim, _
-                        .EntryNo = EntryNo, _
-                        .EntryItemNo = EntryItemNo, _
-                        .OrderFrmOnline = OrderFrmOnline, _
-                        .CustFrmOnline = CustFrmOnline
-                     })
-                    db.SaveChanges()
+                    Using tran As New TransactionScope
+                        Try
+                            db.Database.Connection.Open()
 
-                    If txtIssuedQTY.Value = "" Then
-                        txtIssuedQTY.Value = "0"
+                            db.tblWHPickingDetails.Add(New tblWHPickingDetail With { _
+                             .PullSignal = txtPullSignal.Value.Trim, _
+                             .LOTNo = txtLOtNo.Value.Trim, _
+                             .WHSite = CStr(Session("WHSite")), _
+                             .WHLocation = CStr(Session("WHLocation")), _
+                             .ENDCustomer = CStr(Session("ENDCustomer")), _
+                             .CustomerLOTNo = CStr(Session("CustomerLOTNo")), _
+                             .WHSource = CStr(Session("WHSource")), _
+                             .ItemNo = CDbl(CDbl(itemmax).ToString("#,##0")), _
+                             .ProductCode = CStr(Session("ProductCode")), _
+                             .CustomerPN = CStr(Session("CustomerPN")), _
+                             .OwnerPN = CStr(Session("OwnerPN")), _
+                             .ProductDesc = CStr(Session("ProductDesc")), _
+                             .Measurement = CStr(Session("Measurement")), _
+                             .ProductWidth = CType(CDbl(ProductWidth).ToString("#,##0.000"), Double?), _
+                             .ProductLength = CType(CDbl(ProductLength).ToString("#,##0.000"), Double?), _
+                             .ProductHeight = CType(CDbl(ProductHeight).ToString("#,##0.000"), Double?), _
+                             .ProductVolume = CType(CDbl(ProductVolume).ToString("#,##0.000"), Double?), _
+                             .OrderNo = CStr(Session("OrderNo")), _
+                             .ReceiveNo = CStr(Session("ReceiveNo")), _
+                             .Type = CStr(Session("Type")), _
+                             .ReceiveDate = DateTime.ParseExact(CStr(Session("ReceiveDate")), "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US")), _
+                             .PickQuantity = CType(CDbl(txtQTYOfPick.Value.Trim).ToString("#,##0.000"), Double?), _
+                             .PickUnit = CStr(Session("QuantityUnit")), _
+                             .Weigth = CType(CDbl(Weigth).ToString("#,##0.000"), Double?), _
+                             .WeigthUnit = CStr(Session("WeigthUnit")), _
+                             .Currency = CStr(Session("Currency")), _
+                             .ManufacturingDate = md, _
+                             .ExpiredDate = exDate, _
+                             .ExchangeRate = CType(CDbl(ExchangeRate).ToString("#,##0.0000"), Double?), _
+                             .PriceForeigh = CType(CDbl(PriceForeigh).ToString("#,##0.0000"), Double?), _
+                             .PriceForeighAmount = CType(CDbl(PriceForeighAmount).ToString("#,##0.0000"), Double?), _
+                             .PriceBath = CType(CDbl(PriceBath).ToString("#,##0.0000"), Double?), _
+                             .PriceBathAmount = CType(CDbl(PriceBathAmount).ToString("#,##0.0000"), Double?), _
+                             .PalletNo = txtPalletNo.Value.Trim, _
+                             .UserBy = CStr(Session("userName")), _
+                             .LastUpdate = Now, _
+                             .Item = CDec(ItemNo_), _
+                             .Reqno = RowRequest1, _
+                             .ExpInvNo = zInvoice, _
+                             .PONo = txtPONo_PickPack.Value.Trim, _
+                             .EntryNo = EntryNo, _
+                             .EntryItemNo = EntryItemNo, _
+                             .OrderFrmOnline = OrderFrmOnline, _
+                             .CustFrmOnline = CustFrmOnline
+                            })
+                            tran.Complete()
+                            db.SaveChanges()
+
+
+                            Dim up As tblWHStockMovement = (From sm In db.tblWHStockMovements Where sm.LOTNo = sI.c.ReceiveNo And sm.ItemNo = ItemNo_ And sm.OwnerPN = sI.c.OwnerPN And sm.CustomerLOTNo = sI.c.CustomerLOTNo).FirstOrDefault
+
+                            If up IsNot Nothing Then
+                                If txtIssuedQTY.Value = "" Then
+                                    txtIssuedQTY.Value = "0"
+                                End If
+                                up.AvalableQuantity = Quantity - CType(CDbl(txtQTYOfPick.Value.Trim), Double?)
+                                up.ISSUEQuantity = CType(CDbl(txtQTYOfPick.Value.Trim), Double?) + CType(CDbl(txtIssuedQTY.Value.Trim), Double?)
+                                up.OrderFrmOnline = OrderFrmOnline
+                                up.CustFrmOnline = CustFrmOnline
+                                tran.Complete()
+                                db.SaveChanges()
+                            Else
+
+                            End If
+
+                            Dim upR As tblWHRequestedISSUE = (From ri In db.tblWHRequestedISSUEs Where ri.PullSignal = txtPullSignal.Value.Trim And ri.LotNo = txtLOtNo.Value.Trim And ri.ItemNo = RowRequest1).FirstOrDefault
+
+                            If upR IsNot Nothing Then
+                                upR.AvailableRequestQTY = QtyRequest - CInt(txtQTYOfPick.Value.Trim)
+                                upR.OrderFrmOnline = OrderFrmOnline
+                                upR.CustFrmOnline = CustFrmOnline
+                                tran.Complete()
+                                db.SaveChanges()
+                            Else
+
+                            End If
+                            'sb.Append(" SET AvailableQuantity=@AvailableQuantity,StatusAvailable=@StatusAvailable,StatusPutAlway=@StatusPutAlway,OrderFrmOnline=@OrderFrmOnline,CustFrmOnline=@CustFrmOnline")
+                            'sb.Append(" WHERE (LOTNo=@LOTNo AND ItemNo=@ItemNo AND OwnerPN=@OwnerPN AND CustomerLotNo=@CustomerLotNo)")
+                            Dim upG As tblWHConfirmGoodsReceiveDetail = (From g In db.tblWHConfirmGoodsReceiveDetails Where g.LOTNo = sI.c.ReceiveNo And g.OwnerPN = sI.c.OwnerPN And g.CustomerLOTNo = sI.c.CustomerLOTNo And g.ItemNo = ItemNo_).FirstOrDefault
+
+                            If upG IsNot Nothing Then
+
+                                upR.AvailableRequestQTY = (ItemTotal - CDbl(txtQTYOfPick.Value.Trim))
+                                upR.OrderFrmOnline = OrderFrmOnline
+                                upR.CustFrmOnline = CustFrmOnline
+                                If ItemTotal - CDbl(txtQTYOfPick.Value) = 0 Then
+                                    upG.StatusAvailable = "1"
+                                Else
+                                    upG.StatusAvailable = "0"
+                                End If
+                                upG.StatusPutAlway = 0
+                                db.SaveChanges()
+                            Else
+
+                            End If
+                            QtyRequest = QtyRequest - CInt(txtQTYOfPick.Value)
+                        Catch ex As Exception
+                            tran.Dispose()
+                            ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด เนื่องจาก " & ex.Message & " ');", True)
+                        End Try
+                        
+                    End Using
+                End If
+
+            Next
+
+            If chkSCRAP.Checked = False Then
+                ReadDataComfrimGoods()
+                'ReadDataPickDetail()
+            End If
+            ReadDataRequestedISSUE()
+            ReadDataRequestedISSUE_PickPack()
+            'ClareDataPickDetail()
+            'CountWHPickDetailTotal()
+
+            If dgvReadWHIssuedRequest.Items.Count = 0 Then
+                _LotnoPick = txtLOtNo.Value.Trim
+                _PullPick = txtPullSignal.Value.Trim
+                _DatePick = dtpPullDate.Text.Trim
+                _TimePick = txtPullTime.Value.Trim
+            End If
+        End If
+    End Sub
+
+    Private Sub Save_DATA_Scrap()
+        con = New ConfirmGoodsReceiveDetail
+        Dim chkName As CheckBox
+        Dim i As Integer
+
+        With dgvReadWHIssuedDetail
+            For i = 0 To .Items.Count - 1
+                chkName = CType(dgvReadWHIssuedDetail.Items(i).FindControl("chkLotNo"), CheckBox)
+                Dim lblLOTNo As String = CType(dgvReadWHIssuedDetail.Items(i).FindControl("lblLOTNo"), Label).Text.Trim
+                Dim lblItemNo As Integer = CInt(CType(dgvReadWHIssuedDetail.Items(i).FindControl("lblItemNo"), Label).Text.Trim)
+                Dim lblProduct As String = CType(dgvReadWHIssuedDetail.Items(i).FindControl("lblProduct"), Label).Text.Trim
+                Dim lblOwner As String = CType(dgvReadWHIssuedDetail.Items(i).FindControl("lblOwner"), Label).Text.Trim
+
+                If chkName.Checked = True Then
+                    Dim sI = (From c In db.tblWHConfirmGoodsReceiveDetails Join pds In db.tblProductDetails On c.ProductCode Equals pds.ProductCode And c.OwnerPN Equals pds.CustomerPart _
+                   Where c.LOTNo = lblLOTNo And c.OwnerPN = lblOwner And c.ProductCode = lblProduct And c.ItemNo = lblItemNo And c.StatusAvailable = "0" And c.Type = "Goods Complete").FirstOrDefault
+                    If sI IsNot Nothing Then
+
+                        con.setLOTNo = sI.c.LOTNo
+                        con.setWHSite = sI.c.WHSite
+                        con.setWHLocation = sI.c.WHLocation
+                        con.setENDCustomer = sI.c.ENDCustomer
+                        con.setCustomerLOTNo = sI.c.CustomerLOTNo
+                        con.setWHSource = sI.c.WHSource
+                        con.setItemNo = CStr(sI.c.ItemNo)
+                        con.setProductCode = sI.c.ProductCode
+                        con.setCustomerPN = sI.c.CustomerPN
+                        con.setOwnerPN = sI.c.OwnerPN
+                        con.setProductDesc = sI.c.ProductDesc
+                        con.setMeasurement = sI.c.Measurement
+                        con.setProductWidth = CStr(sI.c.ProductWidth)
+                        con.setProductLength = CStr(sI.c.ProductLength)
+                        con.setProductHeight = CStr(sI.c.ProductHeight)
+                        con.setProductVolume = CStr(sI.c.ProductVolume)
+                        con.setOrderNo = sI.c.OrderNo
+                        con.setReceiveNo = sI.c.ReceiveNo
+                        con.setType = sI.c.Type
+                        con.setQuantity = CStr(sI.c.Quantity)
+                        con.setReceiveDate = CStr(sI.c.ReceiveDate)
+                        con.setQuantityUnit = sI.c.QuantityUnit
+                        con.setWeigth = CStr(sI.c.Weigth)
+                        con.setWeigthUnit = sI.c.WeigthUnit
+                        con.setCurrency = sI.c.Currency
+                        con.setExchangeRate = CStr(sI.c.ExchangeRate)
+                        con.setPriceForeigh = CStr(sI.c.PriceForeigh)
+                        con.setPriceForeighAmount = CStr(sI.c.PriceForeighAmount)
+                        con.setPriceBath = CStr(sI.c.PriceBath)
+                        con.setPriceBathAmount = CStr(sI.c.PriceBathAmount)
+                        con.setEntryNo = sI.c.EntryNo
+                        con.setEntryItemNo = CStr(sI.c.EntryItemNo)
+                        con.setManufacturingDate = CStr(sI.c.ManufacturingDate)
+                        con.setExpiredDate = CStr(sI.c.ExpectedDate)
+
+                        Session("LOTNo") = con.setLOTNo
+                        Session("WHSite") = con.setWHSite
+                        Session("WHLocation") = con.setWHLocation
+                        Session("ENDCustomer") = con.setENDCustomer
+                        Session("CustomerLOTNo") = con.setCustomerLOTNo
+                        Session("WHSource") = con.setWHSource
+                        Session("ItemNo") = con.setItemNo
+                        Session("ProductCode") = con.setProductCode
+                        Session("CustomerPN") = con.setCustomerPN
+                        Session("OwnerPN") = con.setOwnerPN
+                        Session("ProductDesc") = con.setProductDesc
+                        Session("Measurement") = con.setMeasurement
+                        Session("ProductWidth") = con.setProductWidth
+                        Session("ProductLength") = con.setProductLength
+                        Session("ProductHeight") = con.setProductHeight
+                        Session("ProductVolume") = con.setProductVolume
+                        Session("OrderNo") = con.setOrderNo
+                        Session("ReceiveNo") = con.setReceiveNo
+                        Session("Type") = con.setType
+                        Session("Quantity") = con.setQuantity
+                        Session("ReceiveDate") = con.setReceiveDate
+                        Session("QuantityUnit") = con.setQuantityUnit
+                        Session("Weigth") = con.setWeigth
+                        Session("WeigthUnit") = con.setWeigthUnit
+                        Session("Currency") = con.setCurrency
+                        Session("ExchangeRate") = con.setExchangeRate
+                        Session("PriceForeigh") = con.setPriceForeigh
+                        Session("PriceForeighAmount") = con.setPriceForeighAmount
+                        Session("PriceBath") = con.setPriceBath
+                        Session("PriceBathAmount") = con.setPriceBathAmount
+                        Session("EntryNo") = con.setEntryNo
+                        Session("EntryItemNo") = con.setEntryItemNo
+                        ManufacturingDate = ""
+                        ExpiredDate = ""
+                        
+                        ItemTotal = CDbl(txtQTYOfPick.Value)
+
+                        ReadStockMovement()
+
+                        SavePickDetail_New()
+                        'ReadDataPickDetail()
                     End If
-                    Dim up As tblWHStockMovement = (From sm In db.tblWHStockMovements Where sm.LOTNo = sI.c.ReceiveNo And sm.ItemNo = ItemNo_ And sm.OwnerPN = sI.c.OwnerPN And sm.CustomerLOTNo = sI.c.CustomerLOTNo).FirstOrDefault
-
-                    If up IsNot Nothing Then
-                        up.AvalableQuantity = sI.c.Quantity - CType(CDbl(txtQTYOfPick.Value.Trim), Double?)
-                        up.ISSUEQuantity = CType(CDbl(txtQTYOfPick.Value.Trim), Double?) + CType(CDbl(txtIssuedQTY.Value.Trim), Double?)
-                        up.OrderFrmOnline = OrderFrmOnline
-                        up.CustFrmOnline = CustFrmOnline
-                        db.SaveChanges()
-                    Else
-
-                    End If
-
-                    Dim upR As tblWHRequestedISSUE = (From ri In db.tblWHRequestedISSUEs Where ri.PullSignal = txtPullSignal.Value.Trim And ri.LotNo = txtLOtNo.Value.Trim And ri.ItemNo = RowRequest1).FirstOrDefault
-
-                    If upR IsNot Nothing Then
-                        upR.AvailableRequestQTY = QtyRequest - CInt(txtQTYOfPick.Value.Trim)
-                        upR.OrderFrmOnline = OrderFrmOnline
-                        upR.CustFrmOnline = CustFrmOnline
-                        db.SaveChanges()
-                    Else
-
-                    End If
-
-                    Dim upG As tblWHConfirmGoodsReceiveDetail = (From g In db.tblWHConfirmGoodsReceiveDetails Where g.LOTNo = sI.c.ReceiveNo And g.OwnerPN = sI.c.OwnerPN And g.CustomerLOTNo = sI.c.CustomerLOTNo).FirstOrDefault
-
 
                 End If
 
             Next
 
-
-
-
-            'Sql = "SELECT max(itemno) as ItemMax  FROM tblWHPickingDetail WHERE PullSignal = '" & txtPullSignal.Value.Trim & "'   and LOTNo = '" & txtLOtNo.Value.Trim & "'  "
-
-
-            Try
-
-                'If txtRManuFacturingDate.Text = "" Then
-                '    .Parameters.Add("@ManufacturingDate", SqlDbType.DateTime).Value = DBNull.Value
-                'Else
-                '    .Parameters.Add("@ManufacturingDate", SqlDbType.DateTime).Value = txtRManuFacturingDate.Text.Trim()
-                'End If
-
-                '.PullSignal = txtPullSignal.Value.Trim, _
-                '.LOTNo = txtLOtNo.Value.Trim, _
-                '.WHSite = txtRWHSite.Text.Trim, _
-                '.WHLocation = txtRWHLocation.Text.Trim, _
-                '.ENDCustomer = txtREndCustomer.Text.Trim, _
-                '.CustomerLOTNo = txtRCustomerLotNo.Text.Trim, _
-                '.WHSource = txtRWHSoure.Text.Trim, _
-                '.ItemNo = CDbl(itemmax).ToString("#,##0"), _
-                '.ProductCode = txtRProductCode.Text.Trim, _
-                '.CustomerPN = txtRCustomerPN.Text.Trim, _
-                '.OwnerPN = txtROwnerPN.Text.Trim, _
-                '.ProductDesc = txtRProductDesc.Text.Trim, _
-                '.Measurement = txtRMeasurement.Text.Trim, _
-                '.ProductWidth = CDbl(txtRProductWidth.Text).ToString("#,##0.000"), _
-                '.ProductLength = CDbl(txtRProductLength.Text).ToString("#,##0.000", _
-                '.ProductHeight = CDbl(txtRProductHeight.Text).ToString("#,##0.000"), _
-                '.ProductVolume = CDbl(txtRProductVolume.Text).ToString("#,##0.000"), _
-                '.OrderNo = txtROrderNo.Text.Trim, _
-                '.ReceiveNo = txtRReceiveNo.Text.Trim, _
-                '.Type = txtRType.Text.Trim, _
-                '.ManufacturingDate  = DBNull.Value, _              
-                '.ExpiredDate = DBNull.Value, _
-                '.ReceiveDate = txtRReceiveDate.Text.Trim, _
-                '.PickQuantity = CDbl(txtQTYOfPick.Text).ToString("#,##0.000"), _
-                '.PickUnit = txtRQuantityUnit.Text.Trim, _
-                '.Weigth = CDbl(txtRWeight.Text).ToString("#,##0.000"), _
-                '.WeigthUnit = txtRWeightUnit.Text.Trim, _
-                '.Currency = txtRCurrency.Text.Trim, _
-                '.ExchangeRate = CDbl(txtRExchangeRate.Text).ToString("#,##0.0000"), _
-                '.PriceForeigh = CDbl(txtRPriceForeight.Text).ToString("#,##0.0000"), _
-                '.PriceForeighAmount = CDbl(txtRPriceForeightAmount.Text).ToString("#,##0.0000"), _
-                '.PriceBath = CDbl(txtRBathForeight.Text).ToString("#,##0.0000"), _
-                '.PriceBathAmount = CDbl(txtRBathForeightAmount.Text).ToString("#,##0.0000"), _
-                '.PalletNo = txtPalletNo.Text.Trim, _
-                '.UserBy = DBConnString.UserName, _
-                '.LastUpdate = Now, _
-                '.Item = CDbl(txtItemNoPick.Text).ToString("#,##0"), _
-                '.ReqNo = RowRequest1, _
-                '.ExpInvNo = zInvoice, _
-                '.PONo = txtPONo.Text.Trim, _
-                '.EntryNo = REntryNo, _
-                '.EntryItemNo = REntryItemNo, _
-                '.OrderFrmOnline = txtOrderFrmOnline.Text, _
-                '.CustFrmOnline = txtCustFrmOnline.Text, _
-
-
-
-                '    sb = New StringBuilder()
-                '    sb.Append("UPDATE tblWHStockMovement")
-                '    sb.Append(" SET AvalableQuantity=@AvalableQuantity, ISSUEQuantity=@ISSUEQuantity,OrderFrmOnline=@OrderFrmOnline,CustFrmOnline=@CustFrmOnline")
-                '    sb.Append(" WHERE (LOTNo=@LOTNo AND ItemNo=@ItemNo AND OwnerPN=@OwnerPN AND CustomerLotNo=@CustomerLotNo)")
-                '    Dim sqlEdit As String
-                '    sqlEdit = sb.ToString()
-                '    If txtIssuedQTY.Text = "" Then
-                '        txtIssuedQTY.Text = "0"
-                '    End If
-                '    With com
-                '        .CommandText = sqlEdit
-                '        .CommandType = CommandType.Text
-                '        .Connection = Conn
-                '        .Transaction = tr
-                '        .Parameters.Clear()
-                '        .Parameters.Add("@LOTNo", SqlDbType.NVarChar).Value = txtRReceiveNo.Text.Trim()
-                '        .Parameters.Add("@OwnerPN", SqlDbType.NVarChar).Value = txtROwnerPN.Text.Trim()
-                '        .Parameters.Add("@CustomerLotNo", SqlDbType.NVarChar).Value = txtRCustomerLotNo.Text.Trim()
-                '        .Parameters.Add("@ItemNo", SqlDbType.Decimal).Value = CDbl(txtItemNoPick.Text).ToString("#,##0")
-                '        .Parameters.Add("@ReceiveNo", SqlDbType.NVarChar).Value = txtRReceiveNo.Text.Trim()
-                '        .Parameters.Add("@AvalableQuantity", SqlDbType.Float).Value = (ItemTotal - CDbl(txtQTYOfPick.Text)).ToString("#,##0.00")
-                '        .Parameters.Add("@ISSUEQuantity", SqlDbType.Float).Value = (CDbl(txtQTYOfPick.Text) + CDbl(txtIssuedQTY.Text)).ToString("#,##0.00")
-                '        .Parameters.Add("@OrderFrmOnline", SqlDbType.NVarChar).Value = txtOrderFrmOnline.Text.Trim()
-                '        .Parameters.Add("@CustFrmOnline", SqlDbType.NVarChar).Value = txtCustFrmOnline.Text.Trim()
-                '        Dim result As Integer
-                '        result = .ExecuteNonQuery()
-                '        If result = 0 Then
-                '            tr.Rollback()
-                '            MessageBox.Show("เกิดข้อผิดพลาด เนื่องจาก Update SaveMovement", "ผลการทำงาน", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                '            Exit Sub
-                '        End If
-                '    End With
-
-
-                '    sb = New StringBuilder()
-                '    sb.Append("UPDATE tblWHRequestedISSUE")
-                '    sb.Append(" SET AvailableRequestQTY=@AvailableRequestQTY,OrderFrmOnline=@OrderFrmOnline,CustFrmOnline=@CustFrmOnline")
-                '    sb.Append(" WHERE (PullSignal=@PullSignal AND LOTNo=@LOTNo AND ItemNo=@ItemNo)")
-                '    Dim sqlEdit1 As String
-                '    sqlEdit1 = sb.ToString()
-
-                '    With com
-                '        .CommandText = sqlEdit1
-                '        .CommandType = CommandType.Text
-                '        .Connection = Conn
-                '        .Transaction = tr
-                '        .Parameters.Clear()
-                '        .Parameters.Add("@PullSignal", SqlDbType.NVarChar).Value = txtPullSignal.Text.Trim()
-                '        .Parameters.Add("@LOTNo", SqlDbType.NVarChar).Value = txtLOtNo.Text.Trim()
-                '        .Parameters.Add("@ItemNo", SqlDbType.NVarChar).Value = RowRequest1
-                '        .Parameters.Add("@AvailableRequestQTY", SqlDbType.Float).Value = QtyRequest - CInt(txtQTYOfPick.Text)
-                '        .Parameters.Add("@OrderFrmOnline", SqlDbType.NVarChar).Value = txtOrderFrmOnline.Text.Trim()
-                '        .Parameters.Add("@CustFrmOnline", SqlDbType.NVarChar).Value = txtCustFrmOnline.Text.Trim()
-
-                '        Dim result As Integer
-                '        result = .ExecuteNonQuery()
-                '        If result = 0 Then
-                '            tr.Rollback()
-                '            MessageBox.Show("เกิดข้อผิดพลาด เนื่องจาก Update tblWHRequestedISSUE  ", "ผลการทำงาน", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                '            Exit Sub
-                '        End If
-                '    End With
-
-                '    sb = New StringBuilder()
-                '    sb.Append("UPDATE tblWHConfirmGoodsReceiveDetail")
-                '    sb.Append(" SET AvailableQuantity=@AvailableQuantity,StatusAvailable=@StatusAvailable,StatusPutAlway=@StatusPutAlway,OrderFrmOnline=@OrderFrmOnline,CustFrmOnline=@CustFrmOnline")
-                '    sb.Append(" WHERE (LOTNo=@LOTNo AND ItemNo=@ItemNo AND OwnerPN=@OwnerPN AND CustomerLotNo=@CustomerLotNo)")
-                '    Dim sqlEdit2 As String
-                '    sqlEdit2 = sb.ToString()
-
-                '    With com
-                '        .CommandText = sqlEdit2
-                '        .CommandType = CommandType.Text
-                '        .Connection = Conn
-                '        .Transaction = tr
-                '        .Parameters.Clear()
-                '        .Parameters.Add("@LOTNo", SqlDbType.NVarChar).Value = txtRReceiveNo.Text
-                '        .Parameters.Add("@OwnerPN", SqlDbType.NVarChar).Value = txtROwnerPN.Text
-                '        .Parameters.Add("@CustomerLotNo", SqlDbType.NVarChar).Value = txtRCustomerLotNo.Text
-                '        .Parameters.Add("@ItemNo", SqlDbType.Decimal).Value = CDbl(txtItemNoPick.Text).ToString("#,##0")
-                '        .Parameters.Add("@AvailableQuantity", SqlDbType.Float).Value = (ItemTotal - CDbl(txtQTYOfPick.Text)).ToString("#,##0.00")
-                '        .Parameters.Add("@OrderFrmOnline", SqlDbType.NVarChar).Value = txtOrderFrmOnline.Text.Trim()
-                '        .Parameters.Add("@CustFrmOnline", SqlDbType.NVarChar).Value = txtCustFrmOnline.Text.Trim()
-                '        If (ItemTotal - CDbl(txtQTYOfPick.Text)) = 0 Then
-                '            .Parameters.Add("@StatusAvailable", SqlDbType.Decimal).Value = 1
-                '        Else
-                '            .Parameters.Add("@StatusAvailable", SqlDbType.Decimal).Value = 0
-                '        End If
-                '        .Parameters.Add("@StatusPutAlway", SqlDbType.Int).Value = 0
-                '        Dim result As Integer
-                '        result = .ExecuteNonQuery()
-                '        If result = 0 Then
-                '            tr.Rollback()
-                '            MessageBox.Show("เกิดข้อผิดพลาด เนื่องจาก Update Confirm ", "ผลการทำงาน", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                '            Exit Sub
-                '        End If
-                '    End With
-
-                '    QtyRequest = QtyRequest - CInt(txtQTYOfPick.Text.Trim)
-
-            Catch ex As Exception
-                '    tr.Rollback()
-                '    MessageBox.Show("เกิดข้อผิดพลาด เนื่องจาก " & ex.Message, "ผลการทำงาน", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                '    Exit Sub
-            End Try
-
-            'tr.Commit()
-
-            'If chkSCRAP.Checked = False Then
-            '    ReadDataComfrimGoods()
-            '    ReadDataPickDetail()
-            'End If
-
-            'ReadDataRequestedISSUE()
-            'ReadDataRequestedISSUE_PickPack()
-            'ClareDataPickDetail()
-            'CountWHPickDetailTotal()
-
-            ''dgvItemAuto.DataSource = Nothing
-            ''dgvReadWHIssuedDetail.DataSource = Nothing
-            ''ReadDataRequestedISSUE_PickPack()
-            ''ReadDataPickDetail()
-            ''ClareDataPickDetail()
-            ''CountWHPickDetailTotal()
-            'If dgvReadWHIssuedRequest.RowCount = 0 Then
-            '    _LotnoPick = txtLOTNo.Text.Trim
-            '    _PullPick = txtPullSignal.Text.Trim
-            '    _DatePick = dtpPullDate.Text.Trim
-            '    _TimePick = txtPullTime.Text.Trim
-
-            '    'Dim f As New FrmRptMailPick()
-            '    'f.MdiParent = frmMain
-            '    'f.Show()
-
-            '  End If
-
-        End If
+        End With
+        ReadDataComfrimGoods()
+        'ReadDataPickDetail()
+        'CountWHPickDetailTotal()
+        'MessageBox.Show("ระบบได้ทำการแก้ไขข้อมูลให้  เรียบร้อยแล้ว !!!", "ผลการทำงาน", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
-
-
 End Class

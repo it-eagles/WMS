@@ -1193,15 +1193,15 @@
                                                                 </ItemTemplate>
                                                                 <AlternatingItemTemplate>
                                                                         <tr class="danger">
-                                                                        <td><asp:CheckBox ID="chkLotNo" runat="server" AutoPostBack="true"></asp:CheckBox></td>
-                                                                        <td><asp:Label ID="lblLOTNo" runat="server" Text="Label"></asp:Label></td>
-                                                                        <td><asp:Label ID="lblSite" runat="server" Text="Label"></asp:Label></td>                                                                        
-                                                                        <td><asp:Label ID="lblCustomer" runat="server" Text="Label"></asp:Label></td>                                                                                                                                             
-                                                                        <td><asp:Label ID="lblItemNo" runat="server" Text="Label"></asp:Label></td>
-                                                                        <td><asp:Label ID="lblProduct" runat="server" Text="Label"></asp:Label></td>
-                                                                        <td><asp:Label ID="lblPN" runat="server" Text="Label"></asp:Label></td>
-                                                                        <td><asp:Label ID="lblOwner" runat="server" Text="Label"></asp:Label></td>
-                                                                        <td><asp:Label ID="lblEntry" runat="server" Text="Label"></asp:Label></td>                                                                  
+                                                                            <td><asp:CheckBox ID="chkLotNo" runat="server" AutoPostBack="true"></asp:CheckBox></td>
+                                                                            <td><asp:Label ID="lblLOTNo" runat="server" Text="Label"></asp:Label></td>
+                                                                            <td><asp:Label ID="lblSite" runat="server" Text="Label"></asp:Label></td>                                                                        
+                                                                            <td><asp:Label ID="lblCustomer" runat="server" Text="Label"></asp:Label></td>                                                                                                                                             
+                                                                            <td><asp:Label ID="lblItemNo" runat="server" Text="Label"></asp:Label></td>
+                                                                            <td><asp:Label ID="lblProduct" runat="server" Text="Label"></asp:Label></td>
+                                                                            <td><asp:Label ID="lblPN" runat="server" Text="Label"></asp:Label></td>
+                                                                            <td><asp:Label ID="lblOwner" runat="server" Text="Label"></asp:Label></td>
+                                                                            <td><asp:Label ID="lblEntry" runat="server" Text="Label"></asp:Label></td>                                                                  
                                                                     </tr>
                                                                 </AlternatingItemTemplate>
                                                                 <FooterTemplate>
@@ -1264,7 +1264,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="txtQuantityOfPick_PickPack" class="col-sm-4 control-label">QuantityOfPick:</label>
+                                                            <label for="txtQTYOfPick" class="col-sm-4 control-label">QuantityOfPick:</label>
                                                             <div class="col-sm-8">
                                                                <%-- <asp:DropDownList ID="ddlQuantityOfPick_PickPack" CssClass="form-control input-sm" runat="server"></asp:DropDownList>--%>
                                                                 <input runat="server" id="txtQTYOfPick" class="form-control input-sm" autocomplete="off"/>
@@ -1274,9 +1274,9 @@
 
                                                     <div class="col-md-4">
                                                         <div class="form-group">
-                                                            <label for="txtQTYCanPick_PickPack" class="col-sm-4 control-label">QTY Can Pick:</label>
+                                                            <label for="txtSumQTYPick1" class="col-sm-4 control-label">QTY Can Pick:</label>
                                                             <div class="col-sm-8">
-                                                                <input class="form-control input-sm" id="txtSumQTYPick1" runat="server" value="0" autocomplete="off" disabled="disabled" />
+                                                                <input class="form-control input-sm" id="txtSumQTYPick1" runat="server" autocomplete="off" disabled />
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
@@ -1585,7 +1585,7 @@
                                                         <div class="form-group">
                                                             <label for="txtQuantityOfPick_PickNJR" class="col-sm-5 control-label">QuantityOfPick:</label>
                                                             <div class="col-sm-7">
-                                                                <input class="form-control input-sm" id="txtQuantityOfPick_PickNJR" runat="server" autocomplete="off" />
+                                                                <input class="form-control input-sm" id="txtQuantityOfPick_PickNJR" runat="server" autocomplete="off"/>
                                                             </div>
                                                         </div>
                                                     </div>

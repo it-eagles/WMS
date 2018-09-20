@@ -6772,6 +6772,7 @@
     <Compile Include="Class\DBConnString.vb" />
     <Compile Include="Class\Ieat107.vb" />
     <Compile Include="Class\LoginCls.vb" />
+    <Compile Include="Class\Module1.vb" />
     <Compile Include="Class\MoneyExt.vb" />
     <Compile Include="CustomsInvoice.aspx.designer.vb">
       <DependentUpon>CustomsInvoice.aspx</DependentUpon>
