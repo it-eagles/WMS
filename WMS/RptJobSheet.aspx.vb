@@ -67,57 +67,64 @@ Public Class RptJobSheet
 
     Protected Sub btnPrint_ServerClick(sender As Object, e As EventArgs)
         Dim _cultureEnInfo As New Globalization.CultureInfo("en-US")
+        Dim site As String = ddlJobSite.Text.Trim
         Dim formdate As String = CStr(Convert.ToDateTime(Me.txtdatepickerFromDate.Text, _cultureEnInfo).ToString("dd/MM/yyyy"))
         Dim toDate As String = CStr(Convert.ToDateTime(Me.txtdatepickerToDate.Text, _cultureEnInfo).ToString("dd/MM/yyyy"))
         If rdbExport.Checked = True Then
-            'Dim ReportSourch As ReportClass
-            Dim r As New rptSummaryJOBOut
-            Try
-                'PV = New frmExpCustomsInvoiceRPT2
-
-                'r.SetDatabaseLogon("LKBWarehouse", "7tFCca6pzt", "LKBWarehouse", "LKBWarehouse")
-                r.SetDatabaseLogon("sa", "36133HNVek", "LKBWarehouseTESTServer", "LKBWarehouse")
-                r.SetParameterValue("FromDate", formdate.Trim)
-                r.SetParameterValue("ToDate", toDate.Trim)
-                r.SetParameterValue("JOBSite", ddlJobSite.SelectedValue)
-                PV.ReportSorce = r
-                'Cursor = Cursors.Default
-
-                'PV.WindowState = FormWindowState.Maximized
-                'PV.ShowDialog(Me)
-                'Dim url As String = "ShowReport/ShowRptJobSheet.aspx"
-                'ScriptManager.RegisterStartupScript(Me, Me.GetType(), "onclick", "javascript:window.open( '" + url + "','_blank','height=600px,width=1000px,scrollbars=1');", True)
-
-            Catch ex As Exception
-            End Try
+            Session("formdate") = formdate
+            Session("toDate") = toDate
+            Dim url As String = "ShowReport/ShowRptJobSheet.aspx?WHSite=" + site
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "onclick", "javascript:window.open( '" + url + "','_blank','height=600px,width=1000px,scrollbars=1');", True)
         End If
+        'If rdbExport.Checked = True Then
+        '    'Dim ReportSourch As ReportClass
+        '    Dim r As New rptSummaryJOBOut
+        '    Try
+        '        'PV = New frmExpCustomsInvoiceRPT2
 
-        If rdbImport.Checked = True Then
-            'Dim ReportSourch As ReportClass
-            Dim r As New rptSummaryJobIn
-            Try
-                'PV = New frmExpCustomsInvoiceRPT2
-                'r.SetDatabaseLogon("LKBWarehouse", "7tFCca6pzt", "LKBWarehouse", "LKBWarehouse")
+        '        'r.SetDatabaseLogon("LKBWarehouse", "7tFCca6pzt", "LKBWarehouse", "LKBWarehouse")
+        '        r.SetDatabaseLogon("sa", "36133HNVek", "LKBWarehouseTESTServer", "LKBWarehouse")
+        '        r.SetParameterValue("FromDate", formdate.Trim)
+        '        r.SetParameterValue("ToDate", toDate.Trim)
+        '        r.SetParameterValue("JOBSite", ddlJobSite.SelectedValue)
+        '        PV.ReportSorce = r
+        '        'Cursor = Cursors.Default
 
-                r.SetDatabaseLogon("sa", "36133HNVek", "LKBWarehouseTESTServer", "LKBWarehouse")
-                r.SetParameterValue("FromDate", formdate.Trim)
-                r.SetParameterValue("ToDate", toDate.Trim)
-                r.SetParameterValue("JOBSite", ddlJobSite.Text)
-                PV.ReportSorce = r
+        '        'PV.WindowState = FormWindowState.Maximized
+        '        'PV.ShowDialog(Me)
+        '        'Dim url As String = "ShowReport/ShowRptJobSheet.aspx"
+        '        'ScriptManager.RegisterStartupScript(Me, Me.GetType(), "onclick", "javascript:window.open( '" + url + "','_blank','height=600px,width=1000px,scrollbars=1');", True)
 
-                'rpt.Load(Server.MapPath("../Report/rptSummaryJobIn.rpt"))
-                'rpt.SetDataSource(r)
+        '    Catch ex As Exception
+        '    End Try
+        'End If
 
-                'Dim url As String = "ShowReport/ShowRptJobSheet.aspx"
-                Dim url As String = "ShowReport/ShowRptJobSheet.aspx?fordate=" + formdate.ToString & "?todate=" + toDate & "?jobsite=" + ddlJobSite.Text
-                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "onclick", "javascript:window.open( '" + url + "','_blank','height=600px,width=1000px,scrollbars=1');", True)
+        'If rdbImport.Checked = True Then
+        '    'Dim ReportSourch As ReportClass
+        '    Dim r As New rptSummaryJobIn
+        '    Try
+        '        'PV = New frmExpCustomsInvoiceRPT2
+        '        'r.SetDatabaseLogon("LKBWarehouse", "7tFCca6pzt", "LKBWarehouse", "LKBWarehouse")
 
-                'Cursor = Cursors.Default
-                'PV.WindowState = FormWindowState.Maximized
-                'PV.ShowDialog(Me)
-            Catch ex As Exception
-            End Try
-        End If
+        '        r.SetDatabaseLogon("sa", "36133HNVek", "LKBWarehouseTESTServer", "LKBWarehouse")
+        '        r.SetParameterValue("FromDate", formdate.Trim)
+        '        r.SetParameterValue("ToDate", toDate.Trim)
+        '        r.SetParameterValue("JOBSite", ddlJobSite.Text)
+        '        PV.ReportSorce = r
+
+        '        'rpt.Load(Server.MapPath("../Report/rptSummaryJobIn.rpt"))
+        '        'rpt.SetDataSource(r)
+
+        '        'Dim url As String = "ShowReport/ShowRptJobSheet.aspx"
+        '        Dim url As String = "ShowReport/ShowRptJobSheet.aspx?fordate=" + formdate.ToString & "?todate=" + toDate & "?jobsite=" + ddlJobSite.Text
+        '        ScriptManager.RegisterStartupScript(Me, Me.GetType(), "onclick", "javascript:window.open( '" + url + "','_blank','height=600px,width=1000px,scrollbars=1');", True)
+
+        '        'Cursor = Cursors.Default
+        '        'PV.WindowState = FormWindowState.Maximized
+        '        'PV.ShowDialog(Me)
+        '    Catch ex As Exception
+        '    End Try
+        'End If
     End Sub
     Private Sub ClearDATA()
         rdbImport.Checked = False

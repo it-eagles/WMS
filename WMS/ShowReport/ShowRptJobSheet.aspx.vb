@@ -2,8 +2,15 @@
 Option Strict On
 Option Infer On
 
-Imports CrystalDecisions.Shared
 Imports CrystalDecisions.CrystalReports.Engine
+Imports CrystalDecisions.Shared
+Imports CrystalDecisions.Web
+Imports CrystalDecisions.ReportSource
+Imports CrystalDecisions.CrystalReports
+Imports System.Linq
+Imports Microsoft.Reporting.WebForms
+Imports System.Net
+Imports System.Globalization
 
 Public Class ShowRptJobSheet
     Inherits System.Web.UI.Page
@@ -14,67 +21,52 @@ Public Class ShowRptJobSheet
     Public Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
         If Not IsPostBack Then
+            Dim WHSite As String = Request.QueryString("WHSite")
+            Dim formdate As String = CStr(Session("formdate"))
+            Dim toDate As String = CStr(Session("toDate"))
 
-            '    Dim index As Integer = CInt(Request.QueryString("recno"))
-
-            '    Using db = New LKBWarehouseEntities1
-
-            '        Dim results = (From c In db.tblBookingMessengers
-            '              Where c.RecNo = index
-            '              Select New With {
-            '                    c.RecNo,
-            '                    c.BookingTime,
-            '                    c.CusTel,
-            '                    c.ContactPerson,
-            '                    c.CustomerName,
-            '                    c.Location,
-            '                    c.JobType1,
-            '                    c.JobType2,
-            '                    c.JobType3,
-            '                    c.JobDesc,
-            '                    c.ReceiveComback,
-            '                    c.BookingBy,
-            '                    c.Branch,
-            '                    c.Messenger,
-            '                    c.Status,
-            '                    c.Remark,
-            '                    c.ReceiveBy,
-            '                    c.BookingDate,
-            '                    c.CreateDate,
-            '                    c.JobType4
-            '                    }).ToList()
-
-            '        rpt.Load(Server.MapPath("../Report/rptSummaryJobIn.rpt"))
-            '        rpt.SetDataSource(results)
-
-            '        CrystalReportViewer1.ReportSource = rpt
-            '        CrystalReportViewer1 = Nothing
+            Try
+                'PV = New frmExpCustomsInvoiceRPT2
 
 
-            '        'CType(rpt, ReportDocument).ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("../PDF/" + CStr(index) + ".pdf"))
+                rpt.Load(Server.MapPath("../Report/rptSummaryJOBOut.rpt"))
+                'rpt.SetDatabaseLogon("sa", "36133HNVek", "LKBWarehouseTESTServer", "LKBWarehouse")
+                rpt.SetDatabaseLogon("LKBWarehouse", "7tFCca6pzt", "LKBWarehouse", "LKBWarehouse")
+                rpt.SetParameterValue("FromDate", formdate)
+                rpt.SetParameterValue("ToDate", toDate)
+                rpt.SetParameterValue("JOBSite", WHSite)
+                CrystalReportViewer1.ReportSource = rpt
+                CType(rpt, ReportDocument).ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("../Files/" + "SummaryJOBOut-" + WHSite + ".pdf"))
+                Dim path As String = Server.MapPath("../Files/" + "SummaryJOBOut-" + WHSite + ".pdf")
+                Dim client As New WebClient()
+                Dim buffer As Byte() = client.DownloadData(path)
 
-            '        'Dim path As String = Server.MapPath("../PDF/" + CStr(Request.QueryString("recno")) + ".pdf")
-            '        'Dim client As New WebClient()
-            '        'Dim buffer As [Byte]() = client.DownloadData(path)
+                If buffer IsNot Nothing Then
+                    Response.ContentType = "application/pdf"
+                    Response.AddHeader("content-length", buffer.Length.ToString())
+                    Response.BinaryWrite(buffer)
+                    Response.End()
+                End If
+                'Cursor = Cursors.Default
 
-            '        'If buffer IsNot Nothing Then
-            '        '    Response.ContentType = "application/pdf"
-            '        '    Response.AddHeader("content-length", buffer.Length.ToString())
-            '        '    Response.BinaryWrite(buffer)
-            '        '    Response.End()
-            '        'End If
-            '    End Using
-            rpt.Load(Server.MapPath("../Report/rptSummaryJobIn.rpt"))
-            rpt.SetDataSource(ReportSorce)
+                'PV.WindowState = FormWindowState.Maximized
+                'PV.ShowDialog(Me)
+                'Dim url As String = "ShowReport/ShowRptJobSheet.aspx"
+                'ScriptManager.RegisterStartupScript(Me, Me.GetType(), "onclick", "javascript:window.open( '" + url + "','_blank','height=600px,width=1000px,scrollbars=1');", True)
 
-            CrystalReportViewer1.ReportSource = rpt
-            CrystalReportViewer1 = Nothing
+            Catch ex As Exception
+            End Try
+            
         End If
 
 
         'CType(rpt, ReportDocument).ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("../PDF/" + CStr(ReportSorce) + ".pdf"))
     End Sub
-
+    Protected Sub CrystalReportViewer1_Unload(sender As Object, e As EventArgs) Handles CrystalReportViewer1.Unload
+        rpt.Close()
+        rpt.Dispose()
+        GC.Collect()
+    End Sub
     Public Property ReportSorce() As Object
         Get
             Return _ReportSource
