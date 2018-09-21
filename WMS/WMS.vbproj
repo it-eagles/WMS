@@ -7322,8 +7322,6 @@
       <DependentUpon>MasterTariffCode.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="msg.vb" />
-    <Compile Include="msgBoxIcon.vb" />
     <Compile Include="MultiIssuedWH.aspx.designer.vb">
       <DependentUpon>MultiIssuedWH.aspx</DependentUpon>
     </Compile>
@@ -7439,14 +7437,12 @@
       <DependentUpon>rptSegateSummaryReport1.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-
     <Compile Include="Report\rptSummaryJobIn.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptSummaryJobIn.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-
     <Compile Include="Report\rptSummaryJOBOut.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

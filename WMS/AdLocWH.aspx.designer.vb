@@ -282,4 +282,5 @@ Partial Public Class AdLocWH
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents Repeater2 As Global.System.Web.UI.WebControls.Repeater
+
 End Class
