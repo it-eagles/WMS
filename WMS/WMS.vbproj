@@ -6772,7 +6772,6 @@
     <Compile Include="Class\DBConnString.vb" />
     <Compile Include="Class\Ieat107.vb" />
     <Compile Include="Class\LoginCls.vb" />
-    <Compile Include="Class\Module1.vb" />
     <Compile Include="Class\MoneyExt.vb" />
     <Compile Include="CustomsInvoice.aspx.designer.vb">
       <DependentUpon>CustomsInvoice.aspx</DependentUpon>
@@ -7323,6 +7322,8 @@
       <DependentUpon>MasterTariffCode.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
+    <Compile Include="msg.vb" />
+    <Compile Include="msgBoxIcon.vb" />
     <Compile Include="MultiIssuedWH.aspx.designer.vb">
       <DependentUpon>MultiIssuedWH.aspx</DependentUpon>
     </Compile>
@@ -7433,12 +7434,6 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Report\rptSummaryJobIn.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>rptSummaryJobIn.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Report\rptSummaryJobIn1.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptSummaryJobIn.rpt</DependentUpon>
@@ -7716,7 +7711,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Report\rptSummaryJobIn.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptSummaryJobIn1.vb</LastGenOutput>
+      <LastGenOutput>rptSummaryJobIn.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\rptSummaryJOBOut.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
