@@ -59,13 +59,22 @@ Partial Public Class RptIEAT
     Protected WithEvents rdbByIEATNo As Global.System.Web.UI.WebControls.RadioButton
 
     '''<summary>
-    '''RdbByIEATPermit control.
+    '''rdbByIEATPermit control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents RdbByIEATPermit As Global.System.Web.UI.WebControls.RadioButton
+    Protected WithEvents rdbByIEATPermit As Global.System.Web.UI.WebControls.RadioButton
+
+    '''<summary>
+    '''FieldsetByDate control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents FieldsetByDate As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
     '''txtdatepickerDate control.
@@ -104,6 +113,15 @@ Partial Public Class RptIEAT
     Protected WithEvents CalendarExtenderToDate As Global.AjaxControlToolkit.CalendarExtender
 
     '''<summary>
+    '''FieldsetByIEATNo control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents FieldsetByIEATNo As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
     '''txtIEATNo control.
     '''</summary>
     '''<remarks>
@@ -111,6 +129,15 @@ Partial Public Class RptIEAT
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents txtIEATNo As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+    '''<summary>
+    '''FieldsetByIEATPermit control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents FieldsetByIEATPermit As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
     '''txtIEATPermit control.
@@ -131,11 +158,11 @@ Partial Public Class RptIEAT
     Protected WithEvents btnPrint As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
-    '''btnClose control.
+    '''btnClear control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents btnClose As Global.System.Web.UI.HtmlControls.HtmlButton
+    Protected WithEvents btnClear As Global.System.Web.UI.HtmlControls.HtmlButton
 End Class

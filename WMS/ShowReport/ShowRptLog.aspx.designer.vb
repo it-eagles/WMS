@@ -11,7 +11,7 @@ Option Strict On
 Option Explicit On
 
 
-Partial Public Class ShowRptJobSheet
+Partial Public Class ShowRptLog
 
     '''<summary>
     '''form1 control.

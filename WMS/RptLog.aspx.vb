@@ -9,7 +9,12 @@
 
     End Sub
 
-    Protected Sub btnClose_ServerClick(sender As Object, e As EventArgs)
-
+    Protected Sub btnClear_ServerClick(sender As Object, e As EventArgs)
+        Clear()
+    End Sub
+    Private Sub Clear()
+        txtdatepickerDate.Text = ""
+        txtdatepickerToDate.Text = ""
+        txtInvoiceNo.Value = ""
     End Sub
 End Class
