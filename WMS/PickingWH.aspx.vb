@@ -2475,10 +2475,10 @@ Public Class PickingWH
             'CountWHPickDetailTotal()
 
             If dgvReadWHIssuedRequest.Items.Count = 0 Then
-                _LotnoPick = txtLOtNo.Value.Trim
-                _PullPick = txtPullSignal.Value.Trim
-                _DatePick = dtpPullDate.Text.Trim
-                _TimePick = txtPullTime.Value.Trim
+                '_LotnoPick = txtLOtNo.Value.Trim
+                '_PullPick = txtPullSignal.Value.Trim
+                '_DatePick = dtpPullDate.Text.Trim
+                '_TimePick = txtPullTime.Value.Trim
             End If
         End If
     End Sub
