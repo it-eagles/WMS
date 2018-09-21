@@ -36,23 +36,18 @@ Public Class ShowRptJobSheet
                 rpt.SetParameterValue("ToDate", toDate)
                 rpt.SetParameterValue("JOBSite", WHSite)
                 CrystalReportViewer1.ReportSource = rpt
-                CType(rpt, ReportDocument).ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("../Files/" + "SummaryJOBOut-" + WHSite + ".pdf"))
-                Dim path As String = Server.MapPath("../Files/" + "SummaryJOBOut-" + WHSite + ".pdf")
-                Dim client As New WebClient()
-                Dim buffer As Byte() = client.DownloadData(path)
+                Session.Add("report", rpt)
+                'CType(rpt, ReportDocument).ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("../Files/" + "SummaryJOBOut-" + WHSite + ".pdf"))
+                'Dim path As String = Server.MapPath("../Files/" + "SummaryJOBOut-" + WHSite + ".pdf")
+                'Dim client As New WebClient()
+                'Dim buffer As Byte() = client.DownloadData(path)
 
-                If buffer IsNot Nothing Then
-                    Response.ContentType = "application/pdf"
-                    Response.AddHeader("content-length", buffer.Length.ToString())
-                    Response.BinaryWrite(buffer)
-                    Response.End()
-                End If
-                'Cursor = Cursors.Default
-
-                'PV.WindowState = FormWindowState.Maximized
-                'PV.ShowDialog(Me)
-                'Dim url As String = "ShowReport/ShowRptJobSheet.aspx"
-                'ScriptManager.RegisterStartupScript(Me, Me.GetType(), "onclick", "javascript:window.open( '" + url + "','_blank','height=600px,width=1000px,scrollbars=1');", True)
+                'If buffer IsNot Nothing Then
+                '    Response.ContentType = "application/pdf"
+                '    Response.AddHeader("content-length", buffer.Length.ToString())
+                '    Response.BinaryWrite(buffer)
+                '    Response.End()
+                'End If
 
             Catch ex As Exception
             End Try
