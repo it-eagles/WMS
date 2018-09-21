@@ -6772,7 +6772,6 @@
     <Compile Include="Class\DBConnString.vb" />
     <Compile Include="Class\Ieat107.vb" />
     <Compile Include="Class\LoginCls.vb" />
-    <Compile Include="Class\Module1.vb" />
     <Compile Include="Class\MoneyExt.vb" />
     <Compile Include="CustomsInvoice.aspx.designer.vb">
       <DependentUpon>CustomsInvoice.aspx</DependentUpon>
@@ -7323,6 +7322,8 @@
       <DependentUpon>MasterTariffCode.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
+    <Compile Include="msg.vb" />
+    <Compile Include="msgBoxIcon.vb" />
     <Compile Include="MultiIssuedWH.aspx.designer.vb">
       <DependentUpon>MultiIssuedWH.aspx</DependentUpon>
     </Compile>
@@ -7438,12 +7439,15 @@
       <DependentUpon>rptSegateSummaryReport1.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+<<<<<<< HEAD
+=======
     <Compile Include="Report\rptSummaryJobIn.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptSummaryJobIn.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+>>>>>>> 24514242f2e04d5db898592752c489f9db9d6d07
     <Compile Include="Report\rptSummaryJOBOut.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
