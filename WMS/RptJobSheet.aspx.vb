@@ -7,7 +7,6 @@ Imports System.Text
 Imports System.Data
 Imports System.Data.SqlClient
 Imports System.Diagnostics
-'Imports System.Windows.Forms.Design
 Imports CrystalDecisions.CrystalReports.Engine
 Imports System.Globalization
 Public Class RptJobSheet
@@ -28,17 +27,7 @@ Public Class RptJobSheet
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If Not IsPostBack Then
             showSite()
-
-            Dim strConn As String
-            strConn = DBConnString.strConn
-            Conn = New SqlConnection()
-            With Conn
-                If .State = ConnectionState.Open Then .Close()
-                .ConnectionString = strConn
-                .Open()
-            End With
             ClearDATA()
-
         End If
     End Sub
     '--------------------------------------------------------------------Show ddl Site----------------------------------------------------
@@ -66,65 +55,30 @@ Public Class RptJobSheet
     End Sub
 
     Protected Sub btnPrint_ServerClick(sender As Object, e As EventArgs)
+        If String.IsNullOrEmpty(txtdatepickerFromDate.Text.Trim) Then
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ FromDate ก่อน');", True)
+            Exit Sub
+        End If
+        If String.IsNullOrEmpty(txtdatepickerToDate.Text.Trim) Then
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ ToDate ก่อน');", True)
+            Exit Sub
+        End If
+
         Dim _cultureEnInfo As New Globalization.CultureInfo("en-US")
         Dim site As String = ddlJobSite.Text.Trim
         Dim formdate As String = CStr(Convert.ToDateTime(Me.txtdatepickerFromDate.Text, _cultureEnInfo).ToString("dd/MM/yyyy"))
         Dim toDate As String = CStr(Convert.ToDateTime(Me.txtdatepickerToDate.Text, _cultureEnInfo).ToString("dd/MM/yyyy"))
+        Dim Export As Boolean
         If rdbExport.Checked = True Then
-            Session("formdate") = formdate
-            Session("toDate") = toDate
-            Dim url As String = "ShowReport/ShowRptJobSheet.aspx?WHSite=" + site
-            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "onclick", "javascript:window.open( '" + url + "','_blank','height=600px,width=1000px,scrollbars=1');", True)
+            Export = True
+        Else
+            Export = False
         End If
-        'If rdbExport.Checked = True Then
-        '    'Dim ReportSourch As ReportClass
-        '    Dim r As New rptSummaryJOBOut
-        '    Try
-        '        'PV = New frmExpCustomsInvoiceRPT2
-
-        '        'r.SetDatabaseLogon("LKBWarehouse", "7tFCca6pzt", "LKBWarehouse", "LKBWarehouse")
-        '        r.SetDatabaseLogon("sa", "36133HNVek", "LKBWarehouseTESTServer", "LKBWarehouse")
-        '        r.SetParameterValue("FromDate", formdate.Trim)
-        '        r.SetParameterValue("ToDate", toDate.Trim)
-        '        r.SetParameterValue("JOBSite", ddlJobSite.SelectedValue)
-        '        PV.ReportSorce = r
-        '        'Cursor = Cursors.Default
-
-        '        'PV.WindowState = FormWindowState.Maximized
-        '        'PV.ShowDialog(Me)
-        '        'Dim url As String = "ShowReport/ShowRptJobSheet.aspx"
-        '        'ScriptManager.RegisterStartupScript(Me, Me.GetType(), "onclick", "javascript:window.open( '" + url + "','_blank','height=600px,width=1000px,scrollbars=1');", True)
-
-        '    Catch ex As Exception
-        '    End Try
-        'End If
-
-        'If rdbImport.Checked = True Then
-        '    'Dim ReportSourch As ReportClass
-        '    Dim r As New rptSummaryJobIn
-        '    Try
-        '        'PV = New frmExpCustomsInvoiceRPT2
-        '        'r.SetDatabaseLogon("LKBWarehouse", "7tFCca6pzt", "LKBWarehouse", "LKBWarehouse")
-
-        '        r.SetDatabaseLogon("sa", "36133HNVek", "LKBWarehouseTESTServer", "LKBWarehouse")
-        '        r.SetParameterValue("FromDate", formdate.Trim)
-        '        r.SetParameterValue("ToDate", toDate.Trim)
-        '        r.SetParameterValue("JOBSite", ddlJobSite.Text)
-        '        PV.ReportSorce = r
-
-        '        'rpt.Load(Server.MapPath("../Report/rptSummaryJobIn.rpt"))
-        '        'rpt.SetDataSource(r)
-
-        '        'Dim url As String = "ShowReport/ShowRptJobSheet.aspx"
-        '        Dim url As String = "ShowReport/ShowRptJobSheet.aspx?fordate=" + formdate.ToString & "?todate=" + toDate & "?jobsite=" + ddlJobSite.Text
-        '        ScriptManager.RegisterStartupScript(Me, Me.GetType(), "onclick", "javascript:window.open( '" + url + "','_blank','height=600px,width=1000px,scrollbars=1');", True)
-
-        '        'Cursor = Cursors.Default
-        '        'PV.WindowState = FormWindowState.Maximized
-        '        'PV.ShowDialog(Me)
-        '    Catch ex As Exception
-        '    End Try
-        'End If
+        Session("Export") = Export
+        Session("formdate") = formdate
+        Session("toDate") = toDate
+        Dim url As String = "ShowReport/ShowRptJobSheet.aspx?WHSite=" + site + "&test=" + formdate
+        ScriptManager.RegisterStartupScript(Me, Me.GetType(), "onclick", "javascript:window.open( '" + url + "','_blank','height=600px,width=1000px,scrollbars=1');", True)
     End Sub
     Private Sub ClearDATA()
         rdbImport.Checked = False
@@ -132,6 +86,4 @@ Public Class RptJobSheet
         txtdatepickerFromDate.Text = ""
         txtdatepickerToDate.Text = ""
     End Sub
-
-
 End Class

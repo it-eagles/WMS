@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="RptLog.aspx.vb" Inherits="WMS.RptLog" MasterPageFile="~/Home.Master"  %>
-<%@ Register Assembly="CrystalDecisions.Web, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" Namespace="CrystalDecisions.Web" TagPrefix="CR" %>
+<%@ Register Assembly="CrystalDecisions.Web, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" Namespace="CrystalDecisions.Web" TagPrefix="CR" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
 
@@ -41,7 +41,39 @@
                                 <div class="form-group" >                                    
                                         <label for="txtSelect" class="col-sm-3 control-label">Select Import/Export:</label>
                                          <div class="col-sm-5">                                            
-                                             <asp:DropDownList ID="ddlSelectImEx" CssClass="form-control" runat="server"></asp:DropDownList>  
+                                             <asp:DropDownList ID="ddlSelectImEx" CssClass="form-control" runat="server">
+                                                 <asp:ListItem></asp:ListItem>
+                                                    <asp:ListItem>LogExpGenLOT</asp:ListItem>
+                                                    <asp:ListItem>LogInvoice</asp:ListItem>
+                                                    <asp:ListItem>LogInvoiceDetail</asp:ListItem>
+                                                    <asp:ListItem>LogPackingList</asp:ListItem>
+                                                    <asp:ListItem>LogImpGenLOT</asp:ListItem>
+                                                    <asp:ListItem>LogImpInvoice</asp:ListItem>
+                                                    <asp:ListItem>LogImpInvoiceDetail</asp:ListItem>
+                                                    <asp:ListItem>LogImpPackingList</asp:ListItem>
+                                                    <asp:ListItem>LogBrand</asp:ListItem>
+                                                    <asp:ListItem>LogCarLicense</asp:ListItem>
+                                                    <asp:ListItem>LogConsignnee</asp:ListItem>
+                                                    <asp:ListItem>LogCountry</asp:ListItem>
+                                                    <asp:ListItem>LogCurrency</asp:ListItem>
+                                                    <asp:ListItem>LogDeliveryTerm</asp:ListItem>
+                                                    <asp:ListItem>LogDriver</asp:ListItem>
+                                                    <asp:ListItem>LogProductDetail</asp:ListItem>
+                                                    <asp:ListItem>LogProductUnit</asp:ListItem>
+                                                    <asp:ListItem>LogProvince</asp:ListItem>
+                                                    <asp:ListItem>LogTruckManifest</asp:ListItem>
+                                                    <asp:ListItem>LogTruckManifestDetail</asp:ListItem>
+                                                    <asp:ListItem>LogTruckOwner</asp:ListItem>
+                                                    <asp:ListItem>LogTruckType</asp:ListItem>
+                                                    <asp:ListItem>LogReferenceType</asp:ListItem>
+                                                    <asp:ListItem>LogShipper</asp:ListItem>
+                                                    <asp:ListItem>LogShippingMark</asp:ListItem>
+                                                    <asp:ListItem>LogtransprotationMode</asp:ListItem>
+                                                    <asp:ListItem>LogTruckWayBill</asp:ListItem>
+                                                    <asp:ListItem>LogTruckWayBillDetail</asp:ListItem>
+                                                    <asp:ListItem>LogUser</asp:ListItem>
+                                                    <asp:ListItem>LogWarehouseType</asp:ListItem>
+                                             </asp:DropDownList>  
                                          </div>
                                  </div> 
                                  <div class="form-group">
@@ -65,7 +97,7 @@
                                 </div>   
                                  
                                 <div class="form-group">
-                                <fieldset>  <legend>By Date</legend>              
+                                <fieldset id="FieldsetByDate" runat="server">  <legend>By Date</legend>              
                                 <div class="form-group" >                                    
                                         <label for="txtCode" class="col-sm-3 control-label">Date Start:</label>
                                          <div class="col-sm-5">                                            
@@ -86,7 +118,7 @@
                                  </div> 
                                      
                                  <div class="form-group">
-                                <fieldset>  <legend>By Invoice</legend>              
+                                <fieldset id="FieldsetByInvoice" runat="server">  <legend>By Invoice</legend>              
                                 <div class="form-group" >                                    
                                         <label for="txtInvoiceNo" class="col-sm-3 control-label">Invoice No:</label>
                                          <div class="col-sm-5">     
@@ -99,15 +131,8 @@
                                  <div class="form-group" >   
                                         <div class="col-sm-5"></div>                                 
                                         <button type="submit" runat="server" class="btn btn-primary" id="btnPrint" title="btnPrint" onserverclick="btnPrint_ServerClick">Print</button>
-                                        <button type="submit" runat="server" class="btn btn-primary" id="btnClose" title="btnClose" onserverclick="btnClose_ServerClick">Close</button>
+                                        <button type="submit" runat="server" class="btn btn-primary" id="btnClear" title="btnClear" onserverclick="btnClear_ServerClick">Clear</button>
                                  </div>
-
-
-
-                                     <%--<CR:CrystalReportViewer ID="CrystalReportViewer1" runat="server" AutoDataBind="true" />
-                                     <CR:CrystalReportSource ID="CrystalReportSource1" runat="server"></CR:CrystalReportSource>--%>
-
-
                                     <!-- /.box-body -->
                              </div>
                            </div>
@@ -135,23 +160,15 @@
 
         <script type="text/javascript">
           function EnableDisableTextBox() {
-              var status = document.getElementById('<%=rdbByDate.ClientID%>').checked;
+              var statusbydate = document.getElementById('<%=rdbByDate.ClientID%>').checked;
+              var statusbyinvoice = document.getElementById('<%=rdbByInvoice.ClientID%>').checked;
              
-              if (status == true) {
-                <%--document.getElementById('<%=txtWidth.ClientID%>').disabled = true;
-                document.getElementById('<%=txtLong.ClientID%>').disabled = true;
-                document.getElementById('<%=txtHeigth.ClientID%>').disabled = true;
-                document.getElementById('<%=txtValume.ClientID%>').disabled = true;
-                document.getElementById('<%=txtUsedStatus.ClientID%>').disabled = true;        
-                document.getElementById('<%=txtQTYPallet.ClientID%>').disabled = false;  --%>
-            } else if (status == false){
-               <%-- document.getElementById('<%=txtWidth.ClientID%>').disabled = false;
-                document.getElementById('<%=txtLong.ClientID%>').disabled = false;
-                document.getElementById('<%=txtHeigth.ClientID%>').disabled = false;
-                document.getElementById('<%=txtValume.ClientID%>').disabled = false;
-                document.getElementById('<%=txtUsedStatus.ClientID%>').disabled = false;
-                document.getElementById('<%=txtQTYPallet.ClientID%>').disabled = true; --%> 
-               
+              if (statusbydate == true) {
+                document.getElementById('<%=FieldsetByDate.ClientID%>').disabled = false;
+                document.getElementById('<%=FieldsetByInvoice.ClientID%>').disabled = true;
+              } else if (statusbyinvoice == true) {
+                document.getElementById('<%=FieldsetByDate.ClientID%>').disabled = true;
+                document.getElementById('<%=FieldsetByInvoice.ClientID%>').disabled = false;
             }
              
         }
