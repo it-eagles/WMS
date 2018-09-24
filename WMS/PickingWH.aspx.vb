@@ -4,6 +4,9 @@ Option Infer On
 
 Imports System.Transactions
 Imports System.Globalization
+Imports System.IO
+Imports Microsoft.Office.Interop
+
 Public Class PickingWH
     Inherits System.Web.UI.Page
     Dim db As New LKBWarehouseEntities1
@@ -29,19 +32,19 @@ Public Class PickingWH
         Dim form As String = "frmIssued"
         If Not Me.IsPostBack Then
             If classPermis.CheckRead(form, usename) = True Then
-                If Not IsPostBack Then               
+                If Not IsPostBack Then
                     showDiscrepencyUNIT()
                     showQuantity3()
                     showQuatity1()
                     showQuatity2()
-                    showSales()                 
-                    showSource()                
+                    showSales()
+                    showSource()
                     showUnitWeightDetail()
                     showVolume()
                     showWeight()
                     showWeightINV()
                     TabName.Value = Request.Form(TabName.UniqueID)
-                    LockMain()             
+                    LockMain()
                 End If
             Else
                 ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('คุณไม่มีสิทธิ เข้าโปรแกรมนี้' !!!');", True)
@@ -107,7 +110,7 @@ Public Class PickingWH
 
     Protected Sub btnSelectJobEdit_ServerClick(sender As Object, e As EventArgs)
         ReadDataPicklist()
-      
+
     End Sub
 
     Protected Sub btnJobNoHead_ServerClick(sender As Object, e As EventArgs)
@@ -828,7 +831,7 @@ Public Class PickingWH
                 If Not IsNothing(exp.VolumeUnit) Then
                     dcbVolume.Text = exp.VolumeUnit
                 End If
-               
+
             Catch ex As Exception
                 ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('" & ex.Message & "')", True)
                 Exit Try
@@ -843,7 +846,7 @@ Public Class PickingWH
             Dim lblSales As Label = CType(e.Item.FindControl("lblSales"), Label)
             Dim lblSite As Label = CType(e.Item.FindControl("lblSite"), Label)
             Dim lblCus As Label = CType(e.Item.FindControl("lblCus"), Label)
-            
+
             If Not IsNothing(lblEASLOTNo) Then
                 lblEASLOTNo.Text = DataBinder.Eval(e.Item.DataItem, "EASLOTNo").ToString
             End If
@@ -864,7 +867,7 @@ Public Class PickingWH
     Private Sub selectExpGenLOT()
         Dim testdate As Integer
         Dim dataMon As Integer
-        If String.IsNullOrEmpty(txtLotNo.Value.Trim) Then
+        If String.IsNullOrEmpty(txtLOtNo.Value.Trim) Then
             testdate = CInt(Convert.ToDateTime(Date.Now).ToString("yyyy"))
             dataMon = CInt(Convert.ToDateTime(Date.Now).ToString("MM"))
         End If
@@ -1010,12 +1013,12 @@ Public Class PickingWH
                 Else
                     ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('PrepairLOT ที่คุณใส่ ไม่ถูกต้อง !!!');", True)
                 End If
-              
+
             Catch ex As Exception
                 ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด เนื่องจาก " & ex.Message & "')", True)
             End Try
         End If
-        txtLOTNo.Focus()
+        txtLOtNo.Focus()
     End Sub
 
     Private Sub ReadDataPicklist()
@@ -1025,7 +1028,7 @@ Public Class PickingWH
             testdate = CInt(Convert.ToDateTime(Date.Now).ToString("yyyy"))
             dataMon = CInt(Convert.ToDateTime(Date.Now).ToString("MM"))
         End If
- 
+
         'Where e.LOTDate.Year = testdate
         Dim exl = (From e In db.tblWHPickings Where e.LOTNo.Contains(txtLOtNo.Value.Trim) Or (e.LastUpdate.Year = testdate And e.LastUpdate.Month = dataMon) Order By e.LOTNo Descending
                  Select New With {
@@ -1135,7 +1138,7 @@ Public Class PickingWH
             Dim lblLOTNo As Label = CType(e.Item.FindControl("lblLOTNo"), Label)
             Dim lblPullDate As Label = CType(e.Item.FindControl("lblPullDate"), Label)
             Dim lblDelivery As Label = CType(e.Item.FindControl("lblDelivery"), Label)
-        
+
             If Not IsNothing(lblPullSignal) Then
                 lblPullSignal.Text = DataBinder.Eval(e.Item.DataItem, "PullSignal").ToString
             End If
@@ -1148,7 +1151,7 @@ Public Class PickingWH
             If Not IsNothing(lblDelivery) Then
                 lblDelivery.Text = DataBinder.Eval(e.Item.DataItem, "DeliveryDate", "{0:dd/MM/yyyy}").ToString
             End If
-           
+
         End If
     End Sub
     Private Sub savePicking_Modify()
@@ -1350,7 +1353,7 @@ Public Class PickingWH
             Dim lblDesc As Label = CType(e.Item.FindControl("lblDesc"), Label)
             Dim lblPn As Label = CType(e.Item.FindControl("lblPn"), Label)
             Dim lblLot As Label = CType(e.Item.FindControl("lblLot"), Label)
-                                                     
+
             If Not IsNothing(lblPull) Then
                 lblPull.Text = DataBinder.Eval(e.Item.DataItem, "PullSignal").ToString
             End If
@@ -1368,7 +1371,7 @@ Public Class PickingWH
             End If
             If Not IsNothing(lblDesc) Then
                 lblDesc.Text = DataBinder.Eval(e.Item.DataItem, "OwnerPart").ToString
-            End If         
+            End If
             If Not IsNothing(lblPn) Then
                 lblPn.Text = DataBinder.Eval(e.Item.DataItem, "OrderNo").ToString
             End If
@@ -1662,7 +1665,7 @@ Public Class PickingWH
             txtItemNo.Focus()
             Exit Sub
         End If
-        If chkNotUseDate_AssignDetail.Checked = False Then         
+        If chkNotUseDate_AssignDetail.Checked = False Then
             ManufacturingDate = DateTime.ParseExact(txtdatepickerManufacturing_AssignDetail.Text, "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US"))
             ExpiredDate = DateTime.ParseExact(txtdatepickerExpiredDate_AssignDetail.Text, "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US"))
         ElseIf chkNotUseDate_AssignDetail.Checked = True Then
@@ -1684,7 +1687,7 @@ Public Class PickingWH
         Else
             PriceBath = txtPriceBath.Value.Trim
         End If
-       
+
         If MsgBox("คุณต้องการเพิ่มรายการ RequestedISSUE ใหม่ ใช่หรือไม่ ?", MsgBoxStyle.YesNo, "คำยืนยัน") = MsgBoxResult.Yes Then
 
             Try
@@ -2044,7 +2047,7 @@ Public Class PickingWH
                 dgvReadWHIssuedDetail.DataSource = Nothing
                 dgvReadWHIssuedDetail.DataBind()
             End If
-        End If  
+        End If
         SumQTYCanPick()
     End Sub
 
@@ -2193,17 +2196,20 @@ Public Class PickingWH
                     con.setPriceBathAmount = CStr(sI.c.PriceBathAmount)
                     con.setEntryNo = sI.c.EntryNo
                     con.setEntryItemNo = CStr(sI.c.EntryItemNo)
-                    If String.IsNullOrEmpty(CStr(sI.c.ManufacturingDate)) Then
+
+                    If sI.c.ManufacturingDate Is Nothing Then
                         con.setManufacturingDate = Nothing
                     Else
                         con.setManufacturingDate = CStr(sI.c.ManufacturingDate)
                     End If
-                    If String.IsNullOrEmpty(CStr(sI.c.ExpectedDate)) Then
+                    If sI.c.ExpectedDate Is Nothing Then
                         con.setExpiredDate = Nothing
                     Else
                         con.setExpiredDate = CStr(sI.c.ExpectedDate)
                     End If
-                   
+
+                    Session("MD") = con.setManufacturingDate
+                    Session("ED") = con.setExpiredDate
                     Session("LOTNo") = con.setLOTNo
                     Session("WHSite") = con.setWHSite
                     Session("WHLocation") = con.setWHLocation
@@ -2236,8 +2242,6 @@ Public Class PickingWH
                     Session("PriceBathAmount") = con.setPriceBathAmount
                     Session("EntryNo") = con.setEntryNo
                     Session("EntryItemNo") = con.setEntryItemNo
-                    ManufacturingDate = con.setManufacturingDate
-                    ExpiredDate = con.setExpiredDate
                 End If
             End If
         Next
@@ -2252,8 +2256,8 @@ Public Class PickingWH
         Dim ItemNo As Integer = CInt(Session("ItemNo"))
         Dim clotNO As String = CStr(Session("CustomerLOTNo"))
         Dim owner As String = CStr(Session("OwnerPN"))
-       
-  
+
+
         Dim sb = (From s In db.tblWHStockMovements Where s.LOTNo = lotNo And s.ItemNo = ItemNo And s.OwnerPN = owner And s.CustomerLOTNo = clotNO Select s.ISSUEQuantity).FirstOrDefault
         If sb IsNot Nothing Then
             txtIssuedQTY.Value = String.Format("{0:0.00}", sb)
@@ -2283,6 +2287,22 @@ Public Class PickingWH
         Dim EntryNo As String
         Dim EntryItemNo As Integer
         Dim Quantity As Double = CDbl(Session("Quantity"))
+        ProductWidth = CDbl(Session("ProductWidth"))
+        ProductLength = CDbl(Session("ProductLength"))
+        ProductHeight = CDbl(Session("ProductHeight"))
+        ProductVolume = CDbl(Session("ProductVolume"))
+        Weigth = CDbl(Session("Weigth"))
+        ExchangeRate = CDbl(Session("ExchangeRate"))
+        PriceForeigh = CDbl(Session("PriceForeigh"))
+        PriceForeighAmount = CDbl(Session("PriceForeighAmount"))
+        PriceBath = CDbl(Session("PriceBath"))
+        PriceBathAmount = CDbl(Session("PriceBathAmount"))
+        ItemNo_ = CInt(Session("ItemNO"))
+        EntryNo = CStr(Session("EntryNo"))
+        EntryItemNo = CInt(Session("EntryItemNo"))
+        ManufacturingDate = CStr(Session("MD"))
+        ExpiredDate = CStr(Session("ED"))
+
         If txtLOtNo.Value.Trim = "" Then
             ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ LOT NO ก่อน !!!')", True)
             txtLOtNo.Focus()
@@ -2328,20 +2348,7 @@ Public Class PickingWH
                 Dim sI = (From c In db.tblWHConfirmGoodsReceiveDetails Join pds In db.tblProductDetails On c.ProductCode Equals pds.ProductCode And c.OwnerPN Equals pds.CustomerPart _
                     Where c.LOTNo = lblLOTNo And c.OwnerPN = lblOwner And c.ProductCode = lblProduct And c.ItemNo = lblItemNo And c.StatusAvailable = "0" And c.Type = "Goods Complete").FirstOrDefault
                 If sI IsNot Nothing Then
-                         
-                    ProductWidth = CDbl(Session("ProductWidth"))
-                    ProductLength = CDbl(Session("ProductLength"))
-                    ProductHeight = CDbl(Session("ProductHeight"))
-                    ProductVolume = CDbl(Session("ProductVolume"))
-                    Weigth = CDbl(Session("Weigth"))
-                    ExchangeRate = CDbl(Session("ExchangeRate"))
-                    PriceForeigh = CDbl(Session("PriceForeigh"))
-                    PriceForeighAmount = CDbl(Session("PriceForeighAmount"))
-                    PriceBath = CDbl(Session("PriceBath"))
-                    PriceBathAmount = CDbl(Session("PriceBathAmount"))
-                    ItemNo_ = CInt(Session("ItemNO"))
-                    EntryNo = CStr(Session("EntryNo"))
-                    EntryItemNo = CInt(Session("EntryItemNo"))
+
 
                     If ManufacturingDate IsNot Nothing Then
                         md = DateTime.ParseExact(CStr(ManufacturingDate), "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("en-US"))
@@ -2459,7 +2466,7 @@ Public Class PickingWH
                             tran.Dispose()
                             ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "alertMessage", "alert('เกิดข้อผิดพลาด เนื่องจาก " & ex.Message & " ');", True)
                         End Try
-                        
+
                     End Using
                 End If
 
@@ -2570,7 +2577,7 @@ Public Class PickingWH
                         Session("EntryItemNo") = con.setEntryItemNo
                         ManufacturingDate = ""
                         ExpiredDate = ""
-                        
+
                         ItemTotal = CDbl(txtQTYOfPick.Value)
 
                         ReadStockMovement()
@@ -2588,5 +2595,161 @@ Public Class PickingWH
         'ReadDataPickDetail()
         'CountWHPickDetailTotal()
         'MessageBox.Show("ระบบได้ทำการแก้ไขข้อมูลให้  เรียบร้อยแล้ว !!!", "ผลการทำงาน", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    End Sub
+
+    Protected Sub btnImport1NJRC_ImportFiles_ServerClick(sender As Object, e As EventArgs)
+        If classPermis.CheckSave("", "") = True Then Exit Sub
+
+        Dim fileExists As Boolean
+        fileExists = My.Computer.FileSystem.FileExists(txtImport.Value.Trim)
+
+        If fileExists = False Then
+            Exit Sub
+
+        End If
+        Dim itemMax As Integer
+
+        Dim pd = (From p In db.tblWHPickingDetails Where p.PullSignal = txtPullSignal.Value.Trim And p.LOTNo = txtLOtNo.Value.Trim _
+           Group By p.ItemNo
+           Into Item = Max(p.ItemNo) Select Item).First
+        If pd.ToString IsNot Nothing Then
+            itemMax = 0
+        Else
+            itemMax = CInt(pd)
+        End If
+
+        Dim MyEx As New Excel.Application
+        Dim MyBook As Excel.Workbook
+        Dim MySheet As Excel.Worksheet
+        MyEx.DisplayAlerts = False
+        MyBook = MyEx.Workbooks.Add
+        MySheet = CType(MyBook.Sheets.Add, Excel.Worksheet)
+        MySheet.Name = "Data Transfer"
+
+        Dim dt As New DataTable
+        Dim dr As DataRow
+
+        Dim intCount As Integer
+        dt.Columns.Add("ProductNo")
+        dt.Columns.Add("CutomerPart")
+        dt.Columns.Add("OwnerPart")
+        dt.Columns.Add("ProductDesc")
+        dt.Columns.Add("RequestQTY")
+        dt.Columns.Add("QTYUnit")
+        dt.Columns.Add("OrderNo")
+        dt.Columns.Add("CustomerLot")
+        dt.Columns.Add("InvoiceDate")
+        dt.Columns.Add("WHSource")
+        dt.Columns.Add("ItemInvoice")
+        dt.Columns.Add("NetWeight")
+        dt.Columns.Add("NetWeightUnit")
+        dt.Columns.Add("GrossWeight")
+        dt.Columns.Add("GrossWeightUnit")
+        dt.Columns.Add("UnitPrice")
+        dt.Columns.Add("Currency")
+        dt.Columns.Add("Amount")
+        dt.Columns.Add("Package")
+        dt.Columns.Add("Origin")
+
+        Dim strWer As StreamReader
+        Dim readLine As String
+        strWer = File.OpenText(txtImport.Value.Trim)
+        Dim iii As Integer = 0
+        Dim inv As String
+        Dim product As String
+        Dim qty As String
+        Dim result As Integer
+
+        Do Until strWer.EndOfStream
+            readLine = strWer.ReadLine
+            dr = dt.NewRow
+            Dim ProductCode As String = "NJR-IC-" + Split(readLine, ",")(4)
+
+            Dim sql = (From p In db.tblProductDetails Where p.ProductCode = ""
+                  Select p).FirstOrDefault
+            If sql IsNot Nothing Then
+                dr("ProductNo") = sql.ProductCode
+                dr("ProductDesc") = sql.ImpDesc1
+                dr("OwnerPart") = sql.CustomerPart
+                dr("CutomerPart") = sql.EndUserPart
+            Else
+                strWer.Close()
+                Exit Sub
+            End If
+            dr("InvoiceDate") = CDate(Split(readLine, ",")(1).Substring(6, 2) + "/" + Split(readLine, ",")(1).Substring(4, 2) + "/" + Split(readLine, ",")(1).Substring(0, 4))
+            dr("WHSource") = Split(readLine, ",")(2)
+            dr("OrderNo") = Split(readLine, ",")(3)
+            dr("CustomerLot") = Split(readLine, ",")(6)
+            dr("RequestQTY") = Split(readLine, ",")(7)
+            dr("QTYUnit") = Split(readLine, ",")(8)
+            dr("ItemInvoice") = Split(readLine, ",")(9)
+            dr("NetWeight") = Split(readLine, ",")(10)
+            dr("NetWeightUnit") = Split(readLine, ",")(11)
+            dr("GrossWeight") = Split(readLine, ",")(12)
+            dr("GrossWeightUnit") = Split(readLine, ",")(13)
+            dr("UnitPrice") = Split(readLine, ",")(14)
+            dr("Currency") = Split(readLine, ",")(15)
+            dr("Amount") = Split(readLine, ",")(16)
+            dr("Origin") = Mid(Split(readLine, ",")(17), 1, 2)
+            dr("Package") = Split(readLine, ",")(18)
+
+            dt.Rows.Add(dr)
+        Loop
+        strWer.Close()
+        MyBook.Close()
+        MyEx.Quit()
+        MySheet = Nothing
+        MyBook = Nothing
+        MyEx = Nothing
+        System.GC.Collect()
+
+        If MsgBox("คุณต้องการเพิ่มรายการ RequestedISSUE ใหม่ ใช่หรือไม่ ?", MsgBoxStyle.YesNo, "คำยืนยัน") = MsgBoxResult.Yes Then
+
+            Dim i As Integer
+
+            For i = 0 To dt.Rows.Count - 1
+                Try
+                    db.tblWHRequestedISSUEs.Add(New tblWHRequestedISSUE With { _
+                    .PullSignal = txtPullSignal.Value.Trim, _
+                    .LotNo = txtLOtNo.Value.Trim, _
+                    .ItemNo = i + itemMax + 1, _
+                    .ProductNo = dt.Rows(i).Item("ProductNo").ToString, _
+                    .CutomerPart = dt.Rows(i).Item("CutomerPart").ToString, _
+                    .OwnerPart = dt.Rows(i).Item("OwnerPart").ToString, _
+                    .ProductDesc = dt.Rows(i).Item("ProductDesc").ToString, _
+                    .RequestQTY = CType(CDbl(dt.Rows(i).Item("RequestQTY").ToString).ToString("#,##0.000"), Double?), _
+                    .QTYUnit = dt.Rows(i).Item("QTYUnit").ToString, _
+                    .OrderNo = dt.Rows(i).Item("OrderNo").ToString, _
+                    .PriceForeigh = CDbl(CDbl(dt.Rows(i).Item("UnitPrice").ToString).ToString("#,##0.0000")) * CDbl(CDbl(dt.Rows(i).Item("RequestQTY").ToString).ToString("#,##0.000")), _
+                    .PriceBath = 0, _
+                    .CustomerLot = dt.Rows(i).Item("CustomerLot").ToString, _
+                    .ManufacturingDate = CType(dt.Rows(i).Item("InvoiceDate").ToString, Date?), _
+                    .ExpiredDate = Nothing, _
+                    .CreateBy = CStr(Session("UserName")), _
+                    .CreateDate = Now, _
+                    .AvailableRequestQTY = CType(CDbl(dt.Rows(i).Item("RequestQTY").ToString).ToString("#,##0.000"), Double?), _
+                    .ItemNo1 = CType(CDbl(i + itemMax + 1).ToString("#,##0"), Double?), _
+                    .WHSource = dt.Rows(i).Item("WHSource").ToString, _
+                    .ItemInvoice = CInt(dt.Rows(i).Item("ItemInvoice").ToString), _
+                    .NetWeight = CType(CDbl(dt.Rows(i).Item("NetWeight").ToString).ToString("#,##0.0000"), Double?), _
+                    .NetWeightUnit = dt.Rows(i).Item("NetWeightUnit").ToString, _
+                    .GrossWeight = CType(CDbl(dt.Rows(i).Item("GrossWeight").ToString).ToString("#,##0.0000"), Double?), _
+                    .GrossWeightUnit = dt.Rows(i).Item("GrossWeightUnit").ToString, _
+                    .Currency = dt.Rows(i).Item("Currency").ToString, _
+                    .Amount = CType(CDbl(dt.Rows(i).Item("Amount").ToString).ToString("#,##0.0000"), Double?), _
+                    .Package = CInt(dt.Rows(i).Item("Package").ToString), _
+                    .Origin = dt.Rows(i).Item("Origin").ToString
+                     })
+                    db.SaveChanges()
+                Catch ex As Exception
+
+                End Try
+            Next
+
+        End If
+        ClearDataPull()
+        ReadDataRequestedISSUE()
+        ReadDataRequestedISSUE_PickPack()
+
     End Sub
 End Class

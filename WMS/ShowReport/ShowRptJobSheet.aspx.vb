@@ -36,7 +36,7 @@ Public Class ShowRptJobSheet
                 rpt.SetParameterValue("ToDate", toDate)
                 rpt.SetParameterValue("JOBSite", WHSite)
                 CrystalReportViewer1.ReportSource = rpt
-                Session.Add("report", rpt)
+
                 'CType(rpt, ReportDocument).ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("../Files/" + "SummaryJOBOut-" + WHSite + ".pdf"))
                 'Dim path As String = Server.MapPath("../Files/" + "SummaryJOBOut-" + WHSite + ".pdf")
                 'Dim client As New WebClient()
@@ -71,4 +71,6 @@ Public Class ShowRptJobSheet
             crvReport = Value
         End Set
     End Property
+
+
 End Class

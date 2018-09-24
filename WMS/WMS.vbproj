@@ -77,6 +77,11 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -7322,8 +7327,6 @@
       <DependentUpon>MasterTariffCode.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="msg.vb" />
-    <Compile Include="msgBoxIcon.vb" />
     <Compile Include="MultiIssuedWH.aspx.designer.vb">
       <DependentUpon>MultiIssuedWH.aspx</DependentUpon>
     </Compile>
@@ -7439,14 +7442,12 @@
       <DependentUpon>rptSegateSummaryReport1.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-
     <Compile Include="Report\rptSummaryJobIn.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptSummaryJobIn.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-
     <Compile Include="Report\rptSummaryJOBOut.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

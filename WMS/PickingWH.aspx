@@ -594,12 +594,12 @@
                                                             <div class="form-group">
                                                                 <label for="txtSelectFileForImport_NewFileNJRC_ImportFiles" class="col-sm-4 control-label">Select File For Import:</label>
                                                                 <div class="col-sm-4">
-                                                                    <input type="file" class="form-control input-sm" id="txtSelectFileForImport_NewFileNJRC_ImportFiles" runat="server" autocomplete="off" />
+                                                                    <input type="file" class="form-control input-sm" id="txtImport" runat="server" autocomplete="off" />
                                                                 </div>
                                                             </div>
                                                             <div class="form-group">
                                                                 <div class="col-sm-4 col-sm-offset-6">
-                                                                    <button type="submit" runat="server" class="btn btn-success btn-sm" id="btnImport1NJRC_ImportFiles" title="btnImport1NJRC_ImportFiles">Import 1 NJRC</button>
+                                                                    <button type="submit" runat="server" class="btn btn-success btn-sm" id="btnImport1NJRC_ImportFiles" title="btnImport1NJRC_ImportFiles" onserverclick="btnImport1NJRC_ImportFiles_ServerClick">Import 1 NJRC</button>
                                                                 </div>
                                                             </div>
                                                         </div>

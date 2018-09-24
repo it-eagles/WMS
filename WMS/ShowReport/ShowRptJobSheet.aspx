@@ -11,12 +11,13 @@
 <body>
     <form id="form1" runat="server">
     <div>
-    
-        <CR:CrystalReportViewer ID="CrystalReportViewer1" runat="server"  EnableDatabaseLogonPrompt="False" EnableParameterPrompt="False" ReportSourceID="CrystalReportSource1" ToolPanelView="None" AutoDataBind="true" />
+   
+        <CR:CrystalReportViewer ID="CrystalReportViewer1" runat="server" AutoDataBind="True" GroupTreeImagesFolderUrl="" Height="50px" ReportSourceID="CrystalReportSource1" ToolbarImagesFolderUrl="" ToolPanelWidth="200px" Width="350px" />
         <CR:CrystalReportSource ID="CrystalReportSource1" runat="server">
-            <Report FileName="~/Report/rptSummaryJOBOut.rpt">
+            <Report FileName="Report\rptSummaryJOBOut.rpt">
             </Report>
         </CR:CrystalReportSource>
+   
     </div>
     </form>
 </body>
