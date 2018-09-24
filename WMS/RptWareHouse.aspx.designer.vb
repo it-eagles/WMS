@@ -95,13 +95,22 @@ Partial Public Class RptWareHouse
     Protected WithEvents chkReceivedDate As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
 
     '''<summary>
-    '''txtReceivedDate control.
+    '''txtdatepickerReceivedDate control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtReceivedDate As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtdatepickerReceivedDate As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''CalendarExtenderReceivedDate control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CalendarExtenderReceivedDate As Global.AjaxControlToolkit.CalendarExtender
 
     '''<summary>
     '''chkIssuedDate control.
@@ -113,13 +122,22 @@ Partial Public Class RptWareHouse
     Protected WithEvents chkIssuedDate As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
 
     '''<summary>
-    '''txtIssuedDate control.
+    '''txtdatepickerIssuedDate control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtIssuedDate As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtdatepickerIssuedDate As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''CalendarExtenderIssuedDate control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CalendarExtenderIssuedDate As Global.AjaxControlToolkit.CalendarExtender
 
     '''<summary>
     '''ddlCusCode control.
@@ -194,40 +212,40 @@ Partial Public Class RptWareHouse
     Protected WithEvents txtWHSource As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''chkToReceivedDate control.
+    '''txtdatepickerToReceivedDate control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents chkToReceivedDate As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
+    Protected WithEvents txtdatepickerToReceivedDate As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''txtToReceivedDate control.
+    '''CalendarExtenderToReceivedDate control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtToReceivedDate As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents CalendarExtenderToReceivedDate As Global.AjaxControlToolkit.CalendarExtender
 
     '''<summary>
-    '''chkToIssuedDate control.
+    '''txtdatepickerToIssuedDate control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents chkToIssuedDate As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
+    Protected WithEvents txtdatepickerToIssuedDate As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''txtToIssuedDate control.
+    '''CalendarExtenderToIssuedDate control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtToIssuedDate As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents CalendarExtenderToIssuedDate As Global.AjaxControlToolkit.CalendarExtender
 
     '''<summary>
     '''ddlToCusCode control.
@@ -284,13 +302,13 @@ Partial Public Class RptWareHouse
     Protected WithEvents ddlTypeOfGoods As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''ddlEndCustomer control.
+    '''txtEndCustomer control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlEndCustomer As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtEndCustomer As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
     '''btnListData control.
