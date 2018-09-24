@@ -6,6 +6,12 @@ Imports System.Transactions
 Imports System.Globalization
 Imports System.IO
 Imports Microsoft.Office.Interop
+Imports System.Linq
+Imports System.Data.SqlClient
+Imports System.Data
+Imports System.Security.Cryptography
+Imports System.Drawing.Drawing2D
+Imports System.Text
 
 Public Class PickingWH
     Inherits System.Web.UI.Page
@@ -29,7 +35,7 @@ Public Class PickingWH
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Dim usename As String = CStr(Session("UserName"))
-        Dim form As String = "frmIssued"
+        Dim form As String = "frmPicklist"
         If Not Me.IsPostBack Then
             If classPermis.CheckRead(form, usename) = True Then
                 If Not IsPostBack Then
@@ -2598,155 +2604,163 @@ Public Class PickingWH
     End Sub
 
     Protected Sub btnImport1NJRC_ImportFiles_ServerClick(sender As Object, e As EventArgs)
-        If classPermis.CheckSave("", "") = True Then Exit Sub
-
-        Dim fileExists As Boolean
-        fileExists = My.Computer.FileSystem.FileExists(txtImport.Value.Trim)
-
-        If fileExists = False Then
-            Exit Sub
-
-        End If
-        Dim itemMax As Integer
-
-        Dim pd = (From p In db.tblWHPickingDetails Where p.PullSignal = txtPullSignal.Value.Trim And p.LOTNo = txtLOtNo.Value.Trim _
-           Group By p.ItemNo
-           Into Item = Max(p.ItemNo) Select Item).First
-        If pd.ToString IsNot Nothing Then
-            itemMax = 0
-        Else
-            itemMax = CInt(pd)
-        End If
-
-        Dim MyEx As New Excel.Application
-        Dim MyBook As Excel.Workbook
-        Dim MySheet As Excel.Worksheet
-        MyEx.DisplayAlerts = False
-        MyBook = MyEx.Workbooks.Add
-        MySheet = CType(MyBook.Sheets.Add, Excel.Worksheet)
-        MySheet.Name = "Data Transfer"
-
-        Dim dt As New DataTable
-        Dim dr As DataRow
-
-        Dim intCount As Integer
-        dt.Columns.Add("ProductNo")
-        dt.Columns.Add("CutomerPart")
-        dt.Columns.Add("OwnerPart")
-        dt.Columns.Add("ProductDesc")
-        dt.Columns.Add("RequestQTY")
-        dt.Columns.Add("QTYUnit")
-        dt.Columns.Add("OrderNo")
-        dt.Columns.Add("CustomerLot")
-        dt.Columns.Add("InvoiceDate")
-        dt.Columns.Add("WHSource")
-        dt.Columns.Add("ItemInvoice")
-        dt.Columns.Add("NetWeight")
-        dt.Columns.Add("NetWeightUnit")
-        dt.Columns.Add("GrossWeight")
-        dt.Columns.Add("GrossWeightUnit")
-        dt.Columns.Add("UnitPrice")
-        dt.Columns.Add("Currency")
-        dt.Columns.Add("Amount")
-        dt.Columns.Add("Package")
-        dt.Columns.Add("Origin")
-
-        Dim strWer As StreamReader
-        Dim readLine As String
-        strWer = File.OpenText(txtImport.Value.Trim)
-        Dim iii As Integer = 0
-        Dim inv As String
-        Dim product As String
-        Dim qty As String
-        Dim result As Integer
-
-        Do Until strWer.EndOfStream
-            readLine = strWer.ReadLine
-            dr = dt.NewRow
-            Dim ProductCode As String = "NJR-IC-" + Split(readLine, ",")(4)
-
-            Dim sql = (From p In db.tblProductDetails Where p.ProductCode = ""
-                  Select p).FirstOrDefault
-            If sql IsNot Nothing Then
-                dr("ProductNo") = sql.ProductCode
-                dr("ProductDesc") = sql.ImpDesc1
-                dr("OwnerPart") = sql.CustomerPart
-                dr("CutomerPart") = sql.EndUserPart
-            Else
-                strWer.Close()
+        Dim usename As String = CStr(Session("UserName"))
+        Dim form As String = "frmPicklist"
+        If classPermis.CheckSave(form, usename) = True Then
+            Dim FileName As String = Path.GetFileName(txtImport1.PostedFile.FileName)
+            Dim Extension As String = Path.GetExtension(txtImport1.PostedFile.FileName)
+            Dim fileExists As Boolean
+            fileExists = My.Computer.FileSystem.FileExists(Path.Combine(FileName))
+          
+            If String.IsNullOrEmpty(FileName) Then
+                MsgBox("ไม่พบไฟล์")
                 Exit Sub
             End If
-            dr("InvoiceDate") = CDate(Split(readLine, ",")(1).Substring(6, 2) + "/" + Split(readLine, ",")(1).Substring(4, 2) + "/" + Split(readLine, ",")(1).Substring(0, 4))
-            dr("WHSource") = Split(readLine, ",")(2)
-            dr("OrderNo") = Split(readLine, ",")(3)
-            dr("CustomerLot") = Split(readLine, ",")(6)
-            dr("RequestQTY") = Split(readLine, ",")(7)
-            dr("QTYUnit") = Split(readLine, ",")(8)
-            dr("ItemInvoice") = Split(readLine, ",")(9)
-            dr("NetWeight") = Split(readLine, ",")(10)
-            dr("NetWeightUnit") = Split(readLine, ",")(11)
-            dr("GrossWeight") = Split(readLine, ",")(12)
-            dr("GrossWeightUnit") = Split(readLine, ",")(13)
-            dr("UnitPrice") = Split(readLine, ",")(14)
-            dr("Currency") = Split(readLine, ",")(15)
-            dr("Amount") = Split(readLine, ",")(16)
-            dr("Origin") = Mid(Split(readLine, ",")(17), 1, 2)
-            dr("Package") = Split(readLine, ",")(18)
 
-            dt.Rows.Add(dr)
-        Loop
-        strWer.Close()
-        MyBook.Close()
-        MyEx.Quit()
-        MySheet = Nothing
-        MyBook = Nothing
-        MyEx = Nothing
-        System.GC.Collect()
+            Dim itemMax As Integer
+            Dim pd = (From p In db.tblWHPickingDetails Where p.PullSignal = txtPullSignal.Value.Trim And p.LOTNo = txtLOtNo.Value.Trim _
+               Group By p.ItemNo
+               Into Item = Max(p.ItemNo) Select Item).FirstOrDefault
+            If pd.ToString IsNot Nothing Then
+                itemMax = 0
+            Else
+                itemMax = CInt(pd)
+            End If
 
-        If MsgBox("คุณต้องการเพิ่มรายการ RequestedISSUE ใหม่ ใช่หรือไม่ ?", MsgBoxStyle.YesNo, "คำยืนยัน") = MsgBoxResult.Yes Then
+            Dim MyEx As New Excel.Application
+            Dim MyBook As Excel.Workbook
+            Dim MySheet As Excel.Worksheet
+            MyEx.DisplayAlerts = False
+            MyBook = MyEx.Workbooks.Add
+            MySheet = CType(MyBook.Sheets.Add, Excel.Worksheet)
+            MySheet.Name = "Data Transfer"
 
-            Dim i As Integer
+            Dim dt As New DataTable
+            Dim dr As DataRow
 
-            For i = 0 To dt.Rows.Count - 1
-                Try
-                    db.tblWHRequestedISSUEs.Add(New tblWHRequestedISSUE With { _
-                    .PullSignal = txtPullSignal.Value.Trim, _
-                    .LotNo = txtLOtNo.Value.Trim, _
-                    .ItemNo = i + itemMax + 1, _
-                    .ProductNo = dt.Rows(i).Item("ProductNo").ToString, _
-                    .CutomerPart = dt.Rows(i).Item("CutomerPart").ToString, _
-                    .OwnerPart = dt.Rows(i).Item("OwnerPart").ToString, _
-                    .ProductDesc = dt.Rows(i).Item("ProductDesc").ToString, _
-                    .RequestQTY = CType(CDbl(dt.Rows(i).Item("RequestQTY").ToString).ToString("#,##0.000"), Double?), _
-                    .QTYUnit = dt.Rows(i).Item("QTYUnit").ToString, _
-                    .OrderNo = dt.Rows(i).Item("OrderNo").ToString, _
-                    .PriceForeigh = CDbl(CDbl(dt.Rows(i).Item("UnitPrice").ToString).ToString("#,##0.0000")) * CDbl(CDbl(dt.Rows(i).Item("RequestQTY").ToString).ToString("#,##0.000")), _
-                    .PriceBath = 0, _
-                    .CustomerLot = dt.Rows(i).Item("CustomerLot").ToString, _
-                    .ManufacturingDate = CType(dt.Rows(i).Item("InvoiceDate").ToString, Date?), _
-                    .ExpiredDate = Nothing, _
-                    .CreateBy = CStr(Session("UserName")), _
-                    .CreateDate = Now, _
-                    .AvailableRequestQTY = CType(CDbl(dt.Rows(i).Item("RequestQTY").ToString).ToString("#,##0.000"), Double?), _
-                    .ItemNo1 = CType(CDbl(i + itemMax + 1).ToString("#,##0"), Double?), _
-                    .WHSource = dt.Rows(i).Item("WHSource").ToString, _
-                    .ItemInvoice = CInt(dt.Rows(i).Item("ItemInvoice").ToString), _
-                    .NetWeight = CType(CDbl(dt.Rows(i).Item("NetWeight").ToString).ToString("#,##0.0000"), Double?), _
-                    .NetWeightUnit = dt.Rows(i).Item("NetWeightUnit").ToString, _
-                    .GrossWeight = CType(CDbl(dt.Rows(i).Item("GrossWeight").ToString).ToString("#,##0.0000"), Double?), _
-                    .GrossWeightUnit = dt.Rows(i).Item("GrossWeightUnit").ToString, _
-                    .Currency = dt.Rows(i).Item("Currency").ToString, _
-                    .Amount = CType(CDbl(dt.Rows(i).Item("Amount").ToString).ToString("#,##0.0000"), Double?), _
-                    .Package = CInt(dt.Rows(i).Item("Package").ToString), _
-                    .Origin = dt.Rows(i).Item("Origin").ToString
-                     })
-                    db.SaveChanges()
-                Catch ex As Exception
+            Dim intCount As Integer
+            dt.Columns.Add("ProductNo")
+            dt.Columns.Add("CutomerPart")
+            dt.Columns.Add("OwnerPart")
+            dt.Columns.Add("ProductDesc")
+            dt.Columns.Add("RequestQTY")
+            dt.Columns.Add("QTYUnit")
+            dt.Columns.Add("OrderNo")
+            dt.Columns.Add("CustomerLot")
+            dt.Columns.Add("InvoiceDate")
+            dt.Columns.Add("WHSource")
+            dt.Columns.Add("ItemInvoice")
+            dt.Columns.Add("NetWeight")
+            dt.Columns.Add("NetWeightUnit")
+            dt.Columns.Add("GrossWeight")
+            dt.Columns.Add("GrossWeightUnit")
+            dt.Columns.Add("UnitPrice")
+            dt.Columns.Add("Currency")
+            dt.Columns.Add("Amount")
+            dt.Columns.Add("Package")
+            dt.Columns.Add("Origin")
 
-                End Try
-            Next
+            Dim strWer As StreamReader
+            Dim readLine As String
+            strWer = File.OpenText(txtImport1.PostedFile.FileName)
+            Dim iii As Integer = 0
+            Dim inv As String
+            Dim product As String
+            Dim qty As String
+            Dim result As Integer
+
+            Do Until strWer.EndOfStream
+                readLine = strWer.ReadLine
+                dr = dt.NewRow
+                Dim ProductCode As String = "NJR-IC-" + Split(readLine, ",")(4)
+
+                Dim sql = (From p In db.tblProductDetails Where p.ProductCode = ""
+                      Select p).FirstOrDefault
+                If sql IsNot Nothing Then
+                    dr("ProductNo") = sql.ProductCode
+                    dr("ProductDesc") = sql.ImpDesc1
+                    dr("OwnerPart") = sql.CustomerPart
+                    dr("CutomerPart") = sql.EndUserPart
+                Else
+                    strWer.Close()
+                    Exit Sub
+                End If
+                dr("InvoiceDate") = CDate(Split(readLine, ",")(1).Substring(6, 2) + "/" + Split(readLine, ",")(1).Substring(4, 2) + "/" + Split(readLine, ",")(1).Substring(0, 4))
+                dr("WHSource") = Split(readLine, ",")(2)
+                dr("OrderNo") = Split(readLine, ",")(3)
+                dr("CustomerLot") = Split(readLine, ",")(6)
+                dr("RequestQTY") = Split(readLine, ",")(7)
+                dr("QTYUnit") = Split(readLine, ",")(8)
+                dr("ItemInvoice") = Split(readLine, ",")(9)
+                dr("NetWeight") = Split(readLine, ",")(10)
+                dr("NetWeightUnit") = Split(readLine, ",")(11)
+                dr("GrossWeight") = Split(readLine, ",")(12)
+                dr("GrossWeightUnit") = Split(readLine, ",")(13)
+                dr("UnitPrice") = Split(readLine, ",")(14)
+                dr("Currency") = Split(readLine, ",")(15)
+                dr("Amount") = Split(readLine, ",")(16)
+                dr("Origin") = Mid(Split(readLine, ",")(17), 1, 2)
+                dr("Package") = Split(readLine, ",")(18)
+
+                dt.Rows.Add(dr)
+            Loop
+            strWer.Close()
+            MyBook.Close()
+            MyEx.Quit()
+            MySheet = Nothing
+            MyBook = Nothing
+            MyEx = Nothing
+            System.GC.Collect()
+
+            'If MsgBox("คุณต้องการเพิ่มรายการ RequestedISSUE ใหม่ ใช่หรือไม่ ?", MsgBoxStyle.YesNo, "คำยืนยัน") = MsgBoxResult.Yes Then
+
+            '    Dim i As Integer
+
+            '    For i = 0 To dt.Rows.Count - 1
+            '        Try
+            '            db.tblWHRequestedISSUEs.Add(New tblWHRequestedISSUE With { _
+            '            .PullSignal = txtPullSignal.Value.Trim, _
+            '            .LotNo = txtLOtNo.Value.Trim, _
+            '            .ItemNo = i + itemMax + 1, _
+            '            .ProductNo = dt.Rows(i).Item("ProductNo").ToString, _
+            '            .CutomerPart = dt.Rows(i).Item("CutomerPart").ToString, _
+            '            .OwnerPart = dt.Rows(i).Item("OwnerPart").ToString, _
+            '            .ProductDesc = dt.Rows(i).Item("ProductDesc").ToString, _
+            '            .RequestQTY = CType(CDbl(dt.Rows(i).Item("RequestQTY").ToString).ToString("#,##0.000"), Double?), _
+            '            .QTYUnit = dt.Rows(i).Item("QTYUnit").ToString, _
+            '            .OrderNo = dt.Rows(i).Item("OrderNo").ToString, _
+            '            .PriceForeigh = CDbl(CDbl(dt.Rows(i).Item("UnitPrice").ToString).ToString("#,##0.0000")) * CDbl(CDbl(dt.Rows(i).Item("RequestQTY").ToString).ToString("#,##0.000")), _
+            '            .PriceBath = 0, _
+            '            .CustomerLot = dt.Rows(i).Item("CustomerLot").ToString, _
+            '            .ManufacturingDate = CType(dt.Rows(i).Item("InvoiceDate").ToString, Date?), _
+            '            .ExpiredDate = Nothing, _
+            '            .CreateBy = CStr(Session("UserName")), _
+            '            .CreateDate = Now, _
+            '            .AvailableRequestQTY = CType(CDbl(dt.Rows(i).Item("RequestQTY").ToString).ToString("#,##0.000"), Double?), _
+            '            .ItemNo1 = CType(CDbl(i + itemMax + 1).ToString("#,##0"), Double?), _
+            '            .WHSource = dt.Rows(i).Item("WHSource").ToString, _
+            '            .ItemInvoice = CInt(dt.Rows(i).Item("ItemInvoice").ToString), _
+            '            .NetWeight = CType(CDbl(dt.Rows(i).Item("NetWeight").ToString).ToString("#,##0.0000"), Double?), _
+            '            .NetWeightUnit = dt.Rows(i).Item("NetWeightUnit").ToString, _
+            '            .GrossWeight = CType(CDbl(dt.Rows(i).Item("GrossWeight").ToString).ToString("#,##0.0000"), Double?), _
+            '            .GrossWeightUnit = dt.Rows(i).Item("GrossWeightUnit").ToString, _
+            '            .Currency = dt.Rows(i).Item("Currency").ToString, _
+            '            .Amount = CType(CDbl(dt.Rows(i).Item("Amount").ToString).ToString("#,##0.0000"), Double?), _
+            '            .Package = CInt(dt.Rows(i).Item("Package").ToString), _
+            '            .Origin = dt.Rows(i).Item("Origin").ToString
+            '             })
+            '            db.SaveChanges()
+            '        Catch ex As Exception
+
+            '        End Try
+            '    Next
+
+            'End If
+        Else
 
         End If
+
+       
         ClearDataPull()
         ReadDataRequestedISSUE()
         ReadDataRequestedISSUE_PickPack()

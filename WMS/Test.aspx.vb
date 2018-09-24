@@ -255,37 +255,7 @@ Public Class Test
         Next
     End Sub
 
-    'Protected Sub txttest_TextChanged(sender As Object, e As EventArgs) Handles txttest.TextChanged
-    '    MsgBox(txttest.Text)
-    '
-
-    Protected Sub btnAdd_ServerClick(sender As Object, e As EventArgs)
-        'Dim StrWer As StreamReader
-        'Dim readLine As String
-        'Dim fileE As Boolean
-        'fileE = My.Computer.FileSystem.FileExists(txtFile.Value.Trim)
-
-        'StrWer = file.OpenText(txtFile.Value.Trim)
-
-        'Do Until StrWer.EndOfStream
-        '    readLine = StrWer.ReadLine
-
-        '    Dim S As String = Split(readLine, ",")(0)
-        'Loop
-
-        If FileUpload1.HasFile Then
-            ' Path ที่ฮยู่ไฟล์
-            Dim FileName As String = Path.GetFileName(FileUpload1.PostedFile.FileName)
-            ' นามสกุล
-            Dim Extension As String = Path.GetExtension(FileUpload1.PostedFile.FileName)
-            ' Path ที่เก็บไฟล์ 
-            Dim FolderPath As String = ConfigurationManager.AppSettings("FolderPath")
-            ' save ไฟล์ลง path
-            Dim FilePath As String = Server.MapPath(FolderPath + FileName)
-            FileUpload1.SaveAs(FilePath)
-            Import_To_Grid(FilePath, Extension, rbHDR.SelectedItem.Text)
-        End If
-    End Sub
+  
     Private Sub Import_To_Grid(ByVal FilePath As String, ByVal Extension As String, ByVal isHDR As String)
         Dim conStr As String = ""
         Dim i As Integer
@@ -318,14 +288,11 @@ Public Class Test
         oda.Fill(dt)
         connExcel.Close()
 
-        For i = 0 To dt.Rows.Count - 1
-            txtCompanyName.Text = dt.Rows(i)("CompanyName").ToString
-
-        Next
-        'GridView1.Caption = Path.GetFileName(FilePath)
-        'GridView1.DataSource = dt
-        'GridView1.DataBind()
-        'dt.Columns.Add()
+     
+        GridView1.Caption = Path.GetFileName(FilePath)
+        GridView1.DataSource = dt
+        GridView1.DataBind()
+        dt.Columns.Add()
 
     End Sub
 
@@ -338,5 +305,23 @@ Public Class Test
         Import_To_Grid(FilePath, Extension, rbHDR.SelectedItem.Text)
         GridView1.PageIndex = e.NewPageIndex
         GridView1.DataBind()
+    End Sub
+
+    Protected Sub btnAdd_ServerClick(sender As Object, e As EventArgs)
+        If FileUpload1.HasFile Then
+            ' Path ที่ฮยู่ไฟล์
+            Dim FileName As String = Path.GetFileName(FileUpload1.PostedFile.FileName)
+            ' นามสกุล
+            Dim Extension As String = Path.GetExtension(FileUpload1.PostedFile.FileName)
+            ' Path ที่เก็บไฟล์ 
+            Dim FolderPath As String = ConfigurationManager.AppSettings("FolderPath")
+            ' save ไฟล์ลง path
+            Dim FilePath As String = Server.MapPath(FolderPath + FileName)
+
+            'Dim fileExists As Boolean
+            'fileExists = My.Computer.FileSystem.FileExists(Application.StartupPath & FileName)
+            FileUpload1.SaveAs(FilePath)
+            Import_To_Grid(FilePath, Extension, rbHDR.SelectedItem.Text)
+        End If
     End Sub
 End Class

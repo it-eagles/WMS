@@ -617,13 +617,13 @@ Partial Public Class PickingWH
     Protected WithEvents btnImport3NJRC_ImportFiles As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
-    '''txtImport control.
+    '''txtImport1 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtImport As Global.System.Web.UI.HtmlControls.HtmlInputFile
+    Protected WithEvents txtImport1 As Global.System.Web.UI.WebControls.FileUpload
 
     '''<summary>
     '''btnImport1NJRC_ImportFiles control.
