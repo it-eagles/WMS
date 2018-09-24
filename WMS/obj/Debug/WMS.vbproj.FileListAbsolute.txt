@@ -232,3 +232,4 @@ C:\Users\bossp\Documents\WMS\WMS\obj\Debug\WMS.vbproj.GenerateResource.Cache
 C:\Users\bossp\Documents\WMS\WMS\obj\Debug\WMS.dll
 C:\Users\bossp\Documents\WMS\WMS\obj\Debug\WMS.xml
 C:\Users\bossp\Documents\WMS\WMS\obj\Debug\WMS.pdb
+C:\Users\bossp\Documents\WMS\WMS\obj\Debug\WMS.vbprojResolveAssemblyReference.cache

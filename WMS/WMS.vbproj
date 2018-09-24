@@ -6700,7 +6700,9 @@
     <Content Include="Scripts\select2\vendor\jquery-2.1.0.js" />
     <Content Include="Scripts\util.css" />
     <Content Include="ShipmentRec.aspx" />
+    <Content Include="ShowReport\ShowRptIEAT.aspx" />
     <Content Include="ShowReport\ShowRptJobSheet.aspx" />
+    <Content Include="ShowReport\ShowRptLog.aspx" />
     <Content Include="SingleIssuedWH.aspx" />
     <Content Include="SingleReceivedWH.aspx" />
     <Content Include="Test.aspx" />
@@ -6774,7 +6776,6 @@
     </Compile>
     <Compile Include="Class\ClassPermis.vb" />
     <Compile Include="Class\ConfirmGoodsReceiveDetail .vb" />
-    <Compile Include="Class\DBConnString.vb" />
     <Compile Include="Class\Ieat107.vb" />
     <Compile Include="Class\LoginCls.vb" />
     <Compile Include="Class\MoneyExt.vb" />
@@ -7436,6 +7437,18 @@
       <DependentUpon>CrystalReport1.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Report\rptIEATExport.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptIEATExport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptIEATImport.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptIEATImport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Report\rptSegateSummaryReport1.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -7580,11 +7593,25 @@
       <DependentUpon>ShipmentRec.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
+    <Compile Include="ShowReport\ShowRptIEAT.aspx.designer.vb">
+      <DependentUpon>ShowRptIEAT.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ShowReport\ShowRptIEAT.aspx.vb">
+      <DependentUpon>ShowRptIEAT.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="ShowReport\ShowRptJobSheet.aspx.designer.vb">
       <DependentUpon>ShowRptJobSheet.aspx</DependentUpon>
     </Compile>
     <Compile Include="ShowReport\ShowRptJobSheet.aspx.vb">
       <DependentUpon>ShowRptJobSheet.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="ShowReport\ShowRptLog.aspx.designer.vb">
+      <DependentUpon>ShowRptLog.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ShowReport\ShowRptLog.aspx.vb">
+      <DependentUpon>ShowRptLog.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="SingleIssuedWH.aspx.designer.vb">
@@ -7717,6 +7744,14 @@
     <EmbeddedResource Include="Report\CrystalReport1.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CrystalReport1.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptIEATExport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptIEATExport.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptIEATImport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptIEATImport.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\rptSegateSummaryReport1.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

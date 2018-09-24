@@ -59,6 +59,15 @@ Partial Public Class RptLog
     Protected WithEvents rdbByInvoice As Global.System.Web.UI.WebControls.RadioButton
 
     '''<summary>
+    '''FieldsetByDate control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents FieldsetByDate As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
     '''txtdatepickerDate control.
     '''</summary>
     '''<remarks>
@@ -95,6 +104,15 @@ Partial Public Class RptLog
     Protected WithEvents CalendarExtenderToDate As Global.AjaxControlToolkit.CalendarExtender
 
     '''<summary>
+    '''FieldsetByInvoice control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents FieldsetByInvoice As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
     '''txtInvoiceNo control.
     '''</summary>
     '''<remarks>
@@ -113,11 +131,11 @@ Partial Public Class RptLog
     Protected WithEvents btnPrint As Global.System.Web.UI.HtmlControls.HtmlButton
 
     '''<summary>
-    '''btnClose control.
+    '''btnClear control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents btnClose As Global.System.Web.UI.HtmlControls.HtmlButton
+    Protected WithEvents btnClear As Global.System.Web.UI.HtmlControls.HtmlButton
 End Class

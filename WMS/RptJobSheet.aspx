@@ -95,13 +95,6 @@
                                         <button type="submit" runat="server" class="btn btn-primary" id="btnPrint" title="btnPrint" onserverclick="btnPrint_ServerClick">Print</button>
                                         <button type="submit" runat="server" class="btn btn-primary" id="btnClear" title="btnClear" onserverclick="btnClear_ServerClick">Clear</button>
                                  </div>
-
-
-
-                                     <%--<CR:CrystalReportViewer ID="CrystalReportViewer1" runat="server" AutoDataBind="true" />
-                                     <CR:CrystalReportSource ID="CrystalReportSource1" runat="server"></CR:CrystalReportSource>--%>
-
-
                                     <!-- /.box-body -->
                              </div>
                            </div>
