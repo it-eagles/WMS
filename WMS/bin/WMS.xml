@@ -6,11 +6,7 @@ WMS
 </name>
 </assembly>
 <members>
-<<<<<<< HEAD
 <member name="F:WMS.HTITrackingRec.form1">
-=======
-<member name="F:WMS.CustomsInvoice.form1">
->>>>>>> b77325e867ea59558e170b0afba9d00747ff0e22
 	<summary>
 form1 control.
 </summary>
@@ -26,11 +22,7 @@ ScriptManager1 control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-<<<<<<< HEAD
 </member><member name="F:WMS.HTITrackingRec.txtdatepickerToDate">
-=======
-</member><member name="F:WMS.CustomsInvoice.btnAddNew">
->>>>>>> b77325e867ea59558e170b0afba9d00747ff0e22
 	<summary>
 txtdatepickerToDate control.
 </summary>
@@ -1142,7 +1134,7 @@ Repeater2 control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.RptIEAT.form1">
+</member><member name="F:WMS.RptCartonFrm.form1">
 	<summary>
 form1 control.
 </summary>
@@ -1150,7 +1142,7 @@ form1 control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.RptIEAT.ScriptManager1">
+</member><member name="F:WMS.RptCartonFrm.ScriptManager1">
 	<summary>
 ScriptManager1 control.
 </summary>
@@ -1158,63 +1150,23 @@ ScriptManager1 control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.RptIEAT.ddlSelectImEx">
+</member><member name="F:WMS.RptCartonFrm.txtdatepickerFromDate">
 	<summary>
-ddlSelectImEx control.
+txtdatepickerFromDate control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.RptIEAT.rdbByDate">
+</member><member name="F:WMS.RptCartonFrm.CalendarExtenderFromDate">
 	<summary>
-rdbByDate control.
+CalendarExtenderFromDate control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.RptIEAT.rdbByIEATNo">
-	<summary>
-rdbByIEATNo control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptIEAT.rdbByIEATPermit">
-	<summary>
-rdbByIEATPermit control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptIEAT.FieldsetByDate">
-	<summary>
-FieldsetByDate control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptIEAT.txtdatepickerDate">
-	<summary>
-txtdatepickerDate control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptIEAT.CalendarExtenderDate">
-	<summary>
-CalendarExtenderDate control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptIEAT.txtdatepickerToDate">
+</member><member name="F:WMS.RptCartonFrm.txtdatepickerToDate">
 	<summary>
 txtdatepickerToDate control.
 </summary>
@@ -1222,7 +1174,7 @@ txtdatepickerToDate control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.RptIEAT.CalendarExtenderToDate">
+</member><member name="F:WMS.RptCartonFrm.CalendarExtenderToDate">
 	<summary>
 CalendarExtenderToDate control.
 </summary>
@@ -1230,49 +1182,41 @@ CalendarExtenderToDate control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.RptIEAT.FieldsetByIEATNo">
+</member><member name="F:WMS.RptCartonFrm.rdbStock">
 	<summary>
-FieldsetByIEATNo control.
+rdbStock control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.RptIEAT.txtIEATNo">
+</member><member name="F:WMS.RptCartonFrm.rdbReceive">
 	<summary>
-txtIEATNo control.
+rdbReceive control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.RptIEAT.FieldsetByIEATPermit">
+</member><member name="F:WMS.RptCartonFrm.RdbIssue">
 	<summary>
-FieldsetByIEATPermit control.
+RdbIssue control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.RptIEAT.txtIEATPermit">
+</member><member name="F:WMS.RptCartonFrm.txtOwnerCode">
 	<summary>
-txtIEATPermit control.
+txtOwnerCode control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.RptIEAT.btnPrint">
+</member><member name="F:WMS.RptCartonFrm.btnReport">
 	<summary>
-btnPrint control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptIEAT.btnClear">
-	<summary>
-btnClear control.
+btnReport control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -2686,422 +2630,6 @@ Repeater1 control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.RptCustoms.form1">
-	<summary>
-form1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptCustoms.ScriptManager1">
-	<summary>
-ScriptManager1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptCustoms.rdbNormalReport">
-	<summary>
-rdbNormalReport control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptCustoms.rdbCompleteReport">
-	<summary>
-rdbCompleteReport control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptCustoms.rdbNotCompleteReport">
-	<summary>
-rdbNotCompleteReport control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptCustoms.rdbIN">
-	<summary>
-rdbIN control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptCustoms.rdbOUT">
-	<summary>
-rdbOUT control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptCustoms.btnAddData">
-	<summary>
-btnAddData control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptCustoms.rdb01_TAB01">
-	<summary>
-rdb01_TAB01 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptCustoms.rdb02_TAB01">
-	<summary>
-rdb02_TAB01 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptCustoms.rdb03_TAB01">
-	<summary>
-rdb03_TAB01 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptCustoms.rdb04_TAB01">
-	<summary>
-rdb04_TAB01 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptCustoms.txtdatepickerFromDate_TAB01">
-	<summary>
-txtdatepickerFromDate_TAB01 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptCustoms.CalendarExtenderFromDate_TAB01">
-	<summary>
-CalendarExtenderFromDate_TAB01 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptCustoms.txtdatepickerToDate_TAB01">
-	<summary>
-txtdatepickerToDate_TAB01 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptCustoms.CalendarExtenderToDate_TAB01">
-	<summary>
-CalendarExtenderToDate_TAB01 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptCustoms.btnReport_TAB01">
-	<summary>
-btnReport_TAB01 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptCustoms.rdb01_TAB02">
-	<summary>
-rdb01_TAB02 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptCustoms.rdb02_TAB02">
-	<summary>
-rdb02_TAB02 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptCustoms.txtdatepickerFromDate_TAB02">
-	<summary>
-txtdatepickerFromDate_TAB02 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptCustoms.CalendarExtenderFromDate_TAB02">
-	<summary>
-CalendarExtenderFromDate_TAB02 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptCustoms.txtdatepickerToDate_TAB02">
-	<summary>
-txtdatepickerToDate_TAB02 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptCustoms.CalendarExtenderToDate_TAB02">
-	<summary>
-CalendarExtenderToDate_TAB02 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptCustoms.btnReport_TAB02">
-	<summary>
-btnReport_TAB02 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptCustoms.txtdatepickerFromDate_TAB03">
-	<summary>
-txtdatepickerFromDate_TAB03 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptCustoms.CalendarExtenderFromDate_TAB03">
-	<summary>
-CalendarExtenderFromDate_TAB03 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptCustoms.txtdatepickerToDate_TAB03">
-	<summary>
-txtdatepickerToDate_TAB03 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptCustoms.CalendarExtenderToDate_TAB03">
-	<summary>
-CalendarExtenderToDate_TAB03 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptCustoms.btnReport_TAB03">
-	<summary>
-btnReport_TAB03 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptCustoms.txtdatepickerFromDate_TAB04">
-	<summary>
-txtdatepickerFromDate_TAB04 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptCustoms.CalendarExtenderFromDate_TAB04">
-	<summary>
-CalendarExtenderFromDate_TAB04 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptCustoms.txtdatepickerToDate_TAB04">
-	<summary>
-txtdatepickerToDate_TAB04 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptCustoms.CalendarExtenderToDate_TAB04">
-	<summary>
-CalendarExtenderToDate_TAB04 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptCustoms.btnReport_TAB04">
-	<summary>
-btnReport_TAB04 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptCustoms.txtdatepickerFromDate_TAB05">
-	<summary>
-txtdatepickerFromDate_TAB05 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptCustoms.CalendarExtenderFromDate_TAB05">
-	<summary>
-CalendarExtenderFromDate_TAB05 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptCustoms.txtdatepickerToDate_TAB05">
-	<summary>
-txtdatepickerToDate_TAB05 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptCustoms.CalendarExtenderToDate_TAB05">
-	<summary>
-CalendarExtenderToDate_TAB05 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptCustoms.btnReport_TAB05">
-	<summary>
-btnReport_TAB05 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptCustoms.txtdatepickerRemainProduct_TAB06">
-	<summary>
-txtdatepickerRemainProduct_TAB06 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptCustoms.CalendarExtenderRemainProduct_TAB06">
-	<summary>
-CalendarExtenderRemainProduct_TAB06 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptCustoms.btnReport_TAB06">
-	<summary>
-btnReport_TAB06 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptCustoms.txtdatepickerFromDate_TAB07">
-	<summary>
-txtdatepickerFromDate_TAB07 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptCustoms.CalendarExtenderFromDate_TAB07">
-	<summary>
-CalendarExtenderFromDate_TAB07 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptCustoms.txtdatepickerToDate_TAB07">
-	<summary>
-txtdatepickerToDate_TAB07 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptCustoms.CalendarExtenderToDate_TAB07">
-	<summary>
-CalendarExtenderToDate_TAB07 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptCustoms.btnReport_TAB07">
-	<summary>
-btnReport_TAB07 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptCustoms.txtdatepickerFromDate_TAB08">
-	<summary>
-txtdatepickerFromDate_TAB08 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptCustoms.CalendarExtenderFromDate_TAB08">
-	<summary>
-CalendarExtenderFromDate_TAB08 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptCustoms.txtdatepickerToDate_TAB08">
-	<summary>
-txtdatepickerToDate_TAB08 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptCustoms.CalendarExtenderToDate_TAB08">
-	<summary>
-CalendarExtenderToDate_TAB08 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptCustoms.btnReport_TAB08">
-	<summary>
-btnReport_TAB08 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
 </member><member name="F:WMS.TestReport.form1">
 	<summary>
 form1 control.
@@ -3462,134 +2990,6 @@ btnPrint control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.RptJobSheet.form1">
-	<summary>
-form1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptJobSheet.ScriptManager1">
-	<summary>
-ScriptManager1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptJobSheet.rdbImport">
-	<summary>
-rdbImport control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptJobSheet.rdbExport">
-	<summary>
-rdbExport control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptJobSheet.txtdatepickerFromDate">
-	<summary>
-txtdatepickerFromDate control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptJobSheet.CalendarExtenderFromDate">
-	<summary>
-CalendarExtenderFromDate control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptJobSheet.txtdatepickerToDate">
-	<summary>
-txtdatepickerToDate control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptJobSheet.CalendarExtenderToDate">
-	<summary>
-CalendarExtenderToDate control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptJobSheet.ddlJobSite">
-	<summary>
-ddlJobSite control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptJobSheet.btnPrint">
-	<summary>
-btnPrint control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptJobSheet.btnClear">
-	<summary>
-btnClear control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptWD.form1">
-	<summary>
-form1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptWD.ScriptManager1">
-	<summary>
-ScriptManager1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptWD.txtdatepickerDate">
-	<summary>
-txtdatepickerDate control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptWD.CalendarExtenderDate">
-	<summary>
-CalendarExtenderDate control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptWD.btnReport">
-	<summary>
-btnReport control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
 </member><member name="F:WMS.ShowRptWareHouse.form1">
 	<summary>
 form1 control.
@@ -3689,6 +3089,110 @@ To modify move field declaration from designer file to code-behind file.
 </member><member name="F:WMS.UserProfile.Repeater1">
 	<summary>
 Repeater1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptStorageAgingFrm.form1">
+	<summary>
+form1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptStorageAgingFrm.ScriptManager1">
+	<summary>
+ScriptManager1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptStorageAgingFrm.chk1">
+	<summary>
+chk1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptStorageAgingFrm.txtdatepickerFromDate">
+	<summary>
+txtdatepickerFromDate control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptStorageAgingFrm.CalendarExtenderFromDate">
+	<summary>
+CalendarExtenderFromDate control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptStorageAgingFrm.txtdatepickerToDate">
+	<summary>
+txtdatepickerToDate control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptStorageAgingFrm.CalendarExtenderToDate">
+	<summary>
+CalendarExtenderToDate control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptStorageAgingFrm.ddlBranch">
+	<summary>
+ddlBranch control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptStorageAgingFrm.rdbIssue">
+	<summary>
+rdbIssue control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptStorageAgingFrm.rdbBalance">
+	<summary>
+rdbBalance control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptStorageAgingFrm.txtOwnerCode">
+	<summary>
+txtOwnerCode control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptStorageAgingFrm.txtOwnerPart">
+	<summary>
+txtOwnerPart control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptStorageAgingFrm.btnReport">
+	<summary>
+btnReport control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -7798,9 +7302,9 @@ txtSelectFileForImport_ImportFileNJR control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.CreateRec.txtSelectFileForImportEntryItemNo_ItemPortFileNJR">
+</member><member name="F:WMS.CreateRec.ImportEntryItemNo_ItemPortFileNJR">
 	<summary>
-txtSelectFileForImportEntryItemNo_ItemPortFileNJR control.
+ImportEntryItemNo_ItemPortFileNJR control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -7809,6 +7313,14 @@ To modify move field declaration from designer file to code-behind file.
 </member><member name="F:WMS.CreateRec.btnImport_ImportFileNJR">
 	<summary>
 btnImport_ImportFileNJR control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.CreateRec.GridView1">
+	<summary>
+GridView1 control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -8046,7 +7558,6 @@ Repeater9 control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-<<<<<<< HEAD
 </member><member name="F:WMS.ShowRptIEAT.form1">
 	<summary>
 form1 control.
@@ -8064,9 +7575,6 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member><member name="F:WMS.ShowRptJobSheet.form1">
-=======
-</member><member name="F:WMS.ViewGoods.txtExpPriceForeight">
->>>>>>> b77325e867ea59558e170b0afba9d00747ff0e22
 	<summary>
 form1 control.
 </summary>
@@ -8101,38 +7609,6 @@ To modify move field declaration from designer file to code-behind file.
 </member><member name="F:WMS.MasterPartyAdd.Repeater1">
 	<summary>
 Repeater1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptCustomsDaily.form1">
-	<summary>
-form1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptCustomsDaily.ScriptManager1">
-	<summary>
-ScriptManager1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptCustomsDaily.txtJobNo">
-	<summary>
-txtJobNo control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptCustomsDaily.btnReport">
-	<summary>
-btnReport control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -8794,7 +8270,7 @@ Repeater6 control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.RptIEATFee.form1">
+</member><member name="F:WMS.RptIEATFeeFrm.form1">
 	<summary>
 form1 control.
 </summary>
@@ -8802,7 +8278,7 @@ form1 control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.RptIEATFee.ScriptManager1">
+</member><member name="F:WMS.RptIEATFeeFrm.ScriptManager1">
 	<summary>
 ScriptManager1 control.
 </summary>
@@ -8810,7 +8286,7 @@ ScriptManager1 control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.RptIEATFee.txtdatepickerDate">
+</member><member name="F:WMS.RptIEATFeeFrm.txtdatepickerDate">
 	<summary>
 txtdatepickerDate control.
 </summary>
@@ -8818,7 +8294,7 @@ txtdatepickerDate control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.RptIEATFee.CalendarExtenderDate">
+</member><member name="F:WMS.RptIEATFeeFrm.CalendarExtenderDate">
 	<summary>
 CalendarExtenderDate control.
 </summary>
@@ -8826,7 +8302,7 @@ CalendarExtenderDate control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.RptIEATFee.txtdatepickerToDate">
+</member><member name="F:WMS.RptIEATFeeFrm.txtdatepickerToDate">
 	<summary>
 txtdatepickerToDate control.
 </summary>
@@ -8834,7 +8310,7 @@ txtdatepickerToDate control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.RptIEATFee.CalendarExtenderToDate">
+</member><member name="F:WMS.RptIEATFeeFrm.CalendarExtenderToDate">
 	<summary>
 CalendarExtenderToDate control.
 </summary>
@@ -8842,7 +8318,7 @@ CalendarExtenderToDate control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.RptIEATFee.btnReport">
+</member><member name="F:WMS.RptIEATFeeFrm.btnReport">
 	<summary>
 btnReport control.
 </summary>
@@ -8850,7 +8326,7 @@ btnReport control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.RptPlanHTI.form1">
+</member><member name="F:WMS.RptLocationFrm.form1">
 	<summary>
 form1 control.
 </summary>
@@ -8858,7 +8334,7 @@ form1 control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.RptPlanHTI.ScriptManager1">
+</member><member name="F:WMS.RptLocationFrm.ScriptManager1">
 	<summary>
 ScriptManager1 control.
 </summary>
@@ -8866,7 +8342,39 @@ ScriptManager1 control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.RptPlanHTI.txtdatepickerFromDate">
+</member><member name="F:WMS.RptLocationFrm.txtLocationNo">
+	<summary>
+txtLocationNo control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptLocationFrm.btnReport">
+	<summary>
+btnReport control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptPlanHTIFrm.form1">
+	<summary>
+form1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptPlanHTIFrm.ScriptManager1">
+	<summary>
+ScriptManager1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptPlanHTIFrm.txtdatepickerFromDate">
 	<summary>
 txtdatepickerFromDate control.
 </summary>
@@ -8874,7 +8382,7 @@ txtdatepickerFromDate control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.RptPlanHTI.CalendarExtenderFromDate">
+</member><member name="F:WMS.RptPlanHTIFrm.CalendarExtenderFromDate">
 	<summary>
 CalendarExtenderFromDate control.
 </summary>
@@ -8882,7 +8390,7 @@ CalendarExtenderFromDate control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.RptPlanHTI.txtdatepickerToDate">
+</member><member name="F:WMS.RptPlanHTIFrm.txtdatepickerToDate">
 	<summary>
 txtdatepickerToDate control.
 </summary>
@@ -8890,7 +8398,7 @@ txtdatepickerToDate control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.RptPlanHTI.CalendarExtenderToDate">
+</member><member name="F:WMS.RptPlanHTIFrm.CalendarExtenderToDate">
 	<summary>
 CalendarExtenderToDate control.
 </summary>
@@ -8898,7 +8406,7 @@ CalendarExtenderToDate control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.RptPlanHTI.btnReport">
+</member><member name="F:WMS.RptPlanHTIFrm.btnReport">
 	<summary>
 btnReport control.
 </summary>
@@ -9066,27 +8574,7 @@ btnEditHead control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-<<<<<<< HEAD
 </member><member name="F:WMS.MultiIssuedWH.btnSaveAddHead">
-=======
-</member><member name="F:WMS.ShowRptWareHouse.form1">
-	<summary>
-form1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.ShowRptWareHouse.CrystalReportViewer1">
-	<summary>
-CrystalReportViewer1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.SingleReceivedWH.form1">
->>>>>>> b77325e867ea59558e170b0afba9d00747ff0e22
 	<summary>
 btnSaveAddHead control.
 </summary>
@@ -10190,7 +9678,7 @@ btnReport control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.RptStorageAging.form1">
+</member><member name="F:WMS.RptIEATFrm.form1">
 	<summary>
 form1 control.
 </summary>
@@ -10198,7 +9686,7 @@ form1 control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.RptStorageAging.ScriptManager1">
+</member><member name="F:WMS.RptIEATFrm.ScriptManager1">
 	<summary>
 ScriptManager1 control.
 </summary>
@@ -10206,31 +9694,63 @@ ScriptManager1 control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.RptStorageAging.chk1">
+</member><member name="F:WMS.RptIEATFrm.ddlSelectImEx">
 	<summary>
-chk1 control.
+ddlSelectImEx control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.RptStorageAging.txtdatepickerFromDate">
+</member><member name="F:WMS.RptIEATFrm.rdbByDate">
 	<summary>
-txtdatepickerFromDate control.
+rdbByDate control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.RptStorageAging.CalendarExtenderFromDate">
+</member><member name="F:WMS.RptIEATFrm.rdbByIEATNo">
 	<summary>
-CalendarExtenderFromDate control.
+rdbByIEATNo control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.RptStorageAging.txtdatepickerToDate">
+</member><member name="F:WMS.RptIEATFrm.rdbByIEATPermit">
+	<summary>
+rdbByIEATPermit control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptIEATFrm.FieldsetByDate">
+	<summary>
+FieldsetByDate control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptIEATFrm.txtdatepickerDate">
+	<summary>
+txtdatepickerDate control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptIEATFrm.CalendarExtenderDate">
+	<summary>
+CalendarExtenderDate control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptIEATFrm.txtdatepickerToDate">
 	<summary>
 txtdatepickerToDate control.
 </summary>
@@ -10238,7 +9758,7 @@ txtdatepickerToDate control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.RptStorageAging.CalendarExtenderToDate">
+</member><member name="F:WMS.RptIEATFrm.CalendarExtenderToDate">
 	<summary>
 CalendarExtenderToDate control.
 </summary>
@@ -10246,47 +9766,247 @@ CalendarExtenderToDate control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.RptStorageAging.ddlBranch">
+</member><member name="F:WMS.RptIEATFrm.FieldsetByIEATNo">
 	<summary>
-ddlBranch control.
+FieldsetByIEATNo control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.RptStorageAging.rdbIssue">
+</member><member name="F:WMS.RptIEATFrm.txtIEATNo">
 	<summary>
-rdbIssue control.
+txtIEATNo control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.RptStorageAging.rdbBalance">
+</member><member name="F:WMS.RptIEATFrm.FieldsetByIEATPermit">
 	<summary>
-rdbBalance control.
+FieldsetByIEATPermit control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.RptStorageAging.txtOwnerCode">
+</member><member name="F:WMS.RptIEATFrm.txtIEATPermit">
 	<summary>
-txtOwnerCode control.
+txtIEATPermit control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.RptStorageAging.txtOwnerPart">
+</member><member name="F:WMS.RptIEATFrm.btnPrint">
 	<summary>
-txtOwnerPart control.
+btnPrint control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.RptStorageAging.btnReport">
+</member><member name="F:WMS.RptIEATFrm.btnClear">
+	<summary>
+btnClear control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptLogFrm.form1">
+	<summary>
+form1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptLogFrm.ScriptManager1">
+	<summary>
+ScriptManager1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptLogFrm.ddlSelectImEx">
+	<summary>
+ddlSelectImEx control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptLogFrm.rdbByDate">
+	<summary>
+rdbByDate control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptLogFrm.rdbByInvoice">
+	<summary>
+rdbByInvoice control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptLogFrm.FieldsetByDate">
+	<summary>
+FieldsetByDate control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptLogFrm.txtdatepickerDate">
+	<summary>
+txtdatepickerDate control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptLogFrm.CalendarExtenderDate">
+	<summary>
+CalendarExtenderDate control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptLogFrm.txtdatepickerToDate">
+	<summary>
+txtdatepickerToDate control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptLogFrm.CalendarExtenderToDate">
+	<summary>
+CalendarExtenderToDate control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptLogFrm.FieldsetByInvoice">
+	<summary>
+FieldsetByInvoice control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptLogFrm.txtInvoiceNo">
+	<summary>
+txtInvoiceNo control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptLogFrm.btnPrint">
+	<summary>
+btnPrint control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptLogFrm.btnClear">
+	<summary>
+btnClear control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptStorageChargeFrm.form1">
+	<summary>
+form1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptStorageChargeFrm.ScriptManager1">
+	<summary>
+ScriptManager1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptStorageChargeFrm.txtdatepickerFromDate">
+	<summary>
+txtdatepickerFromDate control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptStorageChargeFrm.CalendarExtenderFromDate">
+	<summary>
+CalendarExtenderFromDate control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptStorageChargeFrm.txtdatepickerToDate">
+	<summary>
+txtdatepickerToDate control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptStorageChargeFrm.CalendarExtenderToDate">
+	<summary>
+CalendarExtenderToDate control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptStorageChargeFrm.rdbByDate">
+	<summary>
+rdbByDate control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptStorageChargeFrm.rdbByIEATNo">
+	<summary>
+rdbByIEATNo control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptStorageChargeFrm.RdbByIEATPermit">
+	<summary>
+RdbByIEATPermit control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptStorageChargeFrm.txtBalance">
+	<summary>
+txtBalance control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptStorageChargeFrm.btnReport">
 	<summary>
 btnReport control.
 </summary>
@@ -15126,15 +14846,9 @@ btnImport3NJRC_ImportFiles control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-<<<<<<< HEAD
 </member><member name="F:WMS.PickingWH.txtImport1">
 	<summary>
 txtImport1 control.
-=======
-</member><member name="F:WMS.ReportIEAT_E_02.TextBox1">
-	<summary>
-TextBox1 control.
->>>>>>> b77325e867ea59558e170b0afba9d00747ff0e22
 </summary>
 	<remarks>
 Auto-generated field.
@@ -17004,142 +16718,6 @@ Repeater8 control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.RptSumLOT.form1">
-	<summary>
-form1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptSumLOT.ScriptManager1">
-	<summary>
-ScriptManager1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptSumLOT.txtdatepickerFromDate">
-	<summary>
-txtdatepickerFromDate control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptSumLOT.CalendarExtenderFromDate">
-	<summary>
-CalendarExtenderFromDate control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptSumLOT.txtdatepickerToDate">
-	<summary>
-txtdatepickerToDate control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptSumLOT.CalendarExtenderToDate">
-	<summary>
-CalendarExtenderToDate control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptSumLOT.chkCustomer">
-	<summary>
-chkCustomer control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptSumLOT.ddlCustomer">
-	<summary>
-ddlCustomer control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptSumLOT.chkENDCustomer">
-	<summary>
-chkENDCustomer control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptSumLOT.ddlENDCustomer">
-	<summary>
-ddlENDCustomer control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptSumLOT.btnPrint">
-	<summary>
-btnPrint control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptSumLOT.btnClose">
-	<summary>
-btnClose control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptTranPick.form1">
-	<summary>
-form1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptTranPick.ScriptManager1">
-	<summary>
-ScriptManager1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptTranPick.txtReceiveNo">
-	<summary>
-txtReceiveNo control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptTranPick.txtItem">
-	<summary>
-txtItem control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptTranPick.btnReport">
-	<summary>
-btnReport control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
 </member><member name="F:WMS.TestCode.form1">
 	<summary>
 form1 control.
@@ -17685,46 +17263,6 @@ To modify move field declaration from designer file to code-behind file.
  Module used to define the properties that are available in the My Namespace for Web projects.
  </summary>
 	<remarks></remarks>
-</member><member name="F:WMS.RptStatusPick.form1">
-	<summary>
-form1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptStatusPick.ScriptManager1">
-	<summary>
-ScriptManager1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptStatusPick.ddlBranch">
-	<summary>
-ddlBranch control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptStatusPick.ddlCusCode">
-	<summary>
-ddlCusCode control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptStatusPick.btnReport">
-	<summary>
-btnReport control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
 </member><member name="F:WMS.IEATOut.form1">
 	<summary>
 form1 control.
@@ -17864,6 +17402,38 @@ To modify move field declaration from designer file to code-behind file.
 </member><member name="F:WMS.IEATOut.txtInvoiceNo10">
 	<summary>
 txtInvoiceNo10 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptCustomsDailyFrm.form1">
+	<summary>
+form1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptCustomsDailyFrm.ScriptManager1">
+	<summary>
+ScriptManager1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptCustomsDailyFrm.txtJobNo">
+	<summary>
+txtJobNo control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptCustomsDailyFrm.btnReport">
+	<summary>
+btnReport control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -19037,15 +18607,9 @@ ProductCodeUpdatePanel control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-<<<<<<< HEAD
 </member><member name="F:WMS.SingleReceivedWH.dgvProduct">
 	<summary>
 dgvProduct control.
-=======
-</member><member name="F:WMS.CreateRec.ImportEntryItemNo_ItemPortFileNJR">
-	<summary>
-ImportEntryItemNo_ItemPortFileNJR control.
->>>>>>> b77325e867ea59558e170b0afba9d00747ff0e22
 </summary>
 	<remarks>
 Auto-generated field.
@@ -19059,19 +18623,7 @@ EndCustomerPanel control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-<<<<<<< HEAD
 </member><member name="F:WMS.SingleReceivedWH.EndCustomerUpdatePanel">
-=======
-</member><member name="F:WMS.CreateRec.GridView1">
-	<summary>
-GridView1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.CreateRec.btnSaveToInvoice_ImportFileNJR">
->>>>>>> b77325e867ea59558e170b0afba9d00747ff0e22
 	<summary>
 EndCustomerUpdatePanel control.
 </summary>
@@ -20735,7 +20287,6 @@ CalendarExtenderManufacturing control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-<<<<<<< HEAD
 </member><member name="F:WMS.RejectIssuedWH.txtdatepickerReceiveDate">
 	<summary>
 txtdatepickerReceiveDate control.
@@ -20753,9 +20304,6 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member><member name="F:WMS.RejectIssuedWH.txtQuantity">
-=======
-</member><member name="F:WMS.UpdateGoods.txtImpValueRateP">
->>>>>>> b77325e867ea59558e170b0afba9d00747ff0e22
 	<summary>
 txtQuantity control.
 </summary>
@@ -20862,6 +20410,422 @@ To modify move field declaration from designer file to code-behind file.
 </member><member name="F:WMS.RejectIssuedWH.Repeater9">
 	<summary>
 Repeater9 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptCustomsFrm.form1">
+	<summary>
+form1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptCustomsFrm.ScriptManager1">
+	<summary>
+ScriptManager1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptCustomsFrm.rdbNormalReport">
+	<summary>
+rdbNormalReport control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptCustomsFrm.rdbCompleteReport">
+	<summary>
+rdbCompleteReport control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptCustomsFrm.rdbNotCompleteReport">
+	<summary>
+rdbNotCompleteReport control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptCustomsFrm.rdbIN">
+	<summary>
+rdbIN control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptCustomsFrm.rdbOUT">
+	<summary>
+rdbOUT control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptCustomsFrm.btnAddData">
+	<summary>
+btnAddData control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptCustomsFrm.rdb01_TAB01">
+	<summary>
+rdb01_TAB01 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptCustomsFrm.rdb02_TAB01">
+	<summary>
+rdb02_TAB01 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptCustomsFrm.rdb03_TAB01">
+	<summary>
+rdb03_TAB01 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptCustomsFrm.rdb04_TAB01">
+	<summary>
+rdb04_TAB01 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptCustomsFrm.txtdatepickerFromDate_TAB01">
+	<summary>
+txtdatepickerFromDate_TAB01 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptCustomsFrm.CalendarExtenderFromDate_TAB01">
+	<summary>
+CalendarExtenderFromDate_TAB01 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptCustomsFrm.txtdatepickerToDate_TAB01">
+	<summary>
+txtdatepickerToDate_TAB01 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptCustomsFrm.CalendarExtenderToDate_TAB01">
+	<summary>
+CalendarExtenderToDate_TAB01 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptCustomsFrm.btnReport_TAB01">
+	<summary>
+btnReport_TAB01 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptCustomsFrm.rdb01_TAB02">
+	<summary>
+rdb01_TAB02 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptCustomsFrm.rdb02_TAB02">
+	<summary>
+rdb02_TAB02 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptCustomsFrm.txtdatepickerFromDate_TAB02">
+	<summary>
+txtdatepickerFromDate_TAB02 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptCustomsFrm.CalendarExtenderFromDate_TAB02">
+	<summary>
+CalendarExtenderFromDate_TAB02 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptCustomsFrm.txtdatepickerToDate_TAB02">
+	<summary>
+txtdatepickerToDate_TAB02 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptCustomsFrm.CalendarExtenderToDate_TAB02">
+	<summary>
+CalendarExtenderToDate_TAB02 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptCustomsFrm.btnReport_TAB02">
+	<summary>
+btnReport_TAB02 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptCustomsFrm.txtdatepickerFromDate_TAB03">
+	<summary>
+txtdatepickerFromDate_TAB03 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptCustomsFrm.CalendarExtenderFromDate_TAB03">
+	<summary>
+CalendarExtenderFromDate_TAB03 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptCustomsFrm.txtdatepickerToDate_TAB03">
+	<summary>
+txtdatepickerToDate_TAB03 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptCustomsFrm.CalendarExtenderToDate_TAB03">
+	<summary>
+CalendarExtenderToDate_TAB03 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptCustomsFrm.btnReport_TAB03">
+	<summary>
+btnReport_TAB03 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptCustomsFrm.txtdatepickerFromDate_TAB04">
+	<summary>
+txtdatepickerFromDate_TAB04 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptCustomsFrm.CalendarExtenderFromDate_TAB04">
+	<summary>
+CalendarExtenderFromDate_TAB04 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptCustomsFrm.txtdatepickerToDate_TAB04">
+	<summary>
+txtdatepickerToDate_TAB04 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptCustomsFrm.CalendarExtenderToDate_TAB04">
+	<summary>
+CalendarExtenderToDate_TAB04 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptCustomsFrm.btnReport_TAB04">
+	<summary>
+btnReport_TAB04 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptCustomsFrm.txtdatepickerFromDate_TAB05">
+	<summary>
+txtdatepickerFromDate_TAB05 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptCustomsFrm.CalendarExtenderFromDate_TAB05">
+	<summary>
+CalendarExtenderFromDate_TAB05 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptCustomsFrm.txtdatepickerToDate_TAB05">
+	<summary>
+txtdatepickerToDate_TAB05 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptCustomsFrm.CalendarExtenderToDate_TAB05">
+	<summary>
+CalendarExtenderToDate_TAB05 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptCustomsFrm.btnReport_TAB05">
+	<summary>
+btnReport_TAB05 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptCustomsFrm.txtdatepickerRemainProduct_TAB06">
+	<summary>
+txtdatepickerRemainProduct_TAB06 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptCustomsFrm.CalendarExtenderRemainProduct_TAB06">
+	<summary>
+CalendarExtenderRemainProduct_TAB06 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptCustomsFrm.btnReport_TAB06">
+	<summary>
+btnReport_TAB06 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptCustomsFrm.txtdatepickerFromDate_TAB07">
+	<summary>
+txtdatepickerFromDate_TAB07 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptCustomsFrm.CalendarExtenderFromDate_TAB07">
+	<summary>
+CalendarExtenderFromDate_TAB07 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptCustomsFrm.txtdatepickerToDate_TAB07">
+	<summary>
+txtdatepickerToDate_TAB07 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptCustomsFrm.CalendarExtenderToDate_TAB07">
+	<summary>
+CalendarExtenderToDate_TAB07 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptCustomsFrm.btnReport_TAB07">
+	<summary>
+btnReport_TAB07 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptCustomsFrm.txtdatepickerFromDate_TAB08">
+	<summary>
+txtdatepickerFromDate_TAB08 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptCustomsFrm.CalendarExtenderFromDate_TAB08">
+	<summary>
+CalendarExtenderFromDate_TAB08 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptCustomsFrm.txtdatepickerToDate_TAB08">
+	<summary>
+txtdatepickerToDate_TAB08 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptCustomsFrm.CalendarExtenderToDate_TAB08">
+	<summary>
+CalendarExtenderToDate_TAB08 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WMS.RptCustomsFrm.btnReport_TAB08">
+	<summary>
+btnReport_TAB08 control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -22451,7 +22415,7 @@ dgvCustomerGroup control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.RptCarton.form1">
+</member><member name="F:WMS.RptStatusPickFrm.form1">
 	<summary>
 form1 control.
 </summary>
@@ -22459,7 +22423,7 @@ form1 control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.RptCarton.ScriptManager1">
+</member><member name="F:WMS.RptStatusPickFrm.ScriptManager1">
 	<summary>
 ScriptManager1 control.
 </summary>
@@ -22467,127 +22431,23 @@ ScriptManager1 control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.RptCarton.txtdatepickerFromDate">
+</member><member name="F:WMS.RptStatusPickFrm.ddlBranch">
 	<summary>
-txtdatepickerFromDate control.
+ddlBranch control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.RptCarton.CalendarExtenderFromDate">
+</member><member name="F:WMS.RptStatusPickFrm.ddlCusCode">
 	<summary>
-CalendarExtenderFromDate control.
+ddlCusCode control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.RptCarton.txtdatepickerToDate">
-	<summary>
-txtdatepickerToDate control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptCarton.CalendarExtenderToDate">
-	<summary>
-CalendarExtenderToDate control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptCarton.rdbStock">
-	<summary>
-rdbStock control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptCarton.rdbReceive">
-	<summary>
-rdbReceive control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptCarton.RdbIssue">
-	<summary>
-RdbIssue control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptCarton.txtOwnerCode">
-	<summary>
-txtOwnerCode control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptCarton.btnReport">
-	<summary>
-btnReport control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptSumSeagate.form1">
-	<summary>
-form1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptSumSeagate.ScriptManager1">
-	<summary>
-ScriptManager1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptSumSeagate.txtdatepickerDate">
-	<summary>
-txtdatepickerDate control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptSumSeagate.CalendarExtenderDate">
-	<summary>
-CalendarExtenderDate control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptSumSeagate.txtdatepickerToDate">
-	<summary>
-txtdatepickerToDate control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptSumSeagate.CalendarExtenderToDate">
-	<summary>
-CalendarExtenderToDate control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptSumSeagate.btnReport">
+</member><member name="F:WMS.RptStatusPickFrm.btnReport">
 	<summary>
 btnReport control.
 </summary>
@@ -23891,7 +23751,7 @@ CalendarExtender1 control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.RptLocation.form1">
+</member><member name="F:WMS.RptJobSheetFrm.form1">
 	<summary>
 form1 control.
 </summary>
@@ -23899,7 +23759,7 @@ form1 control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.RptLocation.ScriptManager1">
+</member><member name="F:WMS.RptJobSheetFrm.ScriptManager1">
 	<summary>
 ScriptManager1 control.
 </summary>
@@ -23907,165 +23767,23 @@ ScriptManager1 control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.RptLocation.txtLocationNo">
+</member><member name="F:WMS.RptJobSheetFrm.rdbImport">
 	<summary>
-txtLocationNo control.
+rdbImport control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.RptLocation.btnReport">
+</member><member name="F:WMS.RptJobSheetFrm.rdbExport">
 	<summary>
-btnReport control.
+rdbExport control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.RptLog.form1">
-	<summary>
-form1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptLog.ScriptManager1">
-	<summary>
-ScriptManager1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptLog.ddlSelectImEx">
-	<summary>
-ddlSelectImEx control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptLog.rdbByDate">
-	<summary>
-rdbByDate control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptLog.rdbByInvoice">
-	<summary>
-rdbByInvoice control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-<<<<<<< HEAD
-</member><member name="F:WMS.RptLog.FieldsetByDate">
-	<summary>
-FieldsetByDate control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptLog.txtdatepickerDate">
-=======
-</member><member name="F:WMS.PickingWH.chkNotUseDate_AssignDetail">
->>>>>>> b77325e867ea59558e170b0afba9d00747ff0e22
-	<summary>
-txtdatepickerDate control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptLog.CalendarExtenderDate">
-	<summary>
-CalendarExtenderDate control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptLog.txtdatepickerToDate">
-	<summary>
-txtdatepickerToDate control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptLog.CalendarExtenderToDate">
-	<summary>
-CalendarExtenderToDate control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-<<<<<<< HEAD
-</member><member name="F:WMS.RptLog.FieldsetByInvoice">
-	<summary>
-FieldsetByInvoice control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptLog.txtInvoiceNo">
-=======
-</member><member name="F:WMS.PickingWH.txtOrderFrmOnline">
->>>>>>> b77325e867ea59558e170b0afba9d00747ff0e22
-	<summary>
-txtInvoiceNo control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptLog.btnPrint">
-	<summary>
-btnPrint control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-<<<<<<< HEAD
-</member><member name="F:WMS.RptLog.btnClear">
-	<summary>
-btnClear control.
-=======
-</member><member name="F:WMS.PickingWH.CalendarExtenderExpiredDate_AssignDetail">
-	<summary>
-CalendarExtenderExpiredDate_AssignDetail control.
->>>>>>> b77325e867ea59558e170b0afba9d00747ff0e22
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptStorageCharge.form1">
-	<summary>
-form1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptStorageCharge.ScriptManager1">
-	<summary>
-ScriptManager1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptStorageCharge.txtdatepickerFromDate">
+</member><member name="F:WMS.RptJobSheetFrm.txtdatepickerFromDate">
 	<summary>
 txtdatepickerFromDate control.
 </summary>
@@ -24073,7 +23791,7 @@ txtdatepickerFromDate control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.RptStorageCharge.CalendarExtenderFromDate">
+</member><member name="F:WMS.RptJobSheetFrm.CalendarExtenderFromDate">
 	<summary>
 CalendarExtenderFromDate control.
 </summary>
@@ -24081,7 +23799,7 @@ CalendarExtenderFromDate control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.RptStorageCharge.txtdatepickerToDate">
+</member><member name="F:WMS.RptJobSheetFrm.txtdatepickerToDate">
 	<summary>
 txtdatepickerToDate control.
 </summary>
@@ -24089,7 +23807,7 @@ txtdatepickerToDate control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.RptStorageCharge.CalendarExtenderToDate">
+</member><member name="F:WMS.RptJobSheetFrm.CalendarExtenderToDate">
 	<summary>
 CalendarExtenderToDate control.
 </summary>
@@ -24097,371 +23815,25 @@ CalendarExtenderToDate control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.RptStorageCharge.rdbByDate">
+</member><member name="F:WMS.RptJobSheetFrm.ddlJobSite">
 	<summary>
-rdbByDate control.
+ddlJobSite control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.RptStorageCharge.rdbByIEATNo">
+</member><member name="F:WMS.RptJobSheetFrm.btnPrint">
 	<summary>
-rdbByIEATNo control.
+btnPrint control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:WMS.RptStorageCharge.RdbByIEATPermit">
+</member><member name="F:WMS.RptJobSheetFrm.btnClear">
 	<summary>
-RdbByIEATPermit control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptStorageCharge.txtBalance">
-	<summary>
-txtBalance control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptStorageCharge.btnReport">
-	<summary>
-btnReport control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptWareHouse.form1">
-	<summary>
-form1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptWareHouse.ScriptManager1">
-	<summary>
-ScriptManager1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptWareHouse.ddlDocType">
-	<summary>
-ddlDocType control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptWareHouse.txtJobno">
-	<summary>
-txtJobno control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptWareHouse.txtPartNo">
-	<summary>
-txtPartNo control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptWareHouse.txtLocationNo">
-	<summary>
-txtLocationNo control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptWareHouse.txtCusRefNo">
-	<summary>
-txtCusRefNo control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptWareHouse.txtOrderNo">
-	<summary>
-txtOrderNo control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptWareHouse.chkReceivedDate">
-	<summary>
-chkReceivedDate control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-<<<<<<< HEAD
-</member><member name="F:WMS.RptWareHouse.txtdatepickerReceivedDate">
-	<summary>
-txtdatepickerReceivedDate control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptWareHouse.CalendarExtenderReceivedDate">
-	<summary>
-CalendarExtenderReceivedDate control.
-=======
-</member><member name="F:WMS.PickingWH.rcbLIFO">
-	<summary>
-rcbLIFO control.
->>>>>>> b77325e867ea59558e170b0afba9d00747ff0e22
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptWareHouse.chkIssuedDate">
-	<summary>
-chkIssuedDate control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-<<<<<<< HEAD
-</member><member name="F:WMS.RptWareHouse.txtdatepickerIssuedDate">
-	<summary>
-txtdatepickerIssuedDate control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptWareHouse.CalendarExtenderIssuedDate">
-	<summary>
-CalendarExtenderIssuedDate control.
-=======
-</member><member name="F:WMS.PickingWH.txtIssuedQTY">
-	<summary>
-txtIssuedQTY control.
->>>>>>> b77325e867ea59558e170b0afba9d00747ff0e22
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptWareHouse.ddlCusCode">
-	<summary>
-ddlCusCode control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptWareHouse.ddlENDUserCode">
-	<summary>
-ddlENDUserCode control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptWareHouse.ddlWHSite">
-	<summary>
-ddlWHSite control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptWareHouse.txtToJobno">
-	<summary>
-txtToJobno control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptWareHouse.txtToPartNo">
-	<summary>
-txtToPartNo control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptWareHouse.txtToLocationNo">
-	<summary>
-txtToLocationNo control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptWareHouse.txtToCusRefNo">
-	<summary>
-txtToCusRefNo control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptWareHouse.txtWHSource">
-	<summary>
-txtWHSource control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-<<<<<<< HEAD
-</member><member name="F:WMS.RptWareHouse.txtdatepickerToReceivedDate">
-	<summary>
-txtdatepickerToReceivedDate control.
-=======
-</member><member name="F:WMS.PickingWH.dgvReadWHIssuedRequestNJR">
-	<summary>
-dgvReadWHIssuedRequestNJR control.
->>>>>>> b77325e867ea59558e170b0afba9d00747ff0e22
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-<<<<<<< HEAD
-</member><member name="F:WMS.RptWareHouse.CalendarExtenderToReceivedDate">
-	<summary>
-CalendarExtenderToReceivedDate control.
-=======
-</member><member name="F:WMS.PickingWH.ddlWHSite_PickNJR">
-	<summary>
-ddlWHSite_PickNJR control.
->>>>>>> b77325e867ea59558e170b0afba9d00747ff0e22
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-<<<<<<< HEAD
-</member><member name="F:WMS.RptWareHouse.txtdatepickerToIssuedDate">
-	<summary>
-txtdatepickerToIssuedDate control.
-=======
-</member><member name="F:WMS.PickingWH.dgvItemAuto">
-	<summary>
-dgvItemAuto control.
->>>>>>> b77325e867ea59558e170b0afba9d00747ff0e22
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-<<<<<<< HEAD
-</member><member name="F:WMS.RptWareHouse.CalendarExtenderToIssuedDate">
-	<summary>
-CalendarExtenderToIssuedDate control.
-=======
-</member><member name="F:WMS.PickingWH.txtQuantityOfPick_PickNJR">
-	<summary>
-txtQuantityOfPick_PickNJR control.
->>>>>>> b77325e867ea59558e170b0afba9d00747ff0e22
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptWareHouse.ddlToCusCode">
-	<summary>
-ddlToCusCode control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptWareHouse.ddlToENDUserCode">
-	<summary>
-ddlToENDUserCode control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptWareHouse.chkAllNJR">
-	<summary>
-chkAllNJR control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptWareHouse.rdbExpireDate">
-	<summary>
-rdbExpireDate control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptWareHouse.rdbNotExpire">
-	<summary>
-rdbNotExpire control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptWareHouse.ddlTypeOfGoods">
-	<summary>
-ddlTypeOfGoods control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptWareHouse.txtEndCustomer">
-	<summary>
-txtEndCustomer control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-<<<<<<< HEAD
-</member><member name="F:WMS.RptWareHouse.btnListData">
-	<summary>
-btnListData control.
-=======
-</member><member name="F:WMS.PickingWH.btnAutoPickPallet">
-	<summary>
-btnAutoPickPallet control.
->>>>>>> b77325e867ea59558e170b0afba9d00747ff0e22
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptWareHouse.btnReport">
-	<summary>
-btnReport control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptWareHouse.Repeater1">
-	<summary>
-Repeater1 control.
+btnClear control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -24795,23 +24167,9 @@ txtImpExciseRatePay control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-<<<<<<< HEAD
 </member><member name="F:WMS.UpdateGoods.txtImpExciseSpcRatePay">
 	<summary>
 txtImpExciseSpcRatePay control.
-=======
-</member><member name="F:WMS.RptWareHouse.txtdatepickerReceivedDate">
-	<summary>
-txtdatepickerReceivedDate control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptWareHouse.CalendarExtenderReceivedDate">
-	<summary>
-CalendarExtenderReceivedDate control.
->>>>>>> b77325e867ea59558e170b0afba9d00747ff0e22
 </summary>
 	<remarks>
 Auto-generated field.
@@ -24825,23 +24183,9 @@ txtImpPriviege control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-<<<<<<< HEAD
 </member><member name="F:WMS.UpdateGoods.dcboImpBrand">
 	<summary>
 dcboImpBrand control.
-=======
-</member><member name="F:WMS.RptWareHouse.txtdatepickerIssuedDate">
-	<summary>
-txtdatepickerIssuedDate control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:WMS.RptWareHouse.CalendarExtenderIssuedDate">
-	<summary>
-CalendarExtenderIssuedDate control.
->>>>>>> b77325e867ea59558e170b0afba9d00747ff0e22
 </summary>
 	<remarks>
 Auto-generated field.
@@ -24911,57 +24255,33 @@ chkExpEnable2 control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-<<<<<<< HEAD
 </member><member name="F:WMS.UpdateGoods.txtExpDesc3">
 	<summary>
 txtExpDesc3 control.
-=======
-</member><member name="F:WMS.RptWareHouse.txtdatepickerToReceivedDate">
-	<summary>
-txtdatepickerToReceivedDate control.
->>>>>>> b77325e867ea59558e170b0afba9d00747ff0e22
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-<<<<<<< HEAD
 </member><member name="F:WMS.UpdateGoods.chkExpEnable3">
 	<summary>
 chkExpEnable3 control.
-=======
-</member><member name="F:WMS.RptWareHouse.CalendarExtenderToReceivedDate">
-	<summary>
-CalendarExtenderToReceivedDate control.
->>>>>>> b77325e867ea59558e170b0afba9d00747ff0e22
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-<<<<<<< HEAD
 </member><member name="F:WMS.UpdateGoods.txtExpProductAttribute1">
 	<summary>
 txtExpProductAttribute1 control.
-=======
-</member><member name="F:WMS.RptWareHouse.txtdatepickerToIssuedDate">
-	<summary>
-txtdatepickerToIssuedDate control.
->>>>>>> b77325e867ea59558e170b0afba9d00747ff0e22
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-<<<<<<< HEAD
 </member><member name="F:WMS.UpdateGoods.txtExpProductAttribute2">
 	<summary>
 txtExpProductAttribute2 control.
-=======
-</member><member name="F:WMS.RptWareHouse.CalendarExtenderToIssuedDate">
-	<summary>
-CalendarExtenderToIssuedDate control.
->>>>>>> b77325e867ea59558e170b0afba9d00747ff0e22
 </summary>
 	<remarks>
 Auto-generated field.
@@ -25015,15 +24335,9 @@ txtExpQtyCarton control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-<<<<<<< HEAD
 </member><member name="F:WMS.UpdateGoods.txtExpWeightCarton">
 	<summary>
 txtExpWeightCarton control.
-=======
-</member><member name="F:WMS.RptWareHouse.txtEndCustomer">
-	<summary>
-txtEndCustomer control.
->>>>>>> b77325e867ea59558e170b0afba9d00747ff0e22
 </summary>
 	<remarks>
 Auto-generated field.

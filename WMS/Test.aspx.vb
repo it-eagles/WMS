@@ -260,7 +260,7 @@ Public Class Test
             Dim FileName As String = Path.GetFileName(FileUpload1.PostedFile.FileName)
             ' นามสกุล
             Dim Extension As String = Path.GetExtension(FileUpload1.PostedFile.FileName)
-            ' Path ที่เก็บไฟล์ 
+            ' Path ที่เก็บไฟล์
             Dim FolderPath As String = ConfigurationManager.AppSettings("FolderPath")
             ' save ไฟล์ลง path
             Dim FilePath As String = Server.MapPath(FolderPath + FileName)
@@ -270,7 +270,7 @@ Public Class Test
     End Sub
     Private Sub Import_To_Grid(ByVal FilePath As String, ByVal Extension As String, ByVal isHDR As String)
         Dim conStr As String = ""
-        Dim i As Integer
+        'Dim i As Integer
         Select Case Extension
             Case ".xls"
                 conStr = ConfigurationManager.ConnectionStrings("Excel03ConString").ConnectionString
