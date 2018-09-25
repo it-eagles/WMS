@@ -21,7 +21,11 @@ Public Class AdLocWH
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If Not Me.IsPostBack Then
-
+            txtLocation.Disabled = True
+            txtAvalibleQTY.Disabled = True
+            txtDamageQTY.Disabled = True
+            rdbGoodComplete.Enabled = False
+            rdbGoodDamage.Enabled = False
         End If
     End Sub
 
@@ -316,8 +320,10 @@ Public Class AdLocWH
         txtInvoice.Value = ""
 
 
+
     End Sub
-        Public Sub showJobNo()
+    
+    Public Sub showJobNo()
 
         Dim user = (From u In db.tblWHConfirmGoodsReceiveDetails Where u.LOTNo = txtJobNo.Value.Trim
                        Select New With {u.LOTNo,
@@ -325,12 +331,12 @@ Public Class AdLocWH
                               u.ENDCustomer,
                               u.CustomerLOTNo,
                               u.ItemNo}).ToList()
-            If user.Count > 0 Then
-                Repeater2.DataSource = user.ToList
-                Repeater2.DataBind()
-            Else
-                Me.Repeater2.DataSource = Nothing
-                Me.Repeater2.DataBind()
-            End If
-        End Sub
-    End Class
+        If user.Count > 0 Then
+            Repeater2.DataSource = user.ToList
+            Repeater2.DataBind()
+        Else
+            Me.Repeater2.DataSource = Nothing
+            Me.Repeater2.DataBind()
+        End If
+    End Sub
+End Class
