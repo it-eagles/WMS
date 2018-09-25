@@ -1694,7 +1694,7 @@
                                                                    <%-- <input type="file" class="form-control input-sm" id="txtSelectFileForImportEntryItemNo_ItemPortFileNJR" runat="server" />--%>
                                                                 </div>
                                                                 <div class="col-sm-4">
-                                                                    <button type="submit" runat="server" onserverclick="btnImport_ImportFileNJR_ServerClick" class="btn btn-success" id="btnImport_ImportFileNJR" title="btnImport_ImportFileNJR">Import Update</button>
+                                                                    <button type="submit" runat="server"  onserverclick="btnImport_ImportFileNJR_ServerClick" class="btn btn-success" id="btnImport_ImportFileNJR" title="btnImport_ImportFileNJR">Import Update</button>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group">
