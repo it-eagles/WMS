@@ -36,7 +36,7 @@
                    <div class="col-lg-8 col-md-8 col-md-offset-2">
                             <!-- form start -->
                            
-                       <from class="form-horizontal">
+                       <div class="form-horizontal">
                            <div class="box-body">   
                                             
                                 <div class="form-group" >
@@ -64,7 +64,7 @@
                                       <div class="col-sm-10">
                                            <%--<input class="form-control input-sm" id="txtDescription" runat="server" placeholder="Description"/>--%>
                                            <%--<textarea class="form-control input-sm" rows="3" placeholder="Enter ..." style="margin: 0px 8.5px 0px 0px; width: 575px; height: 86px;"></textarea>--%>
-                                           <asp:TextBox Cssclass="form-control input-sm" TextMode="MultiLine" runat="server" Height="135px" Width="575px" ID="txtDescription"></asp:TextBox>
+                                           <asp:TextBox Cssclass="form-control input-sm" TextMode="MultiLine" runat="server" Height="135px" Width="669px" ID="txtDescription"></asp:TextBox>
                                         </div>
                       
                                     </div>
@@ -73,7 +73,7 @@
                                            <div class="col-sm-10">
                                             <%--<input class="form-control input-sm" id="txtNotes" runat="server"  placeholder="Notes"/>--%>
                                             <%--<textarea class="form-control input-sm" rows="3" placeholder="Enter ..." style="margin: 0px 8.5px 0px 0px; width: 575px; height: 86px;"></textarea>--%>
-                                               <asp:TextBox runat="server" Cssclass="form-control input-sm" TextMode="MultiLine" Height="135px" Width="575px" ID="txtNotes"></asp:TextBox>
+                                               <asp:TextBox runat="server" Cssclass="form-control input-sm" TextMode="MultiLine" Height="135px" Width="669px" ID="txtNotes"></asp:TextBox>
                                            </div>
                                       
                                     </div>
@@ -85,13 +85,13 @@
                                        </div>
                                    
                                     </div>
-                                <div class="text-right">
-                        <button type="submit" runat="server" class="btn btn-primary btn-sm" id="btnAddGroup" title="btnAddUser" onserverclick="btnUpdatGroup_Click">Update</button>
+                                <div class="text-center">
+                        <button type="submit" runat="server" class="btn btn-primary btn-lg" id="btnAddGroup" title="btnAddUser" onserverclick="btnUpdatGroup_Click">Update</button>
                              </div>
                                     <!-- /.box-body -->
                              </div>
                           
-                       </from>
+                       </div>
                           
                             <!--/.col-lg-6 col-md-6--->
                         </div>

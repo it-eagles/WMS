@@ -181,18 +181,18 @@
     <Content Include="ReportIEAT-E-02.aspx" />
     <Content Include="ReportIEATRec.aspx" />
     <Content Include="ReportLotTotal.aspx" />
-    <Content Include="RptCarton.aspx" />
-    <Content Include="RptCustoms.aspx" />
-    <Content Include="RptCustomsDaily.aspx" />
-    <Content Include="RptIEAT.aspx" />
-    <Content Include="RptIEATFee.aspx" />
-    <Content Include="RptJobSheet.aspx" />
-    <Content Include="RptLocation.aspx" />
-    <Content Include="RptLog.aspx" />
-    <Content Include="RptPlanHTI.aspx" />
-    <Content Include="RptStatusPick.aspx" />
-    <Content Include="RptStorageAging.aspx" />
-    <Content Include="RptStorageCharge.aspx" />
+    <Content Include="RptCartonFrm.aspx" />
+    <Content Include="RptCustomsFrm.aspx" />
+    <Content Include="RptCustomsDailyFrm.aspx" />
+    <Content Include="RptIEATFrm.aspx" />
+    <Content Include="RptIEATFeeFrm.aspx" />
+    <Content Include="RptJobSheetFrm.aspx" />
+    <Content Include="RptLocationFrm.aspx" />
+    <Content Include="RptLogFrm.aspx" />
+    <Content Include="RptPlanHTIFrm.aspx" />
+    <Content Include="RptStatusPickFrm.aspx" />
+    <Content Include="RptStorageAgingFrm.aspx" />
+    <Content Include="RptStorageChargeFrm.aspx" />
     <Content Include="RptSumLOT.aspx" />
     <Content Include="RptSumSeagate.aspx" />
     <Content Include="RptTranPick.aspx" />
@@ -7436,125 +7436,89 @@
       <DependentUpon>ReportLotTotal.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="Report\CrystalReport1.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CrystalReport1.rpt</DependentUpon>
-      <SubType>Component</SubType>
+    <Compile Include="RptCartonFrm.aspx.designer.vb">
+      <DependentUpon>RptCartonFrm.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Report\rptIEATExport.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>rptIEATExport.rpt</DependentUpon>
-      <SubType>Component</SubType>
+    <Compile Include="RptCartonFrm.aspx.vb">
+      <DependentUpon>RptCartonFrm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Report\rptIEATImport.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>rptIEATImport.rpt</DependentUpon>
-      <SubType>Component</SubType>
+    <Compile Include="RptCustomsFrm.aspx.designer.vb">
+      <DependentUpon>RptCustomsFrm.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Report\rptSegateSummaryReport1.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>rptSegateSummaryReport1.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Report\rptSummaryJobIn.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>rptSummaryJobIn.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Report\rptSummaryJOBOut.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>rptSummaryJOBOut.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="RptCarton.aspx.designer.vb">
-      <DependentUpon>RptCarton.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="RptCarton.aspx.vb">
-      <DependentUpon>RptCarton.aspx</DependentUpon>
+    <Compile Include="RptCustomsFrm.aspx.vb">
+      <DependentUpon>RptCustomsFrm.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="RptCustoms.aspx.designer.vb">
-      <DependentUpon>RptCustoms.aspx</DependentUpon>
+    <Compile Include="RptCustomsDailyFrm.aspx.designer.vb">
+      <DependentUpon>RptCustomsDailyFrm.aspx</DependentUpon>
     </Compile>
-    <Compile Include="RptCustoms.aspx.vb">
-      <DependentUpon>RptCustoms.aspx</DependentUpon>
+    <Compile Include="RptCustomsDailyFrm.aspx.vb">
+      <DependentUpon>RptCustomsDailyFrm.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="RptCustomsDaily.aspx.designer.vb">
-      <DependentUpon>RptCustomsDaily.aspx</DependentUpon>
+    <Compile Include="RptIEATFrm.aspx.designer.vb">
+      <DependentUpon>RptIEATFrm.aspx</DependentUpon>
     </Compile>
-    <Compile Include="RptCustomsDaily.aspx.vb">
-      <DependentUpon>RptCustomsDaily.aspx</DependentUpon>
+    <Compile Include="RptIEATFrm.aspx.vb">
+      <DependentUpon>RptIEATFrm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RptIEATFeeFrm.aspx.designer.vb">
+      <DependentUpon>RptIEATFeeFrm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RptIEATFeeFrm.aspx.vb">
+      <DependentUpon>RptIEATFeeFrm.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="RptIEAT.aspx.designer.vb">
-      <DependentUpon>RptIEAT.aspx</DependentUpon>
+    <Compile Include="RptJobSheetFrm.aspx.designer.vb">
+      <DependentUpon>RptJobSheetFrm.aspx</DependentUpon>
     </Compile>
-    <Compile Include="RptIEAT.aspx.vb">
-      <DependentUpon>RptIEAT.aspx</DependentUpon>
+    <Compile Include="RptJobSheetFrm.aspx.vb">
+      <DependentUpon>RptJobSheetFrm.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="RptIEATFee.aspx.designer.vb">
-      <DependentUpon>RptIEATFee.aspx</DependentUpon>
+    <Compile Include="RptLocationFrm.aspx.designer.vb">
+      <DependentUpon>RptLocationFrm.aspx</DependentUpon>
     </Compile>
-    <Compile Include="RptIEATFee.aspx.vb">
-      <DependentUpon>RptIEATFee.aspx</DependentUpon>
+    <Compile Include="RptLocationFrm.aspx.vb">
+      <DependentUpon>RptLocationFrm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RptLogFrm.aspx.designer.vb">
+      <DependentUpon>RptLogFrm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RptLogFrm.aspx.vb">
+      <DependentUpon>RptLogFrm.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="RptJobSheet.aspx.designer.vb">
-      <DependentUpon>RptJobSheet.aspx</DependentUpon>
+    <Compile Include="RptPlanHTIFrm.aspx.designer.vb">
+      <DependentUpon>RptPlanHTIFrm.aspx</DependentUpon>
     </Compile>
-    <Compile Include="RptJobSheet.aspx.vb">
-      <DependentUpon>RptJobSheet.aspx</DependentUpon>
+    <Compile Include="RptPlanHTIFrm.aspx.vb">
+      <DependentUpon>RptPlanHTIFrm.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="RptLocation.aspx.designer.vb">
-      <DependentUpon>RptLocation.aspx</DependentUpon>
+    <Compile Include="RptStatusPickFrm.aspx.designer.vb">
+      <DependentUpon>RptStatusPickFrm.aspx</DependentUpon>
     </Compile>
-    <Compile Include="RptLocation.aspx.vb">
-      <DependentUpon>RptLocation.aspx</DependentUpon>
+    <Compile Include="RptStatusPickFrm.aspx.vb">
+      <DependentUpon>RptStatusPickFrm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RptStorageAgingFrm.aspx.designer.vb">
+      <DependentUpon>RptStorageAgingFrm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RptStorageAgingFrm.aspx.vb">
+      <DependentUpon>RptStorageAgingFrm.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="RptLog.aspx.designer.vb">
-      <DependentUpon>RptLog.aspx</DependentUpon>
+    <Compile Include="RptStorageChargeFrm.aspx.designer.vb">
+      <DependentUpon>RptStorageChargeFrm.aspx</DependentUpon>
     </Compile>
-    <Compile Include="RptLog.aspx.vb">
-      <DependentUpon>RptLog.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
-    </Compile>
-    <Compile Include="RptPlanHTI.aspx.designer.vb">
-      <DependentUpon>RptPlanHTI.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="RptPlanHTI.aspx.vb">
-      <DependentUpon>RptPlanHTI.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
-    </Compile>
-    <Compile Include="RptStatusPick.aspx.designer.vb">
-      <DependentUpon>RptStatusPick.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="RptStatusPick.aspx.vb">
-      <DependentUpon>RptStatusPick.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
-    </Compile>
-    <Compile Include="RptStorageAging.aspx.designer.vb">
-      <DependentUpon>RptStorageAging.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="RptStorageAging.aspx.vb">
-      <DependentUpon>RptStorageAging.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
-    </Compile>
-    <Compile Include="RptStorageCharge.aspx.designer.vb">
-      <DependentUpon>RptStorageCharge.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="RptStorageCharge.aspx.vb">
-      <DependentUpon>RptStorageCharge.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+    <Compile Include="RptStorageChargeFrm.aspx.vb">
+      <DependentUpon>RptStorageChargeFrm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="RptSumLOT.aspx.designer.vb">
       <DependentUpon>RptSumLOT.aspx</DependentUpon>
@@ -7752,30 +7716,6 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Report\CrystalReport1.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>CrystalReport1.vb</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Report\rptIEATExport.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptIEATExport.vb</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Report\rptIEATImport.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptIEATImport.vb</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Report\rptSegateSummaryReport1.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptSegateSummaryReport1.vb</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Report\rptSummaryJobIn.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptSummaryJobIn.vb</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Report\rptSummaryJOBOut.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptSummaryJOBOut.vb</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
