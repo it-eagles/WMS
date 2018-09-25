@@ -22,8 +22,7 @@ Public Class Test
         'lblDisplayDate.Text = System.DateTime.Now.ToString("T")
         If Not Me.IsPostBack Then
             'TabName.Value = Request.Form(TabName.UniqueID)
-
-            showUserList()
+            'showUserList()
         End If
     End Sub
     Protected Sub btnTest_ServerClick(sender As Object, e As EventArgs)
@@ -255,7 +254,20 @@ Public Class Test
         Next
     End Sub
 
-  
+    Protected Sub btnAdd_ServerClick(sender As Object, e As EventArgs)
+        If FileUpload1.HasFile Then
+            ' Path ที่ฮยู่ไฟล์
+            Dim FileName As String = Path.GetFileName(FileUpload1.PostedFile.FileName)
+            ' นามสกุล
+            Dim Extension As String = Path.GetExtension(FileUpload1.PostedFile.FileName)
+            ' Path ที่เก็บไฟล์ 
+            Dim FolderPath As String = ConfigurationManager.AppSettings("FolderPath")
+            ' save ไฟล์ลง path
+            Dim FilePath As String = Server.MapPath(FolderPath + FileName)
+            FileUpload1.SaveAs(FilePath)
+            Import_To_Grid(FilePath, Extension, rbHDR.SelectedItem.Text)
+        End If
+    End Sub
     Private Sub Import_To_Grid(ByVal FilePath As String, ByVal Extension As String, ByVal isHDR As String)
         Dim conStr As String = ""
         Dim i As Integer
@@ -288,7 +300,6 @@ Public Class Test
         oda.Fill(dt)
         connExcel.Close()
 
-     
         GridView1.Caption = Path.GetFileName(FilePath)
         GridView1.DataSource = dt
         GridView1.DataBind()
@@ -305,23 +316,5 @@ Public Class Test
         Import_To_Grid(FilePath, Extension, rbHDR.SelectedItem.Text)
         GridView1.PageIndex = e.NewPageIndex
         GridView1.DataBind()
-    End Sub
-
-    Protected Sub btnAdd_ServerClick(sender As Object, e As EventArgs)
-        If FileUpload1.HasFile Then
-            ' Path ที่ฮยู่ไฟล์
-            Dim FileName As String = Path.GetFileName(FileUpload1.PostedFile.FileName)
-            ' นามสกุล
-            Dim Extension As String = Path.GetExtension(FileUpload1.PostedFile.FileName)
-            ' Path ที่เก็บไฟล์ 
-            Dim FolderPath As String = ConfigurationManager.AppSettings("FolderPath")
-            ' save ไฟล์ลง path
-            Dim FilePath As String = Server.MapPath(FolderPath + FileName)
-
-            'Dim fileExists As Boolean
-            'fileExists = My.Computer.FileSystem.FileExists(Application.StartupPath & FileName)
-            FileUpload1.SaveAs(FilePath)
-            Import_To_Grid(FilePath, Extension, rbHDR.SelectedItem.Text)
-        End If
     End Sub
 End Class
