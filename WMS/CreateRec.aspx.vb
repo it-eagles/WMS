@@ -11,6 +11,9 @@ Imports CrystalDecisions.CrystalReports.Engine
 Imports System.Transactions
 Imports System.Globalization
 Imports System.Net.Mime.MediaTypeNames
+'Imports System.Data
+Imports System.Data.OleDb
+Imports Microsoft.Office.Interop
 
 Public Class CreateRec
     Inherits System.Web.UI.Page
@@ -4016,4 +4019,194 @@ Public Class CreateRec
         End If
         ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('Sent To Confirm เรียบร้อยแล้วครับ');", True)
     End Sub
+
+    Protected Sub btnUpload_OnClick(sender As Object, e As EventArgs)
+
+        If Not IsNothing(txtSelectFileForImport_Import.PostedFile) Then
+
+            Dim UlFileName As String
+            Dim i As Integer
+
+            UlFileName = "MyXls/" & System.IO.Path.GetFileName(txtSelectFileForImport_Import.Value)
+
+            '*** Save Images ***'
+            txtSelectFileForImport_Import.PostedFile.SaveAs(Server.MapPath(UlFileName))
+
+            '*** Create Excel.Application ***'
+            Dim xlApp As New Excel.Application
+            Dim xlBook As Excel.Workbook
+            Dim xlSheet1 As Excel.Worksheet
+
+            xlBook = xlApp.Workbooks.Open(Server.MapPath(UlFileName))
+            xlBook.Application.Visible = False
+
+            xlSheet1 = xlBook.Worksheets(1)
+
+            '*** Create DataTable ***'
+            Dim dt As New System.Data.DataTable
+            Dim dr As System.Data.DataRow
+
+            '*** Column ***'
+            dt.Columns.Add("InvoiceNo")
+            dt.Columns.Add("DateInv")
+            dt.Columns.Add("ProductCode")
+            dt.Columns.Add("ProductName")
+            dt.Columns.Add("Quantity")
+            dt.Columns.Add("QuantityUnit")
+            dt.Columns.Add("RemarkInv")
+            dt.Columns.Add("PO")
+            dt.Columns.Add("Pallet")
+            dt.Columns.Add("UnitPallet")
+            dt.Columns.Add("Weight")
+            dt.Columns.Add("UnitWeight")
+            dt.Columns.Add("Pallet1")
+            dt.Columns.Add("UnitPallet1")
+            dt.Columns.Add("UnitDimension")
+            dt.Columns.Add("Num")
+            dt.Columns.Add("Currency")
+            dt.Columns.Add("ExchangeRate")
+            dt.Columns.Add("PriceForeigh")
+            dt.Columns.Add("PriceForeighAmount")
+            dt.Columns.Add("PriceBath")
+            dt.Columns.Add("PriceBathAmount")
+            dt.Columns.Add("ItemNo")
+            dt.Columns.Add("Shipment")
+            dt.Columns.Add("OwnerPN")
+            dt.Columns.Add("CustomerPN")
+            dt.Columns.Add("Prodes")
+            dt.Columns.Add("ExpTariffCode")
+
+            i = 2
+            Do While Not Trim(xlSheet1.Cells.Item(i, 1).Value) = ""
+                '*** Rows ***'
+                dr = dt.NewRow
+                dr("InvoiceNo") = xlSheet1.Cells.Item(i, 1).Value
+                dr("DateInv") = xlSheet1.Cells.Item(i, 2).Value
+                dr("ProductCode") = xlSheet1.Cells.Item(i, 3).Value
+                dr("ProductName") = xlSheet1.Cells.Item(i, 4).Value
+                dr("Quantity") = xlSheet1.Cells.Item(i, 5).Value
+                dr("QuantityUnit") = xlSheet1.Cells.Item(i, 6).Value
+                dr("RemarkInv") = xlSheet1.Cells.Item(i, 7).Value
+                dr("PO") = xlSheet1.Cells.Item(i, 8).Value
+                dr("Pallet") = xlSheet1.Cells.Item(i, 9).Value
+                dr("UnitPallet") = xlSheet1.Cells.Item(i, 10).Value
+                dr("Weight") = xlSheet1.Cells.Item(i, 11).Value
+                dr("UnitWeight") = xlSheet1.Cells.Item(i, 12).Value
+                dr("Pallet1") = xlSheet1.Cells.Item(i, 13).Value
+                dr("UnitPallet1") = xlSheet1.Cells.Item(i, 14).Value
+                dr("UnitDimension") = xlSheet1.Cells.Item(i, 15).Value
+                dr("Num") = xlSheet1.Cells.Item(i, 16).Value
+                dr("Currency") = xlSheet1.Cells.Item(i, 17).Value
+                dr("ExchangeRate") = xlSheet1.Cells.Item(i, 18).Value
+                dr("PriceForeigh") = xlSheet1.Cells.Item(i, 19).Value
+                dr("PriceForeighAmount") = xlSheet1.Cells.Item(i, 20).Value
+                dr("PriceBath") = xlSheet1.Cells.Item(i, 21).Value
+                dr("PriceBathAmount") = xlSheet1.Cells.Item(i, 22).Value
+                dr("ItemNo") = xlSheet1.Cells.Item(i, 23).Value
+                dr("Shipment") = xlSheet1.Cells.Item(i, 24).Value
+                dr("OwnerPN") = xlSheet1.Cells.Item(i, 25).Value
+                dr("CustomerPN") = xlSheet1.Cells.Item(i, 26).Value
+                dr("Prodes") = xlSheet1.Cells.Item(i, 27).Value
+                dr("ExpTariffCode") = xlSheet1.Cells.Item(i, 28).Value
+                dt.Rows.Add(dr)
+                i = i + 1
+            Loop
+
+            '*** End DataTable ***'
+
+            '*** Insert to Database ***'
+            Dim objConn As OleDbConnection
+            Dim objCmd As OleDbCommand
+            Dim strConnString As String
+            Dim strSQL As String
+            strConnString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & Server.MapPath("database/mydatabase.mdb") & ";"
+            objConn = New OleDbConnection(strConnString)
+            objConn.Open()
+
+            For i = 0 To dt.Rows.Count - 1                  '*** Insert Record ***'
+                strSQL = "INSERT INTO customer2 (CustomerID,Name,Email,CountryCode,Budget,Used) " & _
+                " VALUES ('" & dt.Rows(i)("CustomerID") & "','" & dt.Rows(i)("Name") & "' " & _
+                ",'" & dt.Rows(i)("Email") & "','" & dt.Rows(i)("CountryCode") & "' " & _
+                ",'" & dt.Rows(i)("Budget") & "','" & dt.Rows(i)("Used") & "') "
+                objCmd = New OleDbCommand(strSQL, objConn)
+                objCmd.ExecuteNonQuery()
+            Next
+
+            'Me.lblText.Text = "Record Inserted."
+
+            '*** Quit and Clear Object ***'
+            objConn.Close()
+            objConn = Nothing
+
+            xlApp.Application.Quit()
+            xlApp.Quit()
+            xlSheet1 = Nothing
+            xlBook = Nothing
+            xlApp = Nothing
+        End If
+
+    End Sub
+
+    Protected Sub Import_ImportFileNJR(ByVal FilePath As String, ByVal Extension As String, ByVal isHDR As String)
+
+        Dim conStr As String = ""
+        Dim i As Integer
+        Select Case Extension
+            Case ".xls"
+                conStr = ConfigurationManager.ConnectionStrings("Excel03ConString").ConnectionString
+                Exit Select
+            Case ".xlsx"
+                conStr = ConfigurationManager.ConnectionStrings("Excel07ConString").ConnectionString
+                Exit Select
+            Case ".csv"
+                conStr = ConfigurationManager.ConnectionStrings("CSVConString").ConnectionString
+                Exit Select
+        End Select
+
+        conStr = String.Format(conStr, FilePath, isHDR)
+
+        Dim connExcel As New OleDbConnection(conStr)
+        Dim cmdExcel As New OleDbCommand
+        Dim oda As New OleDbDataAdapter
+        Dim dt As New DataTable
+
+        cmdExcel.Connection = connExcel
+        connExcel.Open()
+        Dim dtExeelSchema As DataTable
+        dtExeelSchema = connExcel.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, Nothing)
+        Dim SheetName As String = dtExeelSchema.Rows(0)("TABLE_NAME").ToString
+        connExcel.Close()
+
+        connExcel.Open()
+        cmdExcel.CommandText = "SELECT * From [" & SheetName & "]"
+        oda.SelectCommand = cmdExcel
+        oda.Fill(dt)
+        connExcel.Close()
+
+        'For i = 0 To dt.Rows.Count - 1
+        'txtCompanyName.Text = dt.Rows(i)("CompanyName").ToString
+        '
+        'Next
+        GridView1.Caption = Path.GetFileName(FilePath)
+        GridView1.DataSource = dt
+        GridView1.DataBind()
+        dt.Columns.Add()
+
+    End Sub
+
+    Protected Sub btnImport_ImportFileNJR_ServerClick(sender As Object, e As EventArgs)
+        If ImportEntryItemNo_ItemPortFileNJR.HasFile Then
+            ' Path ที่ฮยู่ไฟล์
+            Dim FileName As String = Path.GetFileName(ImportEntryItemNo_ItemPortFileNJR.PostedFile.FileName)
+            ' นามสกุล
+            Dim Extension As String = Path.GetExtension(ImportEntryItemNo_ItemPortFileNJR.PostedFile.FileName)
+            ' Path ที่เก็บไฟล์ 
+            Dim FolderPath As String = ConfigurationManager.AppSettings("FolderPath")
+            ' save ไฟล์ลง path
+            Dim FilePath As String = Server.MapPath(FolderPath + FileName)
+            'ImportEntryItemNo_ItemPortFileNJR.SaveAs(FilePath)
+            Import_ImportFileNJR(FilePath, Extension, "Yes")
+        End If
+    End Sub
 End Class
+

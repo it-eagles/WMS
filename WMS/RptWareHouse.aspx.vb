@@ -795,6 +795,284 @@ Protected Sub btnListData_ServerClick(sender As Object, e As EventArgs)
             Dim url As String = "ShowReport/ShowRptWareHouse.aspx?Jonno=" + Jobno + "&WHSite=" + CheckWHStie
             ScriptManager.RegisterStartupScript(Me, Me.GetType(), "onclick", "javascript:window.open( '" + url + "','_blank','height=600px,width=1000px,scrollbars=1');", True)
 
+        ElseIf ddlDocType.Text = "Summary Unpicking Report" Then
+
+            If ddlCusCode.Text.Trim = "" Then
+                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ Cus Code ก่อน');", True)
+                Exit Sub
+            End If
+            If txtdatepickerReceivedDate.Text.Trim = "" Then
+                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ Received Date ก่อน');", True)
+                Exit Sub
+            End If
+            If txtdatepickerToReceivedDate.Text.Trim = "" Then
+                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ To Received Date ก่อน');", True)
+                Exit Sub
+            End If
+            If ddlWHSite.Text.Trim = "" Then
+                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ WH Site ก่อน');", True)
+                Exit Sub
+            End If
+            If txtCusRefNo.Value.Trim = "" Then
+                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ CusRef No ก่อน');", True)
+                Exit Sub
+            End If
+            If txtPartNo.Value.Trim = "" Then
+                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ Part No ก่อน');", True)
+                Exit Sub
+            End If
+            If txtOrderNo.Value.Trim = "" Then
+                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ Order No ก่อน');", True)
+                Exit Sub
+            End If
+
+            If chkAllNJR.Checked = True Then
+                Checkallnjr = 1
+            Else
+                Checkallnjr = 0
+            End If
+
+            Session("CheckDocType") = CheckDocType
+            Session("Cuscode") = Cuscode
+            Session("ReceivedDate") = ReceivedDate
+            Session("To_ReceivedDate") = To_ReceivedDate
+            Session("CheckWHStie") = CheckWHStie
+            Session("Cusrefno") = Cusrefno
+            Session("Partno") = Partno
+            Session("Orderno") = Orderno
+            Session("Checkallnjr") = Checkallnjr
+
+            Dim url As String = "ShowReport/ShowRptWareHouse.aspx?Jonno=" + Jobno + "&WHSite=" + CheckWHStie
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "onclick", "javascript:window.open( '" + url + "','_blank','height=600px,width=1000px,scrollbars=1');", True)
+
+        ElseIf ddlDocType.Text = "HTI Quarantine Stock Control" Then
+
+            If ddlCusCode.Text.Trim = "" Then
+                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ Cus Code ก่อน');", True)
+                Exit Sub
+            End If
+            If txtdatepickerReceivedDate.Text.Trim = "" Then
+                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ Received Date ก่อน');", True)
+                Exit Sub
+            End If
+            If txtdatepickerToReceivedDate.Text.Trim = "" Then
+                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ To Received Date ก่อน');", True)
+                Exit Sub
+            End If
+            If ddlWHSite.Text.Trim = "" Then
+                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ WH Site ก่อน');", True)
+                Exit Sub
+            End If
+            If txtPartNo.Value.Trim = "" Then
+                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ Part No ก่อน');", True)
+                Exit Sub
+            End If
+            If txtOrderNo.Value.Trim = "" Then
+                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ Order No ก่อน');", True)
+                Exit Sub
+            End If
+
+            Session("CheckDocType") = CheckDocType
+            Session("Cuscode") = Cuscode
+            Session("ReceivedDate") = ReceivedDate
+            Session("To_ReceivedDate") = To_ReceivedDate
+            Session("CheckWHStie") = CheckWHStie
+            Session("Partno") = Partno
+            Session("Orderno") = Orderno
+
+            Dim url As String = "ShowReport/ShowRptWareHouse.aspx?Jonno=" + Jobno + "&WHSite=" + CheckWHStie
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "onclick", "javascript:window.open( '" + url + "','_blank','height=600px,width=1000px,scrollbars=1');", True)
+
+        ElseIf ddlDocType.Text = "Check HTI Quarantine Stock Control" Then
+
+            If ddlCusCode.Text.Trim = "" Then
+                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ Cus Code ก่อน');", True)
+                Exit Sub
+            End If
+            If txtdatepickerReceivedDate.Text.Trim = "" Then
+                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ Received Date ก่อน');", True)
+                Exit Sub
+            End If
+            If txtdatepickerToReceivedDate.Text.Trim = "" Then
+                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ To Received Date ก่อน');", True)
+                Exit Sub
+            End If
+            If ddlWHSite.Text.Trim = "" Then
+                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ WH Site ก่อน');", True)
+                Exit Sub
+            End If
+            If txtPartNo.Value.Trim = "" Then
+                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ Part No ก่อน');", True)
+                Exit Sub
+            End If
+            If txtOrderNo.Value.Trim = "" Then
+                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ Order No ก่อน');", True)
+                Exit Sub
+            End If
+            If ddlTypeOfGoods.Text.Trim = "" Then
+                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ Type Of Good ก่อน');", True)
+                Exit Sub
+            End If
+
+            If chkReceivedDate.Checked = True Then
+                CheckRecDate = "No"
+            Else
+                CheckRecDate = "Yes"
+            End If
+
+            Session("CheckDocType") = CheckDocType
+            Session("Cuscode") = Cuscode
+            Session("ReceivedDate") = ReceivedDate
+            Session("To_ReceivedDate") = To_ReceivedDate
+            Session("CheckWHStie") = CheckWHStie
+            Session("Partno") = Partno
+            Session("Orderno") = Orderno
+            Session("CheckType") = CheckType
+            Session("CheckRecDate") = CheckRecDate
+
+            Dim url As String = "ShowReport/ShowRptWareHouse.aspx?Jonno=" + Jobno + "&WHSite=" + CheckWHStie
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "onclick", "javascript:window.open( '" + url + "','_blank','height=600px,width=1000px,scrollbars=1');", True)
+
+        ElseIf ddlDocType.Text = "Summary Job Receipt From LKB" Then
+
+            If txtdatepickerReceivedDate.Text.Trim = "" Then
+                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ Received Date ก่อน');", True)
+                Exit Sub
+            End If
+            If txtdatepickerToReceivedDate.Text.Trim = "" Then
+                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ To Received Date ก่อน');", True)
+                Exit Sub
+            End If
+
+            Session("CheckDocType") = CheckDocType
+            Session("ReceivedDate") = ReceivedDate
+            Session("To_ReceivedDate") = To_ReceivedDate
+
+            Dim url As String = "ShowReport/ShowRptWareHouse.aspx?Jonno=" + Jobno + "&WHSite=" + CheckWHStie
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "onclick", "javascript:window.open( '" + url + "','_blank','height=600px,width=1000px,scrollbars=1');", True)
+
+        ElseIf ddlDocType.Text = "Summary Job Issued From LKB" Then
+
+            If txtdatepickerIssuedDate.Text.Trim = "" Then
+                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ Issued Date ก่อน');", True)
+                Exit Sub
+            End If
+            If txtdatepickerToIssuedDate.Text.Trim = "" Then
+                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ To Issued Date ก่อน');", True)
+                Exit Sub
+            End If
+
+            Session("CheckDocType") = CheckDocType
+            Session("IssuedDate") = IssuedDate
+            Session("To_IssuedDate") = To_IssuedDate
+
+            Dim url As String = "ShowReport/ShowRptWareHouse.aspx?Jonno=" + Jobno + "&WHSite=" + CheckWHStie
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "onclick", "javascript:window.open( '" + url + "','_blank','height=600px,width=1000px,scrollbars=1');", True)
+
+        ElseIf ddlDocType.Text = "HTI Stock Take" Then
+
+            If ddlWHSite.Text.Trim = "" Then
+                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ WH Site ก่อน');", True)
+                Exit Sub
+            End If
+            If txtPartNo.Value.Trim = "" Then
+                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ Part No ก่อน');", True)
+                Exit Sub
+            End If
+            If txtToLocationNo.Value.Trim = "" Then
+                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ To Location No ก่อน');", True)
+                Exit Sub
+            End If
+
+            Session("CheckDocType") = CheckDocType
+            Session("CheckWHStie") = CheckWHStie
+            Session("Partno") = Partno
+            Session("Locationno") = Locationno
+
+            Dim url As String = "ShowReport/ShowRptWareHouse.aspx?Jonno=" + Jobno + "&WHSite=" + CheckWHStie
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "onclick", "javascript:window.open( '" + url + "','_blank','height=600px,width=1000px,scrollbars=1');", True)
+
+        ElseIf ddlDocType.Text = "Other Summary Receipt" Or ddlDocType.Text = "Other Summary Issue" Then
+
+            If ddlCusCode.Text.Trim = "" Then
+                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ Cus Code ก่อน');", True)
+                Exit Sub
+            End If
+            If txtdatepickerReceivedDate.Text.Trim = "" Then
+                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ Received Date ก่อน');", True)
+                Exit Sub
+            End If
+            If txtdatepickerToReceivedDate.Text.Trim = "" Then
+                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ To Received Date ก่อน');", True)
+                Exit Sub
+            End If
+            If ddlWHSite.Text.Trim = "" Then
+                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ WH Site ก่อน');", True)
+                Exit Sub
+            End If
+            If txtCusRefNo.Value.Trim = "" Then
+                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ CusRef No ก่อน');", True)
+                Exit Sub
+            End If
+            If txtPartNo.Value.Trim = "" Then
+                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ Part No ก่อน');", True)
+                Exit Sub
+            End If
+            If txtOrderNo.Value.Trim = "" Then
+                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ Order No ก่อน');", True)
+                Exit Sub
+            End If
+
+            Session("CheckDocType") = CheckDocType
+            Session("Cuscode") = Cuscode
+            Session("ReceivedDate") = ReceivedDate
+            Session("To_ReceivedDate") = To_ReceivedDate
+            Session("CheckWHStie") = CheckWHStie
+            Session("Cusrefno") = Cusrefno
+            Session("Partno") = Partno
+            Session("Orderno") = Orderno
+
+            Dim url As String = "ShowReport/ShowRptWareHouse.aspx?Jonno=" + Jobno + "&WHSite=" + CheckWHStie
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "onclick", "javascript:window.open( '" + url + "','_blank','height=600px,width=1000px,scrollbars=1');", True)
+
+        ElseIf ddlDocType.Text = "Other Quarantine Stock Control" Then
+
+            If ddlCusCode.Text.Trim = "" Then
+                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ Cus Code ก่อน');", True)
+                Exit Sub
+            End If
+            If txtdatepickerReceivedDate.Text.Trim = "" Then
+                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ Received Date ก่อน');", True)
+                Exit Sub
+            End If
+            If txtdatepickerToReceivedDate.Text.Trim = "" Then
+                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ To Received Date ก่อน');", True)
+                Exit Sub
+            End If
+            If ddlWHSite.Text.Trim = "" Then
+                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ WH Site ก่อน');", True)
+                Exit Sub
+            End If
+            If txtPartNo.Value.Trim = "" Then
+                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ Part No ก่อน');", True)
+                Exit Sub
+            End If
+            If txtOrderNo.Value.Trim = "" Then
+                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ Order No ก่อน');", True)
+                Exit Sub
+            End If
+
+            Session("CheckDocType") = CheckDocType
+            Session("Cuscode") = Cuscode
+            Session("ReceivedDate") = ReceivedDate
+            Session("To_ReceivedDate") = To_ReceivedDate
+            Session("CheckWHStie") = CheckWHStie
+            Session("Partno") = Partno
+            Session("Orderno") = Orderno
+
+            Dim url As String = "ShowReport/ShowRptWareHouse.aspx?Jonno=" + Jobno + "&WHSite=" + CheckWHStie
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "onclick", "javascript:window.open( '" + url + "','_blank','height=600px,width=1000px,scrollbars=1');", True)
+
 
 
         End If

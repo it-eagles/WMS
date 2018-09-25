@@ -1690,10 +1690,11 @@
                                                             <div class="form-group">
                                                                 <label for="txtSelectFileForImport" class="col-sm-4 control-label">Select File For Import:</label>
                                                                 <div class="col-sm-4">
-                                                                    <input type="file" class="form-control input-sm" id="txtSelectFileForImportEntryItemNo_ItemPortFileNJR" runat="server" />
+                                                                    <asp:FileUpload runat="server" ID="ImportEntryItemNo_ItemPortFileNJR" CssClass="form-control input-sm" />
+                                                                   <%-- <input type="file" class="form-control input-sm" id="txtSelectFileForImportEntryItemNo_ItemPortFileNJR" runat="server" />--%>
                                                                 </div>
                                                                 <div class="col-sm-4">
-                                                                    <button type="submit" runat="server" class="btn btn-success" id="btnImport_ImportFileNJR" title="btnImport_ImportFileNJR">Import Update</button>
+                                                                    <button type="submit" runat="server" onserverclick="btnImport_ImportFileNJR_ServerClick" class="btn btn-success" id="btnImport_ImportFileNJR" title="btnImport_ImportFileNJR">Import Update</button>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group">
@@ -1721,6 +1722,7 @@
 
                                                             <div class="form-group">
                                                                 <div class="col-sm-8">
+                                                                    <asp:GridView ID="GridView1" runat="server"></asp:GridView>
                                                                 </div>
                                                                 <div class="col-sm-4">
                                                                     <button type="submit" runat="server" class="btn btn-success" id="btnSaveToInvoice_ImportFileNJR" title="btnSaveToInvoice_ImportFileNJR">Save To Invoice</button>
