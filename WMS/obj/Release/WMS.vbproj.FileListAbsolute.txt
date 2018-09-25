@@ -123,3 +123,4 @@ C:\Users\bossp\Documents\WMS\WMS\obj\Release\WMS.vbproj.GenerateResource.Cache
 C:\Users\bossp\Documents\WMS\WMS\obj\Release\WMS.dll
 C:\Users\bossp\Documents\WMS\WMS\obj\Release\WMS.xml
 C:\Users\bossp\Documents\WMS\WMS\obj\Release\WMS.pdb
+D:\it-eaglesWMS\WMS\bin\DatabaseConnections.dll

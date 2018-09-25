@@ -46,8 +46,10 @@
                                     </asp:RadioButtonList>
                                 </div>
                                 <fieldset>
-                                      <asp:GridView ID="GridView1" runat="server" OnPageIndexChanging="PageIndexChanging" AllowPaging = "true"  >
+                                    <div class="table-condensed">
+                                              <asp:GridView ID="GridView1" runat="server" OnPageIndexChanging="PageIndexChanging" AllowPaging = "true"  >
                                   </asp:GridView>
+                                    </div>                          
 
                                   <%--  <div >
                                           <asp:TextBox runat="server" ID="txtCompanyName" CssClass="form-control input-sm"></asp:TextBox>
