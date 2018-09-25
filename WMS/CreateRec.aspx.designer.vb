@@ -1868,13 +1868,13 @@ Partial Public Class CreateRec
     Protected WithEvents txtSelectFileForImport_ImportFileNJR As Global.System.Web.UI.HtmlControls.HtmlInputFile
 
     '''<summary>
-    '''txtSelectFileForImportEntryItemNo_ItemPortFileNJR control.
+    '''ImportEntryItemNo_ItemPortFileNJR control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtSelectFileForImportEntryItemNo_ItemPortFileNJR As Global.System.Web.UI.HtmlControls.HtmlInputFile
+    Protected WithEvents ImportEntryItemNo_ItemPortFileNJR As Global.System.Web.UI.WebControls.FileUpload
 
     '''<summary>
     '''btnImport_ImportFileNJR control.
@@ -1884,6 +1884,15 @@ Partial Public Class CreateRec
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents btnImport_ImportFileNJR As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''GridView1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents GridView1 As Global.System.Web.UI.WebControls.GridView
 
     '''<summary>
     '''btnSaveToInvoice_ImportFileNJR control.
