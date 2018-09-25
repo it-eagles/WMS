@@ -34,7 +34,8 @@
                                     <asp:FileUpload ID="FileUpload1" runat="server" />
                                        <%-- <input class="form-control input-sm" runat="server" id="txtFile" type="file" />--%>
                                 </div>   
-                               <div class="colmd-2">
+                               <div class="col-md-2">
+              
                                    <button runat="server" id="btnAdd" class="btn btn-pinterest btn-block" onserverclick="btnAdd_ServerClick"></button>
                                </div>
                                 <div>
@@ -48,12 +49,12 @@
                                       <asp:GridView ID="GridView1" runat="server" OnPageIndexChanging="PageIndexChanging" AllowPaging = "true"  >
                                   </asp:GridView>
 
-                                    <div >
+                                  <%--  <div >
                                           <asp:TextBox runat="server" ID="txtCompanyName" CssClass="form-control input-sm"></asp:TextBox>
                                        
-                                    </div>
+                                    </div>--%>
                                     <br />
-                                    <button id="button">ทดสอบ API แบงค์ชาติ</button>
+                                  <%--  <button id="button">ทดสอบ API แบงค์ชาติ</button>--%>
                                 </fieldset>
                                
                                 <%--<asp:TextBox runat="server" ID="txttest" CssClass="form-control input-sm" AutoPostBack="true" OnTextChanged="txttest_TextChanged"></asp:TextBox>--%>

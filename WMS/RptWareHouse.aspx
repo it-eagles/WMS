@@ -1,5 +1,4 @@
 ﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="RptWareHouse.aspx.vb" Inherits="WMS.RptWareHouse" MasterPageFile="~/Home.Master" %>
-<%@ Register Assembly="CrystalDecisions.Web, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" Namespace="CrystalDecisions.Web" TagPrefix="CR" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
 
@@ -42,59 +41,98 @@
                                                               <div class="form-group">
                                                                   <label for="txtDocType" class="col-sm-4 control-label">Doc Type:</label>                                      
                                                                  <div class="col-sm-8">
-                                                                    <asp:DropDownList ID="ddlDocType" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                                     <asp:DropDownList ID="ddlDocType" CssClass="form-control" runat="server">
+                                                                         <asp:ListItem>General Stock Report</asp:ListItem>
+                                                                         <asp:ListItem> Stock Report New</asp:ListItem>
+                                                                         <asp:ListItem>HTI Quarantine Stock Control</asp:ListItem>
+                                                                         <asp:ListItem>Check HTI Quarantine Stock Control</asp:ListItem>
+                                                                         <asp:ListItem>Summary Receipt</asp:ListItem>
+                                                                         <asp:ListItem>Summary Issue</asp:ListItem>
+                                                                         <asp:ListItem>Check Summary Receipt</asp:ListItem>
+                                                                         <asp:ListItem>Summary Unpicking Report</asp:ListItem>
+                                                                         <asp:ListItem>HTI Stock Take</asp:ListItem>
+                                                                         <asp:ListItem>Receipt Planned Report</asp:ListItem>
+                                                                         <asp:ListItem>Receipt Summary Report</asp:ListItem>
+                                                                         <asp:ListItem>Unstuffing Tally Report</asp:ListItem>
+                                                                         <asp:ListItem>Receipt Discrepancy Report</asp:ListItem>
+                                                                         <asp:ListItem>Goods Receipt Note Report</asp:ListItem>
+                                                                         <asp:ListItem>Product Inventory Detail Report</asp:ListItem>
+                                                                         <asp:ListItem>Product Inventory Detail For Export Report</asp:ListItem>
+                                                                         <asp:ListItem>Product Inventory Summary Report</asp:ListItem>
+                                                                         <asp:ListItem>Putaway List Report</asp:ListItem>
+                                                                         <asp:ListItem>Stock Out Report</asp:ListItem>
+                                                                         <asp:ListItem>Stock Movement Report</asp:ListItem>
+                                                                         <asp:ListItem>Order Tally Report</asp:ListItem>
+                                                                         <asp:ListItem>Pick List/Ticket Report</asp:ListItem>
+                                                                         <asp:ListItem>Pick List/Ticket Report for Pick</asp:ListItem>
+                                                                         <asp:ListItem>Picking Not Issued</asp:ListItem>
+                                                                         <asp:ListItem>Delivery Summary Report</asp:ListItem>
+                                                                         <asp:ListItem>Issued Planned Report</asp:ListItem>
+                                                                         <asp:ListItem>WareHouse Activity Report</asp:ListItem>
+                                                                         <asp:ListItem>Summary Job Receipt From LKB</asp:ListItem>
+                                                                         <asp:ListItem>Summary Job Issued From LKB</asp:ListItem>
+                                                                         <asp:ListItem>Other Summary Receipt</asp:ListItem>
+                                                                         <asp:ListItem>Other Summary Issue</asp:ListItem>
+                                                                         <asp:ListItem>Other Quarantine Stock Control</asp:ListItem>
+                                                                     </asp:DropDownList>
                                                                  </div>
                                                               </div>
                                                               <div class="form-group">
                                                                   <label for="txtJobno" class="col-sm-4 control-label">Job No:</label>                                       
                                                                 <div class="col-sm-8">
-                                                                    <input class="form-control" id="txtJobno" runat="server" placeholder="Job No"/>
+                                                                    <input class="form-control" id="txtJobno" runat="server" placeholder="Job No" autocomplete="off" />
                                                                 </div>
                                                                   </div>
                                                               <div class="form-group">
                                                                   <label for="txtPartNo" class="col-sm-4 control-label">Part No:</label>                                       
                                                                 <div class="col-sm-8">
-                                                                    <input class="form-control" id="txtPartNo" runat="server" placeholder="Job No"/>
+                                                                    <input class="form-control" id="txtPartNo" runat="server" placeholder="Part No" autocomplete="off"/>
                                                                 </div>
                                                                   </div>  
                                                               <div class="form-group">
                                                                   <label for="txtLocationNo" class="col-sm-4 control-label">Location No:</label>                                       
                                                                 <div class="col-sm-8">
-                                                                    <input class="form-control" id="txtLocationNo" runat="server" placeholder="Job No"/>
+                                                                    <input class="form-control" id="txtLocationNo" runat="server" placeholder="Location No" autocomplete="off"/>
                                                                 </div>
                                                                   </div>       
                                                               <div class="form-group">
                                                                   <label for="txtCusRefNo" class="col-sm-4 control-label">CUSREF No:</label>                                       
                                                                 <div class="col-sm-8">
-                                                                    <input class="form-control" id="txtCusRefNo" runat="server" placeholder="Job No"/>
+                                                                    <input class="form-control" id="txtCusRefNo" runat="server" placeholder="CUSREF No" autocomplete="off"/>
                                                                 </div>
                                                                   </div>    
                                                               <div class="form-group">
                                                                   <label for="txtOrderNo" class="col-sm-4 control-label">Order No:</label>                                       
                                                                 <div class="col-sm-8">
-                                                                    <input class="form-control" id="txtOrderNo" runat="server" placeholder="Job No"/>
+                                                                    <input class="form-control" id="txtOrderNo" runat="server" placeholder="Order No" autocomplete="off"/>
                                                                 </div>
                                                                   </div>      
                                                               <div class="form-group">
                                                                   <label for="txtReceivedDate" class="col-sm-5 control-label">Received Date:</label>    
                                                                   <div class="col-sm-1">
+                                                                      <div class="checkbox">
                                                                         <label>
-                                                                           <input type="checkbox" runat="server" id="chkReceivedDate" />
+                                                                           <input type="checkbox" runat="server" id="chkReceivedDate" checked="checked" onclick="EnableDisableTextBox();" />
                                                                       </label>            
+                                                                      </div>
                                                                   </div>                                    
-                                                                <div class="col-sm-6">
-                                                                    <input class="form-control" id="txtReceivedDate" runat="server" placeholder="Job No"/>
-                                                                </div>
+                                                                  <div class="col-sm-6">
+                                                                      <asp:TextBox CssClass="form-control input" ID="txtdatepickerReceivedDate" runat="server" placeholder="DD/MM/YYYY" autocomplete="off"></asp:TextBox>
+                                                                      <asp:CalendarExtender ID="CalendarExtenderReceivedDate" runat="server" Enabled="True" TargetControlID="txtdatepickerReceivedDate" Format="dd/MM/yyyy"></asp:CalendarExtender>
+                                                                  </div>
                                                                   </div>
                                                               <div class="form-group">
                                                                   <label for="txtIssuedDate" class="col-sm-5 control-label">Issued Date:</label>    
                                                                   <div class="col-sm-1">
+                                                                      <div class="checkbox">
                                                                         <label>
-                                                                           <input type="checkbox" runat="server" id="chkIssuedDate" />
+                                                                           <input type="checkbox" runat="server" id="chkIssuedDate" checked="checked" onclick="EnableDisableTextBox2();"/>
                                                                       </label>            
+                                                                          </div>
                                                                   </div>                                    
                                                                 <div class="col-sm-6">
-                                                                    <input class="form-control" id="txtIssuedDate" runat="server" placeholder="Job No"/>
+                                                                    <asp:TextBox CssClass="form-control input" ID="txtdatepickerIssuedDate" runat="server" placeholder="DD/MM/YYYY" autocomplete="off"></asp:TextBox>
+                                                                    <asp:CalendarExtender ID="CalendarExtenderIssuedDate" runat="server" Enabled="True" TargetControlID="txtdatepickerIssuedDate" Format="dd/MM/yyyy"></asp:CalendarExtender>
                                                                 </div>
                                                                   </div>
                                                               <div class="form-group">
@@ -114,71 +152,63 @@
 
                                                           <div class="col-md-4"> 
                                                               <div class="form-group">
-                                                                  <label for="txtWHSite" class="col-sm-4 control-label">WH Site:</label>                                       
+                                                                  <label for="txtWHSite" class="col-sm-3 control-label">WH Site:</label>                                       
                                                                 <div class="col-sm-8">                                            
                                                                      <asp:DropDownList ID="ddlWHSite" CssClass="form-control" runat="server"></asp:DropDownList>  
                                                                  </div>
                                                                </div>
                                                               <div class="form-group">
-                                                                  <label for="txtToJobno" class="col-sm-4 control-label">To:</label>                                       
+                                                                  <label for="txtToJobno" class="col-sm-3 control-label">To:</label>                                       
                                                                 <div class="col-sm-8">
-                                                                    <input class="form-control" id="txtToJobno" runat="server"/>
+                                                                    <input class="form-control" id="txtToJobno" runat="server" placeholder="Job No" autocomplete="off"/>
                                                                 </div>
                                                                   </div>
                                                               <div class="form-group">
-                                                                  <label for="txtToPartNo" class="col-sm-4 control-label">To:</label>                                       
+                                                                  <label for="txtToPartNo" class="col-sm-3 control-label">To:</label>                                       
                                                                 <div class="col-sm-8">
-                                                                    <input class="form-control" id="txtToPartNo" runat="server"/>
+                                                                    <input class="form-control" id="txtToPartNo" runat="server" placeholder="Part No" autocomplete="off"/>
                                                                 </div>
                                                                   </div>  
                                                               <div class="form-group">
-                                                                  <label for="txtToLocationNo" class="col-sm-4 control-label">To:</label>                                       
+                                                                  <label for="txtToLocationNo" class="col-sm-3 control-label">To:</label>                                       
                                                                 <div class="col-sm-8">
-                                                                    <input class="form-control" id="txtToLocationNo" runat="server"/>
+                                                                    <input class="form-control" id="txtToLocationNo" runat="server" placeholder="Location No" autocomplete="off"/>
                                                                 </div>
                                                                   </div>       
                                                               <div class="form-group">
-                                                                  <label for="txtToCusRefNo" class="col-sm-4 control-label">To:</label>                                       
+                                                                  <label for="txtToCusRefNo" class="col-sm-3 control-label">To:</label>                                       
                                                                 <div class="col-sm-8">
-                                                                    <input class="form-control" id="txtToCusRefNo" runat="server"/>
+                                                                    <input class="form-control" id="txtToCusRefNo" runat="server" placeholder="CUSREF No" autocomplete="off"/>
                                                                 </div>
                                                                   </div>    
                                                               <div class="form-group">
-                                                                  <label for="txtWHSource" class="col-sm-4 control-label">WH Soucre:</label>                                       
+                                                                  <label for="txtWHSource" class="col-sm-3 control-label">WH Source:</label>                               
                                                                 <div class="col-sm-8">
-                                                                    <input class="form-control" id="txtWHSource" runat="server"/>
+                                                                    <input class="form-control" id="txtWHSource" runat="server" placeholder="WHSource No" autocomplete="off"/>
                                                                 </div>
                                                                   </div> 
                                                               <div class="form-group">
-                                                                  <label for="txtToReceivedDate" class="col-sm-4 control-label">To:</label>    
-                                                                  <div class="col-sm-1">
-                                                                        <label>
-                                                                           <input type="checkbox" runat="server" id="chkToReceivedDate" />
-                                                                      </label>            
-                                                                  </div>                                    
-                                                                <div class="col-sm-7">
-                                                                    <input class="form-control" id="txtToReceivedDate" runat="server"/>
+                                                                  <label for="txtToReceivedDate" class="col-sm-3 control-label">To:</label>                       
+                                                                <div class="col-sm-8">
+                                                                    <asp:TextBox CssClass="form-control input" ID="txtdatepickerToReceivedDate" runat="server" placeholder="DD/MM/YYYY" autocomplete="off"></asp:TextBox>
+                                                                    <asp:CalendarExtender ID="CalendarExtenderToReceivedDate" runat="server" Enabled="True" TargetControlID="txtdatepickerToReceivedDate" Format="dd/MM/yyyy"></asp:CalendarExtender>
                                                                 </div>
                                                                   </div>
                                                               <div class="form-group">
-                                                                  <label for="txtToIssuedDate" class="col-sm-4 control-label">To:</label>    
-                                                                  <div class="col-sm-1">
-                                                                        <label>
-                                                                           <input type="checkbox" runat="server" id="chkToIssuedDate" />
-                                                                      </label>            
-                                                                  </div>                                    
-                                                                <div class="col-sm-7">
-                                                                    <input class="form-control" id="txtToIssuedDate" runat="server"/>
+                                                                  <label for="txtToIssuedDate" class="col-sm-3 control-label">To:</label>                                
+                                                                <div class="col-sm-8">
+                                                                    <asp:TextBox CssClass="form-control input" ID="txtdatepickerToIssuedDate" runat="server" placeholder="DD/MM/YYYY" autocomplete="off"></asp:TextBox>
+                                                                    <asp:CalendarExtender ID="CalendarExtenderToIssuedDate" runat="server" Enabled="True" TargetControlID="txtdatepickerToIssuedDate" Format="dd/MM/yyyy"></asp:CalendarExtender>
                                                                 </div>
                                                                   </div>
                                                               <div class="form-group">
-                                                                  <label for="txtToCusCode" class="col-sm-4 control-label">To:</label>                                       
+                                                                  <label for="txtToCusCode" class="col-sm-3 control-label">To:</label>                                       
                                                                 <div class="col-sm-8">                                            
                                                                      <asp:DropDownList ID="ddlToCusCode" CssClass="form-control" runat="server"></asp:DropDownList>  
                                                                  </div>
                                                                </div>
                                                               <div class="form-group">
-                                                                  <label for="txtToENDUserCode" class="col-sm-4 control-label">To:</label>                                       
+                                                                  <label for="txtToENDUserCode" class="col-sm-3 control-label">To:</label>                                       
                                                                 <div class="col-sm-8">                                            
                                                                      <asp:DropDownList ID="ddlToENDUserCode" CssClass="form-control" runat="server"></asp:DropDownList>  
                                                                  </div>
@@ -191,58 +221,68 @@
                                                               <div class="form-group" style="height:34px;">
                                                                   <div class="col-sm-3"></div>
                                                                   <div class="col-sm-4">
+                                                                      <div class="checkbox">
                                                                         <label>
-                                                                           <input type="checkbox" runat="server" id="chkAllNJR" />AllNJR
-                                                                      </label>            
+                                                                           <input type="checkbox" runat="server" id="chkAllNJR" />All NJR
+                                                                      </label>
+                                                                      </div>            
                                                                    </div>
                                                                   </div>
                                                                   <div class="form-group" style="height:34px;">
-                                                                      <div class="col-sm-3"></div>
-                                                                     <label for="txtLiveOfGoods" class="col-sm-4 control-label">Live Of Goods:</label>                                                           
+                                                                      <%--<div class="col-sm-3"></div>--%>
+                                                                                                                                
                                                               </div>
                                                               <div class="form-group" style="height:34px;">
-                                                                            <div class="col-sm-3"></div>
-                                                                            <div class="col-sm-5">
+                                                                  <label for="txtLiveOfGoods" class="col-sm-4 control-label">Live Of Goods:</label>
+                                                                            <div class="col-sm-4">
                                                                             <div class="radio">
                                                                             <label>                                            
                                                                              <asp:RadioButton runat="server" ID ="rdbExpireDate" Text="Expire Date"  onclick="EnableDisableTextBox();"  GroupName="option1" />
                                                                           </label>
                                                                            </div>            
                                                                        </div>
-                                                                  </div>
-                                                             <div class="form-group" style="height:34px;">
-                                                                            <div class="col-sm-3"></div>
-                                                                            <div class="col-sm-5">
+                                                                  <div class="col-sm-4">
                                                                             <div class="radio">
                                                                             <label>                                            
                                                                              <asp:RadioButton runat="server" ID ="rdbNotExpire" Text="Not Expire" onclick="EnableDisableTextBox();" GroupName="option1"/>
                                                                           </label>
                                                                            </div>            
-                                                                       </div>                                 
+                                                                       </div>
+                                                                  </div>
+                                                             <div class="form-group" style="height:34px;">
+                                                                            <%--<div class="col-sm-3"></div>--%>
+                                                                                                             
                                                             </div>
                                                               <div class="form-group">
                                                                   <label for="txtTypeOfGoods" class="col-sm-4 control-label">TypeOfGoods:</label>                                       
                                                                 <div class="col-sm-8">                                            
-                                                                     <asp:DropDownList ID="ddlTypeOfGoods" CssClass="form-control" runat="server"></asp:DropDownList>  
+                                                                    <asp:DropDownList ID="ddlTypeOfGoods" CssClass="form-control" runat="server">
+                                                                        <asp:ListItem>Q-FFL</asp:ListItem>
+                                                                        <asp:ListItem>Q-CON</asp:ListItem>
+                                                                        <asp:ListItem>Q-SC</asp:ListItem>
+                                                                        <asp:ListItem>Q-SCRAP</asp:ListItem>
+                                                                        <asp:ListItem>BackFill</asp:ListItem>
+                                                                    </asp:DropDownList>  
                                                                  </div>
                                                                </div>
                                                               <div class="form-group">
                                                                   <label for="txtEndCustomer" class="col-sm-4 control-label">End Customer:</label>                                       
                                                                 <div class="col-sm-8">                                            
-                                                                     <asp:DropDownList ID="ddlEndCustomer" CssClass="form-control" runat="server"></asp:DropDownList>  
+                                                                     <input class="form-control" id="txtEndCustomer" runat="server" placeholder="EndCustomer No" autocomplete="off"/>
                                                                  </div>
                                                                </div>
+                                                                    <div class="col-sm-4"></div>       
                                                               <div class="form-group" >   
-                                                                    <div class="col-sm-3"></div>       
-                                                                    <div class="col-sm-6">                       
-                                                                    <button type="submit" runat="server" class="btn btn-primary" id="btnListData" title="btnListData" onserverclick="btnListData_ServerClick">List Data</button>
-                                                                    </div>   
+                                                                    <div class="col-sm-4">                       
+                                                                    <button type="submit" runat="server" class="btn btn-primary btn-lg" id="btnListData" title="btnListData" onserverclick="btnListData_ServerClick">LIST DATA</button>
+                                                                    </div>
+                                                                  <div class="col-sm-2">                                
+                                                                    <button type="submit" runat="server" class="btn btn-primary btn-lg" id="btnReport" title="btnReport" onserverclick="btnReport_ServerClick"><i class="fa fa-print"></i></button>
+                                                                    </div>
                                                               </div>
                                                               <div class="form-group" >   
                                                                     <div class="col-sm-3"></div>    
-                                                                    <div class="col-sm-6">                                
-                                                                    <button type="submit" runat="server" class="btn btn-primary" id="btnReport" title="btnReport" onserverclick="btnReport_ServerClick">Report</button>
-                                                                    </div>
+                                                                    
                                                               </div>
 
                                                           </div>
@@ -275,26 +315,36 @@
 
         <script type="text/javascript">
           function EnableDisableTextBox() {
-              var status = document.getElementById('<%=rdbExpireDate.ClientID%>').checked;
-             
-              if (status == true) {
-                <%--document.getElementById('<%=txtWidth.ClientID%>').disabled = true;
-                document.getElementById('<%=txtLong.ClientID%>').disabled = true;
-                document.getElementById('<%=txtHeigth.ClientID%>').disabled = true;
-                document.getElementById('<%=txtValume.ClientID%>').disabled = true;
-                document.getElementById('<%=txtUsedStatus.ClientID%>').disabled = true;        
-                document.getElementById('<%=txtQTYPallet.ClientID%>').disabled = false;  --%>
-            } else if (status == false){
-               <%-- document.getElementById('<%=txtWidth.ClientID%>').disabled = false;
-                document.getElementById('<%=txtLong.ClientID%>').disabled = false;
-                document.getElementById('<%=txtHeigth.ClientID%>').disabled = false;
-                document.getElementById('<%=txtValume.ClientID%>').disabled = false;
-                document.getElementById('<%=txtUsedStatus.ClientID%>').disabled = false;
-                document.getElementById('<%=txtQTYPallet.ClientID%>').disabled = true; --%> 
-               
-            }
-             
+              var status1 = document.getElementById('<%=chkReceivedDate.ClientID%>').checked;
+              if (status1 == true) {
+                document.getElementById('<%=txtdatepickerReceivedDate.ClientID%>').disabled = true;
+                document.getElementById('<%=txtdatepickerToReceivedDate.ClientID%>').disabled = true;
+            } else if (status1 == false){
+                document.getElementById('<%=txtdatepickerReceivedDate.ClientID%>').disabled = false;
+                document.getElementById('<%=txtdatepickerToReceivedDate.ClientID%>').disabled = false;
+            } 
         }
+    </script>
+
+                <script type="text/javascript">
+                    function EnableDisableTextBox2() {
+              var status2 = document.getElementById('<%=chkIssuedDate.ClientID%>').checked;
+                if (status2 == true) {
+                document.getElementById('<%=txtdatepickerIssuedDate.ClientID%>').disabled = true;
+                document.getElementById('<%=txtdatepickerToIssuedDate.ClientID%>').disabled = true;
+            } else if (status2 == false) {
+                document.getElementById('<%=txtdatepickerIssuedDate.ClientID%>').disabled = false;
+                document.getElementById('<%=txtdatepickerToIssuedDate.ClientID%>').disabled = false;
+            }
+}
+    </script>
+            <script type="text/javascript">
+                function EnableDisableTextBox2() {
+                    var status2 = document.getElementById('<%=txtJobno.ClientID%>').onkeyup;
+                        if (status2 == true) {
+                            document.getElementById('<%=txtToJobno.ClientID%>').textContent = document.getElementById('<%=txtJobno.ClientID%>').textContent;
+                }
+    }
     </script>
 
 </form>

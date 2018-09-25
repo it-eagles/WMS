@@ -594,7 +594,8 @@
                                                             <div class="form-group">
                                                                 <label for="txtSelectFileForImport_NewFileNJRC_ImportFiles" class="col-sm-4 control-label">Select File For Import:</label>
                                                                 <div class="col-sm-4">
-                                                                    <input type="file" class="form-control input-sm" id="txtImport" runat="server" autocomplete="off" />
+                                                                    <asp:FileUpload ID="txtImport1" CssClass="form-control" runat="server" />
+                                                                    <%--<input type="file" class="form-control input-sm" id="txtImport" runat="server" autocomplete="off" />--%>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group">

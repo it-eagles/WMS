@@ -6703,6 +6703,7 @@
     <Content Include="ShowReport\ShowRptIEAT.aspx" />
     <Content Include="ShowReport\ShowRptJobSheet.aspx" />
     <Content Include="ShowReport\ShowRptLog.aspx" />
+    <Content Include="ShowReport\ShowRptWareHouse.aspx" />
     <Content Include="SingleIssuedWH.aspx" />
     <Content Include="SingleReceivedWH.aspx" />
     <Content Include="Test.aspx" />
@@ -7612,6 +7613,13 @@
     </Compile>
     <Compile Include="ShowReport\ShowRptLog.aspx.vb">
       <DependentUpon>ShowRptLog.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="ShowReport\ShowRptWareHouse.aspx.designer.vb">
+      <DependentUpon>ShowRptWareHouse.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ShowReport\ShowRptWareHouse.aspx.vb">
+      <DependentUpon>ShowRptWareHouse.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="SingleIssuedWH.aspx.designer.vb">
