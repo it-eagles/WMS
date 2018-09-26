@@ -137,7 +137,7 @@
                                             <div class="form-group">
                                                 <label for="txtLocation" class="col-sm-3 control-label">Location:</label>
                                                 <div class="checkbox col-sm-1">
-                                                    <input type="checkbox" runat="server" id="chkLocation" />
+                                                    <input type="checkbox" runat="server" id="chkLocation" onclick="EnableDisableTextBox();" checked="checked"/>
                                                 </div>
                                                 <div class="col-sm-8">
                                                     <input class="form-control" id="txtLocation" runat="server" value="0" />
@@ -146,7 +146,7 @@
                                             <div class="form-group">
                                                 <label for="txtAvalibleQTY" class="col-sm-3 control-label">Avalible QTY:</label>
                                                 <div class="checkbox col-sm-1">
-                                                    <input type="checkbox" runat="server" id="chkAvalibleQTY" />
+                                                    <input type="checkbox" runat="server" id="chkAvalibleQTY" onclick="EnableDisableTextBox3();" checked="checked"/>
                                                 </div>
                                                 <div class="col-sm-8">
                                                     <input class="form-control" id="txtAvalibleQTY" runat="server" value="0" />
@@ -215,19 +215,19 @@
                                             <div class="form-group">
                                                 <label for="txtStatus" class="col-sm-3 control-label">Status:</label>
                                                 <div class="checkbox col-sm-1">
-                                                    <input type="checkbox" runat="server" id="chkStatus" />
+                                                    <input type="checkbox" runat="server" id="chkStatus" onclick="EnableDisableTextBox1();" checked="checked" />
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <div class="radio">
                                                         <label>
-                                                            <asp:RadioButton runat="server" ID="rdbGoodComplete" Text="Goods Complete" onclick="EnableDisableTextBox();" GroupName="option3" />
+                                                            <asp:RadioButton runat="server" ID="rdbGoodComplete" Text="Goods Complete" onclick="EnableDisableTextBox4();" GroupName="option3" />
                                                         </label>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <div class="radio">
                                                         <label>
-                                                            <asp:RadioButton runat="server" ID="rdbGoodDamage" Text="Goods Damage" onclick="EnableDisableTextBox();" GroupName="option3" />
+                                                            <asp:RadioButton runat="server" ID="rdbGoodDamage" Text="Goods Damage"  onclick="EnableDisableTextBox4();" GroupName="option3" />
                                                         </label>
                                                     </div>
                                                 </div>
@@ -235,10 +235,10 @@
                                             <div class="form-group">
                                                 <label for="txtDamageQTY" class="col-sm-3 control-label">Damage QTY:</label>
                                                 <div class="checkbox col-sm-1">
-                                                    <input type="checkbox" runat="server" id="chkDamageQTY" />
+                                                    <input type="checkbox" runat="server" id="chkDamageQTY" checked="checked"/>
                                                 </div>
                                                 <div class="col-sm-8">
-                                                    <input class="form-control" id="txtDamageQTY" runat="server" value="0" />
+                                                    <input class="form-control" id="txtDamageQTY" runat="server" value="0"  />
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -267,7 +267,7 @@
                         </div>
                         <!--/.row-->
                         <div class="box-header with-border">
-                            <h3 class="box-title">Code Money Config</h3>
+                            
                         </div>
                         <div class="row">
                             <div class="col-lg-8 col-md-8 col-md-offset-2">
@@ -394,6 +394,101 @@
             <!-- /.row -->
         </section>
         <!-- /.content -->
+              <script type="text/javascript">
+                  function EnableDisableTextBox() {
+                      var status = document.getElementById('<%=chkLocation.ClientID%>').checked;
+
+                if (status == true) {
+                   
+                  document.getElementById('<%=txtLocation.ClientID%>').disabled = true;
+
+                
+              } else if (status == false) {
+                  
+                document.getElementById('<%=txtLocation.ClientID%>').disabled = false;
+                
+
+            }
+
+                  }
+
+
+        </script>
+
+        <script type="text/javascript">
+            function EnableDisableTextBox1() {
+                var status = document.getElementById('<%=chkStatus.ClientID%>').checked;
+
+                      if (status == true) {
+                          document.getElementById('<%=rdbGoodComplete.ClientID%>').disabled = true;
+                          document.getElementById('<%=rdbGoodDamage.ClientID%>').disabled = true;
+                          
+
+                } else if (status == false) {
+                    document.getElementById('<%=rdbGoodComplete.ClientID%>').disabled = false;
+                    document.getElementById('<%=rdbGoodDamage.ClientID%>').disabled = false;
+         }
+
+            }
+
+        </script>
+        
+
+         
+
+        <script type="text/javascript">
+            function EnableDisableTextBox2() {
+                var status = document.getElementById('<%=chkDamageQTY.ClientID%>').checked;
+
+                if (status == true) {
+                    document.getElementById('<%=txtDamageQTY.ClientID%>').disabled = true;
+
+                      } else  {
+                          document.getElementById('<%=txtDamageQTY.ClientID%>').disabled = false;
+                }
+
+        }
+
+        </script>
+
+
+        <script type="text/javascript">
+            function EnableDisableTextBox3() {
+                var status = document.getElementById('<%=chkAvalibleQTY.ClientID%>').checked;
+
+                if (status == true) {
+                    document.getElementById('<%=txtAvalibleQTY.ClientID%>').disabled = true;
+
+                } else {
+                    document.getElementById('<%=txtAvalibleQTY.ClientID%>').disabled = false;
+                }
+
+            }
+
+        </script>
+
+        <script type="text/javascript">
+            function EnableDisableTextBox4() {
+                var status = document.getElementById('<%=rdbGoodComplete.ClientID%>').checked;
+
+                if (status == true) {
+                    document.getElementById('<%=txtAvalibleQTY.ClientID%>').disabled = false;
+                    document.getElementById('<%=txtDamageQTY.ClientID%>').disabled = true;
+                    document.getElementById('<%=chkAvalibleQTY.ClientID%>').checked = false;
+                    document.getElementById('<%=chkDamageQTY.ClientID%>').checked = true;
+
+                } else {
+                    document.getElementById('<%=txtAvalibleQTY.ClientID%>').disabled = true;
+                    document.getElementById('<%=txtDamageQTY.ClientID%>').disabled = false;
+                    document.getElementById('<%=chkAvalibleQTY.ClientID%>').checked = true;
+                    document.getElementById('<%=chkDamageQTY.ClientID%>').checked = false;
+                }
+
+            }
+
+        </script>
+        
+      
 
     </form>
 </asp:Content>
