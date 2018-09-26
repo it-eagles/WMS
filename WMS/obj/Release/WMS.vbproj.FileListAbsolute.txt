@@ -124,3 +124,4 @@ D:\WMS-Eagle\WMS\obj\Release\WMS.dll
 D:\WMS-Eagle\WMS\obj\Release\WMS.xml
 D:\WMS-Eagle\WMS\obj\Release\WMS.pdb
 D:\it-eaglesWMS\WMS\bin\DatabaseConnections.dll
+D:\WMS-Eagle\WMS\bin\DatabaseConnections.dll
