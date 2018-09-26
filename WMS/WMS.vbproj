@@ -193,11 +193,6 @@
     <Content Include="RptStatusPickFrm.aspx" />
     <Content Include="RptStorageAgingFrm.aspx" />
     <Content Include="RptStorageChargeFrm.aspx" />
-    <Content Include="RptSumLOT.aspx" />
-    <Content Include="RptSumSeagate.aspx" />
-    <Content Include="RptTranPick.aspx" />
-    <Content Include="RptWareHouse.aspx" />
-    <Content Include="RptWD.aspx" />
     <Content Include="Scripts\bootstrap-colorpicker\dist\css\bootstrap-colorpicker.css" />
     <Content Include="Scripts\bootstrap-colorpicker\dist\css\bootstrap-colorpicker.min.css" />
     <Content Include="Scripts\bootstrap-colorpicker\dist\img\bootstrap-colorpicker\alpha-horizontal.png" />
@@ -7519,41 +7514,6 @@
     <Compile Include="RptStorageChargeFrm.aspx.vb">
       <DependentUpon>RptStorageChargeFrm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="RptSumLOT.aspx.designer.vb">
-      <DependentUpon>RptSumLOT.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="RptSumLOT.aspx.vb">
-      <DependentUpon>RptSumLOT.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
-    </Compile>
-    <Compile Include="RptSumSeagate.aspx.designer.vb">
-      <DependentUpon>RptSumSeagate.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="RptSumSeagate.aspx.vb">
-      <DependentUpon>RptSumSeagate.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
-    </Compile>
-    <Compile Include="RptTranPick.aspx.designer.vb">
-      <DependentUpon>RptTranPick.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="RptTranPick.aspx.vb">
-      <DependentUpon>RptTranPick.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
-    </Compile>
-    <Compile Include="RptWareHouse.aspx.designer.vb">
-      <DependentUpon>RptWareHouse.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="RptWareHouse.aspx.vb">
-      <DependentUpon>RptWareHouse.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
-    </Compile>
-    <Compile Include="RptWD.aspx.designer.vb">
-      <DependentUpon>RptWD.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="RptWD.aspx.vb">
-      <DependentUpon>RptWD.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="ShipmentRec.aspx.designer.vb">
       <DependentUpon>ShipmentRec.aspx</DependentUpon>
