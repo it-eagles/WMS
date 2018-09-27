@@ -50,9 +50,8 @@
                                               <asp:GridView ID="GridView1" runat="server" OnPageIndexChanging="PageIndexChanging" AllowPaging = "true"  >
                                   </asp:GridView>
                                     </div>                          
-                                     <input runat="server" id="txttest" value="" />
-                                    <input runat="server" id="Text1" value="" />
-                                   <%--  <div >
+
+                                  <%--  <div >
                                           <asp:TextBox runat="server" ID="txtCompanyName" CssClass="form-control input-sm"></asp:TextBox>
                                        
                                     </div>--%>
@@ -62,8 +61,8 @@
                                
                                 <%--<asp:TextBox runat="server" ID="txttest" CssClass="form-control input-sm" AutoPostBack="true" OnTextChanged="txttest_TextChanged"></asp:TextBox>--%>
                             </div>
-
-                            <asp:Repeater ID="rptCustomers" runat="server" OnItemDataBound="rptCustomers_ItemDataBound">
+                            <div class="table-responsive">
+                                <asp:Repeater ID="rptCustomers" runat="server" OnItemDataBound="rptCustomers_ItemDataBound">
                                 <HeaderTemplate>
                                     <table id="tblCustomers" class="table table-bordered">
                                         <thead>
@@ -99,6 +98,8 @@
                                     </table>
                                 </FooterTemplate>
                             </asp:Repeater>
+                            </div>
+                            
 
                         </div>
                     </div>
@@ -219,14 +220,6 @@
                         }
                     });
                 });
-            });
-</script>
-        <script type="text/javascript">
-            $(document).ready(function(){
-                $("#txttest").keyup(function () {
-                var value = $(this).val();
-                $("#Text1").text(value);
-            }).keyup();
             });
 </script>
     </form>

@@ -28,8 +28,8 @@
                                 </div>
                             <!-- /.box-header -->
                             <div class="box-body">
-
-                                <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="Repeater1_ItemCommand">
+                                <div class="table-responsive">
+                                    <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="Repeater1_ItemCommand">
                                     <HeaderTemplate>
                                         <table id="example1" class="table table-bordered table-striped">
                                             <thead>
@@ -86,6 +86,8 @@
                                         </table>
                                     </FooterTemplate>
                                 </asp:Repeater>
+                                </div>
+                                
                                  
                             </div>
                             <!-- /.box-body -->

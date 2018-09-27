@@ -1141,12 +1141,12 @@ Public Class RptWareHouseFrm
                 ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ Cus Code ก่อน');", True)
                 Exit Sub
             End If
-            If txtdatepickerReceivedDate.Text.Trim = "" Then
-                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ Received Date ก่อน');", True)
+            If txtdatepickerIssuedDate.Text.Trim = "" Then
+                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ Issued Date ก่อน');", True)
                 Exit Sub
             End If
-            If txtdatepickerToReceivedDate.Text.Trim = "" Then
-                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ To Received Date ก่อน');", True)
+            If txtdatepickerToIssuedDate.Text.Trim = "" Then
+                ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('กรุณาใส่ To Issued Date ก่อน');", True)
                 Exit Sub
             End If
             If ddlWHSite.Text.Trim = "" Then
@@ -1178,8 +1178,8 @@ Public Class RptWareHouseFrm
 
             Session("CheckDocType") = CheckDocType
             Session("Cuscode") = Cuscode
-            Session("ReceivedDate") = ReceivedDate
-            Session("To_ReceivedDate") = To_ReceivedDate
+            Session("IssuedDate") = IssuedDate
+            Session("To_IssuedDate") = To_IssuedDate
             Session("CheckWHStie") = CheckWHStie
             Session("Cusrefno") = Cusrefno
             Session("Partno") = Partno

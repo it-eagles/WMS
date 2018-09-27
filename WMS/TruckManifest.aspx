@@ -14,7 +14,8 @@
             <ol class="breadcrumb">
                 <li><a href="HomeMain.aspx"><i class="fa fa-home"></i>Home</a></li>
                 <li><a><i class="fa fa-file"></i>Issue Process</a></li>
-                <li><a>class="active">Truck Manifest</a></li>
+                <li class="active">
+                Truck Manifest
             </ol>
         </section>
 
@@ -31,28 +32,10 @@
                         <div class="box-body">
                             <div class="form-horizontal">
                                 <div class="col-lg-10 col-md-offset-1">
-                                  <div class="row">
-                <div class="col-xs-12">
-                    <div class="box box-default">
-                        <div class="box-body">
-                            <div class="col-xs-12">
-                                <button class="btn btn-app" id="btnAdd" runat="server" onserverclick="btnAdd_ServerClick1"><i class="fa fa-file-text-o"></i>Add</button>
-                                <button class="btn btn-app" id="btnModify" runat="server" onserverclick="btnModify_ServerClick"><i class="fa fa-edit"></i>Modify</button>
-                                <button class="btn btn-app" id="btnDelete" runat="server" onserverclick="btnDelete_ServerClick"><i class="fa fa-trash"></i>Delete</button>
-                                <button class="btn btn-app" id="btnFind" runat="server" onserverclick="btnFind_ServerClick"><i class="fa fa-search"></i>Find</button>
-                                <button class="btn btn-app" id="btnprint" runat="server" onserverclick="btnprint_ServerClick"><i class="fa fa-print"></i>Print</button>
-                                <button class="btn btn-app" id="btnCancel" runat="server" onserverclick="btnCancel_ServerClick"><i class="fa fa-undo"></i>Cancel</button>
-                                <button class="btn btn-app" id="btnSave" runat="server" onserverclick="btnSave_ServerClick"><i class="fa fa-save"></i>Save</button>
-                                <button class="btn btn-app" id="btnClose" runat="server" onserverclick="btnClose_ServerClick"><i class="fa fa-close"></i>Close</button>
-                            </div>           
-                        </div>
-                    </div>
-                </div>
-            </div>                           
                                     <div class="form-group">
-                                        <label for="txtTuckManifestCode" class="col-sm-2 control-label">TruckManifest  Code</label>
+                                        <label for="txtConsignneeCode" class="col-sm-2 control-label">TruckManifest  Code</label>
                                         <div class="col-sm-6">
-                                            <input class="form-control" id="txtTuckManifestCode" runat="server" autocomplete="off"/>
+                                            <input class="form-control" id="txtConsignneeCode" runat="server" />
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -61,7 +44,7 @@
                                             <asp:DropDownList ID="dcboTruckOwner" CssClass="form-control" runat="server" DataTextField="TypeName" DataValueField="TypeID"></asp:DropDownList>
                                         </div>
                                         <div class="col-sm-6">
-                                            <input class="form-control" id="txtTruckOwner" runat="server" autocomplete="off"/>
+                                            <input class="form-control" id="txtTruckOwner" runat="server" />
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -83,13 +66,13 @@
                                     <div class="form-group">
                                         <label for="txtOrigin" class="col-sm-2 control-label">Origin</label>
                                         <div class="col-sm-9">
-                                            <input class="form-control" id="txtOrigin" runat="server" autocomplete="off"/>
+                                            <input class="form-control" id="txtOrigin" runat="server" />
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="txtDestination" class="col-sm-2 control-label">Destination</label>
                                         <div class="col-sm-9">
-                                            <input class="form-control" id="txtDestination" runat="server" autocomplete="off"/>
+                                            <input class="form-control" id="txtDestination" runat="server" />
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -112,7 +95,7 @@
                                             <div class="bootstrap-timepicker">
                                                 <div class="form-group">
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control timepicker" runat="server" id="mskManifestTime"/>
+                                                        <input type="text" class="form-control timepicker" runat="server" id="mskManifestTime">
 
                                                         <div class="input-group-addon">
                                                             <i class="fa fa-clock-o"></i>
@@ -126,35 +109,35 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="txtConsigneeCode" class="col-sm-2 control-label">Consignee Code</label>
+                                        <label for="txtContactCode" class="col-sm-2 control-label">Consignee Code</label>
                                         <div class="col-sm-9">
-                                            <input class="form-control" id="txtConsigneeCode" runat="server" autocomplete="off"/>
+                                            <input class="form-control" id="txtContactCode" runat="server" />
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="txtContactName" class="col-sm-2 control-label">Contact Name</label>
                                         <div class="col-sm-9">
-                                            <input class="form-control" id="txtContactName" runat="server" autocomplete="off"/>
+                                            <input class="form-control" id="txtContactName" runat="server" />
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="txtContactTel" class="col-sm-2 control-label">Contact Tel</label>
                                         <div class="col-sm-4">
-                                            <input class="form-control" id="txtContactTel" runat="server" autocomplete="off"/>
+                                            <input class="form-control" id="txtContactTel" runat="server" />
                                         </div>
                                         <label for="txtIssuedBy" class="col-sm-1 control-label">Issued By</label>
                                         <div class="col-sm-4">
-                                            <input class="form-control" id="txtIssuedBy" runat="server" autocomplete="off"/>
+                                            <input class="form-control" id="txtIssuedBy" runat="server" />
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="txtEasName" class="col-sm-2 control-label">EAS Name</label>
                                         <div class="col-sm-4">
-                                            <input class="form-control" id="txtEasName" runat="server" autocomplete="off"/>
+                                            <input class="form-control" id="txtEasName" runat="server" />
                                         </div>
                                         <label for="txtEasTel" class="col-sm-1 control-label">EAS Tel</label>
                                         <div class="col-sm-4">
-                                            <input class="form-control" id="txtEasTel" runat="server" autocomplete="off"/>
+                                            <input class="form-control" id="txtEasTel" runat="server" />
                                         </div>
                                     </div>
                                 </div>
@@ -168,13 +151,13 @@
                                             <div class="form-group">
                                                 <label for="txtInvoiceNo" class="col-sm-4 control-label">Invoice / TO MAWB.</label>
                                                 <div class="col-sm-8">
-                                                    <input class="form-control" id="txtInvoiceNo" runat="server" autocomplete="off"/>
+                                                    <input class="form-control" id="txtInvoiceNo" runat="server" />
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="txtQuantitye" class="col-sm-4 control-label">Quantity on Truck</label>
                                                 <div class="col-sm-4">
-                                                    <input class="form-control" id="txtQuantity" runat="server" value="0.0" autocomplete="off"/>
+                                                    <input class="form-control" id="txtQuantity" runat="server" />
                                                 </div>
                                                 <div class="col-sm-4">
                                                      <asp:DropDownList ID="dcboUnitQuantity" CssClass="form-control" runat="server" DataTextField="TypeName" DataValueField="TypeID"></asp:DropDownList>
@@ -183,7 +166,7 @@
                                             <div class="form-group">
                                                 <label for="txtQuantityFull" class="col-sm-4 control-label">Total Quantity</label>
                                                 <div class="col-sm-4">
-                                                    <input class="form-control" id="txtQuantityFull" runat="server" autocomplete="off"/>
+                                                    <input class="form-control" id="txtQuantityFull" runat="server" />
                                                 </div>
                                                 <div class="col-sm-4">
                                                      <asp:DropDownList ID="dcboUnitQuantity1" CssClass="form-control" runat="server" DataTextField="TypeName" DataValueField="TypeID"></asp:DropDownList>
@@ -195,13 +178,13 @@
                                             <div class="form-group">
                                                 <label for="txtTruckWaybill" class="col-sm-3 control-label">Truck WayBill</label>
                                                 <div class="col-sm-8">
-                                                    <input class="form-control" id="txtTruckWaybill" runat="server" autocomplete="off"/>
+                                                    <input class="form-control" id="txtTruckWaybill" runat="server" />
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="txtWeight" class="col-sm-3 control-label">Weight</label>
                                                 <div class="col-sm-4">
-                                                    <input class="form-control" id="txtWeight" runat="server" value="0.0" autocomplete="off"/>
+                                                    <input class="form-control" id="txtWeight" runat="server" />
                                                 </div>
                                                 <div class="col-sm-4">
                                                      <asp:DropDownList ID="dcboUnitWeight" CssClass="form-control" runat="server" DataTextField="TypeName" DataValueField="TypeID"></asp:DropDownList>
@@ -218,8 +201,8 @@
                                         <div class="form-group">
 
                                             <div class="col-sm-10 col-md-offset-7">
-                                                <button type="button" class="btn btn-primary">Save New</button>
-                                                <button type="button" class="btn btn-default">Save Modify</button>
+                                                <button type="button" class="btn btn-primary">SaveNew</button>
+                                                <button type="button" class="btn btn-default">SaveModify</button>
                                                 <button type="button" class="btn btn-default">Delete</button>
                                                 <button type="button" class="btn btn-default">Close</button>
                                             </div>
@@ -238,62 +221,6 @@
                 <!-- /.col -->
             </div>
             <!-- /.row -->
-            <div class="row">
-                            <div class="col-lg-8 col-md-8 col-md-offset-2">
-                                <div class="form-group">
-
-                                    <div class="box-body">
-                                        <asp:Repeater ID="Repeater1" runat="server" OnItemDataBound="Repeater1_ItemDataBound">
-                                            <HeaderTemplate>
-                                                <table id="example1" class="table table-condensed">
-                                                    <thead>
-                                                        <tr>
-                                                       <th>Select</th>
-                                                        <th>TruckManifestCode</th>
-                                                        <th>InvoiceNo</th>
-                                                        <th>TruckWayBill</th>
-                                                        <th>Remark</th>
-                                                        <th>RowTruckNo</th>
-
-                                                        </tr>
-                                                    </thead>
-                                            </HeaderTemplate>
-                                            <ItemTemplate>
-                                                <tr class="danger">
-
-                                                    <td class="text-center">
-                                                        <asp:LinkButton ID="clickrpt" CssClass="btn btn-default" runat="server" OnClick="clickrpt_Click"><i class="fa fa-pencil"></i></asp:LinkButton></td>
-                                                    <td>
-                                                        <asp:Label ID="lblTruckManifestCode" runat="server" Text="Label"></asp:Label></td>
-                                                    <td>
-                                                        <asp:Label ID="lblInvoiceNo" runat="server" Text="Label"></asp:Label></td>
-                                                    <td>
-                                                        <asp:Label ID="lblTruckWayBill" runat="server" Text="Label"></asp:Label></td>
-                                                    <td>
-                                                        <asp:Label ID="lblRemark" runat="server" Text="Label"></asp:Label></td>
-                                                    <td>
-                                                        <asp:Label ID="lblRowTruckNo" runat="server" Text="Label"></asp:Label></td>
-                                                </tr>
-                                            </ItemTemplate>
-                                            <FooterTemplate>
-                                                <tfoot>
-                                                    <tr>
-                                                        <th>Select</th>
-                                                        <th>TruckManifestCode</th>
-                                                        <th>InvoiceNo</th>
-                                                        <th>TruckWayBill</th>
-                                                        <th>Remark</th>
-                                                        <th>RowTruckNo</th>
-                                                    </tr>
-                                                </tfoot>
-                                                </table>
-                                            </FooterTemplate>
-                                        </asp:Repeater>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
         </section>
         <!-- /.content -->
 
