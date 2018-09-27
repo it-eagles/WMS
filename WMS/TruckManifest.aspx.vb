@@ -12,10 +12,6 @@ Public Class TruckManifest
     Dim db As New LKBWarehouseEntities1
     Dim ClassPermis As ClassPermis
 
-
-
-
-
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs)
 
 
@@ -60,10 +56,7 @@ Public Class TruckManifest
         dcboUnitWeight.Text = ""
 
     End Sub
-    Protected Sub btnAdd_ServerClick(sender As Object, e As EventArgs) Handles btnAdd.ServerClick
-        tmpButtonStatus = "AddNew"
-        Unlockdata()
-        Cleardata()
+    Protected Sub btnAdd_ServerClick1(sender As Object, e As EventArgs)
 
     End Sub
 
@@ -145,32 +138,34 @@ Public Class TruckManifest
     End Sub
 
     Protected Sub clickrpt_Click(sender As Object, e As EventArgs)
-        Dim Item As RepeaterItem = TryCast(TryCast(sender, LinkButton).Parent, RepeaterItem)
-        Dim lblTruckManifestCode As String = TryCast(Item.FindControl("lblTruckManifestCode"), Label).Text.Trim
-        Dim lblRowTruckNo As Double = CDbl(TryCast(Item.FindControl("lblRowTruckNo"), Label).Text.Trim)
+        '    Dim Item As RepeaterItem = TryCast(TryCast(sender, LinkButton).Parent, RepeaterItem)
+        '    Dim lblTruckManifestCode As String = TryCast(Item.FindControl("lblTruckManifestCode"), Label).Text.Trim
+        '    Dim lblRowTruckNo As Double = CDbl(TryCast(Item.FindControl("lblRowTruckNo"), Label).Text.Trim)
 
-        Dim user = (From u In db.tblTruckManifestDetails Where u.TruckManifestCode = lblTruckManifestCode And u.RowTruckNo = lblRowTruckNo).SingleOrDefault
+        '    Dim user = (From u In db.tblTruckManifestDetails Where u.TruckManifestCode = lblTruckManifestCode And u.RowTruckNo = lblRowTruckNo).SingleOrDefault
 
-        If String.IsNullOrEmpty(user.InvoiceNo) Then
-            txtInvoiceNo.Value = ""
-        Else
-            txtInvoiceNo.Value = user.InvoiceNo
-        End If
-        'If String.IsNullOrEmpty(user.) Then
-        '    lblRowTruckNo = 
-        'Else
-        '    txtOwnerPN.Value = user.u.OwnerPN
-        'End If
-        'If String.IsNullOrEmpty(user.u.OwnerPN) Then
-        '    txtOwnerPN.Value = ""
-        'Else
-        '    txtOwnerPN.Value = user.u.OwnerPN
-        'End If
-        'If String.IsNullOrEmpty(user.u.OwnerPN) Then
-        '    txtOwnerPN.Value = ""
-        'Else
-        '    txtOwnerPN.Value = user.u.OwnerPN
-        'End If
+        '    If String.IsNullOrEmpty(user.InvoiceNo) Then
+        '        txtInvoiceNo.Value = ""
+        '    Else
+        '        txtInvoiceNo.Value = user.InvoiceNo
+        '    End If
+        '    'If String.IsNullOrEmpty(user.) Then
+        '    '    lblRowTruckNo = 
+        '    'Else
+        '    '    txtOwnerPN.Value = user.u.OwnerPN
+        '    'End If
+        '    'If String.IsNullOrEmpty(user.u.OwnerPN) Then
+        '    '    txtOwnerPN.Value = ""
+        '    'Else
+        '    '    txtOwnerPN.Value = user.u.OwnerPN
+        '    'End If
+        '    'If String.IsNullOrEmpty(user.u.OwnerPN) Then
+        '    '    txtOwnerPN.Value = ""
+        '    'Else
+        '    '    txtOwnerPN.Value = user.u.OwnerPN
+        '    'End If
 
     End Sub
+
+
 End Class

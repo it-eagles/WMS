@@ -124,9 +124,6 @@ D:\WMS-Eagle\WMS\obj\Release\WMS.dll
 D:\WMS-Eagle\WMS\obj\Release\WMS.xml
 D:\WMS-Eagle\WMS\obj\Release\WMS.pdb
 D:\it-eaglesWMS\WMS\bin\DatabaseConnections.dll
-<<<<<<< HEAD
-D:\WMS-Eagle\WMS\bin\DatabaseConnections.dll
-=======
 C:\Users\bossp\Documents\WMS\WMS\bin\WMS.dll.config
 C:\Users\bossp\Documents\WMS\WMS\bin\WMS.dll
 C:\Users\bossp\Documents\WMS\WMS\bin\WMS.pdb
@@ -145,4 +142,4 @@ C:\Users\bossp\Documents\WMS\WMS\obj\Release\WMS.vbproj.GenerateResource.Cache
 C:\Users\bossp\Documents\WMS\WMS\obj\Release\WMS.dll
 C:\Users\bossp\Documents\WMS\WMS\obj\Release\WMS.xml
 C:\Users\bossp\Documents\WMS\WMS\obj\Release\WMS.pdb
->>>>>>> c2c659b615073441c389cc2cefbd0abc55ea2dc2
+

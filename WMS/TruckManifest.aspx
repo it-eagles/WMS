@@ -36,7 +36,7 @@
                     <div class="box box-default">
                         <div class="box-body">
                             <div class="col-xs-12">
-                                <button class="btn btn-app" id="btnAdd" runat="server" onserverclick="btnAdd_ServerClick"><i class="fa fa-file-text-o"></i>Add</button>
+                                <button class="btn btn-app" id="btnAdd" runat="server" onserverclick="btnAdd_ServerClick1"><i class="fa fa-file-text-o"></i>Add</button>
                                 <button class="btn btn-app" id="btnModify" runat="server" onserverclick="btnModify_ServerClick"><i class="fa fa-edit"></i>Modify</button>
                                 <button class="btn btn-app" id="btnDelete" runat="server" onserverclick="btnDelete_ServerClick"><i class="fa fa-trash"></i>Delete</button>
                                 <button class="btn btn-app" id="btnFind" runat="server" onserverclick="btnFind_ServerClick"><i class="fa fa-search"></i>Find</button>
