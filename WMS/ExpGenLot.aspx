@@ -410,7 +410,7 @@
                                                         </div>
                                                     </fieldset>
                                                 </div>
-                                                <div class="collg-12 col-md-12">
+                                                <div class="collg-12 col-md-12" style="padding-top:20px">
                                                     <fieldset>
                                                         <legend></legend>
                                                         <asp:Repeater ID="dgvLotNo" runat="server">
