@@ -22,7 +22,7 @@ Public Class Test
         'lblDisplayDate.Text = System.DateTime.Now.ToString("T")
         If Not Me.IsPostBack Then
             'TabName.Value = Request.Form(TabName.UniqueID)
-            'showUserList()
+            showUserList()
         End If
     End Sub
     Protected Sub btnTest_ServerClick(sender As Object, e As EventArgs)

@@ -12,15 +12,15 @@
     <form id="form1" runat="server">
     <div>
    
-        <%--<CR:CrystalReportViewer ID="CrystalReportViewer1" runat="server" AutoDataBind="True" GroupTreeImagesFolderUrl="" Height="50px" ReportSourceID="CrystalReportSource1" ToolbarImagesFolderUrl="" ToolPanelWidth="200px" Width="350px" />
-        <CR:CrystalReportSource ID="CrystalReportSource1" runat="server">
+        <CR:CrystalReportViewer ID="CrystalReportViewer1" runat="server" AutoDataBind="True" Height="50px"  ToolPanelWidth="200px" Width="350px" EnableDatabaseLogonPrompt="False" EnableParameterPrompt="False" />
+        <%--<CR:CrystalReportSource ID="CrystalReportSource1" runat="server">
             <Report FileName="Report\rptSummaryJOBOut.rpt">
             </Report>
         </CR:CrystalReportSource>--%>
    
 
     
-        <CR:CrystalReportViewer ID="CrystalReportViewer1" runat="server"  EnableDatabaseLogonPrompt="False" EnableParameterPrompt="False" AutoDataBind="true"/>
+        <%--<CR:CrystalReportViewer ID="CrystalReportViewer1" runat="server"  EnableDatabaseLogonPrompt="False" EnableParameterPrompt="False" AutoDataBind="true"/>--%>
         <%--<CR:CrystalReportSource ID="CrystalReportSource1" runat="server" >
             <Report FileName="Report\rptSummaryJobIn.rpt">
             </Report>

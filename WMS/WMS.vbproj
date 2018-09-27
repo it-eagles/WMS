@@ -193,6 +193,11 @@
     <Content Include="RptStatusPickFrm.aspx" />
     <Content Include="RptStorageAgingFrm.aspx" />
     <Content Include="RptStorageChargeFrm.aspx" />
+    <Content Include="RptSumLOTFrm.aspx" />
+    <Content Include="RptSumSeagateFrm.aspx" />
+    <Content Include="RptTranPickFrm.aspx" />
+    <Content Include="RptWareHouseFrm.aspx" />
+    <Content Include="RptWDFrm.aspx" />
     <Content Include="Scripts\bootstrap-colorpicker\dist\css\bootstrap-colorpicker.css" />
     <Content Include="Scripts\bootstrap-colorpicker\dist\css\bootstrap-colorpicker.min.css" />
     <Content Include="Scripts\bootstrap-colorpicker\dist\img\bootstrap-colorpicker\alpha-horizontal.png" />
@@ -7431,6 +7436,954 @@
       <DependentUpon>ReportLotTotal.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
+    <Compile Include="Report\ExpCustomsInvoice-Gen.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExpCustomsInvoice-Gen.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\ExpCustomsInvoice-HTI.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExpCustomsInvoice-HTI.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\ExpCustomsInvoice-RCB.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExpCustomsInvoice-RCB.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\ExpCustomsInvoice-RCBIN.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExpCustomsInvoice-RCBIN.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\ExpCustomsInvoice-WD-2.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExpCustomsInvoice-WD-2.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\ExpCustomsInvoice.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExpCustomsInvoice.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\LogReport\RptLogBrand.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptLogBrand.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\LogReport\RptLogCarLicense.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptLogCarLicense.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\LogReport\RptLogConsignnee.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptLogConsignnee.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\LogReport\RptLogCountry.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptLogCountry.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\LogReport\RptLogCurrency.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptLogCurrency.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\LogReport\RptLogDeliveryTerm.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptLogDeliveryTerm.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\LogReport\RptLogDriver.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptLogDriver.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\LogReport\RptLogExpGenLOT.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptLogExpGenLOT.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\LogReport\RptLogImpGenLOT.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptLogImpGenLOT.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\LogReport\RptLogImpInvoice.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptLogImpInvoice.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\LogReport\RptLogImpInvoiceDetail.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptLogImpInvoiceDetail.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\LogReport\RptLogImpPackingList.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptLogImpPackingList.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\LogReport\RptLogInvoice.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptLogInvoice.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\LogReport\RptLogInvoiceDetail.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptLogInvoiceDetail.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\LogReport\RptLogPackingList.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptLogPackingList.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\LogReport\RptLogProductDetail.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptLogProductDetail.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\LogReport\RptLogProductUnit.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptLogProductUnit.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\LogReport\RptLogProvince.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptLogProvince.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\LogReport\RptLogReferenceType.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptLogReferenceType.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\LogReport\RptLogShipper.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptLogShipper.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\LogReport\RptLogShippingMark.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptLogShippingMark.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\LogReport\RptLogtransportationMode.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptLogtransportationMode.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\LogReport\RptLogTruckManifest.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptLogTruckManifest.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\LogReport\RptLogTruckManifestDetail.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptLogTruckManifestDetail.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\LogReport\RptLogTruckOwner.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptLogTruckOwner.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\LogReport\RptLogTruckType.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptLogTruckType.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\LogReport\RptLogTruckWayBill.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptLogTruckWayBill.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\LogReport\RptLogTruckWayBillDetail.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptLogTruckWayBillDetail.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\LogReport\RptLogUser.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptLogUser.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\LogReport\RptLogWareHouseType.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptLogWareHouseType.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\ReportIEAT\rptIEAT-E-02-1R.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptIEAT-E-02-1R.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\ReportIEAT\rptIEAT-E-02R.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptIEAT-E-02R.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\ReportIEAT\rptIEAT-E-02Rnew.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptIEAT-E-02Rnew.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\ReportIEAT\rptIEAT-E-1-02R.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptIEAT-E-1-02R.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\ReportIEAT\rptIEAT-EI-1-02R.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptIEAT-EI-1-02R.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\ReportIEAT\rptIEAT-I-05-06R.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptIEAT-I-05-06R.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\ReportIEAT\rptIEAT-I-05-06Rnew.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptIEAT-I-05-06Rnew.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\ReportIEAT\rptIEAT-I-07R.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptIEAT-I-07R.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\ReportWH\HTIPhysicalCount.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HTIPhysicalCount.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\ReportWH\HTIStockControl.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HTIStockControl.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\ReportWH\HTIStockControlWithCheck.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HTIStockControlWithCheck.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\ReportWH\HTIStockReport-New.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HTIStockReport-New.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\ReportWH\HTIStockReport.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HTIStockReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\ReportWH\HTISummary_Issue.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HTISummary_Issue.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\ReportWH\HTISummary_Receipt-forCheck.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HTISummary_Receipt-forCheck.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\ReportWH\HTISummary_Receipt.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HTISummary_Receipt.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\ReportWH\HTISummary_Unpick.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HTISummary_Unpick.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\ReportWH\rpt12.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rpt12.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\ReportWH\rptptnSummary_Issue.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptptnSummary_Issue.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\ReportWH\rptptnSummary_Receipt.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptptnSummary_Receipt.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\ReportWH\rptStockControl.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptStockControl.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\ReportWH\rptStockReport-New.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptStockReport-New.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\ReportWH\rptStockReport-NewMovement.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptStockReport-NewMovement.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\ReportWH\rptSummaryofIssued.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptSummaryofIssued.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\ReportWH\rptSummaryofIssuedBox.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptSummaryofIssuedBox.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\ReportWH\rptSummaryofReceipt.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptSummaryofReceipt.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\ReportWH\rptSummaryofReceiptBox.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptSummaryofReceiptBox.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\ReportWH\rptSummary_Issue.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptSummary_Issue.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\ReportWH\rptSummary_Receipt.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptSummary_Receipt.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\ReportWH\rptWHActivityReport.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptWHActivityReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\ReportWH\rptWHDeliverySummary.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptWHDeliverySummary.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\ReportWH\rptWHGoodsReceiptNote.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptWHGoodsReceiptNote.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\ReportWH\rptWHIssuePlanned.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptWHIssuePlanned.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\ReportWH\rptWHOrderTallyReport.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptWHOrderTallyReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\ReportWH\rptWHPickingNotIssued.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptWHPickingNotIssued.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\ReportWH\rptWHPickTicketforPick.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptWHPickTicketforPick.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\ReportWH\rptWHPickTicketReport.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptWHPickTicketReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\ReportWH\rptWHProductInventoryDetail.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptWHProductInventoryDetail.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\ReportWH\rptWHProductInventoryDetailExport.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptWHProductInventoryDetailExport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\ReportWH\rptWHProductInventorySummary.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptWHProductInventorySummary.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\ReportWH\rptWHPutawayList.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptWHPutawayList.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\ReportWH\rptWHReceiptDiscrepancyReport.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptWHReceiptDiscrepancyReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\ReportWH\rptWHReceiptPlanned.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptWHReceiptPlanned.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\ReportWH\rptWHReceiptSummaryReport.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptWHReceiptSummaryReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\ReportWH\rptWHStockMovementreport.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptWHStockMovementreport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\ReportWH\rptWHStockOutReport.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptWHStockOutReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\ReportWH\rptWHUnstuffingTallyReport.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptWHUnstuffingTallyReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptCadbury.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptCadbury.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\RptCarton.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptCarton.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\RptCartonIssue.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptCartonIssue.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\RptCartonReceive.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptCartonReceive.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptDO-Gen.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptDO-Gen.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptDo-HTI.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptDo-HTI.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptDo-WD-2 .vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptDo-WD-2 .rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptDO.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptDO.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptDocTranfer-WD-2.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptDocTranfer-WD-2.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptDocTranfer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptDocTranfer.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptDOTemporary.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptDOTemporary.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptExpInstruction.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptExpInstruction.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptExpInstructionsbia.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptExpInstructionsbia.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptExpPackingList-Gen.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptExpPackingList-Gen.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptExpPackingList-HTI.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptExpPackingList-HTI.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptExpPackingList-RCB.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptExpPackingList-RCB.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptExpPackingList-RCBIN.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptExpPackingList-RCBIN.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptExpPackingList-WD-2.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptExpPackingList-WD-2.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptExpPackingList.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptExpPackingList.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptHTITrucking.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptHTITrucking.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptIEAT.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptIEAT.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptIEAT107-Gen.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptIEAT107-Gen.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptIEAT107-SG2.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptIEAT107-SG2.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptIEAT107-WD-2.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptIEAT107-WD-2.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptIEAT107-WD.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptIEAT107-WD.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptIEAT107.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptIEAT107.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptIEAT108-Gen.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptIEAT108-Gen.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptIEAT108-WD-2.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptIEAT108-WD-2.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptIEAT108-WD.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptIEAT108-WD.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptIEAT108.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptIEAT108.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptIEAT109.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptIEAT109.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptIEAT109A.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptIEAT109A.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptIEAT109D.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptIEAT109D.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptIEATExport.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptIEATExport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptIEATImport.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptIEATImport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptImpInstruction.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptImpInstruction.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptImpInstructionSBIA.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptImpInstructionSBIA.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\RptInvoiceLKB.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptInvoiceLKB.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\RptJobLocation.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptJobLocation.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptJobSheetIn.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptJobSheetIn.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptJobSheetInEnd.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptJobSheetInEnd.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptJobSheetOut.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptJobSheetOut.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptJobSheetOutEnd.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptJobSheetOutEnd.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\RptLocation.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptLocation.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptParty.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptParty.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptPlanExp.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptPlanExp.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptPlanImport.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptPlanImport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptPlanIn.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptPlanIn.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptPlanOut.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptPlanOut.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptProduct.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptProduct.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptProductDetail.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptProductDetail.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptPromise.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptPromise.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptrefer6.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptrefer6.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptreferIN.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptreferIN.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptreferOUT.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptreferOUT.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptSegateSummaryReport.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptSegateSummaryReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptSegateSummaryReport1.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptSegateSummaryReport1.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptShipment.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptShipment.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptShipmentsExport.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptShipmentsExport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptStatusPick.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptStatusPick.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptStorageCharge.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptStorageCharge.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptStorageChargeBalance.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptStorageChargeBalance.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptSumCusLotIn.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptSumCusLotIn.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptSumCusLotOut.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptSumCusLotOut.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptSumLotIn.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptSumLotIn.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptSumLotOut.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptSumLotOut.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptSumLOTTotal.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptSumLOTTotal.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptSummaryCommodityIn.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptSummaryCommodityIn.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptSummaryCommodityOut.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptSummaryCommodityOut.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptSummaryJobIn.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptSummaryJobIn.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptSummaryJOBOut.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptSummaryJOBOut.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptTrnPick.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptTrnPick.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\RptTruckmanifest.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptTruckmanifest.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptTruckWayBill.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptTruckWayBill.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptTruckWayBillImp.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptTruckWayBillImp.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="RptCartonFrm.aspx.designer.vb">
       <DependentUpon>RptCartonFrm.aspx</DependentUpon>
     </Compile>
@@ -7513,6 +8466,41 @@
     </Compile>
     <Compile Include="RptStorageChargeFrm.aspx.vb">
       <DependentUpon>RptStorageChargeFrm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RptSumLOTFrm.aspx.designer.vb">
+      <DependentUpon>RptSumLOTFrm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RptSumLOTFrm.aspx.vb">
+      <DependentUpon>RptSumLOTFrm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RptSumSeagateFrm.aspx.designer.vb">
+      <DependentUpon>RptSumSeagateFrm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RptSumSeagateFrm.aspx.vb">
+      <DependentUpon>RptSumSeagateFrm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RptTranPickFrm.aspx.designer.vb">
+      <DependentUpon>RptTranPickFrm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RptTranPickFrm.aspx.vb">
+      <DependentUpon>RptTranPickFrm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RptWareHouseFrm.aspx.designer.vb">
+      <DependentUpon>RptWareHouseFrm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RptWareHouseFrm.aspx.vb">
+      <DependentUpon>RptWareHouseFrm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RptWDFrm.aspx.designer.vb">
+      <DependentUpon>RptWDFrm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RptWDFrm.aspx.vb">
+      <DependentUpon>RptWDFrm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ShipmentRec.aspx.designer.vb">
@@ -7676,6 +8664,638 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\ExpCustomsInvoice-Gen.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ExpCustomsInvoice-Gen.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\ExpCustomsInvoice-HTI.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ExpCustomsInvoice-HTI.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\ExpCustomsInvoice-RCB.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ExpCustomsInvoice-RCB.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\ExpCustomsInvoice-RCBIN.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ExpCustomsInvoice-RCBIN.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\ExpCustomsInvoice-WD-2.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ExpCustomsInvoice-WD-2.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\ExpCustomsInvoice.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ExpCustomsInvoice.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\LogReport\RptLogBrand.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptLogBrand.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\LogReport\RptLogCarLicense.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptLogCarLicense.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\LogReport\RptLogConsignnee.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptLogConsignnee.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\LogReport\RptLogCountry.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptLogCountry.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\LogReport\RptLogCurrency.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptLogCurrency.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\LogReport\RptLogDeliveryTerm.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptLogDeliveryTerm.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\LogReport\RptLogDriver.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptLogDriver.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\LogReport\RptLogExpGenLOT.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptLogExpGenLOT.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\LogReport\RptLogImpGenLOT.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptLogImpGenLOT.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\LogReport\RptLogImpInvoice.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptLogImpInvoice.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\LogReport\RptLogImpInvoiceDetail.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptLogImpInvoiceDetail.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\LogReport\RptLogImpPackingList.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptLogImpPackingList.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\LogReport\RptLogInvoice.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptLogInvoice.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\LogReport\RptLogInvoiceDetail.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptLogInvoiceDetail.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\LogReport\RptLogPackingList.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptLogPackingList.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\LogReport\RptLogProductDetail.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptLogProductDetail.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\LogReport\RptLogProductUnit.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptLogProductUnit.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\LogReport\RptLogProvince.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptLogProvince.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\LogReport\RptLogReferenceType.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptLogReferenceType.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\LogReport\RptLogShipper.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptLogShipper.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\LogReport\RptLogShippingMark.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptLogShippingMark.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\LogReport\RptLogtransportationMode.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptLogtransportationMode.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\LogReport\RptLogTruckManifest.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptLogTruckManifest.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\LogReport\RptLogTruckManifestDetail.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptLogTruckManifestDetail.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\LogReport\RptLogTruckOwner.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptLogTruckOwner.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\LogReport\RptLogTruckType.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptLogTruckType.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\LogReport\RptLogTruckWayBill.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptLogTruckWayBill.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\LogReport\RptLogTruckWayBillDetail.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptLogTruckWayBillDetail.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\LogReport\RptLogUser.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptLogUser.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\LogReport\RptLogWareHouseType.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptLogWareHouseType.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReportIEAT\rptIEAT-E-02-1R.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptIEAT-E-02-1R.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReportIEAT\rptIEAT-E-02R.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptIEAT-E-02R.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReportIEAT\rptIEAT-E-02Rnew.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptIEAT-E-02Rnew.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReportIEAT\rptIEAT-E-1-02R.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptIEAT-E-1-02R.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReportIEAT\rptIEAT-EI-1-02R.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptIEAT-EI-1-02R.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReportIEAT\rptIEAT-I-05-06R.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptIEAT-I-05-06R.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReportIEAT\rptIEAT-I-05-06Rnew.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptIEAT-I-05-06Rnew.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReportIEAT\rptIEAT-I-07R.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptIEAT-I-07R.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReportWH\HTIPhysicalCount.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>HTIPhysicalCount.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReportWH\HTIStockControl.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>HTIStockControl.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReportWH\HTIStockControlWithCheck.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>HTIStockControlWithCheck.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReportWH\HTIStockReport-New.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>HTIStockReport-New.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReportWH\HTIStockReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>HTIStockReport.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReportWH\HTISummary_Issue.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>HTISummary_Issue.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReportWH\HTISummary_Receipt-forCheck.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>HTISummary_Receipt-forCheck.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReportWH\HTISummary_Receipt.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>HTISummary_Receipt.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReportWH\HTISummary_Unpick.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>HTISummary_Unpick.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReportWH\rpt12.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rpt12.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReportWH\rptptnSummary_Issue.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptptnSummary_Issue.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReportWH\rptptnSummary_Receipt.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptptnSummary_Receipt.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReportWH\rptStockControl.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptStockControl.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReportWH\rptStockReport-New.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptStockReport-New.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReportWH\rptStockReport-NewMovement.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptStockReport-NewMovement.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReportWH\rptSummaryofIssued.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptSummaryofIssued.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReportWH\rptSummaryofIssuedBox.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptSummaryofIssuedBox.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReportWH\rptSummaryofReceipt.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptSummaryofReceipt.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReportWH\rptSummaryofReceiptBox.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptSummaryofReceiptBox.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReportWH\rptSummary_Issue.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptSummary_Issue.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReportWH\rptSummary_Receipt.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptSummary_Receipt.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReportWH\rptWHActivityReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptWHActivityReport.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReportWH\rptWHDeliverySummary.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptWHDeliverySummary.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReportWH\rptWHGoodsReceiptNote.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptWHGoodsReceiptNote.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReportWH\rptWHIssuePlanned.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptWHIssuePlanned.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReportWH\rptWHOrderTallyReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptWHOrderTallyReport.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReportWH\rptWHPickingNotIssued.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptWHPickingNotIssued.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReportWH\rptWHPickTicketforPick.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptWHPickTicketforPick.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReportWH\rptWHPickTicketReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptWHPickTicketReport.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReportWH\rptWHProductInventoryDetail.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptWHProductInventoryDetail.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReportWH\rptWHProductInventoryDetailExport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptWHProductInventoryDetailExport.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReportWH\rptWHProductInventorySummary.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptWHProductInventorySummary.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReportWH\rptWHPutawayList.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptWHPutawayList.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReportWH\rptWHReceiptDiscrepancyReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptWHReceiptDiscrepancyReport.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReportWH\rptWHReceiptPlanned.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptWHReceiptPlanned.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReportWH\rptWHReceiptSummaryReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptWHReceiptSummaryReport.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReportWH\rptWHStockMovementreport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptWHStockMovementreport.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReportWH\rptWHStockOutReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptWHStockOutReport.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReportWH\rptWHUnstuffingTallyReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptWHUnstuffingTallyReport.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptCadbury.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptCadbury.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\RptCarton.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptCarton.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\RptCartonIssue.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptCartonIssue.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\RptCartonReceive.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptCartonReceive.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptDO-Gen.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptDO-Gen.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptDo-HTI.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptDo-HTI.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptDo-WD-2 .rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptDo-WD-2 .vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptDO.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptDO.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptDocTranfer-WD-2.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptDocTranfer-WD-2.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptDocTranfer.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptDocTranfer.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptDOTemporary.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptDOTemporary.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptExpInstruction.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptExpInstruction.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptExpInstructionsbia.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptExpInstructionsbia.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptExpPackingList-Gen.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptExpPackingList-Gen.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptExpPackingList-HTI.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptExpPackingList-HTI.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptExpPackingList-RCB.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptExpPackingList-RCB.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptExpPackingList-RCBIN.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptExpPackingList-RCBIN.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptExpPackingList-WD-2.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptExpPackingList-WD-2.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptExpPackingList.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptExpPackingList.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptHTITrucking.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptHTITrucking.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptIEAT.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptIEAT.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptIEAT107-Gen.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptIEAT107-Gen.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptIEAT107-SG2.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptIEAT107-SG2.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptIEAT107-WD-2.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptIEAT107-WD-2.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptIEAT107-WD.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptIEAT107-WD.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptIEAT107.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptIEAT107.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptIEAT108-Gen.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptIEAT108-Gen.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptIEAT108-WD-2.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptIEAT108-WD-2.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptIEAT108-WD.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptIEAT108-WD.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptIEAT108.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptIEAT108.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptIEAT109.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptIEAT109.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptIEAT109A.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptIEAT109A.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptIEAT109D.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptIEAT109D.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptIEATExport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptIEATExport.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptIEATImport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptIEATImport.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptImpInstruction.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptImpInstruction.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptImpInstructionSBIA.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptImpInstructionSBIA.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\RptInvoiceLKB.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptInvoiceLKB.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\RptJobLocation.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptJobLocation.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptJobSheetIn.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptJobSheetIn.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptJobSheetInEnd.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptJobSheetInEnd.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptJobSheetOut.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptJobSheetOut.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptJobSheetOutEnd.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptJobSheetOutEnd.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\RptLocation.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptLocation.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptParty.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptParty.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptPlanExp.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptPlanExp.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptPlanImport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptPlanImport.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptPlanIn.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptPlanIn.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptPlanOut.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptPlanOut.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptProduct.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptProduct.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptProductDetail.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptProductDetail.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptPromise.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptPromise.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptrefer6.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptrefer6.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptreferIN.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptreferIN.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptreferOUT.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptreferOUT.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptSegateSummaryReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptSegateSummaryReport.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptSegateSummaryReport1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptSegateSummaryReport1.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptShipment.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptShipment.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptShipmentsExport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptShipmentsExport.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptStatusPick.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptStatusPick.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptStorageCharge.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptStorageCharge.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptStorageChargeBalance.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptStorageChargeBalance.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptSumCusLotIn.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptSumCusLotIn.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptSumCusLotOut.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptSumCusLotOut.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptSumLotIn.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptSumLotIn.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptSumLotOut.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptSumLotOut.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptSumLOTTotal.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptSumLOTTotal.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptSummaryCommodityIn.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptSummaryCommodityIn.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptSummaryCommodityOut.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptSummaryCommodityOut.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptSummaryJobIn.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptSummaryJobIn.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptSummaryJOBOut.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptSummaryJOBOut.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptTrnPick.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptTrnPick.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\RptTruckmanifest.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptTruckmanifest.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptTruckWayBill.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptTruckWayBill.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptTruckWayBillImp.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptTruckWayBillImp.vb</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -8203,9 +9823,7 @@
     <Content Include="Scripts\dist\css\adminlte.min.css.map" />
     <Content Include="Scripts\plugins\input-mask\phone-codes\phone-be.json" />
     <Content Include="Scripts\plugins\input-mask\phone-codes\phone-codes.json" />
-    <Content Include="packages.config">
-      <SubType>Designer</SubType>
-    </Content>
+    <Content Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
