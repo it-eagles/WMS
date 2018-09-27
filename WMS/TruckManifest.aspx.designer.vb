@@ -32,13 +32,85 @@ Partial Public Class TruckManifest
     Protected WithEvents ScriptManager1 As Global.System.Web.UI.ScriptManager
 
     '''<summary>
-    '''txtConsignneeCode control.
+    '''btnAdd control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtConsignneeCode As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents btnAdd As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''btnModify control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnModify As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''btnDelete control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnDelete As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''btnFind control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnFind As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''btnprint control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnprint As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''btnCancel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnCancel As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''btnSave control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnSave As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''btnClose control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnClose As Global.System.Web.UI.HtmlControls.HtmlButton
+
+    '''<summary>
+    '''txtTuckManifestCode control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtTuckManifestCode As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
     '''dcboTruckOwner control.
@@ -131,13 +203,13 @@ Partial Public Class TruckManifest
     Protected WithEvents mskManifestTime As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''txtContactCode control.
+    '''txtConsigneeCode control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtContactCode As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents txtConsigneeCode As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
     '''txtContactName control.
@@ -255,4 +327,13 @@ Partial Public Class TruckManifest
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents dcboUnitWeight As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''Repeater1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Repeater1 As Global.System.Web.UI.WebControls.Repeater
 End Class
