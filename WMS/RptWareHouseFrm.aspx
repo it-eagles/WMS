@@ -1,4 +1,4 @@
-﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="RptWareHouseFrm.aspx.vb" Inherits="WMS.RptWareHouseFrm" MasterPageFile="~/Home.Master" %>
+﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="RptWareHouseFrm.aspx.vb" Inherits="WMS.RptWareHouseFrm" MasterPageFile="~/Home.Master" EnableEventValidation="false" EnableViewState="true"%>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
@@ -80,7 +80,7 @@
                                         <div class="form-group">
                                             <label for="txtJobno" class="col-sm-4 control-label">Job No:</label>
                                             <div class="col-sm-8">
-                                                <input class="form-control" id="txtJobno" runat="server" placeholder="Job No" autocomplete="off" />
+                                                <input class="form-control" id="txtJobno" runat="server" placeholder="Job No" autocomplete="off"  />
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -160,7 +160,7 @@
                                         <div class="form-group">
                                             <label for="txtToJobno" class="col-sm-3 control-label">To:</label>
                                             <div class="col-sm-8">
-                                                <input class="form-control" id="txtToJobno" runat="server" placeholder="Job No" autocomplete="off" />
+                                                <input class="form-control" id="txtToJobno" runat="server" placeholder="Job No" />
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -394,13 +394,23 @@
             }
     }
         </script>
-        <%--<script type="text/javascript">
-                function EnableDisableTextBox2() {
-                    var status2 = document.getElementById('<%=txtJobno.ClientID%>').onkeyup;
-                        if (status2 == true) {
-                            document.getElementById('<%=txtToJobno.ClientID%>').textContent = document.getElementById('<%=txtJobno.ClientID%>').textContent;
-                }
-    }
-    </script>--%>
+
+        <script type="text/javascript">
+            function CopyText() {
+                var x = document.getElementById("txtJobno").value;
+                document.getElementById("txtToJobno").setAttribute("text", x);
+                alert(x);
+             }
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#txtJobno').keyup(function () {
+                    $('#txtToJobno').val($(this).val());
+                    alert($(this).val());
+                });
+            });
+            
+        </script>
+
     </form>
 </asp:Content>

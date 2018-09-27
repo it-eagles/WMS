@@ -278,23 +278,23 @@
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a target="_blank" href="RptSumSeagate.aspx"><i class="fa fa-circle-o"></i>Report Summary Seagate</a></li>
-                            <li><a target="_blank" href="RptIEATFee.aspx"><i class="fa fa-circle-o"></i>Report IEAT Fee</a></li>
-                            <li><a target="_blank" href="RptIEAT.aspx"><i class="fa fa-circle-o"></i>Report IEAT</a></li>
-                            <li><a target="_blank" href="RptLog.aspx"><i class="fa fa-circle-o"></i>Report Log</a></li>
-                            <li><a target="_blank" href="RptSumLOT.aspx"><i class="fa fa-circle-o"></i>Report SumLOT</a></li>
-                            <li><a target="_blank" href="RptJobSheet.aspx"><i class="fa fa-circle-o"></i>Report JobSheet</a></li>
-                            <li><a target="_blank" href="RptStorageCharge.aspx"><i class="fa fa-circle-o"></i>Report Storage Charge</a></li>
-                            <li><a target="_blank" href="RptStorageAging.aspx"><i class="fa fa-circle-o"></i>Report Storage Aging</a></li>
-                            <li><a target="_blank" href="RptWareHouse.aspx"><i class="fa fa-circle-o"></i>Report Ware House</a></li>
-                            <li><a target="_blank" href="RptPlanHTI.aspx"><i class="fa fa-circle-o"></i>Report Plan HTI</a></li>
-                            <li><a target="_blank" href="RptWD.aspx"><i class="fa fa-circle-o"></i>Report WD</a></li>
-                            <li><a target="_blank" href="RptCustomsDaily.aspx"><i class="fa fa-circle-o"></i>Report Customs Daily</a></li>
-                            <li><a target="_blank" href="RptCustoms.aspx"><i class="fa fa-circle-o"></i>Report Customs</a></li>
-                            <li><a target="_blank" href="RptLocation.aspx"><i class="fa fa-circle-o"></i>Report Location</a></li>
-                            <li><a target="_blank" href="RptStatusPick.aspx"><i class="fa fa-circle-o"></i>Report Status Pick</a></li>
-                            <li><a target="_blank" href="RptCarton.aspx"><i class="fa fa-circle-o"></i>Report Carton</a></li>
-                            <li><a target="_blank" href="RptTranPick.aspx"><i class="fa fa-circle-o"></i>Report Transection Pick</a></li>
+                            <li><a target="_blank" href="RptSumSeagateFrm.aspx"><i class="fa fa-circle-o"></i>Report Summary Seagate</a></li>
+                            <li><a target="_blank" href="RptIEATFeeFrm.aspx"><i class="fa fa-circle-o"></i>Report IEAT Fee</a></li>
+                            <li><a target="_blank" href="RptIEATFrm.aspx"><i class="fa fa-circle-o"></i>Report IEAT</a></li>
+                            <li><a target="_blank" href="RptLogFrm.aspx"><i class="fa fa-circle-o"></i>Report Log</a></li>
+                            <li><a target="_blank" href="RptSumLOTFrm.aspx"><i class="fa fa-circle-o"></i>Report SumLOT</a></li>
+                            <li><a target="_blank" href="RptJobSheetFrm.aspx"><i class="fa fa-circle-o"></i>Report JobSheet</a></li>
+                            <li><a target="_blank" href="RptStorageChargeFrm.aspx"><i class="fa fa-circle-o"></i>Report Storage Charge</a></li>
+                            <li><a target="_blank" href="RptStorageAgingFrm.aspx"><i class="fa fa-circle-o"></i>Report Storage Aging</a></li>
+                            <li><a target="_blank" href="RptWareHouseFrm.aspx"><i class="fa fa-circle-o"></i>Report Ware House</a></li>
+                            <li><a target="_blank" href="RptPlanHTIFrm.aspx"><i class="fa fa-circle-o"></i>Report Plan HTI</a></li>
+                            <li><a target="_blank" href="RptWDFrm.aspx"><i class="fa fa-circle-o"></i>Report WD</a></li>
+                            <li><a target="_blank" href="RptCustomsDailyFrm.aspx"><i class="fa fa-circle-o"></i>Report Customs Daily</a></li>
+                            <li><a target="_blank" href="RptCustomsFrm.aspx"><i class="fa fa-circle-o"></i>Report Customs</a></li>
+                            <li><a target="_blank" href="RptLocationFrm.aspx"><i class="fa fa-circle-o"></i>Report Location</a></li>
+                            <li><a target="_blank" href="RptStatusPickFrm.aspx"><i class="fa fa-circle-o"></i>Report Status Pick</a></li>
+                            <li><a target="_blank" href="RptCartonFrm.aspx"><i class="fa fa-circle-o"></i>Report Carton</a></li>
+                            <li><a target="_blank" href="RptTranPickFrm.aspx"><i class="fa fa-circle-o"></i>Report Transection Pick</a></li>
                         </ul>
                     </li>
                     <li class="treeview">

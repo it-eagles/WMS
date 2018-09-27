@@ -61,8 +61,8 @@
                                
                                 <%--<asp:TextBox runat="server" ID="txttest" CssClass="form-control input-sm" AutoPostBack="true" OnTextChanged="txttest_TextChanged"></asp:TextBox>--%>
                             </div>
-
-                            <asp:Repeater ID="rptCustomers" runat="server" OnItemDataBound="rptCustomers_ItemDataBound">
+                            <div class="table-responsive">
+                                <asp:Repeater ID="rptCustomers" runat="server" OnItemDataBound="rptCustomers_ItemDataBound">
                                 <HeaderTemplate>
                                     <table id="tblCustomers" class="table table-bordered">
                                         <thead>
@@ -98,6 +98,8 @@
                                     </table>
                                 </FooterTemplate>
                             </asp:Repeater>
+                            </div>
+                            
 
                         </div>
                     </div>

@@ -42,7 +42,6 @@
                                         <label for="txtSelect" class="col-sm-3 control-label">Select Import/Export:</label>
                                          <div class="col-sm-5">                                            
                                              <asp:DropDownList ID="ddlSelectImEx" CssClass="form-control" runat="server">
-                                                 <asp:ListItem></asp:ListItem>
                                                     <asp:ListItem>LogExpGenLOT</asp:ListItem>
                                                     <asp:ListItem>LogInvoice</asp:ListItem>
                                                     <asp:ListItem>LogInvoiceDetail</asp:ListItem>
@@ -97,7 +96,7 @@
                                 </div>   
                                  
                                 <div class="form-group">
-                                <fieldset id="FieldsetByDate" runat="server">  <legend>By Date</legend>              
+                                <fieldset id="FieldsetByDate" runat="server">  <legend>From Date</legend>              
                                 <div class="form-group" >                                    
                                         <label for="txtCode" class="col-sm-3 control-label">Date Start:</label>
                                          <div class="col-sm-5">                                            
@@ -107,7 +106,7 @@
                                          </div>
                                  </div>
                                   <div class="form-group" >                                    
-                                        <label for="txtCode" class="col-sm-3 control-label">Date Stop:</label>
+                                        <label for="txtCode" class="col-sm-3 control-label">To Date:</label>
                                          <div class="col-sm-5">                                            
                                              <asp:TextBox CssClass="form-control" ID="txtdatepickerToDate" runat="server" placeholder="DD/MM/YYYY">
                                              </asp:TextBox>
@@ -131,7 +130,7 @@
                                  <div class="form-group" >   
                                         <div class="col-sm-5"></div>                                 
                                         <button type="submit" runat="server" class="btn btn-primary" id="btnPrint" title="btnPrint" onserverclick="btnPrint_ServerClick">Print</button>
-                                        <button type="submit" runat="server" class="btn btn-primary" id="btnClear" title="btnClear" onserverclick="btnClear_ServerClick">Clear</button>
+                                        <button type="submit" runat="server" class="btn btn-info" id="btnClear" title="btnClear" onserverclick="btnClear_ServerClick">Clear</button>
                                  </div>
                                     <!-- /.box-body -->
                              </div>

@@ -108,6 +108,7 @@ Public Class MoneyExt
             'Return result 
             Return strResult
         Catch ex As Exception
+            Return False
         End Try
 
     End Function
@@ -219,6 +220,7 @@ Public Class MoneyExt
             'Return result 
             Return strResult
         Catch ex As Exception
+            Return False
         End Try
     End Function
 
@@ -329,6 +331,7 @@ Public Class MoneyExt
             'Return result 
             NumToEngPallet = strResult
         Catch ex As Exception
+            Return False
         End Try
     End Function
 End Class
