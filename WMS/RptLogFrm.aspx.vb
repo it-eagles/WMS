@@ -1,8 +1,12 @@
+<<<<<<< HEAD
 Option Explicit On
 Option Strict On
 Option Infer On
 
 Public Class RptLogfrm
+=======
+Public Class RptlogFrm
+>>>>>>> 8f9c1eba2d5077fd8b5eb134726eb9b44630a7ed
     Inherits System.Web.UI.Page
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load

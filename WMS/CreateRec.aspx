@@ -1204,7 +1204,7 @@
                                 <!-- Post -->
                                 <div class="row">
                                     <%--------------------------------------------------------------------Start Left Form---------------------------------------------%>
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                         <!-- Horizontal Form -->
                                         <!-- form start -->
                                         <div class="form-horizontal">
@@ -1212,67 +1212,131 @@
                                                 <legend>Invoice</legend>
                                                 <div class="box-body">
                                                     <div class="form-group">
-                                                        <label for="txtInvoiceNo" class="col-sm-3 control-label">Invoice No:</label>
-                                                        <div class="col-sm-9">
-                                                            <input class="form-control input-sm" id="txtInvoiceNo" runat="server" autocomplete="off" />
-                                                            <%--<asp:DropDownList ID="ddlInvoiceNo" CssClass="form-control" runat="server"></asp:DropDownList>--%>
+                                                        <div class="col-sm-6">
+                                                            <label for="txtInvoiceNo" class="col-sm-3 control-label">Invoice No:</label>
+                                                            <div class="col-sm-9">
+                                                                <input class="form-control input-sm" id="txtInvoiceNo" runat="server" autocomplete="off" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <label for="txtDataInvoice" class="col-sm-3 control-label">Data Invoice:</label>
+                                                            <div class="col-sm-9">
+                                                                <asp:TextBox CssClass="form-control input-sm" ID="txtdatepickerDataInvoice" runat="server" placeholder="DD/MM/YYYY" autocomplete="off"></asp:TextBox>
+                                                                <asp:CalendarExtender ID="CalendarExtenderDataInvoice" runat="server" Enabled="True" TargetControlID="txtdatepickerDataInvoice" Format="dd/MM/yyyy"></asp:CalendarExtender>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="txtProductCodeInvoice" class="col-sm-3 control-label">Product Code:</label>
-                                                        <div class="col-sm-3">
-                                                            <input class="form-control input-sm" id="txtProductCodeInvoice" runat="server" autocomplete="off" />
+                                                        <div class="col-sm-6">
+                                                            <label for="txtProductCodeInvoice" class="col-sm-3 control-label">Product Code:</label>
+                                                            <div class="col-sm-4">
+                                                                <div class="input-group">
+                                                                    <input type="text" class="form-control input-sm" id="txtProductCodeInvoice" runat="server" autocomplete="off" />
+                                                                    <span class="input-group-btn">
+                                                                        <button class="btn btn-sm btn-default" type="button" runat="server" onserverclick="Unnamed_ServerClick7"><i class="glyphicon glyphicon-search"></i></button>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                            <label for="txtPONoProductCode" class="col-sm-2 control-label">PO No:</label>
+                                                            <div class="col-sm-3">
+                                                                <input class="form-control input-sm" id="txtPONoProductCode" runat="server" autocomplete="off" />
+                                                            </div>
                                                         </div>
-                                                        <div class="col-sm-1">
-                                                            <%--<button type="button" id="btnProductCode" class="btn btn-block btn-primary" data-toggle="modal" data-target="#ProductCodeModal" runat="server"><i class="glyphicon glyphicon-search"></i></button>--%>
-                                                            <button type="button" class="btn btn-sm btn-primary" runat="server" onserverclick="Unnamed_ServerClick7"><i class="glyphicon glyphicon-search"></i></button>
-                                                        </div>
-                                                        <label for="txtPONoProductCode" class="col-sm-2 control-label">PO No:</label>
-                                                        <div class="col-sm-3">
-                                                            <input class="form-control input-sm" id="txtPONoProductCode" runat="server" autocomplete="off" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="txtQuantityInvoice" class="col-sm-3 control-label">Quantity:</label>
-                                                        <div class="col-sm-4">
-                                                            <input class="form-control input-sm" id="txtQuantityInvoice" runat="server" value="0" autocomplete="off" autofocus="autofocus" />
-                                                        </div>
-                                                        <div class="col-sm-5">
-                                                            <asp:DropDownList ID="ddlQuantityInvoice" CssClass="form-control input-sm" runat="server"></asp:DropDownList>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="txtWeightInvoice" class="col-sm-3 control-label">Weight:</label>
-                                                        <div class="col-sm-4">
-                                                            <input class="form-control input-sm" id="txtWeightInvoice" runat="server" value="0" autocomplete="off" />
-                                                        </div>
-                                                        <div class="col-sm-5">
-                                                            <asp:DropDownList ID="ddlWeightInvoice" CssClass="form-control input-sm" runat="server"></asp:DropDownList>
+                                                        <div class="col-sm-6">
+                                                            <label for="txtProductNameInvoice" class="col-sm-3 control-label">Product Name:</label>
+                                                            <div class="col-sm-9">
+                                                                <input class="form-control input-sm" id="txtProductNameInvoice" runat="server" autocomplete="off" />
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="txtRamarkInvoice" class="col-sm-3 control-label">Remark:</label>
-                                                        <div class="col-sm-9">
-                                                            <textarea class="form-control input-sm" rows="3" runat="server" id="txtRemarkInvoice" placeholder="Remark" style="height: 34px; width: 917px;"></textarea>
+                                                        <div class="col-sm-6">
+                                                            <label for="txtQuantityInvoice" class="col-sm-3 control-label">Quantity:</label>
+                                                            <div class="col-sm-4">
+                                                                <input class="form-control input-sm" id="txtQuantityInvoice" runat="server" value="0" autocomplete="off" autofocus="autofocus" />
+                                                            </div>
+                                                            <div class="col-sm-5">
+                                                                <asp:DropDownList ID="ddlQuantityInvoice" CssClass="form-control input-sm" runat="server"></asp:DropDownList>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <label for="txtPallet_SKIDInvoice" class="col-sm-3 control-label">Pallet/SKID:</label>
+                                                            <div class="col-sm-4">
+                                                                <input class="form-control input-sm" id="txtPallet_SKIDInvoice" runat="server" value="0" autocomplete="off" />
+                                                            </div>
+                                                            <div class="col-sm-5">
+                                                                <asp:DropDownList ID="ddlPallet_SKIDInvoice" CssClass="form-control input-sm" runat="server"></asp:DropDownList>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="txtShipmentInvoice" class="col-sm-3 control-label">Shipment:</label>
-                                                        <div class="col-sm-4">
-                                                            <input class="form-control input-sm" id="txtShipmentInvoice" runat="server" autocomplete="off" />
+                                                        <div class="col-sm-6">
+                                                            <label for="txtWeightInvoice" class="col-sm-3 control-label">Weight:</label>
+                                                            <div class="col-sm-4">
+                                                                <input class="form-control input-sm" id="txtWeightInvoice" runat="server" value="0" autocomplete="off" />
+                                                            </div>
+                                                            <div class="col-sm-5">
+                                                                <asp:DropDownList ID="ddlWeightInvoice" CssClass="form-control input-sm" runat="server"></asp:DropDownList>
+                                                            </div>
                                                         </div>
-                                                        <label for="txtItemNoInvoice" class="col-sm-2 control-label">Item No:</label>
-                                                        <div class="col-sm-3">
-                                                            <input class="form-control input-sm" id="txtItemNoInvoice" runat="server" autocomplete="off" />
+                                                        <div class="col-sm-6">
+                                                            <label for="txtBoxInvoice" class="col-sm-3 control-label">Box:</label>
+                                                            <div class="col-sm-4">
+                                                                <input class="form-control input-sm" id="txtBoxInvoice" runat="server" value="0" autocomplete="off" />
+                                                            </div>
+                                                            <div class="col-sm-5">
+                                                                <asp:DropDownList ID="ddlBoxInvoice" CssClass="form-control input-sm" runat="server"></asp:DropDownList>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="txtMeasurementInvoice" class="col-sm-3 control-label">Measurement:</label>
-                                                        <div class="col-sm-4">
-                                                            <input class="form-control input-sm" id="txtWidthInvoice" runat="server" placeholder="Width" autocomplete="off" />
+                                                        <div class="col-sm-6">
+                                                            <label for="txtRamarkInvoice" class="col-sm-3 control-label">Remark:</label>
+                                                            <div class="col-sm-9">
+                                                                <textarea class="form-control input-sm table-responsive" rows="3" runat="server" id="txtRemarkInvoice" placeholder="Remark"></textarea>
+                                                            </div>
                                                         </div>
-                                                        <div class="col-sm-4">
-                                                            <input class="form-control input-sm" id="txtHeightInvoice" runat="server" placeholder="Height" autocomplete="off" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="col-sm-6">
+                                                            <label for="txtShipmentInvoice" class="col-sm-3 control-label">Shipment:</label>
+                                                            <div class="col-sm-4">
+                                                                <input class="form-control input-sm" id="txtShipmentInvoice" runat="server" autocomplete="off" />
+                                                            </div>
+                                                            <label for="txtItemNoInvoice" class="col-sm-2 control-label">Item No:</label>
+                                                            <div class="col-sm-3">
+                                                                <input class="form-control input-sm" id="txtItemNoInvoice" runat="server" autocomplete="off" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <label for="txtUnitDimension" class="col-sm-3 control-label">UnitDimension:</label>
+                                                            <div class="col-sm-4">
+                                                                <asp:DropDownList ID="ddlUnitDimension" CssClass="form-control input-sm" runat="server"></asp:DropDownList>
+                                                            </div>
+                                                            <label for="txtPalletDimensionInvoice" class="col-sm-2 control-label">Pallet:</label>
+                                                            <div class="col-sm-3">
+                                                                <input class="form-control input-sm" id="txtPalletDimensionInvoice" runat="server" value="0" autocomplete="off" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="col-sm-6">
+                                                            <label for="txtMeasurementInvoice" class="col-sm-3 control-label">Measurement:</label>
+                                                            <div class="col-sm-3">
+                                                                <input class="form-control input-sm" id="txtWidthInvoice" runat="server" placeholder="Width" autocomplete="off" />
+                                                            </div>
+                                                            <div class="col-sm-3">
+                                                                <input class="form-control input-sm" id="txtHeightInvoice" runat="server" placeholder="Height" autocomplete="off" />
+                                                            </div>
+                                                            <div class="col-sm-3">
+                                                                <input class="form-control input-sm" id="txtLenghtInvoice" runat="server" placeholder="Lenght" autocomplete="off" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <label for="txtEntryItemNoInvoice" class="col-sm-3 control-label">EntryItemNo:</label>
+                                                            <div class="col-sm-4">
+                                                                <input class="form-control input-sm" id="txtEntryItemNoInvoice" runat="server" autocomplete="off" />
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1287,29 +1351,42 @@
                                                 <legend>Currency</legend>
                                                 <div class="box-body">
                                                     <div class="form-group">
-                                                        <label for="txtCurrencyInvoice" class="col-sm-4">Currency:</label>
-                                                        <label for="txtExchangeRateInvoice" class="col-sm-3">Exchange Rate:</label>
-                                                        <label for="txtPriceForeignInvoice" class="col-sm-4">@Price(Foreign):</label>
+                                                        <label for="txtCurrencyInvoice" class="col-sm-2">Currency:</label>
+                                                        <label for="txtExchangeRateInvoice" class="col-sm-2">Exchange Rate:</label>
+                                                        <label for="txtPriceForeignInvoice" class="col-sm-2">@Price(Foreign):</label>
+                                                        <label for="txtPriceBathInvoice" class="col-sm-2">@Price(Bath):</label>
+                                                        <label for="txtAmountForeignInvoice" class="col-sm-2">Amount(Foreign):</label>
+                                                        <label for="txtAmountBathInvoice" class="col-sm-2">Amount(Bath):</label>
                                                     </div>
                                                     <div class="form-group">
-                                                        <div class="col-sm-4">
+                                                        <div class="col-sm-2">
                                                             <asp:DropDownList ID="ddlCurrencyInvoice" CssClass="form-control input-sm" runat="server"></asp:DropDownList>
                                                         </div>
-                                                        <div class="col-sm-4">
+                                                        <div class="col-sm-2">
                                                             <input class="form-control input-sm" id="txtExchangeRateInvoice" runat="server" value="0.0" autocomplete="off" />
                                                         </div>
-                                                        <div class="col-sm-4">
+                                                        <div class="col-sm-2">
                                                             <input class="form-control input-sm" id="txtPriceForeignInvoice" runat="server" value="0.0" autocomplete="off" />
+                                                        </div>
+                                                        <div class="col-sm-2">
+                                                            <input class="form-control input-sm" id="txtPriceBathInvoice" runat="server" value="0.0" readonly="true" autocomplete="off" />
+                                                        </div>
+                                                        <div class="col-sm-2">
+                                                            <input class="form-control input-sm" id="txtAmountForeignInvoice" runat="server" value="0.0" readonly="true" autocomplete="off" />
+                                                        </div>
+                                                        <div class="col-sm-2">
+                                                            <input class="form-control input-sm" id="txtAmountBathInvoice" runat="server" value="0.0" readonly="true" autocomplete="off" />
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <div class="col-sm-6">
-                                                            <%--<button runat="server" class="btn-primary" id="btnGenIEATNo" title="btnGenIEATNo">Generate </button>--%>
-                                                            <button type="submit" runat="server" class="btn btn-primary" id="btnSaveInvoice" title="btnSaveInvoice" onserverclick="btnSaveInvoice_ServerClick">Save Inv.</button>
-                                                        </div>
-                                                        <div class="col-sm-6">
-                                                            <%--<button runat="server" class="btn-primary" id="btnGenIEATNo" title="btnGenIEATNo">Generate </button>--%>
-                                                            <button type="submit" runat="server" class="btn btn-default" id="btnModifyInvoice" title="btnModifyInvoice" onserverclick="btnModifyInvoice_ServerClick">Modify Inv.</button>
+                                                        <div class="col-sm-12 text-right">
+                                                            <button type="submit" runat="server" class="btn btn-primary" id="Button1" title="btnSaveInvoice" onserverclick="btnSaveInvoice_ServerClick">Save Inv.</button>
+                                                            &nbsp;
+                                                            <button type="submit" runat="server" class="btn btn-default" id="Button2" title="btnModifyInvoice" onserverclick="btnModifyInvoice_ServerClick">Modify Inv.</button>
+                                                            &nbsp;
+                                                            <button type="submit" runat="server" class="btn btn-warning" id="btnDeleteInvoice" title="btnDeleteInvoice" onserverclick="btnDeleteInvoice_ServerClick">Delete Inv.</button>
+                                                            &nbsp;
+                                                            <button type="submit" runat="server" class="btn btn-danger" id="btnDeleteAllInvoice" title="btnDeleteAllInvoice" onserverclick="btnDeleteAllInvoice_ServerClick">Delete Inv. All</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1317,53 +1394,74 @@
                                             </fieldset>
                                         </div>
 
+                                        <div class="form-horizontal">
+                                            <fieldset>
+                                                <div class="box-body">
+                                                    <div class="form-group">
+                                                        <div class="col-sm-12">
+                                                            <iframe runat="server" id="iFrame1" width="100%" style="background-color:#E5E7E9"></iframe>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </div>
 
                                         <div class="form-horizontal">
                                             <fieldset>
                                                 <legend>Import Flight</legend>
                                                 <div class="box-body">
                                                     <div class="form-group">
-                                                        <label for="txtFlightNoInvoice" class="col-sm-4 control-label">Flight No:</label>
-                                                        <div class="col-sm-8">
-                                                            <input class="form-control input-sm" id="txtFlightNo" runat="server" autocomplete="off" />
+                                                        <div class="col-sm-6">
+                                                            <label for="txtFlightNoInvoice" class="col-sm-3 control-label">Flight No:</label>
+                                                            <div class="col-sm-9">
+                                                                <input class="form-control input-sm" id="txtFlightNo" runat="server" autocomplete="off" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <label for="txtFlightDateInvoice" class="col-sm-3 control-label">Flight Date:</label>
+                                                            <div class="col-sm-9">
+                                                                <asp:TextBox CssClass="form-control input-sm" ID="txtdatepickerFlightDateInvoice" runat="server" placeholder="DD/MM/YYYY" autocomplete="off"></asp:TextBox>
+                                                                <asp:CalendarExtender ID="CalendarExtenderFlightDateInvoice" runat="server" Enabled="True" TargetControlID="txtdatepickerFlightDateInvoice" Format="dd/MM/yyyy"></asp:CalendarExtender>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="txtFlightDateInvoice" class="col-sm-4 control-label">Flight Date:</label>
-                                                        <div class="col-sm-8">
-                                                            <asp:TextBox CssClass="form-control input-sm" ID="txtdatepickerFlightDateInvoice" runat="server" placeholder="DD/MM/YYYY" autocomplete="off"></asp:TextBox>
-                                                            <asp:CalendarExtender ID="CalendarExtenderFlightDateInvoice" runat="server" Enabled="True" TargetControlID="txtdatepickerFlightDateInvoice" Format="dd/MM/yyyy"></asp:CalendarExtender>
+                                                        <div class="col-sm-6">
+                                                            <label for="txtQuantity_PLT_Skid_Invoice" class="col-sm-3 control-label">Quantity PLT/SKID:</label>
+                                                            <div class="col-sm-4">
+                                                                <input class="form-control input-sm" id="txtQuantity_PLT_Skid_Invoice" runat="server" value="0" autocomplete="off" />
+                                                            </div>
+                                                            <div class="col-sm-4 col-sm-offset-1">
+                                                                <asp:DropDownList ID="ddlQuantity_PLT_Skid_Invoice" CssClass="form-control input-sm" runat="server"></asp:DropDownList>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <div class="col-sm-5 col-sm-offset-1">
+                                                                <asp:DropDownList ID="ddlQuantity_PLT_Skid_Invoice2" CssClass="form-control input-sm" runat="server">
+                                                                    <asp:ListItem>--select--</asp:ListItem>
+                                                                    <asp:ListItem>HAWB</asp:ListItem>
+                                                                    <asp:ListItem>HBL</asp:ListItem>
+                                                                </asp:DropDownList>
+                                                            </div>
+                                                            <div class="col-sm-5 col-sm-offset-1">
+                                                                <input class="form-control input-sm" id="txtQuantity_PLT_Skid_Invoice2" runat="server" value="0" autocomplete="off" />
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="txtQuantity_PLT_Skid_Invoice" class="col-sm-4 control-label">Quantity PLT/SKID:</label>
-                                                        <div class="col-sm-4">
-                                                            <input class="form-control input-sm" id="txtQuantity_PLT_Skid_Invoice" runat="server" value="0" autocomplete="off" />
-                                                        </div>
-                                                        <div class="col-sm-4">
-                                                            <asp:DropDownList ID="ddlQuantity_PLT_Skid_Invoice" CssClass="form-control input-sm" runat="server"></asp:DropDownList>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <div class="col-sm-4">
-                                                            <asp:DropDownList ID="ddlQuantity_PLT_Skid_Invoice2" CssClass="form-control input-sm" runat="server">
-                                                                <asp:ListItem>--select--</asp:ListItem>
-                                                                <asp:ListItem>HAWB</asp:ListItem>
-                                                                <asp:ListItem>HBL</asp:ListItem>
-                                                            </asp:DropDownList>
-                                                        </div>
-                                                        <div class="col-sm-8">
-                                                            <input class="form-control input-sm" id="txtQuantity_PLT_Skid_Invoice2" runat="server" value="0" autocomplete="off" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <div class="col-sm-4 col-sm-offset-4">
+                                                        <div class="col-sm-12 text-right">
                                                             <button type="submit" runat="server" class="btn btn-primary" id="btnSaveFlightNoInvoice" title="btnSaveFlightNoInvoice" onserverclick="btnSaveFlightNoInvoice_ServerClick">Save Flight No</button>
-                                                        </div>
-                                                        <div class="col-sm-4 ">
+                                                            &nbsp;
                                                             <button type="submit" runat="server" class="btn btn-warning" id="btnDeleteFlightNoInvoice" title="btnDeleteFlightNoInvoice" onserverclick="btnDeleteFlightNoInvoice_ServerClick">Delete Flight No</button>
                                                         </div>
                                                     </div>
+                                                    
+                                                    <div class="form-group">
+                                                        <div class="col-sm-12">
+                                                            <iframe runat="server" id="iframe2" width="100%" style="background-color:#E5E7E9"></iframe>
+                                                        </div>
+                                                    </div>
+
                                                     <div class="form-group">
                                                         <%--------------------------------------Data Issued Detail Repeater---------------------------------%>
                                                       <asp:Repeater ID="Repeater10" runat="server" OnItemCommand="Repeater10_ItemCommand">
@@ -1421,145 +1519,25 @@
 
 
                                     <%------------------------------------------------------------Start Right Form------------------------------------------------%>
-                                    <div class="col-md-6">
-                                        <!-- Horizontal Form -->
-                                        <!-- form start -->
-                                        <div class="form-horizontal">
-                                            <fieldset>
-                                                <legend>Invoice</legend>
-                                                <div class="box-body">
-                                                    <div class="form-group">
-                                                        <label for="txtDataInvoice" class="col-sm-3 control-label">Data Invoice:</label>
-                                                        <div class="col-sm-8">
-                                                            <asp:TextBox CssClass="form-control input-sm" ID="txtdatepickerDataInvoice" runat="server" placeholder="DD/MM/YYYY" autocomplete="off"></asp:TextBox>
-                                                            <asp:CalendarExtender ID="CalendarExtenderDataInvoice" runat="server" Enabled="True" TargetControlID="txtdatepickerDataInvoice" Format="dd/MM/yyyy"></asp:CalendarExtender>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="txtProductNameInvoice" class="col-sm-3 control-label">Product Name:</label>
-                                                        <div class="col-sm-8">
-                                                            <input class="form-control input-sm" id="txtProductNameInvoice" runat="server" autocomplete="off" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="txtPallet_SKIDInvoice" class="col-sm-3 control-label">Pallet/SKID:</label>
-                                                        <div class="col-sm-4">
-                                                            <input class="form-control input-sm" id="txtPallet_SKIDInvoice" runat="server" value="0" autocomplete="off" />
-                                                        </div>
-                                                        <div class="col-sm-4">
-                                                            <asp:DropDownList ID="ddlPallet_SKIDInvoice" CssClass="form-control input-sm" runat="server"></asp:DropDownList>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="txtBoxInvoice" class="col-sm-3 control-label">Box:</label>
-                                                        <div class="col-sm-4">
-                                                            <input class="form-control input-sm" id="txtBoxInvoice" runat="server" value="0" autocomplete="off" />
-                                                        </div>
-                                                        <div class="col-sm-4">
-                                                            <asp:DropDownList ID="ddlBoxInvoice" CssClass="form-control input-sm" runat="server"></asp:DropDownList>
-                                                        </div>
-                                                    </div>
-
-                                                    <h1></h1>
-                                                    <%--<h1></h1>--%>
-
-                                                    <div class="form-group">
-                                                        <label for="txtUnitDimension" class="col-sm-3 control-label">UnitDimension:</label>
-                                                        <div class="col-sm-3">
-                                                            <asp:DropDownList ID="ddlUnitDimension" CssClass="form-control input-sm" runat="server"></asp:DropDownList>
-                                                        </div>
-                                                        <label for="txtPalletDimensionInvoice" class="col-sm-2 control-label">Pallet:</label>
-                                                        <div class="col-sm-3">
-                                                            <input class="form-control input-sm" id="txtPalletDimensionInvoice" runat="server" value="0" autocomplete="off" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <div class="col-sm-4">
-                                                            <input class="form-control input-sm" id="txtLenghtInvoice" runat="server" placeholder="Lenght" autocomplete="off" />
-                                                        </div>
-                                                        <label for="txtEntryItemNoInvoice" class="col-sm-3 control-label">EntryItemNo:</label>
-                                                        <div class="col-sm-4">
-                                                            <input class="form-control input-sm" id="txtEntryItemNoInvoice" runat="server" autocomplete="off" />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- /.box-body -->
-                                            </fieldset>
-                                        </div>
-                                        <!-- /.box -->
-
-                                        <!-- general form Commodity -->
-                                        <div class="form-horizontal">
-                                            <fieldset>
-                                                <legend>Currency</legend>
-                                                <div class="box-body">
-                                                    <div class="form-group">
-                                                        <label for="txtPriceBathInvoice" class="col-sm-4 ">@Price(Bath):</label>
-                                                        <label for="txtAmountForeignInvoice" class="col-sm-4 ">Amount(Foreign):</label>
-                                                        <label for="txtAmountBathInvoice" class="col-sm-4 ">Amount(Bath):</label>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <div class="col-sm-4">
-                                                            <input class="form-control input-sm" id="txtPriceBathInvoice" runat="server" value="0.0" readonly="true" autocomplete="off" />
-                                                        </div>
-                                                        <div class="col-sm-4">
-                                                            <input class="form-control input-sm" id="txtAmountForeignInvoice" runat="server" value="0.0" readonly="true" autocomplete="off" />
-                                                        </div>
-                                                        <div class="col-sm-4">
-                                                            <input class="form-control input-sm" id="txtAmountBathInvoice" runat="server" value="0.0" readonly="true" autocomplete="off" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <div class="col-sm-6">
-                                                            <%--<button runat="server" class="btn-primary" id="btnGenIEATNo" title="btnGenIEATNo">Generate </button>--%>
-                                                            <button type="submit" runat="server" class="btn btn-warning" id="btnDeleteInvoice" title="btnDeleteInvoice" onserverclick="btnDeleteInvoice_ServerClick">Delete Inv.</button>
-                                                        </div>
-                                                        <div class="col-sm-6">
-                                                            <%--<button runat="server" class="btn-primary" id="btnGenIEATNo" title="btnGenIEATNo">Generate </button>--%>
-                                                            <button type="submit" runat="server" class="btn btn-danger" id="btnDeleteAllInvoice" title="btnDeleteAllInvoice" onserverclick="btnDeleteAllInvoice_ServerClick">Delete Inv. All</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- /.box-body -->
-                                            </fieldset>
-                                        </div>
-
-
+                                    <div class="col-md-12">
                                         <div class="form-horizontal">
                                             <fieldset>
                                                 <legend>Export</legend>
                                                 <div class="box-body">
                                                     <div class="form-group">
-                                                        <div class="col-sm-8">
+                                                        <div class="col-sm-6">
                                                             <input class="form-control input-sm" id="txtQTYExportInvoice" runat="server" placeholder="0" autocomplete="off" />
                                                         </div>
-                                                        <div class="col-sm-4">
-                                                            <%--<button runat="server" class="btn-primary" id="btnGenIEATNo" title="btnGenIEATNo">Generate </button>--%>
-                                                            <button type="submit" runat="server" class="btn btn-primary" id="btnSumQTYInvoice" onserverclick="btnSumQTYInvoice_ServerClick" title="btnSumQTYInvoice">Sum QTY</button>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <div class="col-sm-8">
-                                                        </div>
-                                                        <div class="col-sm-4">
+                                                        <div class="col-sm-6 text-right">
+                                                            <button type="submit" runat="server" class="btn btn-default" id="btnSumQTYInvoice" onserverclick="btnSumQTYInvoice_ServerClick" title="btnSumQTYInvoice">Sum QTY</button>
+                                                            &nbsp;
                                                             <button type="submit" runat="server" class="btn btn-primary" id="btnSaveToPrepairInvoice" onserverclick="btnSaveToPrepairInvoice_ServerClick" title="btnSaveToPrepairInvoice">Save To Prepair</button>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <div class="col-sm-8">
-                                                        </div>
-                                                        <div class="col-sm-4">
+                                                            &nbsp;
                                                             <button type="submit" runat="server" class="btn btn-soundcloud" id="btnExportCSVFileInvoice" onserverclick="btnExportCSVFileInvoice_ServerClick" title="btnExportCSVFileInvoice">Export csv File   </button>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <div class="col-sm-8">
-                                                        </div>
-                                                        <div class="col-sm-4">
+                                                            &nbsp;
                                                             <button type="submit" runat="server" class="btn btn-success" id="btnSaveToConfirmNJRCInvoice" onserverclick="btnSaveToConfirmNJRCInvoice_ServerClick" title="btnSaveToConfirmNJRCInvoice">Save To Confirm NJRC</button>
                                                         </div>
                                                     </div>
-
                                                 </div>
                                                 <!-- /.box-body -->
                                             </fieldset>
@@ -1605,7 +1583,7 @@
                                                                     <button type="submit" runat="server" class="btn btn-success" id="btnImport_Import" title="btnImport_Import">Import</button>
                                                                 </div>
                                                             </div>
-                                                            <div class="form-group">
+                                                            <%--<div class="form-group">
                                                                 <div class="col-sm-12">
                                                                     <div class="progress active">
                                                                         <div class="progress-bar progress-bar-primary progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
@@ -1613,7 +1591,7 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
+                                                            </div>--%>
 
                                                         </div>
                                                     </fieldset>
@@ -1694,10 +1672,10 @@
                                                                    <%-- <input type="file" class="form-control input-sm" id="txtSelectFileForImportEntryItemNo_ItemPortFileNJR" runat="server" />--%>
                                                                 </div>
                                                                 <div class="col-sm-4">
-                                                                    <button type="submit" runat="server"  onserverclick="btnImport_ImportFileNJR_ServerClick" class="btn btn-success" id="btnImport_ImportFileNJR" title="btnImport_ImportFileNJR">Import Update</button>
+                                                                    <button type="submit" runat="server" onserverclick="btnImport_ImportFileNJR_ServerClick" class="btn btn-success" id="btnImport_ImportFileNJR" title="btnImport_ImportFileNJR">Import Update</button>
                                                                 </div>
                                                             </div>
-                                                            <div class="form-group">
+                                                            <%--<div class="form-group">
                                                                 <div class="col-sm-12">
                                                                     <div class="progress active">
                                                                         <div class="progress-bar progress-bar-primary progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
@@ -1705,14 +1683,14 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
+                                                            </div>--%>
 
                                                         </div>
                                                     </fieldset>
                                                 </div>
                                                 <!-- /.box-body -->
                                             </div>
-
+                                            
                                             <div class="form-horizontal">
                                                 <div class="box-body">
 
@@ -1721,10 +1699,13 @@
                                                         <div class="col-lg-12 col-md-12">
 
                                                             <div class="form-group">
-                                                                <div class="col-sm-8">
+                                                                <div class="col-sm-12" style="width:100%; height:350px; overflow-x:scroll; overflow-y:scroll;">
                                                                     <asp:GridView ID="GridView1" runat="server"></asp:GridView>
                                                                 </div>
-                                                                <div class="col-sm-4">
+                                                                
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <div class="col-sm-4 col-sm-offset-8">
                                                                     <button type="submit" runat="server" class="btn btn-success" id="btnSaveToInvoice_ImportFileNJR" title="btnSaveToInvoice_ImportFileNJR">Save To Invoice</button>
                                                                 </div>
                                                             </div>
