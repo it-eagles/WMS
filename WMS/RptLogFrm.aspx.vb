@@ -1,8 +1,8 @@
-<<<<<<< HEAD
-﻿Public Class RptLogfrm
-=======
-﻿Public Class RptLogFrm
->>>>>>> 5c28d6f84ea2d8570db5f5f55311fad3b9b1d335
+Option Explicit On
+Option Strict On
+Option Infer On
+
+Public Class RptLogfrm
     Inherits System.Web.UI.Page
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load

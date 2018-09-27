@@ -50,8 +50,9 @@
                                               <asp:GridView ID="GridView1" runat="server" OnPageIndexChanging="PageIndexChanging" AllowPaging = "true"  >
                                   </asp:GridView>
                                     </div>                          
-
-                                  <%--  <div >
+                                     <input runat="server" id="txttest" value="" />
+                                    <input runat="server" id="Text1" value="" />
+                                   <%--  <div >
                                           <asp:TextBox runat="server" ID="txtCompanyName" CssClass="form-control input-sm"></asp:TextBox>
                                        
                                     </div>--%>
@@ -218,6 +219,14 @@
                         }
                     });
                 });
+            });
+</script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $("#txttest").keyup(function () {
+                var value = $(this).val();
+                $("#Text1").text(value);
+            }).keyup();
             });
 </script>
     </form>
